@@ -1,0 +1,358 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Filesystem\Filesystem;
+use App\DataTables\ChatDataTable;
+use App\Http\Requests;
+use App\Http\Requests\CreateChatRequest;
+use App\Http\Requests\UpdateChatRequest;
+use App\Repositories\ChatRepository;
+use Flash;
+use App\Http\Controllers\AppBaseController;
+use Response;
+
+use App\User;
+use App\Models\Postulacion;
+use App\Models\Usuario;
+use App\Models\Candidato;
+use App\Models\Empleador;
+use App\Models\Mensaje;
+use Carbon\Carbon;
+
+
+
+
+class ChatController extends AppBaseController
+{
+    /** @var  ChatRepository */
+    private $chatRepository;
+
+    public function __construct(ChatRepository $chatRepo)
+    {
+        $this->chatRepository = $chatRepo;
+    }
+
+
+    public function vchat()
+    {
+        $validar=$this->getFechaSys();
+      $id_usr=Auth::user()->id;
+      $tipo_=Auth::user()->perfil_id;
+      $lista="";
+       if($tipo_==2 ){
+          $obj=Empleador::where([ ['user_id', '=',$id_usr] ] )->first();
+          $lista = DB::select( DB::raw("SELECT DISTINCT U.id,CONCAT(E.nombres, ' ', E.apellidos) as des,E.created_at,U.url_imagen,
+                       E.descripcion
+                       FROM ofertas O,postulaciones P,candidatos E,users U
+                       WHERE P.estatus_id in ('1','2') and P.oferta_id=O.id and O.empleador_id='".  $obj->id  ."'
+                        and P.candidato_id=E.id and E.user_id=U.id Order by E.nombres") );
+       }else if($tipo_==3 ){
+            $obj=Candidato::where([ ['user_id', '=',$id_usr] ] )->first();
+            $lista = DB::select( DB::raw("SELECT DISTINCT U.id,CONCAT(E.contacto, '-->', E.empresa) as des,E.created_at,U.url_imagen,
+               E.descripcion
+               FROM ofertas O,postulaciones P,empleadores E,users U
+               WHERE P.candidato_id='". $obj->id ."' and P.estatus_id in ('1','2') and P.oferta_id=O.id
+              and O.empleador_id=E.id and E.user_id=U.id Order by E.contacto ") );
+       }
+       $historico=null;
+        return view('zvistas.chat')
+                ->with('usuarios', $lista)
+                ->with('chat_with', 'n')
+                ->with('chat_with_id', '0')
+                ->with('inicio', true)
+                ->with('historico', $historico);
+    }
+
+    public function historico($id){
+        Carbon::setLocale(config('app.locale'));
+        $de_=$id;
+        $validar=$this->getFechaSys();
+        $id_usr=Auth::user()->id;
+        $tipo_=Auth::user()->perfil_id;
+        $lista="";
+        if($tipo_==2 ){
+             $obj=Empleador::where([ ['user_id', '=',$id_usr] ] )->first();
+             $lista = DB::select( DB::raw("SELECT DISTINCT U.id,CONCAT(E.nombres, ' ', E.apellidos) as des,E.created_at,U.url_imagen,E.descripcion
+                          FROM ofertas O,postulaciones P,candidatos E,users U
+                          WHERE P.estatus_id in ('1','2') and P.oferta_id=O.id and O.empleador_id='".  $obj->id  ."'
+                          AND P.candidato_id=E.id and E.user_id=U.id Order by E.nombres") );
+            $obj=Candidato::where([ ['user_id', '=',$de_] ] )->first();
+            $cw_=' Con '.$obj->nombres.' '.$obj->apellidos;
+
+        }else if($tipo_==3 ){
+             $obj=Candidato::where([ ['user_id', '=',$id_usr] ] )->first();
+             $lista = DB::select( DB::raw("SELECT DISTINCT U.id,CONCAT(E.contacto, '-->', E.empresa) as des,E.created_at,U.url_imagen,E.descripcion
+                FROM ofertas O,postulaciones P,empleadores E,users U
+                WHERE P.candidato_id='". $obj->id ."' and P.estatus_id in ('1','2') and P.oferta_id=O.id
+               and O.empleador_id=E.id and E.user_id=U.id Order by E.contacto ") );
+               $obj=Empleador::where([ ['user_id', '=',$de_] ] )->first();
+               $cw_=' Con '.$obj->contacto.'--> '.$obj->empresa;
+        }
+      $historico = DB::select( DB::raw("SELECT M.id,M.mensaje,M.deuser_id,M.parauser_id,M.created_at,M.leido,M.updated_at,U.url_imagen,U.name
+          					        FROM mensajes M,users U
+          		              WHERE M.parauser_id='". $id_usr  ."' and M.deuser_id='". $de_  ."' AND  M.deuser_id=U.id
+                            UNION
+                            SELECT M.id,M.mensaje,M.deuser_id,M.parauser_id,M.created_at,M.leido,M.updated_at,U.url_imagen,U.name
+                            FROM mensajes M,users U
+                            WHERE M.parauser_id='". $de_  ."' and M.deuser_id='". $id_usr   ."' AND  M.parauser_id=U.id
+                            ORDER BY created_at ASC
+                            ") );
+
+        return view('zvistas.chat')
+                ->with('inicio', false)
+                ->with('usuarios', $lista)
+                ->with('chat_with', $cw_)
+                ->with('chat_with_id', $id)
+                ->with('historico', $historico);
+    }
+
+    public function enviarmensaje(Request $request){
+           Carbon::setLocale(config('app.locale'));
+           date_default_timezone_set('America/Bogota');
+           $de_      = Auth::user()->id;
+           $para_    = $request->input('para');
+           $msg_     = $request->input('msg');
+           $obj_para = Usuario::where([ ['id', '=',$para_] ] )->first();
+      		 if (!empty($obj_para)) {
+                $ruta_destino = public_path('/images/system_imgs/chats/'.$para_.'/');
+              //  Filesystem::makeDirectory($ruta_destino);
+                $obj = Mensaje::create([
+                						'deuser_id' => intval($de_),
+                						'parauser_id' => intval($para_),
+                						'mensaje' => $msg_,
+                						'recivido'=> 0,
+                						'leido'=> 0,
+          			       ]);
+          			if($obj){
+                  //$carbon = new Carbon($obj->created_at, 'America/Bogota');
+                  $RP="<div class='activity-row activity-row1'  >
+                         <div class='col-xs-3 activity-img'>
+                             <img src='". Auth::user()->url_imagen ."' class='img-responsive avatarxx1' />
+                             <span>". date('H:i')  ."</span>
+                         </div>
+                        <div class='col-xs-5 activity-img1'>
+                          <div class='activity-desc-sub'>
+                             <h5>". Auth::user()->name ."</h5>
+                             <p> ".  $msg_ ."</p>
+                          </div>
+                       </div>
+                      <div class='col-xs-4 activity-desc1'></div>
+                      <div class='clearfix'> </div>
+                   </div>";
+          				 return $RP;
+          			}
+            }
+          $RP="<div class='activity-row activity-row1'  >
+                    <div class='col-xs-3 activity-img'>
+                        <img src='". Auth::user()->url_imagen ."' class='img-responsive avatarxx1' />
+                        <span>". date('H:i')  ."</span>
+                    </div>
+                   <div class='col-xs-5 activity-img1'>
+                     <div class='activity-desc-sub'>
+                        <h5>". Auth::user()->name ."</h5>
+                        <p> Mensaje no enviado </p>
+                     </div>
+                  </div>
+                 <div class='col-xs-4 activity-desc1'></div>
+                 <div class='clearfix'> </div>
+              </div>";
+        return $RP;
+    }
+    public function recibirmensaje(Request $request){
+       Carbon::setLocale(config('app.locale'));
+        $de_ = $request->input('de');
+        //$de_="10";
+        if($de_==""){
+          return "";
+        }
+        $validar=$this->getFechaSys();
+        $id_usr=Auth::user()->id;
+        $tipo_=Auth::user()->perfil_id;
+        $lista="";
+        $RP = "";
+        $historico = DB::select( DB::raw("SELECT M.id,M.mensaje,M.deuser_id,M.parauser_id,M.created_at,M.leido,M.updated_at,U.url_imagen,U.name
+          					  FROM mensajes M,users U
+          		        WHERE M.parauser_id='". $id_usr  ."' and M.deuser_id='". $de_  ."' and M.recivido=0 AND  M.deuser_id=U.id  Order by M.created_at") );
+        foreach($historico as $item){
+            $carbon = new Carbon($item->created_at, 'America/Bogota');
+            $RP .= "<div class='activity-row activity-row1'>
+               <div class='col-xs-2 activity-desc1'></div>
+               <div class='col-xs-7 activity-img2'>
+                 <div class='activity-desc-sub1'>
+                   <h5>". $item->name ."</h5>
+                   <p>". $item->mensaje ."</p>
+                 </div>
+               </div>
+               <div class='col-xs-3 activity-img'><img src='". $item->url_imagen ."' class='img-responsive avatarxx1' /><span>". $carbon->diffForHumans()  ."</span></div>
+               <div class='clearfix'> </div>
+              </div>";
+              $obj_msg = Mensaje::where([ ['id', '=', $item->id ] ] )->first();
+              $obj_msg->recivido=1;
+              $obj_msg->save();
+            //$response .= "<option value='". $card->pkcreditcard."'>". $card->creditcard_type .' ' . substr($card->creditcard_numbercard, -4) ."</option>";
+        }
+        return $RP;
+    }
+
+
+    public function enviarfoto(Request $request){
+      		 $file=asset('/images/no-picture.jpg');
+      		 $id_ = $request->input('id');
+      		/* $usuario=Usuario::find($id_);
+      		 if (!empty($usuario)) {
+          			$image = $request->file('image');
+          			$ruta_destino = public_path('/images/system_imgs/chats/');
+          			$img =  Image::make($image->getRealPath());
+          			$ruta_img=$ruta_destino."puser_".$id_.'.'.$image->getClientOriginalExtension();
+          			$img_local='/images/system_imgs/chats/puser_'.$id_.'.'.$image->getClientOriginalExtension();
+                $img->resize(200, 200)->save($ruta_img);
+          			$file =asset($img_local);
+          			$usuario->url_imagen = $file;
+          		  $usuario->save();
+          			Toastr::info("Imagen de perfil actualizada", "Perfil", $options = [] );
+          			return "Imagen de perfil actualizada";
+            }
+      		  Toastr::info("No se pudo cargar la imagen", "Perfil", $options = [] );
+      	    return "No se pudo cargar la imagen";*/
+    }
+
+
+    /**
+     * Display a listing of the Chat.
+     *
+     * @param ChatDataTable $chatDataTable
+     * @return Response
+     */
+    public function index(ChatDataTable $chatDataTable)
+    {
+        return $chatDataTable->render('chats.index');
+    }
+
+    /**
+     * Show the form for creating a new Chat.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return view('chats.create');
+    }
+
+    /**
+     * Store a newly created Chat in storage.
+     *
+     * @param CreateChatRequest $request
+     *
+     * @return Response
+     */
+    public function store(CreateChatRequest $request)
+    {
+        $input = $request->all();
+
+        $chat = $this->chatRepository->create($input);
+
+        Flash::success('Chat saved successfully.');
+
+        return redirect(route('chats.index'));
+    }
+
+    /**
+     * Display the specified Chat.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function show($id)
+    {
+        $chat = $this->chatRepository->findWithoutFail($id);
+
+        if (empty($chat)) {
+            Flash::error('Chat not found');
+
+            return redirect(route('chats.index'));
+        }
+
+        return view('chats.show')->with('chat', $chat);
+    }
+
+    /**
+     * Show the form for editing the specified Chat.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function edit($id)
+    {
+        $chat = $this->chatRepository->findWithoutFail($id);
+
+        if (empty($chat)) {
+            Flash::error('Chat not found');
+
+            return redirect(route('chats.index'));
+        }
+
+        return view('chats.edit')->with('chat', $chat);
+    }
+
+    /**
+     * Update the specified Chat in storage.
+     *
+     * @param  int              $id
+     * @param UpdateChatRequest $request
+     *
+     * @return Response
+     */
+    public function update($id, UpdateChatRequest $request)
+    {
+        $chat = $this->chatRepository->findWithoutFail($id);
+
+        if (empty($chat)) {
+            Flash::error('Chat not found');
+
+            return redirect(route('chats.index'));
+        }
+
+        $chat = $this->chatRepository->update($request->all(), $id);
+
+        Flash::success('Chat updated successfully.');
+
+        return redirect(route('chats.index'));
+    }
+
+    /**
+     * Remove the specified Chat from storage.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        $chat = $this->chatRepository->findWithoutFail($id);
+
+        if (empty($chat)) {
+            Flash::error('Chat not found');
+
+            return redirect(route('chats.index'));
+        }
+
+        $this->chatRepository->delete($id);
+
+        Flash::success('Chat deleted successfully.');
+
+        return redirect(route('chats.index'));
+    }
+
+    private function getFechaSys(){
+         date_default_timezone_set('America/Bogota');
+         $fecha_ = date("Y-m-d", time());
+         $hora_=  date("H:i:s", time());
+         return $fecha_.$hora_;
+     }
+}

@@ -5,15 +5,17 @@
      $notificaciones=Mensaje::getNotificacions( Auth::user()->id );
      $tt=Mensaje::ttNotificacions( Auth::user()->id );
      $tit="No hay mensajes";
+
+		 $ttn=Mensaje::ttNotificacionsnews( Auth::user()->id );
      if($tt>0){
 ?>
 <li class="dropdown messages-menu">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-    	<i class="fa fa-envelope-o fa-2x"></i>
-    	<span class="label label-success">{{  $tt }}</span>
+    <a href="#" id='leer_mensajes' class="dropdown-toggle" data-toggle="dropdown">
+    	 <i class="fa fa-envelope-o fa-2x"></i>
+    	 <span id='div_tt_nuevas' class="label label-success">{{  $ttn }}</span>
     </a>
     <ul class="dropdown-menu">
-  	<li class="header">Tienes {{  $tt }} mensajes  </li>
+  	<li class="header"> <div id='div_tt_nuevas_' >   Tienes {{  $ttn }} mensajes nuevos  </div> </li>
   	<li>
   		<ul class="menu">
          @foreach($notificaciones as $item)

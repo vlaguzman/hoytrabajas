@@ -20,8 +20,8 @@
                     <h5> {{ $item->experiencia }}  Años de experiencia </h5>
     						</div>
     						<div class="media-right">
-    							<a class="button button-block"  href="#"  >
-                     <i class="fa fa-commenting-o fa-4x l_secundary" aria-hidden="true"></i>
+    							<a class="button button-block"  href="{!! route('msgs.historico', $item->userid) !!}"  >
+                     <i class="icon-bubbles icono-5x l_secundary" aria-hidden="true"></i>
                   </a>
     						</div>
 					    </li>

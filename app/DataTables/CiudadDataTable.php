@@ -14,10 +14,15 @@ class CiudadDataTable extends DataTable
      */
     public function ajax()
     {
-        return $this->datatables
+        /*return $this->datatables
             ->eloquent($this->query())
             ->addColumn('action', 'ciudads.datatables_actions')
-            ->make(true);
+            ->make(true);*/
+
+            return $this->datatables
+                ->collection( $this->query() )
+                ->addColumn('action', 'ciudads.datatables_actions')
+                ->make(true);
     }
 
     /**
@@ -27,9 +32,17 @@ class CiudadDataTable extends DataTable
      */
     public function query()
     {
-        $ciudads = Ciudad::query();
+      /*  $ciudads = Ciudad::query();
+        return $this->applyScopes($ciudads);*/
 
-        return $this->applyScopes($ciudads);
+
+        $lista  = Ciudad::select(array('ciudades.id','ciudades.descripcion','departamentos.descripcion as des_dep'  ))
+                          ->leftJoin('departamentos','ciudades.departamento_id','=','departamentos.id')
+                          ->orderBy('descripcion', 'desc')->get();
+
+        return $lista;
+
+
     }
 
     /**
@@ -74,8 +87,9 @@ class CiudadDataTable extends DataTable
     private function getColumns()
     {
         return [
-            'descripcion' => ['name' => 'descripcion', 'data' => 'descripcion'],
-            'departamento_id' => ['name' => 'departamento_id', 'data' => 'departamento_id']
+               'Departamento' => ['name' => 'des_dep', 'data' => 'des_dep'],
+               'Ciudad' => ['name' => 'descripcion', 'data' => 'descripcion']
+
         ];
     }
 

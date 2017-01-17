@@ -14,10 +14,15 @@ class AdministradorDataTable extends DataTable
      */
     public function ajax()
     {
-        return $this->datatables
+        /*return $this->datatables
             ->eloquent($this->query())
             ->addColumn('action', 'administradors.datatables_actions')
-            ->make(true);
+            ->make(true);*/
+            return $this->datatables
+                ->collection( $this->query() )
+                ->addColumn('action', 'administradors.datatables_actions')
+                ->make(true);
+
     }
 
     /**
@@ -27,9 +32,14 @@ class AdministradorDataTable extends DataTable
      */
     public function query()
     {
-        $administradors = Administrador::query();
+        /*$administradors = Administrador::query();
+        return $this->applyScopes($administradors);*/
 
-        return $this->applyScopes($administradors);
+          $lista  = Administrador::select(array('administradores.id','administradores.nombres','administradores.apellidos','administradores.telefono',
+                  'administradores.correo','users.url_imagen'  ))
+                  ->leftJoin('users','administradores.user_id','=','users.id')
+                  ->orderBy('nombres', 'desc')->get();
+          return $lista;
     }
 
     /**
@@ -74,11 +84,11 @@ class AdministradorDataTable extends DataTable
     private function getColumns()
     {
         return [
+            'Imagen' => ['name' => 'url_imagen', 'data' =>  'url_imagen','width'=>'6%','render'=>' "<img src="+data+" style=\"width:50px;height:50px;\" />"' ] ,
             'nombres' => ['name' => 'nombres', 'data' => 'nombres'],
             'apellidos' => ['name' => 'apellidos', 'data' => 'apellidos'],
             'telefono' => ['name' => 'telefono', 'data' => 'telefono'],
-            'correo' => ['name' => 'correo', 'data' => 'correo'],
-            'user_id' => ['name' => 'user_id', 'data' => 'user_id']
+            'correo' => ['name' => 'correo', 'data' => 'correo']
         ];
     }
 

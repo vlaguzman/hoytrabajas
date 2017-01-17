@@ -14,10 +14,14 @@ class EmpleadorDataTable extends DataTable
      */
     public function ajax()
     {
-        return $this->datatables
+      /*  return $this->datatables
             ->eloquent($this->query())
             ->addColumn('action', 'empleadors.datatables_actions')
-            ->make(true);
+            ->make(true);*/
+            return $this->datatables
+                ->collection( $this->query() )
+                ->addColumn('action', 'empleadors.datatables_actions')
+                ->make(true);
     }
 
     /**
@@ -27,9 +31,16 @@ class EmpleadorDataTable extends DataTable
      */
     public function query()
     {
-        $empleadors = Empleador::query();
+        /*$empleadors = Empleador::query();
+        return $this->applyScopes($empleadors);*/
 
-        return $this->applyScopes($empleadors);
+        $lista  = Empleador::select(array('empleadores.id','empleadores.empresa','empleadores.contacto','empleadores.telefono','empleadores.correo',
+             'empleadores.descripcion','empleadores.direccion','users.url_imagen' ,'ciudades.descripcion as des_ciudad'  ))
+                          ->leftJoin('users','empleadores.user_id','=','users.id')
+                          ->leftJoin('ciudades','empleadores.ciudad_id','=','ciudades.id')
+                          ->orderBy('empresa', 'desc')->get();
+
+        return $lista;
     }
 
     /**
@@ -74,14 +85,16 @@ class EmpleadorDataTable extends DataTable
     private function getColumns()
     {
         return [
+            'Imagen' => ['name' => 'url_imagen', 'data' =>  'url_imagen','width'=>'6%','render'=>' "<img src="+data+" style=\"width:50px;height:50px;\" />"' ] ,
             'contacto' => ['name' => 'contacto', 'data' => 'contacto'],
             'empresa' => ['name' => 'empresa', 'data' => 'empresa'],
             'telefono' => ['name' => 'telefono', 'data' => 'telefono'],
             'correo' => ['name' => 'correo', 'data' => 'correo'],
             'descripcion' => ['name' => 'descripcion', 'data' => 'descripcion'],
             'direccion' => ['name' => 'direccion', 'data' => 'direccion'],
-            'ciudad_id' => ['name' => 'ciudad_id', 'data' => 'ciudad_id'],
-            'user_id' => ['name' => 'user_id', 'data' => 'user_id']
+            'Ciudad' => ['name' => 'des_ciudad', 'data' => 'des_ciudad'],
+
+
         ];
     }
 

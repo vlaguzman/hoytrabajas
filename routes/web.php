@@ -49,7 +49,10 @@ Route::group(['middleware' => 'auth'], function(){
   Route::any('/chat', 'ChatController@vchat');
   Route::any('msgs/{id}/historico',['as' => 'msgs.historico', 'uses' => 'ChatController@historico']);
   Route::any('enviarmensaje', 'ChatController@enviarmensaje');
+	Route::any('enviaroferta', 'ChatController@enviaroferta');
+
   Route::any('recibirmensaje', 'ChatController@recibirmensaje');
+  Route::any('leermensajes', 'ChatController@marcarnotificacionesleidas');
 
   Route::any('postulacion/{id}/registrar',['as' => 'postulacion.registrar', 'uses' => 'PostulacionController@registrar']);
   Route::any('postulacion/{id}/aprobar',['as' => 'postulacion.aprobar', 'uses' => 'PostulacionController@aprobar']);

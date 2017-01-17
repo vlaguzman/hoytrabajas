@@ -11,6 +11,10 @@ use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
 
+use App\Models\Departamento;
+
+
+
 class CiudadController extends AppBaseController
 {
     /** @var  CiudadRepository */
@@ -39,7 +43,10 @@ class CiudadController extends AppBaseController
      */
     public function create()
     {
-        return view('ciudads.create');
+
+         $departamentos     = Departamento::orderBy('descripcion')->pluck('descripcion', 'id');
+         return view('ciudads.create')
+                ->with('departamentos',   $departamentos );
     }
 
     /**
@@ -76,8 +83,9 @@ class CiudadController extends AppBaseController
 
             return redirect(route('ciudads.index'));
         }
+        return view('ciudads.show')
+               ->with('ciudad', $ciudad);
 
-        return view('ciudads.show')->with('ciudad', $ciudad);
     }
 
     /**
@@ -96,8 +104,11 @@ class CiudadController extends AppBaseController
 
             return redirect(route('ciudads.index'));
         }
+        $departamentos     = Departamento::orderBy('descripcion')->pluck('descripcion', 'id');
 
-        return view('ciudads.edit')->with('ciudad', $ciudad);
+        return view('ciudads.edit')
+             ->with('ciudad', $ciudad)
+            ->with('departamentos',   $departamentos );
     }
 
     /**

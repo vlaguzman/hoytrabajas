@@ -48,11 +48,12 @@ class Handler extends ExceptionHandler
                return view('errors.404' );
             // return response()->view('errors.404', ['des_error' => $exception->getMessage()], 404);
          }
-
+		 if ($exception instanceof TokenMismatchException){
+            return redirect('/');
+         }
           //   return view('errors.0');
                 //->with('num_error', 'SWIT EMAIl' )
               //  ->with('des_error', 'Ocurrido un error' );
-
         return parent::render($request, $exception);
     }
 

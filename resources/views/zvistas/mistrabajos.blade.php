@@ -34,19 +34,31 @@
 													<div class="single-blog" >
 														 <a href="{{ route('ofertas.show', $item->id) }}"   >
 																 <img src="{{ $item->url_imagen }}" class="img-responsive center-block "   >
-																 <h2>{{ $item->nombre }}</h2>
-																 <ul class="post-meta">
-																		 <li><i class="fa fa-pencil-square-o"></i><strong> Publicado por: </strong> {{ Empleador::where([ ['id', '=',$item->empleador_id] ] )->first()->empresa  }}</li>
-																		 <li><i class="fa fa-clock-o"></i><strong> {{ date('d-m-Y H:i', strtotime($item->created_at  ))   }}</strong></li>
-																 </ul>
+																 <div class="blog-tits" >
+																 <p class='color_tit3x' > {{ $item->nombre }} </p>
+																 <div class="post-meta">
+																		<div class="row">
+																				<div class="col-md-12">
+																					<p class='color_tit1x' >	<i class="fa fa-pencil-square-o"></i> <strong> Publicado por: </strong>  {{ Empleador::where([ ['id', '=',$item->empleador_id] ] )->first()->empresa  }} </p>
+																				</div>
+																		 </div>
+																		 <div class="row">
+																					<div class="col-md-12">
+																						<p class='color_tit1x' ><i class="fa fa-clock-o"></i><strong>  {{ date('d-m-Y H:i', strtotime($item->created_at  ))   }}  </strong></p>
+																					</div>
+																			 </div>
+																</div>
 																 <div class="blog-content">
 																		 <p> {{ $item->descripcion }}.</p>
 																 </div>
 																 <hr/>
 																 <div class="blog-content">
-																			 <p> {{ Ciudad::find($item->ciudad_id)->first()->descripcion }}  - {{ $item->direccion }}   </p>
-																			 <h5 class='text-right color_bprecio' > <i class="fa fa-usd" aria-hidden="true"></i>  {{ $item->paga }} COP.<h5>
+																	 <div class="text-center">
+																				 <p class='color_bdir' > {{ Ciudad::where([ ['id', '=',$item->ciudad_id] ] )->first()->descripcion }} - {{ $item->direccion }}  </p>
+																				 <h5 class='color_bprecio' > <i class="fa fa-usd" aria-hidden="true"></i>  {{ $item->paga }} COP.<h5>
+																		</div>
 																 </div>
+																</div>
 														 </a>
 												 </div>
 											 </div>
@@ -71,25 +83,37 @@
 												<div class="single-blog" >
 													 <a href="{{ route('ofertas.show', $item->id) }}"   >
 															 <img src="{{ $item->url_imagen }}" class="img-responsive center-block "   >
-															 <h2>{{ $item->nombre }}</h2>
-															 <ul class="post-meta">
-																	 <li><i class="fa fa-pencil-square-o"></i><strong> Publicado por: </strong> {{ Empleador::where([ ['id', '=',$item->empleador_id] ] )->first()->empresa  }}</li>
-																	 <li><i class="fa fa-clock-o"></i><strong> {{ date('d-m-Y H:i', strtotime($item->created_at  ))   }}</strong></li>
-															 </ul>
+															  <div class="blog-tits" >
+															   <p class='color_tit3x' > {{ $item->nombre }} </p>
+																 <div class="post-meta">
+	 																 <div class="row">
+	 																		 <div class="col-md-12">
+	 																			 <p class='color_tit1x' >	<i class="fa fa-pencil-square-o"></i> <strong> Publicado por: </strong>  {{ Empleador::where([ ['id', '=',$item->empleador_id] ] )->first()->empresa  }} </p>
+	 																		 </div>
+	 																	</div>
+	 																	<div class="row">
+	 																			 <div class="col-md-12">
+	 																				 <p class='color_tit1x' ><i class="fa fa-clock-o"></i><strong>  {{ date('d-m-Y H:i', strtotime($item->created_at  ))   }}  </strong></p>
+	 																			 </div>
+	 																		</div>
+	 														 </div>
 															 <div class="blog-content">
 																	 <p> {{ $item->descripcion }}.</p>
 															 </div>
 															 <hr/>
 															 <div class="blog-content">
-																		 <p> {{ Ciudad::find($item->ciudad_id)->first()->descripcion }}  - {{ $item->direccion }}   </p>
-																		 <h5 class='text-right color_bprecio' > <i class="fa fa-usd" aria-hidden="true"></i>  {{ $item->paga }} COP.<h5>
+																 <div class="text-center">
+																			 <p class='color_bdir' > {{ Ciudad::where([ ['id', '=',$item->ciudad_id] ] )->first()->descripcion }} - {{ $item->direccion }}  </p>
+																			 <h5 class='color_bprecio' > <i class="fa fa-usd" aria-hidden="true"></i>  {{ $item->paga }} COP.<h5>
+																	</div>
 															 </div>
+														</div>
 													 </a>
 											 </div>
 										 </div>
 										@endforeach
 								 @else
-											@include('zvistas.notrabajos')
+											@include('zvistas.notrabajosa')
 									@endif
 								</div>
 							 </div>
@@ -109,25 +133,37 @@
 											 <div class="single-blog" >
 													<a href="{{ route('ofertas.show', $item->id) }}"   >
 															<img src="{{ $item->url_imagen }}" class="img-responsive center-block "   >
-															<h2>{{ $item->nombre }}</h2>
-															<ul class="post-meta">
-																	<li><i class="fa fa-pencil-square-o"></i><strong> Publicado por: </strong> {{ Empleador::where([ ['id', '=',$item->empleador_id] ] )->first()->empresa  }}</li>
-																	<li><i class="fa fa-clock-o"></i><strong> {{ date('d-m-Y H:i', strtotime($item->created_at  ))   }}</strong></li>
-															</ul>
+															 <div class="blog-tits" >
+															  <p class='color_tit3x' > {{ $item->nombre }} </p>
+																<div class="post-meta">
+																	 <div class="row">
+																			 <div class="col-md-12">
+																				 <p class='color_tit1x' >	<i class="fa fa-pencil-square-o"></i> <strong> Publicado por: </strong>  {{ Empleador::where([ ['id', '=',$item->empleador_id] ] )->first()->empresa  }} </p>
+																			 </div>
+																		</div>
+																		<div class="row">
+																				 <div class="col-md-12">
+																					 <p class='color_tit1x' ><i class="fa fa-clock-o"></i><strong>  {{ date('d-m-Y H:i', strtotime($item->created_at  ))   }}  </strong></p>
+																				 </div>
+																			</div>
+															 </div>
 															<div class="blog-content">
 																	<p> {{ $item->descripcion }}.</p>
 															</div>
 															<hr/>
 															<div class="blog-content">
-																		<p> {{ Ciudad::find($item->ciudad_id)->first()->descripcion }}  - {{ $item->direccion }}   </p>
-																		<h5 class='text-right color_bprecio' > <i class="fa fa-usd" aria-hidden="true"></i>  {{ $item->paga }} COP.<h5>
+																 <div class="text-center">
+																		 <p class='color_bdir' > {{ Ciudad::where([ ['id', '=',$item->ciudad_id] ] )->first()->descripcion }} - {{ $item->direccion }}  </p>
+																		 <h5 class='color_bprecio' > <i class="fa fa-usd" aria-hidden="true"></i>  {{ $item->paga }} COP.<h5>
+																 </div>
 															</div>
+														</div>
 													</a>
 											</div>
 										</div>
 									 @endforeach
 								@else
-										 @include('zvistas.notrabajos')
+										 @include('zvistas.notrabajosr')
 								 @endif
 							 </div>
 							</div>

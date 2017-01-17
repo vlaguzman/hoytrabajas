@@ -8,7 +8,7 @@
 ?>
 @extends('layouts.app')
 @section('content')
-<div class="fondo">
+<div class="">
   <div class="register-box fondo_hdn">
     <div class="register-box-body fondo_hdn">
 
@@ -37,7 +37,7 @@
 				<br />
 		</div>
 
-
+<div class="row">
     <form method="post" action="{{ url('/guardarperfil') }}">
 		   {!! csrf_field() !!}
 			<div class="fondo_gris">
@@ -95,7 +95,7 @@
 					</div>
 			 </div>
     </form>
-
+  </div>
     </div>
   </div>
 </div>

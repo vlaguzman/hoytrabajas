@@ -31,12 +31,16 @@
 
 			      <div class="row fondo_gris"   >
 					       <div class="col-md-1">
+									  <div id="cropContainerModal"></div>
 		             </div>
 		              <div class="col-md-10 ">
 										 <div class="text-center">
+
 											   <div class="element">
 											 	    <img id='set_imagen' src="{{ $url_img_ }}"  class='img-responsive center-block hoverZoomLink set_imagen'  >
 												    <input type="file" name="upload_img_" id="upload_img_" accept="image/*" >
+
+
 												 </div>
 										 </div>
 		             </div>

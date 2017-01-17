@@ -59,7 +59,7 @@ class User extends Authenticatable
 		return $p->perfil()->first()->descripcion;
 	}
 
-    public function postulado($id_){
+  public function postulado($id_){
        $id_usr=Auth::user()->id;
        $obj=Candidato::where([ ['user_id', '=',$id_usr] ] )->first();
        if($obj){

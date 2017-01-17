@@ -1,54 +1,63 @@
-<!-- Id Field -->
-<div class="form-group">
-    {!! Form::label('id', 'Id:') !!}
-    <p>{!! $administrador->id !!}</p>
+<?php
+	   use Carbon\Carbon;
+     use App\Models\Usuario;
+     Carbon::setLocale(config('app.locale'));
+
+?>
+<div class="">
+  <div class="register-box fondo_hdn">
+    <div class="register-box-body fondo_hdn">
+		<div class="text-center">
+			<br />
+		</div>
+		<div class="row f_primary">
+				<br />
+		</div>
+	    <div class="row f_primary">
+		    <div class="col-md-4 ">
+
+            </div>
+            <div class="col-md-4">
+								<img id='img_perfil' class="profile-picture-1  img-responsive center-block" src="{{   Usuario::where([ ['id', '=',$administrador->user_id] ] )->first()->url_imagen   }} "  />
+            </div>
+			<div class="col-md-4">
+
+      </div>
+		</div>
+		<div class="row f_primary">
+				<br />
+		</div>
+  <div class="row">
+	 <div class="fondo_gris">
+			    <br />
+        <div class="form-group">
+  				    <div class="input-group">
+  					    <span class="input-group-addon" ><span class="icon icon-user"></span></span>
+    						<p>{!! $administrador->nombres !!}</p>
+  					 </div>
+  			</div>
+				<div class="form-group">
+  				    <div class="input-group">
+  					    <span class="input-group-addon" ><span class="icon icon-user"></span></span>
+    						<p>{!! $administrador->apellidos !!}</p>
+  					 </div>
+  			</div>
+				<div class="form-group">
+				    <div class="input-group">
+					    <span class="input-group-addon" ><span class="icon icon-envelope"></span></span>
+						  <p>{!! $administrador->correo !!}</p>
+					</div>
+				</div>
+        <div class="form-group has-feedback {{ $errors->has('telefono') ? ' has-error' : '' }}">
+            <div class="input-group">
+              <span class="input-group-addon" ><span class="icon icon-phone"></span></span>
+              <p>{!! $administrador->telefono !!}</p>
+          </div>
+        </div>
+				<br />
+		  </div>
+    </div>
 </div>
 
-<!-- Nombres Field -->
-<div class="form-group">
-    {!! Form::label('nombres', 'Nombres:') !!}
-    <p>{!! $administrador->nombres !!}</p>
+  </div>
 </div>
-
-<!-- Apellidos Field -->
-<div class="form-group">
-    {!! Form::label('apellidos', 'Apellidos:') !!}
-    <p>{!! $administrador->apellidos !!}</p>
-</div>
-
-<!-- Telefono Field -->
-<div class="form-group">
-    {!! Form::label('telefono', 'Telefono:') !!}
-    <p>{!! $administrador->telefono !!}</p>
-</div>
-
-<!-- Correo Field -->
-<div class="form-group">
-    {!! Form::label('correo', 'Correo:') !!}
-    <p>{!! $administrador->correo !!}</p>
-</div>
-
-<!-- User Id Field -->
-<div class="form-group">
-    {!! Form::label('user_id', 'User Id:') !!}
-    <p>{!! $administrador->user_id !!}</p>
-</div>
-
-<!-- Created At Field -->
-<div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
-    <p>{!! $administrador->created_at !!}</p>
-</div>
-
-<!-- Updated At Field -->
-<div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{!! $administrador->updated_at !!}</p>
-</div>
-
-<!-- Deleted At Field -->
-<div class="form-group">
-    {!! Form::label('deleted_at', 'Deleted At:') !!}
-    <p>{!! $administrador->deleted_at !!}</p>
-</div>
-

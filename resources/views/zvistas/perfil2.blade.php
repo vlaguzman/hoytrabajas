@@ -8,7 +8,7 @@
 ?>
 @extends('layouts.app')
 @section('content')
-<div class="fondo">
+<div class="">
   <div class="register-box fondo_hdn">
     <div class="register-box-body fondo_hdn">
 

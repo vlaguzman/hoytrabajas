@@ -1,72 +1,92 @@
-<!-- Id Field -->
-<div class="form-group">
-    {!! Form::label('id', 'Id:') !!}
-    <p>{!! $empleador->id !!}</p>
-</div>
 
-<!-- Contacto Field -->
-<div class="form-group">
-    {!! Form::label('contacto', 'Contacto:') !!}
-    <p>{!! $empleador->contacto !!}</p>
-</div>
+<?php
+	   use Carbon\Carbon;
+     use App\Models\Usuario;
+     use App\Models\Ciudad;
 
-<!-- Empresa Field -->
-<div class="form-group">
-    {!! Form::label('empresa', 'Empresa:') !!}
-    <p>{!! $empleador->empresa !!}</p>
-</div>
+     Carbon::setLocale(config('app.locale'));
 
-<!-- Telefono Field -->
-<div class="form-group">
-    {!! Form::label('telefono', 'Telefono:') !!}
-    <p>{!! $empleador->telefono !!}</p>
-</div>
+?>
+<div class="">
+  <div class="register-box fondo_hdn">
+    <div class="register-box-body fondo_hdn">
 
-<!-- Correo Field -->
-<div class="form-group">
-    {!! Form::label('correo', 'Correo:') !!}
-    <p>{!! $empleador->correo !!}</p>
-</div>
+		<div class="text-center">
+			<br />
+		</div>
+		<div class="row f_primary">
+				<br />
+		</div>
+	    <div class="row f_primary">
+		    <div class="col-md-4 ">
 
-<!-- Descripcion Field -->
-<div class="form-group">
-    {!! Form::label('descripcion', 'Descripcion:') !!}
-    <p>{!! $empleador->descripcion !!}</p>
-</div>
+            </div>
+            <div class="col-md-4">
+			          <img id='img_perfil' class="profile-picture-1  img-responsive center-block" src="{{ Usuario::where([ ['id', '=',$empleador->user_id] ] )->first()->url_imagen }} "  />
+            </div>
+			<div class="col-md-4">
 
-<!-- Direccion Field -->
-<div class="form-group">
-    {!! Form::label('direccion', 'Direccion:') !!}
-    <p>{!! $empleador->direccion !!}</p>
-</div>
+     </div>
+		</div>
+		<div class="row f_primary">
+				<br />
+		</div>
 
-<!-- Ciudad Id Field -->
-<div class="form-group">
-    {!! Form::label('ciudad_id', 'Ciudad Id:') !!}
-    <p>{!! $empleador->ciudad_id !!}</p>
-</div>
+  <div class="row ">
 
-<!-- User Id Field -->
-<div class="form-group">
-    {!! Form::label('user_id', 'User Id:') !!}
-    <p>{!! $empleador->user_id !!}</p>
-</div>
+    <form method="post" action="{{ url('/guardarperfil') }}">
+		   {!! csrf_field() !!}
+			<div class="fondo_gris">
+			    <br />
+          <div class="form-group ">
+  				    <div class="input-group">
+  					    <span class="input-group-addon" ><span class="icon icon-user"></span></span>
+    						<p>{!! $empleador->contacto !!}</p>
+  					 </div>
+  				</div>
+          <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon" ><span class="icon icon-briefcase"></span></span>
+                <p>{!! $empleador->empresa !!}</p>
+            </div>
+          </div>
+				<div class="form-group ">
+				    <div class="input-group">
+					    <span class="input-group-addon" ><span class="icon icon-envelope"></span></span>
+						 <p>{!! $empleador->correo !!}</p>
+					</div>
+				</div>
 
-<!-- Created At Field -->
-<div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
-    <p>{!! $empleador->created_at !!}</p>
-</div>
+        <div class="form-group ">
+            <div class="input-group">
+              <span class="input-group-addon" ><span class="icon icon-phone"></span></span>
+             <p>{!! $empleador->telefono !!}</p>
+          </div>
+        </div>
+				<div class="form-group "   >
+				    <div class="input-group">
+					    <span class="input-group-addon" > <span class="icon icon-location-pin"></span>  </span>
+               <p>    {!! Ciudad::where([ ['id', '=',$empleador->ciudad_id] ] )->first()->descripcion  !!}     </p>
+					</div>
+				</div>
+        <div class="form-group ">
+            <div class="input-group">
+              <span class="input-group-addon" ><span class="icon icon-direction"></span></span>
+              <p>{!! $empleador->direccion !!}</p>
+          </div>
+        </div>
+        <div class="form-group ">
+				    <div class="input-group">
+					    <span class="input-group-addon" ><span class="icon icon-pencil"></span></span>
+						  <p>{!! $empleador->descripcion !!}</p>
 
-<!-- Updated At Field -->
-<div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{!! $empleador->updated_at !!}</p>
-</div>
+					</div>
 
-<!-- Deleted At Field -->
-<div class="form-group">
-    {!! Form::label('deleted_at', 'Deleted At:') !!}
-    <p>{!! $empleador->deleted_at !!}</p>
+				</div>
+				<br />
+		  </div>
+    </form>
 </div>
-
+    </div>
+  </div>
+</div>

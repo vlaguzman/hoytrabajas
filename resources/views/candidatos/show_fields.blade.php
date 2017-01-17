@@ -9,7 +9,7 @@
      Carbon::setLocale(config('app.locale'));
 
 ?>
-<div class="fondo">
+<div class="">
   <div class="register-box ">
     <div class="register-box-body ">
 		<div class="text-center">
@@ -23,19 +23,19 @@
 
             </div>
             <div class="col-md-4">
-			   <img class="img-responsive center-block" src="{{ Usuario::find( $candidato->user_id )->first()->url_imagen   }} "  />
+			        <img class="profile-picture-1 img-responsive center-block" src="{{ Usuario::where([ ['id', '=',$candidato->user_id] ] )->first()->url_imagen  }} "  />
             </div>
-			<div class="col-md-4">
-			    <button class='btn_image f_primary'  >
-				   <img class="img-responsive center-block" src="{{ asset('images/camerap.png') }} "  />
-				</button>
-            </div>
+			  <div class="col-md-4">
+
+        </div>
 		</div>
 		<div class="row f_primary">
 				<br />
 		</div>
+		<div class="row">
 			<div class="fondo_gris">
 			    <br />
+
 				<div class="form-group">
 				    <div class="input-group">
 					     <span class="input-group-addon" ><span class="icon icon-user"></span></span>
@@ -107,11 +107,8 @@
 				</div>
 				<br />
 		  </div>
-			  <div class="row">
-					<div class="col-xs-12">
-							<button type="submit" class="btn btn-primary btn-block btn-system01">Aceptar</button>
-					</div>
-			 </div>
+ </div>
+
 
     </div>
   </div>

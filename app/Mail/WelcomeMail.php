@@ -31,7 +31,7 @@ class WelcomeMail extends Mailable
     public function build()
     {
         return $this->view('emails.welcome')
-		        ->from('noreply@hoytrabajas.com')
+		        ->from('hoytrabajas@hoytrabajas.com')
                 ->subject('Bienvenido!');
     }
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="icon" href="favicon.ico" type="image/x-icon" />
+	  <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <title>{{ config('app.name') }} ::  Seleccionar Tipo De Usuario</title>
 
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -15,8 +15,8 @@
 	<link rel="stylesheet" href="{{ asset('vendor/iCheck/all.css') }} ">
     <link rel="stylesheet" href="{{ asset('theme/css/AdminLTE.css') }} " >
     <link rel="stylesheet" href="{{ asset('theme/css/skins/skin-zjft.css') }}">
-	
-   
+
+
 </head>
 <body class=" ">
 <div class="fondo">
@@ -34,14 +34,14 @@
 					<div class="col-md-12">
 					    <div class="text-center">
 					      <h3 class='tit_sp3' >Soy Empleado </h3>
-						</div>  
+						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-12">
 					    <div class="text-center">
 					      <h4 class='tit_sp' >Busco conseguir trabajo </h4>
-						</div>  
+						</div>
 					</div>
 				</div>
 				<div class="row">
@@ -49,7 +49,7 @@
 					<div class="col-md-10">
 					    <div class="text-center">
 					      <img class='img-responsive center-block' src="{{ asset('images/it1.png') }} "   >
-						</div>  
+						</div>
 					</div>
 					<div class="col-xs-1 "></div>
 				</div>
@@ -58,7 +58,7 @@
 					<div class="col-xs-10 ">
 					    <div class="text-center">
 						   <a href="{{ url('/register') }}" style="margin-bottom: 0px!important;" class="btn btn-primary btn-block btn-system01">Buscar Trabajo</a>
-					    </div> 
+					    </div>
 					</div>
 					<div class="col-xs-1 "></div>
 			    </div>
@@ -73,14 +73,14 @@
 					<div class="col-md-12">
 					    <div class="text-center">
 					      <h3 class='tit_sp3' >Soy Empleador </h3>
-						</div>  
+						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-12">
 					    <div class="text-center">
 					      <h4 class='tit_sp' >Busco conseguir trabajadores</h4>
-						</div>  
+						</div>
 					</div>
 				</div>
 				<div class="row">
@@ -88,7 +88,7 @@
 					<div class="col-md-10">
 					    <div class="text-center">
 					      <img class='img-responsive center-block' src="{{ asset('images/it2.png') }} "   >
-						</div>  
+						</div>
 					</div>
 					<div class="col-xs-1 "></div>
 				</div>

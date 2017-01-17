@@ -34,7 +34,7 @@ class WelcomeAdmMail extends Mailable
     public function build()
     {
         return $this->view('emails.welcomeadm')
-		        ->from('noreply@hoytrabajas.com')
+		        ->from('hoytrabajas@hoytrabajas.com')
                 ->subject('Usuario administrador creado, Bienvenido!');
     }
 }

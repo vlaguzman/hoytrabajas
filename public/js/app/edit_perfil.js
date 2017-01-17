@@ -18,10 +18,13 @@ $( document ).ready(function() {
           $(this).html('El tiempo ha expirado!').parent().addClass('disabled');
     });
   //  $('#enviar_msg').attr(enabled,true);
-    $("#botones_msg").removeClass("hidden");
-	  $("#botones_msg").css('visibility','visible');
-    var myVar = setInterval(cargar_mensajes_recibidos, 10000);
+     try{
+         $("#botones_msg").removeClass("hidden");
+    	   $("#botones_msg").css('visibility','visible');
+         var myVar = setInterval(cargar_mensajes_recibidos, 10000);
+     }catch(e){
 
+     }
       $('#experiencia2').keyup(function() {
          console.debug('Validar experienciaa...');
          var min_= parseFloat( $(this).attr("min") );
@@ -58,9 +61,39 @@ $( document ).ready(function() {
          //var diff = max_chars - chars;
          $('#cont_oferta_dir').html(chars+"/"+max_chars+' caracteres');
      });
-     var max_chars=$('#resena2').attr("maxlength");
-     var chars = $('#resena2').val().length;
-     $('#cont_resena2').html(chars+"/"+max_chars);
+     try{
+         var max_chars=$('#resena2').attr("maxlength");
+         var chars = $('#resena2').val().length;
+         $('#cont_resena2').html(chars+"/"+max_chars);
+     }catch(e){
+
+     }
+
+
+     try{
+         console.debug('Inicio carga plugin fotos .');
+          var cropperHeader = new Croppic('cropContainerModal');
+          /* var croppicContainerModalOptions = {
+               uploadUrl:'img_save_to_file.php',
+               cropUrl:'img_crop_to_file.php',
+               modal:true,
+               imgEyecandyOpacity:0.4,
+               loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',
+               onBeforeImgUpload: function(){ console.log('onBeforeImgUpload') },
+               onAfterImgUpload: function(){ console.log('onAfterImgUpload') },
+               onImgDrag: function(){ console.log('onImgDrag') },
+               onImgZoom: function(){ console.log('onImgZoom') },
+               onBeforeImgCrop: function(){ console.log('onBeforeImgCrop') },
+               onAfterImgCrop:function(){ console.log('onAfterImgCrop') },
+               onReset:function(){ console.log('onReset') },
+               onError:function(errormessage){ console.log('onError:'+errormessage) }
+           }
+           var cropContainerModal = new Croppic('cropContainerModal', croppicContainerModalOptions);*/
+
+              console.debug('Fin carga plugin fotos ');
+     }catch(e){
+          console.debug(e);
+     }
 
     console.debug('Fin Inicialiado...');
  });
@@ -167,6 +200,18 @@ $('#enviar_msg').on("click", function() {
 	   console.debug('Enviando mensaje...');
      enviar_mensaje();
 });
+$('.link_enviar_oferta').on("click", function() {
+     var id_= $(this).attr('data-id');
+     console.debug('Enviando oferta id='+id_);
+     enviar_oferta(id_);
+
+    // enviar_mensaje();
+});
+$('#leer_mensajes').on("click", function() {
+	   console.debug('marcando notificaciones como leidos...');
+     marcar_como_leidos();
+});
+
 $("#upload_img_").change(function(event) {
 	  console.debug('Cambiando imagen...');
     $.each(event.target.files, function(index, file) {
@@ -311,6 +356,42 @@ function guardar_imagen_perfil(id_){
         });
      }
 
+
+    function enviar_oferta(id_){
+          if(id_ == ''){
+              return false;
+          }
+          var para_  =  $('#para').val();
+          var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+          $.ajax({
+                       type: 'post',
+                       data: {
+                             _token : CSRF_TOKEN,
+                             para: para_,
+                             id: id_,
+                       },
+                       url: '../../enviaroferta',
+                       success: function(data){
+                           console.debug('rp='+data );
+                           $("#mensajes").append(data);
+                           $("#msg").val("");
+                           $('#style-2').attr('scrollTop', $('#style-2').attr('scrollHeight'));
+                   },
+                   error: function (xhr, ajaxOptions, thrownError) {
+                        //$.growl({ title: 'Evento', message: 'Error inesperado. ',style:'error' });
+                        console.debug('Error='+xhr.responseText);
+                        $("#mensajes").append(xhr.responseText);
+                        $("#msg").val("");
+                        console.debug('Sccroll ='+ $('#style-2').attr('scrollTop') );
+                        console.debug('Sccroll ='+ $('#style-2').attr('scrollHeight') );
+                        $('#style-2').attr('scrollTop', $('#style-2').attr('scrollHeight') );
+                  }
+
+             });
+          }
+
+
+
      function cargar_mensajes_recibidos(){
             var de_  =  $('#para').val();
             if(de_ == ''){
@@ -338,3 +419,68 @@ function guardar_imagen_perfil(id_){
                     }
                 });
       }
+
+
+      function recibir_notificaciones(){
+                   var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+                     $.ajax({
+                            type: 'post',
+                            data: {
+                                 _token : CSRF_TOKEN,
+                           },
+                            url: 'recibirnotificaciones',
+                            success: function(data){
+                                console.debug('rp='+data );
+                                if(data=='SI'){
+
+                                }
+
+                              /*  $("#mensajes").append(data);
+                                $("#msg").val("");
+                                $('#style-2').attr('scrollTop', $('#style-2').attr('scrollHeight'));*/
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+
+                             console.debug('Error='+xhr.responseText);
+                            /* $("#mensajes").append(xhr.responseText);
+                             $("#msg").val("");
+                             console.debug('Sccroll ='+ $('#style-2').attr('scrollTop') );
+                             console.debug('Sccroll ='+ $('#style-2').attr('scrollHeight') );
+                             $('#style-2').attr('scrollTop', $('#style-2').attr('scrollHeight') );*/
+                       }
+
+                  });
+        }
+
+
+      function marcar_como_leidos(){
+             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+               $.ajax({
+                      type: 'post',
+                      data: {
+                           _token : CSRF_TOKEN,
+                     },
+                      url: 'leermensajes',
+                      success: function(data){
+                          console.debug('rp='+data );
+                          if(data=='SI'){
+                                $("#div_tt_nuevas").html('0');
+                                $("#div_tt_nuevas_").html('No tienes mensajes');
+                          }
+
+                        /*  $("#mensajes").append(data);
+                          $("#msg").val("");
+                          $('#style-2').attr('scrollTop', $('#style-2').attr('scrollHeight'));*/
+                  },
+                  error: function (xhr, ajaxOptions, thrownError) {
+
+                       console.debug('Error='+xhr.responseText);
+                      /* $("#mensajes").append(xhr.responseText);
+                       $("#msg").val("");
+                       console.debug('Sccroll ='+ $('#style-2').attr('scrollTop') );
+                       console.debug('Sccroll ='+ $('#style-2').attr('scrollHeight') );
+                       $('#style-2').attr('scrollTop', $('#style-2').attr('scrollHeight') );*/
+                 }
+
+            });
+         }

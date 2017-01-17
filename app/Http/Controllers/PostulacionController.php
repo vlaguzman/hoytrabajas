@@ -47,6 +47,7 @@ class PostulacionController extends AppBaseController
 
     public function registrar($id_){
         $id_usr=Auth::user()->id;
+        $url_perfil=Auth::user()->url_imagen;
         $obj=Candidato::where([ ['user_id', '=',$id_usr] ] )->first();
         if($obj){
             $emp_ =$obj->id;
@@ -63,7 +64,7 @@ class PostulacionController extends AppBaseController
                      $obj1=Oferta::where([ ['id', '=',$id_] ] )->first();
                      $obj2=Empleador::where([ ['id', '=',$obj1->empleador_id ] ] )->first();
                      $user=User::where([ ['id', '=',$obj2->user_id ] ] )->first();
-                     Mensaje::Notificacion($user->id, 'Nueva postulacion','candidato','Se ha postulado un nuevo candidato para tu publicacion',$id_usr,'http://www.hoytrabajas.com/htw/public/images/no-picture.jpg'  );
+                     Mensaje::Notificacion($user->id, 'Nueva postulacion','candidato','Se ha postulado un nuevo candidato para tu publicacion',$id_usr,$url_perfil );
                      Toastr::success("Postulado exitosamente!", "Prcoesado", $options = [] );
                 }else{
                     Toastr::error("No se pudo procesar la postulacion, intente mas tarde", "Error...", $options = [] );

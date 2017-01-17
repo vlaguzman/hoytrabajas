@@ -40,7 +40,7 @@ class CandidatoController extends AppBaseController
           $crits_="";
 
           if($nom !="" ){
-              $crits_ = " AND E.nombres like ''". $nom."%' ";
+              $crits_ = " AND E.nombres like '". $nom."%' ";
           }
           if($exp>0){
              $crits_ = " AND E.experiencia >= ". $exp ." ";
@@ -63,7 +63,7 @@ class CandidatoController extends AppBaseController
         /*  $lista= Candidato::where([ ['nombres', 'like', $nom ] ] )
       		            ->orderBy('rate', 'desc')->get();*/
           $lista = DB::select( DB::raw("SELECT E.id,E.nombres,E.apellidos,E.created_at as ago,
-                  U.url_imagen,E.telefono,E.correo,E.descripcion,E.experiencia,E.rate
+                  U.url_imagen,E.telefono,E.correo,E.descripcion,E.experiencia,E.rate,U.id as userid
                   FROM candidatos E,users U
                   WHERE E.user_id=U.id  ". $crits_  ." ORDER BY E.rate DESC, E.created_at ASC  ") );
 

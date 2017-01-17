@@ -27,7 +27,6 @@
         "maddhatter/laravel-fullcalendar": "^1.2",
         "narutimateum/toastr-5.2-laravel": "dev-master",
         "pusher/pusher-PHP-server": "^2.6",
-        "pusher/pusher-php-server": "^2.6",
         "styde/html": "~1.2",
         "yajra/laravel-datatables-oracle": "~6.0"
     },

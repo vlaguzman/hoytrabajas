@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Notification;
 use App\User;
-
+use Carbon\Carbon;
 /**
  * @SWG\Definition(
  *      definition="Mensaje",
@@ -118,13 +119,28 @@ class Mensaje extends Model
               return false;
           }
     }
+    public static function NotificacionesLeer($iduser){
+          Carbon::setLocale(config('app.locale'));
+          $dt = Carbon::now('America/Bogota');
+          $rp= DB::table('notifications')
+              ->where('user_id', $iduser)
+              ->whereNull('read_at')
+              ->update(['read_at' => $dt->toDateTimeString() ]);
+          if($rp){
+             return "SI";
+          } else{
+             return "NO";
+          }
 
+    }
     public static function getNotificacions( $iduser ){
         return (  Notification::where([ ['user_id', '=',$iduser ] ] )->orderBy('created_at', 'desc')->get() );
     }
     public static function ttNotificacions( $iduser ){
         return (  Notification::where([ ['user_id', '=',$iduser ] ] )->count() );
     }
-
+    public static function ttNotificacionsnews( $iduser ){
+        return (  Notification::where([ ['user_id', '=',$iduser ] ,['read_at', '=',null ]   ] )->count() );
+    }
 
 }

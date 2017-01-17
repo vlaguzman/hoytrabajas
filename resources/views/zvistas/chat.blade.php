@@ -21,7 +21,7 @@
         							</div>
         							<div class="col-xs-2 activity-desc1">
                         <h6>
-                           <i class="fa fa-comment-o fa-2x l_secundary" aria-hidden="true"></i>
+													  <i class="icon-bubbles icono-2x l_secundary" aria-hidden="true"></i>
                          </h6>
                        </div>
         							<div class="clearfix"> </div>
@@ -73,7 +73,7 @@
                             <div class="col-xs-5 activity-img1">
                               <div class="activity-desc-sub">
                                 <h5>{{ Auth::user()->name }}</h5>
-                                <p>{{ $item->mensaje }} </p>
+                                <p> <?php echo $item->mensaje;  ?> </p>
                               </div>
                             </div>
                             <div class="col-xs-4 activity-desc1"></div>
@@ -99,10 +99,42 @@
             @if ($inicio==false)
                <div id="botones_msg"  class="hidden"  >
                     <input id='para' name='para' type="hidden" value="{{ $chat_with_id }}" >
-                    <input id='msg'  name='msg' type="text" value="Escribe tu mensaje" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Escribe tu mensaje';}" required="">
-                    <a id='enviar_msg' class="button button-block"  href="#"  >
-                       <i class="fa fa-paper-plane-o fa-2x l_secundary" aria-hidden="true"></i>
-                    </a>
+
+									  <div class="btn-toolbar" role="toolbar" aria-label="...">
+											<div class="btn-group" role="group" aria-label="...">
+											     <input id='msg'  name='msg' type="text" size='80' value="Escribe tu mensaje" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Escribe tu mensaje';}" required="">
+                      </div>
+
+											  <div class="btn-group" role="group" aria-label="...">
+													<a id='enviar_msg' class="button button-block"  href="#"  >
+														 <i class="icon-cursor icono-2x l_secundary" aria-hidden="true"></i>
+													</a>
+												</div>
+												<div class="btn-group" role="group" aria-label="...">
+														<div class="dropup">
+														  <button class="btn dropdown-toggle" type="button" id="dropdown-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+														    <i class="icon icon-briefcase icono-2x l_secundary" aria-hidden="true"></i>
+														    <span class="caret"></span>
+														  </button>
+															  @if (Auth::user()->perfil_id==2  )
+																  <ul class="dropdown-menu" aria-labelledby="dropdown-menu">
+																			@foreach($ofertas as $item)
+																			    <li><a  class='link_enviar_oferta' data-id='{{ $item->id }}' >
+																							<div class="pull-left">
+																									<img src="{{ $item->url_imagen }}" class="img-circle"  style="height:32px; "  >
+																							</div>
+																						   <p class='tit-st1' >{{ $item->nombre }}</p>
+
+																					  </a></li>
+																			@endforeach
+																  </ul>
+															  @endif
+														</div>
+
+													</div>
+
+											</div>
+
               </div>
             @endif
 

@@ -14,15 +14,14 @@ use App\Repositories\ChatRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
-
+use Carbon\Carbon;
 use App\User;
 use App\Models\Postulacion;
 use App\Models\Usuario;
 use App\Models\Candidato;
 use App\Models\Empleador;
 use App\Models\Mensaje;
-use Carbon\Carbon;
-
+use App\Models\Oferta;
 
 
 
@@ -59,11 +58,13 @@ class ChatController extends AppBaseController
               and O.empleador_id=E.id and E.user_id=U.id Order by E.contacto ") );
        }
        $historico=null;
+       $ofertas=null;
         return view('zvistas.chat')
                 ->with('usuarios', $lista)
                 ->with('chat_with', 'n')
                 ->with('chat_with_id', '0')
                 ->with('inicio', true)
+                ->with('ofertas', $ofertas)
                 ->with('historico', $historico);
     }
 
@@ -74,14 +75,18 @@ class ChatController extends AppBaseController
         $id_usr=Auth::user()->id;
         $tipo_=Auth::user()->perfil_id;
         $lista="";
+        $ofertas="";
         if($tipo_==2 ){
              $obj=Empleador::where([ ['user_id', '=',$id_usr] ] )->first();
+             $prop_=$obj->id;
              $lista = DB::select( DB::raw("SELECT DISTINCT U.id,CONCAT(E.nombres, ' ', E.apellidos) as des,E.created_at,U.url_imagen,E.descripcion
                           FROM ofertas O,postulaciones P,candidatos E,users U
                           WHERE P.estatus_id in ('1','2') and P.oferta_id=O.id and O.empleador_id='".  $obj->id  ."'
                           AND P.candidato_id=E.id and E.user_id=U.id Order by E.nombres") );
             $obj=Candidato::where([ ['user_id', '=',$de_] ] )->first();
             $cw_=' Con '.$obj->nombres.' '.$obj->apellidos;
+            $validar=$this->getFechaSys();
+            $ofertas =Oferta::where([ ['empleador_id', '=',$prop_ ],['desde', '<=',$validar ],['hasta', '>=',$validar ] ] )->orderBy('created_at', 'desc')->get();
 
         }else if($tipo_==3 ){
              $obj=Candidato::where([ ['user_id', '=',$id_usr] ] )->first();
@@ -101,12 +106,12 @@ class ChatController extends AppBaseController
                             WHERE M.parauser_id='". $de_  ."' and M.deuser_id='". $id_usr   ."' AND  M.parauser_id=U.id
                             ORDER BY created_at ASC
                             ") );
-
         return view('zvistas.chat')
                 ->with('inicio', false)
                 ->with('usuarios', $lista)
                 ->with('chat_with', $cw_)
                 ->with('chat_with_id', $id)
+                ->with('ofertas', $ofertas)
                 ->with('historico', $historico);
     }
 
@@ -162,6 +167,64 @@ class ChatController extends AppBaseController
               </div>";
         return $RP;
     }
+
+    public function enviaroferta(Request $request){
+           Carbon::setLocale(config('app.locale'));
+           date_default_timezone_set('America/Bogota');
+           $de_      = Auth::user()->id;
+           $para_    = $request->input('para');
+           $id_oferta_     = $request->input('id');
+           $obj_para = Usuario::where([ ['id', '=',$para_] ] )->first();
+           $msg_='Te invito a ver esta oferta de empleo <br/><a class="button button-block btn-system03"  href="../../ofertas/'. $id_oferta_.'"  >Ir a la oferta</a>';
+           if (!empty($obj_para)) {
+
+                $obj = Mensaje::create([
+                            'deuser_id' => intval($de_),
+                            'parauser_id' => intval($para_),
+                            'mensaje' => $msg_,
+                            'recivido'=> 0,
+                            'leido'=> 0,
+                       ]);
+                if($obj){
+
+                  $RP="<div class='activity-row activity-row1'  >
+                         <div class='col-xs-3 activity-img'>
+                             <img src='". Auth::user()->url_imagen ."' class='img-responsive avatarxx1' />
+                             <span>". date('H:i')  ."</span>
+                         </div>
+                        <div class='col-xs-5 activity-img1'>
+                          <div class='activity-desc-sub'>
+                             <h5>". Auth::user()->name ."</h5>
+                             <p> ".  $msg_ ."</p>
+                          </div>
+                       </div>
+                      <div class='col-xs-4 activity-desc1'></div>
+                      <div class='clearfix'> </div>
+                   </div>";
+                   return $RP;
+                }
+            }
+          $RP="<div class='activity-row activity-row1'  >
+                    <div class='col-xs-3 activity-img'>
+                        <img src='". Auth::user()->url_imagen ."' class='img-responsive avatarxx1' />
+                        <span>". date('H:i')  ."</span>
+                    </div>
+                   <div class='col-xs-5 activity-img1'>
+                     <div class='activity-desc-sub'>
+                        <h5>". Auth::user()->name ."</h5>
+                        <p> Oferta no enviada </p>
+                     </div>
+                  </div>
+                 <div class='col-xs-4 activity-desc1'></div>
+                 <div class='clearfix'> </div>
+              </div>";
+        return $RP;
+    }
+
+
+
+
+
     public function recibirmensaje(Request $request){
        Carbon::setLocale(config('app.locale'));
         $de_ = $request->input('de');
@@ -196,6 +259,10 @@ class ChatController extends AppBaseController
             //$response .= "<option value='". $card->pkcreditcard."'>". $card->creditcard_type .' ' . substr($card->creditcard_numbercard, -4) ."</option>";
         }
         return $RP;
+    }
+
+    public function marcarnotificacionesleidas(Request $request){
+          return Mensaje::NotificacionesLeer( Auth::user()->id );
     }
 
 

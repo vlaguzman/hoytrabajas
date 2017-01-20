@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap-datepicker/css/bootstrap-datepicker.css') }}">
 	  <link rel="stylesheet" href="{{asset('vendor/toastr/build/toastr.css') }}">
    	<link rel="stylesheet" href="{{asset('vendor/star-rating/star-rating-svg.css') }}">
-    <link rel="stylesheet" href="{{asset('vendor/croppic/croppic.css') }}">
+    <link rel="stylesheet" href="{{asset('vendor/cropperjs/cropper.css') }}">
 
 
     @yield('css')
@@ -143,8 +143,8 @@
     <script src="{{ asset('vendor/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap-select/js/bootstrap-select.js') }} "></script>
     <script src="{{ asset('vendor/bootstrap-select/js/i18n/defaults-es_ES.min.js') }} "></script>
-    <script src="{{ asset('vendor/croppic/croppic.js') }} "></script>
-    <script src="{{ asset('vendor/croppic/jquery.mousewheel.min.js') }} "></script>
+    <script src="{{ asset('vendor/cropperjs/cropper.min.js') }} "></script>
+
 
     <script src="{{ asset('theme/js/app.js') }}"></script>
 	  <script src="{{ asset('js/app/edit_perfil.js') }} "></script>

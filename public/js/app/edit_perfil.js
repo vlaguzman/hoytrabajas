@@ -1,5 +1,8 @@
 
-
+var cropBoxData;
+var canvasData;
+var cropper;
+var image_tcrop;
 
 $( document ).ready(function() {
       console.debug('Inicialiado...');
@@ -70,30 +73,6 @@ $( document ).ready(function() {
      }
 
 
-     try{
-         console.debug('Inicio carga plugin fotos .');
-          var cropperHeader = new Croppic('cropContainerModal');
-          /* var croppicContainerModalOptions = {
-               uploadUrl:'img_save_to_file.php',
-               cropUrl:'img_crop_to_file.php',
-               modal:true,
-               imgEyecandyOpacity:0.4,
-               loaderHtml:'<div class="loader bubblingG"><span id="bubblingG_1"></span><span id="bubblingG_2"></span><span id="bubblingG_3"></span></div> ',
-               onBeforeImgUpload: function(){ console.log('onBeforeImgUpload') },
-               onAfterImgUpload: function(){ console.log('onAfterImgUpload') },
-               onImgDrag: function(){ console.log('onImgDrag') },
-               onImgZoom: function(){ console.log('onImgZoom') },
-               onBeforeImgCrop: function(){ console.log('onBeforeImgCrop') },
-               onAfterImgCrop:function(){ console.log('onAfterImgCrop') },
-               onReset:function(){ console.log('onReset') },
-               onError:function(errormessage){ console.log('onError:'+errormessage) }
-           }
-           var cropContainerModal = new Croppic('cropContainerModal', croppicContainerModalOptions);*/
-
-              console.debug('Fin carga plugin fotos ');
-     }catch(e){
-          console.debug(e);
-     }
 
     console.debug('Fin Inicialiado...');
  });
@@ -222,6 +201,24 @@ $("#upload_img_").change(function(event) {
 						object.filename = file.name;
 						object.data = event.target.result;
 						$("#set_imagen").attr("src",  object.data );
+            $('#modal_image').modal('show');
+            $('#modal_image').find('#imagen_mod').attr("src",  object.data );
+            //image_tcrop= $('#modal_image').find('#imagen_mod');
+            image_tcrop = document.getElementById('imagen_mod');
+            /*var cropper = new Cropper(image, {
+              dragMode: 'move',
+              aspectRatio: 16 / 9,
+              autoCropArea: 0.8,
+              restore: false,
+              guides: false,
+              center: false,
+              highlight: false,
+              cropBoxMovable: false,
+              cropBoxResizable: false,
+              toggleDragModeOnDblclick: false,
+      				minContainerWidth: 400
+            });*/
+
 				};
 		    reader.readAsDataURL(file);
     });
@@ -252,12 +249,45 @@ $("#upload_img_oferta").change(function(event) {
 			object.filename = file.name;
 			object.data = event.target.result;
 			$("#set_ioferta").attr("src",  object.data );
-			  var id_=$('#id_oferta').val();
+			      var id_=$('#id_oferta').val();
 			      guardar_imagen_oferta(id_);
         };
         reader.readAsDataURL(file);
     });
 });
+
+$('#modal_image').on('shown.bs.modal', function () {
+    cropper = new Cropper(image_tcrop, {
+        dragMode: 'move',
+        movable: false,
+        cropBoxMovable: true,
+        cropBoxResizable: false,
+        autoCropArea: 0.6,
+        restore: false,
+        guides: false,
+        center: false,
+        minContainerHeight: 400,
+        minContainerWidth: 400,
+        minCanvasHeight: 400,
+        minCanvasWidth: 400,
+        width: 400,
+        height: 400,
+       ready: function () {
+           cropper.setCropBoxData(cropBoxData).setCanvasData(canvasData);
+       }
+    });
+  }).on('hidden.bs.modal', function () {
+        cropBoxData = cropper.getCropBoxData();
+        canvasData = cropper.getCanvasData();
+        croppedCanvas = cropper.getCroppedCanvas();
+        //console.debug('Imagen='+croppedCanvas.toDataURL());
+
+      //  $('#upload_img_oferta')[0].files[0]
+        $("#set_imagen").attr("src",  croppedCanvas.toDataURL());
+        //$('#modal_image').modal('show');
+        //$('#modal_image').find('#imagen_mod').attr("src",  object.data );
+        cropper.destroy();
+  });
 
 
 
@@ -301,7 +331,8 @@ function guardar_imagen_perfil(id_){
       	console.debug( "TOKEN="+CSRF_TOKEN );
       	datos = new FormData();
       	var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-          datos.append('image', $('#upload_img_oferta')[0].files[0]);
+          datos.append('image', croppedCanvas);
+          //datos.append('image', $('#upload_img_oferta')[0].files[0]);
     	    datos.append('id', id_);
     	    datos.append('_token', CSRF_TOKEN);
     	    //console.debug( datos );
@@ -313,6 +344,7 @@ function guardar_imagen_perfil(id_){
         		     data: datos,
         		     url: '../../actualizarfoferta',
         		 success: function(data){
+                  croppedCanvas=null;
         			    console.debug('Foto oferta cargada en el servidor');
         		 },
         		 error: function (xhr, ajaxOptions, thrownError) {

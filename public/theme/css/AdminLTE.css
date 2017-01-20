@@ -6268,3 +6268,13 @@ i.icon_13{
   overflow: hidden;
   text-overflow:    ellipsis;
 }
+.crop_img{
+   max-width: 100%;
+}
+.fill_oferta_img{
+     max-height:400px!important;
+     max-width: 400px!important;
+
+    height: 400px!important;
+    width: 400px!important;
+}

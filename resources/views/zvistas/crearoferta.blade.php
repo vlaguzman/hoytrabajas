@@ -1,6 +1,25 @@
 @extends('layouts.app')
 @section('content')
 <section class="content">
+	<div id="modal_image" class="modal fade"  role="dialog" aria-labelledby="modalLabel" tabindex="-1">
+		 <div class="modal-dialog" role="document">
+			 <div class="modal-content">
+				 <div class="modal-header">
+					  <h5 class="modal-title" id="modalLabel">Redimensionar Imagen</h5>
+					  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				 </div>
+				 <div class="modal-body">
+					 <div class="img-container">
+						 <img id="imagen_mod" src="" class='crop_img' alt="Picture">
+					 </div>
+				 </div>
+				 <div class="modal-footer">
+					  <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+				 </div>
+			 </div>
+		 </div>
+	 </div>
+
 	<div class="row">
 	   <br/>
 	</div>
@@ -35,12 +54,9 @@
 		             </div>
 		              <div class="col-md-10 ">
 										 <div class="text-center">
-
 											   <div class="element">
-											 	    <img id='set_imagen' src="{{ $url_img_ }}"  class='img-responsive center-block hoverZoomLink set_imagen'  >
+											 	    <img id='set_imagen' src="{{ $url_img_ }}"  class='fill_oferta_img center-block set_imagen '   alt="Picture" >
 												    <input type="file" name="upload_img_" id="upload_img_" accept="image/*" >
-
-
 												 </div>
 										 </div>
 		             </div>
@@ -291,5 +307,9 @@
     <div class="col-md-1">
 	   </div>
 	</div>
+
+
+
 </section>
+
 @endsection

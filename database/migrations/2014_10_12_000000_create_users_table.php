@@ -13,14 +13,20 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        /*Schema::create('users', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+			$table->string('push_token',200);
+			$table->string('origen',20);
+			$table->string('url_imagen',500);
+			$table->integer('perfil_id');
+			$table->boolean('activo')
             $table->rememberToken();
             $table->timestamps();
-        });*/
+			$table->foreign('perfil_id')->references('id')->on('perfiles')->onDelete('cascade')->onUpdate('cascade');
+        });
     }
 
     /**

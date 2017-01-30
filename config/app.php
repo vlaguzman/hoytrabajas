@@ -183,8 +183,10 @@ return [
 		Intervention\Image\ImageServiceProvider::class,
 		narutimateum\Toastr\ToastrServiceProvider::class,
 		Laravel\Socialite\SocialiteServiceProvider::class,
-    GeneaLabs\Phpgmaps\PhpgmapsServiceProvider::class,
-    Cmgmyr\Messenger\MessengerServiceProvider::class,
+		GeneaLabs\Phpgmaps\PhpgmapsServiceProvider::class,
+		Cmgmyr\Messenger\MessengerServiceProvider::class,
+		Way\Generators\GeneratorsServiceProvider::class,
+		Xethron\MigrationsGenerator\MigrationsGeneratorServiceProvider::class,
         //
 
         /*

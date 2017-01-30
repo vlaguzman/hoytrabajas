@@ -231,7 +231,7 @@ class RegisterController extends Controller
                       ]);
                   }
                   $estudio_nv=$data['estudios'];
-                  $obj_e  = Estudio::where([ ['descripcion', '=',  ] ] )->first();
+                  $obj_e  = Estudio::where([ ['descripcion', '=', $estudio_nv ] ] )->first();
                   $id_estu="0";
                   if($obj_e ){
                       $id_estu=$obj_e->id;

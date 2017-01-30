@@ -34,6 +34,7 @@ class SocialAccountService{
                     'password' => bcrypt($id_),
 					'perfil_id' => 0,
 					'activo'=>0,
+					'push_token'=>'',
 					'url_imagen' => $url_perfil,
                 ]);
             }else{
@@ -76,6 +77,7 @@ class SocialAccountService{
 										'password' => bcrypt($id_),
 										'perfil_id' => 0,
 										'activo'=>0,
+										'push_token'=>'',
 										'url_imagen' => $url_perfil,
                 ]);
 

@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
 			$table->boolean('activo')
             $table->rememberToken();
             $table->timestamps();
+			$table->softDeletes();
 			$table->foreign('perfil_id')->references('id')->on('perfiles')->onDelete('cascade')->onUpdate('cascade');
         });
     }

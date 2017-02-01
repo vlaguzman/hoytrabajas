@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
 			$table->string('origen',20);
 			$table->string('url_imagen',500);
 			$table->integer('perfil_id');
-			$table->boolean('activo')
+			$table->boolean('activo');
             $table->rememberToken();
             $table->timestamps();
 			$table->softDeletes();

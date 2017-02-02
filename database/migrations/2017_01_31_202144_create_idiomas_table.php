@@ -15,9 +15,9 @@ class CreateIdiomasTable extends Migration
     {
         Schema::create('idiomas', function (Blueprint $table) {
             $table->increments('id');
-			$table->string('descripcion');
+			      $table->string('descripcion')->unique();
             $table->timestamps();
-			$table->softDeletes();
+			      $table->softDeletes();
         });
     }
 

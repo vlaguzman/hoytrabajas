@@ -24,14 +24,11 @@ class CreateCandidatosTable extends Migration
 			$table->string('direccion',300);
 			$table->smallInteger('experiencia');
 			$table->smallInteger('rate');
-			$table->integer('genero_id');
-			$table->integer('ciudad_id');
+			$table->integer('genero_id')->unsigned();
+			$table->integer('ciudad_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->timestamps();
 			$table->softDeletes();
-			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-			$table->foreign('genero_id')->references('id')->on('generos')->onDelete('cascade')->onUpdate('cascade');
-			$table->foreign('ciudad_id')->references('id')->on('ciudades')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

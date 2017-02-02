@@ -17,8 +17,9 @@ class UsersTableSeeder extends Seeder
                 'password' =>  bcrypt('1234567'),
                 'perfil_id' =>1,
                 'activo' =>1,
+				'origen' =>'laravel',
                 'push_token'=>'',
-                'url_imagen' => asset('/images/no-picture.jpg'),
+                'url_imagen' => asset('/htw/public/images/system_imgs/no-picture.jpg'),
         ]);
     }
 }

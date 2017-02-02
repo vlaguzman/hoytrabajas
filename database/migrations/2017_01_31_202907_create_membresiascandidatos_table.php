@@ -15,15 +15,13 @@ class CreateMembresiascandidatosTable extends Migration
     {
         Schema::create('membresias_candidatos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('membresia_id');
-            $table->integer('candidato_id');
+            $table->integer('membresia_id')->unsigned();
+            $table->integer('candidato_id')->unsigned();
 			$table->dateTime('desde');
 			$table->dateTime('hasta');
 			$table->decimal('pagado', 10, 2);	
             $table->timestamps();
 			$table->softDeletes();
-			$table->foreign('membresia_id')->references('id')->on('membresias')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('candidato_id')->references('id')->on('candidatos')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -14,15 +14,14 @@ class CreateAdministradoresTable extends Migration
     public function up()
     {
         Schema::create('administradores', function (Blueprint $table) {
-            $table->increments('id');
-			$table->string('nombres',100);
-			$table->string('apellidos',100);
-			$table->string('telefono',15);
-			$table->string('correo',100);
-			$table->integer('user_id')->unsigned();
-            $table->timestamps();
-			$table->softDeletes();
-			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+                $table->increments('id');
+      			$table->string('nombres',100);
+      			$table->string('apellidos',100);
+      			$table->string('telefono',15);
+      			$table->string('correo',100);
+      			$table->integer('user_id')->unsigned();
+                $table->timestamps();
+      			$table->softDeletes();
         });
     }
 

@@ -15,12 +15,11 @@ class CreateIdiomascandidatosTable extends Migration
     {
         Schema::create('idiomas_candidatos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('idioma_id');
-            $table->integer('candidato_id');
+            $table->integer('idioma_id')->unsigned();
+            $table->integer('candidato_id')->unsigned();
             $table->timestamps();
-			$table->softDeletes();
-			$table->foreign('idioma_id')->references('id')->on('idiomas')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('candidato_id')->references('id')->on('candidatos')->onDelete('cascade')->onUpdate('cascade');
+		    $table->softDeletes();
+            $table->unique(['idioma_id', 'candidato_id']);
         });
     }
 

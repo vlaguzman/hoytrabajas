@@ -19,7 +19,7 @@ use App\Models\SectorCandidato;
 use App\Models\EstudioCandidato;
 use App\Models\IdiomaCandidato;
 
-
+use App\Util;
 
 class CandidatoController extends AppBaseController
 {
@@ -33,43 +33,42 @@ class CandidatoController extends AppBaseController
 
 
     public function filtrar(Request $request){
-          $nom  = $request->input('nombre');
-          $exp  = $request->input('exp');
-          $fna  = date("Y-m-d", strtotime( $request->input('fnac') ) );
-          $parametros=array();
-          $crits_="";
+          $nom  = Util::getValor( $request->input('nombre') );
+          $exp  = Util::getValor( $request->input('exp')    );
+          $fna  = Util::getValor( $request->input('fnac')   );
 
+          $parametros=array();
           if($nom !="" ){
-              $crits_ = " AND E.nombres like '". $nom."%' ";
+              $nom_ = $requestx->nom."%";
           }
           if($exp>0){
-             $crits_ = " AND E.experiencia >= ". $exp ." ";
+             $parametros= array( array("experiencia",">=", $exp ) );
           }
-          /*if($fna){
-             $parametros= array( array("fnac",">=", $fna ) );
-          }*/
-          /*$lst = $request->input('lsgeneros');
-          if( $lst !=null){
-              $generos=array();
-             foreach( $lst as $selected_id){
-                 $generos= array($selected_id);
-             }
-             $parametros= array( array("genero_id","in", $generos ) );
-          }*/
+          if($fna !="" ){
+              $fna_  = date("Y-m-d", strtotime( $fna ) );
+              $parametros= array( array("fnac",">=", $fna_ ) );
+          }
 
-          /*$lista= Candidato::where([ ['nombres', 'like',$nom ] ] )
-		            ->where($parametros)
-		            ->orderBy('rate', 'desc')->get();*/
-        /*  $lista= Candidato::where([ ['nombres', 'like', $nom ] ] )
-      		            ->orderBy('rate', 'desc')->get();*/
-          $lista = DB::select( DB::raw("SELECT E.id,E.nombres,E.apellidos,E.created_at as ago,
+          /*$lista = DB::select( DB::raw("SELECT E.id,E.nombres,E.apellidos,E.created_at as ago,
                   U.url_imagen,E.telefono,E.correo,E.descripcion,E.experiencia,E.rate,U.id as userid
                   FROM candidatos E,users U
-                  WHERE E.user_id=U.id  ". $crits_  ." ORDER BY E.rate DESC, E.created_at ASC  ") );
+                  WHERE E.user_id=U.id  ". $crits_  ." ORDER BY E.rate DESC, E.created_at ASC  ") );*/
+
+        $lista  = Candidato::select('candidatos.id','candidatos.nombres','candidatos.apellidos','candidatos.telefono',
+        		     'candidatos.correo','candidatos.descripcion','candidatos.direccion','candidatos.experiencia',
+        			   'candidatos.rate','candidatos.fnac','created_at as ago'
+        			   'users.id as userid','users.url_imagen','users.email as usuario',
+        			   'ciudades.descripcion as des_ciudad','generos.descripcion as des_genero')
+        			   ->where([ ['nombres', 'like',$nom_  ] ] )
+        			   ->where($parametros)
+                 ->join('users','candidatos.user_id','=','users.id')
+                 ->join('ciudades','candidatos.ciudad_id','=','ciudades.id')
+        			   ->join('generos','candidatos.genero_id','=','generos.id')
+        		     ->orderBy('rate', 'desc')->orderBy('created_at', 'asc')->get();
 
           return view('zvistas.listaempleados')
                      ->with('p1',  $nom )
-                      ->with('empleados',  $lista );
+                     ->with('empleados',  $lista );
 
     }
 

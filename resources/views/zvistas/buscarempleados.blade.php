@@ -49,33 +49,33 @@
 						     <span class="input-group-addon" > <span class="icon icon-symbol-female"></span> </span>
 	               Genero
 						  </div>
-							{!! Form::select('lsgeneros[]',$generos, null, ['class' => 'form-control','multiple' => true   ] ) !!}
+							{!! Form::select('lsgeneros[]',$generos, null, ['class' => 'form-control','multiple' => true,'title'=>'--Seleccione--'    ] ) !!}
 					</div>
 					<div class="form-group ">
 							<div class="input-group">
 								 <span class="input-group-addon" ><span class="icon icon-pie-chart"></span></span>
 							   Experiencia
 						  </div>
-							<input type="number" class="form-control" name="exp" value="{{ old('exp') }}" placeholder="Experiencia" >
+							<input type="number" class="form-control" name="exp" value="" placeholder="Experiencia" >
 					</div>
 					<div class="form-group "   >
 							<div class="input-group">
 								<span class="input-group-addon" > <span class="icon icon-heart"></span>  </span>
 							 Sector de interes
 						</div>
-							{!! Form::select('lssectores[]',$sectores, null, ['class' => 'form-control','multiple' => true   ] ) !!}
+							{!! Form::select('lssectores[]',$sectores, null, ['class' => 'form-control','multiple' => true ,'title'=>'--Seleccione--'   ] ) !!}
 					</div>
 					<div class="form-group "   >
 	            <div class="input-group">
 	              <span class="input-group-addon" > <span class="icon icon-globe"></span>  </span>
 	              Idiomas
 	            </div>
-	            {!! Form::select('lsidiomas[]',$idiomas, null, ['class' => 'form-control','multiple' => true   ] ) !!}
+	            {!! Form::select('lsidiomas[]',$idiomas, null, ['class' => 'form-control','multiple' => true,'title'=>'--Seleccione--'    ] ) !!}
 	        </div>
 					<div class="form-group">
 							<div class="input-group">
 								 <span class="input-group-addon" ><span class="icon icon-present"></span></span>
-							   <input type="date" class="form-control" name="fnac" value="{{ old('fnac') }}"  >
+							   <input type="date" class="form-control" name="fnac" value=""  >
 						 </div>
 					</div>
 					<br />

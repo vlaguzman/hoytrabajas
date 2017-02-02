@@ -14,10 +14,10 @@ class CreatePerfilesTable extends Migration
     public function up()
     {
         Schema::create('perfiles', function (Blueprint $table) {
-             $table->integer('id')->primary();
-			 $table->string('descripcion');
-             $table->timestamps();
-			 $table->softDeletes();
+                $table->integer('id')->unsigned()->primary();
+			    $table->string('descripcion')->unique();
+                $table->timestamps();
+			    $table->softDeletes();
         });
     }
 

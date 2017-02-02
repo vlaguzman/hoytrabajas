@@ -17,13 +17,11 @@ class CreateMensajesTable extends Migration
             $table->increments('id');
 			$table->integer('deuser_id')->unsigned();
 			$table->integer('parauser_id')->unsigned();
-			$table>text('mensaje');
-			$table>tinyInteger('recivido');
-			$table>tinyInteger('leido');
+			$table->text('mensaje');
+			$table->boolean('recivido');
+			$table->boolean('leido');
             $table->timestamps();
 			$table->softDeletes();
-			$table->foreign('deuser_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-			$table->foreign('parauser_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -16,10 +16,9 @@ class CreateEstadosTable extends Migration
         Schema::create('estados', function (Blueprint $table) {
             $table->increments('id');
 			$table->string('descripcion');
-			$table->integer('pais_id');
+			$table->integer('pais_id')->unsigned();
             $table->timestamps();
 			$table->softDeletes();
-			$table->foreign('pais_id')->references('id')->on('paises')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

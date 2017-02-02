@@ -14,8 +14,8 @@ class CreatePostulacionestatusTable extends Migration
     public function up()
     {
         Schema::create('postulacion_estatus', function (Blueprint $table) {
-            $table->integer('id')->primary();
-			$table->string('descripcion',20);
+            $table->integer('id')->unsigned()->primary();
+			$table->string('descripcion',20)->unique();
             $table->timestamps();
 			$table->softDeletes();
         });

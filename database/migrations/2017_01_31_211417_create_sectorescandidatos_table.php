@@ -15,12 +15,11 @@ class CreateSectorescandidatosTable extends Migration
     {
         Schema::create('sectores_candidatos', function (Blueprint $table) {
             $table->increments('id');
-			$table->integer('sector_id');
-            $table->integer('candidato_id');
+			$table->integer('sector_id')->unsigned();
+            $table->integer('candidato_id')->unsigned();
             $table->timestamps();
 			$table->softDeletes();
-			$table->foreign('sector_id')->references('id')->on('sectores')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('candidato_id')->references('id')->on('candidatos')->onDelete('cascade')->onUpdate('cascade');
+            $table->unique(['sector_id', 'candidato_id']);
         });
     }
 

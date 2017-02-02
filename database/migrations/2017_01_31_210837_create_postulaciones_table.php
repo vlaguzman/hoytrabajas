@@ -15,14 +15,12 @@ class CreatePostulacionesTable extends Migration
     {
         Schema::create('postulaciones', function (Blueprint $table) {
             $table->increments('id');
-			$table->integer('oferta_id');
-            $table->integer('candidato_id');
-			$table->integer('estatus_id');
+			$table->integer('oferta_id')->unsigned();
+            $table->integer('candidato_id')->unsigned();
+			$table->integer('estatus_id')->unsigned();
             $table->timestamps();
 			$table->softDeletes();
-			$table->foreign('oferta_id')->references('id')->on('ofertas')->onDelete('cascade')->onUpdate('cascade');
-			$table->foreign('candidato_id')->references('id')->on('candidatos')->onDelete('cascade')->onUpdate('cascade');
-			$table->foreign('estatus_id')->references('id')->on('postulacion_estatus')->onDelete('cascade')->onUpdate('cascade');
+			$table->unique(['oferta_id', 'candidato_id']);
         });
     }
 

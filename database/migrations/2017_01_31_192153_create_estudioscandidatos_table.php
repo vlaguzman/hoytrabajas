@@ -15,12 +15,11 @@ class CreateEstudioscandidatosTable extends Migration
     {
         Schema::create('estudios_candidatos', function (Blueprint $table) {
             $table->increments('id');
-			$table->integer('estudio_id');
-            $table->integer('candidato_id');
+			$table->integer('estudio_id')->unsigned();
+            $table->integer('candidato_id')->unsigned();
             $table->timestamps();
-			$table->softDeletes();
-			$table->foreign('estudio_id')->references('id')->on('estudios')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('candidato_id')->references('id')->on('candidatos')->onDelete('cascade')->onUpdate('cascade');
+      		$table->softDeletes();
+            $table->unique(['estudio_id', 'candidato_id']);
         });
     }
 

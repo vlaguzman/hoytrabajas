@@ -15,14 +15,13 @@ class CreateMembresiaspreciosTable extends Migration
     {
         Schema::create('membresias_precios', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('membresia_id');
+            $table->integer('membresia_id')->unsigned();
             $table->smallInteger('duracion');
 			$table->dateTime('desde');
 			$table->dateTime('hasta');
-			$table->decimal('precio', 10, 2);	
+			$table->decimal('precio', 10, 2);
             $table->timestamps();
 			$table->softDeletes();
-			$table->foreign('membresia_id')->references('id')->on('membresias')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

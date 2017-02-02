@@ -21,12 +21,11 @@ class CreateUsersTable extends Migration
 			$table->string('push_token',200);
 			$table->string('origen',20);
 			$table->string('url_imagen',500);
-			$table->integer('perfil_id');
+			$table->integer('perfil_id')->unsigned();
 			$table->boolean('activo');
             $table->rememberToken();
             $table->timestamps();
 			$table->softDeletes();
-			$table->foreign('perfil_id')->references('id')->on('perfiles')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -37,6 +36,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-       // Schema::dropIfExists('users');
+        Schema::dropIfExists('users');
     }
 }

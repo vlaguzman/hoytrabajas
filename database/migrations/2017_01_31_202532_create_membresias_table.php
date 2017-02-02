@@ -15,9 +15,9 @@ class CreateMembresiasTable extends Migration
     {
         Schema::create('membresias', function (Blueprint $table) {
             $table->increments('id');
-			$table->string('descripcion',100);
-			$table>tinyInteger('empleador');
-			$table>tinyInteger('candidato');
+			$table->string('descripcion',100)->unique();
+      	    $table->boolean('empleador')->unsigned();
+      	    $table->boolean('candidato')->unsigned();
             $table->timestamps();
 			$table->softDeletes();
         });

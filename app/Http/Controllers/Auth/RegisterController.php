@@ -82,25 +82,25 @@ class RegisterController extends Controller
     {
         if($data['tipo']=='2' ){
            return Validator::make( $data, [
-              'nombre' => 'required|max:200',
+              'nombre' => 'required|min:2|max:200',
               'email' => 'required|email|max:255|unique:users',
               'password' => 'required|min:6|confirmed',
-              'empresa' => 'required|max:200',
+              'empresa' => 'required|min:2|max:200',
               'telefono' => 'required|max:15',
-              'dir' => 'required|max:200',
-              'reseña' => 'required|max:200',
+              'dir' => 'required|min:3|max:200',
+              'reseña' => 'required|min:9|max:200',
               'imagen_perfl_' => 'required|image|mimes:jpeg,png,jpg|max:2048'
            ]);
         }else if($data['tipo']=='3' ){
            return Validator::make($data, [
-               'nombre' => 'required|max:100',
-			         'apellido' => 'required|max:100',
+               'nombre' => 'required|min:2|max:100',
+			         'apellido' => 'required|min:2|max:100',
                'email' => 'required|email|max:100|unique:users',
                'password' => 'required|min:6|confirmed',
-               'estudios' => 'required|max:200',
+               'estudios' => 'required|min:3|max:200',
                'experiencia' => 'required|numeric|min:1|max:75',
                'nacio' => 'required',
-               'reseña' => 'required|max:300',
+               'reseña' => 'required|min:9|max:300',
                'imagen_perfl_' => 'required|image|mimes:jpeg,png,jpg|max:2048'
             ]);
         }
@@ -218,12 +218,6 @@ class RegisterController extends Controller
                            'sector_id' => $selected_id,
                       ]);
                   }
-                  /*foreach( $data['lsestudios'] as $selected_id){
-                      EstudioCandidato::create([
-                           'candidato_id' => $id_candidato,
-                           'estudio_id' => $selected_id,
-                      ]);
-                  }*/
                   foreach( $data['lsidiomas'] as $selected_id){
                       IdiomaCandidato::create([
                            'candidato_id' => $id_candidato,

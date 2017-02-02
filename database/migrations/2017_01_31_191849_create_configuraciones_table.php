@@ -15,12 +15,11 @@ class CreateConfiguracionesTable extends Migration
     {
         Schema::create('configuraciones', function (Blueprint $table) {
             $table->increments('id');
-			$table->boolean('email')
-			$table->boolean('push')
+			$table->boolean('email');
+			$table->boolean('push');
             $table->integer('user_id')->unsigned();
             $table->timestamps();
 			$table->softDeletes();
-			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

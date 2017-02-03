@@ -8,7 +8,7 @@
 ?>
 @extends('layouts.app')
 @section('content')
-<div class="fondo">
+<div class="">
   <div class="register-box fondo_hdn">
     <div class="register-box-body fondo_hdn">
 
@@ -26,9 +26,7 @@
 			   <img class="img-responsive center-block" src="{{ $datos->url_imagen  }}"  />
             </div>
 			<div class="col-md-4">
-			    <button class='btn_image f_primary'  >
-				   <img class="img-responsive center-block" src="{{ asset('images/camerap.png') }} "  />
-				</button>
+
             </div>
 		</div>
 		<div class="row f_primary">
@@ -63,6 +61,19 @@
 					  @endif
 					</div>
 				</div>
+
+				<div class="form-group has-feedback {{ $errors->has('password') ? ' has-error' : '' }}">
+						<div class="input-group">
+							<span class="input-group-addon" ><span class="icon icon-lock"></span></span>
+							<input type="password" class="form-control" placeholder="Contraseña" name="password"  autocomplete="off" >
+								@if ($errors->has('password'))
+								 <span class="help-block">
+										 <strong>{{ $errors->first('password') }}</strong>
+									</span>
+								@endif
+						</div>
+				</div>
+
 
 
 				<div class="form-group has-feedback {{ $errors->has('empresa') ? ' has-error' : '' }}">
@@ -104,17 +115,23 @@
               @endif
           </div>
         </div>
-        <div class="form-group has-feedback {{ $errors->has('descripcion') ? ' has-error' : '' }}">
-				    <div class="input-group">
-					    <span class="input-group-addon" ><span class="icon icon-pencil"></span></span>
-						<input type="text" class="form-control" name="descripcion" value="{{ old('descripcion')  }}" placeholder="Reseña" >
-						@if ($errors->has('descripcion'))
-							<span class="help-block">
-							  <strong>{{ $errors->first('descripcion') }}</strong>
-							</span>
-					    @endif
-					</div>
-				</div>
+				<div class="form-group has-feedback {{ $errors->has('reseña') ? ' has-error' : '' }}">
+    		 	 <div class="input-group">
+    					    <span class="input-group-addon" ><span class="icon icon-pencil"></span></span>
+    						  <textarea  rows="3" cols="40" class="form-control" name="reseña" id='resena' value="{{ old('reseña') }}" placeholder="Reseña" maxlength="300">{{ old('reseña') }}</textarea>
+    						  @if ($errors->has('reseña'))
+      							<span class="help-block">
+      							  <strong>{{ $errors->first('reseña') }}</strong>
+      							</span>
+    					    @endif
+    			 </div>
+           <div class="text-center">
+             <span id='cont_resena' >0/300 caracteres </span>
+           </div>
+		  </div>
+
+
+
 				<br />
 		  </div>
 			  <div class="row">

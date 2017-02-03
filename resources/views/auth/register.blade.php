@@ -184,23 +184,21 @@
                  {!! Form::select('lsidiomas[]',$idiomas, null, ['class' => 'selectpicker','multiple' => true,'data-max-options' => '5','title'=>'--Selecciona--','data-selected-text-format'=>'count'    ] ) !!}
               </span>
             </div>
-
         </div>
         <div class="form-group has-feedback {{ $errors->has('reseña') ? ' has-error' : '' }}">
-		 	 <div class="input-group">
-					    <span class="input-group-addon" ><span class="icon icon-pencil"></span></span>
-						  <textarea  rows="3" cols="40" class="form-control" name="reseña" id='resena' value="{{ old('reseña') }}" placeholder="Reseña" maxlength="300">{{ old('reseña') }}</textarea>
-						  @if ($errors->has('reseña'))
-  							<span class="help-block">
-  							  <strong>{{ $errors->first('reseña') }}</strong>
-  							</span>
-					    @endif
-
-			 </div>
-         <div class="text-center">
-           <span id='cont_resena' >0/300 caracteres </span>
-         </div>
-		</div>
+    		 	 <div class="input-group">
+    					    <span class="input-group-addon" ><span class="icon icon-pencil"></span></span>
+    						  <textarea  rows="3" cols="40" class="form-control" name="reseña" id='resena' value="{{ old('reseña') }}" placeholder="Reseña" maxlength="300">{{ old('reseña') }}</textarea>
+    						  @if ($errors->has('reseña'))
+      							<span class="help-block">
+      							  <strong>{{ $errors->first('reseña') }}</strong>
+      							</span>
+    					    @endif
+    			 </div>
+           <div class="text-center">
+             <span id='cont_resena' >0/300 caracteres </span>
+           </div>
+		  </div>
 		<br />
 	</div>
 			  <div class="row">

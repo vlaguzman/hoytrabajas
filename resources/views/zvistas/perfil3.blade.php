@@ -6,7 +6,7 @@
      Carbon::setLocale(config('app.locale'));
 		 $carbon = new Carbon($datos->fnac, 'America/Bogota');
 		 $dt = Carbon::now();
-		 $fnacx=$carbon->format('d/m/Y');
+		 $fnacx=$carbon->format('d-m-Y');
 ?>
 @extends('layouts.app')
 @section('content')
@@ -87,6 +87,17 @@
     							    <strong>{{ $errors->first('nacio') }}</strong>
     							</span>
   					    @endif
+					</div>
+				</div>
+				<div class="form-group has-feedback {{ $errors->has('telefono') ? ' has-error' : '' }}">
+						<div class="input-group">
+							<span class="input-group-addon" ><span class="icon icon-phone"></span></span>
+						<input type="text" class="form-control" name="telefono" value="{{ $datos->telefono }}" placeholder="Telefono" >
+						@if ($errors->has('telefono'))
+							<span class="help-block">
+								<strong>{{ $errors->first('telefono') }}</strong>
+							</span>
+							@endif
 					</div>
 				</div>
 				<div class="form-group "   >

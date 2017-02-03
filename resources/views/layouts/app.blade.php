@@ -26,20 +26,15 @@
    	<link rel="stylesheet" href="{{asset('vendor/star-rating/star-rating-svg.css') }}">
     <link rel="stylesheet" href="{{asset('vendor/cropperjs/cropper.css') }}">
 
+     <script type="text/javascript">
+        var APP_URL = {!! json_encode(url('/')) !!}
+     </script>
+
 
     @yield('css')
 </head>
 
 <body class="hold-transition skin-blue fixed sidebar-mini"    >
-  <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.8&appId=1099225366813958";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
 @if (!Auth::guest())
     <div class="wrapper">
         <!-- Main Header -->
@@ -84,7 +79,7 @@
         <footer class="main-footer text-color-3" style="max-height: 100px;text-align: center">
             <strong>Hoy Trabajas  © 2016. Todos los derechos reservados. Design By CRIZZ. </strong>
 			 <div class="pull-right">
-			     <strong> Version 1.0 - [2016.12.29]</strong>
+			     <strong> Version 1.1 - [2017.02.03]</strong>
 			 </div>
         </footer>
 

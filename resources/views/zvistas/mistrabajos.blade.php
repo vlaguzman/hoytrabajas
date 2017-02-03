@@ -28,7 +28,7 @@
 
 									<div class="container">
 									 <div class="row">
-										@if (!empty($ofertas1))
+										@if (count($ofertas1)>0 )
 										 @foreach($ofertas1 as $item)
 											<div class="col-lg-4 col-md-4 col-sm-6">
 													<div class="single-blog" >
@@ -77,7 +77,7 @@
 
 								<div class="container">
 								 <div class="row">
-									@if (!empty($ofertas2))
+									@if (count($ofertas2)>0 )
 									 @foreach($ofertas2 as $item)
 										<div class="col-lg-4 col-md-4 col-sm-6">
 												<div class="single-blog" >
@@ -127,7 +127,7 @@
 
 								<div class="container">
 								<div class="row">
-								 @if (!empty($ofertas3))
+								 @if (count($ofertas3)>0 )
 									@foreach($ofertas3 as $item)
 									 <div class="col-lg-4 col-md-4 col-sm-6">
 											 <div class="single-blog" >

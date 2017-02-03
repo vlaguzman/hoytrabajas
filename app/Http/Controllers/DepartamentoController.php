@@ -11,6 +11,9 @@ use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
 
+use App\Models\Pais;
+
+
 class DepartamentoController extends AppBaseController
 {
     /** @var  DepartamentoRepository */
@@ -39,7 +42,9 @@ class DepartamentoController extends AppBaseController
      */
     public function create()
     {
-        return view('departamentos.create');
+        $paises     = Pais::orderBy('descripcion')->pluck('descripcion', 'id');
+        return view('departamentos.create')
+               ->with('paises',   $paises );
     }
 
     /**
@@ -96,8 +101,10 @@ class DepartamentoController extends AppBaseController
 
             return redirect(route('departamentos.index'));
         }
-
-        return view('departamentos.edit')->with('departamento', $departamento);
+        $paises     = Pais::orderBy('descripcion')->pluck('descripcion', 'id');
+        return view('departamentos.edit')
+              ->with('departamento', $departamento)
+              ->with('paises',   $paises );
     }
 
     /**

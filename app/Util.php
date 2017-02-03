@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\Usuario;
 
-class Util 
+class Util
 {
 
 	public static function getUsuario(){
@@ -31,9 +31,14 @@ class Util
         $vlrr = $vlr;
 		$vlrr = stripslashes($vlrr);
 		$vlrr = htmlspecialchars($vlrr);
-		$vlrr = strip_tags($vlrr); 
+		$vlrr = strip_tags($vlrr);
         return $vlrr;
     }
-
+		public static function getFechaSys(){
+				date_default_timezone_set('America/Bogota');
+				$fecha_ = date("Y-m-d", time());
+				$hora_=  date("H:i:s", time());
+				return $fecha_.$hora_;
+		}
 
 }

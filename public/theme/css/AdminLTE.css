@@ -5928,8 +5928,8 @@ option {
 }
 .avatarxx1 {
    border-radius: 50%;
-   width: 90px!important;
-   height: 90px!important;
+   width: 50px!important;
+   height: 50px!important;
 }
 .avatarxx2 {
     border-radius: 50%!important;
@@ -6065,6 +6065,7 @@ i.icon_13{
 	padding:.7em;
 	background:#E7E7E7;
 	position:relative;
+  border-radius: 10px;
 }
 .activity-desc-sub1{
 	text-align: right;

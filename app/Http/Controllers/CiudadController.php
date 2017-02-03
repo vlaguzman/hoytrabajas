@@ -108,7 +108,7 @@ class CiudadController extends AppBaseController
 
         return view('ciudads.edit')
              ->with('ciudad', $ciudad)
-            ->with('departamentos',   $departamentos );
+             ->with('departamentos',   $departamentos );
     }
 
     /**

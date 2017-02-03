@@ -89,7 +89,7 @@ class OfertaController extends AppBaseController
               'obs' => '',
               'lat' => $request->input('lat'),
               'lng' => $request->input('lng'),
-              'bloqueada  ' => false,
+              'bloqueada' => false,
 				    ]);
 
         if($obj){

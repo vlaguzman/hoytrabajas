@@ -64,7 +64,7 @@ class PostulacionController extends AppBaseController
                      $obj1=Oferta::where([ ['id', '=',$id_] ] )->first();
                      $obj2=Empleador::where([ ['id', '=',$obj1->empleador_id ] ] )->first();
                      $user=User::where([ ['id', '=',$obj2->user_id ] ] )->first();
-                     Mensaje::Notificacion($user->id, 'Nueva postulacion','candidato','Se ha postulado un nuevo candidato para tu publicacion',$id_usr,$url_perfil );
+                     Mensaje::Notificacion($user->id, 'Nueva postulacion','candidato','Se ha postulado un nuevo candidato para tu publicacion',$emp_,$url_perfil );
                      Toastr::success("Postulado exitosamente!", "Prcoesado", $options = [] );
                 }else{
                     Toastr::error("No se pudo procesar la postulacion, intente mas tarde", "Error...", $options = [] );

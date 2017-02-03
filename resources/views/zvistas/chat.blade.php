@@ -85,7 +85,7 @@
                             <div class="col-xs-7 activity-img2">
                               <div class="activity-desc-sub1">
                                 <h5>{{ $item->name }}</h5>
-                                <p> {{ $item->mensaje }} </p>
+                                <p><?php echo $item->mensaje;  ?></p>
                               </div>
                             </div>
                             <div class="col-xs-3 activity-img"><img src='{{ $item->url_imagen }}' class="img-responsive avatarxx1" alt=""/><span> {{      $fechax   }}  </span></div>
@@ -112,11 +112,12 @@
 												</div>
 												<div class="btn-group" role="group" aria-label="...">
 														<div class="dropup">
+															@if (Auth::user()->perfil_id==2  )
 														  <button class="btn dropdown-toggle" type="button" id="dropdown-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 														    <i class="icon icon-briefcase icono-2x l_secundary" aria-hidden="true"></i>
 														    <span class="caret"></span>
 														  </button>
-															  @if (Auth::user()->perfil_id==2  )
+
 																  <ul class="dropdown-menu" aria-labelledby="dropdown-menu">
 																			@foreach($ofertas as $item)
 																			    <li><a  class='link_enviar_oferta' data-id='{{ $item->id }}' >
@@ -128,9 +129,8 @@
 																					  </a></li>
 																			@endforeach
 																  </ul>
-															  @endif
 														</div>
-
+															@endif
 													</div>
 
 											</div>

@@ -123,7 +123,8 @@ class Oferta extends Model
         'lat' => 'string',
         'lng' => 'string',
         'empleador_id' => 'integer',
-        'obs' => 'string'
+        'obs' => 'string',
+        'bloqueada'=> 'boolean',
     ];
 
     /*public function getDesdeAttribute($value)

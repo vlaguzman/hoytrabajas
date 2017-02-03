@@ -7,7 +7,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+use narutimateum\Toastr\Facades\Toastr;
 use App\Http\Requests\CreateCandidatoRequest;
 use App\Http\Requests\UpdateCandidatoRequest;
 use App\Repositories\CandidatoRepository;
@@ -36,10 +36,10 @@ class CandidatoController extends AppBaseController
           $nom  = Util::getValor( $request->input('nombre') );
           $exp  = Util::getValor( $request->input('exp')    );
           $fna  = Util::getValor( $request->input('fnac')   );
-
+          $nom_ ="";
           $parametros=array();
           if($nom !="" ){
-              $nom_ = $requestx->nom."%";
+              $nom_ = $nom."%";
           }
           if($exp>0){
              $parametros= array( array("experiencia",">=", $exp ) );
@@ -56,7 +56,7 @@ class CandidatoController extends AppBaseController
 
         $lista  = Candidato::select('candidatos.id','candidatos.nombres','candidatos.apellidos','candidatos.telefono',
         		     'candidatos.correo','candidatos.descripcion','candidatos.direccion','candidatos.experiencia',
-        			   'candidatos.rate','candidatos.fnac','created_at as ago'
+        			   'candidatos.rate','candidatos.fnac','candidatos.created_at as ago',
         			   'users.id as userid','users.url_imagen','users.email as usuario',
         			   'ciudades.descripcion as des_ciudad','generos.descripcion as des_genero')
         			   ->where([ ['nombres', 'like',$nom_  ] ] )
@@ -64,7 +64,7 @@ class CandidatoController extends AppBaseController
                  ->join('users','candidatos.user_id','=','users.id')
                  ->join('ciudades','candidatos.ciudad_id','=','ciudades.id')
         			   ->join('generos','candidatos.genero_id','=','generos.id')
-        		     ->orderBy('rate', 'desc')->orderBy('created_at', 'asc')->get();
+        		     ->orderBy('rate', 'desc')->orderBy('candidatos.created_at', 'asc')->get();
 
           return view('zvistas.listaempleados')
                      ->with('p1',  $nom )
@@ -123,9 +123,10 @@ class CandidatoController extends AppBaseController
         $candidato = $this->candidatoRepository->findWithoutFail($id);
 
         if (empty($candidato)) {
-            Flash::error('Candidato not found');
-
-            return redirect(route('candidatos.index'));
+            //Flash::error('Candidato not found');
+            Toastr::info("Candidato no encontrado", "No encontrado", $options = [] );
+            return redirect()->intended('/home');
+            //return redirect(route('candidatos.index'));
         }
         $lista1  = SectorCandidato::select(array('sectores.descripcion'   ))
                           ->leftJoin('sectores','sectores_candidatos.sector_id','=','sectores.id')

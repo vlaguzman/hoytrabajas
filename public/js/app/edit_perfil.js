@@ -1,4 +1,5 @@
-
+var ASEC_=1000*60;
+var INTERVALO_CONSULTAS_=ASEC_*1; //dos minutos por consulta
 var cropBoxData;
 var canvasData;
 var cropper;
@@ -24,9 +25,12 @@ $( document ).ready(function() {
      try{
          $("#botones_msg").removeClass("hidden");
     	   $("#botones_msg").css('visibility','visible');
-         var myVar = setInterval(cargar_mensajes_recibidos, 10000);
+         cargar_mensajes_recibidos();
+         console.debug('Reloj intervalo '+INTERVALO_CONSULTAS_);
+         var myVar = setInterval(cargar_mensajes_recibidos, INTERVALO_CONSULTAS_);
+         console.debug('Reloj configurado verificacion de mensajes ...');
      }catch(e){
-
+          console.debug('Reloj intervalo error '+e);
      }
       $('#experiencia2').keyup(function() {
          console.debug('Validar experienciaa...');
@@ -39,6 +43,24 @@ $( document ).ready(function() {
         if( val>max_ ){
            $(this).val('') ;
         }
+     });
+     $('#experiencia').keyup(function() {
+        console.debug('Validar experienciaa...');
+        var min_= parseFloat( $(this).attr("min") );
+        var max_= parseFloat( $(this).attr("max") );
+        var val = parseFloat(  $(this).val() );
+        if( val<min_ ){
+             $(this).val('') ;
+        }
+       if( val>max_ ){
+          $(this).val('') ;
+       }
+    });
+     $('#resena').keyup(function() {
+         var max_chars=$(this).attr("maxlength");
+         var chars = $(this).val().length;
+         //var diff = max_chars - chars;
+         $('#cont_resena').html(chars+"/"+max_chars);
      });
      $('#resena2').keyup(function() {
          var max_chars=$(this).attr("maxlength");
@@ -306,9 +328,9 @@ function guardar_imagen_perfil(id_){
              processData: false,
              contentType: false,
     		     data: datos,
-    		     url: 'actualizarfoto',
-    		 success: function(data){
-    			    console.debug('Datos='+data);
+    		     url: APP_URL+'/actualizarfoto',
+    		     success: function(data){
+    			  console.debug('Datos='+data);
     			// var obj = JSON.parse(data);
     			/* if(data.rp=="ok"){
     				 console.debug(obj.msg);
@@ -342,15 +364,15 @@ function guardar_imagen_perfil(id_){
                  processData: false,
                  contentType: false,
         		     data: datos,
-        		     url: '../../actualizarfoferta',
-        		 success: function(data){
-                  croppedCanvas=null;
-        			    console.debug('Foto oferta cargada en el servidor');
-        		 },
-        		 error: function (xhr, ajaxOptions, thrownError) {
-        			  // $.growl({ title: 'Evento', message: 'Error inesperado. ',style:'error' });
-        			  console.debug('Error='+xhr.responseText);
-        		}
+        		     url: APP_URL+'/actualizarfoferta',
+        		     success: function(data){
+                      croppedCanvas=null;
+            			    console.debug('Foto oferta cargada en el servidor');
+        		     },
+            		 error: function (xhr, ajaxOptions, thrownError) {
+            			  // $.growl({ title: 'Evento', message: 'Error inesperado. ',style:'error' });
+            			  console.debug('Error='+xhr.responseText);
+            		}
        });
     }
 
@@ -368,7 +390,7 @@ function guardar_imagen_perfil(id_){
                       para: para_,
                       msg: msg_,
                  },
-                  url: '../../enviarmensaje',
+                  url: APP_URL+'/enviarmensaje',
                   success: function(data){
                       console.debug('rp='+data );
                       $("#mensajes").append(data);
@@ -402,7 +424,7 @@ function guardar_imagen_perfil(id_){
                              para: para_,
                              id: id_,
                        },
-                       url: '../../enviaroferta',
+                       url: APP_URL+'/enviaroferta',
                        success: function(data){
                            console.debug('rp='+data );
                            $("#mensajes").append(data);
@@ -425,6 +447,7 @@ function guardar_imagen_perfil(id_){
 
 
      function cargar_mensajes_recibidos(){
+            console.debug('Verificando mensajes recibidos...');
             var de_  =  $('#para').val();
             if(de_ == ''){
                 return false;
@@ -437,10 +460,11 @@ function guardar_imagen_perfil(id_){
                           _token : CSRF_TOKEN,
                            de: de_,
                      },
-                     url: '../../recibirmensaje',
+                     url: APP_URL+'/recibirmensaje',
                      success: function(data){
+                       console.debug('recibido='+data);
                         if(data!=''){
-                          new Audio('../../images/alerta.mp3' ).play()
+                          new Audio(APP_URL+'/images/alerta.mp3' ).play()
                           $("#mensajes").append(data);
                           $('#style-2').attr('scrollTop', $('#style-2').attr('scrollHeight'));
                         }
@@ -460,7 +484,7 @@ function guardar_imagen_perfil(id_){
                             data: {
                                  _token : CSRF_TOKEN,
                            },
-                            url: 'recibirnotificaciones',
+                            url: APP_URL+'/recibirnotificaciones',
                             success: function(data){
                                 console.debug('rp='+data );
                                 if(data=='SI'){
@@ -492,7 +516,7 @@ function guardar_imagen_perfil(id_){
                       data: {
                            _token : CSRF_TOKEN,
                      },
-                      url: 'leermensajes',
+                      url: APP_URL+'/leermensajes',
                       success: function(data){
                           console.debug('rp='+data );
                           if(data=='SI'){

@@ -8,7 +8,7 @@
 ?>
 @extends('layouts.app')
 @section('content')
-<div class="fondo">
+<div class="">
   <div class="register-box fondo_hdn">
     <div class="register-box-body fondo_hdn">
     		<div class="text-center">
@@ -25,9 +25,7 @@
               <img class="img-responsive center-block" src="{{ $datos->url_imagen  }} "  />
            </div>
 			    <div class="col-md-4">
-			        <button class='btn_image f_primary'  >
-				          <img class="img-responsive center-block" src="{{ asset('images/camerap.png') }} "  />
-			   	    </button>
+
           </div>
 		   </div>
   		 <div class="row f_primary">
@@ -73,16 +71,27 @@
   					  @endif
 					  </div>
 				</div>
-				<div class="form-group has-feedback {{ $errors->has('fnac') ? ' has-error' : '' }}">
-				    <div class="input-group">
-					    <span class="input-group-addon" ><span class="icon icon-present"></span></span>
-						  <input type="date" class="form-control" name="fnac" value="{{ old('fnac')  }}"  >
-  						@if ($errors->has('fnac'))
-    							<span class="help-block">
-    							    <strong>{{ $errors->first('fnac') }}</strong>
-    							</span>
-  					    @endif
-					</div>
+				<div class="form-group has-feedback {{ $errors->has('password') ? ' has-error' : '' }}">
+						<div class="input-group">
+							<span class="input-group-addon" ><span class="icon icon-lock"></span></span>
+							<input type="password" class="form-control" placeholder="Contraseña" name="password"  autocomplete="off" >
+								@if ($errors->has('password'))
+								 <span class="help-block">
+										 <strong>{{ $errors->first('password') }}</strong>
+									</span>
+								@endif
+						</div>
+				</div>
+				<div class="form-group has-feedback {{ $errors->has('nacio') ? ' has-error' : '' }}">
+				   <div class="input-group">
+					   <span class="input-group-addon" ><span class="icon icon-present"></span></span>
+					   <input type="text" class="form-control datepicker" name="nacio" value="{{ old('nacio') }}" placeholder="Ingrese"  >
+					   @if ($errors->has('nacio'))
+						<span class="help-block">
+						  <strong>{{ $errors->first('nacio') }}</strong>
+						</span>
+					   @endif
+				   </div>
 				</div>
 				<div class="form-group "   >
 				    <div class="input-group">
@@ -90,51 +99,66 @@
                 {!! Form::select('genero',$generos, null, ['class' => 'form-control'  ] ) !!}
 					  </div>
 				</div>
-				<div class="form-group has-feedback {{ $errors->has('exp') ? ' has-error' : '' }}">
+				<div class="form-group has-feedback {{ $errors->has('experiencia') ? ' has-error' : '' }}">
 				    <div class="input-group">
-					    <span class="input-group-addon" ><span class="icon icon-pie-chart"></span></span>
-					  	<input type="number" class="form-control" name="exp" value="{{ old('exp') }}" placeholder="Experiencia" >
-							 @if ($errors->has('exp'))
-								  <span class="help-block">
-								     <strong>{{ $errors->first('exp') }}</strong>
-								  </span>
-						    @endif
-					 </div>
-				</div>
+					    <span class="input-group-addon" >  <span class="icon icon-pie-chart"></span> </span>
+						  <input type="number" class="form-control" name="experiencia" id='experiencia' value="{{ old('experiencia') }}" placeholder="Años de experiencia" min="1" max="75" >
 
-        <div class="form-group "   >
-            <div class="input-group">
-               <span class="input-group-addon" > <span class="icon icon-heart"></span>  </span>
-               Sectores de interes
-            </div>
-            {!! Form::select('lssectores[]',$sectores, null, ['class' => 'form-control','multiple' => true   ] ) !!}
 
-        </div>
-        <div class="form-group "   >
-            <div class="input-group">
-              <span class="input-group-addon" > <span class="icon icon-badge"></span>  </span>
-              Estudios
-            </div>
-              {!! Form::select('lsestudios[]',$estudios, null, ['class' => 'form-control','multiple' => true   ] ) !!}
-        </div>
-        <div class="form-group "   >
-            <div class="input-group">
-              <span class="input-group-addon" > <span class="icon icon-globe"></span>  </span>
-              Idiomas
-            </div>
-               {!! Form::select('lsidiomas[]',$idiomas, null, ['class' => 'form-control','multiple' => true   ] ) !!}
-        </div>
-        <div class="form-group has-feedback {{ $errors->has('descripcion') ? ' has-error' : '' }}">
-				    <div class="input-group">
-					    <span class="input-group-addon" ><span class="icon icon-pencil"></span></span>
-						<input type="text" class="form-control" name="descripcion" value="{{ old('descripcion') }}" placeholder="Reseña" >
-						@if ($errors->has('descripcion'))
+						@if ($errors->has('experiencia'))
 							<span class="help-block">
-							  <strong>{{ $errors->first('descripcion') }}</strong>
+							  <strong>{{ $errors->first('experiencia') }}</strong>
 							</span>
 					    @endif
 					</div>
 				</div>
+				<div class="form-group has-feedback {{ $errors->has('estudios') ? ' has-error' : '' }}"   >
+            <div class="input-group">
+                <span class="input-group-addon" > <span class="icon icon-badge"></span>  </span>
+                <input type="text" class="form-control" name="estudios" value="{{ old('estudios') }}" placeholder="Estudios" >
+               @if ($errors->has('estudios'))
+  							  <span class="help-block">
+  							     <strong>{{ $errors->first('estudios') }}</strong>
+  							  </span>
+  					    @endif
+            </div>
+        </div>
+				<div class="form-group "   >
+						<div class="input-group">
+							<span class="input-group-addon" > <span class="icon icon-heart"></span>  </span>
+							 Sector de interes
+							 <span class="help-block">
+										{!! Form::select('lssectores[]',$sectores, null, ['class' => 'selectpicker','multiple' => true,'data-max-options' => '5','title'=>'--Selecciona--','data-selected-text-format'=>'count'    ] ) !!}
+							 </span>
+						</div>
+
+				</div>
+				<div class="form-group "   >
+						<div class="input-group">
+							<span class="input-group-addon" > <span class="icon icon-globe"></span>  </span>
+							Idiomas
+							<span class="help-block">
+								 {!! Form::select('lsidiomas[]',$idiomas, null, ['class' => 'selectpicker','multiple' => true,'data-max-options' => '5','title'=>'--Selecciona--','data-selected-text-format'=>'count'    ] ) !!}
+							</span>
+						</div>
+				</div>
+
+				<div class="form-group has-feedback {{ $errors->has('reseña') ? ' has-error' : '' }}">
+    		 	 <div class="input-group">
+    					    <span class="input-group-addon" ><span class="icon icon-pencil"></span></span>
+    						  <textarea  rows="3" cols="40" class="form-control" name="reseña" id='resena' value="{{ old('reseña') }}" placeholder="Reseña" maxlength="300">{{ old('reseña') }}</textarea>
+    						  @if ($errors->has('reseña'))
+      							<span class="help-block">
+      							  <strong>{{ $errors->first('reseña') }}</strong>
+      							</span>
+    					    @endif
+    			 </div>
+           <div class="text-center">
+             <span id='cont_resena' >0/300 caracteres </span>
+           </div>
+		  </div>
+
+
 				<br />
 		  </div>
 			<div class="row">

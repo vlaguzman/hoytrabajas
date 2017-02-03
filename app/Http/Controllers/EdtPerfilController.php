@@ -126,9 +126,10 @@ class EdtPerfilController extends Controller
                  'nombre' => 'required|max:200',
                  'empresa' => 'required|max:200',
                  'email' => 'required|email|max:100',
-                 'telefono' => 'required',
+                 'telefono' => 'required|min:8|max:15',
                  'direccion' => 'required|max:200',
-                'reseña' => 'required|max:300'
+                 'reseña' => 'required|max:300',
+
               ]);
 
               if ($v->fails()){
@@ -149,14 +150,15 @@ class EdtPerfilController extends Controller
                  'nombres' => 'required|max:100',
                  'apellidos' => 'required|max:100',
                  'email' => 'required|email|max:100',
-                 'nacio'=> 'required',
+                 'nacio'=> 'required|date',
                  'experiencia' => 'required|numeric',
+                 'telefono' => 'required|min:8|max:15',
                  'reseña' => 'required|max:300'
               ]);
               //echo  "FECHA=".$request->input('nacio') ;
-              Carbon::setLocale(config('app.locale'));
-         		  $carbon = new Carbon($request->input('nacio'), 'America/Bogota');
-         		  $fnacx=$carbon->format('Y/m/d');
+              //Carbon::setLocale(config('app.locale'));
+         		  //$carbon = new Carbon($request->input('nacio'), 'America/Bogota');
+         		//  $fnacx=$carbon->format('Y/m/d');
               // echo  "FECHA FRN=".$fnacx;
               if ($v->fails()){
                   return redirect()->back()->withErrors($v->errors());
@@ -165,59 +167,68 @@ class EdtPerfilController extends Controller
               $id_candidato=$obj->id;
               $obj->nombres=$request->input('nombres');
               $obj->apellidos=$request->input('apellidos');
-            //  $obj->fnac=date("Y-m-d", strtotime(  $request->input('nacio')  )) ;
-              $obj->fnac=strtotime(  $fnacx ) ;
+              $obj->telefono=$request->input('telefono');
+              $obj->fnac=  date("Y-m-d", strtotime(  $request->input('nacio')  ));
               $obj->correo=$request->input('email');
               $obj->descripcion=$request->input('reseña');
               $obj->experiencia=$request->input('experiencia');
               $obj->genero_id=$request->input('genero');
               $rp=$obj->save();
               if($rp){
-              /*  $lst = $request->input('lsestudios');
-                if( $lst !=null){
-                  foreach( $lst as $selected_id){
-                      EstudioCandidato::create([
-                           'candidato_id' => $id_candidato,
-                           'estudio_id' => $selected_id,
-                      ]);
-                  }
-                }*/
 
                   $lst = $request->input('lssectores');
                   if( $lst !=null){
                      foreach( $lst as $selected_id){
-                        SectorCandidato::create([
+
+                       SectorCandidato::updateOrCreate([
+                            'candidato_id' => $id_candidato,
+                            'sector_id' => $selected_id,
+                       ]);
+                        /*SectorCandidato::create([
                              'candidato_id' => $id_candidato,
                              'sector_id' => $selected_id,
-                        ]);
+                        ]);*/
                      }
                   }
 
                   $lst = $request->input('lsidiomas');
                   if( $lst !=null){
                     foreach( $lst  as $selected_id){
-                        IdiomaCandidato::create([
+                        IdiomaCandidato::updateOrCreate([
+                           'candidato_id' => $id_candidato,
+                           'idioma_id' => $selected_id,
+                       ]);
+                        /*IdiomaCandidato::create([
                              'candidato_id' => $id_candidato,
                              'idioma_id' => $selected_id,
-                        ]);
+                        ]);*/
                     }
                   }
 
-                  $estudio_nv=$request->input('estudios');
-                  $obj_e  = Estudio::where([ ['descripcion', '=',  ] ] )->first();
+                  $estudio_nv= $request->input('estudios');
+                  $obj_e  = Estudio::where([ ['descripcion', '=', $estudio_nv ] ] )->first();
                   $id_estu="0";
                   if($obj_e ){
                       $id_estu=$obj_e->id;
                   }else{
-                      $obj_e= Estudio::create([
-                           'descripcion' => $estudio_nv
-                       ]);
-                      $id_estu=$obj_e->id;
+                      if($estudio_nv!=''){
+                          $obj_e= Estudio::create(['descripcion' => $estudio_nv]);
+                          $id_estu=$obj_e->id;
+                      }
                   }
-                  EstudioCandidato::create([
-                       'candidato_id' => $id_candidato,
-                       'estudio_id' => $id_estu,
-                  ]);
+                  if( $id_estu!="0"){
+                      EstudioCandidato::updateOrCreate([
+                           'candidato_id' => $id_candidato,
+                           'estudio_id' => $id_estu,
+                      ]);
+                      /*EstudioCandidato::create([
+                           'candidato_id' => $id_candidato,
+                           'estudio_id' => $id_estu,
+                      ]);*/
+                  }
+
+
+
               }
         }
         Toastr::info("Perfil actualizado", "Procesado", $options = [] );
@@ -238,7 +249,8 @@ class EdtPerfilController extends Controller
                  'email' => 'required|email|max:100',
                  'telefono' => 'required',
                  'direccion' => 'required|max:200',
-                 'descripcion' => 'required|max:300'
+                 'reseña' => 'required|max:300',
+                 'password' => 'required|min:6'
               ]);
 
               if ($v->fails()){
@@ -248,15 +260,22 @@ class EdtPerfilController extends Controller
                      'contacto' => $request->input('nombre'),
                      'empresa' =>  $request->input('empresa'),
                      'correo' => $request->input('email'),
-                     'descripcion' => $request->input('descripcion'),
+                     'descripcion' => $request->input('reseña'),
                      'ciudad_id' =>  $request->input('ciudad'),
                      'telefono' => $request->input('telefono'),
                      'direccion' =>  $request->input('ciudad'),
                      'user_id' => $id_usr,
                 ]);
+                $psw=$request->input('password');
                 if($rp){
-                   Auth::user()->perfil_id=2;
-                   Auth::user()->save();
+                  // Auth::user()->perfil_id=2;
+                  // Auth::user()->save();
+                   $obj=Usuario::where([ ['id', '=',$id_usr] ] )->first();
+                   if($obj){
+                      $obj->perfil_id=2;
+                      $obj->password=bcrypt( $psw );
+                      $obj->save();
+                   }
                    Mail::to($user->email)->send(new WelcomeMail($user));
                 }
 
@@ -265,9 +284,11 @@ class EdtPerfilController extends Controller
                'nombres' => 'required|max:100',
                'apellidos' => 'required|max:100',
                'email' => 'required|email|max:100',
-               'fnac' => 'required|date',
-               'exp' => 'required|numeric',
-               'descripcion' => 'required|max:300'
+               'nacio' => 'required|date',
+               'experiencia' => 'required|numeric',
+               'reseña' => 'required|max:300',
+               'estudios' => 'required|min:2|max:200',
+               'password' => 'required|min:6',
             ]);
 
             if ($v->fails()){
@@ -277,19 +298,26 @@ class EdtPerfilController extends Controller
                  'nombres' => $request->input('nombres'),
                  'apellidos' => $request->input('apellidos'),
                  'correo' => $request->input('email'),
-                 'fnac' => date("Y-m-d", strtotime(  $request->input('fnac')  )),
-                 'descripcion' => $request->input('des'),
+                 'fnac' => date("Y-m-d", strtotime(  $request->input('nacio')  )),
+                 'descripcion' => $request->input('reseña'),
                  'genero_id' => $request->input('genero'),
-                 'experiencia' =>$request->input('exp'),
+                 'experiencia' =>$request->input('experiencia'),
                  'rate' => 0,
                  'ciudad_id' => 1,
                  'telefono' => '',
                  'direccion' => '',
                  'user_id' => $id_usr,
             ]);
+            $psw=$request->input('password');
             if($rp){
-                Auth::user()->perfil_id=3;
-                Auth::user()->save();
+                //Auth::user()->perfil_id=3;
+                //Auth::user()->save();
+                $obj=Usuario::where([ ['id', '=',$id_usr] ] )->first();
+                if($obj){
+                   $obj->perfil_id=3;
+                   $obj->password=bcrypt( $psw );
+                   $obj->save();
+                }
                 $id_candidato=$rp->id;
                 $lst = $request->input('lssectores');
                 if( $lst !=null){
@@ -300,15 +328,6 @@ class EdtPerfilController extends Controller
                       ]);
                    }
                 }
-                $lst = $request->input('lsestudios');
-                if( $lst !=null){
-                  foreach( $lst as $selected_id){
-                      EstudioCandidato::create([
-                           'candidato_id' => $id_candidato,
-                           'estudio_id' => $selected_id,
-                      ]);
-                  }
-                }
                 $lst = $request->input('lsidiomas');
                 if( $lst !=null){
                   foreach( $lst  as $selected_id){
@@ -318,18 +337,37 @@ class EdtPerfilController extends Controller
                       ]);
                   }
                 }
+
+                $estudio_nv= $request->input('estudios');
+                $obj_e  = Estudio::where([ ['descripcion', '=', $estudio_nv ] ] )->first();
+                $id_estu="0";
+                if($obj_e ){
+                    $id_estu=$obj_e->id;
+                }else{
+                    if($estudio_nv!=''){
+                        $obj_e= Estudio::create(['descripcion' => $estudio_nv]);
+                        $id_estu=$obj_e->id;
+                    }
+                }
+                if( $id_estu!="0"){
+                    EstudioCandidato::create([
+                         'candidato_id' => $id_candidato,
+                         'estudio_id' => $id_estu,
+                    ]);
+                }
                 Mail::to($user->email)->send(new WelcomeMail($user));
             }
         }
         Toastr::info("Perfil confirmado", "Procesado", $options = [] );
         //return back()->withInput();
-        return  $this->show();
+      //  return  $this->show();
+      return redirect()->intended('/home');
     }
 
     public function actualizarFoto(Request $request){
       		 $file=asset('/images/no-picture.jpg');
       		 $id_ = $request->input('id');
-      		 $usuario=Usuario::find($id_);
+      		 $usuario=Usuario::where([ ['id', '=',$id_] ] )->first();
       		 if (!empty($usuario)) {
           			$image = $request->file('image');
           			$ruta_destino = public_path('/images/system_imgs/usuarios/');

@@ -90,7 +90,7 @@ class Mensaje extends Model
 
 
     public static function NotificacionAll($tipo,$modelo,$msg,$url,$imagen){
-         $users= User::all();
+         $users= User::whereIn('perfil_id', [1, 3]);
          foreach($users as $item){
               $iduser=$item->id;
               $obj = Notification::create([

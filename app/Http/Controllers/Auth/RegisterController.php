@@ -124,6 +124,7 @@ class RegisterController extends Controller
                      'password' =>  bcrypt($data['password']),
                      'perfil_id' =>2,
                      'activo' =>1,
+                     'origen'=>'web',
                      'push_token'=>'',
                      'url_imagen' => asset('/images/no-picture.jpg'),
                    ]);
@@ -179,6 +180,7 @@ class RegisterController extends Controller
                    'password' =>  bcrypt($data['password']),
                    'perfil_id' =>3,
                    'activo' =>1,
+                   'origen'=>'web',
                    'push_token'=>'',
                    'url_imagen' => asset('/images/no-picture.jpg'),
               ]);
@@ -230,15 +232,18 @@ class RegisterController extends Controller
                   if($obj_e ){
                       $id_estu=$obj_e->id;
                   }else{
-                      $obj_e= Estudio::create([
-                           'descripcion' => $estudio_nv
-                       ]);
-                      $id_estu=$obj_e->id;
+                      if($estudio_nv!=''){
+                          $obj_e= Estudio::create(['descripcion' => $estudio_nv]);
+                          $id_estu=$obj_e->id;
+                      }
                   }
-                  EstudioCandidato::create([
-                       'candidato_id' => $id_candidato,
-                       'estudio_id' => $id_estu,
-                  ]);
+                  if( $id_estu!="0"){
+                      EstudioCandidato::create([
+                           'candidato_id' => $id_candidato,
+                           'estudio_id' => $id_estu,
+                      ]);
+                  }
+
                  Toastr::info("Bienvenido a Hoy Trabajas", "Usuario", $options = ["progressBar" => true,
                             "positionClass" =>"toast-top-right",
                             "preventDuplicates"=> false,
@@ -272,6 +277,7 @@ class RegisterController extends Controller
                 'password' =>  bcrypt($data['password']),
                 'perfil_id' =>2,
                 'activo' =>1,
+                'origen'=>'web',
                 'url_imagen' => asset('/images/no-picture.jpg'),
               ]);
        if($user){

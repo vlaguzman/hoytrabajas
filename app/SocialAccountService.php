@@ -15,35 +15,41 @@ class SocialAccountService{
 		//$url_p = $providerUser->avatar_original;
 		$url_perfil= $this->guardar_imagen($id_,$url_p);
         if ($account) {
-			$user = User::whereEmail($providerUser->getEmail())->first();
-			if ($user) {
-			    $user->url_imagen= $url_perfil;
-                $user->save();
-			}
-            return $account->user;
+			       $user = User::whereEmail($providerUser->getEmail())->first();
+		  	     if ($user) {
+			           $user->url_imagen= $url_perfil;
+                 $user->save();
+			       }
+             return $account->user;
         } else {
-            $account = new SocialAccount([
+          /*  $account = new SocialAccount([
                 'provider_user_id' => $id_,
                 'provider' => 'facebook'
-            ]);
+            ]);*/
             $user = User::whereEmail($providerUser->getEmail())->first();
             if (!$user) {
-				$user = User::create([
-				    'name' => $providerUser->getName(),
-                    'email' => $providerUser->getEmail(),
-                    'password' => bcrypt($id_),
-					'perfil_id' => 0,
-					'activo'=>0,
-					'push_token'=>'',
-					'url_imagen' => $url_perfil,
-                ]);
+      				$user = User::create([
+      				             'name' => $providerUser->getName(),
+                          'email' => $providerUser->getEmail(),
+                          'password' => bcrypt($id_),
+                					'perfil_id' => 0,
+                					'activo'=>0,
+                					'push_token'=>'',
+                          'origen'=>'web-facebook',
+                					'url_imagen' => $url_perfil,
+                          ]);
+                  $account = SocialAccount::create([
+                              'provider_user_id' => $id_,
+                              'provider' =>'facebook' ,
+                              'user_id'=> $user->id
+                  ]);
             }else{
-			   $user->name= $providerUser->getName();
-			   $user->url_imagen= $url_perfil;
-			   $user->save();
-			}
-            $account->user()->associate($user);
-            $account->save();
+      			   $user->name= $providerUser->getName();
+      			   $user->url_imagen= $url_perfil;
+      			   $user->save();
+			      }
+            //$account->user()->associate($user);
+          //  $account->save();
             return $user;
         }
 
@@ -65,10 +71,7 @@ class SocialAccountService{
 			       }
             return $account->user;
       }else{
-            $account = new SocialAccount([
-                'provider_user_id' => $id_,
-                'provider' => 'google'
-            ]);
+
             $user = User::whereEmail($providerUser->getEmail())->first();
             if (!$user) {
                 $user = User::create([
@@ -77,17 +80,22 @@ class SocialAccountService{
 										'password' => bcrypt($id_),
 										'perfil_id' => 0,
 										'activo'=>0,
+                    'origen'=>'web-googlep',
 										'push_token'=>'',
 										'url_imagen' => $url_perfil,
                 ]);
-
+                $account = SocialAccount::create([
+                    'provider_user_id' => $id_,
+                    'provider' => 'google',
+                    'user_id'=> $user->id
+                ]);
             }else{
 						   $user->name= $providerUser->getName();
 						   $user->url_imagen= $url_perfil;
 						   $user->save();
 			      }
-            $account->user()->associate($user);
-            $account->save();
+            //$account->user()->associate($user);
+          //  $account->save();
             return $user;
         }
 	}

@@ -30,7 +30,7 @@ class AddForeignKeysTable extends Migration
 			$table->foreign('ciudad_id')->references('id')->on('ciudades')->onDelete('cascade')->onUpdate('cascade');
         });
 		Schema::table('ciudades', function (Blueprint $table) {
-            $table->foreign('estado_id')->references('id')->on('estados')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('departamento_id')->references('id')->on('departamentos')->onDelete('cascade')->onUpdate('cascade');
         });
 		Schema::table('estados', function (Blueprint $table) {
             $table->foreign('pais_id')->references('id')->on('paises')->onDelete('cascade')->onUpdate('cascade');
@@ -163,6 +163,5 @@ class AddForeignKeysTable extends Migration
 		Schema::table('chats', function (Blueprint $table) {
 			 $table->dropForeign('chats_user_id_foreign');
         });
-		
     }
 }

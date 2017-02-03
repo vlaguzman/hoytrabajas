@@ -45,11 +45,6 @@ class ChatController extends AppBaseController
         if($tipo_==2 ){
           $obj=Empleador::where([ ['user_id', '=',$id_usr] ] )->first();
           $prop_ =$obj->id;
-          /*$lista = DB::select( DB::raw("SELECT DISTINCT U.id,CONCAT(E.nombres, ' ', E.apellidos) as des,E.created_at,U.url_imagen,
-                       E.descripcion
-                       FROM ofertas O,postulaciones P,candidatos E,users U
-                       WHERE P.estatus_id in ('1','2') and P.oferta_id=O.id and O.empleador_id='".  $obj->id  ."'
-                        and P.candidato_id=E.id and E.user_id=U.id Order by E.nombres") );*/
             $lista  = Postulacion::select('users.id','users.url_imagen','candidatos.nombres as des','candidatos.created_at',
                     'candidatos.correo','candidatos.descripcion','candidatos.telefono' )
                       ->where([ ['ofertas.empleador_id', '=',$prop_ ] ] )
@@ -63,11 +58,6 @@ class ChatController extends AppBaseController
        }else if($tipo_==3 ){
             $obj=Candidato::where([ ['user_id', '=',$id_usr] ] )->first();
             $prop_ =$obj->id;
-            /*$lista = DB::select( DB::raw("SELECT DISTINCT U.id,CONCAT(E.contacto, '-->', E.empresa) as des,E.created_at,U.url_imagen,
-               E.descripcion
-               FROM ofertas O,postulaciones P,empleadores E,users U
-               WHERE P.candidato_id='". $obj->id ."' and P.estatus_id in ('1','2') and P.oferta_id=O.id
-              and O.empleador_id=E.id and E.user_id=U.id Order by E.contacto ") );*/
               $lista  = Postulacion::select('users.id','users.url_imagen','empleadores.empresa as des','empleadores.created_at',
                        'empleadores.correo','empleadores.descripcion','empleadores.telefono' )
                         ->where([ ['postulaciones.candidato_id', '=',$prop_ ] ] )
@@ -100,12 +90,7 @@ class ChatController extends AppBaseController
         if($tipo_==2 ){
              $obj=Empleador::where([ ['user_id', '=',$id_usr] ] )->first();
              $prop_=$obj->id;
-             /*$lista = DB::select( DB::raw("SELECT DISTINCT U.id,CONCAT(E.nombres, ' ', E.apellidos) as des,E.created_at,U.url_imagen,E.descripcion
-                          FROM ofertas O,postulaciones P,candidatos E,users U
-                          WHERE P.estatus_id in ('1','2') and P.oferta_id=O.id and O.empleador_id='".  $obj->id  ."'
-                          AND P.candidato_id=E.id and E.user_id=U.id Order by E.nombres") );*/
-
-          $lista  = Postulacion::select('users.id','users.url_imagen','candidatos.nombres as des','candidatos.created_at',
+            $lista  = Postulacion::select('users.id','users.url_imagen','candidatos.nombres as des','candidatos.created_at',
                         'candidatos.correo','candidatos.descripcion','candidatos.telefono' )
                         ->where([ ['ofertas.empleador_id', '=',$prop_ ] ] )
                         ->whereIn('postulaciones.estatus_id', [1, 2])
@@ -123,10 +108,6 @@ class ChatController extends AppBaseController
         }else if($tipo_==3 ){
              $obj=Candidato::where([ ['user_id', '=',$id_usr] ] )->first();
              $prop_=$obj->id;
-            /* $lista = DB::select( DB::raw("SELECT DISTINCT U.id,CONCAT(E.contacto, '-->', E.empresa) as des,E.created_at,U.url_imagen,E.descripcion
-                FROM ofertas O,postulaciones P,empleadores E,users U
-                WHERE P.candidato_id='". $obj->id ."' and P.estatus_id in ('1','2') and P.oferta_id=O.id
-               and O.empleador_id=E.id and E.user_id=U.id Order by E.contacto ") );*/
                $lista  = Postulacion::select('users.id','users.url_imagen','empleadores.empresa as des','empleadores.created_at',
                              'empleadores.correo','empleadores.descripcion','empleadores.telefono' )
                              ->where([ ['postulaciones.candidato_id', '=',$prop_ ] ] )
@@ -140,15 +121,6 @@ class ChatController extends AppBaseController
                $cw_=' Con '.$obj->contacto.'--> '.$obj->empresa;
         }
 
-      /*$historico = DB::select( DB::raw("SELECT M.id,M.mensaje,M.deuser_id,M.parauser_id,M.created_at,M.leido,M.updated_at,U.url_imagen,U.name
-          					        FROM mensajes M,users U
-          		              WHERE M.parauser_id='". $id_usr  ."' and M.deuser_id='". $de_  ."' AND  M.deuser_id=U.id
-                            UNION
-                            SELECT M.id,M.mensaje,M.deuser_id,M.parauser_id,M.created_at,M.leido,M.updated_at,U.url_imagen,U.name
-                            FROM mensajes M,users U
-                            WHERE M.parauser_id='". $de_  ."' and M.deuser_id='". $id_usr   ."' AND  M.parauser_id=U.id
-                            ORDER BY created_at ASC
-                            ") );*/
         $a  = Mensaje::select('mensajes.id','mensajes.mensaje','mensajes.deuser_id','mensajes.parauser_id','mensajes.leido',
                       'mensajes.created_at','mensajes.updated_at','users.url_imagen','users.name' )
                       ->where([ ['mensajes.parauser_id', '=', $id_usr  ] ] )

@@ -173,7 +173,7 @@
 		 <div class="tab-content ">
 				 <div role="tabpanel" class="tab-pane fade in active" id="pendiente">
 							<div class="panel-body">
-								 @if (!empty($empleados1))
+								 @if (count($empleados1)>0)
 									<ul class="media-list">
 										@foreach($empleados1 as $item)
 												<li class="media">
@@ -182,7 +182,7 @@
 															<div class="col-sm-2 col-md-2 col-lg-2">
 
 							    							<a href="{{ route('candidatos.show', $item->id) }}"  >
-							    							   <img class="media-object avatarxx1" src="{{ $item->url_imagen }}" alt="" >
+							    							   <img class="media-object avatarxx3" src="{{ $item->url_imagen }}" alt="" >
 							    							</a>
 					    					</div>
 					    						<div class="col-sm-8 col-md-8 col-lg-8">
@@ -237,7 +237,7 @@
 				 </div>
 				 <div role="tabpanel" class="tab-pane fade" id="aceptado">
 						<div class="panel-body">
-							 @if (!empty($empleados2))
+							 @if (count($empleados2)>0)
 
 									 <ul class="media-list">
 							@foreach($empleados2 as $item)
@@ -246,7 +246,7 @@
 													<div class="row">
 														<div class="col-sm-2 col-md-2 col-lg-2">
 																<a href="{{ route('candidatos.show', $item->id) }}">
-																	 <img class="media-object avatarxx1" src="{{ $item->url_imagen }}" alt="" >
+																	 <img class="media-object avatarxx3" src="{{ $item->url_imagen }}" alt="" >
 																</a>
 														</div>
 														<div class="col-sm-8 col-md-8 col-lg-8">
@@ -277,14 +277,14 @@
 				 </div>
 				 <div role="tabpanel" class="tab-pane fade" id="rechazado">
 						<div class="panel-body">
-								@if (!empty($empleados3))
+								@if (count($empleados3)>0)
 								<div class="container">
  									 <ul class="media-list">
 							   @foreach($empleados3 as $item)
 											<li class="media">
 											<div class="media-left">
 												<a href="{{ route('candidatos.show', $item->id) }}">
-													 <img class="media-object avatarxx1" src="{{ $item->url_imagen }}" alt="" >
+													 <img class="media-object avatarxx3" src="{{ $item->url_imagen }}" alt="" >
 												</a>
 											</div>
 											<div class="media-body">

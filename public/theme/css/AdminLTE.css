@@ -5931,6 +5931,11 @@ option {
    width: 50px!important;
    height: 50px!important;
 }
+.avatarxx3 {
+   border-radius: 50%;
+   width: 90px!important;
+   height: 90px!important;
+}
 .avatarxx2 {
     border-radius: 50%!important;
 

@@ -24,6 +24,8 @@ use App\Models\Ciudad;
 use App\Models\Sector;
 use App\Models\Empleador;
 use App\Models\Mensaje;
+use App\Models\Postulacion;
+
 
 class OfertaController extends AppBaseController
 {
@@ -200,32 +202,6 @@ class OfertaController extends AppBaseController
 
             return redirect(route('ofertas.index'));
         }
-
-      //  $config = array();
-      //  $config['center'] = 'auto';
-
-      /*  $config['apiKey'] = 'AIzaSyA1c5fXxWdutyXZPPBHZTKHvJbyo1yAVDY';
-        $config['zoom'] = '10';
-        $config['center'] = '4.6482837,-74.2478935 ';*/
-        /*$config['directions'] = TRUE;
-        $config['directionsStart'] = 'auto';
-        $config['directionsEnd'] = $oferta->direccion;
-        $config['directionsDivID'] = 'directionsDiv';*/
-        /*$config['onboundschanged'] = 'if (!centreGot) {
-                var mapCentre = map.getCenter();
-                marker_0.setOptions({
-                    position: new google.maps.LatLng(mapCentre.lat(), mapCentre.lng())
-                });
-            }
-            centreGot = true;';*/
-
-      /*  \Gmaps::initialize($config);
-        $marker = array();
-        $marker['position'] = '4.6482837,-74.2478935';
-        $marker['draggable'] = TRUE;
-        $marker['animation'] = 'DROP';
-        \Gmaps::add_marker($marker);
-        $map = \Gmaps::create_map();*/
         $id_usr=Auth::user()->id;
         $obj=Empleador::where([ ['user_id', '=',$id_usr] ] )->first();
         $lista1="";
@@ -233,21 +209,34 @@ class OfertaController extends AppBaseController
         $lista3="";
         if($obj){
           $prop_=$obj->id;
-          $lista1 = DB::select( DB::raw("SELECT DISTINCT P.id as pid,E.id,E.nombres,E.apellidos,P.created_at as fpostulacion,
-                    E.created_at as ago,U.url_imagen,E.telefono,E.correo,E.descripcion,E.experiencia,E.rate,U.id as userid
-                    FROM ofertas O,postulaciones P,candidatos E,users U
-                    WHERE P.estatus_id ='1' and P.oferta_id=O.id and O.empleador_id='". $prop_  ."'  and O.id='". $oferta->id ."'
-                    and P.candidato_id=E.id and E.user_id=U.id ") );
-          $lista2 = DB::select( DB::raw("SELECT DISTINCT E.id,E.nombres ,E.apellidos,
-                    E.created_at as ago,U.url_imagen,E.telefono,E.correo,E.descripcion,E.experiencia,E.rate,U.id as userid
-                    FROM ofertas O,postulaciones P,candidatos E,users U
-                    WHERE P.estatus_id ='2' and P.oferta_id=O.id and O.empleador_id='". $prop_   ."' and O.id='". $oferta->id ."'
-                    and P.candidato_id=E.id and E.user_id=U.id ") );
-         $lista3 = DB::select( DB::raw("SELECT DISTINCT E.nombres,E.apellidos,
-                   E.created_at as ago,U.url_imagen,E.telefono,E.correo,E.descripcion,E.experiencia,E.rate,U.id as userid
-                   FROM ofertas O,postulaciones P,candidatos E,users U
-                   WHERE P.estatus_id ='3' and P.oferta_id=O.id and O.empleador_id='". $prop_  ."'  and O.id='". $oferta->id ."'
-                   and P.candidato_id=E.id and E.user_id=U.id ") );
+          $lista1  = Postulacion::select('users.id as userid','users.url_imagen','postulaciones.created_at as fpostulacion ','candidatos.*' )
+                    ->where([ ['ofertas.empleador_id', '=',$prop_ ] ] )
+                    ->where([ ['ofertas.id', '=',$oferta->id] ] )
+                    ->where([ ['postulaciones.estatus_id', '=',1 ] ] )
+                    ->join('ofertas','postulaciones.oferta_id','=','ofertas.id')
+                    ->join('candidatos','postulaciones.candidato_id','=','candidatos.id')
+                    ->join('users','candidatos.user_id','=','users.id')
+                    ->distinct('users.id')
+                    ->orderBy('nombres', 'asc')->get();
+         $lista2  = Postulacion::select('users.id as userid','users.url_imagen','postulaciones.created_at as fpostulacion ','candidatos.*' )
+                    ->where([ ['ofertas.empleador_id', '=',$prop_ ] ] )
+                    ->where([ ['ofertas.id', '=',$oferta->id] ] )
+                    ->where([ ['postulaciones.estatus_id', '=',2 ] ] )
+                    ->join('ofertas','postulaciones.oferta_id','=','ofertas.id')
+                    ->join('candidatos','postulaciones.candidato_id','=','candidatos.id')
+                    ->join('users','candidatos.user_id','=','users.id')
+                    ->distinct('users.id')
+                    ->orderBy('nombres', 'asc')->get();
+        $lista3  = Postulacion::select('users.id as userid','users.url_imagen','postulaciones.created_at as fpostulacion ','candidatos.*' )
+                  ->where([ ['ofertas.empleador_id', '=',$prop_ ] ] )
+                  ->where([ ['ofertas.id', '=',$oferta->id] ] )
+                  ->where([ ['postulaciones.estatus_id', '=',3 ] ] )
+                  ->join('ofertas','postulaciones.oferta_id','=','ofertas.id')
+                  ->join('candidatos','postulaciones.candidato_id','=','candidatos.id')
+                  ->join('users','candidatos.user_id','=','users.id')
+                  ->distinct('users.id')
+                  ->orderBy('nombres', 'asc')->get();
+
         }else{
 
 

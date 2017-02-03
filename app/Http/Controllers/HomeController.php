@@ -148,7 +148,7 @@ class HomeController extends Controller
 
 
     public function ofertasactivas(){
-          $validar=Util::getFechaSys();
+          $validar=$this->getFechaSys();
           $lista= Oferta::where([ ['desde', '<=',$validar ],['hasta', '>=',$validar ] ] )
                       ->orderBy('created_at', 'desc')->get();
           return view('zvistas.ofertas')

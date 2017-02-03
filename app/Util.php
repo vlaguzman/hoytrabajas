@@ -10,22 +10,22 @@ use App\Models\Usuario;
 class Util
 {
 
-	public static function getUsuario(){
+	public  function getUsuario(){
 		return Usuario::find(Auth::user()->id);
 	}
-    public  static function getFechaVence($fecha){
+    public  function getFechaVence($fecha){
         $carbon = new Carbon($fecha, 'America/Bogota');
         $carbon1 = $carbon->addDays(1);
         return $carbon1;
     }
-    public static function getVenceHoras($fecha){
+    public  function getVenceHoras($fecha){
         $carbon = new Carbon($fecha, 'America/Bogota');
         $carbon1 = $carbon->addDays(1);
         $carbon2 = Carbon::now('America/Bogota');
         $prog = $carbon1->diffInHours($carbon2);
         return $prog;
     }
-	public static function getValor($vlr){
+	public  function getValor($vlr){
 		if($vlr==null) $vlr="";
 		$vlr  = trim($vlr);
         $vlrr = $vlr;
@@ -34,11 +34,5 @@ class Util
 		$vlrr = strip_tags($vlrr);
         return $vlrr;
     }
-		public static function getFechaSys(){
-				date_default_timezone_set('America/Bogota');
-				$fecha_ = date("Y-m-d", time());
-				$hora_=  date("H:i:s", time());
-				return $fecha_.$hora_;
-		}
 
 }

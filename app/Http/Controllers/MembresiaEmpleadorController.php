@@ -49,7 +49,7 @@ class MembresiaEmpleadorController extends AppBaseController
            $idiomas      = Idioma::orderBy('descripcion')->pluck('descripcion', 'id');
            $ciudades     = Ciudad::orderBy('descripcion')->pluck('descripcion', 'id');
             $item= MembresiaEmpleador::where([ ['empleador_id', '=',$id ],['desde', '<=',$validar ],['hasta', '>=',$validar ] ] )->first();
-            if ($item==false) {
+            if ($item===false) {
                 $membresia=Membresia::where([ ['empleador', '=', 1] ]   )->first();
                 $id_membresia=$membresia->id;
                 $item= MembresiaPrecio::where([ ['membresia_id', '=',$id_membresia ],['desde', '<=',$validar ],['hasta', '>=',$validar ] ] )->first();
@@ -66,7 +66,7 @@ class MembresiaEmpleadorController extends AppBaseController
                       'desde' => $desde_,
                       'hasta' => $hasta_,
                       ]);
-                    if($obj==true ){
+                    if($obj===true ){
                         return view('zvistas.buscarempleados')
                               ->with('generos',  $generos )
                               ->with('sectores',  $sectores )

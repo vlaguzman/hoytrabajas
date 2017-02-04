@@ -28,7 +28,8 @@
         "narutimateum/toastr-5.2-laravel": "dev-master",
         "pusher/pusher-PHP-server": "^2.6",
         "styde/html": "~1.2",
-        "yajra/laravel-datatables-oracle": "~6.0"
+        "yajra/laravel-datatables-oracle": "~6.0",
+        "zircote/swagger-php": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

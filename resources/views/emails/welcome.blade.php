@@ -1,5 +1,6 @@
 <html>
 <head>
+<meta charset="UTF-8">
 <style type="text/css">
 		p{
 			margin:10px 0;
@@ -808,13 +809,5 @@ Equipo Hoy Trabajas
                 </tr>
             </table>
         </center>
-    </body>
-
-<h2>Bienvenido {{ $user->name }}!</h2>
-
-<p>Esperemos que nuestra aplicación te sea de gran utilidad!</p>
-
-   Enviado automáticamente desde <a href={{ url('/') }} title="Hoy Trabajas">Hoy Trabajas</a>  
-
   </body> 
-</head>
+<html>

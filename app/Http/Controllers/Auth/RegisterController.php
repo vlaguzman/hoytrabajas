@@ -144,7 +144,7 @@ class RegisterController extends Controller
                 if($rp){
                    $image = $data['imagen_perfl_'];
                    $ruta_destino = public_path('/images/system_imgs/usuarios/');
-                   if($image!=null){
+                   if($image!== null){
                        $img =  Image::make($image->getRealPath());
                        $ruta_img=$ruta_destino."puser_".$id_usr.'.'.$image->getClientOriginalExtension();
                        $img_local='/images/system_imgs/usuarios/puser_'.$id_usr.'.'.$image->getClientOriginalExtension();
@@ -204,7 +204,7 @@ class RegisterController extends Controller
               if($rp){
                   $image = $data['imagen_perfl_'];
                   $ruta_destino = public_path('/images/system_imgs/usuarios/');
-                  if($image!=null){
+                  if($image!== null){
                       $img =  Image::make($image->getRealPath());
                       $ruta_img=$ruta_destino."puser_".$id_usr.'.'.$image->getClientOriginalExtension();
                       $img_local='/images/system_imgs/usuarios/puser_'.$id_usr.'.'.$image->getClientOriginalExtension();

@@ -63,6 +63,6 @@ class Estudio extends Model
      **/
     public function estudiosCandidatos()
     {
-        return $this->hasMany(\App\Models\EstudiosCandidato::class);
+        return $this->hasMany(\App\Models\EstudioCandidato::class);
     }
 }

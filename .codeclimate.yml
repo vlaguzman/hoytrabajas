@@ -1,0 +1,37 @@
+engines:
+  rubocop:
+    enabled: true
+    #checks:
+    #	Rubocop/Metrics/ClassLength:
+    #  	enabled: false
+  golint:
+   	enabled: true
+  eslint:
+    enabled: true
+  csslint:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - php:
+ratings:
+  paths:
+  - app/**
+  - "**.go"
+exclude_paths:
+- "**/vendor/**/*"
+- bootstrap/**
+- config/**
+- database/**
+- node_modules/**
+- public/**
+- resources/**
+- routes/**
+- storage/**
+- tests/**
+- vendor/**/*"
+- app/Exceptions/**
+- app/Providers/**
+- app/Http/Middleware/**
+

@@ -1,5 +1,6 @@
 <html>
 <head>
+<meta charset="UTF-8">
 <style type="text/css">
 		p{
 			margin:10px 0;
@@ -808,7 +809,6 @@ Equipo Hoy Trabajas
                 </tr>
             </table>
         </center>
-    </body>
-
+ 
   </body> 
-</head>
+<html>

@@ -63,6 +63,6 @@ class PostulacionEstatus extends Model
      **/
     public function postulaciones()
     {
-        return $this->hasMany(\App\Models\Postulacione::class);
+        return $this->hasMany(\App\Models\Postulacion::class);
     }
 }

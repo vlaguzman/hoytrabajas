@@ -65,7 +65,7 @@ class Membresia extends Model
      **/
     public function membresiasCandidatos()
     {
-        return $this->hasMany(\App\Models\MembresiasCandidato::class);
+        return $this->hasMany(\App\Models\MembresiaCandidato::class);
     }
 
     /**
@@ -73,7 +73,7 @@ class Membresia extends Model
      **/
     public function membresiasEmpleadores()
     {
-        return $this->hasMany(\App\Models\MembresiasEmpleadore::class);
+        return $this->hasMany(\App\Models\MembresiaEmpleador::class);
     }
 
     /**
@@ -81,6 +81,6 @@ class Membresia extends Model
      **/
     public function membresiasPrecios()
     {
-        return $this->hasMany(\App\Models\MembresiasPrecio::class);
+        return $this->hasMany(\App\Models\MembresiaPrecio::class);
     }
 }

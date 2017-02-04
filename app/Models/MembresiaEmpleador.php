@@ -81,7 +81,7 @@ class MembresiaEmpleador extends Model
      **/
     public function empleadore()
     {
-        return $this->belongsTo(\App\Models\Empleadore::class);
+        return $this->belongsTo(\App\Models\Empleador::class);
     }
 
     /**

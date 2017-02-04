@@ -177,32 +177,27 @@ class EdtPerfilController extends Controller
               if($rp){
 
                   $lst = $request->input('lssectores');
-                  if( $lst !=null){
+                  if( $lst !== null  ){
+					if(count($lst)>0){  
                      foreach( $lst as $selected_id){
-
-                       SectorCandidato::updateOrCreate([
-                            'candidato_id' => $id_candidato,
-                            'sector_id' => $selected_id,
-                       ]);
-                        /*SectorCandidato::create([
-                             'candidato_id' => $id_candidato,
-                             'sector_id' => $selected_id,
-                        ]);*/
-                     }
+						   SectorCandidato::updateOrCreate([
+								'candidato_id' => $id_candidato,
+								'sector_id' => $selected_id,
+						   ]);
+                       }
+					 } 
                   }
 
                   $lst = $request->input('lsidiomas');
-                  if( $lst !=null){
-                    foreach( $lst  as $selected_id){
-                        IdiomaCandidato::updateOrCreate([
-                           'candidato_id' => $id_candidato,
-                           'idioma_id' => $selected_id,
-                       ]);
-                        /*IdiomaCandidato::create([
-                             'candidato_id' => $id_candidato,
-                             'idioma_id' => $selected_id,
-                        ]);*/
-                    }
+                  if( $lst !== null  ){
+					if(count($lst)>0){    
+						foreach( $lst  as $selected_id){
+							IdiomaCandidato::updateOrCreate([
+							   'candidato_id' => $id_candidato,
+							   'idioma_id' => $selected_id,
+						   ]);
+						}
+					}	
                   }
 
                   $estudio_nv= $request->input('estudios');
@@ -221,10 +216,6 @@ class EdtPerfilController extends Controller
                            'candidato_id' => $id_candidato,
                            'estudio_id' => $id_estu,
                       ]);
-                      /*EstudioCandidato::create([
-                           'candidato_id' => $id_candidato,
-                           'estudio_id' => $id_estu,
-                      ]);*/
                   }
 
 
@@ -268,8 +259,6 @@ class EdtPerfilController extends Controller
                 ]);
                 $psw=$request->input('password');
                 if($rp){
-                  // Auth::user()->perfil_id=2;
-                  // Auth::user()->save();
                    $obj=Usuario::where([ ['id', '=',$id_usr] ] )->first();
                    if($obj){
                       $obj->perfil_id=2;
@@ -310,8 +299,6 @@ class EdtPerfilController extends Controller
             ]);
             $psw=$request->input('password');
             if($rp){
-                //Auth::user()->perfil_id=3;
-                //Auth::user()->save();
                 $obj=Usuario::where([ ['id', '=',$id_usr] ] )->first();
                 if($obj){
                    $obj->perfil_id=3;
@@ -320,22 +307,26 @@ class EdtPerfilController extends Controller
                 }
                 $id_candidato=$rp->id;
                 $lst = $request->input('lssectores');
-                if( $lst !=null){
-                   foreach( $lst as $selected_id){
-                      SectorCandidato::create([
-                           'candidato_id' => $id_candidato,
-                           'sector_id' => $selected_id,
-                      ]);
-                   }
+                if( $lst !== null){
+				   if(count($lst)>0){    	
+					   foreach( $lst as $selected_id){
+						  SectorCandidato::updateOrCreate([
+							   'candidato_id' => $id_candidato,
+							   'sector_id' => $selected_id,
+						  ]);
+					   }
+				   }   
                 }
                 $lst = $request->input('lsidiomas');
-                if( $lst !=null){
-                  foreach( $lst  as $selected_id){
-                      IdiomaCandidato::create([
-                           'candidato_id' => $id_candidato,
-                           'idioma_id' => $selected_id,
-                      ]);
-                  }
+                if( $lst !== null){
+				  if(count($lst)>0){  	
+					  foreach( $lst  as $selected_id){
+						  IdiomaCandidato::updateOrCreate([
+							   'candidato_id' => $id_candidato,
+							   'idioma_id' => $selected_id,
+						  ]);
+					  }
+				   }	  
                 }
 
                 $estudio_nv= $request->input('estudios');
@@ -350,7 +341,7 @@ class EdtPerfilController extends Controller
                     }
                 }
                 if( $id_estu!="0"){
-                    EstudioCandidato::create([
+                    EstudioCandidato::updateOrCreate([
                          'candidato_id' => $id_candidato,
                          'estudio_id' => $id_estu,
                     ]);

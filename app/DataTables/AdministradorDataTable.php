@@ -14,10 +14,6 @@ class AdministradorDataTable extends DataTable
      */
     public function ajax()
     {
-        /*return $this->datatables
-            ->eloquent($this->query())
-            ->addColumn('action', 'administradors.datatables_actions')
-            ->make(true);*/
             return $this->datatables
                 ->collection( $this->query() )
                 ->addColumn('action', 'administradors.datatables_actions')
@@ -32,13 +28,10 @@ class AdministradorDataTable extends DataTable
      */
     public function query()
     {
-        /*$administradors = Administrador::query();
-        return $this->applyScopes($administradors);*/
-
-          $lista  = Administrador::select(array('administradores.id','administradores.nombres','administradores.apellidos','administradores.telefono',
-                  'administradores.correo','users.url_imagen'  ))
+          $lista  = Administrador::select('administradores.id','administradores.nombres','administradores.apellidos','administradores.telefono',
+                  'administradores.correo','users.url_imagen')
                   ->leftJoin('users','administradores.user_id','=','users.id')
-                  ->orderBy('nombres', 'desc')->get();
+                  ->orderBy('administradores.nombres', 'desc')->get();
           return $lista;
     }
 

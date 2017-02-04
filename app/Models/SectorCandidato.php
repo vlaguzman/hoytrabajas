@@ -80,6 +80,6 @@ class SectorCandidato extends Model
      **/
     public function sectore()
     {
-        return $this->belongsTo(\App\Models\Sectore::class);
+        return $this->belongsTo(\App\Models\Sector::class);
     }
 }

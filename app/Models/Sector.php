@@ -71,6 +71,6 @@ class Sector extends Model
      **/
     public function sectoresCandidatos()
     {
-        return $this->hasMany(\App\Models\SectoresCandidato::class);
+        return $this->hasMany(\App\Models\SectorCandidato::class);
     }
 }

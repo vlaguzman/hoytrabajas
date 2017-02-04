@@ -63,6 +63,6 @@ class Idioma extends Model
      **/
     public function idiomasCandidatos()
     {
-        return $this->hasMany(\App\Models\IdiomasCandidato::class);
+        return $this->hasMany(\App\Models\IdiomaCandidato::class);
     }
 }

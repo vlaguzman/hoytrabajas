@@ -14,10 +14,6 @@ class EmpleadorDataTable extends DataTable
      */
     public function ajax()
     {
-      /*  return $this->datatables
-            ->eloquent($this->query())
-            ->addColumn('action', 'empleadors.datatables_actions')
-            ->make(true);*/
             return $this->datatables
                 ->collection( $this->query() )
                 ->addColumn('action', 'empleadors.datatables_actions')
@@ -31,14 +27,12 @@ class EmpleadorDataTable extends DataTable
      */
     public function query()
     {
-        /*$empleadors = Empleador::query();
-        return $this->applyScopes($empleadors);*/
 
-        $lista  = Empleador::select(array('empleadores.id','empleadores.empresa','empleadores.contacto','empleadores.telefono','empleadores.correo',
-             'empleadores.descripcion','empleadores.direccion','users.url_imagen' ,'ciudades.descripcion as des_ciudad'  ))
+        $lista  = Empleador::select('empleadores.id','empleadores.empresa','empleadores.contacto','empleadores.telefono','empleadores.correo',
+             'empleadores.descripcion','empleadores.direccion','users.url_imagen' ,'ciudades.descripcion as des_ciudad')
                           ->leftJoin('users','empleadores.user_id','=','users.id')
                           ->leftJoin('ciudades','empleadores.ciudad_id','=','ciudades.id')
-                          ->orderBy('empresa', 'desc')->get();
+                          ->orderBy('empleadores.empresa', 'desc')->get();
 
         return $lista;
     }
@@ -93,8 +87,6 @@ class EmpleadorDataTable extends DataTable
             'descripcion' => ['name' => 'descripcion', 'data' => 'descripcion'],
             'direccion' => ['name' => 'direccion', 'data' => 'direccion'],
             'Ciudad' => ['name' => 'des_ciudad', 'data' => 'des_ciudad'],
-
-
         ];
     }
 

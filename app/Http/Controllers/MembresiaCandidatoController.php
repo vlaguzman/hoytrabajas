@@ -39,7 +39,7 @@ class MembresiaCandidatoController extends AppBaseController
            $validar=$this->getFechaSys();
            $hasta=date("Y-m-d", time());
            $item= MembresiaCandidato::where([ ['candidato_id', '=',$id ],['desde', '<=',$validar ],['hasta', '>=',$validar ] ] )->first();
-           if ($item==false) {
+           if ($item===false) {
                 $membresia=Membresia::where([ ['candidato', '=', 1] ]   )->first();
                 $id_membresia=$membresia->id;
                 $item= MembresiaPrecio::where([ ['membresia_id', '=',$id_membresia ],['desde', '<=',$validar ],['hasta', '>=',$validar ] ] )->first();

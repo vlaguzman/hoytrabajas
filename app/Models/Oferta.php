@@ -127,15 +127,6 @@ class Oferta extends Model
         'bloqueada'=> 'boolean',
     ];
 
-    /*public function getDesdeAttribute($value)
-    {
-        return $value->format('M d Y');
-    }*/
-    /*public function getDesdeAttribute()
-    {
-        return  $this->attributes['desde']  ;
-    }*/
-
 
     /**
      * Validation rules

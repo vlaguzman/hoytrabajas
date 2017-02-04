@@ -1,5 +1,7 @@
+<!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <style type="text/css">
 		p{
 			margin:10px 0;
@@ -609,8 +611,8 @@ Equipo Hoy Trabajas
             </tr>
     </tbody>
 </table></td>
-                            </tr>
-                        </table>
+</tr>
+</table>
 						<!--[if gte mso 9]>
 						</td>
 						</tr>
@@ -621,5 +623,5 @@ Equipo Hoy Trabajas
                 </tr>
             </table>
         </center>
-    </body>   
-</head>
+ </body>   
+<html>

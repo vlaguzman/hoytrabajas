@@ -15,10 +15,6 @@ class MembresiaEmpleadorDataTable extends DataTable
      */
     public function ajax()
     {
-      /*  return $this->datatables
-            ->eloquent($this->query())
-            ->addColumn('action', 'membresia_empleadors.datatables_actions')
-            ->make(true);*/
             return $this->datatables
                 ->collection( $this->query() )
                 ->editColumn('desde',' {{  date(\'d-m-Y \', strtotime($desde) )  }}')
@@ -37,11 +33,11 @@ class MembresiaEmpleadorDataTable extends DataTable
         /*$membresiaEmpleadors = MembresiaEmpleador::query();
 
         return $this->applyScopes($membresiaEmpleadors);*/
-      $lista  = MembresiaEmpleador::select(array('membresias_empleadores.id','membresias_empleadores.pagado','membresias_empleadores.desde','membresias_empleadores.hasta',
-          'empleadores.empresa','membresias.descripcion as des_mem','membresias_empleadores.created_at' ))
+      $lista  = MembresiaEmpleador::select('membresias_empleadores.id','membresias_empleadores.pagado','membresias_empleadores.desde','membresias_empleadores.hasta',
+          'empleadores.empresa','membresias.descripcion as des_mem','membresias_empleadores.created_at' )
                   ->leftJoin('empleadores','membresias_empleadores.empleador_id','=','empleadores.id')
                   ->leftJoin('membresias','membresias_empleadores.membresia_id','=','membresias.id')
-                  ->orderBy('created_at', 'desc')->get();
+                  ->orderBy('membresias_empleadores.created_at', 'desc')->get();
         return $lista;
     }
 

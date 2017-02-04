@@ -146,7 +146,7 @@ class Candidato extends Model
      **/
     public function ciudade()
     {
-        return $this->belongsTo(\App\Models\Ciudade::class);
+        return $this->belongsTo(\App\Models\Ciudad::class);
     }
 
     /**
@@ -162,7 +162,7 @@ class Candidato extends Model
      **/
     public function user()
     {
-        return $this->belongsTo(\App\Models\User::class);
+        return $this->belongsTo(\App\Models\Usuario::class);
     }
 
     /**
@@ -170,7 +170,7 @@ class Candidato extends Model
      **/
     public function estudiosCandidatos()
     {
-        return $this->hasMany(\App\Models\EstudiosCandidato::class);
+        return $this->hasMany(\App\Models\EstudioCandidato::class);
     }
 
     /**
@@ -178,7 +178,7 @@ class Candidato extends Model
      **/
     public function idiomasCandidatos()
     {
-        return $this->hasMany(\App\Models\IdiomasCandidato::class);
+        return $this->hasMany(\App\Models\IdiomaCandidato::class);
     }
 
     /**
@@ -186,7 +186,7 @@ class Candidato extends Model
      **/
     public function membresiasCandidatos()
     {
-        return $this->hasMany(\App\Models\MembresiasCandidato::class);
+        return $this->hasMany(\App\Models\MembresiaCandidato::class);
     }
 
     /**
@@ -194,7 +194,7 @@ class Candidato extends Model
      **/
     public function postulaciones()
     {
-        return $this->hasMany(\App\Models\Postulacione::class);
+        return $this->hasMany(\App\Models\Postulacion::class);
     }
 
     /**
@@ -202,6 +202,6 @@ class Candidato extends Model
      **/
     public function sectoresCandidatos()
     {
-        return $this->hasMany(\App\Models\SectoresCandidato::class);
+        return $this->hasMany(\App\Models\SectorCandidato::class);
     }
 }

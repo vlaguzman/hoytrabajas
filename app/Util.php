@@ -26,7 +26,7 @@ class Util
         return $prog;
     }
 	public  function getValor($vlr){
-		if($vlr==null) $vlr="";
+		if($vlr=== null) $vlr="";
 		$vlr  = trim($vlr);
         $vlrr = $vlr;
 		$vlrr = stripslashes($vlrr);

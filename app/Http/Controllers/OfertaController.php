@@ -98,7 +98,7 @@ class OfertaController extends AppBaseController
             Toastr::info("Oferta creada correctamente", "Procesado", $options = [] );
             $id_=$obj->id;
             $ruta_destino = public_path('/images/system_imgs/ofertas/');
-            if($image!=null){
+            if($image!==null){
                 $img =  Image::make($image->getRealPath());
                 $ruta_img=$ruta_destino."ioferta_".$id_.'.'.$image->getClientOriginalExtension();
                 $img_local='/images/system_imgs/ofertas/ioferta_'.$id_.'.'.$image->getClientOriginalExtension();

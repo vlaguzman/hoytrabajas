@@ -87,7 +87,7 @@ class Ciudad extends Model
      **/
     public function empleadores()
     {
-        return $this->hasMany(\App\Models\Empleadore::class);
+        return $this->hasMany(\App\Models\Empleador::class);
     }
 
     /**

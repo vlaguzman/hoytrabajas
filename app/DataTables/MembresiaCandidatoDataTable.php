@@ -14,10 +14,6 @@ class MembresiaCandidatoDataTable extends DataTable
      */
     public function ajax()
     {
-        /*return $this->datatables
-            ->eloquent($this->query())
-            ->addColumn('action', 'membresia_candidatos.datatables_actions')
-            ->make(true);*/
             return $this->datatables
                 ->collection( $this->query() )
                 ->editColumn('desde',' {{  date(\'d-m-Y \', strtotime($desde) )  }}')
@@ -33,14 +29,11 @@ class MembresiaCandidatoDataTable extends DataTable
      */
     public function query()
     {
-      /*  $membresiaCandidatos = MembresiaCandidato::query();
-
-        return $this->applyScopes($membresiaCandidatos);*/
-        $lista  = MembresiaCandidato::select(array('membresias_candidatos.id','membresias_candidatos.pagado','membresias_candidatos.desde','membresias_candidatos.hasta',
-            'candidatos.nombres','membresias.descripcion as des_mem','membresias_candidatos.created_at' ))
+        $lista  = MembresiaCandidato::select('membresias_candidatos.id','membresias_candidatos.pagado','membresias_candidatos.desde','membresias_candidatos.hasta',
+            'candidatos.nombres','membresias.descripcion as des_mem','membresias_candidatos.created_at' )
                     ->leftJoin('candidatos','membresias_candidatos.candidato_id','=','candidatos.id')
                     ->leftJoin('membresias','membresias_candidatos.membresia_id','=','membresias.id')
-                    ->orderBy('created_at', 'desc')->get();
+                    ->orderBy('membresias_candidatos.created_at', 'desc')->get();
           return $lista;
     }
 

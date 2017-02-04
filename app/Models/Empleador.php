@@ -114,7 +114,7 @@ class Empleador extends Model
      **/
     public function ciudade()
     {
-        return $this->belongsTo(\App\Models\Ciudade::class);
+        return $this->belongsTo(\App\Models\Ciudad::class);
     }
 
     /**
@@ -122,7 +122,7 @@ class Empleador extends Model
      **/
     public function user()
     {
-        return $this->belongsTo(\App\Models\User::class);
+        return $this->belongsTo(\App\Models\Usuario::class);
     }
 
     /**
@@ -130,7 +130,7 @@ class Empleador extends Model
      **/
     public function membresiasEmpleadores()
     {
-        return $this->hasMany(\App\Models\MembresiasEmpleadore::class);
+        return $this->hasMany(\App\Models\MembresiaEmpleador::class);
     }
 
     /**

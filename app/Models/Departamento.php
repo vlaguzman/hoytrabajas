@@ -69,9 +69,9 @@ class Departamento extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function paise()
+    public function paises()
     {
-        return $this->belongsTo(\App\Models\Paise::class);
+        return $this->belongsTo(\App\Models\Pais::class);
     }
 
     /**
@@ -79,6 +79,6 @@ class Departamento extends Model
      **/
     public function ciudades()
     {
-        return $this->hasMany(\App\Models\Ciudade::class);
+        return $this->hasMany(\App\Models\Ciudad::class);
     }
 }

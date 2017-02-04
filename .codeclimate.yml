@@ -6,10 +6,10 @@ engines:
   csslint:
     enabled: true
   phpcodesniffer:
-    enabled: true 
+    enabled: true 	
   duplication:
-     enabled: false
-  config:
+    enabled: false
+    config:
       languages:
       - php:
 ratings:
@@ -25,5 +25,6 @@ exclude_paths:
 - tests/**
 - vendor/**/*"
 - app/Exceptions/**
-- resources/assets/** 
-- resources/lang/** 
+- app/Providers/**
+- resources/assets/**
+- resources/lang/**

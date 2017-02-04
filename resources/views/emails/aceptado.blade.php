@@ -1,6 +1,7 @@
 ï»¿<!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta charset="UTF-8">
 <style type="text/css">
 		p{
@@ -383,26 +384,14 @@
             <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;height: 100%;margin: 0;padding: 0;width: 100%;background-color: #FAFAFA;">
                 <tr>
                     <td align="center" valign="top" id="bodyCell" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;height: 100%;margin: 0;padding: 10px;width: 100%;border-top: 0;">
-                        <!-- BEGIN TEMPLATE // -->
-						<!--[if gte mso 9]>
-						<table align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="width:600px;">
-						<tr>
-						<td align="center" valign="top" width="600" style="width:600px;">
-						<![endif]-->
+                        
                         <table border="0" cellpadding="0" cellspacing="0" width="100%" class="templateContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;border: 0;max-width: 600px !important;">
                             <tr>
                                 <td valign="top" id="templatePreheader" style="background:#f1f1f1 none no-repeat center/cover;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #f1f1f1;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;border-top: 0;border-bottom: 0;padding-top: 9px;padding-bottom: 9px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
     <tbody class="mcnTextBlockOuter">
         <tr>
             <td valign="top" class="mcnTextBlockInner" style="padding-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-              	<!--[if mso]>
-				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
-				<tr>
-				<![endif]-->
-			    
-				<!--[if mso]>
-				<td valign="top" width="390" style="width:390px;">
-				<![endif]-->
+              	
                 <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width: 390px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%" class="mcnTextContentContainer">
                     <tbody><tr>
                         
@@ -412,13 +401,7 @@
                         </td>
                     </tr>
                 </tbody></table>
-				<!--[if mso]>
-				</td>
-				<![endif]-->
-                
-				<!--[if mso]>
-				<td valign="top" width="210" style="width:210px;">
-				<![endif]-->
+				
                 <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width: 210px;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%" class="mcnTextContentContainer">
                     <tbody><tr>
                         
@@ -428,14 +411,7 @@
                         </td>
                     </tr>
                 </tbody></table>
-				<!--[if mso]>
-				</td>
-				<![endif]-->
-                
-				<!--[if mso]>
-				</tr>
-				</table>
-				<![endif]-->
+				
             </td>
         </tr>
     </tbody>
@@ -467,35 +443,21 @@
     <tbody class="mcnTextBlockOuter">
         <tr>
             <td valign="top" class="mcnTextBlockInner" style="padding-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-              	<!--[if mso]>
-				<table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
-				<tr>
-				<![endif]-->
-			    
-				<!--[if mso]>
-				<td valign="top" width="600" style="width:600px;">
-				<![endif]-->
+              
                 <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%" class="mcnTextContentContainer">
                     <tbody><tr>
                         
                         <td valign="top" class="mcnTextContent" style="padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
                         
-                            <div style="text-align: center;"><span style="font-size:23px"><span style="font-family:open sans,helvetica neue,helvetica,arial,sans-serif">Felicitaciones {{ $user->name }}!, ¡Haz sido seleccionado!</span></span><br>
-<font face="open sans, helvetica neue, helvetica, arial, sans-serif"><span style="font-size:13px">llego tu momento, es hora de trabajar y cómo lo predijimos, en menos de 1 día. Ahora ve a tu cuenta y ponte en contacto con el Ofertante para ultimar los detalles de tu trabajo.</span></font><br>
-<span style="font-size:13px"><span style="font-family:open sans,helvetica neue,helvetica,arial,sans-serif">Nos alegra ser parte de tu beneficio económico y laboral.</span></span><br>
+                            <div style="text-align: center;"><span style="font-size:23px"><span style="font-family:open sans,helvetica neue,helvetica,arial,sans-serif">Felicitaciones {{ $user->name }}!, Haz sido seleccionado!</span></span><br>
+<font face="open sans, helvetica neue, helvetica, arial, sans-serif"><span style="font-size:13px">llego tu momento, es hora de trabajar y como lo predijimos, en menos de 1 dia. Ahora ve a tu cuenta y ponte en contacto con el Ofertante para ultimar los detalles de tu trabajo.</span></font><br>
+<span style="font-size:13px"><span style="font-family:open sans,helvetica neue,helvetica,arial,sans-serif">Nos alegra ser parte de tu beneficio economico y laboral.</span></span><br>
 &nbsp;</div>
 
                         </td>
                     </tr>
                 </tbody></table>
-				<!--[if mso]>
-				</td>
-				<![endif]-->
-                
-				<!--[if mso]>
-				</tr>
-				</table>
-				<![endif]-->
+				
             </td>
         </tr>
     </tbody>
@@ -528,10 +490,6 @@
                         </td>
                     </tr>
                 </tbody></table>
-<!--            
-                <td class="mcnDividerBlockInner" style="padding: 18px;">
-                <hr class="mcnDividerContent" style="border-bottom-color:none; border-left-color:none; border-right-color:none; border-bottom-width:0; border-left-width:0; border-right-width:0; margin-top:0; margin-right:0; margin-bottom:0; margin-left:0;" />
--->
             </td>
         </tr>
     </tbody>
@@ -555,16 +513,9 @@
                             </tr>
                             <tr>
                                 <td valign="top" id="templateFooter" style="background:#FAFAFA none no-repeat center/cover;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FAFAFA;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;border-top: 0;border-bottom: 0;padding-top: 9px;padding-bottom: 9px;"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnBoxedTextBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-    <!--[if gte mso 9]>
-	<table align="center" border="0" cellspacing="0" cellpadding="0" width="100%">
-	<![endif]-->
 	<tbody class="mcnBoxedTextBlockOuter">
         <tr>
             <td valign="top" class="mcnBoxedTextBlockInner" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-                
-				<!--[if gte mso 9]>
-				<td align="center" valign="top" ">
-				<![endif]-->
                 <table align="left" border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" class="mcnBoxedTextContentContainer">
                     <tbody><tr>
                         
@@ -581,14 +532,6 @@ Equipo Hoy Trabajas
                         </td>
                     </tr>
                 </tbody></table>
-				<!--[if gte mso 9]>
-				</td>
-				<![endif]-->
-                
-				<!--[if gte mso 9]>
-                </tr>
-                </table>
-				<![endif]-->
             </td>
         </tr>
     </tbody>
@@ -599,11 +542,7 @@ Equipo Hoy Trabajas
                     <table align="left" width="100%" border="0" cellpadding="0" cellspacing="0" class="mcnImageContentContainer" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
                         <tbody><tr>
                             <td class="mcnImageContent" valign="top" style="padding-right: 0px;padding-left: 0px;padding-top: 0;padding-bottom: 0;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-                                
-                                    
-                                        <img align="center" alt="" src="https://gallery.mailchimp.com/85a84aa2f2c46a34472b54f0d/images/bc095828-f05c-4d65-8c97-b80e22333500.png" width="600" style="max-width: 1800px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" class="mcnImage">
-                                    
-                                
+                                <img align="center" alt="" src="https://gallery.mailchimp.com/85a84aa2f2c46a34472b54f0d/images/bc095828-f05c-4d65-8c97-b80e22333500.png" width="600" style="max-width: 1800px;padding-bottom: 0;display: inline !important;vertical-align: bottom;border: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;" class="mcnImage">
                             </td>
                         </tr>
                     </tbody></table>
@@ -613,12 +552,6 @@ Equipo Hoy Trabajas
 </table></td>
 </tr>
 </table>
-						<!--[if gte mso 9]>
-						</td>
-						</tr>
-						</table>
-						<![endif]-->
-                        <!-- // END TEMPLATE -->
                     </td>
                 </tr>
             </table>

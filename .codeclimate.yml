@@ -7,8 +7,7 @@ engines:
     enabled: true
   duplication:
     enabled: true
-	checks:
-      Identical code:
+    Identical code:
         enabled: false
     config:
       languages:
@@ -20,7 +19,6 @@ exclude_paths:
 - "**/vendor/**/*"
 - bootstrap/**
 - config/**
-- database/**
 - node_modules/**
 - public/**
 - resources/**

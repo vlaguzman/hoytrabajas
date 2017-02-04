@@ -30,9 +30,6 @@ class MembresiaEmpleadorDataTable extends DataTable
      */
     public function query()
     {
-        /*$membresiaEmpleadors = MembresiaEmpleador::query();
-
-        return $this->applyScopes($membresiaEmpleadors);*/
       $lista  = MembresiaEmpleador::select('membresias_empleadores.id','membresias_empleadores.pagado','membresias_empleadores.desde','membresias_empleadores.hasta',
           'empleadores.empresa','membresias.descripcion as des_mem','membresias_empleadores.created_at' )
                   ->leftJoin('empleadores','membresias_empleadores.empleador_id','=','empleadores.id')

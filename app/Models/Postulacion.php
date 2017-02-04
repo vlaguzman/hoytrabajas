@@ -5,36 +5,6 @@ namespace App\Models;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-/**
- * @SWG\Definition(
- *      definition="Postulacion",
- *      required={""},
- *      @SWG\Property(
- *          property="id",
- *          description="id",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
- *          property="oferta_id",
- *          description="oferta_id",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
- *          property="candidato_id",
- *          description="candidato_id",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
- *          property="estatus_id",
- *          description="estatus_id",
- *          type="integer",
- *          format="int32"
- *      )
- * )
- */
 class Postulacion extends Model
 {
     use SoftDeletes;

@@ -5,23 +5,7 @@ namespace App\Models;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-/**
- * @SWG\Definition(
- *      definition="Genero",
- *      required={""},
- *      @SWG\Property(
- *          property="id",
- *          description="id",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
- *          property="descripcion",
- *          description="descripcion",
- *          type="string"
- *      )
- * )
- */
+
 class Genero extends Model
 {
     use SoftDeletes;

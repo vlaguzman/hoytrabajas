@@ -5,49 +5,6 @@ namespace App\Models;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-/**
- * @SWG\Definition(
- *      definition="Usuario",
- *      required={""},
- *      @SWG\Property(
- *          property="id",
- *          description="id",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
- *          property="name",
- *          description="name",
- *          type="string"
- *      ),
- *      @SWG\Property(
- *          property="email",
- *          description="email",
- *          type="string"
- *      ),
- *      @SWG\Property(
- *          property="password",
- *          description="password",
- *          type="string"
- *      ),
- *      @SWG\Property(
- *          property="remember_token",
- *          description="remember_token",
- *          type="string"
- *      ),
- *      @SWG\Property(
- *          property="perfil_id",
- *          description="perfil_id",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
- *          property="url_imagen",
- *          description="url_imagen",
- *          type="string"
- *      )
- * )
- */
 class Usuario extends Model
 {
     use SoftDeletes;

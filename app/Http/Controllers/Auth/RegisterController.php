@@ -115,7 +115,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
+		$options = ["progressBar" => false,
+                              "positionClass" =>"toast-top-right",
+                              "preventDuplicates"=> false,
+                              "showDuration" => 300,
+                              "hideDuration" => 3000,
+                              "timeOut" => 5000,
+                              "extendedTimeOut" => 1000,
+                              "showEasing" => "swing",
+                              "hideEasing"=> "linear",
+                              "showMethod" => "fadeIn",
+                              "hideMethod" => "fadeOut"  ];
+							  
+							  
        if($data['tipo']=='2' ){
 
            $user = User::create([
@@ -153,24 +165,14 @@ class RegisterController extends Controller
                        $user->url_imagen=$file;
                        $user->save();
                    }
-                   Toastr::info("Bienvenido a Hoy Trabajas", "Empresa", $options = ["progressBar" => false,
-                              "positionClass" =>"toast-top-right",
-                              "preventDuplicates"=> false,
-                              "showDuration" => 300,
-                              "hideDuration" => 3000,
-                              "timeOut" => 5000,
-                              "extendedTimeOut" => 1000,
-                              "showEasing" => "swing",
-                              "hideEasing"=> "linear",
-                              "showMethod" => "fadeIn",
-                              "hideMethod" => "fadeOut"  ] );
+                   Toastr::info("Bienvenido a Hoy Trabajas", "Empresa", $options );
 					        	Mail::to($user->email)->send(new WelcomeMail($user));
                     return $user;
                 }else{
-                  Toastr::error("Error al crear el Usuario Empresa", "Usuario..", $options = [] );
+                  Toastr::error("Error al crear el Usuario Empresa", "Usuario..", $options  );
                 }
             }else{
-                 Toastr::error("No se pudo crear el Usuario Empresa.", "Usuario.", $options = [] );
+                 Toastr::error("No se pudo crear el Usuario Empresa.", "Usuario.", $options  );
             }
 
         }else if($data['tipo']=='3' ){
@@ -244,24 +246,14 @@ class RegisterController extends Controller
                       ]);
                   }
 
-                 Toastr::info("Bienvenido a Hoy Trabajas", "Usuario", $options = ["progressBar" => true,
-                            "positionClass" =>"toast-top-right",
-                            "preventDuplicates"=> false,
-                            "showDuration" => 300,
-                            "hideDuration" => 1000,
-                            "timeOut" => 5000,
-                            "extendedTimeOut" => 1000,
-                            "showEasing" => "swing",
-                            "hideEasing"=> "linear",
-                            "showMethod" => "fadeIn",
-                            "hideMethod" => "fadeOut"  ] );
+                 Toastr::info("Bienvenido a Hoy Trabajas", "Usuario", $options  );
 					       Mail::to($user->email)->send(new WelcomeMail($user));
                  return $user;
               }else{
-                Toastr::error("Error al crear el Usuario", "Usuario..", $options = [] );
+                Toastr::error("Error al crear el Usuario", "Usuario..", $options  );
               }
           }else{
-               Toastr::error("No se pudo crear el Usuario.", "Usuario.", $options = [] );
+               Toastr::error("No se pudo crear el Usuario.", "Usuario.", $options  );
           }
         }
 
@@ -270,7 +262,17 @@ class RegisterController extends Controller
 
     protected function create2(array $data)
     {
-
+		$options = ["progressBar" => false,
+                              "positionClass" =>"toast-top-right",
+                              "preventDuplicates"=> false,
+                              "showDuration" => 300,
+                              "hideDuration" => 3000,
+                              "timeOut" => 5000,
+                              "extendedTimeOut" => 1000,
+                              "showEasing" => "swing",
+                              "hideEasing"=> "linear",
+                              "showMethod" => "fadeIn",
+                              "hideMethod" => "fadeOut"  ];
       $user = User::create([
                 'email' => $data['email'],
                 'name' => $data['name'],
@@ -294,23 +296,13 @@ class RegisterController extends Controller
                ]);
 
            if($rp){
-              Toastr::info("Bienvenido a Hoy Trabajas", "Empresa", $options = ["progressBar" => false,
-                         "positionClass" =>"toast-top-right",
-                         "preventDuplicates"=> false,
-                         "showDuration" => 300,
-                         "hideDuration" => 3000,
-                         "timeOut" => 5000,
-                         "extendedTimeOut" => 1000,
-                         "showEasing" => "swing",
-                         "hideEasing"=> "linear",
-                         "showMethod" => "fadeIn",
-                         "hideMethod" => "fadeOut"  ] );
+              Toastr::info("Bienvenido a Hoy Trabajas", "Empresa", $options );
               return $user;
            }else{
-             Toastr::error("Error al crear el Usuario Empresa", "Usuario..", $options = [] );
+             Toastr::error("Error al crear el Usuario Empresa", "Usuario..", $options  );
            }
        }else{
-            Toastr::error("No se pudo crear el Usuario Empresa.", "Usuario.", $options = [] );
+            Toastr::error("No se pudo crear el Usuario Empresa.", "Usuario.", $options  );
        }
 
     }

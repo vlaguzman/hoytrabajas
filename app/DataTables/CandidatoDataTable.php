@@ -18,11 +18,6 @@ class CandidatoDataTable extends DataTable
      */
     public function ajax()
     {
-        /*return $this->datatables
-            ->eloquent($this->query())
-            ->addColumn('action', 'candidatos.datatables_actions')
-            ->make(true);*/
-            $id_usr = Auth::user()->id;
             $tipo_  = Auth::user()->perfil_id;
             if($tipo_==1 ){
               return $this->datatables
@@ -46,11 +41,9 @@ class CandidatoDataTable extends DataTable
      */
     public function query()
     {
-      $id_usr = Auth::user()->id;
       $tipo_  = Auth::user()->perfil_id;
       $lista= "";
       if($tipo_==2 ){
-        //  $prop  = Candidato::where([ ['user_id', '=',$id_usr] ] )->first();
           $lista  = Candidato::select(array('candidatos.id','candidatos.nombres','candidatos.apellidos','candidatos.rate','candidatos.experiencia',
              'candidatos.descripcion','candidatos.fnac','users.url_imagen' ,'ciudades.descripcion as des_ciudad','generos.descripcion as des_genero'   ))
                           ->leftJoin('users','candidatos.user_id','=','users.id')
@@ -68,8 +61,6 @@ class CandidatoDataTable extends DataTable
       }
       return $lista;
 
-        /*$candidatos = Candidato::query();
-        return $this->applyScopes($candidatos);*/
     }
 
     /**

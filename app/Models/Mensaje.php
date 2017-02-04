@@ -9,35 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Notification;
 use App\User;
 use Carbon\Carbon;
-/**
- * @SWG\Definition(
- *      definition="Mensaje",
- *      required={""},
- *      @SWG\Property(
- *          property="id",
- *          description="id",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
- *          property="deuser_id",
- *          description="deuser_id",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
- *          property="parauser_id",
- *          description="parauser_id",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
- *          property="mensaje",
- *          description="mensaje",
- *          type="string"
- *      )
- * )
- */
+
 class Mensaje extends Model
 {
     use SoftDeletes;
@@ -93,7 +65,7 @@ class Mensaje extends Model
          $users= User::whereIn('perfil_id', [1, 3]);
          foreach($users as $item){
               $iduser=$item->id;
-              $obj = Notification::create([
+               Notification::create([
                       'user_id' => intval($iduser),
                       'data' => $msg,
                       'type' => $tipo,

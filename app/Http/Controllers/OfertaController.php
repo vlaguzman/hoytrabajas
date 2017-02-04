@@ -17,7 +17,6 @@ use Response;
 use Carbon\Carbon;
 use Intervention\Image\ImageManagerStatic as Image;
 use narutimateum\Toastr\Facades\Toastr;
-use Appitventures\Phpgmaps\Phpgmaps;
 
 use App\Models\Oferta;
 use App\Models\Ciudad;
@@ -67,6 +66,7 @@ class OfertaController extends AppBaseController
       }
 
       public function registraroferta(Request $request){
+		  $options = [];
           $id_usr=Auth::user()->id;
           $obj_e  = Empleador::where([ ['user_id', '=',$id_usr] ] )->first();
           $file=asset('/images/ofertadef.png');
@@ -95,7 +95,8 @@ class OfertaController extends AppBaseController
 				    ]);
 
         if($obj){
-            Toastr::info("Oferta creada correctamente", "Procesado", $options = [] );
+			
+            Toastr::info("Oferta creada correctamente", "Procesado", $options  );
             $id_=$obj->id;
             $ruta_destino = public_path('/images/system_imgs/ofertas/');
             if($image!==null){
@@ -108,14 +109,16 @@ class OfertaController extends AppBaseController
                 $oferta->url_imagen=$file;
                 $oferta->save();
                 Mensaje::NotificacionAll('Nueva oferta creada','oferta',$obj->descripcion,$obj->id,$oferta->url_imagen );
-                Toastr::info("Imagen oferta agregada correctamente", "Procesado", $options = [] );
+                Toastr::info("Imagen oferta agregada correctamente", "Procesado", $options  );
             }
          }else{
-            Toastr::error("No se pudo procesar", "Error...", $options = [] );
+			 
+            Toastr::error("No se pudo procesar", "Error...", $options  );
          }
          return redirect(route('ofertas.index'));
       }
       public function actualizarFoto(Request $request){
+		    $options = [];
              $file=asset('/images/ofertadef.png');
              $id_ = $request->input('id');
              $obj=Oferta::find($id_);
@@ -125,17 +128,14 @@ class OfertaController extends AppBaseController
                   $img =  Image::make($image->getRealPath());
                   $ruta_img=$ruta_destino."ioferta_".$id_.'.'.$image->getClientOriginalExtension();
                   $img_local='/images/system_imgs/ofertas/ioferta_'.$id_.'.'.$image->getClientOriginalExtension();
-                /*  $img->resize(300, 200, function ($constraint) {
-                     $constraint->aspectRatio();
-                  })->save($ruta_img);*/
                   $img->resize(400, 400)->save($ruta_img);
                   $file =asset($img_local);
                   $obj->url_imagen = $file;
                   $obj->save();
-                  Toastr::info("Imagen de la oferta actualizada", "Oferta", $options = [] );
+                  Toastr::info("Imagen de la oferta actualizada", "Oferta", $options  );
                   return "Imagen de la oferta actualizada";
               }
-              Toastr::info("No se pudo cargar la imagen", "Oferta", $options = [] );
+              Toastr::info("No se pudo cargar la imagen", "Oferta", $options );
               return "No se pudo cargar la imagen";
       }
 
@@ -179,7 +179,7 @@ class OfertaController extends AppBaseController
     {
         $input = $request->all();
 
-        $oferta = $this->ofertaRepository->create($input);
+        $this->ofertaRepository->create($input);
 
         Flash::success('Oferta saved successfully.');
 
@@ -269,19 +269,6 @@ class OfertaController extends AppBaseController
         }
         $sectores     = Sector::orderBy('descripcion')->pluck('descripcion', 'id');
         $ciudades     = Ciudad::orderBy('descripcion')->pluck('descripcion', 'id');
-
-        $config = array();
-        $config['apiKey'] = 'AIzaSyA1c5fXxWdutyXZPPBHZTKHvJbyo1yAVDY';
-        $config['zoom'] = '16';
-        //$config['center'] = 'auto';
-        $config['center'] = '4.6482837,-74.2478935 ';
-        \Gmaps::initialize($config);
-        $marker = array();
-        $marker['position'] = '4.6482837, -74.2478935';
-        $marker['draggable'] = TRUE;
-        $marker['animation'] = 'DROP';
-        \Gmaps::add_marker($marker);
-        $map = \Gmaps::create_map();
 
         return view('ofertas.edit')
                    ->with('sectores', $sectores)

@@ -38,7 +38,6 @@ class ChatController extends AppBaseController
 
     public function vchat()
     {
-        $validar=$this->getFechaSys();
         $id_usr=Auth::user()->id;
         $tipo_=Auth::user()->perfil_id;
         $lista="";
@@ -150,8 +149,6 @@ class ChatController extends AppBaseController
            $msg_     = $request->input('msg');
            $obj_para = Usuario::where([ ['id', '=',$para_] ] )->first();
       		 if (!empty($obj_para)) {
-                $ruta_destino = public_path('/images/system_imgs/chats/'.$para_.'/');
-              //  Filesystem::makeDirectory($ruta_destino);
                 $obj = Mensaje::create([
                 						'deuser_id' => intval($de_),
                 						'parauser_id' => intval($para_),
@@ -160,7 +157,6 @@ class ChatController extends AppBaseController
                 						'leido'=> 0,
           			       ]);
           			if($obj){
-                  //$carbon = new Carbon($obj->created_at, 'America/Bogota');
                   $RP="<div class='activity-row activity-row1'  >
                          <div class='col-xs-3 activity-img'>
                              <img src='". Auth::user()->url_imagen ."' class='img-responsive avatarxx1' />
@@ -255,19 +251,12 @@ class ChatController extends AppBaseController
     public function recibirmensaje(Request $request){
        Carbon::setLocale(config('app.locale'));
         $de_ = $request->input('de');
-        //$de_="10";
         if($de_==""){
           return "";
         }
-        $validar=$this->getFechaSys();
         $id_usr=Auth::user()->id;
-        $tipo_=Auth::user()->perfil_id;
-        $lista="";
         $RP = "";
-        /*$historico = DB::select( DB::raw("SELECT M.id,M.mensaje,M.deuser_id,M.parauser_id,M.created_at,M.leido,M.updated_at,U.url_imagen,U.name
-          					  FROM mensajes M,users U
-          		        WHERE M.parauser_id='". $id_usr  ."' and M.deuser_id='". $de_  ."' and M.recivido=0 AND  M.deuser_id=U.id  Order by M.created_at") );*/
-
+        
       $historico  = Mensaje::select('mensajes.id','mensajes.mensaje','mensajes.deuser_id','mensajes.parauser_id','mensajes.leido',
                     'mensajes.created_at','mensajes.updated_at','users.url_imagen','users.name' )
                     ->where([ ['mensajes.parauser_id', '=', $id_usr  ] ] )
@@ -293,7 +282,7 @@ class ChatController extends AppBaseController
                 $obj_msg = Mensaje::where([ ['id', '=', $item->id ] ] )->first();
                 $obj_msg->recivido=1;
                 $obj_msg->save();
-              //$response .= "<option value='". $card->pkcreditcard."'>". $card->creditcard_type .' ' . substr($card->creditcard_numbercard, -4) ."</option>";
+              
            }
            return $RP;
 
@@ -307,24 +296,8 @@ class ChatController extends AppBaseController
 
 
     public function enviarfoto(Request $request){
-      		 $file=asset('/images/no-picture.jpg');
       		 $id_ = $request->input('id');
-      		/* $usuario=Usuario::find($id_);
-      		 if (!empty($usuario)) {
-          			$image = $request->file('image');
-          			$ruta_destino = public_path('/images/system_imgs/chats/');
-          			$img =  Image::make($image->getRealPath());
-          			$ruta_img=$ruta_destino."puser_".$id_.'.'.$image->getClientOriginalExtension();
-          			$img_local='/images/system_imgs/chats/puser_'.$id_.'.'.$image->getClientOriginalExtension();
-                $img->resize(200, 200)->save($ruta_img);
-          			$file =asset($img_local);
-          			$usuario->url_imagen = $file;
-          		  $usuario->save();
-          			Toastr::info("Imagen de perfil actualizada", "Perfil", $options = [] );
-          			return "Imagen de perfil actualizada";
-            }
-      		  Toastr::info("No se pudo cargar la imagen", "Perfil", $options = [] );
-      	    return "No se pudo cargar la imagen";*/
+			 return $id_;
     }
 
 
@@ -360,7 +333,7 @@ class ChatController extends AppBaseController
     {
         $input = $request->all();
 
-        $chat = $this->chatRepository->create($input);
+        $this->chatRepository->create($input);
 
         Flash::success('Chat saved successfully.');
 

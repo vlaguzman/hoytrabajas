@@ -49,11 +49,6 @@ class CandidatoController extends AppBaseController
               $parametros= array( array("fnac",">=", $fna_ ) );
           }
 
-          /*$lista = DB::select( DB::raw("SELECT E.id,E.nombres,E.apellidos,E.created_at as ago,
-                  U.url_imagen,E.telefono,E.correo,E.descripcion,E.experiencia,E.rate,U.id as userid
-                  FROM candidatos E,users U
-                  WHERE E.user_id=U.id  ". $crits_  ." ORDER BY E.rate DESC, E.created_at ASC  ") );*/
-
         $lista  = Candidato::select('candidatos.id','candidatos.nombres','candidatos.apellidos','candidatos.telefono',
         		     'candidatos.correo','candidatos.descripcion','candidatos.direccion','candidatos.experiencia',
         			   'candidatos.rate','candidatos.fnac','candidatos.created_at as ago',
@@ -104,7 +99,7 @@ class CandidatoController extends AppBaseController
     {
         $input = $request->all();
 
-        $candidato = $this->candidatoRepository->create($input);
+        $this->candidatoRepository->create($input);
 
         Flash::success('Candidato saved successfully.');
 
@@ -123,10 +118,9 @@ class CandidatoController extends AppBaseController
         $candidato = $this->candidatoRepository->findWithoutFail($id);
 
         if (empty($candidato)) {
-            //Flash::error('Candidato not found');
-            Toastr::info("Candidato no encontrado", "No encontrado", $options = [] );
+			$options = [];
+            Toastr::info("Candidato no encontrado", "No encontrado", $options  );
             return redirect()->intended('/home');
-            //return redirect(route('candidatos.index'));
         }
         $lista1  = SectorCandidato::select(array('sectores.descripcion'   ))
                           ->leftJoin('sectores','sectores_candidatos.sector_id','=','sectores.id')

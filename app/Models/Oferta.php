@@ -6,76 +6,7 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon;
 
-/**
- * @SWG\Definition(
- *      definition="Oferta",
- *      required={""},
- *      @SWG\Property(
- *          property="id",
- *          description="id",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
- *          property="nombre",
- *          description="nombre",
- *          type="string"
- *      ),
- *      @SWG\Property(
- *          property="descripcion",
- *          description="descripcion",
- *          type="string"
- *      ),
- *      @SWG\Property(
- *          property="url_imagen",
- *          description="url_imagen",
- *          type="string"
- *      ),
- *      @SWG\Property(
- *          property="direccion",
- *          description="direccion",
- *          type="string"
- *      ),
- *      @SWG\Property(
- *          property="paga",
- *          description="paga",
- *          type="string"
- *      ),
- *      @SWG\Property(
- *          property="sector_id",
- *          description="sector_id",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
- *          property="ciudad_id",
- *          description="ciudad_id",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
- *          property="lat",
- *          description="lat",
- *          type="string"
- *      ),
- *      @SWG\Property(
- *          property="lng",
- *          description="lng",
- *          type="string"
- *      ),
- *      @SWG\Property(
- *          property="empleador_id",
- *          description="empleador_id",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
- *          property="obs",
- *          description="obs",
- *          type="string"
- *      )
- * )
- */
+
 class Oferta extends Model
 {
     use SoftDeletes;

@@ -20,12 +20,6 @@ class OfertaDataTable extends DataTable
      */
     public function ajax()
     {
-        /*return $this->datatables
-            ->eloquent($this->query())
-            ->addColumn('action', 'ofertas.datatables_actions')
-            ->make(true);*/
-
-
             return $this->datatables
                 ->collection( $this->query() )
                 ->editColumn('desde',' {{  date(\'d-m-Y H:i\', strtotime($desde) )     }}')
@@ -54,7 +48,6 @@ class OfertaDataTable extends DataTable
 
 
           }else{
-              //$lista  = Oferta::where([ ['bloqueada', '=',false] ] )->orderBy('created_at', 'desc')->get();
               $lista  = Oferta::select(array('ofertas.id','ofertas.nombre','ofertas.created_at','ofertas.descripcion','ofertas.desde','ofertas.hasta','ofertas.paga','ofertas.sector_id','ofertas.empleador_id','ofertas.url_imagen' ,'empleadores.contacto','sectores.descripcion as des_sector'   ))
                                 ->leftJoin('empleadores','ofertas.empleador_id','=','empleadores.id')
                                 ->leftJoin('sectores','ofertas.sector_id','=','sectores.id')
@@ -62,9 +55,6 @@ class OfertaDataTable extends DataTable
 
           }
           return $lista;
-         //return Oferta::all();
-         //$ofertas = Oferta::query();
-          //return $this->applyScopes($ofertas);
     }
 
     /**
@@ -108,8 +98,6 @@ class OfertaDataTable extends DataTable
      */
     private function getColumns()
     {
-
-      $id_usr = Auth::user()->id;
       $tipo_  = Auth::user()->perfil_id;
       if($tipo_==1 ){
           return [

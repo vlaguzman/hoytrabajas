@@ -68,7 +68,6 @@ class AdministradorController extends AppBaseController
     }
 
     public function store(CreateAdministradorRequest $request){
-        $input = $request->all();
     		$correo=$request->input('correo');
     		$user = User::whereEmail( $correo )->first();
     		if (!$user) {
@@ -90,9 +89,9 @@ class AdministradorController extends AppBaseController
     						'correo' => $request->input('correo'),
     						'user_id' => $id_usr
                ]);
-    				   if($rp){
-    					     //Flash::success('Administrador creado.');
-                   Toastr::info("Administrador creado, se ha enviado un email al correo del usuario", "Creado", $options = [] );
+    			if($rp){
+					$options = [];
+                   Toastr::info("Administrador creado, se ha enviado un email al correo del usuario", "Creado",$options  );
                    Mail::to($user->email)->send(new WelcomeAdmMail($user,$psw ));
     					     return redirect(route('administradors.index'));
     				   }else{
@@ -101,7 +100,6 @@ class AdministradorController extends AppBaseController
     			 }else{
     				  Flash::error('No se pudo crear el usaurio Administrador.');
     			 }
-    			//$administrador = $this->administradorRepository->create($input);
     		}else{
     			   Flash::error('Usuario '. $correo .', ya esta registrado.');
     		}

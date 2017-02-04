@@ -5,44 +5,6 @@ namespace App\Models;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-/**
- * @SWG\Definition(
- *      definition="Administrador",
- *      required={""},
- *      @SWG\Property(
- *          property="id",
- *          description="id",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
- *          property="nombres",
- *          description="nombres",
- *          type="string"
- *      ),
- *      @SWG\Property(
- *          property="apellidos",
- *          description="apellidos",
- *          type="string"
- *      ),
- *      @SWG\Property(
- *          property="telefono",
- *          description="telefono",
- *          type="string"
- *      ),
- *      @SWG\Property(
- *          property="correo",
- *          description="correo",
- *          type="string"
- *      ),
- *      @SWG\Property(
- *          property="user_id",
- *          description="user_id",
- *          type="integer",
- *          format="int32"
- *      )
- * )
- */
 class Administrador extends Model
 {
     use SoftDeletes;

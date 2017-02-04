@@ -114,7 +114,6 @@ class EdtPerfilController extends Controller
                   return redirect()->back()->withErrors($v->errors());
               }
               $obj=Administrador::where([ ['user_id', '=',$id_usr] ] )->first();
-              $id_admin=$obj->id;
               $obj->nombres=$request->input('nombres');
               $obj->apellidos=$request->input('apellidos');
               $obj->correo=$request->input('email');
@@ -136,7 +135,6 @@ class EdtPerfilController extends Controller
                   return redirect()->back()->withErrors($v->errors());
               }
               $obj=Empleador::where([ ['user_id', '=',$id_usr] ] )->first();
-              $id_empleador=$obj->id;
               $obj->contacto=$request->input('nombre');
               $obj->empresa=$request->input('empresa');
               $obj->correo=$request->input('email');
@@ -155,11 +153,6 @@ class EdtPerfilController extends Controller
                  'telefono' => 'required|min:8|max:15',
                  'reseña' => 'required|max:300'
               ]);
-              //echo  "FECHA=".$request->input('nacio') ;
-              //Carbon::setLocale(config('app.locale'));
-         		  //$carbon = new Carbon($request->input('nacio'), 'America/Bogota');
-         		//  $fnacx=$carbon->format('Y/m/d');
-              // echo  "FECHA FRN=".$fnacx;
               if ($v->fails()){
                   return redirect()->back()->withErrors($v->errors());
               }
@@ -222,9 +215,9 @@ class EdtPerfilController extends Controller
 
               }
         }
-        Toastr::info("Perfil actualizado", "Procesado", $options = [] );
+		$options = [];
+        Toastr::info("Perfil actualizado", "Procesado", $options );
         return back()->withInput();
-      //  return  $this->show();
     }
 
     public function confirmar(Request $request){
@@ -349,13 +342,13 @@ class EdtPerfilController extends Controller
                 Mail::to($user->email)->send(new WelcomeMail($user));
             }
         }
-        Toastr::info("Perfil confirmado", "Procesado", $options = [] );
-        //return back()->withInput();
-      //  return  $this->show();
+		$options = [];
+        Toastr::info("Perfil confirmado", "Procesado", $options );
       return redirect()->intended('/home');
     }
 
     public function actualizarFoto(Request $request){
+		     $options = [];
       		 $file=asset('/images/no-picture.jpg');
       		 $id_ = $request->input('id');
       		 $usuario=Usuario::where([ ['id', '=',$id_] ] )->first();
@@ -365,17 +358,15 @@ class EdtPerfilController extends Controller
           			$img =  Image::make($image->getRealPath());
           			$ruta_img=$ruta_destino."puser_".$id_.'.'.$image->getClientOriginalExtension();
           			$img_local='/images/system_imgs/usuarios/puser_'.$id_.'.'.$image->getClientOriginalExtension();
-          		/*	$img->resize(200, 200, function ($constraint) {
-          				 $constraint->aspectRatio();
-          			})->save($ruta_img);*/
                 $img->resize(200, 200)->save($ruta_img);
           			$file =asset($img_local);
           			$usuario->url_imagen = $file;
-          		  $usuario->save();
-          			Toastr::info("Imagen de perfil actualizada", "Perfil", $options = [] );
+          		    $usuario->save();
+				    
+          			Toastr::info("Imagen de perfil actualizada", "Perfil", $options  );
           			return "Imagen de perfil actualizada";
             }
-      		  Toastr::info("No se pudo cargar la imagen", "Perfil", $options = [] );
+      		Toastr::info("No se pudo cargar la imagen", "Perfil", $options );
       	    return "No se pudo cargar la imagen";
     }
 

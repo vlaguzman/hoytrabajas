@@ -53,7 +53,7 @@ class IdiomaCandidatoController extends AppBaseController
     {
         $input = $request->all();
 
-        $idiomaCandidato = $this->idiomaCandidatoRepository->create($input);
+         $this->idiomaCandidatoRepository->create($input);
 
         Flash::success('Idioma Candidato saved successfully.');
 

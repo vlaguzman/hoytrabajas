@@ -53,7 +53,7 @@ class SectorController extends AppBaseController
     {
         $input = $request->all();
 
-        $sector = $this->sectorRepository->create($input);
+         $this->sectorRepository->create($input);
 
         Flash::success('Sector saved successfully.');
 

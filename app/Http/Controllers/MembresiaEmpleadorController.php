@@ -150,7 +150,7 @@ class MembresiaEmpleadorController extends AppBaseController
     {
         $input = $request->all();
 
-        $membresiaEmpleador = $this->membresiaEmpleadorRepository->create($input);
+        $this->membresiaEmpleadorRepository->create($input);
 
         Flash::success('Membresia Empleador saved successfully.');
 

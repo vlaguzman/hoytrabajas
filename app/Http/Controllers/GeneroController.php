@@ -53,7 +53,7 @@ class GeneroController extends AppBaseController
     {
         $input = $request->all();
 
-        $genero = $this->generoRepository->create($input);
+         $this->generoRepository->create($input);
 
         Flash::success('Genero saved successfully.');
 

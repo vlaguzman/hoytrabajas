@@ -5,30 +5,6 @@ namespace App\Models;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-/**
- * @SWG\Definition(
- *      definition="SectorCandidato",
- *      required={""},
- *      @SWG\Property(
- *          property="id",
- *          description="id",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
- *          property="sector_id",
- *          description="sector_id",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
- *          property="candidato_id",
- *          description="candidato_id",
- *          type="integer",
- *          format="int32"
- *      )
- * )
- */
 class SectorCandidato extends Model
 {
     use SoftDeletes;

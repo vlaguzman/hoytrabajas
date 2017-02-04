@@ -14,10 +14,7 @@ class CiudadDataTable extends DataTable
      */
     public function ajax()
     {
-        /*return $this->datatables
-            ->eloquent($this->query())
-            ->addColumn('action', 'ciudads.datatables_actions')
-            ->make(true);*/
+
 
             return $this->datatables
                 ->collection( $this->query() )
@@ -32,8 +29,7 @@ class CiudadDataTable extends DataTable
      */
     public function query()
     {
-      /*  $ciudads = Ciudad::query();
-        return $this->applyScopes($ciudads);*/
+
 
 
         $lista  = Ciudad::select(array('ciudades.id','ciudades.descripcion','departamentos.descripcion as des_dep'  ))

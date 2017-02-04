@@ -53,7 +53,7 @@ class PostulacionEstatusController extends AppBaseController
     {
         $input = $request->all();
 
-        $postulacionEstatus = $this->postulacionEstatusRepository->create($input);
+        $this->postulacionEstatusRepository->create($input);
 
         Flash::success('Postulacion Estatus saved successfully.');
 

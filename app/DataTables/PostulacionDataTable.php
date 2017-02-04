@@ -14,10 +14,6 @@ class PostulacionDataTable extends DataTable
      */
     public function ajax()
     {
-        /*return $this->datatables
-            ->eloquent($this->query())
-            ->addColumn('action', 'postulacions.datatables_actions')
-            ->make(true);*/
             return $this->datatables
                 ->collection( $this->query() )
                 ->editColumn('fnac',' {{  date(\'d-m-Y \', strtotime($fnac) )  }}')
@@ -40,13 +36,6 @@ class PostulacionDataTable extends DataTable
                       ->join('users', 'candidatos.user_id', '=', 'users.id')
                       ->orderBy('nombres', 'desc')->get();
         return $lista;
-
-      /*  ->leftJoin('users','candidatos.user_id','=','users.id')
-        ->leftJoin('ciudades','candidatos.ciudad_id','=','ciudades.id')
-        ->leftJoin('generos','candidatos.genero_id','=','generos.id')*/
-
-        /*$postulacions = Postulacion::query();
-        return $this->applyScopes($postulacions);*/
     }
 
     /**
@@ -91,9 +80,6 @@ class PostulacionDataTable extends DataTable
     private function getColumns()
     {
         return [
-            /*'oferta_id' => ['name' => 'oferta_id', 'data' => 'oferta_id'],
-            'candidato_id' => ['name' => 'candidato_id', 'data' => 'candidato_id'],
-            'estatus_id' => ['name' => 'estatus_id', 'data' => 'estatus_id']*/
             'Oferta' => ['name' => 'url_imagen', 'data' =>  'url_imagen','width'=>'6%','render'=>' "<img src="+data+" style=\"width:50px;height:50px;\" />"' ] ,
             'Nombre' => ['name' => 'nombres', 'data' => 'nombres'],
             'Apellido' => ['name' => 'apellidos', 'data' => 'apellidos'],
@@ -102,9 +88,6 @@ class PostulacionDataTable extends DataTable
             'Experiencia' => ['name' => 'experiencia', 'data' => 'experiencia'],
             'Calificacion' => ['name' => 'rate', 'data' => 'rate'],
             'Perfil' => ['name' => 'url_perfil', 'data' =>  'url_perfil','width'=>'6%','render'=>' "<img src="+data+" style=\"width:50px;height:50px;\" />"' ] 
-
-
-
         ];
     }
 

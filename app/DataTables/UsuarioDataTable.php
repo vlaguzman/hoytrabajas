@@ -14,10 +14,6 @@ class UsuarioDataTable extends DataTable
      */
     public function ajax()
     {
-        /*return $this->datatables
-            ->eloquent($this->query())
-            ->addColumn('action', 'usuarios.datatables_actions')
-            ->make(true);*/
             return $this->datatables
                 ->collection( $this->query() )
                 ->editColumn('created_at',' {{  date(\'d-m-Y \', strtotime($created_at) )  }}')
@@ -32,9 +28,6 @@ class UsuarioDataTable extends DataTable
      */
     public function query()
     {
-        /*$usuarios = Usuario::query();
-
-        return $this->applyScopes($usuarios);*/
 
         $lista  = Usuario::select(array('users.id','users.name','users.email','users.activo','users.url_imagen',
                     'perfiles.descripcion as des_perfil','users.created_at','users.perfil_id' ))

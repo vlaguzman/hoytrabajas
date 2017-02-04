@@ -53,7 +53,7 @@ class SectorCandidatoController extends AppBaseController
     {
         $input = $request->all();
 
-        $sectorCandidato = $this->sectorCandidatoRepository->create($input);
+        $this->sectorCandidatoRepository->create($input);
 
         Flash::success('Sector Candidato saved successfully.');
 

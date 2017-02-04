@@ -5,36 +5,6 @@ namespace App\Models;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-/**
- * @SWG\Definition(
- *      definition="MembresiaEmpleador",
- *      required={""},
- *      @SWG\Property(
- *          property="id",
- *          description="id",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
- *          property="pagado",
- *          description="pagado",
- *          type="number",
- *          format="float"
- *      ),
- *      @SWG\Property(
- *          property="empleador_id",
- *          description="empleador_id",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
- *          property="membresia_id",
- *          description="membresia_id",
- *          type="integer",
- *          format="int32"
- *      )
- * )
- */
 class MembresiaEmpleador extends Model
 {
     use SoftDeletes;

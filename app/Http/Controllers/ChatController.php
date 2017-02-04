@@ -22,30 +22,23 @@ use App\Models\Candidato;
 use App\Models\Empleador;
 use App\Models\Mensaje;
 use App\Models\Oferta;
-
-
-
 class ChatController extends AppBaseController
 {
-    /** @var  ChatRepository */
     private $chatRepository;
 
     public function __construct(ChatRepository $chatRepo)
     {
         $this->chatRepository = $chatRepo;
     }
-
-
     public function vchat()
     {
         $id_usr=Auth::user()->id;
         $tipo_=Auth::user()->perfil_id;
         $lista="";
-        if($tipo_==2 ){
+        if( $tipo_==2 ) {
           $obj=Empleador::where([ ['user_id', '=',$id_usr] ] )->first();
           $prop_ =$obj->id;
-            $lista  = Postulacion::select('users.id','users.url_imagen','candidatos.nombres as des','candidatos.created_at',
-                    'candidatos.correo','candidatos.descripcion','candidatos.telefono' )
+            $lista  = Postulacion::select('users.id','users.url_imagen','candidatos.nombres as des','candidatos.created_at','candidatos.correo','candidatos.descripcion','candidatos.telefono' )
                       ->where([ ['ofertas.empleador_id', '=',$prop_ ] ] )
                       ->whereIn('postulaciones.estatus_id', [1, 2])
                       ->join('ofertas','postulaciones.oferta_id','=','ofertas.id')
@@ -53,12 +46,10 @@ class ChatController extends AppBaseController
                       ->join('users','candidatos.user_id','=','users.id')
                       ->distinct('users.id')
                       ->orderBy('nombres', 'asc')->get();
-
-       }else if($tipo_==3 ){
+       }else if( $tipo_==3 ) {
             $obj=Candidato::where([ ['user_id', '=',$id_usr] ] )->first();
             $prop_ =$obj->id;
-              $lista  = Postulacion::select('users.id','users.url_imagen','empleadores.empresa as des','empleadores.created_at',
-                       'empleadores.correo','empleadores.descripcion','empleadores.telefono' )
+            $lista  = Postulacion::select('users.id','users.url_imagen','empleadores.empresa as des','empleadores.created_at','empleadores.correo','empleadores.descripcion','empleadores.telefono' )
                         ->where([ ['postulaciones.candidato_id', '=',$prop_ ] ] )
                         ->whereIn('postulaciones.estatus_id', [1, 2])
                         ->join('ofertas','postulaciones.oferta_id','=','ofertas.id')

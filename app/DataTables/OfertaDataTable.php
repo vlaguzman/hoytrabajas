@@ -1,20 +1,13 @@
 <?php
-
 namespace App\DataTables;
-
 use App\Models\Oferta;
 use App\Models\Empleador;
 use Form;
 use Yajra\Datatables\Services\DataTable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
-
-
-
 class OfertaDataTable extends DataTable
 {
-
     /**
      * @return \Illuminate\Http\JsonResponse
      */
@@ -27,7 +20,6 @@ class OfertaDataTable extends DataTable
                 ->addColumn('action', 'ofertas.datatables_actions')
                 ->make(true);
     }
-
     /**
      * Get the query object to be processed by datatables.
      *
@@ -121,8 +113,6 @@ class OfertaDataTable extends DataTable
              'Sector' => ['name' => 'des_sector', 'data' => 'des_sector'],
           ];
        }
-
-
     }
 
     /**

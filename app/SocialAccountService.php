@@ -16,7 +16,7 @@ class SocialAccountService{
 		 $url_perfil = $this->guardar_imagen($id_,$url_p);
 		return $this->guardarDatos($providerUser,$account,$url_perfil,'google','web-googlep' );  
 	}
-	private function guardarDatos(ProviderUser $providerUser,$account,$url_perfil,$prov_,$origen ){
+	private function guardarDatos(ProviderUser $providerUser,SocialAccount $account,$url_perfil,$prov_,$origen ){
 		$id_=$providerUser->getId();
 	    if ($account) {
 			    $user = User::whereEmail($providerUser->getEmail())->first();

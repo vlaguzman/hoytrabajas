@@ -1,5 +1,5 @@
 <?php
-	   use Carbon\Carbon;
+	 use Carbon\Carbon;
      use App\Models\Usuario;
      Carbon::setLocale(config('app.locale'));
 

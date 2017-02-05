@@ -1,11 +1,7 @@
 <?php
-
 namespace App\DataTables;
-
 use App\Models\Idioma;
-use Form;
 use Yajra\Datatables\Services\DataTable;
-
 class IdiomaDataTable extends DataTable
 {
 

@@ -18,7 +18,7 @@ class StatusOferta extends Notification
      *
      * @return void
      */
-     private $oferta;
+    private $oferta;
     public function __construct(Oferta $obj)
     {
         $this->oferta = $obj;
@@ -48,7 +48,6 @@ class StatusOferta extends Notification
                     ->action('Notification Action', 'https://laravel.com')
                     ->line('Thank you for using our application!');
     }
-
     /**
      * Get the array representation of the notification.
      *
@@ -59,18 +58,8 @@ class StatusOferta extends Notification
     {
         return [
             'data' => 'Tienes un nuevo postulado para tu oferta.',
-            'notifiable_id' => $this->post->id,
+            'notifiable_id' => $this->oferta->id,
             'type' => 'Oferta'
         ];
     }
-
-	/*public function toArray($notifiable)
-			{
-				return [
-					'invoice_id' => $this->invoice->id,
-					'amount' => $this->invoice->amount,
-				];
-			} */
-
-
 }

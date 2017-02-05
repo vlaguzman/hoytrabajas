@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\DataTables\CandidatoDataTable;
 use App\Http\Requests;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use narutimateum\Toastr\Facades\Toastr;
 use App\Http\Requests\CreateCandidatoRequest;
 use App\Http\Requests\UpdateCandidatoRequest;
@@ -25,6 +23,17 @@ class CandidatoController extends AppBaseController
 {
     /** @var  CandidatoRepository */
     private $candidatoRepository;
+	private $options = ["progressBar" => false,
+                         "positionClass" =>"toast-top-right",
+                         "preventDuplicates"=> false,
+                         "showDuration" => 300,
+                         "hideDuration" => 3000,
+                         "timeOut" => 5000,
+                         "extendedTimeOut" => 1000,
+                         "showEasing" => "swing",
+                         "hideEasing"=> "linear",
+                         "showMethod" => "fadeIn",
+                         "hideMethod" => "fadeOut"  ];
 
     public function __construct(CandidatoRepository $candidatoRepo)
     {
@@ -118,8 +127,7 @@ class CandidatoController extends AppBaseController
         $candidato = $this->candidatoRepository->findWithoutFail($id);
 
         if (empty($candidato)) {
-			$options = [];
-            Toastr::info("Candidato no encontrado", "No encontrado", $options  );
+            Toastr::info("Candidato no encontrado", "No encontrado", $this->options  );
             return redirect()->intended('/home');
         }
         $lista1  = SectorCandidato::select(array('sectores.descripcion'   ))
@@ -179,7 +187,7 @@ class CandidatoController extends AppBaseController
             return redirect(route('candidatos.index'));
         }
 
-        $candidato = $this->candidatoRepository->update($request->all(), $id);
+        $this->candidatoRepository->update($request->all(), $id);
 
         Flash::success('Candidato updated successfully.');
 

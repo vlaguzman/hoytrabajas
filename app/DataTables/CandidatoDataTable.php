@@ -3,13 +3,8 @@
 namespace App\DataTables;
 
 use App\Models\Candidato;
-use Form;
 use Yajra\Datatables\Services\DataTable;
-
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
-
 class CandidatoDataTable extends DataTable
 {
 
@@ -19,7 +14,7 @@ class CandidatoDataTable extends DataTable
     public function ajax()
     {
             $tipo_  = Auth::user()->perfil_id;
-            if($tipo_==1 ){
+            if( $tipo_==1 ) {
               return $this->datatables
                   ->collection( $this->query() )
                   ->editColumn('fnac',' {{  date(\'d-m-Y \', strtotime($fnac) )  }}')
@@ -43,7 +38,7 @@ class CandidatoDataTable extends DataTable
     {
       $tipo_  = Auth::user()->perfil_id;
       $lista= "";
-      if($tipo_==2 ){
+      if( $tipo_==2 ) {
           $lista  = Candidato::select(array('candidatos.id','candidatos.nombres','candidatos.apellidos','candidatos.rate','candidatos.experiencia',
              'candidatos.descripcion','candidatos.fnac','users.url_imagen' ,'ciudades.descripcion as des_ciudad','generos.descripcion as des_genero'   ))
                           ->leftJoin('users','candidatos.user_id','=','users.id')
@@ -60,7 +55,6 @@ class CandidatoDataTable extends DataTable
                           ->orderBy('nombres', 'desc')->get();
       }
       return $lista;
-
     }
 
     /**
@@ -104,9 +98,6 @@ class CandidatoDataTable extends DataTable
      */
     private function getColumns()
     {
-
-
-
         return [
             'Imagen' => ['name' => 'url_imagen', 'data' =>  'url_imagen','width'=>'6%','render'=>' "<img src="+data+" style=\"width:50px;height:50px;\" />"' ] ,
             'nombres' => ['name' => 'nombres', 'data' => 'nombres'],

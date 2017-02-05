@@ -3,9 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Mensaje;
-use Form;
 use Yajra\Datatables\Services\DataTable;
-
 class MensajeDataTable extends DataTable
 {
 
@@ -28,7 +26,6 @@ class MensajeDataTable extends DataTable
     public function query()
     {
         $mensajes = Mensaje::query();
-
         return $this->applyScopes($mensajes);
     }
 

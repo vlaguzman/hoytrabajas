@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-
 use App\User;
 use App\Models\Oferta;
 use App\Models\Candidato;
@@ -15,9 +12,6 @@ use App\Models\MembresiaCandidato;
 use App\Models\MembresiaEmpleador;
 use App\Models\MembresiaPrecio;
 use App\Models\Postulacion;
-
-
-
 class HomeController extends Controller
 {
     /**

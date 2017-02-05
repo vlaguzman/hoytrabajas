@@ -3,9 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Pais;
-use Form;
 use Yajra\Datatables\Services\DataTable;
-
 class PaisDataTable extends DataTable
 {
 

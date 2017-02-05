@@ -4,33 +4,37 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use App\Http\Requests;
 use App\DataTables\OfertaDataTable;
 use App\Http\Requests\CreateOfertaRequest;
 use App\Http\Requests\UpdateOfertaRequest;
 use App\Repositories\OfertaRepository;
 use App\Http\Controllers\AppBaseController;
-
 use Flash;
 use Response;
-use Carbon\Carbon;
 use Intervention\Image\ImageManagerStatic as Image;
 use narutimateum\Toastr\Facades\Toastr;
-
 use App\Models\Oferta;
 use App\Models\Ciudad;
 use App\Models\Sector;
 use App\Models\Empleador;
 use App\Models\Mensaje;
 use App\Models\Postulacion;
-
-
 class OfertaController extends AppBaseController
 {
     /** @var  OfertaRepository */
     private $ofertaRepository;
-
+	private $options = ["progressBar" => false,
+                         "positionClass" =>"toast-top-right",
+                         "preventDuplicates"=> false,
+                         "showDuration" => 300,
+                         "hideDuration" => 3000,
+                         "timeOut" => 5000,
+                         "extendedTimeOut" => 1000,
+                         "showEasing" => "swing",
+                         "hideEasing"=> "linear",
+                         "showMethod" => "fadeIn",
+                         "hideMethod" => "fadeOut"  ];
     public function __construct(OfertaRepository $ofertaRepo)
     {
         $this->ofertaRepository = $ofertaRepo;
@@ -66,7 +70,6 @@ class OfertaController extends AppBaseController
       }
 
       public function registraroferta(Request $request){
-		  $options = [];
           $id_usr=Auth::user()->id;
           $obj_e  = Empleador::where([ ['user_id', '=',$id_usr] ] )->first();
           $file=asset('/images/ofertadef.png');
@@ -95,8 +98,7 @@ class OfertaController extends AppBaseController
 				    ]);
 
         if($obj){
-			
-            Toastr::info("Oferta creada correctamente", "Procesado", $options  );
+            Toastr::info("Oferta creada correctamente", "Procesado", $this->options  );
             $id_=$obj->id;
             $ruta_destino = public_path('/images/system_imgs/ofertas/');
             if($image!==null){
@@ -109,7 +111,7 @@ class OfertaController extends AppBaseController
                 $oferta->url_imagen=$file;
                 $oferta->save();
                 Mensaje::NotificacionAll('Nueva oferta creada','oferta',$obj->descripcion,$obj->id,$oferta->url_imagen );
-                Toastr::info("Imagen oferta agregada correctamente", "Procesado", $options  );
+                Toastr::info("Imagen oferta agregada correctamente", "Procesado", $this->options  );
             }
          }else{
 			 
@@ -118,7 +120,6 @@ class OfertaController extends AppBaseController
          return redirect(route('ofertas.index'));
       }
       public function actualizarFoto(Request $request){
-		    $options = [];
              $file=asset('/images/ofertadef.png');
              $id_ = $request->input('id');
              $obj=Oferta::find($id_);
@@ -132,10 +133,10 @@ class OfertaController extends AppBaseController
                   $file =asset($img_local);
                   $obj->url_imagen = $file;
                   $obj->save();
-                  Toastr::info("Imagen de la oferta actualizada", "Oferta", $options  );
+                  Toastr::info("Imagen de la oferta actualizada","Oferta",$this->options);
                   return "Imagen de la oferta actualizada";
               }
-              Toastr::info("No se pudo cargar la imagen", "Oferta", $options );
+              Toastr::info("No se pudo cargar la imagen","Oferta",$this->options);
               return "No se pudo cargar la imagen";
       }
 
@@ -236,19 +237,12 @@ class OfertaController extends AppBaseController
                   ->join('users','candidatos.user_id','=','users.id')
                   ->distinct('users.id')
                   ->orderBy('nombres', 'asc')->get();
-
-        }else{
-
-
         }
-
-
         return view('ofertas.show')
               ->with('empleados1',  $lista1 )
               ->with('empleados2',  $lista2 )
               ->with('empleados3',  $lista3 )
               ->with('oferta', $oferta);
-
     }
 
     /**
@@ -294,7 +288,7 @@ class OfertaController extends AppBaseController
             return redirect(route('ofertas.index'));
         }
 
-        $oferta = $this->ofertaRepository->update($request->all(), $id);
+        $this->ofertaRepository->update($request->all(), $id);
 
         Flash::success('Oferta updated successfully.');
 

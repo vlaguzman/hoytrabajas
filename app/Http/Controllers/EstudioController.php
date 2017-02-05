@@ -53,7 +53,7 @@ class EstudioController extends AppBaseController
     {
         $input = $request->all();
 
-        $estudio = $this->estudioRepository->create($input);
+        $this->estudioRepository->create($input);
 
         Flash::success('Estudio saved successfully.');
 

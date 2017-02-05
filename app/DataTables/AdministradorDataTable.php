@@ -1,11 +1,7 @@
 <?php
-
 namespace App\DataTables;
-
 use App\Models\Administrador;
-use Form;
 use Yajra\Datatables\Services\DataTable;
-
 class AdministradorDataTable extends DataTable
 {
 
@@ -28,8 +24,7 @@ class AdministradorDataTable extends DataTable
      */
     public function query()
     {
-          $lista  = Administrador::select('administradores.id','administradores.nombres','administradores.apellidos','administradores.telefono',
-                  'administradores.correo','users.url_imagen')
+          $lista  = Administrador::select('administradores.id','administradores.nombres','administradores.apellidos','administradores.telefono','administradores.correo','users.url_imagen')
                   ->leftJoin('users','administradores.user_id','=','users.id')
                   ->orderBy('administradores.nombres', 'desc')->get();
           return $lista;

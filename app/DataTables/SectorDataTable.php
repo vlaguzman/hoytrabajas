@@ -3,9 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Sector;
-use Form;
 use Yajra\Datatables\Services\DataTable;
-
 class SectorDataTable extends DataTable
 {
 

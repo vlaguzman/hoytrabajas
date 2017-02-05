@@ -45,7 +45,19 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = '/home';
-
+	
+	protected $options = ["progressBar" => false,
+                         "positionClass" =>"toast-top-right",
+                         "preventDuplicates"=> false,
+                         "showDuration" => 300,
+                         "hideDuration" => 3000,
+                         "timeOut" => 5000,
+                         "extendedTimeOut" => 1000,
+                         "showEasing" => "swing",
+                         "hideEasing"=> "linear",
+                         "showMethod" => "fadeIn",
+                         "hideMethod" => "fadeOut"  ];
+							  
     /**
      * Create a new controller instance.
      *
@@ -115,17 +127,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-		$options = ["progressBar" => false,
-                              "positionClass" =>"toast-top-right",
-                              "preventDuplicates"=> false,
-                              "showDuration" => 300,
-                              "hideDuration" => 3000,
-                              "timeOut" => 5000,
-                              "extendedTimeOut" => 1000,
-                              "showEasing" => "swing",
-                              "hideEasing"=> "linear",
-                              "showMethod" => "fadeIn",
-                              "hideMethod" => "fadeOut"  ];
+		
 							  
 							  
        if($data['tipo']=='2' ){
@@ -262,17 +264,6 @@ class RegisterController extends Controller
 
     protected function create2(array $data)
     {
-		$options = ["progressBar" => false,
-                              "positionClass" =>"toast-top-right",
-                              "preventDuplicates"=> false,
-                              "showDuration" => 300,
-                              "hideDuration" => 3000,
-                              "timeOut" => 5000,
-                              "extendedTimeOut" => 1000,
-                              "showEasing" => "swing",
-                              "hideEasing"=> "linear",
-                              "showMethod" => "fadeIn",
-                              "hideMethod" => "fadeOut"  ];
       $user = User::create([
                 'email' => $data['email'],
                 'name' => $data['name'],

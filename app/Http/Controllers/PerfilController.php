@@ -53,7 +53,7 @@ class PerfilController extends AppBaseController
     {
         $input = $request->all();
 
-        $perfil = $this->perfilRepository->create($input);
+        $this->perfilRepository->create($input);
 
         Flash::success('Perfil saved successfully.');
 

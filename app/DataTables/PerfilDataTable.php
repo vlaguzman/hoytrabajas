@@ -3,9 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Perfil;
-use Form;
 use Yajra\Datatables\Services\DataTable;
-
 class PerfilDataTable extends DataTable
 {
 
@@ -28,7 +26,6 @@ class PerfilDataTable extends DataTable
     public function query()
     {
         $perfils = Perfil::query();
-
         return $this->applyScopes($perfils);
     }
 

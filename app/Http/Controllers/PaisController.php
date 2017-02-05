@@ -53,7 +53,7 @@ class PaisController extends AppBaseController
     {
         $input = $request->all();
 
-        $pais = $this->paisRepository->create($input);
+        $this->paisRepository->create($input);
 
         Flash::success('Pais saved successfully.');
 

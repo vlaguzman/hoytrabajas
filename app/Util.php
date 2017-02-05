@@ -1,12 +1,9 @@
 <?php
 
 namespace App;
-
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\Usuario;
-
 class Util
 {
 

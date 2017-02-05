@@ -3,9 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Usuario;
-use Form;
 use Yajra\Datatables\Services\DataTable;
-
 class UsuarioDataTable extends DataTable
 {
 
@@ -28,7 +26,6 @@ class UsuarioDataTable extends DataTable
      */
     public function query()
     {
-
         $lista  = Usuario::select(array('users.id','users.name','users.email','users.activo','users.url_imagen',
                     'perfiles.descripcion as des_perfil','users.created_at','users.perfil_id' ))
                     ->leftJoin('perfiles','users.perfil_id','=','perfiles.id')

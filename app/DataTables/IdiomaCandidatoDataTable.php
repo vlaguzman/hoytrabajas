@@ -3,9 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\IdiomaCandidato;
-use Form;
 use Yajra\Datatables\Services\DataTable;
-
 class IdiomaCandidatoDataTable extends DataTable
 {
 
@@ -28,7 +26,6 @@ class IdiomaCandidatoDataTable extends DataTable
     public function query()
     {
         $idiomaCandidatos = IdiomaCandidato::query();
-
         return $this->applyScopes($idiomaCandidatos);
     }
 

@@ -53,7 +53,7 @@ class EstudioCandidatoController extends AppBaseController
     {
         $input = $request->all();
 
-        $estudioCandidato = $this->estudioCandidatoRepository->create($input);
+        $this->estudioCandidatoRepository->create($input);
 
         Flash::success('Estudio Candidato saved successfully.');
 

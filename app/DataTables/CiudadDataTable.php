@@ -1,11 +1,8 @@
 <?php
-
 namespace App\DataTables;
 
 use App\Models\Ciudad;
-use Form;
 use Yajra\Datatables\Services\DataTable;
-
 class CiudadDataTable extends DataTable
 {
 
@@ -14,8 +11,6 @@ class CiudadDataTable extends DataTable
      */
     public function ajax()
     {
-
-
             return $this->datatables
                 ->collection( $this->query() )
                 ->addColumn('action', 'ciudads.datatables_actions')
@@ -29,13 +24,9 @@ class CiudadDataTable extends DataTable
      */
     public function query()
     {
-
-
-
         $lista  = Ciudad::select(array('ciudades.id','ciudades.descripcion','departamentos.descripcion as des_dep'  ))
                           ->leftJoin('departamentos','ciudades.departamento_id','=','departamentos.id')
                           ->orderBy('descripcion', 'desc')->get();
-
         return $lista;
 
 

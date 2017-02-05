@@ -53,7 +53,7 @@ class EmpleadorController extends AppBaseController
     {
         $input = $request->all();
 
-        $empleador = $this->empleadorRepository->create($input);
+        $this->empleadorRepository->create($input);
 
         Flash::success('Empleador saved successfully.');
 

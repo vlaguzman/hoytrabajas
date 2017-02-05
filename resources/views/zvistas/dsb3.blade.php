@@ -1,11 +1,9 @@
 <?php
 	use Carbon\Carbon;
-	use App\Models\Empleador;
-	use App\Models\Usuario;
-	use App\Models\Ciudad;
     Carbon::setLocale(config('app.locale'));
-	//echo "Hoy es : ".Carbon::now()->format('l j F Y h:i:s A');
-		$vacio=true;
+	use App\Models\Empleador;
+	use App\Models\Ciudad;
+	$vacio=true;
 ?>
 <section class="content">
 	<div class="row">

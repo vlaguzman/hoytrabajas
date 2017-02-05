@@ -103,7 +103,7 @@ class MembresiaCandidatoController extends AppBaseController
     {
         $input = $request->all();
 
-        $membresiaCandidato = $this->membresiaCandidatoRepository->create($input);
+        $this->membresiaCandidatoRepository->create($input);
 
         Flash::success('Membresia Candidato saved successfully.');
 

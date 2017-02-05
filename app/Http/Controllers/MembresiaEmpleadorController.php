@@ -27,7 +27,18 @@ class MembresiaEmpleadorController extends AppBaseController
 {
     /** @var  MembresiaEmpleadorRepository */
     private $membresiaEmpleadorRepository;
-
+	private $options = ["progressBar" => false,
+                         "positionClass" =>"toast-top-right",
+                         "preventDuplicates"=> false,
+                         "showDuration" => 300,
+                         "hideDuration" => 3000,
+                         "timeOut" => 5000,
+                         "extendedTimeOut" => 1000,
+                         "showEasing" => "swing",
+                         "hideEasing"=> "linear",
+                         "showMethod" => "fadeIn",
+                         "hideMethod" => "fadeOut"  ];
+						 
     public function __construct(MembresiaEmpleadorRepository $membresiaEmpleadorRepo)
     {
         $this->membresiaEmpleadorRepository = $membresiaEmpleadorRepo;
@@ -85,8 +96,6 @@ class MembresiaEmpleadorController extends AppBaseController
                          ->with('idiomas',  $idiomas )
                          ->with('ciudades',  $ciudades );
            }
-
-          //return Redirect::back();
     }
     public function validar(){
           $validar=$this->getFechaSys();
@@ -107,7 +116,7 @@ class MembresiaEmpleadorController extends AppBaseController
                              ->with('estudios',  $estudios )
                              ->with('idiomas',  $idiomas )
                              ->with('ciudades',  $ciudades );
-              }else{//sin membresia
+              }else{
                    $membresia=Membresia::where([ ['empleador', '=', 1] ] )->first();
                    $id_membresia=$membresia->id;
                    $item= MembresiaPrecio::where([ ['membresia_id', '=',$id_membresia ],['desde', '<=',$validar ],['hasta', '>=',$validar ] ] )->first();
@@ -149,11 +158,8 @@ class MembresiaEmpleadorController extends AppBaseController
     public function store(CreateMembresiaEmpleadorRequest $request)
     {
         $input = $request->all();
-
         $this->membresiaEmpleadorRepository->create($input);
-
-        Flash::success('Membresia Empleador saved successfully.');
-
+		Toastr::info("Membresia Empleador creada", "Procesado", $this->options );
         return redirect(route('membresiaEmpleadors.index'));
     }
 

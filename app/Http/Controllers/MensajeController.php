@@ -58,7 +58,7 @@ class MensajeController extends AppBaseController
     {
         $input = $request->all();
 
-        $mensaje = $this->mensajeRepository->create($input);
+        $this->mensajeRepository->create($input);
 
         Flash::success('Mensaje saved successfully.');
 

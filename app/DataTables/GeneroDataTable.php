@@ -3,9 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Genero;
-use Form;
 use Yajra\Datatables\Services\DataTable;
-
 class GeneroDataTable extends DataTable
 {
 

@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Filesystem\Filesystem;
 use App\DataTables\ChatDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateChatRequest;
@@ -15,7 +13,6 @@ use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
 use Carbon\Carbon;
-use App\User;
 use App\Models\Postulacion;
 use App\Models\Usuario;
 use App\Models\Candidato;

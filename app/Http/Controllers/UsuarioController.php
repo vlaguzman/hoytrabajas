@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\DataTables\UsuarioDataTable;
 use App\Http\Requests;
 use App\Http\Requests\CreateUsuarioRequest;
@@ -10,7 +8,6 @@ use App\Repositories\UsuarioRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
-
 class UsuarioController extends AppBaseController
 {
     /** @var  UsuarioRepository */
@@ -53,7 +50,7 @@ class UsuarioController extends AppBaseController
     {
         $input = $request->all();
 
-       $this->usuarioRepository->create($input);
+        $this->usuarioRepository->create($input);
 
         Flash::success('Usuario saved successfully.');
 

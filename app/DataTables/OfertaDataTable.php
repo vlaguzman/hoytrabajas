@@ -2,9 +2,7 @@
 namespace App\DataTables;
 use App\Models\Oferta;
 use App\Models\Empleador;
-use Form;
 use Yajra\Datatables\Services\DataTable;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 class OfertaDataTable extends DataTable
 {
@@ -30,7 +28,7 @@ class OfertaDataTable extends DataTable
           $id_usr = Auth::user()->id;
           $tipo_  = Auth::user()->perfil_id;
           $lista= "";
-          if($tipo_==2 ){
+          if( $tipo_==2 ) {
               $prop  = Empleador::where([ ['user_id', '=',$id_usr] ] )->first();
               $lista  = Oferta::select(array('ofertas.id','ofertas.nombre','ofertas.created_at','ofertas.descripcion','ofertas.desde','ofertas.hasta','ofertas.paga','ofertas.sector_id','ofertas.empleador_id','ofertas.url_imagen' ,'empleadores.contacto','sectores.descripcion as des_sector'   ))
                                 ->leftJoin('empleadores','ofertas.empleador_id','=','empleadores.id')
@@ -91,7 +89,7 @@ class OfertaDataTable extends DataTable
     private function getColumns()
     {
       $tipo_  = Auth::user()->perfil_id;
-      if($tipo_==1 ){
+      if( $tipo_==1 ) {
           return [
               'Imagen' => ['name' => 'url_imagen', 'data' =>  'url_imagen','width'=>'6%','render'=>' "<img src="+data+" style=\"width:50px;height:50px;\" />"'    ] ,
               'Titulo' => ['name' => 'nombre', 'data' => 'nombre'],

@@ -1,11 +1,8 @@
 <?php
 
 namespace App\DataTables;
-
 use App\Models\Chat;
-use Form;
 use Yajra\Datatables\Services\DataTable;
-
 class ChatDataTable extends DataTable
 {
 
@@ -28,7 +25,6 @@ class ChatDataTable extends DataTable
     public function query()
     {
         $chats = Chat::query();
-
         return $this->applyScopes($chats);
     }
 

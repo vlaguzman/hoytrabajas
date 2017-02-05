@@ -26,7 +26,18 @@ class PostulacionController extends AppBaseController
 {
     /** @var  PostulacionRepository */
     private $postulacionRepository;
-
+	private $options = ["progressBar" => false,
+                         "positionClass" =>"toast-top-right",
+                         "preventDuplicates"=> false,
+                         "showDuration" => 300,
+                         "hideDuration" => 3000,
+                         "timeOut" => 5000,
+                         "extendedTimeOut" => 1000,
+                         "showEasing" => "swing",
+                         "hideEasing"=> "linear",
+                         "showMethod" => "fadeIn",
+                         "hideMethod" => "fadeOut"  ];
+						 
     public function __construct(PostulacionRepository $postulacionRepo)
     {
         $this->postulacionRepository = $postulacionRepo;
@@ -65,7 +76,7 @@ class PostulacionController extends AppBaseController
             $emp_ =$obj->id;
             $postulacion=Postulacion::where([ ['oferta_id', '=', $id_ ],['candidato_id', '=',$emp_  ]   ] )->first();
             if (!empty($postulacion)) {
-                Toastr::error("Ya tienes una postulacion pendiente para etsa oferta", "Duplicado", $options );
+                Toastr::error("Ya tienes una postulacion pendiente para etsa oferta", "Duplicado", $this->options );
             }else{
                 $obj = Postulacion::create([
                         'estatus_id' => 1,
@@ -79,28 +90,16 @@ class PostulacionController extends AppBaseController
                      Mensaje::Notificacion($user->id, 'Nueva postulacion','candidato','Se ha postulado un nuevo candidato para tu publicacion',$emp_,$url_perfil );
                      Toastr::success("Postulado exitosamente!", "Prcoesado", $options  );
                 }else{
-                    Toastr::error("No se pudo procesar la postulacion, intente mas tarde", "Error...", $options  );
+                    Toastr::error("No se pudo procesar la postulacion, intente mas tarde", "Error...", $this->options );
                 }
             }
         }else{
-           Toastr::error("Opcion solo disponible para candidatos ", "Error...", $options );
+           Toastr::error("Opcion solo disponible para candidatos ", "Error...", $this->options );
         }
 
         return back()->withInput();
      }
    public function aprobar($id_){
-	   $options = ["progressBar" => false,
-                                      "positionClass" =>"toast-top-right",
-                                      "preventDuplicates"=> false,
-                                      "showDuration" => 300,
-                                      "hideDuration" => 3000,
-                                      "timeOut" => 5000,
-                                      "extendedTimeOut" => 1000,
-                                      "showEasing" => "swing",
-                                      "hideEasing"=> "linear",
-                                      "showMethod" => "fadeIn",
-                                      "hideMethod" => "fadeOut"  ];
-	   
         $postulacion=Postulacion::find($id_);
           if (!empty($postulacion)) {
              $postulacion->estatus_id=2;
@@ -109,7 +108,7 @@ class PostulacionController extends AppBaseController
         				 $user=User::where([ ['id', '=',$obj->user_id ] ] )->first();
         				 Mail::to($user->email)->send(new AceptadoMail($user));
                  Mensaje::Notificacion($user->id,'Postulacion aceptada','oferta','Has sido aceptado para una postulacion',$postulacion->oferta_id,'http://www.hoytrabajas.com/htw/public/images/aceptar.png' );
-        	     Toastr::info("Empleado Aceptado!", "Prcoesado", $options );
+        	     Toastr::info("Empleado Aceptado!", "Prcoesado", $this->options );
                  return back()->withInput();
              }
         }
@@ -117,17 +116,6 @@ class PostulacionController extends AppBaseController
         return back()->withInput();
     }
   public function rechazar($id_){
-	  $options = ["progressBar" => false,
-                                      "positionClass" =>"toast-top-right",
-                                      "preventDuplicates"=> false,
-                                      "showDuration" => 300,
-                                      "hideDuration" => 3000,
-                                      "timeOut" => 5000,
-                                      "extendedTimeOut" => 1000,
-                                      "showEasing" => "swing",
-                                      "hideEasing"=> "linear",
-                                      "showMethod" => "fadeIn",
-                                      "hideMethod" => "fadeOut"  ];
       $postulacion=Postulacion::find($id_);
         if (!empty($postulacion)) {
             $postulacion->estatus_id=3;
@@ -135,11 +123,11 @@ class PostulacionController extends AppBaseController
                   $obj=Candidato::where([ ['id', '=',$postulacion->candidato_id] ] )->first();
                   $user=User::where([ ['id', '=',$obj->user_id ] ] )->first();
                   Mensaje::Notificacion($user->id,'Postulacion rechazada','oferta','Has sido rechazado para una postulacion',$postulacion->oferta_id,'http://www.hoytrabajas.com/htw/public/images/rechazar.png' );
-                  Toastr::success("Empleado rechazado!", "Prcoesado", $options );
+                  Toastr::success("Empleado rechazado!", "Prcoesado", $this->options );
                   return back()->withInput();
             }
        }
-      Toastr::error("No se pudo procesar la postulacion, intente mas tarde", "Error...", $options = [] );
+      Toastr::error("No se pudo procesar la postulacion, intente mas tarde", "Error...", $this->options );
       return back()->withInput();
    }
 

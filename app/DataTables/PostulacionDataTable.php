@@ -3,9 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Postulacion;
-use Form;
 use Yajra\Datatables\Services\DataTable;
-
 class PostulacionDataTable extends DataTable
 {
 

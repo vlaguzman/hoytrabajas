@@ -3,9 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Empleador;
-use Form;
 use Yajra\Datatables\Services\DataTable;
-
 class EmpleadorDataTable extends DataTable
 {
 
@@ -27,7 +25,6 @@ class EmpleadorDataTable extends DataTable
      */
     public function query()
     {
-
         $lista  = Empleador::select('empleadores.id','empleadores.empresa','empleadores.contacto','empleadores.telefono','empleadores.correo',
              'empleadores.descripcion','empleadores.direccion','users.url_imagen' ,'ciudades.descripcion as des_ciudad')
                           ->leftJoin('users','empleadores.user_id','=','users.id')

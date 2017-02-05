@@ -53,7 +53,7 @@ class MembresiaController extends AppBaseController
     {
         $input = $request->all();
 
-        $membresia = $this->membresiaRepository->create($input);
+        $this->membresiaRepository->create($input);
 
         Flash::success('Membresia saved successfully.');
 

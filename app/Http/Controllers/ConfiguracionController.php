@@ -53,7 +53,7 @@ class ConfiguracionController extends AppBaseController
     {
         $input = $request->all();
 
-        $configuracion = $this->configuracionRepository->create($input);
+        $this->configuracionRepository->create($input);
 
         Flash::success('Configuracion saved successfully.');
 

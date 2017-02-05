@@ -26,5 +26,4 @@ exclude_paths:
 - vendor/**/*"
 - app/Exceptions/**
 - app/Providers/**
-- resources/assets/**
-- resources/lang/**
+- resources/**

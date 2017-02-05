@@ -60,7 +60,7 @@ class CiudadController extends AppBaseController
     {
         $input = $request->all();
 
-        $ciudad = $this->ciudadRepository->create($input);
+        $this->ciudadRepository->create($input);
 
         Flash::success('Ciudad saved successfully.');
 

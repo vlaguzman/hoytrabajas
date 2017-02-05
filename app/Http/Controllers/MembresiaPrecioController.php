@@ -53,7 +53,7 @@ class MembresiaPrecioController extends AppBaseController
     {
         $input = $request->all();
 
-        $membresiaPrecio = $this->membresiaPrecioRepository->create($input);
+        $this->membresiaPrecioRepository->create($input);
 
         Flash::success('Membresia Precio saved successfully.');
 

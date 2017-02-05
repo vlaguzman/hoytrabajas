@@ -3,9 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\EstudioCandidato;
-use Form;
 use Yajra\Datatables\Services\DataTable;
-
 class EstudioCandidatoDataTable extends DataTable
 {
 
@@ -28,7 +26,6 @@ class EstudioCandidatoDataTable extends DataTable
     public function query()
     {
         $estudioCandidatos = EstudioCandidato::query();
-
         return $this->applyScopes($estudioCandidatos);
     }
 

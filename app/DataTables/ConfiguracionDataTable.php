@@ -3,9 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Configuracion;
-use Form;
 use Yajra\Datatables\Services\DataTable;
-
 class ConfiguracionDataTable extends DataTable
 {
 

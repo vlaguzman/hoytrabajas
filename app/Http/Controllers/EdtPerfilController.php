@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\WelcomeMail;
 use Intervention\Image\ImageManagerStatic as Image;
 use narutimateum\Toastr\Facades\Toastr;
-use Carbon\Carbon;
-use App\User;
 use App\Models\Usuario;
 use App\Models\Administrador;
 use App\Models\Empleador;
@@ -26,7 +24,18 @@ use App\Models\IdiomaCandidato;
 
 class EdtPerfilController extends Controller
 {
-
+	private $options = ["progressBar" => false,
+                         "positionClass" =>"toast-top-right",
+                         "preventDuplicates"=> false,
+                         "showDuration" => 300,
+                         "hideDuration" => 3000,
+                         "timeOut" => 5000,
+                         "extendedTimeOut" => 1000,
+                         "showEasing" => "swing",
+                         "hideEasing"=> "linear",
+                         "showMethod" => "fadeIn",
+                         "hideMethod" => "fadeOut"  ];
+							  
     public function confr3(){
 
         $obj=Auth::user();
@@ -210,13 +219,9 @@ class EdtPerfilController extends Controller
                            'estudio_id' => $id_estu,
                       ]);
                   }
-
-
-
               }
         }
-		$options = [];
-        Toastr::info("Perfil actualizado", "Procesado", $options );
+        Toastr::info("Perfil actualizado", "Procesado", $this->options );
         return back()->withInput();
     }
 
@@ -342,13 +347,11 @@ class EdtPerfilController extends Controller
                 Mail::to($user->email)->send(new WelcomeMail($user));
             }
         }
-		$options = [];
-        Toastr::info("Perfil confirmado", "Procesado", $options );
+        Toastr::info("Perfil confirmado", "Procesado", $this->options );
       return redirect()->intended('/home');
     }
 
     public function actualizarFoto(Request $request){
-		     $options = [];
       		 $file=asset('/images/no-picture.jpg');
       		 $id_ = $request->input('id');
       		 $usuario=Usuario::where([ ['id', '=',$id_] ] )->first();
@@ -363,10 +366,10 @@ class EdtPerfilController extends Controller
           			$usuario->url_imagen = $file;
           		    $usuario->save();
 				    
-          			Toastr::info("Imagen de perfil actualizada", "Perfil", $options  );
+          			Toastr::info("Imagen de perfil actualizada", "Perfil", $this->options  );
           			return "Imagen de perfil actualizada";
             }
-      		Toastr::info("No se pudo cargar la imagen", "Perfil", $options );
+      		Toastr::info("No se pudo cargar la imagen", "Perfil", $this->options );
       	    return "No se pudo cargar la imagen";
     }
 

@@ -1,24 +1,22 @@
 <?php
 namespace App;
 use Laravel\Socialite\Contracts\User as ProviderUser;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\WelcomeMail;
 class SocialAccountService{
     public function procesarFb(ProviderUser $providerUser){
         $account = SocialAccount::whereProvider('facebook')->whereProviderUserId($providerUser->getId())->first();
 		$id_=$providerUser->getId();
 		$url_p='https://graph.facebook.com/'. $id_ .'/picture?type=large';
-		$url_perfil= $this->guardar_imagen($id_,$url_p); 
-		return guardar_datos($providerUser,$account,$url_perfil,'facebook','web-facebook' );
+		$url_perfil= $this->guardarImagen($id_,$url_p); 
+		return $this->guardarDatos($providerUser,$account,$url_perfil,'facebook','web-facebook' );
     }
 	public function procesarGp(ProviderUser $providerUser){
 		 $account = SocialAccount::whereProvider('google')->whereProviderUserId($providerUser->getId())->first();
 		 $id_= $providerUser->getId();
 		 $url_p = preg_replace('/\?sz=[\d]*$/', '', $providerUser->avatar);
 		 $url_perfil = $this->guardar_imagen($id_,$url_p);
-		return guardar_datos($providerUser,$account,$url_perfil,'google','web-googlep' );  
+		return $this->guardarDatos($providerUser,$account,$url_perfil,'google','web-googlep' );  
 	}
-	private function guardar_datos(ProviderUser $providerUser,$account,$url_perfil,$prov_,$origen ){
+	private function guardarDatos(ProviderUser $providerUser,$account,$url_perfil,$prov_,$origen ){
 		$id_=$providerUser->getId();
 	    if ($account) {
 			    $user = User::whereEmail($providerUser->getEmail())->first();
@@ -53,7 +51,7 @@ class SocialAccountService{
             return $user;
         } 
 	}
-	private function guardar_imagen($id,$url){
+	private function guardarImagen($id,$url){
 		$file=asset('/images/system_imgs/no-picture.jpg');
 		$arrContextOptions=array(
 			"ssl"=>array(

@@ -3,9 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Departamento;
-use Form;
 use Yajra\Datatables\Services\DataTable;
-
 class DepartamentoDataTable extends DataTable
 {
 
@@ -28,7 +26,6 @@ class DepartamentoDataTable extends DataTable
     public function query()
     {
         $departamentos = Departamento::query();
-
         return $this->applyScopes($departamentos);
     }
 

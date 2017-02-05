@@ -3,9 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\MembresiaPrecio;
-use Form;
 use Yajra\Datatables\Services\DataTable;
-
 class MembresiaPrecioDataTable extends DataTable
 {
 
@@ -28,7 +26,6 @@ class MembresiaPrecioDataTable extends DataTable
     public function query()
     {
         $membresiaPrecios = MembresiaPrecio::query();
-
         return $this->applyScopes($membresiaPrecios);
     }
 

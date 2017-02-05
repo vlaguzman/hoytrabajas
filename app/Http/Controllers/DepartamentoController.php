@@ -58,7 +58,7 @@ class DepartamentoController extends AppBaseController
     {
         $input = $request->all();
 
-        $departamento = $this->departamentoRepository->create($input);
+        $this->departamentoRepository->create($input);
 
         Flash::success('Departamento saved successfully.');
 

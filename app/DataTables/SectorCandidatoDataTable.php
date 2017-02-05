@@ -3,7 +3,6 @@
 namespace App\DataTables;
 
 use App\Models\SectorCandidato;
-use Form;
 use Yajra\Datatables\Services\DataTable;
 
 class SectorCandidatoDataTable extends DataTable
@@ -28,7 +27,6 @@ class SectorCandidatoDataTable extends DataTable
     public function query()
     {
         $sectorCandidatos = SectorCandidato::query();
-
         return $this->applyScopes($sectorCandidatos);
     }
 

@@ -3,7 +3,6 @@
 namespace App\DataTables;
 
 use App\Models\PostulacionEstatus;
-use Form;
 use Yajra\Datatables\Services\DataTable;
 
 class PostulacionEstatusDataTable extends DataTable
@@ -28,7 +27,6 @@ class PostulacionEstatusDataTable extends DataTable
     public function query()
     {
         $postulacionEstatuses = PostulacionEstatus::query();
-
         return $this->applyScopes($postulacionEstatuses);
     }
 

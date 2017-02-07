@@ -109,13 +109,13 @@ class ChatController extends AppBaseController
         }
 
         $a  = Mensaje::select('mensajes.id','mensajes.mensaje','mensajes.deuser_id','mensajes.parauser_id','mensajes.leido',
-                      'mensajes.created_at','mensajes.updated_at','users.url_imagen','users.name' )
+                      'mensajes.created_at','mensajes.updated_at','mensajes.url','users.url_imagen','users.name' )
                       ->where([ ['mensajes.parauser_id', '=', $id_usr  ] ] )
                       ->where([ ['mensajes.deuser_id', '=', $de_    ] ] )
                       ->join('users','mensajes.deuser_id','=','users.id');
 
        $b  = Mensaje::select('mensajes.id','mensajes.mensaje','mensajes.deuser_id','mensajes.parauser_id','mensajes.leido',
-                    'mensajes.created_at','mensajes.updated_at','users.url_imagen','users.name' )
+                    'mensajes.created_at','mensajes.updated_at','mensajes.url','users.url_imagen','users.name' )
                     ->where([ ['mensajes.parauser_id', '=', $de_    ] ] )
                     ->where([ ['mensajes.deuser_id', '=', $id_usr   ] ] )
                     ->join('users','mensajes.deuser_id','=','users.id');
@@ -135,32 +135,34 @@ class ChatController extends AppBaseController
            $de_      = Auth::user()->id;
            $para_    = $request->input('para');
            $msg_     = $request->input('msg');
+		   $oferta_     = $request->input('oferta');
            $obj_para = Usuario::where([ ['id', '=',$para_] ] )->first();
       		 if (!empty($obj_para)) {
                 $obj = Mensaje::create([
-                						'deuser_id' => intval($de_),
-                						'parauser_id' => intval($para_),
-                						'mensaje' => $msg_,
-                						'recivido'=> 0,
-                						'leido'=> 0,
-          			       ]);
-          			if($obj){
-                  $RP="<div class='activity-row activity-row1'  >
-                         <div class='col-xs-3 activity-img'>
-                             <img src='". Auth::user()->url_imagen ."' class='img-responsive avatarxx1' />
-                             <span>". date('H:i')  ."</span>
-                         </div>
-                        <div class='col-xs-5 activity-img1'>
-                          <div class='activity-desc-sub'>
-                             <h5>". Auth::user()->name ."</h5>
-                             <p> ".  $msg_ ."</p>
-                          </div>
-                       </div>
-                      <div class='col-xs-4 activity-desc1'></div>
-                      <div class='clearfix'> </div>
-                   </div>";
-          				 return $RP;
-          			}
+                		    'deuser_id' => intval($de_),
+                			'parauser_id' => intval($para_),
+                			'mensaje' => $msg_,
+                			'recivido'=> 0,
+                			'leido'=> 0,
+							'url'=> $oferta_,
+          			   ]);
+          		if($obj){
+					  $RP="<div class='activity-row activity-row1'  >
+							 <div class='col-xs-3 activity-img'>
+								 <img src='". Auth::user()->url_imagen ."' class='img-responsive avatarxx1' />
+								 <span>". date('H:i')  ."</span>
+							 </div>
+							<div class='col-xs-5 activity-img1'>
+							  <div class='activity-desc-sub'>
+								 <h5>". Auth::user()->name ."</h5>
+								 <p> ".  $msg_ ."</p>
+							  </div>
+						   </div>
+						  <div class='col-xs-4 activity-desc1'></div>
+						  <div class='clearfix'> </div>
+					   </div>";
+          		   return $RP;
+          		}
             }
           $RP="<div class='activity-row activity-row1'  >
                     <div class='col-xs-3 activity-img'>
@@ -186,15 +188,15 @@ class ChatController extends AppBaseController
            $para_    = $request->input('para');
            $id_oferta_     = $request->input('id');
            $obj_para = Usuario::where([ ['id', '=',$para_] ] )->first();
-           $msg_='Te invito a ver esta oferta de empleo <br/><a class="button button-block btn-system03"  href="../../ofertas/'. $id_oferta_.'"  >Ir a la oferta</a>';
+           $msg_='Te invito a ver esta oferta de empleo <br/><a class="button button-block btn-system03"  href="../../ofertas/'. $id_oferta_ .'"  >Ir a la oferta</a>';
            if (!empty($obj_para)) {
-
                 $obj = Mensaje::create([
                             'deuser_id' => intval($de_),
                             'parauser_id' => intval($para_),
                             'mensaje' => $msg_,
                             'recivido'=> 0,
                             'leido'=> 0,
+							'url'=> $id_oferta_,
                        ]);
                 if($obj){
 
@@ -273,9 +275,6 @@ class ChatController extends AppBaseController
               
            }
            return $RP;
-
-
-
     }
 
     public function marcarnotificacionesleidas(Request $request){

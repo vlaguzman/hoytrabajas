@@ -260,6 +260,7 @@ class EdtPerfilController extends Controller
                    $obj=Usuario::where([ ['id', '=',$id_usr] ] )->first();
                    if($obj){
                       $obj->perfil_id=2;
+					  $obj->activo=1;
                       $obj->password=bcrypt( $psw );
                       $obj->save();
                    }
@@ -300,6 +301,7 @@ class EdtPerfilController extends Controller
                 $obj=Usuario::where([ ['id', '=',$id_usr] ] )->first();
                 if($obj){
                    $obj->perfil_id=3;
+				   $obj->activo=1;
                    $obj->password=bcrypt( $psw );
                    $obj->save();
                 }

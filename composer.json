@@ -32,6 +32,7 @@
         "zircote/swagger-php": "^2.0"
     },
     "require-dev": {
+        "codeclimate/php-test-reporter": "^0.4.2",
         "fzaninotto/faker": "~1.4",
         "ignasbernotas/laravel-model-generator": "^1",
         "laracasts/generators": "^1.1",

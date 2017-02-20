@@ -20,6 +20,9 @@ class CreateMembresiascandidatosTable extends Migration
 			$table->dateTime('desde');
 			$table->dateTime('hasta');
 			$table->decimal('pagado', 10, 2);	
+			$table->string('nro_factura',50);	
+			$table->string('nro_aprobacion',100);	
+			$table->string('estatus',100);	
             $table->timestamps();
 			$table->softDeletes();
         });

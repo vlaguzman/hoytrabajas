@@ -86,11 +86,11 @@ class EdtPerfilController extends Controller
                               ->leftJoin('sectores','sectores_candidatos.sector_id','=','sectores.id')
                               ->where([ ['candidato_id', '=',$id_candidato] ] )
                               ->orderBy('sectores_candidatos.created_at', 'desc')->get();
-           $lista2  = IdiomaCandidato::select(array('idiomas.descripcion'   ))
+            $lista2  = IdiomaCandidato::select(array('idiomas.descripcion'   ))
                               ->leftJoin('idiomas','idiomas_candidatos.idioma_id','=','idiomas.id')
                               ->where([ ['candidato_id', '=',$id_candidato ] ] )
                               ->orderBy('idiomas_candidatos.created_at', 'desc')->get();
-           $lista3  = EstudioCandidato::select(array('estudios.descripcion'   ))
+            $lista3  = EstudioCandidato::select(array('estudios.descripcion'   ))
                               ->leftJoin('estudios','estudios_candidatos.estudio_id','=','estudios.id')
                               ->where([ ['candidato_id', '=',$id_candidato ] ] )
                               ->orderBy('estudios_candidatos.created_at', 'desc')->get();

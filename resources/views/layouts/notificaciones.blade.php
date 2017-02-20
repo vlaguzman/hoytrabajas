@@ -9,10 +9,10 @@
 		 $ttn=Mensaje::ttNotificacionsnews( Auth::user()->id );
      if($tt>0){
 ?>
-<li class="dropdown messages-menu">
-    <a href="#" id='leer_mensajes' class="dropdown-toggle" data-toggle="dropdown">
-    	 <i class="fa fa-envelope-o fa-2x"></i>
-    	 <span id='div_tt_nuevas' class="label label-success">{{  $ttn }}</span>
+<li class="nav-item dropdown">
+	<a id='leer_mensajes' class="nav-link" data-toggle="dropdown" href="javascript:void(0)" title="Notifications" aria-expanded="false" data-animation="scale-up" role="button">
+        <i class="icon md-notifications" aria-hidden="true"></i>
+        <span id='div_tt_nuevas' class="tag tag-pill tag-danger up">{{ $ttn }}</span>
     </a>
     <ul class="dropdown-menu">
   	<li class="header"> <div id='div_tt_nuevas_' >   Tienes {{  $ttn }} mensajes nuevos  </div> </li>

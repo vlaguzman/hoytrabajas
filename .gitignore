@@ -1,0 +1,24 @@
+tmp
+log
+.gems
+/public/packs
+/public/packs-test
+/node_modules
+yarn-debug.log*
+.yarn-integrity
+app/helpers
+*.swp
+storage
+spec/examples.txt
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+public/assets
+.data
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key

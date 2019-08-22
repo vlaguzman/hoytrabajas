@@ -1,5 +1,5 @@
 FactoryBot.define do
     factory :labor_disponibility do
-      description { 'Esta es la descripcion del documento' }
+      description { 'This is the description of the labor disponibility' }
     end
   end

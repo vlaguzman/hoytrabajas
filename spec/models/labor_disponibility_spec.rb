@@ -5,7 +5,6 @@ RSpec.describe LaborDisponibility, type: :model do
     labor_disponibility = FactoryBot.build(:labor_disponibility, description: nil)
     labor_disponibility.valid?
 
-    expect(labor_disponibility.errors[:description].size).to_not be_zero
     expect(labor_disponibility.errors[:description].size).to eq(1)
   end
 end

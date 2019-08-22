@@ -5,6 +5,6 @@ RSpec.describe DocumentType, type: :model do
     document_type = FactoryBot.build(:document_type, description: nil)
     document_type.valid?
 
-    expect(document_type.errors[:description].size).to eq(1)
+    expect(document_type.errors[:description].size).to_not be_zero
   end
 end

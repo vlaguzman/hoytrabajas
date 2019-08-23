@@ -12,6 +12,7 @@ RSpec.describe "sing up user", :type => :feature do
           expect(page).to have_text("El trabajo ideal si existe!")
         end
       end
+
       context "I am looking for a candidate" do
         xit "should show a message to the employer" do
           fill_in "email", :with => "employee@gmail.com"
@@ -22,18 +23,22 @@ RSpec.describe "sing up user", :type => :feature do
         end
       end
     end
-    context "I want to sing up with Facebook" do
-      xit "should send me to a page where I can select my role" do
-        expect(page).to have_text("regístrate con")
-        page.should have_selector(:link_or_button, 'Facebook')
-        expect(page).to have_text("Escoge tu tipo de cuenta")
+
+    context "when I want to sign up with a social network account" do
+      context "I want to sing up with Facebook" do
+        xit "should send me to a page where I can select my role" do
+          expect(page).to have_text("regístrate con")
+          page.should have_selector(:link_or_button, 'Facebook')
+          expect(page).to have_text("Escoge tu tipo de cuenta")
+        end
       end
-    end
-    context "I want to sing up with Google" do
-      xit "should send me to a page where I can select my role" do
-        expect(page).to have_text("regístrate con")
-        page.should have_selector(:link_or_button, 'Google')
-        expect(page).to have_text("Escoge tu tipo de cuenta")
+
+      context "I want to sing up with Google" do
+        xit "should send me to a page where I can select my role" do
+          expect(page).to have_text("regístrate con")
+          page.should have_selector(:link_or_button, 'Google')
+          expect(page).to have_text("Escoge tu tipo de cuenta")
+        end
       end
     end
   end

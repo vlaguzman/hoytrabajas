@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe City, type: :model do
-  it "shoild validate the presence of description" do
+  it "should validate the presence of description" do
     city = FactoryBot.build(:city, description: nil)
     city.valid?
 

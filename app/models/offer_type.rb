@@ -1,3 +1,3 @@
-class TypeOffer < ApplicationRecord
+class OfferType < ApplicationRecord
   validates_presence_of :description
 end

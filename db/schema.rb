@@ -45,6 +45,12 @@ ActiveRecord::Schema.define(version: 2019_08_23_211923) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "educational_degrees", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "handicaps", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false

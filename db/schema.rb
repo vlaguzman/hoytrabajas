@@ -75,6 +75,12 @@ ActiveRecord::Schema.define(version: 2019_08_23_200045) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "salary_types", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "soft_skills", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false

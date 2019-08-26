@@ -26,7 +26,7 @@ RSpec.describe "fill the principal canditate user data", :type => :feature do
       click_button 'siguiente'
       
       candidate = User.first
-      curriculum = candidate.curriculum
+      curriculum = candidate.curriculum_vitae
       expect(curriculum.gender.description).to eq("male")
     end
   end

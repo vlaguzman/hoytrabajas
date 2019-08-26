@@ -7,4 +7,9 @@ RSpec.describe SoftSkill, type: :model do
 
     expect(soft_skill.errors[:description].size).to eq(1)
   end
+
+  #test shoulda matchers
+  xdescribe 'associations' do
+    xit { should belong_to(:curriculum_vitae) }
+  end
 end

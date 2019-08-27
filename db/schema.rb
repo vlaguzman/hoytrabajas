@@ -86,6 +86,20 @@ ActiveRecord::Schema.define(version: 2019_08_27_153701) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "educational_levels", force: :cascade do |t|
+    t.string "institution_name"
+    t.date "start_date"
+    t.date "finish_date"
+    t.string "degree"
+    t.boolean "ongoing_study"
+    t.string "city_id"
+    t.string "curriculum_vitae_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_id"], name: "index_educational_levels_on_city_id", unique: true
+    t.index ["curriculum_vitae_id"], name: "index_educational_levels_on_curriculum_vitae_id", unique: true
+  end
+
   create_table "genders", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false

@@ -2,55 +2,6 @@ require 'rails_helper'
 
 RSpec.describe CurriculumVitae, type: :model do
 
-  it "should validate the presence of travel_disponibility" do
-    curriculum = FactoryBot.build(:curriculum_vitae, travel_disponibility: nil)
-    curriculum.valid?
-
-    expect(curriculum.errors[:travel_disponibility].size).to eq(1)
-  end
-
-  it "should validate the presence of release_date" do
-    curriculum = FactoryBot.build(:curriculum_vitae, release_date: nil)
-    curriculum.valid?
-
-    expect(curriculum.errors[:release_date].size).to eq(1)
-  end
-
-  it "should validate the presence of tell_us" do
-    curriculum = FactoryBot.build(:curriculum_vitae, tell_us: nil)
-    curriculum.valid?
-
-    expect(curriculum.errors[:tell_us].size).to eq(1)
-  end
-
-  it "should validate the presence of identification_number" do
-    curriculum = FactoryBot.build(:curriculum_vitae, identification_number: nil)
-    curriculum.valid?
-
-    expect(curriculum.errors[:identification_number].size).to eq(1)
-  end
-
-  it "should validate the presence of cellphone_number" do
-    curriculum = FactoryBot.build(:curriculum_vitae, cellphone_number: nil)
-    curriculum.valid?
-
-    expect(curriculum.errors[:cellphone_number].size).to eq(1)
-  end
-
-  it "should validate the presence of area_code" do
-    curriculum = FactoryBot.build(:curriculum_vitae, area_code: nil)
-    curriculum.valid?
-
-    expect(curriculum.errors[:area_code].size).to eq(1)
-  end
-
-  it "should validate the presence of cellphone_number" do
-    curriculum = FactoryBot.build(:curriculum_vitae, cellphone_number: nil)
-    curriculum.valid?
-
-    expect(curriculum.errors[:cellphone_number].size).to eq(1)
-  end
-
   describe "validations" do
     it { is_expected.to validate_presence_of(:user) }
     it { is_expected.to validate_presence_of(:area_code) }

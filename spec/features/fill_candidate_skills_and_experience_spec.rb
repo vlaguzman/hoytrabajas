@@ -21,6 +21,7 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
                                     [id: 2, language_name: 'Portugues', language_proficiency: 'básico']]
       click_button 'siguiente'
     end
+    
     context "after the skills data is filled" do
       context "I dont have any experience" do
           xit "should show me the option to dont add any experience, I should click on it and see the message of the next secction" do
@@ -32,6 +33,7 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
             expect(page).to have_text("Veamos tu información académica")
           end      
       end
+
       context "I want to add just one experience" do
           xit "should see the experience fields and the next buttons, click on it and see the message of the next secction" do
             #Visit the rute of the profile user creation - step 7
@@ -56,6 +58,7 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
             #IMPORTANT - Here you must validate the creation of the tables with the information filled by user
           end
       end 
+
       context "I want to add more than one experience" do
           xit "should see the experience fields and the button to add more experience, whend I click on it it should show me the resume and a new page to fill the information" do
             #Visit the rute of the profile user creation - step 7
@@ -99,7 +102,6 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
             
             expect(page).to have_text("Veamos tu información académica")
             #IMPORTANT - Here you must validate the creation of the tables with the information filled by user
-      
       end 
     end
   end

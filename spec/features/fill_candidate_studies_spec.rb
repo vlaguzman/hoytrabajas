@@ -47,7 +47,7 @@ RSpec.describe "fill the canditate user data, studies and acknowledgments", :typ
         find('form input[type="file"]').set('path/to/file.csv')
         click_button 'siguiente'
 
-        #You should validate the creation ofi the studie in the DB
+        #You should validate the creation of the study in the DB
 
         expect(page).to have_text("Cuentas con reconocimientos")
       end   
@@ -75,8 +75,6 @@ RSpec.describe "fill the canditate user data, studies and acknowledgments", :typ
         #I have to wait at least 5 seconds
         sleep 5
 
-        #You should validate the creation ofi the studie in the DB
-
         fill_in "title", :with => 'Tecnico en sistemas'
         fill_in "school", :with => 'Sena'
         fill_in "started_at", :with => '2016/01/01'
@@ -84,7 +82,7 @@ RSpec.describe "fill the canditate user data, studies and acknowledgments", :typ
         fill_in "location", :with => 'Bogota'
         click_button 'siguiente'
 
-        #You should validate the creation ofi the studie in the DB
+        #You should validate the creation of the study in the DB
 
         expect(page).to have_text("Cuentas con reconocimientos")    
       end   
@@ -93,7 +91,7 @@ RSpec.describe "fill the canditate user data, studies and acknowledgments", :typ
     context "after the studies data is filled" do
       context "I dont have any acknowledgment" do
         xit "should show me the fields of acknowledgment information and the publish button" do
-          #Visit the rute of the profile user creation - step 9
+          #Visit the rute of the profile user creation - step 10
           visit "/candidato/#{user.id}/create_user/step10"
 
           expect(page).to have_text("Cuentas con reconocimientos")
@@ -106,7 +104,7 @@ RSpec.describe "fill the canditate user data, studies and acknowledgments", :typ
           expect(page).to have_text("Has creado un perfil ganador")
         end
         xit "should show me the fields of acknowledgment information and the skip button" do
-          #Visit the rute of the profile user creation - step 9
+          #Visit the rute of the profile user creation - step 10
           visit "/candidato/#{user.id}/create_user/step10"
 
           expect(page).to have_text("Cuentas con reconocimientos")
@@ -132,7 +130,7 @@ RSpec.describe "fill the canditate user data, studies and acknowledgments", :typ
           find('form input[type="file"]').set('path/to/file.csv')
           click_button 'publicar'
 
-          #You should validate the creation ofi the studie in the DB
+          #You should validate the creation of the acknowledgment in the DB
 
           expect(page).to have_text("Has creado un perfil ganador")
         end
@@ -150,8 +148,6 @@ RSpec.describe "fill the canditate user data, studies and acknowledgments", :typ
           find('form input[type="file"]').set('path/to/file.csv')
           click_button 'agregar otro reconocimiento'
 
-          #You should validate the creation ofi the studie in the DB
-
           expect(page).to have_text("Premio a la puntualidad")
           expect(page).to have_text("Sena")
           expect(page).to have_text("Bogota")
@@ -166,7 +162,7 @@ RSpec.describe "fill the canditate user data, studies and acknowledgments", :typ
           find('form input[type="file"]').set('path/to/file.csv')
           click_button 'publicar'
 
-          #You should validate the creation ofi the studie in the DB
+          #You should validate the creation of the acknowledgment in the DB
           
           expect(page).to have_text("Has creado un perfil ganador")
         end

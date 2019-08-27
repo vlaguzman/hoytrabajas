@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :companies
   devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  namespace :users do
+    resource :profile, only: [:create, :update, :show]
+  end
   root to: "home#index"
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_27_042603) do
+ActiveRecord::Schema.define(version: 2019_08_27_153701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,35 @@ ActiveRecord::Schema.define(version: 2019_08_27_042603) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "curriculum_vitaes", force: :cascade do |t|
+    t.string "user_id"
+    t.integer "area_code"
+    t.string "cellphone_number"
+    t.string "city_id"
+    t.string "nationality_id"
+    t.string "identification_number"
+    t.string "tell_us"
+    t.datetime "release_date"
+    t.string "labor_disponibility_id"
+    t.string "document_type_id"
+    t.string "handicap_id"
+    t.string "gender_id"
+    t.string "work_type_id"
+    t.string "contract_type_id"
+    t.boolean "travel_disponibility"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_id"], name: "index_curriculum_vitaes_on_city_id", unique: true
+    t.index ["contract_type_id"], name: "index_curriculum_vitaes_on_contract_type_id", unique: true
+    t.index ["document_type_id"], name: "index_curriculum_vitaes_on_document_type_id", unique: true
+    t.index ["gender_id"], name: "index_curriculum_vitaes_on_gender_id", unique: true
+    t.index ["handicap_id"], name: "index_curriculum_vitaes_on_handicap_id", unique: true
+    t.index ["labor_disponibility_id"], name: "index_curriculum_vitaes_on_labor_disponibility_id", unique: true
+    t.index ["nationality_id"], name: "index_curriculum_vitaes_on_nationality_id", unique: true
+    t.index ["user_id"], name: "index_curriculum_vitaes_on_user_id", unique: true
+    t.index ["work_type_id"], name: "index_curriculum_vitaes_on_work_type_id", unique: true
   end
 
   create_table "document_types", force: :cascade do |t|

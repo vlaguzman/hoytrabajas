@@ -35,6 +35,7 @@ group :development, :test do
   gem 'brakeman', require: false
   gem 'rails_best_practices'
   gem 'rubycritic'
+  gem 'shoulda', '~> 3.5'
 end
 
 group :development do

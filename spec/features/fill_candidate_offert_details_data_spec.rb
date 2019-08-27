@@ -4,9 +4,9 @@ RSpec.describe "fill the canditate user data", :type => :feature do
   context "like a candidate user after the principal data is filled" do
     xit "should see the offert info to fill and the next buttons" do
       
-      #crear usuario con informacion principal
+      #Create a user with the principal information - Use a factory
       user = User.new('name', 'last_name', 'email')
-      #visitar ruta de creación de perfil, page 3      
+      #Visit the rute of the profile user creation - step 3 
       visit "/candidato/#{user.id}/create_user/step3" 
       
       expect(page).to have_text("Busquemos las mejores ofertas")
@@ -36,7 +36,7 @@ RSpec.describe "fill the canditate user data", :type => :feature do
       click_button 'siguiente'
       
       expect(page).to have_text("Dejanos conocer tus habilidades")
-      #validar la creacion de las tablas intermedias
+      #IMPORTANT - Here you must validate the creation of the tables with the information filled by user
     end
   end
 end

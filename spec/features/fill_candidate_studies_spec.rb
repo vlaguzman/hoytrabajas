@@ -18,6 +18,7 @@ RSpec.describe "fill the canditate user data, studies and acknowledgments", :typ
 
         expect(page).to have_text("Cuentas con reconocimientos")
       end
+
       xit "should show the studies fields and the skip button" do
         #Visit the rute of the profile user creation - step 9
         visit "/candidato/#{user.id}/create_user/step9"
@@ -103,6 +104,7 @@ RSpec.describe "fill the canditate user data, studies and acknowledgments", :typ
 
           expect(page).to have_text("Has creado un perfil ganador")
         end
+        
         xit "should show me the fields of acknowledgment information and the skip button" do
           #Visit the rute of the profile user creation - step 10
           visit "/candidato/#{user.id}/create_user/step10"

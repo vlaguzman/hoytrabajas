@@ -11,7 +11,7 @@ RSpec.describe "fill the canditate user data", :type => :feature do
       
       expect(page).to have_text("Busquemos las mejores ofertas")
       fill_in "job_categories", :with => ['seguridad', 'logistica y transporte']#it can be more than one option
-      page.select ['Tiempo completo', 'Medio tiempo'], from: 'job_offer'#it can be more than one option
+      fill_in "job_offer", :with => ['Tiempo completo', 'Medio tiempo']#it can be more than one option
       page.select 'Indiferente', from: 'legal_agreement'
       page.select 'Indiferente', from: 'work_methodology'
       page.select 'Inmediato', from: 'job_availability'
@@ -22,8 +22,8 @@ RSpec.describe "fill the canditate user data", :type => :feature do
       check 'work_other_cities'
       page.select 'Bogota', from: 'job_city'
       page.select 'Usaquen', from: 'job_location'
-      page.select 'Moto', from: 'vehicle'#it can be more than one option
-      page.select 'B1', from: 'licenses'#it can be more than one option
+      fill_in "vehicle", :with => ['Moto', 'Carro']#it can be more than one option
+      fill_in "licenses", :with => ['B1', 'B2']#it can be more than one option
       click_button 'siguiente'
       
       expect(page).to have_text("Busquemos las mejores ofertas")

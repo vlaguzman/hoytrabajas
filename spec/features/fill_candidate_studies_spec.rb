@@ -48,6 +48,7 @@ RSpec.describe "fill the canditate user data, studies and acknowledgments", :typ
         expect(page).to have_text("El titulo educativo es un campo requerido")          
         end
       end
+      
       context "I fill all fields" do
         xit "should show me the fields and save the data on click next button" do
           visit "/candidato/#{user.id}/create_user/step9" 

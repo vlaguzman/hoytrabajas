@@ -34,24 +34,40 @@ RSpec.describe "fill the canditate user data, studies and acknowledgments", :typ
     end
     
     context "I just have one study" do
-      xit "should show me the fields and save the data on next button in the DB" do
+      context "I dont fill the title" do
+        xit "should return a erron, and show me a message that says'the title is a required field'" do
         visit "/candidato/#{user.id}/create_user/step9" 
 
         expect(page).to have_text("veamos tu formación académica")
-        fill_in "title", :with => 'Tecnico en cocina'
         fill_in "school", :with => 'Sena'
         fill_in "started_at", :with => '2017/01/01'
-        fill_in "finished_at", :with => ''
         check 'still_in_progress'
         fill_in "location", :with => 'Bogota'
-        #Here is necesary to test the upload of a file
-        find('form input[type="file"]').set('path/to/file.csv')
         click_button 'siguiente'
 
-        #You should validate the creation of the study in the DB
+        expect(page).to have_text("El titulo educativo es un campo requerido")          
+        end
+      end
+      context "I fill all fields" do
+        xit "should show me the fields and save the data on click next button" do
+          visit "/candidato/#{user.id}/create_user/step9" 
 
-        expect(page).to have_text("Cuentas con reconocimientos")
-      end   
+          expect(page).to have_text("veamos tu formación académica")
+          fill_in "title", :with => 'Tecnico en cocina'
+          fill_in "school", :with => 'Sena'
+          fill_in "started_at", :with => '2017/01/01'
+          fill_in "finished_at", :with => ''
+          check 'still_in_progress'
+          fill_in "location", :with => 'Bogota'
+          #Here is necesary to test the upload of a file
+          find('form input[type="file"]').set('path/to/file.csv')
+          click_button 'siguiente'
+
+          #You should validate the creation of the study in the DB
+
+          expect(page).to have_text("Cuentas con reconocimientos")
+        end   
+      end
     end
     
     context "I have more than one study" do

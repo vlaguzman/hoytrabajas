@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :users do
-    resource :profile, only: [:create, :update, :show]
+    resource :profile
   end
   root to: "home#index"
 end

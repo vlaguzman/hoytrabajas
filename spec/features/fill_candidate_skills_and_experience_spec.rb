@@ -79,13 +79,6 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
             fill_in "used_technical_skills", :with => ['Redes sociales', 'Photoshop']#it can be more than one option
             click_button 'agregar otra experiencia'
 
-            expect(page).to have_text("Marketing")
-            expect(page).to have_text("HoyTrabajas")
-            expect(page).to have_text("Community manager")
-
-            #I have to wait at least 5 seconds
-            sleep 5
-
             expect(page).to have_text("Cuentanos un poco de tu experiencia")
             page.select 'Marketing', from: 'job_category'
             fill_in "company", :with => 'Verde Logico'

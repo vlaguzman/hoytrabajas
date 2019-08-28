@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_27_153701) do
+ActiveRecord::Schema.define(version: 2019_08_27_230627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,15 @@ ActiveRecord::Schema.define(version: 2019_08_27_153701) do
     t.index ["nationality_id"], name: "index_curriculum_vitaes_on_nationality_id", unique: true
     t.index ["user_id"], name: "index_curriculum_vitaes_on_user_id", unique: true
     t.index ["work_type_id"], name: "index_curriculum_vitaes_on_work_type_id", unique: true
+  end
+
+  create_table "curriculum_vitaes_soft_skills", force: :cascade do |t|
+    t.bigint "curriculum_vitae_id", null: false
+    t.bigint "soft_skill_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_soft_skills_on_curriculum_vitae_id"
+    t.index ["soft_skill_id"], name: "index_curriculum_vitaes_soft_skills_on_soft_skill_id"
   end
 
   create_table "document_types", force: :cascade do |t|
@@ -154,12 +163,6 @@ ActiveRecord::Schema.define(version: 2019_08_27_153701) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "recruitment_types", force: :cascade do |t|
-    t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "salary_types", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -242,4 +245,6 @@ ActiveRecord::Schema.define(version: 2019_08_27_153701) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "curriculum_vitaes_soft_skills", "curriculum_vitaes"
+  add_foreign_key "curriculum_vitaes_soft_skills", "soft_skills"
 end

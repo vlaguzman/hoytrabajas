@@ -17,6 +17,13 @@ RSpec.describe CurriculumVitae, type: :model do
     it { is_expected.to validate_presence_of(:work_type) }
     it { is_expected.to validate_presence_of(:contract_type) }
     it { is_expected.to validate_presence_of(:travel_disponibility) }
+
+  end
+
+  context "attachments" do
+    subject {  FactoryBot.build(:curriculum_vitae).photo }
+
+    it { is_expected.to be_an_instance_of(ActiveStorage::Attached::One) }
   end
 
   describe 'associations' do

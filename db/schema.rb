@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_27_230627) do
+ActiveRecord::Schema.define(version: 2019_08_28_152344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "acknowledgments", force: :cascade do |t|
+    t.string "title"
+    t.datetime "start_date"
+    t.string "entity_name"
+    t.bigint "curriculum_vitae_id", null: false
+    t.index ["curriculum_vitae_id"], name: "index_acknowledgments_on_curriculum_vitae_id"
+  end
 
   create_table "available_work_days", force: :cascade do |t|
     t.string "description"
@@ -245,6 +253,7 @@ ActiveRecord::Schema.define(version: 2019_08_27_230627) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "acknowledgments", "curriculum_vitaes"
   add_foreign_key "curriculum_vitaes_soft_skills", "curriculum_vitaes"
   add_foreign_key "curriculum_vitaes_soft_skills", "soft_skills"
 end

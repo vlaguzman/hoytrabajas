@@ -69,13 +69,6 @@ RSpec.describe "fill the canditate user data, studies and acknowledgments", :typ
         find('form input[type="file"]').set('path/to/file.csv')
         click_button 'agregar otro estudio'
 
-        expect(page).to have_text("Tecnico en cocina")
-        expect(page).to have_text("Sena")
-        expect(page).to have_text("Bogota")
-
-        #I have to wait at least 5 seconds
-        sleep 5
-
         fill_in "title", :with => 'Tecnico en sistemas'
         fill_in "school", :with => 'Sena'
         fill_in "started_at", :with => '2016/01/01'
@@ -149,13 +142,6 @@ RSpec.describe "fill the canditate user data, studies and acknowledgments", :typ
           #Here is necesary to test the upload of a file
           find('form input[type="file"]').set('path/to/file.csv')
           click_button 'agregar otro reconocimiento'
-
-          expect(page).to have_text("Premio a la puntualidad")
-          expect(page).to have_text("Sena")
-          expect(page).to have_text("Bogota")
-
-          #I have to wait at least 5 seconds
-          sleep 5
 
           fill_in "title", :with => 'Medalla de oro cerveza IPA'
           fill_in "institution", :with => 'Puerto Cervecero'

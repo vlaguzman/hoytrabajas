@@ -13,4 +13,5 @@ class CurriculumVitae < ApplicationRecord
   belongs_to :work_type
   belongs_to :contract_type
 
+  has_and_belongs_to_many :soft_skills
 end

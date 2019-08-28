@@ -1,10 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe SoftSkill, type: :model do
-  it "should validate the presence of description" do
-    soft_skill = FactoryBot.build(:soft_skill, description: nil)
-    soft_skill.valid?
 
-    expect(soft_skill.errors[:description].size).to eq(1)
+  describe "validations" do
+    it { is_expected.to validate_presence_of(:description) }
+  end
+
+  describe "associations" do
+    it  { should have_and_belong_to_many(:curriculum_vitaes) }
   end
 end

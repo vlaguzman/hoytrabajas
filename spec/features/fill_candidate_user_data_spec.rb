@@ -8,7 +8,6 @@ RSpec.describe "fill the principal canditate user data", :type => :feature do
       user = User.create(email: 'nuevousuario@gmail.com', password: 'hola12345', password_confirmation: 'hola12345', sign_in_count: 0, confirmed_at: Date.today)
 
       visit new_user_session_path
-
       within '#new_user' do
         fill_in 'user_email', with: 'nuevousuario@gmail.com'
         fill_in 'user_password', with: 'hola12345'

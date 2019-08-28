@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_28_152344) do
+ActiveRecord::Schema.define(version: 2019_08_28_153348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -171,6 +171,14 @@ ActiveRecord::Schema.define(version: 2019_08_28_152344) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "recommendations", force: :cascade do |t|
+    t.string "recommendation"
+    t.bigint "curriculum_vitae_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["curriculum_vitae_id"], name: "index_recommendations_on_curriculum_vitae_id"
+  end
+
   create_table "salary_types", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -256,4 +264,5 @@ ActiveRecord::Schema.define(version: 2019_08_28_152344) do
   add_foreign_key "acknowledgments", "curriculum_vitaes"
   add_foreign_key "curriculum_vitaes_soft_skills", "curriculum_vitaes"
   add_foreign_key "curriculum_vitaes_soft_skills", "soft_skills"
+  add_foreign_key "recommendations", "curriculum_vitaes"
 end

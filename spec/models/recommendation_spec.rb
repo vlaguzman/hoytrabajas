@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Recommendation, type: :model do
   describe "validations" do
     it { is_expected.to validate_presence_of(:recommendation) }
+    it { is_expected.to validate_presence_of(:back_to_work_score) }
   end
 
   describe "associations" do

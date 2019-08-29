@@ -1,5 +1,5 @@
 class Recommendation < ApplicationRecord
-  validates_presence_of :recommendation
+  validates_presence_of :recommendation, :back_to_work_score
 
   belongs_to :curriculum_vitae
 

@@ -13,4 +13,6 @@ class Offer < ApplicationRecord
   belongs_to :work_type
   belongs_to :job_category
   belongs_to :contract_type
+
+  has_and_belongs_to_many :terms
 end

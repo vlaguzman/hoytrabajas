@@ -27,5 +27,6 @@ RSpec.describe Offer, type: :model do
     it { should belong_to(:work_type) }
     it { should belong_to(:job_category) }
     it { should belong_to(:contract_type) }
+    it { should have_and_belong_to_many(:terms) }
   end
 end

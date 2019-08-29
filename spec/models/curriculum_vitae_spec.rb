@@ -3,20 +3,28 @@ require 'rails_helper'
 RSpec.describe CurriculumVitae, type: :model do
 
   describe "validations" do
-    it { is_expected.to validate_presence_of(:user) }
-    it { is_expected.to validate_presence_of(:area_code) }
-    it { is_expected.to validate_presence_of(:cellphone_number) }
-    it { is_expected.to validate_presence_of(:city) }
-    it { is_expected.to validate_presence_of(:identification_number) }
-    it { is_expected.to validate_presence_of(:tell_us) }
-    it { is_expected.to validate_presence_of(:release_date) }
-    it { is_expected.to validate_presence_of(:labor_disponibility) }
-    it { is_expected.to validate_presence_of(:document_type) }
-    it { is_expected.to validate_presence_of(:handicap) }
-    it { is_expected.to validate_presence_of(:gender) }
-    it { is_expected.to validate_presence_of(:work_type) }
-    it { is_expected.to validate_presence_of(:contract_type) }
-    it { is_expected.to validate_presence_of(:travel_disponibility) }
+    it { should validate_presence_of(:user) }
+    it { should validate_presence_of(:area_code) }
+    it { should validate_presence_of(:cellphone_number) }
+    it { should validate_presence_of(:city) }
+    it { should validate_presence_of(:identification_number) }
+    it { should validate_presence_of(:tell_us) }
+    it { should validate_presence_of(:release_date) }
+    it { should validate_presence_of(:labor_disponibility) }
+    it { should validate_presence_of(:document_type) }
+    it { should validate_presence_of(:handicap) }
+    it { should validate_presence_of(:gender) }
+    it { should validate_presence_of(:work_type) }
+    it { should validate_presence_of(:contract_type) }
+    it { should validate_presence_of(:travel_disponibility) }
+    it { should respond_to(:photo) }
+
+  end
+
+  context "attachments" do
+    subject {  FactoryBot.build(:curriculum_vitae).photo }
+
+    it { should be_an_instance_of(ActiveStorage::Attached::One) }
   end
 
   describe 'associations' do

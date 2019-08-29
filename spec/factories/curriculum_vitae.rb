@@ -16,6 +16,10 @@ FactoryBot.define do
     association :gender,                factory: :gender
     association :work_type,             factory: :work_type
     association :contract_type,         factory: :contract_type
+
+    after(:build) do |curriculum|
+      curriculum.photo.attach(io: File.open(Rails.root.join('spec', 'factories', 'images', 'photo.jpg')), filename: 'photo.jpg', content_type: 'image/jpeg')
+    end
   end
 end
 

@@ -1,4 +1,34 @@
-%h1 New Profile
+%h1 Empecemos por conocernos
 
-= render 'form'
+= form_for [:users, @profile] do |f|
+  - if @profile.errors.present?
+    #error_explanation
+      %h2= "#{pluralize(@profile.errors.count, "error")} prohibited this profile from being saved:"
+      %ul
+        - @profile.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :name
+    = f.text_field :name
 
+  .field
+    = f.label :last_name
+    = f.text_field :last_name
+
+  .field
+    %select{ name: "/users/profiles[:nationality]"}
+      %option{value: "Colombia"} Colombia
+
+  .field
+    %select{ name: "/users/profiles[:document_type]"}
+      %option{value: "Cedula de ciudadania"} Cedula de ciudadania
+
+  .field
+    = f.label :document_number
+    = f.text_field :document_number
+
+  .field
+    = f.label :contact_number
+    = f.text_field :contact_number
+
+  %button{type: "submit"} siguiente

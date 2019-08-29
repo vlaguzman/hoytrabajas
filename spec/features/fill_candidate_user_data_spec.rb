@@ -19,17 +19,18 @@ RSpec.describe "fill the principal canditate user data", :type => :feature do
       # TODO: hacer otra prueba para rediririr al usuraia a otra pantalla
       # cuando ya ha sido logueado antes
       expect(page).to have_text("Empecemos por conocernos")
-      fill_in "name", :with => "Carlos"
-      fill_in "last_name", :with => "Rojas"
-      page.select 'nationality', from: 'Colombia'
-      page.select 'document_type', from: 'Cedula de ciudadania'
-      fill_in "document_number", :with => "1063558224"
-      fill_in "contact_number", :with => "3183638789"
+
+      fill_in "profiles[name]", :with => "Carlos"
+      fill_in "profiles[last_name]", :with => "Rojas"
+      page.select 'Colombia', from: 'profiles[:nationality]'
+      page.select 'Cedula de ciudadania', from: 'profiles[:document_type]'
+      fill_in "profiles[document_number]", :with => "1063558224"
+      fill_in "profiles[contact_number]", :with => "3183638789"
       click_button 'siguiente'
-      
+
       expect(User.count).to eq 1
       expect(CurriculumVitae.count).to eq 1
-      
+
       expect(page).to have_text("Empecemos por conocernos")
       fill_in "about_you", :with => "I am the best chef in the world"
       page.select 'masculino', from: 'gender'
@@ -37,7 +38,7 @@ RSpec.describe "fill the principal canditate user data", :type => :feature do
       page.select 'ninguna', from: 'special_condition'
       page.select 'Profesional', from: 'education'
       click_button 'siguiente'
-      
+
       candidate = User.first
       curriculum = candidate.curriculum_vitae
       expect(curriculum.gender.description).to eq("male")

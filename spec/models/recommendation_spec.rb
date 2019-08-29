@@ -7,6 +7,7 @@ RSpec.describe Recommendation, type: :model do
 
   describe "associations" do
     it { should belong_to(:curriculum_vitae) }
-    it  { should have_and_belong_to_many(:soft_skills) }
+    it { should have_and_belong_to_many(:soft_skills) }
+    it { should have_and_belong_to_many(:technical_skills) }
   end
 end

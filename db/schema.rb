@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_28_213701) do
+ActiveRecord::Schema.define(version: 2019_08_29_141748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -179,6 +179,15 @@ ActiveRecord::Schema.define(version: 2019_08_28_213701) do
     t.index ["curriculum_vitae_id"], name: "index_recommendations_on_curriculum_vitae_id"
   end
 
+  create_table "recommendations_soft_skills", force: :cascade do |t|
+    t.bigint "recommendation_id", null: false
+    t.bigint "soft_skill_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recommendation_id"], name: "index_recommendations_soft_skills_on_recommendation_id"
+    t.index ["soft_skill_id"], name: "index_recommendations_soft_skills_on_soft_skill_id"
+  end
+
   create_table "relationship_times", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -277,4 +286,6 @@ ActiveRecord::Schema.define(version: 2019_08_28_213701) do
   add_foreign_key "curriculum_vitaes_soft_skills", "curriculum_vitaes"
   add_foreign_key "curriculum_vitaes_soft_skills", "soft_skills"
   add_foreign_key "recommendations", "curriculum_vitaes"
+  add_foreign_key "recommendations_soft_skills", "recommendations"
+  add_foreign_key "recommendations_soft_skills", "soft_skills"
 end

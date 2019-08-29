@@ -290,6 +290,10 @@ ActiveRecord::Schema.define(version: 2019_08_30_154944) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "terms", force: :cascade do |t|
+    t.string "description"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

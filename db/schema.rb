@@ -193,6 +193,36 @@ ActiveRecord::Schema.define(version: 2019_08_30_154944) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "offers", force: :cascade do |t|
+    t.string "title"
+    t.string "address"
+    t.string "cellphone"
+    t.string "description"
+    t.integer "vacancies_quantity"
+    t.string "close_date"
+    t.boolean "immediate_start"
+    t.boolean "required_experience"
+    t.string "description_responsibilities"
+    t.datetime "release_date"
+    t.integer "status"
+    t.bigint "user_id", null: false
+    t.bigint "city_id", null: false
+    t.bigint "job_category_id", null: false
+    t.bigint "offer_type_id", null: false
+    t.bigint "gender_id", null: false
+    t.bigint "work_type_id", null: false
+    t.bigint "contract_type_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_id"], name: "index_offers_on_city_id"
+    t.index ["contract_type_id"], name: "index_offers_on_contract_type_id"
+    t.index ["gender_id"], name: "index_offers_on_gender_id"
+    t.index ["job_category_id"], name: "index_offers_on_job_category_id"
+    t.index ["offer_type_id"], name: "index_offers_on_offer_type_id"
+    t.index ["user_id"], name: "index_offers_on_user_id"
+    t.index ["work_type_id"], name: "index_offers_on_work_type_id"
+  end
+
   create_table "recommendations", force: :cascade do |t|
     t.string "recommendation"
     t.bigint "curriculum_vitae_id", null: false
@@ -323,6 +353,13 @@ ActiveRecord::Schema.define(version: 2019_08_30_154944) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "curriculum_vitaes_soft_skills", "curriculum_vitaes"
   add_foreign_key "curriculum_vitaes_soft_skills", "soft_skills"
+  add_foreign_key "offers", "cities"
+  add_foreign_key "offers", "contract_types"
+  add_foreign_key "offers", "genders"
+  add_foreign_key "offers", "job_categories"
+  add_foreign_key "offers", "offer_types"
+  add_foreign_key "offers", "users"
+  add_foreign_key "offers", "work_types"
   add_foreign_key "recommendations", "curriculum_vitaes"
   add_foreign_key "recommendations_soft_skills", "recommendations"
   add_foreign_key "recommendations_soft_skills", "soft_skills"

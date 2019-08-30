@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_30_201952) do
+ActiveRecord::Schema.define(version: 2019_08_30_203111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -235,7 +235,9 @@ ActiveRecord::Schema.define(version: 2019_08_30_201952) do
     t.bigint "offer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "level_id", null: false
     t.index ["language_id"], name: "index_languages_offers_on_language_id"
+    t.index ["level_id"], name: "index_languages_offers_on_level_id"
     t.index ["offer_id"], name: "index_languages_offers_on_offer_id"
   end
 
@@ -465,6 +467,7 @@ ActiveRecord::Schema.define(version: 2019_08_30_201952) do
   add_foreign_key "job_aids_offers", "job_aids"
   add_foreign_key "job_aids_offers", "offers"
   add_foreign_key "languages_offers", "languages"
+  add_foreign_key "languages_offers", "levels"
   add_foreign_key "languages_offers", "offers"
   add_foreign_key "offers", "cities"
   add_foreign_key "offers", "contract_types"

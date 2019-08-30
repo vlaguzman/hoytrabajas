@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_30_163300) do
+ActiveRecord::Schema.define(version: 2019_08_30_184241) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -264,6 +264,15 @@ ActiveRecord::Schema.define(version: 2019_08_30_163300) do
     t.index ["term_id"], name: "index_offers_terms_on_term_id"
   end
 
+  create_table "offers_vehicles", force: :cascade do |t|
+    t.bigint "offer_id", null: false
+    t.bigint "vehicle_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["offer_id"], name: "index_offers_vehicles_on_offer_id"
+    t.index ["vehicle_id"], name: "index_offers_vehicles_on_vehicle_id"
+  end
+
   create_table "recommendations", force: :cascade do |t|
     t.string "recommendation"
     t.bigint "curriculum_vitae_id", null: false
@@ -418,6 +427,8 @@ ActiveRecord::Schema.define(version: 2019_08_30_163300) do
   add_foreign_key "offers", "work_types"
   add_foreign_key "offers_terms", "offers"
   add_foreign_key "offers_terms", "terms"
+  add_foreign_key "offers_vehicles", "offers"
+  add_foreign_key "offers_vehicles", "vehicles"
   add_foreign_key "recommendations", "curriculum_vitaes"
   add_foreign_key "recommendations_soft_skills", "recommendations"
   add_foreign_key "recommendations_soft_skills", "soft_skills"

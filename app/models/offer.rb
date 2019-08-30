@@ -25,6 +25,7 @@ class Offer < ApplicationRecord
   has_and_belongs_to_many :soft_skills
   has_and_belongs_to_many :technical_skills
   has_and_belongs_to_many :work_positions
+  has_and_belongs_to_many :responsibilities
 
   has_one_attached :image
 end

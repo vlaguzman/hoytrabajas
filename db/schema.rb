@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_30_215944) do
+ActiveRecord::Schema.define(version: 2019_08_30_221606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -289,6 +289,15 @@ ActiveRecord::Schema.define(version: 2019_08_30_215944) do
     t.index ["work_type_id"], name: "index_offers_on_work_type_id"
   end
 
+  create_table "offers_responsibilities", force: :cascade do |t|
+    t.bigint "offer_id", null: false
+    t.bigint "responsibility_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["offer_id"], name: "index_offers_responsibilities_on_offer_id"
+    t.index ["responsibility_id"], name: "index_offers_responsibilities_on_responsibility_id"
+  end
+
   create_table "offers_soft_skills", force: :cascade do |t|
     t.bigint "offer_id", null: false
     t.bigint "soft_skill_id", null: false
@@ -507,6 +516,8 @@ ActiveRecord::Schema.define(version: 2019_08_30_215944) do
   add_foreign_key "offers", "offer_types"
   add_foreign_key "offers", "users"
   add_foreign_key "offers", "work_types"
+  add_foreign_key "offers_responsibilities", "offers"
+  add_foreign_key "offers_responsibilities", "responsibilities"
   add_foreign_key "offers_soft_skills", "offers"
   add_foreign_key "offers_soft_skills", "soft_skills"
   add_foreign_key "offers_technical_skills", "levels"

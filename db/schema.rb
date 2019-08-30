@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_29_144815) do
+ActiveRecord::Schema.define(version: 2019_08_30_154944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2019_08_29_144815) do
     t.boolean "travel_disponibility"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "visits_count"
     t.index ["city_id"], name: "index_curriculum_vitaes_on_city_id", unique: true
     t.index ["contract_type_id"], name: "index_curriculum_vitaes_on_contract_type_id", unique: true
     t.index ["document_type_id"], name: "index_curriculum_vitaes_on_document_type_id", unique: true
@@ -293,6 +294,13 @@ ActiveRecord::Schema.define(version: 2019_08_29_144815) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "visits", force: :cascade do |t|
+    t.bigint "curriculum_vitae_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["curriculum_vitae_id"], name: "index_visits_on_curriculum_vitae_id"
+  end
+
   create_table "work_positions", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -320,4 +328,5 @@ ActiveRecord::Schema.define(version: 2019_08_29_144815) do
   add_foreign_key "recommendations_soft_skills", "soft_skills"
   add_foreign_key "recommendations_technical_skills", "recommendations"
   add_foreign_key "recommendations_technical_skills", "technical_skills"
+  add_foreign_key "visits", "curriculum_vitaes"
 end

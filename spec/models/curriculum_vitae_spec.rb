@@ -18,7 +18,8 @@ RSpec.describe CurriculumVitae, type: :model do
     it { should validate_presence_of(:contract_type) }
     it { should validate_presence_of(:travel_disponibility) }
     it { should respond_to(:photo) }
-
+    it { should respond_to(:visits) }
+    it { should respond_to(:visits_count) }
   end
 
   context "attachments" do
@@ -37,6 +38,7 @@ RSpec.describe CurriculumVitae, type: :model do
     it { should belong_to(:gender) }
     it { should belong_to(:work_type) }
     it { should belong_to(:contract_type) }
+    it { should have_many(:visits) }
     it { should have_and_belong_to_many(:soft_skills) }
   end
 end

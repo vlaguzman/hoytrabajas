@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_30_200829) do
+ActiveRecord::Schema.define(version: 2019_08_30_201952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -228,6 +228,15 @@ ActiveRecord::Schema.define(version: 2019_08_30_200829) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "languages_offers", force: :cascade do |t|
+    t.bigint "language_id", null: false
+    t.bigint "offer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["language_id"], name: "index_languages_offers_on_language_id"
+    t.index ["offer_id"], name: "index_languages_offers_on_offer_id"
   end
 
   create_table "levels", force: :cascade do |t|
@@ -455,6 +464,8 @@ ActiveRecord::Schema.define(version: 2019_08_30_200829) do
   add_foreign_key "functions_offers", "offers"
   add_foreign_key "job_aids_offers", "job_aids"
   add_foreign_key "job_aids_offers", "offers"
+  add_foreign_key "languages_offers", "languages"
+  add_foreign_key "languages_offers", "offers"
   add_foreign_key "offers", "cities"
   add_foreign_key "offers", "contract_types"
   add_foreign_key "offers", "genders"

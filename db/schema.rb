@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_30_210334) do
+ActiveRecord::Schema.define(version: 2019_08_30_211728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -296,6 +296,17 @@ ActiveRecord::Schema.define(version: 2019_08_30_210334) do
     t.index ["soft_skill_id"], name: "index_offers_soft_skills_on_soft_skill_id"
   end
 
+  create_table "offers_technical_skills", force: :cascade do |t|
+    t.bigint "offer_id", null: false
+    t.bigint "technical_skill_id", null: false
+    t.bigint "level_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["level_id"], name: "index_offers_technical_skills_on_level_id"
+    t.index ["offer_id"], name: "index_offers_technical_skills_on_offer_id"
+    t.index ["technical_skill_id"], name: "index_offers_technical_skills_on_technical_skill_id"
+  end
+
   create_table "offers_terms", force: :cascade do |t|
     t.integer "time"
     t.bigint "term_id", null: false
@@ -485,6 +496,9 @@ ActiveRecord::Schema.define(version: 2019_08_30_210334) do
   add_foreign_key "offers", "work_types"
   add_foreign_key "offers_soft_skills", "offers"
   add_foreign_key "offers_soft_skills", "soft_skills"
+  add_foreign_key "offers_technical_skills", "levels"
+  add_foreign_key "offers_technical_skills", "offers"
+  add_foreign_key "offers_technical_skills", "technical_skills"
   add_foreign_key "offers_terms", "offers"
   add_foreign_key "offers_terms", "terms"
   add_foreign_key "offers_vehicles", "offers"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_30_191529) do
+ActiveRecord::Schema.define(version: 2019_08_30_194035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,15 @@ ActiveRecord::Schema.define(version: 2019_08_30_191529) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "available_work_days_offers", force: :cascade do |t|
+    t.bigint "available_work_day_id", null: false
+    t.bigint "offer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["available_work_day_id"], name: "index_available_work_days_offers_on_available_work_day_id"
+    t.index ["offer_id"], name: "index_available_work_days_offers_on_offer_id"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -430,6 +439,8 @@ ActiveRecord::Schema.define(version: 2019_08_30_191529) do
   add_foreign_key "acknowledgments", "curriculum_vitaes"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "age_ranges", "offers"
+  add_foreign_key "available_work_days_offers", "available_work_days"
+  add_foreign_key "available_work_days_offers", "offers"
   add_foreign_key "curriculum_vitaes_soft_skills", "curriculum_vitaes"
   add_foreign_key "curriculum_vitaes_soft_skills", "soft_skills"
   add_foreign_key "driving_licences_offers", "driving_licences"

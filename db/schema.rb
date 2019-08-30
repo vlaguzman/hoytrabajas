@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_30_211728) do
+ActiveRecord::Schema.define(version: 2019_08_30_214202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -326,6 +326,13 @@ ActiveRecord::Schema.define(version: 2019_08_30_211728) do
     t.index ["vehicle_id"], name: "index_offers_vehicles_on_vehicle_id"
   end
 
+  create_table "offers_work_positions", force: :cascade do |t|
+    t.bigint "offer_id", null: false
+    t.bigint "work_position_id", null: false
+    t.index ["offer_id"], name: "index_offers_work_positions_on_offer_id"
+    t.index ["work_position_id"], name: "index_offers_work_positions_on_work_position_id"
+  end
+
   create_table "offers_working_days", force: :cascade do |t|
     t.bigint "offer_id", null: false
     t.bigint "working_day_id", null: false
@@ -503,6 +510,8 @@ ActiveRecord::Schema.define(version: 2019_08_30_211728) do
   add_foreign_key "offers_terms", "terms"
   add_foreign_key "offers_vehicles", "offers"
   add_foreign_key "offers_vehicles", "vehicles"
+  add_foreign_key "offers_work_positions", "offers"
+  add_foreign_key "offers_work_positions", "work_positions"
   add_foreign_key "offers_working_days", "offers"
   add_foreign_key "offers_working_days", "working_days"
   add_foreign_key "recommendations", "curriculum_vitaes"

@@ -44,5 +44,6 @@ RSpec.describe Offer, type: :model do
     it { should have_and_belong_to_many(:languages) }
     it { should have_and_belong_to_many(:soft_skills) }
     it { should have_and_belong_to_many(:technical_skills) }
+    it { should have_and_belong_to_many(:work_positions) }
   end
 end

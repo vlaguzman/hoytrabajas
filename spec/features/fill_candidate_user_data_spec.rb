@@ -18,15 +18,25 @@ RSpec.describe "fill the principal canditate user data", :type => :feature do
       # de registr ode informacion
       # TODO: hacer otra prueba para rediririr al usuraia a otra pantalla
       # cuando ya ha sido logueado antes
-      expect(page).to have_text("Empecemos por conocernos")
 
-      fill_in "profiles[name]", :with => "Carlos"
-      fill_in "profiles[last_name]", :with => "Rojas"
-      page.select 'Colombia', from: 'profiles[:nationality]'
-      page.select 'Cedula de ciudadania', from: 'profiles[:document_type]'
-      fill_in "profiles[document_number]", :with => "1063558224"
-      fill_in "profiles[contact_number]", :with => "3183638789"
-      click_button 'siguiente'
+
+      #a new user answers the first part of the form with
+      #all the  required fields
+      expect(page).to have_text("Empecemos por conocernos")
+     
+      colombian = FactoryBot.build(:nationality)
+      document = FactoryBot.build(:document_type)
+      profile = FactoryBot.build(:profile)
+
+      within '#new_profile' do
+        fill_in 'profile[name]', with: 'Carlos'
+        fill_in 'profile[last_name]', with: 'Rojas'
+        page.select 'Colombia', from: 'profiles[:nationality]'
+        page.select 'Cedula de ciudadania', from: 'profiles[:document_type]'
+        fill_in "profile[document_number]", :with => "1063558224"
+        fill_in "profile[contact_number]", :with => "3183638789"
+        click_on 'siguiente'
+     end
 
       expect(User.count).to eq 1
       expect(CurriculumVitae.count).to eq 1
@@ -34,7 +44,7 @@ RSpec.describe "fill the principal canditate user data", :type => :feature do
       expect(page).to have_text("Empecemos por conocernos")
       fill_in "about_you", :with => "I am the best chef in the world"
       page.select 'masculino', from: 'gender'
-      fill_in "birthday", :with => "1990/01/01"
+      fill_in "birthday", :with => "1990-01-01"
       page.select 'ninguna', from: 'special_condition'
       page.select 'Profesional', from: 'education'
       click_button 'siguiente'

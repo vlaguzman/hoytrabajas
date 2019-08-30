@@ -19,6 +19,7 @@ class Offer < ApplicationRecord
   has_and_belongs_to_many :job_aids
   has_and_belongs_to_many :vehicles
   has_and_belongs_to_many :driving_licences
+  has_and_belongs_to_many :working_days
 
   has_one_attached :image
 end

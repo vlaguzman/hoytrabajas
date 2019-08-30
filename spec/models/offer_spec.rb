@@ -39,5 +39,6 @@ RSpec.describe Offer, type: :model do
     it { should have_and_belong_to_many(:job_aids) }
     it { should have_and_belong_to_many(:vehicles) }
     it { should have_and_belong_to_many(:driving_licences) }
+    it { should have_and_belong_to_many(:working_days) }
   end
 end

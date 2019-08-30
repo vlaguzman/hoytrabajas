@@ -14,6 +14,13 @@ RSpec.describe Offer, type: :model do
     it { should validate_presence_of(:description_responsibilities) }
     it { should validate_presence_of(:release_date) }
     it { should validate_presence_of(:status) }
+    it { should respond_to(:image) }
+  end
+
+  context "attachments" do
+    subject {  FactoryBot.build(:offer).image }
+
+    it { should be_an_instance_of(ActiveStorage::Attached::One) }
   end
 
   describe "assocciations" do

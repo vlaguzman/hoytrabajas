@@ -22,6 +22,7 @@ class Offer < ApplicationRecord
   has_and_belongs_to_many :working_days
   has_and_belongs_to_many :available_work_days
   has_and_belongs_to_many :languages
+  has_and_belongs_to_many :soft_skills
 
   has_one_attached :image
 end

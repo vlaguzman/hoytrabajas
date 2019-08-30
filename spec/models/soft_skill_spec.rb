@@ -9,5 +9,6 @@ RSpec.describe SoftSkill, type: :model do
   describe "associations" do
     it  { should have_and_belong_to_many(:curriculum_vitaes) }
     it  { should have_and_belong_to_many(:recommendations) }
+    it  { should have_and_belong_to_many(:offers) }
   end
 end

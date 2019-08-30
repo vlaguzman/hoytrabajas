@@ -15,4 +15,5 @@ class Offer < ApplicationRecord
   belongs_to :contract_type
 
   has_and_belongs_to_many :terms
+  has_and_belongs_to_many :functions
 end

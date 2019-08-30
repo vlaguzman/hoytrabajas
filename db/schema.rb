@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_30_154944) do
+ActiveRecord::Schema.define(version: 2019_08_30_163300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,15 @@ ActiveRecord::Schema.define(version: 2019_08_30_154944) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "age_ranges", force: :cascade do |t|
+    t.integer "from"
+    t.integer "to"
+    t.bigint "offer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["offer_id"], name: "index_age_ranges_on_offer_id"
   end
 
   create_table "available_work_days", force: :cascade do |t|
@@ -139,6 +148,19 @@ ActiveRecord::Schema.define(version: 2019_08_30_154944) do
     t.index ["curriculum_vitae_id"], name: "index_educational_levels_on_curriculum_vitae_id", unique: true
   end
 
+  create_table "functions", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "functions_offers", force: :cascade do |t|
+    t.bigint "offer_id", null: false
+    t.bigint "function_id", null: false
+    t.index ["function_id"], name: "index_functions_offers_on_function_id"
+    t.index ["offer_id"], name: "index_functions_offers_on_offer_id"
+  end
+
   create_table "genders", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -161,6 +183,15 @@ ActiveRecord::Schema.define(version: 2019_08_30_154944) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "job_aids_offers", force: :cascade do |t|
+    t.bigint "job_aid_id", null: false
+    t.bigint "offer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["job_aid_id"], name: "index_job_aids_offers_on_job_aid_id"
+    t.index ["offer_id"], name: "index_job_aids_offers_on_offer_id"
   end
 
   create_table "job_categories", force: :cascade do |t|
@@ -191,6 +222,46 @@ ActiveRecord::Schema.define(version: 2019_08_30_154944) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "offers", force: :cascade do |t|
+    t.string "title"
+    t.string "address"
+    t.string "cellphone"
+    t.string "description"
+    t.integer "vacancies_quantity"
+    t.string "close_date"
+    t.boolean "immediate_start"
+    t.boolean "required_experience"
+    t.string "description_responsibilities"
+    t.datetime "release_date"
+    t.integer "status"
+    t.bigint "user_id", null: false
+    t.bigint "city_id", null: false
+    t.bigint "job_category_id", null: false
+    t.bigint "offer_type_id", null: false
+    t.bigint "gender_id", null: false
+    t.bigint "work_type_id", null: false
+    t.bigint "contract_type_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_id"], name: "index_offers_on_city_id"
+    t.index ["contract_type_id"], name: "index_offers_on_contract_type_id"
+    t.index ["gender_id"], name: "index_offers_on_gender_id"
+    t.index ["job_category_id"], name: "index_offers_on_job_category_id"
+    t.index ["offer_type_id"], name: "index_offers_on_offer_type_id"
+    t.index ["user_id"], name: "index_offers_on_user_id"
+    t.index ["work_type_id"], name: "index_offers_on_work_type_id"
+  end
+
+  create_table "offers_terms", force: :cascade do |t|
+    t.integer "time"
+    t.bigint "term_id", null: false
+    t.bigint "offer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["offer_id"], name: "index_offers_terms_on_offer_id"
+    t.index ["term_id"], name: "index_offers_terms_on_term_id"
   end
 
   create_table "recommendations", force: :cascade do |t|
@@ -230,6 +301,12 @@ ActiveRecord::Schema.define(version: 2019_08_30_154944) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "requirements", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "salary_types", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -258,6 +335,10 @@ ActiveRecord::Schema.define(version: 2019_08_30_154944) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "terms", force: :cascade do |t|
+    t.string "description"
   end
 
   create_table "users", force: :cascade do |t|
@@ -321,8 +402,22 @@ ActiveRecord::Schema.define(version: 2019_08_30_154944) do
 
   add_foreign_key "acknowledgments", "curriculum_vitaes"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "age_ranges", "offers"
   add_foreign_key "curriculum_vitaes_soft_skills", "curriculum_vitaes"
   add_foreign_key "curriculum_vitaes_soft_skills", "soft_skills"
+  add_foreign_key "functions_offers", "functions"
+  add_foreign_key "functions_offers", "offers"
+  add_foreign_key "job_aids_offers", "job_aids"
+  add_foreign_key "job_aids_offers", "offers"
+  add_foreign_key "offers", "cities"
+  add_foreign_key "offers", "contract_types"
+  add_foreign_key "offers", "genders"
+  add_foreign_key "offers", "job_categories"
+  add_foreign_key "offers", "offer_types"
+  add_foreign_key "offers", "users"
+  add_foreign_key "offers", "work_types"
+  add_foreign_key "offers_terms", "offers"
+  add_foreign_key "offers_terms", "terms"
   add_foreign_key "recommendations", "curriculum_vitaes"
   add_foreign_key "recommendations_soft_skills", "recommendations"
   add_foreign_key "recommendations_soft_skills", "soft_skills"

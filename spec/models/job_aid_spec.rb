@@ -1,10 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe JobAid, type: :model do
-  it "should validate the presence of description" do
-    job_aid = FactoryBot.build(:job_aid, description: nil)
-    job_aid.valid?
 
-    expect(job_aid.errors[:description].size).to eq(1)
+  describe "validations" do
+    it { should validate_presence_of(:description) }
+  end
+
+  describe "associations" do
+    it { should have_and_belong_to_many(:offers) }
   end
 end

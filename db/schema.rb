@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_30_143602) do
+ActiveRecord::Schema.define(version: 2019_08_30_163300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -183,6 +183,15 @@ ActiveRecord::Schema.define(version: 2019_08_30_143602) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "job_aids_offers", force: :cascade do |t|
+    t.bigint "job_aid_id", null: false
+    t.bigint "offer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["job_aid_id"], name: "index_job_aids_offers_on_job_aid_id"
+    t.index ["offer_id"], name: "index_job_aids_offers_on_offer_id"
   end
 
   create_table "job_categories", force: :cascade do |t|
@@ -398,6 +407,8 @@ ActiveRecord::Schema.define(version: 2019_08_30_143602) do
   add_foreign_key "curriculum_vitaes_soft_skills", "soft_skills"
   add_foreign_key "functions_offers", "functions"
   add_foreign_key "functions_offers", "offers"
+  add_foreign_key "job_aids_offers", "job_aids"
+  add_foreign_key "job_aids_offers", "offers"
   add_foreign_key "offers", "cities"
   add_foreign_key "offers", "contract_types"
   add_foreign_key "offers", "genders"

@@ -1,19 +1,19 @@
 class Users::ProfilesController < ApplicationController
-
+  before_action :authenticate_user!
+  
   def index
-    #@profile = Profile.new
+    @user= current_user
   end
 
   def show
-
   end
 
   def create
   end
 
-  #GET /profiles/new
+  #GET /users/profiles/new
   def new
-    @profile = Profile.new
+    @user = User.new
   end
 
 end

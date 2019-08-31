@@ -6,6 +6,7 @@ RSpec.describe "fill the principal canditate user data", :type => :feature do
 
       # a new user who has never been loged-in, i.e. sign_in_count is zero
       user = User.create(email: 'nuevousuario@gmail.com', password: 'hola12345', password_confirmation: 'hola12345', sign_in_count: 0, confirmed_at: Date.today)
+      #user = FactoryBot.build(:user)
 
       visit new_user_session_path
       within '#new_user' do
@@ -26,17 +27,16 @@ RSpec.describe "fill the principal canditate user data", :type => :feature do
      
       colombian = FactoryBot.build(:nationality)
       document = FactoryBot.build(:document_type)
-      profile = FactoryBot.build(:profile)
 
-      within '#new_profile' do
-        fill_in 'profile[name]', with: 'Carlos'
-        fill_in 'profile[last_name]', with: 'Rojas'
-        page.select 'Colombia', from: 'profiles[:nationality]'
-        page.select 'Cedula de ciudadania', from: 'profiles[:document_type]'
-        fill_in "profile[document_number]", :with => "1063558224"
-        fill_in "profile[contact_number]", :with => "3183638789"
-        click_on 'siguiente'
-     end
+      #within '#new_' do
+        #fill_in 'profile[name]', with: 'Carlos'
+        #fill_in 'profile[last_name]', with: 'Rojas'
+        #page.select 'Colombia', from: 'profiles[:nationality]'
+        #page.select 'Cedula de ciudadania', from: 'profiles[:document_type]'
+        #fill_in "profile[document_number]", :with => "1063558224"
+        #fill_in "profile[contact_number]", :with => "3183638789"
+        #click_on 'siguiente'
+     #end
 
       expect(User.count).to eq 1
       expect(CurriculumVitae.count).to eq 1

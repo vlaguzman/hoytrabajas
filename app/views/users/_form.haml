@@ -1,11 +1,11 @@
 %h1 Empecemos por conocernos
 
-= form_for [:users, @profile] do |f|
-  - if @profile.errors.present?
+= form_for [@users] do |f|
+  - if @users.errors.present?
     #error_explanation
-      %h2= "#{pluralize(@profile.errors.count, "error")} prohibited this profile from being saved:"
+      %h2= "#{pluralize(@users.errors.count, "error")} prohibited this profile from being saved:"
       %ul
-        - @profile.errors.full_messages.each do |message|
+        - @users.errors.full_messages.each do |message|
           %li= message
   .field
     = f.label :name

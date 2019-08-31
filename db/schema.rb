@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_31_181435) do
+ActiveRecord::Schema.define(version: 2019_08_31_183133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,6 +117,13 @@ ActiveRecord::Schema.define(version: 2019_08_31_181435) do
     t.index ["labor_disponibility_id"], name: "index_curriculum_vitaes_on_labor_disponibility_id"
     t.index ["user_id"], name: "index_curriculum_vitaes_on_user_id"
     t.index ["work_mode_id"], name: "index_curriculum_vitaes_on_work_mode_id"
+  end
+
+  create_table "curriculum_vitaes_educational_degrees", force: :cascade do |t|
+    t.string "curriculum_vitae_id"
+    t.string "educational_degree_id"
+    t.index ["curriculum_vitae_id"], name: "cv_id", unique: true
+    t.index ["educational_degree_id"], name: "edu_degree_id", unique: true
   end
 
   create_table "curriculum_vitaes_limitations", force: :cascade do |t|

@@ -29,5 +29,7 @@ RSpec.describe CurriculumVitae, type: :model do
     it { should have_many(:visits) }
     it { should have_and_belong_to_many(:limitations) }
     it { should have_and_belong_to_many(:soft_skills) }
+    it { should have_and_belong_to_many(:educational_degrees) }
+
   end
 end

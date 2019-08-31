@@ -12,7 +12,7 @@ class CurriculumVitae < ApplicationRecord
   has_many :visits
 
   has_and_belongs_to_many :soft_skills
-  #has_and_belongs_to_many :limitations
+  has_and_belongs_to_many :limitations
 
   has_one_attached :photo
 end

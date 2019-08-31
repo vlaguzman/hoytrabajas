@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_31_174714) do
+ActiveRecord::Schema.define(version: 2019_08_31_181435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,6 +119,13 @@ ActiveRecord::Schema.define(version: 2019_08_31_174714) do
     t.index ["work_mode_id"], name: "index_curriculum_vitaes_on_work_mode_id"
   end
 
+  create_table "curriculum_vitaes_limitations", force: :cascade do |t|
+    t.bigint "curriculum_vitae_id", null: false
+    t.bigint "limitation_id", null: false
+    t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_limitations_on_curriculum_vitae_id"
+    t.index ["limitation_id"], name: "index_curriculum_vitaes_limitations_on_limitation_id"
+  end
+
   create_table "curriculum_vitaes_soft_skills", force: :cascade do |t|
     t.bigint "curriculum_vitae_id", null: false
     t.bigint "soft_skill_id", null: false
@@ -206,12 +213,6 @@ ActiveRecord::Schema.define(version: 2019_08_31_174714) do
   end
 
   create_table "genders", force: :cascade do |t|
-    t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "handicaps", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

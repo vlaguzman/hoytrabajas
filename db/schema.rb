@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_31_154644) do
+ActiveRecord::Schema.define(version: 2019_08_31_164723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,9 @@ ActiveRecord::Schema.define(version: 2019_08_31_154644) do
     t.datetime "start_date"
     t.string "entity_name"
     t.bigint "curriculum_vitae_id", null: false
+    t.bigint "curriculum_vitaes_id"
     t.index ["curriculum_vitae_id"], name: "index_acknowledgments_on_curriculum_vitae_id"
+    t.index ["curriculum_vitaes_id"], name: "index_acknowledgments_on_curriculum_vitaes_id"
   end
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -100,33 +102,19 @@ ActiveRecord::Schema.define(version: 2019_08_31_154644) do
   end
 
   create_table "curriculum_vitaes", force: :cascade do |t|
-    t.string "user_id"
-    t.integer "area_code"
-    t.string "cellphone_number"
-    t.string "city_id"
-    t.string "nationality_id"
-    t.string "identification_number"
-    t.string "tell_us"
+    t.string "area_code"
+    t.string "about_me"
     t.datetime "release_date"
-    t.string "labor_disponibility_id"
-    t.string "document_type_id"
-    t.string "handicap_id"
-    t.string "gender_id"
-    t.string "work_type_id"
-    t.string "contract_type_id"
-    t.boolean "travel_disponibility"
+    t.string "travel_disponibility"
+    t.string "visits_count"
+    t.bigint "user_id", null: false
+    t.bigint "city_id", null: false
+    t.bigint "labor_disponibility_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "visits_count"
-    t.index ["city_id"], name: "index_curriculum_vitaes_on_city_id", unique: true
-    t.index ["contract_type_id"], name: "index_curriculum_vitaes_on_contract_type_id", unique: true
-    t.index ["document_type_id"], name: "index_curriculum_vitaes_on_document_type_id", unique: true
-    t.index ["gender_id"], name: "index_curriculum_vitaes_on_gender_id", unique: true
-    t.index ["handicap_id"], name: "index_curriculum_vitaes_on_handicap_id", unique: true
-    t.index ["labor_disponibility_id"], name: "index_curriculum_vitaes_on_labor_disponibility_id", unique: true
-    t.index ["nationality_id"], name: "index_curriculum_vitaes_on_nationality_id", unique: true
-    t.index ["user_id"], name: "index_curriculum_vitaes_on_user_id", unique: true
-    t.index ["work_type_id"], name: "index_curriculum_vitaes_on_work_type_id", unique: true
+    t.index ["city_id"], name: "index_curriculum_vitaes_on_city_id"
+    t.index ["labor_disponibility_id"], name: "index_curriculum_vitaes_on_labor_disponibility_id"
+    t.index ["user_id"], name: "index_curriculum_vitaes_on_user_id"
   end
 
   create_table "curriculum_vitaes_soft_skills", force: :cascade do |t|
@@ -134,7 +122,9 @@ ActiveRecord::Schema.define(version: 2019_08_31_154644) do
     t.bigint "soft_skill_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "curriculum_vitaes_id"
     t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_soft_skills_on_curriculum_vitae_id"
+    t.index ["curriculum_vitaes_id"], name: "index_curriculum_vitaes_soft_skills_on_curriculum_vitaes_id"
     t.index ["soft_skill_id"], name: "index_curriculum_vitaes_soft_skills_on_soft_skill_id"
   end
 
@@ -391,7 +381,9 @@ ActiveRecord::Schema.define(version: 2019_08_31_154644) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "back_to_work_score"
+    t.bigint "curriculum_vitaes_id"
     t.index ["curriculum_vitae_id"], name: "index_recommendations_on_curriculum_vitae_id"
+    t.index ["curriculum_vitaes_id"], name: "index_recommendations_on_curriculum_vitaes_id"
   end
 
   create_table "recommendations_soft_skills", force: :cascade do |t|
@@ -516,7 +508,9 @@ ActiveRecord::Schema.define(version: 2019_08_31_154644) do
     t.bigint "curriculum_vitae_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "curriculum_vitaes_id"
     t.index ["curriculum_vitae_id"], name: "index_visits_on_curriculum_vitae_id"
+    t.index ["curriculum_vitaes_id"], name: "index_visits_on_curriculum_vitaes_id"
   end
 
   create_table "work_positions", force: :cascade do |t|
@@ -537,7 +531,6 @@ ActiveRecord::Schema.define(version: 2019_08_31_154644) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "acknowledgments", "curriculum_vitaes"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "age_ranges", "offers"
   add_foreign_key "applied_offers", "applied_offer_statuses"

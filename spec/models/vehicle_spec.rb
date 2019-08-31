@@ -1,11 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Vehicle, type: :model do
-  describe "validations" do
-    it { should validate_presence_of(:description) }
+  describe 'associations' do
+    it { should respond_to(:description) }
   end
 
-  describe "associations" do
+  describe 'associations' do
+    it { should have_and_belong_to_many(:curriculum_vitaes) }
     it { should have_and_belong_to_many(:offers) }
   end
+
 end

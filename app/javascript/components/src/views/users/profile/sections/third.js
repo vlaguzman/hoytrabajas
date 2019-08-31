@@ -3,10 +3,10 @@ import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import { Row, Col } from 'reactstrap'
 import { map } from 'lodash'
-import DataCard from 'Components/Cards/DataCard'
-import PaperHeader from 'Components/PaperHeader'
-import CarouselRow from 'Components/Carousel/CarouselRow'
-import AddEditButton from 'Views/users/profile/components/AddEditButton'
+import DataCard from '../components/Cards/DataCard'
+import PaperHeader from '../components/PaperHeader'
+import CarouselRow from '../components/Carousel/CarouselRow'
+import AddEditButton from '../views/users/profile/components/AddEditButton'
 
 const data = [
   { titleSec: 'CineColombia', subTitleSec: 'Community Manager' },

@@ -1,5 +1,5 @@
 import React from 'react'
-import { DynamicValidations } from 'Views/DynamicViews'
+import { DynamicValidations } from '../views/DynamicViews'
 
 
 const Validations = () => (

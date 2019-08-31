@@ -1,8 +1,8 @@
 import React, {Fragment} from 'react'
 import Head from 'next/head'
 import { Row } from 'reactstrap'
-import EditForm from 'Components/FormsLayout/EditForm'
-import allForms from 'Views/edicion_oferta/sections/forms/formJson'
+import EditForm from '../components/FormsLayout/EditForm'
+import allForms from '../views/edicion_oferta/sections/forms/formJson'
 
 const EditOffersPage = () => {
   return (

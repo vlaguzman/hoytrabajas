@@ -10,12 +10,12 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import Slide from '@material-ui/core/Slide'
-// import { FormProvider } from 'Context/formContext'
-// import { InfoProvider } from 'Context/formInfoContext'
+// import { FormProvider } from '../context/formContext'
+// import { InfoProvider } from '../context/formInfoContext'
 
 // utilizar rutas absolutas para importar
-// import FormBody from 'Views/users/profile/form_sections/FormBody'
-// import allForms from 'Views/users/profile/formJson'
+// import FormBody from '../views/users/profile/form_sections/FormBody'
+// import allForms from '../views/users/profile/formJson'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />

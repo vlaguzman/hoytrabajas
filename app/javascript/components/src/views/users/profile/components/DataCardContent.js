@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import Typography from '@material-ui/core/Typography'
 import { Row, Col } from 'reactstrap'
 import { makeGetDisplayFields } from 'Src/selectors/forms'
-import useWhyDidYouUpdate from 'Hooks/useWhyDidYouUpdate'
+import useWhyDidYouUpdate from '../hooks/useWhyDidYouUpdate'
 
 const BasicInfoDisplay = ({ currentDataContent }) => {
   const ignoreFields = ['name', 'last_name']

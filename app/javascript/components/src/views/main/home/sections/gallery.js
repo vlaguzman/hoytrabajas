@@ -3,7 +3,7 @@ import { Row, Col } from 'reactstrap'
 import Button from '@material-ui/core/Button';
 // import IntlMessages from 'Util/IntlMessages'
 import Cards from './components/gallery_cards/gallery_card'
-import Carousel from 'Components/Carousel/CarouselRow'
+import Carousel from '../components/Carousel/CarouselRow'
 import { map } from 'lodash';
 
 

@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button'
-import { loadInfo } from 'Actions'
-import { FormContext, DispatchContext } from 'Context/formContext'
-import { InfoContext } from 'Context/formInfoContext'
+import { loadInfo } from '../actions'
+import { FormContext, DispatchContext } from '../context/formContext'
+import { InfoContext } from '../context/formInfoContext'
 
 const FormButtons = ({ scrollAction, history, loadInfo }) => {
   const { next, prev, formSection } = useContext(FormContext)

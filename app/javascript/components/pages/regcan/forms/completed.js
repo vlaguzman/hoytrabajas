@@ -1,5 +1,5 @@
 import React from 'react'
-import { DynamicFormsCompleted} from 'Views/DynamicViews'
+import { DynamicFormsCompleted} from '../views/DynamicViews'
 
 const RegFormsPage = () => (
   <div className="regcan-wrapper pcx">

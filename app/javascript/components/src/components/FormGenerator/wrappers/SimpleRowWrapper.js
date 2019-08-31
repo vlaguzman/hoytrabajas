@@ -4,10 +4,10 @@ import { Row, Col } from 'reactstrap'
 import { connect } from 'react-redux'
 import { makeGetField } from 'Src/selectors/forms'
 import Paper from '@material-ui/core/Paper'
-import { updateField, updateErrors } from 'Actions'
+import { updateField, updateErrors } from '../actions'
 import { useDebouncedCallback } from 'use-debounce'
-import Checkbox from 'Components/FormGenerator/fields/Checkbox'
-import SelectChip from 'Components/FormGenerator/fields/SelectChip'
+import Checkbox from '../components/FormGenerator/fields/Checkbox'
+import SelectChip from '../components/FormGenerator/fields/SelectChip'
 
 const ownFieldOptions = {
   selectChip: props => {

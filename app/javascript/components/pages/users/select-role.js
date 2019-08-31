@@ -1,5 +1,5 @@
 import React from 'react'
-import { DynamicUsersChooseRole } from 'Views/DynamicViews'
+import { DynamicUsersChooseRole } from '../views/DynamicViews'
 
 const RouteUsers = () => (
   <div className="users-wrapper pcx">

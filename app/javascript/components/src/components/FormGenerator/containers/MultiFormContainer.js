@@ -3,9 +3,9 @@ import PropTypes from 'prop-types'
 import uuidv4 from 'uuid/v4'
 import { connect } from 'react-redux'
 import { Col } from 'reactstrap'
-import { updateFieldArray, pushFieldArray } from 'Actions'
+import { updateFieldArray, pushFieldArray } from '../actions'
 import { makeGetMultiFormID } from 'Src/selectors/forms'
-import MultiFormWrapper from 'Components/FormGenerator/wrappers/MultiFormWrapper'
+import MultiFormWrapper from '../components/FormGenerator/wrappers/MultiFormWrapper'
 
 const MultiFormContainer = props => {
   const {

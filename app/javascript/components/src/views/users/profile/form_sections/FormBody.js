@@ -1,6 +1,6 @@
 import React, { Fragment, useContext } from 'react'
-import FormGenerator from 'Components/FormGenerator'
-import { FormContext } from 'Context/formContext'
+import FormGenerator from '../components/FormGenerator'
+import { FormContext } from '../context/formContext'
 import FormButtons from './FormButtons'
 
 const FormBody = ({ scrollAction }) => {

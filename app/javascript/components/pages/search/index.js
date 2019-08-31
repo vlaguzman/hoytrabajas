@@ -1,5 +1,5 @@
 import React from 'react'
-import { DynamicSearch } from 'Views/DynamicViews'
+import { DynamicSearch } from '../views/DynamicViews'
 
 const RegPage = () => (
   <div className="search-wrapper pcx">

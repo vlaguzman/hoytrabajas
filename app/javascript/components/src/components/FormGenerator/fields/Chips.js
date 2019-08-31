@@ -3,7 +3,7 @@ import Chip from '@material-ui/core/Chip'
 import FaceIcon from '@material-ui/icons/Face'
 import { connect } from 'react-redux'
 import { makeGetMultiFormInfo } from 'Src/selectors/forms'
-import dialogState from 'Hooks/dialogState'
+import dialogState from '../hooks/dialogState'
 import FormDialog from './FormDialog'
 
 const Chips = props => {

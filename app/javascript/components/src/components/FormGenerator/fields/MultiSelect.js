@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Col } from 'reactstrap'
-import { updateField } from 'Actions'
+import { updateField } from '../actions'
 import { useTheme } from '@material-ui/styles'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'

@@ -8,8 +8,8 @@ import CardHeader from '@material-ui/core/CardHeader'
 import IconButton from '@material-ui/core/IconButton'
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder'
 import Chip from '@material-ui/core/Chip'
-import { FormProvider } from 'Context/formContext'
-import FormBody from 'Views/edicion_oferta/sections/forms/sections/FormBody'
+import { FormProvider } from '../context/formContext'
+import FormBody from '../views/edicion_oferta/sections/forms/sections/FormBody'
 
 const FavoriteButton = () => (
   <IconButton className="p-0" aria-label="Settings">

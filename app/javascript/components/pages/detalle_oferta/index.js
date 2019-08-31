@@ -1,5 +1,5 @@
 import React from 'react'
-import { DynamicDetalle } from 'Views/DynamicViews'
+import { DynamicDetalle } from '../views/DynamicViews'
 
 const MainPage = () => (
   <div className="detalle-wrapper">

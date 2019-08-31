@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
-import { FormProvider } from 'Context/formContext'
+import { FormProvider } from '../context/formContext'
 import Body from './layout/Body'
 import FormButtons from './sections/FormButtons'
 import FormBody from './sections/FormBody'

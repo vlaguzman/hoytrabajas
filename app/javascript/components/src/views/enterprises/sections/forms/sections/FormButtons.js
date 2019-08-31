@@ -7,15 +7,15 @@ import { connect } from 'react-redux'
 //   makeGetFormSection,
 //   makeGetValidateFormSection
 // } from 'Src/selectors/forms'
-import useWhyDidYouUpdate from 'Hooks/useWhyDidYouUpdate'
+import useWhyDidYouUpdate from '../hooks/useWhyDidYouUpdate'
 import {
   FormContext,
   DispatchContext,
   FormChangeContext
-} from 'Context/formContext'
+} from '../context/formContext'
 
-// import { loadInfo } from 'Actions'
-// import { InfoContext } from 'Context/formInfoContext'
+// import { loadInfo } from '../actions'
+// import { InfoContext } from '../context/formInfoContext'
 
 const FormButtons = props => {
   const { scrollAction, formSection, formName, next, prev } = props

@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import Paper from '@material-ui/core/Paper'
 import { Row } from 'reactstrap'
-import PaperHeader from 'Components/PaperHeader'
-import { FormProvider } from 'Context/formContext'
-// import { InfoProvider } from 'Context/formInfoContext'
+import PaperHeader from '../components/PaperHeader'
+import { FormProvider } from '../context/formContext'
+// import { InfoProvider } from '../context/formInfoContext'
 
 // // utilizar rutas absolutas para importar
-import FormBody from 'Views/enterprises/sections/forms/sections/FormBody'
-import allForms from 'Views/enterprises/sections/forms/formJson'
+import FormBody from '../views/enterprises/sections/forms/sections/FormBody'
+import allForms from '../views/enterprises/sections/forms/formJson'
 
 const SecondSection = () => {
   const myRef = React.createRef()

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import Button from '@material-ui/core/Button'
-import { FormContext, DispatchContext } from 'Context/formContext'
+import { FormContext, DispatchContext } from '../context/formContext'
 
 const FormButtons = ({ scrollAction }) => {
   const { next, prev } = useContext(FormContext)

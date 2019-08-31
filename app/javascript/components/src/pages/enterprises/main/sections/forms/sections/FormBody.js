@@ -1,8 +1,8 @@
 import React, { Fragment, useContext } from 'react'
-import FormGenerator from 'Components/FormGenerator'
-// import ResposiveDialog from 'Components/Dialog/ResponsiveDialog'
-// import ExperienceCard from 'Components/ExperienceCard'
-import { FormContext } from 'Context/formContext'
+import FormGenerator from '../components/FormGenerator'
+// import ResposiveDialog from '../components/Dialog/ResponsiveDialog'
+// import ExperienceCard from '../components/ExperienceCard'
+import { FormContext } from '../context/formContext'
 import FormTitle from './FormTitle'
 import FormButtons from './FormButtons'
 

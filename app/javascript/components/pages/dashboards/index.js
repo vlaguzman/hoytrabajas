@@ -1,5 +1,5 @@
 import React from 'react'
-import { DynamicBoards } from 'Views/DynamicViews'
+import { DynamicBoards } from '../views/DynamicViews'
 
 const MainPage = () => (
   <div className="dashboards-wrapper pcx">

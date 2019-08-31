@@ -8,14 +8,14 @@ import CardHeader from '@material-ui/core/CardHeader'
 import CardContent from '@material-ui/core/CardContent'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
-import AgencyWelcomeBarChart from 'Components/Charts/AgencyWelcomeBarChart'
+import AgencyWelcomeBarChart from '../components/Charts/AgencyWelcomeBarChart'
 import InputLabel from '@material-ui/core/InputLabel'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormControl from '@material-ui/core/FormControl'
 import Select from '@material-ui/core/Select'
 import { WelcomeBarChart1 } from './data'
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder'
-import CarouselRow from 'Components/Carousel/CarouselRow'
+import CarouselRow from '../components/Carousel/CarouselRow'
 import { map } from 'lodash';
 
 

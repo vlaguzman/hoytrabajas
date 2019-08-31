@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Row, Col } from 'reactstrap'
-import CandidateController from 'Components/FormGenerator/controllers/CandidateController'
-import OffersController from 'Components/FormGenerator/controllers/OffersController'
+import CandidateController from '../components/FormGenerator/controllers/CandidateController'
+import OffersController from '../components/FormGenerator/controllers/OffersController'
 
 const FormGenerator = ({
   scrollAction,

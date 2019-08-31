@@ -2,9 +2,9 @@ import React from 'react'
 import Paper from '@material-ui/core/Paper'
 import {Row} from 'reactstrap'
 import Typography from '@material-ui/core/Typography'
-import PaperHeader from 'Components/PaperHeader';
-import { FormProvider } from 'Context/formContext'
-import { InfoProvider } from 'Context/formInfoContext'
+import PaperHeader from '../components/PaperHeader';
+import { FormProvider } from '../context/formContext'
+import { InfoProvider } from '../context/formInfoContext'
 import FormBody from '../forms/sections/FormBody'
 import allForms from '../forms/formJson'
 

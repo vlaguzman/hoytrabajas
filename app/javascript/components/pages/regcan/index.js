@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react'
-import { DynamicReg } from 'Views/DynamicViews'
-import IsLoggedIn from 'Components/Permissions/IsLoggedIn'
+import { DynamicReg } from '../views/DynamicViews'
+import IsLoggedIn from '../components/Permissions/IsLoggedIn'
 
 const RegPage = () => (
   <Fragment>

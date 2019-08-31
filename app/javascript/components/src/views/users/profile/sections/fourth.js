@@ -6,17 +6,17 @@ import { map } from 'lodash'
 
 // Usar rutas absolutas hacia la carpeta de componentes general (si son reutilizables)
 // o hacia la carpeta de componentes propia de la vista
-import DataCard from 'Components/Cards/DataCard'
-import CarouselRow from 'Components/Carousel/CarouselRow'
+import DataCard from '../components/Cards/DataCard'
+import CarouselRow from '../components/Carousel/CarouselRow'
 
 // Evitar utilizar guión bajo para los nombres
 // import PaperHeader from '../components/paper_header';
-import PaperHeader from 'Components/PaperHeader'
+import PaperHeader from '../components/PaperHeader'
 
 // El nombre del componente importado debe coincidir con el nombre del archivo
 // import ButtonsAuxiliars from '../components/buttons'
-import AuxiliaryButtons from 'Views/users/profile/components/AuxiliaryButtons'
-import AddEditButton from 'Views/users/profile/components/AddEditButton'
+import AuxiliaryButtons from '../views/users/profile/components/AuxiliaryButtons'
+import AddEditButton from '../views/users/profile/components/AddEditButton'
 
 const data = [
   {

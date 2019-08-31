@@ -2,10 +2,10 @@ import React, { useContext, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { useRouter } from 'next/router'
 import Button from '@material-ui/core/Button'
-import { loadInfo } from 'Actions'
-import { FormContext, DispatchContext } from 'Context/formContext'
+import { loadInfo } from '../actions'
+import { FormContext, DispatchContext } from '../context/formContext'
 import {Row} from 'reactstrap'
-// import { InfoContext } from 'Context/formInfoContext'
+// import { InfoContext } from '../context/formInfoContext'
 const FormButtons = ({ scrollAction, dispatch }) => {
   const { next, prev, formSection } = useContext(FormContext)
   const dispatchForm = useContext(DispatchContext)

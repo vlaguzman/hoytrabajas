@@ -4,7 +4,7 @@ import { Row } from 'reactstrap'
 import Btn from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import { AddCircleOutline } from '@material-ui/icons'
-import { DispatchContext } from 'Context/formContext'
+import { DispatchContext } from '../context/formContext'
 
 const SkipButton = ({
   pro: {

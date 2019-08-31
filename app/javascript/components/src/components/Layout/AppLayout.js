@@ -7,9 +7,9 @@ import {
 } from '@material-ui/styles'
 import { ThemeProvider } from 'styled-components'
 
-import Header from 'Components/Layout/Header'
-import Footer from 'Components/Layout/Footer'
-import theme from 'Components/Layout/Theme/theme'
+import Header from '../components/Layout/Header'
+import Footer from '../components/Layout/Footer'
+import theme from '../components/Layout/Theme/theme'
 
 const AppLayout = ({ children }) => {
   const [isTop, setIsTop] = useState(false)

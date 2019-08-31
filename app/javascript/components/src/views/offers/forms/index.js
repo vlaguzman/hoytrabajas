@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import Paper from '@material-ui/core/Paper'
-import { FormProvider } from 'Context/formContext'
+import { FormProvider } from '../context/formContext'
 import FormBody from './sections/FormBody'
 import allForms from './formJson'
 import {Row, Col} from 'reactstrap'

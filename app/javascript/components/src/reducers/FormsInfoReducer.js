@@ -11,7 +11,7 @@ import {
   PUSH_FIELD_ARRAY,
   UPDATE_FORM_ID,
   RESET_ALL
-} from 'Actions/types'
+} from '../actions/types'
 
 export default (state = INIT_STATE, action) =>
   produce(state, draftState => {

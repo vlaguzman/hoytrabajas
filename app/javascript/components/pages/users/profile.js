@@ -1,5 +1,5 @@
 import React from 'react'
-import { DynamicUsersProfile } from 'Views/DynamicViews'
+import { DynamicUsersProfile } from '../views/DynamicViews'
 
 const UsersProfile = () => (
   <div className="users-wrapper pcx">

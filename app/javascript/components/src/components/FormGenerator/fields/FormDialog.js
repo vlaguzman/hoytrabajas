@@ -1,8 +1,8 @@
 import React from 'react'
 import Dialog from '@material-ui/core/Dialog'
 import DialogContent from '@material-ui/core/DialogContent'
-import ExperienceCard from 'Components/Cards/ExperienceCard'
-import EducationCard from 'Components/Cards/EducationCard'
+import ExperienceCard from '../components/Cards/ExperienceCard'
+import EducationCard from '../components/Cards/EducationCard'
 
 const FormDialog = props => {
   const {

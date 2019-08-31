@@ -1,5 +1,5 @@
 import React from 'react'
-import { DynamicEnterprises } from 'Views/DynamicViews'
+import { DynamicEnterprises } from '../views/DynamicViews'
 
 const Enterprises = () => (
   <div className="crof-wrapper pcx">

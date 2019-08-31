@@ -1,5 +1,5 @@
 import React from 'react'
-import { DynamicOffersCompleted} from 'Views/DynamicViews'
+import { DynamicOffersCompleted} from '../views/DynamicViews'
 
 const OffersFormsCompletedPage = () => (
   <div className="regcan-wrapper pcx">

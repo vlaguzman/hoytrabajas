@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react'
-import { DynamicOffersForms } from 'Views/DynamicViews'
+import { DynamicOffersForms } from '../views/DynamicViews'
 
 const OffersFormsPage = () => (
   <Fragment>

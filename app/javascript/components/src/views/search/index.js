@@ -2,7 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import {Row, Col} from 'reactstrap'
-import GalleryCards from 'Components/galleryCards';
+import GalleryCards from '../components/galleryCards';
 import Button from '@material-ui/core/Button'
 
 const RegPage = () => {

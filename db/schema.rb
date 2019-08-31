@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_31_153540) do
+ActiveRecord::Schema.define(version: 2019_08_31_154644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -422,6 +422,16 @@ ActiveRecord::Schema.define(version: 2019_08_31_153540) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "required_experiences", force: :cascade do |t|
+    t.integer "duration"
+    t.bigint "duration_type_id", null: false
+    t.bigint "offer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["duration_type_id"], name: "index_required_experiences_on_duration_type_id"
+    t.index ["offer_id"], name: "index_required_experiences_on_offer_id"
+  end
+
   create_table "requirements", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -575,5 +585,7 @@ ActiveRecord::Schema.define(version: 2019_08_31_153540) do
   add_foreign_key "recommendations_soft_skills", "soft_skills"
   add_foreign_key "recommendations_technical_skills", "recommendations"
   add_foreign_key "recommendations_technical_skills", "technical_skills"
+  add_foreign_key "required_experiences", "duration_types"
+  add_foreign_key "required_experiences", "offers"
   add_foreign_key "visits", "curriculum_vitaes"
 end

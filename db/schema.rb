@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_30_221606) do
+ActiveRecord::Schema.define(version: 2019_08_31_141732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -164,6 +164,15 @@ ActiveRecord::Schema.define(version: 2019_08_30_221606) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["city_id"], name: "index_educational_levels_on_city_id", unique: true
     t.index ["curriculum_vitae_id"], name: "index_educational_levels_on_curriculum_vitae_id", unique: true
+  end
+
+  create_table "educational_levels_offers", force: :cascade do |t|
+    t.bigint "educational_level_id", null: false
+    t.bigint "offer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["educational_level_id"], name: "index_educational_levels_offers_on_educational_level_id"
+    t.index ["offer_id"], name: "index_educational_levels_offers_on_offer_id"
   end
 
   create_table "functions", force: :cascade do |t|
@@ -502,6 +511,8 @@ ActiveRecord::Schema.define(version: 2019_08_30_221606) do
   add_foreign_key "curriculum_vitaes_soft_skills", "soft_skills"
   add_foreign_key "driving_licences_offers", "driving_licences"
   add_foreign_key "driving_licences_offers", "offers"
+  add_foreign_key "educational_levels_offers", "educational_levels"
+  add_foreign_key "educational_levels_offers", "offers"
   add_foreign_key "functions_offers", "functions"
   add_foreign_key "functions_offers", "offers"
   add_foreign_key "job_aids_offers", "job_aids"

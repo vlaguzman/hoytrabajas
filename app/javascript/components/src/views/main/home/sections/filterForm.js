@@ -1,0 +1,384 @@
+import React, { Fragment } from 'react'
+import { Form, FormText, Col, FormFeedback, Collapse, Row } from 'reactstrap'
+import Button from '@material-ui/core/Button'
+import IconButton from '@material-ui/core/IconButton'
+import Fab from '@material-ui/core/Fab'
+import RctCollapsibleCard from 'Components/Reactify/CollapsibleCard'
+import dialogState from 'Hooks/dialogState'
+import ListaCategorias from 'Views/main/home/sections/components/categories_components/categoriesList'
+import CarouselRow from 'Views/main/home/sections/components/carousel/carousel'
+import FormGen from 'Views/main/home/sections/components/formFieldGenerartor'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+import Dialog from '@material-ui/core/Dialog';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import CloseIcon from '@material-ui/icons/Close';
+import Slide from '@material-ui/core/Slide';
+
+
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
+import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
+
+const names = [
+  'Oliver Hansen',
+  'Van Henry',
+  'April Tucker',
+  'Ralph Hubbard',
+  'Omar Alexander',
+  'Carlos Abbott',
+  'Miriam Wagner',
+  'Bradley Wilkerson',
+  'Virginia Andrews',
+  'Kelly Snyder',
+];
+
+
+const currencies = [
+  {
+    value: 'USD',
+    label: '$',
+  },
+  {
+    value: 'EUR',
+    label: '€',
+  },
+  {
+    value: 'BTC',
+    label: '฿',
+  },
+  {
+    value: 'JPY',
+    label: '¥',
+  },
+];
+
+
+
+const FilterForm = ({ categorias, fields1, fields2, button1 }) => {
+  const { value: state, toggleState } = dialogState({ open: false })
+  const [open, setOpen] = React.useState(false);
+
+  function handleClickOpen() {
+    setOpen(true);
+  }
+
+  function handleClose() {
+    setOpen(false);
+  }
+
+  const [personName, setPersonName] = React.useState([]);
+
+  function handleChange(event) {
+    setPersonName(event.target.value);
+  }
+
+  function handleChangeMultiple(event) {
+    const { options } = event.target;
+    const value = [];
+    for (let i = 0, l = options.length; i < l; i += 1) {
+      if (options[i].selected) {
+        value.push(options[i].value);
+      }
+    }
+    setPersonName(value);
+  }
+
+  const arregloCampos = (arreglo) => {
+    return (
+      <Fragment>
+      {
+          arreglo.map(({label, placeholder},i)=> (
+          <Col xs={12} lg={4} key={i}>
+            <FormControl >
+              <InputLabel htmlFor="select-multiple-checkbox">
+                {label}
+              </InputLabel>
+              <Select
+                multiple
+                value={personName}
+                onChange={handleChange}
+                className='w-70 mb-20'
+                input={<Input id="select-multiple-checkbox" />}
+                renderValue={selected => selected.join(', ')}
+                >
+                            <MenuItem disabled value="">
+                              <em>{placeholder}</em>
+                            </MenuItem>
+                            {names.map(name => (
+                              <MenuItem key={name} value={name} >
+                                {name}
+                              </MenuItem>
+                            ))}
+                          </Select>
+                </FormControl>
+            </Col>
+        ))
+      }
+    </Fragment>
+    )
+  }
+
+  return (
+    <Row className="justify-content-center" noGutters>
+      <RctCollapsibleCard colClasses="col-9 my-30 d-none d-lg-block " contentCustomClasses="">
+        <Form className="row justify-content-around">
+          <Col xs={12} md={1} className="pt-rem pl-0 p-0 align-items-center">
+            <Button
+              type="button"
+              onClick={toggleState}
+              className="text-primary h-50"
+            >
+              {button1}
+            </Button>
+          </Col>
+          <FormGen fields={fields1} />
+          <Fab className="mb-10 search_button text-white" color="primary">
+            <FontAwesomeIcon icon="search" size='sm' />
+          </Fab>
+          <Col xs={12} md={1} className="pl-0 p-0 align-items-center">
+            <IconButton
+              className="text-primary"
+              style={{width: '55%', height: '60%'}}
+              onClick={handleClickOpen}
+            >
+             <FontAwesomeIcon className='mx-auto text-primary' icon={['fas', 'list']} size="xs" />  
+            </IconButton>
+            <Dialog style={{backgroundColor: '#F5F5F5'}}   fullScreen open={open} onClose={handleClose} TransitionComponent={Transition}>
+              <AppBar className='position-relative text-white' >
+                <Toolbar>
+                <FontAwesomeIcon className='mx-auto text-primary' icon={['fas', 'list']}  /> 
+                  <Typography variant="h6" style={{flex: '1'}} >
+                   Busqueda Avanzada
+                  </Typography>
+                  <Button variant='outlined' style={{borderRadius: '30px', color: 'white', borderColor: 'white',}} className='mx-5'>
+                    Borrar
+                  </Button>
+                  <Button variant='outlined' style={{borderRadius: '30px', borderColor: 'white', color: 'white'}} className='mx-20'>
+                    Buscar
+                  </Button>
+                  <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
+                    <CloseIcon />
+                  </IconButton>
+                </Toolbar>
+              </AppBar>
+
+              <Col xs={12} className='px-auto py-50 mb-70 align-items-center'>
+                {/* ************************** */}
+                {/* Primera Linea  */}
+                {/* *********************** */}
+                <Row className='mx-0 px-40'>
+                  <Col>
+                  <FormControl component="fieldset">
+                      <FormLabel component="legend">Fecha de publicación</FormLabel>
+                      <RadioGroup
+                        aria-label="gender"
+                        name="gender1">
+                          {
+                            [ 
+                              'Últimas 24 horas',
+                              'Semana pasada',
+                              'Mes pasado',
+                              'Cualquier Momento'
+                             ].map((e, i) => (
+                               <FormControlLabel key={i} className='m-0' value={e} control={<Radio 
+                                       icon={<RadioButtonUncheckedIcon fontSize="small" />}
+                                       checkedIcon={<RadioButtonCheckedIcon fontSize="small" />}
+                               />} label={<Typography variant='body2' >{e}</Typography>} />
+                             ))
+                          }
+                      </RadioGroup>
+                    </FormControl>
+                  </Col>
+                  <Col>
+                  <FormControl component="fieldset">
+                      <FormLabel component="legend">Fecha de publicación</FormLabel>
+                      <RadioGroup
+                        aria-label="gender"
+                        name="gender1">
+                          {
+                            [ 
+                              '1 año',
+                              '2 años',
+                              'sin experiencia'
+                             ].map((e, i) => (
+                               <FormControlLabel key={i} className='m-0' value={e} control={<Radio 
+                                       icon={<RadioButtonUncheckedIcon fontSize="small" />}
+                                       checkedIcon={<RadioButtonCheckedIcon fontSize="small" />}
+                               />} label={<Typography variant='body2' >{e}</Typography>} />
+                             ))
+                          }
+                      </RadioGroup>
+                    </FormControl>
+                  </Col>
+                  <Col>
+                  <FormControl component="fieldset">
+                      <FormLabel component="legend">Fecha de publicación</FormLabel>
+                      <RadioGroup
+                        aria-label="gender"
+                        name="gender1">
+                          {
+                            [ 
+                              '1 año',
+                              '2 años',
+                              'sin experiencia'
+                             ].map((e,i) => (
+                              <FormControlLabel key={i} className='m-0' value="female" control={<Radio 
+                                icon={<RadioButtonUncheckedIcon fontSize="small" />}
+                                checkedIcon={<RadioButtonCheckedIcon fontSize="small" />}
+                                />} label={<Typography variant='body2' >{e}</Typography>} />
+                             ))
+                          }
+                      </RadioGroup>
+                    </FormControl>
+                  </Col>
+                </Row>
+                {/* ************************** */}
+                {/* segunda Linea  */}
+                {/* *********************** */}
+                <Row className='mx-0 px-40'>
+                {
+                      arregloCampos([
+                        {
+                          label: 'Cargo' ,
+                          placeholder: 'Escribe el cargo a buscar'
+                        },
+                        {
+                          label: 'Categorias de trabajo' ,
+                          placeholder: 'Categorias de trabajo'
+                        },
+                        {
+                          label: 'Ciudad' ,
+                          placeholder: 'Selecciona la ciudad de interes'
+                        },
+
+                      ])
+                    }
+                </Row>
+                {/* ************************** */}
+                {/* tercera Linea  */}
+                {/* *********************** */}
+                <Row className='mx-0 px-40'>
+                {
+                      arregloCampos([
+                        {
+                          label: 'Localidad',
+                          placeholder: 'Selecciona la localidad de interes'
+                        },
+                        
+                        {
+                          label: 'Tipo de oferta',
+                          placeholder: 'Selecciona el tipo de oferta de interes'
+                        },
+                        
+                        {
+                          label: 'Tipo de contratación',
+                          placeholder: 'Selecciona la ciudad de interes'
+                        }
+
+                      ])
+                    }
+                </Row>
+                {/* ************************** */}
+                {/* cuarta Linea  */}
+                {/* *********************** */}
+                <Row className='mx-0 px-40'>
+                {
+                      arregloCampos([
+                        {
+                          label: 'Modalidad de trabajo',
+                          placeholder: 'Selecciona la localidad de interes'
+                        },
+                        
+                        {
+                          label: 'Auxilios o prestaciones',
+                          placeholder: 'Selecciona el tipo de oferta de interes'
+                        },
+                        
+                        {
+                          label: 'Días disponibles para trabajar',
+                          placeholder: 'Selecciona el tipo de oferta de interes'
+                        }
+                      ])
+                    }
+                </Row>
+                {/* ************************** */}
+                {/* quinta Linea  */}
+                {/* *********************** */}
+                <Row className='mx-0 px-40'>
+                {
+                      arregloCampos([
+                        {
+                          label: 'Jornada',
+                          placeholder: 'Selecciona la ciudad de interes'
+                        },
+                        {
+                          label: 'Aspiración salarial',
+                          placeholder: 'Selecciona el salario'
+                        },
+                        {
+                          label: 'Tiempo',
+                          placeholder: 'Periodo de tu aspiracion salarial'
+                        }
+                      ])
+                    }
+                </Row>
+                {/* ************************** */}
+                {/* sexta Linea  */}
+                {/* *********************** */}
+                <Row className='px-40 mx-0 mb-30 w-100 justify-content-start'>
+                {
+                      arregloCampos([
+                        {
+                          label: 'Nivel de educación',
+                          placeholder: 'Selecciona alguna de las opciones'
+                        },
+                        {
+                          label: 'Idiomas',
+                          placeholder: 'Selecciona alguna de las opciones'
+                        },
+                      ])
+                    }
+                </Row>
+              </Col>
+            </Dialog>
+          </Col>
+        </Form>
+        <Collapse isOpen={state.open}>
+          <CarouselRow items={categorias} />
+        </Collapse>
+      </RctCollapsibleCard>
+    </Row> 
+  )
+}
+export default FilterForm
+
+
+
+
+
+
+
+
+
+
+
+
+

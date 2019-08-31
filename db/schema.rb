@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_31_164723) do
+ActiveRecord::Schema.define(version: 2019_08_31_174714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -112,9 +112,11 @@ ActiveRecord::Schema.define(version: 2019_08_31_164723) do
     t.bigint "labor_disponibility_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "work_mode_id", null: false
     t.index ["city_id"], name: "index_curriculum_vitaes_on_city_id"
     t.index ["labor_disponibility_id"], name: "index_curriculum_vitaes_on_labor_disponibility_id"
     t.index ["user_id"], name: "index_curriculum_vitaes_on_user_id"
+    t.index ["work_mode_id"], name: "index_curriculum_vitaes_on_work_mode_id"
   end
 
   create_table "curriculum_vitaes_soft_skills", force: :cascade do |t|
@@ -300,17 +302,17 @@ ActiveRecord::Schema.define(version: 2019_08_31_164723) do
     t.bigint "job_category_id", null: false
     t.bigint "offer_type_id", null: false
     t.bigint "gender_id", null: false
-    t.bigint "work_type_id", null: false
     t.bigint "contract_type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "work_mode_id", null: false
     t.index ["city_id"], name: "index_offers_on_city_id"
     t.index ["contract_type_id"], name: "index_offers_on_contract_type_id"
     t.index ["gender_id"], name: "index_offers_on_gender_id"
     t.index ["job_category_id"], name: "index_offers_on_job_category_id"
     t.index ["offer_type_id"], name: "index_offers_on_offer_type_id"
     t.index ["user_id"], name: "index_offers_on_user_id"
-    t.index ["work_type_id"], name: "index_offers_on_work_type_id"
+    t.index ["work_mode_id"], name: "index_offers_on_work_mode_id"
   end
 
   create_table "offers_responsibilities", force: :cascade do |t|
@@ -513,13 +515,13 @@ ActiveRecord::Schema.define(version: 2019_08_31_164723) do
     t.index ["curriculum_vitaes_id"], name: "index_visits_on_curriculum_vitaes_id"
   end
 
-  create_table "work_positions", force: :cascade do |t|
+  create_table "work_modes", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "work_types", force: :cascade do |t|
+  create_table "work_positions", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

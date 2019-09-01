@@ -1,5 +1,5 @@
 import produce from 'immer'
-import INIT_STATE from 'Src/store/initialStates/forms'
+import INIT_STATE from '../store/initialStates/forms'
 
 import {
   LOAD_INFO,

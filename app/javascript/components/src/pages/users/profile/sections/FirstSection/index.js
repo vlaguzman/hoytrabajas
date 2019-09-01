@@ -2,7 +2,7 @@ import React, {Fragment} from 'react'
 import Typography from '@material-ui/core/Typography';
 import {Row, Col} from 'reactstrap';
 import DataCard from '../../../../components/DataCard';
-import { listOfIcons } from '../../data';
+import { listOfIcons } from '../../../../../views/users/profile/data';
 
 const FirstSection = () => {
   return (

@@ -15,6 +15,7 @@
     "auth0-js": "^9.11.3",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "chart": "^0.1.2",
+    "chart.js": "^2.8.0",
     "clsx": "^1.0.4",
     "date-fns": "^2.0.1",
     "downshift": "^3.2.12",

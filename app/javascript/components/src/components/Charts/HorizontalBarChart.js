@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { HorizontalBar } from 'react-chartjs-2'
-import ChartConfig from '../constants/chart-config'
+import ChartConfig from '../../constants/chart-config'
 
 export default class HorizontalBarChart extends Component {
   render() {

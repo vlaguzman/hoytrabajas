@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import {Row, Col} from 'reactstrap'
-import HorizontalBarChart from '../components/Charts/HorizontalBarChart';
+import HorizontalBarChart from '../../../components/Charts/HorizontalBarChart';
 import MaterialList from './list'
 import CarouselRow from '../carousel';
 import { map } from 'lodash';

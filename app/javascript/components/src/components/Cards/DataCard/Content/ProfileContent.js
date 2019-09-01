@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Col } from 'reactstrap'
 import { makeGetDisplayFields } from '../../../../selectors/forms'
 import useWhyDidYouUpdate from       '../../../../hooks/useWhyDidYouUpdate'
-import ProfileBasicInfo from './styles/ProfileBasicInfo'
+import ProfileBasicInfo from  './styles/ProfileBasicInfo'
 
 const renderOptions = {
   basic_info: ({ currentDataContent }) => (

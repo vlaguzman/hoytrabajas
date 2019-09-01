@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Col } from 'reactstrap'
-import { makeGetDisplayFields } from 'selectors/forms'
-import useWhyDidYouUpdate from 'hooks/useWhyDidYouUpdate'
+import { makeGetDisplayFields } from '../../../../selectors/forms'
+import useWhyDidYouUpdate from       '../../../../hooks/useWhyDidYouUpdate'
 import ProfileBasicInfo from './styles/ProfileBasicInfo'
 
 const renderOptions = {

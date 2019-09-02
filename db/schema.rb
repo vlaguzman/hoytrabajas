@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_31_195124) do
+ActiveRecord::Schema.define(version: 2019_09_02_153339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -149,6 +149,13 @@ ActiveRecord::Schema.define(version: 2019_08_31_195124) do
     t.bigint "vehicle_id", null: false
     t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_vehicles_on_curriculum_vitae_id"
     t.index ["vehicle_id"], name: "index_curriculum_vitaes_vehicles_on_vehicle_id"
+  end
+
+  create_table "curriculum_vitaes_working_days", force: :cascade do |t|
+    t.bigint "curriculum_vitae_id", null: false
+    t.bigint "working_day_id", null: false
+    t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_working_days_on_curriculum_vitae_id"
+    t.index ["working_day_id"], name: "index_curriculum_vitaes_working_days_on_working_day_id"
   end
 
   create_table "document_types", force: :cascade do |t|

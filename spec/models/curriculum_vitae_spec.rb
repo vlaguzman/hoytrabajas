@@ -31,6 +31,6 @@ RSpec.describe CurriculumVitae, type: :model do
     it { should have_and_belong_to_many(:soft_skills) }
     it { should have_and_belong_to_many(:educational_degrees) }
     it { should have_and_belong_to_many(:vehicles) }
-
+    it { should have_and_belong_to_many(:working_days) }
   end
 end

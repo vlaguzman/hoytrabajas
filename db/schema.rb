@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_02_165112) do
+ActiveRecord::Schema.define(version: 2019_09_02_221047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -110,6 +110,12 @@ ActiveRecord::Schema.define(version: 2019_09_02_165112) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "currencies", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "curriculum_vitaes", force: :cascade do |t|
     t.string "area_code"
     t.string "about_me"
@@ -149,6 +155,17 @@ ActiveRecord::Schema.define(version: 2019_09_02_165112) do
     t.bigint "limitation_id", null: false
     t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_limitations_on_curriculum_vitae_id"
     t.index ["limitation_id"], name: "index_curriculum_vitaes_limitations_on_limitation_id"
+  end
+
+  create_table "curriculum_vitaes_salaries", force: :cascade do |t|
+    t.bigint "curriculum_vitae_id", null: false
+    t.bigint "salary_period_id", null: false
+    t.bigint "currency_id", null: false
+    t.integer "from"
+    t.integer "to"
+    t.index ["currency_id"], name: "index_curriculum_vitaes_salaries_on_currency_id"
+    t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_salaries_on_curriculum_vitae_id"
+    t.index ["salary_period_id"], name: "index_curriculum_vitaes_salaries_on_salary_period_id"
   end
 
   create_table "curriculum_vitaes_soft_skills", force: :cascade do |t|
@@ -384,6 +401,19 @@ ActiveRecord::Schema.define(version: 2019_09_02_165112) do
     t.index ["responsibility_id"], name: "index_offers_responsibilities_on_responsibility_id"
   end
 
+  create_table "offers_salaries", force: :cascade do |t|
+    t.bigint "offer_id", null: false
+    t.bigint "currency_id", null: false
+    t.bigint "salary_type_id", null: false
+    t.bigint "salary_period_id", null: false
+    t.integer "from"
+    t.integer "to"
+    t.index ["currency_id"], name: "index_offers_salaries_on_currency_id"
+    t.index ["offer_id"], name: "index_offers_salaries_on_offer_id"
+    t.index ["salary_period_id"], name: "index_offers_salaries_on_salary_period_id"
+    t.index ["salary_type_id"], name: "index_offers_salaries_on_salary_type_id"
+  end
+
   create_table "offers_soft_skills", force: :cascade do |t|
     t.bigint "offer_id", null: false
     t.bigint "soft_skill_id", null: false
@@ -498,6 +528,12 @@ ActiveRecord::Schema.define(version: 2019_09_02_165112) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "salary_periods", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "salary_types", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -607,6 +643,9 @@ ActiveRecord::Schema.define(version: 2019_09_02_165112) do
   add_foreign_key "curriculum_vitaes_languages", "languages"
   add_foreign_key "curriculum_vitaes_limitations", "curriculum_vitaes"
   add_foreign_key "curriculum_vitaes_limitations", "limitations"
+  add_foreign_key "curriculum_vitaes_salaries", "currencies"
+  add_foreign_key "curriculum_vitaes_salaries", "curriculum_vitaes"
+  add_foreign_key "curriculum_vitaes_salaries", "salary_periods"
   add_foreign_key "curriculum_vitaes_soft_skills", "soft_skills"
   add_foreign_key "curriculum_vitaes_technical_skills", "curriculum_vitaes"
   add_foreign_key "curriculum_vitaes_technical_skills", "job_categories"
@@ -636,6 +675,10 @@ ActiveRecord::Schema.define(version: 2019_09_02_165112) do
   add_foreign_key "offers", "work_modes"
   add_foreign_key "offers_responsibilities", "offers"
   add_foreign_key "offers_responsibilities", "responsibilities"
+  add_foreign_key "offers_salaries", "currencies"
+  add_foreign_key "offers_salaries", "offers"
+  add_foreign_key "offers_salaries", "salary_periods"
+  add_foreign_key "offers_salaries", "salary_types"
   add_foreign_key "offers_soft_skills", "offers"
   add_foreign_key "offers_soft_skills", "soft_skills"
   add_foreign_key "offers_technical_skills", "levels"

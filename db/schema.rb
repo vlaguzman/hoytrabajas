@@ -587,6 +587,14 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "sexes", force: :cascade do |t|
+    t.string "description"
+    t.bigint "users_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["users_id"], name: "index_sexes_on_users_id"
+  end
+
   create_table "soft_skills", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false

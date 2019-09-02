@@ -33,7 +33,4 @@ RSpec.describe User, type: :model do
     #it { should have_and_belongs_to_many(:handicap) }
     #it { should have_and_belonds_to_many(:educational_degree) }
   end
-
-
-
 end

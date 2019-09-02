@@ -104,6 +104,30 @@ ActiveRecord::Schema.define(version: 2019_09_02_233227) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "contact_name"
+    t.string "cellphone"
+    t.string "contact_cellphone"
+    t.string "nit"
+    t.string "address"
+    t.string "web_site"
+    t.string "contact_web_site"
+    t.string "description"
+    t.string "contact_work_position"
+    t.bigint "employees_range_id", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_companies_on_email", unique: true
+    t.index ["employees_range_id"], name: "index_companies_on_employees_range_id"
+    t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
+  end
+
   create_table "contract_types", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -641,6 +665,7 @@ ActiveRecord::Schema.define(version: 2019_09_02_233227) do
   add_foreign_key "applied_offers", "offers"
   add_foreign_key "available_work_days_offers", "available_work_days"
   add_foreign_key "available_work_days_offers", "offers"
+  add_foreign_key "companies", "employees_ranges"
   add_foreign_key "curriculum_vitaes", "cities"
   add_foreign_key "curriculum_vitaes", "labor_disponibilities"
   add_foreign_key "curriculum_vitaes", "users"

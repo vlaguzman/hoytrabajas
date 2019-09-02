@@ -14,7 +14,6 @@ RSpec.describe Company, type: :model do
     it { should validate_presence_of(:contact_web_site) }
     it { should validate_presence_of(:description) }
     it { should validate_presence_of(:contact_work_position) }
-    it { should validate_presence_of(:description) }
     it { should respond_to(:logo) }
   end
 

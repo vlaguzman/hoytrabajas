@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_02_155326) do
+ActiveRecord::Schema.define(version: 2019_09_02_162719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,6 +124,15 @@ ActiveRecord::Schema.define(version: 2019_09_02_155326) do
     t.string "educational_degree_id"
     t.index ["curriculum_vitae_id"], name: "cv_id", unique: true
     t.index ["educational_degree_id"], name: "edu_degree_id", unique: true
+  end
+
+  create_table "curriculum_vitaes_languages", force: :cascade do |t|
+    t.bigint "curriculum_vitae_id", null: false
+    t.bigint "language_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_languages_on_curriculum_vitae_id"
+    t.index ["language_id"], name: "index_curriculum_vitaes_languages_on_language_id"
   end
 
   create_table "curriculum_vitaes_limitations", force: :cascade do |t|

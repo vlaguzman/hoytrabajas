@@ -17,6 +17,7 @@ class CurriculumVitae < ApplicationRecord
   has_and_belongs_to_many :vehicles
   has_and_belongs_to_many :working_days
   has_and_belongs_to_many :available_work_days
+  has_and_belongs_to_many :languages
 
   has_one_attached :photo
 end

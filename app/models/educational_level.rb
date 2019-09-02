@@ -3,4 +3,5 @@ class EducationalLevel < ApplicationRecord
 
   belongs_to :city
   belongs_to :curriculum_vitae
+  has_and_belongs_to_many :offers
 end

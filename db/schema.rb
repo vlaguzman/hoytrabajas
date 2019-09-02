@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_30_163300) do
+ActiveRecord::Schema.define(version: 2019_08_31_154644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,10 +53,38 @@ ActiveRecord::Schema.define(version: 2019_08_30_163300) do
     t.index ["offer_id"], name: "index_age_ranges_on_offer_id"
   end
 
+  create_table "applied_offer_statuses", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "applied_offers", force: :cascade do |t|
+    t.datetime "applied_date"
+    t.string "note"
+    t.bigint "offer_id", null: false
+    t.bigint "curriculum_vitae_id", null: false
+    t.bigint "applied_offer_status_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["applied_offer_status_id"], name: "index_applied_offers_on_applied_offer_status_id"
+    t.index ["curriculum_vitae_id"], name: "index_applied_offers_on_curriculum_vitae_id"
+    t.index ["offer_id"], name: "index_applied_offers_on_offer_id"
+  end
+
   create_table "available_work_days", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "available_work_days_offers", force: :cascade do |t|
+    t.bigint "available_work_day_id", null: false
+    t.bigint "offer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["available_work_day_id"], name: "index_available_work_days_offers_on_available_work_day_id"
+    t.index ["offer_id"], name: "index_available_work_days_offers_on_offer_id"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -122,6 +150,21 @@ ActiveRecord::Schema.define(version: 2019_08_30_163300) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "driving_licences_offers", force: :cascade do |t|
+    t.bigint "offer_id", null: false
+    t.bigint "driving_licence_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["driving_licence_id"], name: "index_driving_licences_offers_on_driving_licence_id"
+    t.index ["offer_id"], name: "index_driving_licences_offers_on_offer_id"
+  end
+
+  create_table "duration_types", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "durations", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -146,6 +189,15 @@ ActiveRecord::Schema.define(version: 2019_08_30_163300) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["city_id"], name: "index_educational_levels_on_city_id", unique: true
     t.index ["curriculum_vitae_id"], name: "index_educational_levels_on_curriculum_vitae_id", unique: true
+  end
+
+  create_table "educational_levels_offers", force: :cascade do |t|
+    t.bigint "educational_level_id", null: false
+    t.bigint "offer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["educational_level_id"], name: "index_educational_levels_offers_on_educational_level_id"
+    t.index ["offer_id"], name: "index_educational_levels_offers_on_offer_id"
   end
 
   create_table "functions", force: :cascade do |t|
@@ -212,6 +264,23 @@ ActiveRecord::Schema.define(version: 2019_08_30_163300) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "languages_offers", force: :cascade do |t|
+    t.bigint "language_id", null: false
+    t.bigint "offer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "level_id", null: false
+    t.index ["language_id"], name: "index_languages_offers_on_language_id"
+    t.index ["level_id"], name: "index_languages_offers_on_level_id"
+    t.index ["offer_id"], name: "index_languages_offers_on_offer_id"
+  end
+
+  create_table "levels", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "nationalities", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -254,6 +323,33 @@ ActiveRecord::Schema.define(version: 2019_08_30_163300) do
     t.index ["work_type_id"], name: "index_offers_on_work_type_id"
   end
 
+  create_table "offers_responsibilities", force: :cascade do |t|
+    t.bigint "offer_id", null: false
+    t.bigint "responsibility_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["offer_id"], name: "index_offers_responsibilities_on_offer_id"
+    t.index ["responsibility_id"], name: "index_offers_responsibilities_on_responsibility_id"
+  end
+
+  create_table "offers_soft_skills", force: :cascade do |t|
+    t.bigint "offer_id", null: false
+    t.bigint "soft_skill_id", null: false
+    t.index ["offer_id"], name: "index_offers_soft_skills_on_offer_id"
+    t.index ["soft_skill_id"], name: "index_offers_soft_skills_on_soft_skill_id"
+  end
+
+  create_table "offers_technical_skills", force: :cascade do |t|
+    t.bigint "offer_id", null: false
+    t.bigint "technical_skill_id", null: false
+    t.bigint "level_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["level_id"], name: "index_offers_technical_skills_on_level_id"
+    t.index ["offer_id"], name: "index_offers_technical_skills_on_offer_id"
+    t.index ["technical_skill_id"], name: "index_offers_technical_skills_on_technical_skill_id"
+  end
+
   create_table "offers_terms", force: :cascade do |t|
     t.integer "time"
     t.bigint "term_id", null: false
@@ -262,6 +358,31 @@ ActiveRecord::Schema.define(version: 2019_08_30_163300) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["offer_id"], name: "index_offers_terms_on_offer_id"
     t.index ["term_id"], name: "index_offers_terms_on_term_id"
+  end
+
+  create_table "offers_vehicles", force: :cascade do |t|
+    t.bigint "offer_id", null: false
+    t.bigint "vehicle_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["offer_id"], name: "index_offers_vehicles_on_offer_id"
+    t.index ["vehicle_id"], name: "index_offers_vehicles_on_vehicle_id"
+  end
+
+  create_table "offers_work_positions", force: :cascade do |t|
+    t.bigint "offer_id", null: false
+    t.bigint "work_position_id", null: false
+    t.index ["offer_id"], name: "index_offers_work_positions_on_offer_id"
+    t.index ["work_position_id"], name: "index_offers_work_positions_on_work_position_id"
+  end
+
+  create_table "offers_working_days", force: :cascade do |t|
+    t.bigint "offer_id", null: false
+    t.bigint "working_day_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["offer_id"], name: "index_offers_working_days_on_offer_id"
+    t.index ["working_day_id"], name: "index_offers_working_days_on_working_day_id"
   end
 
   create_table "recommendations", force: :cascade do |t|
@@ -301,7 +422,23 @@ ActiveRecord::Schema.define(version: 2019_08_30_163300) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "required_experiences", force: :cascade do |t|
+    t.integer "duration"
+    t.bigint "duration_type_id", null: false
+    t.bigint "offer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["duration_type_id"], name: "index_required_experiences_on_duration_type_id"
+    t.index ["offer_id"], name: "index_required_experiences_on_offer_id"
+  end
+
   create_table "requirements", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "responsibilities", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -403,12 +540,24 @@ ActiveRecord::Schema.define(version: 2019_08_30_163300) do
   add_foreign_key "acknowledgments", "curriculum_vitaes"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "age_ranges", "offers"
+  add_foreign_key "applied_offers", "applied_offer_statuses"
+  add_foreign_key "applied_offers", "curriculum_vitaes"
+  add_foreign_key "applied_offers", "offers"
+  add_foreign_key "available_work_days_offers", "available_work_days"
+  add_foreign_key "available_work_days_offers", "offers"
   add_foreign_key "curriculum_vitaes_soft_skills", "curriculum_vitaes"
   add_foreign_key "curriculum_vitaes_soft_skills", "soft_skills"
+  add_foreign_key "driving_licences_offers", "driving_licences"
+  add_foreign_key "driving_licences_offers", "offers"
+  add_foreign_key "educational_levels_offers", "educational_levels"
+  add_foreign_key "educational_levels_offers", "offers"
   add_foreign_key "functions_offers", "functions"
   add_foreign_key "functions_offers", "offers"
   add_foreign_key "job_aids_offers", "job_aids"
   add_foreign_key "job_aids_offers", "offers"
+  add_foreign_key "languages_offers", "languages"
+  add_foreign_key "languages_offers", "levels"
+  add_foreign_key "languages_offers", "offers"
   add_foreign_key "offers", "cities"
   add_foreign_key "offers", "contract_types"
   add_foreign_key "offers", "genders"
@@ -416,12 +565,27 @@ ActiveRecord::Schema.define(version: 2019_08_30_163300) do
   add_foreign_key "offers", "offer_types"
   add_foreign_key "offers", "users"
   add_foreign_key "offers", "work_types"
+  add_foreign_key "offers_responsibilities", "offers"
+  add_foreign_key "offers_responsibilities", "responsibilities"
+  add_foreign_key "offers_soft_skills", "offers"
+  add_foreign_key "offers_soft_skills", "soft_skills"
+  add_foreign_key "offers_technical_skills", "levels"
+  add_foreign_key "offers_technical_skills", "offers"
+  add_foreign_key "offers_technical_skills", "technical_skills"
   add_foreign_key "offers_terms", "offers"
   add_foreign_key "offers_terms", "terms"
+  add_foreign_key "offers_vehicles", "offers"
+  add_foreign_key "offers_vehicles", "vehicles"
+  add_foreign_key "offers_work_positions", "offers"
+  add_foreign_key "offers_work_positions", "work_positions"
+  add_foreign_key "offers_working_days", "offers"
+  add_foreign_key "offers_working_days", "working_days"
   add_foreign_key "recommendations", "curriculum_vitaes"
   add_foreign_key "recommendations_soft_skills", "recommendations"
   add_foreign_key "recommendations_soft_skills", "soft_skills"
   add_foreign_key "recommendations_technical_skills", "recommendations"
   add_foreign_key "recommendations_technical_skills", "technical_skills"
+  add_foreign_key "required_experiences", "duration_types"
+  add_foreign_key "required_experiences", "offers"
   add_foreign_key "visits", "curriculum_vitaes"
 end

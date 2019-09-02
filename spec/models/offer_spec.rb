@@ -14,6 +14,13 @@ RSpec.describe Offer, type: :model do
     it { should validate_presence_of(:description_responsibilities) }
     it { should validate_presence_of(:release_date) }
     it { should validate_presence_of(:status) }
+    it { should respond_to(:image) }
+  end
+
+  context "attachments" do
+    subject {  FactoryBot.build(:offer).image }
+
+    it { should be_an_instance_of(ActiveStorage::Attached::One) }
   end
 
   describe "assocciations" do
@@ -30,5 +37,15 @@ RSpec.describe Offer, type: :model do
     it { should have_and_belong_to_many(:terms) }
     it { should have_and_belong_to_many(:functions) }
     it { should have_and_belong_to_many(:job_aids) }
+    it { should have_and_belong_to_many(:vehicles) }
+    it { should have_and_belong_to_many(:driving_licences) }
+    it { should have_and_belong_to_many(:working_days) }
+    it { should have_and_belong_to_many(:available_work_days) }
+    it { should have_and_belong_to_many(:languages) }
+    it { should have_and_belong_to_many(:soft_skills) }
+    it { should have_and_belong_to_many(:technical_skills) }
+    it { should have_and_belong_to_many(:work_positions) }
+    it { should have_and_belong_to_many(:responsibilities) }
+    it { should have_and_belong_to_many(:educational_level) }
   end
 end

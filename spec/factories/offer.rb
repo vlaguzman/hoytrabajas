@@ -11,5 +11,9 @@ FactoryBot.define do
     description_responsibilities  { "endSint esse anim consequat commodo." }
     release_date                  { Date.new }
     status                        { "published" }
+
+    after(:build) do |offer|
+      offer.image.attach(io: File.open(Rails.root.join('spec', 'factories', 'images', 'photo.jpg')), filename: 'photo.jpg', content_type: 'image/jpeg')
+    end
   end
 end

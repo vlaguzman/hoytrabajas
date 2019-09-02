@@ -10,6 +10,7 @@ class CurriculumVitae < ApplicationRecord
   belongs_to :contract_type
 
   has_many :visits
+  has_many :step_up_skills
 
   has_and_belongs_to_many :soft_skills
   has_and_belongs_to_many :limitations

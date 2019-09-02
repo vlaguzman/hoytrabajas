@@ -10,7 +10,6 @@ class CurriculumVitae < ApplicationRecord
   belongs_to :contract_type
 
   has_many :visits
-  has_many :step_up_skills
 
   has_and_belongs_to_many :soft_skills
   has_and_belongs_to_many :limitations
@@ -19,6 +18,7 @@ class CurriculumVitae < ApplicationRecord
   has_and_belongs_to_many :working_days
   has_and_belongs_to_many :available_work_days
   has_and_belongs_to_many :languages
+  has_and_belongs_to_many :technical_skills
 
   has_one_attached :photo
 end

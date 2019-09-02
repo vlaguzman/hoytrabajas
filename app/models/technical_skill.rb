@@ -3,5 +3,5 @@ class TechnicalSkill < ApplicationRecord
 
   has_and_belongs_to_many :recommendations
   has_and_belongs_to_many :offers
-  has_and_belongs_to_many :curriculum_vitaes, join_table: :step_up_skills
+  has_and_belongs_to_many :curriculum_vitaes
 end

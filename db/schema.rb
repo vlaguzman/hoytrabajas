@@ -162,6 +162,20 @@ ActiveRecord::Schema.define(version: 2019_09_02_165112) do
     t.index ["soft_skill_id"], name: "index_curriculum_vitaes_soft_skills_on_soft_skill_id"
   end
 
+  create_table "curriculum_vitaes_technical_skills", force: :cascade do |t|
+    t.boolean "step_up"
+    t.bigint "job_category_id", null: false
+    t.bigint "level_id", null: false
+    t.bigint "curriculum_vitae_id", null: false
+    t.bigint "technical_skill_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_technical_skills_on_curriculum_vitae_id"
+    t.index ["job_category_id"], name: "index_curriculum_vitaes_technical_skills_on_job_category_id"
+    t.index ["level_id"], name: "index_curriculum_vitaes_technical_skills_on_level_id"
+    t.index ["technical_skill_id"], name: "index_curriculum_vitaes_technical_skills_on_technical_skill_id"
+  end
+
   create_table "curriculum_vitaes_vehicles", force: :cascade do |t|
     t.bigint "curriculum_vitae_id", null: false
     t.bigint "vehicle_id", null: false
@@ -502,15 +516,6 @@ ActiveRecord::Schema.define(version: 2019_09_02_165112) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "step_up_skills", force: :cascade do |t|
-    t.bigint "curriculum_vitae_id", null: false
-    t.bigint "technical_skill_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["curriculum_vitae_id"], name: "index_step_up_skills_on_curriculum_vitae_id"
-    t.index ["technical_skill_id"], name: "index_step_up_skills_on_technical_skill_id"
-  end
-
   create_table "technical_skill_categories", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -603,6 +608,10 @@ ActiveRecord::Schema.define(version: 2019_09_02_165112) do
   add_foreign_key "curriculum_vitaes_limitations", "curriculum_vitaes"
   add_foreign_key "curriculum_vitaes_limitations", "limitations"
   add_foreign_key "curriculum_vitaes_soft_skills", "soft_skills"
+  add_foreign_key "curriculum_vitaes_technical_skills", "curriculum_vitaes"
+  add_foreign_key "curriculum_vitaes_technical_skills", "job_categories"
+  add_foreign_key "curriculum_vitaes_technical_skills", "levels"
+  add_foreign_key "curriculum_vitaes_technical_skills", "technical_skills"
   add_foreign_key "curriculum_vitaes_vehicles", "curriculum_vitaes"
   add_foreign_key "curriculum_vitaes_vehicles", "vehicles"
   add_foreign_key "curriculum_vitaes_working_days", "curriculum_vitaes"
@@ -646,6 +655,4 @@ ActiveRecord::Schema.define(version: 2019_09_02_165112) do
   add_foreign_key "recommendations_technical_skills", "technical_skills"
   add_foreign_key "required_experiences", "duration_types"
   add_foreign_key "required_experiences", "offers"
-  add_foreign_key "step_up_skills", "curriculum_vitaes"
-  add_foreign_key "step_up_skills", "technical_skills"
 end

@@ -69,8 +69,10 @@ ActiveRecord::Schema.define(version: 2019_09_02_165112) do
     t.bigint "applied_offer_status_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "curriculum_vitaes_id"
     t.index ["applied_offer_status_id"], name: "index_applied_offers_on_applied_offer_status_id"
     t.index ["curriculum_vitae_id"], name: "index_applied_offers_on_curriculum_vitae_id"
+    t.index ["curriculum_vitaes_id"], name: "index_applied_offers_on_curriculum_vitaes_id"
     t.index ["offer_id"], name: "index_applied_offers_on_offer_id"
   end
 
@@ -78,6 +80,13 @@ ActiveRecord::Schema.define(version: 2019_09_02_165112) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "available_work_days_curriculum_vitaes", force: :cascade do |t|
+    t.string "curriculum_vitae_id"
+    t.string "available_work_day_id"
+    t.index ["available_work_day_id"], name: "cv_av_work_day_av_work_day_id", unique: true
+    t.index ["curriculum_vitae_id"], name: "cv_av_work_day_cv_id", unique: true
   end
 
   create_table "available_work_days_offers", force: :cascade do |t|
@@ -299,6 +308,12 @@ ActiveRecord::Schema.define(version: 2019_09_02_165112) do
   end
 
   create_table "levels", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "limitations", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -576,12 +591,22 @@ ActiveRecord::Schema.define(version: 2019_09_02_165112) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "age_ranges", "offers"
   add_foreign_key "applied_offers", "applied_offer_statuses"
-  add_foreign_key "applied_offers", "curriculum_vitaes"
   add_foreign_key "applied_offers", "offers"
   add_foreign_key "available_work_days_offers", "available_work_days"
   add_foreign_key "available_work_days_offers", "offers"
-  add_foreign_key "curriculum_vitaes_soft_skills", "curriculum_vitaes"
+  add_foreign_key "curriculum_vitaes", "cities"
+  add_foreign_key "curriculum_vitaes", "labor_disponibilities"
+  add_foreign_key "curriculum_vitaes", "users"
+  add_foreign_key "curriculum_vitaes", "work_modes"
+  add_foreign_key "curriculum_vitaes_languages", "curriculum_vitaes"
+  add_foreign_key "curriculum_vitaes_languages", "languages"
+  add_foreign_key "curriculum_vitaes_limitations", "curriculum_vitaes"
+  add_foreign_key "curriculum_vitaes_limitations", "limitations"
   add_foreign_key "curriculum_vitaes_soft_skills", "soft_skills"
+  add_foreign_key "curriculum_vitaes_vehicles", "curriculum_vitaes"
+  add_foreign_key "curriculum_vitaes_vehicles", "vehicles"
+  add_foreign_key "curriculum_vitaes_working_days", "curriculum_vitaes"
+  add_foreign_key "curriculum_vitaes_working_days", "working_days"
   add_foreign_key "driving_licences_offers", "driving_licences"
   add_foreign_key "driving_licences_offers", "offers"
   add_foreign_key "educational_levels_offers", "educational_levels"
@@ -599,7 +624,7 @@ ActiveRecord::Schema.define(version: 2019_09_02_165112) do
   add_foreign_key "offers", "job_categories"
   add_foreign_key "offers", "offer_types"
   add_foreign_key "offers", "users"
-  add_foreign_key "offers", "work_types"
+  add_foreign_key "offers", "work_modes"
   add_foreign_key "offers_responsibilities", "offers"
   add_foreign_key "offers_responsibilities", "responsibilities"
   add_foreign_key "offers_soft_skills", "offers"
@@ -615,12 +640,12 @@ ActiveRecord::Schema.define(version: 2019_09_02_165112) do
   add_foreign_key "offers_work_positions", "work_positions"
   add_foreign_key "offers_working_days", "offers"
   add_foreign_key "offers_working_days", "working_days"
-  add_foreign_key "recommendations", "curriculum_vitaes"
   add_foreign_key "recommendations_soft_skills", "recommendations"
   add_foreign_key "recommendations_soft_skills", "soft_skills"
   add_foreign_key "recommendations_technical_skills", "recommendations"
   add_foreign_key "recommendations_technical_skills", "technical_skills"
   add_foreign_key "required_experiences", "duration_types"
   add_foreign_key "required_experiences", "offers"
-  add_foreign_key "visits", "curriculum_vitaes"
+  add_foreign_key "step_up_skills", "curriculum_vitaes"
+  add_foreign_key "step_up_skills", "technical_skills"
 end

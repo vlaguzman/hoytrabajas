@@ -4,6 +4,7 @@ class ChangesInCurriculumVitae < ActiveRecord::Migration[6.0]
     remove_foreign_key :acknowledgments, :curriculum_vitaes
     remove_foreign_key :recommendations, :curriculum_vitaes
     remove_foreign_key :visits, :curriculum_vitaes
+    remove_foreign_key :applied_offers, :curriculum_vitaes
 
     drop_table :curriculum_vitaes
 
@@ -25,5 +26,7 @@ class ChangesInCurriculumVitae < ActiveRecord::Migration[6.0]
     add_reference :acknowledgments, :curriculum_vitaes
     add_reference :recommendations, :curriculum_vitaes
     add_reference :visits, :curriculum_vitaes
+    add_reference :applied_offers, :curriculum_vitaes
+
   end
 end

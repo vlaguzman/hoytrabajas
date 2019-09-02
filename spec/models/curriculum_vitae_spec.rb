@@ -3,23 +3,16 @@ require 'rails_helper'
 RSpec.describe CurriculumVitae, type: :model do
 
   describe "validations" do
-    it { should validate_presence_of(:user) }
     it { should validate_presence_of(:area_code) }
-    it { should validate_presence_of(:cellphone_number) }
-    it { should validate_presence_of(:city) }
-    it { should validate_presence_of(:identification_number) }
-    it { should validate_presence_of(:tell_us) }
+    it { should validate_presence_of(:about_me) }
     it { should validate_presence_of(:release_date) }
-    it { should validate_presence_of(:labor_disponibility) }
-    it { should validate_presence_of(:document_type) }
-    it { should validate_presence_of(:handicap) }
-    it { should validate_presence_of(:gender) }
-    it { should validate_presence_of(:work_type) }
-    it { should validate_presence_of(:contract_type) }
     it { should validate_presence_of(:travel_disponibility) }
+    it { should validate_presence_of(:visits_count) }
+    it { should validate_presence_of(:user) }
+    it { should validate_presence_of(:city) }
+    it { should validate_presence_of(:labor_disponibility) }
     it { should respond_to(:photo) }
     it { should respond_to(:visits) }
-    it { should respond_to(:visits_count) }
   end
 
   context "attachments" do
@@ -31,14 +24,16 @@ RSpec.describe CurriculumVitae, type: :model do
   describe 'associations' do
     it { should belong_to(:user) }
     it { should belong_to(:city) }
-    it { should belong_to(:nationality) }
     it { should belong_to(:labor_disponibility) }
-    it { should belong_to(:document_type) }
-    it { should belong_to(:handicap) }
-    it { should belong_to(:gender) }
-    it { should belong_to(:work_type) }
-    it { should belong_to(:contract_type) }
+    it { should belong_to(:work_mode) }
     it { should have_many(:visits) }
+    it { should have_and_belong_to_many(:limitations) }
     it { should have_and_belong_to_many(:soft_skills) }
+    it { should have_and_belong_to_many(:educational_degrees) }
+    it { should have_and_belong_to_many(:vehicles) }
+    it { should have_and_belong_to_many(:working_days) }
+    it { should have_and_belong_to_many(:available_work_days) }
+    it { should have_and_belong_to_many(:languages) }
+    it { should have_and_belong_to_many(:technical_skills) }
   end
 end

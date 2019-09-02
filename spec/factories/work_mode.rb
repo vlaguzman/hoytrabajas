@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :work_type do
+  factory :work_mode do
     description { ' Presencial '}
   end
 end

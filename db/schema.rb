@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_31_154644) do
+ActiveRecord::Schema.define(version: 2019_09_02_165112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,9 @@ ActiveRecord::Schema.define(version: 2019_08_31_154644) do
     t.datetime "start_date"
     t.string "entity_name"
     t.bigint "curriculum_vitae_id", null: false
+    t.bigint "curriculum_vitaes_id"
     t.index ["curriculum_vitae_id"], name: "index_acknowledgments_on_curriculum_vitae_id"
+    t.index ["curriculum_vitaes_id"], name: "index_acknowledgments_on_curriculum_vitaes_id"
   end
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -67,8 +69,10 @@ ActiveRecord::Schema.define(version: 2019_08_31_154644) do
     t.bigint "applied_offer_status_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "curriculum_vitaes_id"
     t.index ["applied_offer_status_id"], name: "index_applied_offers_on_applied_offer_status_id"
     t.index ["curriculum_vitae_id"], name: "index_applied_offers_on_curriculum_vitae_id"
+    t.index ["curriculum_vitaes_id"], name: "index_applied_offers_on_curriculum_vitaes_id"
     t.index ["offer_id"], name: "index_applied_offers_on_offer_id"
   end
 
@@ -76,6 +80,13 @@ ActiveRecord::Schema.define(version: 2019_08_31_154644) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "available_work_days_curriculum_vitaes", force: :cascade do |t|
+    t.string "curriculum_vitae_id"
+    t.string "available_work_day_id"
+    t.index ["available_work_day_id"], name: "cv_av_work_day_av_work_day_id", unique: true
+    t.index ["curriculum_vitae_id"], name: "cv_av_work_day_cv_id", unique: true
   end
 
   create_table "available_work_days_offers", force: :cascade do |t|
@@ -100,33 +111,44 @@ ActiveRecord::Schema.define(version: 2019_08_31_154644) do
   end
 
   create_table "curriculum_vitaes", force: :cascade do |t|
-    t.string "user_id"
-    t.integer "area_code"
-    t.string "cellphone_number"
-    t.string "city_id"
-    t.string "nationality_id"
-    t.string "identification_number"
-    t.string "tell_us"
+    t.string "area_code"
+    t.string "about_me"
     t.datetime "release_date"
-    t.string "labor_disponibility_id"
-    t.string "document_type_id"
-    t.string "handicap_id"
-    t.string "gender_id"
-    t.string "work_type_id"
-    t.string "contract_type_id"
-    t.boolean "travel_disponibility"
+    t.string "travel_disponibility"
+    t.string "visits_count"
+    t.bigint "user_id", null: false
+    t.bigint "city_id", null: false
+    t.bigint "labor_disponibility_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "visits_count"
-    t.index ["city_id"], name: "index_curriculum_vitaes_on_city_id", unique: true
-    t.index ["contract_type_id"], name: "index_curriculum_vitaes_on_contract_type_id", unique: true
-    t.index ["document_type_id"], name: "index_curriculum_vitaes_on_document_type_id", unique: true
-    t.index ["gender_id"], name: "index_curriculum_vitaes_on_gender_id", unique: true
-    t.index ["handicap_id"], name: "index_curriculum_vitaes_on_handicap_id", unique: true
-    t.index ["labor_disponibility_id"], name: "index_curriculum_vitaes_on_labor_disponibility_id", unique: true
-    t.index ["nationality_id"], name: "index_curriculum_vitaes_on_nationality_id", unique: true
-    t.index ["user_id"], name: "index_curriculum_vitaes_on_user_id", unique: true
-    t.index ["work_type_id"], name: "index_curriculum_vitaes_on_work_type_id", unique: true
+    t.bigint "work_mode_id", null: false
+    t.index ["city_id"], name: "index_curriculum_vitaes_on_city_id"
+    t.index ["labor_disponibility_id"], name: "index_curriculum_vitaes_on_labor_disponibility_id"
+    t.index ["user_id"], name: "index_curriculum_vitaes_on_user_id"
+    t.index ["work_mode_id"], name: "index_curriculum_vitaes_on_work_mode_id"
+  end
+
+  create_table "curriculum_vitaes_educational_degrees", force: :cascade do |t|
+    t.string "curriculum_vitae_id"
+    t.string "educational_degree_id"
+    t.index ["curriculum_vitae_id"], name: "cv_id", unique: true
+    t.index ["educational_degree_id"], name: "edu_degree_id", unique: true
+  end
+
+  create_table "curriculum_vitaes_languages", force: :cascade do |t|
+    t.bigint "curriculum_vitae_id", null: false
+    t.bigint "language_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_languages_on_curriculum_vitae_id"
+    t.index ["language_id"], name: "index_curriculum_vitaes_languages_on_language_id"
+  end
+
+  create_table "curriculum_vitaes_limitations", force: :cascade do |t|
+    t.bigint "curriculum_vitae_id", null: false
+    t.bigint "limitation_id", null: false
+    t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_limitations_on_curriculum_vitae_id"
+    t.index ["limitation_id"], name: "index_curriculum_vitaes_limitations_on_limitation_id"
   end
 
   create_table "curriculum_vitaes_soft_skills", force: :cascade do |t|
@@ -134,8 +156,38 @@ ActiveRecord::Schema.define(version: 2019_08_31_154644) do
     t.bigint "soft_skill_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "curriculum_vitaes_id"
     t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_soft_skills_on_curriculum_vitae_id"
+    t.index ["curriculum_vitaes_id"], name: "index_curriculum_vitaes_soft_skills_on_curriculum_vitaes_id"
     t.index ["soft_skill_id"], name: "index_curriculum_vitaes_soft_skills_on_soft_skill_id"
+  end
+
+  create_table "curriculum_vitaes_technical_skills", force: :cascade do |t|
+    t.boolean "step_up"
+    t.bigint "job_category_id", null: false
+    t.bigint "level_id", null: false
+    t.bigint "curriculum_vitae_id", null: false
+    t.bigint "technical_skill_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_technical_skills_on_curriculum_vitae_id"
+    t.index ["job_category_id"], name: "index_curriculum_vitaes_technical_skills_on_job_category_id"
+    t.index ["level_id"], name: "index_curriculum_vitaes_technical_skills_on_level_id"
+    t.index ["technical_skill_id"], name: "index_curriculum_vitaes_technical_skills_on_technical_skill_id"
+  end
+
+  create_table "curriculum_vitaes_vehicles", force: :cascade do |t|
+    t.bigint "curriculum_vitae_id", null: false
+    t.bigint "vehicle_id", null: false
+    t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_vehicles_on_curriculum_vitae_id"
+    t.index ["vehicle_id"], name: "index_curriculum_vitaes_vehicles_on_vehicle_id"
+  end
+
+  create_table "curriculum_vitaes_working_days", force: :cascade do |t|
+    t.bigint "curriculum_vitae_id", null: false
+    t.bigint "working_day_id", null: false
+    t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_working_days_on_curriculum_vitae_id"
+    t.index ["working_day_id"], name: "index_curriculum_vitaes_working_days_on_working_day_id"
   end
 
   create_table "document_types", force: :cascade do |t|
@@ -219,12 +271,6 @@ ActiveRecord::Schema.define(version: 2019_08_31_154644) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "handicaps", force: :cascade do |t|
-    t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "industries", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -281,6 +327,12 @@ ActiveRecord::Schema.define(version: 2019_08_31_154644) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "limitations", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "nationalities", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -310,17 +362,17 @@ ActiveRecord::Schema.define(version: 2019_08_31_154644) do
     t.bigint "job_category_id", null: false
     t.bigint "offer_type_id", null: false
     t.bigint "gender_id", null: false
-    t.bigint "work_type_id", null: false
     t.bigint "contract_type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "work_mode_id", null: false
     t.index ["city_id"], name: "index_offers_on_city_id"
     t.index ["contract_type_id"], name: "index_offers_on_contract_type_id"
     t.index ["gender_id"], name: "index_offers_on_gender_id"
     t.index ["job_category_id"], name: "index_offers_on_job_category_id"
     t.index ["offer_type_id"], name: "index_offers_on_offer_type_id"
     t.index ["user_id"], name: "index_offers_on_user_id"
-    t.index ["work_type_id"], name: "index_offers_on_work_type_id"
+    t.index ["work_mode_id"], name: "index_offers_on_work_mode_id"
   end
 
   create_table "offers_responsibilities", force: :cascade do |t|
@@ -391,7 +443,9 @@ ActiveRecord::Schema.define(version: 2019_08_31_154644) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "back_to_work_score"
+    t.bigint "curriculum_vitaes_id"
     t.index ["curriculum_vitae_id"], name: "index_recommendations_on_curriculum_vitae_id"
+    t.index ["curriculum_vitaes_id"], name: "index_recommendations_on_curriculum_vitaes_id"
   end
 
   create_table "recommendations_soft_skills", force: :cascade do |t|
@@ -516,16 +570,18 @@ ActiveRecord::Schema.define(version: 2019_08_31_154644) do
     t.bigint "curriculum_vitae_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "curriculum_vitaes_id"
     t.index ["curriculum_vitae_id"], name: "index_visits_on_curriculum_vitae_id"
+    t.index ["curriculum_vitaes_id"], name: "index_visits_on_curriculum_vitaes_id"
   end
 
-  create_table "work_positions", force: :cascade do |t|
+  create_table "work_modes", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "work_types", force: :cascade do |t|
+  create_table "work_positions", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -537,16 +593,29 @@ ActiveRecord::Schema.define(version: 2019_08_31_154644) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "acknowledgments", "curriculum_vitaes"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "age_ranges", "offers"
   add_foreign_key "applied_offers", "applied_offer_statuses"
-  add_foreign_key "applied_offers", "curriculum_vitaes"
   add_foreign_key "applied_offers", "offers"
   add_foreign_key "available_work_days_offers", "available_work_days"
   add_foreign_key "available_work_days_offers", "offers"
-  add_foreign_key "curriculum_vitaes_soft_skills", "curriculum_vitaes"
+  add_foreign_key "curriculum_vitaes", "cities"
+  add_foreign_key "curriculum_vitaes", "labor_disponibilities"
+  add_foreign_key "curriculum_vitaes", "users"
+  add_foreign_key "curriculum_vitaes", "work_modes"
+  add_foreign_key "curriculum_vitaes_languages", "curriculum_vitaes"
+  add_foreign_key "curriculum_vitaes_languages", "languages"
+  add_foreign_key "curriculum_vitaes_limitations", "curriculum_vitaes"
+  add_foreign_key "curriculum_vitaes_limitations", "limitations"
   add_foreign_key "curriculum_vitaes_soft_skills", "soft_skills"
+  add_foreign_key "curriculum_vitaes_technical_skills", "curriculum_vitaes"
+  add_foreign_key "curriculum_vitaes_technical_skills", "job_categories"
+  add_foreign_key "curriculum_vitaes_technical_skills", "levels"
+  add_foreign_key "curriculum_vitaes_technical_skills", "technical_skills"
+  add_foreign_key "curriculum_vitaes_vehicles", "curriculum_vitaes"
+  add_foreign_key "curriculum_vitaes_vehicles", "vehicles"
+  add_foreign_key "curriculum_vitaes_working_days", "curriculum_vitaes"
+  add_foreign_key "curriculum_vitaes_working_days", "working_days"
   add_foreign_key "driving_licences_offers", "driving_licences"
   add_foreign_key "driving_licences_offers", "offers"
   add_foreign_key "educational_levels_offers", "educational_levels"
@@ -564,7 +633,7 @@ ActiveRecord::Schema.define(version: 2019_08_31_154644) do
   add_foreign_key "offers", "job_categories"
   add_foreign_key "offers", "offer_types"
   add_foreign_key "offers", "users"
-  add_foreign_key "offers", "work_types"
+  add_foreign_key "offers", "work_modes"
   add_foreign_key "offers_responsibilities", "offers"
   add_foreign_key "offers_responsibilities", "responsibilities"
   add_foreign_key "offers_soft_skills", "offers"
@@ -580,12 +649,10 @@ ActiveRecord::Schema.define(version: 2019_08_31_154644) do
   add_foreign_key "offers_work_positions", "work_positions"
   add_foreign_key "offers_working_days", "offers"
   add_foreign_key "offers_working_days", "working_days"
-  add_foreign_key "recommendations", "curriculum_vitaes"
   add_foreign_key "recommendations_soft_skills", "recommendations"
   add_foreign_key "recommendations_soft_skills", "soft_skills"
   add_foreign_key "recommendations_technical_skills", "recommendations"
   add_foreign_key "recommendations_technical_skills", "technical_skills"
   add_foreign_key "required_experiences", "duration_types"
   add_foreign_key "required_experiences", "offers"
-  add_foreign_key "visits", "curriculum_vitaes"
 end

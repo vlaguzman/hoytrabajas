@@ -6,7 +6,8 @@ RSpec.describe WorkingDay, type: :model do
     it { should validate_presence_of(:description) }
   end
 
-  describe "assocciations" do
+  describe "associations" do
+    it  { should have_and_belong_to_many(:curriculum_vitaes) }
     it { should have_and_belong_to_many(:offers) }
   end
 

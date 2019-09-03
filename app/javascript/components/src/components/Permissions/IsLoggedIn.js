@@ -1,7 +1,7 @@
 import React from 'react'
-import { useAuth0 } from 'Auth/authContext'
-import redirect from 'Helpers/redirect'
-import loadingSVG from 'Auth/loading.svg'
+import { useAuth0 } from '../../auth/authContext'
+import redirect from '../../helpers/redirect'
+import loadingSVG from '../../auth/loading.svg'
 
 const style = {
   position: 'absolute',

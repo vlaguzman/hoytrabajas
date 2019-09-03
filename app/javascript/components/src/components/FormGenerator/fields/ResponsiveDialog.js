@@ -5,7 +5,7 @@ import withMobileDialog from '@material-ui/core/withMobileDialog'
 import MaterialButton from '@material-ui/core/Button'
 import { AddCircleOutline } from '@material-ui/icons'
 import { makeGetMultiForm } from 'Src/selectors/forms'
-import dialogState from '../hooks/dialogState'
+import dialogState from '../../../hooks/dialogState'
 import FormDialog from './FormDialog'
 
 const ResponsiveDialog = props => {

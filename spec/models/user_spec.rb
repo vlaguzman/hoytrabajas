@@ -1,35 +1,37 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  user = FactoryBot.build(:user)
-  user.valid?
 
   describe "validations" do
-    it { is_expected.to validate_presence_of(:email) }
-    it { is_expected.to validate_presence_of(:password) }
-    it { is_expected.to validate_presence_of(:password_confirmation) }
-    it { is_expected.to validate_presence_of(:sign_in_count) }
-    it { is_expected.to validate_presence_of(:confirmed_at) }
-    #it { is_expected.to validate_presence_of(:name) }
-    #it { is_expected.to validate_presence_of(:last_name) }
-    #it { is_expected.to validate_presence_of(:nationaloty) }
-    #it { is_expected.to validate_presence_of(:document_type) }
-    #it { is_expected.to validate_presence_of(:identification_number) }
-    #it { is_expected.to validate_presence_of(:contact_number) }
-    #it { is_expected.to validate_presence_of(:about_me) }
-    #it { is_expected.to validate_presence_of(:sexuality) }
-    #it { is_expected.to validate_presence_of(:birthday) }
-    #it { is_expected.to validate_presence_of(:handicap) }
-    it { is_expected.to validate_presence_of(:educational_degrees) }
- 
-    
+    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:last_name) }
+    it { should validate_presence_of(:birthday) }
+    it { should validate_presence_of(:contact_number) }
+    it { should validate_presence_of(:email) }
+    it { should validate_presence_of(:identification_number) }
+    it { should validate_presence_of(:about_me) }
+    it { should validate_presence_of(:password) }
+    it { should validate_presence_of(:password_confirmation) }
+    it { should validate_presence_of(:sign_in_count) }
+    it { should validate_presence_of(:confirmed_at) }
+    it { should respond_to(:sex) }
+    it { should respond_to(:contract_type) }
+    it { should respond_to(:document_type) }
+    it { should respond_to(:work_mode) }
+    it { should respond_to(:curriculum_vitaes) }
+    it { should respond_to(:nationalities) }
+    it { should respond_to(:educational_degrees) }
+    it { should respond_to(:limitations) }
   end
 
   describe "associations" do
-    #it { should belong_to(:curriculum_vitae) }
-    #it { should belong_to(:document_type) }
-    #it { should belong_to(:sexuality) }
-    #it { should belong_to(:nationality) }
+    it { should belong_to(:sex) }
+    it { should belong_to(:document_type) }
+    it { should belong_to(:work_mode) }
+    it { should belong_to(:contract_type) }
+    #it { should have_and_belong_to_many(:curriculum_vitaes) }
+    #it { should have_and_belong_to_many(:nationalities) }
+    #it { should have_and_belong_to_many(:limitations) }
     it { should have_and_belong_to_many(:educational_degrees) }
   end
 end

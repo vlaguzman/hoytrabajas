@@ -590,10 +590,8 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
 
   create_table "sexes", force: :cascade do |t|
     t.string "description"
-    t.bigint "users_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["users_id"], name: "index_sexes_on_users_id"
   end
 
   create_table "soft_skills", force: :cascade do |t|
@@ -650,25 +648,22 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
     t.string "uid"
     t.string "name"
     t.string "last_name"
-    t.bigint "natinalities_id"
-    t.bigint "document_types_id"
+    t.date "birthday"
+    t.string "contact_number"
     t.string "identification_number"
     t.string "about_me"
-    t.bigint "sexes_id"
-    t.date "birthday"
-    t.bigint "limitations_id"
-    t.bigint "educational_degrees_id"
-    t.bigint "contract_types_id"
+    t.bigint "sex_id", null: false
+    t.bigint "document_type_id", null: false
+    t.bigint "contract_type_id", null: false
+    t.bigint "work_mode_id", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-    t.index ["contract_types_id"], name: "index_users_on_contract_types_id"
-    t.index ["document_types_id"], name: "index_users_on_document_types_id"
-    t.index ["educational_degrees_id"], name: "index_users_on_educational_degrees_id"
+    t.index ["contract_type_id"], name: "index_users_on_contract_type_id"
+    t.index ["document_type_id"], name: "index_users_on_document_type_id"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["limitations_id"], name: "index_users_on_limitations_id"
-    t.index ["natinalities_id"], name: "index_users_on_natinalities_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["sexes_id"], name: "index_users_on_sexes_id"
+    t.index ["sex_id"], name: "index_users_on_sex_id"
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
+    t.index ["work_mode_id"], name: "index_users_on_work_mode_id"
   end
 
   create_table "users_limitations", force: :cascade do |t|
@@ -794,6 +789,10 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
   add_foreign_key "recommendations_technical_skills", "technical_skills"
   add_foreign_key "required_experiences", "duration_types"
   add_foreign_key "required_experiences", "offers"
+  add_foreign_key "users", "contract_types"
+  add_foreign_key "users", "document_types"
+  add_foreign_key "users", "sexes"
+  add_foreign_key "users", "work_modes"
   add_foreign_key "users_limitations", "limitations"
   add_foreign_key "users_limitations", "users"
   add_foreign_key "users_nationalities", "nationalities"

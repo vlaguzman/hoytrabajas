@@ -1,8 +1,8 @@
 import React from 'react'
 import { Col } from 'reactstrap'
 import Typography from '@material-ui/core/Typography'
-import DefaultContainer from '../components/FormGenerator/containers/DefaultContainer'
-import UncontrolledContainer from '../components/FormGenerator/containers/UncontrolledContainer'
+import DefaultContainer from '../../../components/FormGenerator/containers/DefaultContainer'
+import UncontrolledContainer from '../../../components/FormGenerator/containers/UncontrolledContainer'
 
 const Title = ({ title }) => (
   <Typography

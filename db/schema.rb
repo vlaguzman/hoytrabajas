@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_02_233227) do
+ActiveRecord::Schema.define(version: 2019_09_03_001002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,6 +126,15 @@ ActiveRecord::Schema.define(version: 2019_09_02_233227) do
     t.index ["email"], name: "index_companies_on_email", unique: true
     t.index ["employees_range_id"], name: "index_companies_on_employees_range_id"
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
+  end
+
+  create_table "companies_users", force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_companies_users_on_company_id"
+    t.index ["user_id"], name: "index_companies_users_on_user_id"
   end
 
   create_table "contract_types", force: :cascade do |t|
@@ -666,6 +675,8 @@ ActiveRecord::Schema.define(version: 2019_09_02_233227) do
   add_foreign_key "available_work_days_offers", "available_work_days"
   add_foreign_key "available_work_days_offers", "offers"
   add_foreign_key "companies", "employees_ranges"
+  add_foreign_key "companies_users", "companies"
+  add_foreign_key "companies_users", "users"
   add_foreign_key "curriculum_vitaes", "cities"
   add_foreign_key "curriculum_vitaes", "labor_disponibilities"
   add_foreign_key "curriculum_vitaes", "users"

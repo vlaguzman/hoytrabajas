@@ -9,5 +9,7 @@ class Company < ApplicationRecord
 
   belongs_to :employees_range
 
+  has_and_belongs_to_many :users
+
   has_one_attached :logo
 end

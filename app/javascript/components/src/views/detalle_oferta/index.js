@@ -17,15 +17,9 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import CheckCircle from '@material-ui/icons/CheckCircle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Avatar from '@material-ui/core/Avatar';
-import Cards from '../views/main/home/sections/components/gallery_cards/gallery_card'
-import Carousel from '../components/Carousel/CarouselRow'
+import Cards from '../../views/main/home/sections/components/gallery_cards/gallery_card'
+import Carousel from '../../components/Carousel/CarouselRow'
 import { map } from 'lodash';
-
-
-
-// los nombres de secciones deben ser más descriptivos
-
-
 
 const DetallePage = () => {
   return (

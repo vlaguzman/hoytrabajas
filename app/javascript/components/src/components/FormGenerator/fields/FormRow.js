@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { makeGetFormRow } from 'Src/selectors/forms'
+import { makeGetFormRow } from '../../../selectors/forms'
 import { Row, Col } from 'reactstrap'
 import Fab from '@material-ui/core/Fab'
 import AddIcon from '@material-ui/icons/Add'

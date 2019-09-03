@@ -10,7 +10,7 @@ import Chip from '@material-ui/core/Chip'
 import { useDebouncedCallback } from 'use-debounce'
 import FormControl from '@material-ui/core/FormControl'
 import FormHelperText from '@material-ui/core/FormHelperText'
-import useWhyDidYouUpdate from '../hooks/useWhyDidYouUpdate'
+import useWhyDidYouUpdate from '../../../hooks/useWhyDidYouUpdate'
 import { compareArrays } from 'Helpers'
 
 const MAX_VALUES = 3

@@ -1,5 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles'
-import AppConfig from '../constants/AppConfig'
+import AppConfig from '../../../constants/AppConfig'
 
 const theme = createMuiTheme({
   palette: {

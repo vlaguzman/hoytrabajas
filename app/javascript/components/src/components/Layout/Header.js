@@ -15,14 +15,14 @@ import Lock from '@material-ui/icons/Lock'
 import Fab from '@material-ui/core/Fab'
 import { useAuth0 } from 'Auth/authContext'
 import { useRouter } from 'next/router'
-import Link from '../components/Layout/Link'
-import SimpleMenu from '../components/Menu/SimpleMenu'
+import Link from '../../components/Layout/Link'
+import SimpleMenu from '../../components/Menu/SimpleMenu'
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import FormGen from '../components/inlineFormgenerartor'
+import FormGen from '../../components/inlineFormgenerartor'
 import {fields1} from './data'
 import {Row,Col} from 'reactstrap'
-import dialogState from '../hooks/dialogState'
+import dialogState from '../../hooks/dialogState'
 
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';

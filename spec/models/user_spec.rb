@@ -20,7 +20,7 @@ RSpec.describe User, type: :model do
     #it { is_expected.to validate_presence_of(:sexuality) }
     #it { is_expected.to validate_presence_of(:birthday) }
     #it { is_expected.to validate_presence_of(:handicap) }
-    #it { is_expected.to validate_presence_of(:educational_degree) }
+    it { is_expected.to validate_presence_of(:educational_degrees) }
  
     
   end
@@ -30,7 +30,6 @@ RSpec.describe User, type: :model do
     #it { should belong_to(:document_type) }
     #it { should belong_to(:sexuality) }
     #it { should belong_to(:nationality) }
-    #it { should have_and_belongs_to_many(:handicap) }
-    #it { should have_and_belonds_to_many(:educational_degree) }
+    it { should have_and_belong_to_many(:educational_degrees) }
   end
 end

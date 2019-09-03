@@ -329,12 +329,6 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
     t.index ["offer_id"], name: "index_functions_offers_on_offer_id"
   end
 
-  create_table "genders", force: :cascade do |t|
-    t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "industries", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -424,7 +418,6 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
     t.bigint "city_id", null: false
     t.bigint "job_category_id", null: false
     t.bigint "offer_type_id", null: false
-    t.bigint "gender_id", null: false
     t.bigint "contract_type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -646,10 +639,54 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "provider"
     t.string "uid"
+    t.string "name"
+    t.string "last_name"
+    t.bigint "natinalities_id"
+    t.bigint "document_types_id"
+    t.string "identification_number"
+    t.string "about_me"
+    t.bigint "sexes_id"
+    t.date "birthday"
+    t.bigint "limitations_id"
+    t.bigint "educational_degrees_id"
+    t.bigint "contract_types_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["contract_types_id"], name: "index_users_on_contract_types_id"
+    t.index ["document_types_id"], name: "index_users_on_document_types_id"
+    t.index ["educational_degrees_id"], name: "index_users_on_educational_degrees_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["limitations_id"], name: "index_users_on_limitations_id"
+    t.index ["natinalities_id"], name: "index_users_on_natinalities_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["sexes_id"], name: "index_users_on_sexes_id"
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
+  end
+
+  create_table "users_educational_degrees", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "educational_degree_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["educational_degree_id"], name: "index_users_educational_degrees_on_educational_degree_id"
+    t.index ["user_id"], name: "index_users_educational_degrees_on_user_id"
+  end
+
+  create_table "users_limitations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "limitation_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["limitation_id"], name: "index_users_limitations_on_limitation_id"
+    t.index ["user_id"], name: "index_users_limitations_on_user_id"
+  end
+
+  create_table "users_nationalities", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "nationality_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["nationality_id"], name: "index_users_nationalities_on_nationality_id"
+    t.index ["user_id"], name: "index_users_nationalities_on_user_id"
   end
 
   create_table "vehicles", force: :cascade do |t|
@@ -755,4 +792,10 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
   add_foreign_key "recommendations_technical_skills", "technical_skills"
   add_foreign_key "required_experiences", "duration_types"
   add_foreign_key "required_experiences", "offers"
+  add_foreign_key "users_educational_degrees", "educational_degrees"
+  add_foreign_key "users_educational_degrees", "users"
+  add_foreign_key "users_limitations", "limitations"
+  add_foreign_key "users_limitations", "users"
+  add_foreign_key "users_nationalities", "nationalities"
+  add_foreign_key "users_nationalities", "users"
 end

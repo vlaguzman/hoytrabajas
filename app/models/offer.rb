@@ -8,7 +8,7 @@ class Offer < ApplicationRecord
   belongs_to :job_category
   belongs_to :offer_type
   belongs_to :job_category
-  belongs_to :gender
+  belongs_to :sex
   belongs_to :job_category
   belongs_to :work_mode
   belongs_to :job_category

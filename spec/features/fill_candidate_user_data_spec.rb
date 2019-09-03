@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "fill the principal canditate user data", :type => :feature do
   context "like a candidate user in his first login" do
-    it "should see the info to fill and the next button in each section" do
+   xit "should see the info to fill and the next button in each section" do
 
       # a new user who has never been loged-in, i.e. sign_in_count is zero
       user = User.create(email: 'nuevousuario@gmail.com', password: 'hola12345', password_confirmation: 'hola12345', sign_in_count: 0, confirmed_at: Date.today)

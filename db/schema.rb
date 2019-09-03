@@ -287,6 +287,15 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "educational_degrees_users", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "educational_degree_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["educational_degree_id"], name: "index_educational_degrees_users_on_educational_degree_id"
+    t.index ["user_id"], name: "index_educational_degrees_users_on_user_id"
+  end
+
   create_table "educational_levels", force: :cascade do |t|
     t.string "institution_name"
     t.date "start_date"
@@ -662,15 +671,6 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
-  create_table "users_educational_degrees", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "educational_degree_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["educational_degree_id"], name: "index_users_educational_degrees_on_educational_degree_id"
-    t.index ["user_id"], name: "index_users_educational_degrees_on_user_id"
-  end
-
   create_table "users_limitations", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "limitation_id", null: false
@@ -753,6 +753,8 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
   add_foreign_key "curriculum_vitaes_working_days", "working_days"
   add_foreign_key "driving_licences_offers", "driving_licences"
   add_foreign_key "driving_licences_offers", "offers"
+  add_foreign_key "educational_degrees_users", "educational_degrees"
+  add_foreign_key "educational_degrees_users", "users"
   add_foreign_key "educational_levels_offers", "educational_levels"
   add_foreign_key "educational_levels_offers", "offers"
   add_foreign_key "functions_offers", "functions"
@@ -792,8 +794,6 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
   add_foreign_key "recommendations_technical_skills", "technical_skills"
   add_foreign_key "required_experiences", "duration_types"
   add_foreign_key "required_experiences", "offers"
-  add_foreign_key "users_educational_degrees", "educational_degrees"
-  add_foreign_key "users_educational_degrees", "users"
   add_foreign_key "users_limitations", "limitations"
   add_foreign_key "users_limitations", "users"
   add_foreign_key "users_nationalities", "nationalities"

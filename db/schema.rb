@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_03_190629) do
+ActiveRecord::Schema.define(version: 2019_09_03_204947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -238,6 +238,13 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
     t.index ["job_category_id"], name: "index_curriculum_vitaes_technical_skills_on_job_category_id"
     t.index ["level_id"], name: "index_curriculum_vitaes_technical_skills_on_level_id"
     t.index ["technical_skill_id"], name: "index_curriculum_vitaes_technical_skills_on_technical_skill_id"
+  end
+
+  create_table "curriculum_vitaes_users", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "curriculum_vitae_id", null: false
+    t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_users_on_curriculum_vitae_id"
+    t.index ["user_id"], name: "index_curriculum_vitaes_users_on_user_id"
   end
 
   create_table "curriculum_vitaes_vehicles", force: :cascade do |t|
@@ -742,6 +749,8 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
   add_foreign_key "curriculum_vitaes_technical_skills", "job_categories"
   add_foreign_key "curriculum_vitaes_technical_skills", "levels"
   add_foreign_key "curriculum_vitaes_technical_skills", "technical_skills"
+  add_foreign_key "curriculum_vitaes_users", "curriculum_vitaes"
+  add_foreign_key "curriculum_vitaes_users", "users"
   add_foreign_key "curriculum_vitaes_vehicles", "curriculum_vitaes"
   add_foreign_key "curriculum_vitaes_vehicles", "vehicles"
   add_foreign_key "curriculum_vitaes_working_days", "curriculum_vitaes"

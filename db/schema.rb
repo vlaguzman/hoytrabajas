@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_03_210701) do
+ActiveRecord::Schema.define(version: 2019_09_03_212856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -195,24 +195,6 @@ ActiveRecord::Schema.define(version: 2019_09_03_210701) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_languages_on_curriculum_vitae_id"
     t.index ["language_id"], name: "index_curriculum_vitaes_languages_on_language_id"
-  end
-
-  create_table "curriculum_vitaes_limitations", force: :cascade do |t|
-    t.bigint "curriculum_vitae_id", null: false
-    t.bigint "limitation_id", null: false
-    t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_limitations_on_curriculum_vitae_id"
-    t.index ["limitation_id"], name: "index_curriculum_vitaes_limitations_on_limitation_id"
-  end
-
-  create_table "curriculum_vitaes_salaries", force: :cascade do |t|
-    t.bigint "curriculum_vitae_id", null: false
-    t.bigint "salary_period_id", null: false
-    t.bigint "currency_id", null: false
-    t.integer "from"
-    t.integer "to"
-    t.index ["currency_id"], name: "index_curriculum_vitaes_salaries_on_currency_id"
-    t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_salaries_on_curriculum_vitae_id"
-    t.index ["salary_period_id"], name: "index_curriculum_vitaes_salaries_on_salary_period_id"
   end
 
   create_table "curriculum_vitaes_soft_skills", force: :cascade do |t|
@@ -405,6 +387,13 @@ ActiveRecord::Schema.define(version: 2019_09_03_210701) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "limitations_users", force: :cascade do |t|
+    t.bigint "limitation_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["limitation_id"], name: "index_limitations_users_on_limitation_id"
+    t.index ["user_id"], name: "index_limitations_users_on_user_id"
   end
 
   create_table "nationalities", force: :cascade do |t|
@@ -746,11 +735,6 @@ ActiveRecord::Schema.define(version: 2019_09_03_210701) do
   add_foreign_key "curriculum_vitaes", "work_modes"
   add_foreign_key "curriculum_vitaes_languages", "curriculum_vitaes"
   add_foreign_key "curriculum_vitaes_languages", "languages"
-  add_foreign_key "curriculum_vitaes_limitations", "curriculum_vitaes"
-  add_foreign_key "curriculum_vitaes_limitations", "limitations"
-  add_foreign_key "curriculum_vitaes_salaries", "currencies"
-  add_foreign_key "curriculum_vitaes_salaries", "curriculum_vitaes"
-  add_foreign_key "curriculum_vitaes_salaries", "salary_periods"
   add_foreign_key "curriculum_vitaes_soft_skills", "soft_skills"
   add_foreign_key "curriculum_vitaes_technical_skills", "curriculum_vitaes"
   add_foreign_key "curriculum_vitaes_technical_skills", "job_categories"
@@ -775,6 +759,8 @@ ActiveRecord::Schema.define(version: 2019_09_03_210701) do
   add_foreign_key "languages_offers", "languages"
   add_foreign_key "languages_offers", "levels"
   add_foreign_key "languages_offers", "offers"
+  add_foreign_key "limitations_users", "limitations"
+  add_foreign_key "limitations_users", "users"
   add_foreign_key "nationalities_users", "nationalities"
   add_foreign_key "nationalities_users", "users"
   add_foreign_key "offers", "cities"

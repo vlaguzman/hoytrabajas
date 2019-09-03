@@ -31,7 +31,7 @@ RSpec.describe User, type: :model do
     it { should belong_to(:contract_type) }
     it { should have_and_belong_to_many(:curriculum_vitaes) }
     it { should have_and_belong_to_many(:nationalities) }
-    #it { should have_and_belong_to_many(:limitations) }
+    it { should have_and_belong_to_many(:limitations) }
     it { should have_and_belong_to_many(:educational_degrees) }
   end
 end

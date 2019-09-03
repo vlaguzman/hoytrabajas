@@ -12,7 +12,6 @@ class CurriculumVitae < ApplicationRecord
   has_many :visits
 
   has_and_belongs_to_many :soft_skills
-  has_and_belongs_to_many :limitations
   has_and_belongs_to_many :educational_degrees
   has_and_belongs_to_many :vehicles
   has_and_belongs_to_many :working_days

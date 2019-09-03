@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Col } from 'reactstrap'
-import { updateField } from '../actions'
+import { updateField } from '../../../actions'
 import { useTheme } from '@material-ui/styles'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
@@ -12,7 +12,7 @@ import Input from '@material-ui/core/Input'
 import FormControl from '@material-ui/core/FormControl'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import { connect } from 'react-redux'
-import { makeGetField } from 'Src/selectors/forms'
+import { makeGetField } from '../../../selectors/forms'
 import { compareArrays } from 'Helpers'
 
 const MultiSelect = props => {

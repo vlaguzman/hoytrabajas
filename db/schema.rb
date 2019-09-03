@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_02_221047) do
+ActiveRecord::Schema.define(version: 2019_09_03_002841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,53 @@ ActiveRecord::Schema.define(version: 2019_09_02_221047) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.string "contact_name"
+    t.string "cellphone"
+    t.string "contact_cellphone"
+    t.string "nit"
+    t.string "address"
+    t.string "web_site"
+    t.string "contact_web_site"
+    t.string "description"
+    t.string "contact_work_position"
+    t.bigint "employees_range_id", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.inet "last_sign_in_ip"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.integer "failed_attempts", default: 0, null: false
+    t.string "unlock_token"
+    t.datetime "locked_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["confirmation_token"], name: "index_companies_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_companies_on_email", unique: true
+    t.index ["employees_range_id"], name: "index_companies_on_employees_range_id"
+    t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
+    t.index ["unlock_token"], name: "index_companies_on_unlock_token", unique: true
+  end
+
+  create_table "companies_users", force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_companies_users_on_company_id"
+    t.index ["user_id"], name: "index_companies_users_on_user_id"
   end
 
   create_table "contract_types", force: :cascade do |t|
@@ -269,6 +316,12 @@ ActiveRecord::Schema.define(version: 2019_09_02_221047) do
     t.index ["offer_id"], name: "index_educational_levels_offers_on_offer_id"
   end
 
+  create_table "employees_ranges", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "functions", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -374,7 +427,6 @@ ActiveRecord::Schema.define(version: 2019_09_02_221047) do
     t.string "description_responsibilities"
     t.datetime "release_date"
     t.integer "status"
-    t.bigint "user_id", null: false
     t.bigint "city_id", null: false
     t.bigint "job_category_id", null: false
     t.bigint "offer_type_id", null: false
@@ -383,12 +435,13 @@ ActiveRecord::Schema.define(version: 2019_09_02_221047) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "work_mode_id", null: false
+    t.bigint "company_id"
     t.index ["city_id"], name: "index_offers_on_city_id"
+    t.index ["company_id"], name: "index_offers_on_company_id"
     t.index ["contract_type_id"], name: "index_offers_on_contract_type_id"
     t.index ["gender_id"], name: "index_offers_on_gender_id"
     t.index ["job_category_id"], name: "index_offers_on_job_category_id"
     t.index ["offer_type_id"], name: "index_offers_on_offer_type_id"
-    t.index ["user_id"], name: "index_offers_on_user_id"
     t.index ["work_mode_id"], name: "index_offers_on_work_mode_id"
   end
 
@@ -635,6 +688,9 @@ ActiveRecord::Schema.define(version: 2019_09_02_221047) do
   add_foreign_key "applied_offers", "offers"
   add_foreign_key "available_work_days_offers", "available_work_days"
   add_foreign_key "available_work_days_offers", "offers"
+  add_foreign_key "companies", "employees_ranges"
+  add_foreign_key "companies_users", "companies"
+  add_foreign_key "companies_users", "users"
   add_foreign_key "curriculum_vitaes", "cities"
   add_foreign_key "curriculum_vitaes", "labor_disponibilities"
   add_foreign_key "curriculum_vitaes", "users"
@@ -671,7 +727,6 @@ ActiveRecord::Schema.define(version: 2019_09_02_221047) do
   add_foreign_key "offers", "genders"
   add_foreign_key "offers", "job_categories"
   add_foreign_key "offers", "offer_types"
-  add_foreign_key "offers", "users"
   add_foreign_key "offers", "work_modes"
   add_foreign_key "offers_responsibilities", "offers"
   add_foreign_key "offers_responsibilities", "responsibilities"

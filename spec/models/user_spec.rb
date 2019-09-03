@@ -13,7 +13,7 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:password) }
     it { should validate_presence_of(:password_confirmation) }
     it { should validate_presence_of(:sign_in_count) }
-    it { should validate_presence_of(:cgitonfirmed_at) }
+    it { should validate_presence_of(:confirmed_at) }
     it { should respond_to(:sex) }
     it { should respond_to(:contract_type) }
     it { should respond_to(:document_type) }
@@ -30,7 +30,7 @@ RSpec.describe User, type: :model do
     it { should belong_to(:work_mode) }
     it { should belong_to(:contract_type) }
     it { should have_and_belong_to_many(:curriculum_vitaes) }
-    #it { should have_and_belong_to_many(:nationalities) }
+    it { should have_and_belong_to_many(:nationalities) }
     #it { should have_and_belong_to_many(:limitations) }
     it { should have_and_belong_to_many(:educational_degrees) }
   end

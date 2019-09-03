@@ -1,9 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Nationality, type: :model do
-  it "should validate the presence of description" do
-    nationality = FactoryBot.build(:nationality, description: nil)  
-    nationality.valid?
-    expect(nationality.errors[:description].size).to eq(1)
+
+  describe "validations" do
+    it { should validate_presence_of(:description) }
+  end
+
+  describe "validations" do
+    it { should have_and_belong_to_many(:users) }
   end
 end

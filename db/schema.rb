@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_03_204947) do
+ActiveRecord::Schema.define(version: 2019_09_03_210701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -413,6 +413,13 @@ ActiveRecord::Schema.define(version: 2019_09_03_204947) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "nationalities_users", force: :cascade do |t|
+    t.bigint "nationality_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["nationality_id"], name: "index_nationalities_users_on_nationality_id"
+    t.index ["user_id"], name: "index_nationalities_users_on_user_id"
+  end
+
   create_table "offer_types", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -768,6 +775,8 @@ ActiveRecord::Schema.define(version: 2019_09_03_204947) do
   add_foreign_key "languages_offers", "languages"
   add_foreign_key "languages_offers", "levels"
   add_foreign_key "languages_offers", "offers"
+  add_foreign_key "nationalities_users", "nationalities"
+  add_foreign_key "nationalities_users", "users"
   add_foreign_key "offers", "cities"
   add_foreign_key "offers", "contract_types"
   add_foreign_key "offers", "job_categories"

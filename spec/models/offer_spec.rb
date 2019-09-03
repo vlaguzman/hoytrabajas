@@ -24,7 +24,7 @@ RSpec.describe Offer, type: :model do
   end
 
   describe "assocciations" do
-    it { should belong_to(:user) }
+    it { should belong_to(:company) }
     it { should belong_to(:city) }
     it { should belong_to(:job_category) }
     it { should belong_to(:offer_type) }

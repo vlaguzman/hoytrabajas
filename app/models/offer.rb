@@ -3,7 +3,7 @@ class Offer < ApplicationRecord
                         :close_date, :immediate_start, :required_experience,
                         :description_responsibilities, :release_date, :status
 
-  belongs_to :user
+  belongs_to :company
   belongs_to :city
   belongs_to :job_category
   belongs_to :offer_type

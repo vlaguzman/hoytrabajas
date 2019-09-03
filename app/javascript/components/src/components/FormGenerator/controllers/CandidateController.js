@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { Col } from 'reactstrap'
 import Typography from '@material-ui/core/Typography'
-import DefaultContainer from '../components/FormGenerator/containers/DefaultContainer'
-import UncontrolledContainer from '../components/FormGenerator/containers/UncontrolledContainer'
-import MultiFormContainer from '../components/FormGenerator/containers/MultiFormContainer'
+import DefaultContainer from '../../../components/FormGenerator/containers/DefaultContainer'
+import UncontrolledContainer from '../../../components/FormGenerator/containers/UncontrolledContainer'
+import MultiFormContainer from '../../../components/FormGenerator/containers/MultiFormContainer'
 
 const Title = ({ name, className, title, ...props }) => (
   <Typography

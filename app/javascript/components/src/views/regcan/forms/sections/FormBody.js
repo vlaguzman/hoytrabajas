@@ -1,6 +1,6 @@
 import React, { Fragment, useContext } from 'react'
-import FormGenerator from '../components/FormGenerator'
-import { FormContext, FormNameContext } from '../context/formContext'
+import FormGenerator from '../../../../components/FormGenerator'
+import { FormContext, FormNameContext } from '../../../../context/formContext'
 import FormTitle from './FormTitle'
 import FormButtons from './FormButtons'
 

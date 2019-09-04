@@ -1,14 +1,11 @@
 import React, { useContext } from 'react'
 import Button from '@material-ui/core/Button'
-import { loadInfo } from '../../../../actions'
 import Router from 'next/router'
 import { FormContext, DispatchContext } from '../../../../context/formContext'
-import { InfoContext } from '../../../../context/formInfoContext'
 
 const FormButtons = ({ scrollAction }) => {
   const { next, prev, formSection } = useContext(FormContext)
   const dispatch = useContext(DispatchContext)
-  const infoState = useContext(InfoContext)
   const nextPage = () => {
     if (next) {
       dispatch({ type: next })
@@ -27,7 +24,6 @@ const FormButtons = ({ scrollAction }) => {
   const submit = e => {
     e.preventDefault()
     nextPage()
-    loadInfo({ ...infoState })
   }
   return (
     <div className="w-100 my-70" style={{ height: '15%' }}>

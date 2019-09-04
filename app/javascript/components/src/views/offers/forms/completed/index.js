@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
-import Cortinilla from '../views/offers/shared/Cortinilla'
-import data from '../views/offers/data'
+import Cortinilla from '../../../../views/offers/shared/Cortinilla'
+import data from '../../../../views/offers/data'
 
 const OffersFormCompletedPage = () => (
   <div className="main-wrapper">

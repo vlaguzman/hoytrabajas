@@ -2,7 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
-import { useAuth0 } from 'Auth/authContext'
+import { useAuth0 } from '../../../auth/authContext'
 
 const SelectRolePage = () => {
   const {
@@ -14,14 +14,11 @@ const SelectRolePage = () => {
   } = useAuth0()
 
   const chooseRole = async roleId => {
-    // await updateToken()
     await updateUserMetadata({ accessToken, userId: user.id, data: { roleId } })
     await updateUserRole({ accessToken, roleId })
   }
 
   if (!isAuthenticated) console.log('TODO: Should redirect to another page.')
-  // TODO: Si el usuario ya tiene rol asignado, redirigirlo a otra vista.
-  // Esto debe hacerse desde el server a través de getInitialProps
 
   return (
     <div className="ecom-dashboard-wrapper">

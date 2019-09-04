@@ -3,19 +3,12 @@ import PropTypes from 'prop-types'
 import Button from '@material-ui/core/Button'
 import Router from 'next/router'
 import { connect } from 'react-redux'
-// import {
-//   makeGetFormSection,
-//   makeGetValidateFormSection
-// } from 'Src/selectors/forms'
-import useWhyDidYouUpdate from '../hooks/useWhyDidYouUpdate'
+import useWhyDidYouUpdate from '../../../../../hooks/useWhyDidYouUpdate'
 import {
   FormContext,
   DispatchContext,
   FormChangeContext
-} from '../context/formContext'
-
-// import { loadInfo } from '../actions'
-// import { InfoContext } from '../context/formInfoContext'
+} from '../../../../../context/formContext'
 
 const FormButtons = props => {
   const { scrollAction, formSection, formName, next, prev } = props
@@ -26,7 +19,6 @@ const FormButtons = props => {
       dispatch({ type: next })
       scrollAction()
     } else {
-      // Router.push('/app/regcan/main/1')
       console.log('should save to DB')
     }
   }
@@ -36,7 +28,6 @@ const FormButtons = props => {
   const submit = e => {
     e.preventDefault()
     nextPage()
-    // loadInfo({ ...infoState })
   }
 
   const infoHasChanged = false
@@ -62,17 +53,6 @@ const FormButtons = props => {
   ) : null
 }
 
-// const makeMapStateToProps = () => {
-//   const getField = makeGetFormSection()
-//   const getValidationField = makeGetValidateFormSection()
-//   const mapStateToProps = (state, props) => ({
-//     currentField: getField(state, props),
-//     currentValidation: getValidationField(state, props)
-//   })
-//   return mapStateToProps
-// }
-
-// export default connect(makeMapStateToProps)(FormButtons)
 export default FormButtons
 
 FormButtons.propTypes = {

@@ -10,7 +10,7 @@ import { combineReducers } from 'redux'
 // import authUserReducer from './AuthUserReducer'
 // import feedbacksReducer from './FeedbacksReducer'
 // import ecommerceReducer from './EcommerceReducer'
-import formsInfoReducer from 'Reducers/FormsInfoReducer'
+import formsInfoReducer from './FormsInfoReducer'
 
 const reducers = combineReducers({
   forms: formsInfoReducer

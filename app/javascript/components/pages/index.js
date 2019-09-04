@@ -1,5 +1,5 @@
 import React from 'react'
-import { DynamicHome } from '../views/DynamicViews'
+import { DynamicHome } from '../src/views/DynamicViews'
 
 const HomePage = () => (
   <div className="main-wrapper">

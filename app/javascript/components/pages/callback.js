@@ -1,5 +1,5 @@
 import React from 'react'
-import LoginCallback from 'Auth/LoginCallback'
+import LoginCallback from '../src/auth/LoginCallback'
 
 const LoginCallbackPage = () => <LoginCallback />
 

@@ -11,7 +11,7 @@ import { useDebouncedCallback } from 'use-debounce'
 import FormControl from '@material-ui/core/FormControl'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import useWhyDidYouUpdate from '../../../hooks/useWhyDidYouUpdate'
-import { compareArrays } from 'Helpers'
+import { compareArrays } from '../../../helpers'
 
 const MAX_VALUES = 3
 const suggestions = [

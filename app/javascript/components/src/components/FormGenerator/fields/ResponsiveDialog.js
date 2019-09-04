@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import withMobileDialog from '@material-ui/core/withMobileDialog'
 import MaterialButton from '@material-ui/core/Button'
 import { AddCircleOutline } from '@material-ui/icons'
-import { makeGetMultiForm } from 'Src/selectors/forms'
+import { makeGetMultiForm } from '../../../selectors/forms'
 import dialogState from '../../../hooks/dialogState'
 import FormDialog from './FormDialog'
 

@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react'
 import Typography from '@material-ui/core/Typography'
 import { Row, Col } from 'reactstrap'
-import DataCard from '../components/Cards/DataCard'
-import ProfileContent from '../components/Cards/DataCard/Content/ProfileContent'
-import { listOfIcons } from '../views/users/profile/data'
-import allForms from '../views/users/profile/formJson'
+import DataCard from '../../../../../components/Cards/DataCard'
+import ProfileContent from '../../../../../components/Cards/DataCard/Content/ProfileContent'
+import { listOfIcons } from '../../../../../views/users/profile/data'
+import allForms from '../../../../../views/users/profile/formJson'
 
 const findForm = sectionName =>
   allForms.find(form => form.formSection === sectionName)

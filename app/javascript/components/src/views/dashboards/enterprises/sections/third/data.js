@@ -1,4 +1,4 @@
-import ChartConfig from '../constants/chart-config';
+import ChartConfig from '../../../../../constants/chart-config';
 
 
 export const WelcomeBarChart1 = {

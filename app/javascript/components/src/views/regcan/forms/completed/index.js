@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
-import Cortinilla from '../views/regcan/shared/Cortinilla'
-import data from '../views/regcan/data'
+import Cortinilla from '../../../../views/regcan/shared/Cortinilla'
+import data from '../../../../views/regcan/data'
 
 const RegPage = () => (
   <div className="main-wrapper">

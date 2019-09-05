@@ -13,7 +13,7 @@ import FormControl from '@material-ui/core/FormControl'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import { connect } from 'react-redux'
 import { makeGetField } from '../../../selectors/forms'
-import { compareArrays } from 'Helpers'
+import { compareArrays } from '../../../helpers'
 
 const MultiSelect = props => {
   const {

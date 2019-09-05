@@ -14,7 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import Content from './content'
 
-const GalleryCards = ({ }) => {
+const GalleryCard = ({ offer }) => {
   return (
           <Col
             className="cardOffer position-relative mb-30 justify-content-center align-items-center px-5"
@@ -102,7 +102,9 @@ const GalleryCards = ({ }) => {
                     image="https://picsum.photos/id/397/300/180"
                     title="Contemplative Reptile"
                   />
-                  <Content />
+                  <Content
+	             offer = {offer}
+		  />
                 </CardActionArea>
               </Card>
             {/* </div> */}
@@ -110,4 +112,4 @@ const GalleryCards = ({ }) => {
   )
 }
 
-export default GalleryCards
+export default GalleryCard

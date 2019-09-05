@@ -10,6 +10,7 @@ app/helpers
 *.swp
 storage
 spec/examples.txt
+.DS_Store
 
 /public/packs
 /public/packs-test

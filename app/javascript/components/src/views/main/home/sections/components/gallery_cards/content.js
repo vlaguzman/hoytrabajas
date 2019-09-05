@@ -6,7 +6,7 @@ import Divider from '@material-ui/core/Divider'
 import { Badge, Row, Col } from 'reactstrap'
 import CardContent from '@material-ui/core/CardContent'
 
-const Content = () => {
+const Content = ({ offer }) => {
   return (
     <CardContent className="position-relative pb-5">
       <Avatar
@@ -43,7 +43,7 @@ const Content = () => {
         className="mb-0 mt-10 fw-bold"
         style={{ fontSize: '18px' }}
       >
-        Aux. de cocina comida rápida
+	  { offer.title }
       </Typography>
       <Typography
         gutterBottom
@@ -52,16 +52,18 @@ const Content = () => {
         className="mb-10"
         style={{ fontWeight: '500', fontSize: '14px' }}
       >
-        Paisa Wings
+	  offer.company_name
+	  
       </Typography>
       <Typography className="text-secondary mb-10" variant="body2" component="p">
-        Importante franquicia sangucheria peruana ubicada en reconocidos…
+	  { offer.description }
       </Typography>
       <Typography variant="caption" className="text-secondary">
         <i
           className="ti-location-pin fw-bold mr-5"
           style={{ fontSize: '1rem' }}
         />
+	  { offer.city }
         Bogotá 
         <i
           className="ti-hand-point-up fw-bold ml-20"

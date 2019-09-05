@@ -1,3 +1,5 @@
+      1 app/controllers/home_controller.rb
+      1 app/controllers/offers_controller.rb
       1 app/controllers/users/wizards/step_eights_controller.rb
       1 app/controllers/users/wizards/step_fives_controller.rb
       1 app/controllers/users/wizards/step_fours_controller.rb

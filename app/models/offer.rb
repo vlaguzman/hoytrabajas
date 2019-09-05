@@ -2,6 +2,7 @@ class Offer < ApplicationRecord
   validates_presence_of :title, :address, :cellphone, :description, :vacancies_quantity,
                         :close_date, :immediate_start, :required_experience,
                         :description_responsibilities, :release_date, :status
+  scope :active, -> { where(status: 'active') }
 
   belongs_to :company
   belongs_to :city
@@ -29,4 +30,5 @@ class Offer < ApplicationRecord
   has_and_belongs_to_many :educational_level
 
   has_one_attached :image
+
 end

@@ -48,4 +48,30 @@ RSpec.describe Offer, type: :model do
     it { should have_and_belong_to_many(:responsibilities) }
     it { should have_and_belong_to_many(:educational_level) }
   end
+  
+  describe "#active" do
+
+    context "there are just one active_offer" do
+      let!(:offer) { create(:offer) }
+      it "should return one offer" do
+        expect(Offer.active.count).to eq(1)
+      end
+    end
+
+    context "there are not active_offer" do
+      let!(:offer) { create(:offer, :expired_offer) }
+      it "should not return any offer" do
+        expect(Offer.active.count).to eq(0)
+      end
+    end
+    
+    context "there are active and expired offers" do
+      let!(:offers) { [create(:offer, title: 'active_offer'), create(:offer, :expired_offer)] }
+      it "should return just the active_offer" do
+        expect(Offer.active.first.title).to eq('active_offer')
+        expect(Offer.active.count).to eq(1)
+      end
+    end
+
+  end
 end

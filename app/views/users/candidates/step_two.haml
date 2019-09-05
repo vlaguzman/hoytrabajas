@@ -1,0 +1,25 @@
+%h1 Empecemos por conocernos
+%h3 Brinda a las empresas información valiosa sobre ti.
+
+= form_for(:user, url: '/users', method: :put, html: { id: :candidate_step_two } ) do |field|
+  - if @user.errors.present?
+    %lu
+    - @user.errors.full_messages.each do |message|
+      %li= message
+
+  = hidden_field_tag :operation, :step_two
+
+  = field.label :about_me, "Cuentanos un poco de ti*"
+  = field.text_field :about_me
+
+  = field.label :sex, "Genero*"
+  = field.select :sex, @sexes.map { |sex| [sex.description, sex.id] }, { prompt: "Seleccione un genero"}
+
+  = field.label :birthday, "Fecha de nacimiento"
+  = field.date_field :birthday
+
+  = field.select(:limitations, @limitations.map { |limitation| [limitation.description, limitation.id] } ,{ prompt: "Seleccione una limitacion"}, { :multiple => true } )
+
+  = field.select(:educational_degrees, @educational_degrees.map { |degree| [degree.description, degree.id] } ,{ prompt: "Seleccione nivel educativo"}, { :multiple => true } )
+
+  = field.submit("siguiente")

@@ -3,17 +3,17 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 
   describe "validations" do
-    it { should validate_presence_of(:name) }
-    it { should validate_presence_of(:last_name) }
-    it { should validate_presence_of(:birthday) }
-    it { should validate_presence_of(:contact_number) }
+    it { should respond_to(:name) }
+    it { should respond_to(:last_name) }
+    it { should respond_to(:birthday) }
+    it { should respond_to(:contact_number) }
+    it { should respond_to(:about_me) }
+    it { should respond_to(:identification_number) }
     it { should validate_presence_of(:email) }
-    it { should validate_presence_of(:identification_number) }
-    it { should validate_presence_of(:about_me) }
     it { should validate_presence_of(:password) }
-    it { should validate_presence_of(:password_confirmation) }
     it { should validate_presence_of(:sign_in_count) }
     it { should validate_presence_of(:confirmed_at) }
+    it { should respond_to(:password_confirmation) }
     it { should respond_to(:sex) }
     it { should respond_to(:contract_type) }
     it { should respond_to(:document_type) }

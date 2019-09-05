@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_03_212856) do
+ActiveRecord::Schema.define(version: 2019_09_04_231343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -175,7 +175,9 @@ ActiveRecord::Schema.define(version: 2019_09_03_212856) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "work_mode_id", null: false
+    t.bigint "contract_type_id", null: false
     t.index ["city_id"], name: "index_curriculum_vitaes_on_city_id"
+    t.index ["contract_type_id"], name: "index_curriculum_vitaes_on_contract_type_id"
     t.index ["labor_disponibility_id"], name: "index_curriculum_vitaes_on_labor_disponibility_id"
     t.index ["user_id"], name: "index_curriculum_vitaes_on_user_id"
     t.index ["work_mode_id"], name: "index_curriculum_vitaes_on_work_mode_id"
@@ -195,6 +197,17 @@ ActiveRecord::Schema.define(version: 2019_09_03_212856) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_languages_on_curriculum_vitae_id"
     t.index ["language_id"], name: "index_curriculum_vitaes_languages_on_language_id"
+  end
+
+  create_table "curriculum_vitaes_salaries", force: :cascade do |t|
+    t.bigint "curriculum_vitae_id", null: false
+    t.bigint "salary_period_id", null: false
+    t.bigint "currency_id", null: false
+    t.integer "from"
+    t.integer "to"
+    t.index ["currency_id"], name: "index_curriculum_vitaes_salaries_on_currency_id"
+    t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_salaries_on_curriculum_vitae_id"
+    t.index ["salary_period_id"], name: "index_curriculum_vitaes_salaries_on_salary_period_id"
   end
 
   create_table "curriculum_vitaes_soft_skills", force: :cascade do |t|
@@ -434,12 +447,14 @@ ActiveRecord::Schema.define(version: 2019_09_03_212856) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "work_mode_id", null: false
+    t.bigint "sex_id", null: false
     t.bigint "company_id"
     t.index ["city_id"], name: "index_offers_on_city_id"
     t.index ["company_id"], name: "index_offers_on_company_id"
     t.index ["contract_type_id"], name: "index_offers_on_contract_type_id"
     t.index ["job_category_id"], name: "index_offers_on_job_category_id"
     t.index ["offer_type_id"], name: "index_offers_on_offer_type_id"
+    t.index ["sex_id"], name: "index_offers_on_sex_id"
     t.index ["work_mode_id"], name: "index_offers_on_work_mode_id"
   end
 
@@ -730,11 +745,15 @@ ActiveRecord::Schema.define(version: 2019_09_03_212856) do
   add_foreign_key "companies_users", "companies"
   add_foreign_key "companies_users", "users"
   add_foreign_key "curriculum_vitaes", "cities"
+  add_foreign_key "curriculum_vitaes", "contract_types"
   add_foreign_key "curriculum_vitaes", "labor_disponibilities"
   add_foreign_key "curriculum_vitaes", "users"
   add_foreign_key "curriculum_vitaes", "work_modes"
   add_foreign_key "curriculum_vitaes_languages", "curriculum_vitaes"
   add_foreign_key "curriculum_vitaes_languages", "languages"
+  add_foreign_key "curriculum_vitaes_salaries", "currencies"
+  add_foreign_key "curriculum_vitaes_salaries", "curriculum_vitaes"
+  add_foreign_key "curriculum_vitaes_salaries", "salary_periods"
   add_foreign_key "curriculum_vitaes_soft_skills", "soft_skills"
   add_foreign_key "curriculum_vitaes_technical_skills", "curriculum_vitaes"
   add_foreign_key "curriculum_vitaes_technical_skills", "job_categories"
@@ -767,6 +786,7 @@ ActiveRecord::Schema.define(version: 2019_09_03_212856) do
   add_foreign_key "offers", "contract_types"
   add_foreign_key "offers", "job_categories"
   add_foreign_key "offers", "offer_types"
+  add_foreign_key "offers", "sexes"
   add_foreign_key "offers", "work_modes"
   add_foreign_key "offers_responsibilities", "offers"
   add_foreign_key "offers_responsibilities", "responsibilities"

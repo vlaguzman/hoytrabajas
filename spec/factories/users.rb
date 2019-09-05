@@ -1,21 +1,31 @@
 FactoryBot.define do
   factory :user do
-    email { 'nuevousuario@gmail.com' } 
-    password { 'hola12345' }
-    password_confirmation { 'hola12345' }
-    sign_in_count { 0 }
-    confirmed_at { Date.today } 
+    name                  { Faker::FunnyName.name }
+    last_name             { Faker::FunnyName.two_word_name }
+    birthday              { Faker::Date.birthday(min_age: 18, max_age: 65) }
+    contact_number        { Faker::PhoneNumber.cell_phone }
+    identification_number { Faker::IDNumber.valid }
+    email                 { Faker::Internet.email }
+    password              { Faker::Blockchain::Bitcoin.address }
+    confirmed_at          { Date.today }
+    sign_in_count         { 1323 }
 
-    #first form 
-    #name { "Carlos" }
-    #last_name { "Rojas" }
-    #nationality { nil }
-    #document_type { nil }
-    #identification_number { nil }
-    #about_me { "I am the best chef in the world" }
-    #sexuality { nil }
-    #birthday { Date.new(1990-01-01) }
-    #handicap { nil }
-    #educational_degree { nil }
+    association :sex, factory: :sex
+    association :contract_type, factory: :contract_type
+    association :document_type, factory: :document_type
+    association :work_mode, factory: :work_mode
+
+    trait :first_time_candidate do
+      name                  { nil }
+      last_name             { nil }
+      birthday              { nil }
+      contact_number        { nil }
+      identification_number { nil }
+      email                 { Faker::Internet.email }
+      password              { Faker::Blockchain::Bitcoin.address }
+      confirmed_at          { Date.today }
+      sign_in_count         { 0 }
+    end
+
   end
 end

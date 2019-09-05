@@ -79,4 +79,15 @@ RSpec.configure do |config|
       with.library :rails
     end
   end
+
+  #Rspec HTML Matchers
+  config.include RSpecHtmlMatchers
+
+  #FactoryBot Helper
+  config.include FactoryBot::Syntax::Methods
+
+  #Devise helpder
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :view
+  config.include Devise::Test::IntegrationHelpers, type: :feature
 end

@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :nationality do
-    description {'Colombiano'}
+    description {'Colombian'}
   end
 end

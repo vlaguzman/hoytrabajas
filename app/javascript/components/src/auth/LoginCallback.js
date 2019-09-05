@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import loadingSVG from './loading.svg'
-import { useAuth0 } from './authContext'
+import { useAuth0 } from '../auth/authContext'
 
 const style = {
   position: 'absolute',

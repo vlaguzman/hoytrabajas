@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react'
-import { DynamicOffers } from '../views/DynamicViews'
-import IsLoggedIn from '../components/Permissions/IsLoggedIn'
+import { DynamicOffers } from '../../src/views/DynamicViews'
+import IsLoggedIn from '../../src/components/Permissions/IsLoggedIn'
 
 const OffersPage = () => (
   <Fragment>

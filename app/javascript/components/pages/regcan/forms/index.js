@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react'
-import { DynamicRegForms } from '../views/DynamicViews'
+import { DynamicRegForms } from '../../../src/views/DynamicViews'
 
 const RegFormsPage = () => (
   <Fragment>

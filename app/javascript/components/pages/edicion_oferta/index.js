@@ -1,5 +1,5 @@
 import React from 'react'
-import { DynamicOfferEdit } from '../views/DynamicViews'
+import { DynamicOfferEdit } from '../../src/views/DynamicViews'
 
 const MainPage = () => (
     <DynamicOfferEdit />

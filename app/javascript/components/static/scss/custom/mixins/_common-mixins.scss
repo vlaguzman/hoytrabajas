@@ -9,7 +9,7 @@
         line-height: $size;
         text-align: center;
         width: $size !important;
-        @extend .p-0;
+        @extend .p-0 !optional; //gabriel add '!optional' and compiled app/javascript/components/static/scss/custom/_user.scss
         vertical-align: middle;
     }
 }

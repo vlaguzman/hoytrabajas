@@ -1,3 +1,9 @@
+$color: #fff;
+@import '../bootstrap/variables';
+@import '../bootstrap/functions';
+@import '../bootstrap-override';
+@import '../app-variables';
+@import 'mixins/common-mixins';
 /*=========== User Style =========*/
 .card-block-content {
 	.media {

@@ -35,6 +35,8 @@ group :development, :test do
   gem 'brakeman', require: false
   gem 'rails_best_practices'
   gem 'rubycritic'
+  gem 'simplecov', :require => false
+  gem 'simplecov-csv', :require => false
   gem 'shoulda', '~> 3.5'
 end
 

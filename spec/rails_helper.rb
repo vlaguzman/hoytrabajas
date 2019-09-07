@@ -5,6 +5,19 @@ require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
+require "simplecov"
+require "simplecov-csv"
+SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new([
+  SimpleCov::Formatter::HTMLFormatter,
+  SimpleCov::Formatter::CSVFormatter,
+])
+
+SimpleCov.start 'rails' do
+  add_filter "/spec/"
+  add_filter "/gems/"
+  add_filter "/config/"
+  add_filter "/app/controllers/"
+end
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in

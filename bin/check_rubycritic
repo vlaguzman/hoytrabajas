@@ -1,0 +1,16 @@
+#!/bin/sh
+
+echo "Runnig Rubycritic..."
+bundle exec rubycritic app lib
+grep "var score =" tmp/rubycritic/overview.html | awk '{ print $4 }' | cut -d ";" -f1 > tmp/rubycritic_manifest
+SCORE_FROM_MASTER=$(cat rubycritic_manifest)
+SCORE_FROM_BRANCH=$(cat tmp/rubycritic_manifest)
+
+if [ $( echo "$SCORE_FROM_BRANCH < $SCORE_FROM_MASTER" | bc -l ) -eq 1 ]; then
+  echo "****************************************************************************************************************"
+  echo "The overall score has worsened"
+  echo "****************************************************************************************************************"
+  exit 1
+else
+  cp tmp/rubycritic_manifest rubycritic_manifest
+fi

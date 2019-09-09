@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe "fill the canditate user data", :type => :feature do
   context "like a candidate user after the principal data is filled" do
     xit "should see the offert info to fill and the next buttons" do
-      
+
       #Create a user with the principal information - Use a factory
       user = User.new('name', 'last_name', 'email')
-      #Visit the rute of the profile user creation - step 3 
-      visit "/candidato/#{user.id}/create_user/step3" 
-      
+      #Visit the rute of the profile user creation - step 3
+      visit "/candidato/#{user.id}/create_user/step3"
+
       expect(page).to have_text("Busquemos las mejores ofertas")
       fill_in "job_categories", :with => ['seguridad', 'logistica y transporte']#it can be more than one option
       fill_in "job_offer", :with => ['Tiempo completo', 'Medio tiempo']#it can be more than one option

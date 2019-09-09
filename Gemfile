@@ -39,7 +39,6 @@ group :development, :test do
   gem 'simplecov-csv', :require => false
   gem 'shoulda', '~> 3.5'
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
-  gem "byebug", "~> 11.0"
   gem "rails-controller-testing"
   gem 'rspec-html-matchers'
 end

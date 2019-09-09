@@ -1,12 +1,11 @@
 class CurriculumVitae < ApplicationRecord
   validates_presence_of :user
-  #:area_code, :city, :about_me, :release_date, :labor_disponibility, :work_mode, :travel_disponibility, :visits_count
 
-  belongs_to :user
-  belongs_to :city
-  belongs_to :labor_disponibility
-  belongs_to :work_mode
-  belongs_to :contract_type
+  belongs_to :user,                 optional: true
+  belongs_to :city,                 optional: true
+  belongs_to :labor_disponibility,  optional: true
+  belongs_to :work_mode,            optional: true
+  belongs_to :contract_type,        optional: true
 
   has_many :visits
 

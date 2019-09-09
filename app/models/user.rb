@@ -7,15 +7,17 @@ class User < ApplicationRecord
 
   validates_presence_of :email, :confirmed_at, :sign_in_count
 
-  belongs_to :sex
-  belongs_to :contract_type
-  belongs_to :document_type
-  belongs_to :work_mode
+  belongs_to :sex,            optional: true
+  belongs_to :contract_type,  optional: true
+  belongs_to :document_type,  optional: true
+  belongs_to :work_mode,      optional: true
+  belongs_to :educational_degree, optional: true
+
+
+  has_many :curriculum_vitaes
 
   has_and_belongs_to_many :nationalities
   has_and_belongs_to_many :limitations
-  has_and_belongs_to_many :educational_degrees
-  has_and_belongs_to_many :curriculum_vitaes
 
   has_and_belongs_to_many :companies
 end

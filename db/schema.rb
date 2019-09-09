@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_04_231343) do
+ActiveRecord::Schema.define(version: 2019_09_09_192725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -169,13 +169,13 @@ ActiveRecord::Schema.define(version: 2019_09_04_231343) do
     t.datetime "release_date"
     t.string "travel_disponibility"
     t.string "visits_count"
-    t.bigint "user_id", null: false
-    t.bigint "city_id", null: false
-    t.bigint "labor_disponibility_id", null: false
+    t.bigint "user_id"
+    t.bigint "city_id"
+    t.bigint "labor_disponibility_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "work_mode_id", null: false
-    t.bigint "contract_type_id", null: false
+    t.bigint "work_mode_id"
+    t.bigint "contract_type_id"
     t.index ["city_id"], name: "index_curriculum_vitaes_on_city_id"
     t.index ["contract_type_id"], name: "index_curriculum_vitaes_on_contract_type_id"
     t.index ["labor_disponibility_id"], name: "index_curriculum_vitaes_on_labor_disponibility_id"
@@ -233,13 +233,6 @@ ActiveRecord::Schema.define(version: 2019_09_04_231343) do
     t.index ["job_category_id"], name: "index_curriculum_vitaes_technical_skills_on_job_category_id"
     t.index ["level_id"], name: "index_curriculum_vitaes_technical_skills_on_level_id"
     t.index ["technical_skill_id"], name: "index_curriculum_vitaes_technical_skills_on_technical_skill_id"
-  end
-
-  create_table "curriculum_vitaes_users", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "curriculum_vitae_id", null: false
-    t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_users_on_curriculum_vitae_id"
-    t.index ["user_id"], name: "index_curriculum_vitaes_users_on_user_id"
   end
 
   create_table "curriculum_vitaes_vehicles", force: :cascade do |t|
@@ -670,13 +663,15 @@ ActiveRecord::Schema.define(version: 2019_09_04_231343) do
     t.string "contact_number"
     t.string "identification_number"
     t.string "about_me"
-    t.bigint "sex_id", null: false
-    t.bigint "document_type_id", null: false
-    t.bigint "contract_type_id", null: false
-    t.bigint "work_mode_id", null: false
+    t.bigint "sex_id"
+    t.bigint "document_type_id"
+    t.bigint "contract_type_id"
+    t.bigint "work_mode_id"
+    t.bigint "educational_degree_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["contract_type_id"], name: "index_users_on_contract_type_id"
     t.index ["document_type_id"], name: "index_users_on_document_type_id"
+    t.index ["educational_degree_id"], name: "index_users_on_educational_degree_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["sex_id"], name: "index_users_on_sex_id"
@@ -759,8 +754,6 @@ ActiveRecord::Schema.define(version: 2019_09_04_231343) do
   add_foreign_key "curriculum_vitaes_technical_skills", "job_categories"
   add_foreign_key "curriculum_vitaes_technical_skills", "levels"
   add_foreign_key "curriculum_vitaes_technical_skills", "technical_skills"
-  add_foreign_key "curriculum_vitaes_users", "curriculum_vitaes"
-  add_foreign_key "curriculum_vitaes_users", "users"
   add_foreign_key "curriculum_vitaes_vehicles", "curriculum_vitaes"
   add_foreign_key "curriculum_vitaes_vehicles", "vehicles"
   add_foreign_key "curriculum_vitaes_working_days", "curriculum_vitaes"
@@ -815,6 +808,7 @@ ActiveRecord::Schema.define(version: 2019_09_04_231343) do
   add_foreign_key "required_experiences", "offers"
   add_foreign_key "users", "contract_types"
   add_foreign_key "users", "document_types"
+  add_foreign_key "users", "educational_degrees"
   add_foreign_key "users", "sexes"
   add_foreign_key "users", "work_modes"
   add_foreign_key "users_limitations", "limitations"

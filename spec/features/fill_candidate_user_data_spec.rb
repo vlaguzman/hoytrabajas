@@ -17,8 +17,6 @@ RSpec.describe "fill the principal candidate user data", :type => :feature do
 
     create(:contract_type)
 
-    create(:sex, description: "masculino")
-
     create(:limitation, description: "ninguna")
     create(:limitation, description: "daltonismo")
 
@@ -29,7 +27,7 @@ RSpec.describe "fill the principal candidate user data", :type => :feature do
     let!(:candidate) { create(:user, :first_time_candidate, email: "nuevousuario@gmail.com", password: "hola12345" ) }
 
     it "should see the info to fill and the next button in each section" do
-      #sign_in candidate
+
       visit new_user_session_path
 
       expect(page).to have_text("Log in")
@@ -45,43 +43,35 @@ RSpec.describe "fill the principal candidate user data", :type => :feature do
 
       expect(page).to have_text("Empecemos por conocernos")
 
-      # dado el usuario se logea por primera vez, es redirigido a la pagina
-      # de registr de informacion
-      # TODO: hacer otra prueba para rediririr al usuraia a otra pantalla
-      # cuando ya ha sido logueado antes
-
-      #a new user answers the first part of the form with
-      #all the required fields
-
-      within '#update_user' do
+      within '#step_one' do
         fill_in 'user[name]', with: 'Carlos'
         fill_in 'user[last_name]', with: 'Rojas'
-        select 'Colombiana', from: 'user[nationalities][]'
-        select 'Cedula de Ciudadania', from: 'user[document_type]'
+        select 'Colombiana', from: 'user[nationality_ids][]'
+        select 'Cedula de Ciudadania', from: 'user[document_type_id]'
         fill_in "user[identification_number]", :with => "1063558224"
         fill_in "user[contact_number]", :with => "3183638789"
         click_on 'siguiente'
       end
-      save_page("paps.html")
 
       expect(User.count).to eq(1)
       expect(CurriculumVitae.count).to eq(1)
 
       expect(page).to have_text("Empecemos por conocernos")
 
-
-      within '#candidate_step_two' do
+      within '#step_two' do
         fill_in "user[about_me]", :with => "I am the best chef in the world"
-        page.select 'masculino', from: 'user[sex]'
-        fill_in "user[birthday]", :with => "1990-01-01"
-        page.select 'ninguna', from: 'user[limitations][]'
-        page.select 'Profesional', from: 'user[educational_degrees][]'
+        page.select 'masculino', from: 'user[sex_id]'
+        fill_in "user[birthday]", :with => "1990-12-20"
+        page.select 'ninguna', from: 'user[limitation_ids][]'
+        page.select 'Profesional', from: 'user[educational_degree_id]'
         click_button 'siguiente'
       end
 
       candidate = User.first
 
       expect(candidate.sex.description).to eq("masculino")
+      expect(candidate.about_me).to eq("I am the best chef in the world")
+      expect(candidate.birthday).to eq(Date.parse("1990-12-20"))
       expect(candidate.curriculum_vitaes.count).to eq(1)
     end
   end

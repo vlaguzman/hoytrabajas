@@ -20,7 +20,7 @@ RSpec.describe User, type: :model do
     it { should respond_to(:work_mode) }
     it { should respond_to(:curriculum_vitaes) }
     it { should respond_to(:nationalities) }
-    it { should respond_to(:educational_degrees) }
+    it { should respond_to(:educational_degree) }
     it { should respond_to(:limitations) }
   end
 
@@ -29,9 +29,9 @@ RSpec.describe User, type: :model do
     it { should belong_to(:document_type) }
     it { should belong_to(:work_mode) }
     it { should belong_to(:contract_type) }
-    it { should have_and_belong_to_many(:curriculum_vitaes) }
+    it { should belong_to(:educational_degree) }
+    it { should have_many(:curriculum_vitaes) }
     it { should have_and_belong_to_many(:nationalities) }
     it { should have_and_belong_to_many(:limitations) }
-    it { should have_and_belong_to_many(:educational_degrees) }
   end
 end

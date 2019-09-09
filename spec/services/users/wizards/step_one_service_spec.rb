@@ -1,0 +1,48 @@
+require 'rails_helper'
+
+RSpec.describe Users::Wizards::StepOneService do
+  let!(:document_type) { create(:document_type) }
+  let!(:nationalities) { [
+    create(:nationality, description: "Argentina"),
+    create(:nationality, description: "Peruana")
+  ] }
+
+  let(:candidate) {create(:user, :first_time_candidate) }
+  let(:params) do
+    {
+      name: "False",
+      last_name: "Fakeman",
+      document_type_id: document_type.id,
+      contact_number: "12355552345",
+      identification_number: "561234563",
+      nationality_ids: nationalities.pluck(:id)
+    }
+  end
+
+  it { should be_an_instance_of(Module) }
+
+  describe "#call" do
+    it "Should return a modified user" do
+      modified_candidate = subject.(candidate: candidate, update_params: params )
+
+      expect(User.count).to eq(1)
+      expect(CurriculumVitae.count).to eq(1)
+
+      expect(modified_candidate).to be_an_instance_of(User)
+      expect(modified_candidate.curriculum_vitaes.count).to eq(1)
+
+      expect(modified_candidate.name).to eq(params[:name])
+      expect(modified_candidate.last_name).to eq(params[:last_name])
+
+      saved_document_type = DocumentType.find_by(id: params[:document_type_id])
+      expect(modified_candidate.document_type).to eq(saved_document_type)
+
+      saved_nationalities = nationalities.map { |id| Nationality.find_by(id: id) }
+      expect(modified_candidate.nationalities).to eq(saved_nationalities)
+
+      expect(modified_candidate.identification_number).to eq(params[:identification_number])
+      expect(modified_candidate.contact_number).to eq(params[:contact_number])
+    end
+
+  end
+end

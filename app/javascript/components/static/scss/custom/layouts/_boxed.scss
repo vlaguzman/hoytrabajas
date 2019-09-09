@@ -1,10 +1,9 @@
-@import '../../../img/boxed-bg';
 /*========= App Boxed Layout ========*/
 .boxed-layout {
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
   margin: 0 auto;
   width: 1280px !important;
-  background-image: $boxed-bg;
+  //gabriel background-image: $boxed-bg;
   .search-icon {
     width: 16rem;
   }

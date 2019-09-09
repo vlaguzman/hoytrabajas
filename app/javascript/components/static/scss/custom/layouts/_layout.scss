@@ -1,3 +1,9 @@
+@import '../../bootstrap/variables';
+@import '../../bootstrap/functions';
+@import '../../bootstrap-override';
+@import '../../app-variables';
+@import '../mixins/common-mixins';
+@import '../../bootstrap/mixins/breakpoints';
 /*====== All App Layout Include Here =====*/
 // Collapse Sidebar Layout
 @import "./collapse";

@@ -1,3 +1,8 @@
+@import '../bootstrap/variables';
+@import '../bootstrap/functions';
+@import '../bootstrap-override';
+@import '../app-variables';
+@import 'mixins/common-mixins';
 /*======= All App Effect Is Mentioned Here ========*/
 .rct-notify {
   display: flex;
@@ -34,7 +39,7 @@
 }
 /*=========== Weather Widget Effect =============*/
 .rct-weather-widget {
-  background-image: $weather-bg;
+  //gabriel background-image: $weather-bg;
   background-size: cover;
   -moz-animation: animatedBackground 25s infinite ease;
   -o-animation: animatedBackground 25s infinite ease;

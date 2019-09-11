@@ -1,1 +1,26 @@
-%H1 Step 3
+%h1 Busquemos las mejores ofertas
+%h3 Brinda a las empresas información valiosa sobre ti.
+
+= form_for(:user, url: users_step_three_path, method: :put, html: { id: :step_three } ) do |field|
+  - if @user.errors.present?
+    %lu
+    - @user.errors.full_messages.each do |message|
+      %li= message
+
+  = field.fields_for(:curriculum_vitae) do |field|
+    = field.label :job_cateogories, "Elije las categorías en las que deseas buscar trabajo"
+    = field.select(:job_category_ids, @user.job_categories_list.map { |job_category| [job_category.description, job_category.id] }, { prompt: "Seleccione categorias"}, { :multiple => true })
+
+    = field.label :offer_types, "Tipo de oferta"
+    = field.select(:offer_type_ids, @user.offer_types_list.map { |offer_type| [offer_type.description, offer_type.id] }, { prompt: "Seleccione tipos de oferta"}, { :multiple => true })
+
+    = field.label :contract_type, "Acuerdo legal"
+    = field.select(:contract_type_id, @user.contract_types_list.map { |contract_type| [contract_type.description, contract_type.id] }, { prompt: "Seleccione un acuerdo"})
+
+    = field.label :work_modes, "Modalidad de trabajo"
+    = field.select(:work_mode_ids, @user.work_modes_list.map { |work_mode| [work_mode.description, work_mode.id] }, { prompt: "Seleccione modalidades de trabajo"}, { :multiple => true })
+
+    = field.label :labor_disponibilities, "Disponibilidad para trabajar"
+    = field.select(:labor_disponibility_id, @user.labor_disponibilities_list.map { |labor_disponibility| [labor_disponibility.description, labor_disponibility.id] }, { prompt: "Seleccione una disponibilidad para trabajar"})
+
+  = field.submit("siguiente")

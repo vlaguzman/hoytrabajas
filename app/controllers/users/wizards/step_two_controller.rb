@@ -6,7 +6,7 @@ class Users::Wizards::StepTwoController < ApplicationController
 
   def update
     @user = Users::Wizards::StepTwoService.(candidate: current_user, update_params: strong_params)
-
+    #TODO Ajustar el uso de @user
     @user = Users::Wizards::StepTwoPresenter.new(current_user)
 
     if not @user.errors.details.present?

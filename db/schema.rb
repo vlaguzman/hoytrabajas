@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_09_192725) do
+ActiveRecord::Schema.define(version: 2019_09_10_225451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -188,6 +188,15 @@ ActiveRecord::Schema.define(version: 2019_09_09_192725) do
     t.string "educational_degree_id"
     t.index ["curriculum_vitae_id"], name: "cv_id", unique: true
     t.index ["educational_degree_id"], name: "edu_degree_id", unique: true
+  end
+
+  create_table "curriculum_vitaes_job_categories", force: :cascade do |t|
+    t.bigint "curriculum_vitae_id", null: false
+    t.bigint "job_category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_job_categories_on_curriculum_vitae_id"
+    t.index ["job_category_id"], name: "index_curriculum_vitaes_job_categories_on_job_category_id"
   end
 
   create_table "curriculum_vitaes_languages", force: :cascade do |t|
@@ -663,10 +672,10 @@ ActiveRecord::Schema.define(version: 2019_09_09_192725) do
     t.string "contact_number"
     t.string "identification_number"
     t.string "about_me"
-    t.bigint "sex_id"
-    t.bigint "document_type_id"
-    t.bigint "contract_type_id"
-    t.bigint "work_mode_id"
+    t.bigint "sex_id", null: false
+    t.bigint "document_type_id", null: false
+    t.bigint "contract_type_id", null: false
+    t.bigint "work_mode_id", null: false
     t.bigint "educational_degree_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["contract_type_id"], name: "index_users_on_contract_type_id"
@@ -744,6 +753,8 @@ ActiveRecord::Schema.define(version: 2019_09_09_192725) do
   add_foreign_key "curriculum_vitaes", "labor_disponibilities"
   add_foreign_key "curriculum_vitaes", "users"
   add_foreign_key "curriculum_vitaes", "work_modes"
+  add_foreign_key "curriculum_vitaes_job_categories", "curriculum_vitaes"
+  add_foreign_key "curriculum_vitaes_job_categories", "job_categories"
   add_foreign_key "curriculum_vitaes_languages", "curriculum_vitaes"
   add_foreign_key "curriculum_vitaes_languages", "languages"
   add_foreign_key "curriculum_vitaes_salaries", "currencies"

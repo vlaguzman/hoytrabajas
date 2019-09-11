@@ -33,5 +33,6 @@ RSpec.describe User, type: :model do
     it { should have_many(:curriculum_vitaes) }
     it { should have_and_belong_to_many(:nationalities) }
     it { should have_and_belong_to_many(:limitations) }
+    it { should accept_nested_attributes_for(:curriculum_vitaes)}
   end
 end

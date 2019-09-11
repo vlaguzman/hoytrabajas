@@ -16,7 +16,7 @@ class CurriculumVitae < ApplicationRecord
   has_and_belongs_to_many :available_work_days
   has_and_belongs_to_many :languages
   has_and_belongs_to_many :technical_skills
-  has_and_belongs_to_many :users
+  has_and_belongs_to_many :job_categories
 
   has_one_attached :photo
 end

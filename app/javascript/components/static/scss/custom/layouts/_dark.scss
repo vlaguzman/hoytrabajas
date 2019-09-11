@@ -1,13 +1,16 @@
-@import '../../bootstrap/variables';
+@import '../mixins/common-mixins';
 @import '../../bootstrap/functions';
+@import '../../bootstrap/mixins';
+@import '../../bootstrap/variables';
 @import '../../bootstrap-override';
 @import '../../app-variables';
+
 /*====== Dark Layout Style Here ======*/
 
 body.dark-mode,
 body.dark-mode .app-boxed .rct-page {
   color: $dark-bg-color;
-  background-image: $dark-layout-bg;
+  background-image: url('../../../img/dark-layout-bg.png');
 }
 
 .dark-mode {

@@ -3,7 +3,9 @@
 @import '../bootstrap-override';
 @import '../app-variables';
 @import 'mixins/common-mixins';
+
 /*======= All App Effect Is Mentioned Here ========*/
+
 .rct-notify {
   display: flex;
   -moz-animation: notify 1.5s infinite linear;
@@ -39,7 +41,7 @@
 }
 /*=========== Weather Widget Effect =============*/
 .rct-weather-widget {
-  background-image: $weather-bg;
+  background-image: url('/static/img/weather-1.png');
   background-size: cover;
   -moz-animation: animatedBackground 25s infinite ease;
   -o-animation: animatedBackground 25s infinite ease;

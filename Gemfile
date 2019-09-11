@@ -27,7 +27,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.8'
+  gem 'rspec-rails', '~> 4.0.0.beta2'
   gem 'capybara', '~>2.8'
   gem 'factory_bot_rails'
   gem 'curb'
@@ -38,6 +38,9 @@ group :development, :test do
   gem 'simplecov', :require => false
   gem 'simplecov-csv', :require => false
   gem 'shoulda', '~> 3.5'
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+  gem "rails-controller-testing"
+  gem 'rspec-html-matchers'
 end
 
 group :development do

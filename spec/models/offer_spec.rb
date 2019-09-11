@@ -29,7 +29,7 @@ RSpec.describe Offer, type: :model do
     it { should belong_to(:job_category) }
     it { should belong_to(:offer_type) }
     it { should belong_to(:job_category) }
-    it { should belong_to(:gender) }
+    it { should belong_to(:sex) }
     it { should belong_to(:job_category) }
     it { should belong_to(:work_mode) }
     it { should belong_to(:job_category) }

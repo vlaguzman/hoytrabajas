@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :companies
+  resource :users, only: [:edit, :update] do
+    resource :step_one,   only: [:show, :update], controller: 'users/wizards/step_one'
+    resource :step_two,   only: [:show, :update], controller: 'users/wizards/step_two'
+    resource :step_three, only: [:show, :update], controller: 'users/wizards/step_three'
+  end
+
   devise_for :users
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :companies
+
   root to: "home#index"
+
 end

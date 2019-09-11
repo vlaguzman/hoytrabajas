@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_03_190629) do
+ActiveRecord::Schema.define(version: 2019_09_10_225451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -169,13 +169,15 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
     t.datetime "release_date"
     t.string "travel_disponibility"
     t.string "visits_count"
-    t.bigint "user_id", null: false
-    t.bigint "city_id", null: false
-    t.bigint "labor_disponibility_id", null: false
+    t.bigint "user_id"
+    t.bigint "city_id"
+    t.bigint "labor_disponibility_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "work_mode_id", null: false
+    t.bigint "work_mode_id"
+    t.bigint "contract_type_id"
     t.index ["city_id"], name: "index_curriculum_vitaes_on_city_id"
+    t.index ["contract_type_id"], name: "index_curriculum_vitaes_on_contract_type_id"
     t.index ["labor_disponibility_id"], name: "index_curriculum_vitaes_on_labor_disponibility_id"
     t.index ["user_id"], name: "index_curriculum_vitaes_on_user_id"
     t.index ["work_mode_id"], name: "index_curriculum_vitaes_on_work_mode_id"
@@ -188,6 +190,15 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
     t.index ["educational_degree_id"], name: "edu_degree_id", unique: true
   end
 
+  create_table "curriculum_vitaes_job_categories", force: :cascade do |t|
+    t.bigint "curriculum_vitae_id", null: false
+    t.bigint "job_category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_job_categories_on_curriculum_vitae_id"
+    t.index ["job_category_id"], name: "index_curriculum_vitaes_job_categories_on_job_category_id"
+  end
+
   create_table "curriculum_vitaes_languages", force: :cascade do |t|
     t.bigint "curriculum_vitae_id", null: false
     t.bigint "language_id", null: false
@@ -195,13 +206,6 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_languages_on_curriculum_vitae_id"
     t.index ["language_id"], name: "index_curriculum_vitaes_languages_on_language_id"
-  end
-
-  create_table "curriculum_vitaes_limitations", force: :cascade do |t|
-    t.bigint "curriculum_vitae_id", null: false
-    t.bigint "limitation_id", null: false
-    t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_limitations_on_curriculum_vitae_id"
-    t.index ["limitation_id"], name: "index_curriculum_vitaes_limitations_on_limitation_id"
   end
 
   create_table "curriculum_vitaes_salaries", force: :cascade do |t|
@@ -287,6 +291,15 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "educational_degrees_users", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "educational_degree_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["educational_degree_id"], name: "index_educational_degrees_users_on_educational_degree_id"
+    t.index ["user_id"], name: "index_educational_degrees_users_on_user_id"
+  end
+
   create_table "educational_levels", force: :cascade do |t|
     t.string "institution_name"
     t.date "start_date"
@@ -327,12 +340,6 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
     t.bigint "function_id", null: false
     t.index ["function_id"], name: "index_functions_offers_on_function_id"
     t.index ["offer_id"], name: "index_functions_offers_on_offer_id"
-  end
-
-  create_table "genders", force: :cascade do |t|
-    t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "industries", force: :cascade do |t|
@@ -397,10 +404,24 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "limitations_users", force: :cascade do |t|
+    t.bigint "limitation_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["limitation_id"], name: "index_limitations_users_on_limitation_id"
+    t.index ["user_id"], name: "index_limitations_users_on_user_id"
+  end
+
   create_table "nationalities", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "nationalities_users", force: :cascade do |t|
+    t.bigint "nationality_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["nationality_id"], name: "index_nationalities_users_on_nationality_id"
+    t.index ["user_id"], name: "index_nationalities_users_on_user_id"
   end
 
   create_table "offer_types", force: :cascade do |t|
@@ -424,18 +445,18 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
     t.bigint "city_id", null: false
     t.bigint "job_category_id", null: false
     t.bigint "offer_type_id", null: false
-    t.bigint "gender_id", null: false
     t.bigint "contract_type_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "work_mode_id", null: false
+    t.bigint "sex_id", null: false
     t.bigint "company_id"
     t.index ["city_id"], name: "index_offers_on_city_id"
     t.index ["company_id"], name: "index_offers_on_company_id"
     t.index ["contract_type_id"], name: "index_offers_on_contract_type_id"
-    t.index ["gender_id"], name: "index_offers_on_gender_id"
     t.index ["job_category_id"], name: "index_offers_on_job_category_id"
     t.index ["offer_type_id"], name: "index_offers_on_offer_type_id"
+    t.index ["sex_id"], name: "index_offers_on_sex_id"
     t.index ["work_mode_id"], name: "index_offers_on_work_mode_id"
   end
 
@@ -587,6 +608,12 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "sexes", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "soft_skills", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -639,10 +666,44 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "provider"
     t.string "uid"
+    t.string "name"
+    t.string "last_name"
+    t.date "birthday"
+    t.string "contact_number"
+    t.string "identification_number"
+    t.string "about_me"
+    t.bigint "sex_id", null: false
+    t.bigint "document_type_id", null: false
+    t.bigint "contract_type_id", null: false
+    t.bigint "work_mode_id", null: false
+    t.bigint "educational_degree_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["contract_type_id"], name: "index_users_on_contract_type_id"
+    t.index ["document_type_id"], name: "index_users_on_document_type_id"
+    t.index ["educational_degree_id"], name: "index_users_on_educational_degree_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["sex_id"], name: "index_users_on_sex_id"
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
+    t.index ["work_mode_id"], name: "index_users_on_work_mode_id"
+  end
+
+  create_table "users_limitations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "limitation_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["limitation_id"], name: "index_users_limitations_on_limitation_id"
+    t.index ["user_id"], name: "index_users_limitations_on_user_id"
+  end
+
+  create_table "users_nationalities", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "nationality_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["nationality_id"], name: "index_users_nationalities_on_nationality_id"
+    t.index ["user_id"], name: "index_users_nationalities_on_user_id"
   end
 
   create_table "vehicles", force: :cascade do |t|
@@ -688,13 +749,14 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
   add_foreign_key "companies_users", "companies"
   add_foreign_key "companies_users", "users"
   add_foreign_key "curriculum_vitaes", "cities"
+  add_foreign_key "curriculum_vitaes", "contract_types"
   add_foreign_key "curriculum_vitaes", "labor_disponibilities"
   add_foreign_key "curriculum_vitaes", "users"
   add_foreign_key "curriculum_vitaes", "work_modes"
+  add_foreign_key "curriculum_vitaes_job_categories", "curriculum_vitaes"
+  add_foreign_key "curriculum_vitaes_job_categories", "job_categories"
   add_foreign_key "curriculum_vitaes_languages", "curriculum_vitaes"
   add_foreign_key "curriculum_vitaes_languages", "languages"
-  add_foreign_key "curriculum_vitaes_limitations", "curriculum_vitaes"
-  add_foreign_key "curriculum_vitaes_limitations", "limitations"
   add_foreign_key "curriculum_vitaes_salaries", "currencies"
   add_foreign_key "curriculum_vitaes_salaries", "curriculum_vitaes"
   add_foreign_key "curriculum_vitaes_salaries", "salary_periods"
@@ -709,6 +771,8 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
   add_foreign_key "curriculum_vitaes_working_days", "working_days"
   add_foreign_key "driving_licences_offers", "driving_licences"
   add_foreign_key "driving_licences_offers", "offers"
+  add_foreign_key "educational_degrees_users", "educational_degrees"
+  add_foreign_key "educational_degrees_users", "users"
   add_foreign_key "educational_levels_offers", "educational_levels"
   add_foreign_key "educational_levels_offers", "offers"
   add_foreign_key "functions_offers", "functions"
@@ -718,11 +782,15 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
   add_foreign_key "languages_offers", "languages"
   add_foreign_key "languages_offers", "levels"
   add_foreign_key "languages_offers", "offers"
+  add_foreign_key "limitations_users", "limitations"
+  add_foreign_key "limitations_users", "users"
+  add_foreign_key "nationalities_users", "nationalities"
+  add_foreign_key "nationalities_users", "users"
   add_foreign_key "offers", "cities"
   add_foreign_key "offers", "contract_types"
-  add_foreign_key "offers", "genders"
   add_foreign_key "offers", "job_categories"
   add_foreign_key "offers", "offer_types"
+  add_foreign_key "offers", "sexes"
   add_foreign_key "offers", "work_modes"
   add_foreign_key "offers_responsibilities", "offers"
   add_foreign_key "offers_responsibilities", "responsibilities"
@@ -749,4 +817,13 @@ ActiveRecord::Schema.define(version: 2019_09_03_190629) do
   add_foreign_key "recommendations_technical_skills", "technical_skills"
   add_foreign_key "required_experiences", "duration_types"
   add_foreign_key "required_experiences", "offers"
+  add_foreign_key "users", "contract_types"
+  add_foreign_key "users", "document_types"
+  add_foreign_key "users", "educational_degrees"
+  add_foreign_key "users", "sexes"
+  add_foreign_key "users", "work_modes"
+  add_foreign_key "users_limitations", "limitations"
+  add_foreign_key "users_limitations", "users"
+  add_foreign_key "users_nationalities", "nationalities"
+  add_foreign_key "users_nationalities", "users"
 end

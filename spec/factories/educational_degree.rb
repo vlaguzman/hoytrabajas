@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :educational_degree do
-    description { 'BsicPrimary' }
+    description { 'BasicPrimary' }
   end
 end

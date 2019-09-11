@@ -1,3 +1,3 @@
-class Gender < ApplicationRecord
+class Sex < ApplicationRecord
   validates_presence_of :description
 end

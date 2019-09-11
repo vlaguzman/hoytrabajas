@@ -1,12 +1,19 @@
+@import '../../custom/mixins/common-mixins';
+@import '../functions';
+@import '../mixins';
+@import '../variables';
+@import '../../bootstrap-override';
+@import '../../app-variables';
+
 // stylelint-disable declaration-no-important
 
 @each $color, $value in $theme-colors {
-  @include bg-variant(".bg-#{$color}", $value);
+  @include bg-variant('.bg-#{$color}', $value);
 }
 
 @if $enable-gradients {
   @each $color, $value in $theme-colors {
-    @include bg-gradient-variant(".bg-gradient-#{$color}", $value);
+    @include bg-gradient-variant('.bg-gradient-#{$color}', $value);
   }
 }
 

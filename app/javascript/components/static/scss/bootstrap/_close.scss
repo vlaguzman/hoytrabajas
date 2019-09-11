@@ -1,3 +1,6 @@
+@import './variables';
+@import './mixins';
+
 .close {
   float: right;
   font-size: $close-font-size;

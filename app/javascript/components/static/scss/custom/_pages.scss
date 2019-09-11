@@ -733,7 +733,7 @@ figure.img-wrapper {
 
 .faq-page-wrapper {
    .panel-heading {
-      @extend .rct-block-title !optional; //gabriel
+      @extend .rct-block-title !optional; 
       border-bottom: none;
       >div {
          margin: 0;

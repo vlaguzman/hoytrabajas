@@ -23,7 +23,7 @@ end
 def compare_new_classes_scores(hash_new_classes)
   name_class = hash_new_classes.keys.last
   class_scores = hash_new_classes[name_class]
-  if class_scores.eql?("F")
+  if class_scores.eql?("F") 
     raise "The score for '#{name_class}' is '#{class_scores}', this class does not meet the required score "
   end
 end

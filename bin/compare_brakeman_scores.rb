@@ -14,9 +14,9 @@ end
 
 def summary(json_content)
   json_content["warnings"]
-    .map{|w|w["warning_type"]}
-    .group_by{|w|w}
-    .tap{|summary| summary["errors"] = json_content.fetch("errors", []) }
+    .map { |warning| warning["warning_type"] }
+    .group_by { |warning_type| warning_type }
+    .tap { |summary| summary["errors"] = json_content.fetch("errors", []) }
 end
 
 current_json = parse_json_for(current_scores)
@@ -25,13 +25,13 @@ new_json     = parse_json_for(new_scores)
 current_summary = summary(current_json)
 new_summary = summary(new_json)
 
-new_summary.each do |warning, occurences|
+new_summary.each do |warning, occurrences|
   #the current summary does not have this type of warnings
   if current_summary[warning].nil?
-    raise "New flaws were added, The are now #{occurences.count} warnings of #{warning}"
+    raise "New flaws were added, The are now #{occurrences.count} warnings of #{warning}"
   end
 
-  if occurences.count > current_summary[warning].count
-    raise "New flaws were added, The are now #{occurences.count} warnings of #{warning}"
+  if occurrences.count > current_summary[warning].count
+    raise "New flaws were added, The are now #{occurrences.count} warnings of #{warning}" 
   end
 end

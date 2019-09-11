@@ -1,0 +1,3 @@
+app/views/users/wizards/step_one/show.haml:4:  - if @user.errors.present?
+app/views/users/wizards/step_three/show.haml:5:  - if @user.errors.present?
+app/views/users/wizards/step_two/show.haml:5:  - if @user.errors.present?

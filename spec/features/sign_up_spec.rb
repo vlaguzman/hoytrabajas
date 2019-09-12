@@ -1,7 +1,19 @@
+require 'rails_helper'
+
 RSpec.describe "sing up user", :type => :feature do                                                                                           
   context "Like a external user, I should get in hoytrabajas.com and see the option 'registarse'" do
-    #expect(page).to have_text("registrarse")
-    #click_button 'registrarse'
+
+    it "User visit home page and click on sign in" do
+
+      visit root_path
+    
+      expect(page).to have_text("Sign In")
+      click_on 'Sign In'
+
+      expect(page).to have_text("Regístrate ahora")
+    end
+
+
     context  "when I want to sing up with email and password" do
       context "when I looking for a job" do
         xit "should show a message to the candidate" do
@@ -12,15 +24,15 @@ RSpec.describe "sing up user", :type => :feature do
           expect(page).to have_text("El trabajo ideal si existe!")
         end
       end
+    end
 
-      context "I am looking for a candidate" do
-        xit "should show a message to the employer" do
-          fill_in "email", :with => "employee@gmail.com"
-          fill_in "password", :with => "iwanttofindaemployee"
-          page.select 'Empleador', from: 'user_role'
-          click_button 'crear cuenta'
-          expect(page).to have_text("El empleado ideal si existe!")
-        end
+    context "I am looking for a candidate" do
+      xit "should show a message to the employer" do
+        fill_in "email", :with => "employee@gmail.com"
+        fill_in "password", :with => "iwanttofindaemployee"
+        page.select 'Empleador', from: 'user_role'
+        click_button 'crear cuenta'
+        expect(page).to have_text("El empleado ideal si existe!")
       end
     end
 
@@ -32,13 +44,13 @@ RSpec.describe "sing up user", :type => :feature do
           expect(page).to have_text("Escoge tu tipo de cuenta")
         end
       end
+    end
 
-      context "I want to sing up with Google" do
-        xit "should send me to a page where I can select my role" do
-          expect(page).to have_text("regístrate con")
-          page.should have_selector(:link_or_button, 'Google')
-          expect(page).to have_text("Escoge tu tipo de cuenta")
-        end
+    context "I want to sing up with Google" do
+      xit "should send me to a page where I can select my role" do
+        expect(page).to have_text("regístrate con")
+        page.should have_selector(:link_or_button, 'Google')
+        expect(page).to have_text("Escoge tu tipo de cuenta")
       end
     end
   end

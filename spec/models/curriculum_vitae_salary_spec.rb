@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CurriculumVitaesSalaries, type: :model do
+RSpec.describe CurriculumVitaeSalary, type: :model do
 
   describe "validations" do
     it { should validate_presence_of(:from) }

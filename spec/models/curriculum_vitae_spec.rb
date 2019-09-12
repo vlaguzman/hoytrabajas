@@ -24,6 +24,7 @@ RSpec.describe CurriculumVitae, type: :model do
     it { should belong_to(:user) }
     it { should belong_to(:labor_disponibility) }
     it { should belong_to(:contract_type) }
+    it { should have_one(:curriculum_vitae_salary) }
     it { should have_many(:visits) }
     it { should have_and_belong_to_many(:soft_skills) }
     it { should have_and_belong_to_many(:working_days) }

@@ -6,6 +6,8 @@ class CurriculumVitae < ApplicationRecord
   belongs_to :labor_disponibility,  optional: true
   belongs_to :contract_type,        optional: true
 
+  has_one :curriculum_vitae_salary
+
   has_many :visits
 
   has_and_belongs_to_many :soft_skills

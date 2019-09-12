@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_11_223337) do
+ActiveRecord::Schema.define(version: 2019_09_12_143947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -163,6 +163,17 @@ ActiveRecord::Schema.define(version: 2019_09_11_223337) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "curriculum_vitae_salaries", force: :cascade do |t|
+    t.bigint "curriculum_vitae_id", null: false
+    t.bigint "salary_period_id", null: false
+    t.bigint "currency_id", null: false
+    t.integer "from"
+    t.integer "to"
+    t.index ["currency_id"], name: "index_curriculum_vitae_salaries_on_currency_id"
+    t.index ["curriculum_vitae_id"], name: "index_curriculum_vitae_salaries_on_curriculum_vitae_id"
+    t.index ["salary_period_id"], name: "index_curriculum_vitae_salaries_on_salary_period_id"
+  end
+
   create_table "curriculum_vitaes", force: :cascade do |t|
     t.string "area_code"
     t.string "about_me"
@@ -215,17 +226,6 @@ ActiveRecord::Schema.define(version: 2019_09_11_223337) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_offer_types_on_curriculum_vitae_id"
     t.index ["offer_type_id"], name: "index_curriculum_vitaes_offer_types_on_offer_type_id"
-  end
-
-  create_table "curriculum_vitaes_salaries", force: :cascade do |t|
-    t.bigint "curriculum_vitae_id", null: false
-    t.bigint "salary_period_id", null: false
-    t.bigint "currency_id", null: false
-    t.integer "from"
-    t.integer "to"
-    t.index ["currency_id"], name: "index_curriculum_vitaes_salaries_on_currency_id"
-    t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_salaries_on_curriculum_vitae_id"
-    t.index ["salary_period_id"], name: "index_curriculum_vitaes_salaries_on_salary_period_id"
   end
 
   create_table "curriculum_vitaes_soft_skills", force: :cascade do |t|
@@ -786,6 +786,9 @@ ActiveRecord::Schema.define(version: 2019_09_11_223337) do
   add_foreign_key "companies", "employees_ranges"
   add_foreign_key "companies_users", "companies"
   add_foreign_key "companies_users", "users"
+  add_foreign_key "curriculum_vitae_salaries", "currencies"
+  add_foreign_key "curriculum_vitae_salaries", "curriculum_vitaes"
+  add_foreign_key "curriculum_vitae_salaries", "salary_periods"
   add_foreign_key "curriculum_vitaes", "cities"
   add_foreign_key "curriculum_vitaes", "contract_types"
   add_foreign_key "curriculum_vitaes", "labor_disponibilities"
@@ -797,9 +800,6 @@ ActiveRecord::Schema.define(version: 2019_09_11_223337) do
   add_foreign_key "curriculum_vitaes_languages", "languages"
   add_foreign_key "curriculum_vitaes_offer_types", "curriculum_vitaes"
   add_foreign_key "curriculum_vitaes_offer_types", "offer_types"
-  add_foreign_key "curriculum_vitaes_salaries", "currencies"
-  add_foreign_key "curriculum_vitaes_salaries", "curriculum_vitaes"
-  add_foreign_key "curriculum_vitaes_salaries", "salary_periods"
   add_foreign_key "curriculum_vitaes_soft_skills", "soft_skills"
   add_foreign_key "curriculum_vitaes_technical_skills", "curriculum_vitaes"
   add_foreign_key "curriculum_vitaes_technical_skills", "job_categories"

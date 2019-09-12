@@ -1,4 +1,4 @@
-class CurriculumVitaesSalaries < ApplicationRecord
+class CurriculumVitaeSalary < ApplicationRecord
   validates_presence_of :to, :from
 
   belongs_to :curriculum_vitae

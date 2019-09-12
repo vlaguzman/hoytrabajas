@@ -101,11 +101,29 @@ RSpec.describe "fill the canditate user data", :type => :feature do
 
       save_page('paps.html') #TODO removeme
 
-      #step five
-
       expect(page).to have_text(/Busquemos las mejores ofertas/)
-      fill_in "available_work_days", :with => ['jueves', 'fines de semana']#it can be more than one option
-      fill_in "working_hours", :with => ['Mañana 7am-12pm', 'Noche 10pm-3am']#it can be more than one option
+
+      let(:available_work_days) do
+        [
+          create(:available_work_day, description: 'jueves'),
+          create(:available_work_day, description: 'fines de semana'),
+        ]
+      end
+
+      let(:working_days) do
+        [
+          create(:working_day, description: 'Mañana 7am-12pm'),
+          create(:working_day, description: 'Noche 10pm-3am'),
+        ]
+      end
+
+      within '#step_four' do
+        select('jueves', from: "user[available_work_day_ids][]")
+        select('fines de semana', from: "user[curriculum_vitae][available_work_day_ids][]")
+
+        select('Mañana 7am-12pm', from: "user[curriculum_vitae][working_hours][]")
+        select('Noche 10pm-3am', from: "user[curriculum_vitae][working_hours][]")
+      end
       page.select 'Rango', from: 'type_range'
       fill_in "min_salary", :with => '4000'
       fill_in "max_salary", :with => '10000'

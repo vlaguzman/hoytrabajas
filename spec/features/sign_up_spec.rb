@@ -16,13 +16,21 @@ RSpec.describe "sing up user", :type => :feature do
 
     context  "when I want to sing up with email and password" do
       context "when I looking for a job" do
-        xit "should show a message to the candidate" do
-          fill_in "email", :with => "candidate@gmail.com"
-          fill_in "password", :with => "iwanttofindajob"
-          page.select 'Candidato', from: 'user_role'
-          click_button 'crear cuenta'
+
+        it "should show a message to the candidate" do
+
+          visit new_user_registration_path
+
+          fill_in 'user[email]', :with => "candidate@gmail.com"
+          fill_in 'user[password]', :with => "iwanttofindajob"
+          page.select 'Candidato', from: 'user[role]'
+          select 'Medallo', from: 'user[city_id]'
+          click_on 'Registrarme'
+
           expect(page).to have_text("El trabajo ideal si existe!")
+
         end
+
       end
     end
 

@@ -31,11 +31,33 @@ RSpec.describe "fill the canditate user data", :type => :feature do
       ]
     end
 
+    let!(:available_work_days) do
+      [
+        create(:available_work_day, description: 'jueves'),
+        create(:available_work_day, description: 'fines de semana'),
+      ]
+    end
+
+    let!(:working_days) do
+      [
+        create(:working_day, description: 'Mañana 7am-12pm'),
+        create(:working_day, description: 'Noche 10pm-3am'),
+      ]
+    end
+
+    let!(:salary_periods) do
+      [
+        create(:salary_period, description: 'Diario'),
+        create(:salary_period, description: 'Mensaual'),
+      ]
+    end
+
     let!(:contract_type) { create(:contract_type, description: "Indiferente") }
     let!(:work_mode) { create(:work_mode, description: "Indiferente") }
     let!(:labor_disponibility) { create(:labor_disponibility, description: "Inmediato") }
     let!(:state) { create(:state, description: 'Bogota') }
     let!(:city) { create(:city, description: 'Bogota') }
+    let!(:currency) { create(:currency) }
 
     it "should see the offert info to fill and the next buttons" do
       #Create a user with the principal information - Use a factory
@@ -97,40 +119,33 @@ RSpec.describe "fill the canditate user data", :type => :feature do
         click_button 'siguiente'
       end
 
-      expect(user.city.description).to eq('Bogota')
-
       save_page('paps.html') #TODO removeme
+
+      user.reload
+      expect(user.city.description).to eq('Bogota')
 
       expect(page).to have_text(/Busquemos las mejores ofertas/)
 
-      let(:available_work_days) do
-        [
-          create(:available_work_day, description: 'jueves'),
-          create(:available_work_day, description: 'fines de semana'),
-        ]
-      end
-
-      let(:working_days) do
-        [
-          create(:working_day, description: 'Mañana 7am-12pm'),
-          create(:working_day, description: 'Noche 10pm-3am'),
-        ]
-      end
-
-      within '#step_four' do
-        select('jueves', from: "user[available_work_day_ids][]")
+      within '#step_five' do
+        select('jueves', from: "user[curriculum_vitae][available_work_day_ids][]")
         select('fines de semana', from: "user[curriculum_vitae][available_work_day_ids][]")
 
-        select('Mañana 7am-12pm', from: "user[curriculum_vitae][working_hours][]")
-        select('Noche 10pm-3am', from: "user[curriculum_vitae][working_hours][]")
-      end
-      page.select 'Rango', from: 'type_range'
-      fill_in "min_salary", :with => '4000'
-      fill_in "max_salary", :with => '10000'
-      page.select 'Día', from: 'salary_interval'
-      click_button 'siguiente'
+        select('Mañana 7am-12pm', from: "user[curriculum_vitae][working_day_ids][]")
+        select('Noche 10pm-3am', from: "user[curriculum_vitae][working_day_ids][]")
 
-      expect(page).to have_text("Dejanos conocer tus habilidades")
+        select 'Rango', from: 'user[curriculum_vitae][curriculum_vitae_salary][range_type]'
+
+        select('COP', from: 'user[curriculum_vitae][curriculum_vitae_salary][currency_id]')
+
+        fill_in "user[curriculum_vitae][curriculum_vitae_salary][from]", :with => '4000'
+        fill_in "user[curriculum_vitae][curriculum_vitae_salary][to]", :with => '10000'
+
+        select('Diario', from: 'user[curriculum_vitae][curriculum_vitae_salary][salary_period_id]')
+
+        click_button 'siguiente'
+      end
+
+      expect(page).to have_text(/Dejanos conocer tus habilidades/)
       #IMPORTANT - Here you must validate the creation of the tables with the information filled by user
     end
   end

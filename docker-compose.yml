@@ -5,9 +5,8 @@ services:
     build: .
     volumes:
       - "./:/ht"
-    #disable webpack if you see this in PR please replace
-    #command: bash -c 'bin/webpack --watch --progress --color & bin/rails s -p 3000 -b "0.0.0.0"'
-    command: bash -c 'bin/rails s -p 3000 -b "0.0.0.0"'
+    command: bash -c 'bin/webpack --watch --progress --color & bin/rails s -p 3000 -b "0.0.0.0"'
+    #command: bash -c 'bin/rails s -p 3000 -b "0.0.0.0"'
     ports:
       - "3000:3000"
     depends_on:

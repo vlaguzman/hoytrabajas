@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_12_143947) do
+ActiveRecord::Schema.define(version: 2019_09_12_191509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,10 +83,10 @@ ActiveRecord::Schema.define(version: 2019_09_12_143947) do
   end
 
   create_table "available_work_days_curriculum_vitaes", force: :cascade do |t|
-    t.string "curriculum_vitae_id"
-    t.string "available_work_day_id"
-    t.index ["available_work_day_id"], name: "cv_av_work_day_av_work_day_id", unique: true
-    t.index ["curriculum_vitae_id"], name: "cv_av_work_day_cv_id", unique: true
+    t.integer "curriculum_vitae_id"
+    t.integer "available_work_day_id"
+    t.index ["available_work_day_id"], name: "cv_av_work_day_av_work_day_id"
+    t.index ["curriculum_vitae_id"], name: "cv_av_work_day_cv_id"
   end
 
   create_table "available_work_days_offers", force: :cascade do |t|
@@ -781,6 +781,8 @@ ActiveRecord::Schema.define(version: 2019_09_12_143947) do
   add_foreign_key "age_ranges", "offers"
   add_foreign_key "applied_offers", "applied_offer_statuses"
   add_foreign_key "applied_offers", "offers"
+  add_foreign_key "available_work_days_curriculum_vitaes", "available_work_days"
+  add_foreign_key "available_work_days_curriculum_vitaes", "curriculum_vitaes"
   add_foreign_key "available_work_days_offers", "available_work_days"
   add_foreign_key "available_work_days_offers", "offers"
   add_foreign_key "companies", "employees_ranges"

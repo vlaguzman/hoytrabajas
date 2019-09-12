@@ -7,7 +7,6 @@ class Users::Wizards::StepFourController < ApplicationController
   def update
     @user = Users::Wizards::StepFourService.(candidate: current_user, update_params: strong_params)
 
-
     if @user.errors.details.any?
       @user = user_presenter(current_user)
       render 'show'

@@ -7,12 +7,13 @@ class Users::Wizards::StepFiveController < ApplicationController
   def update
     @user = Users::Wizards::StepFiveService.(candidate: current_user, update_params: strong_params)
 
-
     if @user.errors.details.any?
       @user = user_presenter(current_user)
       render 'show'
     else
-      redirect_to users_step_five_path
+      #TODO create step six controller
+      #redirect_to users_step_six_path
+      render 'users/wizards/step_six/show'
     end
   end
 
@@ -26,9 +27,17 @@ class Users::Wizards::StepFiveController < ApplicationController
     params
     .require(:user)
     .permit(
-      #:city_id, { driving_licence_ids:[], vehicle_ids: [], curriculum_vitae: [:travel_disponibility] }
-    )
-    .to_h
+      curriculum_vitae: {
+        available_work_day_ids: [],
+        working_day_ids: [],
+        curriculum_vitae_salary: [
+          :currency_id,
+          :from,
+          :to,
+          :salary_period_id
+        ]
+      }
+    ).to_h
   end
 
 end

@@ -24,11 +24,13 @@ RSpec.describe Users::Wizards::StepThreeService do
 
   let(:params) do
     {
-      job_category_ids:       job_categories.pluck(:id),
-      offer_type_ids:         job_categories.pluck(:id),
-      contract_type_id:       offer_types.last.id,
-      work_mode_ids:          [work_mode.id],
-      labor_disponbility_id:  labor_disponibility.id
+      curriculum_vitae:{
+        job_category_ids:       job_categories.pluck(:id),
+        offer_type_ids:         offer_types.pluck(:id),
+        contract_type_id:       contract_type.id,
+        work_mode_ids:          [work_mode.id],
+        labor_disponibility_id: labor_disponibility.id
+      }
     }
   end
 
@@ -37,6 +39,7 @@ RSpec.describe Users::Wizards::StepThreeService do
   describe "#call" do
     it "Should return a modified user" do
       new_curriculum
+      cv_params = params[:curriculum_vitae]
 
       modified_candidate = subject.(candidate: candidate, update_params: params)
       modified_curriculum = modified_candidate.curriculum_vitaes.first
@@ -44,18 +47,17 @@ RSpec.describe Users::Wizards::StepThreeService do
       expect(User.count).to eq(1)
       expect(CurriculumVitae.count).to eq(1)
 
-      saved_job_categories = params[:job_category_ids].map { |id| JobCategory.find_by(id: id) }
+      saved_job_categories = cv_params[:job_category_ids].map { |id| JobCategory.find_by(id: id) }
       expect(modified_curriculum.job_categories).to match_array(saved_job_categories)
 
-      saved_offer_types = params[:offer_type_ids].map { |id| OfferType.find_bby(id: id) }
+      saved_offer_types = cv_params[:offer_type_ids].map { |id| OfferType.find_by(id: id) }
       expect(modified_curriculum.offer_types).to match_array(saved_offer_types)
 
-      expect(modified_curriculum.contract_type).to eq(CotractType.find_by(id: params[:contract_type_id]))
-
-      saved_work_modes = work_mode_ids.map { |id| WorkMode.find_by(id: id) }
+      saved_work_modes = cv_params[:work_mode_ids].map { |id| WorkMode.find_by(id: id) }
       expect(modified_curriculum.work_modes).to match_array(saved_work_modes)
 
-      expect(modified_curriculum.labor_disponibility).to eq(LaborDisponibility.find(id: params[:labor_disponbility_id]))
+      expect(modified_curriculum.contract_type).to eq(ContractType.find_by(id: cv_params[:contract_type_id]))
+      expect(modified_curriculum.labor_disponibility).to eq(LaborDisponibility.find_by(id: cv_params[:labor_disponibility_id]))
     end
 
   end

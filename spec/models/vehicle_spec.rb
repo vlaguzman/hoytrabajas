@@ -6,7 +6,7 @@ RSpec.describe Vehicle, type: :model do
   end
 
   describe 'associations' do
-    it { should have_and_belong_to_many(:curriculum_vitaes) }
+    it { should have_and_belong_to_many(:users) }
     it { should have_and_belong_to_many(:offers) }
   end
 

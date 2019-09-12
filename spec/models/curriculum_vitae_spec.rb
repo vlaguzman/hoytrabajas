@@ -9,7 +9,6 @@ RSpec.describe CurriculumVitae, type: :model do
     it { should respond_to(:release_date) }
     it { should respond_to(:travel_disponibility) }
     it { should respond_to(:visits_count) }
-    it { should respond_to(:city) }
     it { should respond_to(:labor_disponibility) }
     it { should respond_to(:photo) }
     it { should respond_to(:visits) }
@@ -23,17 +22,16 @@ RSpec.describe CurriculumVitae, type: :model do
 
   describe 'associations' do
     it { should belong_to(:user) }
-    it { should belong_to(:city) }
     it { should belong_to(:labor_disponibility) }
-    it { should belong_to(:work_mode) }
     it { should belong_to(:contract_type) }
     it { should have_many(:visits) }
     it { should have_and_belong_to_many(:soft_skills) }
-    it { should have_and_belong_to_many(:vehicles) }
     it { should have_and_belong_to_many(:working_days) }
     it { should have_and_belong_to_many(:available_work_days) }
     it { should have_and_belong_to_many(:languages) }
     it { should have_and_belong_to_many(:technical_skills) }
     it { should have_and_belong_to_many(:job_categories) }
+    it { should have_and_belong_to_many(:offer_types) }
+    it { should have_and_belong_to_many(:work_modes) }
   end
 end

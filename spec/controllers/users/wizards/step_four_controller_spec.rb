@@ -6,7 +6,7 @@ RSpec.describe Users::Wizards::StepFourController, type: :controller do
     let(:candidate) { create(:user, :first_time_candidate) }
     let(:cv) { create(:curriculum_vitae, user: candidate) }
 
-    it "should render uusers_wizard_step_three#show template" do
+    it "should render users_wizard_step_three#show template" do
       get :show
 
       expect(response).to render_template(:show)

@@ -76,13 +76,16 @@ A         * Users::WizardService                2      17.38      0           2
 A         * Users::Wizards::StepFiveController  3      20.76      0           3
 A         * Users::Wizards::StepFivePresenter   1      18.55      0           5
 A         * Users::Wizards::StepFiveService     2      9.86       0           1
+A         * Users::Wizards::StepFourController  2      20.5       23          2
 A         * Users::Wizards::StepFourPresenter   1      22.56      0           6
 A         * Users::Wizards::StepFourService     2      2.0        0           1
 A         * Users::Wizards::StepOneController   1      22.09      0           2
 A         * Users::Wizards::StepOnePresenter    2      9.02       0           3
 A         * Users::Wizards::StepOneService      2      4.0        0           1
+A         * Users::Wizards::StepThreeController 2      22.04      0           3
 A         * Users::Wizards::StepThreePresenter  2      22.56      0           6
 A         * Users::Wizards::StepThreeService    3      2.0        0           1
+A         * Users::Wizards::StepTwoController   3      20.5       23          2
 A         * Users::Wizards::StepTwoPresenter    2      13.54      0           4
 A         * Users::Wizards::StepTwoService      2      3.0        0           1
 A         * UsersController                     2      7.47       0           1
@@ -93,6 +96,3 @@ A         * Visit                               1      0.0        0           1
 A         * WorkMode                            3      0.0        0           1
 A         * WorkPosition                        2      0.0        0           1
 A         * WorkingDay                          5      0.0        0           1
-B         * Users::Wizards::StepFourController  2      22.04      25          4
-B         * Users::Wizards::StepThreeController 2      22.04      25          4
-B         * Users::Wizards::StepTwoController   3      22.04      25          4

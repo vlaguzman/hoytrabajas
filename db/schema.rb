@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_12_191509) do
+ActiveRecord::Schema.define(version: 2019_09_13_205341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -215,8 +215,10 @@ ActiveRecord::Schema.define(version: 2019_09_12_191509) do
     t.bigint "language_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "level_id", null: false
     t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_languages_on_curriculum_vitae_id"
     t.index ["language_id"], name: "index_curriculum_vitaes_languages_on_language_id"
+    t.index ["level_id"], name: "index_curriculum_vitaes_languages_on_level_id"
   end
 
   create_table "curriculum_vitaes_offer_types", force: :cascade do |t|
@@ -800,6 +802,7 @@ ActiveRecord::Schema.define(version: 2019_09_12_191509) do
   add_foreign_key "curriculum_vitaes_job_categories", "job_categories"
   add_foreign_key "curriculum_vitaes_languages", "curriculum_vitaes"
   add_foreign_key "curriculum_vitaes_languages", "languages"
+  add_foreign_key "curriculum_vitaes_languages", "levels"
   add_foreign_key "curriculum_vitaes_offer_types", "curriculum_vitaes"
   add_foreign_key "curriculum_vitaes_offer_types", "offer_types"
   add_foreign_key "curriculum_vitaes_soft_skills", "soft_skills"

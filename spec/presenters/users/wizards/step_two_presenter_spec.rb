@@ -8,7 +8,7 @@ RSpec.describe Users::Wizards::StepTwoPresenter do
     it { should respond_to(:sexes_list) }
 
     it "should return a array with nationalities objects" do
-      expect(subject.sexes_list).to match_array(Sex.all)
+      expect(subject.sexes_list).to match_array(Sex.all.map { |object| [object.description, object.id] })
     end
   end
 

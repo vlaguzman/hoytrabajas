@@ -32,6 +32,6 @@ new_summary.each do |warning, occurrences|
   end
 
   if occurrences.count > current_summary[warning].count
-    raise "New flaws were added, The are now #{occurrences.count} warnings of #{warning}" 
+    raise "New flaws were added, The are now #{occurrences.count} warnings of #{warning}"
   end
 end

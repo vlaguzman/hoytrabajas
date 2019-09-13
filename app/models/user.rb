@@ -12,6 +12,7 @@ class User < ApplicationRecord
   belongs_to :document_type,      optional: true
   belongs_to :work_mode,          optional: true
   belongs_to :educational_degree, optional: true
+  belongs_to :city,               optional: true
 
 
   has_many :curriculum_vitaes
@@ -19,6 +20,8 @@ class User < ApplicationRecord
   has_and_belongs_to_many :nationalities
   has_and_belongs_to_many :limitations
   has_and_belongs_to_many :companies
+  has_and_belongs_to_many :vehicles
+  has_and_belongs_to_many :driving_licences
 
   accepts_nested_attributes_for :curriculum_vitaes
 end

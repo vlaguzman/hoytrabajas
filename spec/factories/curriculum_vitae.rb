@@ -8,7 +8,6 @@ FactoryBot.define do
     association :user,                 factory: :user
     association :city,                 factory: :city
     association :labor_disponibility,  factory: :labor_disponibility
-    association :work_mode,            factory: :work_mode
 
     after(:build) do |curriculum|
       curriculum.photo.attach(io: File.open(Rails.root.join('spec', 'factories', 'images', 'photo.jpg')), filename: 'photo.jpg', content_type: 'image/jpeg')

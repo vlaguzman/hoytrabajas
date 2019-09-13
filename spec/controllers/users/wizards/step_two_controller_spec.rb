@@ -16,7 +16,7 @@ RSpec.describe Users::Wizards::StepTwoController, type: :controller do
 
   end
 
-  describe "POST users_wizard_step_two#update" do
+  describe "PUT users_wizard_step_two#update" do
     let(:sex_id) { create(:sex).id }
     let(:ed_id) { create(:educational_degree).id }
 
@@ -36,8 +36,7 @@ RSpec.describe Users::Wizards::StepTwoController, type: :controller do
 
       post :update, params:{ user: update_params }
 
-      expect(response.status).to eq(200)
-      expect(response).to render_template("users/wizards/step_three/show")
+      expect(response.status).to eq(302)
     end
 
   end

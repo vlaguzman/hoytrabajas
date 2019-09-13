@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :currency do
-    descripcion { "COP" }
+    description { "COP" }
   end
 end

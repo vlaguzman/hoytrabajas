@@ -24,7 +24,7 @@ RSpec.describe Users::Wizards::StepThreePresenter do
     it { should respond_to(:contract_types_list) }
 
     it "should return a array with contract type objects" do
-      expect(subject.contract_types_list).to match_array(ContractType.all)
+      expect(subject.contract_types_list).to match_array(ContractType.all.map { |object| [object.description, object.id] })
     end
   end
 
@@ -32,7 +32,7 @@ RSpec.describe Users::Wizards::StepThreePresenter do
     it { should respond_to(:work_modes_list) }
 
     it "should return a array with work mode objects" do
-      expect(subject.work_modes_list).to match_array(WorkMode.all)
+      expect(subject.work_modes_list).to match_array(WorkMode.all.map { |object| [object.description, object.id] })
     end
   end
 

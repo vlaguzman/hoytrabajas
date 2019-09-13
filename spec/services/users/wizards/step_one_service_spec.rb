@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Users::Wizards::StepOneService do
-  let!(:document_type) { create(:document_type) }
-  let!(:nationalities) { [
-    create(:nationality, description: "Argentina"),
-    create(:nationality, description: "Peruana")
+  let!(:document_type_id) { create(:document_type).id }
+  let!(:nationality_ids) { [
+    create(:nationality, description: "Argentina").id,
+    create(:nationality, description: "Peruana").id
   ] }
 
   let(:candidate) {create(:user, :first_time_candidate) }
@@ -12,10 +12,10 @@ RSpec.describe Users::Wizards::StepOneService do
     {
       name: "False",
       last_name: "Fakeman",
-      document_type_id: document_type.id,
+      document_type_id: document_type_id,
       contact_number: "12355552345",
       identification_number: "561234563",
-      nationality_ids: nationalities.pluck(:id)
+      nationality_ids: nationality_ids
     }
   end
 
@@ -37,7 +37,7 @@ RSpec.describe Users::Wizards::StepOneService do
       saved_document_type = DocumentType.find_by(id: params[:document_type_id])
       expect(modified_candidate.document_type).to eq(saved_document_type)
 
-      saved_nationalities = nationalities.map { |id| Nationality.find_by(id: id) }
+      saved_nationalities = nationality_ids.map { |id| Nationality.find_by(id: id) }
       expect(modified_candidate.nationalities).to eq(saved_nationalities)
 
       expect(modified_candidate.identification_number).to eq(params[:identification_number])

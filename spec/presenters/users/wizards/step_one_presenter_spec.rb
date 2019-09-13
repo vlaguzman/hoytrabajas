@@ -16,7 +16,7 @@ RSpec.describe Users::Wizards::StepOnePresenter do
     it { should respond_to(:document_types_list) }
 
     it "should return a array with document types objects" do
-      expect(subject.document_types_list).to match_array(DocumentType.all)
+      expect(subject.document_types_list).to match_array(DocumentType.all.map { |object| [object.description, object.id] })
     end
   end
 

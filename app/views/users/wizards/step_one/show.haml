@@ -12,11 +12,10 @@
   = field.label :last_name, "Apellido"
   = field.text_field :last_name
 
-  /#TODO Move this logic to other site
-  = field.select :document_type_id, @user.document_types_list.map { |type| [type.description, type.id] }, { prompt: "Seleccione Nacionalidad"}
+  = field.select :document_type_id, @user.document_types_list, { prompt: "Seleccione Nacionalidad"}
 
   = field.label :nationalities, "Nacionalidad"
-  = field.select(:nationality_ids, @user.nationalities_list.map { |nationality| [nationality.description, nationality.id] } ,{ prompt: "Seleccione Nacionalidad"}, { :multiple => true } )
+  = field.select(:nationality_ids, @user.nationalities_list,{ prompt: "Seleccione Nacionalidad"}, { :multiple => true } )
 
   = field.label :identification_number, "Numero de Documento"
   = field.text_field :identification_number

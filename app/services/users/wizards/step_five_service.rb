@@ -5,7 +5,7 @@ module Users::Wizards::StepFiveService
     create_salary_params.merge!(curriculum_vitae: candidate.curriculum_vitaes.first)
     create_curriculum_vitae_salary(create_params: create_salary_params)
 
-    Users::WizardService.update_step(candidate: candidate, update_params: update_params)
+    Users::WizardService.update_step(candidate, update_params: update_params)
   end
 
   private

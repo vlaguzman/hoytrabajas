@@ -1,13 +1,10 @@
 module Users::Wizards::StepOneService
   def self.call(candidate: _, update_params: {})
-    cv = CurriculumVitae.new( user: candidate )
+    CurriculumVitae.create( user: candidate )
 
-    if  candidate.update(update_params) && cv.save
-      candidate
-    else
-      candidate.errors.details.concat(cv.errors.details)
-      candidate
-    end
+    update_params.merge!(curriculum_vitae: {})
+
+    Users::WizardService.update_step(candidate, update_params: update_params)
   end
 
 end

@@ -13,15 +13,15 @@
   = field.text_field :about_me
 
   = field.label :sex, "Genero*"
-  = field.select :sex_id, @user.sexes_list.map { |sex| [sex.description, sex.id] }, { prompt: "Seleccione un genero"}
+  = field.select :sex_id, @user.sexes_list, { prompt: "Seleccione un genero"}
 
   = field.label :birthday, "Fecha de nacimiento"
   = field.date_field :birthday
 
   = field.label :limitations, "Condiciones especiales"
-  = field.select(:limitation_ids, @user.limitations_list.map { |limitation| [limitation.description, limitation.id] } ,{ prompt: "Seleccione una limitacion"}, { :multiple => true })
+  = field.select(:limitation_ids, @user.limitations_list,{ prompt: "Seleccione una limitacion"}, { :multiple => true })
 
   = field.label :educational_degree, "Ultimo titulo educativo alcanzado"
-  = field.select(:educational_degree_id, @user.educational_degrees_list.map { |degree| [degree.description, degree.id] } ,{ prompt: "Seleccione"})
+  = field.select(:educational_degree_id, @user.educational_degrees_list,{ prompt: "Seleccione"})
 
   = field.submit("siguiente")

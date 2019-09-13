@@ -15,36 +15,34 @@ RSpec.describe Users::WizardService do
 
       let(:params) do
         {
-          user: {
-            name: "Elcan",
-            last_name: "Didato",
-            birthday: Date.parse("1999-12-31"),
-            contact_number: "900121213",
-            identification_number: "90807060",
-            curriculum_vitae: {
-              area_code: "130121",
-              about_me: "Amet nulla officia do voluptate.",
-              release_date: Date.parse("2019-09-11"),
-              travel_disponibility: true,
-              job_category_ids: job_category_ids,
-              offer_type_ids: offer_type_ids,
-              work_mode_ids: work_mode_ids
-            }
+          name: "Elcan",
+          last_name: "Didato",
+          birthday: Date.parse("1999-12-31"),
+          contact_number: "900121213",
+          identification_number: "90807060",
+          curriculum_vitae: {
+            area_code: "130121",
+            about_me: "Amet nulla officia do voluptate.",
+            release_date: Date.parse("2019-09-11"),
+            travel_disponibility: true,
+            job_category_ids: job_category_ids,
+            offer_type_ids: offer_type_ids,
+            work_mode_ids: work_mode_ids
           }
         }
       end
 
       it "Should be modified the user and the curriculum vitae" do
         new_curriculum
-        updated_candidate = subject.update_step(candidate: candidate, update_params: params[:user])
+        updated_candidate = subject.update_step(candidate, update_params: params)
 
         expect(updated_candidate).to be_an_instance_of(User)
 
-        expect(updated_candidate.name).to eq(params[:user][:name])
-        expect(updated_candidate.last_name).to eq(params[:user][:last_name])
-        expect(updated_candidate.birthday).to eq(params[:user][:birthday])
-        expect(updated_candidate.contact_number).to eq(params[:user][:contact_number])
-        expect(updated_candidate.identification_number).to eq(params[:user][:identification_number])
+        expect(updated_candidate.name).to eq(params[:name])
+        expect(updated_candidate.last_name).to eq(params[:last_name])
+        expect(updated_candidate.birthday).to eq(params[:birthday])
+        expect(updated_candidate.contact_number).to eq(params[:contact_number])
+        expect(updated_candidate.identification_number).to eq(params[:identification_number])
 
         expect(updated_candidate.curriculum_vitaes.count).to eq(1)
 

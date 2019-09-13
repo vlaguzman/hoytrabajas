@@ -1,23 +1,23 @@
 class Users::Wizards::StepThreePresenter < ApplicationPresenter
 
   def job_categories_list
-    JobCategory.all
+    JobCategory.all.map { |object| [object.description, object.id] }
   end
 
   def offer_types_list
-    OfferType.all
+    OfferType.all.map { |object| [object.description, object.id] }
   end
 
   def contract_types_list
-    ContractType.all
+    ContractType.all.map { |object| [object.description, object.id] }
   end
 
   def work_modes_list
-    WorkMode.all
+    WorkMode.all.map { |object| [object.description, object.id] }
   end
 
   def labor_disponibilities_list
-    LaborDisponibility.all
+    LaborDisponibility.all.map { |object| [object.description, object.id] }
   end
 
 end

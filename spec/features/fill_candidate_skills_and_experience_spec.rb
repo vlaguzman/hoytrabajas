@@ -3,24 +3,44 @@ require 'rails_helper'
 RSpec.describe "fill the canditate user data, skills and experience", :type => :feature do
   context "like a candidate user after the offert details data is filled" do
     #Create a user with the principal information, and the offert details - Use a factory
-    before { FactoryBot.build(:user) }
+    let(:curriculum) { create( :curriculum_vitae, user: create(:user, :first_time_candidate)) }
 
     context "I fill all data" do
-      xit "should see the skills fields and the system should save on click on next button" do
+      it "should see the skills fields and the system should save on click on next button" do
         #Visit the rute of the profile user creation - step 6
-        visit "/candidato/#{user.id}/create_user/step6" 
-        
+        visit users_step_six_path
+
         expect(page).to have_text("Dejanos conocer tus habilidades")
+
         #it can be more than one option
-        fill_in "soft_skills", :with => ['Creatividad', 'Responsabilidad']
-        #it can be more than one option, each option is a hash 
+        select('Creatividad', from:'user[curriculum_vitae][soft_skill_ids][]')
+        select('Responsabilidad', from:'user[curriculum_vitae][soft_skill_ids][]')
+
+        #it can be more than one option, each option is a hash
         #id, skill_name, skill_category, skill_proficiency
-        fill_in "technical_skills", :with => [[id: 1, skill_name: 'SEO', skill_category: 'Marketing', skill_proficiency: 'avanzado'],
-                                              [id: 2, skill_name: 'SEM', skill_category: 'Marketing', skill_proficiency: 'medio']]
-        fill_in "to_learn_skills", :with => [[id: 3, skill_name: 'Redes sociales', skill_category: 'Marketing'],
-                                             [id: 4, skill_name: 'Google Analytics', skill_category: 'Marketing']]
-        fill_in "language", :with => [[id: 1, language_name: 'Inglés', language_proficiency: 'avanzado'],
-                                      [id: 2, language_name: 'Portugues', language_proficiency: 'básico']]
+        select('Marketing', from: 'user[curriculum_vitae][curriculum_vitaes_technical_skills][job_category_ids][]')
+        select('SEO', from: 'user[curriculum_vitae][curriculum_vitaes_technical_skills][technical_skill_ids][]')
+        select('avanzado', from: 'user[curriculum_vitae][curriculum_vitaes_technical_skills][level][]')
+
+        #TODO With react build the feature of create many curriculum technical skills
+        #select('Marketing', from: 'user[curriculum_vitae][technical_skills][curriculum_vitaes_technical_skills][job_category_ids][]')
+        #select('SEM', from: 'user[curriculum_vitae][technical_skills][curriculum_vitaes_technical_skills][technical_skill_ids][]')
+        #select('medio', from: 'user[curriculum_vitae][technical_skills][curriculum_vitaes_technical_skills][level][]')
+
+        select('Marketing', from: 'user[curriculum_vitae][to_learn_skills][job_category_ids][]')
+        select('Redes sociales', from: 'user[curriculum_vitae][to_learn_skills][technical_skill_ids][]')
+
+        #TODO With react build the feature of create many curriculum to learn skills
+        #select('Marketing', from: 'user[curriculum_vitae][to_learn_skills][job_category_ids][]')
+        #select('Redes sociales', from: 'user[curriculum_vitae][to_learn_skills][technical_skill_ids][]')
+
+        select('Inglés', from: 'user[curriculum_vitae][curriculum_vitaes_languages][language_id]')
+        select('avanzado', from: 'user[curriculum_vitae][curriculum_vitaes_languages][level_id]')
+
+        #TODO With react build the feature of create many curriculum languages
+        #select('Inglés', from: 'user[curriculum_vitae][curriculum_vitaes_languages][language_id]')
+        #select('avanzado', from: 'user[curriculum_vitae][curriculum_vitaes_languages][level_id]')
+
         click_button 'siguiente'
 
         #Validate the creation of the modeles in the DB
@@ -33,7 +53,7 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
       xit "should see a message that said me 'you must fill the soft_skills'" do
         #Visit the rute of the profile user creation - step 6
         visit "/candidato/#{user.id}/create_user/step6" 
-        
+
         expect(page).to have_text("Dejanos conocer tus habilidades")
         #it can be more than one option, each option is a hash 
         #id, skill_name, skill_category, skill_proficiency

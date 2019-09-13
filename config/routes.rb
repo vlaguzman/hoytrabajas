@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resource :step_three, only: [:show, :update], controller: 'users/wizards/step_three'
     resource :step_four,  only: [:show, :update], controller: 'users/wizards/step_four'
     resource :step_five,  only: [:show, :update], controller: 'users/wizards/step_five'
+    resource :step_six,   only: [:show, :update], controller: 'users/wizards/step_six'
   end
 
   devise_for :users

@@ -1,3 +1,5 @@
+      1 app/controllers/users/wizards/step_five_controller.rb
+      1 app/controllers/users/wizards/step_four_controller.rb
       1 app/controllers/users/wizards/step_one_controller.rb
       1 app/controllers/users/wizards/step_three_controller.rb
       1 app/controllers/users/wizards/step_two_controller.rb

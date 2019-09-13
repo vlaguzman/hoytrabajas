@@ -83,9 +83,9 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/users/wizards/step_one_presenter.rb",100,11,5,5,0
 "./app/presenters/users/wizards/step_three_presenter.rb",100,23,11,11,0
 "./app/presenters/users/wizards/step_two_presenter.rb",100,15,7,7,0
-"./app/services/users/wizard_service.rb",87,33,15,13,2
+"./app/services/users/wizard_service.rb",100,39,18,18,0
 "./app/services/users/wizards/step_five_service.rb",100,17,9,9,0
 "./app/services/users/wizards/step_four_service.rb",100,7,3,3,0
-"./app/services/users/wizards/step_one_service.rb",71,13,7,5,2
+"./app/services/users/wizards/step_one_service.rb",100,10,5,5,0
 "./app/services/users/wizards/step_three_service.rb",100,5,3,3,0
-"./app/services/users/wizards/step_two_service.rb",100,8,4,4,0
+"./app/services/users/wizards/step_two_service.rb",100,9,4,4,0

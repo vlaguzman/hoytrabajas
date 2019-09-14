@@ -1,0 +1,30 @@
+%h1 Busquemos las mejores ofertas
+%h3 Brinda a las empresas información valiosa sobre ti.
+
+= form_for(:user, url: users_wizards_step_five_path, method: :put, html: { id: :step_five } ) do |field|
+  - if @user.errors.present?
+    %lu
+    - @user.errors.full_messages.each do |message|
+      %li= message
+
+  = field.fields_for(:curriculum_vitae) do |field|
+    = field.label :available_work_day_ids, "¿Que días estas disponible para trabajar?"
+    = field.select(:available_work_day_ids, @user.available_work_days_list, { prompt: "Seleccione dias habiles"}, { :multiple => true })
+
+    = field.label :working_day_ids, "Franja horaria"
+    = field.select(:working_day_ids, @user.working_days_list, { prompt: "Seleccione hornadas"}, { :multiple => true })
+
+    = field.fields_for(:curriculum_vitae_salary) do |field|
+      = field.label "range_type", "Aspiración salarial*"
+      = field.select("range_type", @user.range_types_list, { prompt: "Seleccione tipo"})
+
+      = field.select(:currency_id, @user.currencies_list, { prompt: "Seleccione moneda"})
+
+      = field.number_field :from, placeholder: "Ejem, 750.000"
+      %label a
+      = field.number_field :to, placeholder: "Ejem, 750.000"
+
+      = field.label :salary_period_id, "Pago"
+      = field.select(:salary_period_id, @user.salary_periods_list, { prompt: "Seleccione hornadas"})
+
+  = field.submit("siguiente")

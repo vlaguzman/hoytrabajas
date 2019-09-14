@@ -1,0 +1,26 @@
+%h1 Empecemos por conocernos
+
+= form_for(:user, url: users_wizards_step_one_path, method: :put, html: { id: :step_one } ) do |field|
+  - if @user.errors.present?
+    %lu
+    - @user.errors.full_messages.each do |message|
+      %li= message
+
+  = field.label :name, "Nombre"
+  = field.text_field :name
+
+  = field.label :last_name, "Apellido"
+  = field.text_field :last_name
+
+  = field.select :document_type_id, @user.document_types_list, { prompt: "Seleccione Nacionalidad"}
+
+  = field.label :nationalities, "Nacionalidad"
+  = field.select(:nationality_ids, @user.nationalities_list,{ prompt: "Seleccione Nacionalidad"}, { :multiple => true } )
+
+  = field.label :identification_number, "Numero de Documento"
+  = field.text_field :identification_number
+
+  = field.label :contact_number, "Numero de Contacto"
+  = field.text_field :contact_number
+
+  = field.submit("siguiente")

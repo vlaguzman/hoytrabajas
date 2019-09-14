@@ -3,4 +3,5 @@ class Language < ApplicationRecord
 
   has_and_belongs_to_many :offers
   has_and_belongs_to_many :curriculum_vitaes
+  has_and_belongs_to_many :levels
 end

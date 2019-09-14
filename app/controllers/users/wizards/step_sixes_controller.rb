@@ -6,11 +6,12 @@ class Users::Wizards::StepSixesController < ApplicationController
 
   def update
     puts strong_params
+    user_presenter
     #@user = Users::Wizards::StepFiveService.(candidate: current_user, update_params: strong_params)
 
     #if @user.errors.details.any?
     #  user_presenter
-    #  render 'show'
+    #  render 'show'user_presenter
     #else
     #  redirect_to users_wizards_step_six_path
     #end
@@ -19,7 +20,7 @@ class Users::Wizards::StepSixesController < ApplicationController
   private
 
   def user_presenter
-    @user = Users::Wizards::StepSixPresenter.new(current_user)
+    #@user = Users::Wizards::StepSixPresenter.new(current_user)
   end
 
   def strong_params

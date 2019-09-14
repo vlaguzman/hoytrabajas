@@ -1,1 +1,30 @@
 %h1 Déjanos conocer tus habilidades
+%h3 Brinda a las empresas información valiosa sobre ti.
+
+= form_for(:user, url: users_wizards_step_six_path, method: :put, html: { id: :step_six } ) do |field|
+  - if @user.errors.present? #this
+    %lu
+    - @user.errors.full_messages.each do |message|
+      %li= message
+
+  = field.fields_for(:curriculum_vitae) do |field|
+    = field.label :soft_skill_ids, "Define tres habilidades blandas que destacarías de tu perfil*"
+    = field.select(:soft_skill_ids, @user.soft_skills_list, { prompt: "Seleccione habiles blandas"}, { :multiple => true })
+
+    = field.label :curriculum_vitae_technical_skills, "Define técnicas de acuerdo a tu perfil*"
+    = field.fields_for(:curriculum_vitaes_technical_skills) do |field|
+      = field.select(:job_category_id, @user.job_categories_list, { prompt: "Seleccione una categoria"})
+      = field.select(:technical_skill_id, @user.technical_skills_list, { prompt: "Seleccione una habilidad tecnica"})
+      = field.select(:level_id, @user.levels_list, { prompt: "Seleccione el nivel de la habilidad"})
+
+    = field.label :soft_skill_ids, "Define qué habilidades te gustaría aprender o reforzar"
+    = field.fields_for(:to_learn_skills) do |field|
+      = field.select(:job_category_id, @user.job_categories_list, { prompt: "Seleccione una categoria"})
+      = field.select(:technical_skill_id, @user.technical_skills_list, { prompt: "Seleccione una habilidad tecnica"})
+
+    = field.label :curriculum_vitaes_languages, "¿Que idiomas deseas resaltar en tu perfil?"
+    = field.fields_for(:curriculum_vitaes_languages) do |field|
+      = field.select(:language_id, @user.languages_list, { prompt: "Selecciona el idioma"})
+      = field.select(:level_id, @user.levels_list, { prompt: "Nivel"})
+
+  = field.submit("siguiente")

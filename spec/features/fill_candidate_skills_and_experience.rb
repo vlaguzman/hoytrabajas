@@ -6,7 +6,7 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
     let(:curriculum) { create( :curriculum_vitae, user: create(:user, :first_time_candidate)) }
 
     context "I fill all data" do
-      xit "should see the skills fields and the system should save on click on next button" do
+      it "should see the skills fields and the system should save on click on next button" do
         #Visit the rute of the profile user creation - step 6
         visit users_wizards_step_six_path
 

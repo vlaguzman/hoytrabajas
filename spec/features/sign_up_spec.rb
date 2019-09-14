@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe "sing up user", type: :feature do                                                                                           
+RSpec.describe "sign up user", type: :feature do
   context "Like a external user, I should get in hoytrabajas.com and see the option 'registarse'" do
 
     it "User visit home page and click on sign in" do
 
       visit root_path
-    
+
       expect(page).to have_text("Sign In")
       click_on 'Sign In'
 

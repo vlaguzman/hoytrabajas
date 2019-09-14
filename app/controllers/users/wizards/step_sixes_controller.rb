@@ -1,4 +1,4 @@
-class Users::Wizards::StepSixController < ApplicationController
+class Users::Wizards::StepSixesController < ApplicationController
 
   def show
     user_presenter
@@ -12,7 +12,7 @@ class Users::Wizards::StepSixController < ApplicationController
     #  user_presenter
     #  render 'show'
     #else
-    #  redirect_to users_step_six_path
+    #  redirect_to users_wizards_step_six_path
     #end
   end
 

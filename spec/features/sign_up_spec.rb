@@ -25,11 +25,12 @@ RSpec.describe "sing up user", type: :feature do
           fill_in 'user[password_confirmation]', :with => "1wantt$finda7ob"
           #check 'Candidato'
           click_on 'Registrarme'
-          expect(current_path).to eq(users_step_zero_path)
+          expect(current_path).to eq(users_wizards_step_zero_path)
+          save_page("cosito.html")
         end
       end
     end
-
+=begin
     context "I am looking for a candidate" do
       xit "should show a message to the employer" do
         fill_in "email", :with => "employee@gmail.com"
@@ -57,5 +58,7 @@ RSpec.describe "sing up user", type: :feature do
         expect(page).to have_text("Escoge tu tipo de cuenta")
       end
     end
+=end
   end
 end
+

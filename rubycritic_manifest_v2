@@ -72,7 +72,7 @@ A         * TechnicalSkill                       5      0.0        0           1
 A         * TechnicalSkillCategory               1      0.0        0           1
 A         * Term                                 4      0.0        0           1
 A         * User                                 11     0.0        0           1
-A         * Users::RegistrationsController       1      1.0        0           2
+A         * Users::RegistrationsController       2      1.0        0           2
 A         * Users::WizardService                 2      17.38      0           2
 A         * Users::Wizards::StepFivePresenter    1      18.55      0           5
 A         * Users::Wizards::StepFiveService      2      9.86       0           1
@@ -89,7 +89,7 @@ A         * Users::Wizards::StepThreesController 3      22.04      0           3
 A         * Users::Wizards::StepTwoPresenter     2      13.54      0           4
 A         * Users::Wizards::StepTwoService       2      3.0        0           1
 A         * Users::Wizards::StepTwosController   5      20.5       23          2
-A         * Users::Wizards::StepZerosController  0      0.0        0           1
+A         * Users::Wizards::StepZerosController  1      0.0        0           1
 A         * UsersController                      3      7.47       0           1
 A         * UsersLimitations                     1      0.0        0           1
 A         * UsersNationalities                   1      0.0        0           1
@@ -99,4 +99,4 @@ A         * WorkMode                             3      0.0        0           1
 A         * WorkPosition                         2      0.0        0           1
 A         * WorkingDay                           5      0.0        0           1
 B         * Users::Wizards::StepFivesController  5      20.5       20          3
-B         * Users::Wizards::StepSixController    1      10.82      20          2
+B         * Users::Wizards::StepSixesController  2      10.82      20          2

@@ -5,6 +5,5 @@ app/views/devise/registrations/new.html.haml:10:    - if @minimum_password_lengt
 app/views/users/wizards/step_fives/show.haml:5:  - if @user.errors.present?
 app/views/users/wizards/step_fours/show.haml:5:  - if @user.errors.present?
 app/views/users/wizards/step_ones/show.haml:4:  - if @user.errors.present?
-app/views/users/wizards/step_six/show.haml:5:  - if @user.errors.present?
 app/views/users/wizards/step_threes/show.haml:5:  - if @user.errors.present?
 app/views/users/wizards/step_twos/show.haml:5:  - if @user.errors.present?

@@ -21,7 +21,7 @@ RSpec.describe UsersController, type: :controller do
 
         get :edit
 
-        expect(response).to redirect_to(users_step_one_path)
+        expect(response).to redirect_to(users_wizards_step_one_path)
       end
     end
   end

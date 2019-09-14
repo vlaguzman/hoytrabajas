@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "users/wizards/step_one/show" do
+RSpec.describe "users/wizards/step_ones/show" do
   it "Should render users/wizards/step_one#edit template" do
     assign(:nationalities, [create(:nationality), create(:nationality)])
     assign(:document_types, [create(:document_type), create(:document_type)])

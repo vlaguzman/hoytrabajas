@@ -1,4 +1,4 @@
-class Users::Wizards::StepThreeController < ApplicationController
+class Users::Wizards::StepThreesController < ApplicationController
 
   def show
     @user = user_presenter(current_user)
@@ -11,7 +11,7 @@ class Users::Wizards::StepThreeController < ApplicationController
       @user = user_presenter(current_user)
       render 'show'
     else
-      redirect_to users_step_four_path
+      redirect_to users_wizards_step_four_path
     end
   end
 

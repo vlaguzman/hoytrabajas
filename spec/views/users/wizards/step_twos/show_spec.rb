@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "users/wizards/step_two/show" do
-  it "Should render users/wizards/step_one#show template" do
+RSpec.describe "users/wizards/step_twos/show" do
+  it "Should render users/wizards/step_twos#show template" do
     assign(:limitations, [create(:limitation, description: "Ninguna")])
     assign(:educational_degrees, [create(:educational_degree, description: "Profesional")])
     assign(:sexes, [create(:sex, description: "masculino")])

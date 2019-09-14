@@ -1,4 +1,4 @@
-class Users::Wizards::StepFourController < ApplicationController
+class Users::Wizards::StepFoursController < ApplicationController
 
   attr_reader :user
 
@@ -13,7 +13,7 @@ class Users::Wizards::StepFourController < ApplicationController
       user_presenters
       render 'show'
     else
-      redirect_to users_step_five_path
+      redirect_to users_wizards_step_five_path
     end
   end
 

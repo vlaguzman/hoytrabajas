@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "users/wizards/step_three/show" do
-  it "Should render users/wizards/step_three#show template" do
+RSpec.describe "users/wizards/step_threes/show" do
+  it "Should render users/wizards/step_threes#show template" do
     assign(:job_categories, [
       create(:job_category, description: "Marketing"),
       create(:job_category, description: "Tecnologia y Programacion"),

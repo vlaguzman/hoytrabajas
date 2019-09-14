@@ -74,7 +74,7 @@ RSpec.describe "fill the canditate user data", :type => :feature do
       sign_in user
 
       #Visit the rute of the profile user creation - step 3
-      visit users_step_three_path
+      visit users_wizards_step_three_path
 
       expect(page).to have_text(/Busquemos las mejores ofertas/)
 
@@ -145,7 +145,7 @@ RSpec.describe "fill the canditate user data", :type => :feature do
         click_button 'siguiente'
       end
 
-      expect(page).to have_text(/Dejanos conocer tus habilidades/)
+      expect(page).to have_text(/Déjanos conocer tus habilidades/)
       #IMPORTANT - Here you must validate the creation of the tables with the information filled by user
     end
   end

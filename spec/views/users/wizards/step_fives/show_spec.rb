@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "users/wizards/step_five/show" do
-  it "Should render users/wizards/step_five#show template" do
+RSpec.describe "users/wizards/step_fives/show" do
+  it "Should render users/wizards/step_fives#show template" do
     assign(:available_work_days, [
       create(:available_work_day, description: 'jueves'),
       create(:available_work_day, description: 'fines de semana'),

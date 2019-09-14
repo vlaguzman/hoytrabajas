@@ -1,7 +1,7 @@
 %h1 Empecemos por conocernos
 %h3 Brinda a las empresas información valiosa sobre ti.
 
-= form_for(:user, url: users_step_two_path, method: :put, html: { id: :step_two } ) do |field|
+= form_for(:user, url: users_wizards_step_two_path, method: :put, html: { id: :step_two } ) do |field|
   - if @user.errors.present?
     %lu
     - @user.errors.full_messages.each do |message|

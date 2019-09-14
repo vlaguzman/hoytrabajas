@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "users/wizards/step_four/show" do
-  it "Should render users/wizards/step_four#show template" do
+RSpec.describe "users/wizards/step_fours/show" do
+  it "Should render users/wizards/step_fours#show template" do
     assign(:states, [
       create(:state),
       create(:state, description: "Bogota"),

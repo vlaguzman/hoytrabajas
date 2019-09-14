@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Users::Wizards::StepTwoController, type: :controller do
+RSpec.describe Users::Wizards::StepTwosController, type: :controller do
 
   describe "GET users_wizard_step_two#show" do
     let(:candidate) { create(:user, :first_time_candidate) }

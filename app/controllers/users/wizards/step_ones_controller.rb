@@ -1,4 +1,4 @@
-class Users::Wizards::StepOneController < ApplicationController
+class Users::Wizards::StepOnesController < ApplicationController
 
   def show
     @user = Users::Wizards::StepOnePresenter.new(current_user)
@@ -10,7 +10,7 @@ class Users::Wizards::StepOneController < ApplicationController
     @user = Users::Wizards::StepOnePresenter.new(current_user)
 
     if not @user.errors.details.present?
-      redirect_to users_step_two_path
+      redirect_to users_wizards_step_two_path
     else
       render 'show'
     end

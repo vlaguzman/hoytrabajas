@@ -11,7 +11,6 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:email) }
     it { should validate_presence_of(:password) }
     it { should validate_presence_of(:sign_in_count) }
-    it { should validate_presence_of(:confirmed_at) }
     it { should respond_to(:password_confirmation) }
     it { should respond_to(:sex) }
     it { should respond_to(:contract_type) }

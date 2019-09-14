@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "sing up user", :type => :feature do                                                                                           
+RSpec.describe "sing up user", type: :feature do                                                                                           
   context "Like a external user, I should get in hoytrabajas.com and see the option 'registarse'" do
 
     it "User visit home page and click on sign in" do
@@ -17,20 +17,17 @@ RSpec.describe "sing up user", :type => :feature do
     context  "when I want to sing up with email and password" do
       context "when I looking for a job" do
 
-        it "should show a message to the candidate" do
+        it "should redirect to cadidate step zero" do
 
           visit new_user_registration_path
-
           fill_in 'user[email]', :with => "candidate@gmail.com"
-          fill_in 'user[password]', :with => "iwanttofindajob"
-          page.select 'Candidato', from: 'user[role]'
-          select 'Medallo', from: 'user[city_id]'
+          fill_in 'user[password]', :with => "1wantt$finda7ob"
+          fill_in 'user[password_confirmation]', :with => "1wantt$finda7ob"
+          #check 'Candidato'
           click_on 'Registrarme'
-
-          expect(page).to have_text("El trabajo ideal si existe!")
-
+          save_page("esto.html")
+          expect(current_path).to eq(users_step_zero_path)
         end
-
       end
     end
 

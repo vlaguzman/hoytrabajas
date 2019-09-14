@@ -5,7 +5,7 @@ class User < ApplicationRecord
           :recoverable, :rememberable, :validatable, :confirmable,
           :lockable, :timeoutable, :trackable, :omniauthable, omniauth_providers:%i[facebook]
 
-  validates_presence_of :email, :confirmed_at, :sign_in_count
+  validates_presence_of :email, :sign_in_count
 
   belongs_to :sex,                optional: true
   belongs_to :contract_type,      optional: true

@@ -15,6 +15,11 @@ Rails.application.routes.draw do
   devise_for :users
   devise_for :companies
 
+  resources :faqs, only: [:index]
+  resources :offers
+  resources :job_categories
+  resources :companies
+
   root to: "home#index"
 
 end

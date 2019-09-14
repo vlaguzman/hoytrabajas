@@ -25,7 +25,6 @@ RSpec.describe "sing up user", type: :feature do
           fill_in 'user[password_confirmation]', :with => "1wantt$finda7ob"
           #check 'Candidato'
           click_on 'Registrarme'
-          save_page("esto.html")
           expect(current_path).to eq(users_step_zero_path)
         end
       end

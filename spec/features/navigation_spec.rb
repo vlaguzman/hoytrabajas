@@ -8,7 +8,12 @@ RSpec.describe "Overall navigation" do
       visit root_path
       expect(page).to have_content("Ellos hoy confian en nosotros")
       expect(page).to have_link("Home", href: root_path)
+
       expect(page).to have_link("Preguntas frecuentes", href: faqs_path)
+      click_on("Preguntas frecuentes")
+      expect(page).to have_text("Faqs")
+      click_on("Home")
+
       expect(page).to have_link("Registro del candidato", href: new_user_registration_path)
       expect(page).to have_link("Registro de la empresa", href: new_company_registration_path)
       expect(page).to have_link("Ofertas", href: offers_path)

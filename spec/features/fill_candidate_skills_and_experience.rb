@@ -3,14 +3,53 @@ require 'rails_helper'
 RSpec.describe "fill the canditate user data, skills and experience", :type => :feature do
   context "like a candidate user after the offert details data is filled" do
     #Create a user with the principal information, and the offert details - Use a factory
+    let!(:soft_skills) do
+      [
+        create(:soft_skill, description: "Creatividad"),
+        create(:soft_skill, description: "Responsabilidad")
+      ]
+    end
+
+    let!(:job_categories) do
+      [
+        create(:job_category, description: "Marketing"),
+        create(:job_category, description: "Desarrollo de Software"),
+      ]
+    end
+
+    let!(:technical_skills) do
+      [
+        create(:technical_skill, description: "SEO"),
+        create(:technical_skill, description: "Redes sociales"),
+      ]
+    end
+
+    let!(:languages) do
+      [
+        create(:language, description: "Parsel"),
+        create(:language, description: "Inglés"),
+      ]
+    end
+
+    let!(:levels) do
+      [
+        create(:level, description: "medio"),
+        create(:level, description: "avanzado"),
+      ]
+    end
+
     let(:curriculum) { create( :curriculum_vitae, user: create(:user, :first_time_candidate)) }
 
     context "I fill all data" do
       it "should see the skills fields and the system should save on click on next button" do
+        sign_in curriculum.user
+
         #Visit the rute of the profile user creation - step 6
         visit users_wizards_step_six_path
 
-        expect(page).to have_text("Dejanos conocer tus habilidades")
+        save_page('paps.html')
+
+        expect(page).to have_text("Déjanos conocer tus habilidades")
 
         #it can be more than one option
         select('Creatividad', from:'user[curriculum_vitae][soft_skill_ids][]')
@@ -18,17 +57,17 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
 
         #it can be more than one option, each option is a hash
         #id, skill_name, skill_category, skill_proficiency
-        select('Marketing', from: 'user[curriculum_vitae][curriculum_vitaes_technical_skills][job_category_ids][]')
-        select('SEO', from: 'user[curriculum_vitae][curriculum_vitaes_technical_skills][technical_skill_ids][]')
-        select('avanzado', from: 'user[curriculum_vitae][curriculum_vitaes_technical_skills][level][]')
+        select('Marketing', from: 'user[curriculum_vitae][curriculum_vitaes_technical_skills][job_category_id]')
+        select('SEO', from: 'user[curriculum_vitae][curriculum_vitaes_technical_skills][technical_skill_id]')
+        select('avanzado', from: 'user[curriculum_vitae][curriculum_vitaes_technical_skills][level_id]')
 
         #TODO With react build the feature of create many curriculum technical skills
         #select('Marketing', from: 'user[curriculum_vitae][technical_skills][curriculum_vitaes_technical_skills][job_category_ids][]')
         #select('SEM', from: 'user[curriculum_vitae][technical_skills][curriculum_vitaes_technical_skills][technical_skill_ids][]')
         #select('medio', from: 'user[curriculum_vitae][technical_skills][curriculum_vitaes_technical_skills][level][]')
 
-        select('Marketing', from: 'user[curriculum_vitae][to_learn_skills][job_category_ids][]')
-        select('Redes sociales', from: 'user[curriculum_vitae][to_learn_skills][technical_skill_ids][]')
+        select('Marketing', from: 'user[curriculum_vitae][to_learn_skills][job_category_id]')
+        select('Redes sociales', from: 'user[curriculum_vitae][to_learn_skills][technical_skill_id]')
 
         #TODO With react build the feature of create many curriculum to learn skills
         #select('Marketing', from: 'user[curriculum_vitae][to_learn_skills][job_category_ids][]')

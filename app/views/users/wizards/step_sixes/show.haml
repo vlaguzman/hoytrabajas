@@ -6,7 +6,7 @@
 
   = field.fields_for(:curriculum_vitae) do |field|
     = field.label :soft_skill_ids, "Define tres habilidades blandas que destacarías de tu perfil*"
-    = field.select(:soft_skill_ids, @user.soft_skills_list, { prompt: "Seleccione habiles blandas"}, { :multiple => true })
+    = field.select(:soft_skill_ids, @user.soft_skills_list, { prompt: "Seleccione habilidades blandas"}, { :multiple => true })
 
     = field.label :curriculum_vitae_technical_skills, "Define técnicas de acuerdo a tu perfil*"
     = field.fields_for(:curriculum_vitaes_technical_skills) do |field|

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       resource :step_four,  only: [:show, :update]
       resource :step_five,  only: [:show, :update]
       resource :step_six,   only: [:show, :update]
+      resource :step_seven, only: [:show, :update]
     end
   end
 

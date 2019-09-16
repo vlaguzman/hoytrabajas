@@ -2,10 +2,7 @@
 %h3 Brinda a las empresas información valiosa sobre ti.
 
 = form_for(:user, url: users_wizards_step_five_path, method: :put, html: { id: :step_five } ) do |field|
-  - if @user.errors.present?
-    %lu
-    - @user.errors.full_messages.each do |message|
-      %li= message
+  - render 'shared/form_errors', source: @user
 
   = field.fields_for(:curriculum_vitae) do |field|
     = field.label :available_work_day_ids, "¿Que días estas disponible para trabajar?"

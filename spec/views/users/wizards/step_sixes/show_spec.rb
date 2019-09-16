@@ -7,6 +7,8 @@ RSpec.describe "users/wizards/step_sixes/show" do
 
     render
 
+    expect(rendered).to render_template(partial: 'shared/_form_errors')
+
     #title
     expect(rendered).to match(/Déjanos conocer tus habilidades/)
     expect(rendered).to match(/Brinda a las empresas información valiosa sobre ti./)

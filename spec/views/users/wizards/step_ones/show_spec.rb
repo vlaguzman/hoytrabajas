@@ -10,6 +10,8 @@ RSpec.describe "users/wizards/step_ones/show" do
 
     expect(rendered).to match(/Empecemos por conocernos/)
 
+    expect(rendered).to render_template(partial: 'shared/_form_errors')
+
     expect(rendered).to have_tag(:form, with: { id: "step_one" }) do
       with_tag(:input, with: { name: "user[name]", type: "text" })
       with_tag(:input, with: { name: "user[last_name]", type: "text" })

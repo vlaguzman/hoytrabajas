@@ -2,10 +2,7 @@
 %h3 Brinda a las empresas información valiosa sobre ti.
 
 = form_for(:user, url: users_wizards_step_six_path, method: :put, html: { id: :step_six } ) do |field|
-  - if @user.errors.present? #this
-    %lu
-    - @user.errors.full_messages.each do |message|
-      %li= message
+  - render 'shared/form_errors', source: @user
 
   = field.fields_for(:curriculum_vitae) do |field|
     = field.label :soft_skill_ids, "Define tres habilidades blandas que destacarías de tu perfil*"

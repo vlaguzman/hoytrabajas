@@ -2,10 +2,7 @@
 %h3 Brinda a las empresas información valiosa sobre ti.
 
 = form_for(:user, url: users_wizards_step_four_path, method: :put, html: { id: :step_four } ) do |field|
-  - if @user.errors.present?
-    %lu
-    - @user.errors.full_messages.each do |message|
-      %li= message
+  - render 'shared/form_errors', source: @user
 
   = field.label :state_id, "Departamento"
   %select{name: 'states' ,placeholder: "Seleccione departamento" }

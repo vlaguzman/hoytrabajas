@@ -15,6 +15,10 @@ RSpec.describe "Overall navigation" do
       click_on("Home")
 
       expect(page).to have_link("Registro del candidato", href: new_user_registration_path)
+      click_on("Registro del candidato")
+      expect(page).to have_text("Regístrate ahora")
+      click_on("Home")
+
       expect(page).to have_link("Registro de la empresa", href: new_company_registration_path)
       expect(page).to have_link("Ofertas", href: offers_path)
       expect(page).to have_link("Categorias de empleo", href: job_categories_path)

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   namespace :users do
     namespace :wizards do
-      resource :step_zero,  only: [:show] 
+      resource :step_zero,  only: [:show]
       resource :step_one,   only: [:show, :update]
       resource :step_two,   only: [:show, :update]
       resource :step_three, only: [:show, :update]

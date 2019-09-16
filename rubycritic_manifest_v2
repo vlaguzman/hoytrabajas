@@ -33,7 +33,7 @@ A         * EducationalDegree                    4      0.0        0           1
 A         * EducationalLevel                     2      0.0        0           1
 A         * EducationalLevelsOffers              1      0.0        0           1
 A         * EmployeesRange                       1      0.0        0           1
-A         * FaqsController                       1      0.0        0           1
+A         * FaqsController                       2      0.0        0           1
 A         * Function                             2      0.0        0           1
 A         * FunctionsOffers                      1      0.0        0           1
 A         * HomeController                       1      0.0        0           1

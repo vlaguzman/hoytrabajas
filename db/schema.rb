@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_16_211753) do
+ActiveRecord::Schema.define(version: 2019_09_17_141109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -244,11 +244,11 @@ ActiveRecord::Schema.define(version: 2019_09_16_211753) do
   create_table "curriculum_vitaes_technical_skills", force: :cascade do |t|
     t.boolean "step_up"
     t.bigint "job_category_id", null: false
-    t.bigint "level_id", null: false
     t.bigint "curriculum_vitae_id", null: false
     t.bigint "technical_skill_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "level_id"
     t.index ["curriculum_vitae_id"], name: "index_curriculum_vitaes_technical_skills_on_curriculum_vitae_id"
     t.index ["job_category_id"], name: "index_curriculum_vitaes_technical_skills_on_job_category_id"
     t.index ["level_id"], name: "index_curriculum_vitaes_technical_skills_on_level_id"

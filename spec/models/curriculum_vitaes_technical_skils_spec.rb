@@ -1,7 +1,7 @@
 RSpec.describe CurriculumVitaesTechnicalSkills, type: :model do
 
   describe "validations" do
-    it { should validate_presence_of(:step_up) }
+    it { should respond_to(:step_up) }
   end
 
   describe "associations" do

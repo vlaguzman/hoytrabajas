@@ -94,15 +94,19 @@ RSpec.describe Users::Wizards::StepSixService do
 
       it "should create a curriculum vitae techical skills object associated to the curriculum vitae" do
         expect(new_curriculum_vitae.technical_skills.count).to be_zero
-        expect(new_curriculum_vitae.languaes.count).to be_zero
+        expect(new_curriculum_vitae.languages.count).to be_zero
 
         candidate = new_curriculum_vitae.user
 
         updated_candidate = subject.(candidate: candidate, update_params: params)
 
-        expect(new_curriculum_vitae.technical_skills.count).to eq(2)
-        expect(new_curriculum_vitae.languaes.count).to eq(1)
+        expect(new_curriculum_vitae.technical_skills.pluck(:description)).to match_array(["SEO","Redes sociales"])
+        expect(new_curriculum_vitae.languages.pluck(:description)).to match_array(["Inglés"])
 
+        saved_to_learn_skill = CurriculumVitaesTechnicalSkills.find_by(curriculum_vitae_id: new_curriculum_vitae.id)
+
+        expect(saved_to_learn_skill.level).to eq(nil)
+        expect(saved_to_learn_skill.step_up).to be_truthy
         #updated_cv_salary = updated_candidate.curriculum_vitaes.first.curriculum_vitae_salary
 #
         #expect(CurriculumVitaeSalary.count).to eq(1)

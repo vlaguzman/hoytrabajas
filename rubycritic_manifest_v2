@@ -51,6 +51,7 @@ A         * Limitation                           4      0.0        0           1
 A         * Nationality                          4      0.0        0           1
 A         * Offer                                18     0.0        0           1
 A         * OfferType                            5      0.0        0           1
+A         * OffersController                     0      0.0        0           1
 A         * OffersResponsibilities               1      0.0        0           1
 A         * OffersSalaries                       2      0.0        0           1
 A         * OffersSoftSkills                     1      0.0        0           1

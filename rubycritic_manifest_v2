@@ -13,7 +13,7 @@ A         * AvailableWorkDay                     3      0.0        0           1
 A         * AvailableWorkDaysCurriculumVitaes    1      0.0        0           1
 A         * AvailableWorkDaysOffers              1      0.0        0           1
 A         * City                                 2      0.0        0           1
-A         * CompaniesController                  0      0.0        0           1
+A         * CompaniesController                  1      0.0        0           1
 A         * CompaniesUsers                       1      0.0        0           1
 A         * Company                              2      0.0        0           1
 A         * ContractType                         1      0.0        0           1
@@ -51,7 +51,7 @@ A         * Limitation                           4      0.0        0           1
 A         * Nationality                          4      0.0        0           1
 A         * Offer                                18     0.0        0           1
 A         * OfferType                            5      0.0        0           1
-A         * OffersController                     0      0.0        0           1
+A         * OffersController                     1      0.0        0           1
 A         * OffersResponsibilities               1      0.0        0           1
 A         * OffersSalaries                       2      0.0        0           1
 A         * OffersSoftSkills                     1      0.0        0           1

@@ -13,7 +13,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/available_work_days_offers.rb",100,4,3,3,0
 "./app/models/city.rb",100,3,2,2,0
 "./app/models/companies_users.rb",100,4,3,3,0
-"./app/models/company.rb",0,15,9,0,9
+"./app/models/company.rb",0,14,8,0,8
 "./app/models/contract_type.rb",100,3,2,2,0
 "./app/models/currency.rb",100,3,2,2,0
 "./app/models/curriculum_vitae.rb",100,24,18,18,0

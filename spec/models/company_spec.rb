@@ -3,17 +3,18 @@ require 'rails_helper'
 RSpec.describe Company, type: :model do
 
   describe "validations" do
-    it { should validate_presence_of(:name) }
-    it { should validate_presence_of(:contact_name) }
-    it { should validate_presence_of(:cellphone) }
-    it { should validate_presence_of(:contact_cellphone) }
-    it { should validate_presence_of(:nit) }
-    it { should validate_presence_of(:address) }
+    it { should respond_to(:name) }
+    it { should respond_to(:contact_name) }
+    it { should respond_to(:cellphone) }
+    it { should respond_to(:contact_cellphone) }
+    it { should respond_to(:nit) }
+    it { should respond_to(:address) }
     it { should validate_presence_of(:email) }
-    it { should validate_presence_of(:web_site) }
-    it { should validate_presence_of(:contact_web_site) }
-    it { should validate_presence_of(:description) }
-    it { should validate_presence_of(:contact_work_position) }
+    it { should validate_presence_of(:password) }
+    it { should respond_to(:web_site) }
+    it { should respond_to(:contact_web_site) }
+    it { should respond_to(:description) }
+    it { should respond_to(:contact_work_position) }
     it { should respond_to(:logo) }
   end
 

@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
+  #TODO u cant modify a idividual user is dont change to 'resources'
   resource :users, only: [:edit, :update]
+  resource :companies, only:[:index, :edit]
+
+  namespace :companies do
+    namespace :first_offer do
+      resource :step_zero, only: [:show]
+      resource :step_one,  only: [:show]
+    end
+  end
 
   namespace :users do
     namespace :wizards do
@@ -13,13 +22,13 @@ Rails.application.routes.draw do
     end
   end
 
+
   devise_for :users, controllers: { registrations: 'users/registrations' }
-  devise_for :companies
+  devise_for :companies,  controllers: { registrations: 'companies/registrations' }
 
   resources :faqs, only: [:index]
   resources :offers
   resources :job_categories
-  resources :companies
 
   root to: "home#index"
 

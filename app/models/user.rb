@@ -24,4 +24,5 @@ class User < ApplicationRecord
   has_and_belongs_to_many :driving_licences
 
   accepts_nested_attributes_for :curriculum_vitaes
+
 end

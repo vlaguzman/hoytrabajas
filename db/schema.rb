@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_13_205341) do
+ActiveRecord::Schema.define(version: 2019_09_16_211753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 2019_09_13_205341) do
     t.string "contact_web_site"
     t.string "description"
     t.string "contact_work_position"
-    t.bigint "employees_range_id", null: false
+    t.integer "employees_range_id"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

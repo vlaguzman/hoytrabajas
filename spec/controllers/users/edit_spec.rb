@@ -16,12 +16,12 @@ RSpec.describe UsersController, type: :controller do
     context "When user logs in for the first time" do
       let(:candidate) { create(:user, :first_time_candidate) }
 
-      it "should see the step 1 of fill candidate data wizard" do
+      it "should see the step 0 of fill candidate data wizard" do
         sign_in candidate
 
         get :edit
 
-        expect(response).to redirect_to(users_wizards_step_one_path)
+        expect(response).to redirect_to(users_wizards_step_zero_path)
       end
     end
   end

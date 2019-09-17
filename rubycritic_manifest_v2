@@ -40,7 +40,7 @@ A         * HomeController                       1      0.0        0           1
 A         * Industry                             3      0.0        0           1
 A         * JobAid                               4      0.0        0           1
 A         * JobAidsOffers                        1      0.0        0           1
-A         * JobCategoriesController              0      0.0        0           1
+A         * JobCategoriesController              1      0.0        0           1
 A         * JobCategory                          4      0.0        0           1
 A         * LaborDisponibility                   1      0.0        0           1
 A         * Language                             5      0.0        0           1

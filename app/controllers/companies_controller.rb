@@ -4,11 +4,7 @@ class CompaniesController < ApplicationController
   end
 
   def edit
-    if current_company.sign_in_count <= 1
-      redirect_to companies_first_offer_step_zero_path
-    else
-      render 'edit'
-    end
+    first_sign_in?(current_company, companies_first_offer_step_zero_path)
   end
 
 end

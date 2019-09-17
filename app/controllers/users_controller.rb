@@ -1,11 +1,7 @@
 class UsersController < ApplicationController
 
   def edit
-    if current_user.sign_in_count <= 1
-      redirect_to users_wizards_step_zero_path
-    else
-      render 'edit'
-    end
+    first_sign_in?(current_user, users_wizards_step_zero_path)
   end
 
   def update

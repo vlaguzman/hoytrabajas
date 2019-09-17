@@ -30,6 +30,10 @@ RSpec.describe "Overall navigation" do
       click_on("Home")
 
       expect(page).to have_link("Empresas", href: companies_path)
+      click_on("Empresas")
+      expect(page).to have_text("Empresas")
+      click_on("Home")
+
     end
   end
 end

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   #TODO u cant modify a idividual user is dont change to 'resources'
+
   resource :users, only: [:edit, :update]
-  resource :companies, only:[:index, :edit]
+  resource :companies, only:[:index, :show, :edit]
 
   namespace :companies do
     namespace :first_offer do
@@ -28,7 +29,7 @@ Rails.application.routes.draw do
 
   resources :faqs, only: [:index]
   resources :offers
-  resources :job_categories
+  resources :job_categories, only:[:index]
 
   root to: "home#index"
 

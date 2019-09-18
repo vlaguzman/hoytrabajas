@@ -58,5 +58,6 @@ RSpec.describe Users::WizardService do
       end
 
     end
+
   end
 end

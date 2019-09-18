@@ -62,62 +62,56 @@ RSpec.describe Users::Wizards::StepSixService do
         }
       end
 
-      it "Should return a modifiend User" do
-        candidate = new_curriculum_vitae.user
+      context "when the params are valid" do
+        it "Should return a modifiend User" do
+          candidate = new_curriculum_vitae.user
 
-        updated_candidate = subject.(candidate: candidate, update_params: params)
+          updated_candidate = subject.(candidate: candidate, update_params: params)
 
-        expect(updated_candidate).to be_an_instance_of(User)
+          expect(updated_candidate).to be_an_instance_of(User)
+        end
+
+        it "Should update the curriculum vitae" do
+          candidate = new_curriculum_vitae.user
+
+          updated_candidate = subject.(candidate: candidate, update_params: params)
+
+          expect(updated_candidate.curriculum_vitaes.count).to eq(1)
+          expect(CurriculumVitaesLanguages.count).to eq(1)
+          expect(new_curriculum_vitae.languages.count).to eq(1)
+          expect(CurriculumVitaesTechnicalSkills.count).to eq(2)
+          expect(new_curriculum_vitae.technical_skills.count).to eq(2)
+          expect(new_curriculum_vitae.soft_skills.count).to eq(2)
+        end
+
+        it "should asociate a selected soft skills to the curriculum vitae" do
+          candidate = new_curriculum_vitae.user
+
+          updated_candidate = subject.(candidate: candidate, update_params: params)
+
+          expect(new_curriculum_vitae.soft_skills.pluck(:description)).to match_array(["Creatividad","Responsabilidad"])
+
+        end
+
+        it "should create a curriculum vitae techical skills object associated to the curriculum vitae" do
+          expect(new_curriculum_vitae.technical_skills.count).to be_zero
+          expect(new_curriculum_vitae.languages.count).to be_zero
+
+          candidate = new_curriculum_vitae.user
+
+          updated_candidate = subject.(candidate: candidate, update_params: params)
+
+          expect(new_curriculum_vitae.technical_skills.pluck(:description)).to match_array(["SEO","Redes sociales"])
+          expect(new_curriculum_vitae.languages.pluck(:description)).to match_array(["Inglés"])
+
+          saved_to_learn_skill = CurriculumVitaesTechnicalSkills.find_by(curriculum_vitae_id: new_curriculum_vitae.id)
+
+          expect(saved_to_learn_skill.level).to eq(nil)
+          expect(saved_to_learn_skill.step_up).to be_truthy
+          #updated_cv_salary = updated_candidate.curriculum_vitaes.first.curriculum_vitae_salary
+        end
       end
 
-      it "Should update the curriculum vitae" do
-        candidate = new_curriculum_vitae.user
-
-        updated_candidate = subject.(candidate: candidate, update_params: params)
-
-        expect(updated_candidate.curriculum_vitaes.count).to eq(1)
-        expect(CurriculumVitaesLanguages.count).to eq(1)
-        expect(new_curriculum_vitae.languages.count).to eq(1)
-        expect(CurriculumVitaesTechnicalSkills.count).to eq(2)
-        expect(new_curriculum_vitae.technical_skills.count).to eq(2)
-        expect(new_curriculum_vitae.soft_skills.count).to eq(2)
-      end
-
-      it "should asociate a selected soft skills to the curriculum vitae" do
-        candidate = new_curriculum_vitae.user
-
-        updated_candidate = subject.(candidate: candidate, update_params: params)
-
-        expect(new_curriculum_vitae.soft_skills.pluck(:description)).to match_array(["Creatividad","Responsabilidad"])
-
-      end
-
-      it "should create a curriculum vitae techical skills object associated to the curriculum vitae" do
-        expect(new_curriculum_vitae.technical_skills.count).to be_zero
-        expect(new_curriculum_vitae.languages.count).to be_zero
-
-        candidate = new_curriculum_vitae.user
-
-        updated_candidate = subject.(candidate: candidate, update_params: params)
-
-        expect(new_curriculum_vitae.technical_skills.pluck(:description)).to match_array(["SEO","Redes sociales"])
-        expect(new_curriculum_vitae.languages.pluck(:description)).to match_array(["Inglés"])
-
-        saved_to_learn_skill = CurriculumVitaesTechnicalSkills.find_by(curriculum_vitae_id: new_curriculum_vitae.id)
-
-        expect(saved_to_learn_skill.level).to eq(nil)
-        expect(saved_to_learn_skill.step_up).to be_truthy
-        #updated_cv_salary = updated_candidate.curriculum_vitaes.first.curriculum_vitae_salary
-#
-        #expect(CurriculumVitaeSalary.count).to eq(1)
-#
-        #expect(updated_cv_salary).to be_present
-        #expect(updated_cv_salary).to be_an_instance_of(CurriculumVitaeSalary)
-        #expect(updated_cv_salary.currency.description).to eq("COP")
-        #expect(updated_cv_salary.from).to eq(4000)
-        #expect(updated_cv_salary.to).to eq(10000)
-        #expect(updated_cv_salary.salary_period.description).to eq("Diario")
-      end
     end
   end
 

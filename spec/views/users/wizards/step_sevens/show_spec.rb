@@ -3,35 +3,16 @@ require 'rails_helper'
 RSpec.describe "users/wizards/step_sevens/show" do
   it "Should render users/wizards/step_sevens#show template" do
 
-    assign(:user, Users::Wizards::StepSevenPresenter.new(create(:user, :first_time_candidate)))
-
     render
 
-    expect(rendered).to render_template(partial: 'shared/_form_errors')
-
-    #title
     expect(rendered).to match(/Cuentanos un poco de tu experiencia/)
+    expect(rendered).to match(/¿Cuentas con experiencia?/)
+    expect(rendered).to have_link("Si, quiero adicionarla", href: users_wizards_step_eight_path)
+    expect(rendered).to have_link("No pero con disposición", href: users_wizards_step_nine_path)
 
-    #form
-    #expect(rendered).to have_tag(:form, with: { id: "step_six" }) do
-    #  with_tag(:label, text: "Define tres habilidades blandas que destacarías de tu perfil*")
-    #  with_select("user[curriculum_vitae][soft_skill_ids][]")
+    expect(rendered).to have_link("Siguiente", href: users_wizards_step_eight_path)
 
-    #  with_tag(:label, text: "Define técnicas de acuerdo a tu perfil*")
-    #  with_select("user[curriculum_vitae][curriculum_vitaes_technical_skills][job_category_id]")
-    #  with_select("user[curriculum_vitae][curriculum_vitaes_technical_skills][technical_skill_id]")
-    #  with_select("user[curriculum_vitae][curriculum_vitaes_technical_skills][level_id]")
-
-    #  with_tag(:label, text: "Define qué habilidades te gustaría aprender o reforzar")
-    #  with_select("user[curriculum_vitae][to_learn_skills][job_category_id]")
-    #  with_select("user[curriculum_vitae][to_learn_skills][technical_skill_id]")
-
-    #  with_tag(:label, text: "¿Que idiomas deseas resaltar en tu perfil?")
-    #  with_select("user[curriculum_vitae][curriculum_vitaes_languages][language_id]")
-    #  with_select("user[curriculum_vitae][curriculum_vitaes_languages][level_id]")
-
-    #  with_submit("siguiente")
-
-    #end
+    expect(rendered).to have_link("Saltar", href: users_wizards_step_nine_path)
+    expect(rendered).to have_link("Regresar", href: users_wizards_step_six_path)
   end
 end

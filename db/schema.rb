@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_19_142039) do
+ActiveRecord::Schema.define(version: 2019_09_19_144541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -134,10 +134,10 @@ ActiveRecord::Schema.define(version: 2019_09_19_142039) do
     t.datetime "locked_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "employees_ranges_id"
+    t.bigint "employees_range_id"
     t.index ["confirmation_token"], name: "index_companies_on_confirmation_token", unique: true
     t.index ["email"], name: "index_companies_on_email", unique: true
-    t.index ["employees_ranges_id"], name: "index_companies_on_employees_ranges_id"
+    t.index ["employees_range_id"], name: "index_companies_on_employees_range_id"
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_companies_on_unlock_token", unique: true
   end
@@ -761,6 +761,25 @@ ActiveRecord::Schema.define(version: 2019_09_19_142039) do
     t.index ["curriculum_vitaes_id"], name: "index_visits_on_curriculum_vitaes_id"
   end
 
+  create_table "work_experiences", force: :cascade do |t|
+    t.bigint "job_category_id", null: false
+    t.bigint "work_methodology_id"
+    t.bigint "contract_type_id"
+    t.bigint "curriculum_vitae_id"
+    t.bigint "work_position_id", null: false
+    t.date "stated_at"
+    t.date "finished_at"
+    t.string "company_name"
+    t.boolean "still_in_progress"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["contract_type_id"], name: "index_work_experiences_on_contract_type_id"
+    t.index ["curriculum_vitae_id"], name: "index_work_experiences_on_curriculum_vitae_id"
+    t.index ["job_category_id"], name: "index_work_experiences_on_job_category_id"
+    t.index ["work_methodology_id"], name: "index_work_experiences_on_work_methodology_id"
+    t.index ["work_position_id"], name: "index_work_experiences_on_work_position_id"
+  end
+
   create_table "work_methodologies", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -793,7 +812,7 @@ ActiveRecord::Schema.define(version: 2019_09_19_142039) do
   add_foreign_key "available_work_days_curriculum_vitaes", "curriculum_vitaes"
   add_foreign_key "available_work_days_offers", "available_work_days"
   add_foreign_key "available_work_days_offers", "offers"
-  add_foreign_key "companies", "employees_ranges", column: "employees_ranges_id"
+  add_foreign_key "companies", "employees_ranges"
   add_foreign_key "companies_users", "companies"
   add_foreign_key "companies_users", "users"
   add_foreign_key "curriculum_vitae_salaries", "currencies"
@@ -884,4 +903,9 @@ ActiveRecord::Schema.define(version: 2019_09_19_142039) do
   add_foreign_key "users_nationalities", "users"
   add_foreign_key "users_vehicles", "users"
   add_foreign_key "users_vehicles", "vehicles"
+  add_foreign_key "work_experiences", "contract_types"
+  add_foreign_key "work_experiences", "curriculum_vitaes"
+  add_foreign_key "work_experiences", "job_categories"
+  add_foreign_key "work_experiences", "work_methodologies"
+  add_foreign_key "work_experiences", "work_positions"
 end

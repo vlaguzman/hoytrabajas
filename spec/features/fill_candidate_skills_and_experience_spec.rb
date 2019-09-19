@@ -102,18 +102,49 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
         end
       end
 
-      xcontext "I want to add just one experience" do
+      context "I want to add just one experience" do
         context "I fill all data in the form" do
-          xit "should see the experience fields and the next buttons, click on it and see the message of the next secction" do
+          let!(:job_category_id) do
+            [
+              create(:job_category, description: "Marketing").id
+            ]
+          end
+
+          let!(:work_position_id) do
+            [
+              create(:work_position, description: "Community manager").id
+            ]
+          end
+
+
+          it "should see the experience fields and the next buttons, click on it and see the message of the next secction" do
             #Visit the rute of the profile user creation - step 7
-            visit "/candidato/#{user.id}/create_user/step7"
+            sign_in curriculum.user
+
+            #to the work experience migration
+            #create work_methodology
+            #lik with work_methodology
+            #link with contract type
+            #link with curriculum
+            #link with job category
+            #link witk work positon
+            #started at field date
+            #fisished at field date
+            #company name field
+            #still_in_progress field boolean
+
+            visit users_wizards_step_seven_path
+
             expect(page).to have_text("¿Cuentas con experiencia?")
-            click_button 'Sí, quiero adicionarla'
+            click_on 'Sí, quiero adicionarla'
 
             expect(page).to have_text("Cuentanos un poco de tu experiencia")
-            page.select 'Marketing', from: 'job_category'
-            fill_in "company", :with => 'HoyTrabajas.com'
-            page.select 'Community manager', from: 'role'
+
+            page.select 'Marketing', from: 'user[curriculum_vitae][work_experience][job_category_id]'
+            fill_in "user[curriculum_vitae][work_experience][company_name]", :with => 'HoyTrabajas.com'
+            page.select 'Community manager', from: 'user[curriculum_vitae][work_experience][work_postion_id]'
+
+
             page.select 'Teletrabajo', from: 'work_methodology'
             page.select 'Bogota', from: 'job_city'
             page.select 'Suba', from: 'job_location'
@@ -124,7 +155,7 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
             click_button 'siguiente'
 
             #IMPORTANT - Here you must validate the creation of the tables with the information filled by user
-            
+
             expect(page).to have_text("Veamos tu información académica")
           end
         end
@@ -132,12 +163,12 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
         xcontext "I dont fill the job_category" do
           xit "should see a message that said me 'you must fill the job_category'" do
             #Visit the rute of the profile user creation - step 8
-            visit "/candidato/#{user.id}/create_user/step8" 
-            
+            visit "/candidato/#{user.id}/create_user/step8"
+
             expect(page).to have_text("Cuentanos un poco de tu experiencia")
             page.select 'Community manager', from: 'role'
             click_button 'siguiente'
-            
+
             expect(page).to have_text("La categoria del trabajo es un campo requerido")
           end
         end

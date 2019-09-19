@@ -3,19 +3,20 @@ import Typography from '@material-ui/core/Typography'
 import { Row, Col } from 'reactstrap'
 import CompaniesList from '../../../../views/main/home/sections/components/companiesList'
 import CarouselRow from '../../../../components/Carousel/CarouselRow'
-import { map } from 'lodash'
 
 
+const catalogo = Array(13).fill(null)
 
-export default ({ catalogo, title: { main, subtitle } }) => {
+export default () => {
   return (
     <div className="my-50">
       <div className="mt-20 mb-40 d-flex flex-column justify-content-center align-items-center">
         <Typography className="fw-bold" variant="h5">
-          {main}
+          El trabajo ideal
         </Typography>
+        <h1>Empresas</h1>
         <Typography className="fw-bold" variant="caption">
-          {subtitle}
+          si existe
         </Typography>
       </div>
       <Row
@@ -28,8 +29,7 @@ export default ({ catalogo, title: { main, subtitle } }) => {
         <CarouselRow className='w-75' slidesToShow={3} infinite={true} dots={false}
            slidesToShowResp={1.68} centerMode={true}>
         {
-      map(catalogo,(e, i) => {
-        return (
+      catalogo.map((e,i) => (
           <Col
             // xs={12}
             key={i}
@@ -47,7 +47,7 @@ export default ({ catalogo, title: { main, subtitle } }) => {
             />
           </Col>
         )
-      })}
+      )}
         </CarouselRow>
       </Row>
     </div>

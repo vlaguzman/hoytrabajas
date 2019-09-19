@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_17_141109) do
+ActiveRecord::Schema.define(version: 2019_09_19_142039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -759,6 +759,12 @@ ActiveRecord::Schema.define(version: 2019_09_17_141109) do
     t.bigint "curriculum_vitaes_id"
     t.index ["curriculum_vitae_id"], name: "index_visits_on_curriculum_vitae_id"
     t.index ["curriculum_vitaes_id"], name: "index_visits_on_curriculum_vitaes_id"
+  end
+
+  create_table "work_methodologies", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "work_modes", force: :cascade do |t|

@@ -26,7 +26,7 @@ RSpec.describe "Overall navigation" do
       
       expect(page).to have_link("Ofertas", href: offers_path)
       click_on("Ofertas")
-      expect(page).to have_text("Ofertas")
+      expect(page).to have_text("Offers")
       click_on("Home")
 
       expect(page).to have_link("Categorias de empleo", href: job_categories_path)

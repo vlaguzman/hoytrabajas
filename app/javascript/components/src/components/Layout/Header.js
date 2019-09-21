@@ -13,10 +13,9 @@ import Visibility from '@material-ui/icons/Visibility'
 import MailOutline from '@material-ui/icons/MailOutline'
 import Lock from '@material-ui/icons/Lock'
 import Fab from '@material-ui/core/Fab'
-import { useAuth0 } from '../../../auth/authContext'
-import { useRouter } from 'next/router'
-import Link from '../../components/Layout/Link'
-import SimpleMenu from '../../components/Menu/SimpleMenu'
+//import { useAuth0 } from '../../../auth/authContext'
+//import { useRouter } from 'next/router'
+//import Link from '../../components/Layout/Link'
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import FormGen from '../../components/inlineFormgenerartor'
@@ -69,7 +68,7 @@ const Header = ({ scrollState }) => {
       >
         <div className="d-flex align-items-center">
           <div className="site-logo">
-            <Link href="/" className="logo-mini">
+            <a href="/" className="logo-mini">
               <img
                 src={
                   !scrollState
@@ -80,7 +79,7 @@ const Header = ({ scrollState }) => {
                 alt="site logo"
                 height="100%"
               />
-            </Link>
+            </a>
           </div>
         </div>
         <Form className={`search-width-container d-none d-lg-flex header-bar  mt-10 ${scrollState &&  'show' }`} inline >

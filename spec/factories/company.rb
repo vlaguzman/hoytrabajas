@@ -13,8 +13,6 @@ FactoryBot.define do
     contact_work_position { "Human Resources Talent Hunter" }
     sign_in_count         { 34565 }
 
-    association :employees_range, factory: :employees_range
-
     after(:build) do |company|
       company.logo.attach(io: File.open(Rails.root.join('spec', 'factories', 'images', 'photo.jpg')), filename: 'photo.jpg', content_type: 'image/jpeg')
     end

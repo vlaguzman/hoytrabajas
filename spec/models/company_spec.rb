@@ -25,7 +25,6 @@ RSpec.describe Company, type: :model do
   end
 
   describe "associoations" do
-    it { should belong_to(:employees_range) }
     it { should have_and_belong_to_many(:users) }
   end
 end

@@ -478,8 +478,8 @@ ActiveRecord::Schema.define(version: 2019_09_16_211753) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "work_mode_id", null: false
-    t.bigint "company_id"
     t.bigint "sex_id", null: false
+    t.bigint "company_id"
     t.index ["city_id"], name: "index_offers_on_city_id"
     t.index ["company_id"], name: "index_offers_on_company_id"
     t.index ["contract_type_id"], name: "index_offers_on_contract_type_id"

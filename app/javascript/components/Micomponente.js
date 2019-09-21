@@ -33,7 +33,7 @@ export default class Micomponente extends React.Component {
   }
 */
   render() {
-    return <h1>hola mundo</h1>
+    return (<AppLayout><CssBaseline /></AppLayout>)
 /*
     return (
           <MuiPickersUtilsProvider

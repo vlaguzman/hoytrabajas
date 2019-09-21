@@ -8,21 +8,20 @@ import { ThemeProvider } from 'styled-components'
 
 import Header from '../../components/Layout/Header'
 import Footer from '../../components/Layout/Footer'
-//import theme from '../../components/Layout/Theme/theme'
+import theme from '../../components/Layout/Theme/theme'
 
 const AppLayout = ({ children }) => {
-//  const [isTop, setIsTop] = useState(false)
-//  const myRef = useRef(null)
-//  const onScrollFrame = e => {
-//    const currentTop = e.scrollTop > 200
-//    if (currentTop !== isTop) setIsTop(currentTop)
-//  }
-//  const scrollToBottom = () => {
-//    console.log('las barras',myRef)
-//    myRef.current.scrollToBottom()
-//  }
-  return ( <h1>layout</h1>
-/*
+  const [isTop, setIsTop] = useState(false)
+  const myRef = useRef(null)
+  const onScrollFrame = e => {
+    const currentTop = e.scrollTop > 200
+    if (currentTop !== isTop) setIsTop(currentTop)
+  }
+  const scrollToBottom = () => {
+    console.log('las barras',myRef)
+    myRef.current.scrollToBottom()
+  }
+  return ( 
     <StylesProvider injectFirst>
       <MuiThemeProvider theme={theme}>
         <ThemeProvider theme={theme}>
@@ -58,7 +57,6 @@ const AppLayout = ({ children }) => {
         </ThemeProvider>
       </MuiThemeProvider>
     </StylesProvider>
-*/
   )
 }
 

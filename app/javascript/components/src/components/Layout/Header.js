@@ -73,8 +73,8 @@ const Header = ({ scrollState }) => {
               <img
                 src={
                   !scrollState
-                    ? '/static/img/appLogoW.svg'
-                    : '/static/img/appLogoC.svg'
+                    ? '/assets/static/img/appLogoW.svg'
+                    : '/assets/static/img/appLogoC.svg'
                 }
                 className="mr-15 logo animated fadeIn"
                 alt="site logo"
@@ -130,7 +130,7 @@ const Header = ({ scrollState }) => {
       >
         <DialogTitle id="max-width-dialog-title" className='my-25'>
           <Row noGutters className='justify-content-center'>
-            <img src={'/static/img/appLogoC.svg'}
+            <img src={'/assets/static/img/appLogoC.svg'}
                     className="mr-15  animated fadeIn"
                     alt="site logo"
                     width="50%"

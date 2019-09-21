@@ -36,25 +36,25 @@ const SlideOne = () => {
     <Fragment>
       <Poper contenido="Hello" {...{ id }} {...{ open }} {...{ anchorEl }} />
         <img
-          src="/static/img/node.png"
+          src="/assets/static/img/node.png"
           onClick={handleClick}
           className="position-absolute animated fadeIn first_node"
           alt=""
         />
         <img
-          src="/static/img/node.png"
+          src="/assets/static/img/node.png"
           onClick={handleClick}
           className="position-absolute animated fadeIn second_node"
           alt="Node"
         />
         <img
-          src="/static/img/node.png"
+          src="/assets/static/img/node.png"
           onClick={handleClick}
           className="position-absolute animated fadeIn thrid_node"
           alt="Node"
         />
         <img
-          src="/static/img/box-oferta.png"
+          src="/assets/static/img/box-oferta.png"
           className="position-absolute oferta-box oferta_acostada MuiPaper-elevation20 animated fadeIn"
           alt=""
           width="44%"

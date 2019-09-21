@@ -39,8 +39,8 @@ const CardHeaderComponent = ({
           {titleIcon && (
             <Avatar aria-label="Recipe" className="bg-white mr-5">
               <img
-                // reemplazar por carpeta /static
-                src="/static/custom-icons/icon-disponibilidad.svg"
+                // reemplazar por carpeta /assets/static
+                src="/assets/static/custom-icons/icon-disponibilidad.svg"
                 className=""
                 alt="Contiene un ícono de disponibilidad"
               />

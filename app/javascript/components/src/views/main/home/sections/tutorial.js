@@ -19,14 +19,14 @@ const Tutorial = () => {
           <Row noGutters className="justify-content-end">
             {slide ? <SlideOne /> : <SlideTwo />}
             <img
-              src="/static/img/cellphone.png"
+              src="/assets/static/img/cellphone.png"
               className="position-absolute cellphone"
               alt=""
               // height="100%"
               width="100%"
             />
             <img
-              src="/static/img/ondas.png"
+              src="/assets/static/img/ondas.png"
               className="d-block special-margin-ondas"
               alt=""
               // height="100%"

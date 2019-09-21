@@ -16,7 +16,7 @@ const cards = content =>
           <CardContent>
             <img
               className="d-block mx-auto"
-              src={`/static/img/${img}`}
+              src={`/assets/static/img/${img}`}
               alt={headline}
             />
             <Typography

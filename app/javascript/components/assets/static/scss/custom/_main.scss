@@ -862,13 +862,13 @@
 }
 
 .bg-paola {
-  background-image: url('/static/img/paola.jpg');
+  background-image: url('/assets/static/img/paola.jpg');
   height: 400px;
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: contain;
   @media (max-width: 425px) {
-    background-image: url('/static/img/bg-paola-small.png');  
+    background-image: url('/assets/static/img/bg-paola-small.png');  
     // background-size: contain;
      
   }

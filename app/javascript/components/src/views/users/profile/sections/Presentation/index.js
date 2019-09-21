@@ -17,7 +17,7 @@ const Presentation = () => {
             className="square-30 bg-warning card-right-action"><i className="ti-pencil" /></a> */}
             <img
               // utilizar la carpeta de Static directamente
-              src="/static/avatars/user-11.jpg"
+              src="/assets/static/avatars/user-11.jpg"
               // src={require('/Assets/avatars/user-11.jpg')}
               className="img-fluid mx-auto user-profile-image"
               alt="user images"

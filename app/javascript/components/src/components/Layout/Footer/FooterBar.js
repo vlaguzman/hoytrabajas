@@ -22,7 +22,7 @@ const FooterBar = () => (
         <div className="site-logo">
           {/* <Link href="/" className="logo-mini">
             <img
-              src="/static/img/appLogo.png"
+              src="/assets/static/img/appLogo.png"
               className="mr-15"
               alt="site logo"
               width="35"

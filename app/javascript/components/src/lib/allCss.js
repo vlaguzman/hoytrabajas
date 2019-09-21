@@ -32,4 +32,4 @@
 // import 'react-table/react-table.css';
 
 // Custom Style File
-import '../../static/scss/_style.scss'
+import '../../assets/static/scss/_style.scss'

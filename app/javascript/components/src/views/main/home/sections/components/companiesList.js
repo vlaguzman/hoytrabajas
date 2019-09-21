@@ -20,7 +20,7 @@ const CompaniesList = ({ catalogo }) => {
           >
             <img
               className="rounded"
-              src={`/static/img/logos/clientes-ht-${i + 1}.jpg`}
+              src={`/assets/static/img/logos/clientes-ht-${i + 1}.jpg`}
               alt="client"
             />
           </Col>

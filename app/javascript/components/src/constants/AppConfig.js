@@ -2,7 +2,7 @@
  * App Config File
  */
 const AppConfig = {
-  appLogo: '/static/img/site-logo.png', // App Logo
+  appLogo: '/assets/static/img/site-logo.png', // App Logo
   brandName: 'HoyTrabajas', // Brand Name
   navCollapsed: true, // Sidebar collapse
   darkMode: false, // Dark Mode
@@ -10,7 +10,7 @@ const AppConfig = {
   rtlLayout: false, // RTL Layout
   miniSidebar: false, // Mini Sidebar
   enableSidebarBackgroundImage: false, // Enable Sidebar Background Image
-  sidebarImage: '/static/img/sidebar-4.jpg', // Select sidebar image
+  sidebarImage: '/assets/static/img/sidebar-4.jpg', // Select sidebar image
   isDarkSidenav: true, // Set true to dark sidebar
   enableThemeOptions: false, // Enable Theme Options
   locale: {

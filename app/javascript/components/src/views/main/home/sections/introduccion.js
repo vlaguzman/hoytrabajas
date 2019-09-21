@@ -11,7 +11,7 @@ const Introduccion = () => {
     className="bg-white my-70 special-padding align-items-start px-50 bg-white justify-content-around">
       <Col xs={12} lg={6} className="px-0 py-25 pr-25 justify-content-start">
         <img
-          src="/static/img/femcomp.png"
+          src="/assets/static/img/femcomp.png"
           className="img-fluid"
           alt=""
         />

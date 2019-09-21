@@ -15,8 +15,8 @@ const MaterialList = ({ internalList, arreglo = [] }) => {
         <ListItem divider={i != arr.length - 1} key={label}>
           <ListItemIcon>
             <img
-              // reemplazar por carpeta /static
-              src={`/static/custom-icons/${icon}.svg`}
+              // reemplazar por carpeta /assets/static
+              src={`/assets/static/custom-icons/${icon}.svg`}
               className="mr-10 d-inline"
               alt="Ícono"
             />

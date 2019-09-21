@@ -19,7 +19,7 @@ const FirstSection = () => {
             <i className="ti-pencil"></i>
           </a> */}
           <img
-            src="/static/avatars/user-10.jpg"
+            src="/assets/static/avatars/user-10.jpg"
             className="img-fluid mx-auto user-profile-image"
             alt="user images"
             width="160"

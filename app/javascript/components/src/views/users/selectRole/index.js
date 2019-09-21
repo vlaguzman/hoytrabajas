@@ -30,7 +30,7 @@ const SelectRolePage = () => {
         <Paper className="d-flex flex-column w-80 justify-content-center align-items-center py-60">
           <div className="user-image text-center mb-30">
             <img
-              src="/static/avatars/user-11.jpg"
+              src="/assets/static/avatars/user-11.jpg"
               className="img-fluid mx-auto user-profile-image"
               alt="user images"
               width="110"

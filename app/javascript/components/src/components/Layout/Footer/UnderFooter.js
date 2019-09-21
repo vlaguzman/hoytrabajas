@@ -14,7 +14,7 @@ const UnderFooter = () => {
           <Row noGutters className='justify-content-start align-items-center my-20'>
             <Col xs={5} md={3} className=''>
               <img
-                      src='/static/img/appLogoW.svg'
+                      src='/assets/static/img/appLogoW.svg'
                       className="d-block"
                       alt="site logo"
                       // height="100%"
@@ -49,7 +49,7 @@ const UnderFooter = () => {
           <Row noGutters className='justify-content-start align-items-center  mt-20 mb-10'>
             <Col xs={5} md={3} className=''>
               <img
-                      src='/static/img/appLogoW.svg'
+                      src='/assets/static/img/appLogoW.svg'
                       className="d-block"
                       alt="site logo"
                       // height="100%"
@@ -69,7 +69,7 @@ const UnderFooter = () => {
           <img
             className="rockstart"
             alt="rockstart"
-            src="/static/img/logo_rock.png"
+            src="/assets/static/img/logo_rock.png"
           />{' '}
         </div>
         <div
@@ -97,7 +97,7 @@ const UnderFooter = () => {
           <img
             className="rockstart"
             alt="rockstart"
-            src="/static/img/logo_rock.png"
+            src="/assets/static/img/logo_rock.png"
           />{' '}
         </div>
         <div

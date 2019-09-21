@@ -10,7 +10,7 @@ const Presentation = () => {
       <Col>
         <img
           width="100%"
-          src="/static/img/bg-dashboard.png"
+          src="/assets/static/img/bg-dashboard.png"
           alt="background"
         />
       </Col>
@@ -22,7 +22,7 @@ const Presentation = () => {
         <Row className="justify-content-center">
           <img
             width="100%"
-            src="/static/img/back-dash-empresa.png"
+            src="/assets/static/img/back-dash-empresa.png"
             alt="background"
           />
         </Row>
@@ -78,7 +78,7 @@ const Presentation = () => {
         <Row className="justify-content-end">
           <img
             width="75%"
-            src="/static/img/back-dash-empresa.png"
+            src="/assets/static/img/back-dash-empresa.png"
             alt="background"
           />
         </Row>

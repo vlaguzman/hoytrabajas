@@ -42,7 +42,7 @@ export default () => {
           >
             <img
               className="w-100"
-              src={`/static/img/logos/clientes-ht-${i + 1}.jpg`}
+              src={`/assets/static/img/logos/clientes-ht-${i + 1}.jpg`}
               alt="client"
             />
           </Col>

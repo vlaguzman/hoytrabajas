@@ -12,7 +12,7 @@ const Content = () => {
       <Avatar
         className="position-absolute"
         style={{ top: '-10rem', left: '6%', width: '4rem', height: '4rem' }}
-        src="/static/img/logos/clientes-ht-3.jpg"
+        src="/assets/static/img/logos/clientes-ht-3.jpg"
       />
       <Badge
         color="primary"

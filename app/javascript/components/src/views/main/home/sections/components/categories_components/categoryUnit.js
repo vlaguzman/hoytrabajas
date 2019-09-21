@@ -12,7 +12,7 @@ export default ({ img, cant, name }) => {
       <Row className="justify-content-center mb-5 mx-0">
         <img
           className="rounded"
-          src={`/static/img/${img}`}
+          src={`/assets/static/img/${img}`}
           alt="client"
           width="40"
           height="40"

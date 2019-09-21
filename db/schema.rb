@@ -115,7 +115,6 @@ ActiveRecord::Schema.define(version: 2019_09_16_211753) do
     t.string "contact_web_site"
     t.string "description"
     t.string "contact_work_position"
-    t.integer "employees_range_id"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -135,9 +134,10 @@ ActiveRecord::Schema.define(version: 2019_09_16_211753) do
     t.datetime "locked_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "employees_ranges_id"
     t.index ["confirmation_token"], name: "index_companies_on_confirmation_token", unique: true
     t.index ["email"], name: "index_companies_on_email", unique: true
-    t.index ["employees_range_id"], name: "index_companies_on_employees_range_id"
+    t.index ["employees_ranges_id"], name: "index_companies_on_employees_ranges_id"
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_companies_on_unlock_token", unique: true
   end
@@ -478,8 +478,8 @@ ActiveRecord::Schema.define(version: 2019_09_16_211753) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "work_mode_id", null: false
-    t.bigint "sex_id", null: false
     t.bigint "company_id"
+    t.bigint "sex_id", null: false
     t.index ["city_id"], name: "index_offers_on_city_id"
     t.index ["company_id"], name: "index_offers_on_company_id"
     t.index ["contract_type_id"], name: "index_offers_on_contract_type_id"
@@ -787,7 +787,7 @@ ActiveRecord::Schema.define(version: 2019_09_16_211753) do
   add_foreign_key "available_work_days_curriculum_vitaes", "curriculum_vitaes"
   add_foreign_key "available_work_days_offers", "available_work_days"
   add_foreign_key "available_work_days_offers", "offers"
-  add_foreign_key "companies", "employees_ranges"
+  add_foreign_key "companies", "employees_ranges", column: "employees_ranges_id"
   add_foreign_key "companies_users", "companies"
   add_foreign_key "companies_users", "users"
   add_foreign_key "curriculum_vitae_salaries", "currencies"

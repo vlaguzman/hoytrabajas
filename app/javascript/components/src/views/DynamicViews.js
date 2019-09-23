@@ -1,13 +1,14 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
 import Loading from '../components/Layout/Loading'
+import Loadable from 'react-loadable'
 
 /* MAIN */
 
-export const DynamicHome = dynamic(() => import('./main/home'), {
-  loading: () => <Loading />
+export const DynamicHome = Loadable({
+  loader: () => import('./main/home'),
+  loading: Loading
 })
-
 
 /* OFFERS */
 

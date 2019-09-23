@@ -59,6 +59,7 @@ const Header = ({ scrollState }) => {
       position="static"
       className={`rct-header ${scrollState && 'bg-header'}`}
     >
+      <h1>hola desde el Header</h1>
       <div className={` w-100 p-0 m-0 ${scrollState && 'MuiPaper-elevation10'}`}>
 
       <Toolbar

@@ -16,7 +16,7 @@ import Newsletter from './sections/newsletter'
 import { contenido } from './data'
 // import ScrollAnimation from 'react-animate-on-scroll'
 
-const HomePage = ({ match }) => {
+const HomePage = () => {
   const {
     cover,
     premiun,

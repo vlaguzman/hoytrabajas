@@ -28,7 +28,6 @@ const HomePage = ({ match }) => {
   } = contenido
   return (
     <div className="home-wrapper">
-      <h1>Ellos hoy confian en nosotros</h1>
       <CoverSection {...cover} {...{categorias}} {...{filterForm}} />
       <GallerySection {...gallery} />
       <Introduccion/>

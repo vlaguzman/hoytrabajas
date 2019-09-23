@@ -46,7 +46,6 @@ const AppLayout = ({ children }) => {
                         </div>
                         <div className="rct-page-content">
                           <HomePage />
-                          //{children}
                           <Footer {...{scrollToBottom} }/>
                         </div>
                       </Scrollbars>

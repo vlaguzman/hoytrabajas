@@ -14,7 +14,6 @@ export default () => {
         <Typography className="fw-bold" variant="h5">
           Ellos hoy confian en nosotros
         </Typography>
-        <h1>Empresas</h1>
         <Typography className="fw-bold" variant="caption">
           para encontrar su empleado ideal
         </Typography>

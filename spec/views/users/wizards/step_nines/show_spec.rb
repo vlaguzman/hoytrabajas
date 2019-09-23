@@ -33,6 +33,6 @@ RSpec.describe "users/wizards/step_sixes/show" do
 #
 #      with_submit("siguiente")
 #
-    end
+#    end
   end
 end

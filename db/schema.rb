@@ -767,7 +767,7 @@ ActiveRecord::Schema.define(version: 2019_09_19_144541) do
     t.bigint "contract_type_id"
     t.bigint "curriculum_vitae_id"
     t.bigint "work_position_id", null: false
-    t.date "stated_at"
+    t.date "started_at"
     t.date "finished_at"
     t.string "company_name"
     t.boolean "still_in_progress"

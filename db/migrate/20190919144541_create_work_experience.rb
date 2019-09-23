@@ -6,7 +6,7 @@ class CreateWorkExperience < ActiveRecord::Migration[6.0]
       t.references :contract_type, foreign_key: true
       t.references :curriculum_vitae, foreign_key: true
       t.references :work_position, null: false, foreign_key: true
-      t.date :stated_at
+      t.date :started_at
       t.date :finished_at
       t.string :company_name
       t.boolean :still_in_progress

@@ -7,7 +7,7 @@ RSpec.describe Users::Wizards::StepNinePresenter do
   describe "#_list" do
     it { should respond_to(:_list) }
 
-    ixt "should return a array with available work days objects" do
+    xit "should return a array with available work days objects" do
       #expect(subject._list).to match_array(SoftSkill.all.map { |object| [object.description, object.id] })
     end
   end

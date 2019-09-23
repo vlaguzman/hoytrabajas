@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { MuiPickersUtilsProvider } from '@material-ui/pickers'
 import DateFnsUtils from '@date-io/date-fns'
 import { es, enUS as en } from 'date-fns/locale'

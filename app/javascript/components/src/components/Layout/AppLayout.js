@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
-//import { Scrollbars } from 'react-custom-scrollbars'
+import HomePage from '../../views/main/home/index'
+import { Scrollbars } from 'react-custom-scrollbars'
 import {
   ThemeProvider as MuiThemeProvider,
   StylesProvider
@@ -13,14 +14,14 @@ import theme from '../../components/Layout/Theme/theme'
 const AppLayout = ({ children }) => {
   const [isTop, setIsTop] = useState(false)
   const myRef = useRef(null)
-  /*const onScrollFrame = e => {
+  const onScrollFrame = e => {
     const currentTop = e.scrollTop > 200
     if (currentTop !== isTop) setIsTop(currentTop)
   }
   const scrollToBottom = () => {
     console.log('las barras',myRef)
     myRef.current.scrollToBottom()
-  }*/
+  }
   return ( 
     <StylesProvider injectFirst>
       <MuiThemeProvider theme={theme}>
@@ -31,7 +32,7 @@ const AppLayout = ({ children }) => {
                 <div className="app-container">
                   <div className="rct-app-content">
                     <div className="rct-page" style={{ background: 'white' }}>
-                     /* <Scrollbars
+                      <Scrollbars
                         className="rct-scroll"
                         onScrollFrame={onScrollFrame}
                         universal
@@ -44,10 +45,11 @@ const AppLayout = ({ children }) => {
                           <Header scrollState={isTop} />
                         </div>
                         <div className="rct-page-content">
-                          {children}
+                          <HomePage />
+                          //{children}
                           <Footer {...{scrollToBottom} }/>
                         </div>
-                      </Scrollbars>*/
+                      </Scrollbars>
                     </div>
                   </div>
                 </div>

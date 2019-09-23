@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import AppLayout from '../../../components/Layout/AppLayout'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import Button from '@material-ui/core/Button'
@@ -27,7 +28,6 @@ const HomePage = ({ match }) => {
   } = contenido
   return (
     <div className="home-wrapper">
-      <h1>Ellos hoy confian en nosotros</h1>
       <CoverSection {...cover} {...{categorias}} {...{filterForm}} />
       <GallerySection {...gallery} />
       <Introduccion/>

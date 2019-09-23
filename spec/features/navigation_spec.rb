@@ -6,7 +6,7 @@ RSpec.describe "Overall navigation" do
   context "an anonimous user visits the public pages" do
     scenario "all pages render properly" do
       visit root_path
-      expect(page).to have_content("Ellos hoy confian en nosotros")
+      expect(page).to have_content("Home")
       expect(page).to have_link("Home", href: root_path)
 
       expect(page).to have_link("Preguntas frecuentes", href: faqs_path)

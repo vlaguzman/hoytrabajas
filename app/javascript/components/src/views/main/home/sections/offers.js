@@ -7,24 +7,20 @@ import Carousel from '../../../../components/Carousel/CarouselRow'
 
 const ofertas = Array(6).fill(null)
 
-export default ({
-  childen,
-  ofertas,
-  button,
-  title: { main, highlighted, last }
-}) => {
+export default () => {
 
-  let offers = ofertas.map((e, i) => {
+  let lasOfertas = ofertas.map((e, i) => {
        return (  <Cards key = {i} /> )
       })
   return (
     <div className="">
+      <h1>Offers</h1>
       <div className="sec-title mt-20 mb-40 mx-10  text-center">
-        {main} &nbsp;<span className="text-primary">{highlighted}</span>&nbsp;
-        {last}
+        el trabajo ideal &nbsp;<span className="text-primary">si existe</span>&nbsp;
+        esta en hoy trabajas
       </div>
       <Carousel slidesToShowResp={1} centerMode={true} infinite={true} slidesToShow={3.7} autoplay={false} >
-        {offers}
+        {lasOfertas}
       </Carousel>
       <Row className="justify-content-center align-items-center  my-30 ">
         <Col xs={9} md={4}>

@@ -12,11 +12,10 @@ export default () => {
     <div className="my-50">
       <div className="mt-20 mb-40 d-flex flex-column justify-content-center align-items-center">
         <Typography className="fw-bold" variant="h5">
-          El trabajo ideal
+          Ellos hoy confian en nosotros
         </Typography>
-        <h1>Empresas</h1>
         <Typography className="fw-bold" variant="caption">
-          si existe
+          para encontrar su empleado ideal
         </Typography>
       </div>
       <Row

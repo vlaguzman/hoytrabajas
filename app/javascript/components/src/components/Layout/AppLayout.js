@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { connect } from 'react-redux'
+import HomePage from '../../views/main/home/index'
 import { Scrollbars } from 'react-custom-scrollbars'
 import {
   ThemeProvider as MuiThemeProvider,
@@ -22,7 +22,7 @@ const AppLayout = ({ children }) => {
     console.log('las barras',myRef)
     myRef.current.scrollToBottom()
   }
-  return (
+  return ( 
     <StylesProvider injectFirst>
       <MuiThemeProvider theme={theme}>
         <ThemeProvider theme={theme}>
@@ -45,7 +45,7 @@ const AppLayout = ({ children }) => {
                           <Header scrollState={isTop} />
                         </div>
                         <div className="rct-page-content">
-                          {children}
+                          <HomePage />
                           <Footer {...{scrollToBottom} }/>
                         </div>
                       </Scrollbars>
@@ -65,4 +65,4 @@ const mapStateToProps = ({ settings }) => {
   return { settings }
 }
 
-export default connect(mapStateToProps)(AppLayout)
+export default AppLayout

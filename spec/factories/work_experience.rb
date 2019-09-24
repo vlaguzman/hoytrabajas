@@ -1,7 +1,7 @@
 
 FactoryBot.define do
   factory :work_experience do
-    started_at           { Date.today }
+    started_at          { Date.today }
     finished_at         {  }
     company_name        {  }
     still_in_progress   {  }

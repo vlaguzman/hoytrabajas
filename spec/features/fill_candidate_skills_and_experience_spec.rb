@@ -135,7 +135,6 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
 
       context "I want to add just one experience" do
         context "I fill all data in the form" do
-
           it "should see the experience fields and the next buttons, click on it and see the message of the next secction" do
             #Visit the rute of the profile user creation - step 7
             sign_in curriculum.user

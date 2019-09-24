@@ -62,4 +62,22 @@ RSpec.describe Users::Wizards::StepEightPresenter do
     end
   end
 
+  describe "#have_experience?" do
+    it "Should return a boolean if user have experience" do
+      experiences = WorkExperience.where(curriculum_vitae_id: subject.curriculum_vitaes.first.id).map { |exp| [exp.company_name, exp.work_position.description] }.any?
+
+      expect(subject.have_experience?).to be_truthy
+    end
+
+    context "curriculum user does not have registered experience" do
+      it "Should return falsy" do
+        WorkExperience.destroy_all
+
+        experiences = WorkExperience.where(curriculum_vitae_id: subject.curriculum_vitaes.first.id).map { |exp| [exp.company_name, exp.work_position.description] }.any?
+
+      expect(subject.have_experience?).to be_falsey
+      end
+    end
+  end
+
 end

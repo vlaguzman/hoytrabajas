@@ -1,6 +1,6 @@
 %h1 Cuentanos un poco de tu experiencia
 
-- if @user.registered_experience.any?
+- if @user.have_experience?
   %p= "Llevas #{ @user.registered_experience.count} registro(s) de experiencia laboral"
   - @user.registered_experience.each do |experience|
     %div= "en #{experience[0]} como #{experience[1]}"
@@ -38,7 +38,7 @@
 
   = field.submit("siguiente")
 
-  = field.submit('Agregar otra experiencia')
+  %button{name: "add_other_experience", type: 'submit', value: "1" } Agregar otra experiencia
 
   = link_to('Saltar', users_wizards_step_ten_path)
   = link_to('Regresar', users_wizards_step_seven_path)

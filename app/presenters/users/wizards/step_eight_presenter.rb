@@ -24,4 +24,9 @@ class Users::Wizards::StepEightPresenter < ApplicationPresenter
     cv = source.curriculum_vitaes.first.id
     WorkExperience.where(curriculum_vitae_id: cv).map { |exp| [exp.company_name, exp.work_position.description] }
   end
+
+  def have_experience?
+    cv = source.curriculum_vitaes.first.id
+    WorkExperience.where(curriculum_vitae_id: cv).map { |exp| [exp.company_name, exp.work_position.description] }.any?
+  end
 end

@@ -43,7 +43,7 @@ RSpec.describe "users/wizards/step_eights/show" do
       with_checkbox("user[curriculum_vitae][work_experience][still_in_progress]", false)
 
       with_submit("siguiente")
-      with_submit("Agregar otra experiencia")
+      with_button("Agregar otra experiencia")
     end
 
     expect(rendered).to have_link("Saltar", href: users_wizards_step_ten_path)

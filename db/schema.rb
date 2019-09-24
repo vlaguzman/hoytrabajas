@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_19_144541) do
+ActiveRecord::Schema.define(version: 2019_09_23_175525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -667,6 +667,13 @@ ActiveRecord::Schema.define(version: 2019_09_19_144541) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "technical_skills_work_experiences", force: :cascade do |t|
+    t.bigint "technical_skill_id"
+    t.bigint "work_experience_id"
+    t.index ["technical_skill_id"], name: "index_technical_skills_work_experiences_on_technical_skill_id"
+    t.index ["work_experience_id"], name: "index_technical_skills_work_experiences_on_work_experience_id"
+  end
+
   create_table "terms", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -762,6 +769,7 @@ ActiveRecord::Schema.define(version: 2019_09_19_144541) do
   end
 
   create_table "work_experiences", force: :cascade do |t|
+    t.bigint "city_id"
     t.bigint "job_category_id", null: false
     t.bigint "work_methodology_id"
     t.bigint "contract_type_id"
@@ -773,6 +781,7 @@ ActiveRecord::Schema.define(version: 2019_09_19_144541) do
     t.boolean "still_in_progress"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_id"], name: "index_work_experiences_on_city_id"
     t.index ["contract_type_id"], name: "index_work_experiences_on_contract_type_id"
     t.index ["curriculum_vitae_id"], name: "index_work_experiences_on_curriculum_vitae_id"
     t.index ["job_category_id"], name: "index_work_experiences_on_job_category_id"
@@ -891,6 +900,8 @@ ActiveRecord::Schema.define(version: 2019_09_19_144541) do
   add_foreign_key "recommendations_technical_skills", "technical_skills"
   add_foreign_key "required_experiences", "duration_types"
   add_foreign_key "required_experiences", "offers"
+  add_foreign_key "technical_skills_work_experiences", "technical_skills"
+  add_foreign_key "technical_skills_work_experiences", "work_experiences"
   add_foreign_key "users", "cities"
   add_foreign_key "users", "contract_types"
   add_foreign_key "users", "document_types"
@@ -903,6 +914,7 @@ ActiveRecord::Schema.define(version: 2019_09_19_144541) do
   add_foreign_key "users_nationalities", "users"
   add_foreign_key "users_vehicles", "users"
   add_foreign_key "users_vehicles", "vehicles"
+  add_foreign_key "work_experiences", "cities"
   add_foreign_key "work_experiences", "contract_types"
   add_foreign_key "work_experiences", "curriculum_vitaes"
   add_foreign_key "work_experiences", "job_categories"

@@ -5,7 +5,7 @@ class Users::Wizards::StepSixesController < ApplicationController
   end
 
   def update
-    user = Users::Wizards::StepSixService.(candidate: current_user, update_params: strong_params)
+    user = Users::Wizards::StepSixService.(candidate: current_user, update_params: step_six_params)
 
     if user.errors.details.any?
       user_presenter(user: user)
@@ -21,7 +21,7 @@ class Users::Wizards::StepSixesController < ApplicationController
     @user = Users::Wizards::StepSixPresenter.new(user)
   end
 
-  def strong_params
+  def step_six_params
     params
     .require(:user)
     .permit(

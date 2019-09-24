@@ -11,5 +11,6 @@ FactoryBot.define do
     association :contract_type, factory: :contract_type
     association :curriculum_vitae, factory: :curriculum_vitae
     association :work_position, factory: :work_position
+    association :city, factory: :city
   end
 end

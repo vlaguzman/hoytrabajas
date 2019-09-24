@@ -7,5 +7,7 @@ class WorkExperience < ApplicationRecord
   belongs_to :contract_type, optional: true
   belongs_to :curriculum_vitae
   belongs_to :work_position
+  belongs_to :city, optional: true
 
+  has_and_belongs_to_many :technical_skills
 end

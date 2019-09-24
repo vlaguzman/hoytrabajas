@@ -2,8 +2,5 @@ app/views/devise/registrations/edit.html.haml:14:    %i (leave blank if you don'
 app/views/devise/registrations/edit.html.haml:17:    - if @minimum_password_length
 app/views/devise/registrations/edit.html.haml:9:  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
 app/views/devise/registrations/new.html.haml:10:    - if @minimum_password_length
-app/views/users/wizards/step_fives/show.haml:5:  - if @user.errors.present?
-app/views/users/wizards/step_fours/show.haml:5:  - if @user.errors.present?
-app/views/users/wizards/step_ones/show.haml:4:  - if @user.errors.present?
-app/views/users/wizards/step_threes/show.haml:5:  - if @user.errors.present?
-app/views/users/wizards/step_twos/show.haml:5:  - if @user.errors.present?
+app/views/shared/_form_errors.haml:2:  - if source.errors.full_messages.present?
+app/views/users/wizards/step_eights/show.haml:3:- if @user.registered_experience.any?

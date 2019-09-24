@@ -1,6 +1,7 @@
 class CreateWorkExperience < ActiveRecord::Migration[6.0]
   def change
     create_table :work_experiences do |t|
+      t.references :city, foreign_key: true
       t.references :job_category, null: false, foreign_key: true
       t.references :work_methodology, foreign_key: true
       t.references :contract_type, foreign_key: true

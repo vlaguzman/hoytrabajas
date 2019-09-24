@@ -12,10 +12,12 @@ RSpec.describe WorkExperience, type: :model do
   end
 
   describe 'associations' do
+    it { should belong_to(:city) }
     it { should belong_to(:job_category) }
     it { should belong_to(:work_methodology) }
     it { should belong_to(:contract_type) }
     it { should belong_to(:curriculum_vitae) }
     it { should belong_to(:work_position) }
+    it { should have_and_belong_to_many(:technical_skills) }
   end
 end

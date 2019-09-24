@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :work_methology do
+  factory :work_methodology do
     description { 'TeleWorking' }
   end
 end

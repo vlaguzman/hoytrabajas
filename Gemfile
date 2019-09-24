@@ -41,6 +41,8 @@ group :development, :test do
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
   gem "rails-controller-testing"
   gem 'rspec-html-matchers'
+  gem "guard", require: false
+  gem "guard-rspec", require: false
 end
 
 group :development do

@@ -68,7 +68,7 @@ const Header = ({ scrollState }) => {
       >
         <div className="d-flex align-items-center">
           <div className="site-logo">
-            <a href="/" className="logo-mini">
+            <a href="/"className="logo-mini">
               <img
                 src={
                   !scrollState
@@ -99,13 +99,13 @@ const Header = ({ scrollState }) => {
             </IconButton>
           </li>
           <li className="list-inline-item no-responsive">
-            <MatButton style={{color: !scrollState ? 'white': 'black'}}>Inicio</MatButton>
+            <MatButton style={{color: !scrollState ? 'white': 'black'}} href="/">Inicio</MatButton>
           </li>
           <li className="list-inline-item no-responsive">
-            <MatButton style={{color: !scrollState ? 'white': 'black'}}>Candidato</MatButton>
+            <MatButton style={{color: !scrollState ? 'white': 'black'}} href="/users/registrations#new">Candidato</MatButton>
           </li>
           <li className="list-inline-item no-responsive">
-            <MatButton style={{color: !scrollState ? 'white': 'black'}}>Empleador</MatButton>
+            <MatButton style={{color: !scrollState ? 'white': 'black'}} href="/companies/registrations#new">Empleador</MatButton>
           </li>
           <li className="list-inline-item no-responsive">
             {/* {!isAuthenticated ? ( */}

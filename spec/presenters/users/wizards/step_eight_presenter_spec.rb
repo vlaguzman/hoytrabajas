@@ -62,6 +62,24 @@ RSpec.describe Users::Wizards::StepEightPresenter do
     end
   end
 
+  describe "#registered_experience_message" do
+    context "experience present" do
+      it "should return the message" do
+        expected_message = "Llevas #{subject.registered_experience.count} registro(s) de experiencia laboral"
+
+        expect(subject.registered_experience_message).to eq(expected_message)
+      end
+    end
+
+    context "experience not present" do
+      it "should return nil" do
+        WorkExperience.destroy_all
+
+        expect(subject.registered_experience_message).to be_nil
+      end
+    end
+  end
+
   describe "#have_experience?" do
     it "Should return a boolean if user have experience" do
       experiences = WorkExperience.where(curriculum_vitae_id: subject.curriculum_vitaes.first.id).map { |exp| [exp.company_name, exp.work_position.description] }.any?

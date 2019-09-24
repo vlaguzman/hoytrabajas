@@ -1,9 +1,8 @@
 %h1 Cuentanos un poco de tu experiencia
 
-- if @user.have_experience?
-  %p= "Llevas #{ @user.registered_experience.count} registro(s) de experiencia laboral"
-  - @user.registered_experience.each do |experience|
-    %div= "en #{experience[0]} como #{experience[1]}"
+%p= @user.registered_experience_message
+- @user.registered_experience.each do |experience|
+  %div= "en #{experience[0]} como #{experience[1]}"
 
 = form_for(:user, url: users_wizards_step_eight_path, method: :put, html: { id: :step_eight } ) do |field|
   = render partial: 'shared/form_errors', locals: {source: @user}

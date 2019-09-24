@@ -29,4 +29,10 @@ class Users::Wizards::StepEightPresenter < ApplicationPresenter
     cv = source.curriculum_vitaes.first.id
     WorkExperience.where(curriculum_vitae_id: cv).map { |exp| [exp.company_name, exp.work_position.description] }.any?
   end
+
+  def registered_experience_message
+    if registered_experience.count >= 1
+      "Llevas #{registered_experience.count} registro(s) de experiencia laboral"
+    end
+  end
 end

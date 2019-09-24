@@ -1,23 +1,23 @@
 class Users::Wizards::StepEightPresenter < ApplicationPresenter
 
   def job_categories_list
-    JobCategory.all.map { |object| [object.description, object.id] }
+    model_list(JobCategory)
   end
 
   def work_positions_list
-    WorkPosition.all.map { |object| [object.description, object.id] }
+    model_list(WorkPosition)
   end
 
   def work_methodologies_list
-    WorkMethodology.all.map { |object| [object.description, object.id] }
+    model_list(WorkMethodology)
   end
 
   def cities_list
-    City.all.map { |object| [object.description, object.id] }
+    model_list(City)
   end
 
   def technical_skills_list
-    TechnicalSkill.all.map { |object| [object.description, object.id] }
+    model_list(TechnicalSkill)
   end
 
   def registered_experience
@@ -26,13 +26,13 @@ class Users::Wizards::StepEightPresenter < ApplicationPresenter
   end
 
   def have_experience?
-    cv = source.curriculum_vitaes.first.id
-    WorkExperience.where(curriculum_vitae_id: cv).map { |exp| [exp.company_name, exp.work_position.description] }.any?
+    registered_experience.any?
   end
 
   def registered_experience_message
-    if registered_experience.count >= 1
-      "Llevas #{registered_experience.count} registro(s) de experiencia laboral"
+    count = registered_experience.count
+    if count >= 1
+      "Llevas #{count} registro(s) de experiencia laboral"
     end
   end
 end

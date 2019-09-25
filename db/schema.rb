@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_23_175525) do
+ActiveRecord::Schema.define(version: 2019_09_25_220218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -134,10 +134,12 @@ ActiveRecord::Schema.define(version: 2019_09_23_175525) do
     t.datetime "locked_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "employees_ranges_id"
+    t.bigint "employees_range_id"
+    t.bigint "city_id"
+    t.index ["city_id"], name: "index_companies_on_city_id"
     t.index ["confirmation_token"], name: "index_companies_on_confirmation_token", unique: true
     t.index ["email"], name: "index_companies_on_email", unique: true
-    t.index ["employees_ranges_id"], name: "index_companies_on_employees_ranges_id"
+    t.index ["employees_range_id"], name: "index_companies_on_employees_range_id"
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_companies_on_unlock_token", unique: true
   end
@@ -465,7 +467,7 @@ ActiveRecord::Schema.define(version: 2019_09_23_175525) do
     t.string "cellphone"
     t.string "description"
     t.integer "vacancies_quantity"
-    t.string "close_date"
+    t.datetime "close_date"
     t.boolean "immediate_start"
     t.boolean "required_experience"
     t.string "description_responsibilities"
@@ -821,7 +823,8 @@ ActiveRecord::Schema.define(version: 2019_09_23_175525) do
   add_foreign_key "available_work_days_curriculum_vitaes", "curriculum_vitaes"
   add_foreign_key "available_work_days_offers", "available_work_days"
   add_foreign_key "available_work_days_offers", "offers"
-  add_foreign_key "companies", "employees_ranges", column: "employees_ranges_id"
+  add_foreign_key "companies", "cities"
+  add_foreign_key "companies", "employees_ranges"
   add_foreign_key "companies_users", "companies"
   add_foreign_key "companies_users", "users"
   add_foreign_key "curriculum_vitae_salaries", "currencies"

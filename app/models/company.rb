@@ -7,6 +7,7 @@ class Company < ApplicationRecord
   validates_presence_of :email, :password
 
   belongs_to :employees_range, optional: true
+  belongs_to :city, optional: true
 
   has_and_belongs_to_many :users
 

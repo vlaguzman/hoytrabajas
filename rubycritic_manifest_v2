@@ -5,7 +5,7 @@ A         * ApplicationCable::Connection               1       0.0        0     
 A         * ApplicationController                      11      13.32      0           1
 A         * ApplicationJob                             1       0.0        0           1
 A         * ApplicationMailer                          1       0.0        0           1
-A         * ApplicationPresenter                       1       7.75       0           3
+A         * ApplicationPresenter                       2       7.75       0           3
 A         * ApplicationRecord                          1       0.0        0           1
 A         * AppliedOffer                               1       0.0        0           1
 A         * AppliedOfferStatus                         1       0.0        0           1
@@ -80,7 +80,7 @@ A         * Term                                       4       0.0        0     
 A         * User                                       12      0.0        0           1
 A         * Users::RegistrationsController             3       1.0        0           2
 A         * Users::WizardService                       2       17.38      0           2
-A         * Users::Wizards::StepEightPresenter         3       21.97      0           2
+A         * Users::Wizards::StepEightPresenter         4       21.97      0           2
 A         * Users::Wizards::StepEightService           1       18.84      0           1
 A         * Users::Wizards::StepEightsController       2       26.71      0           1
 A         * Users::Wizards::StepFivePresenter          1       18.55      0           5

@@ -24,8 +24,9 @@ RSpec.describe "Overall navigation" do
       expect(page).to have_text("Regístrate ahora")
       click_on("Inicio")
       
-      save_page("lasofertas.html")
-      expect(page).to have_link("ver más ofertas", href: offers_path)
+      expect(current_path).to eq(root_path)
+      expect(page).to have_link("VER MÁS OFERTAS", href: offers_path)
+      expect(current_path).to eq(offers_path) 
       click_on("ver más ofertas")
       expect(page).to have_text("Offers")
       click_on("Inicio")

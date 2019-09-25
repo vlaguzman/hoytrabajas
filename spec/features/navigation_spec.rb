@@ -6,38 +6,39 @@ RSpec.describe "Overall navigation" do
   context "an anonimous user visits the public pages" do
     scenario "all pages render properly" do
       visit root_path
-      expect(page).to have_content("Home")
-      expect(page).to have_link("Home", href: root_path)
+      expect(page).to have_content("Inicio")
+      expect(page).to have_link("Inicio", href: root_path)
 
-      expect(page).to have_link("Preguntas frecuentes", href: faqs_path)
-      click_on("Preguntas frecuentes")
+      expect(page).to have_link("FAQs", href: faqs_path)
+      click_on("FAQs")
       expect(page).to have_text("Faqs")
-      click_on("Home")
+      click_on("Inicio")
 
-      expect(page).to have_link("Registro del candidato", href: new_user_registration_path)
-      click_on("Registro del candidato")
+      expect(page).to have_link("Candidato", href: new_user_registration_path)
+      click_on("Candidato")
       expect(page).to have_text("Regístrate ahora")
-      click_on("Home")
+      click_on("Inicio")
 
-      expect(page).to have_link("Registro de la empresa", href: new_company_registration_path)
-      click_on("Registro de la empresa")
+      expect(page).to have_link("Empleador", href: new_company_registration_path)
+      click_on("Empleador")
       expect(page).to have_text("Regístrate ahora")
-      click_on("Home")
+      click_on("Inicio")
       
-      expect(page).to have_link("Ofertas", href: offers_path)
-      click_on("Ofertas")
+      save_page("lasofertas.html")
+      expect(page).to have_link("ver más ofertas", href: offers_path)
+      click_on("ver más ofertas")
       expect(page).to have_text("Offers")
-      click_on("Home")
+      click_on("Inicio")
 
       expect(page).to have_link("Categorias de empleo", href: job_categories_path)
       click_on("Categorias de empleo")
       expect(page).to have_text("Categorias de empleo")
-      click_on("Home")
+      click_on("Inicio")
 
       expect(page).to have_link("Empresas", href: companies_path)
       click_on("Empresas")
       expect(page).to have_text("Empresas")
-      click_on("Home")
+      click_on("Inicio")
 
     end
   end

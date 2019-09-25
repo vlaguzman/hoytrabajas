@@ -34,6 +34,7 @@ export default ({
             variant='outlined'
             className="my-20 text-wrap"
             style={{ borderRadius: '50px' }}
+            href="/offers"
           >
             ver más ofertas
           </Button>

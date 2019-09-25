@@ -29,7 +29,8 @@ const UnderFooter = () => {
         </Col>
         <Col className=''>
           <Row noGutters className='justify-content-end align-items-center h-100'>
-          <Col xs={12} md={2} className='text-center' ><Typography variant='body2' >FAQs</Typography></Col>
+          <Col xs={12} md={2} className='text-center' ><Typography variant='body2' ><a href="/companies">Empresas</a></Typography></Col>
+          <Col xs={12} md={2} className='text-center' ><Typography variant='body2' ><a href="/faqs">FAQs</a></Typography></Col>
           <Col xs={12} md={2} className='text-center' ><Typography variant='body2' >Contacto</Typography></Col>
           <Col xs={12} md={4} className='text-center' ><Typography variant='body2' >Terminos y Condiciones</Typography></Col>
           </Row>

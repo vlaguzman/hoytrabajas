@@ -1,3 +1,5 @@
+= react_component('src/components/Layout/Header', {}, prerender:true)
+
 %h2 Regístrate ahora
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = render "devise/shared/error_messages", resource: resource
@@ -24,4 +26,6 @@
       %option{ value: "Compañia" } Compañia
   .actions
     = f.submit "Registrarme"
-/= render "devise/resource/link"
+
+= react_component('src/components/Layout/Footer/Footer', {}, prerender:true)
+//= render "devise/resource/link"

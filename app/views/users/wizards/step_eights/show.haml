@@ -1,0 +1,43 @@
+%h1 Cuentanos un poco de tu experiencia
+
+%p= @user.registered_experience_message
+- @user.registered_experience.each do |experience|
+  %div= "en #{experience[0]} como #{experience[1]}"
+
+= form_for(:user, url: users_wizards_step_eight_path, method: :put, html: { id: :step_eight } ) do |field|
+  = render partial: 'shared/form_errors', locals: {source: @user}
+
+  = field.fields_for(:curriculum_vitae) do |field|
+    = field.fields_for(:work_experience) do |field|
+
+      = field.label :job_category_id, "Úbica tu empleo dentro de una categoría*"
+      = field.select(:job_category_id, @user.job_categories_list, { prompt: "Seleccione una categoria"})
+
+      = field.label :company_name, "Empresa"
+      = field.text_field :company_name
+
+      = field.label :work_position_id, "Cargo*"
+      = field.select(:work_position_id, @user.work_positions_list, { prompt: "Seleccione un cargo"})
+
+      = field.label :work_methodology_id, "Modalidad de trabajo"
+      = field.select(:work_methodology_id, @user.work_methodologies_list, { prompt: "Seleccione una forma de trabajo"})
+
+      = field.label :city_id, "Ciudad"
+      = field.select(:city_id, @user.cities_list, { prompt: "Seleccione una ciudad"})
+
+      = field.label :technical_skill_ids, "Habilidades desempeñadas"
+      = field.select(:technical_skill_ids, @user.technical_skills_list, { prompt: "Seleccione habilidades tecnicas"}, { :multiple => true })
+
+      = field.label :technical_skill_ids, "Fecha de inicio"
+      = field.date_field :started_at
+      = field.date_field :finished_at
+
+      = field.label :still_in_progress, "Altualmente laborando"
+      = field.check_box :still_in_progress
+
+  = field.submit("siguiente")
+
+  %button{name: "add_other_experience", type: 'submit', value: "1" } Agregar otra experiencia
+
+  = link_to('Saltar', users_wizards_step_ten_path)
+  = link_to('Regresar', users_wizards_step_seven_path)

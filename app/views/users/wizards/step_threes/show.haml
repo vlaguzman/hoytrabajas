@@ -2,10 +2,7 @@
 %h3 Brinda a las empresas información valiosa sobre ti.
 
 = form_for(:user, url: users_wizards_step_three_path, method: :put, html: { id: :step_three } ) do |field|
-  - if @user.errors.present?
-    %lu
-    - @user.errors.full_messages.each do |message|
-      %li= message
+  - render 'shared/form_errors', source: @user
 
   = field.fields_for(:curriculum_vitae) do |field|
     = field.label :job_cateogories, "Elije las categorías en las que deseas buscar trabajo"

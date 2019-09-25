@@ -12,4 +12,8 @@ class ApplicationPresenter < SimpleDelegator
   def assets
     ActionController::Base.helpers
   end
+
+  def model_list(model)
+    model.all.map { |object| [object.description, object.id] }
+  end
 end

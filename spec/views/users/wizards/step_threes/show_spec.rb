@@ -24,6 +24,8 @@ RSpec.describe "users/wizards/step_threes/show" do
     expect(rendered).to match(/Busquemos las mejores oferta/)
     expect(rendered).to match(/Brinda a las empresas información valiosa sobre ti./)
 
+    expect(rendered).to render_template(partial: 'shared/_form_errors')
+
     #form
     expect(rendered).to have_tag(:form, with: { id: "step_three" }) do
       with_tag(:label, text: "Elije las categorías en las que deseas buscar trabajo")

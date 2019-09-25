@@ -119,8 +119,6 @@ RSpec.describe "fill the canditate user data", :type => :feature do
         click_button 'siguiente'
       end
 
-      save_page('paps.html') #TODO removeme
-
       user.reload
       expect(user.city.description).to eq('Bogota')
 

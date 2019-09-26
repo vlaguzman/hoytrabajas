@@ -5,8 +5,17 @@ RSpec.describe "Overall navigation" do
   context "an anonimous user visits the public pages" do
     scenario "all pages render properly", js: true, type: :feature do
       visit root_path
-      expect(page).to have_content("INICIO")
-      expect(page).to have_link("Inicio", href: root_path)
+      save_screenshot("gabriel.png")
+      menu = find("div.MuiToolbar-root.MuiToolbar-regular.d-flex.justify-content-start.w-100.px-20.pb-0", visible: false)
+
+      within menu do
+        expect(page).to have_content("INICIO")
+        has_button?("INICIO")
+        #find("span", text: "Inicio").click
+        click_on("Inicio")
+      end
+
+      expect(current_path).to eq(root_path)
 
       expect(page).to have_link("FAQs", href: faqs_path)
       click_on("FAQs")

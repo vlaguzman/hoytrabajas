@@ -98,7 +98,7 @@ RSpec.configure do |config|
   Capybara.javascript_driver = :selenium_chrome
   Capybara.register_driver :selenium_chrome do |app|
     caps = Selenium::WebDriver::Remote::Capabilities.chrome(
-      chromeOptions: {args: %w(headless disable-gpu no-sandbox)},
+      chromeOptions: {args: %w(headless disable-gpu no-sandbox --user-agent='Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:56.0) Gecko/20100101 Firefox/56.0')},
       loggingPrefs:  {browser: 'ALL'}
     )
 

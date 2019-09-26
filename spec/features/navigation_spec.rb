@@ -1,12 +1,11 @@
 #TODO: this spec should be removed once react is fully integrated
 
 require 'rails_helper'
-
 RSpec.describe "Overall navigation" do
   context "an anonimous user visits the public pages" do
-    scenario "all pages render properly" do
+    scenario "all pages render properly", js: true, type: :feature do
       visit root_path
-      expect(page).to have_content("Inicio")
+      expect(page).to have_content("INICIO")
       expect(page).to have_link("Inicio", href: root_path)
 
       expect(page).to have_link("FAQs", href: faqs_path)

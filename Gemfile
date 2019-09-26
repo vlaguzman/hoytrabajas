@@ -28,7 +28,7 @@ gem 'capistrano-rails', group: :development
 
 group :development, :test do
   gem 'rspec-rails', '~> 4.0.0.beta2'
-  gem 'capybara', '~>2.8'
+  gem 'capybara', '~>3.18.0'
   gem 'factory_bot_rails'
   gem 'curb'
   gem 'bullet'
@@ -43,6 +43,7 @@ group :development, :test do
   gem 'rspec-html-matchers'
   gem "guard", require: false
   gem "guard-rspec", require: false
+  gem "selenium-webdriver",'~>3.141.0'
 end
 
 group :development do

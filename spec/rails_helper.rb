@@ -90,4 +90,46 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :view
   config.include Devise::Test::IntegrationHelpers, type: :feature
+
+  ip = `/sbin/ip route|awk '/scope/ { print $9 }'`
+  ip.gsub!(/\n/, "")
+
+  Capybara.default_max_wait_time = 20
+  Capybara.javascript_driver = :selenium_chrome
+  Capybara.register_driver :selenium_chrome do |app|
+    caps = Selenium::WebDriver::Remote::Capabilities.chrome(
+      chromeOptions: {args: %w(headless disable-gpu no-sandbox)},
+      loggingPrefs:  {browser: 'ALL'}
+    )
+
+    Capybara::Selenium::Driver.new(nil, browser: :remote, url: "http://selenium:4444/wd/hub", desired_capabilities: caps).tap do |driver|
+      driver.browser.file_detector = -> args do
+        str = args.first.to_s
+        str if File.exist?(str)
+      end
+    end
+  end
+
+  config.around(:each, type: :feature) do |example|
+    js = example.metadata[:js] || false
+
+    if js
+      Capybara.server = :webrick
+      old_host = Capybara.server_host
+      old_port = Capybara.server_port
+      old_app_host = Capybara.app_host
+
+      Capybara.server_host = ip
+      Capybara.server_port = 3001
+      Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
+
+      example.run
+
+      Capybara.server_host = old_host
+      Capybara.server_port = old_port
+      Capybara.app_host = old_app_host
+    else
+      example.run
+    end
+  end
 end

@@ -14,8 +14,6 @@ FactoryBot.define do
     sign_in_count         { 34565 }
     password              { Faker::Blockchain::Bitcoin.address }
 
-#    association :employees_range, factory: :employees_range
-
     after(:build) do |company|
       company.logo.attach(io: File.open(Rails.root.join('spec', 'factories', 'images', 'photo.jpg')), filename: 'photo.jpg', content_type: 'image/jpeg')
     end

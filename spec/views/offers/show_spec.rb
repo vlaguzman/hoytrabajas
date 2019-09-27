@@ -12,7 +12,7 @@ RSpec.describe "offers/show" do
     assign(:offer, Offers::ShowPresenter.new(show_offer))
     render
 
-    expect(rendered).to have_button("Aplicar a esta oferta")
+    expect(rendered).to have_tag('div', :with => { "data-react-class" => 'pages/detalle_oferta' })
   end
 
 end

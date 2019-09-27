@@ -13,7 +13,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/available_work_days_offers.rb",100,4,3,3,0
 "./app/models/city.rb",100,3,2,2,0
 "./app/models/companies_users.rb",100,4,3,3,0
-"./app/models/company.rb",0,14,8,0,8
+"./app/models/company.rb",0,15,9,0,9
 "./app/models/contract_type.rb",100,3,2,2,0
 "./app/models/currency.rb",100,3,2,2,0
 "./app/models/curriculum_vitae.rb",100,24,18,18,0
@@ -80,6 +80,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/work_position.rb",100,5,3,3,0
 "./app/models/working_day.rb",100,6,4,4,0
 "./app/presenters/application_presenter.rb",91,19,11,10,1
+"./app/presenters/offers/show_presenter.rb",100,90,46,46,0
 "./app/presenters/users/wizards/step_eight_presenter.rb",100,38,20,20,0
 "./app/presenters/users/wizards/step_five_presenter.rb",100,23,11,11,0
 "./app/presenters/users/wizards/step_four_presenter.rb",91,23,11,10,1
@@ -97,3 +98,4 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/users/wizards/step_six_service.rb",91,43,23,21,2
 "./app/services/users/wizards/step_three_service.rb",100,5,3,3,0
 "./app/services/users/wizards/step_two_service.rb",100,9,4,4,0
+"./lib/dates_converter.rb",100,5,3,3,0

@@ -17,7 +17,7 @@ A         * Companies::FirstOffer::StepZerosController 1       0.0        0     
 A         * Companies::RegistrationsController         1       1.0        0           2
 A         * CompaniesController                        4       3.4        0           1
 A         * CompaniesUsers                             1       0.0        0           1
-A         * Company                                    3       0.0        0           1
+A         * Company                                    5       0.0        0           1
 A         * ContractType                               1       0.0        0           1
 A         * Currency                                   1       0.0        0           1
 A         * CurriculumVitae                            21      0.0        0           1
@@ -28,6 +28,7 @@ A         * CurriculumVitaesSoftSkills                 1       0.0        0     
 A         * CurriculumVitaesTechnicalSkills            3       0.0        0           1
 A         * CurriculumVitaesVehicles                   1       0.0        0           1
 A         * CurriculumVitaesWorkingDays                1       0.0        0           1
+A         * DatesConverter                             1       2.0        0           1
 A         * DocumentType                               2       0.0        0           1
 A         * DrivingLicence                             3       0.0        0           1
 A         * DrivingLicencesOffers                      1       0.0        0           1
@@ -55,7 +56,7 @@ A         * Offer                                      19      0.0        0     
 A         * OfferType                                  5       0.0        0           1
 A         * OffersController                           2       1.41       0           1
 A         * OffersResponsibilities                     1       0.0        0           1
-A         * OffersSalaries                             2       0.0        0           1
+A         * OffersSalaries                             3       0.0        0           1
 A         * OffersSoftSkills                           1       0.0        0           1
 A         * OffersTechnicalSkills                      1       0.0        0           1
 A         * OffersTerms                                1       0.0        0           1
@@ -116,3 +117,4 @@ A         * WorkMethodology                            1       0.0        0     
 A         * WorkMode                                   3       0.0        0           1
 A         * WorkPosition                               2       0.0        0           1
 A         * WorkingDay                                 5       0.0        0           1
+C         * Offers::ShowPresenter                      1       119.76     0           5

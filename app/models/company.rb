@@ -4,7 +4,7 @@ class Company < ApplicationRecord
   devise  :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable
 
-  validates_presence_of :email, :password
+  validates_presence_of :email
 
   belongs_to :employees_range, optional: true
   belongs_to :city, optional: true

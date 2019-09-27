@@ -4,7 +4,13 @@ class OffersController < ApplicationController
   end
 
   def show
-    @offer = Offer.find_by(id: params[:id])
+    @offer = offer_show
+  end
+
+  private
+
+  def offer_show
+    Offers::ShowPresenter.new(Offer.find_by(id: params[:id]))
   end
 
 end

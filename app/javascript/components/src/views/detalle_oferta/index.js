@@ -23,59 +23,6 @@ import { map } from 'lodash';
 
 const DetallePage = ({offer}) => {
 
-  console.log(offer)
-
-  const offerData = {
-    close_date: "25 Agosto 2019",
-    title: "Desarrollador Front-end Sr. test",
-    immediate_start: true,
-    description: "endSint esse anim consequat commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaincididunt ut labore et dolore magna aliqua.",
-    vacancies_quantity: 10,
-    required_experience: true,
-    sex: {
-      description: "Mujer"
-    },
-    age_ranges: {
-      from: 18,
-      to: 35
-    },
-    city:{
-      description: "Bogotá D.C."
-    },
-    languages:[['Ingles', "Avanzado"]],
-    offer_type: {
-      description: "Medio Tiempo"
-    },
-    work_mode: {
-      description: "Teletrabajo"
-    },
-    contract_type:{
-      description: "Termino fijo"
-    },
-    salary:{
-      currency: {
-        description: "COP"
-      },
-      from: "2.500.000",
-      to: null,
-      salary_period: {
-        description: "Mensual"
-      }
-    },
-    available_work_days:["Lunes a Viernes", "Sabado"],
-    working_days: [ "Mañana 7 a 1pm", "Tarde 2pm a 7pm" ],
-    job_aids: ["Auxilio de Transporte"],
-    company:{
-      name: "Verdelógico S.A.S",
-      description: "Sector de comunicaciones",
-      address: "Calle Falsa 123 # 00 99",
-      employess_range: {
-        description: "20 a 80"
-      },
-      web_site: "www.verdelógico.com"
-    }
-  }
-
   return (
 <div className="detalle-wrapper" >
   {/* <Row style={{background: 'white', height: '5rem'}}></Row> */}
@@ -89,7 +36,7 @@ const DetallePage = ({offer}) => {
       <Paper className='p-50' >
         <Row className='justify-content-between mx-0'>
           <Typography className='fw-bold' variant='h5' component='span'>
-            {offerData.title}
+            {offer.title}
           </Typography>
           <Chip color='primary' className='text-white'
           label={
@@ -105,68 +52,68 @@ const DetallePage = ({offer}) => {
         </Row>
         <Row className='my-10 mx-0'>
           <Chip className='mr-10' variant='outlined' label='Tecnología y programación'/>
-          { (offerData.immediate_start) && (<Badge color='primary' >Incorporación inmediata </Badge> ) }
+          { (offer.immediate_start) && (<Badge color='primary' >Incorporación inmediata </Badge> ) }
         </Row>
         <Row className='my-10 mx-0'>
-          <Typography variant='caption'><span className='fw-bold' >Cierre </span>{offerData.close_date}</Typography>
+          <Typography variant='caption'><span className='fw-bold' >Cierre </span>{offer.close_date}</Typography>
           <Typography className='ml-10' variant='caption'> <span className='fw-bold' > 26</span> aplicaciones</Typography>
         </Row>
         <Divider variant='middle' className='mx-0 my-10' />
         <Typography variant='body1' >
-          { offerData.description }
+          { offer.description }
         </Typography>
         <Button variant='contained' color='primary' className='text-white my-50' style={{borderRadius: '50px'}} >
           Aplicar a esta oferta
         </Button>
         <Row className='justify-content-between'>
             <Col xs={6} ><Typography variant='body1' className='' >Oferta dirigida a</Typography></Col>
-            <Col xs={6} ><Typography variant='body1' className='fw-bold' >{ offerData.sex.description }</Typography></Col>
+            <Col xs={6} ><Typography variant='body1' className='fw-bold' >{ offer.sex.description }</Typography></Col>
         </Row>
         <Row className='justify-content-between'>
             <Col xs={6} ><Typography variant='body1' className='' >Edad</Typography></Col>
-            <Col xs={6} ><Typography variant='body1' className='fw-bold' >{ `${offerData.age_ranges.from } a ${offerData.age_ranges.to}` }</Typography></Col>
+            <Col xs={6} ><Typography variant='body1' className='fw-bold' >{ `${offer.age_range.from } a ${offer.age_range.to}` }</Typography></Col>
         </Row>
         <Row className='justify-content-between'>
             <Col xs={6} ><Typography variant='body1' className='' >Número de vacantes</Typography></Col>
-            <Col xs={6} ><Typography variant='body1' className='fw-bold' >{offerData.vacancies_quantity}</Typography></Col>
+            <Col xs={6} ><Typography variant='body1' className='fw-bold' >{offer.vacancies_quantity}</Typography></Col>
         </Row>
         <Row className='justify-content-between'>
             <Col xs={6} ><Typography variant='body1' className='' >Residente en</Typography></Col>
-            <Col xs={6} ><Typography variant='body1' className='fw-bold' >{offerData.city.description}</Typography></Col>
+            <Col xs={6} ><Typography variant='body1' className='fw-bold' >{offer.city.description}</Typography></Col>
         </Row>
         <Row className='justify-content-between'>
             <Col xs={6} ><Typography variant='body1' className='' >Experiencia</Typography></Col>
-            <Col xs={6} ><Typography variant='body1' className='fw-bold' > {(offerData.required_experience) ? "Requerida": "No requerida" } </Typography></Col>
+            <Col xs={6} ><Typography variant='body1' className='fw-bold' > {(offer.required_experience) ? "Requerida": "No requerida" } </Typography></Col>
         </Row>
         <Row className='justify-content-between'>
             <Col xs={6} ><Typography variant='body1' className='' >Manejo del idioma</Typography></Col>
-            <Col xs={6} ><Typography variant='body1' className='fw-bold' > {offerData.languages.map(language => `${language[0]} ${language[1]}`) } </Typography></Col>
+            <Col xs={6} ><Typography variant='body1' className='fw-bold' > {offer.languages.map(language => (<div>{language}</div>)) } </Typography></Col>
         </Row>
         <Divider variant='middle' className='mx-0 my-30' />
 
         <Row className='justify-content-between'>
             <Col xs={6} ><Typography variant='body1' className='' >Tipo de oferta</Typography></Col>
-            <Col xs={6} ><Typography variant='body1' className='fw-bold' >{ offerData.offer_type.description }</Typography></Col>
+            <Col xs={6} ><Typography variant='body1' className='fw-bold' >{ offer.offer_type.description }</Typography></Col>
         </Row>
         <Row className='justify-content-between'>
             <Col xs={6} ><Typography variant='body1' className='' >Modalidad de trabajo</Typography></Col>
-            <Col xs={6} ><Typography variant='body1' className='fw-bold' >{ offerData.work_mode.description }</Typography></Col>
+            <Col xs={6} ><Typography variant='body1' className='fw-bold' >{ offer.work_mode.description }</Typography></Col>
         </Row>
         <Row className='justify-content-between'>
             <Col xs={6} ><Typography variant='body1' className='' >Acuerdo Legal</Typography></Col>
-            <Col xs={6} ><Typography variant='body1' className='fw-bold' >{offerData.contract_type.description}</Typography></Col>
+            <Col xs={6} ><Typography variant='body1' className='fw-bold' >{offer.contract_type.description}</Typography></Col>
         </Row>
         <Row className='justify-content-between'>
             <Col xs={6} ><Typography variant='body1' className='' >Salario</Typography></Col>
-            <Col xs={6} ><Typography variant='body1' className='fw-bold' >{`${offerData.salary.currency.description} ${offerData.salary.from}/${offerData.salary.salary_period.description}`}</Typography></Col>
+            <Col xs={6} ><Typography variant='body1' className='fw-bold' >{`${offer.salary.currency.description} ${offer.salary.from}/${offer.salary.salary_period.description}`}</Typography></Col>
         </Row>
         <Row className='justify-content-between'>
             <Col xs={6} ><Typography variant='body1' className='' >Días</Typography></Col>
-            <Col xs={6} ><Typography variant='body1' className='fw-bold' >{offerData.available_work_days.map(value => (<div>{value}</div>) )}</Typography></Col>
+            <Col xs={6} ><Typography variant='body1' className='fw-bold' >{offer.available_work_days.map(value => (<div>{value}</div>) )}</Typography></Col>
         </Row>
         <Row className='justify-content-between'>
             <Col xs={6} ><Typography variant='body1' className='' >Jornada</Typography></Col>
-            <Col xs={6} ><Typography variant='body1' className='fw-bold' >{offerData.working_days.map(value=>(<div>{value}</div>)) }</Typography></Col>
+            <Col xs={6} ><Typography variant='body1' className='fw-bold' >{offer.working_days.map(value=>(<div>{value}</div>)) }</Typography></Col>
         </Row>
         <Row className='justify-content-between'>
             <Col xs={6} ><Typography variant='body1' className='' >Auxilios o prestaciones</Typography></Col>
@@ -181,16 +128,16 @@ const DetallePage = ({offer}) => {
       <Card >
         <CardContent className='p-50 position-relative'>
         <Avatar className='position-absolute MuiPaper-elevation5' style={{right: '3rem', top: '1.9rem', width: '2.8rem', height: '2.8rem'}} >H</Avatar>
-        <Typography variant='subtitle1' className='fw-bold' component='p' >{offerData.company.name}</Typography>
-        <Typography variant='caption'>{offerData.company.description}</Typography>
+        <Typography variant='subtitle1' className='fw-bold' component='p' >{offer.company.name}</Typography>
+        <Typography variant='caption'>{offer.company.description}</Typography>
         <img className='img-fluid my-20'
         src='https://www.kulud-pharmacy.com/wp-content/uploads/2018/01/687474703a2f2f692e696d6775722e636f6d2f4f32454f4378662e706e67.png' />
         <Row className='justify-content-between'>
-            <Col xs={9} ><Typography variant='body1' className=''>{offerData.company.address}</Typography></Col>
+            <Col xs={9} ><Typography variant='body1' className=''>{offer.address}</Typography></Col>
             <Col xs={3} ><FontAwesomeIcon className='ml-auto text-primary' icon={['fas', 'map-marker-alt']} size="sm" /></Col>
         </Row>
         <Row className='justify-content-between'>
-            <Col xs={9} ><Typography variant='body1' className='' >{offerData.company.employess_range.description} empleados</Typography></Col>
+            <Col xs={9} ><Typography variant='body1' className='' >{offer.company.employess_range.description} empleados</Typography></Col>
             <Col xs={3} ><FontAwesomeIcon className='ml-auto text-primary' icon={['fas', 'users']} size="sm" /></Col>
         </Row>
         <Row className='justify-content-between'>
@@ -198,7 +145,7 @@ const DetallePage = ({offer}) => {
             <Col xs={3} ><FontAwesomeIcon className='ml-auto text-primary' icon={['fas', 'envelope']} size="sm" /></Col>
         </Row>
         <Row className='justify-content-between'>
-            <Col xs={9} ><Typography variant='body1' className='fw-bold' >{offerData.company.web_site}</Typography></Col>
+            <Col xs={9} ><Typography variant='body1' className='fw-bold' >{offer.company.web_site}</Typography></Col>
             <Col xs={3} ><FontAwesomeIcon className='ml-auto text-primary' icon={['fas', 'globe']} size="sm" /></Col>
         </Row>
         <Divider variant='middle' className='mx-0 my-10' />

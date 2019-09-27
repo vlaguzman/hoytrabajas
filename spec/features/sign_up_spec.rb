@@ -7,8 +7,8 @@ RSpec.describe "sign up user", type: :feature do
 
       visit root_path
 
-      expect(page).to have_text("Sign In")
-      click_on 'Sign In'
+      expect(page).to have_text("Candidato")
+      click_on 'Candidato'
 
       expect(page).to have_text("Regístrate ahora")
     end

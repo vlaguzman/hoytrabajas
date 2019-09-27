@@ -68,7 +68,7 @@ const Header = ({ scrollState }) => {
       >
         <div className="d-flex align-items-center">
           <div className="site-logo">
-            <a href="/" className="logo-mini">
+            <a href="/"className="logo-mini">
               <img
                 src={
                   !scrollState
@@ -99,17 +99,20 @@ const Header = ({ scrollState }) => {
             </IconButton>
           </li>
           <li className="list-inline-item no-responsive">
-            <MatButton style={{color: !scrollState ? 'white': 'black'}}>Inicio</MatButton>
+            <MatButton style={{color: !scrollState ? 'white': 'black'}} href="/">Inicio</MatButton>
+          </li>
+          {/*TODO: With "Candidato" and "Empleador", to press button redirect me a static landing page.
+          We must take into account to make the change in redirection*/}
+          <li className="list-inline-item no-responsive">
+            <MatButton style={{color: !scrollState ? 'white': 'black'}} href="/users/sign_up">Candidato</MatButton>
           </li>
           <li className="list-inline-item no-responsive">
-            <MatButton style={{color: !scrollState ? 'white': 'black'}}>Candidato</MatButton>
-          </li>
-          <li className="list-inline-item no-responsive">
-            <MatButton style={{color: !scrollState ? 'white': 'black'}}>Empleador</MatButton>
+            <MatButton style={{color: !scrollState ? 'white': 'black'}} href="/companies/sign_up">Empleador</MatButton>
           </li>
           <li className="list-inline-item no-responsive">
             {/* {!isAuthenticated ? ( */}
-              <MatButton style={{color: !scrollState ? 'white': 'black'}} onClick={handleClickOpen}>Login</MatButton>
+            {/*TODO:only login with the user_path*/}
+              <MatButton style={{color: !scrollState ? 'white': 'black'}} onClick={handleClickOpen} href= "/users/sign_in">Login</MatButton>
             {/* ) : (
               <MatButton style={{color: !scrollState ? 'white': 'black'}} onClick={() => logout()}>Logout</MatButton>
             )} */}
@@ -191,7 +194,8 @@ const Header = ({ scrollState }) => {
           {/* ******************** */}
           {/* ******************** */}
           <li className="list-inline-item no-responsive">
-            {<MatButton style={{color: !scrollState ? 'white': 'black'}}>Registrarse</MatButton>}
+          {/*TODO:Temporaly registration with rout por users*/}
+            {<MatButton style={{color: !scrollState ? 'white': 'black'}} href= "/users/sign_up">Registrarse</MatButton>}
           </li>
         </ul>
       </Toolbar>

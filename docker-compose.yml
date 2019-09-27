@@ -11,12 +11,22 @@ services:
       - "3000:3000"
     depends_on:
       - postgres
+      - selenium
     links:
       - postgres:postgres
+      - selenium:selenium
+
   postgres:
     image: postgres
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+  selenium:
+    image: selenium/standalone-chrome-debug
+    ports:
+      - 4444:4444
+      - 5900:5900
+    shm_size: 512M
 
 volumes:
   postgres_data:

@@ -1,43 +1,51 @@
 #TODO: this spec should be removed once react is fully integrated
 
 require 'rails_helper'
-
 RSpec.describe "Overall navigation" do
   context "an anonimous user visits the public pages" do
-    scenario "all pages render properly" do
+    scenario "all pages render properly", js: true, type: :feature do
       visit root_path
-      expect(page).to have_content("Home")
-      expect(page).to have_link("Home", href: root_path)
+      menu = find("div.MuiToolbar-root.MuiToolbar-regular.d-flex.justify-content-start.w-100.px-20.pb-0", visible: false)
 
-      expect(page).to have_link("Preguntas frecuentes", href: faqs_path)
-      click_on("Preguntas frecuentes")
+      within menu do
+        expect(page).to have_content("INICIO")
+        has_button?("INICIO")
+        click_on("Inicio")
+      end
+
+      expect(current_path).to eq(root_path)
+
+      expect(page).to have_link("FAQs", href: faqs_path)
+      click_on("FAQs")
       expect(page).to have_text("Faqs")
-      click_on("Home")
+      click_on("Inicio")
 
-      expect(page).to have_link("Registro del candidato", href: new_user_registration_path)
-      click_on("Registro del candidato")
+      expect(page).to have_link("Candidato", href: new_user_registration_path)
+      click_on("Candidato")
       expect(page).to have_text("Regístrate ahora")
-      click_on("Home")
+      click_on("Inicio")
 
-      expect(page).to have_link("Registro de la empresa", href: new_company_registration_path)
-      click_on("Registro de la empresa")
+      expect(page).to have_link("Empleador", href: new_company_registration_path)
+      click_on("Empleador")
       expect(page).to have_text("Regístrate ahora")
-      click_on("Home")
+      click_on("Inicio")
       
-      expect(page).to have_link("Ofertas", href: offers_path)
-      click_on("Ofertas")
+      expect(current_path).to eq(root_path)
+      has_button?("VER MÁS OFERTAS")
+      click_on("ver más ofertas")
+      expect(current_path).to eq(offers_path) 
       expect(page).to have_text("Offers")
-      click_on("Home")
+      click_on("Inicio")
 
       expect(page).to have_link("Categorias de empleo", href: job_categories_path)
       click_on("Categorias de empleo")
       expect(page).to have_text("Categorias de empleo")
-      click_on("Home")
+      click_on("Inicio")
 
       expect(page).to have_link("Empresas", href: companies_path)
       click_on("Empresas")
       expect(page).to have_text("Empresas")
-      click_on("Home")
+      click_on("Inicio")
 
     end
   end

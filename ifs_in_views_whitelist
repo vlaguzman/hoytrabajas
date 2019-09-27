@@ -1,5 +1,5 @@
 app/views/devise/registrations/edit.html.haml:14:    %i (leave blank if you don't want to change it)
 app/views/devise/registrations/edit.html.haml:17:    - if @minimum_password_length
 app/views/devise/registrations/edit.html.haml:9:  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-app/views/devise/registrations/new.html.haml:10:    - if @minimum_password_length
+app/views/devise/registrations/new.html.haml:12:    - if @minimum_password_length
 app/views/shared/_form_errors.haml:2:  - if source.errors.full_messages.present?

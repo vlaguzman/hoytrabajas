@@ -111,8 +111,6 @@ RSpec.describe Offers::ShowPresenter do
         }
       }
 
-      pp subject.details[:age_range]
-
       expect(subject.details).to eq(expected_object)
     end
   end

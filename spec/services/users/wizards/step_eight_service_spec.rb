@@ -82,7 +82,7 @@ RSpec.describe Users::Wizards::StepEightService do
             updated_candidate = subject.(candidate: candidate, update_params: params)
 
             expect(candidate.errors.any?).to be_truthy
-            expect(candidate.errors.full_messages).to match_array(["Work position can't be blank","Work position must exist"])
+            expect(candidate.errors.full_messages).to match_array(["Work position El Cargo no puede estar vacío","Work position Debes seleccionar un Cargo"])
           end
         end
       end

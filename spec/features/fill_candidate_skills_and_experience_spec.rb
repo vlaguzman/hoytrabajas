@@ -182,9 +182,7 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
             select 'Community manager', from: 'user[curriculum_vitae][work_experience][work_position_id]'
             click_button 'siguiente'
 
-            #TODO add i18n traslations
-            #expect(page).to have_text("La categoria del trabajo es un campo requerido")
-            expect(page).to have_text("Job category can't be blank")
+            expect(page).to have_text("Debes seleccionar un Categoria de Trabajo")
           end
         end
 
@@ -203,7 +201,7 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
             #TODO add i18n traslations
             #expect(pag e).to have_text("El role es un campo requerido")
 
-            expect(page).to have_text("Work position can't be blank")
+            expect(page).to have_text("Work position Debes seleccionar un Cargo")
           end
         end
       end

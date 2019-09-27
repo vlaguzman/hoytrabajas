@@ -21,6 +21,8 @@ import Cards from '../../views/main/home/sections/components/gallery_cards/galle
 import Carousel from '../../components/Carousel/CarouselRow'
 import { map } from 'lodash';
 
+import AppLayout from '../../components/Layout/AppLayout'
+
 const DetallePage = ({offer}) => {
 
   return (
@@ -191,4 +193,5 @@ const DetallePage = ({offer}) => {
 </div>)
 
 }
+
 export default DetallePage

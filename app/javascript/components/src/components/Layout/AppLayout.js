@@ -22,7 +22,7 @@ library.add(fab, fas, faSearch)
 const localeMap = { en, es }
 const locale = 'es'
 
-const AppLayout = ({ children }) => {
+const AppLayout = ({ children, csrf_param, csrf_token }) => {
   const [isTop, setIsTop] = useState(false)
   const myRef = useRef(null)
   const onScrollFrame = e => {
@@ -56,7 +56,7 @@ const AppLayout = ({ children }) => {
                           ref={myRef}
                         >
                           <div className="app-header">
-                            <Header scrollState={isTop} />
+                            <Header scrollState={isTop} csrf_param={csrf_param} csrf_token={csrf_token} />
                           </div>
                           <div className="rct-page-content">
                             <CssBaseline />

@@ -31,7 +31,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Divider from '@material-ui/core/Divider';
 
 
-const Header = ({ scrollState }) => {
+const Header = ({ scrollState, csrf_param, csrf_token }) => {
   const [open, setOpen] = React.useState(false);
   const [loginState, setloginState] = React.useState(true);
   const [fullWidth, setFullWidth] = React.useState(true);
@@ -144,6 +144,7 @@ const Header = ({ scrollState }) => {
             <Typography variant='body2' component='span'>Lorem ipsum dolor sit amet, consectetur adipi.</Typography>
           </DialogContentText>
           <Form id="new_user" className="new_user" action="/users/sign_in" accept-charset="UFT-8" method="post">
+            <Input type="hidden" name={csrf_param} value={csrf_token}/>
             <FormGroup className="mb-2 mr-sm-2 mb-sm-0 position-relative">
               <Input id="user_email" autofocus="autofocus" autocomplete="email" className='pl-40 py-10' type="email" name="user[email]"  placeholder="Correo Electronico" />
               <MailOutline className='position-absolute'  style={{ color: 'lightgrey', top: '0.75rem', left: '.5rem'}}/>
@@ -156,7 +157,7 @@ const Header = ({ scrollState }) => {
             {loginState && <Typography variant='caption' style={{color: '#00CED5'}} href="users/password/new">¿Olvidó su contraseña?</Typography>}
             <Row noGutters className='justify-content-center my-25' >
               <Col xs={12} >
-                <MatButton className='text-white' color='primary' variant='contained'>
+                <MatButton type="submit" className='text-white' color='primary' variant='contained'>
                   {loginState ?  'Iniciar Sesión': 'Registrarse'}
                 </MatButton>
               </Col>

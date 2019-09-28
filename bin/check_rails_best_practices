@@ -2,6 +2,13 @@
 
 echo "Runnig Rails Best Practices..."
 bundle exec rails_best_practices . -e "gems,db,bin,config,coverage,log,node_modules,tmp" | grep "Found.*warnings" | awk '{ print $2 }' > tmp/rails_best_practices_manifest
+
+
+# if there are no bad practices, the file will be empty
+if [ ! $(cat tmp/rails_best_practices_manifest) ]; then
+  echo "0" > tmp/rails_best_practices_manifest;
+fi
+
 SCORE_FROM_MASTER=$(cat rails_best_practices_manifest)
 SCORE_FROM_BRANCH=$(cat tmp/rails_best_practices_manifest)
 

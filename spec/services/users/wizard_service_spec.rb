@@ -50,7 +50,7 @@ RSpec.describe Users::WizardService do
 
         expect(updated_cv.area_code).to eq("130121")
         expect(updated_cv.about_me).to eq("Amet nulla officia do voluptate.")
-        expect(updated_cv.release_date).to eq(Date.parse("2019-09-11"))
+        expect(DatesConverter.default date:updated_cv.release_date).to eq(DatesConverter.default date:Date.new(2019, 9, 11))
         expect(updated_cv.travel_disponibility).to be_truthy
         expect(updated_cv.job_categories.last.description).to eq("Marketing")
         expect(updated_cv.offer_types.last.description).to eq("Full Time")

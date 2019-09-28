@@ -12,14 +12,6 @@ FactoryBot.define do
     release_date                  { Date.new }
     status                        { 'active' }
 
-    association :city, factory: :city
-    association :job_category, factory: :job_category
-    association :offer_type, factory: :offer_type
-    association :sex, factory: :sex
-    association :work_mode, factory: :work_mode
-    association :contract_type, factory: :contract_type
-    association :company, factory: :company
-
     trait :expired_offer do
       status                     { 'expired' }
     end
@@ -27,6 +19,13 @@ FactoryBot.define do
     after(:build) do |offer|
       offer.image.attach(io: File.open(Rails.root.join('spec', 'factories', 'images', 'photo.jpg')), filename: 'photo.jpg', content_type: 'image/jpeg')
     end
-    
+
+    association :city, factory: :city
+    association :job_category, factory: :job_category
+    association :company, factory: :company
+    association :sex, factory: :sex
+    association :offer_type, factory: :offer_type
+    association :work_mode, factory: :work_mode
+    association :contract_type, factory: :contract_type
   end
 end

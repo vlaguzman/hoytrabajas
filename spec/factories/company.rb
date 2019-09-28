@@ -34,5 +34,8 @@ FactoryBot.define do
       description           { nil }
       contact_work_position { nil }
     end
+
+    association :city, factory: :city
+    association :employees_range, factory: :employees_range
   end
 end

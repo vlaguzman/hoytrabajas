@@ -1,5 +1,5 @@
 class OffersSalaries < ApplicationRecord
-  validates_presence_of :to, :from
+  validates_presence_of  :from
 
   belongs_to :offer
   belongs_to :salary_period

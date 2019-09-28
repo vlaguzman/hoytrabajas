@@ -17,14 +17,4 @@ RSpec.describe "home/index" do
       expect(rendered).to match(/one of the best offers/)
     end
   end
-  context "There are not any offer" do
-    #It should be implemented affer have the offer presenter
-    xit "Should reder home#index template without any offers" do
-      assign(:offers, Array.new)
-
-      render
-
-      expect(rendered).to match(/No hay ningun trabajo en este momento/)
-    end
-  end
 end

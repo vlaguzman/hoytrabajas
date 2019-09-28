@@ -5,25 +5,11 @@ import Button from '@material-ui/core/Button';
 import Cards from './components/gallery_cards/gallery_card'
 import Carousel from '../../../../components/Carousel/CarouselRow'
 
-const Gallery = (
-	{
-  children,
-  offers,
-  button,
-  title: { main, highlighted, last }
-}
-) => {
-  return (
-    <div className="">
-      <div className="sec-title mt-20 mb-40 mx-10  text-center">
-        {main} &nbsp;<span className="text-primary">{highlighted}</span>&nbsp;
-        {last}
-      </div>
+const CarruselBlock = (cards) => (
+<div>
       <Carousel slidesToShowResp={1} centerMode={true} slidesToShow={3.7} autoplay={false} >
 	  {
-	    offers.map((e, i) => {
-              return (  <Cards key ={e.title} offer = {e}/> )
-            })
+	    cards
 	  }
       </Carousel>
       <Row className="justify-content-center align-items-center  my-30 ">
@@ -40,6 +26,28 @@ const Gallery = (
           </Button>
         </Col>
       </Row>
+  </div>
+)
+
+const Gallery = (
+	{
+  children,
+  offers,
+  button,
+  title: { main, highlighted, last }
+}
+) => {
+  let cards = offers.map((e, i) => {
+              return (  <Cards key ={e.title} offer = {e}/> )
+            }
+  )
+  return (
+    <div className="">
+      <div className="sec-title mt-20 mb-40 mx-10  text-center">
+        {main} &nbsp;<span className="text-primary">{highlighted}</span>&nbsp;
+        {last}
+      </div>
+      {(cards.length >=1) ? CarruselBlock(cards) : <h1 className="text-center">No hay ningún trabajo en este momento</h1>}
     </div>
   )
 }

@@ -80,7 +80,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/work_position.rb",100,5,3,3,0
 "./app/models/working_day.rb",100,6,4,4,0
 "./app/presenters/application_presenter.rb",91,19,11,10,1
-"./app/presenters/offers/show_presenter.rb",100,90,46,46,0
+"./app/presenters/offers_presenter.rb",100,7,3,3,0
 "./app/presenters/users/wizards/step_eight_presenter.rb",100,38,20,20,0
 "./app/presenters/users/wizards/step_five_presenter.rb",100,23,11,11,0
 "./app/presenters/users/wizards/step_four_presenter.rb",91,23,11,10,1
@@ -90,6 +90,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/users/wizards/step_six_presenter.rb",100,22,11,11,0
 "./app/presenters/users/wizards/step_three_presenter.rb",100,23,11,11,0
 "./app/presenters/users/wizards/step_two_presenter.rb",100,15,7,7,0
+"./app/services/offers/show_service.rb",100,116,57,57,0
 "./app/services/users/wizard_service.rb",100,39,18,18,0
 "./app/services/users/wizards/step_eight_service.rb",100,29,15,15,0
 "./app/services/users/wizards/step_five_service.rb",100,17,9,9,0

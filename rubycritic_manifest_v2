@@ -54,7 +54,8 @@ A         * Limitation                                 4       0.0        0     
 A         * Nationality                                4       0.0        0           1
 A         * Offer                                      19      0.0        0           1
 A         * OfferType                                  5       0.0        0           1
-A         * OffersController                           4       8.03       0           1
+A         * OffersController                           5       8.03       0           1
+A         * OffersPresenter                            1       3.6        0           1
 A         * OffersResponsibilities                     1       0.0        0           1
 A         * OffersSalaries                             3       0.0        0           1
 A         * OffersSoftSkills                           1       0.0        0           1
@@ -117,4 +118,4 @@ A         * WorkMethodology                            1       0.0        0     
 A         * WorkMode                                   3       0.0        0           1
 A         * WorkPosition                               2       0.0        0           1
 A         * WorkingDay                                 5       0.0        0           1
-C         * Offers::ShowPresenter                      1       119.76     0           5
+C         * Offers::ShowService                        2       120.5      0           10

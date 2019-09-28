@@ -1,1 +1,1 @@
-= react_component('pages', {offers: @offers}, prerender: true)
+= react_component('pages', {offers: @offers, csrf_param: request_forgery_protection_token, csrf_token: form_authenticity_token }, prerender: true)

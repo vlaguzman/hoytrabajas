@@ -10,7 +10,7 @@ class OffersController < ApplicationController
   private
 
   def offer_show
-    Offers::ShowPresenter.new(Offer.find_by(id: params[:id]))
+    OffersPresenter.new(Offer.find_by(id: params[:id]))
   end
 
 end

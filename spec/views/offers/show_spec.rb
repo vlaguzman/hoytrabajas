@@ -9,7 +9,7 @@ RSpec.describe "offers/show" do
   let!(:offer_salary) { create(:offers_salaries, offer: show_offer) }
 
   it "should render offers show template" do
-    assign(:offer, Offers::ShowPresenter.new(show_offer))
+    assign(:offer, OffersPresenter.new(show_offer))
     render
 
     expect(rendered).to have_tag('div', :with => { "data-react-class" => 'pages/detalle_oferta' })

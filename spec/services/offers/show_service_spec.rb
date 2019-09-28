@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Offers::ShowPresenter do
+RSpec.describe Offers::ShowService do
   let!(:level) { create(:level, description: "Avanzado") }
   let!(:language) { create(:language, description: "Ingles") }
   let(:monday_to_friday) { create(:available_work_day, description: "Lunes a Viernes") }
@@ -39,7 +39,7 @@ RSpec.describe Offers::ShowPresenter do
     ]
   end
 
-  let!(:offers_salary) { create(:offers_salaries,
+  let(:offers_salary) { create(:offers_salaries,
     offer: offer,
     from: 2500000,
     to: nil,
@@ -59,8 +59,8 @@ RSpec.describe Offers::ShowPresenter do
   describe "#details" do
     it { should respond_to(:details) }
 
-    it "should return a hash with the required info to show template" do
-      expected_object = {
+    let(:expected_object) do
+        {
         close_date: "25 de Agosto del 2019",
         title: "Desarrollador Front-end Sr. test",
         address: "Calle Falsa 123 # 00 99",
@@ -110,9 +110,41 @@ RSpec.describe Offers::ShowPresenter do
           web_site: "www.verdelógico.com"
         }
       }
+    end
 
+    it "should return a hash with the required info to show template" do
+      offers_salary
       expect(subject.details).to eq(expected_object)
     end
+
+    context "when age range asoc with the offer is not present" do
+      it "should return a hash" do
+        offers_salary
+        AgeRange.destroy_all
+
+        expected_object[:age_range] = { from: nil ,to: nil }
+
+        expect(subject.details).to eq(expected_object)
+      end
+    end
+
+    context "when offers salaries asoc with the offer is not present" do
+      it "should return a hash" do
+        OffersSalaries.destroy_all
+
+        response = subject.details
+
+        expected_salary = {
+            currency:{ description: nil },
+            from: nil,
+            salary_period:{ description:nil },
+            to: nil
+          }
+
+        expect(response[:salary]).to eq(expected_salary)
+      end
+    end
   end
+
 
 end

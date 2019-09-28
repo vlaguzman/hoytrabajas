@@ -1,19 +1,32 @@
 FactoryBot.define do
   factory :offer do
     title                         { "Ruby on Rails developer with 10 years of experience" }
-    address                       { "Fake Street 123 # 99 - 01" }
-    cellphone                     { "3002004050" }
+    address                       { Faker::Address.full_address }
+    cellphone                     { Faker::PhoneNumber.cell_phone }
     description                   { "endSint esse anim consequat commodo." }
     vacancies_quantity            { 10 }
-    close_date                    { Date.new + 1.month }
+    close_date                    { Date.today + 1.month }
     immediate_start               { true }
     required_experience           { true }
     description_responsibilities  { "endSint esse anim consequat commodo." }
     release_date                  { Date.new }
-    status                        { "published" }
+    status                        { 'active' }
+
+    association :city, factory: :city
+    association :job_category, factory: :job_category
+    association :offer_type, factory: :offer_type
+    association :sex, factory: :sex
+    association :work_mode, factory: :work_mode
+    association :contract_type, factory: :contract_type
+    association :company, factory: :company
+
+    trait :expired_offer do
+      status                     { 'expired' }
+    end
 
     after(:build) do |offer|
       offer.image.attach(io: File.open(Rails.root.join('spec', 'factories', 'images', 'photo.jpg')), filename: 'photo.jpg', content_type: 'image/jpeg')
     end
+    
   end
 end

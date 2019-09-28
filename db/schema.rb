@@ -470,7 +470,7 @@ ActiveRecord::Schema.define(version: 2019_09_23_175525) do
     t.boolean "required_experience"
     t.string "description_responsibilities"
     t.datetime "release_date"
-    t.integer "status"
+    t.string "status"
     t.bigint "city_id", null: false
     t.bigint "job_category_id", null: false
     t.bigint "offer_type_id", null: false

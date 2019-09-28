@@ -44,7 +44,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/level.rb",100,5,3,3,0
 "./app/models/limitation.rb",100,6,3,3,0
 "./app/models/nationality.rb",100,6,3,3,0
-"./app/models/offer.rb",100,32,26,26,0
+"./app/models/offer.rb",100,34,27,27,0
 "./app/models/offer_type.rb",100,5,3,3,0
 "./app/models/offers_responsibilities.rb",100,4,3,3,0
 "./app/models/offers_salaries.rb",100,8,6,6,0

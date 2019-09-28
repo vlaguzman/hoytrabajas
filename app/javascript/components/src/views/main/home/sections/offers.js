@@ -5,22 +5,16 @@ import Button from '@material-ui/core/Button';
 import Cards from './components/gallery_cards/gallery_card'
 import Carousel from '../../../../components/Carousel/CarouselRow'
 
-const ofertas = Array(6).fill(null)
-
-export default () => {
-
-  let lasOfertas = ofertas.map((e, i) => {
-       return (  <Cards key = {i} /> )
-      })
+const Gallery = ( {offers} ) => {
   return (
     <div className="">
-      <h1>Offers</h1>
-      <div className="sec-title mt-20 mb-40 mx-10  text-center">
-        el trabajo ideal &nbsp;<span className="text-primary">si existe</span>&nbsp;
-        esta en hoy trabajas
-      </div>
-      <Carousel slidesToShowResp={1} centerMode={true} infinite={true} slidesToShow={3.7} autoplay={false} >
-        {lasOfertas}
+      <h1>Encuentra la mejor oferta para ti</h1>
+      <Carousel slidesToShowResp={1} centerMode={true} slidesToShow={3.7} autoplay={false} >
+	  {
+	    offers.map((e, i) => {
+              return (  <Cards key ={e.title} offer = {e}/> )
+            })
+	  }
       </Carousel>
       <Row className="justify-content-center align-items-center  my-30 ">
         <Col xs={9} md={4}>
@@ -39,3 +33,4 @@ export default () => {
     </div>
   )
 }
+export default Gallery

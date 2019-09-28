@@ -1,17 +1,18 @@
 FactoryBot.define do
   factory :company do
-    name                  { "Cemellas Today SA" }
-    contact_name          { "Alfred Fakeman" }
-    cellphone             { "3004005050" }
-    contact_cellphone     { "3004005051" }
+    name                  { Faker::Company.name }
+    contact_name          { Faker::FunnyName.name  }
+    cellphone             { Faker::PhoneNumber.cell_phone }
+    contact_cellphone     { Faker::PhoneNumber.cell_phone }
     nit                   { "901500600-9" }
-    address               { "Calle False 112 # 45-80" }
-    email                 { "contact@hoycamellas.com" }
+    address               { Faker::Address.full_address }
+    email                 { Faker::Internet.email}
     web_site              { "hoycamellas.com" }
     contact_web_site      { "hoycamellas.com/contact" }
     description           { "Occaecat elit reprehenderit proident aliquip anim ex aute aliquip mollit exercitation qui." }
     contact_work_position { "Human Resources Talent Hunter" }
     sign_in_count         { 34565 }
+    password              { Faker::Blockchain::Bitcoin.address }
 
     after(:build) do |company|
       company.logo.attach(io: File.open(Rails.root.join('spec', 'factories', 'images', 'photo.jpg')), filename: 'photo.jpg', content_type: 'image/jpeg')

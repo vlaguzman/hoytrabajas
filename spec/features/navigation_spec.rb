@@ -3,6 +3,8 @@
 require 'rails_helper'
 RSpec.describe "Overall navigation" do
   context "an anonimous user visits the public pages" do
+    before { create(:offer) }
+
     scenario "all pages render properly", js: true, type: :feature do
       visit root_path
       menu = find("div.MuiToolbar-root.MuiToolbar-regular.d-flex.justify-content-start.w-100.px-20.pb-0", visible: false)
@@ -29,11 +31,11 @@ RSpec.describe "Overall navigation" do
       click_on("Empleador")
       expect(page).to have_text("Regístrate ahora")
       click_on("Inicio")
-      
+
       expect(current_path).to eq(root_path)
       has_button?("VER MÁS OFERTAS")
       click_on("ver más ofertas")
-      expect(current_path).to eq(offers_path) 
+      expect(current_path).to eq(offers_path)
       expect(page).to have_text("VER MÁS OFERTAS")
       click_on("Inicio")
 
@@ -44,7 +46,8 @@ RSpec.describe "Overall navigation" do
 
       expect(page).to have_link("Empresas", href: companies_path)
       click_on("Empresas")
-      expect(page).to have_text("Empresas")
+      expect(page).to have_text(/Ellos hoy confian en nosotros/)
+      expect(page).to have_text(/para encontrar su empleado ideal/)
       click_on("Inicio")
 
     end

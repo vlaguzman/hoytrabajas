@@ -1,5 +1,5 @@
 # The Offers::ShowService Class do build the hash  with the data used in offer/show template
-class Offers::ShowService
+class Offers::ShowService < Offers::ViewsService
   include ActionView::Helpers
 
   def initialize(offer)

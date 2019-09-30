@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/capistrano/rvm.git
+  revision: 9cfef39cf0022839dca6b5b330dfefeb5fc363e7
+  specs:
+    capistrano-rvm (0.1.2)
+      capistrano (~> 3.0)
+      sshkit (~> 1.2)
+
+GIT
   remote: https://github.com/faker-ruby/faker.git
   revision: 4247080eb5ea1856a12860eedb08cf36ef8e2219
   branch: master
@@ -438,6 +446,7 @@ DEPENDENCIES
   brakeman
   bullet
   capistrano-rails
+  capistrano-rvm!
   capybara (~> 3.18.0)
   curb
   devise

@@ -24,7 +24,6 @@ gem "simple_token_authentication", "~> 1.0"
 # gem 'image_processing', '~> 1.2'
 
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'capistrano-rails', group: :development
 
 group :development, :test do
   gem 'rspec-rails', '~> 4.0.0.beta2'
@@ -50,4 +49,6 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm', github: 'capistrano/rvm'
 end

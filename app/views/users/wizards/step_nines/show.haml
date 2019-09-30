@@ -1,5 +1,22 @@
-%h1 Veamos tu información académica
+%h1 Veamos tu formación académica
 %h3 Brinda a las empresas información valiosa sobre ti.
 
-- render 'shared/form_errors', source: @user
+= form_for(:user, url: users_wizards_step_nine_path, method: :put, html: { id: :step_nine } ) do |field|
+  - render 'shared/form_errors', source: @user
 
+  = field.label :x, "Título educativo*"
+
+  = field.label :x, "Institución"
+
+  = field.label :x, "Fecha de inicio"
+
+  = field.label :x, "Estudio en curso"
+
+  = field.label :x, "Ubicación"
+
+  = field.submit("Siguiente")
+
+  %button{name: "add_other_study", type: 'submit', value: "1" } Agregar otro estudio
+
+= link_to('Saltar', users_wizards_step_ten_path)
+= link_to('Regresar', users_wizards_step_eight_path)

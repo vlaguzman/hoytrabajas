@@ -5,7 +5,7 @@ class Users::Wizards::StepNinesController < ApplicationController
   end
 
   def update
-
+    redirect_to users_wizards_step_ten_path
   end
 
   private

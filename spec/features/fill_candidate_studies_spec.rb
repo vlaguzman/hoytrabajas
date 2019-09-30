@@ -3,18 +3,22 @@ require 'rails_helper'
 RSpec.describe "fill the canditate user data, studies and acknowledgments", :type => :feature do
   context "like a candidate user after the experience deta is filled" do
     #Create a user with the principal information, and the offert details - Use a factory
-    before { FactoryBot.build(:user) }
-    
-    context "I dont have any study" do
-      xit "should show the studies fields and the next button" do
-        #Visit the rute of the profile user creation - step 9
-        visit "/candidato/#{user.id}/create_user/step9"
+    let(:candidate) { create(:user, :first_time_candidate) }
 
-        expect(page).to have_text("veamos tu formación académica")
-        expect(page).to have_text("titulo educativo")
-        expect(page).to have_text("agregar otro estudio")
-        expect(page).to have_text("siguiente")
-        click_button 'siguiente'
+    context "I dont have any study" do
+      it "should show the studies fields and the next button" do
+        #Visit the rute of the profile user creation - step 9
+        sign_in candidate
+
+        visit users_wizards_step_nine_path
+
+        expect(page).to have_text("Veamos tu formación académica")
+        expect(page).to have_text("Título educativo*")
+        expect(page).to have_text("Agregar otro estudio")
+
+        has_button?("Siguiente")
+
+        click_on 'Siguiente'
 
         expect(page).to have_text("Cuentas con reconocimientos")
       end

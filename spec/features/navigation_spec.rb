@@ -6,6 +6,7 @@ RSpec.describe "Overall navigation" do
     before { create(:offer) }
 
     scenario "all pages render properly", js: true, type: :feature do
+      FactoryBot.create(:offer, title: 'active_offer')
       visit root_path
       menu = find("div.MuiToolbar-root.MuiToolbar-regular.d-flex.justify-content-start.w-100.px-20.pb-0", visible: false)
 

@@ -29,26 +29,26 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.0.beta2'
   gem 'capybara', '~>3.18.0'
   gem 'factory_bot_rails'
-  gem 'curb'
-  gem 'bullet'
-  gem 'brakeman', require: false
   gem 'rails_best_practices'
-  gem 'rubycritic'
-  gem 'simplecov', :require => false
-  gem 'simplecov-csv', :require => false
   gem 'shoulda', '~> 3.5'
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
   gem "rails-controller-testing"
   gem 'rspec-html-matchers'
-  gem "guard", require: false
-  gem "guard-rspec", require: false
   gem "selenium-webdriver",'~>3.141.0'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :development do
+  gem "guard", require: false
+  gem "guard-rspec", require: false
+  gem 'simplecov', :require => false
+  gem 'simplecov-csv', :require => false
+  gem 'rubycritic'
+  gem 'brakeman', require: false
+  gem 'bullet'
+  gem 'curb'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'capistrano-rails'
   gem 'capistrano-rvm', github: 'capistrano/rvm'
 end

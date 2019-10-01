@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   #TODO u cant modify a idividual user is dont change to 'resources'
-  resource :users, only: [:edit, :update]
+
 
   resources :faqs, only: [:index]
   resources :offers
@@ -33,6 +33,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
   devise_for :companies,  controllers: { registrations: 'companies/registrations' }
 
+  resources :users, only: [:edit, :update, :show]
   resources :companies, only: [:index, :show, :edit]
 
   root to: "home#index"

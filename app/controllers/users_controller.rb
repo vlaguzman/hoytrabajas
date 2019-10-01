@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    first_sign_in?(current_user, user_path)
+    first_sign_in?(current_user, users_wizards_step_zero_path)
   end
 
 end

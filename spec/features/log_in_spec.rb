@@ -23,7 +23,7 @@ RSpec.describe "User can Log In", type: :feature do
         click_on("Iniciar Sesión")
       end
 
-      expect(current_path).to eq(edit_users_path)
+      expect(current_path).to eq(user_path("#{User.last.id}"))
     end
   end
 end

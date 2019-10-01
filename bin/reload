@@ -30,7 +30,7 @@ awakenings
 sudo ln -s /etc/nginx/sites-available/$NEW_PROCESS /etc/nginx/sites-enabled/$NEW_PROCESS
 sudo rm /etc/nginx/sites-enabled/$ACTUAL_PROCESS
 echo "Doing reload...................................................."
-sudo service nginx reload
+sudo systemctl reload nginx.service
 echo "Killing old puma process....................................."
 sudo kill -QUIT $(cat $OLD_PID)
 echo "Finished!"

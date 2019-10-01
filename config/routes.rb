@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   #TODO u cant modify a idividual user is dont change to 'resources'
-  resource :users, only: [:edit, :update]
+  resource :users, only: [:edit, :update, :show]
 
   resources :faqs, only: [:index]
   resources :offers

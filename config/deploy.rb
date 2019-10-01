@@ -7,3 +7,9 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/syst
 
 set :rvm_type, :user                     # Defaults to: :auto
 set :rvm_ruby_version, '2.6.3'      # Defaults to: 'default'
+
+namespace :deploy do
+  after :finishing, :notify do
+    `bin/reload`
+  end
+end

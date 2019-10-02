@@ -13,3 +13,15 @@ namespace :deploy do
     end
   end
 end
+
+task :haga_bundle do
+  on roles(:app) do |host|
+    within current_path do
+      as :deploy  do
+        with rails_env: :production do
+          execute './bin/reload'
+        end
+      end
+    end
+  end
+end

@@ -39,7 +39,7 @@ const StandardInput = props => {
         error={hasErrors}
         value={inputValue[name] || ``}
         onChange={handleChange}
-        onBlur={() => onFieldValidation()}
+        // onBlur={() => onFieldValidation()}
       />
       {/* {hasErrors && (
         <FormHelperText>{validation[name].errorMessage}</FormHelperText>

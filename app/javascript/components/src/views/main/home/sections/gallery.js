@@ -37,8 +37,9 @@ const Gallery = (
   title: { main, highlighted, last }
 }
 ) => {
-  let cards = offers.map((e, i) => {
-              return (  <Cards key ={e.title} offer = {e}/> )
+  let cards = offers.map((o, i) => {
+	  console.log(offers)
+              return (  <Cards key ={o['title']} offer = {o}/> )
             }
   )
   return (

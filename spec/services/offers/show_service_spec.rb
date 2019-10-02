@@ -39,7 +39,7 @@ RSpec.describe Offers::ShowService do
     ]
   end
 
-  let(:offers_salary) { create(:offers_salaries,
+  let(:offers_salary) { create(:offer_salary,
     offer: offer,
     from: 2500000,
     to: nil,
@@ -133,7 +133,7 @@ RSpec.describe Offers::ShowService do
 
     context "when offers salaries asoc with the offer is not present" do
       it "should return a hash" do
-        OffersSalaries.destroy_all
+        OfferSalary.destroy_all
 
         response = subject.details
 
@@ -148,6 +148,5 @@ RSpec.describe Offers::ShowService do
       end
     end
   end
-
 
 end

@@ -33,7 +33,7 @@ const Content = ({ offer }) => {
         style={{ top: '-1.4rem', left: '1rem', fontSize: '0.93rem' }}
       >
         <span className="font-weight-bolder">
-          <strong>COP 1'200.000</strong>
+          <strong>{ offer["salary"]["currency"]["description"]}</strong><strong>{ offer["salary"]["from"] }</strong>
         </span>
       </Badge>
       <Typography
@@ -43,7 +43,7 @@ const Content = ({ offer }) => {
         className="mb-0 mt-10 fw-bold"
         style={{ fontSize: '18px' }}
       >
-	  { offer.title }
+	  { offer["title"] }
       </Typography>
       <Typography
         gutterBottom
@@ -51,20 +51,17 @@ const Content = ({ offer }) => {
         component="div"
         className="mb-10"
         style={{ fontWeight: '500', fontSize: '14px' }}
-      >
-	  offer.company_name
-	  
+      >{ offer["company"]["name"] }
+
       </Typography>
       <Typography className="text-secondary mb-10" variant="body2" component="p">
-	  { offer.description }
+  { offer["description"] }
       </Typography>
       <Typography variant="caption" className="text-secondary">
         <i
           className="ti-location-pin fw-bold mr-5"
           style={{ fontSize: '1rem' }}
-        />
-	  { offer.city }
-        Bogotá 
+        />  { offer["city"]["description"] }
         <i
           className="ti-hand-point-up fw-bold ml-20"
           style={{ fontSize: '1rem' }}
@@ -74,9 +71,10 @@ const Content = ({ offer }) => {
       <Row className="mr-0 justify-content-between align-items-end px-10 my-10">
         <Row className="mr-0 px-10">
           <Badge color="primary" className="text-uppercase mr-5 d-block">
-            <small>Sin Experiencia</small>
+            {(offer["required_experience"]=='true') ? <small>Sin Experiencia</small> }
           </Badge>
           <Badge color="success" className="text-uppercase d-block">
+      {(cards.length >=1) ? CarruselBlock(cards) : <h1 className="text-center">No hay ningún trabajo en este momento</h1>}
             <small>Inicio inmediato</small>
           </Badge>
         </Row>

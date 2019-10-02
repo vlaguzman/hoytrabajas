@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import Cards from './components/gallery_cards/gallery_card'
 import Carousel from '../../../../components/Carousel/CarouselRow'
 
-const Gallery = ( {offers} ) => {
+const Gallery = ( { offers } ) => {
   return (
     <div className="">
       <h1>Encuentra la mejor oferta para ti</h1>

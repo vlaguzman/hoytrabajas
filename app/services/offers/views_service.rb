@@ -1,6 +1,14 @@
-class Offers::ViewsService
+class Offers::ViewsService 
+  include ActionView::Helpers
+
   def initialize(offer)
     @offer = offer
+  end
+
+  def details
+    offer.attributes.deep_symbolize_keys
+      .slice(*used_keys)
+      .merge(build_details)
   end
 
   def offer
@@ -13,34 +21,36 @@ class Offers::ViewsService
   
   protected 
 
-  def city_description
-    {description: offer.city.description}
-  end
-
-  def company_details
-    company = offer.company
+  def build_details
     {
-      name: company.name,
+      city:                 { description: offer.city_description },
+      salary:               salary_details,
+      company:              company_details,
+      close_date:           DatesConverter.default(date: offer.close_date)
     }
   end
 
+  def used_keys
+    [:title, :immediate_start, :description, :required_experience]
+  end
+
   def salary_details
-    salary = OffersSalaries.find_by(offer_id: id)
-    unless salary.nil?
-      {
-        from: number_to_currency(salary.from, precision: 0),
-        to: number_to_currency(salary.to, precision: 0),
-        currency: { description: salary.currency.description },
-        salary_period: { description: salary.salary_period.description }
+    {
+      currency: {
+        description: offer.salary_currency_description
+      },
+      from: number_to_currency(offer.salary_from, precision: 0),
+      to: number_to_currency(offer.salary_to, precision: 0),
+      salary_period: {
+        description: offer.salary_period_description
       }
-    else
-      {
-        from: 0,
-        to: 0,
-        currency: { description: nil },
-        salary_period: { description:nil }
-      }
-    end
+    }
+  end
+
+  def company_details
+    {
+      name: offer.company_name,
+    }
   end
 
 end

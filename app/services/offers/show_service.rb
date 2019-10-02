@@ -1,16 +1,7 @@
 # The Offers::ShowService Class do build the hash  with the data used in offer/show template
 class Offers::ShowService < Offers::ViewsService
-  include ActionView::Helpers
 
-  def initialize(offer)
-    @offer = offer
-  end
-
-  def details
-    offer.attributes.deep_symbolize_keys
-      .slice(*used_keys)
-      .merge(build_details)
-  end
+  private
 
   def build_details
     {
@@ -30,14 +21,8 @@ class Offers::ShowService < Offers::ViewsService
     }
   end
 
-  def offer
-    @offer
-  end
-
-  private
-
   def used_keys
-    [:title, :address, :immediate_start, :description, :vacancies_quantity, :required_experience ]
+    [:title, :address, :immediate_start, :description, :vacancies_quantity, :required_experience]
   end
 
   def age_range_details
@@ -49,19 +34,6 @@ class Offers::ShowService < Offers::ViewsService
 
   def languages_list_details
     offer.languages_list.map{ |object| [object.offer_show_details] }
-  end
-
-  def salary_details
-    {
-      currency: {
-        description: offer.salary_currency_description
-      },
-      from: number_to_currency(offer.salary_from, precision: 0),
-      to: number_to_currency(offer.salary_to, precision: 0),
-      salary_period: {
-        description: offer.salary_period_description
-      }
-    }
   end
 
   def available_work_days_list

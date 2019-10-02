@@ -455,6 +455,19 @@ ActiveRecord::Schema.define(version: 2019_10_05_165657) do
     t.index ["user_id"], name: "index_nationalities_users_on_user_id"
   end
 
+  create_table "offer_salaries", force: :cascade do |t|
+    t.bigint "offer_id", null: false
+    t.bigint "currency_id", null: false
+    t.bigint "salary_type_id", null: false
+    t.bigint "salary_period_id", null: false
+    t.integer "from"
+    t.integer "to"
+    t.index ["currency_id"], name: "index_offer_salaries_on_currency_id"
+    t.index ["offer_id"], name: "index_offer_salaries_on_offer_id"
+    t.index ["salary_period_id"], name: "index_offer_salaries_on_salary_period_id"
+    t.index ["salary_type_id"], name: "index_offer_salaries_on_salary_type_id"
+  end
+
   create_table "offer_types", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -498,19 +511,6 @@ ActiveRecord::Schema.define(version: 2019_10_05_165657) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["offer_id"], name: "index_offers_responsibilities_on_offer_id"
     t.index ["responsibility_id"], name: "index_offers_responsibilities_on_responsibility_id"
-  end
-
-  create_table "offers_salaries", force: :cascade do |t|
-    t.bigint "offer_id", null: false
-    t.bigint "currency_id", null: false
-    t.bigint "salary_type_id", null: false
-    t.bigint "salary_period_id", null: false
-    t.integer "from"
-    t.integer "to"
-    t.index ["currency_id"], name: "index_offers_salaries_on_currency_id"
-    t.index ["offer_id"], name: "index_offers_salaries_on_offer_id"
-    t.index ["salary_period_id"], name: "index_offers_salaries_on_salary_period_id"
-    t.index ["salary_type_id"], name: "index_offers_salaries_on_salary_type_id"
   end
 
   create_table "offers_soft_skills", force: :cascade do |t|
@@ -873,6 +873,10 @@ ActiveRecord::Schema.define(version: 2019_10_05_165657) do
   add_foreign_key "limitations_users", "users"
   add_foreign_key "nationalities_users", "nationalities"
   add_foreign_key "nationalities_users", "users"
+  add_foreign_key "offer_salaries", "currencies"
+  add_foreign_key "offer_salaries", "offers"
+  add_foreign_key "offer_salaries", "salary_periods"
+  add_foreign_key "offer_salaries", "salary_types"
   add_foreign_key "offers", "cities"
   add_foreign_key "offers", "contract_types"
   add_foreign_key "offers", "job_categories"
@@ -881,10 +885,6 @@ ActiveRecord::Schema.define(version: 2019_10_05_165657) do
   add_foreign_key "offers", "work_modes"
   add_foreign_key "offers_responsibilities", "offers"
   add_foreign_key "offers_responsibilities", "responsibilities"
-  add_foreign_key "offers_salaries", "currencies"
-  add_foreign_key "offers_salaries", "offers"
-  add_foreign_key "offers_salaries", "salary_periods"
-  add_foreign_key "offers_salaries", "salary_types"
   add_foreign_key "offers_soft_skills", "offers"
   add_foreign_key "offers_soft_skills", "soft_skills"
   add_foreign_key "offers_technical_skills", "levels"

@@ -1,10 +1,13 @@
-import React, {Fragment} from 'react'
-import { DynamicOffersForms } from '../../../src/views/DynamicViews'
+import React from 'react'
+import { DynamicOffersSteps } from '../../../src/views/DynamicViews'
+import AppLayout from '../../../src/components/Layout/AppLayout'
 
-const OffersFormsPage = () => (
-  <Fragment>
-    <DynamicOffersForms />
-  </Fragment>
-)
+const OffersStepsPage = props => {
+  const { formIndex = 0 } = props
+  return (
+  <AppLayout>
+    <DynamicOffersSteps formIndex={formIndex} />
+  </AppLayout>
+)}
 
-export default OffersFormsPage
+export default OffersStepsPage

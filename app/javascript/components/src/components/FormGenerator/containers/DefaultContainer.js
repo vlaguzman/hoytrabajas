@@ -1,24 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { Row, Col } from 'reactstrap'
-import { useDebouncedCallback } from 'use-debounce'
 import Paper from '@material-ui/core/Paper'
-import { updateField, updateErrors } from '../../../actions'
-import { makeGetField, makeGetValidationField } from '../../../selectors/forms'
-import fieldOptions from '../fields/fieldOptions'
-import { useValidation } from '../../../hooks/formValidation'
-import useWhyDidYouUpdate from '../../../hooks/useWhyDidYouUpdate'
+import { Row, Col } from 'reactstrap'
+import fieldOptions from "../fields/fieldOptions"
 
 const DefaultContainer = props => {
   const {
     formSection,
     formName,
     name,
-    dispatch,
     scrollAction,
-    currentField = null,
-    currentValidation = null,
     item: { kind, pro, extra = null, aux = null }
   } = props
 
@@ -33,24 +24,8 @@ const DefaultContainer = props => {
   }
 
   const [inputValue, setValue] = useState({
-    [name]: currentField || defaultValue
+    [name]: defaultValue
   })
-
-  const { validation, validateField } = useValidation(
-    extra && extra.ignoreState
-      ? null
-      : {
-          [name]: currentValidation
-        }
-  )
-
-  const onFieldValidation = () =>
-    validateField({ value: inputValue[name], extra, name })
-
-  console.log('props DEFAULT CONTAINER')
-  console.log(props)
-  console.log('validation DEFAULT CONTAINER')
-  console.log(validation)
 
   const handleChange = e => {
     if (!isArray) {
@@ -101,54 +76,15 @@ const DefaultContainer = props => {
     })
   }
 
-  const [debouncedUpdateField] = useDebouncedCallback(() => {
-    dispatch(
-      updateField({
-        formSection,
-        formName,
-        value: {
-          ...inputValue
-        }
-      })
-    )
-  }, 750)
-
-  useEffect(() => {
-    if (
-      !extra ||
-      (!extra.ignoreState &&
-        !extra.hasFields &&
-        (!validation || !validation[name].errorMessage))
-    ) {
-      debouncedUpdateField()
-    }
-  }, [inputValue])
-
   useEffect(() => {
     setValue({
-      [name]: currentField || defaultValue
+      [name]: defaultValue
     })
   }, [formSection, name])
-
-  useEffect(() => {
-    if ((!extra || !extra.ignoreState) && validation && validation[name]) {
-      dispatch(
-        updateErrors({
-          formSection,
-          formName,
-          fieldName: name,
-          value: {
-            errorMessage: validation[name].errorMessage
-          }
-        })
-      )
-    }
-  }, [validation])
 
   const fieldsProps = {
     formSection,
     formName,
-    dispatch,
     inputValue,
     setValue,
     handleChange,
@@ -161,10 +97,10 @@ const DefaultContainer = props => {
     pro,
     name,
     aux,
-    validation,
-    onFieldValidation,
-    errors: (validation && validation[name].errorMessage) || false,
-    validateErrors: null,
+    // validation,
+    // onFieldValidation,
+    // errors: (validation && validation[name].errorMessage) || false,
+    // validateErrors: null,
     extra
   }
 
@@ -186,22 +122,12 @@ const DefaultContainer = props => {
   return fieldOptions[kind](fieldsProps)
 }
 
-const makeMapStateToProps = () => {
-  const getField = makeGetField()
-  const getValidationField = makeGetValidationField()
-  const mapStateToProps = (state, props) => ({
-    currentField: getField(state, props),
-    currentValidation: getValidationField(state, props)
-  })
-  return mapStateToProps
-}
-export default connect(makeMapStateToProps)(DefaultContainer)
+export default DefaultContainer
 
 DefaultContainer.propTypes = {
   formName: PropTypes.string.isRequired,
   formSection: PropTypes.string.isRequired,
   scrollAction: PropTypes.func.isRequired,
-  dispatch: PropTypes.func.isRequired,
   name: PropTypes.string,
   item: PropTypes.shape({
     kind: PropTypes.string.isRequired,

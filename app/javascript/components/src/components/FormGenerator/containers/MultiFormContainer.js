@@ -1,60 +1,39 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import uuidv4 from 'uuid/v4'
-import { connect } from 'react-redux'
 import { Col } from 'reactstrap'
-import { updateFieldArray, pushFieldArray } from '../../../actions'
-import { makeGetMultiFormID } from '../../../selectors/forms'
-import MultiFormWrapper from '../wrappers/MultiFormWrapper'
+import MultiFormWrapper from "../wrappers/MultiFormWrapper"
 
 const MultiFormContainer = props => {
   const {
     formSection,
     formName,
     dispatch,
-    pro: { fields },
-    currentFormID = null
+    pro: { fields }
   } = props
 
-  const [singleFormID, setSingleFormID] = useState(currentFormID)
+  const [singleFormID, setSingleFormID] = useState(uuidv4())
 
   const addSingleForm = () => {
     const newId = uuidv4()
-    dispatch(
-      pushFieldArray({
-        formID: newId,
-        formSection,
-        formName
-      })
-    )
     setSingleFormID(newId)
   }
-  useEffect(() => {
-    dispatch(
-      updateFieldArray({
-        formSection,
-        formID: singleFormID,
-        formName,
-        value: {
-          id: singleFormID
-        }
-      })
-    )
-  }, [])
+  // useEffect(() => {
+  //   dispatch(
+  //     updateFieldArray({
+  //       formSection,
+  //       formID: singleFormID,
+  //       formName,
+  //       value: {
+  //         id: singleFormID
+  //       }
+  //     })
+  //   )
+  // }, [])
 
   useEffect(() => {
     if (currentFormID !== singleFormID) {
       setSingleFormID(currentFormID)
-      dispatch(
-        updateFieldArray({
-          formSection,
-          formID: currentFormID,
-          formName,
-          value: {
-            id: currentFormID
-          }
-        })
-      )
     }
   }, [currentFormID])
 
@@ -73,8 +52,7 @@ const MultiFormContainer = props => {
             singleFormID,
             setSingleFormID,
             addSingleForm,
-            item,
-            dispatch
+            item
           }}
         />
       </Col>
@@ -82,15 +60,7 @@ const MultiFormContainer = props => {
   })
 }
 
-const makeMapStateToProps = () => {
-  const getMultiFormID = makeGetMultiFormID()
-  const mapStateToProps = (state, props) => ({
-    currentFormID: getMultiFormID(state, props)
-  })
-  return mapStateToProps
-}
-
-export default connect(makeMapStateToProps)(MultiFormContainer)
+export default MultiFormContainer
 
 MultiFormContainer.propTypes = {
   formSection: PropTypes.string.isRequired,

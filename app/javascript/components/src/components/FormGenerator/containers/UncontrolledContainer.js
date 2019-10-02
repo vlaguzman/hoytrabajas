@@ -1,19 +1,14 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import useWhyDidYouUpdate from '../../../hooks/useWhyDidYouUpdate'
-import fieldOptions from '../fields/fieldOptions'
+import fieldOptions from "../fields/fieldOptions"
 
 const UncontrolledContainer = props => {
   const {
     formSection,
     formName,
     name,
-    dispatch,
     item: { kind, pro, className = null }
   } = props
-
-  useWhyDidYouUpdate('UncontrolledContainer-WhyDidYouUpdate', props)
 
   return fieldOptions[kind]({
     formSection,
@@ -25,13 +20,11 @@ const UncontrolledContainer = props => {
   })
 }
 
-// export default UncontrolledContainer
-export default connect()(UncontrolledContainer)
+export default UncontrolledContainer
 
 UncontrolledContainer.propTypes = {
   formName: PropTypes.string.isRequired,
   formSection: PropTypes.string.isRequired,
-  dispatch: PropTypes.func.isRequired,
   name: PropTypes.string,
   item: PropTypes.shape({
     kind: PropTypes.string.isRequired,

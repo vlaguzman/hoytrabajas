@@ -1,12 +1,11 @@
-import React, { Fragment, useContext } from 'react'
+import React, { Fragment } from 'react'
 import FormGenerator from '../../../../components/FormGenerator'
-import { FormContext, FormNameContext } from '../../../../context/formContext'
 import FormTitle from './FormTitle'
 import FormButtons from './FormButtons'
 
-const FormBody = ({ scrollAction }) => {
-  const { title, subtitle, formObj, formSection } = useContext(FormContext)
-  const formName = useContext(FormNameContext)
+const FormBody = props => {
+  const { scrollAction, formContent, formName } = props
+  const { title, subtitle, formObj, formSection, next, prev } = formContent
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -22,9 +21,9 @@ const FormBody = ({ scrollAction }) => {
           onSubmit={handleSubmit}
         >
           <FormGenerator
-            {...{ scrollAction, formObj, formSection, formName }}
+            {...{ scrollAction, formObj, formName, formSection }}
           />
-          <FormButtons {...{ scrollAction }} />
+          <FormButtons {...{ scrollAction, next, prev, formSection }} />
         </form>
       </div>
     </Fragment>

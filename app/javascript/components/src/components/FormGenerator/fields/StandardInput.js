@@ -10,8 +10,6 @@ const StandardInput = props => {
     inputValue,
     name,
     handleChange,
-    validation,
-    onFieldValidation,
     extra
   } = props
 
@@ -31,8 +29,8 @@ const StandardInput = props => {
     )
   }
 
-  const hasErrors =
-    validation && validation[name] && validation[name].errorMessage
+  // TODO: add validation
+  const hasErrors = false
 
   return (
     <FormControl error={hasErrors}>
@@ -43,9 +41,9 @@ const StandardInput = props => {
         onChange={handleChange}
         onBlur={() => onFieldValidation()}
       />
-      {hasErrors && (
+      {/* {hasErrors && (
         <FormHelperText>{validation[name].errorMessage}</FormHelperText>
-      )}
+      )} */}
       {extra && extra.isLength && renderCharCount()}
     </FormControl>
   )
@@ -56,9 +54,7 @@ StandardInput.propTypes = {
   handleChange: PropTypes.func.isRequired,
   pro: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
-  extra: PropTypes.object,
-  validation: PropTypes.object,
-  onFieldValidation: PropTypes.func.isRequired
+  extra: PropTypes.object
 }
 
 export default StandardInput

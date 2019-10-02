@@ -38,7 +38,6 @@ const Cortinilla = ({
           <Row className="my-20 align-items-center justify-content-center">
             <a href={redirectTo}>
               <Button
-                // onClick={() => push(redirectTo)}
                 type="button"
                 style={{ borderRadius: '25px' }}
                 variant="contained"

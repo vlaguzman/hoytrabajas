@@ -1,13 +1,11 @@
-import React, {Fragment} from 'react'
+import React from 'react'
 import { DynamicOffers } from '../../src/views/DynamicViews'
-import IsLoggedIn from '../../src/components/Permissions/IsLoggedIn'
+import AppLayout from '../../src/components/Layout/AppLayout'
 
-const OffersPage = () => (
-  <Fragment>
-    <IsLoggedIn>
-      <DynamicOffers />
-    </IsLoggedIn>
-  </Fragment>
+const OffersPage = props => (
+  <AppLayout>
+    <DynamicOffers {...props} />
+  </AppLayout>
 )
 
 export default OffersPage

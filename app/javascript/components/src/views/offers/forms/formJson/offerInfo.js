@@ -1,7 +1,7 @@
 export default {
-  pag: 2,
-  next: 3,
-  prev: 1,
+  prev: 'step_two',
+  pag: 'step_three',
+  next: 'step_four',
   title: 'Creemos tu primera oferta',
   subtitle: 'Brinda a tu candidato una relevante de tu empresa.',
   formSection: 'offer_info',

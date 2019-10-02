@@ -1,7 +1,7 @@
 export default {
-  pag: 1,
-  next: 2,
-  prev: 0,
+  prev: 'step_one',
+  pag: 'step_two',
+  next: 'step_three',
   title: 'Empecemos por conocernos',
   subtitle: 'Brinda a tu candidato información de tu empresa.',
   formSection: 'about_company',

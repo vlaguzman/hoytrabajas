@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Paper from '@material-ui/core/Paper'
 import { Row, Col } from 'reactstrap'
-import fieldOptions from "../fields/fieldOptions"
+import fieldOptions from '../fields/fieldOptions'
 
 const DefaultContainer = props => {
   const {

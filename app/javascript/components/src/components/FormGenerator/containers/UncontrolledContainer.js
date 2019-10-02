@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import fieldOptions from "../fields/fieldOptions"
+import fieldOptions from '../fields/fieldOptions'
 
 const UncontrolledContainer = props => {
   const {

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash --login
 
 function awakenings {
   while [ $(curl -I --ssl http://ec2-35-170-202-220.compute-1.amazonaws.com/stage/ --silent | head -n1 | awk '{print $2}') != "404" ]

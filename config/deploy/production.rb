@@ -19,7 +19,7 @@ task :haga_bundle do
     within current_path do
       as :deploy  do
         with rails_env: :production do
-          execute './bin/reload'
+          execute "source #{current_path}/bin/reload"
         end
       end
     end

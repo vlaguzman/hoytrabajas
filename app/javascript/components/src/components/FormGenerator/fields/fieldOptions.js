@@ -1,5 +1,5 @@
 // Fields
-
+import React from 'react'
 import Button from '../../../components/FormGenerator/fields/Button'
 import Checkbox from '../../../components/FormGenerator/fields/Checkbox'
 import Chips from '../../../components/FormGenerator/fields/Chips'

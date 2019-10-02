@@ -24,7 +24,6 @@ const CandidateController = ({
   formObj,
   formSection,
   formName,
-  dispatch,
   scrollAction
 }) => {
   const sectionsWithMultipleForms = ['experiences', 'education', 'diplomas']
@@ -51,7 +50,6 @@ const CandidateController = ({
             {...{
               formName,
               formSection: ownSection || formSection,
-              dispatch,
               kind,
               pro,
               extra
@@ -69,7 +67,6 @@ const CandidateController = ({
             {...{
               formSection: ownSection || formSection,
               formName,
-              dispatch,
               item,
               name
             }}
@@ -85,7 +82,6 @@ const CandidateController = ({
           {...{
             formSection: ownSection || formSection,
             formName,
-            dispatch,
             scrollAction,
             item,
             name

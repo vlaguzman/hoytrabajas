@@ -1,39 +1,26 @@
 import React, { useContext, Fragment } from 'react'
-import { connect } from 'react-redux'
-import { useRouter } from 'next/router'
 import Button from '@material-ui/core/Button'
-import { loadInfo } from '../../../../actions'
-import { FormContext, DispatchContext } from '../../../../context/formContext'
-import {Row} from 'reactstrap'
-// import { InfoContext } from '../context/formInfoContext'
-const FormButtons = ({ scrollAction, dispatch }) => {
-  const { next, prev, formSection } = useContext(FormContext)
-  const dispatchForm = useContext(DispatchContext)
-  const router = useRouter()
+import { Row } from 'reactstrap'
+
+const FormButtons = props => {
+  const { scrollAction, next, prev, formSection } = props
   const isChoiceForm = formSection.toLowerCase() === 'has_experience'
-
-  // const infoState = useContext(InfoContext)
-
-  if (!next) router.prefetch('/regcan/forms/completed')
 
   const nextPage = () => {
     if (next) {
-      dispatchForm({ type: next })
-      scrollAction()
+      location.assign(`/companies/first_offer/${next}`)
     } else {
-      router.push('/regcan/forms/completed')
+      location.assign(`/companies/first_offer/completed`)
     }
   }
 
   const prevPage = () => {
-    dispatchForm({ type: prev })
-    scrollAction()
+    location.assign(`/companies/first_offer/${prev}`)
   }
 
   const submit = e => {
     e.preventDefault()
     nextPage()
-    // loadInfo({ ...infoState })
   }
   return (
     <Fragment>
@@ -57,7 +44,7 @@ const FormButtons = ({ scrollAction, dispatch }) => {
       </div>
     </div>
       <div className="w-100 d-flex justify-content-between">
-        {prev != null && (
+        {prev !== null && (
           <Button
             onClick={prevPage}
             size="small"
@@ -68,7 +55,7 @@ const FormButtons = ({ scrollAction, dispatch }) => {
             <small className="fw-bold text-muted">REGRESAR</small>
           </Button>
         )}
-        {prev != null && next && next !== 1 && !isChoiceForm && (
+        {prev !== null && next && next !== 'step_two' && !isChoiceForm && (
           <Button
             onClick={nextPage}
             size="small"
@@ -84,4 +71,4 @@ const FormButtons = ({ scrollAction, dispatch }) => {
   )
 }
 
-export default connect()(FormButtons)
+export default FormButtons

@@ -1,16 +1,16 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { Row, Col } from 'reactstrap'
 import CandidateController from '../../components/FormGenerator/controllers/CandidateController'
 import OffersController from '../../components/FormGenerator/controllers/OffersController'
 
-const FormGenerator = ({
-  scrollAction,
-  dispatch,
-  formObj,
-  formSection,
-  formName
-}) => (
+const FormGenerator = props => {
+  const {
+    scrollAction,
+    formName,
+    formSection,
+    formObj
+  } = props
+  return (
   <Row className="HT__FormGenerator">
     {formName === 'candidate' && (
       <CandidateController
@@ -18,7 +18,6 @@ const FormGenerator = ({
           formObj,
           formSection,
           formName,
-          dispatch,
           scrollAction
         }}
       />
@@ -29,12 +28,11 @@ const FormGenerator = ({
           formObj,
           formSection,
           formName,
-          dispatch,
           scrollAction
         }}
       />
     )}
   </Row>
-)
+)}
 
-export default connect()(FormGenerator)
+export default FormGenerator

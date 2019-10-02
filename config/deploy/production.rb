@@ -3,23 +3,17 @@ server "ec2-35-170-202-220.compute-1.amazonaws.com", user: "deploy", roles: %w{a
 namespace :deploy do
   after :finishing, :notify do
     on roles(:app) do
-      within current_path do
-        as :deploy  do
-          with rails_env: :production do
-            execute "bin/reload", :shell => fetch(:rvm_shell)
-          end
-        end
-      end
+      invoke "reload_app"
     end
   end
 end
 
-task :haga_bundle do
+task :reload_app do
   on roles(:app) do |host|
     within current_path do
       as :deploy  do
         with rails_env: :production do
-          execute "source #{current_path}/bin/reload"
+          execute "bin/reload"
         end
       end
     end

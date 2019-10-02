@@ -1,18 +1,33 @@
 %h1 Veamos tu formación académica
 %h3 Brinda a las empresas información valiosa sobre ti.
 
+%p= @user.registered_studies_message
+- @user.registered_studies.each do |experience|
+  %div= "* #{experience[0]}"
+
 = form_for(:user, url: users_wizards_step_nine_path, method: :put, html: { id: :step_nine } ) do |field|
-  - render 'shared/form_errors', source: @user
+  = render 'shared/form_errors', source: @user
 
-  = field.label :x, "Título educativo*"
+  = field.fields_for(:curriculum_vitae) do |field|
+    = field.fields_for(:educational_level) do |field|
+      = field.label :degree, "Título educativo*"
+      = field.text_field :degree
 
-  = field.label :x, "Institución"
+      = field.label :institution_name, "Institución"
+      = field.text_field :institution_name
 
-  = field.label :x, "Fecha de inicio"
+      = field.label :start_date, "Fecha de inicio"
+      = field.date_field :start_date
+      = field.date_field :finish_date
 
-  = field.label :x, "Estudio en curso"
+      = field.label :ongoing_study, "Estudio en curso"
+      = field.check_box :ongoing_study
 
-  = field.label :x, "Ubicación"
+      = field.label :city_id, "Ubicación"
+      = field.select(:city_id, @user.cities_list, { prompt: "Seleccione una ubicacion"})
+
+      = field.label :diploma, "Arrastra aquí tu diploma"
+      = field.file_field :diploma
 
   = field.submit("Siguiente")
 

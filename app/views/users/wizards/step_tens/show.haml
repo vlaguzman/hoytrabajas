@@ -1,5 +1,22 @@
 %h1 ¿Cuentas con reconocimientos?
 %h3 Brinda a las empresas información valiosa sobre ti.
 
-= link_to('Saltar')
-= link_to('Regresar')
+= form_for(:user, url: users_wizards_step_ten_path, method: :put, html: { id: :step_ten } ) do |field|
+  = render 'shared/form_errors', source: @user
+
+  = field.label :title , "Título reconocimiento"
+
+  = field.label :start_date, "Fecha de inicio"
+ 
+  = field.label :entity_name, "Institución o entidad"
+
+  = field.label :diploma, "Arrastra aquí tu diploma"
+
+  = field.submit("Publicar")
+  %button{name: "add_other_acknowledgment", type: 'submit', value: "1" } Agregar otro reconocimiento
+
+
+
+
+= link_to('Saltar', users_wizards_step_eleven_path)
+= link_to('Regresar', users_wizards_step_nine_path)

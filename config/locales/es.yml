@@ -1,8 +1,12 @@
 es:
-
   activerecord:
     errors:
       models:
+        educational_level:
+          attributes:
+            degree:
+              blank: "El Titulo Educativo no puede estar vacío"
+
         work_experience:
           attributes:
             work_position:

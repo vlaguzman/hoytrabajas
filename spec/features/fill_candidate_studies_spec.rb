@@ -151,59 +151,76 @@ RSpec.describe "fill the canditate user data, studies and acknowledgments", :typ
           expect(page).to have_text("Has creado un perfil ganador")
         end
 
-        xit "should show me the fields of acknowledgment information and the skip button" do
-          #Visit the rute of the profile user creation - step 10
-          visit "/candidato/#{user.id}/create_user/step10"
+        it "should show me the fields of acknowledgment information and the skip button" do
+          sign_in candidate
+
+          visit users_wizards_step_ten_path
 
           expect(page).to have_text("Cuentas con reconocimientos")
-          expect(page).to have_text("titulo reconocimiento")
-          expect(page).to have_text("fecha de inicio")
-          expect(page).to have_text("institucion o entidad")
-          expect(page).to have_text("saltar")
-          click_button 'saltar'
+          expect(page).to have_text("Título reconocimiento")
+          expect(page).to have_text("Fecha de inicio")
+          expect(page).to have_text("Institución o entidad")
+          has_button?("Saltar")
+          click_on 'Saltar'
 
           expect(page).to have_text("Has creado un perfil ganador")
         end
       end
 
       context "I just have one acknowledgment" do
-        xit "should show me the fields of acknowledgment and save the data on click the publish button" do
-          visit "/candidato/#{user.id}/create_user/step10"
+        it "should show me the fields of acknowledgment and save the data on click the publish button" do
+          sign_in candidate
+
+          visit users_wizards_step_ten_path
 
           expect(page).to have_text("Cuentas con reconocimientos")
-          fill_in "title", :with => 'Tecnico en cocina'
-          fill_in "institution", :with => 'Sena'
-          fill_in "date", :with => '2017/01/01'
+
+          fill_in "user[curriculum_vitae][acknowledgment][title]", :with => 'Tecnico en cocina'
+          fill_in "user[curriculum_vitae][acknowledgment][entity_name]", :with => 'Sena'
+          fill_in "user[curriculum_vitae][acknowledgment][start_date]", :with => '2017/01/01'
+
           #Here is necesary to test the upload of a file
-          find('form input[type="file"]').set('path/to/file.csv')
-          click_button 'publicar'
+          attach_file("user[curriculum_vitae][acknowledgment][diploma]", Rails.root + "spec/factories/pdfs/diploma.pdf" )
+
+          click_button 'Publicar'
 
           #You should validate the creation of the acknowledgment in the DB
-
+          expect(Acknowledgment.count).to eq(1)
           expect(page).to have_text("Has creado un perfil ganador")
         end
       end
 
       context "I have more than one acknowledgments" do
-        xit "should show me the fields of acknowledgment and save the data on click the publish button" do
-          visit "/candidato/#{user.id}/create_user/step10"
+        it "should show me the fields of acknowledgment and save the data on click the publish button" do
+          sign_in candidate
 
-          xpect(page).to have_text("Cuentas con reconocimientos")
-          fill_in "title", :with => 'Premio a la puntualidad'
-          fill_in "institution", :with => 'Sena'
-          fill_in "date", :with => '2017/01/01'
+          visit users_wizards_step_ten_path
+
+          expect(page).to have_text("Cuentas con reconocimientos")
+
+          fill_in "user[curriculum_vitae][acknowledgment][title]", :with => 'Premio a la puntualidad'
+          fill_in "user[curriculum_vitae][acknowledgment][entity_name]", :with => 'Sena'
+          fill_in "user[curriculum_vitae][acknowledgment][start_date]", :with => '2017/01/01'
+
           #Here is necesary to test the upload of a file
-          find('form input[type="file"]').set('path/to/file.csv')
-          click_button 'agregar otro reconocimiento'
+          attach_file("user[curriculum_vitae][acknowledgment][diploma]", Rails.root + "spec/factories/pdfs/diploma.pdf" )
 
-          fill_in "title", :with => 'Medalla de oro cerveza IPA'
-          fill_in "institution", :with => 'Puerto Cervecero'
-          fill_in "date", :with => '2019/08/08'
+          click_button 'Agregar otro reconocimiento'
+
+          expect(page).to have_text("Cuentas con reconocimientos")
+          expect(page).to have_text("Llevas 1 registro(s) de reconocimientos")
+          expect(page).to have_text("* Premio a la puntualidad")
+
+          fill_in "user[curriculum_vitae][acknowledgment][title]", :with => 'Medalla de oro cerveza IPA'
+          fill_in "user[curriculum_vitae][acknowledgment][entity_name]", :with => 'Puerto Cervecero'
+          fill_in "user[curriculum_vitae][acknowledgment][start_date]", :with => '2019/08/08'
+
           #Here is necesary to test the upload of a file
-          find('form input[type="file"]').set('path/to/file.csv')
-          click_button 'publicar'
+          attach_file("user[curriculum_vitae][acknowledgment][diploma]", Rails.root + "spec/factories/pdfs/diploma.pdf" )
 
-          #You should validate the creation of the acknowledgment in the DB
+          click_on 'Publicar'
+
+          expect(Acknowledgment.count).to eq(2)
 
           expect(page).to have_text("Has creado un perfil ganador")
         end

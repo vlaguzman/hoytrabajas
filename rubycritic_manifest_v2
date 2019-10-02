@@ -1,4 +1,4 @@
-A         * Acknowledgment                             1       0.0        0           1
+A         * Acknowledgment                             2       0.0        0           1
 A         * AgeRange                                   1       0.0        0           1
 A         * ApplicationCable::Channel                  1       0.0        0           1
 A         * ApplicationCable::Connection               1       0.0        0           1
@@ -34,7 +34,7 @@ A         * DrivingLicence                             3       0.0        0     
 A         * DrivingLicencesOffers                      1       0.0        0           1
 A         * DurationType                               2       0.0        0           1
 A         * EducationalDegree                          4       0.0        0           1
-A         * EducationalLevel                           2       0.0        0           1
+A         * EducationalLevel                           3       0.0        0           1
 A         * EducationalLevelsOffers                    1       0.0        0           1
 A         * EmployeesRange                             1       0.0        0           1
 A         * FaqsController                             2       0.0        0           1
@@ -84,15 +84,15 @@ A         * Users::RegistrationsController             3       1.0        0     
 A         * Users::WizardService                       2       17.38      0           2
 A         * Users::Wizards::StepEightPresenter         4       21.97      0           2
 A         * Users::Wizards::StepEightService           1       18.84      0           1
-A         * Users::Wizards::StepEightsController       2       26.71      0           1
+A         * Users::Wizards::StepElevensController      1       2.41       0           1
 A         * Users::Wizards::StepFivePresenter          1       18.55      0           5
 A         * Users::Wizards::StepFiveService            2       9.86       0           1
 A         * Users::Wizards::StepFivesController        5       20.5       0           2
 A         * Users::Wizards::StepFourPresenter          1       22.56      0           6
 A         * Users::Wizards::StepFourService            2       2.0        0           1
 A         * Users::Wizards::StepFoursController        4       20.5       23          2
-A         * Users::Wizards::StepNinePresenter          2       0.0        0           1
-A         * Users::Wizards::StepNinesController        2       3.24       0           1
+A         * Users::Wizards::StepNinePresenter          3       15.59      18          2
+A         * Users::Wizards::StepNineService            1       17.57      0           1
 A         * Users::Wizards::StepOnePresenter           2       9.02       0           3
 A         * Users::Wizards::StepOneService             2       4.0        0           1
 A         * Users::Wizards::StepOnesController         2       22.09      0           2
@@ -101,6 +101,9 @@ A         * Users::Wizards::StepSevensController       6       2.42       0     
 A         * Users::Wizards::StepSixPresenter           2       22.56      0           6
 A         * Users::Wizards::StepSixService             2       35.8       0           4
 A         * Users::Wizards::StepSixesController        5       20.32      0           1
+A         * Users::Wizards::StepTenPresenter           0       14.59      18          2
+A         * Users::Wizards::StepTenService             0       11.81      0           1
+A         * Users::Wizards::StepTensController         2       25.23      0           1
 A         * Users::Wizards::StepThreePresenter         2       22.56      0           6
 A         * Users::Wizards::StepThreeService           3       2.0        0           1
 A         * Users::Wizards::StepThreesController       3       22.04      0           3
@@ -118,4 +121,6 @@ A         * WorkMethodology                            1       0.0        0     
 A         * WorkMode                                   3       0.0        0           1
 A         * WorkPosition                               2       0.0        0           1
 A         * WorkingDay                                 5       0.0        0           1
+B         * Users::Wizards::StepEightsController       2       26.71      29          2
+B         * Users::Wizards::StepNinesController        4       26.71      29          2
 C         * Offers::ShowService                        3       120.5      0           10

@@ -36,7 +36,8 @@ class Users::Wizards::StepNinesController < ApplicationController
             :start_date,
             :finish_date,
             :ongoing_study,
-            :city_id
+            :city_id,
+            :diploma
           ]
         }
       ).to_h

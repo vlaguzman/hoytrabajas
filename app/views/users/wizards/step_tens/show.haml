@@ -1,0 +1,30 @@
+%h1 ¿Cuentas con reconocimientos?
+%h3 Brinda a las empresas información valiosa sobre ti.
+
+%p= @user.registered_acknowledgments_message
+- @user.registered_acknowledgments.each do |ack|
+  %div= "* #{ack[0]}"
+
+= form_for(:user, url: users_wizards_step_ten_path, method: :put, html: { id: :step_ten } ) do |field|
+  = render 'shared/form_errors', source: @user
+
+  = field.fields_for(:curriculum_vitae) do |field|
+    = field.fields_for(:acknowledgment) do |field|
+
+      = field.label :title , "Título reconocimiento"
+      = field.text_field :title
+
+      = field.label :start_date, "Fecha de inicio"
+      = field.date_field :start_date
+
+      = field.label :entity_name, "Institución o entidad"
+      = field.text_field :entity_name
+
+      = field.label :diploma, "Arrastra aquí tu diploma"
+      = field.file_field :diploma
+
+      = field.submit("Publicar")
+  %button{name: "add_other_acknowledgment", type: 'submit', value: "1" } Agregar otro reconocimiento
+
+= link_to('Saltar', users_wizards_step_eleven_path)
+= link_to('Regresar', users_wizards_step_nine_path)

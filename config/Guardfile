@@ -1,8 +1,7 @@
 rspec_options = {
   cmd: "bundle exec rspec",
   run_all: {
-    cmd: "bundle exec parallel_rspec -o '",
-    cmd_additional_args: "'"
+    cmd: "bundle exec rspec"
   }
 }
 

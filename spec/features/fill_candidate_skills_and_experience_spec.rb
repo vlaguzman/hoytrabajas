@@ -129,7 +129,7 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
 
           click_on 'No pero con disposición'
 
-          expect(page).to have_text(/Veamos tu información académica/)
+          expect(page).to have_text(/Veamos tu formación académica/)
         end
       end
 
@@ -166,7 +166,7 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
 
             #IMPORTANT - Here you must validate the creation of the tables with the information filled by user
 
-            expect(page).to have_text("Veamos tu información académica")
+            expect(page).to have_text("Veamos tu formación académica")
           end
         end
 
@@ -284,7 +284,7 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
 
             #IMPORTANT - Here you must validate the creation of the tables with the information filled by user
 
-            expect(page).to have_text("Veamos tu información académica")
+            expect(page).to have_text("Veamos tu formación académica")
           end
         end
 

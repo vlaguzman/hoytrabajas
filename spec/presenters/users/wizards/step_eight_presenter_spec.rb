@@ -82,8 +82,6 @@ RSpec.describe Users::Wizards::StepEightPresenter do
 
   describe "#have_experience?" do
     it "Should return a boolean if user have experience" do
-      experiences = WorkExperience.where(curriculum_vitae_id: subject.curriculum_vitaes.first.id).map { |exp| [exp.company_name, exp.work_position.description] }.any?
-
       expect(subject.have_experience?).to be_truthy
     end
 

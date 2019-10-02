@@ -1,5 +1,5 @@
 %div
-  - if source.errors.full_messages.present?
+  - if source.errors.any?
     %lu
     - source.errors.full_messages.each do |message|
       %li= message

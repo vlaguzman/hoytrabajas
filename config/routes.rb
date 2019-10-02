@@ -15,17 +15,18 @@ Rails.application.routes.draw do
 
   namespace :users do
     namespace :wizards do
-      resource :step_zero,  only: [:show]
-      resource :step_one,   only: [:show, :update]
-      resource :step_two,   only: [:show, :update]
-      resource :step_three, only: [:show, :update]
-      resource :step_four,  only: [:show, :update]
-      resource :step_five,  only: [:show, :update]
-      resource :step_six,   only: [:show, :update]
-      resource :step_seven, only: [:show, :update]
-      resource :step_eight, only: [:show, :update]
-      resource :step_nine,  only: [:show, :update]
-      resource :step_ten,  only: [:show]
+      resource :step_zero,    only: [:show]
+      resource :step_one,     only: [:show, :update]
+      resource :step_two,     only: [:show, :update]
+      resource :step_three,   only: [:show, :update]
+      resource :step_four,    only: [:show, :update]
+      resource :step_five,    only: [:show, :update]
+      resource :step_six,     only: [:show, :update]
+      resource :step_seven,   only: [:show, :update]
+      resource :step_eight,   only: [:show, :update]
+      resource :step_nine,    only: [:show, :update]
+      resource :step_ten,     only: [:show, :update]
+      resource :step_eleven,  only: [:show]
     end
   end
 

@@ -108,7 +108,7 @@ A         * Users::Wizards::StepTwoPresenter           2       13.54      0     
 A         * Users::Wizards::StepTwoService             2       3.0        0           1
 A         * Users::Wizards::StepTwosController         5       20.5       23          2
 A         * Users::Wizards::StepZerosController        1       0.0        0           1
-A         * UsersController                            7       3.4        0           1
+A         * UsersController                            8       3.4        0           1
 A         * UsersLimitations                           1       0.0        0           1
 A         * UsersNationalities                         1       0.0        0           1
 A         * Vehicle                                    7       0.0        0           1

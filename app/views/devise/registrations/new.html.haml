@@ -16,14 +16,15 @@
     = f.password_field :password, autocomplete: "new-password"
   .field
     = f.label :password_confirmation
-  .field
-    = f.label :password_confirmation
     %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
+    = f.password_field :password_confirmation
   .field
-    %select{ name: "#{resource_name}[user_role]" }
-      %option{ value: "Candidato" } Candidato
-      %option{ value: "Compañia" } Compañia
+    = f.label "Deseas registrarte como"
+    %br/
+    = radio_button_tag("role", "user")
+    = label_tag(:role_user, "Candidato")
+    = radio_button_tag("role", "company")
+    = label_tag(:role_company, "Compañia")
   .actions
     = f.submit "Registrarme"
 

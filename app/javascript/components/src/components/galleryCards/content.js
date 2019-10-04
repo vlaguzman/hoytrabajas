@@ -33,7 +33,7 @@ const Content = () => {
         style={{ top: '-1.4rem', left: '1rem', fontSize: '0.93rem' }}
       >
         <span className="font-weight-bolder">
-          <strong>COP 1'200.000</strong>
+          <strong>COP 1&apos;200.000</strong>
         </span>
       </Badge>
       <Typography

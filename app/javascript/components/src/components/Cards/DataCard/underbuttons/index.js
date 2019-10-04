@@ -77,7 +77,7 @@ const AddEditTimeUpdateButton = ({ texto, tiempo, formNumber }) => {
         aria-describedby="alert-dialog-slide-description"
       >
         <DialogTitle id="alert-dialog-slide-title">
-          Use Google's location service?
+          Use Google&apos;s location service?
         </DialogTitle>
         <DialogContent className="px-70">
           {/* <FormProvider allForms={allForms.slice(formNumber, (formNumber+1))}>

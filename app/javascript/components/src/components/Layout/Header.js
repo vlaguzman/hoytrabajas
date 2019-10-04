@@ -1,25 +1,19 @@
 /**
  * App Header
  */
-import React, { useEffect } from 'react'
+import React from 'react'
 import MatButton from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import Typography from '@material-ui/core/Typography'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import Tooltip from '@material-ui/core/Tooltip'
 import Menu from '@material-ui/icons/Menu'
 import Visibility from '@material-ui/icons/Visibility'
 import MailOutline from '@material-ui/icons/MailOutline'
 import Lock from '@material-ui/icons/Lock'
 import Fab from '@material-ui/core/Fab'
-// import { useAuth0 } from '../../../auth/authContext'
-// import { useRouter } from 'next/router'
-// import Link from '../../components/Layout/Link'
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import { Row, Col, Form, FormGroup, Label, Input } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Row, Col } from 'reactstrap'
-
 import Dialog from '@material-ui/core/Dialog'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
@@ -48,10 +42,6 @@ const Header = ({ scrollState, csrf_param, csrf_token }) => {
   }
 
   const { value: state, toggleState } = dialogState({ open: false })
-
-  // useEffect(() => {
-  //   if (!isAuthenticated) prefetch('/callback')
-  // }, [isAuthenticated])
 
   return (
     <AppBar

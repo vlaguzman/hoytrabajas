@@ -127,7 +127,7 @@ export default {
             ]
           },
           {
-            kind: 'stInput',
+            kind: 'standard_input',
             containerStyle: {
               flex: 1
             },
@@ -149,7 +149,7 @@ export default {
             }
           },
           {
-            kind: 'stInput',
+            kind: 'standard_input',
             containerStyle: {
               flex: 1
             },

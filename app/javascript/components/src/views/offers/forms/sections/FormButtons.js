@@ -3,7 +3,8 @@ import Button from '@material-ui/core/Button'
 import { Row } from 'reactstrap'
 
 const FormButtons = props => {
-  const { scrollAction, next, prev, formSection } = props
+  const { scrollAction, next, prev, buttons, formSection } = props
+  const { prev: prevText = null, next: nextText = null, submit: submitText = null } = buttons
   const isChoiceForm = formSection.toLowerCase() === 'has_experience'
 
   const nextPage = () => {
@@ -38,13 +39,13 @@ const FormButtons = props => {
               next ? 'primary' : 'white'
             } fw-bold mt-10 col-6 col-md-4`}
           >
-            {next ? 'siguiente' : 'publicar'}
+            {submitText}
           </Button>
         )}
       </div>
     </div>
       <div className="w-100 d-flex justify-content-between">
-        {prev !== null && (
+        {prev && prevText && (
           <Button
             onClick={prevPage}
             size="small"
@@ -52,17 +53,17 @@ const FormButtons = props => {
             className="position-absolute text-wrap text-muted fw-bold mt-0 mx-5 w-20 animated fadeIn"
           >
             <i className="ti-arrow-circle-left mx-10" />
-            <small className="fw-bold text-muted">REGRESAR</small>
+            <small className="fw-bold text-muted">${prevText}</small>
           </Button>
         )}
-        {prev !== null && next && next !== 'step_two' && !isChoiceForm && (
+        {prev && next && nextText && !isChoiceForm && (
           <Button
             onClick={nextPage}
             size="small"
             style={{bottom: '0', right: '0'}}
             className="position-absolute text-wrap text-muted fw-bold mx-5 mt-0 w-20 animated fadeIn"
           >
-            <small className="fw-bold text-muted mx-10">SALTAR</small>
+            <small className="fw-bold text-muted mx-10">${nextText}</small>
             <i className="ti-arrow-circle-right" />
           </Button>
         )}

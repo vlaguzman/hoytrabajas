@@ -7,61 +7,41 @@ export default {
   formSection: 'basic_info',
   formObj: [
     {
-      kind: 'stInput',
+      kind: 'standard_input',
+      name: 'name',
       className: 'my-30 animated fadeIn',
       xs: 12,
       lg: 6,
-      pro: {
-        className: 'my-0',
-        name: 'name',
-        id: 'name',
-        label: 'Nombre empresa o Razón social'
-      },
       extra: {
         isAlphanumeric: true
       }
     },
     {
-      kind: 'stInput',
+      kind: 'standard_input',
+      name: 'industry',
       className: 'my-30 animated fadeIn',
       xs: 12,
       lg: 6,
-      pro: {
-        className: 'my-0',
-        name: 'sector',
-        id: 'sector',
-        label: 'Sector al que pertenece tu empresa'
-      },
       extra: {
         isLetters: true
       }
     },
     {
-      kind: 'stInput',
+      kind: 'standard_input',
+      name: 'contact_name',
       className: 'my-30 animated fadeIn',
       xs: 12,
       lg: 6,
-      pro: {
-        className: 'my-0',
-        name: 'contact_person',
-        id: 'contact_person',
-        label: 'Persona de contacto'
-      },
       extra: {
         isLetters: true
       }
     },
     {
-      kind: 'stInput',
+      kind: 'standard_input',
+      name: 'contact_work_position',
       className: 'my-30 animated fadeIn',
       xs: 12,
       lg: 6,
-      pro: {
-        className: 'my-0',
-        name: 'role',
-        id: 'role',
-        label: 'Cargo'
-      },
       extra: {
         isLetters: true
       }
@@ -86,16 +66,11 @@ export default {
       ]
     },
     {
-      kind: 'stInput',
+      kind: 'standard_input',
+      name: 'contact_cellphone',
       className: 'my-30 pl-2 animated fadeIn',
       xs: 8,
       lg: 4,
-      pro: {
-        className: 'my-0',
-        name: 'phone',
-        id: 'phone',
-        label: 'Número de contacto'
-      },
       extra: {
         isNumeric: true
       }

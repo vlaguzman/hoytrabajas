@@ -17,7 +17,7 @@ export default {
         name: 'multiFormWrapper',
         fields: [
           {
-            kind: 'stInput',
+            kind: 'standard_input',
             className: 'position-relative my-30 mt-60 animated fadeIn',
             pro: {
               className: '',
@@ -36,7 +36,7 @@ export default {
             }
           },
           {
-            kind: 'stInput',
+            kind: 'standard_input',
             className: 'position-relative my-30 animated fadeIn',
             pro: {
               className: '',

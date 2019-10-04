@@ -51,7 +51,7 @@ export default {
             ]
           },
           {
-            kind: 'stInput',
+            kind: 'standard_input',
             className: 'my-30 animated fadeIn',
             pro: {
               className: 'm-0',

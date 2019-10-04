@@ -139,7 +139,7 @@ const DetallePage = ({offer}) => {
             <Col xs={3} ><FontAwesomeIcon className='ml-auto text-primary' icon={['fas', 'map-marker-alt']} size="sm" /></Col>
         </Row>
         <Row className='justify-content-between'>
-            <Col xs={9} ><Typography variant='body1' className='' >{offer.company.employess_range.description} empleados</Typography></Col>
+            <Col xs={9} ><Typography variant='body1' className='' >{offer.company.employees_range.description} empleados</Typography></Col>
             <Col xs={3} ><FontAwesomeIcon className='ml-auto text-primary' icon={['fas', 'users']} size="sm" /></Col>
         </Row>
         <Row className='justify-content-between'>

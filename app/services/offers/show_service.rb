@@ -5,23 +5,21 @@ class Offers::ShowService < ApplicationPresenter
   end
 
   def details
-    offer.attributes.deep_symbolize_keys.tap do |whitelist|
-      whitelist.merge!(close_date: DatesConverter.default(date: offer.close_date) )
-      whitelist.merge!(sex: sex_description )
-      whitelist.merge!(age_range: age_range_details)
-      whitelist.merge!(city: city_description)
-      whitelist.merge!(languages: laguages_list)
-      whitelist.merge!(offer_type: offer_type_description)
-      whitelist.merge!(work_mode: work_mode_description)
-      whitelist.merge!(contract_type: contract_type_description)
-      whitelist.merge!(salary: salary_details)
-      whitelist.merge!(available_work_days: available_work_days_list)
-      whitelist.merge!(working_days: working_days_list)
-      whitelist.merge!(job_aids: job_aids_list)
-      whitelist.merge!(company: company_details)
-
-      whitelist.except!(*unused_keys)
-    end
+    offer.attributes.deep_symbolize_keys
+      .merge!(close_date: DatesConverter.default(date: offer.close_date) )
+      .merge!(sex: sex_description )
+      .merge!(age_range: age_range_details)
+      .merge!(city: city_description)
+      .merge!(languages: laguages_list)
+      .merge!(offer_type: offer_type_description)
+      .merge!(work_mode: work_mode_description)
+      .merge!(contract_type: contract_type_description)
+      .merge!(salary: salary_details)
+      .merge!(available_work_days: available_work_days_list)
+      .merge!(working_days: working_days_list)
+      .merge!(job_aids: job_aids_list)
+      .merge!(company: company_details)
+      .tap { |whitelist| whitelist.except!(*unused_keys) }
   end
 
   def offer
@@ -30,6 +28,10 @@ class Offers::ShowService < ApplicationPresenter
 
   def id
     @offer.id
+  end
+
+  def company
+    offer.company
   end
 
   private
@@ -43,13 +45,14 @@ class Offers::ShowService < ApplicationPresenter
     { description: offer.sex.description}
   end
 
+  def age_range
+    AgeRange.find_by(offer_id: id)
+  end
+
   def age_range_details
-    range = AgeRange.find_by(offer_id: id)
-    if range.nil?
-      { from: nil, to: nil }
-    else
-      range.attributes.deep_symbolize_keys.slice(:from, :to)
-    end
+    age_range.attributes.deep_symbolize_keys.slice(:from, :to)
+
+    { from: nil, to: nil }if age_range.nil?
   end
 
   def city_description
@@ -72,15 +75,21 @@ class Offers::ShowService < ApplicationPresenter
     { description: offer.contract_type.description }
   end
 
+  def salary
+    OffersSalaries.find_by(offer_id: id)
+  end
+
   def salary_details
-    salary = OffersSalaries.find_by(offer_id: id)
     if not salary.nil?
-      {
-        from: number_to_currency(salary.from, precision: 0),
-        to: number_to_currency(salary.to, precision: 0),
-        currency: { description: salary.currency.description },
-        salary_period: { description: salary.salary_period.description }
-      }
+      currency = { currency: { description: salary.currency.description } }
+      period = { salary_period: { description: salary.salary_period.description } }
+
+      salary.attributes.deep_symbolize_keys.slice(:from, :to).tap do |field|
+        field.merge!(from: number_to_currency(field[:from], precision: 0))
+        field.merge!(to: number_to_currency(field[:to], precision: 0))
+        field.merge!(currency)
+        field.merge!(period)
+      end
     else
       {
         currency:{ description: nil },
@@ -104,13 +113,11 @@ class Offers::ShowService < ApplicationPresenter
   end
 
   def company_details
-    company = offer.company
-    {
-      name: company.name,
-      description: company.description,
-      employess_range: { description: company.employees_range.description },
-      web_site: company.web_site
-    }
+    company
+      .attributes
+      .deep_symbolize_keys
+      .slice(:name, :description, :web_site, :employees_range)
+      .tap { |field| field.merge!(employees_range: {description: company.employees_range.description}) }
   end
 
 end

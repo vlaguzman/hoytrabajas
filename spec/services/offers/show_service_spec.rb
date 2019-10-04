@@ -104,7 +104,7 @@ RSpec.describe Offers::ShowService do
         company:{
           name: "Verdelógico S.A.S",
           description: "Sector de comunicaciones",
-          employess_range: {
+          employees_range: {
             description: "20 a 80"
           },
           web_site: "www.verdelógico.com"

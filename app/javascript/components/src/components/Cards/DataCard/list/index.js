@@ -37,9 +37,9 @@ const MaterialList = ({ internalList, arreglo = [] }) => {
       ))
   }
   return (
-    <Fragment>
+    <>
       <List>{type[internalList](arreglo)}</List>
-    </Fragment>
+    </>
   )
 }
 export default MaterialList

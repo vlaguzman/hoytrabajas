@@ -40,11 +40,10 @@ const EditForm = props => {
       myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }, 50)
   }
-  
 
   return (
     <Row className="mb-25 mx-0 px-20">
-      <Col xs={12} className='px-0'>
+      <Col xs={12} className="px-0">
         <Card className="p-25">
           <CardHeader
             action={chipContent && <OpenOffer {...{ chipContent }} />}
@@ -55,7 +54,7 @@ const EditForm = props => {
               </Typography>
             }
           />
-          <CardContent className='px-0'>
+          <CardContent className="px-0">
             <FormProvider formName={formName} singleForm={form}>
               <FormBody scrollAction={scrollTop} />
             </FormProvider>

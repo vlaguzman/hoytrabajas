@@ -105,7 +105,7 @@ const theme = createMuiTheme({
       }
     },
     MuiDialog: {
-      paperWidthXs:{
+      paperWidthXs: {
         maxWidth: '400px'
       }
     }

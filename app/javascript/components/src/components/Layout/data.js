@@ -6,9 +6,9 @@ export const fields1 = [
   {
     type: 'select',
     label: 'Ciudad',
-    name: 'city', 
-      xs: 2,
-      lg: 2,
+    name: 'city',
+    xs: 2,
+    lg: 2,
     aux: [
       { label: 'text', value: 'test' },
       { label: 'text', value: 'test' },
@@ -19,8 +19,8 @@ export const fields1 = [
     type: 'select',
     label: 'Tiempo',
     name: 'time',
-      xs: 2,
-      lg: 2,
+    xs: 2,
+    lg: 2,
     aux: [
       { label: 'text', value: 'test' },
       { label: 'text', value: 'test' },
@@ -31,8 +31,8 @@ export const fields1 = [
     type: 'select',
     label: 'Rango Salarial',
     name: 'pay',
-      xs: 2 ,
-      lg: 2,
+    xs: 2,
+    lg: 2,
     aux: [
       { label: 'text', value: 'test' },
       { label: 'text', value: 'test' },

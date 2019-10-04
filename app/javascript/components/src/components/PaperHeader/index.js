@@ -8,7 +8,7 @@ import CheckCircle from '@material-ui/icons/CheckCircle'
 
 const PaperHeader = ({ titulo }) => {
   return (
-    <Fragment>
+    <>
       <Row className="w-100 justify-content-between" noGutters>
         <IconButton aria-label="Settings">
           <FavoriteBorder />
@@ -18,7 +18,7 @@ const PaperHeader = ({ titulo }) => {
           label="Completado"
           clickable
           color="primary"
-          style={{padding: '.2%'}}
+          style={{ padding: '.2%' }}
           onDelete={() => alert('delete icon')}
           deleteIcon={<CheckCircle className="text-white" />}
         />
@@ -28,7 +28,7 @@ const PaperHeader = ({ titulo }) => {
           {titulo}
         </Typography>
       </Row>
-    </Fragment>
+    </>
   )
 }
 

@@ -21,7 +21,8 @@ const ExperienceCard = ({ content, formSection, style }) => {
     stillInProgress
   } = content
 
-  let startDate, endDate
+  let startDate
+  let endDate
 
   if (startedAt && startedAt.constructor === Date)
     startDate = format(startedAt, 'MMMM yyyy')
@@ -44,14 +45,14 @@ const ExperienceCard = ({ content, formSection, style }) => {
             {stillInProgress ? 'Actualidad' : endDate && endDate}
           </Typography>
           {responsabilities && responsabilities.length >= 1 && (
-            <Fragment>
+            <>
               <Typography variant="caption" component="p">
                 Responsabilidades
               </Typography>
               {responsabilities.map(item => (
                 <Chip label={item} key={item} />
               ))}
-            </Fragment>
+            </>
           )}
         </CardContent>
         {jobCategory && (

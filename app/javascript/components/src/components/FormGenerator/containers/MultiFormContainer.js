@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { Col } from 'reactstrap'
 import { updateFieldArray, pushFieldArray } from '../../../actions'
 import { makeGetMultiFormID } from '../../../selectors/forms'
-import MultiFormWrapper from '../../../components/FormGenerator/wrappers/MultiFormWrapper'
+import MultiFormWrapper from '../wrappers/MultiFormWrapper'
 
 const MultiFormContainer = props => {
   const {

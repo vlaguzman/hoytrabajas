@@ -3,7 +3,7 @@ import Typography from '@material-ui/core/Typography'
 
 const DragNDrop = () => {
   return (
-    <Fragment>
+    <>
       <div
         className="w-100 p-20 d-flex justify-content-center"
         style={{ border: '1px dashed #EBEDF2' }}
@@ -20,7 +20,7 @@ const DragNDrop = () => {
           </Typography>
         </div>
       </div>
-    </Fragment>
+    </>
   )
 }
 

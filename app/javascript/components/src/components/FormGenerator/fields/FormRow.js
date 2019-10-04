@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
-import { makeGetFormRow } from '../../../selectors/forms'
 import { Row, Col } from 'reactstrap'
 import Fab from '@material-ui/core/Fab'
 import AddIcon from '@material-ui/icons/Add'
@@ -11,6 +10,7 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 import Chip from '@material-ui/core/Chip'
 import Select from '@material-ui/core/Select'
 import Input from '@material-ui/core/Input'
+import { makeGetFormRow } from '../../../selectors/forms'
 import DownshiftMultiple from './TextChip'
 
 const FormRow = props => {

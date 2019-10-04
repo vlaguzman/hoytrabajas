@@ -5,7 +5,7 @@ import { Row } from 'reactstrap'
 
 const ChipsList = ({ ChipsTitle, Chips }) => {
   return (
-    <Fragment>
+    <>
       {ChipsTitle && (
         <Typography
           variant="body2"
@@ -26,7 +26,7 @@ const ChipsList = ({ ChipsTitle, Chips }) => {
           />
         ))}
       </Row>
-    </Fragment>
+    </>
   )
 }
 export default ChipsList

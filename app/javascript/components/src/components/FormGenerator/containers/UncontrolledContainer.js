@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import useWhyDidYouUpdate from '../../../hooks/useWhyDidYouUpdate'
-import fieldOptions from '../../../components/FormGenerator/fields/fieldOptions'
+import fieldOptions from '../fields/fieldOptions'
 
 const UncontrolledContainer = props => {
   const {

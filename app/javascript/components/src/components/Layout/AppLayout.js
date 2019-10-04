@@ -13,9 +13,9 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { fas, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { es, enUS as en } from 'date-fns/locale'
 
-import Header from '../../components/Layout/Header'
-import Footer from '../../components/Layout/Footer'
-import theme from '../../components/Layout/Theme/theme'
+import Header from './Header'
+import Footer from './Footer'
+import theme from './Theme/theme'
 
 library.add(fab, fas, faSearch)
 
@@ -33,10 +33,7 @@ const AppLayout = ({ children, csrf_param, csrf_token }) => {
     myRef.current.scrollToBottom()
   }
   return (
-    <MuiPickersUtilsProvider
-      utils={DateFnsUtils}
-      locale={localeMap[locale]}
-    >
+    <MuiPickersUtilsProvider utils={DateFnsUtils} locale={localeMap[locale]}>
       <StylesProvider injectFirst>
         <MuiThemeProvider theme={theme}>
           <ThemeProvider theme={theme}>
@@ -56,12 +53,16 @@ const AppLayout = ({ children, csrf_param, csrf_token }) => {
                           ref={myRef}
                         >
                           <div className="app-header">
-                            <Header scrollState={isTop} csrf_param={csrf_param} csrf_token={csrf_token} />
+                            <Header
+                              scrollState={isTop}
+                              csrf_param={csrf_param}
+                              csrf_token={csrf_token}
+                            />
                           </div>
                           <div className="rct-page-content">
                             <CssBaseline />
                             {children}
-                            <Footer {...{scrollToBottom} }/>
+                            <Footer {...{ scrollToBottom }} />
                           </div>
                         </Scrollbars>
                       </div>

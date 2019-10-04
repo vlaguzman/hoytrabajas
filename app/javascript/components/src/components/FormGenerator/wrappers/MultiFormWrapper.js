@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { useDebouncedCallback } from 'use-debounce'
 import { updateFieldArray } from '../../../actions'
 import { makeGetMultiFormField } from '../../../selectors/forms'
-import fieldOptions from '../../../components/FormGenerator/fields/fieldOptions'
+import fieldOptions from '../fields/fieldOptions'
 
 const MultiFormWrapper = props => {
   const {

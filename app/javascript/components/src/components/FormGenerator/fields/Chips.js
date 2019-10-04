@@ -26,7 +26,7 @@ const Chips = props => {
 
   if (allForms.constructor === Array) {
     return (
-      <Fragment>
+      <>
         {allForms.map((item, idx) => {
           const { id = null } = item
           if (idx === allForms.length - 1) return null
@@ -52,7 +52,7 @@ const Chips = props => {
             handleClose
           }}
         />
-      </Fragment>
+      </>
     )
   }
   return null

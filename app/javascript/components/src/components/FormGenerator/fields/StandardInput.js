@@ -21,7 +21,7 @@ const StandardInput = props => {
       (inputValue[name] || inputValue[name] === '') && (
         <FormHelperText
           error={shouldDisplayError}
-          className="stInput__charCount"
+          className="standard_input__charCount"
         >
           {extra.maxLength - inputValue[name].length}
         </FormHelperText>

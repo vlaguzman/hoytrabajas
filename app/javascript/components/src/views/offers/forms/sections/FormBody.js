@@ -4,8 +4,9 @@ import FormTitle from './FormTitle'
 import FormButtons from './FormButtons'
 
 const FormBody = props => {
-  const { scrollAction, formContent, formName } = props
-  const { title, subtitle, formObj, formSection, next, prev } = formContent
+  const { scrollAction, formContent, formInfo } = props
+  const { formObj, formSection, next, prev } = formContent
+  const { title, subtitle, form: { buttons, action, method, type, fields } } = formInfo
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -17,13 +18,14 @@ const FormBody = props => {
       <div className="w-80">
         <form
           className="forms__candidate"
-          method="POST"
+          action={action}
+          method={method}
           onSubmit={handleSubmit}
         >
           <FormGenerator
-            {...{ scrollAction, formObj, formName, formSection }}
+            {...{ scrollAction, formObj, formSection, fields, formName: type }}
           />
-          <FormButtons {...{ scrollAction, next, prev, formSection }} />
+          <FormButtons {...{ scrollAction, next, prev, submit, formSection }} />
         </form>
       </div>
     </Fragment>

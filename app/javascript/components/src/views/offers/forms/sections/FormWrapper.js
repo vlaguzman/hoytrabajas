@@ -5,7 +5,7 @@ import {Row, Col} from 'reactstrap'
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
 
-const FormWrapper = ({ formContent }) => {
+const FormWrapper = ({ formContent, formInfo }) => {
   const myRef = React.createRef()
 
   const scrollTop = () => {
@@ -26,7 +26,7 @@ const FormWrapper = ({ formContent }) => {
       </Row>
       <Row className="mt-10 mb-70 justify-content-center w-100 pb-50 mx-0 px-20">
         <Paper className="d-flex flex-column position-relative paper-width justify-content-around align-items-center pt-60 mb-70">
-          <FormBody scrollAction={scrollTop} formName="offers" formContent={formContent} />
+          <FormBody scrollAction={scrollTop} formName="offers" formContent={formContent} formInfo={formInfo} />
         </Paper>
       </Row>
     </div>

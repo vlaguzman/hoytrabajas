@@ -8,6 +8,7 @@ const FormGenerator = props => {
     scrollAction,
     formName,
     formSection,
+    fields,
     formObj
   } = props
   return (
@@ -18,16 +19,18 @@ const FormGenerator = props => {
           formObj,
           formSection,
           formName,
+          fields,
           scrollAction
         }}
       />
     )}
-    {formName === 'offers' && (
+    {formName === 'company' || formName === 'offers' && (
       <OffersController
         {...{
           formObj,
           formSection,
           formName,
+          fields,
           scrollAction
         }}
       />

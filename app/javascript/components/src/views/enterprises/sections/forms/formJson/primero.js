@@ -5,7 +5,7 @@ export default {
   formSection: 'basic_info',
   formObj: [
     {
-      kind: 'stInput',
+      kind: 'standard_input',
       className: 'my-30 animated fadeIn',
       xs: 12,
       lg: 6,
@@ -17,7 +17,7 @@ export default {
       }
     },
     {
-      kind: 'stInput',
+      kind: 'standard_input',
       className: 'my-30 animated fadeIn',
       xs: 12,
       lg: 6,
@@ -29,7 +29,7 @@ export default {
       }
     },
     {
-      kind: 'stInput',
+      kind: 'standard_input',
       className: 'my-30 animated fadeIn',
       xs: 12,
       lg: 6,
@@ -72,7 +72,7 @@ export default {
       ]
     },
     {
-      kind: 'stInput',
+      kind: 'standard_input',
       className: 'my-30 animated fadeIn',
       xs: 12,
       lg: 6,
@@ -84,7 +84,7 @@ export default {
       }
     },
     {
-      kind: 'stInput',
+      kind: 'standard_input',
       className: 'my-30 animated fadeIn',
       xs: 12,
       lg: 6,
@@ -96,7 +96,7 @@ export default {
       }
     },
     {
-      kind: 'stInput',
+      kind: 'standard_input',
       className: 'my-30 animated fadeIn',
       xs: 12,
       pro: {

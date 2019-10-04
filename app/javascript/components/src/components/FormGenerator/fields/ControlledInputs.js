@@ -13,7 +13,7 @@ import { useValidation } from '../../../hooks/formValidation'
 import Select from './Select'
 
 const ownFieldOptions = {
-  stInput: ({ inputValue, pro, name, handleChange, errors = null }) => (
+  standard_input: ({ inputValue, pro, name, handleChange, errors = null }) => (
     <Col key={name} className={pro.className} style={{ flex: 1 }}>
       <FormControl error={!!errors}>
         <TextField

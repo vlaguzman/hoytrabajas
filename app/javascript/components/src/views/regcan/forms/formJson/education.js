@@ -17,7 +17,7 @@ export default {
         name: 'multiFormWrapper',
         fields: [
           {
-            kind: 'stInput',
+            kind: 'standard_input',
             // title: 'Agrega completa para contar con mas oportunidades en la selección',
             className: 'position-relative my-30 mt-60 animated fadeIn',
             pro: {
@@ -37,7 +37,7 @@ export default {
             }
           },
           {
-            kind: 'stInput',
+            kind: 'standard_input',
             className: 'position-relative my-30 animated fadeIn',
             pro: {
               className: '',

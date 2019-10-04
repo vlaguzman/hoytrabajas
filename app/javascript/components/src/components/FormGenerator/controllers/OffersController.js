@@ -23,9 +23,10 @@ const OffersController = ({
   formObj,
   formSection,
   formName,
+  fields,
   scrollAction
 }) =>
-  formObj.map(item => {
+  fields.map(item => {
     const {
       kind,
       pro,

@@ -15,6 +15,29 @@ RSpec.describe Offer, type: :model do
     it { should validate_presence_of(:release_date) }
     it { should validate_presence_of(:status) }
     it { should respond_to(:image) }
+
+    it { should respond_to(:company_description) }
+    it { should respond_to(:company_name) }
+    it { should respond_to(:company_web_site) }
+    it { should respond_to(:company_employees_range_description) }
+
+    it { should respond_to(:salary_from) }
+    it { should respond_to(:salary_to) }
+    it { should respond_to(:salary_currency_description) }
+    it { should respond_to(:salary_period_description) }
+
+    it { should respond_to(:age_range_from) }
+    it { should respond_to(:age_range_to) }
+
+    it { should respond_to(:sex_description) }
+    it { should respond_to(:city_description) }
+    it { should respond_to(:offer_type_description) }
+    it { should respond_to(:work_mode_description) }
+    it { should respond_to(:contract_type_description) }
+    it { should respond_to(:available_work_days_description) }
+    it { should respond_to(:working_days_description) }
+
+    it { should respond_to(:languages_list) }
   end
 
   context "attachments" do
@@ -34,6 +57,7 @@ RSpec.describe Offer, type: :model do
     it { should belong_to(:work_mode) }
     it { should belong_to(:job_category) }
     it { should belong_to(:contract_type) }
+    it { should have_one(:offers_salaries) }
     it { should have_and_belong_to_many(:terms) }
     it { should have_and_belong_to_many(:functions) }
     it { should have_and_belong_to_many(:job_aids) }
@@ -48,9 +72,8 @@ RSpec.describe Offer, type: :model do
     it { should have_and_belong_to_many(:responsibilities) }
     it { should have_and_belong_to_many(:educational_level) }
   end
-  
-  describe "#active" do
 
+  describe "#active" do
     context "there are just one active_offer" do
       let!(:offer) { create(:offer) }
       it "should return one offer" do
@@ -64,7 +87,7 @@ RSpec.describe Offer, type: :model do
         expect(Offer.active.count).to eq(0)
       end
     end
-    
+
     context "there are active and expired offers" do
       let!(:offers) { [create(:offer, title: 'active_offer'), create(:offer, :expired_offer)] }
       it "should return just the active_offer" do

@@ -5,17 +5,23 @@ class Users::Wizards::StepEightsController < ApplicationController
   end
 
   def update
-    user = Users::Wizards::StepEightService.(candidate: current_user, update_params: step_eight_params)
+    user = step_service.()
 
-    if user.errors.details.any? || add_other_experience.any?
+    if user.errors.details.present? || add_other_experience.any?
       user_presenter(user: user)
-      render 'show'
+      render :show
     else
       redirect_to users_wizards_step_nine_path
     end
+
+
   end
 
   private
+
+  def step_service
+    -> (user: current_user) { Users::Wizards::StepEightService.(candidate: user, update_params: step_eight_params) }
+  end
 
   def user_presenter(user: current_user)
     @user = Users::Wizards::StepEightPresenter.new(user)

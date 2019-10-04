@@ -16,6 +16,8 @@ RSpec.describe Company, type: :model do
     it { should respond_to(:description) }
     it { should respond_to(:contact_work_position) }
     it { should respond_to(:logo) }
+
+    it { should respond_to(:employees_range_description) }
   end
 
   context "attachments" do

@@ -1,10 +1,6 @@
 FactoryBot.define do
   factory :offer do
 
-    after :create do |offer|
-      create :age_range, offer: offer
-    end
-
     title                         { "Ruby on Rails developer with 10 years of experience" }
     address                       { Faker::Address.full_address }
     cellphone                     { Faker::PhoneNumber.cell_phone }

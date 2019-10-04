@@ -1,7 +1,7 @@
 rspec_options = {
   cmd: "bundle exec rspec",
   run_all: {
-    cmd: "bundle exec rspec"
+    cmd: "bundle exec rspec --fail-fast"
   }
 }
 

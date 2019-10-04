@@ -2,7 +2,11 @@ class Offer < ApplicationRecord
   validates_presence_of :title, :address, :cellphone, :description, :vacancies_quantity,
                         :close_date, :immediate_start, :required_experience,
                         :description_responsibilities, :release_date, :status
+
   scope :active, -> { where(status: 'active') }
+
+  has_one :offers_salaries
+  has_one :age_range
 
   belongs_to :company
   belongs_to :city
@@ -31,4 +35,19 @@ class Offer < ApplicationRecord
 
   has_one_attached :image
 
+  #delegates
+  delegate :description, :name, :web_site, :employees_range_description, to: :company, prefix: :company, allow_nil: true
+  delegate :from, :to, :currency_description, :period_description, to: :offers_salaries, prefix: :salary, allow_nil: true
+  delegate :from, :to, to: :age_range, prefix: :age_range, allow_nil: true
+  delegate :description, to: :sex, prefix: :sex, allow_nil: true
+  delegate :description, to: :city, prefix: :city, allow_nil: true
+  delegate :description, to: :offer_type, prefix: :offer_type, allow_nil: true
+  delegate :description, to: :work_mode, prefix: :work_mode, allow_nil: true
+  delegate :description, to: :contract_type, prefix: :contract_type, allow_nil: true
+  delegate :description, to: :available_work_days, prefix: :available_work_days, allow_nil: true
+  delegate :description, to: :working_days, prefix: :working_days, allow_nil: true
+
+  def languages_list
+    LanguagesOffers.where(offer_id: self.id)
+  end
 end

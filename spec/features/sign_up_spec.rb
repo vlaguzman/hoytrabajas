@@ -24,8 +24,11 @@ RSpec.describe "sign up user", type: :feature do
           fill_in 'user[email]', :with => "candidate@gmail.com"
           fill_in 'user[password]', :with => "1wantt$finda7ob"
           fill_in 'user[password_confirmation]', :with => "1wantt$finda7ob"
-          #check 'Candidato'
+
           click_on 'Registrarme'
+
+          expect(User.count).to eq(1)
+          expect(page).to have_text(/Quiero públicar mi oferta/)
 
           expect(current_path).to eq(users_wizards_step_zero_path)
 
@@ -41,12 +44,12 @@ RSpec.describe "sign up user", type: :feature do
         fill_in "company[password]", :with => "iwanttofindaemployee"
         fill_in 'company[password_confirmation]', :with => "iwanttofindaemployee"
 
-        select('Compañia', {from: 'company[user_role]'})
-
         click_button 'Registrarme'
 
         expect(Company.count).to eq(1)
-        expect(page).to have_text(/Quiero publicar mi oferta/)
+
+        expect(page).to have_text(/Quiero públicar mi oferta/)
+
       end
     end
 

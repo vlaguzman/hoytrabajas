@@ -18,13 +18,6 @@
     = f.label :password_confirmation
     %br/
     = f.password_field :password_confirmation
-  .field
-    = f.label "Deseas registrarte como"
-    %br/
-    = radio_button_tag("role", "user")
-    = label_tag(:role_user, "Candidato")
-    = radio_button_tag("role", "company")
-    = label_tag(:role_company, "Compañia")
   .actions
     = f.submit "Registrarme"
 

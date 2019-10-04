@@ -3,7 +3,6 @@ import { Row, Col } from 'reactstrap'
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
-import Link from '../../../components/Layout/Link'
 
 const Cortinilla = ({
   title: { line1, line2 },
@@ -37,7 +36,7 @@ const Cortinilla = ({
             </Typography>
           </Row>
           <Row className="my-20 align-items-center justify-content-center">
-            <Link href={redirectTo}>
+            <a href={redirectTo}>
               <Button
                 // onClick={() => push(redirectTo)}
                 type="button"
@@ -54,16 +53,16 @@ const Cortinilla = ({
                   {buttonText}
                 </Typography>
               </Button>
-            </Link>
+            </a>
             {enlace && (
               <div className="my-25">
-                <Link
+                <a
                   className="text-muted"
                   style={{ textDecoration: 'underline' }}
                   href="/"
                 >
                   {enlace}
-                </Link>
+                </a>
               </div>
             )}
           </Row>

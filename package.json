@@ -11,6 +11,7 @@
     "@material-ui/icons": "^4.2.1",
     "@material-ui/lab": "^4.0.0-alpha.25",
     "@material-ui/pickers": "^3.2.5",
+    "@material-ui/styles": "^4.5.0",
     "@rails/webpacker": "^4.0.7",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
@@ -51,6 +52,7 @@
     "ts-loader": "^6.0.4",
     "typescript": "^3.6.2",
     "use-debounce": "^3.0.0",
+    "uuid": "^3.3.3",
     "validator": "^11.1.0",
     "yarn": "^1.17.3"
   },

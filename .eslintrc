@@ -13,6 +13,7 @@
     "import/newline-after-import": "error",
     "import/imports-first": ["error", "absolute-first"],
     "prettier/prettier": "error",
+    "react/state-in-constructor": 0,
     "react/react-in-jsx-scope": "off",
     "react/jsx-props-no-spreading": 0,
     "react/no-deprecated": 0,
@@ -28,6 +29,7 @@
   "globals": {
     "window": true,
     "document": true,
+    "alert": true,
     "localStorage": true
   }
 }

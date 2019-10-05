@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   end
 
 
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_for :users, controllers: { registrations: 'users/registrations', :omniauth_callbacks => "users/omniauth_callbacks" }
   devise_for :companies,  controllers: { registrations: 'companies/registrations' }
 
   resources :users, only: [:edit, :update, :show]

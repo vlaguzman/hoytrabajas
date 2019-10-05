@@ -1,25 +1,30 @@
-= react_component('src/components/Layout/Header', {}, prerender:true)
-
-%h2 Regístrate ahora
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation
-  .actions
-    = f.submit "Registrarme"
-
-= react_component('src/components/Layout/Footer/Footer', {}, prerender:true)
+%div.d-flex.justify-content-center
+  %h1 Regístrate ahora
+%div.d-flex.justify-content-center
+  %br/
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    %div.mb-2.mr-sm-2.mb-sm-0.position-relative.form-group
+    .field
+      = f.email_field :email, class: "pl-40 py-10 form-control", autofocus: true, autocomplete: "email", placeholder: "Correo Electronico"
+      %svg{class: "MuiSvgIcon-root position-absolute", focusable: "false", viewBox: "0 0 24 24", 'aria-hidden' => "true", role: "presentation", 'style' => "color: lightgrey; top: 075rem; left: 0.5rem;"}
+        %path{d: "M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"}
+    %div.mb-2.mr-sm-2.mb-sm-0.position-relative.form-group
+    .field
+      - if @minimum_password_length
+        %em
+      = f.password_field :password, class: "pl-40 py-10 form-control", autocomplete: "new-password", placeholder: "Contraseña"
+      %svg{class: "MuiSvgIcon-root position-absolute", focusable: "false", viewBox: "0 0 24 24", 'aria-hidden' => "true", role: "presentation", style: "color: rgb(0, 206, 213); top: 0.75rem; right: 1rem;"}
+        %path{d: "M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"}
+    .field
+      = f.password_field :password_confirmation, class: "pl-40 py-10 form-control",  placeholder: "Confirma tú Contraseña"
+      %svg{class: "MuiSvgIcon-root position-absolute", focusable: "false", viewBox: "0 0 24 24", 'aria-hidden' => "true", role: "presentation", style: "color: rgb(0, 206, 213); top: 0.75rem; right: 1rem;"}
+        %path{d: "M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"}
+    %div.justify-content-center.my-25.no-gutters.row
+      %div.col-12
+        .actions
+          = f.button class: "MuiButtonBase-root MuiButton-root text-white MuiButton-contained MuiButton-containedPrimary", tabindex: "0", type: "submit" do
+            %span{class: "MuiButton-label"}
+              Registrarme
+            %span{class: "MuiTouchRipple-root"}
 //= render "devise/resource/link"

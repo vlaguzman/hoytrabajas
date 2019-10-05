@@ -13,10 +13,10 @@ RSpec.describe "users/wizards/step_ones/show" do
     expect(rendered).to render_template(partial: 'shared/_form_errors')
 
     expect(rendered).to have_tag(:form, with: { id: "step_one" }) do
-      with_tag(:input, with: { name: "user[name]", type: "text" })
-      with_tag(:input, with: { name: "user[last_name]", type: "text" })
-      with_select("user[nationality_ids][]")
-      with_select("user[document_type_id]")
+      with_tag(:input, with: { name: "candidate[name]", type: "text" })
+      with_tag(:input, with: { name: "candidate[last_name]", type: "text" })
+      with_select("candidate[nationality_ids][]")
+      with_select("candidate[document_type_id]")
       with_submit("siguiente")
     end
   end

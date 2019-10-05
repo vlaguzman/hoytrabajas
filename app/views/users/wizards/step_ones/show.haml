@@ -1,6 +1,6 @@
 %h1 Empecemos por conocernos
 
-= form_for(:user, url: users_wizards_step_one_path, method: :put, html: { id: :step_one } ) do |field|
+= form_for(:candidate, url: users_wizards_step_one_path, method: :put, html: { id: :step_one } ) do |field|
   = render 'shared/form_errors', source: @user
 
   = field.label :name, "Nombre"

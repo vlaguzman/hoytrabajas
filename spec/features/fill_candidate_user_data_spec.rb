@@ -41,21 +41,21 @@ RSpec.describe "fill the principal candidate user data", :type => :feature do
       # a new user who has never been loged-in, i.e. sign_in_count is zero
       expect(candidate.sign_in_count).to be_zero
 
-      expect(page).to have_text(/El trabajo ideal/)
-      expect(page).to have_text(/si existe!/)
+      expect(page).to have_text(/¡Perfecto!/)
+      expect(page).to have_text(/Has creado un perfil ganador/)
 
 
-      click_on "Quiero publicar mi oferta"
+      click_on "Completar mi perfil"
 
       expect(page).to have_text("Empecemos por conocernos")
 
       within '#step_one' do
-        fill_in 'user[name]', with: 'Carlos'
-        fill_in 'user[last_name]', with: 'Rojas'
-        select 'Colombiana', from: 'user[nationality_ids][]'
-        select 'Cedula de Ciudadania', from: 'user[document_type_id]'
-        fill_in "user[identification_number]", :with => "1063558224"
-        fill_in "user[contact_number]", :with => "3183638789"
+        fill_in 'candidate[name]', with: 'Carlos'
+        fill_in 'candidate[last_name]', with: 'Rojas'
+        select 'Colombiana', from: 'candidate[nationality_ids][]'
+        select 'Cedula de Ciudadania', from: 'candidate[document_type_id]'
+        fill_in "candidate[identification_number]", :with => "1063558224"
+        fill_in "candidate[contact_number]", :with => "3183638789"
         click_on 'siguiente'
       end
 

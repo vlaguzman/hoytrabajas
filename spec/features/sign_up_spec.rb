@@ -28,7 +28,7 @@ RSpec.describe "sign up user", type: :feature do
           click_on 'Registrarme'
 
           expect(User.count).to eq(1)
-          expect(page).to have_text(/Quiero públicar mi oferta/)
+          expect(page).to have_text(/¡Perfecto!/)
 
           expect(current_path).to eq(users_wizards_step_zero_path)
 

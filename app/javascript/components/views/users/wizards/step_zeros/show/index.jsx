@@ -1,5 +1,5 @@
 import React from 'react'
-import AppLayout from '../../../../src/components/Layout/AppLayout'
+import AppLayout from '../../../../../src/components/Layout/AppLayout'
 
 export default class Show extends React.Component {
   render() {
@@ -14,3 +14,4 @@ export default class Show extends React.Component {
     )
   }
 }
+

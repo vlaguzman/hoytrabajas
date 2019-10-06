@@ -46,7 +46,7 @@ RSpec.describe "sign up user", type: :feature do
         click_button 'Registrarme'
 
         expect(Company.count).to eq(1)
-        expect(page).to have_text(/Quiero públicar mi oferta/)
+        expect(page).to have_text(/Quiero publicar mi oferta/)
       end
     end
 

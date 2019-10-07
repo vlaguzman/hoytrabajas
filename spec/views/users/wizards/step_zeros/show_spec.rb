@@ -6,6 +6,6 @@ RSpec.describe "users/wizards/step_zeros/show.haml" do
 
     expect(rendered).to have_content(/El trabajo ideal/)
     expect(rendered).to have_content(/¡si existe!/)
-    expect(rendered).to have_link("Quiero públicar mi oferta", href: users_wizards_step_one_path)
+    expect(rendered).to have_link("Quiero publicar mi oferta", href: users_wizards_step_one_path)
   end
 end

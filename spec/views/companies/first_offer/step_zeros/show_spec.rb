@@ -10,6 +10,6 @@ RSpec.describe "companies/first_offer/step_zeros/show" do
     expect(rendered).to have_content(/Y crear una oferta atractiva para llegar/)
     expect(rendered).to have_content(/a el es muy fácil ¡Vamos a hacerlo!/)
 
-    expect(rendered).to have_link("Quiero públicar mi oferta", href: companies_first_offer_step_one_path)
+    expect(rendered).to have_link("Quiero publicar mi oferta", href: companies_first_offer_step_one_path)
   end
 end

@@ -44,7 +44,8 @@ RSpec.describe "fill the principal candidate user data", :type => :feature do
       expect(page).to have_text(/El trabajo ideal/)
       expect(page).to have_text(/si existe!/)
 
-      click_on "Quiero públicar mi oferta"
+
+      click_on "Quiero publicar mi oferta"
 
       expect(page).to have_text("Empecemos por conocernos")
 

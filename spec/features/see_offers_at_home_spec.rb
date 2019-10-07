@@ -13,13 +13,14 @@ RSpec.describe "see offers at home", type: :feature, js: true do
 
     context "there are some active and some expired offers" do
       it "should show me just the not expired offers" do
-        FactoryBot.create(:offer, title: 'active_offer')
-        FactoryBot.create(:offer, :expired_offer, title: 'expired_offer')
+        offer = FactoryBot.create(:offer, title: 'active_offer')
+        expired = FactoryBot.create(:offer, :expired_offer, title: 'expired_offer')
 	
+        expect(Offer.count).to eq(2)
         visit root_path
 
-        expect(page).to have_text("active_offer")
-        expect(page).not_to have_text("expired_offer")
+        expect(page).to have_text("Active_offer")
+        expect(page).not_to have_text(expired.title)
       end
     end 
   end

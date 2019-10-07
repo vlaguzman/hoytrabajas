@@ -5,13 +5,7 @@ import FormControl from '@material-ui/core/FormControl'
 import FormHelperText from '@material-ui/core/FormHelperText'
 
 const StandardInput = props => {
-  const {
-    pro,
-    inputValue,
-    name,
-    handleChange,
-    extra
-  } = props
+  const { pro, inputValue, name, handleChange, extra } = props
 
   const renderCharCount = () => {
     const shouldDisplayError = inputValue[name] && inputValue[name].length < 0

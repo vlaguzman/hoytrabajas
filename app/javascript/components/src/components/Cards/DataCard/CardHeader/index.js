@@ -29,7 +29,7 @@ const CardHeaderComponent = ({
     ''
   )
   const subheader = (
-    <Fragment>
+    <>
       {centerTitleSec ? (
         <Typography variant="subtitle1" className="text-center fw-bold">
           {centerTitleSec}
@@ -64,12 +64,12 @@ const CardHeaderComponent = ({
           {smallTitleSec}
         </Typography>
       )}
-    </Fragment>
+    </>
   )
   return (
     <CardHeader
       action={
-        <Fragment>
+        <>
           {upActions &&
             (chipCheck ? (
               <Chip
@@ -77,12 +77,12 @@ const CardHeaderComponent = ({
                 label="Completado"
                 clickable
                 color="primary"
-                style={{padding: '2%'}}
+                style={{ padding: '2%' }}
                 onDelete={() => alert('delete icon')}
                 deleteIcon={<CheckCircle className="text-white" />}
               />
             ) : (
-              <Fragment>
+              <>
                 {withEdit && (
                   <div
                     style={{
@@ -111,9 +111,9 @@ const CardHeaderComponent = ({
                     <HighlightOff style={{ fontSize: '1rem' }} />
                   </span>
                 </div>
-              </Fragment>
+              </>
             ))}
-        </Fragment>
+        </>
       }
       className="pb-5 px-0 pt-0"
       disableTypography

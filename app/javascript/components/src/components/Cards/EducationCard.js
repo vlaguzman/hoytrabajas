@@ -20,7 +20,6 @@ const ExperienceCard = ({ content, formSection, style }) => {
   let startDate
   let endDate
 
-
   if (startedAt && startedAt.constructor === Date)
     startDate = format(startedAt, 'MMMM yyyy')
   if (finishedAt && finishedAt.constructor === Date)

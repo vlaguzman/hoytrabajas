@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button'
 
 const FourButtons = ({ pro: { buttons } }) => {
   return (
-    <Fragment>
+    <>
       {buttons.map(({ contained, buttonClass, text, ...e }) => (
         <Button
           key={text}
@@ -18,7 +18,7 @@ const FourButtons = ({ pro: { buttons } }) => {
           {text}
         </Button>
       ))}
-    </Fragment>
+    </>
   )
 }
 

@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Row, Col } from 'reactstrap'
 import { useDebouncedCallback } from 'use-debounce'
+import Paper from '@material-ui/core/Paper'
 import { updateField, updateErrors } from '../../../actions'
 import { makeGetField, makeGetValidationField } from '../../../selectors/forms'
-import fieldOptions from '../../../components/FormGenerator/fields/fieldOptions'
+import fieldOptions from '../fields/fieldOptions'
 import { useValidation } from '../../../hooks/formValidation'
 import useWhyDidYouUpdate from '../../../hooks/useWhyDidYouUpdate'
-import Paper from '@material-ui/core/Paper'
 
 const DefaultContainer = props => {
   const {

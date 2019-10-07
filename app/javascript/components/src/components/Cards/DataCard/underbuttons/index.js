@@ -41,7 +41,7 @@ const AddEditTimeUpdateButton = ({ texto, tiempo, formNumber }) => {
   }
   return (
     // <Row className='w-100 justify-content-between mr-0' >
-    <Fragment>
+    <>
       <div>
         <Typography
           className="text-muted"
@@ -77,7 +77,7 @@ const AddEditTimeUpdateButton = ({ texto, tiempo, formNumber }) => {
         aria-describedby="alert-dialog-slide-description"
       >
         <DialogTitle id="alert-dialog-slide-title">
-          {"Use Google's location service?"}
+          Use Google&apos;s location service?
         </DialogTitle>
         <DialogContent className="px-70">
           {/* <FormProvider allForms={allForms.slice(formNumber, (formNumber+1))}>
@@ -95,7 +95,7 @@ const AddEditTimeUpdateButton = ({ texto, tiempo, formNumber }) => {
           </Button> */}
         </DialogActions>
       </Dialog>
-    </Fragment>
+    </>
     // </Row>
   )
 }

@@ -5,7 +5,7 @@ import FormControl from '@material-ui/core/FormControl'
 import FormHelperText from '@material-ui/core/FormHelperText'
 import Typography from '@material-ui/core/Typography'
 import Slider from '@material-ui/core/Slider'
-import Label from '../../../components/FormGenerator/styles/Label'
+import Label from '../styles/Label'
 
 const styles = theme => ({
   root: {

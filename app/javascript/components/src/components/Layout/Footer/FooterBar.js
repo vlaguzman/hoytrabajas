@@ -5,7 +5,6 @@ import React from 'react'
 import Button from '@material-ui/core/Button'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import Link  from 'next/router'
 
 const FooterBar = () => (
   <AppBar
@@ -20,16 +19,7 @@ const FooterBar = () => (
     >
       <div className="d-flex align-items-center">
         <div className="site-logo">
-          {/* <Link href="/" className="logo-mini">
-            <img
-              src="/assets/static/img/appLogo.png"
-              className="mr-15"
-              alt="site logo"
-              width="35"
-              height="35"
-            />
-          </Link> */}
-          <Link href="/" className="logo-normal">
+          <a href="/" className="logo-normal">
             <img
               src="/img/appLogoText.png"
               className="img-fluid"
@@ -37,7 +27,7 @@ const FooterBar = () => (
               width="67"
               height="17"
             />
-          </Link>
+          </a>
         </div>
         Condiciones
       </div>

@@ -37,7 +37,7 @@ const ResponsiveDialog = props => {
     <div>
       <Row className={className}>
         <MaterialButton
-          {...{ color, style } }
+          {...{ color, style }}
           onClick={handleClickOpen}
           variant={!contained ? 'outlined' : 'contained'}
           size={buttonSize}

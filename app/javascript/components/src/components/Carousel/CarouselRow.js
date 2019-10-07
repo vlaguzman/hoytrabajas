@@ -2,19 +2,26 @@ import React from 'react'
 import Slider from 'react-slick'
 import PropTypes from 'prop-types'
 
-const CarouselRow = ({ children, slidesToShow = 3, 
-  arrows, slidesToShowResp = 1, autoplay = true,
-  centerMode = false, infinite = false, dots=true }) => {
+const CarouselRow = ({
+  children,
+  slidesToShow = 3,
+  arrows,
+  slidesToShowResp = 1,
+  autoplay = true,
+  centerMode = false,
+  infinite = false,
+  dots = true
+}) => {
   const settings = {
-    dots: dots,
+    dots,
     // lazyLoad: true,
-    infinite: infinite,
+    infinite,
     speed: 500,
-    slidesToShow: slidesToShow,
+    slidesToShow,
     slidesToScroll: 1,
-    centerMode: centerMode,
-    arrows: arrows,
-    autoplay: autoplay,
+    centerMode,
+    arrows,
+    autoplay,
     swipeToSlide: true,
     autoplaySpeed: 5000,
     cssEase: 'linear',
@@ -59,7 +66,10 @@ const CarouselRow = ({ children, slidesToShow = 3,
     ]
   }
   return (
-    <Slider {...settings} className="align-items-stretch h-100 w-100 my-25 pl-5">
+    <Slider
+      {...settings}
+      className="align-items-stretch h-100 w-100 my-25 pl-5"
+    >
       {children}
     </Slider>
   )

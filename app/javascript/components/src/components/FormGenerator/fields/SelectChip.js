@@ -30,7 +30,7 @@ const SelectChip = ({
   const onChange = ev => handleChange(ev, name)
 
   return (
-    <Fragment>
+    <>
       {sideText && (
         <Typography variant="body1" className="animated fadeIn d-block">
           {sideText}
@@ -89,7 +89,7 @@ const SelectChip = ({
           {sideTextRight}
         </Typography>
       )}
-    </Fragment>
+    </>
   )
 }
 

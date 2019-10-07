@@ -16,7 +16,7 @@ import Content from './content'
 
 const GalleryCards = ({ cards }) => {
   return (
-    <Fragment>
+    <>
       {cards.map((e, i) => {
         return (
           <Col
@@ -35,8 +35,10 @@ const GalleryCards = ({ cards }) => {
                   size="large"
                   color="primary"
                 >
-                  <span className='d-none d-lg-inline' >Aplica a esta oferta</span>
-                  <span className='d-lg-none' >Aplicar oferta</span>
+                  <span className="d-none d-lg-inline">
+                    Aplica a esta oferta
+                  </span>
+                  <span className="d-lg-none">Aplicar oferta</span>
                 </Button>
               </Row>
               <Row noGutters className="w-100 justify-content-center">
@@ -85,16 +87,28 @@ const GalleryCards = ({ cards }) => {
                 }}
               >
                 <IconButton aria-label="Add to favorites" className="text-info">
-                  <FontAwesomeIcon className='mx-auto' icon={['fab', 'facebook-messenger']}  /> 
+                  <FontAwesomeIcon
+                    className="mx-auto"
+                    icon={['fab', 'facebook-messenger']}
+                  />
                 </IconButton>
                 <IconButton aria-label="Share" className="text-info">
-                  <FontAwesomeIcon className='mx-auto' icon={['fab', 'facebook-square']}  /> 
+                  <FontAwesomeIcon
+                    className="mx-auto"
+                    icon={['fab', 'facebook-square']}
+                  />
                 </IconButton>
                 <IconButton aria-label="Add to favorites">
-                  <FontAwesomeIcon className='mx-auto' icon={['fab', 'whatsapp']}  /> 
+                  <FontAwesomeIcon
+                    className="mx-auto"
+                    icon={['fab', 'whatsapp']}
+                  />
                 </IconButton>
                 <IconButton aria-label="Add to favorites">
-                  <FontAwesomeIcon className='mx-auto' icon={['fab', 'twitter']}  />  
+                  <FontAwesomeIcon
+                    className="mx-auto"
+                    icon={['fab', 'twitter']}
+                  />
                 </IconButton>
               </Row>
             </div>
@@ -116,7 +130,7 @@ const GalleryCards = ({ cards }) => {
           </Col>
         )
       })}
-    </Fragment>
+    </>
   )
 }
 

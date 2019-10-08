@@ -1,18 +1,18 @@
+import PropTypes from 'prop-types'
 import React from 'react'
-import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import Avatar from '@material-ui/core/Avatar'
 import Divider from '@material-ui/core/Divider'
-import { Badge, Row, Col } from 'reactstrap'
+import { Badge, Row } from 'reactstrap'
 import CardContent from '@material-ui/core/CardContent'
 
-const RequiredExperienceBlock = () =>(
+const RequiredExperienceBlock = () => (
   <Badge color="primary" className="text-uppercase mr-5 d-block">
     <small>Sin Experiencia</small>
   </Badge>
 )
 
-const InmediateStartBlock = () =>(
+const InmediateStartBlock = () => (
   <Badge color="success" className="text-uppercase d-block">
     <small>Inicio Inmediato</small>
   </Badge>
@@ -45,7 +45,8 @@ const Content = ({ offer }) => {
         style={{ top: '-1.4rem', left: '1rem', fontSize: '0.93rem' }}
       >
         <span className="font-weight-bolder">
-          <strong>{ offer["salary"]["currency"]["description"]}</strong><strong>{ offer["salary"]["from"] }</strong>
+          <strong>{offer['salary']['currency']['description']}</strong>
+          <strong>{offer['salary']['from']}</strong>
         </span>
       </Badge>
       <Typography
@@ -55,7 +56,7 @@ const Content = ({ offer }) => {
         className="mb-0 mt-10 fw-bold"
         style={{ fontSize: '18px' }}
       >
-	  { offer["title"] }
+        {offer['title']}
       </Typography>
       <Typography
         gutterBottom
@@ -63,17 +64,22 @@ const Content = ({ offer }) => {
         component="div"
         className="mb-10"
         style={{ fontWeight: '500', fontSize: '14px' }}
-      >{ offer["company"]["name"] }
-
+      >
+        {offer['company']['name']}
       </Typography>
-      <Typography className="text-secondary mb-10" variant="body2" component="p">
-        { offer["description"] }
+      <Typography
+        className="text-secondary mb-10"
+        variant="body2"
+        component="p"
+      >
+        {offer['description']}
       </Typography>
       <Typography variant="caption" className="text-secondary">
         <i
           className="ti-location-pin fw-bold mr-5"
           style={{ fontSize: '1rem' }}
-        />  { offer["city"]["description"] }
+        />{' '}
+        {offer['city']['description']}
         <i
           className="ti-hand-point-up fw-bold ml-20"
           style={{ fontSize: '1rem' }}
@@ -82,8 +88,8 @@ const Content = ({ offer }) => {
       </Typography>
       <Row className="mr-0 justify-content-between align-items-end px-10 my-10">
         <Row className="mr-0 px-10">
-            { (offer["required_experience"]==false) && RequiredExperienceBlock() }
-            { (offer["immediate_start"]) && InmediateStartBlock() }
+          {offer['required_experience'] === false && RequiredExperienceBlock()}
+          {offer['immediate_start'] && InmediateStartBlock()}
         </Row>
       </Row>
       <Divider variant="middle" className="mx-0" />
@@ -120,3 +126,24 @@ const Content = ({ offer }) => {
 }
 
 export default Content
+
+Content.propTypes = {
+  offer: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    immediate_start: PropTypes.bool,
+    required_experience: PropTypes.bool,
+    city: PropTypes.shape({
+      description: PropTypes.string.isRequired
+    }),
+    company: PropTypes.shape({
+      name: PropTypes.string.isRequired
+    }),
+    salary: PropTypes.shape({
+      from: PropTypes.number,
+      currency: PropTypes.shape({
+        description: PropTypes.string.isRequired
+      })
+    })
+  })
+}

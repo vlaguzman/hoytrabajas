@@ -40,7 +40,7 @@ A         * EmployeesRange                             1       0.0        0     
 A         * FaqsController                             2       0.0        0           1
 A         * Function                                   2       0.0        0           1
 A         * FunctionsOffers                            1       0.0        0           1
-A         * HomeController                             4       2.42       0           1
+A         * HomeController                             5       2.42       0           1
 A         * Industry                                   3       0.0        0           1
 A         * JobAid                                     4       0.0        0           1
 A         * JobAidsOffers                              1       0.0        0           1
@@ -55,12 +55,12 @@ A         * Nationality                                4       0.0        0     
 A         * Offer                                      22      2.2        0           1
 A         * OfferSalary                                5       0.0        0           1
 A         * OfferType                                  5       0.0        0           1
-A         * Offers::IndexService                       2       1.0        0           1
+A         * Offers::IndexService                       2       15.4       0           1
 A         * Offers::ViewsService                       2       33.2       0           1
-A         * OffersController                           7       9.03       0           1
+A         * OffersController                           8       9.03       0           1
 A         * OffersPresenter                            2       7.2        0           1
 A         * OffersResponsibilities                     1       0.0        0           1
-A         * OffersService                              2       4.71       0           2
+A         * OffersService                              3       4.71       0           2
 A         * OffersSoftSkills                           1       0.0        0           1
 A         * OffersTechnicalSkills                      1       0.0        0           1
 A         * OffersTerms                                1       0.0        0           1

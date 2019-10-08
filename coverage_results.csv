@@ -44,10 +44,10 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/level.rb",100,5,3,3,0
 "./app/models/limitation.rb",100,6,3,3,0
 "./app/models/nationality.rb",100,6,3,3,0
-"./app/models/offer.rb",100,53,41,41,0
+"./app/models/offer.rb",100,48,38,38,0
+"./app/models/offer_salary.rb",100,12,8,8,0
 "./app/models/offer_type.rb",100,5,3,3,0
 "./app/models/offers_responsibilities.rb",100,4,3,3,0
-"./app/models/offers_salaries.rb",100,12,8,8,0
 "./app/models/offers_soft_skills.rb",100,4,3,3,0
 "./app/models/offers_technical_skills.rb",100,5,4,4,0
 "./app/models/offers_terms.rb",100,6,4,4,0
@@ -80,7 +80,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/work_position.rb",100,5,3,3,0
 "./app/models/working_day.rb",100,6,4,4,0
 "./app/presenters/application_presenter.rb",91,19,11,10,1
-"./app/presenters/offers_presenter.rb",100,7,3,3,0
+"./app/presenters/offers_presenter.rb",100,10,5,5,0
 "./app/presenters/users/wizards/step_eight_presenter.rb",100,38,20,20,0
 "./app/presenters/users/wizards/step_five_presenter.rb",100,23,11,11,0
 "./app/presenters/users/wizards/step_four_presenter.rb",91,23,11,10,1
@@ -91,7 +91,10 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/users/wizards/step_ten_presenter.rb",100,18,10,10,0
 "./app/presenters/users/wizards/step_three_presenter.rb",100,23,11,11,0
 "./app/presenters/users/wizards/step_two_presenter.rb",100,15,7,7,0
-"./app/services/offers/show_service.rb",100,88,27,27,0
+"./app/services/offers/index_service.rb",100,9,4,4,0
+"./app/services/offers/show_service.rb",100,60,18,18,0
+"./app/services/offers/views_service.rb",95,56,19,18,1
+"./app/services/offers_service.rb",100,6,3,3,0
 "./app/services/users/wizard_service.rb",100,39,18,18,0
 "./app/services/users/wizards/step_eight_service.rb",100,29,15,15,0
 "./app/services/users/wizards/step_five_service.rb",100,17,9,9,0

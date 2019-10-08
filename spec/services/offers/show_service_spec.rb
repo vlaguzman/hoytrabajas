@@ -64,7 +64,7 @@ RSpec.describe Offers::ShowService do
         close_date: "25 de Agosto del 2019",
         title: "Desarrollador Front-end Sr. test",
         address: "Calle Falsa 123 # 00 99",
-        immediate_start: true,
+        immediate_start: false,
         description: "endSint esse anim consequat commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaincididunt ut labore et dolore magna aliqua.",
         vacancies_quantity: 10,
         required_experience: true,

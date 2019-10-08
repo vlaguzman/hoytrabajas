@@ -52,22 +52,15 @@ A         * LanguagesOffers                            3       2.0        0     
 A         * Level                                      4       0.0        0           1
 A         * Limitation                                 4       0.0        0           1
 A         * Nationality                                4       0.0        0           1
-<<<<<<< HEAD
-A         * Offer                                      20      2.2        0           1
-=======
-A         * Offer                                      21      0.0        0           1
-A         * OfferSalary                                4       0.0        0           1
->>>>>>> temp
+A         * Offer                                      22      2.2        0           1
+A         * OfferSalary                                5       0.0        0           1
 A         * OfferType                                  5       0.0        0           1
-A         * Offers::IndexService                       6       24.98      0           2
-A         * OffersController                           5       8.03       0           1
+A         * Offers::IndexService                       2       1.0        0           1
+A         * Offers::ViewsService                       2       33.2       0           1
+A         * OffersController                           6       9.03       0           1
 A         * OffersPresenter                            2       7.2        0           1
 A         * OffersResponsibilities                     1       0.0        0           1
-<<<<<<< HEAD
-A         * OffersSalaries                             4       0.0        0           1
-=======
 A         * OffersService                              1       4.71       0           2
->>>>>>> temp
 A         * OffersSoftSkills                           1       0.0        0           1
 A         * OffersTechnicalSkills                      1       0.0        0           1
 A         * OffersTerms                                1       0.0        0           1
@@ -134,7 +127,4 @@ A         * WorkMethodology                            1       0.0        0     
 A         * WorkMode                                   3       0.0        0           1
 A         * WorkPosition                               2       0.0        0           1
 A         * WorkingDay                                 5       0.0        0           1
-B         * Offers::ShowService                        5       84.8       0           0
-B         * Users::Wizards::StepEightsController       2       26.71      29          2
-B         * Users::Wizards::StepNinesController        5       26.71      29          2
-C         * Offers::ViewsService                       4       41.2       44          5
+B         * Offers::ShowService                        7       62.6       0           0

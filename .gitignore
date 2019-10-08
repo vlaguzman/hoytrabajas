@@ -20,6 +20,7 @@ yarn-debug.log*
 .yarn-integrity
 public/assets
 .data
+public/rubycritic
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key

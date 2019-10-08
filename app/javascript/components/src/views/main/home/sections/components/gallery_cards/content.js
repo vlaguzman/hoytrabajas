@@ -6,6 +6,18 @@ import Divider from '@material-ui/core/Divider'
 import { Badge, Row, Col } from 'reactstrap'
 import CardContent from '@material-ui/core/CardContent'
 
+const RequiredExperienceBlock = () =>(
+  <Badge color="primary" className="text-uppercase mr-5 d-block">
+    <small>Sin Experiencia</small>
+  </Badge>
+)
+
+const InmediateStartBlock = () =>(
+  <Badge color="success" className="text-uppercase d-block">
+    <small>Inicio Inmediato</small>
+  </Badge>
+)
+
 const Content = ({ offer }) => {
   return (
     <CardContent className="position-relative pb-5">
@@ -55,7 +67,7 @@ const Content = ({ offer }) => {
 
       </Typography>
       <Typography className="text-secondary mb-10" variant="body2" component="p">
-  { offer["description"] }
+        { offer["description"] }
       </Typography>
       <Typography variant="caption" className="text-secondary">
         <i
@@ -70,13 +82,8 @@ const Content = ({ offer }) => {
       </Typography>
       <Row className="mr-0 justify-content-between align-items-end px-10 my-10">
         <Row className="mr-0 px-10">
-          <Badge color="primary" className="text-uppercase mr-5 d-block">
-            {(offer["required_experience"]=='true') ? <small>Sin Experiencia</small> }
-          </Badge>
-          <Badge color="success" className="text-uppercase d-block">
-      {(cards.length >=1) ? CarruselBlock(cards) : <h1 className="text-center">No hay ningún trabajo en este momento</h1>}
-            <small>Inicio inmediato</small>
-          </Badge>
+            { (offer["required_experience"]==false) && RequiredExperienceBlock() }
+            { (offer["immediate_start"]) && InmediateStartBlock() }
         </Row>
       </Row>
       <Divider variant="middle" className="mx-0" />

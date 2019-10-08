@@ -1,4 +1,4 @@
-class OffersSalaries < ApplicationRecord
+class OfferSalary < ApplicationRecord
   validates_presence_of  :from
 
   belongs_to :offer

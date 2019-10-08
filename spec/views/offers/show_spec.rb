@@ -6,7 +6,7 @@ RSpec.describe "offers/show" do
   let(:show_offer) { create(:offer) }
 
   let!(:age_range) { create(:age_range, offer: show_offer) }
-  let!(:offer_salary) { create(:offers_salaries, offer: show_offer) }
+  let!(:offer_salary) { create(:offer_salary, offer: show_offer) }
 
   it "should render offers show template" do
     assign(:offer, OffersPresenter.new(show_offer))

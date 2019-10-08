@@ -1,43 +1,38 @@
 class Offer < ApplicationRecord
-  validates_presence_of :title, :address, :cellphone, :description, :vacancies_quantity,
-                        :close_date, :immediate_start, :required_experience,
-                        :description_responsibilities, :release_date, :status
+  validates_presence_of :title
 
   scope :active, -> { where(status: 'active') }
 
-  has_one :offers_salaries
+  has_one :offer_salary
   has_one :age_range
 
   belongs_to :company
-  belongs_to :city
   belongs_to :job_category
-  belongs_to :offer_type
-  belongs_to :job_category
-  belongs_to :sex
-  belongs_to :job_category
-  belongs_to :work_mode
-  belongs_to :job_category
-  belongs_to :contract_type
+  belongs_to :city, optional: true
+  belongs_to :offer_type, optional: true
+  belongs_to :sex, optional: true
+  belongs_to :work_mode, optional: true
+  belongs_to :contract_type, optional: true
 
-  has_and_belongs_to_many :terms
-  has_and_belongs_to_many :functions
-  has_and_belongs_to_many :job_aids
-  has_and_belongs_to_many :vehicles
-  has_and_belongs_to_many :driving_licences
-  has_and_belongs_to_many :working_days
-  has_and_belongs_to_many :available_work_days
-  has_and_belongs_to_many :languages
-  has_and_belongs_to_many :soft_skills
-  has_and_belongs_to_many :technical_skills
-  has_and_belongs_to_many :work_positions
-  has_and_belongs_to_many :responsibilities
-  has_and_belongs_to_many :educational_level
+  has_and_belongs_to_many :terms, optional: true
+  has_and_belongs_to_many :functions, optional: true
+  has_and_belongs_to_many :job_aids, optional: true
+  has_and_belongs_to_many :vehicles, optional: true
+  has_and_belongs_to_many :driving_licences, optional: true
+  has_and_belongs_to_many :working_days, optional: true
+  has_and_belongs_to_many :available_work_days, optional: true 
+  has_and_belongs_to_many :languages, optional: true 
+  has_and_belongs_to_many :soft_skills, optional: true 
+  has_and_belongs_to_many :technical_skills, optional: true 
+  has_and_belongs_to_many :work_positions, optional: true 
+  has_and_belongs_to_many :responsibilities, optional: true 
+  has_and_belongs_to_many :educational_level, optional: true 
 
   has_one_attached :image
 
   #delegates
   delegate :description, :name, :web_site, :employees_range_description, to: :company, prefix: :company, allow_nil: true
-  delegate :from, :to, :currency_description, :period_description, to: :offers_salaries, prefix: :salary, allow_nil: true
+  delegate :from, :to, :currency_description, :period_description, to: :offer_salary, prefix: :salary, allow_nil: true
   delegate :from, :to, to: :age_range, prefix: :age_range, allow_nil: true
   delegate :description, to: :sex, prefix: :sex, allow_nil: true
   delegate :description, to: :city, prefix: :city, allow_nil: true

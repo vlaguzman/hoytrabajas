@@ -4,18 +4,18 @@ RSpec.describe Offer, type: :model do
 
   describe "validations" do
     it { should validate_presence_of(:title) }
-    it { should validate_presence_of(:address) }
-    it { should validate_presence_of(:cellphone) }
-    it { should validate_presence_of(:description) }
-    it { should validate_presence_of(:vacancies_quantity) }
-    it { should validate_presence_of(:close_date) }
-    it { should validate_presence_of(:immediate_start) }
-    it { should validate_presence_of(:required_experience) }
-    it { should validate_presence_of(:description_responsibilities) }
-    it { should validate_presence_of(:release_date) }
-    it { should validate_presence_of(:status) }
-    it { should respond_to(:image) }
 
+    it { should respond_to(:address) }
+    it { should respond_to(:cellphone) }
+    it { should respond_to(:description) }
+    it { should respond_to(:vacancies_quantity) }
+    it { should respond_to(:close_date) }
+    it { should respond_to(:immediate_start) }
+    it { should respond_to(:required_experience) }
+    it { should respond_to(:description_responsibilities) }
+    it { should respond_to(:release_date) }
+    it { should respond_to(:status) }
+    it { should respond_to(:image) }
     it { should respond_to(:company_description) }
     it { should respond_to(:company_name) }
     it { should respond_to(:company_web_site) }
@@ -57,7 +57,7 @@ RSpec.describe Offer, type: :model do
     it { should belong_to(:work_mode) }
     it { should belong_to(:job_category) }
     it { should belong_to(:contract_type) }
-    it { should have_one(:offers_salaries) }
+    it { should have_one(:offer_salary) }
     it { should have_and_belong_to_many(:terms) }
     it { should have_and_belong_to_many(:functions) }
     it { should have_and_belong_to_many(:job_aids) }

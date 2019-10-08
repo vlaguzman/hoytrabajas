@@ -1,6 +1,8 @@
 es:
   activerecord:
     errors:
+      messages:
+        record_invalid: "Error al grabar el objeto"
       models:
         educational_level:
           attributes:

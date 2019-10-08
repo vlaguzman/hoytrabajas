@@ -39,7 +39,7 @@ RSpec.describe Offers::ShowService do
     ]
   end
 
-  let(:offers_salary) { create(:offers_salaries,
+  let(:offers_salary) { create(:offer_salary,
     offer: offer,
     from: 2500000,
     to: nil,
@@ -64,7 +64,7 @@ RSpec.describe Offers::ShowService do
         close_date: "25 de Agosto del 2019",
         title: "Desarrollador Front-end Sr. test",
         address: "Calle Falsa 123 # 00 99",
-        immediate_start: true,
+        immediate_start: false,
         description: "endSint esse anim consequat commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaincididunt ut labore et dolore magna aliqua.",
         vacancies_quantity: 10,
         required_experience: true,
@@ -133,7 +133,7 @@ RSpec.describe Offers::ShowService do
 
     context "when offers salaries asoc with the offer is not present" do
       it "should return a hash" do
-        OffersSalaries.destroy_all
+        OfferSalary.destroy_all
 
         response = subject.details
 
@@ -148,6 +148,5 @@ RSpec.describe Offers::ShowService do
       end
     end
   end
-
 
 end

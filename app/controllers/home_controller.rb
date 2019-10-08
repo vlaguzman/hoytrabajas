@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @offers = Offer.active
+    @offers = OffersService.new().active_offers_index_details
   end
 end

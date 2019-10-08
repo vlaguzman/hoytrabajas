@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Row, Col } from 'reactstrap'
 import Button from '@material-ui/core/Button'
 import Cards from './components/gallery_cards/gallery_card'
@@ -22,10 +22,10 @@ const Gallery = ({ offers }) => {
       <Row className="justify-content-center align-items-center  my-30 ">
         <Col xs={9} md={4}>
           <Button
+            className="MuiButtonBase-root MuiButton-root my-20 text-wrap MuiButton-outlined MuiButton-outlinedPrimary MuiButton-sizeLarge"
             color="primary"
             size="large"
             variant="outlined"
-            className="my-20 text-wrap"
             style={{ borderRadius: '50px' }}
             href="/offers"
           >

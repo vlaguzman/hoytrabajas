@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Row, Col } from 'reactstrap'
 import Button from '@material-ui/core/Button'
 import Cards from './components/gallery_cards/gallery_card'

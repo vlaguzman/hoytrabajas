@@ -94,7 +94,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/offers/index_service.rb",100,9,4,4,0
 "./app/services/offers/show_service.rb",100,60,18,18,0
 "./app/services/offers/views_service.rb",95,56,19,18,1
-"./app/services/offers_service.rb",100,6,3,3,0
+"./app/services/offers_service.rb",100,7,3,3,0
 "./app/services/users/wizard_service.rb",100,39,18,18,0
 "./app/services/users/wizards/step_eight_service.rb",100,29,15,15,0
 "./app/services/users/wizards/step_five_service.rb",100,17,9,9,0

@@ -6,14 +6,18 @@ import FormButtons from './FormButtons'
 const FormBody = props => {
   const { scrollAction, formContent, formInfo } = props
   const { formObj, formSection, next, prev } = formContent
-  const { title, subtitle, form: { buttons, action, method, type, fields } } = formInfo
+  const {
+    title,
+    subtitle,
+    form: { buttons, action, method, type, fields }
+  } = formInfo
 
   const handleSubmit = e => {
     e.preventDefault()
   }
 
   return (
-    <Fragment>
+    <>
       <FormTitle title={title} subtitle={subtitle} />
       <div className="w-80">
         <form
@@ -25,10 +29,10 @@ const FormBody = props => {
           <FormGenerator
             {...{ scrollAction, formObj, formSection, fields, formName: type }}
           />
-          <FormButtons {...{ scrollAction, next, prev, submit, formSection }} />
+          <FormButtons {...{ scrollAction, next, prev, formSection }} />
         </form>
       </div>
-    </Fragment>
+    </>
   )
 }
 

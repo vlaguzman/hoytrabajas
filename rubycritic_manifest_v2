@@ -55,7 +55,7 @@ A         * Nationality                                4       0.0        0     
 A         * Offer                                      22      2.2        0           1
 A         * OfferSalary                                5       0.0        0           1
 A         * OfferType                                  5       0.0        0           1
-A         * Offers::IndexService                       2       15.4       0           1
+A         * Offers::IndexService                       3       15.4       0           1
 A         * Offers::ViewsService                       2       33.2       0           1
 A         * OffersController                           8       9.03       0           1
 A         * OffersPresenter                            2       7.2        0           1

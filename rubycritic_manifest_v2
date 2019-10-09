@@ -13,7 +13,6 @@ A         * AvailableWorkDay                            3       0.0        0    
 A         * AvailableWorkDaysCurriculumVitaes           1       0.0        0           1
 A         * AvailableWorkDaysOffers                     1       0.0        0           1
 A         * City                                        2       0.0        0           1
-A         * Companies::FirstOffer                       3       0.0        0           1
 A         * Companies::FirstOffer::StepFivesController  3       0.0        0           1
 A         * Companies::FirstOffer::StepFoursController  3       0.0        0           1
 A         * Companies::FirstOffer::StepOnesController   3       0.0        0           1

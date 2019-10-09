@@ -1,22 +1,22 @@
 // Fields
 import React from 'react'
-import Button from "./Button"
-import Checkbox from "./Checkbox"
-import Chips from "./Chips"
-import ControlledInputs from "./ControlledInputs"
-import DatePicker from "./DatePicker"
-import DragNDrop from "./DragNDrop"
-import FourButtons from "./FourButtons"
-import MultiSelect from "./MultiSelect"
-import Radios from "./Radios"
-import ResponsiveDialog from "./ResponsiveDialog"
-import Select from "./Select"
-import SelectChip from "./SelectChip"
-import SkipButton from "./SkipButton"
-import Slider from "./Slider"
-import StandardInput from "./StandardInput"
-import Switch from "./Switch"
-import TextChip from "./TextChip"
+import Button from './Button'
+import Checkbox from './Checkbox'
+import Chips from './Chips'
+import ControlledInputs from './ControlledInputs'
+import DatePicker from './DatePicker'
+import DragNDrop from './DragNDrop'
+import FourButtons from './FourButtons'
+import MultiSelect from './MultiSelect'
+import Radios from './Radios'
+import ResponsiveDialog from './ResponsiveDialog'
+import Select from './Select'
+import SelectChip from './SelectChip'
+import SkipButton from './SkipButton'
+import Slider from './Slider'
+import StandardInput from './StandardInput'
+import Switch from './Switch'
+import TextChip from './TextChip'
 
 // Wrappers
 

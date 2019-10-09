@@ -23,7 +23,11 @@ import { map } from 'lodash';
 
 import AppLayout from '../../components/Layout/AppLayout'
 
-const DetallePage = ({offer}) => {
+const relatedOffersCards = (relatedOffers) => {
+  return relatedOffers.map(relatedOffer => ( <Cards key={relatedOffer['title']} offer={relatedOffer} /> )
+}
+
+const DetallePage = ({offer, relatedOffer}) => {
 
   return (
 <div className="detalle-wrapper" >
@@ -182,11 +186,10 @@ const DetallePage = ({offer}) => {
           Ofertas Relacionadas
     </Typography>
   </Row>
+
   <Row className='pr-20 pl-50'>
     <Carousel slidesToShow={3.7} autoplay={false} >
-        {map(Array(6).fill({}),(e, i) => (
-          <Cards key={i} />
-        ))}
+        { relatedOffersCards( relatedOffer ) }
   </Carousel>
   </Row>
 

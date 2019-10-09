@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :offer do
-    
+
     title                         { Faker::Job.title }
     address                       { Faker::Address.full_address }
     cellphone                     { Faker::PhoneNumber.cell_phone }

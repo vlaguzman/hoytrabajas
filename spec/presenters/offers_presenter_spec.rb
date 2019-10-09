@@ -12,4 +12,12 @@ RSpec.describe OffersPresenter do
     end
   end
 
+  describe "#related_offer_show" do
+    it { should respond_to(:related_offer_show) }
+
+    it "should return a hash with the required info to show template" do
+      expect(subject.related_offer_show).to be_an_instance_of(Array)
+    end
+  end
+
 end

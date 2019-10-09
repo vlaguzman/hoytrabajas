@@ -149,4 +149,41 @@ RSpec.describe Offers::ShowService do
     end
   end
 
+  describe "#related_offers" do
+    it { should respond_to(:related_offers) }
+
+    let(:related_job_category_id) { create(:job_category, id: 10, description: "Cocina").id }
+
+    let(:create_stuffed_offers) {
+      [
+        create(:offer, job_category_id: related_job_category_id),
+        create(:offer, job_category_id: related_job_category_id),
+        create(:offer, job_category_id: related_job_category_id),
+        create(:offer, job_category_id: related_job_category_id),
+        create(:offer, job_category_id: related_job_category_id),
+        create(:offer),
+        create(:offer)
+      ]
+    }
+
+    let(:subject) { described_class.new( create(:offer, job_category_id: related_job_category_id) ) }
+
+
+    it "should return maximun five orders with the same category of source offer" do
+      create_stuffed_offers
+
+      response = subject.related_offers
+
+      puts Offer.pluck(:job_category_id)
+      puts response
+
+      expect(response).to be_an_instance_of(Array)
+      expect(response.size).to eq(5)
+
+      expected_job_category_description = response.map { |offer| offer.job_category.description }
+
+      expect(expected_job_category_description).to match_array( (1..5).map{ |e| "Cocina" } )
+    end
+  end
+
 end

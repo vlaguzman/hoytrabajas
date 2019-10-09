@@ -1,4 +1,4 @@
-class Offers::ViewsService 
+class Offers::ViewsService
   include ActionView::Helpers
 
   def initialize(offer)
@@ -18,8 +18,8 @@ class Offers::ViewsService
   def id
     @offer.id
   end
-  
-  protected 
+
+  protected
 
   def build_details
     {

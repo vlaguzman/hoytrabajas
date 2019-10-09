@@ -1,5 +1,3 @@
-// Fields
-
 import Button from './Button'
 import Checkbox from './Checkbox'
 import Chips from './Chips'

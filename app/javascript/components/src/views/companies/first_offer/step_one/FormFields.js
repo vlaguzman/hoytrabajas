@@ -29,7 +29,6 @@ const FormFields = props => {
     if (isMultiple) {
       const isArray = Array.isArray(formValues[inputName])
       if (isArray) {
-        console.log('isArray')
         const arrayHasItem = formValues[inputName].includes(e.target.value)
         if (!arrayHasItem) {
           const merged = [...formValues[inputName], e.target.value]
@@ -39,14 +38,12 @@ const FormFields = props => {
           }))
         }
       } else {
-        console.log('not in array')
         setFormValues(prevFormValues => ({
           ...prevFormValues,
           [inputName]: [e.target.value]
         }))
       }
     } else {
-      console.log('not multiple')
       setFormValues(prevFormValues => ({
         ...prevFormValues,
         [inputName]: e.target.value
@@ -55,11 +52,6 @@ const FormFields = props => {
   }
 
   const handleDeleteChip = (id, inputName, isMultiple) => {
-    console.log('handleDeleteChip')
-    console.log(id, inputName, isMultiple)
-    console.log('formValues')
-    console.log(formValues)
-
     if (isMultiple) {
       const newChips = [...formValues[inputName]]
       newChips.splice(newChips.indexOf(id), 1)

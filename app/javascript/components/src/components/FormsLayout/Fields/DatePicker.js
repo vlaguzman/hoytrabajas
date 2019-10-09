@@ -31,7 +31,6 @@ const DatePicker = props => {
     <MaterialDatePicker
       format="dd MMM yyyy"
       {...pro}
-      // views={(extra && extra.dateViews) || ['date', 'month', 'year']}
       style={style}
       maxDate={new Date()}
       onChange={handleDate}

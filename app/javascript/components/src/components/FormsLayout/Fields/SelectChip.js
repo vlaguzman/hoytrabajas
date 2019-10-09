@@ -24,7 +24,7 @@ const SelectChip = props => {
   } = props
 
   const defaultValue = isMultiple ? [] : ''
-  const onChange = ev => handleChange(ev, name)
+  const onChange = ev => handleChange(ev, name, isMultiple)
   const hasErrors = false
 
   return (
@@ -58,7 +58,9 @@ const SelectChip = props => {
                     <Chip
                       key={id}
                       label={description}
-                      onDelete={() => handleDeleteChip(id, name, isMultiple)}
+                      onDelete={() => {
+                        handleDeleteChip(id, name, isMultiple)
+                      }}
                       className="mr-5 mt-5"
                     />
                   ))
@@ -66,9 +68,9 @@ const SelectChip = props => {
                   <Chip
                     key={selected}
                     label={selectValues.description}
-                    onDelete={() =>
+                    onDelete={() => {
                       handleDeleteChip(selected, name, isMultiple)
-                    }
+                    }}
                     className="mr-5 mt-5"
                   />
                 )}

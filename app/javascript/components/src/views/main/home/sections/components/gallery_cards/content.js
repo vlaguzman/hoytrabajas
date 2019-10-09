@@ -19,6 +19,21 @@ const InmediateStartBlock = () => (
   </Badge>
 )
 
+const NewFlagBlock = () => (
+  <Badge
+    color="primary"
+    className="px-4 position-absolute font-weight-bolder new_badge"
+    style={{ top: '-0.8rem', right: '1rem' }}
+  >
+    <span className="font-weight-bolder position-relative ml-20">
+      <i
+        className="ti-eye mr-5 pt-5 position-absolute"
+        style={{ fontSize: '1rem', top: '-7px', left: '-20px' }}
+      />
+      <strong>Nuevo</strong>
+    </span>
+  </Badge>
+)
 const Content = ({ offer }) => {
   return (
     <CardContent className="position-relative pb-5">
@@ -27,19 +42,7 @@ const Content = ({ offer }) => {
         style={{ top: '-10rem', left: '6%', width: '4rem', height: '4rem' }}
         src="/assets/static/img/logos/clientes-ht-3.jpg"
       />
-      <Badge
-        color="primary"
-        className="px-4 position-absolute font-weight-bolder new_badge"
-        style={{ top: '-0.8rem', right: '1rem' }}
-      >
-        <span className="font-weight-bolder position-relative ml-20">
-          <i
-            className="ti-eye mr-5 pt-5 position-absolute"
-            style={{ fontSize: '1rem', top: '-7px', left: '-20px' }}
-          />
-          <strong>Nuevo</strong>
-        </span>
-      </Badge>
+      {offer['new_offer'] && NewFlagBlock()}
       <Badge
         color="light"
         className="p-14 position-absolute font-weight-bolder text-dark bg-white"
@@ -134,6 +137,7 @@ Content.propTypes = {
     description: PropTypes.string,
     immediate_start: PropTypes.bool,
     required_experience: PropTypes.bool,
+    new_offer: PropTypes.bool,
     city: PropTypes.shape({
       description: PropTypes.string.isRequired
     }),

@@ -1,7 +1,7 @@
 require "rails_helper"
 include ActionView::Helpers::NumberHelper
 
-RSpec.describe Offers::IndexService do
+RSpec.describe Offers::ViewsService do
 
   let(:offer) { create(:offer, title: "District Facilitator",
              description: "endSint esse anim consequat commodo.", 
@@ -44,7 +44,6 @@ RSpec.describe Offers::IndexService do
       name: "Orellana S.A."
     },
     close_date: "03 de Agosto del 2019",
-    new_offer: false
   } end
 
   describe "#details" do

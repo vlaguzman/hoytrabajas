@@ -16,7 +16,6 @@ RSpec.describe "see offers at home", type: :feature, js: true do
         offer = FactoryBot.create(:offer, title: 'active_offer')
         expired_offer = FactoryBot.create(:offer, :expired_offer, title: 'expired_offer')
 	
-        expect(Offer.count).to eq(2)
         visit root_path
 
         expect(Offer.count).to eq(2)	
@@ -46,6 +45,31 @@ RSpec.describe "see offers at home", type: :feature, js: true do
 	expect(page).to have_text(offer.title.capitalize)
         expect(page).to have_text("INICIO INMEDIATO")
         expect(page).not_to have_text("SIN EXPERIENCIA")
+      end
+    end
+
+    context "there are a new offer" do
+      it "should show me the new flag" do
+        offer = FactoryBot.create(:offer, title: 'new_offer')
+	
+        visit root_path
+
+        expect(page).to have_text(offer.title.capitalize)
+        expect(page).to have_text("Nuevo")
+      end
+    end
+
+    context "there are an old offer" do
+      it "should dont show me the new flag" do
+        offer = FactoryBot.create(:offer, title: 'old_offer')
+        offer.created_at = 3.days.ago
+        offer.save!
+
+        visit root_path
+
+        expect(Offer.count).to eq(1)
+        expect(page).to have_text(offer.title.capitalize)
+        expect(page).not_to have_text("Nuevo")
       end
     end
 

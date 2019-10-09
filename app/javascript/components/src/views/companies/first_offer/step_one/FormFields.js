@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col } from 'reactstrap'
 import StandardInput from '../../../../components/FormsLayout/Fields/StandardInput'
-// import SelectChip from '../../../../components/FormsLayout/Fields/SelectChip'
+import SelectChip from '../../../../components/FormsLayout/Fields/SelectChip'
 
 const FormFields = props => {
   const { formFields, type } = props
@@ -24,12 +24,55 @@ const FormFields = props => {
     [employees_range_id.name]: ''
   })
 
-  const handleChange = (e, inputName) => {
+  const handleChange = (e, inputName, isMultiple = false) => {
     e.persist()
-    setFormValues(prevFormValues => ({
-      ...prevFormValues,
-      [inputName]: e.target.value
-    }))
+    if (isMultiple) {
+      const isArray = Array.isArray(formValues[inputName])
+      if (isArray) {
+        console.log('isArray')
+        const arrayHasItem = formValues[inputName].includes(e.target.value)
+        if (!arrayHasItem) {
+          const merged = [...formValues[inputName], e.target.value]
+          setFormValues(prevFormValues => ({
+            ...prevFormValues,
+            [inputName]: merged
+          }))
+        }
+      } else {
+        console.log('not in array')
+        setFormValues(prevFormValues => ({
+          ...prevFormValues,
+          [inputName]: [e.target.value]
+        }))
+      }
+    } else {
+      console.log('not multiple')
+      setFormValues(prevFormValues => ({
+        ...prevFormValues,
+        [inputName]: e.target.value
+      }))
+    }
+  }
+
+  const handleDeleteChip = (id, inputName, isMultiple) => {
+    console.log('handleDeleteChip')
+    console.log(id, inputName, isMultiple)
+    console.log('formValues')
+    console.log(formValues)
+
+    if (isMultiple) {
+      const newChips = [...formValues[inputName]]
+      newChips.splice(newChips.indexOf(id), 1)
+      setFormValues(prevFormValues => ({
+        ...prevFormValues,
+        [inputName]: newChips
+      }))
+    } else {
+      setFormValues(prevFormValues => ({
+        ...prevFormValues,
+        [inputName]: ''
+      }))
+    }
   }
 
   const inputClassname = 'my-30 animated fadeIn'
@@ -52,12 +95,15 @@ const FormFields = props => {
   const industryField = useMemo(
     () => (
       <Col key={industry_id.name} className={inputClassname} xs={12} lg={6}>
-        <StandardInput
+        <SelectChip
           inputValue={formValues[industry_id.name]}
           inputName={`${type}[${industry_id.name}]`}
           handleChange={handleChange}
+          handleDeleteChip={handleDeleteChip}
           name={industry_id.name}
           label={industry_id.label}
+          selectOptions={industry_id.values}
+          isMultiple
         />
       </Col>
     ),
@@ -119,27 +165,28 @@ const FormFields = props => {
     [formValues[contact_cellphone.name]]
   )
 
-  // const employeeRangeField = useMemo(
-  //   () => (
-  //     <Col
-  //       key={employees_range_id.contact_work_position}
-  //       className={inputClassname}
-  //       xs={12}
-  //       lg={6}
-  //     >
-  //       <SelectChip
-  //         inputValue={formValues[employees_range_id.name]}
-  //         inputName={`${type}[${employees_range_id.name}]`}
-  //         handleChange={handleChange}
-  //         name={employees_range_id.name}
-  //         label={employees_range_id.label}
-  //         selectValues={[]}
-  //         isMultiple={false}
-  //       />
-  //     </Col>
-  //   ),
-  //   [formValues[employees_range_id.name]]
-  // )
+  const employeeRangeField = useMemo(
+    () => (
+      <Col
+        key={employees_range_id.contact_work_position}
+        className={inputClassname}
+        xs={12}
+        lg={6}
+      >
+        <SelectChip
+          inputValue={formValues[employees_range_id.name]}
+          inputName={`${type}[${employees_range_id.name}]`}
+          handleChange={handleChange}
+          handleDeleteChip={handleDeleteChip}
+          name={employees_range_id.name}
+          label={employees_range_id.label}
+          selectOptions={employees_range_id.values}
+          isMultiple={false}
+        />
+      </Col>
+    ),
+    [formValues[employees_range_id.name]]
+  )
 
   return (
     <Row className="HT__FormGenerator">
@@ -148,6 +195,7 @@ const FormFields = props => {
       {contactNameField}
       {contactWorkPositionField}
       {contactCellphoneField}
+      {employeeRangeField}
     </Row>
   )
 }
@@ -155,7 +203,7 @@ const FormFields = props => {
 export default FormFields
 
 FormFields.propTypes = {
-  type: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['user', 'company']),
   formFields: PropTypes.shape({
     name: PropTypes.object,
     industry_id: PropTypes.object,

@@ -3,9 +3,7 @@ import React from 'react'
 import AppLayout from '../../../src/components/Layout/AppLayout'
 
 const OffersStepOnePage = () => (
-  <AppLayout>
-    {/* <DynamicOffersStepOne /> */}
-  </AppLayout>
+  <AppLayout>{/* <DynamicOffersStepOne /> */}</AppLayout>
 )
 
 export default OffersStepOnePage

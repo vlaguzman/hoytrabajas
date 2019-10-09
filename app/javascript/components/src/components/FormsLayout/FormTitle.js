@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 
 const FormTitle = ({ title, subtitle }) => {
@@ -26,8 +25,3 @@ const FormTitle = ({ title, subtitle }) => {
 }
 
 export default FormTitle
-
-FormTitle.propTypes = {
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired
-}

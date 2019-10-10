@@ -2,10 +2,10 @@ import React from 'react'
 import { DynamicDetalle } from '../../src/views/DynamicViews'
 import AppLayout from '../../src/components/Layout/AppLayout'
 
-const MainPage = ({offer}) => (
+const MainPage = (props) => (
   <AppLayout>
     <div className="detalle-wrapper">
-      <DynamicDetalle offer={offer} />
+      <DynamicDetalle {...props} />
     </div>
   </AppLayout>
 )

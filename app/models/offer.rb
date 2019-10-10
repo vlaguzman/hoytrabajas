@@ -2,6 +2,7 @@ class Offer < ApplicationRecord
   validates_presence_of :title
 
   scope :active, -> { where(status: 'active') }
+  scope :related_job_category, -> (job_category) { where(job_category: job_category) }
 
   has_one :offer_salary
   has_one :age_range
@@ -20,13 +21,13 @@ class Offer < ApplicationRecord
   has_and_belongs_to_many :vehicles, optional: true
   has_and_belongs_to_many :driving_licences, optional: true
   has_and_belongs_to_many :working_days, optional: true
-  has_and_belongs_to_many :available_work_days, optional: true 
-  has_and_belongs_to_many :languages, optional: true 
-  has_and_belongs_to_many :soft_skills, optional: true 
-  has_and_belongs_to_many :technical_skills, optional: true 
-  has_and_belongs_to_many :work_positions, optional: true 
-  has_and_belongs_to_many :responsibilities, optional: true 
-  has_and_belongs_to_many :educational_level, optional: true 
+  has_and_belongs_to_many :available_work_days, optional: true
+  has_and_belongs_to_many :languages, optional: true
+  has_and_belongs_to_many :soft_skills, optional: true
+  has_and_belongs_to_many :technical_skills, optional: true
+  has_and_belongs_to_many :work_positions, optional: true
+  has_and_belongs_to_many :responsibilities, optional: true
+  has_and_belongs_to_many :educational_level, optional: true
 
   has_one_attached :image
 

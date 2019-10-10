@@ -20,4 +20,20 @@ RSpec.describe OffersPresenter do
     end
   end
 
+  describe "#index_details" do
+    it { should respond_to(:index_details) }
+
+    it "should return a array with the required info to show template" do
+      response = subject.related_offer_show
+
+      expect(response).to be_an_instance_of(Array)
+    end
+
+    it "should have the expected keys in the arrays" do
+      response = subject.related_offer_show
+
+      expect(response.last.keys).to match_array([:city, :close_date, :company, :description, :immediate_start, :new_offer, :required_experience, :salary, :title])
+    end
+  end
+
 end

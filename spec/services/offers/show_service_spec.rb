@@ -174,9 +174,6 @@ RSpec.describe Offers::ShowService do
 
       response = subject.related_offers
 
-      puts Offer.pluck(:job_category_id)
-      puts response
-
       expect(response).to be_an_instance_of(Array)
       expect(response.size).to eq(5)
 

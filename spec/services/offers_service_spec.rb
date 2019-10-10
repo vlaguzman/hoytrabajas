@@ -45,13 +45,13 @@ RSpec.describe OffersService do
       end
 
       it "Should return maximun five presenter offers" do
-        expect(subject.related_offers_show_details(13).length).to eq(5)
+        expect(subject.related_offers_show_details(main_offer.id, 13).length).to eq(5)
       end
 
       it "Should return hash with details" do
         job_category_id = main_offer.job_category_id
 
-        expect(subject.related_offers_show_details(job_category_id).last.keys).to match_array([
+        expect(subject.related_offers_show_details(main_offer.id, job_category_id).last.keys).to match_array([
           :city, :close_date, :company, :description, :immediate_start, :new_offer, :required_experience, :salary, :title
         ])
       end

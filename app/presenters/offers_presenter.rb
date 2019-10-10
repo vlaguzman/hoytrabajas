@@ -5,7 +5,7 @@ class OffersPresenter < ApplicationPresenter
   end
 
   def related_offer_show
-    OffersService.new().related_offers_show_details(job_category_id)
+    OffersService.related_offers_show_details(id, job_category_id)
   end
 
   def index_details

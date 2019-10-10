@@ -18,6 +18,36 @@ RSpec.describe OffersPresenter do
     it "should return a hash with the required info to show template" do
       expect(subject.related_offer_show).to be_an_instance_of(Array)
     end
+
+    context "when exist 3 related offers" do
+      let!(:main_job_category) { create(:job_category, id: 88, description: "TheMainCategory") }
+
+      let(:main_offer) { create(:offer, job_category: main_job_category) }
+
+      let!(:related_offer_one)   { Offers::IndexService.new(create(:offer, job_category_id: 88)).details }
+      let!(:related_offer_two)   { Offers::IndexService.new(create(:offer, job_category_id: 88)).details }
+      let!(:related_offer_three) { Offers::IndexService.new(create(:offer, job_category_id: 88)).details }
+
+      let!(:stuff_offers) do
+        [create(:offer), create(:offer)]
+      end
+
+      let(:subject) { described_class.new(main_offer) }
+
+      it "should return 3 expected objects" do
+
+        response = subject.related_offer_show
+
+        expected_response = [
+          related_offer_one,
+          related_offer_two,
+          related_offer_three
+        ]
+
+        expect(response.length).to eq(3)
+        expect(response).to match_array(expected_response)
+      end
+    end
   end
 
   describe "#index_details" do
@@ -28,6 +58,8 @@ RSpec.describe OffersPresenter do
 
       expect(response).to be_an_instance_of(Array)
     end
+
+    let!(:related_offer) { create(:offer, job_category: subject.job_category) }
 
     it "should have the expected keys in the arrays" do
       response = subject.related_offer_show

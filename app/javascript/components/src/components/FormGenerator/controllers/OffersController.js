@@ -23,10 +23,10 @@ const OffersController = ({
   formObj,
   formSection,
   formName,
-  dispatch,
+  fields,
   scrollAction
 }) =>
-  formObj.map(item => {
+  fields.map(item => {
     const {
       kind,
       pro,
@@ -46,7 +46,6 @@ const OffersController = ({
             {...{
               formSection: ownSection || formSection,
               formName,
-              dispatch,
               pro,
               item,
               name
@@ -63,7 +62,6 @@ const OffersController = ({
           {...{
             formSection: ownSection || formSection,
             formName,
-            dispatch,
             scrollAction,
             item,
             name

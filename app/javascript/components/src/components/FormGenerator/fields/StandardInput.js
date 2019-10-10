@@ -5,15 +5,7 @@ import FormControl from '@material-ui/core/FormControl'
 import FormHelperText from '@material-ui/core/FormHelperText'
 
 const StandardInput = props => {
-  const {
-    pro,
-    inputValue,
-    name,
-    handleChange,
-    validation,
-    onFieldValidation,
-    extra
-  } = props
+  const { pro, inputValue, name, handleChange, extra } = props
 
   const renderCharCount = () => {
     const shouldDisplayError = inputValue[name] && inputValue[name].length < 0
@@ -23,7 +15,7 @@ const StandardInput = props => {
       (inputValue[name] || inputValue[name] === '') && (
         <FormHelperText
           error={shouldDisplayError}
-          className="stInput__charCount"
+          className="standard_input__charCount"
         >
           {extra.maxLength - inputValue[name].length}
         </FormHelperText>
@@ -31,8 +23,8 @@ const StandardInput = props => {
     )
   }
 
-  const hasErrors =
-    validation && validation[name] && validation[name].errorMessage
+  // TODO: add validation
+  const hasErrors = false
 
   return (
     <FormControl error={hasErrors}>
@@ -41,11 +33,11 @@ const StandardInput = props => {
         error={hasErrors}
         value={inputValue[name] || ``}
         onChange={handleChange}
-        onBlur={() => onFieldValidation()}
+        // onBlur={() => onFieldValidation()}
       />
-      {hasErrors && (
+      {/* {hasErrors && (
         <FormHelperText>{validation[name].errorMessage}</FormHelperText>
-      )}
+      )} */}
       {extra && extra.isLength && renderCharCount()}
     </FormControl>
   )
@@ -56,9 +48,7 @@ StandardInput.propTypes = {
   handleChange: PropTypes.func.isRequired,
   pro: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
-  extra: PropTypes.object,
-  validation: PropTypes.object,
-  onFieldValidation: PropTypes.func.isRequired
+  extra: PropTypes.object
 }
 
 export default StandardInput

@@ -5,7 +5,7 @@ export default {
   formSection: 'about_company',
   formObj: [
     {
-      kind: 'stInput',
+      kind: 'standard_input',
       className: 'animated fadeIn',
       xs: 12,
       pro: {

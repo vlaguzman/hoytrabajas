@@ -1,40 +1,37 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { Row, Col } from 'reactstrap'
 import CandidateController from './controllers/CandidateController'
 import OffersController from './controllers/OffersController'
 
-const FormGenerator = ({
-  scrollAction,
-  dispatch,
-  formObj,
-  formSection,
-  formName
-}) => (
-  <Row className="HT__FormGenerator">
-    {formName === 'candidate' && (
-      <CandidateController
-        {...{
-          formObj,
-          formSection,
-          formName,
-          dispatch,
-          scrollAction
-        }}
-      />
-    )}
-    {formName === 'offers' && (
-      <OffersController
-        {...{
-          formObj,
-          formSection,
-          formName,
-          dispatch,
-          scrollAction
-        }}
-      />
-    )}
-  </Row>
-)
+const FormGenerator = props => {
+  const { scrollAction, formName, formSection, fields, formObj } = props
+  return (
+    <Row className="HT__FormGenerator">
+      {formName === 'candidate' && (
+        <CandidateController
+          {...{
+            formObj,
+            formSection,
+            formName,
+            fields,
+            scrollAction
+          }}
+        />
+      )}
+      {formName === 'company' ||
+        (formName === 'offers' && (
+          <OffersController
+            {...{
+              formObj,
+              formSection,
+              formName,
+              fields,
+              scrollAction
+            }}
+          />
+        ))}
+    </Row>
+  )
+}
 
-export default connect()(FormGenerator)
+export default FormGenerator

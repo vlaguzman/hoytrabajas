@@ -1,5 +1,5 @@
 // Fields
-
+import React from 'react'
 import Button from './Button'
 import Checkbox from './Checkbox'
 import Chips from './Chips'
@@ -25,7 +25,7 @@ import FormRowWrapper from '../wrappers/FormRowWrapper'
 
 export default {
   button: props => <Button {...props} />,
-  stInput: props => <StandardInput {...props} />,
+  standard_input: props => <StandardInput {...props} />,
   select: props => <Select {...props} />,
   selectChip: props => <SelectChip {...props} />,
   datePicker: props => <DatePicker {...props} />,

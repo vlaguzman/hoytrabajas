@@ -1,7 +1,6 @@
 import React from 'react'
-import dynamic from 'next/dynamic'
-import Loading from '../components/Layout/Loading'
 import Loadable from 'react-loadable'
+import Loading from '../components/Layout/Loading'
 
 /* MAIN */
 
@@ -12,103 +11,104 @@ export const DynamicHome = Loadable({
 
 /* OFFERS */
 
-export const DynamicOffers = dynamic(() => import('./offers/'), {
-  loading: () => <Loading />
-})
-export const DynamicOffersForms = dynamic(() => import('./offers/forms'), {
-  loading: () => <Loading />
+export const DynamicOffers = Loadable({
+  loader: () => import("./offers"),
+  loading: Loading
 })
 
+export const DynamicOffersForms = Loadable({
+  loader: () => import('./offers/forms'),
+  loading: Loading
+})
 
-export const DynamicOffersCompleted = dynamic(
-  () => import('./offers/forms/completed'),
-  {
-    loading: () => <Loading />
-  }
-)
+export const DynamicOffersSteps = Loadable({
+  loader: () => import('./offers/forms'),
+  loading: Loading
+})
+
+export const DynamicOffersCompleted = Loadable({
+  loader: () => import('./offers/forms/completed'),
+  loading: Loading
+})
+
+/* COMPANIES */
+
+export const DynamicCompaniesStepZero = Loadable({
+  loader: () => import('./companies/first_offer/step_zero'),
+  loading: Loading
+})
+export const DynamicCompaniesStepOne = Loadable({
+  loader: () => import('./companies/first_offer/step_one'),
+  loading: Loading
+})
 
 /* REGCAN */
 
-
-export const DynamicReg = dynamic(() => import('./regcan/'), {
-  loading: () => <Loading />
+export const DynamicReg = Loadable({
+  loader: () => import('./regcan'),
+  loading: Loading
 })
-export const DynamicRegForms = dynamic(() => import('./regcan/forms'), {
-  loading: () => <Loading />
+export const DynamicRegForms = Loadable({
+  loader: () => import('./regcan/forms'),
+  loading: Loading
 })
-export const DynamicFormsCompleted = dynamic(
-  () => import('./regcan/forms/completed'),
-  {
-    loading: () => <Loading />
-  }
-)
-
+export const DynamicFormsCompleted = Loadable({
+  loader: () => import('./regcan/forms/completed'),
+  loading: Loading
+})
 
 /* ENTERPRISES */
 
-export const DynamicEnterprises = dynamic(() => import('./enterprises'), {
-  loading: () => <Loading />
+export const DynamicEnterprises = Loadable({
+  loader: () => import('./enterprises'),
+  loading: Loading
 })
 
 /* USERS */
 
-
-export const DynamicUsersProfile = dynamic(
-  () => import('./users/profile'),
-  {
-    loading: () => <Loading />
-  }
-)
-export const DynamicUsersChooseRole = dynamic(
-  () => import('./users/selectRole'),
-  {
-    loading: () => <Loading />
-  }
-)
+export const DynamicUsersProfile = Loadable({
+  loader: () => import('./users/profile'),
+  loading: Loading
+})
+export const DynamicUsersChooseRole = Loadable({
+  loader: () => import('./users/selectRole'),
+  loading: Loading
+})
 
 /* Dashboards */
 
-export const DynamicBoards = dynamic(() => import('./dashboards'), {
-  loading: () => <Loading />
+export const DynamicBoards = Loadable({
+  loader: () => import('./dashboards'),
+  loading: Loading
 })
-export const DynamicBoardsEnterprises = dynamic(
-  () => import('./dashboards/enterprises'),
-  {
-    loading: () => <Loading />
-  }
-)
+export const DynamicBoardsEnterprises = Loadable({
+  loader: () => import('./dashboards/enterprises'),
+  loading: Loading
+})
 
 // Detalle oferta
-export const DynamicDetalle = dynamic(
-  () => import('./detalle_oferta'),
-  {
-    loading: () => <Loading />
-  }
-)
+export const DynamicDetalle = Loadable({
+  loader: () => import('./detalle_oferta'),
+  loading: Loading
+})
 
 /* Validations */
 
-export const DynamicValidations = dynamic(
-  () => import('./validations'),
-  {
-    loading: () => <Loading />
-  }
-)
+export const DynamicValidations = Loadable({
+  loader: () => import('./validations'),
+  loading: Loading
+})
 
-/*Edicion oferta*/
+/*Edicion oferta */
 
-export const DynamicOfferEdit = dynamic(
-  () => import('./edicion_oferta'),
-  {
-    loading: () => <Loading />
-  }
-)
+export const DynamicOfferEdit = Loadable({
+  loader: () => import('./edicion_oferta'),
+  loading: Loading
+})
 
-/*Busqueda oferta*/
+/*Busqueda oferta */
 
-export const DynamicSearch = dynamic(
-  () => import('./search'),
-  {
-    loading: () => <Loading />
-  }
-)
+export const DynamicSearch = Loadable({
+  loader: () => import('./search'),
+  loading: Loading
+})

@@ -1,87 +1,79 @@
-import React, { useContext, Fragment } from 'react'
-import { connect } from 'react-redux'
-import { useRouter } from 'next/router'
+import React from 'react'
 import Button from '@material-ui/core/Button'
-import { loadInfo } from '../../../../actions'
-import { FormContext, DispatchContext } from '../../../../context/formContext'
-import {Row} from 'reactstrap'
-// import { InfoContext } from '../context/formInfoContext'
-const FormButtons = ({ scrollAction, dispatch }) => {
-  const { next, prev, formSection } = useContext(FormContext)
-  const dispatchForm = useContext(DispatchContext)
-  const router = useRouter()
+import { Row } from 'reactstrap'
+
+const FormButtons = props => {
+  const { scrollAction, next, prev, buttons, formSection } = props
+  const {
+    prev: prevText = null,
+    next: nextText = null,
+    submit: submitText = null
+  } = buttons
   const isChoiceForm = formSection.toLowerCase() === 'has_experience'
-
-  // const infoState = useContext(InfoContext)
-
-  if (!next) router.prefetch('/regcan/forms/completed')
 
   const nextPage = () => {
     if (next) {
-      dispatchForm({ type: next })
-      scrollAction()
+      window.location.assign(`/companies/first_offer/${next}`)
     } else {
-      router.push('/regcan/forms/completed')
+      window.location.assign(`/companies/first_offer/completed`)
     }
   }
 
   const prevPage = () => {
-    dispatchForm({ type: prev })
-    scrollAction()
+    window.location.assign(`/companies/first_offer/${prev}`)
   }
 
   const submit = e => {
     e.preventDefault()
     nextPage()
-    // loadInfo({ ...infoState })
   }
   return (
-    <Fragment>
-    <div className="w-100 my-70" style={{ height: '15%' }}>
-      <div className="w-100 d-flex justify-content-center">
-        {!isChoiceForm && (
-          <Button
-            type="submit"
-            onClick={submit}
-            variant={next ? 'outlined' : 'contained'}
-            size="large"
-            color="primary"
-            style={{ borderRadius: '30px' }}
-            className={`text-wrap text-${
-              next ? 'primary' : 'white'
-            } fw-bold mt-10 col-6 col-md-4`}
-          >
-            {next ? 'siguiente' : 'publicar'}
-          </Button>
-        )}
+    <>
+      <div className="w-100 my-70" style={{ height: '15%' }}>
+        <div className="w-100 d-flex justify-content-center">
+          {!isChoiceForm && (
+            <Button
+              type="submit"
+              onClick={submit}
+              variant={next ? 'outlined' : 'contained'}
+              size="large"
+              color="primary"
+              style={{ borderRadius: '30px' }}
+              className={`text-wrap text-${
+                next ? 'primary' : 'white'
+              } fw-bold mt-10 col-6 col-md-4`}
+            >
+              {submitText}
+            </Button>
+          )}
+        </div>
       </div>
-    </div>
       <div className="w-100 d-flex justify-content-between">
-        {prev != null && (
+        {prev && prevText && (
           <Button
             onClick={prevPage}
             size="small"
-            style={{bottom: '0', left: '0'}}
+            style={{ bottom: '0', left: '0' }}
             className="position-absolute text-wrap text-muted fw-bold mt-0 mx-5 w-20 animated fadeIn"
           >
             <i className="ti-arrow-circle-left mx-10" />
-            <small className="fw-bold text-muted">REGRESAR</small>
+            <small className="fw-bold text-muted">${prevText}</small>
           </Button>
         )}
-        {prev != null && next && next !== 1 && !isChoiceForm && (
+        {prev && next && nextText && !isChoiceForm && (
           <Button
             onClick={nextPage}
             size="small"
-            style={{bottom: '0', right: '0'}}
+            style={{ bottom: '0', right: '0' }}
             className="position-absolute text-wrap text-muted fw-bold mx-5 mt-0 w-20 animated fadeIn"
           >
-            <small className="fw-bold text-muted mx-10">SALTAR</small>
+            <small className="fw-bold text-muted mx-10">${nextText}</small>
             <i className="ti-arrow-circle-right" />
           </Button>
         )}
       </div>
-    </Fragment>
+    </>
   )
 }
 
-export default connect()(FormButtons)
+export default FormButtons

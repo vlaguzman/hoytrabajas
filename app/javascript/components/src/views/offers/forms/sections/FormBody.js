@@ -1,33 +1,38 @@
-import React, { Fragment, useContext } from 'react'
+import React, { Fragment } from 'react'
 import FormGenerator from '../../../../components/FormGenerator'
-import { FormContext, FormNameContext } from '../../../../context/formContext'
 import FormTitle from './FormTitle'
 import FormButtons from './FormButtons'
 
-const FormBody = ({ scrollAction }) => {
-  const { title, subtitle, formObj, formSection } = useContext(FormContext)
-  const formName = useContext(FormNameContext)
+const FormBody = props => {
+  const { scrollAction, formContent, formInfo } = props
+  const { formObj, formSection, next, prev } = formContent
+  const {
+    title,
+    subtitle,
+    form: { buttons, action, method, type, fields }
+  } = formInfo
 
   const handleSubmit = e => {
     e.preventDefault()
   }
 
   return (
-    <Fragment>
+    <>
       <FormTitle title={title} subtitle={subtitle} />
       <div className="w-80">
         <form
           className="forms__candidate"
-          method="POST"
+          action={action}
+          method={method}
           onSubmit={handleSubmit}
         >
           <FormGenerator
-            {...{ scrollAction, formObj, formSection, formName }}
+            {...{ scrollAction, formObj, formSection, fields, formName: type }}
           />
-          <FormButtons {...{ scrollAction }} />
+          <FormButtons {...{ scrollAction, next, prev, formSection }} />
         </form>
       </div>
-    </Fragment>
+    </>
   )
 }
 

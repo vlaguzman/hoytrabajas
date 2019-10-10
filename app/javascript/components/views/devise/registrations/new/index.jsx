@@ -45,7 +45,7 @@ export default class Index extends React.Component {
                    Regístrate ahora
                  </Typography>
                </DialogContentText>
-               <form id="new_user" className="new_user" action={this.props.registration_path} accept-charset="UFT-8">
+               <form id="new_user" className="new_user" action={this.props.registration_path} acceptCharset="UFT-8">
                  <input type="hidden" name={this.props.csrf_param} value={this.props.csrf_token} />
                  <div className="mb-2 mr-sm-2 mb-sm-0 position-relative">
                    <input id="user_email" className="pl-40 py-10 form-control" autoFocus="autofocus" autoComplete="email" placeholder="Correo electronico" type="email" name="user[email]" />

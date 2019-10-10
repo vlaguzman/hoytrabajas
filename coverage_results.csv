@@ -91,7 +91,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/users/wizards/step_ten_presenter.rb",100,18,10,10,0
 "./app/presenters/users/wizards/step_three_presenter.rb",100,23,11,11,0
 "./app/presenters/users/wizards/step_two_presenter.rb",100,15,7,7,0
-"./app/services/offers/index_service.rb",100,19,6,6,0
+"./app/services/offers/index_service.rb",100,9,4,4,0
 "./app/services/offers/show_service.rb",100,60,18,18,0
 "./app/services/offers/views_service.rb",95,56,19,18,1
 "./app/services/offers_service.rb",100,14,7,7,0

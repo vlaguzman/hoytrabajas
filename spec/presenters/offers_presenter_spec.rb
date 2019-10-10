@@ -54,17 +54,17 @@ RSpec.describe OffersPresenter do
     it { should respond_to(:index_details) }
 
     it "should return a array with the required info to show template" do
-      response = subject.related_offer_show
+      response = subject.index_details
 
-      expect(response).to be_an_instance_of(Array)
+      expect(response).to be_an_instance_of(Hash)
     end
 
     let!(:related_offer) { create(:offer, job_category: subject.job_category) }
 
     it "should have the expected keys in the arrays" do
-      response = subject.related_offer_show
+      response = subject.index_details
 
-      expect(response.last.keys).to match_array([:city, :close_date, :company, :description, :immediate_start, :new_offer, :required_experience, :salary, :title])
+      expect(response.keys).to match_array([:city, :close_date, :company, :description, :immediate_start, :new_offer, :required_experience, :salary, :title])
     end
   end
 

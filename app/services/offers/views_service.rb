@@ -21,6 +21,10 @@ class Offers::ViewsService
 
   protected
 
+  def used_keys
+    [:title, :immediate_start, :description, :required_experience]
+  end
+
   def build_details
     {
       city:                 { description: offer.city_description },
@@ -28,10 +32,6 @@ class Offers::ViewsService
       company:              company_details,
       close_date:           DatesConverter.default(date: offer.close_date)
     }
-  end
-
-  def used_keys
-    [:title, :immediate_start, :description, :required_experience]
   end
 
   def salary_details

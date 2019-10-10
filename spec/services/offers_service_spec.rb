@@ -15,8 +15,6 @@ RSpec.describe OffersService do
       end
     end
 
-
-
     context "When active offers are not present" do
       it "should return a empty array" do
         expect(subject.active_offers_index_details).to be_empty

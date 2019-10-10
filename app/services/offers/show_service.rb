@@ -19,10 +19,6 @@ class Offers::ShowService < Offers::ViewsService
     }
   end
 
-  def related_offers
-    Offer.where(job_category_id: offer.job_category_id).limit(5).to_a
-  end
-
   private
 
   def used_keys

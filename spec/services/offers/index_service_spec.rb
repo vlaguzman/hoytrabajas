@@ -4,13 +4,13 @@ include ActionView::Helpers::NumberHelper
 RSpec.describe Offers::IndexService do
 
   let(:offer) { create(:offer, title: "District Facilitator",
-             description: "endSint esse anim consequat commodo.", 
-             created_at: Date.new(2019, 7, 1),
-             close_date: Date.new(2019, 7, 3),
-             immediate_start: true, 
-             required_experience: true, 
-	     city: create(:city, description: "Bogotá"),
-             company: create(:company, name: "Orellana S.A.")
+      description: "endSint esse anim consequat commodo.",
+      created_at: Date.new(2019, 7, 1),
+      close_date: Date.new(2019, 7, 3),
+      immediate_start: true,
+      required_experience: true,
+      city: create(:city, description: "Bogotá"),
+      company: create(:company, name: "Orellana S.A.")
   ) }
 
   let(:subject) { described_class.new(offer) }
@@ -29,7 +29,7 @@ RSpec.describe Offers::IndexService do
     required_experience: true,
     city: {
       description: "Bogotá"
-    }, 
+    },
     salary: {
       from: "$1,000,000",
       to: "$5,000,000",
@@ -54,6 +54,6 @@ RSpec.describe Offers::IndexService do
       offers_salary
       expect(subject.details).to eq(expected_object)
     end
-  end 
+  end
 
 end

@@ -3,10 +3,11 @@ require 'rails_helper'
 RSpec.describe Offer, type: :model do
 
   describe "class methods" do
-    let(:subject) { Offer }
+    let(:subject) { described_class }
 
     describe "scopes" do
       it { should respond_to(:related_job_category) }
+      it { should respond_to(:active) }
     end
   end
 

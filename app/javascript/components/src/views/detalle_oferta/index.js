@@ -27,9 +27,6 @@ const relatedOffersCards = (relatedOffers) => {
   return relatedOffers.map(relatedOffer => ( <Cards key={relatedOffer['title']} offer={relatedOffer} /> ))
 }
 
-
-
-
 const DetallePage = ({offer, relatedOffers}) => {
 
   return (

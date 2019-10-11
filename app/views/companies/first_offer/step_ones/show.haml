@@ -1,2 +1,3 @@
 -# TODO With prerender the comp break de view
-= react_component('views/companies/first_offer/step_ones/show', { formInfo: @company.form_info }, prerender: false)
+- puts @company.form_info
+= react_component('views/companies/first_offer/step_ones/show', { formInfo: @company.form_info }, prerender: true)

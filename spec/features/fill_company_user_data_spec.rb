@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe "Fill the principal company user data", :type => :feature do
-  let(:company) { FactoryBot.create(:company, email: 'HoyTrabjas.com', password: "password") }
+  let(:company) { FactoryBot.create(:company, :first_time, name: 'HoyTrabjas.com') }
 
   # let(industry_1) { FactoryBot.create(:industry) }
   # let(industry_2) { FactoryBot.create(:industry) }
 
-  def expected_page_structure(page)
+  def expected_page_structure
     expect(page).to have_content("Empecemos por conocernos")
     expect(page).to have_content("Brinda a tu candidato información de tu empresa.")
 
@@ -32,16 +32,18 @@ RSpec.describe "Fill the principal company user data", :type => :feature do
   end
 
   describe "Company user want register data" do
-    before do
-      sign_in(company)
-    end
     context "Data is wrong" do
-      scenario "Fields is required", js: true do
-        puts "llego al scenario"
+      it "Fields is required", js: true do
+        puts "STARCT *****"
+        puts company.inspect
+        sign_in company
+        puts current_path
         visit companies_first_offer_step_one_path
-        puts "llego al la vista"
+        puts "la chinita"
+        puts current_path
+        save_page("daniel.html")
 
-        expected_page_structure(page)
+        expected_page_structure
         fill_form(
           {
             name: '',

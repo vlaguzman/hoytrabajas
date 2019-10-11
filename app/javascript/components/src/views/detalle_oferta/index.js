@@ -23,7 +23,11 @@ import { map } from 'lodash';
 
 import AppLayout from '../../components/Layout/AppLayout'
 
-const DetallePage = ({offer}) => {
+const relatedOffersCards = (relatedOffers) => {
+  return relatedOffers.map(relatedOffer => ( <Cards key={relatedOffer['title']} offer={relatedOffer} /> ))
+}
+
+const DetallePage = ({offer, relatedOffers}) => {
 
   return (
 <div className="detalle-wrapper" >
@@ -162,11 +166,11 @@ const DetallePage = ({offer}) => {
             </div>
             <div className='h-100 p-5 text-center mr-5'
               style={{borderRadius: '50%', border: '1px solid orange', width: '2rem'}}>
-              <FontAwesomeIcon className='mx-auto text-primary' icon={['fab', 'twitter']} size="sm" />            
+              <FontAwesomeIcon className='mx-auto text-primary' icon={['fab', 'twitter']} size="sm" />
             </div>
             <div className='h-100 p-5 text-center mr-5'
               style={{borderRadius: '50%', border: '1px solid orange', width: '2rem'}}>
-              <FontAwesomeIcon className='mx-auto text-primary' icon={['fab', 'whatsapp']} size="sm" />            
+              <FontAwesomeIcon className='mx-auto text-primary' icon={['fab', 'whatsapp']} size="sm" />
             </div>
         </Row>
         </CardContent>
@@ -182,12 +186,11 @@ const DetallePage = ({offer}) => {
           Ofertas Relacionadas
     </Typography>
   </Row>
+
   <Row className='pr-20 pl-50'>
     <Carousel slidesToShow={3.7} autoplay={false} >
-        {map(Array(6).fill({}),(e, i) => (
-          <Cards key={i} />
-        ))}
-  </Carousel>
+      { relatedOffersCards( relatedOffers ) }
+    </Carousel>
   </Row>
 
 </div>)

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "User can Log In", type: :feature do
 
   before {
-    create(:user, email: "example@email.com", password: "Asdf1234")  
+    create(:user, email: "example@email.com", password: "Asdf1234")
   }
 
   context "a registered user must be able to login" do

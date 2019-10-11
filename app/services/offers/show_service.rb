@@ -1,8 +1,6 @@
 # The Offers::ShowService Class do build the hash  with the data used in offer/show template
 class Offers::ShowService < Offers::ViewsService
 
-  private
-
   def build_details
     {
       sex:                  { description: offer.sex_description },
@@ -20,6 +18,8 @@ class Offers::ShowService < Offers::ViewsService
       close_date:           DatesConverter.default(date: offer.close_date)
     }
   end
+
+  private
 
   def used_keys
     [:title, :address, :immediate_start, :description, :vacancies_quantity, :required_experience]

@@ -45,7 +45,7 @@ A         * EmployeesRange                              1       0.0        0    
 A         * FaqsController                              2       0.0        0           1
 A         * Function                                    2       0.0        0           1
 A         * FunctionsOffers                             1       0.0        0           1
-A         * HomeController                              5       2.42       0           1
+A         * HomeController                              6       1.41       0           1
 A         * Industry                                    3       0.0        0           1
 A         * JobAid                                      4       0.0        0           1
 A         * JobAidsOffers                               1       0.0        0           1
@@ -57,15 +57,15 @@ A         * LanguagesOffers                             3       2.0        0    
 A         * Level                                       4       0.0        0           1
 A         * Limitation                                  4       0.0        0           1
 A         * Nationality                                 4       0.0        0           1
-A         * Offer                                       22      2.2        0           1
+A         * Offer                                       23      2.2        0           1
 A         * OfferSalary                                 5       0.0        0           1
 A         * OfferType                                   5       0.0        0           1
 A         * Offers::IndexService                        3       15.4       0           1
-A         * Offers::ViewsService                        2       33.2       0           1
-A         * OffersController                            8       9.03       0           1
-A         * OffersPresenter                             2       7.2        0           1
+A         * Offers::ViewsService                        4       33.2       0           1
+A         * OffersController                            9       8.03       0           1
+A         * OffersPresenter                             5       10.6       0           1
 A         * OffersResponsibilities                      1       0.0        0           1
-A         * OffersService                               3       4.71       0           2
+A         * OffersService                               6       14.0       0           1
 A         * OffersSoftSkills                            1       0.0        0           1
 A         * OffersTechnicalSkills                       1       0.0        0           1
 A         * OffersTerms                                 1       0.0        0           1
@@ -132,4 +132,4 @@ A         * WorkMethodology                             1       0.0        0    
 A         * WorkMode                                    3       0.0        0           1
 A         * WorkPosition                                2       0.0        0           1
 A         * WorkingDay                                  5       0.0        0           1
-B         * Offers::ShowService                         7       62.6       0           0
+B         * Offers::ShowService                         9       62.6       0           0

@@ -15,7 +15,7 @@ export default class Show extends React.Component {
           <p>Y crear una oferta atractiva para llegar</p>
           <p>a el es muy fácil ¡Vamos a hacerlo!</p>
 
-          <a href={this.props.companies_first_offer_step_one_path}>Quiero publicar mi oferta</a>
+          <a href={this.props.path}> Quiero publicar mi oferta </a>
         </AppLayout>
       </div>
     )

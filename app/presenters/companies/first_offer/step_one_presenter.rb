@@ -11,7 +11,7 @@ class Companies::FirstOffer::StepOnePresenter < ApplicationPresenter
   # Crear test para libreria para construir los hash que pasar al componente de react
   # Crear libreria para construir los hash que pasar al componente de react
   def form_info
-    { 
+    {
       title: 'Empecemos por conocernos',
       subtitle: 'Brinda a tu candidato información de tu empresa.',
       form: {

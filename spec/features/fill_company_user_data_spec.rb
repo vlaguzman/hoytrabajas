@@ -1,12 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "Fill the principal company user data", :type => :feature do
-  let(:company) { FactoryBot.create(:company, :first_time, name: 'HoyTrabjas.com') }
+  let(:company) { FactoryBot.create(:company, :first_time, name: 'HoyTrabajas.com') }
 
-  let!(:industry_1) { FactoryBot.create(:industry) }
-  let!(:industry_2) { FactoryBot.create(:industry, description: "Textil") }
-
-  let!(:employees_range) { FactoryBot.create(:employees_range) }
+  let!(:industry) { FactoryBot.create(:industry) }
 
   def expected_page_structure
     expect(page).to have_content("Empecemos por conocernos")
@@ -26,13 +23,16 @@ RSpec.describe "Fill the principal company user data", :type => :feature do
 
   def fill_form(data)
     fill_in 'company["name"]', :with => data[:name]
+
     find(id: 'select-company["industry_id"]', visible: false).click
-    find('li', text: 'Textil').click
-    save_screenshot("daniel.png")
+    find('li', text: 'Sales').click
 
     fill_in 'company["contact_name"]', :with => data[:contact_name]
     fill_in 'company["contact_work_position"]', :with => data[:contact_work_position]
     fill_in 'company["contact_cellphone"]', :with => data[:contact_cellphone]
+
+    find(id: 'select-company["employees_range_id"]', visible: false).click
+    find('li', text: '1-10').click
   end
 
   describe "Company user want register data" do
@@ -66,23 +66,23 @@ RSpec.describe "Fill the principal company user data", :type => :feature do
         expected_page_structure
         fill_form(
           {
-            name: 'HoyTrabajas.com',
-            industry_id: '1, 2',
+            name: 'Enterprise.com',
             contact_name: 'Ruben Cordoba',
             contact_work_position: 'CEO',
-            contact_cellphone: '3101234567',
-            employees_range_id: '1'
+            contact_cellphone: '3101234567'
           }
         )
         click_link_or_button('Siguiente')
 
-        company = Company.find_by(name: 'HoyTrabjas.com')
+        company = Company.find_by(name: 'Enterprise.com')
 
-        expect(company.name).to eq('HoyTrabajas.com')
-        expect(company.industry_id).to eq('1')
+        expect(company.name).to eq('Enterprise.com')
+        puts company.inspect
         expect(company.contact_name).to eq('Ruben Cordoba')
         expect(company.contact_work_position).to eq('CEO')
-        expect(company.employees_range_id).to eq('1')
+
+        expect(company.industry_id).to_not be_empty
+        expect(company.employees_range_id).to_not be_empty
 
         expect(current_path).to eq(companies_first_offer_step_two_path)
         expect(page).to have_text("Describe brevemente tu compañía")

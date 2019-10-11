@@ -95,7 +95,17 @@ const FormFields = props => {
           name={industry_id.name}
           label={industry_id.label}
           selectOptions={industry_id.values}
-          isMultiple
+          isMultiple={false}
+        />
+      </Col>
+    ),
+    [formValues[employees_range_id.name]]
+  )
+
+  return (
+    <Row className="HT__FormGenerator">
+      {nameField}
+      { isMultiple
         />
       </Col>
     ),

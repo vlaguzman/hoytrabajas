@@ -3,8 +3,10 @@ require 'rails_helper'
 RSpec.describe "Fill the principal company user data", :type => :feature do
   let(:company) { FactoryBot.create(:company, :first_time, name: 'HoyTrabjas.com') }
 
-  # let(industry_1) { FactoryBot.create(:industry) }
-  # let(industry_2) { FactoryBot.create(:industry) }
+  let!(:industry_1) { FactoryBot.create(:industry) }
+  let!(:industry_2) { FactoryBot.create(:industry, description: "Textil") }
+
+  let!(:employees_range) { FactoryBot.create(:employees_range) }
 
   def expected_page_structure
     expect(page).to have_content("Empecemos por conocernos")
@@ -12,36 +14,32 @@ RSpec.describe "Fill the principal company user data", :type => :feature do
 
     expect(page).to have_tag(:form, with: { class: "forms__candidate" }) do
       with_tag(:input, with: { name: 'company["name"]', type: "text" })
-      with_select('company["industry_id"]')
+      with_tag(:input, with: { name: 'company["industry_id"]', type: "hidden" })
       with_tag(:input, with: { name: 'company["contact_name"]', type: "text" })
       with_tag(:input, with: { name: 'company["contact_work_position"]', type: "text" })
       with_tag(:input, with: { name: 'company["contact_cellphone"]', type: "text" })
-      with_select('company["employees_range_id"]')
+      with_tag(:input, with: { name: 'company["employees_range_id"]', type: "hidden" })
     end
 
-    expect(page).to have_link_or_button('Siguiente')
+    expect(page).to have_button('Siguiente')
   end
 
   def fill_form(data)
     fill_in 'company["name"]', :with => data[:name]
-    fill_in 'company["industry_id"]', :with => data[:industry_id]
+    find(id: 'select-company["industry_id"]', visible: false).click
+    find('li', text: 'Textil').click
+    save_screenshot("daniel.png")
+
     fill_in 'company["contact_name"]', :with => data[:contact_name]
     fill_in 'company["contact_work_position"]', :with => data[:contact_work_position]
     fill_in 'company["contact_cellphone"]', :with => data[:contact_cellphone]
-    fill_in 'company["employees_range_id"]', :with => data[:employees_range_id]
   end
 
   describe "Company user want register data" do
     context "Data is wrong" do
-      it "Fields is required", js: true do
-        puts "STARCT *****"
-        puts company.inspect
+      scenario "Fields is required", js: true do
         sign_in company
-        puts current_path
         visit companies_first_offer_step_one_path
-        puts "la chinita"
-        puts current_path
-        save_page("daniel.html")
 
         expected_page_structure
         fill_form(
@@ -56,21 +54,20 @@ RSpec.describe "Fill the principal company user data", :type => :feature do
         )
         click_link_or_button('Siguiente')
 
-        expect(page).to have_content(/El campo nombre es requerido/)
-        expect(page).to have_content(/El campo sector al que pertenece la empresa es requerido/)
+        expect(page).to have_content('El campo nombre es requerido')
       end
     end
 
     context "Data is correct" do
       scenario "should save succesfully data", js: true do
-
+        sign_in company
         visit companies_first_offer_step_one_path
 
-        expected_page_structure(page)
+        expected_page_structure
         fill_form(
           {
             name: 'HoyTrabajas.com',
-            industry_id: '1',
+            industry_id: '1, 2',
             contact_name: 'Ruben Cordoba',
             contact_work_position: 'CEO',
             contact_cellphone: '3101234567',

@@ -1,1 +1,1 @@
-RemoveUnusedMethodsInControllersCheck: { except_methods: ['*#index', '*#show', '*#edit', '*#new', '*#update', '*#after_inactive_sign_up_path_for', 'ApplicationController#after_sign_in_path_for' ] }
+RemoveUnusedMethodsInControllersCheck: { except_methods: ['*#index', '*#show', '*#edit', '*#new', '*#update', '*#after_inactive_sign_up_path_for', '*#after_sign_up_path_for', 'ApplicationController#after_sign_in_path_for' ] }

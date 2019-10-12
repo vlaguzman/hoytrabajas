@@ -1,10 +1,12 @@
+app/views/devise/mailer/email_changed.html.haml:3:- if @resource.try(:unconfirmed_email?)
 app/views/devise/registrations/edit.html.haml:14:    %i (leave blank if you don't want to change it)
 app/views/devise/registrations/edit.html.haml:17:    - if @minimum_password_length
 app/views/devise/registrations/edit.html.haml:9:  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-app/views/devise/registrations/new.html.haml:12:    - if @minimum_password_length
-app/views/shared/_form_errors.haml:2:  - if source.errors.any?app/views/devise/mailer/email_changed.html.haml:3:- if @resource.try(:unconfirmed_email?)
+app/views/devise/shared/_error_messages.html.haml:1:- if resource.errors.any?
+app/views/devise/shared/_links.html.haml:10:- if devise_mapping.confirmable? && controller_name != 'confirmations'
 app/views/devise/shared/_links.html.haml:13:- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
 app/views/devise/shared/_links.html.haml:16:- if devise_mapping.omniauthable?
 app/views/devise/shared/_links.html.haml:1:- if controller_name != 'sessions'
 app/views/devise/shared/_links.html.haml:4:- if devise_mapping.registerable? && controller_name != 'registrations'
 app/views/devise/shared/_links.html.haml:7:- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+app/views/shared/_form_errors.haml:2:  - if source.errors.any?

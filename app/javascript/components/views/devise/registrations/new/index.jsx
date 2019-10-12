@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import MatButton from '@material-ui/core/Button'
 import { Row, Col } from 'reactstrap'
 import Typography from '@material-ui/core/Typography'
@@ -11,17 +12,10 @@ import Lock from '@material-ui/icons/Lock'
 import Divider from '@material-ui/core/Divider'
 import AppLayout from '../../../../src/components/Layout/AppLayout'
 
-const handleClickOpen = () => {
-  setOpen(true)
-}
-const handleClose = () => {
-  setOpen(false)
-}
-
 export default class Index extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { open: false }
+    this.state = { open: true }
     this.props = props
   }
 
@@ -33,8 +27,7 @@ export default class Index extends React.Component {
           <Dialog
             fullWidth
             maxWidth="xs"
-            open
-            onClose={handleClose}
+            open={this.state.open}
             aria-labelledby="max-width-dialog-title"
           >
             <DialogTitle id="max-width-dialog-title" className="my-25">
@@ -154,4 +147,11 @@ export default class Index extends React.Component {
       </div>
     )
   }
+}
+
+Index.propTypes = {
+  csrf_token: PropTypes.string.isRequired,
+  csrf_param: PropTypes.string.isRequired,
+  source_name: PropTypes.string.isRequired,
+  registration_path: PropTypes.string.isRequired
 }

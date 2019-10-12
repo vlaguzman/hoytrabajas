@@ -1,5 +1,9 @@
 class Users::Wizards::StepOnePresenter < ApplicationPresenter
 
+  def errors
+    []
+  end
+
   def nationalities_list
     Nationality.all.map { |object| [object.description, object.id] }
   end

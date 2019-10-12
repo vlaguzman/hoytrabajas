@@ -42,7 +42,7 @@ RSpec.describe "fill the principal candidate user data", :type => :feature do
       expect(candidate.sign_in_count).to be_zero
 
       expect(page).to have_text(/El trabajo ideal/)
-      expect(page).to have_text(/si existe!/)
+      expect(page).to have_text(/¡si existe!/)
 
 
       click_on "Quiero publicar mi oferta"
@@ -50,12 +50,12 @@ RSpec.describe "fill the principal candidate user data", :type => :feature do
       expect(page).to have_text("Empecemos por conocernos")
 
       within '#step_one' do
-        fill_in 'user[name]', with: 'Carlos'
-        fill_in 'user[last_name]', with: 'Rojas'
-        select 'Colombiana', from: 'user[nationality_ids][]'
-        select 'Cedula de Ciudadania', from: 'user[document_type_id]'
-        fill_in "user[identification_number]", :with => "1063558224"
-        fill_in "user[contact_number]", :with => "3183638789"
+        fill_in 'candidate[name]', with: 'Carlos'
+        fill_in 'candidate[last_name]', with: 'Rojas'
+        select 'Colombiana', from: 'candidate[nationality_ids][]'
+        select 'Cedula de Ciudadania', from: 'candidate[document_type_id]'
+        fill_in "candidate[identification_number]", :with => "1063558224"
+        fill_in "candidate[contact_number]", :with => "3183638789"
         click_on 'siguiente'
       end
 
@@ -67,7 +67,7 @@ RSpec.describe "fill the principal candidate user data", :type => :feature do
       within '#step_two' do
         fill_in "user[about_me]", :with => "I am the best chef in the world"
         page.select 'masculino', from: 'user[sex_id]'
-        fill_in "user[birthday]", :with => "1990-12-20"
+        fill_in "user[birthday]", :with => "20-12-1990"
         page.select 'ninguna', from: 'user[limitation_ids][]'
         page.select 'Profesional', from: 'user[educational_degree_id]'
         click_button 'siguiente'
@@ -77,7 +77,7 @@ RSpec.describe "fill the principal candidate user data", :type => :feature do
 
       expect(candidate.sex.description).to eq("masculino")
       expect(candidate.about_me).to eq("I am the best chef in the world")
-      expect(candidate.birthday).to eq(Date.parse("1990-12-20"))
+      expect(candidate.birthday).to eq(Date.parse("20-12-1990"))
       expect(candidate.curriculum_vitaes.count).to eq(1)
     end
   end

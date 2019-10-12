@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :faqs, only: [:index]
   resources :offers
   resources :job_categories, only:[:index]
+  resources :companies, only: [:index]
 
   namespace :companies do
     namespace :first_offer do
@@ -36,10 +37,10 @@ Rails.application.routes.draw do
 
 
   devise_for :users, controllers: { registrations: 'users/registrations', :omniauth_callbacks => "users/omniauth_callbacks" }
-  devise_for :companies,  controllers: { registrations: 'companies/registrations' }
+  devise_for :companies, controllers: { registrations: 'companies/registrations' }
 
   resources :users, only: [:edit, :update, :show]
-  resources :companies, only: [:index, :show, :edit]
+  resource :companies, only: [:edit, :update, :show]
 
   root to: "home#index"
 

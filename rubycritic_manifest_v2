@@ -2,7 +2,7 @@ A         * Acknowledgment                              3       0.0        0    
 A         * AgeRange                                    1       0.0        0           1
 A         * ApplicationCable::Channel                   1       0.0        0           1
 A         * ApplicationCable::Connection                1       0.0        0           1
-A         * ApplicationController                       13      13.32      0           1
+A         * ApplicationController                       14      13.32      0           1
 A         * ApplicationJob                              1       0.0        0           1
 A         * ApplicationMailer                           1       0.0        0           1
 A         * ApplicationPresenter                        2       7.75       0           3
@@ -19,10 +19,10 @@ A         * Companies::FirstOffer::StepOnesController   3       0.0        0    
 A         * Companies::FirstOffer::StepThreesController 3       0.0        0           1
 A         * Companies::FirstOffer::StepTwosController   3       0.0        0           1
 A         * Companies::FirstOffer::StepZerosController  1       0.0        0           1
-A         * Companies::RegistrationsController          1       1.0        0           2
-A         * CompaniesController                         4       3.4        0           1
+A         * Companies::RegistrationsController          2       3.16       0           2
+A         * CompaniesController                         5       3.4        0           1
 A         * CompaniesUsers                              1       0.0        0           1
-A         * Company                                     6       0.0        0           1
+A         * Company                                     7       0.0        0           1
 A         * ContractType                                1       0.0        0           1
 A         * Currency                                    1       0.0        0           1
 A         * CurriculumVitae                             21      0.0        0           1
@@ -89,7 +89,7 @@ A         * TechnicalSkillCategory                      1       0.0        0    
 A         * Term                                        4       0.0        0           1
 A         * User                                        13      27.95      0           3
 A         * Users::OmniauthCallbacksController          1       21.49      0           5
-A         * Users::RegistrationsController              3       1.0        0           2
+A         * Users::RegistrationsController              6       3.16       0           2
 A         * Users::WizardService                        2       17.38      0           2
 A         * Users::Wizards::StepEightPresenter          4       21.97      0           2
 A         * Users::Wizards::StepEightService            1       18.84      0           1
@@ -104,9 +104,9 @@ A         * Users::Wizards::StepFoursController         4       20.5       23   
 A         * Users::Wizards::StepNinePresenter           3       15.59      18          2
 A         * Users::Wizards::StepNineService             1       17.57      0           1
 A         * Users::Wizards::StepNinesController         5       26.71      0           1
-A         * Users::Wizards::StepOnePresenter            2       9.02       0           3
+A         * Users::Wizards::StepOnePresenter            3       9.02       0           3
 A         * Users::Wizards::StepOneService              2       4.0        0           1
-A         * Users::Wizards::StepOnesController          2       22.09      0           2
+A         * Users::Wizards::StepOnesController          3       20.51      0           2
 A         * Users::Wizards::StepSevenPresenter          2       0.0        0           1
 A         * Users::Wizards::StepSevensController        6       2.42       0           1
 A         * Users::Wizards::StepSixPresenter            2       22.56      0           6

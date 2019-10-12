@@ -9,7 +9,7 @@ class Users::Wizards::StepOnesController < ApplicationController
 
     @user = Users::Wizards::StepOnePresenter.new(current_user)
 
-    if not @user.errors.details.present?
+    if not @user.errors.present?
       redirect_to users_wizards_step_two_path
     else
       render 'show'
@@ -19,7 +19,7 @@ class Users::Wizards::StepOnesController < ApplicationController
   private
 
   def strong_params
-    params.require(:user).permit(:name, :last_name, :document_type_id, :contact_number, :identification_number, nationality_ids: []).to_h
+    params.require(:candidate).permit(:name, :last_name, :document_type_id, :contact_number, :identification_number, nationality_ids: []).to_h
   end
 
 end

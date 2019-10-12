@@ -41,11 +41,11 @@ RSpec.describe "fill the principal candidate user data", :type => :feature do
       # a new user who has never been loged-in, i.e. sign_in_count is zero
       expect(candidate.sign_in_count).to be_zero
 
-      expect(page).to have_text(/¡Perfecto!/)
-      expect(page).to have_text(/Has creado un perfil ganador/)
+      expect(page).to have_text(/El trabajo ideal/)
+      expect(page).to have_text(/¡si existe!/)
 
 
-      click_on "Completar mi perfil"
+      click_on "Quiero publicar mi oferta"
 
       expect(page).to have_text("Empecemos por conocernos")
 
@@ -67,7 +67,7 @@ RSpec.describe "fill the principal candidate user data", :type => :feature do
       within '#step_two' do
         fill_in "user[about_me]", :with => "I am the best chef in the world"
         page.select 'masculino', from: 'user[sex_id]'
-        fill_in "user[birthday]", :with => "1990-12-20"
+        fill_in "user[birthday]", :with => "20-12-1990"
         page.select 'ninguna', from: 'user[limitation_ids][]'
         page.select 'Profesional', from: 'user[educational_degree_id]'
         click_button 'siguiente'
@@ -77,7 +77,7 @@ RSpec.describe "fill the principal candidate user data", :type => :feature do
 
       expect(candidate.sex.description).to eq("masculino")
       expect(candidate.about_me).to eq("I am the best chef in the world")
-      expect(candidate.birthday).to eq(Date.parse("1990-12-20"))
+      expect(candidate.birthday).to eq(Date.parse("20-12-1990"))
       expect(candidate.curriculum_vitaes.count).to eq(1)
     end
   end

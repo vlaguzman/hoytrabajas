@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "sign up user", type: :feature do
-  context "Like a external user, I should get in hoytrabajas.com and see the option 'registarse'" do
+RSpec.describe "sign up user", js: true,  type: :feature do
+  context "Like a external user, I should get in hoytrabajas.com and see the option 'registrarse'" do
 
     it "User visit home page and click on sign in" do
 
@@ -10,7 +10,7 @@ RSpec.describe "sign up user", type: :feature do
       expect(page).to have_text("Candidato")
       click_on 'Candidato'
 
-      expect(page).to have_text("Regístrate ahora")
+      expect(page).to have_text("Regístrate")
     end
 
 
@@ -25,10 +25,9 @@ RSpec.describe "sign up user", type: :feature do
           fill_in 'user[password]', :with => "1wantt$finda7ob"
           fill_in 'user[password_confirmation]', :with => "1wantt$finda7ob"
 
-          click_on 'Registrarme'
+          click_on 'Regístrarme'
 
           expect(User.count).to eq(1)
-          expect(page).to have_text(/¡Perfecto!/)
 
           expect(current_path).to eq(users_wizards_step_zero_path)
 
@@ -44,11 +43,11 @@ RSpec.describe "sign up user", type: :feature do
         fill_in "company[password]", :with => "iwanttofindaemployee"
         fill_in 'company[password_confirmation]', :with => "iwanttofindaemployee"
 
-        click_button 'Registrarme'
+        click_button 'Regístrarme'
 
         expect(Company.count).to eq(1)
 
-        expect(page).to have_text(/Quiero públicar mi oferta/)
+        expect(current_path).to eq(companies_first_offer_step_zero_path)
 
       end
     end

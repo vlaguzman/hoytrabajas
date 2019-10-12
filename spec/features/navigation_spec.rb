@@ -25,12 +25,12 @@ RSpec.describe "Overall navigation" do
       expect(page).to have_link("Candidato", href: new_user_registration_path)
       click_on("Candidato")
       expect(page).to have_text("Regístrate ahora")
-      click_on("Inicio")
+      visit root_path
 
       expect(page).to have_link("Empleador", href: new_company_registration_path)
       click_on("Empleador")
       expect(page).to have_text("Regístrate ahora")
-      click_on("Inicio")
+      visit root_path
 
       expect(current_path).to eq(root_path)
       has_button?("VER MÁS OFERTAS")

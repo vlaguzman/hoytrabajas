@@ -1,7 +1,7 @@
 class Users::Wizards::StepOnePresenter < ApplicationPresenter
 
-  def errors
-    []
+  def form_information
+    Users::Wizards::StepOne::FormParamsBuilder.("/users/wizards/step_one")
   end
 
   def nationalities_list

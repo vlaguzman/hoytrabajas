@@ -14,10 +14,11 @@ const FormButtons = props => {
     if (prevPath) window.location.assign(prevPath)
   }
 
-  const onSubmit = e => {
+  /** const onSubmit = e => {
     e.preventDefault()
     nextPage()
-  }
+  } */
+
   return (
     <>
       <div className="w-100 my-70" style={{ height: '15%' }}>
@@ -25,7 +26,7 @@ const FormButtons = props => {
           {submit && (
             <Button
               type="submit"
-              onClick={onSubmit}
+              /* onClick={onSubmit} */
               variant={nextPath ? 'outlined' : 'contained'}
               size="large"
               color="primary"

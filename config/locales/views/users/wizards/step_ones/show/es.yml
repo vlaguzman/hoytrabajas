@@ -1,0 +1,18 @@
+es:
+  users:
+    wizards:
+      step_ones:
+        show:
+          title: Empecemos por conocernos
+          subtitle: Brinda a las empresas información valiosa sobre ti.
+          form:
+            buttons:
+              submit: Siguiente
+            type: user
+            formFields:
+              name: "Nombre*"
+              last_name: "Apellido*"
+              nationality_ids: "Nacionalidad*"
+              document_type_id: "Tipo de documento de identidad*"
+              identification_number: "Número de documento*"
+              contact_number: "Número de contacto*"

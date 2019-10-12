@@ -70,8 +70,16 @@ export const DynamicUsersProfile = Loadable({
   loader: () => import('./users/profile'),
   loading: Loading
 })
+
 export const DynamicUsersChooseRole = Loadable({
   loader: () => import('./users/selectRole'),
+  loading: Loading
+})
+
+/** Users Wizards Steps */
+
+export const DynamicUsersWizardsStepOne = Loadable({
+  loader: () => import('./users/wizards/step_ones/show'),
   loading: Loading
 })
 

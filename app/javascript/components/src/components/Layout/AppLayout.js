@@ -22,7 +22,8 @@ library.add(fab, fas, faSearch)
 const localeMap = { en, es }
 const locale = 'es'
 
-const AppLayout = ({ children, csrf_param, csrf_token }) => {
+const AppLayout = ({ children, csrf_param, csrf_token, user_signed_in }) => {
+  console.log("estoy en el AppLayout", user_signed_in)
   const [isTop, setIsTop] = useState(false)
   const myRef = useRef(null)
   const onScrollFrame = e => {
@@ -57,6 +58,7 @@ const AppLayout = ({ children, csrf_param, csrf_token }) => {
                               scrollState={isTop}
                               csrf_param={csrf_param}
                               csrf_token={csrf_token}
+                              user_signed_in={user_signed_in}
                             />
                           </div>
                           <div className="rct-page-content">

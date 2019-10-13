@@ -24,7 +24,8 @@ import dialogState from '../../hooks/dialogState'
 import { fields1 } from './data'
 import FormGen from '../inlineFormgenerartor'
 
-const Header = ({ scrollState, csrf_param, csrf_token }) => {
+const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in }) => {
+  console.log("hola, estoy en el header", user_signed_in)
   const [open, setOpen] = React.useState(false)
   const [loginState, setloginState] = React.useState(true)
   const [fullWidth, setFullWidth] = React.useState(true)
@@ -133,12 +134,21 @@ const Header = ({ scrollState, csrf_param, csrf_token }) => {
             <li className="list-inline-item no-responsive">
               {/* {!isAuthenticated ? ( */}
               {/* TODO:only login with the user_path */}
+              {!user_signed_in && (
               <MatButton
                 style={{ color: !scrollState ? 'white' : 'black' }}
                 onClick={handleClickOpen}
               >
                 Login
-              </MatButton>
+              </MatButton>)}
+              {user_signed_in && (
+              <MatButton
+                style={{ color: !scrollState ? 'white' : 'black' }}
+                onClick={handleClickOpen}
+              >
+                Log Out
+              </MatButton>)}
+	     
               {/* ) : (
               <MatButton style={{color: !scrollState ? 'white': 'black'}} onClick={() => logout()}>Logout</MatButton>
             )} */}

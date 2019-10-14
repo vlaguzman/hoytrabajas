@@ -24,7 +24,8 @@ import dialogState from '../../hooks/dialogState'
 import { fields1 } from './data'
 import FormGen from '../inlineFormgenerartor'
 
-const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in }) => {
+const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in, log_out_user }) => {
+  console.log("estoy serrando sesion", `${log_out_user}`)
   console.log("hola, estoy en el header", user_signed_in)
   const [open, setOpen] = React.useState(false)
   const [loginState, setloginState] = React.useState(true)
@@ -144,7 +145,7 @@ const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in }) => {
               {user_signed_in && (
               <MatButton
                 style={{ color: !scrollState ? 'white' : 'black' }}
-                onClick={handleClickOpen}
+                href={log_out_user}
               >
                 Log Out
               </MatButton>)}

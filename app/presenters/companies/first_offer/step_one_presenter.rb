@@ -1,11 +1,11 @@
 class Companies::FirstOffer::StepOnePresenter < ApplicationPresenter
 
   def industries_values
-    Industry.all.map{|industry| {id: industry.id, description: industry.description}}
+    Industry.all.map { |industry| { id: industry.id, description: industry.description } }
   end
 
   def employees_range_values
-    EmployeesRange.all.map{|employees_range| {id: employees_range.id, description: employees_range.description}}
+    EmployeesRange.all.map { |employees_range| { id: employees_range.id, description: employees_range.description } }
   end
 
   def form_info

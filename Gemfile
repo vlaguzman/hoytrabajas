@@ -39,7 +39,6 @@ group :development, :test do
   gem "selenium-webdriver",'~>3.141.0'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'byebug'
 end
 
 group :development do

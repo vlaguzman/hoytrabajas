@@ -2,7 +2,7 @@ module Users::Wizards::StepOne::FormParamsBuilder
 
   #TODO move genernal method to general class
 
-  FORM_TYPE = :user
+  FORM_TYPE = :candidate
 
   INPUT_FIELDS_KEY = [
     :name,

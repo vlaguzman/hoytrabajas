@@ -14,10 +14,6 @@ const UsersWizardsStepOne = ({ csrf_name, csrf_token, formInfo }) => {
     form: { buttons, action, method, type, formFields }
   } = formInfo
 
-  /*   const handleSubmit = e => {
-    e.preventDefault()
-  } */
-
   return (
     <div className="main-wrapper">
       <FormProgress value={0} />
@@ -30,7 +26,6 @@ const UsersWizardsStepOne = ({ csrf_name, csrf_token, formInfo }) => {
                 className="forms__candidate"
                 action={action}
                 method="post"
-                /* onSubmit={handleSubmit} */
               >
                 <input type="hidden" name={csrf_name} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />

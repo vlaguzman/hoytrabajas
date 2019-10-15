@@ -22,32 +22,32 @@ RSpec.describe Users::Wizards::StepOne::FormParamsBuilder do
           },
           action: '/users/wizards/step_one',
           method: :put,
-          type: :user,
+          type: :candidate,
           formFields: {
             name:{
-              name: "user[name]",
+              name: "candidate[name]",
               label: "Nombre*",
             },
             last_name:{
-              name: "user[last_name]",
+              name: "candidate[last_name]",
               label: "Apellido*",
             },
             nationality_ids:{
-              name:"user[nationality_ids][]",
+              name:"candidate[nationality_ids][]",
               label: "Nacionalidad*",
               values: create_nationalities_list
             },
             document_type_id:{
-              name:"user[document_type_id]",
+              name:"candidate[document_type_id]",
               label: "Tipo de documento de identidad*",
               values: create_document_type_list
             },
             identification_number:{
-              name:"user[identification_number]",
+              name:"candidate[identification_number]",
               label: "Número de documento*",
             },
             contact_number:{
-              name:"user[contact_number]",
+              name:"candidate[contact_number]",
               label: "Número de contacto*"
             }
           }

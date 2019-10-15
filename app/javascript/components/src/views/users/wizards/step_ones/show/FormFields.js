@@ -7,12 +7,12 @@ import SelectChip from '../../../../../components/FormsLayout/Fields/SelectChip'
 const FormFields = props => {
   const { formFields, type } = props
   const {
-    name=                   null,
-    last_name=              null,
-    nationality_ids=        null,
-    document_type_id=       null,
-    identification_number=  null,
-    contact_number=         null
+    name                  = null,
+    last_name             = null,
+    nationality_ids       = null,
+    document_type_id      = null,
+    identification_number = null,
+    contact_number        = null
   } = formFields
 
   const [formValues, setFormValues] = useState({

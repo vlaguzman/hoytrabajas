@@ -1,7 +1,8 @@
 class Users::Wizards::StepOnePresenter < ApplicationPresenter
 
   def form_information
-    Users::Wizards::StepOne::FormParamsBuilder.("/users/wizards/step_one")
+    form_path = Rails.application.routes.url_helpers.users_wizards_step_one_path
+    Users::Wizards::StepOne::FormParamsBuilder.(form_path)
   end
 
   def nationalities_list

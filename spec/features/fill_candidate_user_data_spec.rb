@@ -49,17 +49,17 @@ RSpec.describe "fill the principal candidate user data", :type => :feature do
 
       expect(page).to have_text("Empecemos por conocernos")
 
-      fill_in 'user[name]', with: 'Carlos'
-      fill_in 'user[last_name]', with: 'Rojas'
+      fill_in 'candidate[name]', with: 'Carlos'
+      fill_in 'candidate[last_name]', with: 'Rojas'
 
-      find("div[id='select-user[nationality_ids][]']", visible: false).click
+      find("div[id='select-candidate[nationality_ids][]']", visible: false).click
       find("li", text: "Colombiana").click
 
-      find("div[id='select-user[document_type_id]']", visible: false).click
+      find("div[id='select-candidate[document_type_id]']", visible: false).click
       find("li", text: "Cedula de Ciudadania").click
 
-      fill_in "user[identification_number]", :with => "1063558224"
-      fill_in "user[contact_number]", :with => "3183638789"
+      fill_in "candidate[identification_number]", :with => "1063558224"
+      fill_in "candidate[contact_number]", :with => "3183638789"
 
       find("span", text: "SIGUIENTE").click
 

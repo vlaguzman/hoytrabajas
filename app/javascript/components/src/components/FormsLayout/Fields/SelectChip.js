@@ -12,12 +12,12 @@ import FormHelperText from '@material-ui/core/FormHelperText'
 const SelectChip = props => {
   const {
     inputValue,
-    inputName,
     handleChange,
     handleDeleteChip,
     name,
     label,
     isMultiple,
+    isRequired,
     selectOptions,
     sideText,
     sideTextRight
@@ -36,15 +36,18 @@ const SelectChip = props => {
       )}
       <FormControl key={name} error={hasErrors}>
         {label && (
-          <InputLabel htmlFor="select-multiple-chip">{label}</InputLabel>
+          <InputLabel required={isRequired} htmlFor="select-multiple-chip">
+            {label}
+          </InputLabel>
         )}
         <Select
           value={inputValue || defaultValue}
           input={
             <Input
               id="select-multiple-chip"
-              name={inputName}
+              name={name}
               onChange={onChange}
+              required={isRequired}
             />
           }
           renderValue={selected => {
@@ -105,7 +108,6 @@ SelectChip.propTypes = {
     PropTypes.number,
     PropTypes.array
   ]).isRequired,
-  inputName: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleDeleteChip: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,

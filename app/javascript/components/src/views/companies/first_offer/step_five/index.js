@@ -7,12 +7,16 @@ import FormTitle from '../../../../components/FormsLayout/FormTitle'
 import FormButtons from '../../../../components/FormsLayout/FormButtons'
 import FormFields from './FormFields'
 
-const CompaniesStepOne = ({ formInfo, csrf_name, csrf_token }) => {
+const CompaniesStepFive = ({ formInfo }) => {
   const {
     title,
     subtitle,
     form: { buttons, nextPath, prevPath, action, method, type, formFields }
   } = formInfo
+
+  const handleSubmit = e => {
+    e.preventDefault()
+  }
 
   return (
     <div className="main-wrapper">
@@ -25,11 +29,10 @@ const CompaniesStepOne = ({ formInfo, csrf_name, csrf_token }) => {
               <form
                 className="forms__candidate"
                 action={action}
-                method="post"
+                method={method}
+                onSubmit={handleSubmit}
               >
                 <FormFields type={type} formFields={formFields} />
-                <input type="hidden" name={csrf_name} value={csrf_token} />
-                <input type="hidden" name="_method" value={method} />
                 <FormButtons
                   nextPath={nextPath}
                   prevPath={prevPath}
@@ -44,15 +47,17 @@ const CompaniesStepOne = ({ formInfo, csrf_name, csrf_token }) => {
   )
 }
 
-export default CompaniesStepOne
+export default CompaniesStepFive
 
-CompaniesStepOne.propTypes = {
+CompaniesStepFive.propTypes = {
   formInfo: PropTypes.shape({
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
     form: PropTypes.shape({
       buttons: PropTypes.shape({
-        submit: PropTypes.string.isRequired
+        submit: PropTypes.string.isRequired,
+        prev: PropTypes.string.isRequired,
+        next: PropTypes.string.isRequired
       }),
       nextPath: PropTypes.string.isRequired,
       prevPath: PropTypes.string.isRequired,

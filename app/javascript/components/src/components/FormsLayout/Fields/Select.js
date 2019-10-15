@@ -7,49 +7,60 @@ import TextField from '@material-ui/core/TextField'
 import { FlagIcon } from 'react-flag-kit'
 
 const SelectComponent = props => {
-  const { pro, aux, handleChange, inputValue, errors } = props
-  const { name } = pro
+  const {
+    selectOptions,
+    handleChange,
+    name,
+    label = null,
+    inputValue,
+    isRequired
+  } = props
 
   const maskValue = val => {
     if (!val) return val
-    const item = aux.find(({ value }) => value === val)
-    return item.label
+    const item = selectOptions.find(({ id }) => id === val)
+    return item.description
   }
-  const [maskedInput, setMaskedInput] = useState(
-    maskValue(inputValue[name]) || ''
-  )
+
+  const [maskedInput, setMaskedInput] = useState(maskValue(inputValue) || '')
 
   useEffect(() => {
-    setMaskedInput(inputValue[name])
+    setMaskedInput(inputValue)
   }, [inputValue])
 
   const onChange = e => {
     handleChange(e, name)
   }
 
+  const hasErrors = false
+
   return (
-    <FormControl error={!!errors}>
+    <FormControl error={hasErrors}>
       <TextField
-        {...pro}
-        {...{ onChange }}
         key={name}
-        error={!!errors}
+        name={name}
+        onChange={onChange}
         value={maskedInput}
+        label={label}
+        required={isRequired}
+        select
       >
-        {aux.map(({ value, label, code, size }) => (
-          <MenuItem key={value} {...{ value }}>
+        {selectOptions.map(({ id, description, code, size }) => (
+          <MenuItem key={id} value={id}>
             {code && (
               <FlagIcon
-                {...{ code: code.toUpperCase() }}
-                {...{ size }}
+                code={code.toUpperCase()}
+                size={size}
                 className="mr-10"
               />
             )}
-            {label}
+            {description}
           </MenuItem>
         ))}
       </TextField>
-      {!!errors && <FormHelperText>{errors}</FormHelperText>}
+      {hasErrors && (
+        <FormHelperText>should display error message here</FormHelperText>
+      )}
     </FormControl>
   )
 }
@@ -57,9 +68,14 @@ const SelectComponent = props => {
 export default SelectComponent
 
 SelectComponent.propTypes = {
-  pro: PropTypes.object.isRequired,
-  aux: PropTypes.any.isRequired,
-  inputValue: PropTypes.object.isRequired,
+  inputValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.array
+  ]).isRequired,
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string,
   handleChange: PropTypes.func.isRequired,
-  errors: PropTypes.oneOfType([PropTypes.object, PropTypes.bool])
+  selectOptions: PropTypes.array.isRequired,
+  isRequired: PropTypes.bool
 }

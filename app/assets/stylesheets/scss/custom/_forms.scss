@@ -57,6 +57,7 @@
 }
 
 .HT__FormGenerator {
+  align-items: flex-end;
   .MuiFormHelperText-root.Mui-error {
     position: absolute;
     bottom: -1.25rem;
@@ -65,5 +66,40 @@
     position: absolute;
     bottom: -1.25rem;
     right: 0;
+  }
+  .MuiInputLabel-formControl {
+    margin: 0;
+  }
+  .MuiInputLabel-formControl[data-shrink='false'] {
+    transform: none;
+    bottom: 10px;
+    top: auto;
+  }
+  .inputField {
+    height: 64px;
+    max-height: 64px;
+    .MuiTextField-root {
+      margin-top: auto;
+      label + .MuiInput-formControl {
+        margin-top: 16px;
+      }
+    }
+  }
+
+  label + .MuiInput-formControl {
+    margin-top: auto;
+  }
+
+  &.StepFive .inputField {
+    display: flex;
+    align-items: flex-end;
+
+    label + .MuiInput-formControl {
+      margin-top: 16px;
+    }
+
+    & > .MuiFormControl-root {
+      width: 100%;
+    }
   }
 }

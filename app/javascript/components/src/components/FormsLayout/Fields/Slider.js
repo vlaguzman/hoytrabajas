@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import FormControl from '@material-ui/core/FormControl'
 import FormHelperText from '@material-ui/core/FormHelperText'
-import Typography from '@material-ui/core/Typography'
 import Slider from '@material-ui/core/Slider'
+import styled from 'styled-components'
 import FormLabel from '../FormLabel'
 
 const styles = theme => ({
   root: {
-    padding: `30px 0 0`,
+    flex: 1,
     color: theme.palette.secondary.main
   },
   valueLabel: {
@@ -41,42 +41,86 @@ const styles = theme => ({
 
 const StyledSlider = withStyles(styles)(Slider)
 
-function valuetext(value) {
-  return `${value}°C`
-}
+const FlexContainer = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 20px 0 0;
+`
+const SideText = styled.div`
+  flex: 0 1 20%;
+  margin-bottom: 3px;
+`
 
 const RangeSlider = props => {
   const {
-    pro: { name, label },
     inputValue,
-    handleSlider,
-    errors,
-    extra
+    handleSimpleChange,
+    name,
+    label,
+    beforeLabel,
+    afterLabel,
+    values,
+    step,
+    isMultiple,
+    isRequired = false
   } = props
-  const { step, minValue, maxValue = null, valueLabelDisplay = null } = extra
-  const defaultValue = minValue && maxValue && [minValue, maxValue]
+  const { min, max } = values
+  const defaultValue = isMultiple ? min && max && [min, max] : min
+
+  const hasErrors = false
+
+  const onChange = (e, value) => handleSimpleChange(value, name)
 
   return (
-    <FormControl error={!!errors}>
+    <FormControl error={hasErrors}>
       {label && (
-        <FormLabel id="range-slider" gutterBottom>
+        <FormLabel required={isRequired} id="range-slider" gutterBottom>
           {label}
         </FormLabel>
       )}
-      <StyledSlider
-        value={inputValue[name] || defaultValue}
-        onChange={handleSlider}
-        step={step || 1}
-        min={minValue || 0}
-        max={maxValue || 100}
-        valueLabelDisplay={valueLabelDisplay || 'on'}
-        aria-label={label || `label`}
-        // aria-labelledby="range-slider"
-        getAriaValueText={valuetext}
-      />
-      {!!errors && <FormHelperText>{errors}</FormHelperText>}
+      <FlexContainer>
+        {beforeLabel && <SideText>{beforeLabel}</SideText>}
+        <StyledSlider
+          name={name}
+          value={inputValue || defaultValue}
+          onChange={onChange}
+          step={step || 1}
+          min={min || 0}
+          max={max || 100}
+          aria-label={label || `slider`}
+          valueLabelDisplay="on"
+          style={{
+            marginLeft: beforeLabel ? `5px` : 0,
+            marginRight: afterLabel ? `15px` : 0
+          }}
+        />
+        {afterLabel && (
+          <SideText style={{ textAlign: 'right' }}>{afterLabel}</SideText>
+        )}
+      </FlexContainer>
+      {hasErrors && <FormHelperText>should display error here</FormHelperText>}
     </FormControl>
   )
 }
 
 export default RangeSlider
+
+RangeSlider.propTypes = {
+  inputValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.array
+  ]).isRequired,
+  handleSimpleChange: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string,
+  beforeLabel: PropTypes.string,
+  afterLabel: PropTypes.string,
+  isMultiple: PropTypes.bool,
+  isRequired: PropTypes.bool,
+  values: PropTypes.shape({
+    min: PropTypes.number.isRequired,
+    max: PropTypes.number
+  }),
+  step: PropTypes.number.isRequired
+}

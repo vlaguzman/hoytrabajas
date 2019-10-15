@@ -26,9 +26,8 @@ function capitalize(string) {
 }
 
 const DatePicker = props => {
-  const { label, inputName } = props
-  const { datepicker = null } = pro
-  const formatString = datepicker && datepicker.format
+  const { inputValue, handleSimpleChange, name, label, dateOptions } = props
+  const formatString = dateOptions && dateOptions.format
 
   const formatLabel = date => {
     const stringDate = format(date, formatString)
@@ -36,18 +35,16 @@ const DatePicker = props => {
     return capitalized
   }
 
-  const [selectedDate, handleDateChange] = useState(new Date());
+  const onChange = value => handleSimpleChange(value, name)
 
   return (
     <MaterialDatePicker
-      format="dd MMM yyyy"
-      name={ inputName }
-      {...pro}
+      format={dateOptions.format || 'dd MMM yyyy'}
+      name={name}
       label={label}
-      style={style}
       maxDate={new Date()}
-      onChange={handleDateChange}
-      value={selectedDate}
+      onChange={onChange}
+      value={inputValue || ''}
       labelFunc={formatLabel}
       InputProps={{
         endAdornment: (
@@ -68,6 +65,18 @@ const DatePicker = props => {
 export default DatePicker
 
 DatePicker.propTypes = {
-  inputName: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired
+  inputValue: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.array
+  ]).isRequired,
+  handleSimpleChange: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  dateOptions: PropTypes.shape({
+    format: PropTypes.string,
+    disableFuture: PropTypes.bool,
+    emptyLabel: PropTypes.string,
+    views: PropTypes.array
+  }).isRequired
 }

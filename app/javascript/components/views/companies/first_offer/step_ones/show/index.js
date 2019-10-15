@@ -5,7 +5,7 @@ import AppLayout from '../../../../../src/components/Layout/AppLayout'
 const CompaniesStepOnePage = props => {
   return (
     <AppLayout>
-      <DynamicCompaniesStepOne formInfo={props.formInfo} />
+      <DynamicCompaniesStepOne {...props} />
     </AppLayout>
   )
 }

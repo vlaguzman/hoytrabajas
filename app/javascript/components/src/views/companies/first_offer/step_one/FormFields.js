@@ -99,16 +99,6 @@ const FormFields = props => {
         />
       </Col>
     ),
-    [formValues[employees_range_id.name]]
-  )
-
-  return (
-    <Row className="HT__FormGenerator">
-      {nameField}
-      { isMultiple
-        />
-      </Col>
-    ),
     [formValues[industry_id.name]]
   )
 

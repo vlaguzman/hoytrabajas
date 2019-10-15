@@ -8,8 +8,6 @@ class Companies::FirstOffer::StepOnePresenter < ApplicationPresenter
     EmployeesRange.all.map{|employees_range| {id: employees_range.id, description: employees_range.description}}
   end
 
-  # Crear test para libreria para construir los hash que pasar al componente de react
-  # Crear libreria para construir los hash que pasar al componente de react
   def form_info
     {
       title: 'Empecemos por conocernos',
@@ -20,33 +18,33 @@ class Companies::FirstOffer::StepOnePresenter < ApplicationPresenter
           prev: '',
           next: ''
         },
-        action: '',
+        action: Rails.application.routes.url_helpers.companies_first_offer_step_one_path,
         method: 'PUT',
         type: 'company',
         formFields: {
           name: {
-            name: 'company["name"]',
+            name: 'company[name]',
             label: 'Nombre empresa o Razón social*'
           },
           industry_id: {
-            name: 'company["industry_id"]',
+            name: 'company[industry_id]',
             label: 'Sector al que pertenece tu empresa*',
             values: industries_values
           },
           contact_work_position: {
-            name: 'company["contact_work_position"]',
+            name: 'company[contact_work_position]',
             label: 'Cargo'
           },
           contact_name: {
-            name: 'company["contact_name"]',
+            name: 'company[contact_name]',
             label: 'Persona de contacto'
           },
           contact_cellphone: {
-            name: 'company["contact_cellphone"]',
+            name: 'company[contact_cellphone]',
             label: 'Número de contacto'
           },
           employees_range_id: {
-            name: 'company["employees_range_id"]',
+            name: 'company[employees_range_id]',
             label: 'Número de empleados',
             values: employees_range_values
           }

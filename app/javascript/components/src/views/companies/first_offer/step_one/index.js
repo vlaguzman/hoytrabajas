@@ -7,16 +7,12 @@ import FormTitle from '../../../../components/FormsLayout/FormTitle'
 import FormButtons from '../../../../components/FormsLayout/FormButtons'
 import FormFields from './FormFields'
 
-const CompaniesStepOne = ({ formInfo }) => {
+const CompaniesStepOne = ({ formInfo, csrf_name, csrf_token }) => {
   const {
     title,
     subtitle,
     form: { buttons, action, method, type, formFields }
   } = formInfo
-
-  const handleSubmit = e => {
-    e.preventDefault()
-  }
 
   return (
     <div className="main-wrapper">
@@ -29,10 +25,11 @@ const CompaniesStepOne = ({ formInfo }) => {
               <form
                 className="forms__candidate"
                 action={action}
-                method={method}
-                onSubmit={handleSubmit}
+                method="post"
               >
                 <FormFields type={type} formFields={formFields} />
+                <input type="hidden" name={csrf_name} value={csrf_token} />
+                <input type="hidden" name="_method" value={method} />
                 <FormButtons
                   nextPath="/companies/first_offer/step_two"
                   prevPath={null}

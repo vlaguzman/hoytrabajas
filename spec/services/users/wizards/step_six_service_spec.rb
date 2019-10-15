@@ -104,11 +104,9 @@ RSpec.describe Users::Wizards::StepSixService do
           expect(new_curriculum_vitae.technical_skills.pluck(:description)).to match_array(["SEO","Redes sociales"])
           expect(new_curriculum_vitae.languages.pluck(:description)).to match_array(["Inglés"])
 
-          saved_to_learn_skill = CurriculumVitaesTechnicalSkills.find_by(curriculum_vitae_id: new_curriculum_vitae.id)
+          saved_to_learn_skill = CurriculumVitaesTechnicalSkills.find_by(curriculum_vitae_id: new_curriculum_vitae.id, step_up: true)
 
           expect(saved_to_learn_skill.level).to eq(nil)
-          expect(saved_to_learn_skill.step_up).to be_truthy
-          #updated_cv_salary = updated_candidate.curriculum_vitaes.first.curriculum_vitae_salary
         end
       end
 

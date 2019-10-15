@@ -1,4 +1,4 @@
-import React from 'react'
+import React     from 'react'
 import AppLayout from '../../../../../src/components/Layout/AppLayout'
 
 export default class Show extends React.Component {
@@ -10,12 +10,16 @@ export default class Show extends React.Component {
     return (
       <div className="main-wrapper">
         <AppLayout>
-          <h1>El empleado ideal</h1>
-          <h1>¡si existe!</h1>
-          <p>Y crear una oferta atractiva para llegar</p>
-          <p>a el es muy fácil ¡Vamos a hacerlo!</p>
-
-          <a href={this.props.path}> Quiero publicar mi oferta </a>
+          <div className='background'>
+            <div className='container-general'>
+              <div className='container-specific background'></div>
+              <div className='container-specific'>
+                <h1>El empleado ideal ¡si existe!</h1>
+                <p>Y crear una oferta atractiva para llegar a el es muy facil ¡vamos a hacerlo!</p>
+                <a href={this.props.path}> Quiero publicar mi oferta </a>
+              </div>
+            </div>
+          </div>
         </AppLayout>
       </div>
     )

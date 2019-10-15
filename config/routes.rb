@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-  #devise_for :admin_users, ActiveAdmin::Devise.config
   devise_for :admin_users, {:path=>:admin, :controllers=>{:sessions=>"admin_users/sessions", :passwords=>"active_admin/devise/passwords", :unlocks=>"active_admin/devise/unlocks", :registrations=>"active_admin/devise/registrations", :confirmations=>"active_admin/devise/confirmations"}, :path_names=>{:sign_in=>"login", :sign_out=>"logout"}, :sign_out_via=>[:delete, :get]}
-  #TODO u cant modify a idividual user is dont change to 'resources'
-  #devise_for :admin_users, controllers: { sessions: 'admin_users/sessions' }
   ActiveAdmin.routes(self)
 
   resources :faqs, only: [:index]

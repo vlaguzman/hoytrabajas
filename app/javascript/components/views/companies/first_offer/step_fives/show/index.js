@@ -33,8 +33,8 @@ const formInfo = {
           }
         ]
       },
-      offer_salary_currency_id: {
-        name: 'offer_salary_currency_id',
+      currency_id: {
+        name: 'currency_id',
         label: '',
         current_value: 1,
         values: [
@@ -48,20 +48,20 @@ const formInfo = {
           }
         ]
       },
-      offer_salary_min: {
-        name: 'offer_salary_min',
+      from: {
+        name: 'from',
         placeholder: 'Ej: 750.000',
         currentValue: ''
       },
-      offer_salary_max: {
-        name: 'offer_salary_max',
+      to: {
+        name: 'to',
         label: 'Edad del candidato',
         placeholder: 'Ej: 750.000',
         beforeLabel: 'a',
         currentValue: ''
       },
-      offer_salary_interval_id: {
-        name: 'offer_salary_interval_id',
+      salary_type_id_id: {
+        name: 'salary_type_id_id',
         label: 'Pago',
         currentValue: '',
         values: [
@@ -75,8 +75,8 @@ const formInfo = {
           }
         ]
       },
-      offer_working_days: {
-        name: 'offer_working_days',
+      available_work_day_id: {
+        name: 'available_work_day_id',
         label: '¿Qué días a la semana?',
         currentValue: '',
         isMultiple: true,
@@ -91,8 +91,8 @@ const formInfo = {
           }
         ]
       },
-      offer_working_hours: {
-        name: 'offer_working_hours',
+      working_day_id: {
+        name: 'working_day_id',
         label: '¿En qué jornada?',
         currentValue: '',
         isMultiple: true,
@@ -107,8 +107,8 @@ const formInfo = {
           }
         ]
       },
-      offer_benefits: {
-        name: 'offer_benefits',
+      job_aid_id: {
+        name: 'job_aid_id',
         label: 'Auxilios o prestaciones asociadas a tu oferta',
         currentValue: '',
         isMultiple: true,

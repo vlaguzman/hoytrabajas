@@ -9,26 +9,24 @@ const FormFields = props => {
   const { formFields, type } = props
   const {
     offer_salary_id = null,
-    offer_salary_currency_id = null,
-    offer_salary_min = null,
-    offer_salary_max = null,
-    offer_salary_interval_id = null,
-    offer_working_days = null,
-    offer_working_hours = null,
-    offer_benefits = null
+    currency_id = null,
+    from = null,
+    to = null,
+    salary_type_id_id = null,
+    available_work_day_id = null,
+    working_day_id = null,
+    job_aid_id = null
   } = formFields
 
   const [formValues, setFormValues] = useState({
     [offer_salary_id.name]: offer_salary_id.current_value || '',
-    [offer_salary_currency_id.name]:
-      offer_salary_currency_id.current_value || '',
-    [offer_salary_min.name]: offer_salary_min.current_value || '',
-    [offer_salary_max.name]: offer_salary_max.current_value || '',
-    [offer_salary_interval_id.name]:
-      offer_salary_interval_id.current_value || '',
-    [offer_working_days.name]: offer_working_days.current_value || '',
-    [offer_working_hours.name]: offer_working_hours.current_value || '',
-    [offer_benefits.name]: offer_benefits.current_value || ''
+    [currency_id.name]: currency_id.current_value || '',
+    [from.name]: from.current_value || '',
+    [to.name]: to.current_value || '',
+    [salary_type_id_id.name]: salary_type_id_id.current_value || '',
+    [available_work_day_id.name]: available_work_day_id.current_value || '',
+    [working_day_id.name]: working_day_id.current_value || '',
+    [job_aid_id.name]: job_aid_id.current_value || ''
   })
 
   const handleChange = (e, inputName, isMultiple = false) => {
@@ -58,13 +56,6 @@ const FormFields = props => {
     }
   }
 
-  const handleSimpleChange = (newValue, inputName) => {
-    setFormValues(prevFormValues => ({
-      ...prevFormValues,
-      [inputName]: newValue
-    }))
-  }
-
   const handleDeleteChip = (id, inputName, isMultiple) => {
     if (isMultiple) {
       const newChips = [...formValues[inputName]]
@@ -79,14 +70,6 @@ const FormFields = props => {
         [inputName]: ''
       }))
     }
-  }
-
-  const handleBoolean = (e, inputName) => {
-    if (e.persist) e.persist()
-    setFormValues(prevFormValues => ({
-      ...prevFormValues,
-      [inputName]: e.target.checked
-    }))
   }
 
   const inputClassname = 'my-30 animated fadeIn inputField'
@@ -114,30 +97,30 @@ const FormFields = props => {
     () => (
       <Col className={controlledInputsClassname} xs={12} lg={2}>
         <Select
-          inputValue={formValues[offer_salary_currency_id.name]}
+          inputValue={formValues[currency_id.name]}
           handleChange={handleChange}
-          name={offer_salary_currency_id.name}
-          selectOptions={offer_salary_currency_id.values}
-          isRequired={offer_salary_currency_id.isRequired || false}
+          name={currency_id.name}
+          selectOptions={currency_id.values}
+          isRequired={currency_id.isRequired || false}
         />
       </Col>
     ),
-    [formValues[offer_salary_currency_id.name]]
+    [formValues[currency_id.name]]
   )
 
   const offerSalaryMinField = useMemo(
     () => (
       <Col className={controlledInputsClassname} style={{ flex: 1 }}>
         <StandardInput
-          inputValue={formValues[offer_salary_min.name]}
+          inputValue={formValues[from.name]}
           handleChange={handleChange}
-          name={offer_salary_min.name}
-          placeholder={offer_salary_min.placeholder || ''}
+          name={from.name}
+          placeholder={from.placeholder || ''}
           style={{ width: '100%' }}
         />
       </Col>
     ),
-    [formValues[offer_salary_min.name]]
+    [formValues[from.name]]
   )
 
   const offerSalaryMaxField = useMemo(
@@ -145,86 +128,86 @@ const FormFields = props => {
       formValues[offer_salary_id.name] === 1 ? (
         <Col className={`pr-0 ${controlledInputsClassname}`} xs={12} lg={2}>
           <StandardInput
-            inputValue={formValues[offer_salary_max.name]}
+            inputValue={formValues[to.name]}
             handleChange={handleChange}
-            name={offer_salary_max.name}
-            placeholder={offer_salary_max.placeholder || ''}
-            beforeLabel={offer_salary_max.beforeLabel || ''}
+            name={to.name}
+            placeholder={to.placeholder || ''}
+            beforeLabel={to.beforeLabel || ''}
             style={{ width: '100%' }}
           />
         </Col>
       ) : null,
-    [formValues[offer_salary_max.name], formValues[offer_salary_id.name]]
+    [formValues[to.name], formValues[offer_salary_id.name]]
   )
 
   const offerSalaryIntervalField = useMemo(
     () => (
       <Col className={controlledInputsClassname} xs={12} lg={3}>
         <Select
-          inputValue={formValues[offer_salary_interval_id.name]}
+          inputValue={formValues[salary_type_id_id.name]}
           handleChange={handleChange}
-          name={offer_salary_interval_id.name}
-          label={offer_salary_interval_id.label}
-          selectOptions={offer_salary_interval_id.values}
-          isRequired={offer_salary_interval_id.isRequired || false}
+          name={salary_type_id_id.name}
+          label={salary_type_id_id.label}
+          selectOptions={salary_type_id_id.values}
+          isRequired={salary_type_id_id.isRequired || false}
         />
       </Col>
     ),
-    [formValues[offer_salary_interval_id.name]]
+    [formValues[salary_type_id_id.name]]
   )
 
   const offerWorkingDaysField = useMemo(
     () => (
       <Col className={inputClassname} xs={12} lg={6}>
         <SelectChip
-          inputValue={formValues[offer_working_days.name]}
+          inputValue={formValues[available_work_day_id.name]}
           handleChange={handleChange}
           handleDeleteChip={handleDeleteChip}
-          name={offer_working_days.name}
-          label={offer_working_days.label}
-          selectOptions={offer_working_days.values}
-          isRequired={offer_working_days.isRequired || false}
-          isMultiple={offer_working_days.isMultiple || false}
+          name={available_work_day_id.name}
+          label={available_work_day_id.label}
+          selectOptions={available_work_day_id.values}
+          isRequired={available_work_day_id.isRequired || false}
+          isMultiple={available_work_day_id.isMultiple || false}
         />
       </Col>
     ),
-    [formValues[offer_working_days.name]]
+    [formValues[available_work_day_id.name]]
   )
 
   const offerWorkingHoursField = useMemo(
     () => (
       <Col className={inputClassname} xs={12} lg={6}>
         <SelectChip
-          inputValue={formValues[offer_working_hours.name]}
+          inputValue={formValues[working_day_id.name]}
           handleChange={handleChange}
           handleDeleteChip={handleDeleteChip}
-          name={offer_working_hours.name}
-          label={offer_working_hours.label}
-          selectOptions={offer_working_hours.values}
-          isRequired={offer_working_hours.isRequired || false}
-          isMultiple={offer_working_hours.isMultiple || false}
+          name={working_day_id.name}
+          label={working_day_id.label}
+          selectOptions={working_day_id.values}
+          isRequired={working_day_id.isRequired || false}
+          isMultiple={working_day_id.isMultiple || false}
         />
       </Col>
     ),
-    [formValues[offer_working_hours.name]]
+    [formValues[working_day_id.name]]
   )
 
   const offerBenefitsField = useMemo(
     () => (
       <Col className={inputClassname} xs={12}>
         <SelectChip
-          inputValue={formValues[offer_benefits.name]}
+          inputValue={formValues[job_aid_id.name]}
           handleChange={handleChange}
           handleDeleteChip={handleDeleteChip}
-          name={offer_benefits.name}
-          label={offer_benefits.label}
-          selectOptions={offer_benefits.values}
-          isRequired={offer_benefits.isRequired || false}
-          isMultiple={offer_benefits.isMultiple || false}
+          name={job_aid_id.name}
+          label={job_aid_id.label}
+          selectOptions={job_aid_id.values}
+          isRequired={job_aid_id.isRequired || false}
+          isMultiple={job_aid_id.isMultiple || false}
         />
       </Col>
     ),
-    [formValues[offer_benefits.name]]
+    [formValues[job_aid_id.name]]
   )
 
   return (
@@ -247,12 +230,12 @@ FormFields.propTypes = {
   type: PropTypes.oneOf(['user', 'company']),
   formFields: PropTypes.shape({
     offer_salary_id: PropTypes.object,
-    offer_salary_currency_id: PropTypes.object,
-    offer_salary_min: PropTypes.object,
-    offer_salary_max: PropTypes.object,
-    offer_salary_interval_id: PropTypes.object,
-    offer_working_days: PropTypes.object,
-    offer_working_hours: PropTypes.object,
-    offer_benefits: PropTypes.object
+    currency_id: PropTypes.object,
+    from: PropTypes.object,
+    to: PropTypes.object,
+    salary_type_id_id: PropTypes.object,
+    available_work_day_id: PropTypes.object,
+    working_day_id: PropTypes.object,
+    job_aid_id: PropTypes.object
   }).isRequired
 }

@@ -27,6 +27,7 @@ module Ht
 
     config.eager_load_paths << Rails.root.join('lib')
 
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
     config.i18n.default_locale = :es
 
     config.time_zone = "America/Bogota"

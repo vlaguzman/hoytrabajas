@@ -85,7 +85,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/users/wizards/step_five_presenter.rb",100,23,11,11,0
 "./app/presenters/users/wizards/step_four_presenter.rb",91,23,11,10,1
 "./app/presenters/users/wizards/step_nine_presenter.rb",100,21,12,12,0
-"./app/presenters/users/wizards/step_one_presenter.rb",100,15,7,7,0
+"./app/presenters/users/wizards/step_one_presenter.rb",100,16,8,8,0
 "./app/presenters/users/wizards/step_seven_presenter.rb",100,2,1,1,0
 "./app/presenters/users/wizards/step_six_presenter.rb",100,22,11,11,0
 "./app/presenters/users/wizards/step_ten_presenter.rb",100,18,10,10,0
@@ -100,9 +100,11 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/users/wizards/step_five_service.rb",100,17,9,9,0
 "./app/services/users/wizards/step_four_service.rb",100,7,3,3,0
 "./app/services/users/wizards/step_nine_service.rb",100,28,14,14,0
+"./app/services/users/wizards/step_one/form_params_builder.rb",100,89,31,31,0
 "./app/services/users/wizards/step_one_service.rb",100,10,5,5,0
 "./app/services/users/wizards/step_six_service.rb",91,43,23,21,2
 "./app/services/users/wizards/step_ten_service.rb",100,20,10,10,0
 "./app/services/users/wizards/step_three_service.rb",100,5,3,3,0
 "./app/services/users/wizards/step_two_service.rb",100,9,4,4,0
 "./lib/dates_converter.rb",100,5,3,3,0
+"./lib/list_converter.rb",100,7,3,3,0

@@ -1,23 +1,2 @@
-%h1 Empecemos por conocernos
 
-= form_for(:candidate, url: users_wizards_step_one_path, method: :put, html: { id: :step_one } ) do |field|
-  = render 'shared/form_errors', source: @user
-
-  = field.label :name, "Nombre"
-  = field.text_field :name
-
-  = field.label :last_name, "Apellido"
-  = field.text_field :last_name
-
-  = field.select :document_type_id, @user.document_types_list, { prompt: "Seleccione Nacionalidad"}
-
-  = field.label :nationalities, "Nacionalidad"
-  = field.select(:nationality_ids, @user.nationalities_list,{ prompt: "Seleccione Nacionalidad"}, { :multiple => true } )
-
-  = field.label :identification_number, "Numero de Documento"
-  = field.text_field :identification_number
-
-  = field.label :contact_number, "Numero de Contacto"
-  = field.text_field :contact_number
-
-  = field.submit("siguiente")
+= react_component('views/users/wizards/step_ones/show', {formInfo: @user.form_information, csrf_name: request_forgery_protection_token, csrf_token: form_authenticity_token }, prerender: true)

@@ -53,8 +53,6 @@ RSpec.describe "companies/first_offer/step_ones/show", :type => :feature do
         click_link_or_button('Siguiente')
 
         company = Company.find_by(name: 'Enterprise.com')
-        puts "### COMPANY TEST ### \n" * 3
-        puts company.inspect
 
         expect(company.name).to eq('Enterprise.com')
         expect(company.contact_name).to eq('Ruben Cordoba')

@@ -10,8 +10,8 @@ class Companies::FirstOffer::StepOnePresenter < ApplicationPresenter
 
   def form_info
     {
-      title: 'Empecemos por conocernos',
-      subtitle: 'Brinda a tu candidato información de tu empresa.',
+      title: I18n.t("companies.first_offer.step_ones.show.title"),
+      subtitle: I18n.t("companies.first_offer.step_ones.show.subtitle"),
       form: {
         buttons: {
           submit: 'Siguiente',
@@ -24,28 +24,28 @@ class Companies::FirstOffer::StepOnePresenter < ApplicationPresenter
         formFields: {
           name: {
             name: 'company[name]',
-            label: 'Nombre empresa o Razón social*'
+            label: I18n.t("companies.first_offer.step_ones.show.form.formFields.name")
           },
           industry_id: {
             name: 'company[industry_id]',
-            label: 'Sector al que pertenece tu empresa*',
+            label: I18n.t("companies.first_offer.step_ones.show.form.formFields.name"),
             values: industries_values
           },
           contact_work_position: {
             name: 'company[contact_work_position]',
-            label: 'Cargo'
+            label: I18n.t("companies.first_offer.step_ones.show.form.formFields.name")
           },
           contact_name: {
             name: 'company[contact_name]',
-            label: 'Persona de contacto'
+            label: I18n.t("companies.first_offer.step_ones.show.form.formFields.name")
           },
           contact_cellphone: {
             name: 'company[contact_cellphone]',
-            label: 'Número de contacto'
+            label: I18n.t("companies.first_offer.step_ones.show.form.formFields.name")
           },
           employees_range_id: {
             name: 'company[employees_range_id]',
-            label: 'Número de empleados',
+            label: I18n.t("companies.first_offer.step_ones.show.form.formFields.name"),
             values: employees_range_values
           }
         }

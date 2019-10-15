@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  devise_for :users, controllers:  {registrations: 'users/registrations', :omniauth_callbacks => "users/omniauth_callbacks" , sessions: 'users/sessions' }
+  devise_for :companies, controllers: { registrations: 'companies/registrations' }
+
   resources :faqs, only: [:index]
   resources :offers
   resources :job_categories, only:[:index]
@@ -36,8 +39,6 @@ Rails.application.routes.draw do
 
   devise_for :admin_users, {:path=>:admin, :controllers=>{:sessions=>"admin_users/sessions"}, :path_names=>{:sign_in=>"login", :sign_out=>"logout"}, :sign_out_via=>[:delete, :get]}
   ActiveAdmin.routes(self)
-  devise_for :users, controllers: { registrations: 'users/registrations', :omniauth_callbacks => "users/omniauth_callbacks" }
-  devise_for :companies, controllers: { registrations: 'companies/registrations' }
 
   resources :users, only: [:edit, :update, :show]
   resources :companies, only: [:edit, :update, :show]

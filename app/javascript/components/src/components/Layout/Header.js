@@ -114,23 +114,45 @@ const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in, log_out_u
                 Inicio
               </MatButton>
             </li>
+            {user_signed_in && (
+            <li className="list-inline-item no-responsive">
+              <MatButton
+                style={{ color: !scrollState ? 'white' : 'black' }}
+              >
+                Buscar Ofertas
+              </MatButton>
+            </li>)}
             {/* TODO: With "Candidato" and "Empleador", to press button redirect me a static landing page.
           We must take into account to make the change in redirection */}
             <li className="list-inline-item no-responsive">
+              {!user_signed_in && (
               <MatButton
                 style={{ color: !scrollState ? 'white' : 'black' }}
                 href="/users/sign_up"
               >
                 Candidato
-              </MatButton>
+              </MatButton>)}
+              {user_signed_in && (
+              <MatButton
+                style={{ color: !scrollState ? 'white' : 'black' }}
+              >
+                Ver mi tablero
+              </MatButton>)}
             </li>
             <li className="list-inline-item no-responsive">
+              {!user_signed_in && (
               <MatButton
                 style={{ color: !scrollState ? 'white' : 'black' }}
                 href="/companies/sign_up"
               >
                 Empleador
-              </MatButton>
+              </MatButton>)}
+              {user_signed_in && (
+              <MatButton
+                style={{ color: !scrollState ? 'white' : 'black' }}
+              >
+                Mi perfil
+              </MatButton>)}
             </li>
             <li className="list-inline-item no-responsive">
               {/* {!isAuthenticated ? ( */}
@@ -140,14 +162,14 @@ const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in, log_out_u
                 style={{ color: !scrollState ? 'white' : 'black' }}
                 onClick={handleClickOpen}
               >
-                Login
+                Ingresar
               </MatButton>)}
               {user_signed_in && (
               <MatButton
                 style={{ color: !scrollState ? 'white' : 'black' }}
                 href={log_out_user}
               >
-                Log Out
+                Cerrar sesión
               </MatButton>)}
 	     
               {/* ) : (

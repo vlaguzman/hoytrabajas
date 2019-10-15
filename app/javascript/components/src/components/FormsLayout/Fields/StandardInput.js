@@ -11,6 +11,7 @@ const StandardInput = props => {
     label,
     handleChange,
     extra,
+    isTextArea = false,
     beforeLabel = null,
     placeholder = null
   } = props
@@ -35,18 +36,17 @@ const StandardInput = props => {
   const hasErrors = false
 
   const textAreaProperties = {
-    multiline:true,
+    multiline: false,
     rows: 3,
     rowsMax: 3
   }
 
-  const addTextArea =() => {
-    if(isTextArea) return textAreaProperties
-  }
+  if (isTextArea) textAreaProperties.multiline = true
 
   return (
     <FormControl error={hasErrors}>
       <TextField
+        {...textAreaProperties}
         name={name}
         label={label}
         error={hasErrors}

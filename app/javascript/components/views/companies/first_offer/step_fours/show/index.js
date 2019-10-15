@@ -11,7 +11,7 @@ const formInfo = {
       prev: 'Regresar',
       next: 'Saltar'
     },
-    prevPath: '/companies/first_offer/step_three',
+    previousPath: '/companies/first_offer/step_three',
     nextPath: '/companies/first_offer/step_five',
     action: '',
     method: 'PUT',

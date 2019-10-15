@@ -11,7 +11,7 @@ const formInfo = {
       prev: 'Regresar',
       next: 'Saltar'
     },
-    prevPath: '/companies/first_offer/step_four',
+    previousPath: '/companies/first_offer/step_four',
     nextPath: '/companies/first_offer/step_six',
     action: '',
     method: 'PUT',
@@ -60,8 +60,8 @@ const formInfo = {
         beforeLabel: 'a',
         currentValue: ''
       },
-      salary_type_id_id: {
-        name: 'salary_type_id_id',
+      salary_type_id: {
+        name: 'salary_type_id',
         label: 'Pago',
         currentValue: '',
         values: [

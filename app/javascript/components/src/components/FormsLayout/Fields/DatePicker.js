@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { DatePicker as MaterialDatePicker } from '@material-ui/pickers'
 import InputAdornment from '@material-ui/core/InputAdornment'
@@ -7,19 +7,6 @@ import CalendarIcon from '@material-ui/icons/CalendarToday'
 import ArrowBackIcon from '@material-ui/icons/ArrowBackIos'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForwardIos'
 import { format } from '../../../helpers'
-
-const pro = {
-  className: ' animated fadeIn',
-  datepicker: {
-    format: 'dd MMM yyyy',
-    disableFuture: true,
-    emptyLabel: '...'
-  }
-}
-
-const style = {
-  textTransform: 'capitalize'
-}
 
 function capitalize(string) {
   return string.replace(/(?:^|\s)\S/g, a => a.toUpperCase())
@@ -41,6 +28,7 @@ const DatePicker = props => {
     <MaterialDatePicker
       format={dateOptions.format || 'dd MMM yyyy'}
       name={name}
+      style={{ textTransform: 'capitalize' }}
       label={label}
       maxDate={new Date()}
       onChange={onChange}

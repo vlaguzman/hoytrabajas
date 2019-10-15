@@ -11,7 +11,7 @@ const CompaniesStepFour = ({ formInfo }) => {
   const {
     title,
     subtitle,
-    form: { buttons, nextPath, prevPath, action, method, type, formFields }
+    form: { buttons, nextPath, previousPath, action, method, type, formFields }
   } = formInfo
 
   const handleSubmit = e => {
@@ -35,7 +35,7 @@ const CompaniesStepFour = ({ formInfo }) => {
                 <FormFields type={type} formFields={formFields} />
                 <FormButtons
                   nextPath={nextPath}
-                  prevPath={prevPath}
+                  previousPath={previousPath}
                   buttons={buttons}
                 />
               </form>
@@ -60,7 +60,7 @@ CompaniesStepFour.propTypes = {
         next: PropTypes.string.isRequired
       }),
       nextPath: PropTypes.string.isRequired,
-      prevPath: PropTypes.string.isRequired,
+      previousPath: PropTypes.string.isRequired,
       action: PropTypes.string.isRequired,
       method: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,

@@ -12,7 +12,7 @@ const FormFields = props => {
     currency_id = null,
     from = null,
     to = null,
-    salary_type_id_id = null,
+    salary_type_id = null,
     available_work_day_id = null,
     working_day_id = null,
     job_aid_id = null
@@ -23,7 +23,7 @@ const FormFields = props => {
     [currency_id.name]: currency_id.current_value || '',
     [from.name]: from.current_value || '',
     [to.name]: to.current_value || '',
-    [salary_type_id_id.name]: salary_type_id_id.current_value || '',
+    [salary_type_id.name]: salary_type_id.current_value || '',
     [available_work_day_id.name]: available_work_day_id.current_value || '',
     [working_day_id.name]: working_day_id.current_value || '',
     [job_aid_id.name]: job_aid_id.current_value || ''
@@ -144,16 +144,16 @@ const FormFields = props => {
     () => (
       <Col className={controlledInputsClassname} xs={12} lg={3}>
         <Select
-          inputValue={formValues[salary_type_id_id.name]}
+          inputValue={formValues[salary_type_id.name]}
           handleChange={handleChange}
-          name={salary_type_id_id.name}
-          label={salary_type_id_id.label}
-          selectOptions={salary_type_id_id.values}
-          isRequired={salary_type_id_id.isRequired || false}
+          name={salary_type_id.name}
+          label={salary_type_id.label}
+          selectOptions={salary_type_id.values}
+          isRequired={salary_type_id.isRequired || false}
         />
       </Col>
     ),
-    [formValues[salary_type_id_id.name]]
+    [formValues[salary_type_id.name]]
   )
 
   const offerWorkingDaysField = useMemo(
@@ -233,7 +233,7 @@ FormFields.propTypes = {
     currency_id: PropTypes.object,
     from: PropTypes.object,
     to: PropTypes.object,
-    salary_type_id_id: PropTypes.object,
+    salary_type_id: PropTypes.object,
     available_work_day_id: PropTypes.object,
     working_day_id: PropTypes.object,
     job_aid_id: PropTypes.object

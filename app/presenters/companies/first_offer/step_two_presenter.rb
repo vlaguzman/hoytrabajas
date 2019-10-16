@@ -1,18 +1,13 @@
 class Companies::FirstOffer::StepOnePresenter < ApplicationPresenter
 
-  def form_information
-    form_path = rails_routes.companies_first_form_step_one_path
-    Companies::FirstOffer::StepOne::FormParamsBuilder.(form_path)
-  end
-
   def form_info
     {
-      title: I18n.t("companies.first_offer.step_ones.show.title"),
-      subtitle: I18n.t("companies.first_offer.step_ones.show.subtitle"),
+      title: I18n.t("companies.first_offer.step_two.show.title"),
+      subtitle: I18n.t("companies.first_offer.step_two.show.subtitle"),
       form: {
         buttons: {
           submit: 'Siguiente',
-          previous: '',
+          prev: '',
           next: ''
         },
         action: Rails.application.routes.url_helpers.companies_first_offer_step_one_path,

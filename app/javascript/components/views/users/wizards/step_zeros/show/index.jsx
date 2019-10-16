@@ -6,6 +6,7 @@ export default class Show extends React.Component {
     super(props)
     this.props = props
   }
+
   render() {
     return (
       <div className="main-wrapper">
@@ -15,7 +16,7 @@ export default class Show extends React.Component {
               <div className='container-specific background'></div>
               <div className='container-specific'>
                 <h1>El empleado ideal ¡si existe!</h1>
-                <p>Y crear una oferta atractiva para llegar a el es muy facil ¡vamos a hacerlo!</p>
+                <p>Y crear <strong>una oferta atractiva</strong> para llegar a el es muy facil <strong>¡vamos a hacerlo!</strong></p>
                 <a href={this.props.users_wizards_step_one_path}>Quiero publicar mi oferta</a>
               </div>
             </div>

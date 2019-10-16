@@ -68,9 +68,6 @@ const FormFields = props => {
 
   const inputClassname = 'my-30 animated fadeIn'
 
-
-  /** New */
-
   const aboutMeField = useMemo(
     () => (
       <Col key={about_me.name} className={inputClassname} xs={12} lg={12}>
@@ -167,100 +164,6 @@ const FormFields = props => {
     ),
     [formValues[educational_degree_id.name]]
   )
-
-
-/** Old fields */
-
-/*  const lastNameField = useMemo(
-    () => (
-      <Col key={last_name.name} className={inputClassname} xs={12} lg={6}>
-        <StandardInput
-          inputValue={formValues[last_name.name]}
-          inputName={last_name.name}
-          handleChange={handleChange}
-          name={last_name.name}
-          label={last_name.label}
-        />
-      </Col>
-    ),
-    [formValues[last_name.name]]
-  )
-
-  const nationalityIDsField = useMemo(
-    () => (
-      <Col
-        key={nationality_ids.name}
-        className={inputClassname}
-        xs={12}
-        lg={6}
-      >
-        <SelectChip
-          inputValue={formValues[nationality_ids.name]}
-          inputName={nationality_ids.name}
-          handleChange={handleChange}
-          handleDeleteChip={handleDeleteChip}
-          name={nationality_ids.name}
-          label={nationality_ids.label}
-          selectOptions={nationality_ids.values}
-          isMultiple={true}
-        />
-      </Col>
-    ),
-    [formValues[nationality_ids.name]]
-  )
-
-  const documentTypeIDField = useMemo(
-    () => (
-      <Col
-        key={document_type_id.name}
-        className={inputClassname}
-        xs={12}
-        lg={6}
-      >
-        <SelectChip
-          inputValue={formValues[document_type_id.name]}
-          inputName={document_type_id.name}
-          handleChange={handleChange}
-          handleDeleteChip={handleDeleteChip}
-          name={document_type_id.name}
-          label={document_type_id.label}
-          selectOptions={document_type_id.values}
-          isMultiple={false}
-        />
-      </Col>
-    ),
-    [formValues[document_type_id.name]]
-  )
-
-  const identificationNumberField = useMemo(
-    () => (
-      <Col key={identification_number.name} className={inputClassname} xs={12} lg={6}>
-        <StandardInput
-          inputValue={formValues[identification_number.name]}
-          inputName={identification_number.name}
-          handleChange={handleChange}
-          name={identification_number.name}
-          label={identification_number.label}
-        />
-      </Col>
-    ),
-    [formValues[identification_number.name]]
-  )
-
-  const contactNumberField = useMemo(
-    () => (
-      <Col key={contact_number.name} className={inputClassname} xs={12} lg={6}>
-        <StandardInput
-          inputValue={formValues[contact_number.name]}
-          inputName={contact_number.name}
-          handleChange={handleChange}
-          name={contact_number.name}
-          label={contact_number.label}
-        />
-      </Col>
-    ),
-    [formValues[contact_number.name]]
-  ) */
 
   return (
     <Row className="HT__FormGenerator">

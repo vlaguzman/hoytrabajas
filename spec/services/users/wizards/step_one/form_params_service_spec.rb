@@ -1,15 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe Users::Wizards::StepOne::FormParamsBuilder do
+RSpec.describe Users::Wizards::StepOne::FormParamsService do
 
-  describe "#call" do
-    it { should respond_to(:call) }
+  describe "#form_params" do
 
     let!(:nationalities) { create_list(:nationality, 5) }
     let!(:document_types) { create_list(:document_type, 5) }
 
     let(:create_document_type_list) { ListConverter.model_list(DocumentType) }
     let(:create_nationalities_list) { ListConverter.model_list(Nationality) }
+
+    let(:subject) { described_class }
 
     it "should return the expected object" do
 
@@ -18,7 +19,9 @@ RSpec.describe Users::Wizards::StepOne::FormParamsBuilder do
         subtitle: "Brinda a las empresas información valiosa sobre ti.",
         form: {
           buttons: {
-            submit: 'Siguiente'
+            submit: 'Siguiente',
+            next_path: "/users/wizards/step_two",
+            previous_path: nil
           },
           action: '/users/wizards/step_one',
           method: :put,
@@ -54,7 +57,13 @@ RSpec.describe Users::Wizards::StepOne::FormParamsBuilder do
         }
       }
 
-      response = subject.("/users/wizards/step_one")
+      response = subject.new(
+        form_type: :candidate,
+        template_translation_path: "users.wizards.step_ones.show",
+        action_path: "/users/wizards/step_one" ,
+        next_path: "/users/wizards/step_two",
+        form_method: :put
+      ).form_params
 
       expect(response[:form][:formFields]).to eq(expected_object[:form][:formFields])
 

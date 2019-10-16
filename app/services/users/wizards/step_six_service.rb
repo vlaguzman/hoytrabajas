@@ -34,10 +34,4 @@ module Users::Wizards::StepSixService
     end
   end
 
-  def self.create_soft_skills(curriculum: _, curriculum_params: {})
-    if soft_skill_ids.present?
-      curriculum.update(curriculum_params)
-    end
-  end
-
 end

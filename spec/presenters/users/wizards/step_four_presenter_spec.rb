@@ -28,6 +28,14 @@ RSpec.describe Users::Wizards::StepFourPresenter do
     end
   end
 
+  describe "#work_modes_list" do
+    it { should respond_to(:work_modes_list) }
+
+    it "should return a array with vehicle objects" do
+      expect(subject.work_modes_list).to match_array(subject.model_list(WorkMode))
+    end
+  end
+
   describe "#driving_licences_list" do
     it { should respond_to(:driving_licences_list) }
 

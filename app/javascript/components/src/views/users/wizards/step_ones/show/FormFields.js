@@ -190,7 +190,7 @@ const FormFields = props => {
 export default FormFields
 
 FormFields.propTypes = {
-  type: PropTypes.oneOf(['user', 'company']),
+  type: PropTypes.oneOf(['user', 'company', 'candidate']),
   formFields: PropTypes.shape({
     name: PropTypes.object,
     last_name: PropTypes.object,

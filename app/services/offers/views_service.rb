@@ -15,10 +15,6 @@ class Offers::ViewsService
     @offer
   end
 
-  def id
-    @offer.id
-  end
-
   protected
 
   def used_keys

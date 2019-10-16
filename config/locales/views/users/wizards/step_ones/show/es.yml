@@ -3,12 +3,11 @@ es:
     wizards:
       step_ones:
         show:
-          title: Empecemos por conocernos
-          subtitle: Brinda a las empresas información valiosa sobre ti.
+          title: "Empecemos por conocernos"
+          subtitle: "Brinda a las empresas información valiosa sobre ti."
           form:
             buttons:
-              submit: Siguiente
-            type: user
+              submit: "Siguiente"
             formFields:
               name: "Nombre*"
               last_name: "Apellido*"

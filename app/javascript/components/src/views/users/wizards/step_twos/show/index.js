@@ -7,47 +7,7 @@ import FormTitle from '../../../../../components/FormsLayout/FormTitle'
 import FormButtons from '../../../../../components/FormsLayout/FormButtons'
 import FormFields from './FormFields'
 
-const formInfo = {
-  title: 'Empecemos por conocernos',
-  subtitle: "Brinda a las empresas información valiosa sobre ti.",
-  form: {
-    buttons: {
-      submit: 'Siguiente'
-    },
-    action: '/users/wizards/step_two',
-    method: "put",
-    type: "user",
-    formFields: {
-      about_me:{
-        name: "user[about_me]",
-        label: "Cuentanos un poco de ti*"
-      },
-      sex_id:{
-        name: "user[sex_id]",
-        label: "Genero",
-        values: [{id: 1, description: "sex_example 1"}, {id: 2, description: "sex_example 2"}]
-      },
-      birthday:{
-        name: "user[birthday]",
-        label: "Fecha de nacimiento"
-      },
-      limitation_ids:{
-        name: "user[limitation_ids][]",
-        label: "Nivel de educación*",
-        values: [{id: 1, description: "limit_example 1"}, {id: 2, description: "limit_example 2"}]
-      },
-      educational_degree_id:{
-        name: "user[educational_degree_id]",
-        label: "Nivel de educación*",
-        values: [{id: 1, description: "edu_deg_example 1"}, {id: 2, description: "edu_deg_example 2"}]
-      }
-    }
-  }
-}
-
-const UsersWizardsStepTwo = ({ csrf_name, csrf_token }) => {
-  //#TODO add form_info from prop please
-  console.log(formInfo)
+const UsersWizardsStepTwo = ({formInfo, csrf_name, csrf_token }) => {
   const {
     title,
     subtitle,

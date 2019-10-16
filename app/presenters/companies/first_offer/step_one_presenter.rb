@@ -1,13 +1,5 @@
 class Companies::FirstOffer::StepOnePresenter < ApplicationPresenter
 
-  def industries_values
-    Industry.all.map { |industry| { id: industry.id, description: industry.description } }
-  end
-
-  def employees_range_values
-    EmployeesRange.all.map { |employees_range| { id: employees_range.id, description: employees_range.description } }
-  end
-
   def form_info
     {
       title: I18n.t("companies.first_offer.step_ones.show.title"),
@@ -51,5 +43,15 @@ class Companies::FirstOffer::StepOnePresenter < ApplicationPresenter
         }
       }
     }
+  end
+
+  private
+
+  def industries_values
+    ListConverter.model_list Industry
+  end
+
+  def employees_range_values
+    ListConverter.model_list EmployeesRange
   end
 end

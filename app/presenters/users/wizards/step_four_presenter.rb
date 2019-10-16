@@ -12,12 +12,11 @@ class Users::Wizards::StepFourPresenter < ApplicationPresenter
     Vehicle.all.map { |object| [object.description, object.id] }
   end
 
-  def work_modes_list
-    WorkMode.all.map { |object| [object.description, object.id] }
-  end
-
   def driving_licences_list
     DrivingLicence.all.map { |object| [object.description, object.id] }
   end
 
+  def work_modes_list
+    WorkMode.all.map { |object| [object.description, object.id] }
+  end
 end

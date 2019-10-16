@@ -24,9 +24,10 @@ import dialogState from '../../hooks/dialogState'
 import { fields1 } from './data'
 import FormGen from '../inlineFormgenerartor'
 
-const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in, log_out_user }) => {
-  console.log("estoy serrando sesion", `${log_out_user}`)
-  console.log("hola, estoy en el header", user_signed_in)
+const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in, company_signed_in, log_out_user }) => {
+  console.log("Header,estoy cerrando sesion", `${log_out_user}`)
+  console.log("Header, la company esta logueada? ", company_signed_in)
+  console.log("Header, el usuario esta logueado? ", user_signed_in)
   const [open, setOpen] = React.useState(false)
   const [loginState, setloginState] = React.useState(true)
   const [fullWidth, setFullWidth] = React.useState(true)
@@ -114,14 +115,21 @@ const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in, log_out_u
                 Inicio
               </MatButton>
             </li>
-            {user_signed_in && (
+            {(user_signed_in && (
             <li className="list-inline-item no-responsive">
               <MatButton
                 style={{ color: !scrollState ? 'white' : 'black' }}
               >
                 Buscar Ofertas
               </MatButton>
-            </li>)}
+            </li>)) || (company_signed_in && (
+            <li className="list-inline-item no-responsive">
+              <MatButton
+                style={{ color: !scrollState ? 'white' : 'black' }}
+              >
+                Publicar Ofertas
+              </MatButton>
+            </li>))}
             {/* TODO: With "Candidato" and "Empleador", to press button redirect me a static landing page.
           We must take into account to make the change in redirection */}
             <li className="list-inline-item no-responsive">

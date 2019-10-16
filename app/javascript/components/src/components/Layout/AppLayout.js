@@ -22,9 +22,10 @@ library.add(fab, fas, faSearch)
 const localeMap = { en, es }
 const locale = 'es'
 
-const AppLayout = ({ children, csrf_param, csrf_token, user_signed_in, log_out_user }) => {
-  console.log("estoy en el AppLayout", user_signed_in)
-  console.log("aca estoy para cerrar sesion", `${log_out_user}`)
+const AppLayout = ({ children, csrf_param, csrf_token, user_signed_in, company_signed_in, log_out_user }) => {
+  console.log("AppLayout, esta el user logueado? ", user_signed_in)
+  console.log("AppLayout, esta la company logueada? ", company_signed_in)
+  console.log("AppLayout, esta es la ruta para desloguear: ", `${log_out_user}`)
   const [isTop, setIsTop] = useState(false)
   const myRef = useRef(null)
   const onScrollFrame = e => {
@@ -60,6 +61,7 @@ const AppLayout = ({ children, csrf_param, csrf_token, user_signed_in, log_out_u
                               csrf_param={csrf_param}
                               csrf_token={csrf_token}
                               user_signed_in={user_signed_in}
+                              company_signed_in={company_signed_in}
                               log_out_user={log_out_user}
                             />
                           </div>

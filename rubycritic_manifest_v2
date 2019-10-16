@@ -18,7 +18,9 @@ A         * AvailableWorkDaysOffers                     1       0.0        0    
 A         * City                                        2       0.0        0           1
 A         * Companies::FirstOffer::StepFivesController  3       0.0        0           1
 A         * Companies::FirstOffer::StepFoursController  3       0.0        0           1
-A         * Companies::FirstOffer::StepOnesController   3       0.0        0           1
+A         * Companies::FirstOffer::StepOnePresenter     6       17.2       0           4
+A         * Companies::FirstOffer::StepOneService       3       2.45       0           1
+A         * Companies::FirstOffer::StepOnesController   7       21.31      0           1
 A         * Companies::FirstOffer::StepThreesController 3       0.0        0           1
 A         * Companies::FirstOffer::StepTwosController   3       0.0        0           1
 A         * Companies::FirstOffer::StepZerosController  1       0.0        0           1
@@ -36,7 +38,7 @@ A         * CurriculumVitaesSoftSkills                  1       0.0        0    
 A         * CurriculumVitaesTechnicalSkills             3       0.0        0           1
 A         * CurriculumVitaesVehicles                    1       0.0        0           1
 A         * CurriculumVitaesWorkingDays                 1       0.0        0           1
-A         * Dashboard                                   1       12.33      0           0
+A         * Dashboard                                   2       12.33      0           0
 A         * DatesConverter                              1       2.0        0           1
 A         * DocumentType                                2       0.0        0           1
 A         * DrivingLicence                              3       0.0        0           1
@@ -103,7 +105,7 @@ A         * Users::Wizards::StepElevensController       1       2.41       0    
 A         * Users::Wizards::StepFivePresenter           1       18.55      0           5
 A         * Users::Wizards::StepFiveService             2       9.86       0           1
 A         * Users::Wizards::StepFivesController         5       20.5       0           2
-A         * Users::Wizards::StepFourPresenter           1       22.56      0           6
+A         * Users::Wizards::StepFourPresenter           2       22.56      0           6
 A         * Users::Wizards::StepFourService             2       2.0        0           1
 A         * Users::Wizards::StepFoursController         4       20.5       23          2
 A         * Users::Wizards::StepNinePresenter           3       15.59      18          2

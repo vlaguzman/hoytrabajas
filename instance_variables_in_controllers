@@ -1,3 +1,4 @@
+      1 app/controllers/companies/first_offer/step_ones_controller.rb
       1 app/controllers/home_controller.rb
       1 app/controllers/users/omniauth_callbacks_controller.rb
       1 app/controllers/users/wizards/step_eights_controller.rb

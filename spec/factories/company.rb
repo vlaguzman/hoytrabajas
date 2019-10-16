@@ -26,7 +26,7 @@ FactoryBot.define do
       nit                   { nil }
       address               { nil }
       email                 { Faker::Internet.email }
-      passsword             { Faker::Blockchain::Bitcoin.address }
+      password              { Faker::Blockchain::Bitcoin.address }
       confirmed_at          { Date.today }
       sign_in_count         { 0 }
       web_site              { nil }

@@ -124,7 +124,7 @@ const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in, company_s
                 || (company_signed_in && // else if company is signed in
                     (<MatButton style={{ color: !scrollState ? 'white' : 'black' }}>PUBLICAR OFERTAS</MatButton>))
                 ||                       // else
-                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }} href="/users/sign_up">CANDIDATO</MatButton>)
+                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }} href="/users/sign_up">SIGN UP CANDIDATO</MatButton>)
               }
             </li>
             <li className="list-inline-item no-responsive">
@@ -133,7 +133,7 @@ const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in, company_s
                 || (company_signed_in && // else if company is signed in 
                     (<MatButton style={{ color: !scrollState ? 'white' : 'black' }}>VER MI TABLERO</MatButton>))
                 ||                       // else
-                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }} href="/companies/sign_up">Empleador</MatButton>)
+                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }} href="/companies/sign_up">SIGN UP EMPRESA</MatButton>)
               }
             </li>
             <li className="list-inline-item no-responsive">
@@ -144,7 +144,7 @@ const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in, company_s
                 || (company_signed_in && // else if company is signed in 
                     (<MatButton style={{ color: !scrollState ? 'white' : 'black' }}>MI PERFIL</MatButton>))
                 ||                       // else
-                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }} onClick={handleClickOpen}>REGISTRO CANDIDATO</MatButton>)
+                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }} onClick={handleClickOpen}>SIGN IN CANDIDATO</MatButton>)
               }
               {/* ) : (
               <MatButton style={{color: !scrollState ? 'white': 'black'}} onClick={() => logout()}>Logout</MatButton>
@@ -300,7 +300,7 @@ const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in, company_s
                 || (company_signed_in && // else if company is signed in
                     (<MatButton style={{ color: !scrollState ? 'white' : 'black' }} href={log_out_companies}>CERRAR SESION</MatButton>))
                 ||                       // else
-                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }} href="/companies/sign_up">REGISTRO EMPRESA</MatButton>)
+                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }} href="/companies/sign_in">SIGN IN EMPRESA</MatButton>)
               }
             </li>
           </ul>

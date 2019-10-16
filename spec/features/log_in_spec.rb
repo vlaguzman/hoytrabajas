@@ -30,10 +30,10 @@ RSpec.describe "User can Log In", type: :feature do
 
       visit root_path
 
-      expect(page).to have_content("Login")
+      expect(page).to have_content("SIGN IN CANDIDATO")
 
-      has_button?("Login")
-      click_on("Login")
+      has_button?("SIGN IN CANDIDATO")
+      click_on("SIGN IN CANDIDATO")
 
       within "#new_user" do
         fill_in "user_email", with: 'example@email.com'

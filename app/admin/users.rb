@@ -1,18 +1,34 @@
 ActiveAdmin.register User do
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # Uncomment all parameters which should be permitted for assignment
-  #
-  # permit_params :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :sign_in_count, :current_sign_in_at, :last_sign_in_at, :current_sign_in_ip, :last_sign_in_ip, :confirmation_token, :confirmed_at, :confirmation_sent_at, :unconfirmed_email, :failed_attempts, :unlock_token, :locked_at, :provider, :uid, :name, :last_name, :birthday, :contact_number, :identification_number, :about_me, :sex_id, :document_type_id, :contract_type_id, :work_mode_id, :educational_degree_id, :city_id, :image
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :sign_in_count, :current_sign_in_at, :last_sign_in_at, :current_sign_in_ip, :last_sign_in_ip, :confirmation_token, :confirmed_at, :confirmation_sent_at, :unconfirmed_email, :failed_attempts, :unlock_token, :locked_at, :provider, :uid, :name, :last_name, :birthday, :contact_number, :identification_number, :about_me, :sex_id, :document_type_id, :contract_type_id, :work_mode_id, :educational_degree_id, :city_id, :image]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
-  
+  permit_params :email, :name, :last_name, :password, :password_confirmation, :sex_id, :city_id, :about_me, :contact_number
+
+  index do
+    selectable_column
+    id_column
+    column :email
+    column :name
+    column :last_name
+    actions
+  end
+
+  filter :name_or_last_name_cont, label: 'Nombre'
+  filter :email
+  filter :sex, label: 'Genero', as: :select, collection: Sex.all.map{|s| ["#{s.description}", s.id]} 
+
+  form do |f|
+    f.inputs do
+      f.input :name
+      f.input :last_name
+      f.input :email
+      f.input :password
+      f.input :password_confirmation
+      unless f.object.new_record?
+        f.input :contact_number
+        f.input :about_me
+        f.input :sex_id, label: 'Genero', as: :select, collection: Sex.all.map{|s| ["#{s.description}", s.id]}
+        f.input :work_mode_id, label: 'Modo de trabajo', as: :select, collection: WorkMode.all.map{|s| ["#{s.description}", s.id]}
+      end
+    end
+    f.actions
+  end 
 end

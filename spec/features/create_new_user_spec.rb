@@ -22,6 +22,7 @@ RSpec.describe "Admin can create an User", type: :feature do
       has_button?("Añadir")
       click_on("Añadir")
 
+      expect(page).to have_content("Añadir User")
     end
   end
 end

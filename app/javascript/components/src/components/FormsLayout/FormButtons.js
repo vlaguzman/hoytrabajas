@@ -4,13 +4,15 @@ import Button from '@material-ui/core/Button'
 
 const FormButtons = props => {
   const { nextPath, prevPath, buttons } = props
-  const { next, prev, submit } = buttons
+  const { next, previous, submit } = buttons
 
-  const nextPage = () => {
+  const nextPage = (e) => {
+    e.preventDefault()
     if (nextPath) window.location.assign(nextPath)
   }
 
-  const prevPage = () => {
+  const prevPage = (e) => {
+    e.preventDefault()
     if (prevPath) window.location.assign(prevPath)
   }
 
@@ -35,7 +37,8 @@ const FormButtons = props => {
         </div>
       </div>
       <div className="w-100 d-flex justify-content-between">
-        {prevPath && prev && (
+        {prevPath && previous &&
+        (
           <Button
             onClick={prevPage}
             size="small"
@@ -43,7 +46,7 @@ const FormButtons = props => {
             className="position-absolute text-wrap text-muted fw-bold mt-0 mx-5 w-20 animated fadeIn"
           >
             <i className="ti-arrow-circle-left mx-10" />
-            <small className="fw-bold text-muted">${prev}</small>
+            <small className="fw-bold text-muted">{previous}</small>
           </Button>
         )}
         {prevPath && nextPath && next && (
@@ -53,7 +56,7 @@ const FormButtons = props => {
             style={{ bottom: '0', right: '0' }}
             className="position-absolute text-wrap text-muted fw-bold mx-5 mt-0 w-20 animated fadeIn"
           >
-            <small className="fw-bold text-muted mx-10">${next}</small>
+            <small className="fw-bold text-muted mx-10">{next}</small>
             <i className="ti-arrow-circle-right" />
           </Button>
         )}
@@ -65,10 +68,10 @@ const FormButtons = props => {
 export default FormButtons
 
 FormButtons.propTypes = {
-  prevPath: PropTypes.string,
+  previousPath: PropTypes.string,
   nextPath: PropTypes.string.isRequired,
   buttons: PropTypes.shape({
-    prev: PropTypes.string,
+    previous: PropTypes.string,
     next: PropTypes.string,
     submit: PropTypes.string.isRequired
   }).isRequired

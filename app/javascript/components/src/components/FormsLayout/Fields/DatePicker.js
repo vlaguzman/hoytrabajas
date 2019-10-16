@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import { DatePicker as MaterialDatePicker } from '@material-ui/pickers'
 import InputAdornment from '@material-ui/core/InputAdornment'
@@ -7,6 +7,15 @@ import CalendarIcon from '@material-ui/icons/CalendarToday'
 import ArrowBackIcon from '@material-ui/icons/ArrowBackIos'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForwardIos'
 import { format } from '../../../helpers'
+
+const pro = {
+  className: ' animated fadeIn',
+  datepicker: {
+    format: 'dd MMM yyyy',
+    disableFuture: true,
+    emptyLabel: '...'
+  }
+}
 
 const style = {
   textTransform: 'capitalize'
@@ -17,7 +26,7 @@ function capitalize(string) {
 }
 
 const DatePicker = props => {
-  const { pro, inputValue, handleDate, extra } = props
+  const { label, inputName } = props
   const { datepicker = null } = pro
   const formatString = datepicker && datepicker.format
 
@@ -27,14 +36,18 @@ const DatePicker = props => {
     return capitalized
   }
 
+  const [selectedDate, handleDateChange] = useState(new Date());
+
   return (
     <MaterialDatePicker
       format="dd MMM yyyy"
+      name={ inputName }
       {...pro}
+      label={label}
       style={style}
       maxDate={new Date()}
-      onChange={handleDate}
-      value={inputValue[pro.name] || new Date()}
+      onChange={handleDateChange}
+      value={selectedDate}
       labelFunc={formatLabel}
       InputProps={{
         endAdornment: (
@@ -55,7 +68,6 @@ const DatePicker = props => {
 export default DatePicker
 
 DatePicker.propTypes = {
-  pro: PropTypes.object.isRequired,
-  inputValue: PropTypes.object.isRequired,
-  handleDate: PropTypes.func.isRequired
+  inputName: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired
 }

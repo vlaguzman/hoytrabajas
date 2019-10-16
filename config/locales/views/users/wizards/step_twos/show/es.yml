@@ -1,0 +1,18 @@
+es:
+  users:
+    wizards:
+      step_twos:
+        show:
+          title: "Empecemos por conocernos"
+          subtitle: "Brinda a las empresas información valiosa sobre ti."
+          form:
+            buttons:
+              submit: "Siguiente"
+              next: "Saltar"
+              previous: "Regresar"
+            formFields:
+              about_me: "Cuentanos un poco de ti*"
+              sex_id: "Genero"
+              birthday: "Fecha de nacimiento"
+              educational_degree_id: "Nivel de educación*"
+              limitation_ids:  "Tienes alguna condición especial"

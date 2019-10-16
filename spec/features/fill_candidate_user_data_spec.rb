@@ -68,21 +68,46 @@ RSpec.describe "fill the principal candidate user data", :type => :feature do
 
       expect(page).to have_text("Empecemos por conocernos")
 
-      within '#step_two' do
-        fill_in "user[about_me]", :with => "I am the best chef in the world"
-        page.select 'masculino', from: 'user[sex_id]'
-        fill_in "user[birthday]", :with => "01-13-1995"
-        page.select 'ninguna', from: 'user[limitation_ids][]'
-        page.select 'Profesional', from: 'user[educational_degree_id]'
-        click_button 'siguiente'
-      end
+      fill_in "user[about_me]", :with => "I am the best chef in the world"
+
+      find("div[id='select-user[sex_id]']", visible: false).click
+      find("li", text: "masculino").click
+
+      find("input[name='user[birthday]']").click
+      find("p", text: "13", visible: false).click
+      find("span", text:"OK").click
+
+      find("div[id='select-user[limitation_ids][]']", visible: false).click
+      find("li", text: "ninguna").click
+
+      find("div[id='select-user[educational_degree_id]']", visible: false).click
+      find("li", text: "Profesional").click
+
+      find("span", text: "SIGUIENTE").click
 
       candidate = User.first
 
+      current_month = Date.today.month
+      current_year = Date.today.year
+
       expect(candidate.sex.description).to eq("masculino")
       expect(candidate.about_me).to eq("I am the best chef in the world")
-      expect(candidate.birthday).to eq(Date.parse("13-01-1995"))
+      expect(candidate.birthday).to eq(Date.parse("13-#{current_month}-#{current_year}"))
       expect(candidate.curriculum_vitaes.count).to eq(1)
+    end
+
+    describe "visit step two but the user need return to step one" do
+      context "when click on 'Regresar'" do
+        it "should return to step one", js: true do
+          sign_in candidate
+
+          visit users_wizards_step_two_path
+
+          find("span", text: "Regresar").click
+
+          expect(current_path).to eq(users_wizards_step_one_path)
+        end
+      end
     end
   end
 end

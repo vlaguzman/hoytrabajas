@@ -9,21 +9,6 @@ RSpec.describe "users/wizards/step_twos/show" do
 
     render
 
-    #title
-    expect(rendered).to match(/Empecemos por conocernos/)
-    expect(rendered).to match(/Brinda a las empresas información valiosa sobre ti./)
-
-    expect(rendered).to render_template(partial: 'shared/_form_errors')
-
-    #form
-    expect(rendered).to have_tag(:form, with: { id: "step_two" }) do
-      with_tag(:input, with: { name: "user[about_me]", type: "text" })
-      with_select("user[sex_id]")
-      with_tag(:input, with: { name: "user[birthday]", type: "date" })
-      with_select("user[limitation_ids][]")
-      with_select("user[educational_degree_id]")
-
-      with_submit("siguiente")
-    end
+    expect(rendered).to have_tag("div", with: { "data-react-class": "views/users/wizards/step_twos/show"})
   end
 end

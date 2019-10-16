@@ -9,11 +9,11 @@ class ApplicationPresenter < SimpleDelegator
     super(source)
   end
 
-  def assets
-    ActionController::Base.helpers
-  end
-
   def model_list(model)
     model.all.map { |object| [object.description, object.id] }
+  end
+
+  def rails_routes
+    Rails.application.routes.url_helpers
   end
 end

@@ -14,6 +14,8 @@ const UsersWizardsStepOne = ({ csrf_name, csrf_token, formInfo }) => {
     form: { buttons, action, method, type, formFields }
   } = formInfo
 
+  const { nextPath, previousPath } = buttons
+
   return (
     <div className="main-wrapper">
       <FormProgress value={0} />
@@ -31,8 +33,8 @@ const UsersWizardsStepOne = ({ csrf_name, csrf_token, formInfo }) => {
                 <input type="hidden" name="_method" value={method} />
                 <FormFields type={type} formFields={formFields} />
                 <FormButtons
-                  nextPath="/companies/first_offer/step_two"
-                  prevPath={null}
+                  nextPath={nextPath}
+                  prevPath={previousPath}
                   buttons={buttons}
                 />
               </form>

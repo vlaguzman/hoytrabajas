@@ -14,6 +14,8 @@ const UsersWizardsStepTwo = ({formInfo, csrf_name, csrf_token }) => {
     form: { buttons, action, method, type, formFields }
   } = formInfo
 
+  const { nextPath, previousPath } = buttons
+
   return (
     <div className="main-wrapper">
       <FormProgress value={0} />
@@ -31,8 +33,8 @@ const UsersWizardsStepTwo = ({formInfo, csrf_name, csrf_token }) => {
                 <input type="hidden" name="_method" value={method} />
                 <FormFields type={type} formFields={formFields} />
                 <FormButtons
-                  nextPath="/companies/first_offer/step_three"
-                  prevPath="/companies/first_offer/step_one"
+                  nextPath={ nextPath }
+                  prevPath={ previousPath }
                   buttons={buttons}
                 />
               </form>
@@ -54,7 +56,11 @@ UsersWizardsStepTwo.propTypes = {
     subtitle: PropTypes.string.isRequired,
     form: PropTypes.shape({
       buttons: PropTypes.shape({
-        submit: PropTypes.string.isRequired
+        submit: PropTypes.string.isRequired,
+        next: PropTypes.string.isRequired,
+        nextPath: PropTypes.string.isRequired,
+        previous: PropTypes.string.isRequired,
+        previousPath: PropTypes.string.isRequired
       }),
       action: PropTypes.string.isRequired,
       method: PropTypes.string.isRequired,

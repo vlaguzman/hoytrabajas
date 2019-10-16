@@ -107,17 +107,3 @@ RSpec.describe "Overall navigation" do
     end
   end
 end
-=begin
-Página registro	/app/registration
-
-Dashboard candidato	[username]/dashboard
-
-Dashboard empresa	/companies/[id]/dashboard
-
-Resultado búsqueda por ciudad	/jobs-[city]
-	/empleo-[ciudad]
-Resultado búsqueda por modalidad	/empleo-[modalidad]
-	/jobs-[work-mode]
-Resultado búsqueda por tipo	/empleo-[tipo]
-	/jobs-[offer-type]
-=end

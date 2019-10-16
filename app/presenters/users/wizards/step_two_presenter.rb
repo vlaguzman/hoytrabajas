@@ -1,14 +1,12 @@
 class Users::Wizards::StepTwoPresenter < ApplicationPresenter
 
   def form_information
-    action_path = Rails.application.routes.url_helpers.users_wizards_step_two_path
-    next_path = Rails.application.routes.url_helpers.users_wizards_step_three_path
-    previous_path = Rails.application.routes.url_helpers.users_wizards_step_three_path
+
 
     Users::Wizards::StepTwo::FormParamsService.new(
-      action_path: action_path,
-      next_path: next_path,
-      previous_path: previous_path,
+      action_path: users_wizards_step_two_path,
+      next_path: users_wizards_step_three_path,
+      previous_path: users_wizards_step_one_path,
       template_translation_path: "users.wizards.step_twos.show",
       form_method: :put
     ).form_params
@@ -24,6 +22,20 @@ class Users::Wizards::StepTwoPresenter < ApplicationPresenter
 
   def educational_degrees_list
     EducationalDegree.all.map { |object| [object.description, object.id] }
+  end
+
+  private
+
+  def users_wizards_step_two_path
+    rails_routes.users_wizards_step_two_path
+  end
+
+  def users_wizards_step_three_path
+    rails_routes.users_wizards_step_three_path
+  end
+
+  def users_wizards_step_one_path
+    rails_routes.users_wizards_step_one_path
   end
 
 end

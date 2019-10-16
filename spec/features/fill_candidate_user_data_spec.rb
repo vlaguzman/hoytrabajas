@@ -95,5 +95,19 @@ RSpec.describe "fill the principal candidate user data", :type => :feature do
       expect(candidate.birthday).to eq(Date.parse("13-#{current_month}-#{current_year}"))
       expect(candidate.curriculum_vitaes.count).to eq(1)
     end
+
+    describe "visit step two but the user need return to step one" do
+      context "when click on 'Regresar'" do
+        it "should return to step one", js: true do
+          sign_in candidate
+
+          visit users_wizards_step_two_path
+
+          find("span", text: "Regresar").click
+
+          expect(current_path).to eq(users_wizards_step_one_path)
+        end
+      end
+    end
   end
 end

@@ -30,9 +30,11 @@ RSpec.describe BaseFormWizardsService do
           :subtitle=>"Brinda a las empresas información valiosa sobre ti.",
           :form=>{
             :buttons=>{
-              :next_path=>"users/wizards/step_three",
-              :previous_path=>"users/wizards/step_one",
-              :submit=>"Siguiente"},
+              :nextPath=>"users/wizards/step_three",
+              :previousPath=>"users/wizards/step_one",
+              :submit=>"Siguiente",
+              :next=>"Saltar",
+              :previous=>"Regresar"},
             :action=>"users/wizards/step_two",
             :method=>:put,
             :type=>:user,

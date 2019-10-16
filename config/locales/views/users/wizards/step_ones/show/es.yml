@@ -8,6 +8,8 @@ es:
           form:
             buttons:
               submit: "Siguiente"
+              previous: "Regresar"
+              next: "Saltar"
             formFields:
               name: "Nombre*"
               last_name: "Apellido*"

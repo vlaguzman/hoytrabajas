@@ -21,8 +21,10 @@ RSpec.describe Users::Wizards::StepTwo::FormParamsService do
         form: {
           buttons: {
             submit: 'Siguiente',
-            next_path: '/users/wizards/step_three',
-            previous_path: '/users/wizards/step_one'
+            next: "Saltar",
+            previous: "Regresar",
+            nextPath: '/users/wizards/step_three',
+            previousPath: '/users/wizards/step_one'
           },
           action: '/users/wizards/step_two',
           method: :put,

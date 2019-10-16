@@ -1,4 +1,7 @@
 A         * Acknowledgment                              3       0.0        0           1
+A         * AdminUser                                   2       0.0        0           1
+A         * AdminUsers                                  1       0.0        0           0
+A         * AdminUsers::SessionsController              2       6.2        0           1
 A         * AgeRange                                    1       0.0        0           1
 A         * ApplicationCable::Channel                   1       0.0        0           1
 A         * ApplicationCable::Connection                1       0.0        0           1
@@ -33,6 +36,7 @@ A         * CurriculumVitaesSoftSkills                  1       0.0        0    
 A         * CurriculumVitaesTechnicalSkills             3       0.0        0           1
 A         * CurriculumVitaesVehicles                    1       0.0        0           1
 A         * CurriculumVitaesWorkingDays                 1       0.0        0           1
+A         * Dashboard                                   1       12.33      0           0
 A         * DatesConverter                              1       2.0        0           1
 A         * DocumentType                                2       0.0        0           1
 A         * DrivingLicence                              3       0.0        0           1

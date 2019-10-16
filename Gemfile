@@ -11,6 +11,7 @@ gem 'webpacker'
 gem 'react-rails'
 gem 'jbuilder', '~> 2.7'
 gem 'devise'
+gem 'activeadmin'
 gem 'omniauth-facebook'
 gem 'omniauth-google'
 gem "haml-rails", "~> 2.0"

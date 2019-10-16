@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  #TODO u cant modify a idividual user is dont change to 'resources'
-
 
   resources :faqs, only: [:index]
   resources :offers
@@ -36,6 +34,8 @@ Rails.application.routes.draw do
   end
 
 
+  devise_for :admin_users, {:path=>:admin, :controllers=>{:sessions=>"admin_users/sessions"}, :path_names=>{:sign_in=>"login", :sign_out=>"logout"}, :sign_out_via=>[:delete, :get]}
+  ActiveAdmin.routes(self)
   devise_for :users, controllers: { registrations: 'users/registrations', :omniauth_callbacks => "users/omniauth_callbacks" }
   devise_for :companies, controllers: { registrations: 'companies/registrations' }
 

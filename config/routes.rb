@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   devise_for :companies, controllers: { registrations: 'companies/registrations' }
 
   resources :users, only: [:edit, :update, :show]
-  resource :companies, only: [:edit, :update, :show]
+  resources :companies, only: [:edit, :update, :show]
 
   root to: "home#index"
 

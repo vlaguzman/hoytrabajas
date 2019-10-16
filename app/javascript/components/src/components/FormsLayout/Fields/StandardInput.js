@@ -5,7 +5,7 @@ import FormControl from '@material-ui/core/FormControl'
 import FormHelperText from '@material-ui/core/FormHelperText'
 
 const StandardInput = React.memo(props => {
-  const { inputValue, name, label, inputName, handleChange, extra } = props
+  const { isTextArea=false, inputValue, name, label, inputName, handleChange, extra } = props
 
   const renderCharCount = () => {
     const shouldDisplayError = inputValue && inputValue.length < 0
@@ -26,9 +26,20 @@ const StandardInput = React.memo(props => {
   // TODO: add validation
   const hasErrors = false
 
+  const textAreaProperties = {
+    multiline:true,
+    rows: 3,
+    rowsMax: 3
+  }
+
+  const addTextArea =() => {
+    if(isTextArea) return textAreaProperties
+  }
+
   return (
     <FormControl error={hasErrors}>
       <TextField
+        { ...addTextArea() }
         name={inputName}
         label={label}
         error={hasErrors}
@@ -45,6 +56,7 @@ const StandardInput = React.memo(props => {
 })
 
 StandardInput.propTypes = {
+  isTextArea: PropTypes.bool,
   inputValue: PropTypes.string.isRequired,
   inputName: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,

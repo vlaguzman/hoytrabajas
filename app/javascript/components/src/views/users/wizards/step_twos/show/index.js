@@ -1,0 +1,105 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+import Paper from '@material-ui/core/Paper'
+import { Row } from 'reactstrap'
+import FormProgress from '../../../../../components/FormsLayout/FormProgress'
+import FormTitle from '../../../../../components/FormsLayout/FormTitle'
+import FormButtons from '../../../../../components/FormsLayout/FormButtons'
+import FormFields from './FormFields'
+
+const formInfo = {
+  title: 'Empecemos por conocernos',
+  subtitle: "Brinda a las empresas información valiosa sobre ti.",
+  form: {
+    buttons: {
+      submit: 'Siguiente'
+    },
+    action: '/users/wizards/step_two',
+    method: "put",
+    type: "user",
+    formFields: {
+      about_me:{
+        name: "user[about_me]",
+        label: "Cuentanos un poco de ti*"
+      },
+      sex_id:{
+        name: "user[sex_id]",
+        label: "Genero",
+        values: [{id: 1, description: "sex_example 1"}, {id: 2, description: "sex_example 2"}]
+      },
+      birthday:{
+        name: "user[birthday]",
+        label: "Fecha de nacimiento"
+      },
+      limitation_ids:{
+        name: "user[limitation_ids][]",
+        label: "Nivel de educación*",
+        values: [{id: 1, description: "limit_example 1"}, {id: 2, description: "limit_example 2"}]
+      },
+      educational_degree_id:{
+        name: "user[educational_degree_id]",
+        label: "Nivel de educación*",
+        values: [{id: 1, description: "edu_deg_example 1"}, {id: 2, description: "edu_deg_example 2"}]
+      }
+    }
+  }
+}
+
+const UsersWizardsStepTwo = ({ csrf_name, csrf_token }) => {
+  //#TODO add form_info from prop please
+  console.log(formInfo)
+  const {
+    title,
+    subtitle,
+    form: { buttons, action, method, type, formFields }
+  } = formInfo
+
+  return (
+    <div className="main-wrapper">
+      <FormProgress value={0} />
+      <Row className="mt-10 mb-70 justify-content-center w-100 pb-50 mx-0 px-20">
+        <Paper className="d-flex flex-column position-relative paper-width justify-content-around align-items-center pt-60 mb-70">
+          <>
+            <FormTitle title={title} subtitle={subtitle} />
+            <div className="w-80">
+              <form
+                className="forms__candidate"
+                action={action}
+                method="post"
+              >
+                <input type="hidden" name={csrf_name} value={csrf_token} />
+                <input type="hidden" name="_method" value={method} />
+                <FormFields type={type} formFields={formFields} />
+                <FormButtons
+                  nextPath="/companies/first_offer/step_three"
+                  prevPath="/companies/first_offer/step_one"
+                  buttons={buttons}
+                />
+              </form>
+            </div>
+          </>
+        </Paper>
+      </Row>
+    </div>
+  )
+}
+
+export default UsersWizardsStepTwo
+
+UsersWizardsStepTwo.propTypes = {
+  csrf_name: PropTypes.string,
+  csrf_token: PropTypes.string,
+  formInfo: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string.isRequired,
+    form: PropTypes.shape({
+      buttons: PropTypes.shape({
+        submit: PropTypes.string.isRequired
+      }),
+      action: PropTypes.string.isRequired,
+      method: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      formFields: PropTypes.object.isRequired
+    })
+  })
+}

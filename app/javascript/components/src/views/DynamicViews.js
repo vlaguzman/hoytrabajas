@@ -83,6 +83,11 @@ export const DynamicUsersWizardsStepOne = Loadable({
   loading: Loading
 })
 
+export const DynamicUsersWizardsStepTwo = Loadable({
+  loader: () => import('./users/wizards/step_twos/show'),
+  loading: Loading
+})
+
 /* Dashboards */
 
 export const DynamicBoards = Loadable({

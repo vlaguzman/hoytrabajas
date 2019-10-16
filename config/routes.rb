@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :admin_users, {:path=>:admin, :controllers=>{:sessions=>"admin_users/sessions", :passwords=>"active_admin/devise/passwords", :unlocks=>"active_admin/devise/unlocks", :registrations=>"active_admin/devise/registrations", :confirmations=>"active_admin/devise/confirmations"}, :path_names=>{:sign_in=>"login", :sign_out=>"logout"}, :sign_out_via=>[:delete, :get]}
-  ActiveAdmin.routes(self)
 
   resources :faqs, only: [:index]
   resources :offers
@@ -36,6 +34,8 @@ Rails.application.routes.draw do
   end
 
 
+  devise_for :admin_users, {:path=>:admin, :controllers=>{:sessions=>"admin_users/sessions"}, :path_names=>{:sign_in=>"login", :sign_out=>"logout"}, :sign_out_via=>[:delete, :get]}
+  ActiveAdmin.routes(self)
   devise_for :users, controllers: { registrations: 'users/registrations', :omniauth_callbacks => "users/omniauth_callbacks" }
   devise_for :companies, controllers: { registrations: 'companies/registrations' }
 

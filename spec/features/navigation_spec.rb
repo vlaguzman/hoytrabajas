@@ -22,7 +22,7 @@ RSpec.describe "Overall navigation" do
         expect(current_path).to eq(root_path)
       end
 
-      it "should  viit ‘FAQ’ page from home page" do
+      it "should  viit ‘FAQ’ page from home page", js: true do
         visit root_path
 
         expect(page).to have_link("FAQs", href: faqs_path)
@@ -70,13 +70,14 @@ RSpec.describe "Overall navigation" do
 
         expect(current_path).to eq(offers_path)
         expect(page).to have_text("VER MÁS OFERTAS")
-
+        save_screenshot("inicio.png")
+        save_page("inicio.htlm")
         click_on("INICIO")
 
         expect(current_path).to eq(root_path)
       end
 
-      it "should visit 'categorias de empĺeo' page from home page" do
+      it "should visit 'categorias de empĺeo' page from home page", js: true do
         visit root_path
 
         expect(page).to have_link("Categorias de empleo", href: job_categories_path)
@@ -90,7 +91,7 @@ RSpec.describe "Overall navigation" do
         expect(current_path).to eq(root_path)
       end
 
-      it "should visit 'empresas' page from home page" do
+      it "should visit 'empresas' page from home page", js: true do
         visit root_path
 
         expect(page).to have_link("Empresas", href: companies_path)

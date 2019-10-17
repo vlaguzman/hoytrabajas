@@ -28,7 +28,6 @@ const HomePage = ( { offers, csrf_param, csrf_token, user_signed_in } ) => {
   } = contenido
   return (
     <div className="home-wrapper">
-      <h1 className="nada">{user_signed_in}</h1>
       <CoverSection {...cover} {...{categorias}} {...{filterForm}} />
       <GallerySection {...gallery} offers={offers} />
       <Introduccion/>

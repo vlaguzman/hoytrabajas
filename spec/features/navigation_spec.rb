@@ -70,8 +70,7 @@ RSpec.describe "Overall navigation" do
 
         expect(current_path).to eq(offers_path)
         expect(page).to have_text("VER MÁS OFERTAS")
-        save_screenshot("inicio.png")
-        save_page("inicio.htlm")
+
         click_on("INICIO")
 
         expect(current_path).to eq(root_path)

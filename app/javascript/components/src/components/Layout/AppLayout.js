@@ -23,10 +23,6 @@ const localeMap = { en, es }
 const locale = 'es'
 
 const AppLayout = ({ children, csrf_param, csrf_token, user_signed_in, company_signed_in, log_out_user, log_out_companies }) => {
-  console.log("AppLayout, esta el user logueado? ", user_signed_in)
-  console.log("AppLayout, esta la company logueada? ", company_signed_in)
-  console.log("AppLayout, esta es la ruta para desloguear: ", `${log_out_user}`)
-  console.log("AppLayout, esta es la ruta para desloguear: ", `${log_out_companies}`)
   const [isTop, setIsTop] = useState(false)
   const myRef = useRef(null)
   const onScrollFrame = e => {

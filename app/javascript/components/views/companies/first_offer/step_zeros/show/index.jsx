@@ -8,6 +8,11 @@ export default class Show extends React.Component {
   }
 
   render() {
+    const {
+      path,
+      t
+    } = this.props
+
     return (
       <div className="main-wrapper">
         <AppLayout>
@@ -15,9 +20,9 @@ export default class Show extends React.Component {
             <div className='container-general'>
               <div className='container-specific background'></div>
               <div className='container-specific'>
-                <h1>El empleado ideal ¡si existe!</h1>
-                <p>Y crear <strong>una oferta atractiva</strong> para llegar a el es muy facil <strong>¡vamos a hacerlo!</strong></p>
-                <a href={this.props.path}> Quiero publicar mi oferta </a>
+                <h1>{t.title}</h1>
+                <p>{t.description}</p>
+                <a href={path}>{t.button_action}</a>
               </div>
             </div>
           </div>

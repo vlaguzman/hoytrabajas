@@ -8,6 +8,13 @@ export default class Show extends React.Component {
   }
 
   render() {
+    const {
+      users_wizards_step_one_path,
+      t
+    } = this.props
+
+    console.log(t)
+
     return (
       <div className="main-wrapper">
         <AppLayout>
@@ -15,9 +22,9 @@ export default class Show extends React.Component {
             <div className='container-general'>
               <div className='container-specific background'></div>
               <div className='container-specific'>
-                <h1>El empleado ideal ¡si existe!</h1>
-                <p>Y crear <strong>una oferta atractiva</strong> para llegar a el es muy facil <strong>¡vamos a hacerlo!</strong></p>
-                <a href={this.props.users_wizards_step_one_path}>Quiero publicar mi oferta</a>
+                <h1>{t.title}</h1>
+                <p>{t.description}</p>
+                <a href={users_wizards_step_one_path}>{t.button_action}</a>
               </div>
             </div>
           </div>

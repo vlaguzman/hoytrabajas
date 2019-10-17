@@ -4,4 +4,10 @@ labor_disponibilities = LaborDisponibility.create([
     { description: "No estoy disponible"}
 ])
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
-
+Sex.create!(description: 'Masculino') if Rails.env.development?
+Sex.create!(description: 'Femenino') if Rails.env.development?
+ContractType.create!(description: 'Prestacion de servicios') if Rails.env.development?
+DocumentType.create!(description: 'CC') if Rails.env.development?
+WorkMode.create!(description: 'Teletrabajo') if Rails.env.development?
+EducationalDegree.create!(description: 'Bachiller') if Rails.env.development?
+City.create!(description: 'Bogota') if Rails.env.development?

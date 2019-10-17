@@ -29,7 +29,7 @@ RSpec.describe "User can Log In", type: :feature do
     scenario "redirect after login", js: true do
 
       visit root_path
-      save_screenshot("index.png")
+
       expect(page).to have_content("SIGN IN CANDIDATO")
 
       has_button?("SIGN IN CANDIDATO")

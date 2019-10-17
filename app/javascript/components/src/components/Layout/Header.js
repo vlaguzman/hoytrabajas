@@ -228,15 +228,14 @@ const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in, company_s
                       }}
                     />
                   </FormGroup>
-                  {loginState && (
                     <Typography
+                      component="a"
                       variant="caption"
                       style={{ color: '#00CED5' }}
                       href="users/password/new"
                     >
                       ¿Olvidó su contraseña?
                     </Typography>
-                  )}
                   <Row noGutters className="justify-content-center my-25">
                     <Col xs={12}>
                       <MatButton
@@ -271,16 +270,16 @@ const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in, company_s
               <DialogActions className="">
                 <div className="w-100 text-center">
                   <Typography variant="caption" component="span">
-                    {loginState ? 'No tienes una cuenta' : '¿Ya tienes cuenta?'}
+                    No tienes una cuenta
                   </Typography>
                   <Typography
-                    onClick={toggleLoginState}
                     variant="caption"
                     className="ml-5"
-                    component="span"
+                    component="a"
                     style={{ color: '#00CED5', cursor: 'pointer' }}
+                    href="users/sign_up"
                   >
-                    {loginState ? 'Registrate' : 'Iniciar session'}
+                    Registrate
                   </Typography>
                 </div>
               </DialogActions>

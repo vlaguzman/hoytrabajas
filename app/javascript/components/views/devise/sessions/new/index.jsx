@@ -23,7 +23,7 @@ export default class Index extends React.Component {
     const resource_name = this.props.source_name
     return (
       <div className="main-wrapper">
-        <AppLayout>
+        <AppLayout user_signed_in={this.props.user_signed_in} company_signed_in={this.props.company_signed_in} log_out_user={this.props.log_out_user} log_out_companies={this.props.log_out_companies}>
           <Dialog
             fullWidth
             maxWidth="xs"
@@ -94,23 +94,6 @@ export default class Index extends React.Component {
                     }}
                   />
                 </div>
-                <div className="mb-2 mr-sm-2 mb-sm-0 position-relative">
-                  <input
-                    name={`${resource_name}[password_confirmation]`}
-                    id={`${resource_name}_password_confirmation`}
-                    className="pl-40 py-10 form-control"
-                    placeholder="Confirma tu contraseña"
-                    type="password"
-                  />
-                  <Lock
-                    className="position-absolute"
-                    style={{
-                      color: 'lightgrey',
-                      top: '0.75rem',
-                      left: '.5rem'
-                    }}
-                  />
-                </div>
                 <Row noGutters className="justify-content-center my-25">
                   <Col xs={12}>
                     <MatButton
@@ -119,7 +102,7 @@ export default class Index extends React.Component {
                       color="primary"
                       variant="contained"
                     >
-                      Regístrarme
+                      Iniciar sesión
                     </MatButton>
                   </Col>
                 </Row>
@@ -132,13 +115,15 @@ export default class Index extends React.Component {
               <Row className="my-30">
                 <Col xs={12}>
                   <MatButton variant="outlined">
-                    Continuar con Facebook
+                    Conectarse con Facebook
                   </MatButton>
                 </Col>
               </Row>
               <Row className="my-30">
                 <Col xs={12}>
-                  <MatButton variant="outlined">Continuar con Google</MatButton>
+                  <MatButton variant="outlined">
+                    Conectarse con Google
+                  </MatButton>
                 </Col>
               </Row>
             </DialogContent>

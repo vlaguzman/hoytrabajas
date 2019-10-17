@@ -4,6 +4,7 @@ import MatButton from '@material-ui/core/Button'
 import { Row, Col } from 'reactstrap'
 import Typography from '@material-ui/core/Typography'
 import Dialog from '@material-ui/core/Dialog'
+import DialogActions from '@material-ui/core/DialogActions'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
@@ -43,7 +44,7 @@ export default class Index extends React.Component {
             <DialogContent className="px-40">
               <DialogContentText>
                 <Typography variant="body2" component="span">
-                  Regístrate ahora
+                  Lorem ipsum dolor sit amet, consectetur adipi. 
                 </Typography>
               </DialogContentText>
               <form
@@ -94,6 +95,14 @@ export default class Index extends React.Component {
                     }}
                   />
                 </div>
+                  <Typography
+                    component="a"
+                    variant="caption"
+                    style={{ color: '#00CED5' }}
+                    href="companies/password/new"
+                  >
+                    ¿Olvidó su contraseña?
+                  </Typography>
                 <Row noGutters className="justify-content-center my-25">
                   <Col xs={12}>
                     <MatButton
@@ -127,6 +136,22 @@ export default class Index extends React.Component {
                 </Col>
               </Row>
             </DialogContent>
+            <DialogActions className="">
+              <div className="w-100 text-center">
+                <Typography variant="caption" component="span">
+                  No tienes una cuenta
+                </Typography>
+                <Typography
+                  variant="caption"
+                  className="ml-5"
+                  component="a"
+                  style={{ color: '#00CED5', cursor: 'pointer' }}
+                  href="companies/sign_up"
+                >
+                  Registrate
+                </Typography>
+              </div>
+            </DialogActions>
           </Dialog>
         </AppLayout>
       </div>

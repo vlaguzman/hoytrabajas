@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Companies::FirstOffer::StepOnePresenter do
+RSpec.describe Companies::FirstOffer::StepTwoPresenter do
   let(:company) { create(:company) }
   let(:subject) { described_class.new(company) }
 

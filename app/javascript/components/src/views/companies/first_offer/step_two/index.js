@@ -7,11 +7,11 @@ import FormTitle from '../../../../components/FormsLayout/FormTitle'
 import FormButtons from '../../../../components/FormsLayout/FormButtons'
 import FormFields from './FormFields'
 
-const CompaniesStepOne = ({ csrf_name, csrf_token, formInfo }) => {
+const CompaniesStepTwo = ({ csrf_name, csrf_token, formInfo }) => {
   const {
     title,
     subtitle,
-    form: { buttons, nextPath, previousPath, action, method, type, formFields }
+    form: { buttons, action, method, type, formFields }
   } = formInfo
 
   const { nextPath, previousPath } = buttons
@@ -24,13 +24,17 @@ const CompaniesStepOne = ({ csrf_name, csrf_token, formInfo }) => {
           <>
             <FormTitle title={title} subtitle={subtitle} />
             <div className="w-80">
-              <form className="forms__candidate" action={action} method="post">
-                <FormFields type={type} formFields={formFields} />
+              <form
+                className="forms__candidate"
+                action={action}
+                method="post"
+              >
                 <input type="hidden" name={csrf_name} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />
+                <FormFields type={type} formFields={formFields} />
                 <FormButtons
                   nextPath={nextPath}
-                  previousPath={previousPath}
+                  prevPath={previousPath}
                   buttons={buttons}
                 />
               </form>
@@ -42,9 +46,9 @@ const CompaniesStepOne = ({ csrf_name, csrf_token, formInfo }) => {
   )
 }
 
-export default CompaniesStepOne
+export default CompaniesStepTwo
 
-CompaniesStepOne.propTypes = {
+CompaniesStepTwo.propTypes = {
   csrf_name: PropTypes.string,
   csrf_token: PropTypes.string,
   formInfo: PropTypes.shape({
@@ -54,8 +58,6 @@ CompaniesStepOne.propTypes = {
       buttons: PropTypes.shape({
         submit: PropTypes.string.isRequired
       }),
-      nextPath: PropTypes.string.isRequired,
-      previousPath: PropTypes.string.isRequired,
       action: PropTypes.string.isRequired,
       method: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,

@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   namespace :companies do
     namespace :first_offer do
       resource :step_zero, only: [:show]
-      resource :step_one,  only: [:show, :update]
-      resource :step_two,  only: [:show]
-      resource :step_three,  only: [:show]
+      resource :step_one,   only: [:show, :update]
+      resource :step_two,   only: [:show, :update]
+      resource :step_three, only: [:show]
       resource :step_four,  only: [:show]
       resource :step_five,  only: [:show]
     end

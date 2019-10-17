@@ -8,7 +8,7 @@ const formInfo = {
   form: {
     buttons: {
       submit: 'Siguiente',
-      prev: 'Regresar',
+      previous: 'Regresar',
       next: 'Saltar'
     },
     previousPath: '/companies/first_offer/step_four',

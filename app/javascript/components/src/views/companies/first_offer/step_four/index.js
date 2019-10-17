@@ -56,7 +56,7 @@ CompaniesStepFour.propTypes = {
     form: PropTypes.shape({
       buttons: PropTypes.shape({
         submit: PropTypes.string.isRequired,
-        prev: PropTypes.string.isRequired,
+        previous: PropTypes.string.isRequired,
         next: PropTypes.string.isRequired
       }),
       nextPath: PropTypes.string.isRequired,

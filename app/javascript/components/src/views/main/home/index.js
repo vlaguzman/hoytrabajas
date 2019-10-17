@@ -16,7 +16,7 @@ import Newsletter from './sections/newsletter'
 import { contenido } from './data'
 // import ScrollAnimation from 'react-animate-on-scroll'
 
-const HomePage = ( { offers, csrf_param, csrf_token } ) => {
+const HomePage = ( { offers, csrf_param, csrf_token, user_signed_in } ) => {
   const {
     cover,
     premiun,

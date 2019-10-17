@@ -5,7 +5,7 @@ A         * AdminUsers::SessionsController              2       6.2        0    
 A         * AgeRange                                    1       0.0        0           1
 A         * ApplicationCable::Channel                   1       0.0        0           1
 A         * ApplicationCable::Connection                1       0.0        0           1
-A         * ApplicationController                       14      13.32      0           1
+A         * ApplicationController                       17      13.32      0           1
 A         * ApplicationJob                              1       0.0        0           1
 A         * ApplicationMailer                           1       0.0        0           1
 A         * ApplicationPresenter                        3       10.35      0           3
@@ -97,6 +97,7 @@ A         * Term                                        4       0.0        0    
 A         * User                                        14      27.95      0           3
 A         * Users::OmniauthCallbacksController          1       21.49      0           5
 A         * Users::RegistrationsController              7       5.16       0           2
+A         * Users::SessionsController                   1       0.0        0           1
 A         * Users::WizardService                        2       17.38      0           2
 A         * Users::Wizards::StepEightPresenter          4       21.97      0           2
 A         * Users::Wizards::StepEightService            1       18.84      0           1

@@ -16,13 +16,13 @@ RSpec.describe "Overall navigation" do
         within menu do
           expect(page).to have_content("INICIO")
 
-          click_on("Inicio")
+          click_on("INICIO")
         end
 
         expect(current_path).to eq(root_path)
       end
 
-      it "should  viit ‘FAQ’ page from home page" do
+      it "should  viit ‘FAQ’ page from home page", js: true do
         visit root_path
 
         expect(page).to have_link("FAQs", href: faqs_path)
@@ -31,7 +31,7 @@ RSpec.describe "Overall navigation" do
 
         expect(page).to have_text("Faqs")
 
-        click_on("Inicio")
+        click_on("INICIO")
 
         expect(current_path).to eq(root_path)
       end
@@ -39,9 +39,9 @@ RSpec.describe "Overall navigation" do
       it "should visit Candidato page from home page", js: true do
         visit root_path
 
-        expect(page).to have_link("Candidato", href: new_user_registration_path)
+        expect(page).to have_link("SIGN UP CANDIDATO", href: "/users/sign_up")
 
-        click_on("Candidato")
+        click_on("SIGN UP CANDIDATO")
 
         expect(page).to have_text("Regístrate ahora")
 
@@ -52,9 +52,9 @@ RSpec.describe "Overall navigation" do
       it "should visit 'Empleador' page from home page", js: true do
         visit root_path
 
-        expect(page).to have_link("Empleador", href: new_company_registration_path)
+        expect(page).to have_link("SIGN UP EMPRESA", href: "/companies/sign_up")
 
-        click_on("Empleador")
+        click_on("SIGN UP EMPRESA")
 
         expect(page).to have_text("Regístrate ahora")
 
@@ -71,12 +71,12 @@ RSpec.describe "Overall navigation" do
         expect(current_path).to eq(offers_path)
         expect(page).to have_text("VER MÁS OFERTAS")
 
-        click_on("Inicio")
+        click_on("INICIO")
 
         expect(current_path).to eq(root_path)
       end
 
-      it "should visit 'categorias de empĺeo' page from home page" do
+      it "should visit 'categorias de empĺeo' page from home page", js: true do
         visit root_path
 
         expect(page).to have_link("Categorias de empleo", href: job_categories_path)
@@ -85,12 +85,12 @@ RSpec.describe "Overall navigation" do
 
         expect(page).to have_text("Categorias de empleo")
 
-        click_on("Inicio")
+        click_on("INICIO")
 
         expect(current_path).to eq(root_path)
       end
 
-      it "should visit 'empresas' page from home page" do
+      it "should visit 'empresas' page from home page", js: true do
         visit root_path
 
         expect(page).to have_link("Empresas", href: companies_path)
@@ -100,7 +100,7 @@ RSpec.describe "Overall navigation" do
         expect(page).to have_text(/Ellos hoy confian en nosotros/)
         expect(page).to have_text(/para encontrar su empleado ideal/)
 
-        click_on("Inicio")
+        click_on("INICIO")
 
         expect(current_path).to eq(root_path)
       end

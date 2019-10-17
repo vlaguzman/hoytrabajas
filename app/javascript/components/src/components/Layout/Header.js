@@ -24,7 +24,7 @@ import dialogState from '../../hooks/dialogState'
 import { fields1 } from './data'
 import FormGen from '../inlineFormgenerartor'
 
-const Header = ({ scrollState, csrf_param, csrf_token }) => {
+const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in, company_signed_in, log_out_user, log_out_companies }) => {
   const [open, setOpen] = React.useState(false)
   const [loginState, setloginState] = React.useState(true)
   const [fullWidth, setFullWidth] = React.useState(true)
@@ -109,36 +109,39 @@ const Header = ({ scrollState, csrf_param, csrf_token }) => {
                 style={{ color: !scrollState ? 'white' : 'black' }}
                 href="/"
               >
-                Inicio
+                INICIO
               </MatButton>
             </li>
             {/* TODO: With "Candidato" and "Empleador", to press button redirect me a static landing page.
           We must take into account to make the change in redirection */}
             <li className="list-inline-item no-responsive">
-              <MatButton
-                style={{ color: !scrollState ? 'white' : 'black' }}
-                href="/users/sign_up"
-              >
-                Candidato
-              </MatButton>
+              { (user_signed_in &&       // if user is signed in
+                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }}>BUSCAR OFERTAS</MatButton>))
+                || (company_signed_in && // else if company is signed in
+                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }}>PUBLICAR OFERTAS</MatButton>))
+                ||                       // else
+                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }} href="/users/sign_up">SIGN UP CANDIDATO</MatButton>)
+              }
             </li>
             <li className="list-inline-item no-responsive">
-              <MatButton
-                style={{ color: !scrollState ? 'white' : 'black' }}
-                href="/companies/sign_up"
-              >
-                Empleador
-              </MatButton>
+              { (user_signed_in &&       // if user is signed in 
+                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }}>VER MI TABLERO</MatButton>))
+                || (company_signed_in && // else if company is signed in 
+                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }}>VER MI TABLERO</MatButton>))
+                ||                       // else
+                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }} href="/companies/sign_up">SIGN UP EMPRESA</MatButton>)
+              }
             </li>
             <li className="list-inline-item no-responsive">
               {/* {!isAuthenticated ? ( */}
               {/* TODO:only login with the user_path */}
-              <MatButton
-                style={{ color: !scrollState ? 'white' : 'black' }}
-                onClick={handleClickOpen}
-              >
-                Login
-              </MatButton>
+              { (user_signed_in &&       // if user is signed in 
+                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }}>MI PERFIL</MatButton>))
+                || (company_signed_in && // else if company is signed in 
+                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }}>MI PERFIL</MatButton>))
+                ||                       // else
+                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }} onClick={handleClickOpen}>SIGN IN CANDIDATO</MatButton>)
+              }
               {/* ) : (
               <MatButton style={{color: !scrollState ? 'white': 'black'}} onClick={() => logout()}>Logout</MatButton>
             )} */}
@@ -288,13 +291,12 @@ const Header = ({ scrollState, csrf_param, csrf_token }) => {
             {/* ******************** */}
             <li className="list-inline-item no-responsive">
               {/* TODO:Temporaly registration with rout por users */}
-              {
-                <MatButton
-                  style={{ color: !scrollState ? 'white' : 'black' }}
-                  href="/users/sign_up"
-                >
-                  Registrarse
-                </MatButton>
+              { (user_signed_in &&       // if user is signed in
+                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }} href={log_out_user}>CERRAR SESION</MatButton>))
+                || (company_signed_in && // else if company is signed in
+                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }} href={log_out_companies}>CERRAR SESION</MatButton>))
+                ||                       // else
+                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }} href="/companies/sign_in">SIGN IN EMPRESA</MatButton>)
               }
             </li>
           </ul>

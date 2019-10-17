@@ -7,8 +7,8 @@ RSpec.describe "sign up user", js: true,  type: :feature do
 
       visit root_path
 
-      expect(page).to have_text("Candidato")
-      click_on 'Candidato'
+      expect(page).to have_text("SIGN UP CANDIDATO")
+      click_on 'SIGN UP CANDIDATO'
 
       expect(page).to have_text("Regístrate")
     end
@@ -36,19 +36,37 @@ RSpec.describe "sign up user", js: true,  type: :feature do
     end
 
     context "I am looking for a candidate" do
-      it "should show a message to the employer" do
-        visit new_company_registration_path
 
-        fill_in "company[email]", :with => "employee@gmail.com"
-        fill_in "company[password]", :with => "iwanttofindaemployee"
-        fill_in 'company[password_confirmation]', :with => "iwanttofindaemployee"
+      it "Company visit home page and click on sign in" do
 
-        click_button 'Regístrarme'
+        visit root_path
 
-        expect(Company.count).to eq(1)
+        expect(page).to have_text("SIGN UP EMPRESA") 
+        click_on 'SIGN UP EMPRESA'
 
-        expect(current_path).to eq(companies_first_offer_step_zero_path)
+        expect(page).to have_text("Regístrate")
 
+      end
+    end
+
+
+    context "when company want to sign up with email adn password" do
+      context "when company registrate in the website" do
+
+        it "should redirect to company step zero" do
+
+          visit new_company_registration_path
+
+          fill_in "company[email]", :with => "employee@gmail.com"
+          fill_in "company[password]", :with => "iwanttofindaemployee"
+          fill_in 'company[password_confirmation]', :with => "iwanttofindaemployee"
+
+          click_button 'Regístrarme'
+
+          expect(Company.count).to eq(1)
+
+          expect(current_path).to eq(companies_first_offer_step_zero_path)
+        end
       end
     end
 

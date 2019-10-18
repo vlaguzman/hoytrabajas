@@ -6,6 +6,7 @@ RSpec.describe "Admin can create an User", type: :feature do
   context "a admin user must be able to create a new user" do
     scenario "the admin fill all the data" do
 
+      User.destroy_all
       sign_in FactoryBot.create(:admin_user)
       visit admin_dashboard_path 
       expect(page).to have_content("Active Admin")

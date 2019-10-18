@@ -4,9 +4,11 @@ RSpec.describe "Admin can create an User", type: :feature do
   include Devise::Test::IntegrationHelpers
 
   context "a admin user must be able to edit a created user" do
+    
+    let(:user) { create(:user, name: 'carlos', email: 'elcarlos@gmail.com') }
+
     scenario "the admin select an user and edit all the data" do
       
-      user = FactoryBot.create(:user, name: 'carlos', email: 'elcarlos@gmail.com')
       sign_in FactoryBot.create(:admin_user)
       visit admin_dashboard_path 
       expect(page).to have_content("Active Admin")
@@ -33,6 +35,28 @@ RSpec.describe "Admin can create an User", type: :feature do
       expect(page).to have_content("carlosr@gmail.com")
 
       expect(User.last.email).to eq("carlosr@gmail.com")
+    end
+
+    scenario "the admin select an user and edit just the email" do
+      
+      sign_in FactoryBot.create(:admin_user)
+      visit admin_dashboard_path 
+      expect(page).to have_content("Active Admin")
+      click_on("Users")
+
+      expect(page).to have_content("elcarlos@gmail.com")
+      click_on("Editar")
+      expect(page).to have_content("Editar User")
+
+      within '#edit_user' do
+        fill_in 'user_email', with: 'eldoncarlos@gmail.com'
+        click_on("Guardar User")
+      end
+
+      expect(page).to have_content("Detalles de User")
+      expect(page).to have_content("eldoncarlos@gmail.com")
+
+      expect(User.last.email).to eq("eldoncarlos@gmail.com")
     end
   end
 end

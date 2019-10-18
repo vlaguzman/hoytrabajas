@@ -21,7 +21,7 @@ class Companies::FirstOffer::StepTwosController < ApplicationController
 
   private
 
-  def step_one_params
+  def step_two_params
     params
       .require(:company)
       .permit(

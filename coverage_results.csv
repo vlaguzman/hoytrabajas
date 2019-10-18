@@ -96,7 +96,10 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/users/wizards/step_two_presenter.rb",100,41,16,16,0
 "./app/presenters/users/wizards/step_zero_presenter.rb",100,7,3,3,0
 "./app/services/base_form_wizards_service.rb",100,100,45,45,0
-"./app/services/companies/first_offer/step_one_service.rb",100,10,6,6,0
+"./app/services/companies/first_offer/step_one/form_params_service.rb",100,25,8,8,0
+"./app/services/companies/first_offer/step_one_service.rb",100,11,6,6,0
+"./app/services/companies/first_offer/step_two/form_params_service.rb",100,7,2,2,0
+"./app/services/companies/first_offer/step_two_service.rb",100,11,6,6,0
 "./app/services/offers/index_service.rb",100,19,6,6,0
 "./app/services/offers/show_service.rb",100,60,18,18,0
 "./app/services/offers/views_service.rb",100,52,17,17,0

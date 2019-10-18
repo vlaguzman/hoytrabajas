@@ -7,7 +7,7 @@ import FormTitle from '../../../../components/FormsLayout/FormTitle'
 import FormButtons from '../../../../components/FormsLayout/FormButtons'
 import FormFields from './FormFields'
 
-const CompaniesStepOne = ({ csrf_name, csrf_token, formInfo }) => {
+const CompaniesStepOne = ({ formInfo, csrf_name, csrf_token }) => {
   const {
     title,
     subtitle,

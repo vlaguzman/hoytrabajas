@@ -1,4 +1,5 @@
-import React     from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import AppLayout from '../../../../../src/components/Layout/AppLayout'
 
 export default class Show extends React.Component {
@@ -19,8 +20,6 @@ export default class Show extends React.Component {
       t
     } = this.props
 
-    console.log(t)
-
     return (
       <div className="main-wrapper">
         <AppLayout
@@ -31,10 +30,10 @@ export default class Show extends React.Component {
           csrf_param={csrf_param}
           csrf_token={csrf_token}
         >
-          <div className='background'>
-            <div className='container-general'>
-              <div className='container-specific background'></div>
-              <div className='container-specific'>
+          <div className="background">
+            <div className="container-general">
+              <div className="container-specific background" />
+              <div className="container-specific">
                 <h1>{t.title}</h1>
                 <p>{t.description}</p>
                 <a href={users_wizards_step_one_path}>{t.button_action}</a>
@@ -47,3 +46,13 @@ export default class Show extends React.Component {
   }
 }
 
+Show.propTypes = {
+  users_wizards_step_one_path: PropTypes.string.isRequired,
+  log_out_companies: PropTypes.string.isRequired,
+  company_signed_in: PropTypes.bool.isRequired,
+  user_signed_in: PropTypes.bool.isRequired,
+  log_out_user: PropTypes.string.isRequired,
+  csrf_param: PropTypes.string.isRequired,
+  csrf_token: PropTypes.string.isRequired,
+  t: PropTypes.object.isRequired
+}

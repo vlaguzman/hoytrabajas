@@ -14,8 +14,6 @@ const CompaniesStepTwo = ({ csrf_name, csrf_token, formInfo }) => {
     form: { buttons, action, method, type, formFields }
   } = formInfo
 
-  const { nextPath, previousPath } = buttons
-
   return (
     <div className="main-wrapper">
       <FormProgress value={0} />

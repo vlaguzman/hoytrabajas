@@ -5,12 +5,10 @@ import StandardInput from '../../../../components/FormsLayout/Fields/StandardInp
 
 const FormFields = props => {
   const { formFields, type } = props
-  const {
-    description = null
-  } = formFields
+  const { description = null } = formFields
 
   const [formValues, setFormValues] = useState({
-    [description.name]: '',
+    [description.name]: ''
   })
 
   const handleChange = (e, inputName, isMultiple = false) => {
@@ -46,7 +44,7 @@ const FormFields = props => {
     () => (
       <Col key={description.name} className={inputClassname} xs={12} lg={12}>
         <StandardInput
-          isTextArea={true}
+          isTextArea
           inputValue={formValues[description.name]}
           inputName={description.name}
           handleChange={handleChange}
@@ -58,11 +56,7 @@ const FormFields = props => {
     [formValues[description.name]]
   )
 
-  return (
-    <Row className="HT__FormGenerator">
-      {descriptionField}
-    </Row>
-  )
+  return <Row className="HT__FormGenerator">{descriptionField}</Row>
 }
 
 export default FormFields

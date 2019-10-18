@@ -14,6 +14,8 @@ const CompaniesStepTwo = ({ csrf_name, csrf_token, formInfo }) => {
     form: { buttons, action, method, type, formFields }
   } = formInfo
 
+  const { nextPath, previousPath } = buttons
+
   return (
     <div className="main-wrapper">
       <FormProgress value={0} />
@@ -22,11 +24,7 @@ const CompaniesStepTwo = ({ csrf_name, csrf_token, formInfo }) => {
           <>
             <FormTitle title={title} subtitle={subtitle} />
             <div className="w-80">
-              <form
-                className="forms__candidate"
-                action={action}
-                method="post"
-              >
+              <form className="forms__candidate" action={action} method="post">
                 <input type="hidden" name={csrf_name} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />
                 <FormFields type={type} formFields={formFields} />
@@ -54,7 +52,11 @@ CompaniesStepTwo.propTypes = {
     subtitle: PropTypes.string.isRequired,
     form: PropTypes.shape({
       buttons: PropTypes.shape({
-        submit: PropTypes.string.isRequired
+        submit: PropTypes.string.isRequired,
+        next: PropTypes.string.isRequired,
+        nextPath: PropTypes.string.isRequired,
+        previous: PropTypes.string.isRequired,
+        previousPath: PropTypes.string.isRequired
       }),
       action: PropTypes.string.isRequired,
       method: PropTypes.string.isRequired,

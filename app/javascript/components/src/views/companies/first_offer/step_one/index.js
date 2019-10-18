@@ -50,10 +50,12 @@ CompaniesStepOne.propTypes = {
     subtitle: PropTypes.string.isRequired,
     form: PropTypes.shape({
       buttons: PropTypes.shape({
-        submit: PropTypes.string.isRequired
+        submit: PropTypes.string.isRequired,
+        next: PropTypes.string.isRequired,
+        nextPath: PropTypes.string.isRequired,
+        previous: PropTypes.string.isRequired,
+        previousPath: PropTypes.string.isRequired
       }),
-      nextPath: PropTypes.string.isRequired,
-      previousPath: PropTypes.string.isRequired,
       action: PropTypes.string.isRequired,
       method: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,

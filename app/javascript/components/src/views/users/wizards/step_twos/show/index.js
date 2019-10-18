@@ -30,7 +30,7 @@ const UsersWizardsStepTwo = ({ formInfo, csrf_name, csrf_token }) => {
                 <FormFields type={type} formFields={formFields} />
                 <FormButtons
                   nextPath={nextPath}
-                  previousPath={previousPath}
+                  prevPath={previousPath}
                   buttons={buttons}
                 />
               </form>

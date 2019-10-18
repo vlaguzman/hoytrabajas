@@ -1,6 +1,6 @@
 class Users::Wizards::StepZeroPresenter < ApplicationPresenter
 
-  def translation
+  def component_translations
     I18n.t('users.wizards.step_zero.show')
   end
 

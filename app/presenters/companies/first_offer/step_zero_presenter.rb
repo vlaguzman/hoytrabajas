@@ -1,6 +1,6 @@
 class Companies::FirstOffer::StepZeroPresenter < ApplicationPresenter
 
-  def translation
+  def component_translations
     I18n.t('companies.first_offer.step_zeros.show')
   end
 

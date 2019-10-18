@@ -82,6 +82,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/working_day.rb",100,6,4,4,0
 "./app/presenters/application_presenter.rb",100,19,11,11,0
 "./app/presenters/companies/first_offer/step_one_presenter.rb",100,57,8,8,0
+"./app/presenters/companies/first_offer/step_zero_presenter.rb",100,7,3,3,0
 "./app/presenters/offers_presenter.rb",100,14,7,7,0
 "./app/presenters/users/wizards/step_eight_presenter.rb",100,38,20,20,0
 "./app/presenters/users/wizards/step_five_presenter.rb",100,23,11,11,0
@@ -93,6 +94,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/users/wizards/step_ten_presenter.rb",100,18,10,10,0
 "./app/presenters/users/wizards/step_three_presenter.rb",100,23,11,11,0
 "./app/presenters/users/wizards/step_two_presenter.rb",100,41,16,16,0
+"./app/presenters/users/wizards/step_zero_presenter.rb",100,7,3,3,0
 "./app/services/base_form_wizards_service.rb",100,100,45,45,0
 "./app/services/companies/first_offer/step_one_service.rb",100,10,6,6,0
 "./app/services/offers/index_service.rb",100,19,6,6,0

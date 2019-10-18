@@ -1,7 +1,7 @@
 es:
   companies:
     first_offer:
-      step_ones:
+      step_twos:
         show:
           title: "Empecemos por conocernos"
           subtitle: "Brinda a tu candidato información de tu empresa."
@@ -12,9 +12,4 @@ es:
               previous: "Regresar"
             type: "company"
             formFields:
-              name: "Nombre empresa o Razón social*"
-              industry_id: "Sector al que pertenece tu empresa*"
-              contact_work_position: "Cargo"
-              contact_name: "Persona de contacto"
-              contact_cellphone: "Número de contacto"
-              employees_range_id: "Número de empleados"
+              description: ""

@@ -50,6 +50,11 @@ export const DynamicCompaniesStepFive = Loadable({
   loading: Loading
 })
 
+export const DynamicCompaniesStepTwo = Loadable({
+  loader: () => import('./companies/first_offer/step_two'),
+  loading: Loading
+})
+
 /* REGCAN */
 
 export const DynamicReg = Loadable({

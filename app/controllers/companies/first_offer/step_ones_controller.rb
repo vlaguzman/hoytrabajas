@@ -5,13 +5,12 @@ class Companies::FirstOffer::StepOnesController < ApplicationController
   end
 
   def update
-    company_presenter
     company = Companies::FirstOffer::StepOneService.(company: current_company, update_params: step_one_params)
 
     if company[:status].eql?(:ok)
       redirect_to companies_first_offer_step_two_path
     else
-      company_presenter(company["data"])
+      company_presenter(company[:data])
       render 'show'
     end
   end

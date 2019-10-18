@@ -24,7 +24,12 @@ export default class Index extends React.Component {
     const resource_name = this.props.source_name
     return (
       <div className="main-wrapper">
-        <AppLayout user_signed_in={this.props.user_signed_in} company_signed_in={this.props.company_signed_in} log_out_user={this.props.log_out_user} log_out_companies={this.props.log_out_companies}>
+        <AppLayout
+          user_signed_in={this.props.user_signed_in}
+          company_signed_in={this.props.company_signed_in}
+          log_out_user={this.props.log_out_user}
+          log_out_companies={this.props.log_out_companies}
+        >
           <Dialog
             fullWidth
             maxWidth="xs"
@@ -44,7 +49,7 @@ export default class Index extends React.Component {
             <DialogContent className="px-40">
               <DialogContentText>
                 <Typography variant="body2" component="span">
-                  Lorem ipsum dolor sit amet, consectetur adipi. 
+                  Lorem ipsum dolor sit amet, consectetur adipi.
                 </Typography>
               </DialogContentText>
               <form
@@ -95,14 +100,14 @@ export default class Index extends React.Component {
                     }}
                   />
                 </div>
-                  <Typography
-                    component="a"
-                    variant="caption"
-                    style={{ color: '#00CED5' }}
-                    href="companies/password/new"
-                  >
-                    ¿Olvidó su contraseña?
-                  </Typography>
+                <Typography
+                  component="a"
+                  variant="caption"
+                  style={{ color: '#00CED5' }}
+                  href="companies/password/new"
+                >
+                  ¿Olvidó su contraseña?
+                </Typography>
                 <Row noGutters className="justify-content-center my-25">
                   <Col xs={12}>
                     <MatButton

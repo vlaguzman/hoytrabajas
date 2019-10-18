@@ -5,7 +5,7 @@ RSpec.describe "Admin can create an User", type: :feature do
 
   context "a admin user must be able to edit a created user" do
     
-    let(:user) { create(:user, name: 'carlos', email: 'elcarlos@gmail.com') }
+    let!(:user) { create(:user, name: 'carlos', email: 'elcarlos@gmail.com') }
 
     scenario "the admin select an user and edit all the data" do
       
@@ -57,6 +57,7 @@ RSpec.describe "Admin can create an User", type: :feature do
       expect(page).to have_content("eldoncarlos@gmail.com")
 
       expect(User.last.email).to eq("eldoncarlos@gmail.com")
+      User.destroy_all
     end
   end
 end

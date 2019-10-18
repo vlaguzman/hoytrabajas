@@ -1,0 +1,58 @@
+/*########################################################################
+# STEP ZERO
+########################################################################*/
+
+.background {
+  background-color: #fffbfa;
+}
+
+.container-general {
+  padding: 120px 0px 267px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 466px;
+
+  .container-specific {
+    box-shadow: 0 6px 25px 4px rgba(58, 58, 58, 0.1);
+    padding: 99px 87px 111px;
+    background-color: #fff;
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+
+    h1 {
+      font-weight: bold;
+      font-size: 34px;
+      color: #595858;
+    }
+
+    p {
+      margin-bottom: 51px;
+      font-size: 16px;
+      color: #595858;
+    }
+
+    a {
+      box-shadow: 0 6px 12px 0 rgba(245, 114, 15, 0.37);
+      background-color: #ff6e00;
+      border-radius: 33px;
+      padding: 18px 49px;
+      font-weight: bold;
+      font-size: 16px;
+      color: #fff;
+    }
+
+    &.background {
+      transform: rotate(15deg);
+      position: absolute;
+      margin-left: 69px;
+      height: 315px;
+      width: 420px;
+      padding: 0;
+      z-index: 1;
+      left: auto;
+      top: 140px;
+    }
+  }
+}

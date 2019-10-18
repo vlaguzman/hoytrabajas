@@ -1,4 +1,4 @@
-module Companies::FirstOffer::StepOneService
+module Companies::FirstOffer::StepTwoService
 
   def self.call(company: _, update_params: {})
     updated = company.update(update_params)

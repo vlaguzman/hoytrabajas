@@ -1,7 +1,20 @@
 ActiveAdmin.register User do
+  
+  controller do
+    def update_resource object, attributes
+      attributes.each do |attr|
+        if attr[:password].blank? and attr[:password_confirmation].blank?
+          attr.delete :password
+          attr.delete :password_confirmation
+        end
+      end
+
+      object.send :update_attributes, *attributes
+    end
+  end
 
   permit_params :email, :name, :last_name, :password, :password_confirmation, :sex_id, :city_id, :about_me, :contact_number
-
+ 
   index do
     selectable_column
     id_column

@@ -97,7 +97,7 @@ A         * TechnicalSkill                                    6       0.0       
 A         * TechnicalSkillCategory                            1       0.0        0           1
 A         * Term                                              4       0.0        0           1
 A         * User                                              14      27.95      0           3
-A         * Users                                             2       0.0        42          1
+A         * Users                                             3       15.36      42          2
 A         * Users::OmniauthCallbacksController                1       21.49      0           5
 A         * Users::RegistrationsController                    7       5.16       0           2
 A         * Users::SessionsController                         1       0.0        0           1

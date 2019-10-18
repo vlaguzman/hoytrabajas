@@ -31,6 +31,7 @@ RSpec.describe "Admin can create an User", type: :feature do
 
       expect(User.count).to eq(1)
       expect(User.last.email).to eq("carlosr@gmail.com")
+      User.destroy_all
     end
   end
 end

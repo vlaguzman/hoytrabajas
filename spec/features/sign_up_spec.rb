@@ -21,7 +21,6 @@ RSpec.describe "sign up user", js: true,  type: :feature do
           actual_users = User.count
 
           visit new_user_registration_path
-          
           fill_in 'user[email]', :with => "candidate@gmail.com"
           fill_in 'user[password]', :with => "1wantt$finda7ob"
           fill_in 'user[password_confirmation]', :with => "1wantt$finda7ob"

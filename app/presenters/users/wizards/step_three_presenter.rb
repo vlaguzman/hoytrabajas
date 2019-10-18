@@ -1,5 +1,9 @@
 class Users::Wizards::StepThreePresenter < ApplicationPresenter
 
+  def form_information
+    {}
+  end
+
   def job_categories_list
     JobCategory.all.map { |object| [object.description, object.id] }
   end

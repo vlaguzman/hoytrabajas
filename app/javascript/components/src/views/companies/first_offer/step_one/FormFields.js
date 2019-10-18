@@ -67,7 +67,7 @@ const FormFields = props => {
     }
   }
 
-  const inputClassname = 'my-30 animated fadeIn'
+  const inputClassname = 'my-30 animated fadeIn inputField'
 
   const nameField = useMemo(
     () => (

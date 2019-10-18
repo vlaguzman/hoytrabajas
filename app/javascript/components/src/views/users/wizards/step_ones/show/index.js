@@ -24,17 +24,13 @@ const UsersWizardsStepOne = ({ csrf_name, csrf_token, formInfo }) => {
           <>
             <FormTitle title={title} subtitle={subtitle} />
             <div className="w-80">
-              <form
-                className="forms__candidate"
-                action={action}
-                method="post"
-              >
+              <form className="forms__candidate" action={action} method="post">
                 <input type="hidden" name={csrf_name} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />
                 <FormFields type={type} formFields={formFields} />
                 <FormButtons
                   nextPath={nextPath}
-                  prevPath={previousPath}
+                  previousPath={previousPath}
                   buttons={buttons}
                 />
               </form>

@@ -7,21 +7,21 @@ import SelectChip from '../../../../../components/FormsLayout/Fields/SelectChip'
 const FormFields = props => {
   const { formFields, type } = props
   const {
-    name                  = null,
-    last_name             = null,
-    nationality_ids       = null,
-    document_type_id      = null,
+    name = null,
+    last_name = null,
+    nationality_ids = null,
+    document_type_id = null,
     identification_number = null,
-    contact_number        = null
+    contact_number = null
   } = formFields
 
   const [formValues, setFormValues] = useState({
-    [name.name]: '',
-    [last_name.name]: '',
-    [nationality_ids.name]: '',
-    [document_type_id.name]: '',
-    [identification_number.name]: '',
-    [contact_number.name]: ''
+    [name.name]: name.current_value || '',
+    [last_name.name]: last_name.current_value || '',
+    [nationality_ids.name]: nationality_ids.current_value || '',
+    [document_type_id.name]: document_type_id.current_value || '',
+    [identification_number.name]: identification_number.current_value || '',
+    [contact_number.name]: contact_number.current_value || ''
   })
 
   const handleChange = (e, inputName, isMultiple = false) => {
@@ -67,7 +67,7 @@ const FormFields = props => {
     }
   }
 
-  const inputClassname = 'my-30 animated fadeIn'
+  const inputClassname = 'mt-30 animated fadeIn inputField'
 
   const nameField = useMemo(
     () => (
@@ -89,7 +89,6 @@ const FormFields = props => {
       <Col key={last_name.name} className={inputClassname} xs={12} lg={6}>
         <StandardInput
           inputValue={formValues[last_name.name]}
-          inputName={last_name.name}
           handleChange={handleChange}
           name={last_name.name}
           label={last_name.label}
@@ -101,21 +100,15 @@ const FormFields = props => {
 
   const nationalityIDsField = useMemo(
     () => (
-      <Col
-        key={nationality_ids.name}
-        className={inputClassname}
-        xs={12}
-        lg={6}
-      >
+      <Col key={nationality_ids.name} className={inputClassname} xs={12} lg={6}>
         <SelectChip
           inputValue={formValues[nationality_ids.name]}
-          inputName={nationality_ids.name}
           handleChange={handleChange}
           handleDeleteChip={handleDeleteChip}
           name={nationality_ids.name}
           label={nationality_ids.label}
           selectOptions={nationality_ids.values}
-          isMultiple={true}
+          isMultiple
         />
       </Col>
     ),
@@ -132,13 +125,11 @@ const FormFields = props => {
       >
         <SelectChip
           inputValue={formValues[document_type_id.name]}
-          inputName={document_type_id.name}
           handleChange={handleChange}
           handleDeleteChip={handleDeleteChip}
           name={document_type_id.name}
           label={document_type_id.label}
           selectOptions={document_type_id.values}
-          isMultiple={false}
         />
       </Col>
     ),
@@ -147,10 +138,9 @@ const FormFields = props => {
 
   const identificationNumberField = useMemo(
     () => (
-      <Col key={identification_number.name} className={inputClassname} xs={12} lg={6}>
+      <Col className={inputClassname} xs={12} lg={6}>
         <StandardInput
           inputValue={formValues[identification_number.name]}
-          inputName={identification_number.name}
           handleChange={handleChange}
           name={identification_number.name}
           label={identification_number.label}
@@ -162,10 +152,9 @@ const FormFields = props => {
 
   const contactNumberField = useMemo(
     () => (
-      <Col key={contact_number.name} className={inputClassname} xs={12} lg={6}>
+      <Col className={inputClassname} xs={12} lg={6}>
         <StandardInput
           inputValue={formValues[contact_number.name]}
-          inputName={contact_number.name}
           handleChange={handleChange}
           name={contact_number.name}
           label={contact_number.label}

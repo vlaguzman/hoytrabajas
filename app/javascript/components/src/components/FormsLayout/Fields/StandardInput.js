@@ -4,8 +4,17 @@ import TextField from '@material-ui/core/TextField'
 import FormControl from '@material-ui/core/FormControl'
 import FormHelperText from '@material-ui/core/FormHelperText'
 
-const StandardInput = React.memo(props => {
-  const { isTextArea=false, inputValue, name, label, inputName, handleChange, extra } = props
+const StandardInput = props => {
+  const {
+    inputValue,
+    name,
+    label,
+    handleChange,
+    extra,
+    isTextArea = false,
+    beforeLabel = null,
+    placeholder = null
+  } = props
 
   const renderCharCount = () => {
     const shouldDisplayError = inputValue && inputValue.length < 0
@@ -27,41 +36,40 @@ const StandardInput = React.memo(props => {
   const hasErrors = false
 
   const textAreaProperties = {
-    multiline:true,
+    multiline: false,
     rows: 3,
     rowsMax: 3
   }
 
-  const addTextArea =() => {
-    if(isTextArea) return textAreaProperties
-  }
+  if (isTextArea) textAreaProperties.multiline = true
 
   return (
     <FormControl error={hasErrors}>
       <TextField
-        { ...addTextArea() }
-        name={inputName}
+        {...textAreaProperties}
+        name={name}
         label={label}
         error={hasErrors}
         value={inputValue || ``}
         onChange={e => handleChange(e, name)}
-        // onBlur={() => onFieldValidation()}
+        placeholder={placeholder}
       />
-      {/* {hasErrors && (
-        <FormHelperText>{validation.errorMessage}</FormHelperText>
-      )} */}
+      {hasErrors && (
+        <FormHelperText>should display validation here</FormHelperText>
+      )}
       {extra && extra.isLength && renderCharCount()}
     </FormControl>
   )
-})
+}
 
 StandardInput.propTypes = {
   isTextArea: PropTypes.bool,
   inputValue: PropTypes.string.isRequired,
-  inputName: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   label: PropTypes.string,
+  beforeLabel: PropTypes.string,
+  placeholder: PropTypes.string,
   extra: PropTypes.object
 }
 

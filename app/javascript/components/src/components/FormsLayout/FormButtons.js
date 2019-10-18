@@ -3,17 +3,17 @@ import PropTypes from 'prop-types'
 import Button from '@material-ui/core/Button'
 
 const FormButtons = props => {
-  const { nextPath, prevPath, buttons } = props
+  const { nextPath, previousPath, buttons } = props
   const { next, previous, submit } = buttons
 
-  const nextPage = (e) => {
+  const nextPage = e => {
     e.preventDefault()
     if (nextPath) window.location.assign(nextPath)
   }
 
-  const prevPage = (e) => {
+  const prevPage = e => {
     e.preventDefault()
-    if (prevPath) window.location.assign(prevPath)
+    if (previousPath) window.location.assign(previousPath)
   }
 
   return (
@@ -37,8 +37,7 @@ const FormButtons = props => {
         </div>
       </div>
       <div className="w-100 d-flex justify-content-between">
-        {prevPath && previous &&
-        (
+        {previousPath && previous && (
           <Button
             onClick={prevPage}
             size="small"
@@ -49,7 +48,7 @@ const FormButtons = props => {
             <small className="fw-bold text-muted">{previous}</small>
           </Button>
         )}
-        {prevPath && nextPath && next && (
+        {previousPath && nextPath && next && (
           <Button
             onClick={nextPage}
             size="small"

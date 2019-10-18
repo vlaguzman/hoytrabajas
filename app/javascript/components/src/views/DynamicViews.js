@@ -12,7 +12,7 @@ export const DynamicHome = Loadable({
 /* OFFERS */
 
 export const DynamicOffers = Loadable({
-  loader: () => import("./offers"),
+  loader: () => import('./offers'),
   loading: Loading
 })
 
@@ -39,6 +39,14 @@ export const DynamicCompaniesStepZero = Loadable({
 })
 export const DynamicCompaniesStepOne = Loadable({
   loader: () => import('./companies/first_offer/step_one'),
+  loading: Loading
+})
+export const DynamicCompaniesStepFour = Loadable({
+  loader: () => import('./companies/first_offer/step_four'),
+  loading: Loading
+})
+export const DynamicCompaniesStepFive = Loadable({
+  loader: () => import('./companies/first_offer/step_five'),
   loading: Loading
 })
 
@@ -112,14 +120,14 @@ export const DynamicValidations = Loadable({
   loading: Loading
 })
 
-/*Edicion oferta */
+/* Edicion oferta */
 
 export const DynamicOfferEdit = Loadable({
   loader: () => import('./edicion_oferta'),
   loading: Loading
 })
 
-/*Busqueda oferta */
+/* Busqueda oferta */
 
 export const DynamicSearch = Loadable({
   loader: () => import('./search'),

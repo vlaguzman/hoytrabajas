@@ -11,7 +11,7 @@ const CompaniesStepOne = ({ formInfo, csrf_name, csrf_token }) => {
   const {
     title,
     subtitle,
-    form: { buttons, action, method, type, formFields }
+    form: { buttons, nextPath, previousPath, action, method, type, formFields }
   } = formInfo
 
   return (
@@ -22,17 +22,13 @@ const CompaniesStepOne = ({ formInfo, csrf_name, csrf_token }) => {
           <>
             <FormTitle title={title} subtitle={subtitle} />
             <div className="w-80">
-              <form
-                className="forms__candidate"
-                action={action}
-                method="post"
-              >
+              <form className="forms__candidate" action={action} method="post">
                 <FormFields type={type} formFields={formFields} />
                 <input type="hidden" name={csrf_name} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />
                 <FormButtons
-                  nextPath="/companies/first_offer/step_two"
-                  prevPath={null}
+                  nextPath={nextPath}
+                  previousPath={previousPath}
                   buttons={buttons}
                 />
               </form>
@@ -54,6 +50,8 @@ CompaniesStepOne.propTypes = {
       buttons: PropTypes.shape({
         submit: PropTypes.string.isRequired
       }),
+      nextPath: PropTypes.string.isRequired,
+      previousPath: PropTypes.string.isRequired,
       action: PropTypes.string.isRequired,
       method: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,

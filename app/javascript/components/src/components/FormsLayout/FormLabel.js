@@ -8,10 +8,11 @@ const StyledLabel = styled(Typography)`
   font-size: 16px;
 `
 
-const FormLabel = ({ children, ...props }) => {
+const FormLabel = ({ children, isRequired = false, ...props }) => {
   return (
     <StyledLabel className="MuiInputLabel-shrink" {...props}>
       {children}
+      {isRequired && ` *`}
     </StyledLabel>
   )
 }
@@ -19,5 +20,6 @@ const FormLabel = ({ children, ...props }) => {
 export default FormLabel
 
 FormLabel.propTypes = {
-  children: PropTypes.string.isRequired
+  children: PropTypes.string.isRequired,
+  isRequired: PropTypes.bool
 }

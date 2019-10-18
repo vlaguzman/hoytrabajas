@@ -7,7 +7,7 @@ class Companies::FirstOffer::StepOnePresenter < ApplicationPresenter
       form: {
         buttons: {
           submit: 'Siguiente',
-          prev: '',
+          previous: '',
           next: ''
         },
         action: Rails.application.routes.url_helpers.companies_first_offer_step_one_path,

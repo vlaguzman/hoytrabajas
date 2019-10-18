@@ -31,6 +31,8 @@ RSpec.describe "companies/first_offer/step_ones/show", :type => :feature do
     fill_in 'company[contact_work_position]', :with => data[:contact_work_position]
     fill_in 'company[contact_cellphone]', :with => data[:contact_cellphone]
 
+    execute_script "window.scrollTo(0, (window.innerHeight * 2) )"
+
     find(id: 'select-company[employees_range_id]', visible: false).click
     find('li', text: '1-10').click
   end

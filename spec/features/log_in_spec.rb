@@ -8,19 +8,17 @@ RSpec.describe "User can Log In", type: :feature do
   }
 
   context "a admin user must be able to login" do
-    scenario "redirect after login to the active admin views" do
+    scenario "redirect after login to the active admin views", js: true do
       
       visit new_admin_user_session_path
-
-      expect(page).to have_content("Log in")
+      expect(page).to have_content("Lorem ipsum")
 
       within "#new_admin_user" do
         fill_in "admin_user_email", with: 'admin@email.com'
         fill_in "admin_user_password", with: 'admin1234'
-        has_button?("Log in")
-        click_on("Log in")
+        has_button?("INICIAR SESIÓN")
+        find("span", text: "Iniciar sesión", visible: false).click
       end
-
       expect(page).to have_content("Active Admin")
     end 
   end 

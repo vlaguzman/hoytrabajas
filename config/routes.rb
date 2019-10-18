@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :admin_users, {:path=>:admin, :controllers=>{:sessions=>"admin_users/sessions"}, :path_names=>{:sign_in=>"sign_in", :sign_out=>"logout"}, :sign_out_via=>[:delete, :get]}
+  ActiveAdmin.routes(self)
   devise_for :users, controllers:  {registrations: 'users/registrations', :omniauth_callbacks => "users/omniauth_callbacks" , sessions: 'users/sessions' }
   devise_for :companies, controllers: { registrations: 'companies/registrations' }
 
@@ -39,10 +41,6 @@ Rails.application.routes.draw do
       resource :step_eleven,  only: [:show]
     end
   end
-
-
-  devise_for :admin_users, {:path=>:admin, :controllers=>{:sessions=>"admin_users/sessions"}, :path_names=>{:sign_in=>"login", :sign_out=>"logout"}, :sign_out_via=>[:delete, :get]}
-  ActiveAdmin.routes(self)
 
   resources :users, only: [:edit, :update, :show]
   resources :companies, only: [:edit, :update, :show]

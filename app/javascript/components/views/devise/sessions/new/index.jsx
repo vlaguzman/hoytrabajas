@@ -55,7 +55,7 @@ export default class Index extends React.Component {
               <form
                 id={`new_${resource_name}`}
                 className={`new_${resource_name}`}
-                action={this.props.registration_path}
+                action={this.props.sessions_path}
                 acceptCharset="UFT-8"
                 method="post"
               >
@@ -168,5 +168,9 @@ Index.propTypes = {
   csrf_token: PropTypes.string.isRequired,
   csrf_param: PropTypes.string.isRequired,
   source_name: PropTypes.string.isRequired,
-  registration_path: PropTypes.string.isRequired
+  sessions_path: PropTypes.string.isRequired,
+  user_signed_in: PropTypes.bool.isRequired,
+  company_signed_in: PropTypes.bool.isRequired,
+  log_out_companies: PropTypes.string.isRequired,
+  log_out_user: PropTypes.string.isRequired
 }

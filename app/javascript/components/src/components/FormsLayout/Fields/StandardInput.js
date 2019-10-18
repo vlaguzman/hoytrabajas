@@ -12,6 +12,7 @@ const StandardInput = props => {
     handleChange,
     extra,
     isTextArea = false,
+    maxLength = null,
     beforeLabel = null,
     placeholder = null
   } = props
@@ -20,13 +21,13 @@ const StandardInput = props => {
     const shouldDisplayError = inputValue && inputValue.length < 0
 
     return (
-      extra.maxLength &&
+      maxLength &&
       (inputValue || inputValue === '') && (
         <FormHelperText
           error={shouldDisplayError}
           className="standard_input__charCount"
         >
-          {extra.maxLength - inputValue.length}
+          {maxLength - inputValue.length}
         </FormHelperText>
       )
     )
@@ -64,6 +65,7 @@ const StandardInput = props => {
 
 StandardInput.propTypes = {
   isTextArea: PropTypes.bool,
+  maxLength: PropTypes.number,
   inputValue: PropTypes.string.isRequired,
   handleChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,

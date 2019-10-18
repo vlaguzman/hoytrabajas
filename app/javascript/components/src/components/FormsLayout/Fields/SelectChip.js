@@ -20,7 +20,8 @@ const SelectChip = props => {
     isRequired,
     selectOptions,
     sideText,
-    sideTextRight
+    sideTextRight,
+    formControlStyles = null
   } = props
 
   const defaultValue = isMultiple ? [] : ''
@@ -34,7 +35,7 @@ const SelectChip = props => {
           {sideText}
         </Typography>
       )}
-      <FormControl key={name} error={hasErrors}>
+      <FormControl key={name} error={hasErrors} style={formControlStyles}>
         {label && (
           <InputLabel required={isRequired} htmlFor="select-multiple-chip">
             {label}
@@ -113,7 +114,9 @@ SelectChip.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string,
   isMultiple: PropTypes.bool,
+  isRequired: PropTypes.bool,
   selectOptions: PropTypes.arrayOf(PropTypes.object),
   sideText: PropTypes.string,
-  sideTextRight: PropTypes.string
+  sideTextRight: PropTypes.string,
+  formControlStyles: PropTypes.object
 }

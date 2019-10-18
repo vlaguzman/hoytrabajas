@@ -99,4 +99,11 @@
       width: 100%;
     }
   }
+
+  .SimpleRowWrapper {
+    padding: 20px;
+    .MuiCheckbox-root {
+      padding: 0 10px;
+    }
+  }
 }

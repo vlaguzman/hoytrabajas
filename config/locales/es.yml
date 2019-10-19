@@ -4,11 +4,18 @@ es:
       messages:
         record_invalid: "Error al grabar el objeto"
       models:
+        offer:
+          attributes:
+            company:
+              required: "Por favor seleccione una compañía, este campo es requerido"
+            title:
+              blank: "Por favor ingrese un título a la oferta, este campo no puede estar en blanco"
+            job_category:
+              required: "Por favor seleccione una categoría, este campo es requerido"
         educational_level:
           attributes:
             degree:
               blank: "El Titulo Educativo no puede estar vacío"
-
         work_experience:
           attributes:
             work_position:

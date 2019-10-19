@@ -1,4 +1,23 @@
 es:
+  admin:
+    offers:
+      form:
+        title: "Título"
+        address: "Dirección"
+        company: "Compañía"
+        cellphone: "Celular de contacto"
+        offer_description: "Descripción de la oferta"
+        vacancies_quantity: "Vacantes disponibles"
+        work_mode: "Modo de trabajo"
+        city: "Ciudad"
+        job_category: "Categoría de trabajo"
+        contract_type: "Tipo de contrato"
+        required_experience: "¿Requiere experiencia?"
+        inmediate_start: "Inicio inmediato"
+        status: 
+          label: "Estado"
+          active: "active"
+          expire: "expire"
   activerecord:
     errors:
       messages:

@@ -23,19 +23,19 @@ ActiveAdmin.register Offer do
   form do |f|
     f.semantic_errors *f.object.errors.keys
     f.inputs do
-      f.input :title, label: 'Titulo'
-      f.input :address, label: 'Dirección'
-      f.input :company_id, label: 'Compañía', as: :select, collection: Company.all.map{|c| ["#{c.name}", c.id]}
-      f.input :cellphone, label: 'Celular de contacto'
-      f.input :description, label: 'Descripción de la oferta'
-      f.input :vacancies_quantity, label: 'Cantidad de vacantes'
-      f.input :work_mode_id, label: 'Modo de trabajo', as: :select, collection: WorkMode.all.map{|s| ["#{s.description}", s.id]}
-      f.input :city_id, label: 'Ciudad', as: :select, collection: City.all.map{|s| ["#{s.description}", s.id]}
-      f.input :job_category, label: 'Categoria', as: :select, collection: JobCategory.all.map{|s| ["#{s.description}", s.id]}
-      f.input :contract_type, label: 'Tipo de contrato', as: :select, collection: ContractType.all.map{|s| ["#{s.description}", s.id]}
-      f.input :required_experience, label: 'Experiencia requerida'
-      f.input :immediate_start, label: 'Inicio Inmediato'
-      f.input :status, label: 'Estado', collection: ['active', 'expire']
+      f.input :title, label: t('admin.offers.form.title')
+      f.input :address, label: t('admin.offers.form.address')
+      f.input :company_id, label: t('admin.offers.form.company'), as: :select, collection: Company.all.map{|c| ["#{c.name}", c.id]}
+      f.input :cellphone, label: t('admin.offers.form.cellphone')
+      f.input :description, label: t('admin.offers.form.offer_description')
+      f.input :vacancies_quantity, label: t('admin.offers.form.vacancies_quantity')
+      f.input :work_mode_id, label: t('admin.offers.form.work_mode'), as: :select, collection: WorkMode.all.map{|s| ["#{s.description}", s.id]}
+      f.input :city_id, label: t('admin.offers.form.city'), as: :select, collection: City.all.map{|s| ["#{s.description}", s.id]}
+      f.input :job_category, label: t('admin.offers.form.job_category'), as: :select, collection: JobCategory.all.map{|s| ["#{s.description}", s.id]}
+      f.input :contract_type, label: t('admin.offers.form.contract_type'), as: :select, collection: ContractType.all.map{|s| ["#{s.description}", s.id]}
+      f.input :required_experience, label: t('admin.offers.form.required_experience')
+      f.input :immediate_start, label: t('admin.offers.form.inmediate_start')
+      f.input :status, label: t('admin.offers.form.status.label'), collection: ['active', 'expire']
       unless f.object.new_record?
       end
     end

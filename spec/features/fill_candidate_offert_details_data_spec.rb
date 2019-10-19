@@ -53,13 +53,16 @@ RSpec.describe "fill the canditate user data", :type => :feature do
     end
 
     let!(:contract_type) { create(:contract_type, description: "Indiferente") }
-    let!(:work_mode) { create(:work_mode, description: "Indiferente") }
+    let!(:work_mode) do
+      create(:work_mode, description: "Indiferente")
+      create(:work_mode, description: "Remoto")
+    end
     let!(:labor_disponibility) { create(:labor_disponibility, description: "Inmediato") }
     let!(:state) { create(:state, description: 'Bogota') }
     let!(:city) { create(:city, description: 'Bogota') }
     let!(:currency) { create(:currency) }
 
-    it "should see the offert info to fill and the next buttons" do
+    it "should see the offert info to fill and the next buttons", js: true do
       #Create a user with the principal information - Use a factory
       user = create(:user,:first_time_candidate,
         name: "ELcan",
@@ -76,23 +79,33 @@ RSpec.describe "fill the canditate user data", :type => :feature do
       #Visit the rute of the profile user creation - step 3
       visit users_wizards_step_three_path
 
-      expect(page).to have_text(/Busquemos las mejores ofertas/)
+      expect(page).to have_text(/¡Búsquemos las mejores ofertas!/)
 
-      within '#step_three' do
-        select('seguridad', from: "user[curriculum_vitae][job_category_ids][]") #it can be more than one option
-        select('logistica y transporte', from: "user[curriculum_vitae][job_category_ids][]")
+      find("div[id='select-user[curriculum_vitae][job_category_ids][]", visible: false).click
+      find("li", text: "logistica y transporte").click
 
-        select('Tiempo completo', from: 'user[curriculum_vitae][offer_type_ids][]') #it can be more than one option
-        select('Medio tiempo', from: 'user[curriculum_vitae][offer_type_ids][]')
+      find("div[id='select-user[curriculum_vitae][job_category_ids][]", visible: false).click
+      find("li", text: "seguridad").click
 
-        select('Indiferente', from: 'user[curriculum_vitae][contract_type_id]')
+      find("div[id='select-user[curriculum_vitae][offer_type_ids][]", visible: false).click
+      find("li", text: "Tiempo completo").click
 
-        select('Indiferente', from:'user[curriculum_vitae][work_mode_ids][]') #it can be more than one option
+      find("div[id='select-user[curriculum_vitae][offer_type_ids][]", visible: false).click
+      find("li", text: "Medio tiempo").click
 
-        select('Inmediato', from: 'user[curriculum_vitae][labor_disponibility_id]')
+      find("div[id='select-user[curriculum_vitae][contract_type_id]", visible: false).click
+      find("li", text: "Indiferente").click
 
-        click_button 'siguiente'
-      end
+      find("div[id='select-user[curriculum_vitae][work_mode_ids][]", visible: false).click
+      find("li", text: "Indiferente").click
+
+      find("div[id='select-user[curriculum_vitae][work_mode_ids][]", visible: false).click
+      find("li", text: "Remoto").click
+
+      find("div[id='select-user[curriculum_vitae][labor_disponibility_id]", visible: false).click
+      find("li", text: "Inmediato").click
+
+      find( "span", text: /SIGUIENTE/).click
 
       updated_cv = user.curriculum_vitaes.first
       expect(updated_cv.labor_disponibility.description).to eq('Inmediato')

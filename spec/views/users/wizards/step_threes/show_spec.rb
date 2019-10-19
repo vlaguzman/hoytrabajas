@@ -20,11 +20,6 @@ RSpec.describe "users/wizards/step_threes/show" do
 
     render
 
-    #title
-    expect(rendered).to match(/Busquemos las mejores oferta/)
-    expect(rendered).to match(/Brinda a las empresas información valiosa sobre ti./)
-
-    #form
     expect(rendered).to have_tag("div", with: { "data-react-class": "views/users/wizards/step_threes/show"})
   end
 end

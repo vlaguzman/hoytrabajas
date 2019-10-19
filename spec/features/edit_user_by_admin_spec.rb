@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Admin can create an User", type: :feature do
+RSpec.describe "Admin can edit an User", type: :feature do
   include Devise::Test::IntegrationHelpers
 
   context "a admin user must be able to edit a created user" do

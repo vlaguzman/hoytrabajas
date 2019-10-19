@@ -1,14 +1,40 @@
 es:
+  admin:
+    offers:
+      form:
+        title: "Título"
+        address: "Dirección"
+        company: "Compañía"
+        cellphone: "Celular de contacto"
+        offer_description: "Descripción de la oferta"
+        vacancies_quantity: "Vacantes disponibles"
+        work_mode: "Modo de trabajo"
+        city: "Ciudad"
+        job_category: "Categoría de trabajo"
+        contract_type: "Tipo de contrato"
+        required_experience: "¿Requiere experiencia?"
+        inmediate_start: "Inicio inmediato"
+        status: 
+          label: "Estado"
+          active: "active"
+          expire: "expire"
   activerecord:
     errors:
       messages:
         record_invalid: "Error al grabar el objeto"
       models:
+        offer:
+          attributes:
+            company:
+              required: "Por favor seleccione una compañía, este campo es requerido"
+            title:
+              blank: "Por favor ingrese un título a la oferta, este campo no puede estar en blanco"
+            job_category:
+              required: "Por favor seleccione una categoría, este campo es requerido"
         educational_level:
           attributes:
             degree:
               blank: "El Titulo Educativo no puede estar vacío"
-
         work_experience:
           attributes:
             work_position:

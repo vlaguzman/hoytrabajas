@@ -23,7 +23,13 @@ export default class Index extends React.Component {
     const resource_name = this.props.source_name
     return (
       <div className="main-wrapper">
-        <AppLayout>
+        <AppLayout
+          user_signed_in={this.props.user_signed_in}
+          company_signed_in={this.props.company_signed_in}
+          log_out_user={this.props.log_out_user}
+          log_out_companies={this.props.log_out_companies}
+          t={this.props.t}
+        >
           <Dialog
             fullWidth
             maxWidth="xs"
@@ -43,7 +49,7 @@ export default class Index extends React.Component {
             <DialogContent className="px-40">
               <DialogContentText>
                 <Typography variant="body2" component="span">
-                  Regístrate ahora
+                  {this.props.t.sign_up.title}
                 </Typography>
               </DialogContentText>
               <form
@@ -64,7 +70,7 @@ export default class Index extends React.Component {
                     id={`${resource_name}_email`}
                     className="pl-40 py-10 form-control"
                     autoComplete="email"
-                    placeholder="Correo electronico"
+                    placeholder={this.props.t.sign_up.email_label}
                     type="email"
                   />
                   <MailOutline
@@ -82,7 +88,7 @@ export default class Index extends React.Component {
                     id={`${resource_name}_password`}
                     className="pl-40 py-10 form-control"
                     autoComplete="new-password"
-                    placeholder="Contraseña"
+                    placeholder={this.props.t.sign_up.password_label}
                     type="password"
                   />
                   <Lock
@@ -99,7 +105,7 @@ export default class Index extends React.Component {
                     name={`${resource_name}[password_confirmation]`}
                     id={`${resource_name}_password_confirmation`}
                     className="pl-40 py-10 form-control"
-                    placeholder="Confirma tu contraseña"
+                    placeholder={this.props.t.sign_up.pass_confirm_label}
                     type="password"
                   />
                   <Lock
@@ -119,7 +125,7 @@ export default class Index extends React.Component {
                       color="primary"
                       variant="contained"
                     >
-                      Regístrarme
+                      {this.props.t.sign_up.button_action.sign_up_label}
                     </MatButton>
                   </Col>
                 </Row>
@@ -132,13 +138,13 @@ export default class Index extends React.Component {
               <Row className="my-30">
                 <Col xs={12}>
                   <MatButton variant="outlined">
-                    Continuar con Facebook
+                    {this.props.t.sign_up.button_action.sign_up_facebook}
                   </MatButton>
                 </Col>
               </Row>
               <Row className="my-30">
                 <Col xs={12}>
-                  <MatButton variant="outlined">Continuar con Google</MatButton>
+                  <MatButton variant="outlined">{this.props.t.sign_up.button_action.sign_up_google}</MatButton>
                 </Col>
               </Row>
             </DialogContent>
@@ -153,5 +159,6 @@ Index.propTypes = {
   csrf_token: PropTypes.string.isRequired,
   csrf_param: PropTypes.string.isRequired,
   source_name: PropTypes.string.isRequired,
-  registration_path: PropTypes.string.isRequired
+  registration_path: PropTypes.string.isRequired,
+  t: PropTypes.object.isRequired
 }

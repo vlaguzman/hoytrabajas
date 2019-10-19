@@ -29,6 +29,7 @@ export default class Index extends React.Component {
           company_signed_in={this.props.company_signed_in}
           log_out_user={this.props.log_out_user}
           log_out_companies={this.props.log_out_companies}
+          t={this.props.t}
         >
           <Dialog
             fullWidth
@@ -49,7 +50,7 @@ export default class Index extends React.Component {
             <DialogContent className="px-40">
               <DialogContentText>
                 <Typography variant="body2" component="span">
-                  Lorem ipsum dolor sit amet, consectetur adipi.
+                  {this.props.t.sign_in.title}
                 </Typography>
               </DialogContentText>
               <form
@@ -70,7 +71,7 @@ export default class Index extends React.Component {
                     id={`${resource_name}_email`}
                     className="pl-40 py-10 form-control"
                     autoComplete="email"
-                    placeholder="Correo electronico"
+                    placeholder={this.props.t.sign_in.email_label}
                     type="email"
                   />
                   <MailOutline
@@ -88,7 +89,7 @@ export default class Index extends React.Component {
                     id={`${resource_name}_password`}
                     className="pl-40 py-10 form-control"
                     autoComplete="new-password"
-                    placeholder="Contraseña"
+                    placeholder={this.props.t.sign_in.password_label}
                     type="password"
                   />
                   <Lock
@@ -106,7 +107,7 @@ export default class Index extends React.Component {
                   style={{ color: '#00CED5' }}
                   href="companies/password/new"
                 >
-                  ¿Olvidó su contraseña?
+                  {this.props.t.sign_in.forget_password}
                 </Typography>
                 <Row noGutters className="justify-content-center my-25">
                   <Col xs={12}>
@@ -116,7 +117,7 @@ export default class Index extends React.Component {
                       color="primary"
                       variant="contained"
                     >
-                      Iniciar sesión
+                      {this.props.t.sign_in.button_action.sign_in_label}
                     </MatButton>
                   </Col>
                 </Row>
@@ -129,14 +130,14 @@ export default class Index extends React.Component {
               <Row className="my-30">
                 <Col xs={12}>
                   <MatButton variant="outlined">
-                    Conectarse con Facebook
+                    {this.props.t.sign_in.button_action.sign_in_facebook}
                   </MatButton>
                 </Col>
               </Row>
               <Row className="my-30">
                 <Col xs={12}>
                   <MatButton variant="outlined">
-                    Conectarse con Google
+                    {this.props.t.sign_in.button_action.sign_in_google}
                   </MatButton>
                 </Col>
               </Row>
@@ -144,7 +145,7 @@ export default class Index extends React.Component {
             <DialogActions className="">
               <div className="w-100 text-center">
                 <Typography variant="caption" component="span">
-                  No tienes una cuenta
+                  {this.props.t.sign_in.no_account.title}
                 </Typography>
                 <Typography
                   variant="caption"
@@ -153,7 +154,7 @@ export default class Index extends React.Component {
                   style={{ color: '#00CED5', cursor: 'pointer' }}
                   href="companies/sign_up"
                 >
-                  Registrate
+                  {this.props.t.sign_in.no_account.sign_up}
                 </Typography>
               </div>
             </DialogActions>
@@ -172,5 +173,6 @@ Index.propTypes = {
   user_signed_in: PropTypes.bool.isRequired,
   company_signed_in: PropTypes.bool.isRequired,
   log_out_companies: PropTypes.string.isRequired,
-  log_out_user: PropTypes.string.isRequired
+  log_out_user: PropTypes.string.isRequired,
+  t: PropTypes.object.isRequired
 }

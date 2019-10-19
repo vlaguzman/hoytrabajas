@@ -30,9 +30,9 @@ RSpec.describe "fill the principal candidate user data", :type => :feature do
 
       visit root_path
 
-      expect(page).to have_text("SIGN IN CANDIDATO") 
+      expect(page).to have_text("SIGN UP CANDIDATO") 
 
-      click_on("SIGN IN CANDIDATO")
+      click_on("SIGN UP CANDIDATO")
 
       within '#new_user' do
         fill_in 'user_email', with: 'nuevousuario@gmail.com'

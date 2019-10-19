@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import PropTypes from 'prop-types'
 import { Scrollbars } from 'react-custom-scrollbars'
 import { MuiPickersUtilsProvider } from '@material-ui/pickers'
 import {
@@ -22,7 +23,16 @@ library.add(fab, fas, faSearch)
 const localeMap = { en, es }
 const locale = 'es'
 
-const AppLayout = ({ children, csrf_param, csrf_token, user_signed_in, company_signed_in, log_out_user, log_out_companies }) => {
+const AppLayout = ({
+  children,
+  csrf_param,
+  csrf_token,
+  user_signed_in,
+  company_signed_in,
+  log_out_user,
+  log_out_companies,
+  t
+}) => {
   const [isTop, setIsTop] = useState(false)
   const myRef = useRef(null)
   const onScrollFrame = e => {
@@ -61,6 +71,7 @@ const AppLayout = ({ children, csrf_param, csrf_token, user_signed_in, company_s
                               company_signed_in={company_signed_in}
                               log_out_user={log_out_user}
                               log_out_companies={log_out_companies}
+                              t={t}
                             />
                           </div>
                           <div className="rct-page-content">
@@ -83,3 +94,14 @@ const AppLayout = ({ children, csrf_param, csrf_token, user_signed_in, company_s
 }
 
 export default AppLayout
+
+AppLayout.propTypes = {
+  children: PropTypes.object.isRequired,
+  log_out_companies: PropTypes.string.isRequired,
+  company_signed_in: PropTypes.bool.isRequired,
+  user_signed_in: PropTypes.bool.isRequired,
+  log_out_user: PropTypes.string.isRequired,
+  csrf_param: PropTypes.string.isRequired,
+  csrf_token: PropTypes.string.isRequired,
+  t: PropTypes.object.isRequired
+}

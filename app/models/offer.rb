@@ -1,4 +1,7 @@
 class Offer < ApplicationRecord
+
+  before_save -> { self.slug = self.title.parameterize }
+
   validates_presence_of :title
 
   scope :active, -> { where(status: 'active') }

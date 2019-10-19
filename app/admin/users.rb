@@ -9,7 +9,7 @@ ActiveAdmin.register User do
         end
       end
 
-      object.send :update_attributes, *attributes
+      object.send :update, *attributes
     end
   end
 

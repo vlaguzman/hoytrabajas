@@ -106,4 +106,12 @@ RSpec.describe Offer, type: :model do
     end
 
   end
+
+  describe "#before_save" do
+    it "assign the parametrized name to the slug field" do
+      offer = build(:offer, title: 'Pañalera de pingüinos de compañía', slug: nil)
+      offer.save
+      expect(offer.slug).to eq('panalera-de-pinguinos-de-compania')
+    end
+  end
 end

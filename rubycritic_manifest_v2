@@ -66,7 +66,7 @@ A         * Level                                             4       0.0       
 A         * Limitation                                        4       0.0        0           1
 A         * ListConverter                                     1       6.18       0           1
 A         * Nationality                                       4       0.0        0           1
-A         * Offer                                             23      2.2        0           1
+A         * Offer                                             24      2.2        0           1
 A         * OfferSalary                                       5       0.0        0           1
 A         * OfferType                                         5       0.0        0           1
 A         * Offers::IndexService                              3       15.4       0           1
@@ -152,4 +152,4 @@ B         * Companies::FirstOffer::StepTwoService             5       2.45      
 B         * Companies::FirstOffer::StepTwosController         7       20.32      27          2
 B         * Offers::ShowService                               9       62.6       0           0
 B         * Users                                             3       15.36      62          3
-C         * Offers                                            1       0.0        150         2
+C         * Offers                                            2       0.0        150         2

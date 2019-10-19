@@ -1,63 +1,57 @@
 require 'rails_helper'
 
-RSpec.describe Users::Wizards::StepThree::FormParamsService do
+RSpec.describe Users::Wizards::StepTwo::FormParamsService do
 
   describe "#form_params" do
-    let!(:job_categories) { create_list(:job_category, 5) }
-    let!(:offer_types) { create_list(:offer_type, 5) }
-    let!(:contract_types) { create_list(:contract_type, 5) }
-    let!(:work_modes) { create_list(:work_mode, 5) }
-    let!(:labor_disponibilities) { create_list(:labor_disponibility, 5) }
+    let!(:sexes) { create_list(:sex, 5) }
+    let!(:limitations) { create_list(:limitation, 5) }
+    let!(:educational_degrees) { create_list(:educational_degree, 5) }
 
-    let(:create_job_categories_list) { ListConverter.model_list(JobCategory) }
-    let(:create_offer_types_list) { ListConverter.model_list(OfferType) }
-    let(:create_contract_type_list) { ListConverter.model_list(ContractType) }
-    let(:create_work_mode_list) { ListConverter.model_list(WorkMode) }
-    let(:create_labor_disponibilities_list) { ListConverter.model_list(WorkMode) }
+    let(:create_sex_list) { ListConverter.model_list(Sex) }
+    let(:create_limitations_list) { ListConverter.model_list(Limitation) }
+    let(:create_educational_degree_list) { ListConverter.model_list(EducationalDegree) }
 
     let(:subject) { described_class }
 
     it "should return the expected object" do
 
       expected_object = {
-        title: '¡Búsquemos las mejores ofertas!',
-        subtitle: 'Brinda a las empresas información valiosa sobre ti.',
+        title: 'Empecemos por conocernos',
+        subtitle: "Brinda a las empresas información valiosa sobre ti.",
         form: {
           buttons: {
             submit: 'Siguiente',
-            next: 'Saltar',
-            previous: 'Regresar',
-            nextPath: '/users/wizards/step_four',
-            previousPath: '/users/wizards/step_two'
+            next: "Saltar",
+            previous: "Regresar",
+            nextPath: '/users/wizards/step_three',
+            previousPath: '/users/wizards/step_one'
           },
-          action: '/users/wizards/step_three',
+          action: '/users/wizards/step_two',
           method: :put,
           type: :user,
           formFields: {
-            job_category_ids: {
-              name: 'user[curriculum_vitae][job_category_ids][]',
-              label: 'Elje las categorías en las que deseas buscar trabajo',
-              values: create_job_categories_list
+            about_me:{
+              name: "user[about_me]",
+              label: "Cuentanos un poco de ti*"
             },
-            offer_type_ids: {
-              name: 'user[curriculum_vitae][offer_type_ids][]',
-              label: 'Tipo de oferta',
-              values: create_offer_types_list
+            sex_id:{
+              name: "user[sex_id]",
+              label: "Genero",
+              values: create_sex_list
             },
-            contract_type_id: {
-              name: 'user[curriculum_vitae][contract_type_id]',
-              label: 'Acuerdo legal',
-              values: create_contract_type_list
+            birthday:{
+              name: "user[birthday]",
+              label: "Fecha de nacimiento"
             },
-            work_mode_ids: {
-              name: 'user[curriculum_vitae][work_mode_ids][]',
-              label: 'Modalidad de trabajo',
-              values: create_work_mode_list
+            limitation_ids:{
+              name: "user[limitation_ids][]",
+              label: "Tienes alguna condición especial",
+              values: create_limitations_list
             },
-            labor_disponibility_id: {
-              name: 'user[curriculum_vitae][labor_disponibility_id]',
-              label: 'Disponibilidad para trabajar',
-              values: create_labor_disponibilities_list
+            educational_degree_id:{
+              name: "user[educational_degree_id]",
+              label: "Nivel de educación*",
+              values: create_educational_degree_list
             }
           }
         }

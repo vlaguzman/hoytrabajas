@@ -1,27 +1,28 @@
 class Users::Wizards::StepThreePresenter < ApplicationPresenter
 
   def form_information
-    {}
+    Users::Wizards::StepThree::FormParamsService .new(
+      form_type: :user,
+      template_translation_path: "users.wizards.step_three.show",
+      action_path: users_wizards_step_three_path,
+      previous_path: users_wizards_step_two_path,
+      next_path: users_wizards_step_four_path,
+      form_method: :put
+    ).form_params
   end
 
-  def job_categories_list
-    JobCategory.all.map { |object| [object.description, object.id] }
+  private
+
+  def users_wizards_step_two_path
+    rails_routes.users_wizards_step_two_path
   end
 
-  def offer_types_list
-    OfferType.all.map { |object| [object.description, object.id] }
+  def users_wizards_step_three_path
+    rails_routes.users_wizards_step_three_path
   end
 
-  def contract_types_list
-    ContractType.all.map { |object| [object.description, object.id] }
-  end
-
-  def work_modes_list
-    WorkMode.all.map { |object| [object.description, object.id] }
-  end
-
-  def labor_disponibilities_list
-    LaborDisponibility.all.map { |object| [object.description, object.id] }
+  def users_wizards_step_four_path
+    rails_routes.users_wizards_step_four_path
   end
 
 end

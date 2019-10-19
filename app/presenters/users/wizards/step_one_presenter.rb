@@ -11,14 +11,6 @@ class Users::Wizards::StepOnePresenter < ApplicationPresenter
     ).form_params
   end
 
-  def nationalities_list
-    Nationality.all.map { |object| [object.description, object.id] }
-  end
-
-  def document_types_list
-    DocumentType.all.map { |object| [object.description, object.id] }
-  end
-
   private
 
   def users_wizards_step_one_path

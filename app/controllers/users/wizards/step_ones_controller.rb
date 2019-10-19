@@ -5,7 +5,6 @@ class Users::Wizards::StepOnesController < ApplicationController
   end
 
   def update
-    puts params
     @user = Users::Wizards::StepOneService.(candidate: current_user, update_params: strong_params)
 
     @user = Users::Wizards::StepOnePresenter.new(current_user)

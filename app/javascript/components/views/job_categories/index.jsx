@@ -1,10 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { DynamicHome } from '../src/views/DynamicViews'
-import AppLayout from '../src/components/Layout/AppLayout'
+import AppLayout from '../../src/components/Layout/AppLayout'
 
-const HomePage = ({
-  offers,
+const JobCategory = ({
   csrf_param,
   csrf_token,
   user_signed_in,
@@ -24,20 +22,19 @@ const HomePage = ({
         log_out_companies={log_out_companies}
         session_translation={session_translation}
       >
-        <DynamicHome offers={offers} />
+        <h1>Categorias de empleo</h1>
       </AppLayout>
     </div>
   )
 }
-export default HomePage
+export default JobCategory 
 
-HomePage.propTypes = {
+JobCategory.propTypes = {
   csrf_param: PropTypes.string.isRequired,
   csrf_token: PropTypes.string.isRequired,
   user_signed_in: PropTypes.bool.isRequired,
   company_signed_in: PropTypes.bool.isRequired,
   log_out_user: PropTypes.string.isRequired,
   log_out_companies: PropTypes.string.isRequired,
-  session_translation: PropTypes.object.isRequired,
-  offers: PropTypes.object.isRequired
+  session_translation: PropTypes.object.isRequired
 }

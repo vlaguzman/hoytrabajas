@@ -4,6 +4,7 @@ import MatButton from '@material-ui/core/Button'
 import { Row, Col } from 'reactstrap'
 import Typography from '@material-ui/core/Typography'
 import Dialog from '@material-ui/core/Dialog'
+import DialogActions from '@material-ui/core/DialogActions'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
@@ -49,13 +50,13 @@ export default class Index extends React.Component {
             <DialogContent className="px-40">
               <DialogContentText>
                 <Typography variant="body2" component="span">
-                  {this.props.session_translation.sign_up.title}
+                  {this.props.session_translation.sign_in.title}
                 </Typography>
               </DialogContentText>
               <form
                 id={`new_${resource_name}`}
                 className={`new_${resource_name}`}
-                action={this.props.registration_path}
+                action={this.props.sessions_path}
                 acceptCharset="UFT-8"
                 method="post"
               >
@@ -71,7 +72,7 @@ export default class Index extends React.Component {
                     className="pl-40 py-10 form-control"
                     autoComplete="email"
                     placeholder={
-                      this.props.session_translation.sign_up.email_label
+                      this.props.session_translation.sign_in.email_label
                     }
                     type="email"
                   />
@@ -91,7 +92,7 @@ export default class Index extends React.Component {
                     className="pl-40 py-10 form-control"
                     autoComplete="new-password"
                     placeholder={
-                      this.props.session_translation.sign_up.password_label
+                      this.props.session_translation.sign_in.password_label
                     }
                     type="password"
                   />
@@ -104,25 +105,14 @@ export default class Index extends React.Component {
                     }}
                   />
                 </div>
-                <div className="mb-2 mr-sm-2 mb-sm-0 position-relative">
-                  <input
-                    name={`${resource_name}[password_confirmation]`}
-                    id={`${resource_name}_password_confirmation`}
-                    className="pl-40 py-10 form-control"
-                    placeholder={
-                      this.props.session_translation.sign_up.pass_confirm_label
-                    }
-                    type="password"
-                  />
-                  <Lock
-                    className="position-absolute"
-                    style={{
-                      color: 'lightgrey',
-                      top: '0.75rem',
-                      left: '.5rem'
-                    }}
-                  />
-                </div>
+                <Typography
+                  component="a"
+                  variant="caption"
+                  style={{ color: '#00CED5' }}
+                  href="companies/password/new"
+                >
+                  {this.props.session_translation.sign_in.forget_password}
+                </Typography>
                 <Row noGutters className="justify-content-center my-25">
                   <Col xs={12}>
                     <MatButton
@@ -132,8 +122,8 @@ export default class Index extends React.Component {
                       variant="contained"
                     >
                       {
-                        this.props.session_translation.sign_up.button_action
-                          .sign_up_label
+                        this.props.session_translation.sign_in.button_action
+                          .sign_in_label
                       }
                     </MatButton>
                   </Col>
@@ -148,8 +138,8 @@ export default class Index extends React.Component {
                 <Col xs={12}>
                   <MatButton variant="outlined">
                     {
-                      this.props.session_translation.sign_up.button_action
-                        .sign_up_facebook
+                      this.props.session_translation.sign_in.button_action
+                        .sign_in_facebook
                     }
                   </MatButton>
                 </Col>
@@ -158,13 +148,29 @@ export default class Index extends React.Component {
                 <Col xs={12}>
                   <MatButton variant="outlined">
                     {
-                      this.props.session_translation.sign_up.button_action
-                        .sign_up_google
+                      this.props.session_translation.sign_in.button_action
+                        .sign_in_google
                     }
                   </MatButton>
                 </Col>
               </Row>
             </DialogContent>
+            <DialogActions className="">
+              <div className="w-100 text-center">
+                <Typography variant="caption" component="span">
+                  {this.props.session_translation.sign_in.no_account.title}
+                </Typography>
+                <Typography
+                  variant="caption"
+                  className="ml-5"
+                  component="a"
+                  style={{ color: '#00CED5', cursor: 'pointer' }}
+                  href="companies/sign_up"
+                >
+                  {this.props.session_translation.sign_in.no_account.sign_up}
+                </Typography>
+              </div>
+            </DialogActions>
           </Dialog>
         </AppLayout>
       </div>
@@ -175,11 +181,11 @@ export default class Index extends React.Component {
 Index.propTypes = {
   csrf_token: PropTypes.string.isRequired,
   csrf_param: PropTypes.string.isRequired,
+  source_name: PropTypes.string.isRequired,
+  sessions_path: PropTypes.string.isRequired,
   user_signed_in: PropTypes.bool.isRequired,
   company_signed_in: PropTypes.bool.isRequired,
-  log_out_user: PropTypes.string.isRequired,
   log_out_companies: PropTypes.string.isRequired,
-  source_name: PropTypes.string.isRequired,
-  registration_path: PropTypes.string.isRequired,
+  log_out_user: PropTypes.string.isRequired,
   session_translation: PropTypes.object.isRequired
 }

@@ -2,6 +2,7 @@
  * App Header
  */
 import React from 'react'
+import PropTypes from 'prop-types'
 import MatButton from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import Typography from '@material-ui/core/Typography'
@@ -24,7 +25,16 @@ import dialogState from '../../hooks/dialogState'
 import { fields1 } from './data'
 import FormGen from '../inlineFormgenerartor'
 
-const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in, company_signed_in, log_out_user, log_out_companies }) => {
+const Header = ({
+  scrollState,
+  csrf_param,
+  csrf_token,
+  user_signed_in,
+  company_signed_in,
+  log_out_user,
+  log_out_companies,
+  session_translation
+}) => {
   const [open, setOpen] = React.useState(false)
   const [loginState, setloginState] = React.useState(true)
   const [fullWidth, setFullWidth] = React.useState(true)
@@ -115,33 +125,63 @@ const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in, company_s
             {/* TODO: With "Candidato" and "Empleador", to press button redirect me a static landing page.
           We must take into account to make the change in redirection */}
             <li className="list-inline-item no-responsive">
-              { (user_signed_in &&       // if user is signed in
-                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }}>BUSCAR OFERTAS</MatButton>))
-                || (company_signed_in && // else if company is signed in
-                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }}>PUBLICAR OFERTAS</MatButton>))
-                ||                       // else
-                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }} href="/users/sign_up">SIGN UP CANDIDATO</MatButton>)
-              }
+              {(user_signed_in && ( // if user is signed in
+                <MatButton style={{ color: !scrollState ? 'white' : 'black' }}>
+                  BUSCAR OFERTAS
+                </MatButton>
+              )) ||
+              (company_signed_in && ( // else if company is signed in
+                <MatButton style={{ color: !scrollState ? 'white' : 'black' }}>
+                  PUBLICAR OFERTAS
+                </MatButton>
+              )) || ( // else
+                  <MatButton
+                    style={{ color: !scrollState ? 'white' : 'black' }}
+                    href="/users/sign_up"
+                  >
+                    SIGN UP CANDIDATO
+                  </MatButton>
+                )}
             </li>
             <li className="list-inline-item no-responsive">
-              { (user_signed_in &&       // if user is signed in 
-                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }}>VER MI TABLERO</MatButton>))
-                || (company_signed_in && // else if company is signed in 
-                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }}>VER MI TABLERO</MatButton>))
-                ||                       // else
-                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }} href="/companies/sign_up">SIGN UP EMPRESA</MatButton>)
-              }
+              {(user_signed_in && ( // if user is signed in
+                <MatButton style={{ color: !scrollState ? 'white' : 'black' }}>
+                  VER MI TABLERO
+                </MatButton>
+              )) ||
+              (company_signed_in && ( // else if company is signed in
+                <MatButton style={{ color: !scrollState ? 'white' : 'black' }}>
+                  VER MI TABLERO
+                </MatButton>
+              )) || ( // else
+                  <MatButton
+                    style={{ color: !scrollState ? 'white' : 'black' }}
+                    href="/companies/sign_up"
+                  >
+                    SIGN UP EMPRESA
+                  </MatButton>
+                )}
             </li>
             <li className="list-inline-item no-responsive">
               {/* {!isAuthenticated ? ( */}
               {/* TODO:only login with the user_path */}
-              { (user_signed_in &&       // if user is signed in 
-                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }}>MI PERFIL</MatButton>))
-                || (company_signed_in && // else if company is signed in 
-                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }}>MI PERFIL</MatButton>))
-                ||                       // else
-                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }} onClick={handleClickOpen}>SIGN IN CANDIDATO</MatButton>)
-              }
+              {(user_signed_in && ( // if user is signed in
+                <MatButton style={{ color: !scrollState ? 'white' : 'black' }}>
+                  MI PERFIL
+                </MatButton>
+              )) ||
+              (company_signed_in && ( // else if company is signed in
+                <MatButton style={{ color: !scrollState ? 'white' : 'black' }}>
+                  MI PERFIL
+                </MatButton>
+              )) || ( // else
+                  <MatButton
+                    style={{ color: !scrollState ? 'white' : 'black' }}
+                    onClick={handleClickOpen}
+                  >
+                    SIGN IN CANDIDATO
+                  </MatButton>
+                )}
               {/* ) : (
               <MatButton style={{color: !scrollState ? 'white': 'black'}} onClick={() => logout()}>Logout</MatButton>
             )} */}
@@ -172,7 +212,7 @@ const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in, company_s
               <DialogContent className="px-40">
                 <DialogContentText>
                   <Typography variant="body2" component="span">
-                    Lorem ipsum dolor sit amet, consectetur adipi.
+                    {session_translation.sign_in.title}
                   </Typography>
                 </DialogContentText>
                 <Form
@@ -191,7 +231,7 @@ const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in, company_s
                       className="pl-40 py-10"
                       type="email"
                       name="user[email]"
-                      placeholder="Correo Electronico"
+                      placeholder={session_translation.sign_in.email_label}
                     />
                     <MailOutline
                       className="position-absolute"
@@ -209,7 +249,7 @@ const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in, company_s
                       className="pl-40 py-10"
                       type="password"
                       name="user[password]"
-                      placeholder="Contraseña"
+                      placeholder={session_translation.sign_in.password_label}
                     />
                     <Visibility
                       className="position-absolute"
@@ -228,15 +268,14 @@ const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in, company_s
                       }}
                     />
                   </FormGroup>
-                  {loginState && (
-                    <Typography
-                      variant="caption"
-                      style={{ color: '#00CED5' }}
-                      href="users/password/new"
-                    >
-                      ¿Olvidó su contraseña?
-                    </Typography>
-                  )}
+                  <Typography
+                    component="a"
+                    variant="caption"
+                    style={{ color: '#00CED5' }}
+                    href="users/password/new"
+                  >
+                    {session_translation.forget_password}
+                  </Typography>
                   <Row noGutters className="justify-content-center my-25">
                     <Col xs={12}>
                       <MatButton
@@ -245,7 +284,10 @@ const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in, company_s
                         color="primary"
                         variant="contained"
                       >
-                        {loginState ? 'Iniciar Sesión' : 'Registrarse'}
+                        {
+                          session_translation.sign_in.button_action
+                            .sign_in_label
+                        }
                       </MatButton>
                     </Col>
                   </Row>
@@ -258,12 +300,15 @@ const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in, company_s
                 <Row className="my-30">
                   <Col xs={12} className="mb-10">
                     <MatButton variant="outlined">
-                      conectarse con Google
+                      {
+                        session_translation.sign_in.button_action
+                          .sign_in_facebook
+                      }
                     </MatButton>
                   </Col>
                   <Col xs={12}>
                     <MatButton variant="outlined">
-                      conectarse con Facebook
+                      {session_translation.sign_in.button_action.sign_in_google}
                     </MatButton>
                   </Col>
                 </Row>
@@ -271,16 +316,16 @@ const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in, company_s
               <DialogActions className="">
                 <div className="w-100 text-center">
                   <Typography variant="caption" component="span">
-                    {loginState ? 'No tienes una cuenta' : '¿Ya tienes cuenta?'}
+                    {session_translation.sign_in.no_account.title}
                   </Typography>
                   <Typography
-                    onClick={toggleLoginState}
                     variant="caption"
                     className="ml-5"
-                    component="span"
+                    component="a"
                     style={{ color: '#00CED5', cursor: 'pointer' }}
+                    href="users/sign_up"
                   >
-                    {loginState ? 'Registrate' : 'Iniciar session'}
+                    {session_translation.sign_in.no_account.sign_in}
                   </Typography>
                 </div>
               </DialogActions>
@@ -291,13 +336,29 @@ const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in, company_s
             {/* ******************** */}
             <li className="list-inline-item no-responsive">
               {/* TODO:Temporaly registration with rout por users */}
-              { (user_signed_in &&       // if user is signed in
-                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }} href={log_out_user}>CERRAR SESION</MatButton>))
-                || (company_signed_in && // else if company is signed in
-                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }} href={log_out_companies}>CERRAR SESION</MatButton>))
-                ||                       // else
-                    (<MatButton style={{ color: !scrollState ? 'white' : 'black' }} href="/companies/sign_in">SIGN IN EMPRESA</MatButton>)
-              }
+              {(user_signed_in && ( // if user is signed in
+                <MatButton
+                  style={{ color: !scrollState ? 'white' : 'black' }}
+                  href={log_out_user}
+                >
+                  CERRAR SESION
+                </MatButton>
+              )) ||
+              (company_signed_in && ( // else if company is signed in
+                <MatButton
+                  style={{ color: !scrollState ? 'white' : 'black' }}
+                  href={log_out_companies}
+                >
+                  CERRAR SESION
+                </MatButton>
+              )) || ( // else
+                  <MatButton
+                    style={{ color: !scrollState ? 'white' : 'black' }}
+                    href="/companies/sign_in"
+                  >
+                    SIGN IN EMPRESA
+                  </MatButton>
+                )}
             </li>
           </ul>
         </Toolbar>
@@ -348,3 +409,13 @@ const Header = ({ scrollState, csrf_param, csrf_token, user_signed_in, company_s
 }
 
 export default Header
+
+Header.propTypes = {
+  log_out_companies: PropTypes.string.isRequired,
+  company_signed_in: PropTypes.bool.isRequired,
+  user_signed_in: PropTypes.bool.isRequired,
+  log_out_user: PropTypes.string.isRequired,
+  csrf_param: PropTypes.string.isRequired,
+  csrf_token: PropTypes.string.isRequired,
+  session_translation: PropTypes.object.isRequired
+}

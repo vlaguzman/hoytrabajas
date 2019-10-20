@@ -1,8 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 import { Row, Col } from 'reactstrap'
 import CompaniesList from '../../../../views/main/home/sections/components/companiesList'
 import CarouselRow from '../../../../components/Carousel/CarouselRow'
+import AppLayout from '../../../../components/Layout/AppLayout'
 
 
 const catalogo = Array(13).fill(null)

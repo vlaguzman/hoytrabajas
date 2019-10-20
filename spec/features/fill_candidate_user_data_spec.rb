@@ -28,19 +28,20 @@ RSpec.describe "fill the principal candidate user data", :type => :feature do
 
     it "should see the info to fill and the next button in each section",js: true do
 
-      visit new_user_session_path
+      visit root_path
 
-      expect(page).to have_text("Log in")
+      expect(page).to have_text("SIGN IN CANDIDATO") 
+
+      click_on("SIGN IN CANDIDATO")
 
       within '#new_user' do
         fill_in 'user_email', with: 'nuevousuario@gmail.com'
         fill_in 'user_password', with: 'hola12345'
-        click_on 'Log in'
+        find("span", text: "Iniciar sesión", visible: false).click
       end
 
       # a new user who has never been loged-in, i.e. sign_in_count is zero
       expect(candidate.sign_in_count).to be_zero
-
       expect(page).to have_text(/El empleado ideal ¡si existe!/)
 
       click_on "Quiero publicar mi oferta"

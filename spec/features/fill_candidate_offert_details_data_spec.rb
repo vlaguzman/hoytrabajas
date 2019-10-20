@@ -138,7 +138,7 @@ RSpec.describe "fill the canditate user data", :type => :feature do
       user.reload
       expect(user.city.description).to eq('Bogota')
 
-      expect(page).to have_text(/Busquemos las mejores ofertas/)
+      expect(page).to have_text(/¡Búsquemos las mejores ofertas!/)
 
       find("div[id='select-user[curriculum_vitae][available_work_day_ids][]", visible: false).click
       find("li", text: "jueves").click

@@ -23,33 +23,7 @@ RSpec.describe "users/wizards/step_fives/show" do
 
     render
 
-    #title
-    expect(rendered).to match(/Busquemos las mejores oferta/)
-    expect(rendered).to match(/Brinda a las empresas información valiosa sobre ti./)
+    expect(rendered).to have_tag("div", with: { "data-react-class": "views/users/wizards/step_fives/show"})
 
-    expect(rendered).to render_template(partial: 'shared/_form_errors')
-
-    #form
-    expect(rendered).to have_tag(:form, with: { id: "step_five" }) do
-      with_tag(:label, text: "¿Que días estas disponible para trabajar?")
-      with_select("user[curriculum_vitae][available_work_day_ids][]")
-
-      with_tag(:label, text: "Franja horaria")
-      with_select("user[curriculum_vitae][working_day_ids][]")
-
-      with_tag(:label, text: "Aspiración salarial*")
-      with_select("user[curriculum_vitae][curriculum_vitae_salary][range_type]")
-
-      with_select("user[curriculum_vitae][curriculum_vitae_salary][currency_id]")
-
-      with_tag(:input, with: { name: "user[curriculum_vitae][curriculum_vitae_salary][from]", type: "number" })
-      with_tag(:label, text: "a")
-      with_tag(:input, with: { name: "user[curriculum_vitae][curriculum_vitae_salary][to]", type: "number" })
-
-      with_tag(:label, text: "Pago")
-      with_select("user[curriculum_vitae][curriculum_vitae_salary][salary_period_id]")
-
-      with_submit("siguiente")
-    end
   end
 end

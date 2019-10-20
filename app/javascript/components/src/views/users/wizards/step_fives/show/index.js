@@ -7,7 +7,8 @@ import FormTitle from '../../../../../components/FormsLayout/FormTitle'
 import FormButtons from '../../../../../components/FormsLayout/FormButtons'
 import FormFields from './FormFields'
 
-const UsersWizardsStepFour = props => {
+const UsersWizardsStepFive = props => {
+  console.log(props)
   const { formInfo, csrf_name, csrf_token } = props
   const {
     title,
@@ -43,9 +44,9 @@ const UsersWizardsStepFour = props => {
   )
 }
 
-export default UsersWizardsStepFour
+export default UsersWizardsStepFive
 
-UsersWizardsStepFour.propTypes = {
+UsersWizardsStepFive.propTypes = {
   csrf_name: PropTypes.string,
   csrf_token: PropTypes.string,
   formInfo: PropTypes.shape({

@@ -57,11 +57,18 @@ class BaseFormWizardsService
     object.errors.present? ? {errors: object.errors.messages.map{|_, error_messages| error_messages}} : {}
   end
 
-  def fields_builder
-    {}
+  def fields_builder(*other_fields)
+
+    object = {}
     .merge(input_fields_builder)
     .merge(select_fields_builder)
     .merge(multiple_select_fields_builder)
+
+    if other_fields.present?
+      other_fields.inject(object) { |object, new_object| object.merge(new_object) }
+    else
+      object
+    end
   end
 
   def input_fields

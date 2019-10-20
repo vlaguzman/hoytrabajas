@@ -1,6 +1,6 @@
 class Users::Wizards::StepTwo::FormParamsService < BaseFormWizardsService
 
-  INPUT_FIELDS_KEY = [
+  INPUT_FIELDS_KEYS = [
     :about_me,
     :birthday
   ]

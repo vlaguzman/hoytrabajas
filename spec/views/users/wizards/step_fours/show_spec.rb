@@ -26,30 +26,6 @@ RSpec.describe "users/wizards/step_fours/show" do
 
     render
 
-    #title
-    expect(rendered).to match(/Busquemos las mejores oferta/)
-    expect(rendered).to match(/Brinda a las empresas información valiosa sobre ti./)
-
-    expect(rendered).to render_template(partial: 'shared/_form_errors')
-
-    #form
-    expect(rendered).to have_tag(:form, with: { id: "step_four" }) do
-      with_tag(:label, text: "Departamento")
-      with_select("states")
-
-      with_tag(:label, text: "Disponibilidad para trabajar en otra ciudades")
-      with_checkbox("user[curriculum_vitae][travel_disponibility]", false)
-
-      with_tag(:label, text: "Ciudad")
-      with_select("user[city_id]")
-
-      with_tag(:label, text: "Cuentas con algún tipo de vehículo")
-      with_select("user[vehicle_ids][]")
-
-      with_tag(:label, text: "Licencia de conducción requerida")
-      with_select("user[driving_licence_ids][]")
-
-      with_submit("siguiente")
-    end
+    expect(rendered).to have_tag("div", with: { "data-react-class": "views/users/wizards/step_fours/show"})
   end
 end

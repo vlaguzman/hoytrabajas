@@ -1,0 +1,18 @@
+es:
+  users:
+    wizards:
+      step_threes:
+        show:
+          title: "¡Búsquemos las mejores ofertas!"
+          subtitle: "Brinda a las empresas información valiosa sobre ti."
+          form:
+            buttons:
+              submit: "Siguiente"
+              next: "Saltar"
+              previous: "Regresar"
+            formFields:
+              job_category_ids: "Elje las categorías en las que deseas buscar trabajo"
+              offer_type_ids: "Tipo de oferta"
+              contract_type_id: "Acuerdo legal"
+              work_mode_ids: "Modalidad de trabajo"
+              labor_disponibility_id: "Disponibilidad para trabajar"

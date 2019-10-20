@@ -65,7 +65,7 @@ RSpec.describe Users::Wizards::StepThree::FormParamsService do
 
       response = subject.new(
         form_type: :user,
-        template_translation_path: "users.wizards.step_three.show",
+        template_translation_path: "users.wizards.step_threes.show",
         action_path: "/users/wizards/step_three" ,
         previous_path: "/users/wizards/step_two",
         next_path: "/users/wizards/step_four",

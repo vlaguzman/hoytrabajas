@@ -1,6 +1,6 @@
 class BaseFormWizardsService
 
-  INPUT_FIELDS_KEY = []
+  INPUT_FIELDS_KEYS = []
   SELECT_FIELDS_KEYS = []
   MULTIPLE_SELECT_FIELDS_KEYS = []
 
@@ -65,7 +65,7 @@ class BaseFormWizardsService
   end
 
   def input_fields
-    self.class::INPUT_FIELDS_KEY
+    self.class::INPUT_FIELDS_KEYS
   end
 
   def select_fields

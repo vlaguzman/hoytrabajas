@@ -10,8 +10,9 @@ A         * ApplicationJob                                      1       0.0     
 A         * ApplicationMailer                                   1       0.0        0           1
 A         * ApplicationPresenter                                3       10.35      0           3
 A         * ApplicationRecord                                   1       0.0        0           1
-A         * AppliedOffer                                        1       0.0        0           1
+A         * AppliedOffer                                        2       0.0        0           1
 A         * AppliedOfferStatus                                  1       0.0        0           1
+A         * AppliedOffersController                             1       18.23      0           1
 A         * AvailableWorkDay                                    3       0.0        0           1
 A         * AvailableWorkDaysCurriculumVitaes                   1       0.0        0           1
 A         * AvailableWorkDaysOffers                             1       0.0        0           1
@@ -71,10 +72,11 @@ A         * Nationality                                         4       0.0     
 A         * Offer                                               24      2.2        0           1
 A         * OfferSalary                                         5       0.0        0           1
 A         * OfferType                                           5       0.0        0           1
+A         * Offers::AppliedOfferService                         1       13.25      0           1
 A         * Offers::IndexService                                3       15.4       0           1
 A         * Offers::ViewsService                                5       32.2       0           1
-A         * OffersController                                    9       8.03       0           1
-A         * OffersPresenter                                     5       10.6       0           1
+A         * OffersController                                    10      9.23       0           1
+A         * OffersPresenter                                     6       17.8       0           4
 A         * OffersResponsibilities                              1       0.0        0           1
 A         * OffersService                                       6       14.0       0           1
 A         * OffersSoftSkills                                    1       0.0        0           1
@@ -152,7 +154,7 @@ B         * Companies::FirstOffer::StepOneService               5       2.45    
 B         * Companies::FirstOffer::StepOnesController           8       20.32      27          2
 B         * Companies::FirstOffer::StepTwoService               5       2.45       23          2
 B         * Companies::FirstOffer::StepTwosController           8       20.32      27          2
-B         * Offers::ShowService                                 9       62.6       0           0
+B         * Offers::ShowService                                 10      79.19      0           3
 C         * BaseFormWizardsService                              4       106.86     0           14
 C         * Offers                                              2       0.0        150         2
 D         * Companies                                           2       15.36      72          4

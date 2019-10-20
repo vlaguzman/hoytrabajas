@@ -4,7 +4,9 @@ RSpec.describe AppliedOffer, type: :model do
 
   describe "validations" do
     it { should validate_presence_of(:applied_date) }
-    it { should validate_presence_of(:note) }
+    it { should validate_presence_of(:offer_id) }
+    it { should validate_presence_of(:curriculum_vitae_id) }
+    it { should validate_presence_of(:applied_offer_status_id) }
   end
 
   describe "associoations" do

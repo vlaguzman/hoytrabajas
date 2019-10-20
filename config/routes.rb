@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :faqs, only: [:index]
   resources :offers
+  resources :applied_offers, only: [:create]
   resources :job_categories, only:[:index]
   resources :companies, only: [:index]
 

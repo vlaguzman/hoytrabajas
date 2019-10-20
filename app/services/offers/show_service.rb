@@ -1,6 +1,13 @@
 # The Offers::ShowService Class do build the hash  with the data used in offer/show template
 class Offers::ShowService < Offers::ViewsService
 
+  attr_accessor :offer, :current_user
+
+  def initialize(offer, current_user)
+    @offer = offer
+    @current_user = current_user
+  end
+
   def build_details
     {
       sex:                  { description: offer.sex_description },
@@ -15,8 +22,15 @@ class Offers::ShowService < Offers::ViewsService
       working_days:         working_days_list,
       job_aids:             job_aids_list,
       company:              company_details,
+      is_applied:           query_applied,
+      id_offer:             offer.id,
       close_date:           DatesConverter.default(date: offer.close_date)
     }
+  end
+
+  def query_applied
+    id_vitae = current_user.present? ? current_user.curriculum_vitae_ids.last : 0
+    AppliedOffer.where(curriculum_vitae_id: id_vitae, offer_id: offer.id).present?
   end
 
   private

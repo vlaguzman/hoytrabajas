@@ -12,7 +12,7 @@ class Companies::FirstOffer::StepThreesController < ApplicationController
       redirect_to edit_companies_first_offer_step_four_path(offer[:data].id)
     else
       offer_presenter(offer[:data])
-      render 'show'
+      render 'new'
     end
   end
 

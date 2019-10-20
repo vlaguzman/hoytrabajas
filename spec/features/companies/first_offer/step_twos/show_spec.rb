@@ -25,7 +25,7 @@ RSpec.describe "When company fill the step two form", :type => :feature do
         company.reload
         expect(company.description).to eq("Esta es una description de mi compania")
 
-        expect(current_path).to eq(companies_first_offer_step_three_path)
+        expect(current_path).to eq(new_companies_first_offer_step_three_path)
       end
     end
   end

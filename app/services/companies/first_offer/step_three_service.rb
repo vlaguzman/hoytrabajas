@@ -1,6 +1,6 @@
 module Companies::FirstOffer::StepThreeService
 
-  def self.call(company: company, create_params: {})
+  def self.call(company: _, create_params: {})
     work_position_id = create_params.delete(:offer_work_position_id)
     create_params.merge!({company_id: company.id})
 

@@ -57,9 +57,9 @@ RSpec.describe Companies::FirstOffer::StepThreeService do
 
         expect(offer[:status]).to eq(:error)
 
-        expect(offer[:data]).to be_an_instance_of(Company)
+        expect(offer[:data]).to be_an_instance_of(Offer)
 
-        expect(offer[:data].errors.details[:company_id]).to eq([{:error=>:blank}, {:error=>:blank}])
+        expect(offer[:data].errors.details).to eq({:title=>[{:error=>:blank}], :job_category=>[{:error=>:blank}]})
       end
     end
   end

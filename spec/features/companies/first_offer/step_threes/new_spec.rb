@@ -46,13 +46,37 @@ RSpec.describe "When company fill the step three form", :type => :feature do
       scenario "should save succesfully data", js: true do
         sign_in company
         visit new_companies_first_offer_step_three_path
-        save_page("daniel.html")
-
 
         expected_page_structure
         fill_form(
           {
             title: 'Oferta para el mejor desarrollador del mundo mundial',
+            job_category_id: job_category.description,
+            offer_type_id: offer_type.description,
+            work_mode_id: work_mode.description,
+            offer_work_position_id: work_position.description
+          }
+        )
+        click_link_or_button('Siguiente')
+
+        offer = Offer.find_by(title: 'Oferta para el mejor desarrollador del mundo mundial')
+
+        expect(offer.job_category_id).not_to be_nil
+        expect(offer.work_mode_id).not_to be_nil
+        expect(offer.offer_type_id).not_to be_nil
+
+        expect(current_path).to eq(edit_companies_first_offer_step_four_path(offer.id))
+      end
+    end
+    context "Data is not correct" do
+      scenario "should not save succesfully data", js: true do
+        sign_in company
+        visit new_companies_first_offer_step_three_path
+
+        expected_page_structure
+        fill_form(
+          {
+            title: '',
             job_category_id: job_category.description,
             offer_type_id: offer_type.description,
             work_mode_id: work_mode.description,

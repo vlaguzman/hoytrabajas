@@ -16,7 +16,6 @@ A         * AvailableWorkDay                                  3       0.0       
 A         * AvailableWorkDaysCurriculumVitaes                 1       0.0        0           1
 A         * AvailableWorkDaysOffers                           1       0.0        0           1
 A         * City                                              2       0.0        0           1
-A         * Companies                                         1       0.0        0           0
 A         * Companies::FirstOffer::StepFivesController        3       0.0        0           1
 A         * Companies::FirstOffer::StepFoursController        3       0.0        0           1
 A         * Companies::FirstOffer::StepOne::FormParamsService 1       2.0        0           3
@@ -151,5 +150,6 @@ B         * Companies::FirstOffer::StepOnesController         8       20.32     
 B         * Companies::FirstOffer::StepTwoService             5       2.45       23          2
 B         * Companies::FirstOffer::StepTwosController         7       20.32      27          2
 B         * Offers::ShowService                               9       62.6       0           0
-B         * Users                                             3       15.36      62          3
 C         * Offers                                            2       0.0        150         2
+D         * Companies                                         2       15.36      72          4
+D         * Users                                             4       15.36      92          4

@@ -56,10 +56,6 @@ Show.propTypes = {
   csrf_param: PropTypes.string.isRequired,
   csrf_token: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,
-<<<<<<< HEAD
-  t: PropTypes.object.isRequired,
-=======
   step_zero_translation: PropTypes.object.isRequired,
->>>>>>> translation MF
   session_translation: PropTypes.object.isRequired
 }

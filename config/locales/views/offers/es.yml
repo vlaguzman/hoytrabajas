@@ -20,3 +20,5 @@ es:
     employees: 'empleados'
     contact_company: 'Contactar con la empresa'
     related_offers: 'Ofertas Relacionadas'
+    button_active: 'Aplicar a esta oferta'
+    button_disactive: 'Aplicado'

@@ -37,7 +37,9 @@ const DetallePage = ({
   session_translation,
   log_out_user
 }) => {
-  const valueButton = offer.is_applied ? 'Aplicado' : 'Aplicar a esta oferta'
+  const valueButton = offer.is_applied
+    ? translationOffer.button_disactive
+    : translationOffer.button_active
 
   return (
     <div className="detalle-wrapper">
@@ -541,6 +543,8 @@ DetallePage.propTypes = {
     lenguage: PropTypes.string,
     close: PropTypes.string,
     affinity: PropTypes.string,
-    aplications: PropTypes.string
+    aplications: PropTypes.string,
+    button_disactive: PropTypes.string,
+    button_active: PropTypes.string
   })
 }

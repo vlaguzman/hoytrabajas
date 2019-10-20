@@ -10,11 +10,6 @@ class Offers::AppliedOfferService
   end
 
   def self.create_applied_offer(total_data)
-    applied_offer = AppliedOffer.new(total_data).save
-    if applied_offer
-      { status: :ok }
-    else
-      { status: :error }
-    end
+    AppliedOffer.new(total_data).save
   end
 end

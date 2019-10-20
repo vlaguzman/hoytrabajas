@@ -96,7 +96,9 @@ RSpec.describe OffersPresenter do
         :transport_aid,
         :employees,
         :contact_company,
-        :related_offers
+        :related_offers,
+        :button_active,
+        :button_disactive
       ]
 
       expect(response.keys).to eq(expected_keys)

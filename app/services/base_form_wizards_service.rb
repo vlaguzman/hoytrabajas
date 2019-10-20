@@ -7,7 +7,7 @@ class BaseFormWizardsService
   attr_accessor :object, :form_type, :template_translation_path, :action_path, :previous_path, :next_path, :form_method
 
   def initialize(
-    object: object,
+    object: nil,
     form_type: :user,
     template_translation_path: nil,
     action_path: nil,

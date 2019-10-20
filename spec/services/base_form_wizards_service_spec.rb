@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe BaseFormWizardsService do
+  let(:company) { create(:company) }
 
   describe "instance methods" do
     it { should respond_to(:form_type) }
@@ -17,6 +18,7 @@ RSpec.describe BaseFormWizardsService do
 
       it "should return a hash of params" do
         respose = subject.new(
+          object: company,
           form_type: :user,
           template_translation_path: "users.wizards.step_ones.show",
           action_path: "users/wizards/step_two" ,

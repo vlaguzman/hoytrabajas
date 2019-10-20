@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Paper from '@material-ui/core/Paper'
-import { Row } from 'reactstrap'
-import FormProgress from '../../../../components/FormsLayout/FormProgress'
-import FormTitle from '../../../../components/FormsLayout/FormTitle'
-import FormButtons from '../../../../components/FormsLayout/FormButtons'
-import FormFields from './FormFields'
+import React        from 'react'
+import PropTypes    from 'prop-types'
+import Paper        from '@material-ui/core/Paper'
+import { Row }      from 'reactstrap'
+import FormProgress from '../../../../../components/FormsLayout/FormProgress'
+import FormTitle    from '../../../../../components/FormsLayout/FormTitle'
+import FormButtons  from '../../../../../components/FormsLayout/FormButtons'
+import FormFields   from './FormFields'
 
 const CompaniesStepOne = ({ formInfo, csrf_name, csrf_token }) => {
   const {

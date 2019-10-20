@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react'
-import PropTypes from 'prop-types'
-import { Row, Col } from 'reactstrap'
-import StandardInput from '../../../../components/FormsLayout/Fields/StandardInput'
+import PropTypes     from 'prop-types'
+import { Row, Col }  from 'reactstrap'
+import StandardInput from '../../../../../components/FormsLayout/Fields/StandardInput'
 
 const FormFields = props => {
   const { formFields, type } = props

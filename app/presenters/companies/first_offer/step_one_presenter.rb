@@ -1,7 +1,8 @@
 class Companies::FirstOffer::StepOnePresenter < ApplicationPresenter
 
-  def form_information
+  def form_information(company)
     Companies::FirstOffer::StepOne::FormParamsService.new(
+      object: company,
       action_path: companies_first_offer_step_one_path,
       next_path: companies_first_offer_step_two_path,
       form_type: :company,

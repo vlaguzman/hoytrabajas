@@ -1,2 +1,2 @@
 
-= react_component('views/users/wizards/step_twos/show', {formInfo: @user.form_information, csrf_name: request_forgery_protection_token, csrf_token: form_authenticity_token }, prerender: true)
+= react_component('views/users/wizards/step_twos/show', {formInfo: @user.form_information(@user), csrf_name: request_forgery_protection_token, csrf_token: form_authenticity_token }, prerender: true)

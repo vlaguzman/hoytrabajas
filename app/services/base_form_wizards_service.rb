@@ -4,9 +4,10 @@ class BaseFormWizardsService
   SELECT_FIELDS_KEYS = []
   MULTIPLE_SELECT_FIELDS_KEYS = []
 
-  attr_accessor :form_type, :template_translation_path, :action_path, :previous_path, :next_path, :form_method
+  attr_accessor :object, :form_type, :template_translation_path, :action_path, :previous_path, :next_path, :form_method
 
   def initialize(
+    object: nil,
     form_type: :user,
     template_translation_path: nil,
     action_path: nil,
@@ -14,6 +15,7 @@ class BaseFormWizardsService
     next_path: nil,
     form_method: :post)
 
+    @object                    = object
     @form_type                 = form_type
     @template_translation_path = template_translation_path
     @action_path               = action_path
@@ -41,13 +43,18 @@ class BaseFormWizardsService
   end
 
   def build_form_params
-    {
+    build_form_base = {
       buttons:    buttons_translation,
       action:     action_path,
       method:     form_method,
       type:       form_type,
       formFields: fields_builder
     }
+    build_form_base.merge!(errors_messages)
+  end
+
+  def errors_messages
+    object.errors.present? ? {errors: object.errors.messages.map{|_, error_messages| error_messages}} : {}
   end
 
   def fields_builder

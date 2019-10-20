@@ -2,16 +2,26 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Paper from '@material-ui/core/Paper'
 import { Row } from 'reactstrap'
-import FormProgress from '../../../../components/FormsLayout/FormProgress'
-import FormTitle from '../../../../components/FormsLayout/FormTitle'
-import FormButtons from '../../../../components/FormsLayout/FormButtons'
+import DisplayErrors from '../../../../../components/FormsLayout/DisplayErrors'
+import FormProgress from '../../../../../components/FormsLayout/FormProgress'
+import FormTitle from '../../../../../components/FormsLayout/FormTitle'
+import FormButtons from '../../../../../components/FormsLayout/FormButtons'
 import FormFields from './FormFields'
 
-const CompaniesStepOne = ({ formInfo, csrf_name, csrf_token }) => {
+const CompaniesStepThree = ({ formInfo, csrf_name, csrf_token }) => {
   const {
     title,
     subtitle,
-    form: { buttons, nextPath, previousPath, action, method, type, formFields }
+    form: {
+      buttons,
+      nextPath,
+      previousPath,
+      action,
+      method,
+      type,
+      formFields,
+      errors
+    }
   } = formInfo
 
   return (
@@ -20,6 +30,7 @@ const CompaniesStepOne = ({ formInfo, csrf_name, csrf_token }) => {
       <Row className="mt-10 mb-70 justify-content-center w-100 pb-50 mx-0 px-20">
         <Paper className="d-flex flex-column position-relative paper-width justify-content-around align-items-center pt-60 mb-70">
           <>
+            {errors && <DisplayErrors errors={errors} />}
             <FormTitle title={title} subtitle={subtitle} />
             <div className="w-80">
               <form className="forms__candidate" action={action} method="post">
@@ -40,9 +51,9 @@ const CompaniesStepOne = ({ formInfo, csrf_name, csrf_token }) => {
   )
 }
 
-export default CompaniesStepOne
+export default CompaniesStepThree
 
-CompaniesStepOne.propTypes = {
+CompaniesStepThree.propTypes = {
   csrf_name: PropTypes.string,
   csrf_token: PropTypes.string,
   formInfo: PropTypes.shape({
@@ -59,7 +70,10 @@ CompaniesStepOne.propTypes = {
       action: PropTypes.string.isRequired,
       method: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,
-      formFields: PropTypes.object.isRequired
+      formFields: PropTypes.object.isRequired,
+      nextPath: PropTypes.string.isRequired,
+      previousPath: PropTypes.string.isRequired,
+      errors: PropTypes.object.isRequired
     })
   })
 }

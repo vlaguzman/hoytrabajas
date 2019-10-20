@@ -38,20 +38,26 @@ export const DynamicCompaniesStepZero = Loadable({
   loading: Loading
 })
 export const DynamicCompaniesStepOne = Loadable({
-  loader: () => import('./companies/first_offer/step_one'),
+  loader: () => import('./companies/first_offer/step_ones/show'),
   loading: Loading
 })
+
+export const DynamicCompaniesStepTwo = Loadable({
+  loader: () => import('./companies/first_offer/step_twos/show'),
+  loading: Loading
+})
+
+export const DynamicCompaniesStepThree = Loadable({
+  loader: () => import('./companies/first_offer/step_threes/new'),
+  loading: Loading
+})
+
 export const DynamicCompaniesStepFour = Loadable({
   loader: () => import('./companies/first_offer/step_four'),
   loading: Loading
 })
 export const DynamicCompaniesStepFive = Loadable({
   loader: () => import('./companies/first_offer/step_five'),
-  loading: Loading
-})
-
-export const DynamicCompaniesStepTwo = Loadable({
-  loader: () => import('./companies/first_offer/step_two'),
   loading: Loading
 })
 

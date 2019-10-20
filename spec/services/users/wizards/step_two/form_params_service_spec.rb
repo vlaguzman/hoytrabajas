@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe Users::Wizards::StepTwo::FormParamsService do
 
   describe "#form_params" do
+    let!(:user) { create(:user, :first_time_candidate) }
+
     let!(:sexes) { create_list(:sex, 5) }
     let!(:limitations) { create_list(:limitation, 5) }
     let!(:educational_degrees) { create_list(:educational_degree, 5) }
@@ -58,6 +60,7 @@ RSpec.describe Users::Wizards::StepTwo::FormParamsService do
       }
 
       response = subject.new(
+        object: user,
         form_type: :user,
         template_translation_path: "users.wizards.step_twos.show",
         action_path: "/users/wizards/step_two" ,

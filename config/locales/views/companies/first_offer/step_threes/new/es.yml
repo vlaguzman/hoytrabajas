@@ -1,0 +1,19 @@
+es:
+  companies:
+    first_offer:
+      step_threes:
+        new:
+          title: "Creemos tu primera oferta"
+          subtitle: "Brinda a tu candidato una relevante de tu empresa."
+          form:
+            buttons:
+              submit: "Siguiente"
+              next: "Saltar"
+              previous: "Regresar"
+            type: "company"
+            formFields:
+              title: "Título de tu oferta"
+              offer_work_position_id: "Elige el cargo que deseas contratar"
+              job_category_id: "Selecciona la categoría de tu oferta"
+              offer_type_id: "Tipo de oferta"
+              work_mode_id: "Modalidad de trabajo"

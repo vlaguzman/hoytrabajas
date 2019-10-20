@@ -1,7 +1,8 @@
 class Users::Wizards::StepOnePresenter < ApplicationPresenter
 
-  def form_information
+  def form_information(user)
     Users::Wizards::StepOne::FormParamsService.new(
+      object: user,
       action_path: users_wizards_step_one_path,
       next_path: users_wizards_step_two_path,
       form_type: :candidate,

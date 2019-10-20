@@ -1,6 +1,6 @@
 class Companies::FirstOffer::StepFoursController < ApplicationController
 
-  def show
+  def edit
   end
 
 end

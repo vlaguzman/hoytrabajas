@@ -54,7 +54,8 @@ RSpec.describe Offers::ShowService do
   end
 
   let(:age_range) { create(:age_range, offer: offer) }
-  let(:subject) { described_class.new(offer) }
+  let(:user)      { create(:user) }
+  let(:subject)   { described_class.new(offer, user) }
 
   describe "#details" do
     it { should respond_to(:details) }
@@ -64,7 +65,9 @@ RSpec.describe Offers::ShowService do
         close_date: "25 de Agosto del 2019",
         title: "Desarrollador Front-end Sr. test",
         address: "Calle Falsa 123 # 00 99",
+        id_offer: offer.id,
         immediate_start: false,
+        is_applied: false,
         description: "endSint esse anim consequat commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaincididunt ut labore et dolore magna aliqua.",
         vacancies_quantity: 10,
         required_experience: true,

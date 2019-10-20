@@ -1,8 +1,9 @@
 require "rails_helper"
 
 RSpec.describe OffersPresenter do
-  let(:offer) { create(:offer) }
-  let(:subject) { described_class.new(offer) }
+  let(:offer)   { create(:offer) }
+  let(:user)    { create(:user) }
+  let(:subject) { described_class.new(offer, user) }
 
   describe "#show_details" do
     it { should respond_to(:show_details) }
@@ -32,7 +33,7 @@ RSpec.describe OffersPresenter do
         [create(:offer), create(:offer)]
       end
 
-      let(:subject) { described_class.new(main_offer) }
+      let(:subject) { described_class.new(main_offer, user) }
 
       it "should return 3 expected objects" do
 
@@ -59,12 +60,46 @@ RSpec.describe OffersPresenter do
       expect(response).to be_an_instance_of(Hash)
     end
 
-    let!(:related_offer) { create(:offer, job_category: subject.job_category) }
+    let!(:main_job_category_2) { create(:job_category, id: 1, description: "TheMainCategory") }
+    let!(:related_offer) { create(:offer, job_category: main_job_category_2) }
 
     it "should have the expected keys in the arrays" do
       response = subject.index_details
 
       expect(response.keys).to match_array([:city, :close_date, :company, :description, :immediate_start, :new_offer, :required_experience, :salary, :title])
+    end
+  end
+
+  describe "#component_translations" do
+    it "should return a object used by the react component to build it" do
+      response = subject.component_translations
+
+      expect(response).to be_an_instance_of(Hash)
+
+      expected_keys = [ 
+        :affinity,
+        :close,
+        :aplications,
+        :targeted_offer,
+        :age,
+        :vacancy_numbers,
+        :recident,
+        :experience,
+        :lenguage,
+        :type_ofert,
+        :work_mode,
+        :terms,
+        :salary,
+        :days,
+        :working_day,
+        :benefits,
+        :transport_aid,
+        :employees,
+        :contact_company,
+        :related_offers
+      ]
+
+      expect(response.keys).to eq(expected_keys)
     end
   end
 

@@ -89,7 +89,6 @@ ActiveRecord::Schema.define(version: 2019_10_19_230839) do
 
   create_table "applied_offers", force: :cascade do |t|
     t.datetime "applied_date"
-    t.string "note"
     t.bigint "offer_id", null: false
     t.bigint "curriculum_vitae_id", null: false
     t.bigint "applied_offer_status_id", null: false

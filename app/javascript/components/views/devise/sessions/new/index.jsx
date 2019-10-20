@@ -29,7 +29,7 @@ export default class Index extends React.Component {
           company_signed_in={this.props.company_signed_in}
           log_out_user={this.props.log_out_user}
           log_out_companies={this.props.log_out_companies}
-          t={this.props.t}
+          session_translation={this.props.session_translation}
         >
           <Dialog
             fullWidth
@@ -50,7 +50,7 @@ export default class Index extends React.Component {
             <DialogContent className="px-40">
               <DialogContentText>
                 <Typography variant="body2" component="span">
-                  {this.props.t.sign_in.title}
+                  {this.props.session_translation.sign_in.title}
                 </Typography>
               </DialogContentText>
               <form
@@ -71,7 +71,9 @@ export default class Index extends React.Component {
                     id={`${resource_name}_email`}
                     className="pl-40 py-10 form-control"
                     autoComplete="email"
-                    placeholder={this.props.t.sign_in.email_label}
+                    placeholder={
+                      this.props.session_translation.sign_in.email_label
+                    }
                     type="email"
                   />
                   <MailOutline
@@ -89,7 +91,9 @@ export default class Index extends React.Component {
                     id={`${resource_name}_password`}
                     className="pl-40 py-10 form-control"
                     autoComplete="new-password"
-                    placeholder={this.props.t.sign_in.password_label}
+                    placeholder={
+                      this.props.session_translation.sign_in.password_label
+                    }
                     type="password"
                   />
                   <Lock
@@ -107,7 +111,7 @@ export default class Index extends React.Component {
                   style={{ color: '#00CED5' }}
                   href="companies/password/new"
                 >
-                  {this.props.t.sign_in.forget_password}
+                  {this.props.session_translation.sign_in.forget_password}
                 </Typography>
                 <Row noGutters className="justify-content-center my-25">
                   <Col xs={12}>
@@ -117,7 +121,10 @@ export default class Index extends React.Component {
                       color="primary"
                       variant="contained"
                     >
-                      {this.props.t.sign_in.button_action.sign_in_label}
+                      {
+                        this.props.session_translation.sign_in.button_action
+                          .sign_in_label
+                      }
                     </MatButton>
                   </Col>
                 </Row>
@@ -130,14 +137,20 @@ export default class Index extends React.Component {
               <Row className="my-30">
                 <Col xs={12}>
                   <MatButton variant="outlined">
-                    {this.props.t.sign_in.button_action.sign_in_facebook}
+                    {
+                      this.props.session_translation.sign_in.button_action
+                        .sign_in_facebook
+                    }
                   </MatButton>
                 </Col>
               </Row>
               <Row className="my-30">
                 <Col xs={12}>
                   <MatButton variant="outlined">
-                    {this.props.t.sign_in.button_action.sign_in_google}
+                    {
+                      this.props.session_translation.sign_in.button_action
+                        .sign_in_google
+                    }
                   </MatButton>
                 </Col>
               </Row>
@@ -145,7 +158,7 @@ export default class Index extends React.Component {
             <DialogActions className="">
               <div className="w-100 text-center">
                 <Typography variant="caption" component="span">
-                  {this.props.t.sign_in.no_account.title}
+                  {this.props.session_translation.sign_in.no_account.title}
                 </Typography>
                 <Typography
                   variant="caption"
@@ -154,7 +167,7 @@ export default class Index extends React.Component {
                   style={{ color: '#00CED5', cursor: 'pointer' }}
                   href="companies/sign_up"
                 >
-                  {this.props.t.sign_in.no_account.sign_up}
+                  {this.props.session_translation.sign_in.no_account.sign_up}
                 </Typography>
               </div>
             </DialogActions>
@@ -174,5 +187,5 @@ Index.propTypes = {
   company_signed_in: PropTypes.bool.isRequired,
   log_out_companies: PropTypes.string.isRequired,
   log_out_user: PropTypes.string.isRequired,
-  t: PropTypes.object.isRequired
+  session_translation: PropTypes.object.isRequired
 }

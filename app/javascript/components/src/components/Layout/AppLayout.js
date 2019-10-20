@@ -31,7 +31,7 @@ const AppLayout = ({
   company_signed_in,
   log_out_user,
   log_out_companies,
-  t
+  session_translation
 }) => {
   const [isTop, setIsTop] = useState(false)
   const myRef = useRef(null)
@@ -71,7 +71,7 @@ const AppLayout = ({
                               company_signed_in={company_signed_in}
                               log_out_user={log_out_user}
                               log_out_companies={log_out_companies}
-                              t={t}
+                              session_translation={session_translation}
                             />
                           </div>
                           <div className="rct-page-content">
@@ -103,5 +103,5 @@ AppLayout.propTypes = {
   log_out_user: PropTypes.string.isRequired,
   csrf_param: PropTypes.string.isRequired,
   csrf_token: PropTypes.string.isRequired,
-  t: PropTypes.object.isRequired
+  session_translation: PropTypes.object.isRequired
 }

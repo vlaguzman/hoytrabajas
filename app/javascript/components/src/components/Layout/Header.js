@@ -33,7 +33,7 @@ const Header = ({
   company_signed_in,
   log_out_user,
   log_out_companies,
-  t
+  session_translation
 }) => {
   const [open, setOpen] = React.useState(false)
   const [loginState, setloginState] = React.useState(true)
@@ -212,7 +212,7 @@ const Header = ({
               <DialogContent className="px-40">
                 <DialogContentText>
                   <Typography variant="body2" component="span">
-                    {t.sign_in.title}
+                    {session_translation.sign_in.title}
                   </Typography>
                 </DialogContentText>
                 <Form
@@ -231,7 +231,7 @@ const Header = ({
                       className="pl-40 py-10"
                       type="email"
                       name="user[email]"
-                      placeholder={t.sign_in.email_label}
+                      placeholder={session_translation.sign_in.email_label}
                     />
                     <MailOutline
                       className="position-absolute"
@@ -249,7 +249,7 @@ const Header = ({
                       className="pl-40 py-10"
                       type="password"
                       name="user[password]"
-                      placeholder={t.sign_in.password_label}
+                      placeholder={session_translation.sign_in.password_label}
                     />
                     <Visibility
                       className="position-absolute"
@@ -274,7 +274,7 @@ const Header = ({
                     style={{ color: '#00CED5' }}
                     href="users/password/new"
                   >
-                    {t.forget_password}
+                    {session_translation.forget_password}
                   </Typography>
                   <Row noGutters className="justify-content-center my-25">
                     <Col xs={12}>
@@ -284,7 +284,10 @@ const Header = ({
                         color="primary"
                         variant="contained"
                       >
-                        {t.sign_in.button_action.sign_in_label}
+                        {
+                          session_translation.sign_in.button_action
+                            .sign_in_label
+                        }
                       </MatButton>
                     </Col>
                   </Row>
@@ -297,12 +300,15 @@ const Header = ({
                 <Row className="my-30">
                   <Col xs={12} className="mb-10">
                     <MatButton variant="outlined">
-                      {t.sign_in.button_action.sign_in_facebook}
+                      {
+                        session_translation.sign_in.button_action
+                          .sign_in_facebook
+                      }
                     </MatButton>
                   </Col>
                   <Col xs={12}>
                     <MatButton variant="outlined">
-                      {t.sign_in.button_action.sign_in_google}
+                      {session_translation.sign_in.button_action.sign_in_google}
                     </MatButton>
                   </Col>
                 </Row>
@@ -310,7 +316,7 @@ const Header = ({
               <DialogActions className="">
                 <div className="w-100 text-center">
                   <Typography variant="caption" component="span">
-                    {t.sign_in.no_account.title}
+                    {session_translation.sign_in.no_account.title}
                   </Typography>
                   <Typography
                     variant="caption"
@@ -319,7 +325,7 @@ const Header = ({
                     style={{ color: '#00CED5', cursor: 'pointer' }}
                     href="users/sign_up"
                   >
-                    {t.sign_in.no_account.sign_in}
+                    {session_translation.sign_in.no_account.sign_in}
                   </Typography>
                 </div>
               </DialogActions>
@@ -411,5 +417,5 @@ Header.propTypes = {
   log_out_user: PropTypes.string.isRequired,
   csrf_param: PropTypes.string.isRequired,
   csrf_token: PropTypes.string.isRequired,
-  t: PropTypes.object.isRequired
+  session_translation: PropTypes.object.isRequired
 }

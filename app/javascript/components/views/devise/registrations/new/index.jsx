@@ -28,7 +28,7 @@ export default class Index extends React.Component {
           company_signed_in={this.props.company_signed_in}
           log_out_user={this.props.log_out_user}
           log_out_companies={this.props.log_out_companies}
-          t={this.props.t}
+          session_translation={this.props.session_translation}
         >
           <Dialog
             fullWidth
@@ -49,7 +49,7 @@ export default class Index extends React.Component {
             <DialogContent className="px-40">
               <DialogContentText>
                 <Typography variant="body2" component="span">
-                  {this.props.t.sign_up.title}
+                  {this.props.session_translation.sign_up.title}
                 </Typography>
               </DialogContentText>
               <form
@@ -70,7 +70,9 @@ export default class Index extends React.Component {
                     id={`${resource_name}_email`}
                     className="pl-40 py-10 form-control"
                     autoComplete="email"
-                    placeholder={this.props.t.sign_up.email_label}
+                    placeholder={
+                      this.props.session_translation.sign_up.email_label
+                    }
                     type="email"
                   />
                   <MailOutline
@@ -88,7 +90,9 @@ export default class Index extends React.Component {
                     id={`${resource_name}_password`}
                     className="pl-40 py-10 form-control"
                     autoComplete="new-password"
-                    placeholder={this.props.t.sign_up.password_label}
+                    placeholder={
+                      this.props.session_translation.sign_up.password_label
+                    }
                     type="password"
                   />
                   <Lock
@@ -105,7 +109,9 @@ export default class Index extends React.Component {
                     name={`${resource_name}[password_confirmation]`}
                     id={`${resource_name}_password_confirmation`}
                     className="pl-40 py-10 form-control"
-                    placeholder={this.props.t.sign_up.pass_confirm_label}
+                    placeholder={
+                      this.props.session_translation.sign_up.pass_confirm_label
+                    }
                     type="password"
                   />
                   <Lock
@@ -125,7 +131,10 @@ export default class Index extends React.Component {
                       color="primary"
                       variant="contained"
                     >
-                      {this.props.t.sign_up.button_action.sign_up_label}
+                      {
+                        this.props.session_translation.sign_up.button_action
+                          .sign_up_label
+                      }
                     </MatButton>
                   </Col>
                 </Row>
@@ -138,13 +147,21 @@ export default class Index extends React.Component {
               <Row className="my-30">
                 <Col xs={12}>
                   <MatButton variant="outlined">
-                    {this.props.t.sign_up.button_action.sign_up_facebook}
+                    {
+                      this.props.session_translation.sign_up.button_action
+                        .sign_up_facebook
+                    }
                   </MatButton>
                 </Col>
               </Row>
               <Row className="my-30">
                 <Col xs={12}>
-                  <MatButton variant="outlined">{this.props.t.sign_up.button_action.sign_up_google}</MatButton>
+                  <MatButton variant="outlined">
+                    {
+                      this.props.session_translation.sign_up.button_action
+                        .sign_up_google
+                    }
+                  </MatButton>
                 </Col>
               </Row>
             </DialogContent>
@@ -158,7 +175,11 @@ export default class Index extends React.Component {
 Index.propTypes = {
   csrf_token: PropTypes.string.isRequired,
   csrf_param: PropTypes.string.isRequired,
+  user_signed_in: PropTypes.bool.isRequired,
+  company_signed_in: PropTypes.bool.isRequired,
+  log_out_user: PropTypes.string.isRequired,
+  log_out_companies: PropTypes.string.isRequired,
   source_name: PropTypes.string.isRequired,
   registration_path: PropTypes.string.isRequired,
-  t: PropTypes.object.isRequired
+  session_translation: PropTypes.object.isRequired
 }

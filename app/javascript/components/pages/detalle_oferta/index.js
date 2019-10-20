@@ -3,7 +3,9 @@ import { DynamicDetalle } from '../../src/views/DynamicViews'
 import AppLayout from '../../src/components/Layout/AppLayout'
 
 const MainPage = (props) => (
-  <AppLayout>
+  <AppLayout
+    {...props}
+  >
     <div className="detalle-wrapper">
       <DynamicDetalle {...props} />
     </div>

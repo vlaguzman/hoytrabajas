@@ -38,7 +38,7 @@ RSpec.describe "User can Log In", type: :feature do
         fill_in "user_email", with: 'example@email.com'
         fill_in "user_password", with: 'Asdf1234'
         has_button?("INICIAR SESIÓN")
-        click_on("Iniciar Sesión")
+        find("span", text: "Iniciar sesión", visible: false).click
       end
 
       expect(current_path).to eq(user_path("#{User.last.id}"))

@@ -1,5 +1,18 @@
 en:
   admin:
+    companies:
+      form:
+        name: "Name"
+        description: "Description"
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Password confirmation"
+        city: "City"
+        contact_name: "Contact name"
+        contact_cellphone: "Contact cellphone"
+        nit: "Nit"
+        contact_work_position: "Contact work position"
+        address: "Address"
     offers:
       form:
         title: "Título"

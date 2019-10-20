@@ -1,18 +1,53 @@
 ActiveAdmin.register Company do
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # Uncomment all parameters which should be permitted for assignment
-  #
-  # permit_params :name, :contact_name, :cellphone, :contact_cellphone, :nit, :address, :web_site, :contact_web_site, :description, :contact_work_position, :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :sign_in_count, :current_sign_in_at, :last_sign_in_at, :current_sign_in_ip, :last_sign_in_ip, :confirmation_token, :confirmed_at, :confirmation_sent_at, :unconfirmed_email, :failed_attempts, :unlock_token, :locked_at, :employees_range_id, :city_id
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:name, :contact_name, :cellphone, :contact_cellphone, :nit, :address, :web_site, :contact_web_site, :description, :contact_work_position, :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :sign_in_count, :current_sign_in_at, :last_sign_in_at, :current_sign_in_ip, :last_sign_in_ip, :confirmation_token, :confirmed_at, :confirmation_sent_at, :unconfirmed_email, :failed_attempts, :unlock_token, :locked_at, :employees_range_id, :city_id]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
+  controller do
+    def update_resource object, attributes
+      attributes.each do |attr|
+        if attr[:password].blank? and attr[:password_confirmation].blank?
+          attr.delete :password
+          attr.delete :password_confirmation
+        end
+      end
+
+      object.send :update, *attributes
+    end
+  end 
   
+  permit_params :name, :contact_name, :cellphone, :contact_cellphone, :nit, :address, :web_site, :contact_web_site, :description, :contact_work_position, :email, :password, :password_confirmation, :employees_range_id, :city_id
+  
+  index do
+    selectable_column
+    id_column
+    column :name
+    column :email
+    column :contact_name
+    column :contact_cellphone
+    actions
+  end
+
+  filter :name, label: 'Nombre'
+  filter :contact_name, label: 'Nombre'
+  filter :email
+  filter :city, label: 'Ciudad', as: :select, collection: City.all.map{|c| ["#{c.description}", c.id]} 
+
+  form do |f|
+    f.inputs do
+      f.input :name, label: t('admin.companies.form.name')
+      f.input :description, label: t('admin.companies.form.description')
+      f.input :email, label: t('admin.companies.form.email')
+      f.input :password, label: t('admin.companies.form.password')
+      f.input :password_confirmation, label: t('admin.companies.form.password_confirmation')
+      f.input :city_id, label: t('admin.companies.form.city'), as: :select, collection: City.all.map{|s| ["#{s.description}", s.id]}
+      unless f.object.new_record?
+        f.input :contact_name, label: t('admin.companies.form.contact_name')
+        f.input :contact_work_position, label: t('admin.companies.form.contact_work_position')
+        f.input :contact_cellphone, label: t('admin.companies.form.contact_cellphone')
+        f.input :nit, label: t('admin.companies.form.nit')
+        f.input :address, label: t('admin.companies.form.address')
+        f.input :web_site, label: t('admin.companies.form.web_site')
+      end
+    end
+    f.actions
+  end
+
 end

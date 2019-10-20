@@ -1,16 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const DisplayErrors = ({errors}) => {
-
+const DisplayErrors = ({ errors }) => {
   return (
     <>
       <div>
-        {
-          errors.map((error) =>
-            <span> {error} </span>
-          )
-        }
+        {errors.map(error => (
+          <span> {error} </span>
+        ))}
       </div>
     </>
   )

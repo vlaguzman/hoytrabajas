@@ -17,7 +17,8 @@ export default class Show extends React.Component {
       csrf_param,
       csrf_token,
       path,
-      t
+      t,
+      session_translation
     } = this.props
 
     return (
@@ -29,6 +30,7 @@ export default class Show extends React.Component {
           log_out_user={log_out_user}
           csrf_param={csrf_param}
           csrf_token={csrf_token}
+          session_translation={session_translation}
         >
           <div className="background">
             <div className="container-general">
@@ -54,5 +56,6 @@ Show.propTypes = {
   csrf_param: PropTypes.string.isRequired,
   csrf_token: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,
-  t: PropTypes.object.isRequired
+  t: PropTypes.object.isRequired,
+  session_translation: PropTypes.object.isRequired
 }

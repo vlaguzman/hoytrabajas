@@ -12,7 +12,16 @@ const CompaniesStepThree = ({ formInfo, csrf_name, csrf_token }) => {
   const {
     title,
     subtitle,
-    form: { buttons, nextPath, previousPath, action, method, type, formFields, errors }
+    form: {
+      buttons,
+      nextPath,
+      previousPath,
+      action,
+      method,
+      type,
+      formFields,
+      errors
+    }
   } = formInfo
 
   return (
@@ -21,9 +30,7 @@ const CompaniesStepThree = ({ formInfo, csrf_name, csrf_token }) => {
       <Row className="mt-10 mb-70 justify-content-center w-100 pb-50 mx-0 px-20">
         <Paper className="d-flex flex-column position-relative paper-width justify-content-around align-items-center pt-60 mb-70">
           <>
-            {errors &&
-              <DisplayErrors errors={errors} />
-            }
+            {errors && <DisplayErrors errors={errors} />}
             <FormTitle title={title} subtitle={subtitle} />
             <div className="w-80">
               <form className="forms__candidate" action={action} method="post">
@@ -63,7 +70,10 @@ CompaniesStepThree.propTypes = {
       action: PropTypes.string.isRequired,
       method: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,
-      formFields: PropTypes.object.isRequired
+      formFields: PropTypes.object.isRequired,
+      nextPath: PropTypes.string.isRequired,
+      previousPath: PropTypes.string.isRequired,
+      errors: PropTypes.object.isRequired
     })
   })
 }

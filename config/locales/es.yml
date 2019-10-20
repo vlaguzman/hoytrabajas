@@ -1,5 +1,19 @@
 es:
   admin:
+    companies:
+      form:
+        name: "Nombre"
+        description: "Descripción"
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Confirmación de password"
+        city: "Ciudad"
+        contact_name: "Nombre de contacto"
+        contact_cellphone: "Celular de contacto"
+        nit: "Nit"
+        contact_work_position: "Posición de la persona de contacto"
+        address: "Dirección"
+        website:  "Website"
     offers:
       form:
         title: "Título"
@@ -23,6 +37,12 @@ es:
       messages:
         record_invalid: "Error al grabar el objeto"
       models:
+        company:
+          attributes:
+            email:
+              blank: "Por favor ingrese un correo electrónico, este campo no puede estar en blanco" 
+            password:
+              blank: "Por favor ingrese el password, este campo no puede estar en blanco"
         offer:
           attributes:
             company:

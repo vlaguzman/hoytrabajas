@@ -85,13 +85,7 @@ RSpec.describe "When company fill the step three form", :type => :feature do
         )
         click_link_or_button('Siguiente')
 
-        offer = Offer.find_by(title: 'Oferta para el mejor desarrollador del mundo mundial')
-
-        expect(offer.job_category_id).not_to be_nil
-        expect(offer.work_mode_id).not_to be_nil
-        expect(offer.offer_type_id).not_to be_nil
-
-        expect(current_path).to eq(edit_companies_first_offer_step_four_path(offer.id))
+        expect(page).to have_content("Por favor ingrese un título a la oferta, este campo no puede estar en blanco")
       end
     end
   end

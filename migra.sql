@@ -22,6 +22,12 @@ insert into work_modes(id, description, created_at, updated_at) values(1, 'Gener
 -- Sexes
 insert into sexes(id, description, created_at, updated_at) values(1, 'Hombre', now(), now());
 
+-- Document types
+insert into document_types(id, description, created_at, updated_at) values(1, 'CC', now(), now());
+
+-- Educational degrees
+insert into educational_degrees(id, description, created_at, updated_at) values(1, 'Primaria', now(), now());
+
 -- Companies
 insert into companies(id, name, contact_name, cellphone, contact_cellphone, nit, address, web_site,
 contact_web_site, description, contact_work_position, email, created_at, updated_at, employees_range_id,
@@ -94,3 +100,23 @@ join (select post_id, case meta_value when '' then '0' else meta_value end as me
 join (select post_id, meta_value from hoytrabajas.wp_postmeta where meta_key='_job_description') as _job_description
   on _job_description.post_id=p.id
 where p.post_type='job_listing';
+
+-- Users
+insert into users(id, email, created_at, updated_at, name, last_name, sex_id, document_type_id, contract_type_id,
+work_mode_id, educational_degree_id, city_id)
+select distinct u.id, u.user_email as email,
+now() as created_at,
+now() as update_at,
+first_name.meta_value as name,
+last_name.meta_value as last_name,
+1 as sex_id,
+1 as document_type_id,
+1 as contract_type_id,
+1 as work_mode_id,
+1 as educational_degree_id,
+1 as city_id
+from hoytrabajas.wp_users as u
+join ( select meta_value, user_id from hoytrabajas.wp_usermeta where meta_key='first_name') as first_name
+  on first_name.user_id=u.id
+join ( select meta_value, user_id from hoytrabajas.wp_usermeta where meta_key='last_name') as last_name
+  on last_name.user_id=u.id;

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "sign up user", type: :feature do
+RSpec.describe "visit offer path", type: :feature do
 
   let(:visited_offer) { create(:offer)}
 
@@ -10,7 +10,7 @@ RSpec.describe "sign up user", type: :feature do
         visit offers_path(visited_offer)
 
         expect(page).to have_text(visited_offer.title)
-        end
+      end
     end
   end
 end

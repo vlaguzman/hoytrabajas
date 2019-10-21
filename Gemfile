@@ -11,6 +11,7 @@ gem 'webpacker'
 gem 'react-rails'
 gem 'jbuilder', '~> 2.7'
 gem 'devise'
+gem 'mailgun-ruby', '~>1.1.6'
 gem 'activeadmin'
 gem 'omniauth-facebook'
 gem 'omniauth-google'
@@ -28,6 +29,7 @@ gem 'ransack'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
+  gem 'letter_opener', '~> 1.7'
   gem 'ed25519', '~> 1.2'
   gem 'bcrypt_pbkdf', '~> 1'
   gem 'rspec-rails', '~> 4.0.0.beta2'

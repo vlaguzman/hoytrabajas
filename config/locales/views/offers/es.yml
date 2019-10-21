@@ -1,5 +1,10 @@
 es:
   offers:
+    index:
+      title: 'Encuentra la mejor oferta para ti'
+      btn_more_offers: 'ver más ofertas'
+      no_offers: 'No hay ningún trabajo en este momento'
+    see_offer: 'ver oferta'
     affinity: 'de afinindad'
     close: 'Cierre '
     aplications: ' aplicaciones'
@@ -20,5 +25,8 @@ es:
     employees: 'empleados'
     contact_company: 'Contactar con la empresa'
     related_offers: 'Ofertas Relacionadas'
-    button_active: 'Aplicar a esta oferta'
     button_disactive: 'Aplicado'
+    button_active: 'Aplicar a esta oferta'
+    btn_lg_apply_offer: 'Aplicar a esta oferta'
+    btn_apply_offer: 'Aplicar oferta'
+    btn_super_apply: 'Super Aplicación'

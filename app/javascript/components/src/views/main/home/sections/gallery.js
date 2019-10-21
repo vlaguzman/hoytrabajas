@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button'
 import Cards from './components/gallery_cards/gallery_card'
 import Carousel from '../../../../components/Carousel/CarouselRow'
 
-const CarruselBlock = cards => (
+const CarruselBlock = (cards, btn_more_offers) => (
   <div>
     <Carousel
       slidesToShowResp={1}
@@ -25,16 +25,16 @@ const CarruselBlock = cards => (
           style={{ borderRadius: '50px' }}
           href="/offers"
         >
-          ver más ofertas
+         { btn_more_offers }
         </Button>
       </Col>
     </Row>
   </div>
 )
 
-const Gallery = ({ offers, title: { main, highlighted, last } }) => {
+const Gallery = ({ offers, title: { main, highlighted, last }, offer_translations}) => {
   const cards = offers.map(o => {
-    return <Cards key={o['title']} offer={o} />
+    return <Cards key={o['title']} offer={o} offer_translations={offer_translations}/>
   })
   return (
     <div className="">
@@ -43,9 +43,9 @@ const Gallery = ({ offers, title: { main, highlighted, last } }) => {
         {last}
       </div>
       {cards.length >= 1 ? (
-        CarruselBlock(cards)
+        CarruselBlock(cards, offer_translations.index.btn_more_offers)
       ) : (
-        <h1 className="text-center">No hay ningún trabajo en este momento</h1>
+        <h1 className="text-center"> { offer_translations.index.no_offers }</h1>
       )}
     </div>
   )

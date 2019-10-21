@@ -77,6 +77,8 @@ RSpec.describe OffersPresenter do
       expect(response).to be_an_instance_of(Hash)
 
       expected_keys = [ 
+        :index,
+        :see_offer,
         :affinity,
         :close,
         :aplications,
@@ -97,8 +99,11 @@ RSpec.describe OffersPresenter do
         :employees,
         :contact_company,
         :related_offers,
+        :button_disactive,
         :button_active,
-        :button_disactive
+        :btn_lg_apply_offer,
+        :btn_apply_offer,
+        :btn_super_apply
       ]
 
       expect(response.keys).to eq(expected_keys)

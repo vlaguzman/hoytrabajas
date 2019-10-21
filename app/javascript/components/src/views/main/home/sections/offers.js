@@ -14,7 +14,8 @@ const Gallery = ({
   company_signed_in, 
   log_out_user,      
   log_out_companies, 
-  session_translation
+  session_translation,
+  offer_translations
 }) => {
   return (
     <div className="main-wrapper">
@@ -28,7 +29,7 @@ const Gallery = ({
         session_translation={session_translation}
       >
         <div className="">
-          <h1>Encuentra la mejor oferta para ti</h1>
+          <h1>{ offer_translations.index.title }</h1>
           <Carousel
             slidesToShowResp={1}
             centerMode
@@ -36,7 +37,11 @@ const Gallery = ({
             autoplay={false}
           >
             {offers.map(e => {
-              return <Cards key={e.title} offer={e} />
+              return <Cards 
+                        key={e.title} 
+                        offer={e}
+                        offer_translations={offer_translations} 
+                     />
             })}
           </Carousel>
           <Row className="justify-content-center align-items-center  my-30 ">
@@ -49,7 +54,7 @@ const Gallery = ({
                 style={{ borderRadius: '50px' }}
                 href="/offers"
               >
-                ver más ofertas
+                { offer_translations.index.btn_more_offers }
               </Button>
             </Col>
           </Row>

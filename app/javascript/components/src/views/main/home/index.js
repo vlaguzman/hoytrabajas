@@ -16,7 +16,7 @@ import Newsletter from './sections/newsletter'
 import { contenido } from './data'
 // import ScrollAnimation from 'react-animate-on-scroll'
 
-const HomePage = ( { offers, csrf_param, csrf_token, user_signed_in } ) => {
+const HomePage = ( { offers, csrf_param, csrf_token, user_signed_in, offer_translations } ) => {
   const {
     cover,
     premiun,
@@ -29,7 +29,7 @@ const HomePage = ( { offers, csrf_param, csrf_token, user_signed_in } ) => {
   return (
     <div className="home-wrapper">
       <CoverSection {...cover} {...{categorias}} {...{filterForm}} />
-      <GallerySection {...gallery} offers={offers} />
+      <GallerySection {...gallery} offers={offers} offer_translations ={offer_translations}/>
       <Introduccion/>
       <div className='w-100 position-absolute d-none d-lg-block clipping-shit' style={{height: '1000px', background: 'rgba(211, 211, 211, 0.3)'}} ></div>
       <Row className='mt-70 d-none d-lg-flex'></Row>

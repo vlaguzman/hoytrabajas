@@ -12,7 +12,7 @@ const HomePage = ({
   log_out_user,
   log_out_companies,
   session_translation,
-  offer_translations,
+  offer_translations
 }) => {
   return (
     <div className="main-wrapper">
@@ -40,5 +40,6 @@ HomePage.propTypes = {
   log_out_user: PropTypes.string.isRequired,
   log_out_companies: PropTypes.string.isRequired,
   session_translation: PropTypes.object.isRequired,
-  offers: PropTypes.object.isRequired
+  offers: PropTypes.object.isRequired,
+  offer_translations: ProyTypes.objetct.isRequired
 }

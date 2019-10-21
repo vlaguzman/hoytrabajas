@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import Content from './content'
 
-const GalleryCard = ({ offer, offer_translations}) => {
+const GalleryCard = ({ offer, offer_translations }) => {
   return (
     <Col className="cardOffer position-relative mb-30 justify-content-center align-items-center px-5">
       <div className="bg-buttons-carusel MuiPaper-rounded position-absolute d-flex flex-column align-items-center justify-content-center">
@@ -25,8 +25,12 @@ const GalleryCard = ({ offer, offer_translations}) => {
             size="large"
             color="primary"
           >
-            <span className="d-none d-lg-inline">{ offer_translations.btn_lg_apply_offer}</span>
-            <span className="d-lg-none">{ offer_translations.btn_apply_offer }</span>
+            <span className="d-none d-lg-inline">
+              {offer_translations.btn_lg_apply_offer}
+            </span>
+            <span className="d-lg-none">
+              {offer_translations.btn_apply_offer}
+            </span>
           </Button>
         </Row>
         <Row noGutters className="w-100 justify-content-center">
@@ -36,7 +40,9 @@ const GalleryCard = ({ offer, offer_translations}) => {
             className="w-70 bg-white my-10 text-primary fw-bold"
             size="large"
           >
-            <a href={`offers/${offer['id_offer']}`}>{ offer_translations.see_offer }</a>
+            <a href={`offers/${offer['id_offer']}`}>
+              {offer_translations.see_offer}
+            </a>
           </Button>
         </Row>
         <Row noGutters className="w-100 justify-content-center">
@@ -46,7 +52,7 @@ const GalleryCard = ({ offer, offer_translations}) => {
             className="w-70 my-10 blueGreen-btn fw-bold"
             size="large"
           >
-            { offer_translations.btn_super_apply }
+            {offer_translations.btn_super_apply}
           </Button>
         </Row>
         <Row noGutters className="w-100 justify-content-between px-50 mt-20">
@@ -129,5 +135,11 @@ GalleryCard.propTypes = {
         description: PropTypes.string.isRequired
       })
     })
+  }),
+  offer_translations: PropTypes.shape({
+    btn_lg_apply_offer: PropTypes.string.isRequired,
+    btn_apply_offer: PropTypes.string.isRequired,
+    see_offer: PropTypes.string.isRequired,
+    btn_super_apply: PropTypes.string.isRequired
   })
 }

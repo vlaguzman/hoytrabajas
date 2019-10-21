@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Row, Col } from 'reactstrap'
 import Button from '@material-ui/core/Button'
 import Cards from './components/gallery_cards/gallery_card'
@@ -25,16 +25,26 @@ const CarruselBlock = (cards, btn_more_offers) => (
           style={{ borderRadius: '50px' }}
           href="/offers"
         >
-         { btn_more_offers }
+          {btn_more_offers}
         </Button>
       </Col>
     </Row>
   </div>
 )
 
-const Gallery = ({ offers, title: { main, highlighted, last }, offer_translations}) => {
+const Gallery = ({
+  offers,
+  title: { main, highlighted, last },
+  offer_translations
+}) => {
   const cards = offers.map(o => {
-    return <Cards key={o['title']} offer={o} offer_translations={offer_translations}/>
+    return (
+      <Cards
+        key={o['title']}
+        offer={o}
+        offer_translations={offer_translations}
+      />
+    )
   })
   return (
     <div className="">
@@ -45,7 +55,7 @@ const Gallery = ({ offers, title: { main, highlighted, last }, offer_translation
       {cards.length >= 1 ? (
         CarruselBlock(cards, offer_translations.index.btn_more_offers)
       ) : (
-        <h1 className="text-center"> { offer_translations.index.no_offers }</h1>
+        <h1 className="text-center"> {offer_translations.index.no_offers}</h1>
       )}
     </div>
   )
@@ -60,5 +70,11 @@ Gallery.propTypes = {
     main: PropTypes.string.isRequired,
     highlighted: PropTypes.string.isRequired,
     last: PropTypes.string.isRequired
+  }),
+  offer_translations: PropTypes.shape({
+    index: PropTypes.shape({
+      no_offers: PropTypes.string.isRequired,
+      btn_more_offers: PropTypes.string.isRequired
+    })
   })
 }

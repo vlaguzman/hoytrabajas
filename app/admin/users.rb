@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  
+
   controller do
     def update_resource object, attributes
       attributes.each do |attr|
@@ -14,7 +14,7 @@ ActiveAdmin.register User do
   end
 
   permit_params :email, :name, :last_name, :password, :password_confirmation, :sex_id, :city_id, :about_me, :contact_number
- 
+
   index do
     selectable_column
     id_column
@@ -26,7 +26,7 @@ ActiveAdmin.register User do
 
   filter :name_or_last_name_cont, label: 'Nombre'
   filter :email
-  filter :sex, label: 'Genero', as: :select, collection: Sex.all.map{|s| ["#{s.description}", s.id]} 
+  filter :sex, label: 'Genero', as: :select, collection: Sex.all.map{|s| ["#{s.description}", s.id]}
 
   form do |f|
     f.inputs do
@@ -43,5 +43,5 @@ ActiveAdmin.register User do
       end
     end
     f.actions
-  end 
+  end
 end

@@ -1,4 +1,5 @@
 class Companies::FirstOffer::StepOnesController < ApplicationController
+  before_action :authenticate_company!
 
   def show
     company_presenter

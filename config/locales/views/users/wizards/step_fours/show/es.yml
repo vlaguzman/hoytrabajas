@@ -1,0 +1,18 @@
+es:
+  users:
+    wizards:
+      step_fours:
+        show:
+          title: "¡Búsquemos las mejores ofertas!"
+          subtitle: "Brinda a las empresas información valiosa sobre ti."
+          form:
+            buttons:
+              submit: "Siguiente"
+              next: "Saltar"
+              previous: "Regresar"
+            formFields:
+              state_id: "Departamento"
+              city_id: "Ciudad"
+              driving_licence_ids: "Licencia de conducción requerida"
+              vehicle_ids: "Cuentas con algún tipo de vehículo"
+              travel_disponibility: "Disponibilidad para trabajar en otra ciudades"

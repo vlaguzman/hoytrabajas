@@ -1,7 +1,7 @@
 ActiveAdmin.register Offer do
 
   permit_params :title, :address, :cellphone, :description, :vacancies_quantity, :close_date, :immediate_start, :required_experience, :release_date, :status, :city_id, :job_category_id, :offer_type_id, :contract_type_id, :work_mode_id, :sex_id, :company_id
-  
+
   index do
     selectable_column
     id_column

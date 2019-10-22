@@ -1,4 +1,3 @@
-import React from 'react'
 import Loadable from 'react-loadable'
 import Loading from '../components/Layout/Loading'
 
@@ -104,6 +103,21 @@ export const DynamicUsersWizardsStepOne = Loadable({
 
 export const DynamicUsersWizardsStepTwo = Loadable({
   loader: () => import('./users/wizards/step_twos/show'),
+  loading: Loading
+})
+
+export const DynamicUsersWizardsStepThree = Loadable({
+  loader: () => import('./users/wizards/step_threes/show'),
+  loading: Loading
+})
+
+export const DynamicUsersWizardsStepFour = Loadable({
+  loader: () => import('./users/wizards/step_fours/show'),
+  loading: Loading
+})
+
+export const DynamicUsersWizardsStepFive = Loadable({
+  loader: () => import('./users/wizards/step_fives/show'),
   loading: Loading
 })
 

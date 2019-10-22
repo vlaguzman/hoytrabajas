@@ -22,7 +22,7 @@ RSpec.describe "Overall navigation" do
         expect(current_path).to eq(root_path)
       end
 
-      it "should  viit ‘FAQ’ page from home page", js: true do
+      it "should visit ‘FAQ’ page from home page", js: true do
         visit root_path
 
         expect(page).to have_link("FAQs", href: faqs_path)

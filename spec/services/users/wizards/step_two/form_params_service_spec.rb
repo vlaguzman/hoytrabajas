@@ -60,7 +60,7 @@ RSpec.describe Users::Wizards::StepTwo::FormParamsService do
       }
 
       response = subject.new(
-        object: user,
+        errors: user.errors,
         form_type: :user,
         template_translation_path: "users.wizards.step_twos.show",
         action_path: "/users/wizards/step_two" ,

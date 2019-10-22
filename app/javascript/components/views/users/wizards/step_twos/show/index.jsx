@@ -22,7 +22,7 @@ const UsersWizardsStepTwoPage = props => {
 export default UsersWizardsStepTwoPage
 
 UsersWizardsStepTwoPage.propTypes = {
-  csrf_name: PropTypes.string.isRequired,
+  csrf_param: PropTypes.string.isRequired,
   csrf_token: PropTypes.string.isRequired,
   log_out_companies: PropTypes.string.isRequired,
   company_signed_in: PropTypes.bool.isRequired,

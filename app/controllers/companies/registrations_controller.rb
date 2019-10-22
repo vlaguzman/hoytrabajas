@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 class Companies::RegistrationsController < Devise::RegistrationsController
-  protected  
+  before_action :authenticate_company!
+
+  protected
 
   def after_sign_up_path_for(resource)
     resource.save

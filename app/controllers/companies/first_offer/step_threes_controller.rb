@@ -1,4 +1,5 @@
 class Companies::FirstOffer::StepThreesController < ApplicationController
+  before_action :authenticate_company!
 
   def new
     offer = Offer.new

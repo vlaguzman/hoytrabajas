@@ -68,7 +68,7 @@ export default FormButtons
 
 FormButtons.propTypes = {
   prevPath: PropTypes.string,
-  nextPath: PropTypes.string.isRequired,
+  nextPath: PropTypes.string,
   buttons: PropTypes.shape({
     previous: PropTypes.string,
     next: PropTypes.string,

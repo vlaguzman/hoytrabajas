@@ -20,30 +20,6 @@ RSpec.describe "users/wizards/step_threes/show" do
 
     render
 
-    #title
-    expect(rendered).to match(/Busquemos las mejores oferta/)
-    expect(rendered).to match(/Brinda a las empresas información valiosa sobre ti./)
-
-    expect(rendered).to render_template(partial: 'shared/_form_errors')
-
-    #form
-    expect(rendered).to have_tag(:form, with: { id: "step_three" }) do
-      with_tag(:label, text: "Elije las categorías en las que deseas buscar trabajo")
-      with_select("user[curriculum_vitae][job_category_ids][]")
-
-      with_tag(:label, text: "Tipo de oferta")
-      with_select("user[curriculum_vitae][offer_type_ids][]")
-
-      with_tag(:label, text: "Acuerdo legal")
-      with_select("user[curriculum_vitae][contract_type_id]")
-
-      with_tag(:label, text: "Modalidad de trabajo")
-      with_select("user[curriculum_vitae][work_mode_ids][]")
-
-      with_tag(:label, text: "Disponibilidad para trabajar")
-      with_select("user[curriculum_vitae][labor_disponibility_id]")
-
-      with_submit("siguiente")
-    end
+    expect(rendered).to have_tag("div", with: { "data-react-class": "views/users/wizards/step_threes/show"})
   end
 end

@@ -1,23 +1,29 @@
 class Users::Wizards::StepFivePresenter < ApplicationPresenter
 
-  def available_work_days_list
-    AvailableWorkDay.all.map { |object| [object.description, object.id] }
+  def form_information
+    Users::Wizards::StepFive::FormParamsService.new(
+      errors: source.errors,
+      form_type: :user,
+      template_translation_path: "users.wizards.step_fives.show",
+      action_path: users_wizards_step_five_path,
+      previous_path: users_wizards_step_four_path,
+      next_path: users_wizards_step_six_path,
+      form_method: :put
+    ).form_params
   end
 
-  def working_days_list
-    WorkingDay.all.map { |object| [object.description, object.id] }
+  private
+
+  def users_wizards_step_five_path
+    rails_routes.users_wizards_step_five_path
   end
 
-  def range_types_list
-    [["Rango", 1], ["Fijo", 2]]
+  def users_wizards_step_six_path
+    rails_routes.users_wizards_step_six_path
   end
 
-  def currencies_list
-    Currency.all.map { |object| [object.description, object.id] }
-  end
-
-  def salary_periods_list
-    SalaryPeriod.all.map { |object| [object.description, object.id] }
+  def users_wizards_step_four_path
+    rails_routes.users_wizards_step_four_path
   end
 
 end

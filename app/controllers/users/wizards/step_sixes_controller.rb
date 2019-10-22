@@ -1,4 +1,5 @@
 class Users::Wizards::StepSixesController < ApplicationController
+  before_action :authenticate_user!
 
   def show
     user_presenter

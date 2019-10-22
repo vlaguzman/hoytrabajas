@@ -60,7 +60,7 @@ RSpec.describe "fill the principal candidate user data", :type => :feature do
       fill_in "candidate[identification_number]", :with => "1063558224"
       fill_in "candidate[contact_number]", :with => "3183638789"
 
-      find("span", text: "SIGUIENTE").click
+      find("span", text: /SIGUIENTE/).click
 
       expect(User.count).to eq(1)
       expect(CurriculumVitae.count).to eq(1)
@@ -102,7 +102,7 @@ RSpec.describe "fill the principal candidate user data", :type => :feature do
 
           visit users_wizards_step_two_path
 
-          find("span", text: "Regresar").click
+          find("span", text: /Regresar/).click
 
           expect(current_path).to eq(users_wizards_step_one_path)
         end

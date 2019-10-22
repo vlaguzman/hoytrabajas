@@ -11,10 +11,10 @@ ActiveAdmin.register Company do
 
       object.send :update, *attributes
     end
-  end 
-  
+  end
+
   permit_params :name, :contact_name, :cellphone, :contact_cellphone, :nit, :address, :web_site, :contact_web_site, :description, :contact_work_position, :email, :password, :password_confirmation, :employees_range_id, :city_id
-  
+
   index do
     selectable_column
     id_column
@@ -28,7 +28,7 @@ ActiveAdmin.register Company do
   filter :name, label: 'Nombre'
   filter :contact_name, label: 'Nombre'
   filter :email
-  filter :city, label: 'Ciudad', as: :select, collection: City.all.map{|c| ["#{c.description}", c.id]} 
+  filter :city, label: 'Ciudad', as: :select, collection: City.all.map{|c| ["#{c.description}", c.id]}
 
   form do |f|
     f.inputs do

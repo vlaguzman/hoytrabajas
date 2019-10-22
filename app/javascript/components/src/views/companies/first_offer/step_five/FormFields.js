@@ -4,9 +4,14 @@ import { Row, Col } from 'reactstrap'
 import Select from '../../../../components/FormsLayout/Fields/Select'
 import SelectChip from '../../../../components/FormsLayout/Fields/SelectChip'
 import StandardInput from '../../../../components/FormsLayout/Fields/StandardInput'
+import {
+  handleDeleteChip,
+  handleChange
+} from '../../../../components/FormsLayout/handleFunctions'
+
 
 const FormFields = props => {
-  const { formFields, type } = props
+  const { formFields } = props
   const {
     offer_salary_id = null,
     currency_id = null,
@@ -29,49 +34,6 @@ const FormFields = props => {
     [job_aid_id.name]: job_aid_id.current_value || ''
   })
 
-  const handleChange = (e, inputName, isMultiple = false) => {
-    if (e.persist) e.persist()
-    if (isMultiple) {
-      const isArray = Array.isArray(formValues[inputName])
-      if (isArray) {
-        const arrayHasItem = formValues[inputName].includes(e.target.value)
-        if (!arrayHasItem) {
-          const merged = [...formValues[inputName], e.target.value]
-          setFormValues(prevFormValues => ({
-            ...prevFormValues,
-            [inputName]: merged
-          }))
-        }
-      } else {
-        setFormValues(prevFormValues => ({
-          ...prevFormValues,
-          [inputName]: [e.target.value]
-        }))
-      }
-    } else {
-      setFormValues(prevFormValues => ({
-        ...prevFormValues,
-        [inputName]: e.target.value
-      }))
-    }
-  }
-
-  const handleDeleteChip = (id, inputName, isMultiple) => {
-    if (isMultiple) {
-      const newChips = [...formValues[inputName]]
-      newChips.splice(newChips.indexOf(id), 1)
-      setFormValues(prevFormValues => ({
-        ...prevFormValues,
-        [inputName]: newChips
-      }))
-    } else {
-      setFormValues(prevFormValues => ({
-        ...prevFormValues,
-        [inputName]: ''
-      }))
-    }
-  }
-
   const inputClassname = 'my-30 animated fadeIn inputField'
 
   const controlledInputsClassname =
@@ -82,7 +44,7 @@ const FormFields = props => {
       <Col className={controlledInputsClassname} xs={12} lg={3}>
         <Select
           inputValue={formValues[offer_salary_id.name]}
-          handleChange={handleChange}
+          handleChange={handleChange(formValues, setFormValues)}
           name={offer_salary_id.name}
           label={offer_salary_id.label}
           selectOptions={offer_salary_id.values}
@@ -98,7 +60,7 @@ const FormFields = props => {
       <Col className={controlledInputsClassname} xs={12} lg={2}>
         <Select
           inputValue={formValues[currency_id.name]}
-          handleChange={handleChange}
+          handleChange={handleChange(formValues, setFormValues)}
           name={currency_id.name}
           selectOptions={currency_id.values}
           isRequired={currency_id.isRequired || false}
@@ -113,7 +75,7 @@ const FormFields = props => {
       <Col className={controlledInputsClassname} style={{ flex: 1 }}>
         <StandardInput
           inputValue={formValues[from.name]}
-          handleChange={handleChange}
+          handleChange={handleChange(formValues, setFormValues)}
           name={from.name}
           placeholder={from.placeholder || ''}
           style={{ width: '100%' }}
@@ -129,7 +91,7 @@ const FormFields = props => {
         <Col className={`pr-0 ${controlledInputsClassname}`} xs={12} lg={2}>
           <StandardInput
             inputValue={formValues[to.name]}
-            handleChange={handleChange}
+            handleChange={handleChange(formValues, setFormValues)}
             name={to.name}
             placeholder={to.placeholder || ''}
             beforeLabel={to.beforeLabel || ''}
@@ -145,7 +107,7 @@ const FormFields = props => {
       <Col className={controlledInputsClassname} xs={12} lg={3}>
         <Select
           inputValue={formValues[salary_type_id.name]}
-          handleChange={handleChange}
+          handleChange={handleChange(formValues, setFormValues)}
           name={salary_type_id.name}
           label={salary_type_id.label}
           selectOptions={salary_type_id.values}
@@ -161,8 +123,8 @@ const FormFields = props => {
       <Col className={inputClassname} xs={12} lg={6}>
         <SelectChip
           inputValue={formValues[available_work_day_id.name]}
-          handleChange={handleChange}
-          handleDeleteChip={handleDeleteChip}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={available_work_day_id.name}
           label={available_work_day_id.label}
           selectOptions={available_work_day_id.values}
@@ -179,8 +141,8 @@ const FormFields = props => {
       <Col className={inputClassname} xs={12} lg={6}>
         <SelectChip
           inputValue={formValues[working_day_id.name]}
-          handleChange={handleChange}
-          handleDeleteChip={handleDeleteChip}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={working_day_id.name}
           label={working_day_id.label}
           selectOptions={working_day_id.values}
@@ -197,8 +159,8 @@ const FormFields = props => {
       <Col className={inputClassname} xs={12}>
         <SelectChip
           inputValue={formValues[job_aid_id.name]}
-          handleChange={handleChange}
-          handleDeleteChip={handleDeleteChip}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={job_aid_id.name}
           label={job_aid_id.label}
           selectOptions={job_aid_id.values}
@@ -227,7 +189,6 @@ const FormFields = props => {
 export default FormFields
 
 FormFields.propTypes = {
-  type: PropTypes.oneOf(['user', 'company']),
   formFields: PropTypes.shape({
     offer_salary_id: PropTypes.object,
     currency_id: PropTypes.object,

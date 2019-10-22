@@ -10,7 +10,6 @@ import {
   FormChangeContext
 } from '../../../../../context/formContext'
 
-
 const FormButtons = props => {
   const { scrollAction, formSection, formName, next, prev } = props
   const dispatch = useContext(DispatchContext)

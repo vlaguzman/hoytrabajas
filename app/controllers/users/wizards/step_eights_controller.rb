@@ -1,4 +1,5 @@
 class Users::Wizards::StepEightsController < ApplicationController
+  before_action :authenticate_user!
 
   def show
     user_presenter

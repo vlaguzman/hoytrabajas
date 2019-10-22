@@ -1,22 +1,30 @@
 class Users::Wizards::StepFourPresenter < ApplicationPresenter
 
-  def states_list
-    State.all.map { |object| [object.description, object.id] }
+  def form_information
+    Users::Wizards::StepFour::FormParamsService.new(
+      errors: source.errors,
+      form_type: :user,
+      template_translation_path: "users.wizards.step_fours.show",
+      action_path: users_wizards_step_four_path,
+      previous_path: users_wizards_step_three_path,
+      next_path: users_wizards_step_five_path,
+      form_method: :put
+    ).form_params
+
   end
 
-  def cities_list
-    City.all.map { |object| [object.description, object.id] }
+  private
+
+  def users_wizards_step_five_path
+    rails_routes.users_wizards_step_five_path
   end
 
-  def vehicles_list
-    Vehicle.all.map { |object| [object.description, object.id] }
+  def users_wizards_step_three_path
+    rails_routes.users_wizards_step_three_path
   end
 
-  def driving_licences_list
-    DrivingLicence.all.map { |object| [object.description, object.id] }
+  def users_wizards_step_four_path
+    rails_routes.users_wizards_step_four_path
   end
 
-  def work_modes_list
-    WorkMode.all.map { |object| [object.description, object.id] }
-  end
 end

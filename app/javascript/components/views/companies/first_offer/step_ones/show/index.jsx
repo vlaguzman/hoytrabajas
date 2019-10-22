@@ -16,13 +16,13 @@ const CompaniesStepOnePage = props => {
 
   return (
     <AppLayout
-      csrf_param        = {csrf_param}
-      csrf_token        = {csrf_token}
-      user_signed_in    = {user_signed_in}
-      company_signed_in = {company_signed_in}
-      log_out_user      = {log_out_user}
-      log_out_companies = {log_out_companies} 
-      session_translation={props.session_translation}
+      csrf_param          = {csrf_param}
+      csrf_token          = {csrf_token}
+      user_signed_in      = {user_signed_in}
+      company_signed_in   = {company_signed_in}
+      log_out_user        = {log_out_user}
+      log_out_companies   = {log_out_companies}
+      session_translation = {session_translation}
     >
       <DynamicCompaniesStepOne {...props} />
     </AppLayout>

@@ -1,4 +1,5 @@
 class Users::Wizards::StepOnesController < ApplicationController
+  before_action :authenticate_user!
 
   def show
     @user = Users::Wizards::StepOnePresenter.new(current_user)

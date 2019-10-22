@@ -1,7 +1,7 @@
 = react_component('pages/detalle_oferta',
   { log_out_companies: destroy_company_session_path,
     translationOffer: @offer.component_translations,
-    csrf_name: request_forgery_protection_token,
+    csrf_param: request_forgery_protection_token,
     relatedOffers: @offer.related_offer_show,
     log_out_user: destroy_user_session_path,
     session_translation: I18n.t("session"),

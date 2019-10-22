@@ -1,6 +1,6 @@
 class Companies::FirstOffer::StepOne::FormParamsService < BaseFormWizardsService
 
-  INPUT_FIELDS_KEY = [
+  INPUT_FIELDS_KEYS = [
     :name,
     :contact_name,
     :contact_work_position,

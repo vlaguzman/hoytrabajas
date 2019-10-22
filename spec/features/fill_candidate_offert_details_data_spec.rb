@@ -53,13 +53,16 @@ RSpec.describe "fill the canditate user data", :type => :feature do
     end
 
     let!(:contract_type) { create(:contract_type, description: "Indiferente") }
-    let!(:work_mode) { create(:work_mode, description: "Indiferente") }
+    let!(:work_mode) do
+      create(:work_mode, description: "Indiferente")
+      create(:work_mode, description: "Remoto")
+    end
     let!(:labor_disponibility) { create(:labor_disponibility, description: "Inmediato") }
     let!(:state) { create(:state, description: 'Bogota') }
     let!(:city) { create(:city, description: 'Bogota') }
     let!(:currency) { create(:currency) }
 
-    it "should see the offert info to fill and the next buttons" do
+    it "should see the offert info to fill and the next buttons", js: true do
       #Create a user with the principal information - Use a factory
       user = create(:user,:first_time_candidate,
         name: "ELcan",
@@ -76,72 +79,93 @@ RSpec.describe "fill the canditate user data", :type => :feature do
       #Visit the rute of the profile user creation - step 3
       visit users_wizards_step_three_path
 
-      expect(page).to have_text(/Busquemos las mejores ofertas/)
+      expect(page).to have_text(/¡Búsquemos las mejores ofertas!/)
 
-      within '#step_three' do
-        select('seguridad', from: "user[curriculum_vitae][job_category_ids][]") #it can be more than one option
-        select('logistica y transporte', from: "user[curriculum_vitae][job_category_ids][]")
+      find("div[id='select-user[curriculum_vitae][job_category_ids][]", visible: false).click
+      find("li", text: "logistica y transporte").click
 
-        select('Tiempo completo', from: 'user[curriculum_vitae][offer_type_ids][]') #it can be more than one option
-        select('Medio tiempo', from: 'user[curriculum_vitae][offer_type_ids][]')
+      find("div[id='select-user[curriculum_vitae][job_category_ids][]", visible: false).click
+      find("li", text: "seguridad").click
 
-        select('Indiferente', from: 'user[curriculum_vitae][contract_type_id]')
+      find("div[id='select-user[curriculum_vitae][offer_type_ids][]", visible: false).click
+      find("li", text: "Tiempo completo").click
 
-        select('Indiferente', from:'user[curriculum_vitae][work_mode_ids][]') #it can be more than one option
+      find("div[id='select-user[curriculum_vitae][offer_type_ids][]", visible: false).click
+      find("li", text: "Medio tiempo").click
 
-        select('Inmediato', from: 'user[curriculum_vitae][labor_disponibility_id]')
+      find("div[id='select-user[curriculum_vitae][contract_type_id]", visible: false).click
+      find("li", text: "Indiferente").click
 
-        click_button 'siguiente'
-      end
+      find("div[id='select-user[curriculum_vitae][work_mode_ids][]", visible: false).click
+      find("li", text: "Indiferente").click
+
+      find("div[id='select-user[curriculum_vitae][work_mode_ids][]", visible: false).click
+      find("li", text: "Remoto").click
+
+      find("div[id='select-user[curriculum_vitae][labor_disponibility_id]", visible: false).click
+      find("li", text: "Inmediato").click
+
+      find( "span", text: /SIGUIENTE/).click
 
       updated_cv = user.curriculum_vitaes.first
       expect(updated_cv.labor_disponibility.description).to eq('Inmediato')
       expect(updated_cv.contract_type.description).to eq('Indiferente')
 
-      expect(page).to have_text(/Busquemos las mejores ofertas/)
+      expect(page).to have_text(/¡Búsquemos las mejores ofertas!/)
 
-      within '#step_four' do
-        select('Bogota', from: "states")
+      find("div[id='select-user[state_id]", visible: false).click
+      find("li", text: "Bogota").click
 
-        check('user[curriculum_vitae][travel_disponibility]')
+      find("span", text: "Disponibilidad para trabajar en otra ciudades").click
 
-        select('Bogota', from: "user[city_id]")
+      find("div[id='select-user[city_id]", visible: false).click
+      find("li", text: "Bogota").click
 
-        #TODO add 'localidades' when will be required
-        #page.select 'Usaquen', from: 'job_location' We wont use yet
+      #TODO add 'localidades' when will be required
+      #page.select 'Usaquen', from: 'job_location' We wont use yet
 
-        select('Moto', from: "user[vehicle_ids][]")
-        select('Carro', from: "user[vehicle_ids][]")
+      find("div[id='select-user[vehicle_ids][]", visible: false).click
+      find("li", text: "Moto").click
 
-        select('B1', from: "user[driving_licence_ids][]")
-        select('B2', from: "user[driving_licence_ids][]")
+      find("div[id='select-user[vehicle_ids][]", visible: false).click
+      find("li", text: "Carro").click
 
-        click_button 'siguiente'
-      end
+      find("div[id='select-user[driving_licence_ids][]", visible: false).click
+      find("li", text: "B2").click
+
+      find( "span", text: /SIGUIENTE/).click
 
       user.reload
       expect(user.city.description).to eq('Bogota')
 
-      expect(page).to have_text(/Busquemos las mejores ofertas/)
+      expect(page).to have_text(/¡Búsquemos las mejores ofertas!/)
 
-      within '#step_five' do
-        select('jueves', from: "user[curriculum_vitae][available_work_day_ids][]")
-        select('fines de semana', from: "user[curriculum_vitae][available_work_day_ids][]")
+      find("div[id='select-user[curriculum_vitae][available_work_day_ids][]", visible: false).click
+      find("li", text: "jueves").click
 
-        select('Mañana 7am-12pm', from: "user[curriculum_vitae][working_day_ids][]")
-        select('Noche 10pm-3am', from: "user[curriculum_vitae][working_day_ids][]")
+      find("div[id='select-user[curriculum_vitae][available_work_day_ids][]", visible: false).click
+      find("li", text: "fines de semana").click
 
-        select 'Rango', from: 'user[curriculum_vitae][curriculum_vitae_salary][range_type]'
 
-        select('COP', from: 'user[curriculum_vitae][curriculum_vitae_salary][currency_id]')
+      find("div[id='select-user[curriculum_vitae][working_day_ids][]", visible: false).click
+      find("li", text: "Mañana 7am-12pm").click
 
-        fill_in "user[curriculum_vitae][curriculum_vitae_salary][from]", :with => '4000'
-        fill_in "user[curriculum_vitae][curriculum_vitae_salary][to]", :with => '10000'
+      find("div[id='select-user[curriculum_vitae][working_day_ids][]", visible: false).click
+      find("li", text: "Noche 10pm-3am").click
 
-        select('Diario', from: 'user[curriculum_vitae][curriculum_vitae_salary][salary_period_id]')
+      find("div[id='select-user[curriculum_vitae][curriculum_vitae_salary][range_type]", visible: false).click
+      find("li", text: "Rango").click
 
-        click_button 'siguiente'
-      end
+      find("div[id='select-user[curriculum_vitae][curriculum_vitae_salary][currency_id]", visible: false).click
+      find("li", text: "COP").click
+
+      fill_in "user[curriculum_vitae][curriculum_vitae_salary][from]", :with => '4000'
+      fill_in "user[curriculum_vitae][curriculum_vitae_salary][to]", :with => '10000'
+
+      find("div[id='select-user[curriculum_vitae][curriculum_vitae_salary][salary_period_id]", visible: false).click
+      find("li", text: "Diario").click
+
+      find( "span", text: /SIGUIENTE/).click
 
       expect(page).to have_text(/Déjanos conocer tus habilidades/)
       #IMPORTANT - Here you must validate the creation of the tables with the information filled by user

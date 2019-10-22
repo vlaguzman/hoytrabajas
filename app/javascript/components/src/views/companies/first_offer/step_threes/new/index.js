@@ -8,7 +8,7 @@ import FormTitle from '../../../../../components/FormsLayout/FormTitle'
 import FormButtons from '../../../../../components/FormsLayout/FormButtons'
 import FormFields from './FormFields'
 
-const CompaniesStepThree = ({ formInfo, csrf_name, csrf_token }) => {
+const CompaniesStepThree = ({ formInfo, csrf_param, csrf_token }) => {
   const {
     title,
     subtitle,
@@ -35,11 +35,11 @@ const CompaniesStepThree = ({ formInfo, csrf_name, csrf_token }) => {
             <div className="w-80">
               <form className="forms__candidate" action={action} method="post">
                 <FormFields type={type} formFields={formFields} />
-                <input type="hidden" name={csrf_name} value={csrf_token} />
+                <input type="hidden" name={csrf_param} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />
                 <FormButtons
                   nextPath={nextPath}
-                  previousPath={previousPath}
+                  prevPath={previousPath}
                   buttons={buttons}
                 />
               </form>
@@ -54,7 +54,7 @@ const CompaniesStepThree = ({ formInfo, csrf_name, csrf_token }) => {
 export default CompaniesStepThree
 
 CompaniesStepThree.propTypes = {
-  csrf_name: PropTypes.string,
+  csrf_param: PropTypes.string,
   csrf_token: PropTypes.string,
   formInfo: PropTypes.shape({
     title: PropTypes.string.isRequired,
@@ -63,7 +63,7 @@ CompaniesStepThree.propTypes = {
       buttons: PropTypes.shape({
         submit: PropTypes.string.isRequired,
         next: PropTypes.string.isRequired,
-        nextPath: PropTypes.string.isRequired,
+        nextPath: PropTypes.string,
         previous: PropTypes.string.isRequired,
         previousPath: PropTypes.string.isRequired
       }),
@@ -71,9 +71,9 @@ CompaniesStepThree.propTypes = {
       method: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,
       formFields: PropTypes.object.isRequired,
-      nextPath: PropTypes.string.isRequired,
-      previousPath: PropTypes.string.isRequired,
-      errors: PropTypes.object.isRequired
+      nextPath: PropTypes.string,
+      previousPath: PropTypes.string,
+      errors: PropTypes.object
     })
   })
 }

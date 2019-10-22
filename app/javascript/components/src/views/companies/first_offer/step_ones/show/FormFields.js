@@ -3,9 +3,13 @@ import PropTypes from 'prop-types'
 import { Row, Col } from 'reactstrap'
 import StandardInput from '../../../../../components/FormsLayout/Fields/StandardInput'
 import SelectChip from '../../../../../components/FormsLayout/Fields/SelectChip'
+import {
+  handleDeleteChip,
+  handleChange
+} from '../../../../../components/FormsLayout/handleFunctions'
 
 const FormFields = props => {
-  const { formFields, type } = props
+  const { formFields } = props
   const {
     name = null,
     industry_id = null,
@@ -24,49 +28,6 @@ const FormFields = props => {
     [employees_range_id.name]: ''
   })
 
-  const handleChange = (e, inputName, isMultiple = false) => {
-    e.persist()
-    if (isMultiple) {
-      const isArray = Array.isArray(formValues[inputName])
-      if (isArray) {
-        const arrayHasItem = formValues[inputName].includes(e.target.value)
-        if (!arrayHasItem) {
-          const merged = [...formValues[inputName], e.target.value]
-          setFormValues(prevFormValues => ({
-            ...prevFormValues,
-            [inputName]: merged
-          }))
-        }
-      } else {
-        setFormValues(prevFormValues => ({
-          ...prevFormValues,
-          [inputName]: [e.target.value]
-        }))
-      }
-    } else {
-      setFormValues(prevFormValues => ({
-        ...prevFormValues,
-        [inputName]: e.target.value
-      }))
-    }
-  }
-
-  const handleDeleteChip = (id, inputName, isMultiple) => {
-    if (isMultiple) {
-      const newChips = [...formValues[inputName]]
-      newChips.splice(newChips.indexOf(id), 1)
-      setFormValues(prevFormValues => ({
-        ...prevFormValues,
-        [inputName]: newChips
-      }))
-    } else {
-      setFormValues(prevFormValues => ({
-        ...prevFormValues,
-        [inputName]: ''
-      }))
-    }
-  }
-
   const inputClassname = 'my-30 animated fadeIn inputField'
 
   const nameField = useMemo(
@@ -75,7 +36,7 @@ const FormFields = props => {
         <StandardInput
           inputValue={formValues[name.name]}
           inputName={name.name}
-          handleChange={handleChange}
+          handleChange={handleChange(formValues, setFormValues)}
           name={name.name}
           label={name.label}
         />
@@ -90,8 +51,8 @@ const FormFields = props => {
         <SelectChip
           inputValue={formValues[industry_id.name]}
           inputName={industry_id.name}
-          handleChange={handleChange}
-          handleDeleteChip={handleDeleteChip}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={industry_id.name}
           label={industry_id.label}
           selectOptions={industry_id.values}
@@ -108,7 +69,7 @@ const FormFields = props => {
         <StandardInput
           inputValue={formValues[contact_name.name]}
           inputName={contact_name.name}
-          handleChange={handleChange}
+          handleChange={handleChange(formValues, setFormValues)}
           name={contact_name.name}
           label={contact_name.label}
         />
@@ -128,7 +89,7 @@ const FormFields = props => {
         <StandardInput
           inputValue={formValues[contact_work_position.name]}
           inputName={contact_work_position.name}
-          handleChange={handleChange}
+          handleChange={handleChange(formValues, setFormValues)}
           name={contact_work_position.name}
           label={contact_work_position.label}
         />
@@ -148,7 +109,7 @@ const FormFields = props => {
         <StandardInput
           inputValue={formValues[contact_cellphone.name]}
           inputName={contact_cellphone.name}
-          handleChange={handleChange}
+          handleChange={handleChange(formValues, setFormValues)}
           name={contact_cellphone.name}
           label={contact_cellphone.label}
         />
@@ -168,8 +129,8 @@ const FormFields = props => {
         <SelectChip
           inputValue={formValues[employees_range_id.name]}
           inputName={employees_range_id.name}
-          handleChange={handleChange}
-          handleDeleteChip={handleDeleteChip}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={employees_range_id.name}
           label={employees_range_id.label}
           selectOptions={employees_range_id.values}
@@ -195,7 +156,6 @@ const FormFields = props => {
 export default FormFields
 
 FormFields.propTypes = {
-  type: PropTypes.oneOf(['user', 'company']),
   formFields: PropTypes.shape({
     name: PropTypes.object,
     industry_id: PropTypes.object,

@@ -1,6 +1,6 @@
 class Users::Wizards::StepOne::FormParamsService < BaseFormWizardsService
 
-  INPUT_FIELDS_KEY = [
+  INPUT_FIELDS_KEYS = [
     :name,
     :last_name,
     :identification_number,

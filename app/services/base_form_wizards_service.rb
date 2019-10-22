@@ -1,13 +1,13 @@
 class BaseFormWizardsService
 
-  INPUT_FIELDS_KEY = []
+  INPUT_FIELDS_KEYS = []
   SELECT_FIELDS_KEYS = []
   MULTIPLE_SELECT_FIELDS_KEYS = []
 
-  attr_accessor :object, :form_type, :template_translation_path, :action_path, :previous_path, :next_path, :form_method
+  attr_accessor :errors, :form_type, :template_translation_path, :action_path, :previous_path, :next_path, :form_method
 
   def initialize(
-    object: nil,
+    errors: nil,
     form_type: :user,
     template_translation_path: nil,
     action_path: nil,
@@ -15,7 +15,7 @@ class BaseFormWizardsService
     next_path: nil,
     form_method: :post)
 
-    @object                    = object
+    @errors                    = errors
     @form_type                 = form_type
     @template_translation_path = template_translation_path
     @action_path               = action_path
@@ -54,18 +54,25 @@ class BaseFormWizardsService
   end
 
   def errors_messages
-    object.errors.present? ? {errors: object.errors.messages.map{|_, error_messages| error_messages}} : {}
+    errors.present? ? {errors: errors.messages.map{|_, error_messages| error_messages}} : {}
   end
 
-  def fields_builder
-    {}
+  def fields_builder(*other_fields)
+
+    object = {}
     .merge(input_fields_builder)
     .merge(select_fields_builder)
     .merge(multiple_select_fields_builder)
+
+    if other_fields.present?
+      other_fields.inject(object) { |object, new_object| object.merge(new_object) }
+    else
+      object
+    end
   end
 
   def input_fields
-    self.class::INPUT_FIELDS_KEY
+    self.class::INPUT_FIELDS_KEYS
   end
 
   def select_fields
@@ -76,24 +83,24 @@ class BaseFormWizardsService
     self.class::MULTIPLE_SELECT_FIELDS_KEYS
   end
 
-  def input_fields_builder
+  def input_fields_builder(*subform_names)
     Hash[input_fields.collect do |key|
-      field_data_builder(key, name: name_builder(key), label: labels[key])
+      field_data_builder(key, name: name_builder(key, false, subform_names), label: labels[key])
     end]
   end
 
-  def select_fields_builder
+  def select_fields_builder(*subform_names)
     Hash[select_fields.collect do |key|
-      field_data_builder(key, name: name_builder(key), label: labels[key], values: self.send("#{key}_list"))
+      field_data_builder(key, name: name_builder(key, false, subform_names), label: labels[key], values: self.send("#{key}_list"))
     end]
   end
 
-  def multiple_select_fields_builder
-    Hash[multiple_select_fields.collect { |key| field_data_builder(key, name: name_builder(key, true), label:labels[key], values: self.send("#{key}_list")) } ]
+  def multiple_select_fields_builder(*subform_names)
+    Hash[multiple_select_fields.collect { |key| field_data_builder(key, name: name_builder(key, true, subform_names), label:labels[key], values: self.send("#{key}_list")) } ]
   end
 
-  def name_builder(name, multiple=nil, *forms_names)
-    form_secuence = forms_names.map {|form_name| "[#{form_name}]" }.join("")
+  def name_builder(name, multiple=nil, subforms_names)
+    form_secuence = subforms_names.map {|subform_name| "[#{subform_name}]" }.join("")
     "#{form_type}#{form_secuence}[#{name}]#{'[]' if multiple.present? }"
   end
 

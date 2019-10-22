@@ -62,18 +62,12 @@ CompaniesStepThree.propTypes = {
     form: PropTypes.shape({
       buttons: PropTypes.shape({
         submit: PropTypes.string.isRequired,
-        next: PropTypes.string.isRequired,
-        nextPath: PropTypes.string,
-        previous: PropTypes.string.isRequired,
-        previousPath: PropTypes.string.isRequired
       }),
       action: PropTypes.string.isRequired,
       method: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,
       formFields: PropTypes.object.isRequired,
-      nextPath: PropTypes.string,
-      previousPath: PropTypes.string,
-      errors: PropTypes.object
+      errors: PropTypes.object.isRequired
     })
   })
 }

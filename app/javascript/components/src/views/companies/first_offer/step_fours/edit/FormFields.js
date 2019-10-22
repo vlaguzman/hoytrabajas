@@ -18,18 +18,29 @@ const FormFields = props => {
     contract_type_id = null,
     vacancies_quantity = null,
     sex_id = null,
-    offer_candidate_age = null,
+    offer_age_range = null,
     close_date = null,
     immediate_start = null
   } = formFields
 
+  /*
   const [formValues, setFormValues] = useState({
     [contract_type_id.name]: contract_type_id.current_value || '',
     [vacancies_quantity.name]: vacancies_quantity.current_value || '',
     [sex_id.name]: sex_id.current_value || '',
-    [offer_candidate_age.name]: offer_candidate_age.current_value || '',
+    [offer_age_range.name]: offer_candidate_age.current_value || '',
     [close_date.name]: close_date.current_value || new Date(),
     [immediate_start.name]: immediate_start.current_value || false
+  })
+  */
+
+  const [formValues, setFormValues] = useState({
+    [contract_type_id.name]:   '',
+    [vacancies_quantity.name]: '',
+    [sex_id.name]:             '',
+    [offer_age_range.name]:     '',
+    [close_date.name]:          new Date(),
+    [immediate_start.name]:    false
   })
 
   const inputClassname = 'my-30 animated fadeIn inputField'
@@ -44,7 +55,7 @@ const FormFields = props => {
           name={contract_type_id.name}
           label={contract_type_id.label}
           selectOptions={contract_type_id.values}
-          isRequired={contract_type_id.isRequired || false}
+          isRequired={true}
         />
       </Col>
     ),
@@ -63,7 +74,7 @@ const FormFields = props => {
           values={vacancies_quantity.values}
           step={vacancies_quantity.step}
           isMultiple={false}
-          isRequired={vacancies_quantity.isRequired || false}
+          isRequired={false}
         />
       </Col>
     ),
@@ -81,7 +92,7 @@ const FormFields = props => {
           label={sex_id.label}
           selectOptions={sex_id.values}
           isMultiple
-          isRequired={sex_id.isRequired || false}
+          isRequired={false}
         />
       </Col>
     ),
@@ -102,11 +113,11 @@ const FormFields = props => {
           values={offer_candidate_age.values}
           step={offer_candidate_age.step}
           isMultiple
-          isRequired={offer_candidate_age.isRequired || false}
+          isRequired={false}
         />
       </Col>
     ),
-    [formValues[offer_candidate_age.name]]
+    [formValues[offer_age_range.name]]
   )
 
   const closeDateField = useMemo(
@@ -117,8 +128,7 @@ const FormFields = props => {
           handleSimpleChange={handleSimpleChange(formValues, setFormValues)}
           name={close_date.name}
           label={close_date.label}
-          dateOptions={close_date.dateOptions}
-          isRequired={close_date.isRequired || false}
+          isRequired={true}
         />
       </Col>
     ),
@@ -134,7 +144,7 @@ const FormFields = props => {
           name={immediate_start.name}
           label={immediate_start.label}
           description={immediate_start.description}
-          isRequired={immediate_start.isRequired || false}
+          isRequired={true}
         />
       </Col>
     ),
@@ -160,7 +170,7 @@ FormFields.propTypes = {
     contract_type_id: PropTypes.object,
     vacancies_quantity: PropTypes.object,
     sex_id: PropTypes.object,
-    offer_candidate_age: PropTypes.object,
+    offer_age_range: PropTypes.object,
     close_date: PropTypes.object,
     immediate_start: PropTypes.object
   }).isRequired

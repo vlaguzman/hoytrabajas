@@ -23,6 +23,9 @@ RSpec.describe "When company fill the step three form", :type => :feature do
     end
 
     expect(page).to have_button('Siguiente')
+
+    expect(page).to_not have_button('Regresar')
+    expect(page).to_not have_button('Saltar')
   end
 
   def fill_form(data)

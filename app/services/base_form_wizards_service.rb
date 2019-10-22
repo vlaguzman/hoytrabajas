@@ -1,8 +1,8 @@
 class BaseFormWizardsService
 
-  INPUT_FIELDS_KEYS = []
   SELECT_FIELDS_KEYS = []
   MULTIPLE_SELECT_FIELDS_KEYS = []
+  SLIDER_FIELDS_KEYS = []
 
   attr_accessor :errors, :form_type, :template_translation_path, :action_path, :previous_path, :next_path, :form_method
 
@@ -111,4 +111,5 @@ class BaseFormWizardsService
   def field_data_builder(key, **params)
     [key, params]
   end
+
 end

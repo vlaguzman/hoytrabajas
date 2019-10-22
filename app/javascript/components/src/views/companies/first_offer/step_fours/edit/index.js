@@ -2,21 +2,25 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Paper from '@material-ui/core/Paper'
 import { Row } from 'reactstrap'
-import FormProgress from '../../../../components/FormsLayout/FormProgress'
-import FormTitle from '../../../../components/FormsLayout/FormTitle'
-import FormButtons from '../../../../components/FormsLayout/FormButtons'
+import FormProgress from '../../../../../components/FormsLayout/FormProgress'
+import FormTitle from '../../../../../components/FormsLayout/FormTitle'
+import FormButtons from '../../../../../components/FormsLayout/FormButtons'
 import FormFields from './FormFields'
 
-const CompaniesStepFour = ({ formInfo }) => {
+const CompaniesStepFour = ({ formInfo, csrf_name, csrf_token }) => {
   const {
     title,
     subtitle,
-    form: { buttons, nextPath, previousPath, action, method, type, formFields }
+    form: {
+      buttons,
+      nextPath,
+      previousPath,
+      action,
+      method,
+      type,
+      formFields,
+    }
   } = formInfo
-
-  const handleSubmit = e => {
-    e.preventDefault()
-  }
 
   return (
     <div className="main-wrapper">
@@ -26,13 +30,10 @@ const CompaniesStepFour = ({ formInfo }) => {
           <>
             <FormTitle title={title} subtitle={subtitle} />
             <div className="w-80">
-              <form
-                className="forms__candidate"
-                action={action}
-                method={method}
-                onSubmit={handleSubmit}
-              >
+              <form className="forms__candidate" action={action} method="post" >
                 <FormFields type={type} formFields={formFields} />
+                <input type="hidden" name={csrf_name} value={csrf_token} />
+                <input type="hidden" name="_method" value={method} />
                 <FormButtons
                   nextPath={nextPath}
                   previousPath={previousPath}
@@ -50,21 +51,25 @@ const CompaniesStepFour = ({ formInfo }) => {
 export default CompaniesStepFour
 
 CompaniesStepFour.propTypes = {
+  csrf_name: PropTypes.string,
+  csrf_token: PropTypes.string,
   formInfo: PropTypes.shape({
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
     form: PropTypes.shape({
       buttons: PropTypes.shape({
         submit: PropTypes.string.isRequired,
+        next: PropTypes.string.isRequired,
+        nextPath: PropTypes.string.isRequired,
         previous: PropTypes.string.isRequired,
-        next: PropTypes.string.isRequired
+        previousPath: PropTypes.string.isRequired
       }),
-      nextPath: PropTypes.string.isRequired,
-      previousPath: PropTypes.string.isRequired,
       action: PropTypes.string.isRequired,
       method: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,
-      formFields: PropTypes.object.isRequired
+      formFields: PropTypes.object.isRequired,
+      nextPath: PropTypes.string.isRequired,
+      previousPath: PropTypes.string.isRequired,
     })
   })
 }

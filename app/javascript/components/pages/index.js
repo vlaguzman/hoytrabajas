@@ -11,7 +11,8 @@ const HomePage = ({
   company_signed_in,
   log_out_user,
   log_out_companies,
-  session_translation
+  session_translation,
+  offer_translations
 }) => {
   return (
     <div className="main-wrapper">
@@ -24,7 +25,7 @@ const HomePage = ({
         log_out_companies={log_out_companies}
         session_translation={session_translation}
       >
-        <DynamicHome offers={offers} />
+        <DynamicHome offers={offers} offer_translations={offer_translations} />
       </AppLayout>
     </div>
   )
@@ -39,5 +40,6 @@ HomePage.propTypes = {
   log_out_user: PropTypes.string.isRequired,
   log_out_companies: PropTypes.string.isRequired,
   session_translation: PropTypes.object.isRequired,
-  offers: PropTypes.object.isRequired
+  offers: PropTypes.object.isRequired,
+  offer_translations: PropTypes.object.isRequired
 }

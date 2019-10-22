@@ -50,7 +50,7 @@ RSpec.describe OffersService do
         job_category_id = main_offer.job_category_id
 
         expect(subject.related_offers_show_details(main_offer.id, job_category_id).last.keys).to match_array([
-          :city, :close_date, :company, :description, :immediate_start, :new_offer, :required_experience, :salary, :title
+          :id_offer, :city, :close_date, :company, :description, :immediate_start, :new_offer, :required_experience, :salary, :title
         ])
       end
     end

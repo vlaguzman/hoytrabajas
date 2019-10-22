@@ -66,7 +66,7 @@ RSpec.describe OffersPresenter do
     it "should have the expected keys in the arrays" do
       response = subject.index_details
 
-      expect(response.keys).to match_array([:city, :close_date, :company, :description, :immediate_start, :new_offer, :required_experience, :salary, :title])
+      expect(response.keys).to match_array([:id_offer, :city, :close_date, :company, :description, :immediate_start, :new_offer, :required_experience, :salary, :title])
     end
   end
 
@@ -77,6 +77,8 @@ RSpec.describe OffersPresenter do
       expect(response).to be_an_instance_of(Hash)
 
       expected_keys = [ 
+        :index,
+        :see_offer,
         :affinity,
         :close,
         :aplications,
@@ -97,8 +99,11 @@ RSpec.describe OffersPresenter do
         :employees,
         :contact_company,
         :related_offers,
+        :button_disactive,
         :button_active,
-        :button_disactive
+        :btn_lg_apply_offer,
+        :btn_apply_offer,
+        :btn_super_apply
       ]
 
       expect(response.keys).to eq(expected_keys)

@@ -9,23 +9,19 @@ class Offers::ShowService < Offers::ViewsService
   end
 
   def build_details
+    super().merge(
     {
       sex:                  { description: offer.sex_description },
-      city:                 { description: offer.city_description },
       offer_type:           { description: offer.offer_type_description },
       work_mode:            { description: offer.work_mode_description },
       contract_type:        { description: offer.contract_type_description },
       age_range:            age_range_details,
       languages:            languages_list_details,
       available_work_days:  available_work_days_list,
-      salary:               salary_details,
       working_days:         working_days_list,
       job_aids:             job_aids_list,
-      company:              company_details,
       is_applied:           query_applied,
-      id_offer:             offer.id,
-      close_date:           DatesConverter.default(date: offer.close_date)
-    }
+    })
   end
 
   def query_applied

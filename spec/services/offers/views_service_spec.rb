@@ -23,6 +23,7 @@ RSpec.describe Offers::ViewsService do
   ) }
 
   let(:expected_object) do {
+    id_offer: offer.id, 
     title: "District Facilitator",
     description: "endSint esse anim consequat commodo.",
     immediate_start: true,

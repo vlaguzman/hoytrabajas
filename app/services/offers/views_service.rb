@@ -23,6 +23,7 @@ class Offers::ViewsService
 
   def build_details
     {
+      id_offer:             offer.id,
       city:                 { description: offer.city_description },
       salary:               salary_details,
       company:              company_details,

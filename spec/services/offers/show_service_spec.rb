@@ -62,10 +62,10 @@ RSpec.describe Offers::ShowService do
 
     let(:expected_object) do
         {
+        id_offer: offer.id,
         close_date: "25 de Agosto del 2019",
         title: "Desarrollador Front-end Sr. test",
         address: "Calle Falsa 123 # 00 99",
-        id_offer: offer.id,
         immediate_start: false,
         is_applied: false,
         description: "endSint esse anim consequat commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaincididunt ut labore et dolore magna aliqua.",

@@ -1,22 +1,29 @@
 class Users::Wizards::StepSixPresenter < ApplicationPresenter
 
-  def soft_skills_list
-    SoftSkill.all.map { |object| [object.description, object.id] }
+  def form_information
+    Users::Wizards::StepSix::FormParamsService.new(
+      errors: source.errors,
+      form_type: :user,
+      template_translation_path: "users.wizards.step_sixes.show",
+      action_path: users_wizards_step_six_path,
+      previous_path: users_wizards_step_five_path,
+      next_path: users_wizards_step_seven_path,
+      form_method: :put
+    ).form_params
   end
 
-  def job_categories_list
-    JobCategory.all.map { |object| [object.description, object.id] }
+  private
+
+  def users_wizards_step_five_path
+    rails_routes.users_wizards_step_five_path
   end
 
-  def technical_skills_list
-    TechnicalSkill.all.map { |object| [object.description, object.id] }
+  def users_wizards_step_six_path
+    rails_routes.users_wizards_step_six_path
   end
 
-  def levels_list
-    Level.all.map { |object| [object.description, object.id] }
+  def users_wizards_step_seven_path
+    rails_routes.users_wizards_step_seven_path
   end
 
-  def languages_list
-    Language.all.map { |object| [object.description, object.id] }
-  end
 end

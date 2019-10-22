@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :language do
-    description { ' Español ' }
+    description { "#{Faker::ProgrammingLanguage.name}ish" }
   end
 end

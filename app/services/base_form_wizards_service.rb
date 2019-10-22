@@ -30,6 +30,10 @@ class BaseFormWizardsService
 
   private
 
+  def placeholders_translations
+    template_translations[:form][:placeholders] if template_translations.present?
+  end
+
   def buttons_translation
     template_translations[:form][:buttons]
       .merge(previousPath: previous_path)
@@ -44,11 +48,12 @@ class BaseFormWizardsService
 
   def build_form_params
     build_form_base = {
-      buttons:    buttons_translation,
-      action:     action_path,
-      method:     form_method,
-      type:       form_type,
-      formFields: fields_builder
+      placeholders: placeholders_translations,
+      buttons:      buttons_translation,
+      action:       action_path,
+      method:       form_method,
+      type:         form_type,
+      formFields:   fields_builder
     }
     build_form_base.merge!(errors_messages)
   end

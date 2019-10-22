@@ -1,0 +1,20 @@
+es:
+  users:
+    wizards:
+      step_sixes:
+        show:
+          title: 'Déjanos conocer tus habilidades'
+          subtitle: "Brinda a las empresas información valiosa sobre ti."
+          form:
+            buttons:
+              submit: "Siguiente"
+              next: "Saltar"
+              previous: "Regresar"
+            formFields:
+              soft_skill_ids: 'Define tres habilidades blandas que destacarías de tu perfil*'
+              technical_skill_id: 'Define técnicas de acuerdo a tu perfil*'
+              to_learn_skill_id: 'Define qué habilidades te gustaría aprender o reforzar'
+              language_id: '¿Que idiomas deseas resaltar en tu perfil?'
+            placeholders:
+              language_id: 'Selecciona el idioma'
+              nivel_id: 'Nivel'

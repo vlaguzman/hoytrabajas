@@ -73,8 +73,8 @@ A         * Offer                                               24      2.2     
 A         * OfferSalary                                         5       0.0        0           1
 A         * OfferType                                           5       0.0        0           1
 A         * Offers::AppliedOfferService                         2       13.25      0           1
-A         * Offers::IndexService                                3       15.4       0           1
-A         * Offers::ViewsService                                5       32.2       0           1
+A         * Offers::IndexService                                4       10.85      0           1
+A         * Offers::ViewsService                                7       34.4       0           1
 A         * OffersController                                    10      9.23       0           1
 A         * OffersPresenter                                     6       17.8       0           4
 A         * OffersResponsibilities                              1       0.0        0           1

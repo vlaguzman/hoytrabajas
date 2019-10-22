@@ -41,5 +41,5 @@ HomePage.propTypes = {
   log_out_companies: PropTypes.string.isRequired,
   session_translation: PropTypes.object.isRequired,
   offers: PropTypes.object.isRequired,
-  offer_translations: ProyTypes.objetct.isRequired
+  offer_translations: ProyTypes.object.isRequired
 }

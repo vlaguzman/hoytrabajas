@@ -132,7 +132,7 @@ GalleryCard.propTypes = {
     salary: PropTypes.shape({
       from: PropTypes.number,
       currency: PropTypes.shape({
-        description: PropTypes.string.isRequired
+        description: PropTypes.string
       })
     })
   }),

@@ -18,9 +18,13 @@ import Carousel from '../../components/Carousel/CarouselRow'
 
 import AppLayout from '../../components/Layout/AppLayout'
 
-const relatedOffersCards = relatedOffers => {
+const relatedOffersCards = (relatedOffers, offer_translations) => {
   return relatedOffers.map(relatedOffer => (
-    <Cards key={relatedOffer['title']} offer={relatedOffer} />
+    <Cards
+      key={relatedOffer['title']}
+      offer={relatedOffer}
+      offer_translations={offer_translations}
+    />
   ))
 }
 
@@ -29,13 +33,14 @@ const DetallePage = ({
   relatedOffers,
   pathAppliedOffers,
   translationOffer,
-  csrf_name,
+  csrf_param,
   csrf_token,
   log_out_companies,
   company_signed_in,
   user_signed_in,
   session_translation,
-  log_out_user
+  log_out_user,
+  offer_translations
 }) => {
   const valueButton = offer.is_applied
     ? translationOffer.button_disactive
@@ -50,7 +55,7 @@ const DetallePage = ({
         company_signed_in={company_signed_in}
         user_signed_in={user_signed_in}
         log_out_user={log_out_user}
-        csrf_param={csrf_name}
+        csrf_param={csrf_param}
         csrf_token={csrf_token}
         session_translation={session_translation}
       >
@@ -119,7 +124,7 @@ const DetallePage = ({
               <Divider variant="middle" className="mx-0 my-10" />
               <Typography variant="body1">{offer.description}</Typography>
               <form action={pathAppliedOffers} method="post">
-                <input type="hidden" name={csrf_name} value={csrf_token} />
+                <input type="hidden" name={csrf_param} value={csrf_token} />
                 <input type="hidden" name="_method" value="post" />
                 <input
                   type="hidden"
@@ -479,7 +484,7 @@ const DetallePage = ({
 
         <Row className="pr-20 pl-50">
           <Carousel slidesToShow={3.7} autoplay={false}>
-            {relatedOffersCards(relatedOffers)}
+            {relatedOffersCards(relatedOffers, offer_translations)}
           </Carousel>
         </Row>
       </AppLayout>
@@ -494,11 +499,12 @@ DetallePage.propTypes = {
   company_signed_in: PropTypes.bool.isRequired,
   user_signed_in: PropTypes.bool.isRequired,
   log_out_user: PropTypes.string.isRequired,
-  csrf_name: PropTypes.string.isRequired,
+  csrf_param: PropTypes.string.isRequired,
   csrf_token: PropTypes.string.isRequired,
   relatedOffers: PropTypes.array.isRequired,
   session_translation: PropTypes.object.isRequired,
   pathAppliedOffers: PropTypes.string.isRequired,
+  offer_translations: PropTypes.object.isRequired,
   offer: PropTypes.shape({
     sex: PropTypes.object,
     city: PropTypes.object,

@@ -74,11 +74,11 @@ A         * OfferSalary                                         5       0.0     
 A         * OfferType                                           5       0.0        0           1
 A         * Offers::AppliedOfferService                         2       13.25      0           1
 A         * Offers::IndexService                                4       10.85      0           1
-A         * Offers::ViewsService                                7       34.4       0           1
+A         * Offers::ViewsService                                6       34.4       0           1
 A         * OffersController                                    10      9.23       0           1
 A         * OffersPresenter                                     6       17.8       0           4
 A         * OffersResponsibilities                              1       0.0        0           1
-A         * OffersService                                       6       15.91      0           1
+A         * OffersService                                       7       15.91      0           1
 A         * OffersSoftSkills                                    1       0.0        0           1
 A         * OffersTechnicalSkills                               1       0.0        0           1
 A         * OffersTerms                                         1       0.0        0           1
@@ -157,7 +157,7 @@ B         * Companies::FirstOffer::StepOneService               5       2.45    
 B         * Companies::FirstOffer::StepOnesController           9       20.32      27          2
 B         * Companies::FirstOffer::StepTwoService               5       2.45       23          2
 B         * Companies::FirstOffer::StepTwosController           9       20.32      27          2
-B         * Offers::ShowService                                 10      79.19      0           3
+B         * Offers::ShowService                                 11      74.19      0           2
 C         * BaseFormWizardsService                              8       108.49     0           13
 C         * Offers                                              3       0.0        150         2
 D         * Companies                                           3       15.36      72          4

@@ -65,8 +65,8 @@ HomePage.propTypes = {
   offers: PropTypes.shape({
     map: PropTypes.object
   }),
-  csrf_param: PropTypes.string.isRequired,
-  csrf_token: PropTypes.string.isRequired,
-  user_signed_in: PropTypes.bool.isRequired,
-  offer_translations: PropTypes.object.isRequired
+  csrf_param: PropTypes.string,
+  csrf_token: PropTypes.string,
+  user_signed_in: PropTypes.bool,
+  offer_translations: PropTypes.object
 }

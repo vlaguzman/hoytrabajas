@@ -1,26 +1,26 @@
 import React, { useState, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col } from 'reactstrap'
-import SelectChip from '../../../../components/FormsLayout/Fields/SelectChip'
-import Slider from '../../../../components/FormsLayout/Fields/Slider'
-import DatePicker from '../../../../components/FormsLayout/Fields/DatePicker'
-import Checkbox from '../../../../components/FormsLayout/Fields/Checkbox'
+import SelectChip from '../../../../../components/FormsLayout/Fields/SelectChip'
+import Slider from '../../../../../components/FormsLayout/Fields/Slider'
+import DatePicker from '../../../../../components/FormsLayout/Fields/DatePicker'
+import Checkbox from '../../../../../components/FormsLayout/Fields/Checkbox'
 import {
   handleDeleteChip,
   handleChange,
   handleSimpleChange,
   handleBoolean
-} from '../../../../components/FormsLayout/handleFunctions'
+} from '../../../../../components/FormsLayout/handleFunctions'
 
 const FormFields = props => {
+  console.log("props", props)
   const { formFields } = props
   const {
     contract_type_id = null,
     vacancies_quantity = null,
     sex_id = null,
     offer_age_range = null,
-    close_date = null,
-    immediate_start = null
+    close_date = null
   } = formFields
 
   /*
@@ -28,7 +28,7 @@ const FormFields = props => {
     [contract_type_id.name]: contract_type_id.current_value || '',
     [vacancies_quantity.name]: vacancies_quantity.current_value || '',
     [sex_id.name]: sex_id.current_value || '',
-    [offer_age_range.name]: offer_candidate_age.current_value || '',
+    [offer_age_range.name]: offer_age_range.current_value || '',
     [close_date.name]: close_date.current_value || new Date(),
     [immediate_start.name]: immediate_start.current_value || false
   })
@@ -39,8 +39,7 @@ const FormFields = props => {
     [vacancies_quantity.name]: '',
     [sex_id.name]:             '',
     [offer_age_range.name]:     '',
-    [close_date.name]:          new Date(),
-    [immediate_start.name]:    false
+    [close_date.name]:          new Date()
   })
 
   const inputClassname = 'my-30 animated fadeIn inputField'
@@ -99,19 +98,19 @@ const FormFields = props => {
     [formValues[sex_id.name]]
   )
 
-  const offerCandidateAgeField = useMemo(
+  const offerAgeRangeField = useMemo(
     () => (
       <Col className={inputClassname} xs={12} lg={6}>
         <Slider
-          inputValue={formValues[offer_candidate_age.name]}
+          inputValue={formValues[offer_age_range.name]}
           handleSimpleChange={handleSimpleChange(formValues, setFormValues)}
-          currentValue={offer_candidate_age.currentValue}
-          name={offer_candidate_age.name}
-          label={offer_candidate_age.label}
-          beforeLabel={offer_candidate_age.beforeLabel}
-          afterLabel={offer_candidate_age.afterLabel}
-          values={offer_candidate_age.values}
-          step={offer_candidate_age.step}
+          currentValue={offer_age_range.currentValue}
+          name={offer_age_range.name}
+          label={offer_age_range.label}
+          beforeLabel={offer_age_range.beforeLabel}
+          afterLabel={offer_age_range.afterLabel}
+          values={offer_age_range.values}
+          step={offer_age_range.step}
           isMultiple
           isRequired={false}
         />
@@ -129,26 +128,11 @@ const FormFields = props => {
           name={close_date.name}
           label={close_date.label}
           isRequired={true}
+          dateOptions={close_date.dateOptions}
         />
       </Col>
     ),
     [formValues[close_date.name]]
-  )
-
-  const immediateStartField = useMemo(
-    () => (
-      <Col className={inputClassname} xs={12} lg={6}>
-        <Checkbox
-          inputValue={formValues[immediate_start.name]}
-          handleBoolean={handleBoolean(formValues, setFormValues)}
-          name={immediate_start.name}
-          label={immediate_start.label}
-          description={immediate_start.description}
-          isRequired={true}
-        />
-      </Col>
-    ),
-    [formValues[immediate_start.name]]
   )
 
   return (
@@ -156,9 +140,8 @@ const FormFields = props => {
       {contractTypeField}
       {vacanciesQuantityField}
       {sexField}
-      {offerCandidateAgeField}
+      {offerAgeRangeField}
       {closeDateField}
-      {immediateStartField}
     </Row>
   )
 }

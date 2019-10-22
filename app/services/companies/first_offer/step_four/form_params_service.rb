@@ -1,10 +1,5 @@
 class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsService
 
-  INPUT_FIELDS_KEY = [
-    :close_date,
-    :inmediate_start
-  ]
-
   SELECT_FIELDS_KEYS = [
     :contract_type_id,
   ]
@@ -13,12 +8,17 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
     :sex_id
   ]
 
-  SLIDER_FIELDS_KEYS = [
-    :vacancies_quantity,
-    :offer_age_range,
-  ]
-
   private
+
+  def fields_builder
+    super(
+      vacancies_quantity_field,
+      offer_age_range_field,
+      inmediate_start_field,
+      close_date_field
+    )
+  end
+
 
   def contract_type_id_list
     ListConverter.model_list ContractType
@@ -28,12 +28,54 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
     ListConverter.model_list Sex
   end
 
-  def vacancies_quantity_values
-    ListConverter.slider_values 0, 100
+  def vacancies_quantity_field
+    {
+      vacancies_quantity: {
+        name: 'offer[vacancies_quantity]',
+        label: template_translations[:form][:formFields][:vacancies_quantity],
+        values: { min: 0, max: 100 },
+        step: 1
+      }
+    }
   end
 
-  def offer_age_range_values
-    ListConverter.slider_values 18, 80
+  def offer_age_range_field
+    {
+      offer_age_range: {
+        name: 'offer[offer_age_range]',
+        label: template_translations[:form][:formFields][:offer_age_range],
+        beforeLabel: template_translations[:offer_age_range_before],
+        afterLabel: template_translations[:offer_age_range_after],
+        values: { min: 18, max: 80 },
+        step: 1
+      }
+    }
+  end
+
+  def inmediate_start_field
+    {
+      inmediate_start: {
+        name: 'offer[inmediate_start]',
+        label: template_translations[:form][:formFields][:inmediate_start],
+        description: template_translations[:inmediate_start_description],
+        values: { min: 18, max: 80 },
+        step: 1
+      }
+    }
+  end
+
+  def close_date_field
+    {
+      close_date: {
+        name: 'offer[close_date]',
+        label: template_translations[:form][:formFields][:close_date],
+        dateOptions: {
+          format: 'dd MMMM yyyy',
+          disableFuture: false,
+          emptyLabel: '...'
+        }
+      }
+    }
   end
 
 end

@@ -7,7 +7,7 @@ class Companies::FirstOffer::StepFourPresenter < ApplicationPresenter
       previous_path: companies_first_offer_step_three_path,
       next_path: companies_first_offer_step_five_path,
       form_type: :offer,
-      template_translation_path: "companies.first_offer.step_threes.new",
+      template_translation_path: "companies.first_offer.step_fours.edit",
       form_method: :post
     ).form_params
   end

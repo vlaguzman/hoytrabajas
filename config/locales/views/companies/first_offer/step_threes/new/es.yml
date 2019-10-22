@@ -10,7 +10,7 @@ es:
               submit: "Siguiente"
               next: "Saltar"
               previous: "Regresar"
-            type: "company"
+            type: "offer"
             formFields:
               title: "Título de tu oferta"
               offer_work_position_id: "Elige el cargo que deseas contratar"

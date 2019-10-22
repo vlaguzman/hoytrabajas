@@ -2,6 +2,10 @@ import React, { useState, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col } from 'reactstrap'
 import SelectChip from '../../../../../components/FormsLayout/Fields/SelectChip'
+import {
+  handleChange,
+  handleDeleteChip
+} from '../../../../../components/FormsLayout/handleFunctions'
 
 const FormFields = props => {
   const { formFields } = props
@@ -21,49 +25,6 @@ const FormFields = props => {
     [labor_disponibility_id.name]: ''
   })
 
-  const handleChange = (e, inputName, isMultiple = false) => {
-    e.persist()
-    if (isMultiple) {
-      const isArray = Array.isArray(formValues[inputName])
-      if (isArray) {
-        const arrayHasItem = formValues[inputName].includes(e.target.value)
-        if (!arrayHasItem) {
-          const merged = [...formValues[inputName], e.target.value]
-          setFormValues(prevFormValues => ({
-            ...prevFormValues,
-            [inputName]: merged
-          }))
-        }
-      } else {
-        setFormValues(prevFormValues => ({
-          ...prevFormValues,
-          [inputName]: [e.target.value]
-        }))
-      }
-    } else {
-      setFormValues(prevFormValues => ({
-        ...prevFormValues,
-        [inputName]: e.target.value
-      }))
-    }
-  }
-
-  const handleDeleteChip = (id, inputName, isMultiple) => {
-    if (isMultiple) {
-      const newChips = [...formValues[inputName]]
-      newChips.splice(newChips.indexOf(id), 1)
-      setFormValues(prevFormValues => ({
-        ...prevFormValues,
-        [inputName]: newChips
-      }))
-    } else {
-      setFormValues(prevFormValues => ({
-        ...prevFormValues,
-        [inputName]: ''
-      }))
-    }
-  }
-
   const inputClassname = 'my-30 animated fadeIn'
 
   const jobCategoryIDsField = useMemo(
@@ -77,8 +38,8 @@ const FormFields = props => {
         <SelectChip
           inputValue={formValues[job_category_ids.name]}
           inputName={job_category_ids.name}
-          handleChange={handleChange}
-          handleDeleteChip={handleDeleteChip}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={job_category_ids.name}
           label={job_category_ids.label}
           selectOptions={job_category_ids.values}
@@ -95,8 +56,8 @@ const FormFields = props => {
         <SelectChip
           inputValue={formValues[offer_type_ids.name]}
           inputName={offer_type_ids.name}
-          handleChange={handleChange}
-          handleDeleteChip={handleDeleteChip}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={offer_type_ids.name}
           label={offer_type_ids.label}
           selectOptions={offer_type_ids.values}
@@ -118,8 +79,8 @@ const FormFields = props => {
         <SelectChip
           inputValue={formValues[contract_type_id.name]}
           inputName={contract_type_id.name}
-          handleChange={handleChange}
-          handleDeleteChip={handleDeleteChip}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={contract_type_id.name}
           label={contract_type_id.label}
           selectOptions={contract_type_id.values}
@@ -136,8 +97,8 @@ const FormFields = props => {
         <SelectChip
           inputValue={formValues[work_mode_ids.name]}
           inputName={work_mode_ids.name}
-          handleChange={handleChange}
-          handleDeleteChip={handleDeleteChip}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={work_mode_ids.name}
           label={work_mode_ids.label}
           selectOptions={work_mode_ids.values}
@@ -159,8 +120,8 @@ const FormFields = props => {
         <SelectChip
           inputValue={formValues[labor_disponibility_id.name]}
           inputName={labor_disponibility_id.name}
-          handleChange={handleChange}
-          handleDeleteChip={handleDeleteChip}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={labor_disponibility_id.name}
           label={labor_disponibility_id.label}
           selectOptions={labor_disponibility_id.values}

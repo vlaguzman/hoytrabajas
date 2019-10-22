@@ -2,7 +2,7 @@ class Users::Wizards::StepTwoPresenter < ApplicationPresenter
 
   def form_information
     Users::Wizards::StepTwo::FormParamsService.new(
-      object: user,
+      errors: source.errors,
       action_path: users_wizards_step_two_path,
       next_path: users_wizards_step_three_path,
       previous_path: users_wizards_step_one_path,

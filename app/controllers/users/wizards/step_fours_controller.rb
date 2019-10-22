@@ -1,4 +1,5 @@
 class Users::Wizards::StepFoursController < ApplicationController
+  before_action :authenticate_user!
 
   attr_reader :user
 

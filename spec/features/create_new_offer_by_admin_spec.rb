@@ -3,15 +3,16 @@ require 'rails_helper'
 RSpec.describe "Admin can create an Offer", type: :feature do
   include Devise::Test::IntegrationHelpers
 
-  let!(:company) { FactoryBot.create(:company, name: 'IBM') }
-  let!(:job_category) { FactoryBot.create(:job_category, description: 'ventas') }
-  let!(:work_mode) { FactoryBot.create(:work_mode, description: 'teletrabajo') }
-  let!(:contract_type) { FactoryBot.create(:contract_type, description: 'prestación de servicios') }
+  let!(:company) { create(:company, name: 'IBM') }
+  let!(:job_category) { create(:job_category, description: 'ventas') }
+  let!(:work_mode) { create(:work_mode, description: 'teletrabajo') }
+  let!(:contract_type) { create(:contract_type, description: 'prestación de servicios') }
 
   context "a admin user must be able to create a new offer" do
     scenario "the admin dont fill the title for the company" do
       sign_in FactoryBot.create(:admin_user)
-      visit admin_dashboard_path 
+
+      visit admin_dashboard_path
       expect(page).to have_content("Active Admin")
 
       has_button?("Offers")

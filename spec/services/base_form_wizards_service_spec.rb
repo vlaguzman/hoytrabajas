@@ -18,7 +18,7 @@ RSpec.describe BaseFormWizardsService do
 
       it "should return a hash of params" do
         respose = subject.new(
-          object: company,
+          errors: company.errors,
           form_type: :user,
           template_translation_path: "users.wizards.step_ones.show",
           action_path: "users/wizards/step_two" ,

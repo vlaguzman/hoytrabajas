@@ -47,7 +47,7 @@ RSpec.describe Users::Wizards::StepFive::FormParamsService do
             range_type: {
               name: "user[curriculum_vitae][curriculum_vitae_salary][range_type]",
               label: "Aspiración salarial*",
-              values: ["Rango", "Fijo"]
+              values: [{id: 1, description: "Rango"}, {id: 2, description: "Fijo"}]
             },
             currency_id: {
               name: "user[curriculum_vitae][curriculum_vitae_salary][currency_id]",

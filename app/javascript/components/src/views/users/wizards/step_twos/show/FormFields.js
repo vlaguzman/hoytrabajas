@@ -4,9 +4,14 @@ import { Row, Col } from 'reactstrap'
 import StandardInput from '../../../../../components/FormsLayout/Fields/StandardInput'
 import SelectChip from '../../../../../components/FormsLayout/Fields/SelectChip'
 import DatePicker from '../../../../../components/FormsLayout/Fields/DatePicker'
+import {
+  handleChange,
+  handleSimpleChange,
+  handleDeleteChip
+} from '../../../../../components/FormsLayout/handleFunctions'
 
 const FormFields = props => {
-  const { formFields, type } = props
+  const { formFields } = props
   const {
     about_me = null,
     sex_id = null,
@@ -23,56 +28,6 @@ const FormFields = props => {
     [educational_degree_id.name]: educational_degree_id.current_value || ''
   })
 
-  const handleChange = (e, inputName, isMultiple = false) => {
-    e.persist()
-    if (isMultiple) {
-      const isArray = Array.isArray(formValues[inputName])
-      if (isArray) {
-        const arrayHasItem = formValues[inputName].includes(e.target.value)
-        if (!arrayHasItem) {
-          const merged = [...formValues[inputName], e.target.value]
-          setFormValues(prevFormValues => ({
-            ...prevFormValues,
-            [inputName]: merged
-          }))
-        }
-      } else {
-        setFormValues(prevFormValues => ({
-          ...prevFormValues,
-          [inputName]: [e.target.value]
-        }))
-      }
-    } else {
-      setFormValues(prevFormValues => ({
-        ...prevFormValues,
-        [inputName]: e.target.value
-      }))
-    }
-  }
-
-  const handleSimpleChange = (newValue, inputName) => {
-    setFormValues(prevFormValues => ({
-      ...prevFormValues,
-      [inputName]: newValue
-    }))
-  }
-
-  const handleDeleteChip = (id, inputName, isMultiple) => {
-    if (isMultiple) {
-      const newChips = [...formValues[inputName]]
-      newChips.splice(newChips.indexOf(id), 1)
-      setFormValues(prevFormValues => ({
-        ...prevFormValues,
-        [inputName]: newChips
-      }))
-    } else {
-      setFormValues(prevFormValues => ({
-        ...prevFormValues,
-        [inputName]: ''
-      }))
-    }
-  }
-
   const inputClassname = 'my-30 animated fadeIn inputField'
 
   const aboutMeField = useMemo(
@@ -82,7 +37,7 @@ const FormFields = props => {
           isTextArea
           inputValue={formValues[about_me.name]}
           inputName={about_me.name}
-          handleChange={handleChange}
+          handleChange={handleChange(formValues, setFormValues)}
           name={about_me.name}
           label={about_me.label}
         />
@@ -97,8 +52,8 @@ const FormFields = props => {
         <SelectChip
           inputValue={formValues[sex_id.name]}
           inputName={sex_id.name}
-          handleChange={handleChange}
-          handleDeleteChip={handleDeleteChip}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={sex_id.name}
           label={sex_id.label}
           selectOptions={sex_id.values}
@@ -121,7 +76,7 @@ const FormFields = props => {
         <DatePicker
           name={birthday.name}
           inputValue={formValues[birthday.name]}
-          handleSimpleChange={handleSimpleChange}
+          handleSimpleChange={handleSimpleChange(formValues, setFormValues)}
           label={birthday.label}
           dateOptions={dateOptions}
         />
@@ -136,8 +91,8 @@ const FormFields = props => {
         <SelectChip
           inputValue={formValues[limitation_ids.name]}
           inputName={limitation_ids.name}
-          handleChange={handleChange}
-          handleDeleteChip={handleDeleteChip}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={limitation_ids.name}
           label={limitation_ids.label}
           selectOptions={limitation_ids.values}
@@ -159,8 +114,8 @@ const FormFields = props => {
         <SelectChip
           inputValue={formValues[educational_degree_id.name]}
           inputName={educational_degree_id.name}
-          handleChange={handleChange}
-          handleDeleteChip={handleDeleteChip}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={educational_degree_id.name}
           label={educational_degree_id.label}
           selectOptions={educational_degree_id.values}
@@ -185,7 +140,6 @@ const FormFields = props => {
 export default FormFields
 
 FormFields.propTypes = {
-  type: PropTypes.oneOf(['user', 'company']),
   formFields: PropTypes.shape({
     about_me: PropTypes.object.isRequired,
     sex_id: PropTypes.object.isRequired,

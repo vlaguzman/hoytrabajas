@@ -61,7 +61,7 @@ RSpec.describe Users::Wizards::StepOne::FormParamsService do
       }
 
       response = subject.new(
-        object: user,
+        errors: user.errors,
         form_type: :candidate,
         template_translation_path: "users.wizards.step_ones.show",
         action_path: "/users/wizards/step_one" ,

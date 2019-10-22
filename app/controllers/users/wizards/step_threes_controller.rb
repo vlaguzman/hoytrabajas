@@ -1,4 +1,5 @@
 class Users::Wizards::StepThreesController < ApplicationController
+  before_action :authenticate_user!
 
   def show
     @user = user_presenter(current_user)

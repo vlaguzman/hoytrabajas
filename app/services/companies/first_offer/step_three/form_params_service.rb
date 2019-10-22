@@ -1,6 +1,6 @@
 class Companies::FirstOffer::StepThree::FormParamsService < BaseFormWizardsService
 
-  INPUT_FIELDS_KEY = [
+  INPUT_FIELDS_KEYS = [
     :title
   ]
 

@@ -2,6 +2,7 @@ class Users::Wizards::StepFivePresenter < ApplicationPresenter
 
   def form_information
     Users::Wizards::StepFive::FormParamsService.new(
+      errors: source.errors,
       form_type: :user,
       template_translation_path: "users.wizards.step_fives.show",
       action_path: users_wizards_step_five_path,

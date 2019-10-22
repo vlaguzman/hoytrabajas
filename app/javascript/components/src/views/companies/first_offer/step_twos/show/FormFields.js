@@ -2,41 +2,14 @@ import React, { useState, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col } from 'reactstrap'
 import StandardInput from '../../../../../components/FormsLayout/Fields/StandardInput'
+import { handleChange } from '../../../../../components/FormsLayout/handleFunctions'
 
-const FormFields = props => {
-  const { formFields, type } = props
+const FormFields = ({ formFields }) => {
   const { description = null } = formFields
 
   const [formValues, setFormValues] = useState({
     [description.name]: ''
   })
-
-  const handleChange = (e, inputName, isMultiple = false) => {
-    e.persist()
-    if (isMultiple) {
-      const isArray = Array.isArray(formValues[inputName])
-      if (isArray) {
-        const arrayHasItem = formValues[inputName].includes(e.target.value)
-        if (!arrayHasItem) {
-          const merged = [...formValues[inputName], e.target.value]
-          setFormValues(prevFormValues => ({
-            ...prevFormValues,
-            [inputName]: merged
-          }))
-        }
-      } else {
-        setFormValues(prevFormValues => ({
-          ...prevFormValues,
-          [inputName]: [e.target.value]
-        }))
-      }
-    } else {
-      setFormValues(prevFormValues => ({
-        ...prevFormValues,
-        [inputName]: e.target.value
-      }))
-    }
-  }
 
   const inputClassname = 'my-30 animated fadeIn'
 
@@ -47,7 +20,7 @@ const FormFields = props => {
           isTextArea
           inputValue={formValues[description.name]}
           inputName={description.name}
-          handleChange={handleChange}
+          handleChange={handleChange(formValues, setFormValues)}
           name={description.name}
           label={description.label}
         />
@@ -62,7 +35,6 @@ const FormFields = props => {
 export default FormFields
 
 FormFields.propTypes = {
-  type: PropTypes.oneOf(['user', 'company']),
   formFields: PropTypes.shape({
     description: PropTypes.object
   }).isRequired

@@ -8,8 +8,7 @@ import FormButtons from '../../../../../components/FormsLayout/FormButtons'
 import FormFields from './FormFields'
 
 const UsersWizardsStepFive = props => {
-  console.log(props)
-  const { formInfo, csrf_name, csrf_token } = props
+  const { formInfo, csrf_param, csrf_token } = props
   const {
     title,
     subtitle,
@@ -27,7 +26,7 @@ const UsersWizardsStepFive = props => {
             <FormTitle title={title} subtitle={subtitle} />
             <div className="w-80">
               <form className="forms__candidate" action={action} method="post">
-                <input type="hidden" name={csrf_name} value={csrf_token} />
+                <input type="hidden" name={csrf_param} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />
                 <FormFields type={type} formFields={formFields} />
                 <FormButtons
@@ -47,7 +46,7 @@ const UsersWizardsStepFive = props => {
 export default UsersWizardsStepFive
 
 UsersWizardsStepFive.propTypes = {
-  csrf_name: PropTypes.string,
+  csrf_param: PropTypes.string,
   csrf_token: PropTypes.string,
   formInfo: PropTypes.shape({
     title: PropTypes.string.isRequired,

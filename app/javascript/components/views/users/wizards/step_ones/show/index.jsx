@@ -6,7 +6,7 @@ import AppLayout from '../../../../../src/components/Layout/AppLayout'
 const UsersWizardsStepOnePage = props => {
   return (
     <AppLayout
-      csrf_name={props.csrf_name}
+      csrf_param={props.csrf_param}
       csrf_token={props.csrf_token}
       log_out_companies={props.log_out_companies}
       company_signed_in={props.company_signed_in}
@@ -22,7 +22,7 @@ const UsersWizardsStepOnePage = props => {
 export default UsersWizardsStepOnePage
 
 UsersWizardsStepOnePage.propTypes = {
-  csrf_name: PropTypes.string.isRequired,
+  csrf_param: PropTypes.string.isRequired,
   csrf_token: PropTypes.string.isRequired,
   log_out_companies: PropTypes.string.isRequired,
   company_signed_in: PropTypes.bool.isRequired,

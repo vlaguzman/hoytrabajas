@@ -5,9 +5,15 @@ import SelectChip from '../../../../components/FormsLayout/Fields/SelectChip'
 import Slider from '../../../../components/FormsLayout/Fields/Slider'
 import DatePicker from '../../../../components/FormsLayout/Fields/DatePicker'
 import Checkbox from '../../../../components/FormsLayout/Fields/Checkbox'
+import {
+  handleDeleteChip,
+  handleChange,
+  handleSimpleChange,
+  handleBoolean
+} from '../../../../components/FormsLayout/handleFunctions'
 
 const FormFields = props => {
-  const { formFields, type } = props
+  const { formFields } = props
   const {
     contract_type_id = null,
     vacancies_quantity = null,
@@ -26,64 +32,6 @@ const FormFields = props => {
     [immediate_start.name]: immediate_start.current_value || false
   })
 
-  const handleChange = (e, inputName, isMultiple = false) => {
-    if (e.persist) e.persist()
-    if (isMultiple) {
-      const isArray = Array.isArray(formValues[inputName])
-      if (isArray) {
-        const arrayHasItem = formValues[inputName].includes(e.target.value)
-        if (!arrayHasItem) {
-          const merged = [...formValues[inputName], e.target.value]
-          setFormValues(prevFormValues => ({
-            ...prevFormValues,
-            [inputName]: merged
-          }))
-        }
-      } else {
-        setFormValues(prevFormValues => ({
-          ...prevFormValues,
-          [inputName]: [e.target.value]
-        }))
-      }
-    } else {
-      setFormValues(prevFormValues => ({
-        ...prevFormValues,
-        [inputName]: e.target.value
-      }))
-    }
-  }
-
-  const handleSimpleChange = (newValue, inputName) => {
-    setFormValues(prevFormValues => ({
-      ...prevFormValues,
-      [inputName]: newValue
-    }))
-  }
-
-  const handleDeleteChip = (id, inputName, isMultiple) => {
-    if (isMultiple) {
-      const newChips = [...formValues[inputName]]
-      newChips.splice(newChips.indexOf(id), 1)
-      setFormValues(prevFormValues => ({
-        ...prevFormValues,
-        [inputName]: newChips
-      }))
-    } else {
-      setFormValues(prevFormValues => ({
-        ...prevFormValues,
-        [inputName]: ''
-      }))
-    }
-  }
-
-  const handleBoolean = (e, inputName) => {
-    if (e.persist) e.persist()
-    setFormValues(prevFormValues => ({
-      ...prevFormValues,
-      [inputName]: e.target.checked
-    }))
-  }
-
   const inputClassname = 'my-30 animated fadeIn inputField'
 
   const contractTypeField = useMemo(
@@ -91,8 +39,8 @@ const FormFields = props => {
       <Col className={inputClassname} xs={12} lg={6}>
         <SelectChip
           inputValue={formValues[contract_type_id.name]}
-          handleChange={handleChange}
-          handleDeleteChip={handleDeleteChip}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={contract_type_id.name}
           label={contract_type_id.label}
           selectOptions={contract_type_id.values}
@@ -108,7 +56,7 @@ const FormFields = props => {
       <Col className={inputClassname} xs={12} lg={6}>
         <Slider
           inputValue={formValues[vacancies_quantity.name]}
-          handleSimpleChange={handleSimpleChange}
+          handleSimpleChange={handleSimpleChange(formValues, setFormValues)}
           currentValue={vacancies_quantity.currentValue}
           name={vacancies_quantity.name}
           label={vacancies_quantity.label}
@@ -127,8 +75,8 @@ const FormFields = props => {
       <Col className={inputClassname} xs={12} lg={6}>
         <SelectChip
           inputValue={formValues[sex_id.name]}
-          handleChange={handleChange}
-          handleDeleteChip={handleDeleteChip}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={sex_id.name}
           label={sex_id.label}
           selectOptions={sex_id.values}
@@ -145,7 +93,7 @@ const FormFields = props => {
       <Col className={inputClassname} xs={12} lg={6}>
         <Slider
           inputValue={formValues[offer_candidate_age.name]}
-          handleSimpleChange={handleSimpleChange}
+          handleSimpleChange={handleSimpleChange(formValues, setFormValues)}
           currentValue={offer_candidate_age.currentValue}
           name={offer_candidate_age.name}
           label={offer_candidate_age.label}
@@ -166,7 +114,7 @@ const FormFields = props => {
       <Col className={inputClassname} xs={12} lg={6}>
         <DatePicker
           inputValue={formValues[close_date.name]}
-          handleSimpleChange={handleSimpleChange}
+          handleSimpleChange={handleSimpleChange(formValues, setFormValues)}
           name={close_date.name}
           label={close_date.label}
           dateOptions={close_date.dateOptions}
@@ -182,7 +130,7 @@ const FormFields = props => {
       <Col className={inputClassname} xs={12} lg={6}>
         <Checkbox
           inputValue={formValues[immediate_start.name]}
-          handleBoolean={handleBoolean}
+          handleBoolean={handleBoolean(formValues, setFormValues)}
           name={immediate_start.name}
           label={immediate_start.label}
           description={immediate_start.description}
@@ -208,7 +156,6 @@ const FormFields = props => {
 export default FormFields
 
 FormFields.propTypes = {
-  type: PropTypes.oneOf(['user', 'company']),
   formFields: PropTypes.shape({
     contract_type_id: PropTypes.object,
     vacancies_quantity: PropTypes.object,

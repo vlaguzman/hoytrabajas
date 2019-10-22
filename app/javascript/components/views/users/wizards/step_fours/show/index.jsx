@@ -3,9 +3,8 @@ import { DynamicUsersWizardsStepFour } from '../../../../../src/views/DynamicVie
 import AppLayout from '../../../../../src/components/Layout/AppLayout'
 
 const UsersWizardsStepFourPage = props => {
-  console.log(props)
   return (
-    <AppLayout>
+    <AppLayout {...props}>
       <DynamicUsersWizardsStepFour {...props} />
     </AppLayout>
   )

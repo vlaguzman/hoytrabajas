@@ -7,7 +7,7 @@ import FormTitle from '../../../../../components/FormsLayout/FormTitle'
 import FormButtons from '../../../../../components/FormsLayout/FormButtons'
 import FormFields from './FormFields'
 
-const UsersWizardsStepOne = ({ csrf_name, csrf_token, formInfo }) => {
+const UsersWizardsStepOne = ({ csrf_param, csrf_token, formInfo }) => {
   const {
     title,
     subtitle,
@@ -25,7 +25,7 @@ const UsersWizardsStepOne = ({ csrf_name, csrf_token, formInfo }) => {
             <FormTitle title={title} subtitle={subtitle} />
             <div className="w-80">
               <form className="forms__candidate" action={action} method="post">
-                <input type="hidden" name={csrf_name} value={csrf_token} />
+                <input type="hidden" name={csrf_param} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />
                 <FormFields type={type} formFields={formFields} />
                 <FormButtons
@@ -45,14 +45,16 @@ const UsersWizardsStepOne = ({ csrf_name, csrf_token, formInfo }) => {
 export default UsersWizardsStepOne
 
 UsersWizardsStepOne.propTypes = {
-  csrf_name: PropTypes.string,
+  csrf_param: PropTypes.string,
   csrf_token: PropTypes.string,
   formInfo: PropTypes.shape({
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
     form: PropTypes.shape({
       buttons: PropTypes.shape({
-        submit: PropTypes.string.isRequired
+        submit: PropTypes.string.isRequired,
+        nextPath: PropTypes.string,
+        previousPath: PropTypes.string
       }),
       action: PropTypes.string.isRequired,
       method: PropTypes.string.isRequired,

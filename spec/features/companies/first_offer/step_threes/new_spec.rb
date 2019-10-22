@@ -45,6 +45,7 @@ RSpec.describe "When company fill the step three form", :type => :feature do
     context "Data is correct" do
       scenario "should save succesfully data", js: true do
         sign_in company
+
         visit new_companies_first_offer_step_three_path
 
         expected_page_structure

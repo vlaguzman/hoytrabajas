@@ -2,12 +2,12 @@ import React, { useState, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col } from 'reactstrap'
 import SelectChip from '../../../../../components/FormsLayout/Fields/SelectChip'
-import Checkbox from '../../../../../components/FormsLayout/Fields/Checkbox'
 import Select from '../../../../../components/FormsLayout/Fields/Select'
 import StandardInput from '../../../../../components/FormsLayout/Fields/StandardInput'
-import { handleBoolean, handleDeleteChip, handleChange } from '../../../../../components/FormsLayout/handleFunctions'
-
-
+import {
+  handleDeleteChip,
+  handleChange
+} from '../../../../../components/FormsLayout/handleFunctions'
 
 const FormFields = props => {
   const { formFields } = props
@@ -18,7 +18,7 @@ const FormFields = props => {
     currency_id = null,
     salary_period_id = null,
     available_work_day_ids = null,
-    working_day_ids = null,
+    working_day_ids = null
   } = formFields
 
   const [formValues, setFormValues] = useState({
@@ -34,50 +34,50 @@ const FormFields = props => {
   const inputClassname = 'my-30 animated fadeIn'
 
   const controlledInputsClassname =
-  'animated fadeIn controlledInputs inputField mt-20'
+    'animated fadeIn controlledInputs inputField mt-20'
 
-
-
-  const availableWorkDayIDsField = useMemo(() => (
-    <Col
-      key={available_work_day_ids.name}
-      className={inputClassname}
-      xs={12}
-      lg={12}
-    >
-      <SelectChip
-        inputValue={formValues[available_work_day_ids.name]}
-        inputName={available_work_day_ids.name}
-        handleChange={handleChange(formValues, setFormValues)}
-        handleDeleteChip={handleDeleteChip}
-        name={available_work_day_ids.name}
-        label={available_work_day_ids.label}
-        selectOptions={available_work_day_ids.values}
-        isMultiple
-      />
-    </Col>
+  const availableWorkDayIDsField = useMemo(
+    () => (
+      <Col
+        key={available_work_day_ids.name}
+        className={inputClassname}
+        xs={12}
+        lg={12}
+      >
+        <SelectChip
+          inputValue={formValues[available_work_day_ids.name]}
+          inputName={available_work_day_ids.name}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
+          name={available_work_day_ids.name}
+          label={available_work_day_ids.label}
+          selectOptions={available_work_day_ids.values}
+          isMultiple
+        />
+      </Col>
     ),
     [formValues[available_work_day_ids.name]]
   )
 
-  const workingDayIDsField = useMemo(() => (
-    <Col
-      key={working_day_ids.name}
-      className={inputClassname}
-      xs={12}
-      lg={12}
-    >
-      <SelectChip
-        inputValue={formValues[working_day_ids.name]}
-        inputName={working_day_ids.name}
-        handleChange={handleChange(formValues, setFormValues)}
-        handleDeleteChip={handleDeleteChip}
-        name={working_day_ids.name}
-        label={working_day_ids.label}
-        selectOptions={working_day_ids.values}
-        isMultiple
-      />
-    </Col>
+  const workingDayIDsField = useMemo(
+    () => (
+      <Col
+        key={working_day_ids.name}
+        className={inputClassname}
+        xs={12}
+        lg={12}
+      >
+        <SelectChip
+          inputValue={formValues[working_day_ids.name]}
+          inputName={working_day_ids.name}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
+          name={working_day_ids.name}
+          label={working_day_ids.label}
+          selectOptions={working_day_ids.values}
+          isMultiple
+        />
+      </Col>
     ),
     [formValues[working_day_ids.name]]
   )
@@ -120,7 +120,7 @@ const FormFields = props => {
           inputValue={formValues[from.name]}
           handleChange={handleChange(formValues, setFormValues)}
           name={from.name}
-          placeholder={from.placeholder || 'ejem: 750.000' }
+          placeholder={from.placeholder || 'ejem: 750.000'}
           style={{ width: '100%' }}
         />
       </Col>
@@ -178,6 +178,7 @@ export default FormFields
 
 FormFields.propTypes = {
   formFields: PropTypes.shape({
+    range_type: PropTypes.object,
     from: PropTypes.object,
     to: PropTypes.object,
     currency_id: PropTypes.object,

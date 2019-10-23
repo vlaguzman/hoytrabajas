@@ -51,7 +51,7 @@ const FormFields = props => {
       <Col className={inputClassname} xs={12} lg={6}>
         <Checkbox
           inputValue={formValues[travel_disponibility.name]}
-          handleBoolean={handleBoolean(formValues, setFormValues)}
+          handleBoolean={handleBoolean(setFormValues)}
           name={travel_disponibility.name}
           label=""
           description={travel_disponibility.label}

@@ -1,6 +1,7 @@
 module Companies::FirstOffer::StepFourService
 
-  def self.call(offer: _, update_params: {})
+  def self.call(company: _, update_params: {})
+    offer = Offer.find_by(id: update_params[:id])
     updated = offer.update(update_params)
 
     if updated.save

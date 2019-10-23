@@ -13,33 +13,23 @@ import {
 } from '../../../../../components/FormsLayout/handleFunctions'
 
 const FormFields = props => {
-  console.log("props", props)
   const { formFields } = props
   const {
     contract_type_id = null,
     vacancies_quantity = null,
     sex_id = null,
     offer_age_range = null,
-    close_date = null
+    close_date = null,
+    immediate_start = null
   } = formFields
 
-  /*
   const [formValues, setFormValues] = useState({
-    [contract_type_id.name]: contract_type_id.current_value || '',
-    [vacancies_quantity.name]: vacancies_quantity.current_value || '',
-    [sex_id.name]: sex_id.current_value || '',
-    [offer_age_range.name]: offer_age_range.current_value || '',
-    [close_date.name]: close_date.current_value || new Date(),
-    [immediate_start.name]: immediate_start.current_value || false
-  })
-  */
-
-  const [formValues, setFormValues] = useState({
-    [contract_type_id.name]:   '',
+    [contract_type_id.name]: '',
     [vacancies_quantity.name]: '',
-    [sex_id.name]:             '',
-    [offer_age_range.name]:     '',
-    [close_date.name]:          new Date()
+    [sex_id.name]: '',
+    [offer_age_range.name]: '',
+    [close_date.name]: new Date(),
+    [immediate_start.name]: false
   })
 
   const inputClassname = 'my-30 animated fadeIn inputField'
@@ -135,6 +125,22 @@ const FormFields = props => {
     [formValues[close_date.name]]
   )
 
+  const immediateStartField = useMemo(
+    () => (
+      <Col className={inputClassname} xs={12} lg={6}>
+        <Checkbox
+          inputValue={formValues[immediate_start.name]}
+          handleBoolean={handleBoolean(setFormValues)}
+          name={immediate_start.name}
+          label={immediate_start.label}
+          description={immediate_start.description}
+          isRequired={true}
+        />
+      </Col>
+    ),
+    [formValues[immediate_start.name]]
+  )
+
   return (
     <Row className="HT__FormGenerator">
       {contractTypeField}
@@ -142,6 +148,7 @@ const FormFields = props => {
       {sexField}
       {offerAgeRangeField}
       {closeDateField}
+      {immediateStartField}
     </Row>
   )
 }

@@ -17,7 +17,7 @@ RSpec.describe Companies::FirstOffer::StepFourService do
           sex_id: sex.id,
           offer_age_range: '18,24',
           close_date: '2020-12-31',
-          inmediate_start: true
+          immediate_start: true
         }
       end
 
@@ -33,7 +33,7 @@ RSpec.describe Companies::FirstOffer::StepFourService do
         expect(offer[:data].contract_type_id).to eq(params[:contract_type_id])
         expect(offer[:data].vacancies_quantity).to eq(params[:vacancies_quantity])
         expect(offer[:data].sex_id).to eq(params[:sex_id])
-        expect(offer[:data].inmediate_start).to eq(params[:inmediate_start])
+        expect(offer[:data].immediate_start).to eq(params[:immediate_start])
 
         expect(offer[:error]).to eq(nil)
       end
@@ -47,7 +47,7 @@ RSpec.describe Companies::FirstOffer::StepFourService do
           sex_id: sex.id,
           offer_age_range: '18,24',
           close_date: '2020-12-31',
-          inmediate_start: true
+          immediate_start: true
         }
       end
 

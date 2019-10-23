@@ -2,8 +2,6 @@ class Companies::FirstOffer::StepFoursController < ApplicationController
   before_action :authenticate_company!
 
   def edit
-    puts "#" * 100
-    puts params.inspect
     offer = Offer.find(params["format"])
     offer_presenter(offer)
   end
@@ -26,15 +24,19 @@ class Companies::FirstOffer::StepFoursController < ApplicationController
   private
 
   def step_four_params
+    puts "#" * 100
+    puts params.inspect
+
     params
       .require(:offer)
       .permit(
+        :id,
         :contract_type_id,
         :vacancies_quantity,
         :sex_id,
         :offer_age_range,
         :close_date,
-        :inmediate_start
+        :immediate_start
     ).to_h
   end
 end

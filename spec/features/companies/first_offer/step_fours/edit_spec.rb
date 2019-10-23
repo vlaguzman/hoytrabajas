@@ -17,7 +17,7 @@ RSpec.describe "When company fill the step four form", :type => :feature do
       with_tag(:input, with: { name: 'offer[sex_id]', type: "hidden" })
       with_tag(:input, with: { name: 'offer[offer_age_range]', type: "hidden" })
       with_tag(:input, with: { name: 'offer[close_date]', type: "hidden" })
-      with_tag(:input, with: { name: 'offer[inmediate_start]', type: "checkbox" })
+      with_tag(:input, with: { name: 'offer[immediate_start]', type: "checkbox" })
     end
 
     expect(page).to have_button('Siguiente')
@@ -45,7 +45,7 @@ RSpec.describe "When company fill the step four form", :type => :feature do
             sex_id: sex.id,
             offer_age_range: '18-27',
             close_date: '2020-01-20',
-            inmediate_start: true
+            immediate_start: true
           })
         click_link_or_button('Siguiente')
 

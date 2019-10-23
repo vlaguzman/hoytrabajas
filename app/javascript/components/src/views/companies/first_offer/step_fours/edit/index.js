@@ -7,7 +7,7 @@ import FormTitle from '../../../../../components/FormsLayout/FormTitle'
 import FormButtons from '../../../../../components/FormsLayout/FormButtons'
 import FormFields from './FormFields'
 
-const CompaniesStepFour = ({ formInfo, csrf_name, csrf_token }) => {
+const CompaniesStepFour = ({ formInfo, csrf_param, csrf_token }) => {
   const {
     title,
     subtitle,
@@ -19,6 +19,7 @@ const CompaniesStepFour = ({ formInfo, csrf_name, csrf_token }) => {
       method,
       type,
       formFields,
+      id
     }
   } = formInfo
 
@@ -30,13 +31,14 @@ const CompaniesStepFour = ({ formInfo, csrf_name, csrf_token }) => {
           <>
             <FormTitle title={title} subtitle={subtitle} />
             <div className="w-80">
-              <form className="forms__candidate" action={action} method="post" >
+              <form className="forms__candidate" action={action} method="post">
                 <FormFields type={type} formFields={formFields} />
-                <input type="hidden" name={csrf_name} value={csrf_token} />
+                <input type="hidden" name={csrf_param} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />
+                <input type="hidden" name="offer[id]" value={id} />
                 <FormButtons
                   nextPath={nextPath}
-                  previousPath={previousPath}
+                  prevPath={previousPath}
                   buttons={buttons}
                 />
               </form>
@@ -51,7 +53,7 @@ const CompaniesStepFour = ({ formInfo, csrf_name, csrf_token }) => {
 export default CompaniesStepFour
 
 CompaniesStepFour.propTypes = {
-  csrf_name: PropTypes.string,
+  csrf_param: PropTypes.string,
   csrf_token: PropTypes.string,
   formInfo: PropTypes.shape({
     title: PropTypes.string.isRequired,
@@ -59,17 +61,11 @@ CompaniesStepFour.propTypes = {
     form: PropTypes.shape({
       buttons: PropTypes.shape({
         submit: PropTypes.string.isRequired,
-        next: PropTypes.string.isRequired,
-        nextPath: PropTypes.string.isRequired,
-        previous: PropTypes.string.isRequired,
-        previousPath: PropTypes.string.isRequired
       }),
       action: PropTypes.string.isRequired,
       method: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,
-      formFields: PropTypes.object.isRequired,
-      nextPath: PropTypes.string.isRequired,
-      previousPath: PropTypes.string.isRequired,
+      formFields: PropTypes.object.isRequired
     })
   })
 }

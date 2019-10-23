@@ -14,7 +14,7 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
     super(
       vacancies_quantity_field,
       offer_age_range_field,
-      inmediate_start_field,
+      immediate_start_field,
       close_date_field
     )
   end
@@ -52,18 +52,6 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
     }
   end
 
-  def inmediate_start_field
-    {
-      inmediate_start: {
-        name: 'offer[inmediate_start]',
-        label: template_translations[:form][:formFields][:inmediate_start],
-        description: template_translations[:inmediate_start_description],
-        values: { min: 18, max: 80 },
-        step: 1
-      }
-    }
-  end
-
   def close_date_field
     {
       close_date: {
@@ -74,6 +62,16 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
           disableFuture: false,
           emptyLabel: '...'
         }
+      }
+    }
+  end
+
+  def immediate_start_field
+    {
+      immediate_start: {
+        name: 'offer[immediate_start]',
+        label: template_translations[:form][:formFields][:immediate_start],
+        description: template_translations[:immediate_start_description]
       }
     }
   end

@@ -1,5 +1,3 @@
-- puts "#" * 100
-- puts @offer.form_information
 = react_component('views/companies/first_offer/step_fours/edit',
   {formInfo: @offer.form_information,
   csrf_param: request_forgery_protection_token,
@@ -8,4 +6,4 @@
   company_signed_in: company_signed_in?,
   log_out_user: destroy_user_session_path,
   log_out_companies: destroy_company_session_path,
-  session_translation: I18n.t("session") }, prerender: false)
+  session_translation: I18n.t("session") }, prerender: true)

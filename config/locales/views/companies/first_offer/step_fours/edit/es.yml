@@ -5,7 +5,7 @@ es:
         edit:
           title: "Conozcamos más de tu oferta"
           subtitle: "Brinda a tu candidato una relevante de tu empresa."
-          inmediate_start_description: "Inicio inmediato"
+          immediate_start_description: "Inicio inmediato"
           offer_age_range_before: "Edad min."
           offer_age_range_after: "Edad máx."
           form:
@@ -20,4 +20,4 @@ es:
               sex_id: "Tu oferta está dirigida a"
               offer_age_range: "Edad del candidato"
               close_date: "Fecha de inicio"
-              inmediate_start: "¿Cuál es el tiempo para cubrir esta oferta?"
+              immediate_start: "¿Cuál es el tiempo para cubrir esta oferta?"

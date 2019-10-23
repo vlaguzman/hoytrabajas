@@ -8,8 +8,9 @@ class Companies::FirstOffer::StepFourPresenter < ApplicationPresenter
       next_path: companies_first_offer_step_five_path,
       form_type: :offer,
       template_translation_path: "companies.first_offer.step_fours.edit",
-      form_method: :post
+      form_method: :put
     ).form_params
+      .merge({id: source.id})
   end
 
   private

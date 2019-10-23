@@ -96,7 +96,6 @@ const AppLayout = ({
 export default AppLayout
 
 AppLayout.propTypes = {
-  children: PropTypes.object.isRequired,
   log_out_companies: PropTypes.string.isRequired,
   company_signed_in: PropTypes.bool.isRequired,
   user_signed_in: PropTypes.bool.isRequired,

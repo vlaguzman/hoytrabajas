@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { DynamicCompaniesStepSix } from '../../../../../src/views/DynamicViews'
 import AppLayout from '../../../../../src/components/Layout/AppLayout'
 
@@ -83,11 +84,39 @@ const formInfo = {
 }
 
 const CompaniesStepSixPage = props => {
+  const {
+    log_out_companies,
+    company_signed_in,
+    user_signed_in,
+    log_out_user,
+    csrf_param,
+    csrf_token,
+    session_translation
+  } = props
   return (
-    <AppLayout>
+    <AppLayout
+      log_out_companies={log_out_companies}
+      company_signed_in={company_signed_in}
+      user_signed_in={user_signed_in}
+      log_out_user={log_out_user}
+      csrf_param={csrf_param}
+      csrf_token={csrf_token}
+      session_translation={session_translation}
+    >
       <DynamicCompaniesStepSix formInfo={formInfo} {...props} />
     </AppLayout>
   )
 }
 
 export default CompaniesStepSixPage
+
+CompaniesStepSixPage.propTypes = {
+  log_out_companies: PropTypes.string.isRequired,
+  company_signed_in: PropTypes.bool.isRequired,
+  user_signed_in: PropTypes.bool.isRequired,
+  log_out_user: PropTypes.string.isRequired,
+  csrf_param: PropTypes.string.isRequired,
+  csrf_token: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
+  session_translation: PropTypes.object.isRequired
+}

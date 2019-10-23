@@ -11,13 +11,13 @@ const CompaniesStepSeven = ({ formInfo }) => {
   const {
     title,
     subtitle,
-    form: { buttons, nextPath, prevPath, action, method, type, formFields }
+    form: { buttons, nextPath, previousPath, action, method, type, formFields }
   } = formInfo
 
   return (
-    <div className="main-wrapper">
+    <div className="main-wrapper" style={{ margin: '100px 0' }}>
       <FormProgress value={0} />
-      <Row className="mt-10 mb-70 justify-content-center w-100 pb-50 mx-0 px-20">
+      <Row className="justify-content-center w-100 pb-50 mx-0 px-20">
         <Paper className="d-flex flex-column position-relative paper-width justify-content-around align-items-center pt-60 mb-70">
           <>
             <FormTitle title={title} subtitle={subtitle} />
@@ -30,7 +30,7 @@ const CompaniesStepSeven = ({ formInfo }) => {
                 <FormFields type={type} formFields={formFields} />
                 <FormButtons
                   nextPath={nextPath}
-                  prevPath={prevPath}
+                  previousPath={previousPath}
                   buttons={buttons}
                 />
               </form>
@@ -51,11 +51,11 @@ CompaniesStepSeven.propTypes = {
     form: PropTypes.shape({
       buttons: PropTypes.shape({
         submit: PropTypes.string.isRequired,
-        prev: PropTypes.string.isRequired,
+        previous: PropTypes.string.isRequired,
         next: PropTypes.string.isRequired
       }),
       nextPath: PropTypes.string.isRequired,
-      prevPath: PropTypes.string.isRequired,
+      previousPath: PropTypes.string.isRequired,
       action: PropTypes.string.isRequired,
       method: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,

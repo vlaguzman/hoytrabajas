@@ -1,2 +1,11 @@
 -# TODO With prerender the comp break de view
-= react_component('views/companies/first_offer/step_sixes/show', { }, prerender: false)
+= react_component('views/companies/first_offer/step_sixes/show', 
+  { log_out_companies: destroy_company_session_path,
+  log_out_user: destroy_user_session_path,
+  csrf_param: request_forgery_protection_token,
+  csrf_token: form_authenticity_token,
+  company_signed_in: company_signed_in?,
+  user_signed_in: user_signed_in?,
+  path: companies_first_offer_step_six_path,
+  session_translation: I18n.t("session") },
+  prerender: false)

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import Downshift from 'downshift'
 import deburr from 'lodash/deburr'
@@ -7,51 +7,8 @@ import TextField from '@material-ui/core/TextField'
 import Paper from '@material-ui/core/Paper'
 import MenuItem from '@material-ui/core/MenuItem'
 import Chip from '@material-ui/core/Chip'
-import { useDebouncedCallback } from 'use-debounce'
 import FormControl from '@material-ui/core/FormControl'
 import FormHelperText from '@material-ui/core/FormHelperText'
-import useWhyDidYouUpdate from '../../../hooks/useWhyDidYouUpdate'
-import { compareArrays } from '../../../helpers'
-
-const MAX_VALUES = 3
-const suggestions = [
-  { value: 1, label: 'Afghanistan' },
-  { value: 2, label: 'Aland Islands' },
-  { value: 3, label: 'Albania' },
-  { value: 4, label: 'Algeria' },
-  { value: 5, label: 'American Samoa' },
-  { value: 6, label: 'Andorra' },
-  { value: 7, label: 'Angola' },
-  { value: 8, label: 'Anguilla' },
-  { value: 9, label: 'Antarctica' },
-  { value: 10, label: 'Antigua and Barbuda' },
-  { value: 11, label: 'Argentina' },
-  { value: 12, label: 'Armenia' },
-  { value: 13, label: 'Aruba' },
-  { value: 14, label: 'Australia' },
-  { value: 15, label: 'Austria' },
-  { value: 15, label: 'Azerbaijan' },
-  { value: 15, label: 'Bahamas' },
-  { value: 19, label: 'Bahrain' },
-  { value: 20, label: 'Bangladesh' },
-  { value: 21, label: 'Barbados' },
-  { value: 22, label: 'Belarus' },
-  { value: 23, label: 'Belgium' },
-  { value: 24, label: 'Belize' },
-  { value: 25, label: 'Benin' },
-  { value: 26, label: 'Bermuda' },
-  { value: 27, label: 'Bhutan' },
-  { value: 28, label: 'Bolivia, Plurinational State of' },
-  { value: 29, label: 'Bonaire, Sint Eustatius and Saba' },
-  { value: 30, label: 'Bosnia and Herzegovina' },
-  { value: 31, label: 'Botswana' },
-  { value: 32, label: 'Bouvet Island' },
-  { value: 33, label: 'Brazil' },
-  { value: 34, label: 'British Indian Ocean Territory' },
-  { value: 35, label: 'Brunei Darussalam' }
-]
-
-const newSkillSuggestion = { value: 9999, label: 'Añadir nueva habilidad' }
 
 const useStyles = makeStyles({
   root: {
@@ -70,7 +27,9 @@ const useStyles = makeStyles({
     right: 0
   },
   chip: {
-    margin: `5px 10px`
+    margin: `5px 10px`,
+    position: 'absolute',
+    bottom: '2px'
   },
   inputRoot: {
     flexWrap: 'wrap'
@@ -114,20 +73,21 @@ function renderSuggestion(suggestionProps) {
     highlightedIndex,
     selectedItem
   } = suggestionProps
+
   const isHighlighted = highlightedIndex === index
-  const isSelected = (selectedItem || '').indexOf(suggestion.label) > -1
+  const isSelected = selectedItem === suggestion.description
   return (
     <MenuItem
       {...itemProps}
-      key={suggestion.label}
-      value={suggestion.value}
+      key={suggestion.description}
+      value={suggestion.id}
       selected={isHighlighted}
       component="div"
       style={{
         fontWeight: isSelected ? 500 : 400
       }}
     >
-      {suggestion.label}
+      {suggestion.description}
     </MenuItem>
   )
 }
@@ -141,203 +101,130 @@ renderSuggestion.propTypes = {
   itemProps: PropTypes.object.isRequired,
   selectedItem: PropTypes.string.isRequired,
   suggestion: PropTypes.shape({
-    label: PropTypes.string.isRequired
+    description: PropTypes.string.isRequired
   }).isRequired
-}
-
-function getSuggestions(value, { showEmpty = false } = {}) {
-  const inputValue = deburr(value.trim()).toLowerCase()
-  const inputLength = inputValue.length
-  let count = 0
-
-  const results = suggestions.filter(suggestion => {
-    const keep =
-      count < 5 &&
-      suggestion.label.slice(0, inputLength).toLowerCase() === inputValue
-
-    if (keep) {
-      count += 1
-    }
-
-    return keep
-  })
-
-  return inputLength === 0 && !showEmpty
-    ? []
-    : (results.length > 0 && results) || [newSkillSuggestion]
 }
 
 const TextChip = props => {
   const {
-    formSection,
-    rowValue = null,
-    inputValue: parentInputValue,
-    setValue,
-    setRowValue,
-    pro,
-    name,
-    extra
+    selectOptions,
+    handleChange,
+    inputValue = null,
+    description = null,
+    label = null,
+    newItemDescription = null,
+    placeholder = null,
+    isMultiple = false
   } = props
-  const { subFields = null } = extra
-  const { className = null, label = null } = pro
 
-  const defaultRowValue = rowValue && rowValue[name]
-  const defaultValue = parentInputValue && parentInputValue[name]
-
-  const [inputValue, setInputValue] = useState('')
+  const [inputText, setInputText] = useState('')
   const [selectedItem, setSelectedItem] = useState(
-    defaultRowValue || defaultValue || []
+    { id: inputValue, description } || []
   )
   const [errors, setErrors] = useState(false)
   const classes = useStyles()
 
-  useWhyDidYouUpdate('textchip', props)
-
   useEffect(() => {
     if (
-      rowValue &&
-      rowValue[name] &&
-      !compareArrays(rowValue[name], selectedItem)
+      (inputValue && inputValue !== selectedItem.id) ||
+      (inputValue &&
+        inputValue === 9999 &&
+        description !== selectedItem.description)
     ) {
-      setSelectedItem(rowValue[name])
-    } else if (
-      parentInputValue &&
-      parentInputValue[name] &&
-      !compareArrays(parentInputValue[name], selectedItem)
-    ) {
-      setSelectedItem(parentInputValue[name])
+      setSelectedItem({
+        id: inputValue,
+        description
+      })
     }
-  }, [formSection, rowValue, parentInputValue])
-
-  const [updateRowValue] = useDebouncedCallback(() => {
-    console.log('updateRowValue')
-    console.log(selectedItem)
-    setRowValue(prevState => ({
-      ...prevState,
-      [name]: [...selectedItem]
-    }))
-  }, 750)
+  }, [inputValue, description])
 
   useEffect(() => {
-    if (rowValue) {
-      updateRowValue()
-    } else if (parentInputValue) {
-      setValue(prevState => ({
-        ...prevState,
-        [name]: [...selectedItem]
-      }))
-    }
+    handleChange(selectedItem)
   }, [selectedItem])
+
+  function getSelectedOptions(desc, { showEmpty = false } = {}) {
+    const text = deburr(desc.trim()).toLowerCase()
+    const inputLength = text.length
+    let count = 0
+
+    const results = selectOptions.filter(suggestion => {
+      const keep =
+        count < 5 &&
+        suggestion.description.slice(0, inputLength).toLowerCase() === text
+
+      if (keep) {
+        count += 1
+      }
+
+      return keep
+    })
+
+    return inputLength === 0 && !showEmpty
+      ? []
+      : (results.length > 0 && results) || [
+          { id: 9999, description: newItemDescription }
+        ]
+  }
 
   const handleKeyDown = event => {
     if (event.key === 'Enter') event.preventDefault()
     if (
+      selectedItem &&
       selectedItem.length &&
-      !inputValue.length &&
+      !inputText.length &&
       event.key === 'Backspace'
     ) {
       setSelectedItem(selectedItem.slice(0, selectedItem.length - 1))
     }
   }
 
-  const [cleanErrors] = useDebouncedCallback(() => setErrors(false), 3000)
-
   const handleInputChange = event => {
-    if (selectedItem.length >= MAX_VALUES) {
-      setInputValue('')
-      setErrors(`El máximo de habilidades permitidas es de ${MAX_VALUES}`)
-      cleanErrors()
+    if (!isMultiple && description) {
+      setInputText('')
       return
     }
-    setInputValue(event.target.value)
+    setInputText(event.target.value)
   }
 
-  const mapValue = obj => ({
-    [subFields['value']]: obj.value,
-    [subFields['label']]: obj.label
-  })
-
-  const handleChange = item => {
-    if (selectedItem.length >= MAX_VALUES) return
-
-    const mappedValue = mapValue(item)
-
-    if (item.value === 9999) {
-      const index = selectedItem.findIndex(
-        sel =>
-          sel[subFields['label']].toLowerCase() === inputValue.toLowerCase()
-      )
-      if (index !== -1) {
-        setInputValue('')
-      } else {
-        setInputValue('')
-        setSelectedItem(prevState => [
-          ...prevState,
-          {
-            ...mappedValue,
-            [subFields['label']]: inputValue
-          }
-        ])
-      }
-    } else if (
-      selectedItem.findIndex(sel => sel[subFields['value']] === item.value) ===
-      -1
-    ) {
-      setSelectedItem(prevState => [...prevState, { ...mappedValue }])
-      setInputValue('')
-    } else {
-      setInputValue('')
+  const handleSelectChange = item => {
+    if (!isMultiple) {
+      const desc = item.id === 9999 ? inputText : item.description
+      setInputText('')
+      setSelectedItem({
+        ...item,
+        description: desc
+      })
     }
   }
 
-  const handleDelete = item => () => {
-    const newSelectedItem = [...selectedItem]
-    const index = newSelectedItem.findIndex(sel => sel.label === item.label)
-    newSelectedItem.splice(index, 1)
-    setSelectedItem(newSelectedItem)
-  }
-
-  const mappedValues = useMemo(
-    () =>
-      (selectedItem &&
-        selectedItem.map(sel => {
-          if (!sel[subFields['value']]) return null
-          return {
-            value: sel[subFields['value']],
-            label: sel[subFields['label']]
-          }
-        })) ||
-      [],
-    [selectedItem]
-  )
+  const handleDelete = () => setSelectedItem(null)
 
   return (
-    <FormControl className={className} style={{ flex: 1 }} error={!!errors}>
+    <FormControl
+      className="classNameGoesHere"
+      style={{ flex: 1 }}
+      error={!!errors}
+    >
       <Downshift
         id="downshift-multiple"
-        inputValue={inputValue}
-        onChange={handleChange}
-        selectedItem={mappedValues}
-        itemToString={item => (item ? item.label : '')}
+        inputValue={inputText}
+        onChange={handleSelectChange}
+        selectedItem={selectedItem}
+        itemToString={item => (item ? item.description : '')}
       >
         {({
           getInputProps,
           getItemProps,
           getLabelProps,
           isOpen,
-          inputValue: inputValue2,
+          inputValue: inputText2,
           selectedItem: selectedItem2,
           highlightedIndex
         }) => {
           const { onBlur, onChange, onFocus, ...inputProps } = getInputProps({
             onKeyDown: handleKeyDown,
             placeholder:
-              selectedItem &&
-              selectedItem.length === 0 &&
-              extra &&
-              extra.placeholder
-                ? extra.placeholder
-                : ''
+              (selectedItem && selectedItem.length === 0 && placeholder) || ''
           })
 
           return (
@@ -349,18 +236,30 @@ const TextChip = props => {
                 errors,
                 InputLabelProps: getLabelProps(),
                 InputProps: {
-                  startAdornment: mappedValues.map(item => {
-                    if (!item || !item.value || !item.label) return null
-                    return (
-                      <Chip
-                        key={item.label}
-                        tabIndex={-1}
-                        label={item.label}
-                        className={classes.chip}
-                        onDelete={handleDelete(item)}
-                      />
-                    )
-                  }),
+                  disabled: selectedItem && selectedItem.description,
+                  startAdornment: Array.isArray(selectedItem)
+                    ? selectedItem.map(item => {
+                        if (!item || !item.id || !item.description) return null
+                        return (
+                          <Chip
+                            key={item.description}
+                            tabIndex={-1}
+                            label={item.description}
+                            className={classes.chip}
+                            onDelete={handleDelete(item)}
+                          />
+                        )
+                      })
+                    : (selectedItem && selectedItem.description && (
+                        <Chip
+                          key={selectedItem.description}
+                          tabIndex={-1}
+                          label={selectedItem.description}
+                          className={classes.chip}
+                          onDelete={handleDelete(selectedItem)}
+                        />
+                      )) ||
+                      null,
                   onBlur,
                   onChange: event => {
                     handleInputChange(event)
@@ -374,7 +273,7 @@ const TextChip = props => {
 
               {isOpen ? (
                 <Paper className={classes.paper} square>
-                  {getSuggestions(inputValue2).map((suggestion, index) =>
+                  {getSelectedOptions(inputText2).map((suggestion, index) =>
                     renderSuggestion({
                       suggestion,
                       index,
@@ -394,7 +293,13 @@ const TextChip = props => {
 }
 
 TextChip.propTypes = {
-  // classes: PropTypes.object
+  inputValue: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  selectOptions: PropTypes.array.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  label: PropTypes.string,
+  placeholder: PropTypes.string,
+  isMultiple: PropTypes.bool
 }
 
 export default TextChip

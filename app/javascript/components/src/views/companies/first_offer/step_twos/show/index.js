@@ -30,7 +30,7 @@ const CompaniesStepTwo = ({ csrf_param, csrf_token, formInfo }) => {
                 <FormFields type={type} formFields={formFields} />
                 <FormButtons
                   nextPath={nextPath}
-                  prevPath={previousPath}
+                  previousPath={previousPath}
                   buttons={buttons}
                 />
               </form>

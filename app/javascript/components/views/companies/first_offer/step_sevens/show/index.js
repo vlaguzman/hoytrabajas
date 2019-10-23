@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { DynamicCompaniesStepSeven } from '../../../../../src/views/DynamicViews'
 import AppLayout from '../../../../../src/components/Layout/AppLayout'
 
@@ -8,10 +9,10 @@ const formInfo = {
   form: {
     buttons: {
       submit: 'Siguiente',
-      prev: 'Regresar',
+      previous: 'Regresar',
       next: 'Saltar'
     },
-    prevPath: '/companies/first_offer/step_six',
+    previousPath: '/companies/first_offer/step_six',
     nextPath: '/companies/first_offer/completed',
     action: '',
     method: 'PUT',
@@ -35,7 +36,7 @@ const formInfo = {
       },
       offer_education: {
         name: 'offer_education',
-        beforeLabel: 'Nivel mínimo de educacióm',
+        beforeLabel: 'Nivel mínimo de educación',
         current_value: '',
         values: [
           {
@@ -82,10 +83,25 @@ const formInfo = {
           }
         ]
       },
-      offer_skills_ids: {
-        name: 'offer_skills_ids',
-        beforeLabel: 'Con habilidades en',
+      offer_experience_boolean: {
+        name: 'offer_experience_boolean',
         currentValue: '',
+        beforeLabel: 'ó',
+        description: 'Sin experiencia'
+      },
+      offer_skills: {
+        name: 'offer_skills',
+        current_value: [
+          {
+            id: 1,
+            description: 'Redes sociales',
+            level_id: 2
+          }
+        ]
+      },
+      offer_skills_ids: {
+        beforeLabel: 'Con habilidades en',
+        new_item_description: 'Agregar una nueva habilidad',
         values: [
           {
             id: 1,
@@ -101,10 +117,8 @@ const formInfo = {
           }
         ]
       },
-      offer_skills_level: {
-        name: 'offer_skills_level',
+      offer_skills_level_id: {
         beforeLabel: 'con nivel',
-        currentValue: '',
         values: [
           {
             id: 1,
@@ -120,8 +134,18 @@ const formInfo = {
           }
         ]
       },
-      offer_languages_id: {
-        name: 'offer_languages_id',
+      offer_languages: {
+        name: 'offer_languages',
+        current_value: [
+          {
+            id: 1,
+            description: 'Inglés',
+            level_id: 2
+          }
+        ]
+      },
+      languages_id: {
+        name: 'languages_id',
         beforeLabel: 'Manejo del idioma',
         currentValue: '',
         isMultiple: true,
@@ -133,11 +157,15 @@ const formInfo = {
           {
             id: 2,
             description: 'Francés'
+          },
+          {
+            id: 3,
+            description: 'Portugués'
           }
         ]
       },
-      offer_languages_level: {
-        name: 'offer_languages_level',
+      languages_level_id: {
+        name: 'languages_level_id',
         beforeLabel: 'con nivel',
         currentValue: '',
         values: [
@@ -160,11 +188,39 @@ const formInfo = {
 }
 
 const CompaniesStepSevenPage = props => {
+  const {
+    log_out_companies,
+    company_signed_in,
+    user_signed_in,
+    log_out_user,
+    csrf_param,
+    csrf_token,
+    session_translation
+  } = props
   return (
-    <AppLayout>
-      <DynamicCompaniesStepSeven formInfo={formInfo} />
+    <AppLayout
+      log_out_companies={log_out_companies}
+      company_signed_in={company_signed_in}
+      user_signed_in={user_signed_in}
+      log_out_user={log_out_user}
+      csrf_param={csrf_param}
+      csrf_token={csrf_token}
+      session_translation={session_translation}
+    >
+      <DynamicCompaniesStepSeven formInfo={formInfo} {...props} />
     </AppLayout>
   )
 }
 
 export default CompaniesStepSevenPage
+
+CompaniesStepSevenPage.propTypes = {
+  log_out_companies: PropTypes.string.isRequired,
+  company_signed_in: PropTypes.bool.isRequired,
+  user_signed_in: PropTypes.bool.isRequired,
+  log_out_user: PropTypes.string.isRequired,
+  csrf_param: PropTypes.string.isRequired,
+  csrf_token: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
+  session_translation: PropTypes.object.isRequired
+}

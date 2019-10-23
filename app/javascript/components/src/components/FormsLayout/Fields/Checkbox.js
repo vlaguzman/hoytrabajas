@@ -46,7 +46,7 @@ export default Checkbox
 Checkbox.propTypes = {
   inputValue: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   description: PropTypes.string.isRequired,
   handleBoolean: PropTypes.func.isRequired,
   isRequired: PropTypes.bool

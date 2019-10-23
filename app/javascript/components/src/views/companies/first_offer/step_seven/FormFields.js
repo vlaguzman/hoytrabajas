@@ -1,24 +1,37 @@
 import React, { useState, useMemo } from 'react'
 import PropTypes from 'prop-types'
+import uuidv4 from 'uuid/v4'
 import { Row, Col } from 'reactstrap'
 import Paper from '@material-ui/core/Paper'
 import styled from 'styled-components'
-import Select from '../../../../components/FormsLayout/Fields/Select'
+import Checkbox from '../../../../components/FormsLayout/Fields/Checkbox'
 import SelectChip from '../../../../components/FormsLayout/Fields/SelectChip'
-import StandardInput from '../../../../components/FormsLayout/Fields/StandardInput'
+import FormRow from '../../../../components/FormsLayout/Fields/FormRow'
+import TextChip from '../../../../components/FormsLayout/Fields/TextChip'
 
 const StyledRow = styled(Row)`
   width: 100%;
   flex: 1 1 0%;
   display: flex;
-  align-items: center;
   margin: 0px;
 `
 
 const StyledCol = styled(Col)`
   display: flex;
-  align-items: center;
-  margin: 0px;
+  align-items: flex-end;
+  margin: ${props => (props.marginAuto ? 'auto 0' : 0)};
+
+  & .MuiFormControl-root {
+    flex: 1;
+  }
+`
+
+const BeforeLabel = styled.span`
+  margin: ${props => (props.marginAuto ? `auto 20px auto 0` : `0 20px 0 0`)};
+`
+
+const AfterLabel = styled.span`
+  margin: ${props => (props.marginAuto ? `auto 0 auto 20px` : `0 0 0 20px`)};
 `
 
 const FormFields = props => {
@@ -28,21 +41,38 @@ const FormFields = props => {
     offer_education = null,
     offer_experience_number = null,
     offer_experience_unit = null,
+    offer_experience_boolean = null,
+    offer_skills = null,
     offer_skills_ids = null,
-    offer_skills_level = null,
-    offer_languages_id = null,
-    offer_languages_level = null
+    offer_skills_level_id = null,
+    offer_languages = null,
+    languages_id = null,
+    languages_level_id = null
   } = formFields
+
+  const rowsDefault = defaultValue => {
+    if (defaultValue && defaultValue.length > 0) {
+      return defaultValue.map(rowContent => ({
+        ...rowContent,
+        rowID: uuidv4()
+      }))
+    }
+    return [
+      {
+        rowID: uuidv4()
+      }
+    ]
+  }
 
   const [formValues, setFormValues] = useState({
     [offer_location.name]: offer_location.current_value || '',
     [offer_education.name]: offer_education.current_value || '',
     [offer_experience_number.name]: offer_experience_number.current_value || '',
     [offer_experience_unit.name]: offer_experience_unit.current_value || '',
-    [offer_skills_ids.name]: offer_skills_ids.current_value || '',
-    [offer_skills_level.name]: offer_skills_level.current_value || '',
-    [offer_languages_id.name]: offer_languages_id.current_value || '',
-    [offer_languages_level.name]: offer_languages_level.current_value || ''
+    [offer_experience_boolean.name]:
+      offer_experience_boolean.current_value || false,
+    [offer_skills.name]: rowsDefault(offer_skills.current_value) || [],
+    [offer_languages.name]: rowsDefault(offer_languages.current_value) || []
   })
 
   const handleChange = (e, inputName, isMultiple = false) => {
@@ -72,6 +102,37 @@ const FormFields = props => {
     }
   }
 
+  const addRow = ({ rowName }) => {
+    const merged = [...formValues[rowName], { rowID: uuidv4() }]
+    setFormValues(prevFormValues => ({ ...prevFormValues, [rowName]: merged }))
+  }
+
+  const removeRow = ({ rowName, rowID }) => {
+    if (formValues[rowName].length > 1) {
+      const filteredRows = formValues[rowName].filter(
+        row => row.rowID !== rowID
+      )
+      setFormValues(prevFormValues => ({
+        ...prevFormValues,
+        [rowName]: filteredRows
+      }))
+    }
+  }
+
+  const updateAllRows = ({ updatedRow, rowName, rowID }) => {
+    const currentRows = formValues[rowName]
+    const rowIndex = currentRows.findIndex(row => row.rowID === rowID)
+
+    if (rowIndex !== -1) {
+      const newRows = [...currentRows]
+      newRows[rowIndex] = updatedRow
+      setFormValues(prevFormValues => ({
+        ...prevFormValues,
+        [rowName]: newRows
+      }))
+    }
+  }
+
   const handleDeleteChip = (id, inputName, isMultiple) => {
     if (isMultiple) {
       const newChips = [...formValues[inputName]]
@@ -88,23 +149,25 @@ const FormFields = props => {
     }
   }
 
-  const inputClassname = 'my-30 animated fadeIn inputField'
-
-  const inputStyles = {
-    width: `100%`,
-    flex: 1,
-    display: 'flex',
-    alignItems: 'center',
-    margin: 0
+  const handleBoolean = (e, inputName) => {
+    if (e.persist) e.persist()
+    setFormValues(prevFormValues => ({
+      ...prevFormValues,
+      [inputName]: e.target.checked
+    }))
   }
+
+  const inputClassname = 'my-30 animated fadeIn inputField'
 
   const offerLocationField = useMemo(
     () => (
-      <Col className={inputClassname} xs={12}>
+      <Col className={`${inputClassname} p-0`} xs={12}>
         <Paper className="SimpleRowWrapper" style={{ padding: '20px' }}>
           <StyledRow>
             <StyledCol>
-              {offer_location.beforeLabel && offer_location.beforeLabel}
+              <BeforeLabel>
+                {offer_location.beforeLabel && offer_location.beforeLabel}
+              </BeforeLabel>
               <SelectChip
                 inputValue={formValues[offer_location.name]}
                 handleChange={handleChange}
@@ -113,9 +176,7 @@ const FormFields = props => {
                 selectOptions={offer_location.values}
                 isRequired={offer_location.isRequired || false}
                 isMultiple={offer_location.isMultiple || false}
-                formControlStyle={inputStyles}
               />
-              {offer_location.afterLabel && offer_location.afterLabel}
             </StyledCol>
           </StyledRow>
         </Paper>
@@ -124,7 +185,237 @@ const FormFields = props => {
     [formValues[offer_location.name]]
   )
 
-  return <Row className="HT__FormGenerator StepSeven">{offerLocationField}</Row>
+  const offerEducationField = useMemo(
+    () => (
+      <Col className={`${inputClassname} p-0`} xs={12}>
+        <Paper className="SimpleRowWrapper" style={{ padding: '20px' }}>
+          <StyledRow>
+            <StyledCol>
+              <BeforeLabel>
+                {offer_education.beforeLabel && offer_education.beforeLabel}
+              </BeforeLabel>
+              <SelectChip
+                inputValue={formValues[offer_education.name]}
+                handleChange={handleChange}
+                handleDeleteChip={handleDeleteChip}
+                name={offer_education.name}
+                selectOptions={offer_education.values}
+                isRequired={offer_education.isRequired || false}
+                isMultiple={offer_education.isMultiple || false}
+              />
+            </StyledCol>
+          </StyledRow>
+        </Paper>
+      </Col>
+    ),
+    [formValues[offer_education.name]]
+  )
+
+  const offerExperienceFields = useMemo(
+    () => (
+      <Col className={`${inputClassname} p-0`} xs={12}>
+        <Paper className="SimpleRowWrapper" style={{ padding: '20px' }}>
+          <StyledRow>
+            <StyledCol xs={12} lg={4}>
+              <BeforeLabel marginAuto>
+                {offer_experience_number.beforeLabel &&
+                  offer_experience_number.beforeLabel}
+              </BeforeLabel>
+              <SelectChip
+                inputValue={formValues[offer_experience_number.name]}
+                handleChange={handleChange}
+                handleDeleteChip={handleDeleteChip}
+                name={offer_experience_number.name}
+                selectOptions={offer_experience_number.values}
+                isRequired={offer_experience_number.isRequired || false}
+                isMultiple={offer_experience_number.isMultiple || false}
+                isDisabled={formValues[offer_experience_boolean.name] || false}
+              />
+            </StyledCol>
+            <StyledCol xs={12} lg={4}>
+              <SelectChip
+                inputValue={formValues[offer_experience_unit.name]}
+                handleChange={handleChange}
+                handleDeleteChip={handleDeleteChip}
+                name={offer_experience_unit.name}
+                selectOptions={offer_experience_unit.values}
+                isRequired={offer_experience_unit.isRequired || false}
+                isMultiple={offer_experience_unit.isMultiple || false}
+                isDisabled={formValues[offer_experience_boolean.name] || false}
+              />
+              <AfterLabel marginAuto>
+                {offer_experience_unit.afterLabel &&
+                  offer_experience_unit.afterLabel}
+              </AfterLabel>
+            </StyledCol>
+            <StyledCol xs={12} lg={4} marginAuto>
+              <BeforeLabel marginAuto>
+                {offer_experience_boolean.beforeLabel &&
+                  offer_experience_boolean.beforeLabel}
+              </BeforeLabel>
+              <Checkbox
+                inputValue={formValues[offer_experience_boolean.name]}
+                handleBoolean={handleBoolean}
+                name={offer_experience_boolean.name}
+                label={offer_experience_boolean.label}
+                description={offer_experience_boolean.description}
+                isRequired={offer_experience_boolean.isRequired || false}
+                isMultiple={offer_experience_boolean.isMultiple || false}
+              />
+              <AfterLabel marginAuto>
+                {offer_experience_boolean.afterLabel &&
+                  offer_experience_boolean.afterLabel}
+              </AfterLabel>
+            </StyledCol>
+          </StyledRow>
+        </Paper>
+      </Col>
+    ),
+    [
+      formValues[offer_experience_number.name],
+      formValues[offer_experience_unit.name],
+      formValues[offer_experience_boolean.name]
+    ]
+  )
+
+  const offerSkillsRows = useMemo(
+    () => (
+      <Paper className="FormRowWrapper">
+        {formValues[offer_skills.name].map(currentRow => (
+          <Col
+            key={currentRow.rowID}
+            className={inputClassname}
+            xs={12}
+            style={{ margin: '20px 0', padding: '0 20px' }}
+          >
+            {/* TODO: populate multiple inputs with offer_skills values */}
+            {/* <input type="hidden" value={formValues[offer_skills.name]} /> */}
+            <StyledRow style={{ height: '55px' }}>
+              <FormRow
+                allRows={formValues[offer_skills.name]}
+                rowName={offer_skills.name}
+                currentRow={currentRow}
+                addRow={addRow}
+                removeRow={removeRow}
+                updateAllRows={updateAllRows}
+              >
+                {({
+                  rowValue,
+                  handleRowChanges,
+                  handleTextChip,
+                  handleRowDeleteChip
+                }) => (
+                  <>
+                    <StyledCol xs={12} lg={6}>
+                      <BeforeLabel marginAuto>
+                        {offer_skills_ids.beforeLabel &&
+                          offer_skills_ids.beforeLabel}
+                      </BeforeLabel>
+                      <TextChip
+                        inputValue={rowValue.id}
+                        description={rowValue.description}
+                        handleChange={handleTextChip}
+                        selectOptions={offer_skills_ids.values}
+                        newItemDescription={
+                          offer_skills_ids.new_item_description
+                        }
+                      />
+                    </StyledCol>
+                    <StyledCol xs={12} lg={4}>
+                      <BeforeLabel marginAuto>
+                        {offer_skills_level_id.beforeLabel &&
+                          offer_skills_level_id.beforeLabel}
+                      </BeforeLabel>
+                      <SelectChip
+                        name="level_id"
+                        inputValue={rowValue.level_id || ''}
+                        handleChange={handleRowChanges}
+                        handleDeleteChip={handleRowDeleteChip}
+                        selectOptions={offer_skills_level_id.values}
+                        isRequired={offer_skills_level_id.isRequired || false}
+                      />
+                    </StyledCol>
+                  </>
+                )}
+              </FormRow>
+            </StyledRow>
+          </Col>
+        ))}
+      </Paper>
+    ),
+    [formValues[offer_skills.name]]
+  )
+
+  const offerLanguagesRows = useMemo(
+    () => (
+      <Paper className="FormRowWrapper">
+        {formValues[offer_languages.name].map(currentRow => (
+          <Col
+            key={currentRow.rowID}
+            className={inputClassname}
+            xs={12}
+            style={{ margin: '20px 0', padding: '0 20px' }}
+          >
+            {/* TODO: populate multiple inputs with offer_languages values */}
+            {/* <input type="hidden" value={formValues[offer_languages.name]} /> */}
+            <StyledRow style={{ height: '55px' }}>
+              <FormRow
+                allRows={formValues[offer_languages.name]}
+                rowName={offer_languages.name}
+                currentRow={currentRow}
+                addRow={addRow}
+                removeRow={removeRow}
+                updateAllRows={updateAllRows}
+              >
+                {({ rowValue, handleRowChanges, handleRowDeleteChip }) => (
+                  <>
+                    <StyledCol xs={12} lg={6}>
+                      <BeforeLabel marginAuto>
+                        {languages_id.beforeLabel && languages_id.beforeLabel}
+                      </BeforeLabel>
+                      <SelectChip
+                        name="languages_id"
+                        inputValue={rowValue.languages_id || ''}
+                        handleChange={handleRowChanges}
+                        handleDeleteChip={handleRowDeleteChip}
+                        selectOptions={languages_id.values}
+                        isRequired={languages_id.isRequired || false}
+                      />
+                    </StyledCol>
+                    <StyledCol xs={12} lg={4}>
+                      <BeforeLabel marginAuto>
+                        {languages_level_id.beforeLabel &&
+                          languages_level_id.beforeLabel}
+                      </BeforeLabel>
+                      <SelectChip
+                        name="languages_level_id"
+                        inputValue={rowValue.languages_level_id || ''}
+                        handleChange={handleRowChanges}
+                        handleDeleteChip={handleRowDeleteChip}
+                        selectOptions={languages_level_id.values}
+                        isRequired={languages_level_id.isRequired || false}
+                      />
+                    </StyledCol>
+                  </>
+                )}
+              </FormRow>
+            </StyledRow>
+          </Col>
+        ))}
+      </Paper>
+    ),
+    [formValues[offer_languages.name]]
+  )
+
+  return (
+    <Row className="HT__FormGenerator StepSeven">
+      {offerLocationField}
+      {offerEducationField}
+      {offerExperienceFields}
+      {offerSkillsRows}
+      {offerLanguagesRows}
+    </Row>
+  )
 }
 
 export default FormFields
@@ -132,13 +423,16 @@ export default FormFields
 FormFields.propTypes = {
   type: PropTypes.oneOf(['user', 'company']),
   formFields: PropTypes.shape({
-    offer_location: PropTypes.object,
-    offer_education: PropTypes.object,
-    offer_experience_number: PropTypes.object,
-    offer_experience_unit: PropTypes.object,
-    offer_skills_ids: PropTypes.object,
-    offer_skills_level: PropTypes.object,
-    offer_languages_id: PropTypes.object,
-    offer_languages_level: PropTypes.object
+    offer_location: PropTypes.object.isRequired,
+    offer_education: PropTypes.object.isRequired,
+    offer_experience_number: PropTypes.object.isRequired,
+    offer_experience_unit: PropTypes.object.isRequired,
+    offer_experience_boolean: PropTypes.object,
+    offer_skills: PropTypes.object.isRequired,
+    offer_skills_ids: PropTypes.object.isRequired,
+    offer_skills_level_id: PropTypes.object.isRequired,
+    offer_languages: PropTypes.object.isRequired,
+    languages_id: PropTypes.object.isRequired,
+    languages_level_id: PropTypes.object.isRequired
   }).isRequired
 }

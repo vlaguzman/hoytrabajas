@@ -31,12 +31,13 @@ const AppLayout = ({
   company_signed_in,
   log_out_user,
   log_out_companies,
-  session_translation
+  session_translation,
+  shouldChangeColorOfNav = false
 }) => {
-  const [isTop, setIsTop] = useState(false)
+  const [isTop, setIsTop] = useState(true)
   const myRef = useRef(null)
   const onScrollFrame = e => {
-    const currentTop = e.scrollTop > 200
+    const currentTop = e.scrollTop < 200
     if (currentTop !== isTop) setIsTop(currentTop)
   }
   const scrollToBottom = () => {
@@ -64,7 +65,7 @@ const AppLayout = ({
                         >
                           <div className="app-header">
                             <Header
-                              scrollState={isTop}
+                              isScrollTop={isTop}
                               csrf_param={csrf_param}
                               csrf_token={csrf_token}
                               user_signed_in={user_signed_in}
@@ -72,6 +73,7 @@ const AppLayout = ({
                               log_out_user={log_out_user}
                               log_out_companies={log_out_companies}
                               session_translation={session_translation}
+                              shouldChangeColorOfNav={shouldChangeColorOfNav}
                             />
                           </div>
                           <div className="rct-page-content">
@@ -102,5 +104,6 @@ AppLayout.propTypes = {
   log_out_user: PropTypes.string.isRequired,
   csrf_param: PropTypes.string.isRequired,
   csrf_token: PropTypes.string.isRequired,
-  session_translation: PropTypes.object.isRequired
+  session_translation: PropTypes.object.isRequired,
+  shouldChangeColorOfNav: PropTypes.bool
 }

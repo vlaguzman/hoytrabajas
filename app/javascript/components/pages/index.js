@@ -24,6 +24,7 @@ const HomePage = ({
         log_out_user={log_out_user}
         log_out_companies={log_out_companies}
         session_translation={session_translation}
+        shouldChangeColorOfNav
       >
         <DynamicHome offers={offers} offer_translations={offer_translations} />
       </AppLayout>

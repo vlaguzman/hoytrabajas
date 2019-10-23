@@ -1,93 +1,148 @@
-/**
- * App Header
- */
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import { makeStyles } from '@material-ui/core/styles'
 import MatButton from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
-import Typography from '@material-ui/core/Typography'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Menu from '@material-ui/icons/Menu'
-import Visibility from '@material-ui/icons/Visibility'
-import MailOutline from '@material-ui/icons/MailOutline'
-import Lock from '@material-ui/icons/Lock'
+import MenuIcon from '@material-ui/icons/Menu'
 import Fab from '@material-ui/core/Fab'
-import { Row, Col, Form, FormGroup, Label, Input } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Dialog from '@material-ui/core/Dialog'
-import DialogActions from '@material-ui/core/DialogActions'
-import DialogContent from '@material-ui/core/DialogContent'
-import DialogContentText from '@material-ui/core/DialogContentText'
-import DialogTitle from '@material-ui/core/DialogTitle'
-import Divider from '@material-ui/core/Divider'
-import dialogState from '../../hooks/dialogState'
+import Typography from '@material-ui/core/Typography'
+import {
+  Row,
+  Col,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  NavItem
+} from 'reactstrap'
+import Login from '../Login'
 import { fields1 } from './data'
 import FormGen from '../inlineFormgenerartor'
 
-const Header = ({
-  scrollState,
-  csrf_param,
-  csrf_token,
-  user_signed_in,
-  company_signed_in,
-  log_out_user,
-  log_out_companies,
-  session_translation
-}) => {
-  const [open, setOpen] = React.useState(false)
-  const [loginState, setloginState] = React.useState(true)
-  const [fullWidth, setFullWidth] = React.useState(true)
-  const [maxWidth, setMaxWidth] = React.useState('sm')
-
-  function handleClickOpen() {
-    setOpen(true)
+const useStyles = makeStyles(theme => ({
+  nav: {
+    position: 'fixed',
+    backgroundColor: 'transparent',
+    zIndex: '999 !important',
+    transition: 'all 500ms ease-in-out',
+    color: 'white',
+    top: 0,
+    width: '100%',
+    padding: '0 5%',
+    flexDirection: 'column'
+  },
+  wrapper: {
+    width: '90%',
+    display: 'flex',
+    flexFlow: 'row nowrap',
+    justifyContent: 'flex-start',
+    [theme.breakpoints.down('md')]: {
+      width: '100%',
+      paddingLeft: '20px',
+      paddingRight: '20px',
+      flexWrap: 'wrap',
+      alignItems: 'center',
+      justifyContent: 'space-between'
+    }
+  },
+  searchBar: {
+    margin: 0
+  },
+  searchForm: {
+    flexGrow: 1,
+    [theme.breakpoints.down('md')]: {
+      justifyContent: 'space-around'
+    }
+  },
+  navItemWrapper: {
+    [theme.breakpoints.down('md')]: {
+      margin: '20px 0'
+    }
+  },
+  navItemButton: {
+    [theme.breakpoints.down('md')]: {
+      width: '100%'
+    }
   }
+}))
 
-  function handleClose() {
-    setOpen(false)
-  }
-  function toggleLoginState() {
-    setloginState(!loginState)
-  }
+const Header = props => {
+  const {
+    isScrollTop = true,
+    shouldChangeColorOfNav = false,
+    csrf_param,
+    csrf_token,
+    user_signed_in,
+    company_signed_in,
+    log_out_user,
+    log_out_companies,
+    session_translation
+  } = props
 
-  const { value: state, toggleState } = dialogState({ open: false })
+  const classes = useStyles()
+
+  const [openState, setOpenState] = useState({
+    login: false,
+    navbar: false,
+    categories: false,
+    advancedSearch: false
+  })
+
+  const toggleOpenState = (name, newValue = null) =>
+    setOpenState(prevState => ({
+      ...prevState,
+      [name]: newValue || !openState[name]
+    }))
 
   return (
-    <AppBar
+    <Navbar
       position="static"
-      className={`rct-header ${scrollState && 'bg-header'}`}
+      className={`${classes.nav} navbar-expand-lg ${(!shouldChangeColorOfNav ||
+        !isScrollTop) &&
+        'bg-header'}`}
+      style={{
+        backgroundColor:
+          !shouldChangeColorOfNav || !isScrollTop ? 'white' : 'none'
+      }}
     >
-      <div
-        className={` w-100 p-0 m-0 ${scrollState && 'MuiPaper-elevation10'}`}
-      >
-        <Toolbar
-          disableGutters
-          className="d-flex justify-content-start w-100 px-20 pb-0"
-          color="primary"
-        >
-          <div className="d-flex align-items-center">
-            <div className="site-logo">
-              <a href="/" className="logo-mini">
-                <img
-                  src={
-                    !scrollState
-                      ? '/assets/static/img/appLogoW.svg'
-                      : '/assets/static/img/appLogoC.svg'
-                  }
-                  className="mr-15 logo animated fadeIn"
-                  alt="site logo"
-                  height="100%"
-                />
-              </a>
-            </div>
+      <div className={classes.wrapper}>
+        <div className="d-flex align-items-center">
+          <div className="site-logo">
+            <NavbarBrand href="/" className="logo-mini mr-auto">
+              <img
+                src={
+                  shouldChangeColorOfNav && isScrollTop
+                    ? '/assets/static/img/appLogoW.svg'
+                    : '/assets/static/img/appLogoC.svg'
+                }
+                className="mr-15 logo animated fadeIn"
+                alt="site logo"
+                height="100%"
+              />
+            </NavbarBrand>
           </div>
+        </div>
+        <NavbarToggler
+          onClick={() => toggleOpenState('navbar')}
+          className="mt-5"
+        >
+          <MenuIcon
+            color={shouldChangeColorOfNav && isScrollTop ? 'white' : 'primary'}
+          />
+        </NavbarToggler>
+        <Collapse isOpen={openState.navbar} navbar id="navbarNav">
           <Form
-            className={`search-width-container d-none d-lg-flex header-bar  mt-10 ${scrollState &&
-              'show'}`}
+            className={`d-flex header-bar  mt-10 ${(!shouldChangeColorOfNav ||
+              !isScrollTop) &&
+              'show'} ${classes.searchForm}`}
             inline
           >
-            <FormGroup className="search-width">
+            <FormGroup className={`search-width ${classes.searchBar}`}>
               <Label for="exampleEmail" hidden>
                 Buscar ofertas
               </Label>
@@ -98,7 +153,7 @@ const Header = ({
                 id="exampleEmail"
                 placeholder="Buscar ofertas"
               />
-            </FormGroup>{' '}
+            </FormGroup>
             <Fab
               size="small"
               style={{ marginTop: '1%' }}
@@ -108,267 +163,127 @@ const Header = ({
               <FontAwesomeIcon icon="search" size="sm" />
             </Fab>
           </Form>
-          <ul className="navbar-right list-inline mb-0 ml-auto">
-            <li className="list-inline-item responsive">
-              <IconButton aria-label="menu" className="mt-5">
-                <Menu style={{ color: !scrollState ? 'white' : 'black' }} />
-              </IconButton>
-            </li>
-            <li className="list-inline-item no-responsive">
+          <ul className={`navbar-nav ${classes.navItemWrapper}`}>
+            <NavItem className="list-inline-item">
               <MatButton
-                style={{ color: !scrollState ? 'white' : 'black' }}
+                className={classes.navItemButton}
+                style={{
+                  color:
+                    shouldChangeColorOfNav && isScrollTop ? 'white' : 'black'
+                }}
                 href="/"
               >
                 INICIO
               </MatButton>
-            </li>
+            </NavItem>
             {/* TODO: With "Candidato" and "Empleador", to press button redirect me a static landing page.
-          We must take into account to make the change in redirection */}
-            <li className="list-inline-item no-responsive">
-              {(user_signed_in && ( // if user is signed in
-                <MatButton style={{ color: !scrollState ? 'white' : 'black' }}>
-                  BUSCAR OFERTAS
+            We must take into account to make the change in redirection */}
+            {(user_signed_in || company_signed_in) && (
+              <NavItem className="list-inline-item">
+                <MatButton
+                  className={classes.navItemButton}
+                  style={{
+                    color:
+                      shouldChangeColorOfNav && isScrollTop ? 'white' : 'black'
+                  }}
+                >
+                  MI PERFIL
                 </MatButton>
-              )) ||
-              (company_signed_in && ( // else if company is signed in
-                <MatButton style={{ color: !scrollState ? 'white' : 'black' }}>
-                  PUBLICAR OFERTAS
+              </NavItem>
+            )}
+            {(user_signed_in || company_signed_in) && (
+              <NavItem className="list-inline-item">
+                <MatButton
+                  className={classes.navItemButton}
+                  style={{
+                    color:
+                      shouldChangeColorOfNav && isScrollTop ? 'white' : 'black'
+                  }}
+                >
+                  {(user_signed_in && 'BUSCAR OFERTAS') ||
+                    (company_signed_in && 'PUBLICAR OFERTAS')}
                 </MatButton>
-              )) || ( // else
+              </NavItem>
+            )}
+            {(user_signed_in || company_signed_in) && (
+              <NavItem className="list-inline-item">
+                <MatButton
+                  className={classes.navItemButton}
+                  style={{
+                    color:
+                      shouldChangeColorOfNav && isScrollTop ? 'white' : 'black'
+                  }}
+                >
+                  VER MI TABLERO
+                </MatButton>
+              </NavItem>
+            )}
+            {!user_signed_in && !company_signed_in ? (
+              <>
+                <NavItem className="list-inline-item">
                   <MatButton
-                    style={{ color: !scrollState ? 'white' : 'black' }}
-                    href="/users/sign_up"
+                    className={classes.navItemButton}
+                    style={{
+                      color:
+                        shouldChangeColorOfNav && isScrollTop
+                          ? 'white'
+                          : 'black'
+                    }}
+                    onClick={() => toggleOpenState('login')}
                   >
                     SIGN UP CANDIDATO
                   </MatButton>
-                )}
-            </li>
-            <li className="list-inline-item no-responsive">
-              {(user_signed_in && ( // if user is signed in
-                <MatButton style={{ color: !scrollState ? 'white' : 'black' }}>
-                  VER MI TABLERO
-                </MatButton>
-              )) ||
-              (company_signed_in && ( // else if company is signed in
-                <MatButton style={{ color: !scrollState ? 'white' : 'black' }}>
-                  VER MI TABLERO
-                </MatButton>
-              )) || ( // else
+                </NavItem>
+                <NavItem className="list-inline-item">
                   <MatButton
-                    style={{ color: !scrollState ? 'white' : 'black' }}
-                    href="/companies/sign_up"
+                    className={classes.navItemButton}
+                    style={{
+                      color:
+                        shouldChangeColorOfNav && isScrollTop
+                          ? 'white'
+                          : 'black'
+                    }}
+                    onClick={() => toggleOpenState('login')}
                   >
                     SIGN UP EMPRESA
                   </MatButton>
-                )}
-            </li>
-            <li className="list-inline-item no-responsive">
-              {/* {!isAuthenticated ? ( */}
-              {/* TODO:only login with the user_path */}
-              {(user_signed_in && ( // if user is signed in
-                <MatButton style={{ color: !scrollState ? 'white' : 'black' }}>
-                  MI PERFIL
-                </MatButton>
-              )) ||
-              (company_signed_in && ( // else if company is signed in
-                <MatButton style={{ color: !scrollState ? 'white' : 'black' }}>
-                  MI PERFIL
-                </MatButton>
-              )) || ( // else
+                </NavItem>
+              </>
+            ) : (
+              <>
+                <NavItem className="list-inline-item">
                   <MatButton
-                    style={{ color: !scrollState ? 'white' : 'black' }}
-                    onClick={handleClickOpen}
+                    className={classes.navItemButton}
+                    href={user_signed_in ? log_out_user : log_out_companies}
+                    style={{
+                      color:
+                        shouldChangeColorOfNav && isScrollTop
+                          ? 'white'
+                          : 'black'
+                    }}
+                    onClick={() => toggleOpenState('login')}
                   >
-                    SIGN IN CANDIDATO
+                    CERRAR SESIÓN
                   </MatButton>
-                )}
-              {/* ) : (
-              <MatButton style={{color: !scrollState ? 'white': 'black'}} onClick={() => logout()}>Logout</MatButton>
-            )} */}
-            </li>
-            {/* ******************** */}
-            {/* ******************** */}
-            {/* LOGIN */}
-            {/* ******************** */}
-            {/* ******************** */}
-
-            <Dialog
-              fullWidth
-              maxWidth="xs"
-              open={open}
-              onClose={handleClose}
-              aria-labelledby="max-width-dialog-title"
-            >
-              <DialogTitle id="max-width-dialog-title" className="my-25">
-                <Row noGutters className="justify-content-center">
-                  <img
-                    src="/assets/static/img/appLogoC.svg"
-                    className="mr-15  animated fadeIn"
-                    alt="site logo"
-                    width="50%"
-                  />
-                </Row>
-              </DialogTitle>
-              <DialogContent className="px-40">
-                <DialogContentText>
-                  <Typography variant="body2" component="span">
-                    {session_translation.sign_in.title}
-                  </Typography>
-                </DialogContentText>
-                <Form
-                  id="new_user"
-                  className="new_user"
-                  action="/users/sign_in"
-                  accept-charset="UFT-8"
-                  method="post"
-                >
-                  <Input type="hidden" name={csrf_param} value={csrf_token} />
-                  <FormGroup className="mb-2 mr-sm-2 mb-sm-0 position-relative">
-                    <Input
-                      id="user_email"
-                      autofocus="autofocus"
-                      autocomplete="email"
-                      className="pl-40 py-10"
-                      type="email"
-                      name="user[email]"
-                      placeholder={session_translation.sign_in.email_label}
-                    />
-                    <MailOutline
-                      className="position-absolute"
-                      style={{
-                        color: 'lightgrey',
-                        top: '0.75rem',
-                        left: '.5rem'
-                      }}
-                    />
-                  </FormGroup>
-                  <FormGroup className="mb-2 mr-sm-2 mb-sm-0 position-relative">
-                    <Input
-                      id="user_password"
-                      autocomplete="current-password"
-                      className="pl-40 py-10"
-                      type="password"
-                      name="user[password]"
-                      placeholder={session_translation.sign_in.password_label}
-                    />
-                    <Visibility
-                      className="position-absolute"
-                      style={{
-                        color: '#00CED5',
-                        top: '0.75rem',
-                        right: '1rem'
-                      }}
-                    />
-                    <Lock
-                      className="position-absolute"
-                      style={{
-                        color: 'lightgrey',
-                        top: '0.75rem',
-                        left: '.5rem'
-                      }}
-                    />
-                  </FormGroup>
-                  <Typography
-                    component="a"
-                    variant="caption"
-                    style={{ color: '#00CED5' }}
-                    href="users/password/new"
-                  >
-                    {session_translation.forget_password}
-                  </Typography>
-                  <Row noGutters className="justify-content-center my-25">
-                    <Col xs={12}>
-                      <MatButton
-                        type="submit"
-                        className="text-white"
-                        color="primary"
-                        variant="contained"
-                      >
-                        {
-                          session_translation.sign_in.button_action
-                            .sign_in_label
-                        }
-                      </MatButton>
-                    </Col>
-                  </Row>
-                </Form>
-                <Row className="justify-content-center align-items-center">
-                  <Divider variant="middle" className="mx-10 w-40" />
-                  <span style={{ color: 'lightgrey' }}>o</span>
-                  <Divider variant="middle" className="mx-10 w-40" />
-                </Row>
-                <Row className="my-30">
-                  <Col xs={12} className="mb-10">
-                    <MatButton variant="outlined">
-                      {
-                        session_translation.sign_in.button_action
-                          .sign_in_facebook
-                      }
-                    </MatButton>
-                  </Col>
-                  <Col xs={12}>
-                    <MatButton variant="outlined">
-                      {session_translation.sign_in.button_action.sign_in_google}
-                    </MatButton>
-                  </Col>
-                </Row>
-              </DialogContent>
-              <DialogActions className="">
-                <div className="w-100 text-center">
-                  <Typography variant="caption" component="span">
-                    {session_translation.sign_in.no_account.title}
-                  </Typography>
-                  <Typography
-                    variant="caption"
-                    className="ml-5"
-                    component="a"
-                    style={{ color: '#00CED5', cursor: 'pointer' }}
-                    href="users/sign_up"
-                  >
-                    {session_translation.sign_in.no_account.sign_in}
-                  </Typography>
-                </div>
-              </DialogActions>
-            </Dialog>
-            {/* ******************** */}
-            {/* ******************** */}
-            {/* ******************** */}
-            {/* ******************** */}
-            <li className="list-inline-item no-responsive">
-              {/* TODO:Temporaly registration with rout por users */}
-              {(user_signed_in && ( // if user is signed in
-                <MatButton
-                  style={{ color: !scrollState ? 'white' : 'black' }}
-                  href={log_out_user}
-                >
-                  CERRAR SESION
-                </MatButton>
-              )) ||
-              (company_signed_in && ( // else if company is signed in
-                <MatButton
-                  style={{ color: !scrollState ? 'white' : 'black' }}
-                  href={log_out_companies}
-                >
-                  CERRAR SESION
-                </MatButton>
-              )) || ( // else
-                  <MatButton
-                    style={{ color: !scrollState ? 'white' : 'black' }}
-                    href="/companies/sign_in"
-                  >
-                    SIGN IN EMPRESA
-                  </MatButton>
-                )}
-            </li>
+                </NavItem>
+              </>
+            )}
           </ul>
-        </Toolbar>
+        </Collapse>
+      </div>
+      <div
+        className={`${classes.wrapper} ${shouldChangeColorOfNav &&
+          isScrollTop &&
+          'd-none'}`}
+      >
         <Row
-          className={`d-none d-lg-flex justify-content-around px-20 py-0 header-bar ${scrollState &&
+          className={`d-none d-lg-flex w-100 m-0 justify-content-around p-0 header-bar ${(!shouldChangeColorOfNav ||
+            !isScrollTop) &&
             'show'}`}
         >
           <Col xs={12} md={1} className="pt-rem p-0 align-items-center">
             <Typography
-              onClick={toggleState}
+              onClick={() => toggleOpenState('categories')}
               variant="body2"
               className="text-primary text-center"
             >
@@ -396,18 +311,22 @@ const Header = ({
               color="primary"
               variant="contained"
               style={{ borderRadius: '20px' }}
-              onClick={toggleState}
+              onClick={() => toggleOpenState('advancedSearch')}
               className="text-white h-50"
             >
-              <Typography variant="caption">Prueba Premiun</Typography>
+              <Typography variant="caption">Prueba Premium</Typography>
             </MatButton>
           </Col>
         </Row>
+        <Login
+          {...props}
+          isOpen={openState.login}
+          toggleOpenState={toggleOpenState}
+        />
       </div>
-    </AppBar>
+    </Navbar>
   )
 }
-
 export default Header
 
 Header.propTypes = {
@@ -417,5 +336,7 @@ Header.propTypes = {
   log_out_user: PropTypes.string.isRequired,
   csrf_param: PropTypes.string.isRequired,
   csrf_token: PropTypes.string.isRequired,
-  session_translation: PropTypes.object.isRequired
+  session_translation: PropTypes.object.isRequired,
+  shouldChangeColorOfNav: PropTypes.bool,
+  isScrollTop: PropTypes.bool
 }

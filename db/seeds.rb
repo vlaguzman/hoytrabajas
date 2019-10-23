@@ -12,6 +12,6 @@ WorkMode.create!(description: 'Teletrabajo') if Rails.env.development?
 EducationalDegree.create!(description: 'Bachiller') if Rails.env.development?
 City.create!(description: 'Bogota') if Rails.env.development?
 EmployeesRange.create!(description: '10 - 20') if Rails.env.development?
-Company.create!(name: 'HoyTrbajas.com', employees_range_id: 1, city_id: 1) if Rails.env.development?
+Company.create!(name: 'HoyTrbajas.com', email: "admin@hoytrabajas.com", password: "12345678", employees_range_id: 1, city_id: 1) if Rails.env.development?
 JobCategory.create!(description: 'ventas') if Rails.env.development?
 OfferType.create!(description: 'Trabajo tiempo completo') if Rails.env.development?

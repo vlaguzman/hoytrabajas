@@ -1,16 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { Row, Col } from 'reactstrap'
 import Fab from '@material-ui/core/Fab'
 import AddIcon from '@material-ui/icons/Add'
 import RemoveIcon from '@material-ui/icons/Remove'
-import MenuItem from '@material-ui/core/MenuItem'
-import FormControl from '@material-ui/core/FormControl'
-import FormHelperText from '@material-ui/core/FormHelperText'
-import Chip from '@material-ui/core/Chip'
-import Select from '@material-ui/core/Select'
-import Input from '@material-ui/core/Input'
-import TextChip from './TextChip'
 
 const FormRow = props => {
   const {
@@ -47,9 +39,6 @@ const FormRow = props => {
   }
 
   const handleTextChip = e => {
-    console.log('handleTextChip from formRow')
-    console.log(e)
-
     setRowValue(prevState => ({
       ...prevState,
       id: (e && e.id) || null,
@@ -118,7 +107,7 @@ FormRow.propTypes = {
   addRow: PropTypes.func,
   removeRow: PropTypes.func,
   updateAllRows: PropTypes.func,
-  allRows: PropTypes.object,
+  allRows: PropTypes.array,
   currentRow: PropTypes.object,
   children: PropTypes.elementType
 }

@@ -246,7 +246,7 @@ const TextChip = props => {
                             tabIndex={-1}
                             label={item.description}
                             className={classes.chip}
-                            onDelete={handleDelete(item)}
+                            onDelete={() => handleDelete(item)}
                           />
                         )
                       })
@@ -256,7 +256,7 @@ const TextChip = props => {
                           tabIndex={-1}
                           label={selectedItem.description}
                           className={classes.chip}
-                          onDelete={handleDelete(selectedItem)}
+                          onDelete={() => handleDelete(selectedItem)}
                         />
                       )) ||
                       null,
@@ -293,8 +293,9 @@ const TextChip = props => {
 }
 
 TextChip.propTypes = {
-  inputValue: PropTypes.string.isRequired,
+  inputValue: PropTypes.number,
   description: PropTypes.string,
+  newItemDescription: PropTypes.string.isRequired,
   selectOptions: PropTypes.array.isRequired,
   handleChange: PropTypes.func.isRequired,
   label: PropTypes.string,

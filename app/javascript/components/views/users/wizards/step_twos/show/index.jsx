@@ -5,6 +5,7 @@ import AppLayout from '../../../../../src/components/Layout/AppLayout'
 
 const UsersWizardsStepTwoPage = props => {
   return (
+    <>
     <AppLayout
       log_out_companies={props.log_out_companies}
       company_signed_in={props.company_signed_in}
@@ -16,6 +17,7 @@ const UsersWizardsStepTwoPage = props => {
     >
       <DynamicUsersWizardsStepTwo {...props} />
     </AppLayout>
+    </>
   )
 }
 

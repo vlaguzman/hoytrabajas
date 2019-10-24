@@ -23,7 +23,7 @@ export default class Show extends React.Component {
 
     return (
       <div className="main-wrapper">
-        <AppLayout
+        {/* <AppLayout
           log_out_companies={log_out_companies}
           company_signed_in={company_signed_in}
           user_signed_in={user_signed_in}
@@ -31,7 +31,7 @@ export default class Show extends React.Component {
           csrf_param={csrf_param}
           csrf_token={csrf_token}
           session_translation={session_translation}
-        >
+        > */}
           <div className="background">
             <div className="container-general">
               <div className="container-specific background" />
@@ -44,7 +44,7 @@ export default class Show extends React.Component {
               </div>
             </div>
           </div>
-        </AppLayout>
+        {/* </AppLayout> */}
       </div>
     )
   }

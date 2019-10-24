@@ -10,9 +10,6 @@ import {
 } from '../../../../../components/FormsLayout/handleFunctions'
 
 const FormFields = props => {
-
-  console.log(props)
-
   const { formFields } = props
   const {
     job_category_id = null,

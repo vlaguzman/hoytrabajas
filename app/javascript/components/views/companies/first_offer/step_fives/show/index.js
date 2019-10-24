@@ -128,9 +128,11 @@ const formInfo = {
 }
 
 const CompaniesStepFivePage = props => (
-  <AppLayout>
+  <>
+  {/* <AppLayout> */}
     <DynamicCompaniesStepFive formInfo={formInfo} />
-  </AppLayout>
+  {/* </AppLayout> */}
+  </>
 )
 
 export default CompaniesStepFivePage

@@ -4,9 +4,11 @@ import AppLayout from '../../../../../src/components/Layout/AppLayout'
 
 const UsersWizardsStepThreePage = props => {
   return (
-    <AppLayout {...props} >
+    <>
+    {/* <AppLayout {...props} > */}
       <DynamicUsersWizardsStepThree {...props} />
-    </AppLayout>
+    {/* </AppLayout> */}
+    </>
   )
 }
 

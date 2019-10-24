@@ -2,6 +2,29 @@ require 'rails_helper'
 
 RSpec.describe ListConverter do
 
+  describe "#model_array_list" do
+    context "When model does not have records" do
+      it "Should return a empty array" do
+        the_response = subject.model_array_list(JobCategory)
+
+        expect(the_response).to be_an_instance_of(Array)
+        expect(the_response).to be_empty
+      end
+    end
+
+    context "When the model have records" do
+      it "should return the expected object" do
+        job_category_one = FactoryBot.create(:job_category, description: 'sales')
+        job_category_two = FactoryBot.create(:job_category, description: 'bars')
+        expected_array_list = [['sales', job_category_one.id], ['bars', job_category_two.id]] 
+
+        the_response = subject.model_array_list(JobCategory)
+
+        expect(the_response).to match_array(expected_array_list)
+      end
+    end
+  end
+
   describe "#model_list" do
     context "When model does not have records" do
       it "Should return a empty array" do
@@ -37,4 +60,5 @@ RSpec.describe ListConverter do
       end
     end
   end
+
 end

@@ -16,8 +16,8 @@ ActiveAdmin.register Offer do
   filter :title, label: 'Titulo'
   filter :required_experience, as: :check_boxes, collection: [['Experiencia requerida', true]], label: ''
   filter :immediate_start, as: :check_boxes, collection: [['Inicio Inmediato', true]], label: ''
-  filter :city, label: 'Ciudad', as: :select, collection: City.all.map{|s| ["#{s.description}", s.id]}
-  filter :job_category, label: 'Categoria', as: :select, collection: JobCategory.all.map{|s| ["#{s.description}", s.id]}
+  filter :city, label: 'Ciudad', as: :select, collection:  ListConverter.model_array_list(City)
+  filter :job_category, label: 'Categoria', as: :select, collection: ListConverter.model_array_list(JobCategory)
   filter :status, label: 'Estado', as: :select, collection: ['active', 'expire']
 
   form do |f|
@@ -25,14 +25,14 @@ ActiveAdmin.register Offer do
     f.inputs do
       f.input :title, label: t('admin.offers.form.title')
       f.input :address, label: t('admin.offers.form.address')
-      f.input :company_id, label: t('admin.offers.form.company'), as: :select, collection: Company.all.map{|c| ["#{c.name}", c.id]}
+      f.input :company_id, label: t('admin.offers.form.company'), as: :select, collection: ListConverter.model_array_list(Company, :name)
       f.input :cellphone, label: t('admin.offers.form.cellphone')
       f.input :description, label: t('admin.offers.form.offer_description')
       f.input :vacancies_quantity, label: t('admin.offers.form.vacancies_quantity')
-      f.input :work_mode_id, label: t('admin.offers.form.work_mode'), as: :select, collection: WorkMode.all.map{|s| ["#{s.description}", s.id]}
-      f.input :city_id, label: t('admin.offers.form.city'), as: :select, collection: City.all.map{|s| ["#{s.description}", s.id]}
-      f.input :job_category, label: t('admin.offers.form.job_category'), as: :select, collection: JobCategory.all.map{|s| ["#{s.description}", s.id]}
-      f.input :contract_type, label: t('admin.offers.form.contract_type'), as: :select, collection: ContractType.all.map{|s| ["#{s.description}", s.id]}
+      f.input :work_mode_id, label: t('admin.offers.form.work_mode'), as: :select, collection: ListConverter.model_array_list(WorkMode)
+      f.input :city_id, label: t('admin.offers.form.city'), as: :select, collection: ListConverter.model_array_list(City)
+      f.input :job_category, label: t('admin.offers.form.job_category'), as: :select, collection: ListConverter.model_array_list(JobCategory)
+      f.input :contract_type, label: t('admin.offers.form.contract_type'), as: :select, collection: ListConverter.model_array_list(ContractType)
       f.input :required_experience, label: t('admin.offers.form.required_experience')
       f.input :immediate_start, label: t('admin.offers.form.inmediate_start')
       f.input :status, label: t('admin.offers.form.status.label'), collection: ['active', 'expire']

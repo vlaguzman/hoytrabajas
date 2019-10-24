@@ -10,4 +10,5 @@ ActiveAdmin.register AppliedOffer do
     column :applied_date
     actions
   end
+
 end

@@ -30,6 +30,7 @@ RSpec.describe "fill the principal candidate user data", :type => :feature do
 
       visit root_path
 
+      find("button[id='navbar-toggler']", visible: false).click
       expect(page).to have_text("SIGN IN CANDIDATO") 
 
       click_on("SIGN IN CANDIDATO")

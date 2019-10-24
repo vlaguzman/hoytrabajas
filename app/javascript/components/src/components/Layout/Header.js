@@ -37,12 +37,11 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column'
   },
   wrapper: {
-    width: '90%',
+    width: '100%',
     display: 'flex',
     flexFlow: 'row nowrap',
     justifyContent: 'flex-start',
     [theme.breakpoints.down('md')]: {
-      width: '100%',
       paddingLeft: '20px',
       paddingRight: '20px',
       flexWrap: 'wrap',
@@ -130,6 +129,7 @@ const Header = props => {
         <NavbarToggler
           onClick={() => toggleOpenState('navbar')}
           className="mt-5"
+          id="navbar-toggler"
         >
           <MenuIcon
             color={shouldChangeColorOfNav && isScrollTop ? 'white' : 'primary'}
@@ -178,7 +178,7 @@ const Header = props => {
             </NavItem>
             {/* TODO: With "Candidato" and "Empleador", to press button redirect me a static landing page.
             We must take into account to make the change in redirection */}
-            {(user_signed_in || company_signed_in) && (
+            {user_signed_in || company_signed_in ? (
               <NavItem className="list-inline-item">
                 <MatButton
                   className={classes.navItemButton}
@@ -190,6 +190,37 @@ const Header = props => {
                   MI PERFIL
                 </MatButton>
               </NavItem>
+            ) : (
+              <>
+                <NavItem className="list-inline-item">
+                  <MatButton
+                    className={classes.navItemButton}
+                    style={{
+                      color:
+                        shouldChangeColorOfNav && isScrollTop
+                          ? 'white'
+                          : 'black'
+                    }}
+                    onClick={() => toggleOpenState('login')}
+                  >
+                    SIGN IN CANDIDATO
+                  </MatButton>
+                </NavItem>
+                <NavItem className="list-inline-item">
+                  <MatButton
+                    className={classes.navItemButton}
+                    style={{
+                      color:
+                        shouldChangeColorOfNav && isScrollTop
+                          ? 'white'
+                          : 'black'
+                    }}
+                    href="/companies/sign_in"
+                  >
+                    SIGN IN EMPRESA
+                  </MatButton>
+                </NavItem>
+              </>
             )}
             {(user_signed_in || company_signed_in) && (
               <NavItem className="list-inline-item">
@@ -229,7 +260,7 @@ const Header = props => {
                           ? 'white'
                           : 'black'
                     }}
-                    onClick={() => toggleOpenState('login')}
+                    href="/users/sign_up"
                   >
                     SIGN UP CANDIDATO
                   </MatButton>
@@ -243,7 +274,7 @@ const Header = props => {
                           ? 'white'
                           : 'black'
                     }}
-                    onClick={() => toggleOpenState('login')}
+                    href="/companies/sign_up"
                   >
                     SIGN UP EMPRESA
                   </MatButton>

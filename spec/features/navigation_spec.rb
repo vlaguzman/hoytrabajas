@@ -11,13 +11,9 @@ RSpec.describe "Overall navigation" do
 
         visit root_path
 
-        menu = find("div.MuiToolbar-root.MuiToolbar-regular.d-flex.justify-content-start.w-100.px-20.pb-0", visible: false)
-
-        within menu do
-          expect(page).to have_content("INICIO")
-
-          click_on("INICIO")
-        end
+        find("button[id='navbar-toggler']", visible: false).click
+        expect(page).to have_content("INICIO")
+        click_on("INICIO")
 
         expect(current_path).to eq(root_path)
       end
@@ -31,6 +27,7 @@ RSpec.describe "Overall navigation" do
 
         expect(page).to have_text("Faqs")
 
+        find("button[id='navbar-toggler']", visible: false).click        
         click_on("INICIO")
 
         expect(current_path).to eq(root_path)
@@ -39,6 +36,7 @@ RSpec.describe "Overall navigation" do
       it "should visit Candidato page from home page", js: true do
         visit root_path
 
+        find("button[id='navbar-toggler']", visible: false).click
         expect(page).to have_link("SIGN UP CANDIDATO", href: "/users/sign_up")
 
         click_on("SIGN UP CANDIDATO")
@@ -52,6 +50,7 @@ RSpec.describe "Overall navigation" do
       it "should visit 'Empleador' page from home page", js: true do
         visit root_path
 
+        find("button[id='navbar-toggler']", visible: false).click
         expect(page).to have_link("SIGN UP EMPRESA", href: "/companies/sign_up")
 
         click_on("SIGN UP EMPRESA")
@@ -71,6 +70,7 @@ RSpec.describe "Overall navigation" do
         expect(current_path).to eq(offers_path)
         expect(page).to have_text("VER MÁS OFERTAS")
 
+        find("button[id='navbar-toggler']", visible: false).click
         click_on("INICIO")
 
         expect(current_path).to eq(root_path)
@@ -85,6 +85,7 @@ RSpec.describe "Overall navigation" do
 
         expect(page).to have_text("Categorias de empleo")
 
+        find("button[id='navbar-toggler']", visible: false).click
         click_on("INICIO")
 
         expect(current_path).to eq(root_path)
@@ -100,6 +101,7 @@ RSpec.describe "Overall navigation" do
         expect(page).to have_text(/Ellos hoy confian en nosotros/)
         expect(page).to have_text(/para encontrar su empleado ideal/)
 
+        find("button[id='navbar-toggler']", visible: false).click
         click_on("INICIO")
 
         expect(current_path).to eq(root_path)

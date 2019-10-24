@@ -1,13 +1,16 @@
 /*======== Header Scss ========*/
 
 .app-header {
-  .rct-header {
+  .navbar-wrapper {
     position: fixed;
     background-color: transparent;
     z-index: 999 !important;
-    box-shadow: none !important;
     transition: all 500ms ease-in-out;
     color: white;
+    top: 0;
+    width: 100%;
+    padding: 0 5%;
+    flex-direction: column;
     .site-logo {
       padding: 1rem 0rem 0.8rem 0rem;
       // background-color: $primary;
@@ -25,14 +28,51 @@
       }
     }
   }
+
+  .navbar-row {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    @media (max-width: 992px) {
+      padding-left: 20px;
+      padding-right: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .navbar-search-form {
+    flex-grow: 1;
+    @media (max-width: 992px) {
+      justify-content: 'space-around';
+    }
+  }
+
+  @media (max-width: 992px) {
+    .navbar-item-wrapper {
+      margin: 20px 0;
+      .navbar-item-button {
+        width: 100%;
+      }
+    }
+  }
+
   .bg-header {
     box-shadow: 0px 0px 1px -3px rgba(0, 0, 0, 0.2),
       0px -1px 16px 1px rgba(0, 0, 0, 0.14),
       0px 4px 18px 3px rgba(0, 0, 0, 0.12);
   }
-  .header-bar {
+  .search-bar-wrapper {
     transition: all 500ms ease-in-out;
     opacity: 0;
+    flex: 1 1 60%;
+    padding: 0 20px;
+  }
+  .search-bar {
+    flex: 1;
+    margin: 0;
   }
   .show {
     opacity: 1;
@@ -58,12 +98,6 @@
   width: 45%;
   @media (max-width: 1024px) {
     width: 31%;
-  }
-}
-.search-width {
-  width: 88%;
-  @media (max-width: 1024px) {
-    width: 83%;
   }
 }
 
@@ -370,13 +404,6 @@
 }
 
 /*======= Responsive ========*/
-
-@media (max-width: 500px) {
-  .rct-header .site-logo,
-  .summary-icon {
-    // display: none !important;
-  }
-}
 
 @media (min-width: 725px) {
   .search-form-wrap,

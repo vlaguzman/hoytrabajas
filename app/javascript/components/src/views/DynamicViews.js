@@ -59,6 +59,14 @@ export const DynamicCompaniesStepFive = Loadable({
   loader: () => import('./companies/first_offer/step_five'),
   loading: Loading
 })
+export const DynamicCompaniesStepSix = Loadable({
+  loader: () => import('./companies/first_offer/step_six'),
+  loading: Loading
+})
+export const DynamicCompaniesStepSeven = Loadable({
+  loader: () => import('./companies/first_offer/step_seven'),
+  loading: Loading
+})
 
 /* REGCAN */
 

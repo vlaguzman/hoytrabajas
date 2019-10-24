@@ -7,6 +7,7 @@ RSpec.describe "sign up user", js: true,  type: :feature do
 
       visit root_path
 
+      find("button[id='navbar-toggler']", visible: false).click
       expect(page).to have_text("SIGN UP CANDIDATO")
       click_on 'SIGN UP CANDIDATO'
 
@@ -41,6 +42,7 @@ RSpec.describe "sign up user", js: true,  type: :feature do
 
         visit root_path
 
+        find("button[id='navbar-toggler']", visible: false).click
         expect(page).to have_text("SIGN UP EMPRESA") 
         click_on 'SIGN UP EMPRESA'
 

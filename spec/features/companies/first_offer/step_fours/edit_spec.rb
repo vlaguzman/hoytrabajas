@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "When company fill the step four form", :type => :feature do
-  let(:company) { FactoryBot.create(:company, :first_time, name: 'HoyTrabajas.com') }
-  let(:offer) { FactoryBot.create(:offer) }
+  let(:company) { create(:company, :first_time, name: 'HoyTrabajas.com') }
+  let(:offer)   { create(:offer) }
 
-  let!(:contract_type) { FactoryBot.create(:contract_type) }
-  let!(:sex) { FactoryBot.create(:sex) }
+  let!(:sex)           { create(:sex) }
+  let!(:contract_type) { create(:contract_type) }
 
   def expected_page_structure
     expect(page).to have_content("Conozcamos más de tu oferta")
@@ -36,10 +36,12 @@ RSpec.describe "When company fill the step four form", :type => :feature do
       scenario "should save succesfully data", js: true do
         sign_in company
         visit edit_companies_first_offer_step_four_path(offer.id)
+        save_page("daniel.html")
 
         expected_page_structure
         fill_form(
           {
+            id: offer.id,
             contract_type_id: contract_type.id,
             vacancies_quantity: 10,
             sex_id: sex.id,

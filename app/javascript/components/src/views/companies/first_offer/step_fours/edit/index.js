@@ -23,6 +23,8 @@ const CompaniesStepFour = ({ formInfo, csrf_param, csrf_token }) => {
     }
   } = formInfo
 
+  console.log("formInfo", formInfo)
+
   return (
     <div className="main-wrapper">
       <FormProgress value={0} />
@@ -35,7 +37,7 @@ const CompaniesStepFour = ({ formInfo, csrf_param, csrf_token }) => {
                 <FormFields type={type} formFields={formFields} />
                 <input type="hidden" name={csrf_param} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />
-                <input type="hidden" name="offer[id]" value={id} />
+                <input type="hidden" name="offer[id]" value={formInfo.id} />
                 <FormButtons
                   nextPath={nextPath}
                   prevPath={previousPath}
@@ -56,6 +58,7 @@ CompaniesStepFour.propTypes = {
   csrf_param: PropTypes.string,
   csrf_token: PropTypes.string,
   formInfo: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
     form: PropTypes.shape({

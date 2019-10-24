@@ -33,7 +33,7 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
       vacancies_quantity: {
         name: 'offer[vacancies_quantity]',
         label: template_translations[:form][:formFields][:vacancies_quantity],
-        values: { min: 0, max: 100 },
+        values: { min: 1, max: 100 },
         step: 1
       }
     }

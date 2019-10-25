@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { makeStyles } from '@material-ui/core/styles'
 import MatButton from '@material-ui/core/Button'
-import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
 import Fab from '@material-ui/core/Fab'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -24,52 +22,6 @@ import Login from '../Login'
 import { fields1 } from './data'
 import FormGen from '../inlineFormgenerartor'
 
-const useStyles = makeStyles(theme => ({
-  nav: {
-    position: 'fixed',
-    backgroundColor: 'transparent',
-    zIndex: '999 !important',
-    transition: 'all 500ms ease-in-out',
-    color: 'white',
-    top: 0,
-    width: '100%',
-    padding: '0 5%',
-    flexDirection: 'column'
-  },
-  wrapper: {
-    width: '100%',
-    display: 'flex',
-    flexFlow: 'row nowrap',
-    justifyContent: 'flex-start',
-    [theme.breakpoints.down('md')]: {
-      paddingLeft: '20px',
-      paddingRight: '20px',
-      flexWrap: 'wrap',
-      alignItems: 'center',
-      justifyContent: 'space-between'
-    }
-  },
-  searchBar: {
-    margin: 0
-  },
-  searchForm: {
-    flexGrow: 1,
-    [theme.breakpoints.down('md')]: {
-      justifyContent: 'space-around'
-    }
-  },
-  navItemWrapper: {
-    [theme.breakpoints.down('md')]: {
-      margin: '20px 0'
-    }
-  },
-  navItemButton: {
-    [theme.breakpoints.down('md')]: {
-      width: '100%'
-    }
-  }
-}))
-
 const Header = props => {
   const {
     isScrollTop = true,
@@ -82,8 +34,6 @@ const Header = props => {
     log_out_companies,
     session_translation
   } = props
-
-  const classes = useStyles()
 
   const [openState, setOpenState] = useState({
     login: false,
@@ -101,7 +51,7 @@ const Header = props => {
   return (
     <Navbar
       position="static"
-      className={`${classes.nav} navbar-expand-lg ${(!shouldChangeColorOfNav ||
+      className={`navbar-wrapper navbar-expand-lg ${(!shouldChangeColorOfNav ||
         !isScrollTop) &&
         'bg-header'}`}
       style={{
@@ -109,7 +59,7 @@ const Header = props => {
           !shouldChangeColorOfNav || !isScrollTop ? 'white' : 'none'
       }}
     >
-      <div className={classes.wrapper}>
+      <div className="navbar-row">
         <div className="d-flex align-items-center">
           <div className="site-logo">
             <NavbarBrand href="/" className="logo-mini mr-auto">
@@ -137,12 +87,12 @@ const Header = props => {
         </NavbarToggler>
         <Collapse isOpen={openState.navbar} navbar id="navbarNav">
           <Form
-            className={`d-flex header-bar  mt-10 ${(!shouldChangeColorOfNav ||
+            className={`d-flex search-bar-wrapper  mt-10 ${(!shouldChangeColorOfNav ||
               !isScrollTop) &&
-              'show'} ${classes.searchForm}`}
+              'show'} navbar-search-form`}
             inline
           >
-            <FormGroup className={`search-width ${classes.searchBar}`}>
+            <FormGroup className="search-bar">
               <Label for="exampleEmail" hidden>
                 Buscar ofertas
               </Label>
@@ -163,10 +113,10 @@ const Header = props => {
               <FontAwesomeIcon icon="search" size="sm" />
             </Fab>
           </Form>
-          <ul className={`navbar-nav ${classes.navItemWrapper}`}>
+          <ul className="navbar-nav navbar-item-wrapper">
             <NavItem className="list-inline-item">
               <MatButton
-                className={classes.navItemButton}
+                className="navbar-item-button"
                 style={{
                   color:
                     shouldChangeColorOfNav && isScrollTop ? 'white' : 'black'
@@ -181,7 +131,7 @@ const Header = props => {
             {user_signed_in || company_signed_in ? (
               <NavItem className="list-inline-item">
                 <MatButton
-                  className={classes.navItemButton}
+                  className="navbar-item-button"
                   style={{
                     color:
                       shouldChangeColorOfNav && isScrollTop ? 'white' : 'black'
@@ -194,7 +144,7 @@ const Header = props => {
               <>
                 <NavItem className="list-inline-item">
                   <MatButton
-                    className={classes.navItemButton}
+                    className="navbar-item-button"
                     style={{
                       color:
                         shouldChangeColorOfNav && isScrollTop
@@ -208,7 +158,7 @@ const Header = props => {
                 </NavItem>
                 <NavItem className="list-inline-item">
                   <MatButton
-                    className={classes.navItemButton}
+                    className="navbar-item-button"
                     style={{
                       color:
                         shouldChangeColorOfNav && isScrollTop
@@ -225,7 +175,7 @@ const Header = props => {
             {(user_signed_in || company_signed_in) && (
               <NavItem className="list-inline-item">
                 <MatButton
-                  className={classes.navItemButton}
+                  className="navbar-item-button"
                   style={{
                     color:
                       shouldChangeColorOfNav && isScrollTop ? 'white' : 'black'
@@ -239,7 +189,7 @@ const Header = props => {
             {(user_signed_in || company_signed_in) && (
               <NavItem className="list-inline-item">
                 <MatButton
-                  className={classes.navItemButton}
+                  className="navbar-item-button"
                   style={{
                     color:
                       shouldChangeColorOfNav && isScrollTop ? 'white' : 'black'
@@ -253,7 +203,7 @@ const Header = props => {
               <>
                 <NavItem className="list-inline-item">
                   <MatButton
-                    className={classes.navItemButton}
+                    className="navbar-item-button"
                     style={{
                       color:
                         shouldChangeColorOfNav && isScrollTop
@@ -267,7 +217,7 @@ const Header = props => {
                 </NavItem>
                 <NavItem className="list-inline-item">
                   <MatButton
-                    className={classes.navItemButton}
+                    className="navbar-item-button"
                     style={{
                       color:
                         shouldChangeColorOfNav && isScrollTop
@@ -284,7 +234,7 @@ const Header = props => {
               <>
                 <NavItem className="list-inline-item">
                   <MatButton
-                    className={classes.navItemButton}
+                    className="navbar-item-button"
                     href={user_signed_in ? log_out_user : log_out_companies}
                     style={{
                       color:
@@ -303,7 +253,7 @@ const Header = props => {
         </Collapse>
       </div>
       <div
-        className={`${classes.wrapper} ${shouldChangeColorOfNav &&
+        className={`navbar-row ${shouldChangeColorOfNav &&
           isScrollTop &&
           'd-none'}`}
       >

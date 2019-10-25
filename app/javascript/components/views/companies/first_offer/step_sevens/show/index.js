@@ -113,7 +113,7 @@ const formInfo = {
           },
           {
             id: 3,
-            description: 'Programacióm'
+            description: 'Programación'
           }
         ]
       },
@@ -138,9 +138,8 @@ const formInfo = {
         name: 'offer_languages',
         current_value: [
           {
-            id: 1,
-            description: 'Inglés',
-            level_id: 2
+            languages_id: 1,
+            languages_level_id: 2
           }
         ]
       },

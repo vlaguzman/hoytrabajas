@@ -35,7 +35,7 @@ const AfterLabel = styled.span`
 `
 
 const FormFields = props => {
-  const { formFields, type } = props
+  const { formFields } = props
   const {
     offer_location = null,
     offer_education = null,
@@ -281,15 +281,30 @@ const FormFields = props => {
   const offerSkillsRows = useMemo(
     () => (
       <Paper className="FormRowWrapper">
-        {formValues[offer_skills.name].map(currentRow => (
+        {formValues[offer_skills.name].map((currentRow, index) => (
           <Col
             key={currentRow.rowID}
             className={inputClassname}
             xs={12}
             style={{ margin: '20px 0', padding: '0 20px' }}
           >
-            {/* TODO: populate multiple inputs with offer_skills values */}
-            {/* <input type="hidden" value={formValues[offer_skills.name]} /> */}
+            <>
+              <input
+                type="hidden"
+                name={`${offer_skills.name}[skill_id][${index}]`}
+                value={currentRow.id || ''}
+              />
+              <input
+                type="hidden"
+                name={`${offer_skills.name}[skill_description][${index}]`}
+                value={currentRow.description || ''}
+              />
+              <input
+                type="hidden"
+                name={`${offer_skills.name}[skill_level_id][${index}]`}
+                value={currentRow.level_id || ''}
+              />
+            </>
             <StyledRow style={{ height: '55px' }}>
               <FormRow
                 allRows={formValues[offer_skills.name]}
@@ -349,15 +364,23 @@ const FormFields = props => {
   const offerLanguagesRows = useMemo(
     () => (
       <Paper className="FormRowWrapper">
-        {formValues[offer_languages.name].map(currentRow => (
+        {formValues[offer_languages.name].map((currentRow, index) => (
           <Col
             key={currentRow.rowID}
             className={inputClassname}
             xs={12}
             style={{ margin: '20px 0', padding: '0 20px' }}
           >
-            {/* TODO: populate multiple inputs with offer_languages values */}
-            {/* <input type="hidden" value={formValues[offer_languages.name]} /> */}
+            <input
+              type="hidden"
+              name={`${offer_languages.name}[languages_id][${index}]`}
+              value={currentRow.languages_id || ''}
+            />
+            <input
+              type="hidden"
+              name={`${offer_languages.name}[languages_level_id][${index}]`}
+              value={currentRow.languages_level_id || ''}
+            />
             <StyledRow style={{ height: '55px' }}>
               <FormRow
                 allRows={formValues[offer_languages.name]}
@@ -421,7 +444,6 @@ const FormFields = props => {
 export default FormFields
 
 FormFields.propTypes = {
-  type: PropTypes.oneOf(['user', 'company']),
   formFields: PropTypes.shape({
     offer_location: PropTypes.object.isRequired,
     offer_education: PropTypes.object.isRequired,

@@ -23,7 +23,6 @@ A         * Companies::FirstOffer::StepOne::FormParamsService   2       2.0     
 A         * Companies::FirstOffer::StepOnePresenter             11      12.4       22          2
 A         * Companies::FirstOffer::StepSevensController         1       0.0        0           1
 A         * Companies::FirstOffer::StepSixesController          1       0.0        0           1
-A         * Companies::FirstOffer::StepSixsController           1       0.0        0           1
 A         * Companies::FirstOffer::StepThree::FormParamsService 2       4.0        0           5
 A         * Companies::FirstOffer::StepThreePresenter           3       12.4       0           1
 A         * Companies::FirstOffer::StepThreeService             2       11.25      0           1

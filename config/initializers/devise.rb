@@ -18,7 +18,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'gestogrupos@hoytrabajas.com'
+  config.mailer_sender = 'gestorgrupos@hoytrabajas.com'
   config.omniauth :facebook, ENV['FACEBOOK_APP_ID'],
     ENV['FACEBOOK_APP_SECRET'],
     token_params: { parse: :json },

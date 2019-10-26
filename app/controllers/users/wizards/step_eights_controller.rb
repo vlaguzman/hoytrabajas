@@ -6,6 +6,9 @@ class Users::Wizards::StepEightsController < ApplicationController
   end
 
   def update
+    puts "#" * 100
+    puts "*** PARAMS USER ***"
+    puts params.inspect
     user = step_service.()
 
     if user.errors.details.present? || add_other_experience.any?

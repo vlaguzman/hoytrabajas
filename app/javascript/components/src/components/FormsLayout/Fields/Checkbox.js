@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import MaterialCheckbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
@@ -14,10 +14,15 @@ const Checkbox = props => {
     handleBoolean
   } = props
 
-  const onChange = e => handleBoolean(e, name)
+  const [checkedState, setcheckedState] = useState(false)
+
+  function onChange(e) {
+    handleBoolean(e, name);
+  }
 
   return (
     <>
+      <input type="hidden" name={name} value={inputValue} />
       {label && (
         <FormLabel required={isRequired} id="range-slider" gutterBottom>
           {label}
@@ -27,10 +32,10 @@ const Checkbox = props => {
         className="p-0 mx-0 mb-0"
         control={
           <MaterialCheckbox
-            name={name}
+            name=''
             className="pr-5"
             value={inputValue}
-            checked={inputValue || false}
+            checked={inputValue}
             onChange={onChange}
             required={isRequired}
           />

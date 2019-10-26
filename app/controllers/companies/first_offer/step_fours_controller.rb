@@ -10,7 +10,7 @@ class Companies::FirstOffer::StepFoursController < ApplicationController
     offer = Companies::FirstOffer::StepFourService.(company: current_company, update_params: step_four_params)
 
     if offer[:status].eql?(:ok)
-      redirect_to edit_companies_first_offer_step_four_path(offer[:data].id)
+      redirect_to edit_companies_first_offer_step_five_path(offer[:data].id)
     else
       offer_presenter(offer[:data])
       render 'new'
@@ -25,6 +25,7 @@ class Companies::FirstOffer::StepFoursController < ApplicationController
 
   def step_four_params
     puts "#" * 100
+    puts "*** PARAMS IN CONTROLLER ***" * 100
     puts params.inspect
 
     params
@@ -33,10 +34,10 @@ class Companies::FirstOffer::StepFoursController < ApplicationController
         :id,
         :contract_type_id,
         :vacancies_quantity,
-        :sex_id,
         :offer_age_range,
         :close_date,
-        :immediate_start
+        :immediate_start,
+        :sex_id => []
     ).to_h
   end
 end

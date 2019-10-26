@@ -44,7 +44,7 @@ const FormFields = props => {
           name={contract_type_id.name}
           label={contract_type_id.label}
           selectOptions={contract_type_id.values}
-          isRequired={true}
+          isRequired
         />
       </Col>
     ),
@@ -81,7 +81,7 @@ const FormFields = props => {
           label={sex_id.label}
           selectOptions={sex_id.values}
           isMultiple
-          isRequired={false}
+          isRequired
         />
       </Col>
     ),
@@ -117,8 +117,8 @@ const FormFields = props => {
           handleSimpleChange={handleSimpleChange(formValues, setFormValues)}
           name={close_date.name}
           label={close_date.label}
-          isRequired={true}
           dateOptions={close_date.dateOptions}
+          isRequired={false}
         />
       </Col>
     ),
@@ -134,7 +134,7 @@ const FormFields = props => {
           name={immediate_start.name}
           label={immediate_start.label}
           description={immediate_start.description}
-          isRequired={true}
+          isRequired={false}
         />
       </Col>
     ),

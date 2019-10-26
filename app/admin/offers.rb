@@ -16,8 +16,8 @@ ActiveAdmin.register Offer do
   filter :title, label: 'Titulo'
   filter :required_experience, as: :check_boxes, collection: [['Experiencia requerida', true]], label: ''
   filter :immediate_start, as: :check_boxes, collection: [['Inicio Inmediato', true]], label: ''
-  filter :city, label: 'Ciudad', as: :select, collection:  ListConverter.model_array_list(City)
   filter :job_category, label: 'Categoria', as: :select, collection: ListConverter.model_array_list(JobCategory)
+  filter :city, label: 'Ciudad', as: :select, collection:  ListConverter.model_array_list(City)
   filter :status, label: 'Estado', as: :select, collection: ['active', 'expire']
 
   form do |f|

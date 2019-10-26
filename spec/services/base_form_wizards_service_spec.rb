@@ -41,7 +41,7 @@ RSpec.describe BaseFormWizardsService do
             :method=>:put,
             :type=>:user,
             :formFields=>{},
-            :placeholders=>nil
+            :placeholders=>{}
           }
         }
 

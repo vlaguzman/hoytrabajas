@@ -1,0 +1,18 @@
+es:
+  users:
+    wizards:
+      step_sevens:
+        show:
+          title: 'Cuentanos un poco de tu experiencia'
+          subtitle: 'Brinda a las empresas información valiosa sobre ti.'
+          form:
+            buttons:
+              submit: 'Siguiente'
+              next: 'Saltar'
+              previous: 'Regresar'
+              acceptButton: 'Si, quiero adicionarla'
+              skipButton: 'No pero con disposición'
+              haveExperience: '¿Cuentas con experiencia?'
+            formFields:
+            placeholders:
+

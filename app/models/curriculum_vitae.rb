@@ -21,4 +21,7 @@ class CurriculumVitae < ApplicationRecord
   has_and_belongs_to_many :work_modes
 
   has_one_attached :photo
+
+  #delegates
+  delegate :name, :email, to: :user, prefix: :user, allow_nil: true
 end

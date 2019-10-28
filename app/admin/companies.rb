@@ -28,7 +28,7 @@ ActiveAdmin.register Company do
   filter :name, label: 'Nombre'
   filter :contact_name, label: 'Nombre'
   filter :email
-  filter :city, label: 'Ciudad', as: :select, collection: City.all.map{|c| ["#{c.description}", c.id]}
+  filter :city, label: 'Ciudad', as: :select, collection: ListConverter.model_array_list(City)
 
   form do |f|
     f.inputs do
@@ -37,7 +37,7 @@ ActiveAdmin.register Company do
       f.input :email, label: t('admin.companies.form.email')
       f.input :password, label: t('admin.companies.form.password')
       f.input :password_confirmation, label: t('admin.companies.form.password_confirmation')
-      f.input :city_id, label: t('admin.companies.form.city'), as: :select, collection: City.all.map{|s| ["#{s.description}", s.id]}
+      f.input :city_id, label: t('admin.companies.form.city'), as: :select, collection: ListConverter.model_array_list(City)
       unless f.object.new_record?
         f.input :contact_name, label: t('admin.companies.form.contact_name')
         f.input :contact_work_position, label: t('admin.companies.form.contact_work_position')

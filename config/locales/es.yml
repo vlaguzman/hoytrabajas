@@ -1,5 +1,11 @@
 es:
   admin:
+    applied_offers:
+      form:
+        offer_title: "Oferta"
+        curriculum_vitae_user_email: "Email del usuario"
+        applied_date: "Fecha de aplicación"
+        status: "Estado"
     companies:
       form:
         name: "Nombre"
@@ -61,6 +67,18 @@ es:
       messages:
         record_invalid: "Error al grabar el objeto"
       models:
+        applied_offer:
+          attributes:
+            offer_id:
+              blank: "Por favor seleccione un oferta, este campo no puede estar en blanco" 
+            curriculum_vitae_id:
+              blank: "Por favor seleccione un valor para curriculum vitae, este campo no puede estar en blanco" 
+            applied_date:
+              blank: "Por favor seleccione una fecha, este campo no puede estar en blanco" 
+            applied_offer_status_id:
+              blank: "Por favor seleccione un estado, este campo no puede estar en blanco" 
+            applied_offer_status:
+              required: "Por favor seleccione un estado, este campo es requerido" 
         company:
           attributes:
             email:

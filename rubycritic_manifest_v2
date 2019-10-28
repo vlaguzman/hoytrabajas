@@ -12,6 +12,7 @@ A         * ApplicationPresenter                                3       10.35   
 A         * ApplicationRecord                                   1       0.0        0           1
 A         * AppliedOffer                                        2       0.0        0           1
 A         * AppliedOfferStatus                                  1       0.0        0           1
+A         * AppliedOffers                                       3       0.0        0           0
 A         * AppliedOffersController                             2       18.23      0           1
 A         * AvailableWorkDay                                    3       0.0        0           1
 A         * AvailableWorkDaysCurriculumVitaes                   1       0.0        0           1
@@ -34,11 +35,12 @@ A         * Companies::FirstOffer::StepZerosController          3       3.24    
 A         * Companies::RegistrationsController                  4       5.16       0           2
 A         * CompaniesController                                 5       3.4        0           1
 A         * CompaniesUsers                                      1       0.0        0           1
-A         * Company                                             8       0.0        0           1
+A         * Company                                             9       0.0        0           1
 A         * ContractType                                        1       0.0        0           1
 A         * Currency                                            1       0.0        0           1
-A         * CurriculumVitae                                     21      0.0        0           1
+A         * CurriculumVitae                                     22      0.0        0           1
 A         * CurriculumVitaeSalary                               2       0.0        0           1
+A         * CurriculumVitaes                                    1       0.0        0           0
 A         * CurriculumVitaesEducationalDegrees                  1       0.0        0           1
 A         * CurriculumVitaesLanguages                           2       0.0        0           1
 A         * CurriculumVitaesSoftSkills                          1       0.0        0           1
@@ -69,11 +71,12 @@ A         * Language                                            5       0.0     
 A         * LanguagesOffers                                     3       2.0        0           1
 A         * Level                                               4       0.0        0           1
 A         * Limitation                                          4       0.0        0           1
-A         * ListConverter                                       1       6.18       0           1
+A         * ListConverter                                       2       14.7       0           1
 A         * Nationality                                         4       0.0        0           1
 A         * Offer                                               24      2.2        0           1
 A         * OfferSalary                                         5       0.0        0           1
 A         * OfferType                                           5       0.0        0           1
+A         * Offers                                              5       0.0        0           0
 A         * Offers::AppliedOfferService                         2       13.25      0           1
 A         * Offers::IndexService                                4       10.85      0           1
 A         * Offers::ViewsService                                6       34.4       0           1
@@ -161,6 +164,5 @@ B         * Companies::FirstOffer::StepTwoService               5       2.45    
 B         * Companies::FirstOffer::StepTwosController           9       20.32      27          2
 B         * Offers::ShowService                                 11      74.19      0           2
 C         * BaseFormWizardsService                              8       108.49     0           13
-C         * Offers                                              3       0.0        150         2
-D         * Companies                                           3       15.36      72          4
-D         * Users                                               5       15.36      92          4
+C         * Companies                                           4       15.36      30          2
+C         * Users                                               6       15.36      30          2

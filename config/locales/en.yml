@@ -1,5 +1,11 @@
 en:
   admin:
+    applied_offers:
+      form:
+        offer_title: "Offer"
+        curriculum_vitae_user_email: "User Email"
+        applied_date: "Application date"
+        status: "Status"
     companies:
       form:
         name: "Name"
@@ -35,6 +41,18 @@ en:
       messages:
         record_invalid: "Error saving the object"
       models:
+        applied_offer:
+          attributes:
+            offer_id:
+              blank: "Please select an offer, it cant be blank"
+            curriculum_vitae_id:
+              blank: "Please select a curriculum vitae, it cant be blank"
+            applied_date:
+              blank: "Please select a date, it cant be blank"
+            applied_offer_status:
+              required: "The state is a required fill"
+            applied_offer_status_id:
+              blank: "Please select status, it cant be blank"
         offer:
           attributes:
             company:

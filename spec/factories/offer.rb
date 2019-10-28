@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :offer do
 
-    title                         { Faker::Job.title }
+    title                         { "Great Job" }
     address                       { Faker::Address.full_address }
     cellphone                     { Faker::PhoneNumber.cell_phone }
     description                   { "endSint esse anim consequat commodo." }

@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "home/index" do
+
   context "There are 2 offers" do
     it "Should render home#index template" do
       company = create(:company)
@@ -16,4 +17,5 @@ RSpec.describe "home/index" do
       expect(rendered).to match(/one of the best offers/)
     end
   end
+
 end

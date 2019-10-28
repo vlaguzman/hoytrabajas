@@ -105,6 +105,7 @@ RSpec.describe "fill the canditate user data", :type => :feature do
       find("div[id='select-user[curriculum_vitae][labor_disponibility_id]", visible: false).click
       find("li", text: "Inmediato").click
 
+      execute_script "window.scrollTo(0, (window.innerHeight * 2) )"
       find( "span", text: /SIGUIENTE/).click
 
       updated_cv = user.curriculum_vitaes.first
@@ -162,6 +163,8 @@ RSpec.describe "fill the canditate user data", :type => :feature do
       fill_in "user[curriculum_vitae][curriculum_vitae_salary][from]", :with => '4000'
       fill_in "user[curriculum_vitae][curriculum_vitae_salary][to]", :with => '10000'
 
+      execute_script "window.scrollTo(0, (window.innerHeight * 2) )"
+      
       find("div[id='select-user[curriculum_vitae][curriculum_vitae_salary][salary_period_id]", visible: false).click
       find("li", text: "Diario").click
 

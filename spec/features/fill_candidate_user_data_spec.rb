@@ -61,6 +61,7 @@ RSpec.describe "fill the principal candidate user data", :type => :feature do
       fill_in "candidate[identification_number]", :with => "1063558224"
       fill_in "candidate[contact_number]", :with => "3183638789"
 
+      execute_script "window.scrollTo(0, (window.innerHeight * 2) )"
       find("span", text: /SIGUIENTE/).click
 
       expect(User.count).to eq(1)

@@ -17,7 +17,7 @@ const FormFields = props => {
   const {
     contract_type_id = null,
     vacancies_quantity = null,
-    sex_id = null,
+    sex_ids = null,
     offer_age_range = null,
     close_date = null,
     immediate_start = null
@@ -26,7 +26,7 @@ const FormFields = props => {
   const [formValues, setFormValues] = useState({
     [contract_type_id.name]: '',
     [vacancies_quantity.name]: '',
-    [sex_id.name]: '',
+    [sex_ids.name]: '',
     [offer_age_range.name]: '',
     [close_date.name]: new Date(),
     [immediate_start.name]: false
@@ -74,18 +74,18 @@ const FormFields = props => {
     () => (
       <Col className={inputClassname} xs={12} lg={6}>
         <SelectChip
-          inputValue={formValues[sex_id.name]}
+          inputValue={formValues[sex_ids.name]}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
-          name={sex_id.name}
-          label={sex_id.label}
-          selectOptions={sex_id.values}
+          name={sex_ids.name}
+          label={sex_ids.label}
+          selectOptions={sex_ids.values}
           isMultiple
           isRequired
         />
       </Col>
     ),
-    [formValues[sex_id.name]]
+    [formValues[sex_ids.name]]
   )
 
   const offerAgeRangeField = useMemo(
@@ -159,7 +159,7 @@ FormFields.propTypes = {
   formFields: PropTypes.shape({
     contract_type_id: PropTypes.object,
     vacancies_quantity: PropTypes.object,
-    sex_id: PropTypes.object,
+    sex_ids: PropTypes.object,
     offer_age_range: PropTypes.object,
     close_date: PropTypes.object,
     immediate_start: PropTypes.object

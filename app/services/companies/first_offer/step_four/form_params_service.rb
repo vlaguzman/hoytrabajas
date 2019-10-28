@@ -5,7 +5,7 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
   ]
 
   MULTIPLE_SELECT_FIELDS_KEYS = [
-    :sex_id
+    :sex_ids
   ]
 
   private
@@ -24,7 +24,7 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
     ListConverter.model_list ContractType
   end
 
-  def sex_id_list
+  def sex_ids_list
     ListConverter.model_list Sex
   end
 

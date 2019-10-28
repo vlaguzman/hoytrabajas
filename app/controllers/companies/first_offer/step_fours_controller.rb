@@ -24,10 +24,6 @@ class Companies::FirstOffer::StepFoursController < ApplicationController
   private
 
   def step_four_params
-    puts "#" * 100
-    puts "*** PARAMS IN CONTROLLER ***" * 100
-    puts params.inspect
-
     params
       .require(:offer)
       .permit(
@@ -37,7 +33,7 @@ class Companies::FirstOffer::StepFoursController < ApplicationController
         :offer_age_range,
         :close_date,
         :immediate_start,
-        :sex_id => []
+        :sex_ids => []
     ).to_h
   end
 end

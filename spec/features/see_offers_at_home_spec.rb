@@ -11,6 +11,22 @@ RSpec.describe "see offers at home", type: :feature, js: true do
       end
     end
 
+    context "The offer has a title (>26), a description (>58) and a company name (>31) too long" do
+      it "Should render home#index and shorten the text" do
+        company = FactoryBot.create(:company, name: "the name of the company is too long")
+        offer = FactoryBot.create(:offer, 
+                                   title: 'the title of the offer is too long', 
+                                   description: 'the description of the offer actually is to long, really long',
+                                   company: company)
+
+        visit root_path
+
+	expect(page).to have_text("The Name Of The Company Is Too ...")
+	expect(page).to have_text("The Title Of The Offer Is ...")
+	expect(page).to have_text("The Description Of The Offer Actually Is To Long, Really L...")
+      end
+    end
+
     context "there are some active and some expired offers" do
       it "should show me just the not expired offers" do
         offer = FactoryBot.create(:offer, title: 'active_offer')
@@ -38,7 +54,7 @@ RSpec.describe "see offers at home", type: :feature, js: true do
 
     context "There are inmediate_start offer" do
       it "should show me a message 'INICIO INMEDIATO'" do
-        offer = FactoryBot.create(:offer, :immediate_start_offer, title: 'active_offer_inmediate_start')
+        offer = FactoryBot.create(:offer, :immediate_start_offer, title: 'offer_inmediate_start')
 
 	visit root_path
 

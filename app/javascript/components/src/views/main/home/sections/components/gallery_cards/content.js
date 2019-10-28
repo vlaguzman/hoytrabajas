@@ -34,6 +34,11 @@ const NewFlagBlock = () => (
     </span>
   </Badge>
 )
+
+const WordsShortener = (words, maxSize) => {
+  return words.length > maxSize ? `${words.substring(0, maxSize)}...` : words
+}
+
 const Content = ({ offer }) => {
   return (
     <CardContent className="position-relative pb-5">
@@ -60,7 +65,7 @@ const Content = ({ offer }) => {
         className="mb-0 mt-10 fw-bold"
         style={{ fontSize: '18px' }}
       >
-        {offer['title']}
+        {WordsShortener(offer['title'], 26)}
       </Typography>
       <Typography
         gutterBottom
@@ -69,14 +74,14 @@ const Content = ({ offer }) => {
         className="mb-10"
         style={{ fontWeight: '500', fontSize: '14px' }}
       >
-        {offer['company']['name']}
+        {WordsShortener(offer['company']['name'], 31)}
       </Typography>
       <Typography
         className="text-secondary mb-10"
         variant="body2"
         component="p"
       >
-        {offer['description']}
+        {WordsShortener(offer['description'], 58)}
       </Typography>
       <Typography variant="caption" className="text-secondary">
         <i

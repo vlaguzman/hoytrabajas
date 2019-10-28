@@ -38,7 +38,7 @@ A         * CompaniesUsers                                      1       0.0     
 A         * Company                                             9       0.0        0           1
 A         * ContractType                                        1       0.0        0           1
 A         * Currency                                            1       0.0        0           1
-A         * CurriculumVitae                                     22      0.0        0           1
+A         * CurriculumVitae                                     23      0.0        0           1
 A         * CurriculumVitaeSalary                               2       0.0        0           1
 A         * CurriculumVitaes                                    1       0.0        0           0
 A         * CurriculumVitaesEducationalDegrees                  1       0.0        0           1

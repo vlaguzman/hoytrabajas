@@ -62,10 +62,27 @@ RSpec.describe "Overall navigation" do
       end
 
       it "should visit 'ver mas ofertas' page from home page", js: true do
+        FactoryBot.create(:offer, title: "Titulo De Oferta")
+        FactoryBot.create(:offer, title: "Titulo De Oferta2")
+        FactoryBot.create(:offer, title: "Titulo De Oferta3")
+        FactoryBot.create(:offer, title: "Titulo De Oferta4")
+        FactoryBot.create(:offer, title: "Titulo De Oferta5")
+        FactoryBot.create(:offer, title: "Titulo De Oferta6")
+        FactoryBot.create(:offer, title: "Titulo De Oferta7")
+        FactoryBot.create(:offer, title: "Titulo De Oferta8")
+
         visit root_path
 
-        has_button?("VER MÁS OFERTAS")
-        click_on("Ver más ofertas")
+        has_button?("VER MÁS OFERTAS »")
+        click_on("Ver más ofertas »")
+
+        has_button?("VER MÁS OFERTAS »")
+        click_on("Ver más ofertas »")
+
+        expect(page).to have_text("Titulo De Oferta8")
+
+        has_button?("VER EL LISTADO DE OFERTAS »")
+        click_on("Ver el listado de ofertas »")
 
         expect(current_path).to eq(offers_path)
         expect(page).to have_text("VER MÁS OFERTAS")

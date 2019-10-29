@@ -7,5 +7,4 @@ module ListConverter
   def self.model_array_list(klass, symbol=:description)
     klass.any? ? klass.all.map { |object| [object.send(symbol), object.id] } : []
   end
-
 end

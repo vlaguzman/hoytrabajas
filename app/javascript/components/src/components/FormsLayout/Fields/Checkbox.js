@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import MaterialCheckbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
@@ -14,11 +14,7 @@ const Checkbox = props => {
     handleBoolean
   } = props
 
-  const [checkedState, setcheckedState] = useState(false)
-
-  function onChange(e) {
-    handleBoolean(e, name);
-  }
+  const onChange = e => handleBoolean(e, name)
 
   return (
     <>
@@ -32,7 +28,7 @@ const Checkbox = props => {
         className="p-0 mx-0 mb-0"
         control={
           <MaterialCheckbox
-            name=''
+            name=""
             className="pr-5"
             value={inputValue}
             checked={inputValue}

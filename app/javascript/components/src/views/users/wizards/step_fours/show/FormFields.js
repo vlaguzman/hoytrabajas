@@ -6,7 +6,7 @@ import Checkbox from '../../../../../components/FormsLayout/Fields/Checkbox'
 import {
   handleBoolean,
   handleChange,
-  handleDeleteChip,
+  handleDeleteChip
 } from '../../../../../components/FormsLayout/handleFunctions'
 
 const FormFields = props => {

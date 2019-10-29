@@ -43,6 +43,11 @@
     }
   }
 
+  .navbar-item-wrapper { 
+    flex: 0 1 50%;
+    margin-left: auto;
+  }
+
   .navbar-search-form {
     flex-grow: 1;
     @media (max-width: 992px) {
@@ -66,8 +71,7 @@
   }
   .search-bar-wrapper {
     transition: all 500ms ease-in-out;
-    opacity: 0;
-    flex: 1 1 60%;
+    flex: 1 1 50%;
     padding: 0 20px;
   }
   .search-bar {

@@ -48,15 +48,25 @@ const Header = props => {
       [name]: newValue || !openState[name]
     }))
 
+  const isNavTransparent =
+    !openState.navbar && shouldChangeColorOfNav && isScrollTop
+
+  const colorOfNavToggler = () => isNavTransparent ? ({
+    style: {
+      color: 'white'
+    }
+  }) : ({
+    color: 'primary'
+  })
+    
   return (
     <Navbar
       position="static"
-      className={`navbar-wrapper navbar-expand-lg ${(!shouldChangeColorOfNav ||
-        !isScrollTop) &&
-        'bg-header'}`}
+      className={`navbar-wrapper navbar-expand-lg ${
+        !isNavTransparent ? 'bg-header' : ''
+      }`}
       style={{
-        backgroundColor:
-          !shouldChangeColorOfNav || !isScrollTop ? 'white' : 'none'
+        backgroundColor: isNavTransparent ? 'transparent' : 'white'
       }}
     >
       <div className="navbar-row">
@@ -65,7 +75,7 @@ const Header = props => {
             <NavbarBrand href="/" className="logo-mini mr-auto">
               <img
                 src={
-                  shouldChangeColorOfNav && isScrollTop
+                  isNavTransparent
                     ? '/assets/static/img/appLogoW.svg'
                     : '/assets/static/img/appLogoC.svg'
                 }
@@ -82,44 +92,43 @@ const Header = props => {
           id="navbar-toggler"
         >
           <MenuIcon
-            color={shouldChangeColorOfNav && isScrollTop ? 'white' : 'primary'}
+            {...colorOfNavToggler()}
           />
         </NavbarToggler>
         <Collapse isOpen={openState.navbar} navbar id="navbarNav">
-          <Form
-            className={`d-flex search-bar-wrapper  mt-10 ${(!shouldChangeColorOfNav ||
-              !isScrollTop) &&
-              'show'} navbar-search-form`}
-            inline
-          >
-            <FormGroup className="search-bar">
-              <Label for="exampleEmail" hidden>
-                Buscar ofertas
-              </Label>
-              <Input
-                style={{ width: '98%' }}
-                type="email"
-                name="email"
-                id="exampleEmail"
-                placeholder="Buscar ofertas"
-              />
-            </FormGroup>
-            <Fab
-              size="small"
-              style={{ marginTop: '1%' }}
-              className="mb-10 ml-10 text-white"
-              color="primary"
+          {!isNavTransparent && (
+            <Form
+              className="d-flex search-bar-wrapper mt-10 navbar-search-form"
+              inline
             >
-              <FontAwesomeIcon icon="search" size="sm" />
-            </Fab>
-          </Form>
+              <FormGroup className="search-bar">
+                <Label for="exampleEmail" hidden>
+                  Buscar ofertas
+                </Label>
+                <Input
+                  style={{ width: '98%' }}
+                  type="email"
+                  name="email"
+                  id="exampleEmail"
+                  placeholder="Buscar ofertas"
+                />
+              </FormGroup>
+              <Fab
+                size="small"
+                style={{ marginTop: '1%' }}
+                className="mb-10 ml-10 text-white"
+                color="primary"
+              >
+                <FontAwesomeIcon icon="search" size="sm" />
+              </Fab>
+            </Form>
+          )}
           <ul className="navbar-nav navbar-item-wrapper">
             <NavItem className="list-inline-item">
               <MatButton
                 className="navbar-item-button"
                 style={{
-                  color:
-                    shouldChangeColorOfNav && isScrollTop ? 'white' : 'black'
+                  color: isNavTransparent ? 'white' : 'black'
                 }}
                 href="/"
               >
@@ -133,8 +142,7 @@ const Header = props => {
                 <MatButton
                   className="navbar-item-button"
                   style={{
-                    color:
-                      shouldChangeColorOfNav && isScrollTop ? 'white' : 'black'
+                    color: isNavTransparent ? 'white' : 'black'
                   }}
                 >
                   MI PERFIL
@@ -146,10 +154,7 @@ const Header = props => {
                   <MatButton
                     className="navbar-item-button"
                     style={{
-                      color:
-                        shouldChangeColorOfNav && isScrollTop
-                          ? 'white'
-                          : 'black'
+                      color: isNavTransparent ? 'white' : 'black'
                     }}
                     onClick={() => toggleOpenState('login')}
                   >
@@ -160,10 +165,7 @@ const Header = props => {
                   <MatButton
                     className="navbar-item-button"
                     style={{
-                      color:
-                        shouldChangeColorOfNav && isScrollTop
-                          ? 'white'
-                          : 'black'
+                      color: isNavTransparent ? 'white' : 'black'
                     }}
                     href="/companies/sign_in"
                   >
@@ -177,8 +179,7 @@ const Header = props => {
                 <MatButton
                   className="navbar-item-button"
                   style={{
-                    color:
-                      shouldChangeColorOfNav && isScrollTop ? 'white' : 'black'
+                    color: isNavTransparent ? 'white' : 'black'
                   }}
                 >
                   {(user_signed_in && 'BUSCAR OFERTAS') ||
@@ -191,8 +192,7 @@ const Header = props => {
                 <MatButton
                   className="navbar-item-button"
                   style={{
-                    color:
-                      shouldChangeColorOfNav && isScrollTop ? 'white' : 'black'
+                    color: isNavTransparent ? 'white' : 'black'
                   }}
                 >
                   VER MI TABLERO
@@ -205,10 +205,7 @@ const Header = props => {
                   <MatButton
                     className="navbar-item-button"
                     style={{
-                      color:
-                        shouldChangeColorOfNav && isScrollTop
-                          ? 'white'
-                          : 'black'
+                      color: isNavTransparent ? 'white' : 'black'
                     }}
                     href="/users/sign_up"
                   >
@@ -219,10 +216,7 @@ const Header = props => {
                   <MatButton
                     className="navbar-item-button"
                     style={{
-                      color:
-                        shouldChangeColorOfNav && isScrollTop
-                          ? 'white'
-                          : 'black'
+                      color: isNavTransparent ? 'white' : 'black'
                     }}
                     href="/companies/sign_up"
                   >
@@ -237,10 +231,7 @@ const Header = props => {
                     className="navbar-item-button"
                     href={user_signed_in ? log_out_user : log_out_companies}
                     style={{
-                      color:
-                        shouldChangeColorOfNav && isScrollTop
-                          ? 'white'
-                          : 'black'
+                      color: isNavTransparent ? 'white' : 'black'
                     }}
                     onClick={() => toggleOpenState('login')}
                   >

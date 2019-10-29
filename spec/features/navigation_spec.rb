@@ -65,7 +65,7 @@ RSpec.describe "Overall navigation" do
         visit root_path
 
         has_button?("VER MÁS OFERTAS")
-        click_on("ver más ofertas")
+        click_on("Ver más ofertas")
 
         expect(current_path).to eq(offers_path)
         expect(page).to have_text("VER MÁS OFERTAS")

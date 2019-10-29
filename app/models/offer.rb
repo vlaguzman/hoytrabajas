@@ -38,7 +38,6 @@ class Offer < ApplicationRecord
   delegate :description, :name, :web_site, :employees_range_description, to: :company, prefix: :company, allow_nil: true
   delegate :from, :to, :currency_description, :period_description, to: :offer_salary, prefix: :salary, allow_nil: true
   delegate :from, :to, to: :age_range, prefix: :age_range, allow_nil: true
-  delegate :description, to: :sex, prefix: :sex, allow_nil: true
   delegate :description, to: :city, prefix: :city, allow_nil: true
   delegate :description, to: :offer_type, prefix: :offer_type, allow_nil: true
   delegate :description, to: :work_mode, prefix: :work_mode, allow_nil: true

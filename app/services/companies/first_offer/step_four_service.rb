@@ -1,8 +1,6 @@
 module Companies::FirstOffer::StepFourService
 
   def self.call(company: _, update_params: {})
-    puts "#" * 100
-    puts update_params
     offer = Offer.find_by(id: update_params[:id])
     update_params.except!(:id)
 

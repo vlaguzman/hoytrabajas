@@ -11,7 +11,7 @@ class Offers::ShowService < Offers::ViewsService
   def build_details
     super().merge(
     {
-      sex:                  { description: offer.sex_description },
+      sex:                  { description: offer.sexes.map(&:description) },
       offer_type:           { description: offer.offer_type_description },
       work_mode:            { description: offer.work_mode_description },
       contract_type:        { description: offer.contract_type_description },

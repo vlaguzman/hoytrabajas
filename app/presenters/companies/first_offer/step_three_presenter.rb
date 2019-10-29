@@ -4,8 +4,6 @@ class Companies::FirstOffer::StepThreePresenter < ApplicationPresenter
     Companies::FirstOffer::StepThree::FormParamsService.new(
       errors: source.errors,
       action_path: companies_first_offer_step_three_path,
-      previous_path: '',
-      next_path: '',
       form_type: :offer,
       template_translation_path: "companies.first_offer.step_threes.new",
       form_method: :post

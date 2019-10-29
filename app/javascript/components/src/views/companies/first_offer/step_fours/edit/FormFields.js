@@ -28,7 +28,7 @@ const FormFields = props => {
     [vacancies_quantity.name]: '',
     [sex_ids.name]: '',
     [offer_age_range.name]: '',
-    [close_date.name]: new Date(),
+    [close_date.name]: Date.now(),
     [immediate_start.name]: false
   })
 

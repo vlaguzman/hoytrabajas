@@ -28,7 +28,6 @@ const Checkbox = props => {
         className="p-0 mx-0 mb-0"
         control={
           <MaterialCheckbox
-            name=""
             className="pr-5"
             value={inputValue}
             checked={inputValue}

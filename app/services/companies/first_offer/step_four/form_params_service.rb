@@ -19,7 +19,6 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
     )
   end
 
-
   def contract_type_id_list
     ListConverter.model_list ContractType
   end

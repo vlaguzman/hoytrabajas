@@ -17,7 +17,7 @@ es:
             formFields:
               contract_type_id: "Acuerdo legal"
               vacancies_quantity: "Elige el número de vacantes"
-              sex_id: "Tu oferta está dirigida a"
+              sex_ids: "Tu oferta está dirigida a"
               offer_age_range: "Edad del candidato"
               close_date: "Fecha de inicio"
               immediate_start: "¿Cuál es el tiempo para cubrir esta oferta?"

@@ -84,7 +84,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/application_presenter.rb",100,19,11,11,0
 "./app/presenters/companies/first_offer/step_four_presenter.rb",100,30,10,10,0
 "./app/presenters/companies/first_offer/step_one_presenter.rb",100,24,8,8,0
-"./app/presenters/companies/first_offer/step_three_presenter.rb",100,21,6,6,0
+"./app/presenters/companies/first_offer/step_three_presenter.rb",100,19,6,6,0
 "./app/presenters/companies/first_offer/step_two_presenter.rb",100,28,10,10,0
 "./app/presenters/companies/first_offer/step_zero_presenter.rb",100,7,3,3,0
 "./app/presenters/offers_presenter.rb",100,25,13,13,0
@@ -100,7 +100,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/users/wizards/step_two_presenter.rb",100,28,10,10,0
 "./app/presenters/users/wizards/step_zero_presenter.rb",100,7,3,3,0
 "./app/services/base_form_wizards_service.rb",100,115,52,52,0
-"./app/services/companies/first_offer/step_four/form_params_service.rb",100,79,18,18,0
+"./app/services/companies/first_offer/step_four/form_params_service.rb",100,78,18,18,0
 "./app/services/companies/first_offer/step_four_service.rb",95,35,19,18,1
 "./app/services/companies/first_offer/step_one/form_params_service.rb",100,25,8,8,0
 "./app/services/companies/first_offer/step_one_service.rb",100,11,6,6,0
@@ -129,4 +129,4 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/users/wizards/step_two/form_params_service.rb",100,31,11,11,0
 "./app/services/users/wizards/step_two_service.rb",100,9,4,4,0
 "./lib/dates_converter.rb",100,5,3,3,0
-"./lib/list_converter.rb",100,11,5,5,0
+"./lib/list_converter.rb",100,10,5,5,0

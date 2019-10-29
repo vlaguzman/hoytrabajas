@@ -1,6 +1,11 @@
 class OffersController < ApplicationController
   def index
-    @offers = OffersService.active_offers_index_details
+    @q = Offer.active.ransack(params[:q])
+    if @q.present?
+      @offers = @q.result(distinct: true).map{ |offer| Offers::IndexService.new(offer).details }
+    else
+      @offers = OffersService.active_offers_index_details
+    end
   end
 
   def show

@@ -72,7 +72,7 @@ const currencies = [
 
 
 
-const FilterForm = ({ categorias, fields1, fields2, button1 }) => {
+const FilterForm = ({ categorias, button1, fields1 }) => {
   const { value: state, toggleState } = dialogState({ open: false })
   const [open, setOpen] = React.useState(false);
 
@@ -139,7 +139,7 @@ const FilterForm = ({ categorias, fields1, fields2, button1 }) => {
   return (
     <Row className="justify-content-center" noGutters>
       <RctCollapsibleCard colClasses="col-9 my-30 d-none d-lg-block " contentCustomClasses="">
-        <Form className="row justify-content-around">
+        <Form className="row justify-content-around" action='offers/' method='get'>
           <Col xs={12} md={1} className="pt-rem pl-0 p-0 align-items-center">
             <Button
               type="button"
@@ -150,7 +150,7 @@ const FilterForm = ({ categorias, fields1, fields2, button1 }) => {
             </Button>
           </Col>
           <FormGen fields={fields1} />
-          <Fab className="mb-10 search_button text-white" color="primary">
+          <Fab className="mb-10 search_button text-white" color="primary" type="submit">
             <FontAwesomeIcon icon="search" size='sm' />
           </Fab>
           <Col xs={12} md={1} className="pl-0 p-0 align-items-center">
@@ -369,16 +369,3 @@ const FilterForm = ({ categorias, fields1, fields2, button1 }) => {
   )
 }
 export default FilterForm
-
-
-
-
-
-
-
-
-
-
-
-
-

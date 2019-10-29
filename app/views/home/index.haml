@@ -1,1 +1,11 @@
-= react_component('pages', {offers: @offers, csrf_param: request_forgery_protection_token, csrf_token: form_authenticity_token, user_signed_in: user_signed_in?, company_signed_in: company_signed_in?, log_out_user: destroy_user_session_path, log_out_companies: destroy_company_session_path, session_translation: I18n.t("session"), offer_translations: I18n.t("offers")}, prerender: true)
+= react_component('pages',
+  {offers: @presenter.offers,
+  csrf_param: request_forgery_protection_token,
+  csrf_token: form_authenticity_token,
+  user_signed_in: user_signed_in?,
+  filterForm: @presenter.data_filter,
+  company_signed_in: company_signed_in?,
+  log_out_user: destroy_user_session_path,
+  log_out_companies: destroy_company_session_path,
+  session_translation: I18n.t("session"),
+  offer_translations: I18n.t("offers")}, prerender: true)

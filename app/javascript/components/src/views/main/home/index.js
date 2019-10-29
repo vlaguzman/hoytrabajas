@@ -15,17 +15,18 @@ const HomePage = ({
   csrf_param,
   csrf_token,
   user_signed_in,
-  offer_translations
+  offer_translations,
+  filterForm
 }) => {
   const {
     cover,
     premium,
-    filterForm,
     common: { categorias },
     companies,
     gallery,
     categories
   } = contenido
+
   return (
     <div className="home-wrapper">
       <CoverSection {...cover} {...{ categorias }} {...{ filterForm }} />

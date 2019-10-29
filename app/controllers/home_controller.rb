@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @offers = OffersService.active_offers_index_details
+    @q = Offer.active.ransack(params[:q])
+    @presenter = Home::HomePresenter
   end
 end

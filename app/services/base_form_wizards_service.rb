@@ -111,4 +111,5 @@ class BaseFormWizardsService
   def field_data_builder(key, **params)
     [key, params]
   end
+
 end

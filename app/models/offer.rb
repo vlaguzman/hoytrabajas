@@ -14,7 +14,6 @@ class Offer < ApplicationRecord
   belongs_to :job_category
   belongs_to :city, optional: true
   belongs_to :offer_type, optional: true
-  belongs_to :sex, optional: true
   belongs_to :work_mode, optional: true
   belongs_to :contract_type, optional: true
 
@@ -31,6 +30,7 @@ class Offer < ApplicationRecord
   has_and_belongs_to_many :work_positions, optional: true
   has_and_belongs_to_many :responsibilities, optional: true
   has_and_belongs_to_many :educational_level, optional: true
+  has_and_belongs_to_many :sexes, optional: true
 
   has_one_attached :image
 
@@ -38,7 +38,6 @@ class Offer < ApplicationRecord
   delegate :description, :name, :web_site, :employees_range_description, to: :company, prefix: :company, allow_nil: true
   delegate :from, :to, :currency_description, :period_description, to: :offer_salary, prefix: :salary, allow_nil: true
   delegate :from, :to, to: :age_range, prefix: :age_range, allow_nil: true
-  delegate :description, to: :sex, prefix: :sex, allow_nil: true
   delegate :description, to: :city, prefix: :city, allow_nil: true
   delegate :description, to: :offer_type, prefix: :offer_type, allow_nil: true
   delegate :description, to: :work_mode, prefix: :work_mode, allow_nil: true

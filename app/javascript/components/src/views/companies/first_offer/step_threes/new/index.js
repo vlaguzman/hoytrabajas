@@ -12,16 +12,7 @@ const CompaniesStepThree = ({ formInfo, csrf_param, csrf_token }) => {
   const {
     title,
     subtitle,
-    form: {
-      buttons,
-      nextPath,
-      previousPath,
-      action,
-      method,
-      type,
-      formFields,
-      errors
-    }
+    form: { buttons, action, method, type, formFields, errors }
   } = formInfo
 
   return (
@@ -37,11 +28,7 @@ const CompaniesStepThree = ({ formInfo, csrf_param, csrf_token }) => {
                 <FormFields type={type} formFields={formFields} />
                 <input type="hidden" name={csrf_param} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />
-                <FormButtons
-                  nextPath={nextPath}
-                  prevPath={previousPath}
-                  buttons={buttons}
-                />
+                <FormButtons buttons={buttons} />
               </form>
             </div>
           </>
@@ -61,19 +48,13 @@ CompaniesStepThree.propTypes = {
     subtitle: PropTypes.string.isRequired,
     form: PropTypes.shape({
       buttons: PropTypes.shape({
-        submit: PropTypes.string.isRequired,
-        next: PropTypes.string.isRequired,
-        nextPath: PropTypes.string,
-        previous: PropTypes.string.isRequired,
-        previousPath: PropTypes.string.isRequired
+        submit: PropTypes.string.isRequired
       }),
       action: PropTypes.string.isRequired,
       method: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,
       formFields: PropTypes.object.isRequired,
-      nextPath: PropTypes.string,
-      previousPath: PropTypes.string,
-      errors: PropTypes.object
+      errors: PropTypes.object.isRequired
     })
   })
 }

@@ -45,7 +45,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/level.rb",100,5,3,3,0
 "./app/models/limitation.rb",100,6,3,3,0
 "./app/models/nationality.rb",100,6,3,3,0
-"./app/models/offer.rb",100,52,40,40,0
+"./app/models/offer.rb",100,51,39,39,0
 "./app/models/offer_salary.rb",100,12,8,8,0
 "./app/models/offer_type.rb",100,5,3,3,0
 "./app/models/offers_responsibilities.rb",100,4,3,3,0
@@ -65,7 +65,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/responsibility.rb",100,5,3,3,0
 "./app/models/salary_period.rb",100,6,4,4,0
 "./app/models/salary_type.rb",100,3,2,2,0
-"./app/models/sex.rb",100,3,2,2,0
+"./app/models/sex.rb",100,5,3,3,0
 "./app/models/soft_skill.rb",100,7,5,5,0
 "./app/models/state.rb",100,3,2,2,0
 "./app/models/technical_skill.rb",100,8,6,6,0
@@ -82,8 +82,9 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/work_position.rb",100,5,3,3,0
 "./app/models/working_day.rb",100,6,4,4,0
 "./app/presenters/application_presenter.rb",100,19,11,11,0
+"./app/presenters/companies/first_offer/step_four_presenter.rb",100,30,10,10,0
 "./app/presenters/companies/first_offer/step_one_presenter.rb",100,24,8,8,0
-"./app/presenters/companies/first_offer/step_three_presenter.rb",100,25,8,8,0
+"./app/presenters/companies/first_offer/step_three_presenter.rb",100,19,6,6,0
 "./app/presenters/companies/first_offer/step_two_presenter.rb",100,28,10,10,0
 "./app/presenters/companies/first_offer/step_zero_presenter.rb",100,7,3,3,0
 "./app/presenters/offers_presenter.rb",100,25,13,13,0
@@ -98,7 +99,9 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/users/wizards/step_three_presenter.rb",100,28,10,10,0
 "./app/presenters/users/wizards/step_two_presenter.rb",100,28,10,10,0
 "./app/presenters/users/wizards/step_zero_presenter.rb",100,7,3,3,0
-"./app/services/base_form_wizards_service.rb",100,114,52,52,0
+"./app/services/base_form_wizards_service.rb",100,115,52,52,0
+"./app/services/companies/first_offer/step_four/form_params_service.rb",100,78,18,18,0
+"./app/services/companies/first_offer/step_four_service.rb",95,35,19,18,1
 "./app/services/companies/first_offer/step_one/form_params_service.rb",100,25,8,8,0
 "./app/services/companies/first_offer/step_one_service.rb",100,11,6,6,0
 "./app/services/companies/first_offer/step_three/form_params_service.rb",100,32,12,12,0

@@ -8,6 +8,8 @@ RSpec.describe Offers::ShowService do
   let(:morning) { create(:working_day, description: "Mañana 7 a 1pm") }
   let(:late) { create(:working_day, description: "Tarde 2pm a 7pm") }
   let(:job_aid) { create(:job_aid, description: "Auxilio de Transporte") }
+  let(:job_aid) { create(:job_aid, description: "Auxilio de Transporte") }
+  let(:sex) { create(:sex, description: "Mujer") }
 
   let(:company) { create(:company,
     address: "Calle Falsa 123 # 00 99",
@@ -19,7 +21,7 @@ RSpec.describe Offers::ShowService do
 
   let(:offer) { create(:offer,
     company: company,
-    sex: create(:sex, description: "Mujer"),
+    sex_ids: [sex.id],
     offer_type: create(:offer_type, description: "Medio Tiempo"),
     city: create(:city, description: "Bogotá D.C."),
     work_mode: create(:work_mode, description: "Teletrabajo"),
@@ -72,7 +74,7 @@ RSpec.describe Offers::ShowService do
         vacancies_quantity: 10,
         required_experience: true,
         sex: {
-          description: "Mujer"
+          description: ["Mujer"]
         },
         age_range: {
           from: 18,

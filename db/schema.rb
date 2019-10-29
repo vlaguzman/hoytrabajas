@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_19_230839) do
+ActiveRecord::Schema.define(version: 2019_10_28_161641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -520,7 +520,6 @@ ActiveRecord::Schema.define(version: 2019_10_19_230839) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "work_mode_id"
-    t.bigint "sex_id"
     t.bigint "company_id"
     t.string "slug"
     t.index ["city_id"], name: "index_offers_on_city_id"
@@ -528,7 +527,6 @@ ActiveRecord::Schema.define(version: 2019_10_19_230839) do
     t.index ["contract_type_id"], name: "index_offers_on_contract_type_id"
     t.index ["job_category_id"], name: "index_offers_on_job_category_id"
     t.index ["offer_type_id"], name: "index_offers_on_offer_type_id"
-    t.index ["sex_id"], name: "index_offers_on_sex_id"
     t.index ["work_mode_id"], name: "index_offers_on_work_mode_id"
   end
 
@@ -539,6 +537,13 @@ ActiveRecord::Schema.define(version: 2019_10_19_230839) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["offer_id"], name: "index_offers_responsibilities_on_offer_id"
     t.index ["responsibility_id"], name: "index_offers_responsibilities_on_responsibility_id"
+  end
+
+  create_table "offers_sexes", id: false, force: :cascade do |t|
+    t.bigint "offer_id", null: false
+    t.bigint "sex_id", null: false
+    t.index ["offer_id", "sex_id"], name: "index_offers_sexes_on_offer_id_and_sex_id"
+    t.index ["sex_id", "offer_id"], name: "index_offers_sexes_on_sex_id_and_offer_id"
   end
 
   create_table "offers_soft_skills", force: :cascade do |t|
@@ -910,10 +915,11 @@ ActiveRecord::Schema.define(version: 2019_10_19_230839) do
   add_foreign_key "offers", "contract_types"
   add_foreign_key "offers", "job_categories"
   add_foreign_key "offers", "offer_types"
-  add_foreign_key "offers", "sexes"
   add_foreign_key "offers", "work_modes"
   add_foreign_key "offers_responsibilities", "offers"
   add_foreign_key "offers_responsibilities", "responsibilities"
+  add_foreign_key "offers_sexes", "offers"
+  add_foreign_key "offers_sexes", "sexes"
   add_foreign_key "offers_soft_skills", "offers"
   add_foreign_key "offers_soft_skills", "soft_skills"
   add_foreign_key "offers_technical_skills", "levels"

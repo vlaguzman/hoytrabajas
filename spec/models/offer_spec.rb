@@ -38,7 +38,6 @@ RSpec.describe Offer, type: :model do
     it { should respond_to(:age_range_from) }
     it { should respond_to(:age_range_to) }
 
-    it { should respond_to(:sex_description) }
     it { should respond_to(:city_description) }
     it { should respond_to(:offer_type_description) }
     it { should respond_to(:work_mode_description) }
@@ -61,7 +60,6 @@ RSpec.describe Offer, type: :model do
     it { should belong_to(:job_category) }
     it { should belong_to(:offer_type) }
     it { should belong_to(:job_category) }
-    it { should belong_to(:sex) }
     it { should belong_to(:job_category) }
     it { should belong_to(:work_mode) }
     it { should belong_to(:job_category) }
@@ -80,6 +78,7 @@ RSpec.describe Offer, type: :model do
     it { should have_and_belong_to_many(:work_positions) }
     it { should have_and_belong_to_many(:responsibilities) }
     it { should have_and_belong_to_many(:educational_level) }
+    it { should have_and_belong_to_many(:sexes) }
   end
 
   describe "#active" do

@@ -1,1 +1,9 @@
-= react_component('views/companies/first_offer/step_threes/new', {formInfo: @offer.form_information, csrf_param: request_forgery_protection_token, csrf_token: form_authenticity_token, user_signed_in: user_signed_in?, company_signed_in: company_signed_in?, log_out_user: destroy_user_session_path, log_out_companies: destroy_company_session_path, session_translation: I18n.t("session") }, prerender: false)
+= react_component('views/companies/first_offer/step_threes/new',
+  {formInfo: @offer.form_information,
+  csrf_param: request_forgery_protection_token,
+  csrf_token: form_authenticity_token,
+  user_signed_in: user_signed_in?,
+  company_signed_in: company_signed_in?,
+  log_out_user: destroy_user_session_path,
+  log_out_companies: destroy_company_session_path,
+  session_translation: I18n.t("session") }, prerender: true)

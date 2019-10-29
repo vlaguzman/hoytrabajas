@@ -43,11 +43,12 @@ Rails.application.configure do
   # smpt_settings
 
    config.action_mailer.smtp_settings = {
+     :user_name      => "rormaster@mg.hoytrabajas.com",
+     :password       => "1c3cb51a846066e99efecb47b3fee5f7-816b23ef-925b83cc",
+     :domain         => "mg.hoytrabajas.com",
      :address        => "smtp.mailgun.org",
      :port           => 587,
-     :domain         => "sandbox103f2a692a724acaa2cc907d71deae36.mailgun.org",
-     :user_name      => "postmaster@sandbox103f2a692a724acaa2cc907d71deae36.mailgun.org",
-     :password       => "1100a7684f39170fc0869a96e553c93c-2dfb0afe-9a26a5fe"
+     :authentication => :plain
    }
 
 

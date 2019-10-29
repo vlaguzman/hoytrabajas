@@ -5,5 +5,5 @@ require_relative 'application'
 Rails.application.initialize!
 
 Mailgun.configure do |config|
-  config.api_key = '75d6decc4a38d072d2760ad4edce2cb6-2dfb0afe-b78670c8'
+  config.api_key = 'key-dcd90f07b80eda9ce143c030c38d8cbe'
 end

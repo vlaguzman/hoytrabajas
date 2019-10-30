@@ -1,0 +1,18 @@
+es:
+  users:
+    wizards:
+      step_tens:
+        show:
+          title: '¿Cuentas con reconocimientos?'
+          subtitle: 'Brinda a las empresas información valiosa sobre ti.'
+          form:
+            buttons:
+              previous: 'Regresar'
+              submit: 'Publicar'
+              next: 'Saltar'
+              add_other: 'Agregar otro reconocimiento'
+            formFields:
+              title: 'Título reconocimiento'
+              start_date: 'Fecha de inicio'
+              entity_name: 'Institución o entidad'
+              diploma: 'Carga aquí tu diploma'

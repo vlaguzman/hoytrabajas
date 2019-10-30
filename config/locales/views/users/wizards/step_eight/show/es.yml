@@ -1,0 +1,25 @@
+es:
+  users:
+    wizards:
+      step_eights:
+        show:
+          title: 'Cuentanos un poco de tu experiencia'
+          form:
+            buttons:
+              previous: 'Regresar'
+              submit: 'Siguiente'
+              next: 'Saltar'
+              add_other: 'Agregar otra experiencia'
+            formFields:
+              job_category_id: 'Úbica tu empleo dentro de una categoría*'
+              company_name: 'Empresa'
+              work_position_id: 'Cargo*'
+              work_methodology_id: 'Modalidad de trabajo'
+              city_id: 'Ciudad'
+              still_in_progress: 'Altualmente laborando'
+              technical_skill_ids: 'Habilidades desempeñadas'
+              started_at: 'Fecha de inicio'
+              finished_at: ''
+            placeholders:
+              finished_at: 'Terminacíon'
+

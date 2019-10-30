@@ -8,14 +8,15 @@ RSpec.describe Users::Wizards::StepNinePresenter do
 
   let(:educational_level) { create(:educational_level, curriculum_vitae: curriculum) }
 
-  let!(:city) { create(:city) }
-  let!(:cities_list) { City.all.map { |city| [city.description, city.id] } }
+  describe '#form_information' do
+    it 'should return a object used by the react component to build it' do
+      response = subject.form_information
 
-  describe "#cities_list" do
-    it { should respond_to(:cities_list) }
+      expect(response).to be_an_instance_of(Hash)
 
-    it "should return a array with cites objects" do
-      expect(subject.cities_list).to match_array(cities_list)
+      expected_keys = [:title, :subtitle, :form]
+
+      expect(response.keys).to eq(expected_keys)
     end
   end
 

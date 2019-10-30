@@ -12,7 +12,7 @@ es:
               previous: 'Regresar'
               acceptButton: 'Si, quiero adicionarla'
               skipButton: 'No pero con disposición'
-              haveExperience: '¿Cuentas con experiencia?'
+              have_experience: '¿Cuentas con experiencia?'
             formFields:
             placeholders:
 

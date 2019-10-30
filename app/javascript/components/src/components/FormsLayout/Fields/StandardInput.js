@@ -12,8 +12,6 @@ const StandardInput = props => {
     handleChange,
     extra,
     isTextArea = false,
-    maxLength = null,
-    beforeLabel = null,
     placeholder = null
   } = props
 
@@ -65,12 +63,10 @@ const StandardInput = props => {
 
 StandardInput.propTypes = {
   isTextArea: PropTypes.bool,
-  maxLength: PropTypes.number,
-  inputValue: PropTypes.string.isRequired,
+  inputValue: PropTypes.string,
   handleChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   label: PropTypes.string,
-  beforeLabel: PropTypes.string,
   placeholder: PropTypes.string,
   extra: PropTypes.object
 }

@@ -56,7 +56,8 @@ RSpec.describe Companies::FirstOffer::StepOne::FormParamsService do
               label: 'Número de empleados',
               values: create_employees_ranges_list
             }
-          }
+          },
+          placeholders: {}
         }
       }
 

@@ -7,7 +7,7 @@ class Users::Wizards::StepFivePresenter < ApplicationPresenter
       template_translation_path: "users.wizards.step_fives.show",
       action_path: users_wizards_step_five_path,
       previous_path: users_wizards_step_four_path,
-      next_path: users_wizards_step_six_path,
+      next_path: users_wizards_step_seven_path,
       form_method: :put
     ).form_params
   end
@@ -18,8 +18,8 @@ class Users::Wizards::StepFivePresenter < ApplicationPresenter
     rails_routes.users_wizards_step_five_path
   end
 
-  def users_wizards_step_six_path
-    rails_routes.users_wizards_step_six_path
+  def users_wizards_step_seven_path
+    rails_routes.users_wizards_step_seven_path
   end
 
   def users_wizards_step_four_path

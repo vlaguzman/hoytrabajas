@@ -19,9 +19,9 @@ RSpec.describe Users::Wizards::StepSeven::FormParamsService do
             previousPath: '/users/wizards/step_six',
             nextPath: '/users/wizards/step_eight',
             skipPath: '/users/wizards/step_nine',
-            have_experience: 'Cuentas con experiencía',
+            haveExperience: '¿Cuentas con experiencia?',
             acceptButton: 'Si, quiero adicionarla',
-            skipButton: 'Selecciona el idioma'
+            skipButton: 'No pero con disposición'
           },
           action: '/users/wizards/step_seven',
           method: :post,

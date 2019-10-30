@@ -55,7 +55,8 @@ RSpec.describe Users::Wizards::StepTwo::FormParamsService do
               label: "Nivel de educación*",
               values: create_educational_degree_list
             }
-          }
+          },
+          placeholders: {}
         }
       }
 

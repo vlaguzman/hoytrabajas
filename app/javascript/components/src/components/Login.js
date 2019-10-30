@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography'
 import MailOutline from '@material-ui/icons/MailOutline'
 import Visibility from '@material-ui/icons/Visibility'
 import Lock from '@material-ui/icons/Lock'
-import { Row, Col, Form, FormGroup, Label, Input } from 'reactstrap'
+import { Row, Col, Form, FormGroup, Input } from 'reactstrap'
 
 const Login = ({
   isOpen,
@@ -29,12 +29,13 @@ const Login = ({
   >
     <DialogTitle id="max-width-dialog-title" className="my-25">
       <Row noGutters className="justify-content-center">
-        <img
-          src="/assets/static/img/appLogoC.svg"
-          className="mr-15  animated fadeIn"
-          alt="site logo"
-          width="50%"
-        />
+        <a className="ht-image" href="/">
+          <img
+            src="/assets/static/img/appLogoC.svg"
+            className="mr-15  animated fadeIn"
+            alt="site logo"
+          />
+        </a>
       </Row>
     </DialogTitle>
     <DialogContent className="px-40">
@@ -155,3 +156,10 @@ const Login = ({
 )
 
 export default Login
+Login.propTypes = {
+  csrf_token: PropTypes.string.isRequired,
+  csrf_param: PropTypes.string.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  toggleOpenState: PropTypes.func.isRequired,
+  session_translation: PropTypes.object.isRequired
+}

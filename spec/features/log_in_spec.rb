@@ -32,7 +32,6 @@ RSpec.describe "User can Log In", type: :feature do
       expect(page).to have_content("SIGN IN CANDIDATO")
 
       has_button?("SIGN IN CANDIDATO")
-
       click_on("SIGN IN CANDIDATO")
 
       within "#new_user" do
@@ -43,6 +42,21 @@ RSpec.describe "User can Log In", type: :feature do
       end
 
       expect(current_path).to eq(user_path("#{User.last.id}"))
+    end
+    
+    scenario "the user want to come back to home page", js: true do
+      visit root_path
+
+      find("button[id='navbar-toggler']", visible: false).click
+      expect(page).to have_content("SIGN IN CANDIDATO")
+
+      has_button?("SIGN IN CANDIDATO")
+      click_on("SIGN IN CANDIDATO")
+      save_page("page.html")
+      page.first(".ht-image").click
+     
+      expect(page).to have_text("El empleo ideal para tu tiempo libre") 
+      expect(current_path).to eq(root_path)
     end
   end
 end

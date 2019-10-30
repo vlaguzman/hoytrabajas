@@ -1,9 +1,8 @@
 import React from 'react'
-import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import Avatar from '@material-ui/core/Avatar'
 import Divider from '@material-ui/core/Divider'
-import { Badge, Row, Col } from 'reactstrap'
+import { Badge, Row } from 'reactstrap'
 import CardContent from '@material-ui/core/CardContent'
 
 const Content = () => {
@@ -12,7 +11,7 @@ const Content = () => {
       <Avatar
         className="position-absolute"
         style={{ top: '-10rem', left: '6%', width: '4rem', height: '4rem' }}
-        src="/assets/static/img/logos/clientes-ht-3.jpg"
+        src="/assets/static/img/logos/clientes-ht.jpg"
       />
       <Badge
         color="primary"

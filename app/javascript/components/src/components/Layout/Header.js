@@ -233,7 +233,6 @@ const Header = props => {
                     style={{
                       color: isNavTransparent ? 'white' : 'black'
                     }}
-                    onClick={() => toggleOpenState('login')}
                   >
                     CERRAR SESIÓN
                   </MatButton>

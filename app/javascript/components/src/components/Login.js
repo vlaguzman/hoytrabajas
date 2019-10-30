@@ -11,7 +11,7 @@ import Typography from '@material-ui/core/Typography'
 import MailOutline from '@material-ui/icons/MailOutline'
 import Visibility from '@material-ui/icons/Visibility'
 import Lock from '@material-ui/icons/Lock'
-import { Row, Col, Form, FormGroup, Label, Input } from 'reactstrap'
+import { Row, Col, Form, FormGroup, Input } from 'reactstrap'
 
 const Login = ({
   isOpen,
@@ -156,3 +156,10 @@ const Login = ({
 )
 
 export default Login
+Login.propTypes = {
+  csrf_token: PropTypes.string.isRequired,
+  csrf_param: PropTypes.string.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  toggleOpenState: PropTypes.func.isRequired,
+  session_translation: PropTypes.object.isRequired
+}

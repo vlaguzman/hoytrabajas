@@ -7,7 +7,7 @@ class Companies::FirstOffer::StepFourPresenter < ApplicationPresenter
       previous_path: companies_first_offer_step_three_path,
       next_path: companies_first_offer_step_five_path,
       form_type: :offer,
-      template_translation_path: "companies.first_offer.step_fours.edit",
+      template_translation_path: "companies.first_offer.step_fours.show",
       form_method: :put
     ).form_params
       .merge({id: source.id})
@@ -24,7 +24,7 @@ class Companies::FirstOffer::StepFourPresenter < ApplicationPresenter
   end
 
   def companies_first_offer_step_five_path
-    rails_routes.edit_companies_first_offer_step_five_path(source.id)
+    rails_routes.companies_first_offer_step_five_path(source.id)
   end
 
 end

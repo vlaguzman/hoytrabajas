@@ -2,7 +2,7 @@ es:
   companies:
     first_offer:
       step_fours:
-        edit:
+        show:
           title: "Conozcamos más de tu oferta"
           subtitle: "Brinda a tu candidato una relevante de tu empresa."
           immediate_start_description: "Inicio inmediato"

@@ -6,7 +6,7 @@ class Companies::FirstOffer::StepThree::FormParamsService < BaseFormWizardsServi
 
   SELECT_FIELDS_KEYS = [
     :job_category_id,
-    :offer_work_position_id,
+    :offers_work_positions,
     :offer_type_id,
     :work_mode_id
   ]
@@ -17,7 +17,7 @@ class Companies::FirstOffer::StepThree::FormParamsService < BaseFormWizardsServi
     ListConverter.model_list JobCategory
   end
 
-  def offer_work_position_id_list
+  def offers_work_positions_list
     ListConverter.model_list WorkPosition
   end
 

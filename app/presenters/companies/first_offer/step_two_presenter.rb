@@ -23,6 +23,6 @@ class Companies::FirstOffer::StepTwoPresenter < ApplicationPresenter
   end
 
   def new_companies_first_offer_step_three_path
-    rails_routes.new_companies_first_offer_step_three_path
+    rails_routes.companies_first_offer_step_three_path
   end
 end

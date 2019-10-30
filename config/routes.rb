@@ -19,11 +19,13 @@ Rails.application.routes.draw do
       resource :step_two,   only: [:show, :update]
 
       # Offer
-      resource :step_three, only: [:new, :create, :edit, :update]
-      resource :step_four,  only: [:edit, :update]
-      resource :step_five,  only: [:show, :edit, :update]
-      resource :step_six,   only: [:show]
-      resource :step_seven, only: [:show]
+      resource :step_three, only: [:show, :update]
+      resource :step_four,  only: [:show, :update]
+      resource :step_five,  only: [:show, :update]
+      resource :step_six,   only: [:show, :update]
+      resource :step_seven, only: [:show, :update]
+
+      # Finally
       resource :step_eight, only: [:show]
     end
   end

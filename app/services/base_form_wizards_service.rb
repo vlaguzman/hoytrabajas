@@ -4,10 +4,11 @@ class BaseFormWizardsService
   SELECT_FIELDS_KEYS = []
   MULTIPLE_SELECT_FIELDS_KEYS = []
 
-  attr_accessor :skip_path, :errors, :form_type, :template_translation_path, :action_path, :previous_path, :next_path, :form_method
+  attr_accessor :skip_path, :source, :errors, :form_type, :template_translation_path, :action_path, :previous_path, :next_path, :form_method
 
   def initialize(
     skip_path: nil,
+    source: nil,
     errors: nil,
     form_type: :user,
     template_translation_path: nil,
@@ -16,6 +17,7 @@ class BaseFormWizardsService
     next_path: nil,
     form_method: :post)
 
+    @source                    = source
     @errors                    = errors
     @form_type                 = form_type
     @template_translation_path = template_translation_path
@@ -92,18 +94,18 @@ class BaseFormWizardsService
 
   def input_fields_builder(*subform_names)
     Hash[input_fields.collect do |key|
-      field_data_builder(key, name: name_builder(key, false, subform_names), label: labels[key])
+      field_data_builder(key, name: name_builder(key, false, subform_names), label: labels[key], current_value: current_value(key))
     end]
   end
 
   def select_fields_builder(*subform_names)
     Hash[select_fields.collect do |key|
-      field_data_builder(key, name: name_builder(key, false, subform_names), label: labels[key], values: self.send("#{key}_list"))
+      field_data_builder(key, name: name_builder(key, false, subform_names), label: labels[key], values: self.send("#{key}_list"), current_value: current_value(key))
     end]
   end
 
   def multiple_select_fields_builder(*subform_names)
-    Hash[multiple_select_fields.collect { |key| field_data_builder(key, name: name_builder(key, true, subform_names), label:labels[key], values: self.send("#{key}_list")) } ]
+    Hash[multiple_select_fields.collect { |key| field_data_builder(key, name: name_builder(key, true, subform_names), label:labels[key], values: self.send("#{key}_list"), current_value: current_value(key)) } ]
   end
 
   def name_builder(name, multiple=nil, subforms_names)
@@ -117,6 +119,14 @@ class BaseFormWizardsService
 
   def field_data_builder(key, **params)
     [key, params]
+  end
+
+  def current_value(key)
+    begin
+      source.send(key)
+    rescue
+      key.to_s.camelize.constantize
+    end
   end
 
 end

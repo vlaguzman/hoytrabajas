@@ -29,12 +29,13 @@ const Login = ({
   >
     <DialogTitle id="max-width-dialog-title" className="my-25">
       <Row noGutters className="justify-content-center">
-        <img
-          src="/assets/static/img/appLogoC.svg"
-          className="mr-15  animated fadeIn"
-          alt="site logo"
-          width="50%"
-        />
+        <a className="ht-image" href="/">
+          <img
+            src="/assets/static/img/appLogoC.svg"
+            className="mr-15  animated fadeIn"
+            alt="site logo"
+          />
+        </a>
       </Row>
     </DialogTitle>
     <DialogContent className="px-40">

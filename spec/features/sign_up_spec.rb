@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "sign up user", js: true,  type: :feature do
   context "Like a external user, I should get in hoytrabajas.com and see the option 'registrarse'" do
 
-    it "User visit home page and click on sign in" do
+    it "User visit home page and click on sign up" do
 
       visit root_path
 
@@ -13,7 +13,23 @@ RSpec.describe "sign up user", js: true,  type: :feature do
 
       expect(page).to have_text("Regístrate")
     end
+    
+    context "I want to return to the home page" do
+      it "should return to the root_path" do
 
+        visit root_path
+
+        find("button[id='navbar-toggler']", visible: false).click
+        expect(page).to have_text("SIGN UP CANDIDATO")
+        click_on 'SIGN UP CANDIDATO'
+
+        expect(page).to have_text("Regístrate")
+        page.first(".ht-image").click
+
+        expect(page).to have_text("El empleo ideal para tu tiempo libre") 
+        expect(current_path).to eq(root_path)
+      end
+    end
 
     context  "when I want to sing up with email and password" do
       context "when I looking for a job" do
@@ -48,6 +64,23 @@ RSpec.describe "sign up user", js: true,  type: :feature do
 
         expect(page).to have_text("Regístrate")
 
+      end
+
+      context "I want to return to the home page" do
+        it "should return to the root_path" do
+     
+          visit root_path
+     
+          find("button[id='navbar-toggler']", visible: false).click
+          expect(page).to have_text("SIGN UP EMPRESA") 
+          click_on 'SIGN UP EMPRESA'
+     
+          expect(page).to have_text("Regístrate")
+          page.first(".ht-image").click
+     
+          expect(page).to have_text("El empleo ideal para tu tiempo libre") 
+          expect(current_path).to eq(root_path)
+        end
       end
     end
 

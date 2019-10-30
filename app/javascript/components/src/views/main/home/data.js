@@ -107,7 +107,7 @@ export const contenido = {
       }
     ]
   },
-  premiun: {
+  premium: {
     content: [
       {
         img: 'push.png',

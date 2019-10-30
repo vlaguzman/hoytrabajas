@@ -6,7 +6,7 @@
   .pcx {
     padding: 0 8%;
     @media (max-width: 600px) {
-      padding: 0 0% !important;
+      padding: 0 5% !important;
     }
   }
   .pcx-f {
@@ -123,6 +123,10 @@
   .span-1 {
     letter-spacing: -1px;
     color: #000000;
+  }
+  @media (max-width: '425px') {
+    padding: 0 20%;
+    margin-bottom: 50px !important;
   }
 }
 .sec-title2 {
@@ -1074,4 +1078,25 @@
       width: 100% !important;
     }  
 
+}
+
+.home__premium-card-title {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+}
+
+.home__premium-card-wrapper {
+  max-width: 400px;
+  margin: auto;
+  padding: 0;
+  .home__premium-card-shadow {
+    box-shadow: 0 2px 67px 0 rgba(41, 44, 28, 0.08)
+  }
+}
+
+.home__small-subtitle {
+  margin-top: 10px !important;
+  font-size: 13px !important;
+  color: rgba(0, 0, 0, 0.54) !important;
+  font-weight: 400 !important;
 }

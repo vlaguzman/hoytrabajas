@@ -1,21 +1,14 @@
 import PropTypes from 'prop-types'
-import React, { Fragment } from 'react'
-import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
-import Button from '@material-ui/core/Button'
-import TextField from '@material-ui/core/TextField'
-import Typography from '@material-ui/core/Typography'
-import { Row, Col } from 'reactstrap'
-import AppLayout from '../../../components/Layout/AppLayout'
+import React from 'react'
+import { Row } from 'reactstrap'
 import Introduccion from './sections/introduccion'
 import CoverSection from './sections/cover'
 import GallerySection from './sections/gallery'
-import PremiunSection from './sections/premiun'
+import PremiumSection from './sections/premium'
 import CompaniesSection from './sections/companies'
 import TurorialSection from './sections/tutorial'
 import Newsletter from './sections/newsletter'
 import { contenido } from './data'
-// import ScrollAnimation from 'react-animate-on-scroll'
 
 const HomePage = ({
   offers,
@@ -26,7 +19,7 @@ const HomePage = ({
 }) => {
   const {
     cover,
-    premiun,
+    premium,
     filterForm,
     common: { categorias },
     companies,
@@ -52,7 +45,7 @@ const HomePage = ({
       <Row className="mb-70 d-none d-lg-flex" />
       <Row className="mb-70 d-none d-lg-flex" />
       <Row className="mb-70 d-none d-lg-flex" />
-      <PremiunSection {...premiun} />
+      <PremiumSection {...premium} />
       <CompaniesSection {...companies} />
       <Newsletter />
     </div>

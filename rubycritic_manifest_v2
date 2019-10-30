@@ -60,7 +60,8 @@ A         * EmployeesRange                                      1       0.0     
 A         * FaqsController                                      2       0.0        0           1
 A         * Function                                            2       0.0        0           1
 A         * FunctionsOffers                                     1       0.0        0           1
-A         * HomeController                                      6       1.41       0           1
+A         * Home::HomePresenter                                 1       8.14       48          3
+A         * HomeController                                      7       1.0        0           1
 A         * Industry                                            3       0.0        0           1
 A         * JobAid                                              4       0.0        0           1
 A         * JobAidsOffers                                       1       0.0        0           1
@@ -80,7 +81,7 @@ A         * Offers                                              5       0.0     
 A         * Offers::AppliedOfferService                         2       13.25      0           1
 A         * Offers::IndexService                                4       10.85      0           1
 A         * Offers::ViewsService                                6       34.4       0           1
-A         * OffersController                                    10      9.23       0           1
+A         * OffersController                                    11      20.31      0           2
 A         * OffersPresenter                                     6       17.8       0           4
 A         * OffersResponsibilities                              1       0.0        0           1
 A         * OffersService                                       7       15.91      0           1

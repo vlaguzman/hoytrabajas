@@ -30,7 +30,6 @@ RSpec.describe "fill the principal candidate user data", :type => :feature do
 
       visit root_path
 
-      find("button[id='navbar-toggler']", visible: false).click
       expect(page).to have_text("SIGN IN CANDIDATO") 
 
       click_on("SIGN IN CANDIDATO")
@@ -104,6 +103,7 @@ RSpec.describe "fill the principal candidate user data", :type => :feature do
 
           visit users_wizards_step_two_path
 
+          execute_script "window.scrollTo(0, (window.innerHeight * 2) )"
           find("span", text: /Regresar/).click
 
           expect(current_path).to eq(users_wizards_step_one_path)

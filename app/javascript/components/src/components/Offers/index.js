@@ -105,7 +105,6 @@ const Offers = props => {
   return (
     <>
       <OfferCardsWrapper>{offerCards}</OfferCardsWrapper>
-      {offers.length > offersToDisplay && (
         <Row className="justify-content-center align-items-center  my-30 ">
           <StyledButton
             color="primary"
@@ -120,7 +119,6 @@ const Offers = props => {
               : `${offer_translations.index.btn_more_offers} »`}
           </StyledButton>
         </Row>
-      )}
     </>
   )
 }

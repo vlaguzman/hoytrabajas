@@ -29,3 +29,4 @@ coverage
 .ssh
 .env
 .ruby-version
+stats.js

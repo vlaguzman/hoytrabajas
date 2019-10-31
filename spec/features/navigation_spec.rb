@@ -82,6 +82,7 @@ RSpec.describe "Overall navigation" do
 
         expect(current_path).to eq(offers_path)
         expect(page).to have_text("VER MÁS OFERTAS")
+        expect(page).to have_text("Titulo De Oferta8")
 
         click_on("INICIO")
 

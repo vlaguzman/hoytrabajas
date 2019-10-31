@@ -27,7 +27,11 @@ const HomePage = ({
         session_translation={session_translation}
         shouldChangeColorOfNav
       >
-        <DynamicHome offers={offers} offer_translations={offer_translations} filterForm={filterForm} />
+        <DynamicHome
+          offers={offers}
+          offer_translations={offer_translations}
+          filterForm={filterForm}
+        />
       </AppLayout>
     </div>
   )

@@ -1,6 +1,5 @@
 import React from 'react'
-// import Head from 'next/head'
-import { Row, Col } from 'reactstrap'
+import { Row, Badge, Col } from 'reactstrap'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
 import PropTypes from 'prop-types'
@@ -9,18 +8,17 @@ import Card from '@material-ui/core/Card'
 import Chip from '@material-ui/core/Chip'
 import Button from '@material-ui/core/Button'
 import Divider from '@material-ui/core/Divider'
-import { Badge } from 'reactstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Avatar from '@material-ui/core/Avatar'
 import classNames from 'classnames'
-import Cards from '../main/home/sections/components/gallery_cards/gallery_card'
+import OfferCard from '../../components/Offers/OfferCard'
 import Carousel from '../../components/Carousel/CarouselRow'
 
 import AppLayout from '../../components/Layout/AppLayout'
 
 const relatedOffersCards = (relatedOffers, offer_translations) => {
   return relatedOffers.map(relatedOffer => (
-    <Cards
+    <OfferCard
       key={relatedOffer['title']}
       offer={relatedOffer}
       offer_translations={offer_translations}

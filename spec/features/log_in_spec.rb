@@ -46,7 +46,6 @@ RSpec.describe "User can Log In", type: :feature do
     scenario "the user want to come back to home page", js: true do
       visit root_path
 
-      find("button[id='navbar-toggler']", visible: false).click
       expect(page).to have_content("SIGN IN CANDIDATO")
 
       has_button?("SIGN IN CANDIDATO")

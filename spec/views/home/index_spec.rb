@@ -3,13 +3,11 @@ require 'rails_helper'
 RSpec.describe "home/index" do
 
   context "There are 2 offers" do
-    it "Should render home#index template" do
-      company = create(:company)
+    let!(:offer)  { create(:offer, title: 'The best offer of your life') }
+    let!(:offer2) { create(:offer, title: 'one of the best offers') }
 
-      assign(:offers, [
-        create(:offer, title: 'The best offer of your life', company: company),
-        create(:offer, title: 'one of the best offers', company: company)
-      ])
+    it "Should render home#index template" do
+      assign(:presenter, Home::HomePresenter)
 
       render
 

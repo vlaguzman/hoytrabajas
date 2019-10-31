@@ -531,6 +531,7 @@ DEPENDENCIES
   rails (~> 6.0.0)
   rails-controller-testing
   rails_best_practices
+  ransack
   react-rails
   rspec-html-matchers
   rspec-rails (~> 4.0.0.beta2)

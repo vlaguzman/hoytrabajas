@@ -12,7 +12,8 @@ const HomePage = ({
   log_out_user,
   log_out_companies,
   session_translation,
-  offer_translations
+  offer_translations,
+  filterForm
 }) => {
   return (
     <div className="main-wrapper">
@@ -26,7 +27,11 @@ const HomePage = ({
         session_translation={session_translation}
         shouldChangeColorOfNav
       >
-        <DynamicHome offers={offers} offer_translations={offer_translations} />
+        <DynamicHome
+          offers={offers}
+          offer_translations={offer_translations}
+          filterForm={filterForm}
+        />
       </AppLayout>
     </div>
   )
@@ -42,5 +47,6 @@ HomePage.propTypes = {
   log_out_companies: PropTypes.string.isRequired,
   session_translation: PropTypes.object.isRequired,
   offers: PropTypes.object.isRequired,
-  offer_translations: PropTypes.object.isRequired
+  offer_translations: PropTypes.object.isRequired,
+  filterForm: PropTypes.object.isRequired
 }

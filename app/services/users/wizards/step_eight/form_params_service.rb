@@ -6,12 +6,14 @@ class Users::Wizards::StepEight::FormParamsService < BaseFormWizardsService
     :finished_at,
     :still_in_progress,
   ]
+
   SELECT_FIELDS_KEYS = [
     :job_category_id,
     :work_position_id,
     :work_methodology_id,
     :city_id
   ]
+
   MULTIPLE_SELECT_FIELDS_KEYS = [
     :technical_skill_ids
   ]

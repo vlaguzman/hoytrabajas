@@ -62,7 +62,6 @@ const FormFields = props => {
       >
         <SelectChip
           inputValue={formValues[job_category_id.name]}
-          inputName={job_category_id.name}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={job_category_id.name}
@@ -99,7 +98,6 @@ const FormFields = props => {
       >
         <SelectChip
           inputValue={formValues[work_position_id.name]}
-          inputName={work_position_id.name}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={work_position_id.name}
@@ -122,7 +120,6 @@ const FormFields = props => {
       >
         <SelectChip
           inputValue={formValues[work_methodology_id.name]}
-          inputName={work_methodology_id.name}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={work_methodology_id.name}
@@ -145,7 +142,6 @@ const FormFields = props => {
       >
         <SelectChip
           inputValue={formValues[city_id.name]}
-          inputName={city_id.name}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={city_id.name}
@@ -168,7 +164,6 @@ const FormFields = props => {
       >
         <SelectChip
           inputValue={formValues[technical_skill_ids.name]}
-          inputName={technical_skill_ids.name}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={technical_skill_ids.name}

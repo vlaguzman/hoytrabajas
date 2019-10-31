@@ -6,21 +6,7 @@ import FormProgress from '../../../../../components/FormsLayout/FormProgress'
 import FormTitle from '../../../../../components/FormsLayout/FormTitle'
 import FormButtons from '../../../../../components/FormsLayout/FormButtons'
 import FormFields from './FormFields'
-
-const showMesssage = (messageList, color='black')=>{
-  if(messageList){
-    return messageList
-    .map( messages => messages
-      .map( (message) => ( <span style={{color: color}} key={message}>* {message} <br/></span> ) ) )
-  }
-}
-
-const showExperience = experienceList => {
-  if(experienceList){
-    return experienceList.map( experience => (<p> {`en ${experience[0]} como ${experience[1]}`}</p>))
-  }
-}
-
+import { showMessage, showExperience } from '../../shared/message'
 
 const UsersWizardsStepEight = props => {
   const { formInfo, csrf_param, csrf_token, registered_messages, registered_experience } = props
@@ -43,7 +29,7 @@ const UsersWizardsStepEight = props => {
               <form className="forms__candidate" action={action} method="post" encType="multipart/form-data">
                 <p>{registered_messages}</p>
                 {showExperience(registered_experience)}
-                {showMesssage(errors)}
+                {showMessage(errors)}
 
                 <input type="hidden" name={csrf_param} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />

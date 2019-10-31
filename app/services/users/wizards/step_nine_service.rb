@@ -13,7 +13,7 @@ module Users::Wizards::StepNineService
   def self.create_educational_level(educational_level_params: {})
     if educational_level_params.present?
       #TODO test without this if, with the enctype should works
-      unless educational_level_params['diploma'].present?
+      if not educational_level_params['diploma'].present?
         educational_level_params.except!(:diploma)
       end
       EducationalLevel.create(educational_level_params)

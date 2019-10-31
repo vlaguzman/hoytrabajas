@@ -6,14 +6,7 @@ import FormProgress from '../../../../../components/FormsLayout/FormProgress'
 import FormTitle from '../../../../../components/FormsLayout/FormTitle'
 import FormButtons from '../../../../../components/FormsLayout/FormButtons'
 import FormFields from './FormFields'
-
-const showMesssage = (messageList, color='black')=>{
-  if(messageList){
-    return messageList
-    .map( messages => messages
-      .map( (message) => ( <span style={{color: color}} key={message}>* {message} <br/></span> ) ) )
-  }
-}
+import { showMessage } from '../../shared/message'
 
 const UsersWizardsStepNine = props => {
   const { formInfo, csrf_param, csrf_token, registered_messages, registered_studies } = props
@@ -22,7 +15,6 @@ const UsersWizardsStepNine = props => {
     subtitle,
     form: { buttons, action, method, formFields, errors }
   } = formInfo
-  console.log(props)
   const { nextPath, previousPath, addOther } = buttons
 
   return (
@@ -35,8 +27,8 @@ const UsersWizardsStepNine = props => {
             <div className="w-80">
               <form className="forms__candidate" action={action} method="post" encType="multipart/form-data">
                 <p>{registered_messages}</p>
-                {showMesssage(errors, 'red')}
-                {showMesssage(registered_studies)}
+                {showMessage(errors, 'red')}
+                {showMessage(registered_studies)}
                 <input type="hidden" name={csrf_param} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />
                 <FormFields formFields={formFields} />

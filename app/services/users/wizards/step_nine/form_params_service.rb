@@ -8,6 +8,7 @@ class Users::Wizards::StepNine::FormParamsService < BaseFormWizardsService
     :ongoing_study,
     :diploma
   ]
+
   SELECT_FIELDS_KEYS = [
     :city_id
   ]

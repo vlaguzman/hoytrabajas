@@ -33,11 +33,7 @@ class BaseFormWizardsService
   private
 
   def placeholders_translations
-    if template_translations[:form][:placeholders].present?
-      {}.merge(template_translations[:form][:placeholders])
-    else
-      {}
-    end
+    template_translations[:form][:placeholders].present? ? {}.merge(template_translations[:form][:placeholders]) : {}
   end
 
   def buttons_translation

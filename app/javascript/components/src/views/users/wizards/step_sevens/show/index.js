@@ -15,7 +15,6 @@ const UsersWizardsStepSeven = props => {
     form: { buttons, action, method }
   } = formInfo
 
-  console.log(buttons)
   const {haveExperience, acceptButton, skipButton, skipPath, nextPath, previousPath} = buttons
 
   const redirectTo = (path) => {

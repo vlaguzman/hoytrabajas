@@ -135,7 +135,6 @@ const FormFields = props => {
       <Col key={city_id.name} className={inputClassname} xs={12} lg={6}>
         <SelectChip
           inputValue={formValues[city_id.name]}
-          inputName={city_id.name}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={city_id.name}

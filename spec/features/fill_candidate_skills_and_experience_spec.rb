@@ -97,7 +97,7 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
 
             expect(page).to have_text(/¿Cuentas con experiencia?/)
 
-            click_button('Si, quiero adicionarla')
+            click_button('Sí, quiero adicionarla')
 
             expect(page).to have_text(/Cuentanos un poco de tu experiencia/)
 
@@ -191,7 +191,7 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
 
           expect(page).to have_text("¿Cuentas con experiencia?")
 
-          click_on 'Si, quiero adicionarla'
+          click_on 'Sí, quiero adicionarla'
 
           expect(page).to have_button('Agregar otra experiencia')
         end
@@ -205,7 +205,7 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
 
             expect(page).to have_text("¿Cuentas con experiencia?")
 
-            click_on 'Si, quiero adicionarla'
+            click_on 'Sí, quiero adicionarla'
 
             expect(page).to have_text("Cuentanos un poco de tu experiencia")
 

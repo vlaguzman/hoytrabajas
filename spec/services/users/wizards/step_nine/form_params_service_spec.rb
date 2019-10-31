@@ -58,7 +58,7 @@ RSpec.describe Users::Wizards::StepNine::FormParamsService do
             },
           },
           placeholders:{
-            finish_date: 'Terminacíon'
+            finish_date: 'Terminación'
           }
         }
       }

@@ -170,7 +170,7 @@ RSpec.describe "fill the canditate user data", :type => :feature do
 
       find( "span", text: /SIGUIENTE/).click
 
-      expect(page).to have_text(/Cuentanos un poco de tu experiencia/)
+      expect(page).to have_text(/Cuéntanos un poco de tu experiencia/)
       #IMPORTANT - Here you must validate the creation of the tables with the information filled by user
     end
   end

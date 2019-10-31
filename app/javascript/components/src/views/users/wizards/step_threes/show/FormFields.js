@@ -37,7 +37,6 @@ const FormFields = props => {
       >
         <SelectChip
           inputValue={formValues[job_category_ids.name]}
-          inputName={job_category_ids.name}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={job_category_ids.name}
@@ -55,7 +54,6 @@ const FormFields = props => {
       <Col key={offer_type_ids.name} className={inputClassname} xs={12} lg={6}>
         <SelectChip
           inputValue={formValues[offer_type_ids.name]}
-          inputName={offer_type_ids.name}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={offer_type_ids.name}
@@ -78,7 +76,6 @@ const FormFields = props => {
       >
         <SelectChip
           inputValue={formValues[contract_type_id.name]}
-          inputName={contract_type_id.name}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={contract_type_id.name}
@@ -96,7 +93,6 @@ const FormFields = props => {
       <Col key={work_mode_ids.name} className={inputClassname} xs={12} lg={6}>
         <SelectChip
           inputValue={formValues[work_mode_ids.name]}
-          inputName={work_mode_ids.name}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={work_mode_ids.name}
@@ -119,7 +115,6 @@ const FormFields = props => {
       >
         <SelectChip
           inputValue={formValues[labor_disponibility_id.name]}
-          inputName={labor_disponibility_id.name}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={labor_disponibility_id.name}

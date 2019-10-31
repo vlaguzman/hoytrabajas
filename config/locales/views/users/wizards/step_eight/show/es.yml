@@ -21,5 +21,5 @@ es:
               started_at: 'Fecha de inicio'
               finished_at: ''
             placeholders:
-              finished_at: 'Terminacíon'
+              finished_at: 'Terminación'
 

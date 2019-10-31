@@ -81,7 +81,7 @@ RSpec.describe Users::Wizards::StepEight::FormParamsService do
             }
           },
           placeholders:{
-            finished_at: 'Terminacíon'
+            finished_at: 'Terminación'
           }
         }
       }

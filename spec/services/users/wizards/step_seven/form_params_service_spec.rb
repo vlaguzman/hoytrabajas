@@ -9,7 +9,7 @@ RSpec.describe Users::Wizards::StepSeven::FormParamsService do
     it "should return the expected object" do
 
       expected_object = {
-        title: 'Cuentanos un poco de tu experiencia',
+        title: 'Cuéntanos un poco de tu experiencia',
         subtitle: 'Brinda a las empresas información valiosa sobre ti.',
         form: {
           buttons: {
@@ -20,7 +20,7 @@ RSpec.describe Users::Wizards::StepSeven::FormParamsService do
             nextPath: '/users/wizards/step_eight',
             skipPath: '/users/wizards/step_nine',
             haveExperience: '¿Cuentas con experiencia?',
-            acceptButton: 'Si, quiero adicionarla',
+            acceptButton: 'Sí, quiero adicionarla',
             skipButton: 'No pero con disposición'
           },
           action: '/users/wizards/step_seven',

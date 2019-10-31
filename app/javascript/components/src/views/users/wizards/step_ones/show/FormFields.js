@@ -35,7 +35,6 @@ const FormFields = props => {
       <Col key={name.name} className={inputClassname} xs={12} lg={6}>
         <StandardInput
           inputValue={formValues[name.name]}
-          inputName={name.name}
           handleChange={handleChange(formValues, setFormValues)}
           name={name.name}
           label={name.label}

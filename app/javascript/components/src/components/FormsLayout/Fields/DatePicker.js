@@ -54,7 +54,7 @@ const DatePicker = props => {
 export default DatePicker
 
 DatePicker.propTypes = {
-  inputValue: PropTypes.any.isRequired,
+  inputValue: PropTypes.object.isRequired,
   handleSimpleChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,

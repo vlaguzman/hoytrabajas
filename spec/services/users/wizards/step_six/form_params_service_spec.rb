@@ -60,7 +60,7 @@ RSpec.describe Users::Wizards::StepSix::FormParamsService do
             },
             language_id: {
               name: 'user[curriculum_vitae][language_id]',
-              label: '¿Que idiomas deseas resaltar en tu perfil?',
+              label: '¿Qué idiomas deseas resaltar en tu perfil?',
               values: create_languages_list
             }
           },

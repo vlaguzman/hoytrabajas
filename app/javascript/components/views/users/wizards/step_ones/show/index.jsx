@@ -5,17 +5,9 @@ import AppLayout from '../../../../../src/components/Layout/AppLayout'
 
 const UsersWizardsStepOnePage = props => {
   return (
-    <AppLayout
-      csrf_param={props.csrf_param}
-      csrf_token={props.csrf_token}
-      log_out_companies={props.log_out_companies}
-      company_signed_in={props.company_signed_in}
-      user_signed_in={props.user_signed_in}
-      log_out_user={props.log_out_user}
-      session_translation={props.session_translation}
-    >
+    <>
       <DynamicUsersWizardsStepOne {...props} />
-    </AppLayout>
+    </>
   )
 }
 

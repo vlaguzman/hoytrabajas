@@ -46,7 +46,6 @@ const FormFields = props => {
       >
         <SelectChip
           inputValue={formValues[available_work_day_ids.name]}
-          inputName={available_work_day_ids.name}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={available_work_day_ids.name}
@@ -69,7 +68,6 @@ const FormFields = props => {
       >
         <SelectChip
           inputValue={formValues[working_day_ids.name]}
-          inputName={working_day_ids.name}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={working_day_ids.name}

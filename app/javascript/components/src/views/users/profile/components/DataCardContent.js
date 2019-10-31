@@ -42,8 +42,6 @@ const renderOptions = {
 
 const DataCardContent = props => {
   const { currentDataContent, dataSection } = props
-  console.log('DataCardContent props')
-  console.log(props)
   useWhyDidYouUpdate('dataCardContent', props)
 
   if (!currentDataContent) return null

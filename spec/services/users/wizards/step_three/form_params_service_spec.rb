@@ -59,7 +59,8 @@ RSpec.describe Users::Wizards::StepThree::FormParamsService do
               label: 'Disponibilidad para trabajar',
               values: create_labor_disponibilities_list
             }
-          }
+          },
+          placeholders: {}
         }
       }
 

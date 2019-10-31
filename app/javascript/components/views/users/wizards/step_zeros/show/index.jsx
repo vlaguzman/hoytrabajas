@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import AppLayout from '../../../../../src/components/Layout/AppLayout'
 
 export default class Show extends React.Component {
   constructor(props) {
@@ -23,15 +22,7 @@ export default class Show extends React.Component {
 
     return (
       <div className="main-wrapper">
-        <AppLayout
-          log_out_companies={log_out_companies}
-          company_signed_in={company_signed_in}
-          user_signed_in={user_signed_in}
-          log_out_user={log_out_user}
-          csrf_param={csrf_param}
-          csrf_token={csrf_token}
-          session_translation={session_translation}
-        >
+
           <div className="background">
             <div className="container-general">
               <div className="container-specific background" />
@@ -44,7 +35,6 @@ export default class Show extends React.Component {
               </div>
             </div>
           </div>
-        </AppLayout>
       </div>
     )
   }

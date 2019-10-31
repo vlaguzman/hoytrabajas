@@ -67,7 +67,8 @@ RSpec.describe Users::Wizards::StepFive::FormParamsService do
               label: 'Pago',
               values: create_salary_periods_list
             }
-          }
+          },
+          placeholders: {}
         }
       }
 

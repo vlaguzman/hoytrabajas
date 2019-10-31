@@ -14,43 +14,15 @@ RSpec.describe Users::Wizards::StepEightPresenter do
 
   let(:subject) { described_class.new(candidate) }
 
-  describe "#job_categories_list" do
-    it { should respond_to(:job_categories_list) }
+  describe '#form_information' do
+    it 'should return a object used by the react component to build it' do
+      response = subject.form_information
 
-    it "should return a array with job category objects" do
-      expect(subject.job_categories_list).to match_array(JobCategory.all.map { |object| [object.description, object.id] })
-    end
-  end
+      expect(response).to be_an_instance_of(Hash)
 
-  describe "#work_positions_list" do
-    it { should respond_to(:work_positions_list) }
+      expected_keys = [:title, :form]
 
-    it "should return a array with work position objects" do
-      expect(subject.work_positions_list).to match_array(WorkPosition.all.map { |object| [object.description, object.id] })
-    end
-  end
-
-  describe "#work_methodologies_list" do
-    it { should respond_to(:work_methodologies_list) }
-
-    it "should return a array with work methodoly objects" do
-      expect(subject.work_methodologies_list).to match_array(WorkMethodology.all.map { |object| [object.description, object.id] })
-    end
-  end
-
-  describe "#cities_list" do
-    it { should respond_to(:cities_list) }
-
-    it "should return a array with city objects" do
-      expect(subject.cities_list).to match_array(City.all.map { |object| [object.description, object.id] })
-    end
-  end
-
-  describe "#technical_skills_list" do
-    it { should respond_to(:technical_skills_list) }
-
-    it "should return a array with city objects" do
-      expect(subject.technical_skills_list).to match_array(TechnicalSkill.all.map { |object| [object.description, object.id] })
+      expect(response.keys).to eq(expected_keys)
     end
   end
 

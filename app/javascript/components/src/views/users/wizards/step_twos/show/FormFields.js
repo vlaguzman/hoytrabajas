@@ -36,7 +36,6 @@ const FormFields = props => {
         <StandardInput
           isTextArea
           inputValue={formValues[about_me.name]}
-          inputName={about_me.name}
           handleChange={handleChange(formValues, setFormValues)}
           name={about_me.name}
           label={about_me.label}
@@ -51,7 +50,6 @@ const FormFields = props => {
       <Col key={sex_id.name} className={inputClassname} xs={12} lg={6}>
         <SelectChip
           inputValue={formValues[sex_id.name]}
-          inputName={sex_id.name}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={sex_id.name}
@@ -90,7 +88,6 @@ const FormFields = props => {
       <Col key={limitation_ids.name} className={inputClassname} xs={12} lg={6}>
         <SelectChip
           inputValue={formValues[limitation_ids.name]}
-          inputName={limitation_ids.name}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={limitation_ids.name}
@@ -113,7 +110,6 @@ const FormFields = props => {
       >
         <SelectChip
           inputValue={formValues[educational_degree_id.name]}
-          inputName={educational_degree_id.name}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={educational_degree_id.name}

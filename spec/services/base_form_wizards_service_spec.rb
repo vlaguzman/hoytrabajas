@@ -40,7 +40,8 @@ RSpec.describe BaseFormWizardsService do
             :action=>"users/wizards/step_two",
             :method=>:put,
             :type=>:user,
-            :formFields=>{}
+            :formFields=>{},
+            :placeholders=>{}
           }
         }
 

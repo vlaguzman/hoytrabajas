@@ -18,13 +18,13 @@ const DatePicker = props => {
 
   const formatLabel = date => {
     const stringDate = format(date, formatString)
-    const capitalized = capitalize(stringDate)
-    return capitalized
+    return capitalize(stringDate)
   }
 
   const onChange = value => handleSimpleChange(value, name)
 
   return (
+
     <MaterialDatePicker
       format={dateOptions.format || 'dd MMM yyyy'}
       name={name}
@@ -47,17 +47,14 @@ const DatePicker = props => {
       leftArrowIcon={<ArrowBackIcon />}
       rightArrowIcon={<ArrowForwardIcon />}
     />
+
   )
 }
 
 export default DatePicker
 
 DatePicker.propTypes = {
-  inputValue: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.array
-  ]).isRequired,
+  inputValue: PropTypes.object.isRequired,
   handleSimpleChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,

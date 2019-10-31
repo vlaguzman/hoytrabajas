@@ -35,7 +35,6 @@ const FormFields = props => {
       <Col key={name.name} className={inputClassname} xs={12} lg={6}>
         <StandardInput
           inputValue={formValues[name.name]}
-          inputName={name.name}
           handleChange={handleChange(formValues, setFormValues)}
           name={name.name}
           label={name.label}
@@ -50,7 +49,6 @@ const FormFields = props => {
       <Col key={industry_id.name} className={inputClassname} xs={12} lg={6}>
         <SelectChip
           inputValue={formValues[industry_id.name]}
-          inputName={industry_id.name}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={industry_id.name}
@@ -68,7 +66,6 @@ const FormFields = props => {
       <Col key={contact_name.name} className={inputClassname} xs={12} lg={6}>
         <StandardInput
           inputValue={formValues[contact_name.name]}
-          inputName={contact_name.name}
           handleChange={handleChange(formValues, setFormValues)}
           name={contact_name.name}
           label={contact_name.label}
@@ -88,7 +85,6 @@ const FormFields = props => {
       >
         <StandardInput
           inputValue={formValues[contact_work_position.name]}
-          inputName={contact_work_position.name}
           handleChange={handleChange(formValues, setFormValues)}
           name={contact_work_position.name}
           label={contact_work_position.label}
@@ -108,7 +104,6 @@ const FormFields = props => {
       >
         <StandardInput
           inputValue={formValues[contact_cellphone.name]}
-          inputName={contact_cellphone.name}
           handleChange={handleChange(formValues, setFormValues)}
           name={contact_cellphone.name}
           label={contact_cellphone.label}
@@ -128,7 +123,6 @@ const FormFields = props => {
       >
         <SelectChip
           inputValue={formValues[employees_range_id.name]}
-          inputName={employees_range_id.name}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={employees_range_id.name}

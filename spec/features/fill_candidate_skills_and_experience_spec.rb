@@ -71,55 +71,9 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
 
     let(:curriculum) { create( :curriculum_vitae, user: create(:user, :first_time_candidate)) }
 
-    context "I fill all data" do
-      it "should see the skills fields and the system should save on click on next button" do
-        sign_in curriculum.user
-
-        #Visit the rute of the profile user creation - step 6
-        visit users_wizards_step_six_path
-
-        expect(page).to have_text("Déjanos conocer tus habilidades")
-
-        #it can be more than one option
-        select('Creatividad', from:'user[curriculum_vitae][soft_skill_ids][]')
-        select('Responsabilidad', from:'user[curriculum_vitae][soft_skill_ids][]')
-
-        #it can be more than one option, each option is a hash
-        #id, skill_name, skill_category, skill_proficiency
-        select('Marketing', from: 'user[curriculum_vitae][curriculum_vitaes_technical_skills][job_category_id]')
-        select('SEO', from: 'user[curriculum_vitae][curriculum_vitaes_technical_skills][technical_skill_id]')
-        select('avanzado', from: 'user[curriculum_vitae][curriculum_vitaes_technical_skills][level_id]')
-
-        #TODO With react build the feature of create many curriculum technical skills
-        #select('Marketing', from: 'user[curriculum_vitae][technical_skills][curriculum_vitaes_technical_skills][job_category_ids][]')
-        #select('SEM', from: 'user[curriculum_vitae][technical_skills][curriculum_vitaes_technical_skills][technical_skill_ids][]')
-        #select('medio', from: 'user[curriculum_vitae][technical_skills][curriculum_vitaes_technical_skills][level][]')
-
-        select('Marketing', from: 'user[curriculum_vitae][to_learn_skills][job_category_id]')
-        select('Redes sociales', from: 'user[curriculum_vitae][to_learn_skills][technical_skill_id]')
-
-        #TODO With react build the feature of create many curriculum to learn skills
-        #select('Marketing', from: 'user[curriculum_vitae][to_learn_skills][job_category_ids][]')
-        #select('Redes sociales', from: 'user[curriculum_vitae][to_learn_skills][technical_skill_ids][]')
-
-        select('Inglés', from: 'user[curriculum_vitae][curriculum_vitaes_languages][language_id]')
-        select('avanzado', from: 'user[curriculum_vitae][curriculum_vitaes_languages][level_id]')
-
-        #TODO With react build the feature of create many curriculum languages
-        #select('Inglés', from: 'user[curriculum_vitae][curriculum_vitaes_languages][language_id]')
-        #select('avanzado', from: 'user[curriculum_vitae][curriculum_vitaes_languages][level_id]')
-
-        click_button 'siguiente'
-
-        #Validate the creation of the modeles in the DB
-
-        expect(page).to have_text("Cuentanos un poco de tu experiencia")
-      end
-    end
-
     context "after the skills data is filled" do
       context "I dont have any experience" do
-        it "should show me the option to dont add any experience, I should click on it and see the message of the next secction" do
+        it "should show me the option to dont add any experience, I should click on it and see the message of the next secction", js: true do
           sign_in curriculum.user
 
           #Visit the rute of the profile user creation - step 7
@@ -135,34 +89,49 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
 
       context "I want to add just one experience" do
         context "I fill all data in the form" do
-          it "should see the experience fields and the next buttons, click on it and see the message of the next secction" do
+          it "should see the experience fields and the next buttons, click on it and see the message of the next secction", js: true do
             #Visit the rute of the profile user creation - step 7
             sign_in curriculum.user
 
             visit users_wizards_step_seven_path
 
-            expect(page).to have_text("¿Cuentas con experiencia?")
+            expect(page).to have_text(/¿Cuentas con experiencia?/)
 
-            click_on 'Si, quiero adicionarla'
-            expect(page).to have_text("Cuentanos un poco de tu experiencia")
+            click_button('Sí, quiero adicionarla')
 
-            page.select 'Marketing', from: 'user[curriculum_vitae][work_experience][job_category_id]'
+            expect(page).to have_text(/Cuentanos un poco de tu experiencia/)
+
+            find("div[id='select-user[curriculum_vitae][work_experience][job_category_id]']", visible: false).click
+            find("li", text: "Marketing").click
+
             fill_in "user[curriculum_vitae][work_experience][company_name]", :with => 'HoyTrabajas.com'
-            page.select 'Community manager', from: 'user[curriculum_vitae][work_experience][work_position_id]'
-            page.select 'Teletrabajo', from: 'user[curriculum_vitae][work_experience][work_methodology_id]'
-            page.select 'Bogota', from: 'user[curriculum_vitae][work_experience][city_id]'
+
+            find("div[id='select-user[curriculum_vitae][work_experience][work_position_id]']", visible: false).click
+            find("li", text: "Community manager").click
+
+            find("div[id='select-user[curriculum_vitae][work_experience][work_methodology_id]']", visible: false).click
+            find("li", text: "Teletrabajo").click
+
+            find("div[id='select-user[curriculum_vitae][work_experience][city_id]']", visible: false).click
+            find("li", text: "Bogota").click
 
             #TODO Uncomment when the we implement 'localidades'
             #page.select 'Bogota', from: 'user[curriculum_vitae][work_experience][location_id]'
 
-            fill_in "user[curriculum_vitae][work_experience][started_at]", :with => '2017/01/01'
-            fill_in "user[curriculum_vitae][work_experience][finished_at]", :with => nil
+            #TODO build a way to use easly the datepicker with capybara
+            #fill_in "user[curriculum_vitae][work_experience][started_at]", :with => '2017/01/01'
+            #fill_in "user[curriculum_vitae][work_experience][finished_at]", :with => nil
 
-            check 'user[curriculum_vitae][work_experience][still_in_progress]'
-            page.select 'Redes sociales', from: 'user[curriculum_vitae][work_experience][technical_skill_ids][]'
-            page.select 'Photoshop', from: 'user[curriculum_vitae][work_experience][technical_skill_ids][]'
+            #TODO find the way to check the boolean with capybara
+            #check 'user[curriculum_vitae][work_experience][still_in_progress]'
 
-            click_button 'siguiente'
+            find("div[id='select-user[curriculum_vitae][work_experience][technical_skill_ids][]']", visible: false).click
+            find("li", text: "Redes sociales").click
+
+            find("div[id='select-user[curriculum_vitae][work_experience][technical_skill_ids][]']", visible: false).click
+            find("li", text: "Photoshop").click
+
+            find("span", text: /SIGUIENTE/).click
 
             #IMPORTANT - Here you must validate the creation of the tables with the information filled by user
 
@@ -171,7 +140,7 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
         end
 
         context "I dont fill the job_category" do
-          it "should see a message that said me 'you must fill the job_category'" do
+          it "should see a message that said me 'you must fill the job_category'", js: true do
             #Visit the rute of the profile user creation - step 8
             sign_in curriculum.user
 
@@ -179,15 +148,21 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
 
             expect(page).to have_text("Cuentanos un poco de tu experiencia")
 
-            select 'Community manager', from: 'user[curriculum_vitae][work_experience][work_position_id]'
-            click_button 'siguiente'
+            find("div[id='select-user[curriculum_vitae][work_experience][work_position_id]']", visible: false).click
+            find("li", text: "Community manager").click
+
+            execute_script "window.scrollTo(0, (window.innerHeight * 2) )"
+
+            find("span", text: /SIGUIENTE/).click
+            #click_button 'siguiente'
+            #byebug
 
             expect(page).to have_text("Debes seleccionar un Categoria de Trabajo")
           end
         end
 
         context "I dont fill the role" do
-          it "should see a message that said me 'you must fill the role'" do
+          it "should see a message that said me 'you must fill the role'", js: true do
             #Visit the rute of the profile user creation - step 7
             sign_in curriculum.user
 
@@ -195,32 +170,34 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
 
             expect(page).to have_text("Cuentanos un poco de tu experiencia")
 
-            page.select 'Marketing', from: 'user[curriculum_vitae][work_experience][job_category_id]'
-            click_button 'siguiente'
+            find("div[id='select-user[curriculum_vitae][work_experience][job_category_id]']", visible: false).click
+            find("li", text: "Marketing").click
+
+            find("span", text: /SIGUIENTE/).click
 
             #TODO add i18n traslations
             #expect(pag e).to have_text("El role es un campo requerido")
 
-            expect(page).to have_text("Work position Debes seleccionar un Cargo")
+            expect(page).to have_text("Debes seleccionar un Cargo")
           end
         end
       end
 
       context "I want to add more than one experience" do
-        it "should see the experience fields and the button to add more experience" do
+        it "should see the experience fields and the button to add more experience", js: true do
           sign_in curriculum.user
 
           visit users_wizards_step_seven_path
 
           expect(page).to have_text("¿Cuentas con experiencia?")
 
-          click_on 'Si, quiero adicionarla'
+          click_on 'Sí, quiero adicionarla'
 
           expect(page).to have_button('Agregar otra experiencia')
         end
 
         context "when I click on 'Agregar otra experiencia'" do
-          it "should show me the resume and a new page to fill the information" do
+          it "should show me the resume and a new page to fill the information", js: true do
             #Visit the rute of the profile user creation - step 7
             sign_in curriculum.user
 
@@ -228,25 +205,36 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
 
             expect(page).to have_text("¿Cuentas con experiencia?")
 
-            click_on 'Si, quiero adicionarla'
+            click_on 'Sí, quiero adicionarla'
 
             expect(page).to have_text("Cuentanos un poco de tu experiencia")
 
-            page.select 'Marketing', from: 'user[curriculum_vitae][work_experience][job_category_id]'
+            find("div[id='select-user[curriculum_vitae][work_experience][job_category_id]", visible: false).click
+            find("li", text: "Marketing").click
+
             fill_in "user[curriculum_vitae][work_experience][company_name]", :with => 'HoyTrabajas.com'
-            page.select 'Community manager', from: 'user[curriculum_vitae][work_experience][work_position_id]'
-            page.select 'Teletrabajo', from: 'user[curriculum_vitae][work_experience][work_methodology_id]'
-            page.select 'Bogota', from: 'user[curriculum_vitae][work_experience][city_id]'
+
+            find("div[id='select-user[curriculum_vitae][work_experience][work_position_id]", visible: false).click
+            find("li", text: "Community manager").click
+
+            find("div[id='select-user[curriculum_vitae][work_experience][work_methodology_id]", visible: false).click
+            find("li", text: "Teletrabajo").click
+
+            find("div[id='select-user[curriculum_vitae][work_experience][city_id]", visible: false).click
+            find("li", text: "Bogota").click
 
             #TODO  field 'localidad' is pending
             #page.select 'Suba', from: 'job_location'
 
-            fill_in "user[curriculum_vitae][work_experience][started_at]", :with => '2017/01/01'
-            fill_in "user[curriculum_vitae][work_experience][finished_at]", :with => nil
+            #fill_in "user[curriculum_vitae][work_experience][started_at]", :with => '2017/01/01'
+            #fill_in "user[curriculum_vitae][work_experience][finished_at]", :with => nil
 
-            check 'user[curriculum_vitae][work_experience][still_in_progress]'
-            page.select 'Redes sociales', from: 'user[curriculum_vitae][work_experience][technical_skill_ids][]'
-            page.select 'Photoshop', from: 'user[curriculum_vitae][work_experience][technical_skill_ids][]'
+            #check 'user[curriculum_vitae][work_experience][still_in_progress]'
+            find("div[id='select-user[curriculum_vitae][work_experience][technical_skill_ids][]", visible: false).click
+            find("li", text: "Redes sociales").click
+
+            find("div[id='select-user[curriculum_vitae][work_experience][technical_skill_ids][]", visible: false).click
+            find("li", text: "Photoshop").click
 
             click_button 'Agregar otra experiencia'
 
@@ -255,20 +243,32 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
 
             expect(page).to have_text("Cuentanos un poco de tu experiencia")
 
-            page.select 'Marketing', from: 'user[curriculum_vitae][work_experience][job_category_id]'
+            find("div[id='select-user[curriculum_vitae][work_experience][job_category_id]", visible: false).click
+            find("li", text: "Marketing").click
+
             fill_in "user[curriculum_vitae][work_experience][company_name]", :with => 'Verde Logico'
-            page.select 'Community manager', from: 'user[curriculum_vitae][work_experience][work_position_id]'
-            page.select 'Teletrabajo', from: 'user[curriculum_vitae][work_experience][work_methodology_id]'
-            page.select 'Bogota', from: 'user[curriculum_vitae][work_experience][city_id]'
+
+            find("div[id='select-user[curriculum_vitae][work_experience][work_position_id]", visible: false).click
+            find("li", text: "Community manager").click
+
+            find("div[id='select-user[curriculum_vitae][work_experience][work_methodology_id]", visible: false).click
+            find("li", text: "Teletrabajo").click
+
+            find("div[id='select-user[curriculum_vitae][work_experience][city_id]", visible: false).click
+            find("li", text: "Bogota").click
 
             #TODO  field 'localidad' is pending
             #page.select 'Suba', from: 'job_location'
 
-            fill_in "user[curriculum_vitae][work_experience][started_at]", :with => '2015/01/01'
-            fill_in "user[curriculum_vitae][work_experience][finished_at]", :with => '2016/12/13'
+            #TODO select date using capybara
+            #fill_in "user[curriculum_vitae][work_experience][started_at]", :with => '2015/01/01'
+            #fill_in "user[curriculum_vitae][work_experience][finished_at]", :with => '2016/12/13'
 
-            page.select 'Redes sociales', from: 'user[curriculum_vitae][work_experience][technical_skill_ids][]'
-            page.select 'Photoshop', from: 'user[curriculum_vitae][work_experience][technical_skill_ids][]'
+            find("div[id='select-user[curriculum_vitae][work_experience][technical_skill_ids][]", visible: false).click
+            find("li", text: "Redes sociales").click
+
+            find("div[id='select-user[curriculum_vitae][work_experience][technical_skill_ids][]", visible: false).click
+            find("li", text: "Photoshop").click
 
             click_button 'Agregar otra experiencia'
 
@@ -276,11 +276,15 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
             expect(page).to have_text("en HoyTrabajas.com como Community manager")
             expect(page).to have_text("en Verde Logico como Community manager")
 
-            page.select 'Marketing', from: 'user[curriculum_vitae][work_experience][job_category_id]'
-            fill_in "user[curriculum_vitae][work_experience][company_name]", :with => 'DataWifi'
-            page.select 'Community manager', from: 'user[curriculum_vitae][work_experience][work_position_id]'
+            find("div[id='select-user[curriculum_vitae][work_experience][job_category_id]", visible: false).click
+            find("li", text: "Marketing").click
 
-            click_button 'siguiente'
+            fill_in "user[curriculum_vitae][work_experience][company_name]", :with => 'DataWifi'
+
+            find("div[id='select-user[curriculum_vitae][work_experience][work_position_id]", visible: false).click
+            find("li", text: "Community manager").click
+
+            find("span", text: /SIGUIENTE/).click
 
             #IMPORTANT - Here you must validate the creation of the tables with the information filled by user
 

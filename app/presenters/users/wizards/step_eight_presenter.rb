@@ -1,23 +1,14 @@
 class Users::Wizards::StepEightPresenter < ApplicationPresenter
 
-  def job_categories_list
-    model_list(JobCategory)
-  end
-
-  def work_positions_list
-    model_list(WorkPosition)
-  end
-
-  def work_methodologies_list
-    model_list(WorkMethodology)
-  end
-
-  def cities_list
-    model_list(City)
-  end
-
-  def technical_skills_list
-    model_list(TechnicalSkill)
+  def form_information
+    Users::Wizards::StepEight::FormParamsService.new(
+      errors: source.errors,
+      template_translation_path: 'users.wizards.step_eights.show',
+      action_path: users_wizards_step_eight_path,
+      previous_path: users_wizards_step_six_path,
+      next_path: users_wizards_step_nine_path,
+      form_method: :put
+    ).form_params
   end
 
   def registered_experience
@@ -34,5 +25,19 @@ class Users::Wizards::StepEightPresenter < ApplicationPresenter
     if count >= 1
       "Llevas #{count} registro(s) de experiencia laboral"
     end
+  end
+
+  private
+
+  def users_wizards_step_nine_path
+    rails_routes.users_wizards_step_nine_path
+  end
+
+  def users_wizards_step_six_path
+    rails_routes.users_wizards_step_six_path
+  end
+
+  def users_wizards_step_eight_path
+    rails_routes.users_wizards_step_eight_path
   end
 end

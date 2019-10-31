@@ -5,4 +5,8 @@ class Users::Wizards::StepSevensController < ApplicationController
     @user = Users::Wizards::StepSevenPresenter.new(current_user)
   end
 
+  def update
+    redirect_to users_wizards_step_eight_path
+  end
+
 end

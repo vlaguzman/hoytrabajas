@@ -34,7 +34,8 @@ RSpec.describe Companies::FirstOffer::StepTwo::FormParamsService do
               name: 'company[description]',
               label: ''
             }
-          }
+          },
+          placeholders: {}
         }
       }
 

@@ -1,0 +1,23 @@
+es:
+  users:
+    wizards:
+      step_nines:
+        show:
+          title: 'Veamos tu formación académica'
+          subtitle: 'Brinda a las empresas información valiosa sobre ti.'
+          form:
+            buttons:
+              previous: 'Regresar'
+              submit: 'Siguiente'
+              next: 'Saltar'
+              add_other: 'Agregar otro estudio'
+            formFields:
+              degree: 'Título educativo*'
+              institution_name: 'Institución'
+              start_date: 'Fecha de inicio'
+              finish_date: ''
+              ongoing_study: 'Estudio en curso'
+              city_id: 'Ubicación'
+              diploma: 'Carga aquí tu diploma'
+            placeholders:
+              finish_date: 'Terminación'

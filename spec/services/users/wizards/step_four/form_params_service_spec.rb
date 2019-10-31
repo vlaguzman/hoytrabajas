@@ -58,7 +58,8 @@ RSpec.describe Users::Wizards::StepFour::FormParamsService do
               name: 'user[curriculum_vitae][travel_disponibility]',
               label: 'Disponibilidad para trabajar en otra ciudades'
             }
-          }
+          },
+          placeholders: {}
         }
       }
 

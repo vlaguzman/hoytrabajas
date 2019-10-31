@@ -99,6 +99,35 @@ export const DynamicUsersWizardsStepFive = Loadable({
   loading: Loading
 })
 
+export const DynamicUsersWizardsStepSix = Loadable({
+  loader: () => import('./users/wizards/step_sixes/show'),
+  loading: Loading
+})
+
+export const DynamicUsersWizardsStepSeven = Loadable({
+  loader: () => import('./users/wizards/step_sevens/show'),
+  loading: Loading
+})
+
+export const DynamicUsersWizardsStepEight = Loadable({
+  loader: () => import('./users/wizards/step_eights/show'),
+  loading: Loading
+})
+
+export const DynamicUsersWizardsStepNine = Loadable({
+  loader: () => import('./users/wizards/step_nines/show'),
+  loading: Loading
+})
+
+export const DynamicUsersWizardsStepTen = Loadable({
+  loader: () => import('./users/wizards/step_tens/show'),
+  loading: Loading
+})
+
+export const DynamicUsersWizardsStepEleven = Loadable({
+  loader: () => import('./users/wizards/step_elevens/show'),
+  loading: Loading
+})
 /* Dashboards */
 
 export const DynamicBoards = Loadable({

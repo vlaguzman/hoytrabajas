@@ -1,0 +1,44 @@
+/*########################################################################
+# STEP SEVEN
+########################################################################*/
+
+.action-buttons-container {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  p {
+    margin: 1rem;
+    margin-top: 3rem;
+    align-self:center;
+    font-size: 1rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.15px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  button{
+    cursor: pointer;
+    align-self:center;
+    padding: 0.5rem;
+    width: 18rem;
+    margin: 0.5rem;
+    border-radius: 33px;
+    font-weight: bold;
+    font-size: 1rem;
+
+    &.accept {
+      box-shadow: 0 6px 12px 0 rgba(245, 114, 15, 0.37);
+      color: white;
+      background-color: #ff6e00;
+    }
+
+    &.skip {
+      box-shadow: 0 2px 67px 0 rgba(41, 44, 28, 0.08);
+    }
+  }
+}

@@ -34,7 +34,6 @@ const FormFields = props => {
       <Col key={state_id.name} className={inputClassname} xs={12} lg={6}>
         <SelectChip
           inputValue={formValues[state_id.name]}
-          inputName={state_id.name}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={state_id.name}
@@ -67,7 +66,6 @@ const FormFields = props => {
       <Col key={city_id.name} className={inputClassname} xs={12} lg={6}>
         <SelectChip
           inputValue={formValues[city_id.name]}
-          inputName={city_id.name}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={city_id.name}
@@ -84,7 +82,6 @@ const FormFields = props => {
       <Col key={vehicle_ids.name} className={inputClassname} xs={12} lg={6}>
         <SelectChip
           inputValue={formValues[vehicle_ids.name]}
-          inputName={vehicle_ids.name}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={vehicle_ids.name}
@@ -107,7 +104,6 @@ const FormFields = props => {
       >
         <SelectChip
           inputValue={formValues[driving_licence_ids.name]}
-          inputName={driving_licence_ids.name}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={driving_licence_ids.name}

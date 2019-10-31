@@ -1,6 +1,5 @@
 import React from 'react'
 import { DynamicCompaniesStepFive } from '../../../../../src/views/DynamicViews'
-import AppLayout from '../../../../../src/components/Layout/AppLayout'
 
 const formInfo = {
   title: 'Conozcamos más de tu oferta',
@@ -128,9 +127,9 @@ const formInfo = {
 }
 
 const CompaniesStepFivePage = props => (
-  <AppLayout>
+  <>
     <DynamicCompaniesStepFive formInfo={formInfo} />
-  </AppLayout>
+  </>
 )
 
 export default CompaniesStepFivePage

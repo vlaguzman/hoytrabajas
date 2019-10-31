@@ -56,7 +56,8 @@ RSpec.describe Users::Wizards::StepOne::FormParamsService do
               name:"candidate[contact_number]",
               label: "Número de contacto*"
             }
-          }
+          },
+          placeholders:{}
         }
       }
 

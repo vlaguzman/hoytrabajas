@@ -15,7 +15,6 @@ class Users::Wizards::StepEightsController < ApplicationController
       redirect_to users_wizards_step_nine_path
     end
 
-
   end
 
   private

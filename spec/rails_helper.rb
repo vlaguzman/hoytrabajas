@@ -95,8 +95,8 @@ RSpec.configure do |config|
   ip = `/sbin/ip route|awk '/scope/ { print $9 }'`
   ip.gsub!(/\n/, "")
 
-  #TODO Change to 20 sec when the js compiler be faster
-  Capybara.default_max_wait_time = 60
+  #TODO i dont know the propose of default_max_wait_time, only make slow the test
+  Capybara.default_max_wait_time = 1
   Capybara.javascript_driver = :selenium_chrome
   Capybara.register_driver :selenium_chrome do |app|
     caps = Selenium::WebDriver::Remote::Capabilities.chrome(

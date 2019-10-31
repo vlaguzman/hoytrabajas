@@ -1,0 +1,11 @@
+es:
+  users:
+    wizards:
+      step_elevens:
+        show:
+          title: '¡Perfecto! Has creado un perfil ganador'
+          subtitle: 'Recuerda actualizar constantemente tu perfil para contar con mayores oportunidades.'
+          form:
+            buttons:
+              next: 'Completar mi perfil'
+              go_home: 'Ir a la página principal'

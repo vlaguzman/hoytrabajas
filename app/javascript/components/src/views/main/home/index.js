@@ -3,7 +3,7 @@ import React from 'react'
 import { Row } from 'reactstrap'
 import Introduccion from './sections/introduccion'
 import CoverSection from './sections/cover'
-import GallerySection from './sections/gallery'
+import OffersSection from './sections/offers'
 import PremiumSection from './sections/premium'
 import CompaniesSection from './sections/companies'
 import TurorialSection from './sections/tutorial'
@@ -23,18 +23,13 @@ const HomePage = ({
     premium,
     common: { categorias },
     companies,
-    gallery,
     categories
   } = contenido
 
   return (
     <div className="home-wrapper">
       <CoverSection {...cover} {...{ categorias }} {...{ filterForm }} />
-      <GallerySection
-        {...gallery}
-        offers={offers}
-        offer_translations={offer_translations}
-      />
+      <OffersSection offers={offers} offer_translations={offer_translations} />
       <Introduccion />
       <div
         className="w-100 position-absolute d-none d-lg-block clipping-shit"
@@ -56,9 +51,7 @@ const HomePage = ({
 export default HomePage
 
 HomePage.propTypes = {
-  offers: PropTypes.shape({
-    map: PropTypes.object
-  }),
+  offers: PropTypes.array.isRequired,
   csrf_param: PropTypes.string,
   csrf_token: PropTypes.string,
   user_signed_in: PropTypes.bool,

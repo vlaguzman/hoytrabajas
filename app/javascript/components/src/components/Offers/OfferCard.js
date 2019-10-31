@@ -11,9 +11,9 @@ import Delete from '@material-ui/icons/Delete'
 import ShareIcon from '@material-ui/icons/Share'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import Content from './content'
+import OfferContent from './OfferContent'
 
-const GalleryCard = ({ offer, offer_translations }) => {
+const OfferCard = ({ offer, offer_translations }) => {
   return (
     <Col className="cardOffer position-relative mb-30 justify-content-center align-items-center px-5">
       <div className="bg-buttons-carusel MuiPaper-rounded position-absolute d-flex flex-column align-items-center justify-content-center">
@@ -105,7 +105,7 @@ const GalleryCard = ({ offer, offer_translations }) => {
             image="https://picsum.photos/id/397/300/180"
             title="Contemplative Reptile"
           />
-          <Content offer={offer} />
+          <OfferContent offer={offer} />
         </CardActionArea>
       </Card>
       {/* </div> */}
@@ -113,9 +113,9 @@ const GalleryCard = ({ offer, offer_translations }) => {
   )
 }
 
-export default GalleryCard
+export default OfferCard
 
-GalleryCard.propTypes = {
+OfferCard.propTypes = {
   offer: PropTypes.shape({
     id_offer: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,

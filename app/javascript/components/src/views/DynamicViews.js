@@ -15,21 +15,6 @@ export const DynamicOffers = Loadable({
   loading: Loading
 })
 
-export const DynamicOffersForms = Loadable({
-  loader: () => import('./offers/forms'),
-  loading: Loading
-})
-
-export const DynamicOffersSteps = Loadable({
-  loader: () => import('./offers/forms'),
-  loading: Loading
-})
-
-export const DynamicOffersCompleted = Loadable({
-  loader: () => import('./offers/forms/completed'),
-  loading: Loading
-})
-
 /* COMPANIES */
 
 export const DynamicCompaniesStepZero = Loadable({
@@ -65,21 +50,6 @@ export const DynamicCompaniesStepSix = Loadable({
 })
 export const DynamicCompaniesStepSeven = Loadable({
   loader: () => import('./companies/first_offer/step_seven'),
-  loading: Loading
-})
-
-/* REGCAN */
-
-export const DynamicReg = Loadable({
-  loader: () => import('./regcan'),
-  loading: Loading
-})
-export const DynamicRegForms = Loadable({
-  loader: () => import('./regcan/forms'),
-  loading: Loading
-})
-export const DynamicFormsCompleted = Loadable({
-  loader: () => import('./regcan/forms/completed'),
   loading: Loading
 })
 

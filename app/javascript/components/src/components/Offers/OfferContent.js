@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types'
+import Button from '@material-ui/core/Button'
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
 import Avatar from '@material-ui/core/Avatar'
 import Divider from '@material-ui/core/Divider'
-import { Badge, Row } from 'reactstrap'
+import { Badge, Row, Col } from 'reactstrap'
 import CardContent from '@material-ui/core/CardContent'
 
 const RequiredExperienceBlock = () => (
@@ -38,7 +39,7 @@ const WordsShortener = (words, maxSize) => {
   return words.length > maxSize ? `${words.substring(0, maxSize)}...` : words
 }
 
-const Content = ({ offer }) => {
+const OfferContent = ({ offer }) => {
   return (
     <CardContent className="position-relative pb-5">
       <Avatar
@@ -133,9 +134,9 @@ const Content = ({ offer }) => {
   )
 }
 
-export default Content
+export default OfferContent
 
-Content.propTypes = {
+OfferContent.propTypes = {
   offer: PropTypes.shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.string,

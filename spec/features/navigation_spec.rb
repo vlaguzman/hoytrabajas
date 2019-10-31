@@ -59,13 +59,21 @@ RSpec.describe "Overall navigation" do
 
       it "should visit 'ver mas ofertas' page from home page", js: true do
         FactoryBot.create(:offer, title: "Titulo De Oferta")
-        FactoryBot.create(:offer, title: "Titulo De Oferta2")
-        FactoryBot.create(:offer, title: "Titulo De Oferta3")
-        FactoryBot.create(:offer, title: "Titulo De Oferta4")
-        FactoryBot.create(:offer, title: "Titulo De Oferta5")
-        FactoryBot.create(:offer, title: "Titulo De Oferta6")
-        FactoryBot.create(:offer, title: "Titulo De Oferta7")
-        FactoryBot.create(:offer, title: "Titulo De Oferta8")
+        FactoryBot.create(:offer, title: "Titulo De Oferta41")
+        FactoryBot.create(:offer, title: "Titulo De Oferta52")
+        FactoryBot.create(:offer, title: "Titulo De Oferta63")
+        FactoryBot.create(:offer, title: "Titulo De Oferta74")
+        FactoryBot.create(:offer, title: "Titulo De Oferta85")
+        FactoryBot.create(:offer, title: "Titulo De Oferta26")
+        FactoryBot.create(:offer, title: "Titulo De Oferta37")
+        FactoryBot.create(:offer, title: "Titulo De Oferta48")
+        FactoryBot.create(:offer, title: "Titulo De Oferta59")
+        FactoryBot.create(:offer, title: "Titulo De Oferta60")
+        FactoryBot.create(:offer, title: "Titulo De Oferta71")
+        FactoryBot.create(:offer, title: "Titulo De Oferta82")
+        FactoryBot.create(:offer, title: "Titulo De Oferta55")
+        FactoryBot.create(:offer, title: "Titulo De Oferta84")
+        FactoryBot.create(:offer, title: "Titulo De Oferta83")
 
         visit root_path
 
@@ -75,13 +83,14 @@ RSpec.describe "Overall navigation" do
         has_button?("VER MÁS OFERTAS »")
         click_on("Ver más ofertas »")
 
-        expect(page).to have_text("Titulo De Oferta8")
-
+        expect(page).to have_text("Titulo De Oferta48")
+        
         has_button?("VER EL LISTADO DE OFERTAS »")
         click_on("Ver el listado de ofertas »")
 
         expect(current_path).to eq(offers_path)
         expect(page).to have_text("VER MÁS OFERTAS")
+        expect(page).to have_text("Titulo De Oferta48")
 
         click_on("INICIO")
 

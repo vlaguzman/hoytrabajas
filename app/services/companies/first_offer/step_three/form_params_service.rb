@@ -29,4 +29,9 @@ class Companies::FirstOffer::StepThree::FormParamsService < BaseFormWizardsServi
     ListConverter.model_list WorkMode
   end
 
+  def offers_work_positions_current_value
+    object = OffersWorkPositions.find_by(offer_id: source.id)
+    object.present? ? object.work_position_id : ""
+  end
+
 end

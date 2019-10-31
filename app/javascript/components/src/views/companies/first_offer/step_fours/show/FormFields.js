@@ -24,12 +24,12 @@ const FormFields = props => {
   } = formFields
 
   const [formValues, setFormValues] = useState({
-    [contract_type_id.name]: '',
-    [vacancies_quantity.name]: '',
-    [sex_ids.name]: '',
-    [offer_age_range.name]: '',
-    [close_date.name]: Date.now(),
-    [immediate_start.name]: false
+    [contract_type_id.name]: contract_type_id.current_value || '',
+    [vacancies_quantity.name]: vacancies_quantity.current_value || '',
+    [sex_ids.name]: sex_ids.current_value || '',
+    [offer_age_range.name]: offer_age_range.current_value || '',
+    [close_date.name]: close_date.current_value || Date.now(),
+    [immediate_start.name]: immediate_start.current_value || false
   })
 
   const inputClassname = 'my-30 animated fadeIn inputField'

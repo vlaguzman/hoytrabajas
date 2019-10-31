@@ -8,7 +8,7 @@ const FormFields = ({ formFields }) => {
   const { description = null } = formFields
 
   const [formValues, setFormValues] = useState({
-    [description.name]: ''
+    [description.name]: description.current_value || ''
   })
 
   const inputClassname = 'my-30 animated fadeIn'

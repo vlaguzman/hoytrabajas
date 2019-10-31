@@ -33,7 +33,8 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
         name: 'offer[vacancies_quantity]',
         label: template_translations[:form][:formFields][:vacancies_quantity],
         values: { min: 1, max: 100 },
-        step: 1
+        step: 1,
+        current_value: source.vacancies_quantity
       }
     }
   end
@@ -46,7 +47,8 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
         beforeLabel: template_translations[:offer_age_range_before],
         afterLabel: template_translations[:offer_age_range_after],
         values: { min: 18, max: 80 },
-        step: 1
+        step: 1,
+        current_value: ''
       }
     }
   end
@@ -60,7 +62,8 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
           format: 'dd MMMM yyyy',
           disableFuture: false,
           emptyLabel: '...'
-        }
+        },
+        current_value: ''
       }
     }
   end
@@ -70,7 +73,8 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
       immediate_start: {
         name: 'offer[immediate_start]',
         label: template_translations[:form][:formFields][:immediate_start],
-        description: template_translations[:immediate_start_description]
+        description: template_translations[:immediate_start_description],
+        current_value: source.immediate_start
       }
     }
   end

@@ -12,6 +12,7 @@ const CompaniesStepThree = ({ formInfo, csrf_param, csrf_token }) => {
   const {
     title,
     subtitle,
+    offer_id,
     form: { buttons, action, method, type, formFields, errors }
   } = formInfo
 
@@ -28,6 +29,7 @@ const CompaniesStepThree = ({ formInfo, csrf_param, csrf_token }) => {
                 <FormFields type={type} formFields={formFields} />
                 <input type="hidden" name={csrf_param} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />
+                <input type="hidden" name="offer[id]" value={offer_id} />
                 <FormButtons buttons={buttons} />
               </form>
             </div>
@@ -46,6 +48,7 @@ CompaniesStepThree.propTypes = {
   formInfo: PropTypes.shape({
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
+    offer_id: PropTypes.string.isRequired,
     form: PropTypes.shape({
       buttons: PropTypes.shape({
         submit: PropTypes.string.isRequired

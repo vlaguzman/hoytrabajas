@@ -7,10 +7,10 @@ class Companies::FirstOffer::StepThreesController < ApplicationController
   end
 
   def update
-    offer = Companies::FirstOffer::StepThreeService.(company: current_company, create_params: step_three_params)
+    offer = Companies::FirstOffer::StepThreeService.(company: current_company, params: step_three_params)
 
     if offer[:status].eql?(:ok)
-      redirect_to companies_first_offer_step_four_path(offer[:data].id)
+      redirect_to companies_first_offer_step_four_path(offer_id: offer[:data].id)
     else
       offer_presenter(offer[:data])
       render 'show'
@@ -27,6 +27,7 @@ class Companies::FirstOffer::StepThreesController < ApplicationController
     params
       .require(:offer)
       .permit(
+        :id,
         :title,
         :job_category_id,
         :offers_work_positions,

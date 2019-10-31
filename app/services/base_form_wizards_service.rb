@@ -125,7 +125,7 @@ class BaseFormWizardsService
     begin
       source.send(key)
     rescue
-      key.to_s.camelize.constantize
+      self.send("#{key}_current_value")
     end
   end
 

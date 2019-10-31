@@ -63,29 +63,6 @@ const FormFields = props => {
     [formValues[job_category_id.name]]
   )
 
-  const offersWorkPositionsField = useMemo(
-    () => (
-      <Col
-        key={offers_work_positions.name}
-        className={inputClassname}
-        xs={12}
-        lg={6}
-      >
-        <SelectChip
-          inputValue={formValues[offers_work_positions.name]}
-          inputName={offers_work_positions.name}
-          handleChange={handleChange(formValues, setFormValues)}
-          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
-          name={offers_work_positions.name}
-          label={offers_work_positions.label}
-          selectOptions={offers_work_positions.values}
-          isMultiple={false}
-        />
-      </Col>
-    ),
-    [formValues[offers_work_positions.name]]
-  )
-
   const offerTypeField = useMemo(
     () => (
       <Col key={offer_type_id.name} className={inputClassname} xs={12} lg={6}>
@@ -120,6 +97,29 @@ const FormFields = props => {
       </Col>
     ),
     [formValues[work_mode_id.name]]
+  )
+
+  const offersWorkPositionsField = useMemo(
+    () => (
+      <Col
+        key={offers_work_positions.name}
+        className={inputClassname}
+        xs={12}
+        lg={6}
+      >
+        <SelectChip
+          inputValue={formValues[offers_work_positions.name]}
+          inputName={offers_work_positions.name}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
+          name={offers_work_positions.name}
+          label={offers_work_positions.label}
+          selectOptions={offers_work_positions.values}
+          isMultiple={false}
+        />
+      </Col>
+    ),
+    [formValues[offers_work_positions.name]]
   )
 
   return (

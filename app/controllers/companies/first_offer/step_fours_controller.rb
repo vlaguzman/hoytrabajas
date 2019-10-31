@@ -2,7 +2,7 @@ class Companies::FirstOffer::StepFoursController < ApplicationController
   before_action :authenticate_company!
 
   def show
-    offer = Offer.find(params["format"])
+    offer = Offer.find(params[:offer_id])
     offer_presenter(offer)
   end
 

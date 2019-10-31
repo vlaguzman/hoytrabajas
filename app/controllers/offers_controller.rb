@@ -1,8 +1,8 @@
 class OffersController < ApplicationController
   def index
-    q = Offer.active.ransack(params[:q])
-    if q.present?
-      @offers = q.result(distinct: true).map{ |offer| Offers::IndexService.new(offer).details }
+    query = Offer.active.ransack(params[:q])
+    if query.present?
+      @offers = query.result(distinct: true).map{ |offer| Offers::IndexService.new(offer).details }
     else
       @offers = OffersService.active_offers_index_details
     end

@@ -2,21 +2,21 @@ es:
   devise:
     mailer:
       confirmation_instructions:
-        title: 'Bienvenid@'
+        title: 'Bienvenido'
         greeting:
           title: 'Hola,'
           gratitude: 'Gracias por registrarte en'
           site: ' HoyTrabajas.com'
           closure_user: ' ¡Estamos muy felices de tenerte! y de empezar junto a ti este nuevo momento de encontrar el trabajo ideal.'
           closure_company: ' ¡Estamos muy felices de tenerte! y de empezar junto a ti este nuevo momento de encontrar el empleado ideal.'
-          instruction: 'Haz clic en ele botón de abajo para confirmar e iniciar sesión con tu cuenta.'
+          instruction: 'Haz clic en el boton de abajo para confirmar e iniciar sesion con tu cuenta.'
         button: 'Confirmar email'
         farewell:
           goodbye: 'Saludos,'
-          person: 'Rubén Cordoba'
+          person: 'Ruben Cordoba'
           position: 'Ceo and Founder'
           link: 'HoyTrabajas.com'
         rights:
-          copy_right: '© HoyTrabajas.com 2019 - Todos los derechos reservados.'
+          copy_right: ' HoyTrabajas.com 2019 - Todos los derechos reservados.'
           address: 'Calle 101B #45A - 41  Bogotá, Colombia  /  +(57) 350 705 2990'
-          unsubscribe: 'Quiero dejar de recibir correo electrónicos de HoyTrabajas.com'
+          unsubscribe: 'Quiero dejar de recibir correo electronicos de HoyTrabajas.com'

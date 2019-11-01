@@ -5,7 +5,7 @@ A         * AdminUsers::SessionsController                      2       6.2     
 A         * AgeRange                                            1       0.0        0           1
 A         * ApplicationCable::Channel                           1       0.0        0           1
 A         * ApplicationCable::Connection                        1       0.0        0           1
-A         * ApplicationController                               17      13.32      0           1
+A         * ApplicationController                               18      13.32      0           1
 A         * ApplicationJob                                      1       0.0        0           1
 A         * ApplicationMailer                                   2       0.0        0           1
 A         * ApplicationPresenter                                3       10.35      0           3
@@ -35,10 +35,10 @@ A         * Companies::FirstOffer::StepTwo::FormParamsService   2       0.0     
 A         * Companies::FirstOffer::StepTwoPresenter             14      17.4       24          2
 A         * Companies::FirstOffer::StepZeroPresenter            2       1.0        0           2
 A         * Companies::FirstOffer::StepZerosController          3       3.24       0           1
-A         * Companies::RegistrationsController                  4       2.0        0           2
-A         * CompaniesController                                 5       5.95       0           1
+A         * Companies::RegistrationsController                  5       2.0        0           2
+A         * CompaniesController                                 6       3.4        0           1
 A         * CompaniesUsers                                      1       0.0        0           1
-A         * Company                                             10      1.0        0           1
+A         * Company                                             11      1.0        0           1
 A         * ContractType                                        1       0.0        0           1
 A         * Currency                                            1       0.0        0           1
 A         * CurriculumVitae                                     23      0.0        0           1
@@ -175,18 +175,14 @@ B         * Users::Wizards::StepFourPresenter                   4       16.0    
 B         * Users::Wizards::StepNinePresenter                   4       30.59      40          3
 B         * Users::Wizards::StepSixPresenter                    3       16.0       24          2
 B         * Users::Wizards::StepTenPresenter                    2       27.59      18          2
-<<<<<<< HEAD
 C         * BaseFormWizardsService                              19      137.88     0           18
 C         * Companies                                           4       15.36      30          2
 C         * Companies::FirstOffer::StepEight::FormParamsService 2       23.37      62          8
 C         * Companies::FirstOffer::StepFoursController          13      26.81      27          2
 C         * Users                                               6       15.36      30          2
 C         * Users::Wizards::StepEleven::FormParamsService       1       23.37      62          8
-=======
-C         * BaseFormWizardsService                              13      121.33     0           16
 C         * Companies                                           4       16.61      32          2
 C         * Users                                               6       16.61      32          2
->>>>>>> more changes
 D         * Users::Wizards::StepEight::FormParamsService        2       25.76      29          7
 D         * Users::Wizards::StepNine::FormParamsService         2       21.76      29          3
 D         * Users::Wizards::StepTen::FormParamsService          1       21.76      29          3

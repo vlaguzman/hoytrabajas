@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Admin can edit an Company",js: true, type: :feature do
+RSpec.describe "Admin can edit an Company", type: :feature do
   include Devise::Test::IntegrationHelpers
 
   context "an admin user must be able to edit a created company" do
@@ -26,12 +26,9 @@ RSpec.describe "Admin can edit an Company",js: true, type: :feature do
         fill_in 'company_email', with: 'rootnpool@company.com'
         fill_in 'company_password', with: 'ontherocks'
         fill_in 'company_password_confirmation', with: 'ontherocks'
-        save_screenshot("pass.png")
         click_on("Guardar Company")
-        save_screenshot("admin.png")
       end
 
-      company.reload
 
       expect(page).to have_content("Detalles de Company")
       expect(page).to have_content("rootnpool@company.com")
@@ -54,9 +51,6 @@ RSpec.describe "Admin can edit an Company",js: true, type: :feature do
         fill_in 'company_email', with: 'justanotheremail@company.com'
         click_on("Guardar Company")
       end
-      save_screenshot("admin2.png")
-
-      company.reload
 
       expect(page).to have_content("Detalles de Company")
       expect(page).to have_content("justanotheremail@company.com")

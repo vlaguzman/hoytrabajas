@@ -639,7 +639,6 @@
                                         %br/
                                         = t('devise.mailer.confirmation_instructions.greeting.gratitude')
                                         %strong= t('devise.mailer.confirmation_instructions.greeting.site')
-                                        = "#{@resource.class.name.underscore.to_sym}"
                                         = t("devise.mailer.confirmation_instructions.greeting.closure_#{@resource.class.name.underscore.to_s}")
                                         %br/
                                         %br/

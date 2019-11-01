@@ -3,7 +3,7 @@ import { Row, Col } from 'reactstrap'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 
-const Presentation = () => {
+const Presentation = ({title_one, title_two, title_decription}) => {
   return ( 
     <Fragment>
       <Row className="position-absolute" style={{ top: '0px', left: '0px' }}>
@@ -31,23 +31,22 @@ const Presentation = () => {
           <Row noGutters className="p-20 justify-content-center">
             <div>
               <Typography className="text-left" variant="h2">
-                Lorem ipsum dolor
+                {title_one}
               </Typography>
               <Typography className="text-left text-warning" variant="h2">
-                quis nostrud.
+                {title_two}
               </Typography>
               <Typography className="my-25 w-60" variant="body2">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-                lectus ligula, lacinia in.
+                {title_decription}
               </Typography>
-              <Button
+              {/* <Button
                 className="mt-25 fw-bold"
                 color="primary"
                 style={{ borderRadius: '30px', textTransform: 'none' }}
                 variant="contained"
               >
-                <span className="text-white">Crecer a Premium</span>
-              </Button>
+                <span className="text-white">Volver premiun </span>
+              </Button> */}
             </div>
           </Row>
         </Col>
@@ -84,7 +83,7 @@ const Presentation = () => {
           </Row>
         </Col>
       </Row>
-    </Fragment>    
+    </Fragment>
   )
 }
 

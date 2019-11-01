@@ -32,7 +32,8 @@ const rows = [
   }
 ]
 
-const Second = () => {
+const Second = ({applied_offers}) => {
+
   const theTitle = (texto) => (
     <Fragment>
     <IconButton className="p-0" aria-label="Settings">
@@ -88,43 +89,43 @@ const Second = () => {
                 <TableRow>
                   <TableCell className="text-info" align="left" padding="checkbox" ></TableCell>
                   <TableCell className="text-info" align="center" size='medium' >Oferta</TableCell>
-                  <TableCell className="text-info" align="left">
+                  {/* <TableCell className="text-info" align="left">
                     Chat
-                  </TableCell>
-                  <TableCell className="text-info" align="left">
+                  </TableCell> */}
+                  {/* <TableCell className="text-info" align="left">
                     <i className="ti-timer"></i>
-                  </TableCell>
-                  <TableCell className="text-info" align="left">
+                  </TableCell> */}
+                  {/* <TableCell className="text-info" align="left">
                     Aplicaciones
-                  </TableCell>
-                  <TableCell className="text-info" align="left">
+                  </TableCell> */}
+                  {/* <TableCell className="text-info" align="left">
                     Inicio
-                  </TableCell>
-                  <TableCell className="text-info" align="left">
+                  </TableCell> */}
+                  {/* <TableCell className="text-info" align="left">
                     Cierre
-                  </TableCell>
-                  <TableCell className="text-info" align="left">
+                  </TableCell> */}
+                  {/* <TableCell className="text-info" align="left">
                     Estado
-                  </TableCell>
+                  </TableCell> */}
                 </TableRow>
               </TableHead>
               <TableBody>
-                {rows.map((row, i) => (
+                {applied_offers.map((offer, i) => (
                   <TableRow key={i}>
                     <TableCell align="left" padding="checkbox" >
                       <RemoveCircleOutline />
                     </TableCell>
-                    <TableCell align="center" size='medium'>{row.oferta}</TableCell>
-                    <TableCell component="th" scope="row">
+                    <TableCell align="center" size='medium'>{offer.title}</TableCell>
+                    {/* <TableCell component="th" scope="row">
                       <ChatBubbleOutline />
-                    </TableCell>
-                    <TableCell align="left">{row.timer}</TableCell>
-                    <TableCell align="left">{row.aplicaiones}</TableCell>
-                    <TableCell align="left">{row.inicio}</TableCell>
-                    <TableCell align="left">{row.cierre}</TableCell>
-                    <TableCell align="left">
+                    </TableCell> */}
+                    {/* <TableCell align="left">{row.timer}</TableCell> */}
+                    {/* <TableCell align="left">{row.aplicaiones}</TableCell> */}
+                    {/* <TableCell align="left">{row.inicio}</TableCell> */}
+                    {/* <TableCell align="left">{row.cierre}</TableCell> */}
+                    {/* <TableCell align="left">
                       {row.estado ? 'Abierto' : 'Cerrado'}
-                    </TableCell>
+                    </TableCell> */}
                   </TableRow>
                 ))}
               </TableBody>

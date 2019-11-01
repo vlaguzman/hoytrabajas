@@ -21,8 +21,7 @@ function ListItemLink(props) {
   return <ListItem button component="a" {...props} />
 }
 
-  
-const First = () => {
+const First = ({email, location, telephone, name}) => {
   const theTitle = (texto) => (
     <Fragment>
     <IconButton className="p-0" aria-label="Settings">
@@ -47,10 +46,11 @@ const First = () => {
                   style={{ top: '-1.3rem', left: '.8rem' }}
                   variant="subtitle1"
                 >
-                  75%
+                  {/* 75% */}
                 </Typography>
               </span>
-              <CircularProgress variant="static" value={75} size={50} />
+              {/* TODO oscar percentage of profile complete */}
+              {/* <CircularProgress variant="static" value={75} size={50} /> */}
             </Fragment>
           }
           title={theTitle('Mi perfil')}
@@ -62,54 +62,55 @@ const First = () => {
         />
         <CardContent className="px-25 d-none d-lg-block">
           <Typography className="mb-10" variant="h6">
-            Carlos Andrés Gómez Gongora
+            {name}
           </Typography>
           <Typography className="mb-10" variant="body1">
-            310 123 456 789
+            {telephone}
           </Typography>
           <Typography className="mb-10" variant="body1">
-            vicmezquita@gmail.com
+            {email}
           </Typography>
           <Typography className="mb-25" variant="body1">
-            Bogotá, Colombia
+            {location}
           </Typography>
         </CardContent>
         <CardContent className="py-25 d-lg-none">
           <Typography className="fw-bold text-right mb-0" variant="h6">
-            Carlos Andrés
+            {/* Carlos Andrés */}
           </Typography>
           <Typography className="mb-10 text-primary text-right" variant="h6">
-            Gómez Gongora
+            {/* Gómez Gongora */}
           </Typography>
           <Typography className="mb-0 text-right" variant="body1">
-            310 123 456 789
+            {/* 310 123 456 789 */}
           </Typography>
           <Typography className="mb-0 text-right" variant="body1">
-            vicmezquita@gmail.com
+            {/* vicmezquita@gmail.com */}
           </Typography>
           <Typography className="mb-25 text-right" variant="body1">
-            Bogotá, Colombia
+            {/* Bogotá, Colombia */}
           </Typography>
         </CardContent>
         <Divider variant="middle" className="px-0" />
         <CardActions className="">
           <Row className="justify-content-between w-100 mr-0 px-30">
             <Typography variant="caption" component="span">
-              Ultima actualización: Hace 25 días
+              {/* Ultima actualización: Hace 25 días */}
             </Typography>
-            <Typography
+            {/* <Typography
               variant="caption"
               className="text-info text-right"
               component="span"
             >
               <i className="ti-pencil text-info mr-10" />
               Editar
-            </Typography>
+            </Typography> */}
           </Row>
         </CardActions>
       </Card>
     </Col>
-    <Col xs={12} md={6} className="p-5">
+    {/* TODO oscar notifications realy ? !! */}
+    {/* <Col xs={12} md={6} className="p-5">
       <Card className="px-25 pt-25 pb-5">
         <CardHeader
           title={theTitle('Mis Notificaciones')}
@@ -155,7 +156,7 @@ const First = () => {
           </Row>
         </CardActions>
       </Card>
-    </Col>
+    </Col> */}
   </Row>
   )
 }

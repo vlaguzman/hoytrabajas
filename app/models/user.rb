@@ -23,6 +23,8 @@ class User < ApplicationRecord
   has_and_belongs_to_many :vehicles
   has_and_belongs_to_many :driving_licences
 
+  delegate :description, to: :city, prefix: :city, allow_nil: true
+
   accepts_nested_attributes_for :curriculum_vitaes
 
   def self.new_with_session(params, session)

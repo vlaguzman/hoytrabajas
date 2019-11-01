@@ -1,0 +1,6 @@
+es:
+  users:
+    show:
+      title_one: 'Bienvenido al Dashboard'
+      title_two: 'de Candidato.'
+      title_decription: 'Aqui podras editar tu información y ver las ofertas a las que aplicaste.'

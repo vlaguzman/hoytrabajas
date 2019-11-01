@@ -4,4 +4,7 @@ class AppliedOffer < ApplicationRecord
   belongs_to :offer
   belongs_to :curriculum_vitae
   belongs_to :applied_offer_status
+
+  delegate :title, to: :offer, prefix: :offer, allow_nil: true
+
 end

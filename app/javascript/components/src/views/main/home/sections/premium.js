@@ -10,18 +10,18 @@ import { ResponsiveText, ResponsiveButton } from './styles'
 const content = [
   {
     img: 'push.png',
-    headline: 'Un super poder',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed'
+    headline: 'Aplicacion pro',
+    desc: 'Ser mas relevante en las aplicaciones que mas te gustan'
   },
   {
     img: 'tag.png',
-    headline: 'Un super poder',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed'
+    headline: 'Ofertas indicadas',
+    desc: 'Gracias a los porcentajes de afinidad revisa las mejores ofertas para ti'
   },
   {
     img: 'call.png',
-    headline: 'Un super poder',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed'
+    headline: 'Chat directo con el empleador',
+    desc: 'Habla directamente con el empleador para conecer de primera mano su feedback'
   }
 ]
 
@@ -98,8 +98,7 @@ const PremiumSection = () => {
             variant="caption"
             style={{ fontFamily: 'Rubik', color: `rgba(0, 0, 0, 0.54)` }}
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            aliquam faucibus libero, sit amet fringilla odio accumsan in.
+            
           </Typography>
         </Col>
       </Row>

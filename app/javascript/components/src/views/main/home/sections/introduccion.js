@@ -32,12 +32,9 @@ const Introduccion = () => {
               style={{ lineHeight: '1.75', color: '#999999' }}
               variant="body2"
             >
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              Ingresa a nuestra plataforma, llena los formularios con los datos de tu empresa, registra tu oferta laboral y luego BITO, nuestro robot haciendo uso de algoritmos de inteligencia artificial va a identificar los candidatos indicados para tu ofert
             </Typography>
-            <Button
+            {/*<Button
               color="primary"
               className="text-uppercase mt-10 w-40 mb-40"
               variant="outlined"
@@ -48,7 +45,7 @@ const Introduccion = () => {
               <Typography className="fw-bold" variant="caption">
                 Leer más »
               </Typography>
-            </Button>
+            </Button>*/}
           </CardContent>
         </Card>
         <ResponsiveWrapper className="d-lg-none px-20">
@@ -56,12 +53,9 @@ const Introduccion = () => {
             Encontrar el empleado ideal nunca fue tan fácil
           </ResponsiveTitle>
           <ResponsiveText className="my-25 text-justify" variant="body2">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
+              Ingresa a nuestra plataforma, llena los formularios con los datos de tu empresa, registra tu oferta laboral y luego BITO, nuestro robot haciendo uso de algoritmos de inteligencia artificial va a identificar los candidatos indicados para tu ofert
           </ResponsiveText>
-          <ResponsiveButton
+          {/*<ResponsiveButton
             color="primary"
             className="my-10"
             variant="outlined"
@@ -70,7 +64,7 @@ const Introduccion = () => {
             <ResponsiveText variant="caption" style={{ textTransform: 'none' }}>
               Leer más »
             </ResponsiveText>
-          </ResponsiveButton>
+          </ResponsiveButton>*/}
         </ResponsiveWrapper>
       </Col>
     </Row>

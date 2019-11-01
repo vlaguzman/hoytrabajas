@@ -17,7 +17,7 @@ const OfferCard = ({ offer, offer_translations }) => {
   return (
     <Col className="cardOffer position-relative mb-30 justify-content-center align-items-center px-5">
       <div className="bg-buttons-carusel MuiPaper-rounded position-absolute d-flex flex-column align-items-center justify-content-center">
-        <Row noGutters className="w-100 justify-content-center">
+        {/*<Row noGutters className="w-100 justify-content-center">
           <Button
             style={{ borderRadius: '30px' }}
             variant="contained"
@@ -32,7 +32,7 @@ const OfferCard = ({ offer, offer_translations }) => {
               {offer_translations.btn_apply_offer}
             </span>
           </Button>
-        </Row>
+        </Row>*/}
         <Row noGutters className="w-100 justify-content-center">
           <Button
             style={{ borderRadius: '30px' }}
@@ -45,7 +45,7 @@ const OfferCard = ({ offer, offer_translations }) => {
             </a>
           </Button>
         </Row>
-        <Row noGutters className="w-100 justify-content-center">
+        {/*<Row noGutters className="w-100 justify-content-center">
           <Button
             style={{ borderRadius: '30px' }}
             variant="contained"
@@ -54,8 +54,8 @@ const OfferCard = ({ offer, offer_translations }) => {
           >
             {offer_translations.btn_super_apply}
           </Button>
-        </Row>
-        <Row noGutters className="w-100 justify-content-between px-50 mt-20">
+        </Row>*/}
+        {/*<Row noGutters className="w-100 justify-content-between px-50 mt-20">
           <IconButton aria-label="Add to favorites" className="text-danger">
             <FavoriteIcon />
           </IconButton>
@@ -65,8 +65,8 @@ const OfferCard = ({ offer, offer_translations }) => {
           <IconButton aria-label="Add to favorites" className="text-info">
             <Delete />
           </IconButton>
-        </Row>
-        <Row
+        </Row>*/}
+        {/*<Row
           noGutters
           className="w-80 justify-content-between mt-20"
           style={{
@@ -92,7 +92,7 @@ const OfferCard = ({ offer, offer_translations }) => {
           <IconButton aria-label="Add to favorites">
             <FontAwesomeIcon className="mx-auto" icon={['fab', 'twitter']} />
           </IconButton>
-        </Row>
+        </Row>*/}
       </div>
       {/* <div className="content"> */}
       <Card className="tarjeta mx-5" raised>

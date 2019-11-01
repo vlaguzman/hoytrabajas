@@ -8,7 +8,7 @@ ActiveAdmin.register Company do
           attr.delete :password_confirmation
         end
       end
-
+      object.skip_reconfirmation!
       object.send :update, *attributes
     end
   end

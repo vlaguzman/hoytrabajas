@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   resources :offers
   resources :applied_offers, only: [:create]
   resources :job_categories, only:[:index]
-  resources :companies, only: [:index]
 
   namespace :companies do
     namespace :first_offer do
@@ -45,7 +44,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:edit, :update, :show]
-  resources :companies, only: [:edit, :update, :show]
+  resources :companies, only: [:edit, :update, :show, :index]
 
   root to: "home#index"
 

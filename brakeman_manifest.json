@@ -76,9 +76,13 @@
     ],
     "number_of_controllers": 34,
     "number_of_models": 78,
+<<<<<<< HEAD
     "number_of_templates": 43,
+=======
+    "number_of_templates": 42,
+>>>>>>> more changes
     "ruby_version": "2.6.3",
-    "brakeman_version": "4.6.1"
+    "brakeman_version": "4.7.0"
   },
   "warnings": [
 

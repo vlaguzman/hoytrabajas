@@ -51,7 +51,7 @@ group :development do
   gem "guard-rspec", require: false
   gem 'simplecov', :require => false
   gem 'simplecov-csv', :require => false
-  gem 'rubycritic'
+  gem "rubycritic", require: false
   gem 'brakeman', require: false
   gem 'bullet'
   gem 'curb'

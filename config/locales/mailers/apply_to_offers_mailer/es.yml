@@ -1,0 +1,4 @@
+es:
+  mailers:
+    apply_to_offers_mailer:
+      subject: '!Aplicación a oferta¡'

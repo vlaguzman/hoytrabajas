@@ -1,5 +1,5 @@
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import React from 'react'
 import { Row } from 'reactstrap'
 import Introduccion from './sections/introduccion'
 import CoverSection from './sections/cover'
@@ -9,6 +9,7 @@ import CompaniesSection from './sections/companies'
 import TurorialSection from './sections/tutorial'
 import Newsletter from './sections/newsletter'
 import { contenido } from './data'
+import WelcomeModal from './sections/components/WelcomeModal'
 
 const HomePage = ({
   offers,
@@ -22,12 +23,14 @@ const HomePage = ({
     cover,
     premium,
     common: { categorias },
-    companies,
-    categories
+    companies
   } = contenido
+
+  const [isModalOpen, setIsModalOpen] = useState(true)
 
   return (
     <div className="home-wrapper">
+      <WelcomeModal isOpen={isModalOpen} toggleOpenState={setIsModalOpen} />
       <CoverSection {...cover} {...{ categorias }} {...{ filterForm }} />
       <OffersSection offers={offers} offer_translations={offer_translations} />
       <Introduccion />

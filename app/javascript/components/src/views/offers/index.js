@@ -1,9 +1,17 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import styled from 'styled-components'
 import Offers from '../../components/Offers'
 
+const StyledWrapper = styled.div`
+  margin-top: 180px;
+  @media (max-width: 900px) {
+    margin-top: 80px;
+  }
+`
+
 const OffersPage = ({ offers, offer_translations }) => (
-  <>
+  <StyledWrapper>
     <h1
       className="sec-title mb-40 pt-20 mx-10 text-center"
       style={{ marginTop: '100px' }}
@@ -17,7 +25,7 @@ const OffersPage = ({ offers, offer_translations }) => (
       hasAllOffers
       rowIncrement={2}
     />
-  </>
+  </StyledWrapper>
 )
 
 export default OffersPage

@@ -11,6 +11,8 @@ RSpec.describe "Overall navigation" do
 
         visit root_path
 
+
+
         expect(page).to have_content("INICIO")
         click_on("INICIO")
 
@@ -77,6 +79,12 @@ RSpec.describe "Overall navigation" do
 
         visit root_path
 
+        save_screenshot("nav.png")
+        find("button[id='home-welcome-modal']", visible: false).click
+        execute_script "window.scrollTo(0, (window.innerHeight * 2))"
+        
+        save_screenshot("nav2.png")
+
         has_button?("VER MÁS OFERTAS »")
         click_on("Ver más ofertas »")
 
@@ -89,7 +97,6 @@ RSpec.describe "Overall navigation" do
         click_on("Ver el listado de ofertas »")
 
         expect(current_path).to eq(offers_path)
-        expect(page).to have_text("VER MÁS OFERTAS")
         expect(page).to have_text("Titulo De Oferta48")
 
         click_on("INICIO")

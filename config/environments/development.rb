@@ -35,22 +35,20 @@ Rails.application.configure do
   # Action mailer
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :letter_opener_web
-  host = 'localhost:3000'
-  config.action_mailer.default_url_options = { host: host, protocol: 'http' }
+  config.action_mailer.default_url_options = { host: 'localhost:3000', protocol: 'http' }
   config.action_mailer.perform_caching = false
   config.action_mailer.perform_deliveries = true
 
   # smpt_settings
 
    config.action_mailer.smtp_settings = {
-     :user_name      => "rormaster@mg.hoytrabajas.com",
-     :password       => "1c3cb51a846066e99efecb47b3fee5f7-816b23ef-925b83cc",
-     :domain         => "mg.hoytrabajas.com",
+     :user_name      => ENV['EMAIL_USER_NAME'],
+     :password       => ENV['EMAIL_USER_PASSWORD'],
+     :domain         => ENV['EMAIL_USER_DOMAIN'],
      :address        => "smtp.mailgun.org",
      :port           => 587,
      :authentication => :plain
    }
-
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

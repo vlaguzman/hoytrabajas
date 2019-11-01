@@ -48,6 +48,7 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
         afterLabel: template_translations[:offer_age_range_after],
         values: { min: 18, max: 80 },
         step: 1,
+        #TODO daniel
         current_value: ''
       }
     }
@@ -63,6 +64,7 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
           disableFuture: false,
           emptyLabel: '...'
         },
+        #TODO daniel
         current_value: ''
       }
     }

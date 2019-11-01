@@ -14,14 +14,14 @@ const CompaniesStepFour = ({ formInfo, csrf_param, csrf_token }) => {
     id,
     form: {
       buttons,
-      nextPath,
-      previousPath,
       action,
       method,
       type,
       formFields,
     }
   } = formInfo
+
+  const { nextPath, previousPath } = buttons
 
   return (
     <div className="main-wrapper">

@@ -10,7 +10,7 @@ es:
           offer_age_range_after: "Edad máx."
           form:
             buttons:
-              submit: "Siguiente"
+              submit: "Publicar"
               next: "Saltar"
               previous: "Regresar"
             type: "offer"

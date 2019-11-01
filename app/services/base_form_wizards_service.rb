@@ -125,7 +125,8 @@ class BaseFormWizardsService
     begin
       source.send(key)
     rescue
-      self.send("#{key}_current_value")
+     #self.send("#{key}_current_value")
+      ''
     end
   end
 

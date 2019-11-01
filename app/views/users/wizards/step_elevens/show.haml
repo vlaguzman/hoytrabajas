@@ -1,9 +1,1 @@
-= react_component('views/users/wizards/step_elevens/show',
-  {formInfo: @user.form_information,
-  csrf_param: request_forgery_protection_token,
-  csrf_token: form_authenticity_token,
-  log_out_user: destroy_user_session_path,
-  log_out_companies: destroy_company_session_path,
-  user_signed_in: user_signed_in?,
-  company_signed_in: company_signed_in?,
-  session_translation: I18n.t("session") }, prerender: true)
+= render "shared/finally_step", source: @user

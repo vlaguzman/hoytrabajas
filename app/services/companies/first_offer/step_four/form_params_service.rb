@@ -40,6 +40,9 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
   end
 
   def offer_age_range_field
+    object = AgeRange.find_by(offer_id: source.id)
+    current_value = object.present? ? [object.from, object.to] : ""
+
     {
       offer_age_range: {
         name: 'offer[offer_age_range]',
@@ -48,13 +51,15 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
         afterLabel: template_translations[:offer_age_range_after],
         values: { min: 18, max: 80 },
         step: 1,
-        #TODO daniel
-        current_value: ''
+        current_value: current_value
       }
     }
   end
 
   def close_date_field
+    object = source.close_date
+    close_date = object.present? ? "#{close_date.year}, #{close_date.month}, #{close_date.day}" : ""
+
     {
       close_date: {
         name: 'offer[close_date]',
@@ -64,8 +69,7 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
           disableFuture: false,
           emptyLabel: '...'
         },
-        #TODO daniel
-        current_value: ''
+        current_value: close_date
       }
     }
   end

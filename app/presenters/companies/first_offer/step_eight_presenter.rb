@@ -2,7 +2,7 @@ class Companies::FirstOffer::StepEightPresenter < ApplicationPresenter
 
   def form_information
     Companies::FirstOffer::StepEight::FormParamsService.new(
-      template_translation_path: "companies.first_offer.step_threes.new",
+      template_translation_path: "offers.first_offer.step_eights.show",
       go_home_path: root_path,
       next_path: company_path
     ).form_params

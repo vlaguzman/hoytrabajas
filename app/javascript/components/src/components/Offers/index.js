@@ -106,7 +106,7 @@ const Offers = props => {
   return (
     <>
       <OfferCardsWrapper>{offerCards}</OfferCardsWrapper>
-      {loadMoreOffers && offers.length > offerCards.length && (
+      {loadMoreOffers && offers.length >= 1 && offers.length > offersToDisplay && (
         <Row className="justify-content-center align-items-center  my-30 ">
           <StyledButton
             color="primary"

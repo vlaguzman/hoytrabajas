@@ -29,6 +29,7 @@ RSpec.describe "Admin can edit an Company", type: :feature do
         click_on("Guardar Company")
       end
 
+      company.reload
 
       expect(page).to have_content("Detalles de Company")
       expect(page).to have_content("rootnpool@company.com")
@@ -51,6 +52,8 @@ RSpec.describe "Admin can edit an Company", type: :feature do
         fill_in 'company_email', with: 'justanotheremail@company.com'
         click_on("Guardar Company")
       end
+
+      company.reload
 
       expect(page).to have_content("Detalles de Company")
       expect(page).to have_content("justanotheremail@company.com")

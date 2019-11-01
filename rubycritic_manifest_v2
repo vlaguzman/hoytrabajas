@@ -14,7 +14,7 @@ A         * AppliedOffer                                        3       0.0     
 A         * AppliedOfferStatus                                  1       0.0        0           1
 A         * AppliedOffers                                       3       0.0        0           0
 A         * AppliedOffersController                             4       22.43      0           1
-A         * ApplyToOffersMailer                                 2       2.42       0           2
+A         * ApplyToOffersMailer                                 3       2.42       0           2
 A         * AvailableWorkDay                                    3       0.0        0           1
 A         * AvailableWorkDaysCurriculumVitaes                   1       0.0        0           1
 A         * AvailableWorkDaysOffers                             1       0.0        0           1
@@ -36,7 +36,7 @@ A         * Companies::FirstOffer::StepTwoPresenter             14      17.4    
 A         * Companies::FirstOffer::StepZeroPresenter            2       1.0        0           2
 A         * Companies::FirstOffer::StepZerosController          3       3.24       0           1
 A         * Companies::RegistrationsController                  5       2.0        0           2
-A         * CompaniesController                                 6       3.4        0           1
+A         * CompaniesController                                 7       3.4        0           1
 A         * CompaniesUsers                                      1       0.0        0           1
 A         * Company                                             11      1.0        0           1
 A         * ContractType                                        1       0.0        0           1

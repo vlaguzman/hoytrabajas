@@ -70,12 +70,12 @@ const Tutorial = () => {
                   style={{ lineHeight: '1.75', color: '#999999' }}
                   variant="body2"
                 >
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
+                  En nuestra plataforma puedes encontrar un porcentaje de afinidad
+                  que te ayuda a ver primero las ofertas que realmente se adaptan
+                  a tu perfil, adicionalmente te damos la oportunidad que seas relevante
+                  en aquellas ofertas en las que realmente quieres participar.
                 </ResponsiveText>
-                <ResponsiveButton
+                {/*<ResponsiveButton
                   color="primary"
                   className="my-10"
                   variant="outlined"
@@ -87,7 +87,7 @@ const Tutorial = () => {
                   >
                     Leer más »
                   </ResponsiveText>
-                </ResponsiveButton>
+                </ResponsiveButton>*/}
               </ResponsiveWrapper>
             </Col>
           </Row>

@@ -10,8 +10,8 @@ import { ResponsiveText, ResponsiveButton } from './styles'
 const content = [
   {
     img: 'push.png',
-    headline: 'Un super poder',
-    desc: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed'
+    headline: 'Aplicaci√n pro',
+    desc: 'Ser m√s relevante en las aplicaciones que m√s te gustan'
   },
   {
     img: 'tag.png',

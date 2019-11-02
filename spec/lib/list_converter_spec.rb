@@ -58,6 +58,10 @@ RSpec.describe ListConverter do
 
         expect(response).to match_array(expected_list)
       end
+
+      it "should return an array if the class doesnt exist" do
+        expect(subject.model_array_list(nil)).to eq([])
+      end
     end
   end
 

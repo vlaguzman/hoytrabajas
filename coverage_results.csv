@@ -138,4 +138,4 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/users/wizards/step_two/form_params_service.rb",100,31,11,11,0
 "./app/services/users/wizards/step_two_service.rb",100,9,4,4,0
 "./lib/dates_converter.rb",100,5,3,3,0
-"./lib/list_converter.rb",100,10,5,5,0
+"./lib/list_converter.rb",100,14,7,7,0

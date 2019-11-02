@@ -10,7 +10,7 @@ A         * ApplicationJob                                      1       0.0     
 A         * ApplicationMailer                                   1       0.0        0           1
 A         * ApplicationPresenter                                3       10.35      0           3
 A         * ApplicationRecord                                   1       0.0        0           1
-A         * AppliedOffer                                        2       0.0        0           1
+A         * AppliedOffer                                        3       0.0        0           1
 A         * AppliedOfferStatus                                  1       0.0        0           1
 A         * AppliedOffers                                       3       0.0        0           0
 A         * AppliedOffersController                             2       18.23      0           1
@@ -107,7 +107,7 @@ A         * State                                               3       0.0     
 A         * TechnicalSkill                                      6       0.0        0           1
 A         * TechnicalSkillCategory                              1       0.0        0           1
 A         * Term                                                4       0.0        0           1
-A         * User                                                14      27.95      0           3
+A         * User                                                15      27.95      0           3
 A         * Users::OmniauthCallbacksController                  1       21.49      0           5
 A         * Users::RegistrationsController                      7       5.16       0           2
 A         * Users::SessionsController                           3       0.0        0           1
@@ -147,9 +147,10 @@ A         * Users::Wizards::StepTwoService                      2       3.0     
 A         * Users::Wizards::StepTwosController                  6       20.5       23          2
 A         * Users::Wizards::StepZeroPresenter                   2       1.0        0           2
 A         * Users::Wizards::StepZerosController                 3       3.24       0           1
-A         * UsersController                                     8       3.4        0           1
+A         * UsersController                                     9       5.69       0           1
 A         * UsersLimitations                                    1       0.0        0           1
 A         * UsersNationalities                                  1       0.0        0           1
+A         * UsersPresenter                                      1       27.94      0           1
 A         * Vehicle                                             7       0.0        0           1
 A         * Visit                                               1       0.0        0           1
 A         * WorkExperience                                      2       0.0        0           1

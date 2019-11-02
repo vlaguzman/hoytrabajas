@@ -12,13 +12,7 @@ const CompaniesStepFour = ({ formInfo, csrf_param, csrf_token }) => {
     title,
     subtitle,
     id,
-    form: {
-      buttons,
-      action,
-      method,
-      type,
-      formFields,
-    }
+    form: { buttons, action, method, type, formFields }
   } = formInfo
 
   const { nextPath, previousPath } = buttons
@@ -35,7 +29,7 @@ const CompaniesStepFour = ({ formInfo, csrf_param, csrf_token }) => {
                 <FormFields type={type} formFields={formFields} />
                 <input type="hidden" name={csrf_param} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />
-                <input type="hidden" name="offer[id]" value={formInfo.id} />
+                <input type="hidden" name="offer[id]" value={id} />
                 <FormButtons
                   nextPath={nextPath}
                   prevPath={previousPath}

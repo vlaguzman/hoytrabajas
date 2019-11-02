@@ -46,7 +46,7 @@ RSpec.describe "When company fill the step one form", :type => :feature do
         expected_page_structure
         fill_form(
           {
-            name: 'Enterprise.com',
+            name: '',
             contact_name: 'Ruben Cordoba',
             contact_work_position: 'CEO',
             contact_cellphone: '3101234567'
@@ -54,9 +54,9 @@ RSpec.describe "When company fill the step one form", :type => :feature do
         )
         click_link_or_button('Siguiente')
 
-        company = Company.find_by(name: 'Enterprise.com')
+        company.reload
 
-        expect(company.name).to eq('Enterprise.com')
+        expect(company.name).to eq('HoyTrabajas.com')
         expect(company.contact_name).to eq('Ruben Cordoba')
         expect(company.contact_work_position).to eq('CEO')
 

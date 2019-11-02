@@ -37,12 +37,14 @@ RSpec.describe Users::Wizards::StepFive::FormParamsService do
             available_work_day_ids: {
               name: "user[curriculum_vitae][available_work_day_ids][]",
               label: "¿Que días estas disponible para trabajar?",
-              values: create_available_work_days_list
+              values: create_available_work_days_list,
+              current_value: ''
             },
             working_day_ids: {
               name: "user[curriculum_vitae][working_day_ids][]",
               label: "Franja horaria",
-              values: create_working_days_list
+              values: create_working_days_list,
+              current_value: ''
             },
             range_type: {
               name: "user[curriculum_vitae][curriculum_vitae_salary][range_type]",
@@ -52,20 +54,24 @@ RSpec.describe Users::Wizards::StepFive::FormParamsService do
             currency_id: {
               name: "user[curriculum_vitae][curriculum_vitae_salary][currency_id]",
               label: '',
-              values: create_currencies_list
+              values: create_currencies_list,
+              current_value: ''
             },
             from: {
               name: "user[curriculum_vitae][curriculum_vitae_salary][from]",
               label: '',
+              current_value: ''
             },
             to: {
               name: "user[curriculum_vitae][curriculum_vitae_salary][to]",
               label: '',
+              current_value: ''
             },
             salary_period_id: {
               name: 'user[curriculum_vitae][curriculum_vitae_salary][salary_period_id]',
               label: 'Pago',
-              values: create_salary_periods_list
+              values: create_salary_periods_list,
+              current_value: ''
             }
           },
           placeholders: {}

@@ -122,10 +122,14 @@ class BaseFormWizardsService
   end
 
   def current_value(key)
-    begin
-      source.send(key)
-    rescue
-      self.send("#{key}_current_value")
+    if source.present?
+      begin
+        source.send(key)
+      rescue
+        self.send("#{key}_current_value")
+      end
+    else
+      ''
     end
   end
 

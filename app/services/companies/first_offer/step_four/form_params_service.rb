@@ -58,7 +58,7 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
 
   def close_date_field
     object = source.close_date
-    close_date = object.present? ? "#{close_date.year}, #{close_date.month}, #{close_date.day}" : ""
+    close_date = object.present? ? "#{object.year}, #{object.month}, #{object.day}" : ""
 
     {
       close_date: {

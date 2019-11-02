@@ -8,7 +8,6 @@ RSpec.describe Companies::FirstOffer::StepOne::FormParamsService do
     let!(:industries) { create_list(:industry, 5) }
     let(:create_industries_list) { ListConverter.model_list(Industry) }
 
-    let!(:employees_ranges) { create_list(:employees_range, 5) }
     let(:create_employees_ranges_list) { ListConverter.model_list(EmployeesRange) }
 
     let(:subject) { described_class }
@@ -32,29 +31,35 @@ RSpec.describe Companies::FirstOffer::StepOne::FormParamsService do
           formFields: {
             name: {
               name: 'comapny[name]',
-              label: "Nombre empresa o Razón social*"
+              label: "Nombre empresa o Razón social*",
+              current_value: nil
             },
             industry_id: {
               name: 'comapny[industry_id]',
               label: "Sector al que pertenece tu empresa*",
-              values: create_industries_list
+              values: create_industries_list,
+              current_value: nil
             },
             contact_work_position: {
               name: 'comapny[contact_work_position]',
-              label: 'Cargo'
+              label: 'Cargo',
+              current_value: nil
             },
             contact_name: {
               name: 'comapny[contact_name]',
-              label: "Persona de contacto"
+              label: "Persona de contacto",
+              current_value: nil
             },
             contact_cellphone: {
               name: 'comapny[contact_cellphone]',
-              label: "Número de contacto"
+              label: "Número de contacto",
+              current_value: nil
             },
             employees_range_id: {
               name: 'comapny[employees_range_id]',
               label: 'Número de empleados',
-              values: create_employees_ranges_list
+              values: create_employees_ranges_list,
+              current_value: create_employees_ranges_list.pluck(:id).first
             }
           },
           placeholders: {}
@@ -62,6 +67,7 @@ RSpec.describe Companies::FirstOffer::StepOne::FormParamsService do
       }
 
       response = subject.new(
+        source: company,
         errors: company.errors,
         form_type: :comapny,
         template_translation_path: "companies.first_offer.step_ones.show",

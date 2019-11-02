@@ -19,12 +19,12 @@ RSpec.describe Companies::FirstOffer::StepThreeService do
           job_category_id: job_category.id,
           offer_type_id: offer_type.id,
           work_mode_id: work_mode.id,
-          offer_work_position_id: work_position.id
+          offers_work_positions: work_position.id
         }
       end
 
       it "Should return a new offer" do
-        offer = subject.(company: company, create_params: params)
+        offer = subject.(company: company, params: params)
 
         expect(Offer.count).to eq(1)
 
@@ -46,12 +46,12 @@ RSpec.describe Companies::FirstOffer::StepThreeService do
           job_category_id: job_category.description,
           offer_type_id: offer_type.description,
           work_mode_id: work_mode.description,
-          offer_work_position_id: work_position.description
+          offers_work_positions: work_position.description
         }
       end
 
       it "Should return a errors new offer" do
-        offer = subject.(company: company, create_params: params)
+        offer = subject.(company: company, params: params)
 
         expect(Offer.count).to eq(0)
 

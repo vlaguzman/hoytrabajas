@@ -8,7 +8,6 @@ RSpec.describe Companies::FirstOffer::StepTwo::FormParamsService do
     let!(:industries) { create_list(:industry, 5) }
     let(:create_industries_list) { ListConverter.model_list(Industry) }
 
-    let!(:employees_ranges) { create_list(:employees_range, 5) }
     let(:create_employees_ranges_list) { ListConverter.model_list(EmployeesRange) }
 
     let(:subject) { described_class }
@@ -32,7 +31,8 @@ RSpec.describe Companies::FirstOffer::StepTwo::FormParamsService do
           formFields: {
             description: {
               name: 'company[description]',
-              label: ''
+              label: '',
+              current_value: ""
             }
           },
           placeholders: {}

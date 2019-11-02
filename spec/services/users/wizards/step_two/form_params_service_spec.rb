@@ -34,26 +34,31 @@ RSpec.describe Users::Wizards::StepTwo::FormParamsService do
           formFields: {
             about_me:{
               name: "user[about_me]",
-              label: "Cuentanos un poco de ti*"
+              label: "Cuentanos un poco de ti*",
+              current_value: ''
             },
             sex_id:{
               name: "user[sex_id]",
               label: "Genero",
-              values: create_sex_list
+              values: create_sex_list,
+              current_value: ''
             },
             birthday:{
               name: "user[birthday]",
-              label: "Fecha de nacimiento"
+              label: "Fecha de nacimiento",
+              current_value: ''
             },
             limitation_ids:{
               name: "user[limitation_ids][]",
               label: "Tienes alguna condición especial",
-              values: create_limitations_list
+              values: create_limitations_list,
+              current_value: ''
             },
             educational_degree_id:{
               name: "user[educational_degree_id]",
               label: "Nivel de educación*",
-              values: create_educational_degree_list
+              values: create_educational_degree_list,
+              current_value: ''
             }
           },
           placeholders: {}

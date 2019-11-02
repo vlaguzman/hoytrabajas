@@ -29,32 +29,39 @@ RSpec.describe Users::Wizards::StepNine::FormParamsService do
           formFields: {
             degree: {
               label: 'Título educativo*',
-              name: 'user[curriculum_vitae][educational_level][degree]'
+              name: 'user[curriculum_vitae][educational_level][degree]',
+              current_value: ''
             },
             institution_name: {
               label: 'Institución',
-              name: 'user[curriculum_vitae][educational_level][institution_name]'
+              name: 'user[curriculum_vitae][educational_level][institution_name]',
+              current_value: ''
             },
             start_date: {
               label: 'Fecha de inicio',
-              name: 'user[curriculum_vitae][educational_level][start_date]'
+              name: 'user[curriculum_vitae][educational_level][start_date]',
+              current_value: ''
             },
             finish_date: {
               label: '',
-              name: 'user[curriculum_vitae][educational_level][finish_date]'
+              name: 'user[curriculum_vitae][educational_level][finish_date]',
+              current_value: ''
             },
             ongoing_study: {
               label: 'Estudio en curso',
-              name: 'user[curriculum_vitae][educational_level][ongoing_study]'
+              name: 'user[curriculum_vitae][educational_level][ongoing_study]',
+              current_value: ''
             },
             city_id: {
               label: 'Ubicación',
               name: 'user[curriculum_vitae][educational_level][city_id]',
-              values: create_cites_list
+              values: create_cites_list,
+              current_value: ''
             },
             diploma: {
               label: 'Carga aquí tu diploma',
-              name: 'user[curriculum_vitae][educational_level][diploma]'
+              name: 'user[curriculum_vitae][educational_level][diploma]',
+              current_value: ''
             },
           },
           placeholders:{

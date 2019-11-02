@@ -23,7 +23,7 @@ RSpec.describe "When company fill the step four form", :type => :feature do
       with_tag(:input, with: { name: 'offer[immediate_start]', type: "hidden" })
     end
 
-    expect(page).to have_button('Siguiente')
+    expect(page).to have_button('Publicar')
   end
 
   def fill_form(data)
@@ -46,7 +46,8 @@ RSpec.describe "When company fill the step four form", :type => :feature do
     context "Data is correct" do
       scenario "should save succesfully data", js: true do
         sign_in company
-        visit edit_companies_first_offer_step_four_path(offer.id)
+        visit companies_first_offer_step_four_path(offer_id: offer.id)
+        save_page("daniel.html")
 
         expected_page_structure
         fill_form(
@@ -56,17 +57,17 @@ RSpec.describe "When company fill the step four form", :type => :feature do
             sex_two: sex_2.description,
             sex_three: sex_3.description
           })
-        click_link_or_button('Siguiente')
+        click_link_or_button('Publicar')
 
         offer.reload
 
         expect(offer.contract_type_id).to eq(contract_type.id)
-        expect(offer.vacancies_quantity).to eq(1)
+        expect(offer.vacancies_quantity).to eq(10)
         expect(offer.sex_ids).to eq([sex_1.id, sex_2.id, sex_3.id])
         expect(offer.close_date.strftime("%F") ).to eq(Time.now.strftime("%F"))
         expect(offer.immediate_start).to eq(false)
 
-        expect(current_path).to eq(edit_companies_first_offer_step_five_path(offer.id))
+        expect(current_path).to eq(companies_first_offer_step_eight_path)
       end
     end
   end

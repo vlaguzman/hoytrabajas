@@ -8,6 +8,8 @@ class Companies::FirstOffer::StepThreesController < ApplicationController
 
   def update
     offer = Companies::FirstOffer::StepThreeService.(company: current_company, params: step_three_params)
+    puts "#" * 100
+    puts offer.inspect
 
     if offer[:status].eql?(:ok)
       redirect_to companies_first_offer_step_four_path(offer_id: offer[:data].id)

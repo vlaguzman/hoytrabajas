@@ -17,4 +17,5 @@
       1 app/controllers/users/wizards/step_threes_controller.rb
       1 app/controllers/users/wizards/step_twos_controller.rb
       1 app/controllers/users/wizards/step_zeros_controller.rb
+      1 app/controllers/users_controller.rb
       2 app/controllers/offers_controller.rb

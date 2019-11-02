@@ -42,6 +42,9 @@ const Offers = props => {
   const {
     offers,
     offer_translations,
+    csrf_param,
+    csrf_token,
+    applied_offers_path,
     hasAllOffers = false,
     initialRows = 1,
     rowIncrement = 1,
@@ -95,6 +98,9 @@ const Offers = props => {
               key={o['title']}
               offer={o}
               offer_translations={offer_translations}
+              applied_offers_path={applied_offers_path},
+              csrf_param={csrf_param},
+              csrf_token={csrf_token}
             />
           ) : null
         )

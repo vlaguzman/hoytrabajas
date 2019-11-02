@@ -17,6 +17,7 @@ RSpec.describe "apply offer from home", type: :feature, js: :true do
       expect(page).to have_button('Aplicar a esta oferta')
       click_on("Aplicar a esta oferta", match: :first)
 
+      expect(AppliedOffer.count).to eq(1)
       expect(page).to have_button('Aplicado')
     end
 
@@ -31,6 +32,7 @@ RSpec.describe "apply offer from home", type: :feature, js: :true do
       click_on("Aplicar a esta oferta", match: :first)
 
       expect(current_path).to eq(new_user_registration_path)
+      expect(AppliedOffer.count).to eq(0)
     end
   end
 end

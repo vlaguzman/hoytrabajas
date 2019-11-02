@@ -11,6 +11,7 @@ const HomePage = ({
   company_signed_in,
   log_out_user,
   log_out_companies,
+  path_applied_offers,
   session_translation,
   offer_translations,
   filterForm
@@ -30,6 +31,7 @@ const HomePage = ({
         <DynamicHome
           offers={offers}
           offer_translations={offer_translations}
+          path_applied_offers={path_applied_offers}
           filterForm={filterForm}
         />
       </AppLayout>

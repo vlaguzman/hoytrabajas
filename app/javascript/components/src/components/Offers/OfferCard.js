@@ -13,45 +13,48 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import OfferContent from './OfferContent'
 
-const OfferCard = ({ offer, offer_translations }) => {
+const OfferCard = (
+   { offer,
+     path_applied_offers, 
+     csrf_param,
+     csrf_token,
+     offer_translations }) => {
+  const value_button = offer.is_applied
+    ? offer_translations.btn_apply_offer
+    : offer_translations.button_active
+  const value_button_lg = offer.is_applied
+    ? offer_translations.btn_lg_apply_offer
+    : offer_translations.button_active
   return (
     <Col className="cardOffer position-relative mb-30 justify-content-center align-items-center px-5">
       <div className="bg-buttons-carusel MuiPaper-rounded position-absolute d-flex flex-column align-items-center justify-content-center">
         <Row noGutters className="w-100 justify-content-center">
-            {/*  <form action={pathAppliedOffers} method="post">
-                <input type="hidden" name={csrf_param} value={csrf_token} />
-                <input type="hidden" name="_method" value="post" />
-                <input
-                  type="hidden"
-                  name="applied_offer[offer_id]"
-                  value={offer.id_offer}
-                />
-                <Button
-                  variant="contained"
-                  type="submit"
-                  color="primary"
-                  className={classNames('text-white my-50', {
-                    'button-disabled': offer.is_applied
-                  })}
-                  style={{ borderRadius: '50px' }}
-                >
-                  {valueButton}
-                </Button>
-              </form>*/}
-          <Button
-            style={{ borderRadius: '30px' }}
-            variant="contained"
-            className="w-70 my-10 text-white fw-bold"
-            size="large"
-            color="primary"
-          >
-            <span className="d-none d-lg-inline">
-              {offer_translations.btn_lg_apply_offer}
-            </span>
-            <span className="d-lg-none">
-              {offer_translations.btn_apply_offer}
-            </span>
-          </Button>
+          <form action={path_applied_offers} method="post">
+            <input type="hidden" name={csrf_param} value={csrf_token} />
+            <input type="hidden" name="_method" value="post" />
+            <input
+              type="hidden"
+              name="applied_offer[offer_id]"
+              value={offer.id_offer}
+            />
+            <Button
+              variant="contained"
+              type="submit"
+              size="large"
+              color="primary"
+              className={classNames('w-70 my-10 text-white fw-bold', {
+                'button-disabled': offer.is_applied
+              })}
+              style={{ borderRadius: '30px' }}
+            >
+              <span className="d-none d-lg-inline">
+                {value_button_lg}
+              </span>
+              <span className="d-lg-none">
+                {value_button}
+              </span>
+            </Button>
+          </form>
         </Row>
         <Row noGutters className="w-100 justify-content-center">
           <Button

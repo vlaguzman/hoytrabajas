@@ -17,7 +17,27 @@ const OfferCard = ({ offer, offer_translations }) => {
   return (
     <Col className="cardOffer position-relative mb-30 justify-content-center align-items-center px-5">
       <div className="bg-buttons-carusel MuiPaper-rounded position-absolute d-flex flex-column align-items-center justify-content-center">
-        {/*<Row noGutters className="w-100 justify-content-center">
+        <Row noGutters className="w-100 justify-content-center">
+            {/*  <form action={pathAppliedOffers} method="post">
+                <input type="hidden" name={csrf_param} value={csrf_token} />
+                <input type="hidden" name="_method" value="post" />
+                <input
+                  type="hidden"
+                  name="applied_offer[offer_id]"
+                  value={offer.id_offer}
+                />
+                <Button
+                  variant="contained"
+                  type="submit"
+                  color="primary"
+                  className={classNames('text-white my-50', {
+                    'button-disabled': offer.is_applied
+                  })}
+                  style={{ borderRadius: '50px' }}
+                >
+                  {valueButton}
+                </Button>
+              </form>*/}
           <Button
             style={{ borderRadius: '30px' }}
             variant="contained"
@@ -32,7 +52,7 @@ const OfferCard = ({ offer, offer_translations }) => {
               {offer_translations.btn_apply_offer}
             </span>
           </Button>
-        </Row>*/}
+        </Row>
         <Row noGutters className="w-100 justify-content-center">
           <Button
             style={{ borderRadius: '30px' }}

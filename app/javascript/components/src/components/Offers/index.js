@@ -118,7 +118,7 @@ const Offers = props => {
             {(!hasAllOffers && offersToDisplay >= offersLimit) ||
             (!hasAllOffers && offersToDisplay >= offers.length)
               ? 'Ver el listado de ofertas »'
-              : `${offer_translations.index.btn_more_offers} »`}
+              : `${offer_translations.index.btn_more_offers}`}
           </StyledButton>
         </Row>
       )}

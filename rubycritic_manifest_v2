@@ -5,7 +5,7 @@ A         * AdminUsers::SessionsController                      2       6.2     
 A         * AgeRange                                            1       0.0        0           1
 A         * ApplicationCable::Channel                           1       0.0        0           1
 A         * ApplicationCable::Connection                        1       0.0        0           1
-A         * ApplicationController                               18      13.32      0           1
+A         * ApplicationController                               19      13.43      0           1
 A         * ApplicationJob                                      1       0.0        0           1
 A         * ApplicationMailer                                   3       0.0        0           1
 A         * ApplicationPresenter                                3       10.35      0           3
@@ -111,14 +111,16 @@ A         * TechnicalSkill                                      6       0.0     
 A         * TechnicalSkillCategory                              1       0.0        0           1
 A         * Term                                                4       0.0        0           1
 A         * User                                                17      28.95      0           3
+A         * Users::DashboardsController                         10      5.69       0           1
 A         * Users::OmniauthCallbacksController                  1       21.49      0           5
+A         * Users::ProfilesController                           11      5.69       0           1
 A         * Users::RegistrationsController                      9       2.0        0           2
 A         * Users::SessionsController                           3       0.0        0           1
 A         * Users::WizardService                                2       17.38      0           2
 A         * Users::Wizards::StepEightService                    1       18.84      0           1
 A         * Users::Wizards::StepEightsController                7       29.16      0           1
-A         * Users::Wizards::StepElevenPresenter                 1       10.6       0           1
-A         * Users::Wizards::StepElevensController               2       3.24       0           1
+A         * Users::Wizards::StepElevenPresenter                 3       9.4        0           1
+A         * Users::Wizards::StepElevensController               3       7.78       0           2
 A         * Users::Wizards::StepFive::FormParamsService         1       17.7       0           6
 A         * Users::Wizards::StepFiveService                     2       9.86       0           1
 A         * Users::Wizards::StepFivesController                 7       20.5       0           2
@@ -149,7 +151,7 @@ A         * Users::Wizards::StepTwoService                      2       3.0     
 A         * Users::Wizards::StepTwosController                  6       20.5       23          2
 A         * Users::Wizards::StepZeroPresenter                   2       1.0        0           2
 A         * Users::Wizards::StepZerosController                 3       3.24       0           1
-A         * UsersController                                     9       5.69       0           1
+A         * UsersController                                     10      2.2        0           1
 A         * UsersLimitations                                    1       0.0        0           1
 A         * UsersNationalities                                  1       0.0        0           1
 A         * UsersPresenter                                      1       27.94      0           1

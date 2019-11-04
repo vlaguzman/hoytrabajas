@@ -15,6 +15,6 @@ class Users::Wizards::StepElevenPresenter < ApplicationPresenter
   end
 
   def users_dashboard_path
-    rails_routes.users_dashboard_path(source)
+    rails_routes.users_dashboard_path
   end
 end

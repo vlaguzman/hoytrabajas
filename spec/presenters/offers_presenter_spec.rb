@@ -107,7 +107,7 @@ RSpec.describe OffersPresenter do
         :btn_super_apply
       ]
 
-      expect(response.keys).to eq(expected_keys)
+      expect(response.keys).to match_array(expected_keys)
     end
   end
 

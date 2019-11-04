@@ -5,6 +5,10 @@ module ListConverter
   end
 
   def self.model_array_list(klass, symbol=:description)
-    klass.any? ? klass.all.map { |object| [object.send(symbol), object.id] } : []
+   begin
+     klass.any? ? klass.all.map { |object| [object.send(symbol), object.id] } : []
+   rescue Exception => e
+     []
+   end     
   end
 end

@@ -40,7 +40,7 @@ const OfferCard = ({ offer, offer_translations }) => {
             className="w-70 bg-white my-10 text-primary fw-bold"
             size="large"
           >
-            <a href={`offers/${offer['id_offer']}`}>
+            <a href={`/offers/${offer['id_offer']}`}>
               {offer_translations.see_offer}
             </a>
           </Button>

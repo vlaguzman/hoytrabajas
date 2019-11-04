@@ -1,11 +1,18 @@
 require 'rails_helper'
 
+def skip_under_construction
+  find("button[id='home-welcome-modal']", visible: false).click
+  execute_script "window.scrollTo(0, (window.innerHeight * 2))"
+end
+
 RSpec.describe "sign up user", js: true,  type: :feature do
   context "Like a external user, I should get in hoytrabajas.com and see the option 'registrarse'" do
 
     it "User visit home page and click on sign up" do
 
       visit root_path
+
+      skip_under_construction
 
       expect(page).to have_text("SIGN UP CANDIDATO")
       click_on 'SIGN UP CANDIDATO'
@@ -17,6 +24,8 @@ RSpec.describe "sign up user", js: true,  type: :feature do
       it "should return to the root_path" do
 
         visit root_path
+
+        skip_under_construction
 
         expect(page).to have_text("SIGN UP CANDIDATO")
         click_on 'SIGN UP CANDIDATO'
@@ -56,6 +65,8 @@ RSpec.describe "sign up user", js: true,  type: :feature do
 
         visit root_path
 
+        skip_under_construction
+
         expect(page).to have_text("SIGN UP EMPRESA") 
         click_on 'SIGN UP EMPRESA'
 
@@ -67,6 +78,8 @@ RSpec.describe "sign up user", js: true,  type: :feature do
         it "should return to the root_path" do
      
           visit root_path
+
+          skip_under_construction
      
           expect(page).to have_text("SIGN UP EMPRESA") 
           click_on 'SIGN UP EMPRESA'

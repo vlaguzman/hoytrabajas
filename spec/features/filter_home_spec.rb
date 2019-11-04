@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "User searches for an offer", type: :feature do
+  def skip_under_construction
+    find("button[id='home-welcome-modal']", visible: false).click
+    execute_script "window.scrollTo(0, (window.innerHeight * 2))"
+  end
+
   context "When user search of offer" do
     let!(:offer)  { create(:offer, title: "Test sebas") }
     let!(:offer1) { create(:offer, title: "Esto es un prueba de sebas") }
@@ -9,6 +14,8 @@ RSpec.describe "User searches for an offer", type: :feature do
     context "When several offers are found" do
       it "Should return offers related", js: true do
         visit root_path
+
+        skip_under_construction
 
         expect(page).to have_content("El empleo ideal para tu tiempo libre")
 
@@ -32,6 +39,8 @@ RSpec.describe "User searches for an offer", type: :feature do
       it "Should return the related offer", js: true do
         visit root_path
 
+        skip_under_construction
+
         expect(page).to have_content("El empleo ideal para tu tiempo libre")
 
         expect(page).to have_tag(:form, with: { class: "row justify-content-around" }) do
@@ -53,6 +62,8 @@ RSpec.describe "User searches for an offer", type: :feature do
     context "When no concidence is found" do
       it "Should be redirected to the offers page without any results", js: true do
         visit root_path
+
+        skip_under_construction
 
         expect(page).to have_content("El empleo ideal para tu tiempo libre")
 

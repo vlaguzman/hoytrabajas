@@ -44,7 +44,8 @@ const Offers = props => {
     hasAllOffers = false,
     initialRows = 1,
     rowIncrement = 1,
-    maxOffers = 12
+    maxOffers = 12,
+    loadMoreOffers = true
   } = props
 
   const windowSize = useWindowSize()
@@ -105,6 +106,7 @@ const Offers = props => {
   return (
     <>
       <OfferCardsWrapper>{offerCards}</OfferCardsWrapper>
+      {loadMoreOffers && offers.length >= 1 && offers.length > offersToDisplay && (
         <Row className="justify-content-center align-items-center  my-30 ">
           <StyledButton
             color="primary"
@@ -116,9 +118,10 @@ const Offers = props => {
             {(!hasAllOffers && offersToDisplay >= offersLimit) ||
             (!hasAllOffers && offersToDisplay >= offers.length)
               ? 'Ver el listado de ofertas »'
-              : `${offer_translations.index.btn_more_offers} »`}
+              : `${offer_translations.index.btn_more_offers}`}
           </StyledButton>
         </Row>
+      )}
     </>
   )
 }
@@ -136,5 +139,6 @@ Offers.propTypes = {
   hasAllOffers: PropTypes.bool,
   initialRows: PropTypes.number,
   maxOffers: PropTypes.number,
-  rowIncrement: PropTypes.number
+  rowIncrement: PropTypes.number,
+  loadMoreOffers: PropTypes.bool
 }

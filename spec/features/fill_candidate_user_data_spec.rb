@@ -23,6 +23,11 @@ RSpec.describe "fill the principal candidate user data", :type => :feature do
     create(:educational_degree, description: "Profesional")
   }
 
+  def skip_under_construction
+    find("button[id='home-welcome-modal']", visible: false).click
+    execute_script "window.scrollTo(0, (window.innerHeight * 2))"
+  end
+
   context "like a candidate user in his first login" do
     let!(:candidate) { create(:user, :first_time_candidate, email: "nuevousuario@gmail.com", password: "hola12345" ) }
 
@@ -30,7 +35,9 @@ RSpec.describe "fill the principal candidate user data", :type => :feature do
 
       visit root_path
 
-      expect(page).to have_text("SIGN IN CANDIDATO") 
+      skip_under_construction
+
+      expect(page).to have_text("SIGN IN CANDIDATO")
 
       click_on("SIGN IN CANDIDATO")
 

@@ -11,20 +11,9 @@ import Divider from '@material-ui/core/Divider'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Avatar from '@material-ui/core/Avatar'
 import classNames from 'classnames'
-import OfferCard from '../../components/Offers/OfferCard'
-import Carousel from '../../components/Carousel/CarouselRow'
+import Offers from '../../components/Offers'
 
 import AppLayout from '../../components/Layout/AppLayout'
-
-const relatedOffersCards = (relatedOffers, offer_translations) => {
-  return relatedOffers.map(relatedOffer => (
-    <OfferCard
-      key={relatedOffer['title']}
-      offer={relatedOffer}
-      offer_translations={offer_translations}
-    />
-  ))
-}
 
 const DetallePage = ({
   offer,
@@ -342,6 +331,7 @@ const DetallePage = ({
                 <img
                   className="img-fluid my-20"
                   src="https://www.kulud-pharmacy.com/wp-content/uploads/2018/01/687474703a2f2f692e696d6775722e636f6d2f4f32454f4378662e706e67.png"
+                  alt="address"
                 />
                 <Row className="justify-content-between">
                   <Col xs={9}>
@@ -469,6 +459,7 @@ const DetallePage = ({
               <img
                 className="img-fluid"
                 src="https://placeimg.com/480/640/tech"
+                alt="tech"
               />
             </div>
           </Col>
@@ -481,9 +472,11 @@ const DetallePage = ({
         </Row>
 
         <Row className="pr-20 pl-50">
-          <Carousel slidesToShow={3.7} autoplay={false}>
-            {relatedOffersCards(relatedOffers, offer_translations)}
-          </Carousel>
+          <Offers
+            offers={relatedOffers}
+            offer_translations={offer_translations}
+            loadMoreOffers={false}
+          />
         </Row>
       </AppLayout>
     </div>

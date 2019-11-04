@@ -2,6 +2,11 @@
 
 require 'rails_helper'
 
+def skip_under_construction
+  find("button[id='home-welcome-modal']", visible: false).click
+  execute_script "window.scrollTo(0, (window.innerHeight * 2))"
+end
+
 RSpec.describe "Overall navigation" do
   context "an anonimous user visits the public pages" do
     before { create(:offer) }
@@ -11,6 +16,8 @@ RSpec.describe "Overall navigation" do
 
         visit root_path
 
+        skip_under_construction
+
         expect(page).to have_content("INICIO")
         click_on("INICIO")
 
@@ -19,6 +26,8 @@ RSpec.describe "Overall navigation" do
 
       it "should visit ‘FAQ’ page from home page", js: true do
         visit root_path
+
+        skip_under_construction
 
         expect(page).to have_link("FAQs", href: faqs_path)
 
@@ -34,6 +43,8 @@ RSpec.describe "Overall navigation" do
       it "should visit Candidato page from home page", js: true do
         visit root_path
 
+        skip_under_construction
+
         expect(page).to have_link("SIGN UP CANDIDATO", href: "/users/sign_up")
 
         click_on("SIGN UP CANDIDATO")
@@ -46,6 +57,8 @@ RSpec.describe "Overall navigation" do
 
       it "should visit 'Empleador' page from home page", js: true do
         visit root_path
+
+        skip_under_construction
 
         expect(page).to have_link("SIGN UP EMPRESA", href: "/companies/sign_up")
 
@@ -77,19 +90,20 @@ RSpec.describe "Overall navigation" do
 
         visit root_path
 
-        has_button?("VER MÁS OFERTAS »")
-        click_on("Ver más ofertas »")
+        skip_under_construction
 
-        has_button?("VER MÁS OFERTAS »")
-        click_on("Ver más ofertas »")
+        has_button?('VER MÁS OFERTAS')
+        find('span', text:/Ver más ofertas/, visible: false).click
 
-        expect(page).to have_text("Titulo De Oferta48")
+        has_button?('VER MÁS OFERTAS')
+        find('span', text:/Ver más ofertas/, visible: false).click
+
+        expect(page).to have_text(/Titulo De Oferta48/)
         
-        has_button?("VER EL LISTADO DE OFERTAS »")
-        click_on("Ver el listado de ofertas »")
+        has_button?('VER EL LISTADO DE OFERTAS')
+        find('span', text:/Ver el listado de ofertas/, visible: false).click
 
         expect(current_path).to eq(offers_path)
-        expect(page).to have_text("VER MÁS OFERTAS")
         expect(page).to have_text("Titulo De Oferta48")
 
         click_on("INICIO")
@@ -99,6 +113,8 @@ RSpec.describe "Overall navigation" do
 
       it "should visit 'categorias de empĺeo' page from home page", js: true do
         visit root_path
+
+        skip_under_construction
 
         expect(page).to have_link("Categorias de empleo", href: job_categories_path)
 
@@ -113,6 +129,8 @@ RSpec.describe "Overall navigation" do
 
       it "should visit 'empresas' page from home page", js: true do
         visit root_path
+
+        skip_under_construction
 
         expect(page).to have_link("Empresas", href: companies_path)
 

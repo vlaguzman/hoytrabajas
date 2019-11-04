@@ -115,6 +115,9 @@ GEM
       sshkit (>= 1.9.0)
     capistrano-bundler (1.6.0)
       capistrano (~> 3.1)
+    capistrano-env-config (0.3.0)
+      capistrano (~> 3.0)
+      dotenv (~> 2.0)
     capistrano-rails (1.4.0)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
@@ -151,6 +154,7 @@ GEM
     docile (1.3.2)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.7.5)
     ed25519 (1.2.4)
     equalizer (0.0.11)
     erubi (1.9.0)
@@ -535,6 +539,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   brakeman
   bullet
+  capistrano-env-config
   capistrano-rails
   capistrano-rvm!
   capybara (~> 3.18.0)

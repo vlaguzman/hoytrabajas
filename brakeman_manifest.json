@@ -3,9 +3,9 @@
     "app_path": "/ht",
     "rails_version": "6.0.0",
     "security_warnings": 0,
-    "start_time": "2019-11-04 15:03:02 +0000",
-    "end_time": "2019-11-04 15:03:04 +0000",
-    "duration": 1.848219204,
+    "start_time": "2019-11-04 19:30:33 +0000",
+    "end_time": "2019-11-04 19:30:34 +0000",
+    "duration": 0.843019723,
     "checks_performed": [
       "BasicAuth",
       "BasicAuthTimingAttack",
@@ -76,15 +76,7 @@
     ],
     "number_of_controllers": 34,
     "number_of_models": 78,
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "number_of_templates": 43,
-=======
-    "number_of_templates": 42,
->>>>>>> more changes
-=======
-    "number_of_templates": 43,
->>>>>>> test adding for mails
+    "number_of_templates": 45,
     "ruby_version": "2.6.3",
     "brakeman_version": "4.7.0"
   },

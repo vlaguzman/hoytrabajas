@@ -14,7 +14,7 @@ A         * AppliedOffer                                        3       0.0     
 A         * AppliedOfferStatus                                  1       0.0        0           1
 A         * AppliedOffers                                       3       0.0        0           0
 A         * AppliedOffersController                             5       22.43      0           1
-A         * ApplyToOffersMailer                                 4       4.71       0           2
+A         * ApplyToOffersMailer                                 5       4.71       0           2
 A         * AvailableWorkDay                                    3       0.0        0           1
 A         * AvailableWorkDaysCurriculumVitaes                   1       0.0        0           1
 A         * AvailableWorkDaysOffers                             1       0.0        0           1
@@ -116,9 +116,7 @@ A         * Users::RegistrationsController                      9       2.0     
 A         * Users::SessionsController                           3       0.0        0           1
 A         * Users::WizardService                                2       17.38      0           2
 A         * Users::Wizards::StepEightService                    1       18.84      0           1
-A         * Users::Wizards::StepEightsController                7       30.13      0           1
 A         * Users::Wizards::StepEightsController                7       29.16      0           1
-A         * Users::Wizards::StepEleven::FormParamsService       1       23.37      0           6
 A         * Users::Wizards::StepElevenPresenter                 1       10.6       0           1
 A         * Users::Wizards::StepElevensController               2       3.24       0           1
 A         * Users::Wizards::StepFive::FormParamsService         1       17.7       0           6
@@ -176,13 +174,11 @@ B         * Users::Wizards::StepNinePresenter                   4       30.59   
 B         * Users::Wizards::StepSixPresenter                    3       16.0       24          2
 B         * Users::Wizards::StepTenPresenter                    2       27.59      18          2
 C         * BaseFormWizardsService                              19      137.88     0           18
-C         * Companies                                           4       15.36      30          2
+C         * Companies                                           5       16.61      32          2
 C         * Companies::FirstOffer::StepEight::FormParamsService 2       23.37      62          8
 C         * Companies::FirstOffer::StepFoursController          13      26.81      27          2
-C         * Users                                               6       15.36      30          2
+C         * Users                                               7       16.61      32          2
 C         * Users::Wizards::StepEleven::FormParamsService       1       23.37      62          8
-C         * Companies                                           4       16.61      32          2
-C         * Users                                               6       16.61      32          2
 D         * Users::Wizards::StepEight::FormParamsService        2       25.76      29          7
 D         * Users::Wizards::StepNine::FormParamsService         2       21.76      29          3
 D         * Users::Wizards::StepTen::FormParamsService          1       21.76      29          3

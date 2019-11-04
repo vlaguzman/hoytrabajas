@@ -125,7 +125,7 @@ class BaseFormWizardsService
     if source.present?
       begin
         source.send(key)
-      rescue
+      rescue NoMethodError => e
         self.send("#{key}_current_value")
       end
     else

@@ -2,7 +2,7 @@ class Companies::FirstOffer::StepFoursController < ApplicationController
   before_action :authenticate_company!
 
   def show
-    offer = Offer.find(params[:offer_id])
+    offer = Offer.find(show_params[:offer_id])
     offer_presenter(offer)
   end
 
@@ -22,6 +22,13 @@ class Companies::FirstOffer::StepFoursController < ApplicationController
   end
 
   private
+
+  def show_params
+    params
+      .permit(
+        :offer_id
+    ).to_h
+  end
 
   def step_four_params
     params

@@ -16,7 +16,7 @@ RSpec.describe ApplyToOffersMailer, type: :mailer do
 
     it "render the body" do
 
-      expect(email.body.encoded).to match(/Hola mundo/)
+      expect(email.body.encoded).to match(/Confirmo/)
 
     end
 

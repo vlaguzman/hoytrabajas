@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe "Admin can edit an Company", type: :feature do
   include Devise::Test::IntegrationHelpers
 
-  context "a admin user must be able to edit a created company" do
+  context "an admin user must be able to edit a created company" do
     
     let!(:company) { create(:company, name: 'rocknroll', email: 'rocknroll@company.com') }
 
-    scenario "the admin select an company and edit all the data" do
+    scenario "the admin select a company and edit all the data" do
       
       sign_in FactoryBot.create(:admin_user)
       visit admin_dashboard_path 
@@ -29,10 +29,12 @@ RSpec.describe "Admin can edit an Company", type: :feature do
         click_on("Guardar Company")
       end
 
+      company.reload
+
       expect(page).to have_content("Detalles de Company")
       expect(page).to have_content("rootnpool@company.com")
 
-      expect(Company.last.email).to eq("rootnpool@company.com")
+      expect(company.email).to eq("rootnpool@company.com")
     end
 
     scenario "the admin select an user and edit just the email" do
@@ -51,10 +53,12 @@ RSpec.describe "Admin can edit an Company", type: :feature do
         click_on("Guardar Company")
       end
 
+      company.reload
+
       expect(page).to have_content("Detalles de Company")
       expect(page).to have_content("justanotheremail@company.com")
 
-      expect(Company.last.email).to eq("justanotheremail@company.com")
+      expect(company.email).to eq("justanotheremail@company.com")
       Company.destroy_all
     end
   end

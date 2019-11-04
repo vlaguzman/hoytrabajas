@@ -2,7 +2,7 @@ class Company < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise  :database_authenticatable, :registerable,
-          :recoverable, :rememberable, :validatable,
+          :recoverable, :rememberable, :validatable, :confirmable,
           :lockable, :timeoutable, :trackable
 
   validates_presence_of :email
@@ -15,5 +15,9 @@ class Company < ApplicationRecord
   has_one_attached :logo
 
   delegate :description, to: :employees_range, prefix: :employees_range
+
+  def active_for_authentication?
+    skip_confirmation!
+  end
 
 end

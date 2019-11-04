@@ -9,6 +9,7 @@ ActiveAdmin.register User do
         end
       end
 
+      object.skip_reconfirmation!
       object.send :update, *attributes
     end
   end

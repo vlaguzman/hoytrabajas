@@ -2,6 +2,10 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
+if RUBY_VERSION =~ /2.6.3/
+  Encoding.default_external = Encoding::UTF_8
+  Encoding.default_internal = Encoding::UTF_8
+end
 
 gem 'rails', '~> 6.0.0'
 gem 'pg', '>= 0.18', '< 2.0'
@@ -11,6 +15,7 @@ gem 'webpacker'
 gem 'react-rails'
 gem 'jbuilder', '~> 2.7'
 gem 'devise'
+gem 'mailgun-ruby', '~>1.1.6'
 gem 'activeadmin'
 gem 'omniauth-facebook'
 gem 'omniauth-google'
@@ -28,6 +33,7 @@ gem 'ransack'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
+  gem 'letter_opener_web', '~> 1.0'
   gem 'ed25519', '~> 1.2'
   gem 'bcrypt_pbkdf', '~> 1'
   gem 'rspec-rails', '~> 4.0.0.beta2'
@@ -49,7 +55,7 @@ group :development do
   gem "guard-rspec", require: false
   gem 'simplecov', :require => false
   gem 'simplecov-csv', :require => false
-  gem 'rubycritic'
+  gem "rubycritic", require: false
   gem 'brakeman', require: false
   gem 'bullet'
   gem 'curb'

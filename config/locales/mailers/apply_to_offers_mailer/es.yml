@@ -1,0 +1,3 @@
+es:
+  apply_to_offers_mailer:
+    subject: '!Aplicación a oferta¡'

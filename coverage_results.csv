@@ -2,7 +2,8 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/channels/application_cable/channel.rb",0,4,4,0,4
 "./app/channels/application_cable/connection.rb",0,4,4,0,4
 "./app/jobs/application_job.rb",0,7,2,0,2
-"./app/mailers/application_mailer.rb",0,4,4,0,4
+"./app/mailers/application_mailer.rb",100,4,3,3,0
+"./app/mailers/apply_to_offers_mailer.rb",100,8,4,4,0
 "./app/models/acknowledgment.rb",100,7,3,3,0
 "./app/models/admin_user.rb",100,6,3,3,0
 "./app/models/age_range.rb",100,5,3,3,0
@@ -14,7 +15,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/available_work_days_offers.rb",100,4,3,3,0
 "./app/models/city.rb",100,3,2,2,0
 "./app/models/companies_users.rb",100,4,3,3,0
-"./app/models/company.rb",100,19,8,8,0
+"./app/models/company.rb",100,23,10,10,0
 "./app/models/contract_type.rb",100,3,2,2,0
 "./app/models/currency.rb",100,3,2,2,0
 "./app/models/curriculum_vitae.rb",100,27,19,19,0
@@ -71,7 +72,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/technical_skill.rb",100,8,6,6,0
 "./app/models/technical_skill_category.rb",100,3,2,2,0
 "./app/models/term.rb",100,5,3,3,0
-"./app/models/user.rb",78,46,27,21,6
+"./app/models/user.rb",79,51,29,23,6
 "./app/models/users_limitations.rb",100,8,4,4,0
 "./app/models/users_nationalities.rb",100,6,3,3,0
 "./app/models/vehicle.rb",100,6,4,4,0

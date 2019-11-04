@@ -10,20 +10,21 @@ import {
 
 const FormFields = props => {
   const { formFields } = props
+
   const {
     title = null,
     job_category_id = null,
-    offer_work_position_id = null,
+    offers_work_positions = null,
     offer_type_id = null,
     work_mode_id = null
   } = formFields
 
   const [formValues, setFormValues] = useState({
-    [title.name]: '',
-    [job_category_id.name]: '',
-    [offer_work_position_id.name]: '',
-    [offer_type_id.name]: '',
-    [work_mode_id.name]: ''
+    [title.name]: title.current_value || '',
+    [job_category_id.name]: job_category_id.current_value || '',
+    [offers_work_positions.name]: offers_work_positions.current_value || '',
+    [offer_type_id.name]: offer_type_id.current_value || '',
+    [work_mode_id.name]: work_mode_id.current_value || ''
   })
 
   const inputClassname = 'my-30 animated fadeIn inputField'
@@ -62,29 +63,6 @@ const FormFields = props => {
     [formValues[job_category_id.name]]
   )
 
-  const offerWorkPositionField = useMemo(
-    () => (
-      <Col
-        key={offer_work_position_id.name}
-        className={inputClassname}
-        xs={12}
-        lg={6}
-      >
-        <SelectChip
-          inputValue={formValues[offer_work_position_id.name]}
-          inputName={offer_work_position_id.name}
-          handleChange={handleChange(formValues, setFormValues)}
-          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
-          name={offer_work_position_id.name}
-          label={offer_work_position_id.label}
-          selectOptions={offer_work_position_id.values}
-          isMultiple={false}
-        />
-      </Col>
-    ),
-    [formValues[offer_work_position_id.name]]
-  )
-
   const offerTypeField = useMemo(
     () => (
       <Col key={offer_type_id.name} className={inputClassname} xs={12} lg={6}>
@@ -121,13 +99,36 @@ const FormFields = props => {
     [formValues[work_mode_id.name]]
   )
 
+  const offersWorkPositionsField = useMemo(
+    () => (
+      <Col
+        key={offers_work_positions.name}
+        className={inputClassname}
+        xs={12}
+        lg={6}
+      >
+        <SelectChip
+          inputValue={formValues[offers_work_positions.name]}
+          inputName={offers_work_positions.name}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
+          name={offers_work_positions.name}
+          label={offers_work_positions.label}
+          selectOptions={offers_work_positions.values}
+          isMultiple={false}
+        />
+      </Col>
+    ),
+    [formValues[offers_work_positions.name]]
+  )
+
   return (
     <Row className="HT__FormGenerator">
       {titleField}
       {jobCategoryField}
       {offerTypeField}
       {workModeField}
-      {offerWorkPositionField}
+      {offersWorkPositionsField}
     </Row>
   )
 }
@@ -140,6 +141,6 @@ FormFields.propTypes = {
     job_category_id: PropTypes.object,
     offer_type_id: PropTypes.object,
     work_mode_id: PropTypes.object,
-    offer_work_position_id: PropTypes.object
+    offers_work_positions: PropTypes.object
   }).isRequired
 }

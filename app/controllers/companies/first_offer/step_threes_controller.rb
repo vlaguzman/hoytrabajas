@@ -1,19 +1,19 @@
 class Companies::FirstOffer::StepThreesController < ApplicationController
   before_action :authenticate_company!
 
-  def new
-    offer = Offer.new
+  def show
+    offer = params[:offer_id].present? ? Offer.find(params[:offer_id]) : Offer.new
     offer_presenter(offer)
   end
 
-  def create
-    offer = Companies::FirstOffer::StepThreeService.(company: current_company, create_params: step_three_params)
+  def update
+    offer = Companies::FirstOffer::StepThreeService.(company: current_company, params: step_three_params)
 
     if offer[:status].eql?(:ok)
-      redirect_to edit_companies_first_offer_step_four_path(offer[:data].id)
+      redirect_to companies_first_offer_step_four_path(offer_id: offer[:data].id)
     else
       offer_presenter(offer[:data])
-      render 'new'
+      render 'show'
     end
   end
 
@@ -27,9 +27,10 @@ class Companies::FirstOffer::StepThreesController < ApplicationController
     params
       .require(:offer)
       .permit(
+        :id,
         :title,
         :job_category_id,
-        :offer_work_position_id,
+        :offers_work_positions,
         :offer_type_id,
         :work_mode_id
     ).to_h

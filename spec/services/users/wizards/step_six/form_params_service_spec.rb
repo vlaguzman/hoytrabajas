@@ -41,27 +41,32 @@ RSpec.describe Users::Wizards::StepSix::FormParamsService do
             soft_skill_ids: {
               name: 'user[curriculum_vitae][soft_skill_ids][]',
               label: 'Define tres habilidades blandas que destacarías de tu perfil*',
-              values: create_soft_skills_list
+              values: create_soft_skills_list,
+              current_value: ''
             },
             job_category_id: {
               name: 'user[curriculum_vitae][job_category_id]',
               label: nil,
-              values: create_job_category_list
+              values: create_job_category_list,
+              current_value: ''
             },
             technical_skill_id: {
               name: 'user[curriculum_vitae][technical_skill_id]',
               label: 'Define técnicas de acuerdo a tu perfil*',
-              values: create_technical_skills_list
+              values: create_technical_skills_list,
+              current_value: ''
             },
             level_id: {
               name: 'user[curriculum_vitae][level_id]',
               label: nil,
-              values: create_leves_list
+              values: create_leves_list,
+              current_value: ''
             },
             language_id: {
               name: 'user[curriculum_vitae][language_id]',
               label: '¿Qué idiomas deseas resaltar en tu perfil?',
-              values: create_languages_list
+              values: create_languages_list,
+              current_value: ''
             }
           },
           placeholders:{

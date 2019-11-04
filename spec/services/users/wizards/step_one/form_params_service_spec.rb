@@ -33,28 +33,34 @@ RSpec.describe Users::Wizards::StepOne::FormParamsService do
             name:{
               name: "candidate[name]",
               label: "Nombre*",
+              current_value: ''
             },
             last_name:{
               name: "candidate[last_name]",
               label: "Apellido*",
+              current_value: ''
             },
             nationality_ids:{
               name:"candidate[nationality_ids][]",
               label: "Nacionalidad*",
-              values: create_nationalities_list
+              values: create_nationalities_list,
+              current_value: ''
             },
             document_type_id:{
               name:"candidate[document_type_id]",
               label: "Tipo de documento de identidad*",
-              values: create_document_type_list
+              values: create_document_type_list,
+              current_value: ''
             },
             identification_number:{
               name:"candidate[identification_number]",
               label: "Número de documento*",
+              current_value: ''
             },
             contact_number:{
               name:"candidate[contact_number]",
-              label: "Número de contacto*"
+              label: "Número de contacto*",
+              current_value: ''
             }
           },
           placeholders:{}

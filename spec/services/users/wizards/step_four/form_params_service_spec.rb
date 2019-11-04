@@ -37,26 +37,31 @@ RSpec.describe Users::Wizards::StepFour::FormParamsService do
             city_id: {
               name: 'user[city_id]',
               label: 'Ciudad',
-              values: create_cities_list
+              values: create_cities_list,
+              current_value: ''
             },
             state_id: {
               name: 'user[state_id]',
               label: 'Departamento',
-              values: create_states_list
+              values: create_states_list,
+              current_value: ''
             },
             driving_licence_ids: {
               name: 'user[driving_licence_ids][]',
               label: 'Licencia de conducción requerida',
-              values: create_driving_licences_list
+              values: create_driving_licences_list,
+              current_value: ''
             },
             vehicle_ids: {
               name: 'user[vehicle_ids][]',
               label: 'Cuentas con algún tipo de vehículo',
-              values: create_vehicles_list
+              values: create_vehicles_list,
+              current_value: ''
             },
             travel_disponibility: {
               name: 'user[curriculum_vitae][travel_disponibility]',
-              label: 'Disponibilidad para trabajar en otra ciudades'
+              label: 'Disponibilidad para trabajar en otra ciudades',
+              current_value: ''
             }
           },
           placeholders: {}

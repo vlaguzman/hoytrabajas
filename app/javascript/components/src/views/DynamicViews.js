@@ -32,14 +32,15 @@ export const DynamicCompaniesStepTwo = Loadable({
 })
 
 export const DynamicCompaniesStepThree = Loadable({
-  loader: () => import('./companies/first_offer/step_threes/new'),
+  loader: () => import('./companies/first_offer/step_threes/show'),
   loading: Loading
 })
 
 export const DynamicCompaniesStepFour = Loadable({
-  loader: () => import('./companies/first_offer/step_fours/edit'),
+  loader: () => import('./companies/first_offer/step_fours/show'),
   loading: Loading
 })
+
 export const DynamicCompaniesStepFive = Loadable({
   loader: () => import('./companies/first_offer/step_five'),
   loading: Loading

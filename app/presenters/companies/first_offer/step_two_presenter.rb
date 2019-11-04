@@ -2,6 +2,7 @@ class Companies::FirstOffer::StepTwoPresenter < ApplicationPresenter
 
   def form_information
     Companies::FirstOffer::StepTwo::FormParamsService.new(
+      source: source,
       errors: source.errors,
       action_path: companies_first_offer_step_two_path,
       next_path: new_companies_first_offer_step_three_path,
@@ -23,6 +24,6 @@ class Companies::FirstOffer::StepTwoPresenter < ApplicationPresenter
   end
 
   def new_companies_first_offer_step_three_path
-    rails_routes.new_companies_first_offer_step_three_path
+    rails_routes.companies_first_offer_step_three_path
   end
 end

@@ -76,7 +76,8 @@ RSpec.describe OffersPresenter do
 
       expect(response).to be_an_instance_of(Hash)
 
-      expected_keys = [ 
+      expected_keys = [
+        :first_offer,
         :index,
         :see_offer,
         :affinity,

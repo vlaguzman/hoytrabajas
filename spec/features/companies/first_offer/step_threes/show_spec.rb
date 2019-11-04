@@ -16,8 +16,9 @@ RSpec.describe "When company fill the step three form", :type => :feature do
     expect(page).to have_tag(:form, with: { class: "forms__candidate" }) do
       with_tag(:textarea, with: { name: 'offer[title]'})
 
+      with_tag(:input, with: { name: 'offer[id]', type: "hidden" })
       with_tag(:input, with: { name: 'offer[job_category_id]', type: "hidden" })
-      with_tag(:input, with: { name: 'offer[offer_work_position_id]', type: "hidden" })
+      with_tag(:input, with: { name: 'offer[offers_work_positions]', type: "hidden" })
       with_tag(:input, with: { name: 'offer[offer_type_id]', type: "hidden" })
       with_tag(:input, with: { name: 'offer[work_mode_id]', type: "hidden" })
     end
@@ -40,8 +41,8 @@ RSpec.describe "When company fill the step three form", :type => :feature do
     find(id: 'select-offer[work_mode_id]', visible: false).click
     find('li', text: data[:work_mode_id].gsub(' ', '')).click
 
-    find(id: 'select-offer[offer_work_position_id]', visible: false).click
-    find('li', text: data[:offer_work_position_id]).click
+    find(id: 'select-offer[offers_work_positions]', visible: false).click
+    find('li', text: data[:offers_work_positions]).click
   end
 
   describe "Fill the first offer data" do
@@ -49,7 +50,7 @@ RSpec.describe "When company fill the step three form", :type => :feature do
       scenario "should save succesfully data", js: true do
         sign_in company
 
-        visit new_companies_first_offer_step_three_path
+        visit companies_first_offer_step_three_path
 
         expected_page_structure
         fill_form(
@@ -58,7 +59,7 @@ RSpec.describe "When company fill the step three form", :type => :feature do
             job_category_id: job_category.description,
             offer_type_id: offer_type.description,
             work_mode_id: work_mode.description,
-            offer_work_position_id: work_position.description
+            offers_work_positions: work_position.description
           }
         )
         click_link_or_button('Siguiente')
@@ -69,13 +70,13 @@ RSpec.describe "When company fill the step three form", :type => :feature do
         expect(offer.work_mode_id).not_to be_nil
         expect(offer.offer_type_id).not_to be_nil
 
-        expect(current_path).to eq(edit_companies_first_offer_step_four_path(offer.id))
+        expect(current_path).to eq(companies_first_offer_step_four_path)
       end
     end
     context "Data is not correct" do
       scenario "should not save succesfully data", js: true do
         sign_in company
-        visit new_companies_first_offer_step_three_path
+        visit companies_first_offer_step_three_path
 
         expected_page_structure
         fill_form(
@@ -84,7 +85,7 @@ RSpec.describe "When company fill the step three form", :type => :feature do
             job_category_id: job_category.description,
             offer_type_id: offer_type.description,
             work_mode_id: work_mode.description,
-            offer_work_position_id: work_position.description
+            offers_work_positions: work_position.description
           }
         )
         click_link_or_button('Siguiente')

@@ -2,7 +2,8 @@ require "rails_helper"
 
 RSpec.describe Companies::FirstOffer::StepFourPresenter do
   let(:company) { create(:company) }
-  let(:subject) { described_class.new(company) }
+  let(:offer)   { create(:offer) }
+  let(:subject) { described_class.new(offer) }
 
   describe "#form_information" do
     it "should return a object used by the react component to build it" do

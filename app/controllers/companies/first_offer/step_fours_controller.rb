@@ -1,8 +1,8 @@
 class Companies::FirstOffer::StepFoursController < ApplicationController
   before_action :authenticate_company!
 
-  def edit
-    offer = Offer.find(params["format"])
+  def show
+    offer = Offer.find(show_params[:offer_id])
     offer_presenter(offer)
   end
 
@@ -10,10 +10,10 @@ class Companies::FirstOffer::StepFoursController < ApplicationController
     offer = Companies::FirstOffer::StepFourService.(company: current_company, update_params: step_four_params)
 
     if offer[:status].eql?(:ok)
-      redirect_to edit_companies_first_offer_step_five_path(offer[:data].id)
+      redirect_to companies_first_offer_step_eight_path
     else
       offer_presenter(offer[:data])
-      render 'new'
+      render 'show'
     end
   end
 
@@ -22,6 +22,13 @@ class Companies::FirstOffer::StepFoursController < ApplicationController
   end
 
   private
+
+  def show_params
+    params
+      .permit(
+        :offer_id
+    ).to_h
+  end
 
   def step_four_params
     params

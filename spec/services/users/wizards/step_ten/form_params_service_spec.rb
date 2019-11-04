@@ -26,19 +26,23 @@ RSpec.describe Users::Wizards::StepTen::FormParamsService do
           formFields: {
             title: {
               name: 'user[curriculum_vitae][acknowledgment][title]',
-              label: 'Título reconocimiento'
+              label: 'Título reconocimiento',
+              current_value: ''
             },
             start_date: {
               name: 'user[curriculum_vitae][acknowledgment][start_date]',
-              label: 'Fecha de inicio'
+              label: 'Fecha de inicio',
+              current_value: ''
             },
             entity_name: {
               name: 'user[curriculum_vitae][acknowledgment][entity_name]',
-              label: 'Institución o entidad'
+              label: 'Institución o entidad',
+              current_value: ''
             },
             diploma: {
               name: 'user[curriculum_vitae][acknowledgment][diploma]',
-              label: 'Carga aquí tu diploma'
+              label: 'Carga aquí tu diploma',
+              current_value: ''
             }
           },
           placeholders:{}

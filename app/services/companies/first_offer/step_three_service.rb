@@ -1,10 +1,22 @@
 module Companies::FirstOffer::StepThreeService
 
-  def self.call(company: _, create_params: {})
-    work_position_id = create_params.delete(:offer_work_position_id)
-    create_params.merge!({company_id: company.id})
+  def self.call(company: _, params: {})
+    work_position_id = params.delete(:offers_work_positions)
+    params.merge!({company_id: company.id})
 
-    offer = Offer.new(create_params)
+    params[:id].present? ? update_offer(params, work_position_id) : create_offer(params, work_position_id)
+  end
+
+  def self.update_offer(params, work_position_id)
+    offer = Offer.find(params[:id])
+    offer.update(params)
+
+    persist_offer(offer, work_position_id)
+  end
+
+  def self.create_offer(params, work_position_id)
+    offer = Offer.new(params)
+
     persist_offer(offer, work_position_id)
   end
 

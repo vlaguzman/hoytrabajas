@@ -47,7 +47,7 @@ RSpec.describe "User can Log In", type: :feature do
         find("span", text: "Iniciar sesión", visible: false).click
       end
 
-      expect(current_path).to eq(user_path("#{User.last.id}"))
+      expect(current_path).to eq(users_dashboard_path("#{User.last.id}"))
     end
     
     scenario "the user want to come back to home page", js: true do

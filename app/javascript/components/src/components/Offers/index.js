@@ -44,7 +44,7 @@ const Offers = props => {
     offer_translations,
     csrf_param,
     csrf_token,
-    applied_offers_path,
+    path_applied_offers,
     hasAllOffers = false,
     initialRows = 1,
     rowIncrement = 1,
@@ -94,11 +94,12 @@ const Offers = props => {
         offers.map((o, index) =>
           (!hasAllOffers && index < offersLimit && index < offersToDisplay) ||
           index < offersToDisplay ? (
+
             <StyledOfferCard
               key={o['title']}
               offer={o}
               offer_translations={offer_translations}
-              applied_offers_path={applied_offers_path}
+              path_applied_offers={path_applied_offers}
               csrf_param={csrf_param}
               csrf_token={csrf_token}
             />

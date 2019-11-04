@@ -15,7 +15,7 @@ const HomePage = ({
   offers,
   csrf_param,
   csrf_token,
-  applied_offers_path,
+  path_applied_offers,
   user_signed_in,
   offer_translations,
   filterForm
@@ -33,7 +33,7 @@ const HomePage = ({
     <div className="home-wrapper">
       <WelcomeModal isOpen={isModalOpen} toggleOpenState={setIsModalOpen} />
       <CoverSection {...cover} {...{ categorias }} {...{ filterForm }} />
-      <OffersSection csrf_param={csrf_param} csrf_token={csrf_token} offers={offers} applied_offers_path={applied_offers_path} offer_translations={offer_translations} />
+      <OffersSection csrf_param={csrf_param} csrf_token={csrf_token} offers={offers} path_applied_offers={path_applied_offers} offer_translations={offer_translations} />
       <Introduccion />
       <div
         className="w-100 position-absolute d-none d-lg-block clipping-shit"

@@ -16,9 +16,6 @@ class Home::HomePresenter < ApplicationPresenter
           label: 'Tiempo',
           name: 'time',
           aux: [
-            { label: 'text', value: 'test' },
-            { label: 'text', value: 'test' },
-            { label: 'text', value: 'test' }
           ]
         },
         {
@@ -26,9 +23,6 @@ class Home::HomePresenter < ApplicationPresenter
           label: 'Rango Salarial',
           name: 'pay',
           aux: [
-            { label: 'text', value: 'test' },
-            { label: 'text', value: 'test' },
-            { label: 'text', value: 'test' }
           ]
         }
       ],

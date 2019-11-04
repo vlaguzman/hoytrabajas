@@ -14,7 +14,7 @@ const OffersSection = props => {
   const { 
     csrf_param,
     csrf_token,
-    applied_offers_path,
+    path_applied_offers,
     offers, 
     offer_translations } = props
 
@@ -31,7 +31,7 @@ const OffersSection = props => {
         offer_translations={offer_translations}
         csrf_param={csrf_param}
         csrf_token={csrf_token}
-        applied_offers_path={applied_offers_path}
+        path_applied_offers={path_applied_offers}
         initialRows={1}
         maxOffers={12}
       />

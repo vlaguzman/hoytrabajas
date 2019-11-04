@@ -98,8 +98,8 @@ const Offers = props => {
               key={o['title']}
               offer={o}
               offer_translations={offer_translations}
-              applied_offers_path={applied_offers_path},
-              csrf_param={csrf_param},
+              applied_offers_path={applied_offers_path}
+              csrf_param={csrf_param}
               csrf_token={csrf_token}
             />
           ) : null

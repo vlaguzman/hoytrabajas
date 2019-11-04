@@ -161,7 +161,6 @@ A         * WorkPosition                                        2       0.0     
 A         * WorkingDay                                          5       0.0        0           1
 B         * Companies::FirstOffer::StepFour::FormParamsService  10      53.96      0           4
 B         * Companies::FirstOffer::StepFourPresenter            6       25.2       24          2
-B         * Companies::FirstOffer::StepFoursController          12      23.21      27          2
 B         * Companies::FirstOffer::StepOneService               5       2.45       23          2
 B         * Companies::FirstOffer::StepOnesController           9       20.32      27          2
 B         * Companies::FirstOffer::StepTwoService               5       2.45       23          2
@@ -173,9 +172,10 @@ B         * Users::Wizards::StepFourPresenter                   4       16.0    
 B         * Users::Wizards::StepNinePresenter                   4       30.59      40          3
 B         * Users::Wizards::StepSixPresenter                    3       16.0       24          2
 B         * Users::Wizards::StepTenPresenter                    2       27.59      18          2
-C         * BaseFormWizardsService                              18      137.82     0           17
+C         * BaseFormWizardsService                              19      137.88     0           18
 C         * Companies                                           4       15.36      30          2
 C         * Companies::FirstOffer::StepEight::FormParamsService 2       23.37      62          8
+C         * Companies::FirstOffer::StepFoursController          13      26.81      27          2
 C         * Users                                               6       15.36      30          2
 C         * Users::Wizards::StepEleven::FormParamsService       1       23.37      62          8
 D         * Users::Wizards::StepEight::FormParamsService        2       25.76      29          7

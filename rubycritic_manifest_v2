@@ -7,14 +7,14 @@ A         * ApplicationCable::Channel                           1       0.0     
 A         * ApplicationCable::Connection                        1       0.0        0           1
 A         * ApplicationController                               18      13.32      0           1
 A         * ApplicationJob                                      1       0.0        0           1
-A         * ApplicationMailer                                   2       0.0        0           1
+A         * ApplicationMailer                                   3       0.0        0           1
 A         * ApplicationPresenter                                3       10.35      0           3
 A         * ApplicationRecord                                   1       0.0        0           1
 A         * AppliedOffer                                        3       0.0        0           1
 A         * AppliedOfferStatus                                  1       0.0        0           1
 A         * AppliedOffers                                       3       0.0        0           0
-A         * AppliedOffersController                             4       22.43      0           1
-A         * ApplyToOffersMailer                                 3       2.42       0           2
+A         * AppliedOffersController                             5       22.43      0           1
+A         * ApplyToOffersMailer                                 4       4.71       0           2
 A         * AvailableWorkDay                                    3       0.0        0           1
 A         * AvailableWorkDaysCurriculumVitaes                   1       0.0        0           1
 A         * AvailableWorkDaysOffers                             1       0.0        0           1
@@ -110,7 +110,7 @@ A         * State                                               3       0.0     
 A         * TechnicalSkill                                      6       0.0        0           1
 A         * TechnicalSkillCategory                              1       0.0        0           1
 A         * Term                                                4       0.0        0           1
-A         * User                                                16      28.95      0           3
+A         * User                                                17      28.95      0           3
 A         * Users::OmniauthCallbacksController                  1       21.49      0           5
 A         * Users::RegistrationsController                      9       2.0        0           2
 A         * Users::SessionsController                           3       0.0        0           1

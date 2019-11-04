@@ -104,9 +104,14 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/users/wizards/step_two_presenter.rb",100,28,10,10,0
 "./app/presenters/users/wizards/step_zero_presenter.rb",100,7,3,3,0
 "./app/presenters/users_presenter.rb",100,25,11,11,0
+<<<<<<< HEAD
 "./app/services/base_form_wizards_service.rb",100,136,62,62,0
 "./app/services/companies/first_offer/step_eight/form_params_service.rb",100,37,17,17,0
 "./app/services/companies/first_offer/step_four/form_params_service.rb",100,88,22,22,0
+=======
+"./app/services/base_form_wizards_service.rb",100,122,55,55,0
+"./app/services/companies/first_offer/step_four/form_params_service.rb",100,78,18,18,0
+>>>>>>> test adding for mails
 "./app/services/companies/first_offer/step_four_service.rb",95,35,19,18,1
 "./app/services/companies/first_offer/step_one/form_params_service.rb",100,25,8,8,0
 "./app/services/companies/first_offer/step_one_service.rb",100,11,6,6,0

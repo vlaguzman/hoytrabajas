@@ -85,7 +85,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/application_presenter.rb",100,19,11,11,0
 "./app/presenters/companies/first_offer/step_eight_presenter.rb",100,20,8,8,0
 "./app/presenters/companies/first_offer/step_four_presenter.rb",100,31,10,10,0
-"./app/presenters/companies/first_offer/step_one_presenter.rb",100,25,8,8,0
+"./app/presenters/companies/first_offer/step_one_presenter.rb",100,30,10,10,0
 "./app/presenters/companies/first_offer/step_three_presenter.rb",100,21,6,6,0
 "./app/presenters/companies/first_offer/step_two_presenter.rb",100,29,10,10,0
 "./app/presenters/companies/first_offer/step_zero_presenter.rb",100,7,3,3,0

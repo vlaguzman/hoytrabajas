@@ -32,15 +32,14 @@ const Presentation = () => {
           <div>
             <Col>
               <Typography className="text-left" variant="h2">
-                Lorem ipsum dolor
+                Tener el control
               </Typography>
               <Typography className="text-left text-warning" variant="h2">
-                quis nostrud.
+                es muy fácil
               </Typography>
             </Col>
             <Typography className="my-25 w-60" variant="body2">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-              lectus ligula, lacinia in.
+              En HoyTrabajas tener el control de tu perfil, tus aplicaciones y por supuesto, la configuración de tu cuenta es posible, todo desde un mismo lugar. ¡Simple y sin complicaciones!
             </Typography>
             <Button
               className="mt-25 fw-bold"
@@ -84,7 +83,7 @@ const Presentation = () => {
         </Row>
       </Col>
     </Row>
-  </Fragment>   
+  </Fragment>
   )
 }
 

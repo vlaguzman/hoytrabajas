@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 
 const Presentation = ({title_one, title_two, title_decription}) => {
-  return ( 
+  return (
     <Fragment>
       <Row className="position-absolute" style={{ top: '0px', left: '0px' }}>
         <Col>
@@ -54,15 +54,14 @@ const Presentation = ({title_one, title_two, title_decription}) => {
           <Row noGutters className="justify-content-center">
             <Col className='p-0 m-0' >
               <Typography className="text-left text-center fw-bold mb-0" variant="h5">
-                  Lorem ipsum dolor
+                  Bienvenido a tu
                 </Typography>
                 <Typography className="text-left text-center fw-bold text-warning" variant="h5">
-                  quis nostrud.
+                  dashboard.
                 </Typography>
             </Col>
               <Typography className="my-25 w-100 text-center" variant="body2">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-                lectus ligula, lacinia in.
+                Aqui encontraras toda la informacion de tu perfil.
               </Typography>
               <Button
                 className="mt-25 fw-bold mx-auto"

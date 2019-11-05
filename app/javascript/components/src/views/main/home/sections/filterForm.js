@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import { Form, FormText, Col, FormFeedback, Collapse, Row } from 'reactstrap'
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
@@ -67,12 +67,17 @@ const currencies = [
   }
 ]
 
-const FilterForm = ({ categorias, button1, fields1 }) => {
+const FilterForm = ({ common, button1, fields1 }) => {
   // TODO oscar remove this line when in rails when can searh by other fields
   fields1 = [fields1[0]]
 
   const { value: state, toggleState } = dialogState({ open: false })
   const [open, setOpen] = React.useState(false)
+  const [idJobCategory, setIdJobCategory] = useState(null)
+
+  function handleJobCategory(idJobCategoryValue) {
+    setIdJobCategory(idJobCategoryValue)
+  }
 
   function handleClickOpen() {
     setOpen(true)
@@ -417,9 +422,10 @@ const FilterForm = ({ categorias, button1, fields1 }) => {
               </Col>
             </Dialog>
           </Col>
+          <input type="hidden" name='q[job_category_id_eq]' value={idJobCategory}/>
         </Form>
         <Collapse isOpen={state.open}>
-          <CarouselRow items={categorias} />
+          <CarouselRow items={common} handleJobCategory={handleJobCategory}/>
         </Collapse>
       </RctCollapsibleCard>
     </Row>

@@ -19,7 +19,8 @@ const HomePage = ({
   session_translation,
    user_facebook_omniauth_authorize_path,
   offer_translations,
-  filterForm
+  filterForm,
+  common
 }) => {
   return (
     <div className="main-wrapper">
@@ -45,6 +46,7 @@ const HomePage = ({
           csrf_param={csrf_param}
           csrf_token={csrf_token}
           filterForm={filterForm}
+          common={common}
         />
       </AppLayout>
     </div>
@@ -67,5 +69,6 @@ HomePage.propTypes = {
   user_facebook_omniauth_authorize_path: PropTypes.object.isRequired,
   offers: PropTypes.object.isRequired,
   offer_translations: PropTypes.object.isRequired,
-  filterForm: PropTypes.object.isRequired
+  filterForm: PropTypes.object.isRequired,
+  common: PropTypes.object.isRequired
 }

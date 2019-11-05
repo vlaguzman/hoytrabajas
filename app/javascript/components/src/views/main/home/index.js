@@ -16,13 +16,14 @@ const HomePage = ({
   csrf_token,
   path_applied_offers,
   offer_translations,
-  filterForm
+  filterForm,
+  common
 }) => {
   const {
     cover,
     premium,
-    common: { categorias },
-    companies
+    companies,
+    categories
   } = contenido
 
   return (

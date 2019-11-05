@@ -41,4 +41,18 @@ class Home::HomePresenter < ApplicationPresenter
   def offers
     OffersService.active_offers_index_details(current_user, MAX_OFFER_LIMIT)
   end
+
+  def categories
+    categories = JobCategory.all.map do |category|
+      [
+        ["img", 'icon-bar.svg'],
+        ["id", category.id],
+        ["name", category.description],
+        ["quantity", Offer.where(job_category_id: category.id).count]
+      ].to_h
+    end
+    {
+      categorias: categories
+    }
+  end
 end

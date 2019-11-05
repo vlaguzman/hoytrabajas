@@ -3,7 +3,7 @@ import { Row, Col } from 'reactstrap'
 import Typography from '@material-ui/core/Typography'
 import FilterFormSection from './filterForm'
 
-const WelcomeText = ({ welcome_Text, subtitle, categorias, filterForm }) => {
+const WelcomeText = ({ welcome_Text, subtitle, common, filterForm }) => {
   return (
     <Row
       className="align-items-center justify-content-center bg-home mb-60"
@@ -17,7 +17,7 @@ const WelcomeText = ({ welcome_Text, subtitle, categorias, filterForm }) => {
           {subtitle}
         </Typography>
         {/* </div> */}
-        <FilterFormSection {...{ categorias, ...filterForm }} />
+        <FilterFormSection {...{ common, ...filterForm }} />
       </Col>
     </Row>
   )

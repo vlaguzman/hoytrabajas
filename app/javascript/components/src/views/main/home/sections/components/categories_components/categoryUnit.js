@@ -2,13 +2,17 @@ import React, { Fragment } from 'react'
 import {Row,Col} from 'reactstrap'
 import Typography from '@material-ui/core/Typography'
 
-export default ({ img, cant, name }) => {
-
+export default ({ id, img, quantity, name, handleJobCategory }) => {
+  console.log('**************')
+  console.log(img)
+  console.log(name)
+  console.log('**************')
   const ellipsis = (word) => {
     return word.length > 20 ? `${word.substr(0, 18)}...` : word;
   }
+
   return (
-    <Col className='align-items-center justify-content-center h-100'>
+    <Col className='align-items-center justify-content-center h-100' onClick={() => { handleJobCategory(id) }}>
       <Row className="justify-content-center mb-5 mx-0">
         <img
           className="rounded"
@@ -28,7 +32,7 @@ export default ({ img, cant, name }) => {
       <Row className='w-100 h-100 mx-0 mt-auto justify-content-center align-self-end'>
         <Typography variant='body1' 
         className="d-inline-block text-center mt-auto align-self-end fw-bold text-primary">
-          {cant}
+          {quantity}
         </Typography>
       </Row>
     </Col>

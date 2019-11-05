@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import map from 'lodash/map'
 import Unidad from '../../../../../../views/main/home/sections/components/categories_components/categoryUnit'
 
-const CarouselRow = ({ items = [] }) => {
+const CarouselRow = ({ items = [], handleJobCategory }) => {
   const settings = {
     dots: false,
     // lazyLoad: true,
@@ -43,8 +43,8 @@ const CarouselRow = ({ items = [] }) => {
   }
   return (
     <Slider {...settings} className=" p-10 my-25 carusel">
-      {map(items, (item, i) => (
-        <Unidad  key={i} {...item} />
+      {map(items["categorias"], (item, i) => (
+        <Unidad  key={i} {...item} handleJobCategory={handleJobCategory} />
       ))}
     </Slider>
   )

@@ -15,6 +15,7 @@ const CompaniesStepFourPage = props => {
   } = props
 
   return (
+    //TODO daniel, remove AppLayout and fix to implements datepiker
     <AppLayout
       csrf_param={csrf_param}
       csrf_token={csrf_token}

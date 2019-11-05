@@ -4,7 +4,7 @@ class Users::Wizards::StepElevenPresenter < ApplicationPresenter
     Users::Wizards::StepEleven::FormParamsService.new(
       template_translation_path: 'users.wizards.step_elevens.show',
       go_home_path: root_path,
-      next_path: user_path,
+      next_path: users_dashboard_path,
     ).form_params
   end
 
@@ -14,7 +14,7 @@ class Users::Wizards::StepElevenPresenter < ApplicationPresenter
     rails_routes.root_path
   end
 
-  def user_path
-    rails_routes.user_path(source)
+  def users_dashboard_path
+    rails_routes.users_dashboard_path
   end
 end

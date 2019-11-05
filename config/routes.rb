@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   end
 
   namespace :users do
+    resource :dashboard, only: [:show]
+    resource :profile, only: [:show]
+
     namespace :wizards do
       resource :step_zero,    only: [:show]
       resource :step_one,     only: [:show, :update]
@@ -43,7 +46,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:edit, :update, :show]
+  resource :users, only: [:show, :edit]
   resources :companies, only: [:edit, :update, :show, :index]
 
   root to: "home#index"

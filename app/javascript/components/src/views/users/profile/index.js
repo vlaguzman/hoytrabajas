@@ -24,10 +24,11 @@ const ProfilePage = ({ match }) => {
         <meta name="description" content="User profile" />
       </Head>
       <Presentation />
-      <FirstSection />
-      <SecondSection />
-      <ThirdSection />
-      <FourthSection />
+      {/* Tiene Redux */}
+      {/* <FirstSection /> */}
+      {/* <SecondSection /> */}
+      {/* <ThirdSection /> */}
+      {/* <FourthSection /> */}
     </div>
   )
 }

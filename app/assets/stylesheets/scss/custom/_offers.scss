@@ -1,0 +1,16 @@
+.offer-details__offer-wrapper,
+.offer-details__offer-title {
+  @media (max-width: 900px) {
+    margin-bottom: 20px !important;
+  }
+}
+
+.offer-details__related-offers-title--wrapper {
+  @media (max-width: 900px) {
+    margin: 0;
+    .offer-details__related-offers-title--text {
+      text-align: center;
+      margin: 30px auto 15px;
+    }
+  }
+}

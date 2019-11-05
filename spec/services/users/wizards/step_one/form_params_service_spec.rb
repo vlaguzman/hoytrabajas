@@ -2,6 +2,22 @@ require 'rails_helper'
 
 RSpec.describe Users::Wizards::StepOne::FormParamsService do
 
+  context "private methods" do
+    let(:subject) { described_class.new }
+
+    describe "#nationality_ids_list" do
+      it "should return array" do
+        expect(subject.send(:nationality_ids_list)).to be_empty
+      end
+    end
+
+    describe "#document_type_id_list" do
+      it "should return array" do
+        expect(subject.send(:document_type_id_list)).to be_empty
+      end
+    end
+  end
+
   describe "#form_params" do
     let!(:user) { create(:user, :first_time_candidate) }
 

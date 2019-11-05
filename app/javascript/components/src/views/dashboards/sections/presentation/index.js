@@ -1,11 +1,12 @@
-import React, {Fragment} from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { Row, Col } from 'reactstrap'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 
-const Presentation = ({title_one, title_two, title_decription}) => {
-  return ( 
-    <Fragment>
+const Presentation = ({ title_one, title_two, title_decription }) => {
+  return (
+    <>
       <Row className="position-absolute" style={{ top: '0px', left: '0px' }}>
         <Col>
           <img
@@ -18,7 +19,7 @@ const Presentation = ({title_one, title_two, title_decription}) => {
       <Row className="my-70 d-none d-lg-flex" />
       <Row className="my-30 d-lg-none" />
       <Row noGutters className="w-100 bg_dashCand p-30 pt-50">
-      <Col xs={12} lg={6} className='d-lg-none'>
+        <Col xs={12} lg={6} className="d-lg-none">
           <Row className="justify-content-center">
             <img
               width="100%"
@@ -52,28 +53,34 @@ const Presentation = ({title_one, title_two, title_decription}) => {
         </Col>
         <Col xs={12} lg={6} className="align-items-center d-lg-none mt-70">
           <Row noGutters className="justify-content-center">
-            <Col className='p-0 m-0' >
-              <Typography className="text-left text-center fw-bold mb-0" variant="h5">
-                  Lorem ipsum dolor
-                </Typography>
-                <Typography className="text-left text-center fw-bold text-warning" variant="h5">
-                  quis nostrud.
-                </Typography>
-            </Col>
-              <Typography className="my-25 w-100 text-center" variant="body2">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-                lectus ligula, lacinia in.
+            <Col className="p-0 m-0">
+              <Typography
+                className="text-left text-center fw-bold mb-0"
+                variant="h5"
+              >
+                Bienvenido a tu
               </Typography>
-              <Button
-                className="mt-25 fw-bold mx-auto"
-                color="primary"
-                style={{ borderRadius: '30px', textTransform: 'none' }}
-                variant="contained">
-                <span className="text-white">Crecer a Premium</span>
-              </Button>
+              <Typography
+                className="text-left text-center fw-bold text-warning"
+                variant="h5"
+              >
+                dashboard.
+              </Typography>
+            </Col>
+            <Typography className="my-25 w-100 text-center" variant="body2">
+              Aqui encontraras toda la informacion de tu perfil.
+            </Typography>
+            <Button
+              className="mt-25 fw-bold mx-auto"
+              color="primary"
+              style={{ borderRadius: '30px', textTransform: 'none' }}
+              variant="contained"
+            >
+              <span className="text-white">Crecer a Premium</span>
+            </Button>
           </Row>
         </Col>
-        <Col xs={12} lg={6} className='d-lg-flex d-none'>
+        <Col xs={12} lg={6} className="d-lg-flex d-none">
           <Row className="justify-content-end">
             <img
               width="75%"
@@ -83,8 +90,14 @@ const Presentation = ({title_one, title_two, title_decription}) => {
           </Row>
         </Col>
       </Row>
-    </Fragment>
+    </>
   )
 }
 
 export default Presentation
+
+Presentation.propTypes = {
+  title_one: PropTypes.string,
+  title_two: PropTypes.string,
+  title_decription: PropTypes.string
+}

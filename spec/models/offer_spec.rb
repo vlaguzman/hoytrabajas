@@ -113,4 +113,39 @@ RSpec.describe Offer, type: :model do
       expect(offer.slug).to eq('panalera-de-pinguinos-de-compania')
     end
   end
+
+  describe "#by_applied_offer_cv" do
+    before(:each) do
+      @cv = FactoryBot.create(:curriculum_vitae)
+      @cv_2 = FactoryBot.create(:curriculum_vitae)
+      @cv_3 = FactoryBot.create(:curriculum_vitae)
+      offer = FactoryBot.create(:offer, title: 'just_an_offer')
+      offer_2 = FactoryBot.create(:offer, title: 'an_other_offer')
+      applied_offer = FactoryBot.create(:applied_offer, curriculum_vitae: @cv, offer: offer)
+      applied_offer_2 = FactoryBot.create(:applied_offer, curriculum_vitae: @cv, offer: offer_2)
+      applied_offer_3 = FactoryBot.create(:applied_offer, curriculum_vitae: @cv_2, offer: offer_2)
+    end
+
+    context "there just one opply offer with a cv_id" do
+      it "should return the offers related to a curriculum vitae" do
+        expect(Offer.by_applied_offer_cv(@cv_2.id).first.title).to eq('an_other_offer')
+        expect(Offer.by_applied_offer_cv(@cv_2.id).count).to eq(1)
+      end
+    end
+
+    context "there are two opplied offers" do
+      it "should return the offers related to a curriculum vitae" do
+        expect(Offer.by_applied_offer_cv(@cv.id).first.title).to eq('just_an_offer')
+        expect(Offer.by_applied_offer_cv(@cv.id).count).to eq(2)
+      end
+    end
+
+    context "there not are any applied offers by cv_id" do
+      it "shold return an empty array" do
+        expect(Offer.by_applied_offer_cv(@cv_3.id)).to eq([])
+        expect(Offer.by_applied_offer_cv(@cv_3.id).count).to eq(0)
+      end
+    end
+  end
+
 end

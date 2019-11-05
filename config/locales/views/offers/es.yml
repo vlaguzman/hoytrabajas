@@ -28,5 +28,6 @@ es:
     button_disactive: 'Aplicado'
     button_active: 'Aplicar a esta oferta'
     btn_lg_apply_offer: 'Aplicar a esta oferta'
+    btn_apply: 'Aplicar'
     btn_apply_offer: 'Aplicar oferta'
     btn_super_apply: 'Super Aplicación'

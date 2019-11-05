@@ -15,7 +15,7 @@ const OffersSection = props => {
     csrf_param,
     csrf_token,
     path_applied_offers,
-    offers, 
+    offers,
     offer_translations } = props
 
   return (

@@ -19,7 +19,7 @@ const OfferCard = (
      csrf_param,
      csrf_token,
      offer_translations }) => {
-       const value_button = offer.is_applied ? offer_translations.btn_apply_offer : offer_translations.button_active
+       const value_button = offer.is_applied ? offer_translations.btn_apply : offer_translations.button_active
        const value_button_lg = offer.is_applied ? offer_translations.btn_lg_apply_offer : offer_translations.button_active
        return (
          <Col className="cardOffer position-relative mb-30 justify-content-center align-items-center px-5">
@@ -38,17 +38,17 @@ const OfferCard = (
                    type="submit"
                    size="large"
                    color="primary"
-                   className={classNames('w-70 my-10 text-white fw-bold', {
+                   className={classNames('btn-apply w-70 my-10 text-white fw-bold', {
                      'button-disabled': offer.is_applied
                    })}
                    style={{ borderRadius: '30px' }}
                  >
-                   <span className="d-none d-lg-inline">
+                   {/*<span className="d-none d-lg-inline">
                      {value_button_lg}
-                   </span>
-                   <span className="d-lg-none">
+                   </span>*/}
+                   {/*<span className="d-lg-none">*/}
                      {value_button}
-                   </span>
+                   {/*</span>*/}
                  </Button>
                </form>
              </Row>

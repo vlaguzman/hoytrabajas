@@ -17,6 +17,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem 'mailgun-ruby', '~>1.1.6'
 gem 'activeadmin'
+gem 'active_admin_datetimepicker'
 gem 'omniauth-facebook'
 gem 'omniauth-google'
 gem "haml-rails", "~> 2.0"

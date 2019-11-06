@@ -36,6 +36,7 @@ ActiveAdmin.register Offer do
       f.input :required_experience, label: t('admin.offers.form.required_experience')
       f.input :immediate_start, label: t('admin.offers.form.inmediate_start')
       f.input :status, label: t('admin.offers.form.status.label'), collection: ['active', 'expire']
+      f.input :close_date, as: :date_time_picker, datepicker_options: { min_date: "2019-11-1" }
       unless f.object.new_record?
       end
     end

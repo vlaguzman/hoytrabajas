@@ -6,9 +6,21 @@
     %title HT
     = csrf_meta_tags
     = csp_meta_tag
+
+    / Global site tag (gtag.js) - Google Analytics
+    %script{:async => "", :src => "https://www.googletagmanager.com/gtag/js?id=UA-108065726-1"}
+
+    / Facebook pixel
+    %noscript
+      %img{:height => "1", :src => "https://www.facebook.com/tr?id=349189892310764&ev=PageView&noscript=1", :style => "display:none", :width => "1"}/
+
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_pack_tag 'application'
   %body
+    / Google Tag Manager (noscript)
+    %noscript
+      %iframe{:height => "0", :src => "https://www.googletagmanager.com/ns.html?id=GTM-MC7RKNG", :style => "display:none;visibility:hidden", :width => "0"}
+
     -# - unless current_user
     -#   = link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path
     -# - else

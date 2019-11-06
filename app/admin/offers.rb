@@ -25,7 +25,8 @@ ActiveAdmin.register Offer do
     f.inputs do
       f.input :title, label: t('admin.offers.form.title')
       f.input :address, label: t('admin.offers.form.address')
-      f.input :company_id, label: t('admin.offers.form.company'), as: :select, collection: ListConverter.model_array_list(Company, :name)
+      #TODO Oscar Show the name when de value is selected
+      f.input :company_id, as: :datalist, collection: ListConverter.model_array_list(Company, :name, order_by: :name), :input_html => { autoComplete: "off" } 
       f.input :cellphone, label: t('admin.offers.form.cellphone')
       f.input :description, label: t('admin.offers.form.offer_description')
       f.input :vacancies_quantity, label: t('admin.offers.form.vacancies_quantity')

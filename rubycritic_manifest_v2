@@ -74,12 +74,12 @@ A         * Language                                            5       0.0     
 A         * LanguagesOffers                                     3       2.0        0           1
 A         * Level                                               4       0.0        0           1
 A         * Limitation                                          4       0.0        0           1
-A         * ListConverter                                       5       15.9       0           2
+A         * ListConverter                                       6       17.39      0           2
 A         * Nationality                                         4       0.0        0           1
 A         * Offer                                               26      2.2        0           1
 A         * OfferSalary                                         5       0.0        0           1
 A         * OfferType                                           5       0.0        0           1
-A         * Offers                                              5       0.0        0           0
+A         * Offers                                              6       0.0        0           0
 A         * Offers::AppliedOfferService                         2       13.25      0           1
 A         * Offers::IndexService                                4       10.85      0           1
 A         * Offers::ViewsService                                6       34.4       0           1

@@ -24,18 +24,20 @@ ReactRailsUJS.useContext(componentRequireContext);
 
 // TAG MANAGER
 
-(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;
-  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); })
-(window,document,'script','dataLayer','GTM-MC7RKNG');
+(function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MC7RKNG');
 
-// Tracing code analytics
+// Tracking google analytics
 
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-
 gtag('config', 'UA-108065726-1');
 
 // CLIENTIFY ANALYTICS
@@ -43,9 +45,8 @@ gtag('config', 'UA-108065726-1');
 if (typeof trackerCode ==='undefined'){
   (function (d, w, u, o) {
     w[o] = w[o] || function () {
-      (w[o].q = w[o].q || []).push(arguments)
+    (w[o].q = w[o].q || []).push(arguments)
     };
-
     a = d.createElement('script'),
     m = d.getElementsByTagName('script')[0];
     a.async = 1; a.src = u;
@@ -56,16 +57,34 @@ if (typeof trackerCode ==='undefined'){
   ana('trackPageview');
 }
 
-// PIXEL FACEBOOK
+//PIXEL FACEBOOK
 
 !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '349189892310764');
   fbq('track', 'PageView');
 
+// CHATBOT CODE
+
+(function (w,i,d,g,e,t,s){
+  var iapp=document.createElement("app-root");
+  document.getElementsByTagName("body")[0].appendChild(iapp);
+  var link = document.createElement("link");
+  link.setAttribute("rel", "stylesheet");
+  link.setAttribute("type", "text/css");
+  link.setAttribute("href", "https://apps.clientify.net/chatbot/styles.css");
+  document.getElementsByTagName("head")[0].appendChild(link);
+  var iDiv = document.createElement("div");iDiv.id = "13084";
+  iDiv.className = "script";
+  document.getElementsByTagName("body")[0].appendChild(iDiv);w[d] = w[d]||[];
+  t= i.createElement(g);
+  t.async=1;t.src=e;
+  s=i.getElementsByTagName(g)[0];
+  s.parentNode.insertBefore(t, s);
+})(window, document, "_gscq","script","https://apps.clientify.net/chatbot/dist/embed.js")

@@ -63,7 +63,7 @@ Rails.application.configure do
   # Action mailer
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp 
-  config.action_mailer.default_url_options = { host: 'hoytrabajas.com' }
+  config.action_mailer.default_url_options = { host: ENV['EMAIL_USER_DOMAIN'] }
   config.action_mailer.perform_caching = false
   config.action_mailer.perform_deliveries = true
 
@@ -72,7 +72,7 @@ Rails.application.configure do
    config.action_mailer.smtp_settings = {
      :user_name      => ENV['EMAIL_USER_NAME'],
      :password       => ENV['EMAIL_USER_PASSWORD'],
-     :domain         => 'hoytrabajas.com',
+     :domain         => ENV['EMAIL_USER_DOMAIN'],
      :address        => "smtp.mailgun.org",
      :port           => 587,
      :authentication => :plain

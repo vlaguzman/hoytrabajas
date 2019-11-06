@@ -79,7 +79,7 @@ A         * Nationality                                         4       0.0     
 A         * Offer                                               26      2.2        0           1
 A         * OfferSalary                                         5       0.0        0           1
 A         * OfferType                                           5       0.0        0           1
-A         * Offers                                              6       0.0        0           0
+A         * Offers                                              7       0.0        0           0
 A         * Offers::AppliedOfferService                         2       13.25      0           1
 A         * Offers::IndexService                                4       10.85      0           1
 A         * Offers::ViewsService                                6       34.4       0           1

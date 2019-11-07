@@ -5,7 +5,6 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   protected
 
   def after_inactive_sign_up_path_for(resource)
-    active_for_authentication?
     companies_first_offer_step_zero_path
   end
 

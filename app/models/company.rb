@@ -16,8 +16,8 @@ class Company < ApplicationRecord
 
   delegate :description, to: :employees_range, prefix: :employees_range
 
-  def active_for_authentication?
-    skip_confirmation!
+  def confirmation_required?
+    false
   end
 
 end

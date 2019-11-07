@@ -48,22 +48,19 @@ module.exports = function(api) {
     ].filter(Boolean),
     plugins: [
       [
-        'babel-plugin-import',
+        'babel-plugin-transform-imports',
         {
-          'libraryName': '@material-ui/core',
-          'libraryDirectory': 'esm',
-          'camel2DashComponentName': false
-        },
-        'core'
-      ],
-      [
-        'babel-plugin-import',
-        {
-          'libraryName': '@material-ui/icons',
-          'libraryDirectory': 'esm',
-          'camel2DashComponentName': false
-        },
-        'icons'
+          '@material-ui/core': {
+            // Use "transform: '@material-ui/core/${member}'," if your bundler does not support ES modules
+            'transform': '@material-ui/core/esm/${member}',
+            'preventFullImport': true
+          },
+          '@material-ui/icons': {
+            // Use "transform: '@material-ui/icons/${member}'," if your bundler does not support ES modules
+            'transform': '@material-ui/icons/esm/${member}',
+            'preventFullImport': true
+          }
+        }
       ],
       require('babel-plugin-macros'),
       require('@babel/plugin-syntax-dynamic-import').default,

@@ -83,3 +83,10 @@ if (typeof trackerCode ==='undefined'){
   s=i.getElementsByTagName(g)[0];
   s.parentNode.insertBefore(t, s);
 })(window, document, "_gscq","script","https://apps.clientify.net/chatbot/dist/embed.js")
+
+
+//import { fab } from '@fortawesome/free-brands-svg-icons'
+//import { fas, faSearch } from '@fortawesome/free-solid-svg-icons'
+//import { library } from '@fortawesome/fontawesome-svg-core'
+
+//library.add(fab, fas, faSearch)

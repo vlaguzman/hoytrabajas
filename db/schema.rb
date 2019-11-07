@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_28_161641) do
+ActiveRecord::Schema.define(version: 2019_11_07_211755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -750,6 +750,7 @@ ActiveRecord::Schema.define(version: 2019_10_28_161641) do
     t.bigint "educational_degree_id"
     t.bigint "city_id"
     t.text "image"
+    t.string "cv_file"
     t.index ["city_id"], name: "index_users_on_city_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["contract_type_id"], name: "index_users_on_contract_type_id"

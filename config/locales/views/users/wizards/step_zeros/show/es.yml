@@ -3,6 +3,6 @@ es:
     wizards:
       step_zero:
         show:
-          title: 'El empleado ideal ¡si existe!'
-          description: 'Y crear una oferta atractiva para llegar a el es muy facil ¡vamos a hacerlo!'
-          button_action: 'Quiero publicar mi oferta'
+          title: 'El trabajo ideal ¡si existe!'
+          description: 'Y crear un perfi atractivo, para llegar a el es muy facil ¡vamos a hacerlo!'
+          button_action: 'Quiero completar mi perfil'

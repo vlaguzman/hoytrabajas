@@ -12,6 +12,8 @@ class Company < ApplicationRecord
 
   has_and_belongs_to_many :users
 
+  has_many :offers
+
   has_one_attached :logo
 
   delegate :description, to: :employees_range, prefix: :employees_range

@@ -6,6 +6,8 @@ class Offer < ApplicationRecord
 
   scope :active, -> { where(status: 'active') }
   scope :related_job_category, -> (job_category) { where(job_category: job_category) }
+  scope :by_company_email, -> (company_email) { joins(:company).where('companies.email LIKE ?', company_email) }
+  scope :by_company_name, -> (company_name) { joins(:company).where('companies.name LIKE ?', company_name) }
 
   has_one :offer_salary
   has_one :age_range

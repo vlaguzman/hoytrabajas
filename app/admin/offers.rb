@@ -1,5 +1,4 @@
 ActiveAdmin.register Offer do
-
   permit_params :title, :address, :cellphone, :description, :vacancies_quantity, :close_date, :immediate_start, :required_experience, :release_date, :status, :city_id, :job_category_id, :offer_type_id, :contract_type_id, :work_mode_id, :sex_id, :company_id
 
   index do
@@ -13,6 +12,8 @@ ActiveAdmin.register Offer do
     actions
   end
 
+  filter :company_name, as: :string, label: 'Nombre compañia'
+  filter :company_email, as: :string, label: 'Correo compañia'
   filter :title, label: 'Titulo'
   filter :required_experience, as: :check_boxes, collection: [['Experiencia requerida', true]], label: ''
   filter :immediate_start, as: :check_boxes, collection: [['Inicio Inmediato', true]], label: ''

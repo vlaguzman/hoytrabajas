@@ -5,7 +5,7 @@ import { Row, Col } from 'reactstrap'
 import DataCard from '../../../../components/Cards/DataCard'
 import PaperHeader from '../../../../components/PaperHeader'
 import CarouselRow from '../../../../components/Carousel/CarouselRow'
-import { map } from 'lodash'
+import map from 'lodash/map'
 import AddEditButton from '../../../../views/users/profile/components/AddEditButton'
 import { listOfNoIcons } from '../../../../views/users/profile/data'
 

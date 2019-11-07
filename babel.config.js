@@ -16,6 +16,9 @@ module.exports = function(api) {
   }
 
   return {
+    ignore: [
+      /node_modules/,
+    ],
     presets: [
       isTestEnv && [
         require('@babel/preset-env').default,
@@ -44,6 +47,24 @@ module.exports = function(api) {
       ]
     ].filter(Boolean),
     plugins: [
+      [
+        'babel-plugin-import',
+        {
+          'libraryName': '@material-ui/core',
+          'libraryDirectory': 'esm',
+          'camel2DashComponentName': false
+        },
+        'core'
+      ],
+      [
+        'babel-plugin-import',
+        {
+          'libraryName': '@material-ui/icons',
+          'libraryDirectory': 'esm',
+          'camel2DashComponentName': false
+        },
+        'icons'
+      ],
       require('babel-plugin-macros'),
       require('@babel/plugin-syntax-dynamic-import').default,
       isTestEnv && require('babel-plugin-dynamic-import-node'),

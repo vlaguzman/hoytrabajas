@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { Row, Col } from 'reactstrap'
-import { map } from 'lodash'
+import map from 'lodash/map'
 
 const CompaniesList = ({ catalogo }) => {
   return (

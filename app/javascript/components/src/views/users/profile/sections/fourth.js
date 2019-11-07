@@ -2,7 +2,7 @@ import React from 'react'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import { Row, Col } from 'reactstrap'
-import { map } from 'lodash'
+import map from 'lodash/map'
 
 // Usar rutas absolutas hacia la carpeta de componentes general (si son reutilizables)
 // o hacia la carpeta de componentes propia de la vista

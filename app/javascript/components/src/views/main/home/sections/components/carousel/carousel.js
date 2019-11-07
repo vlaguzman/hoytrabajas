@@ -1,7 +1,7 @@
 import React from 'react'
 import Slider from 'react-slick'
 import PropTypes from 'prop-types'
-import { map } from 'lodash'
+import map from 'lodash/map'
 import Unidad from '../../../../../../views/main/home/sections/components/categories_components/categoryUnit'
 
 const CarouselRow = ({ items = [] }) => {

@@ -16,8 +16,7 @@ import Select from '@material-ui/core/Select'
 import { WelcomeBarChart1 } from './data'
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder'
 import CarouselRow from '../../../../../components/Carousel/CarouselRow'
-import { map } from 'lodash';
-
+import map from 'lodash/map'
 
 const Third = () => {
   const theTitle = (texto) => (

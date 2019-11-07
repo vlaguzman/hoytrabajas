@@ -27,6 +27,8 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :curriculum_vitaes
 
+  has_one_attached :cv_file
+
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]

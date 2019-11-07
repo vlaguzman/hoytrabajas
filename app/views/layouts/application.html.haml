@@ -7,15 +7,20 @@
     = csrf_meta_tags
     = csp_meta_tag
 
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = render 'layouts/google_analytics'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+
     / Global site tag (gtag.js) - Google Analytics
     %script{:async => "", :src => "https://www.googletagmanager.com/gtag/js?id=UA-108065726-1"}
+
+    / Crazy egg
+    %script{:async => "async", :src => "//script.crazyegg.com/pages/scripts/0090/2467.js", :type => "text/javascript"}
 
     / Facebook pixel
     %noscript
       %img{:height => "1", :src => "https://www.facebook.com/tr?id=349189892310764&ev=PageView&noscript=1", :style => "display:none", :width => "1"}/
 
-    = stylesheet_link_tag 'application', media: 'all'
-    = javascript_pack_tag 'application'
   %body
     / Google Tag Manager (noscript)
     %noscript

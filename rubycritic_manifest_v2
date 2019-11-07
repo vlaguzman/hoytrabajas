@@ -34,10 +34,10 @@ A         * Companies::FirstOffer::StepThreesController         10      31.38   
 A         * Companies::FirstOffer::StepTwo::FormParamsService   2       0.0        0           0
 A         * Companies::FirstOffer::StepZeroPresenter            2       1.0        0           2
 A         * Companies::FirstOffer::StepZerosController          3       3.24       0           1
-A         * Companies::RegistrationsController                  5       2.0        0           2
+A         * Companies::RegistrationsController                  6       1.0        0           2
 A         * CompaniesController                                 7       3.4        0           1
 A         * CompaniesUsers                                      1       0.0        0           1
-A         * Company                                             11      1.0        0           1
+A         * Company                                             12      0.0        0           1
 A         * ContractType                                        1       0.0        0           1
 A         * Currency                                            1       0.0        0           1
 A         * CurriculumVitae                                     23      0.0        0           1
@@ -109,11 +109,11 @@ A         * State                                               3       0.0     
 A         * TechnicalSkill                                      6       0.0        0           1
 A         * TechnicalSkillCategory                              1       0.0        0           1
 A         * Term                                                4       0.0        0           1
-A         * User                                                17      28.95      0           3
+A         * User                                                18      27.95      0           3
 A         * Users::DashboardsController                         10      5.69       0           1
 A         * Users::OmniauthCallbacksController                  1       21.49      0           5
 A         * Users::ProfilesController                           11      5.69       0           1
-A         * Users::RegistrationsController                      9       2.0        0           2
+A         * Users::RegistrationsController                      10      1.0        0           2
 A         * Users::SessionsController                           3       0.0        0           1
 A         * Users::WizardService                                2       17.38      0           2
 A         * Users::Wizards::StepEightService                    1       18.84      0           1

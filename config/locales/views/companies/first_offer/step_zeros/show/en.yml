@@ -1,0 +1,8 @@
+en:
+  companies:
+    first_offer:
+      step_zeros:
+        show:
+          title: 'The ideal employee does exist!'
+          description: 'Create your offers with the use of keywords, which will make the perfect match with your ideal employee.'
+          button_action: 'Publish my offer'

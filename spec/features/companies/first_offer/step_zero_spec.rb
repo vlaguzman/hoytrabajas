@@ -11,7 +11,7 @@ RSpec.describe "like new company", type: :feature do
       visit companies_first_offer_step_zero_path
 
       expect(page).to have_text(/El empleado ideal ¡si existe!/)
-      expect(page).to have_text(/Y crear una oferta atractiva para llegar a el es muy facil ¡vamos a hacerlo!/)
+      expect(page).to have_text(/Crear tus ofertas con el uso de palabras claves, que harán el match perfecto con tu empleado ideal./)
       expect(page).to have_text(/Quiero publicar mi oferta/)
     end
   end

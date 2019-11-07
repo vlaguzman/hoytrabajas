@@ -1,0 +1,8 @@
+en:
+  users:
+    wizards:
+      step_zero:
+        show:
+          title: 'The ideal job does exist!'
+          description: 'Knowing your skills and experience we will find the best offers for you'
+          button_action: 'Complete my profile'

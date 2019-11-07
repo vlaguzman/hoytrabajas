@@ -14,7 +14,7 @@ RSpec.describe "like new candidate", type: :feature do
       visit users_wizards_step_zero_path
 
       expect(page).to have_text(/El trabajo ideal ¡si existe!/)
-      expect(page).to have_text(/Y crear un perfi atractivo, para llegar a el es muy facil ¡vamos a hacerlo!/)
+      expect(page).to have_text(/Conociendo tus habilidades y experiencia encontraremos las mejores ofertas para ti/)
       expect(page).to have_text(/Quiero completar mi perfil/)
     end
   end

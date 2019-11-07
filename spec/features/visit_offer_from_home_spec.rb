@@ -11,12 +11,12 @@ RSpec.describe "visit offer from home", type: :feature do
     context "When i visit click at see_offer button i should go to the details offer page" do
       it "should see the offer title", js: true do
         Offer.destroy_all
-        visited_offer = FactoryBot.create(:offer)
+        visited_offer = FactoryBot.create(:offer, title: "esto es un texto muuy largo para que se acorte")
         visit root_path
 
         skip_under_construction
 
-        expect(page).to have_text(visited_offer.title)
+        expect(page).to have_text(/Esto Es Un Texto Muuy Larg.../)
         find(".cardOffer").hover
         click_on("ver oferta", match: :first)
 

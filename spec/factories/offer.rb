@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :offer do
 
-    title                         { "Great Job" }
+    title                         { Faker::Lorem.sentence(word_count: 8) }
     address                       { Faker::Address.full_address }
     cellphone                     { Faker::PhoneNumber.cell_phone }
     description                   { "endSint esse anim consequat commodo." }

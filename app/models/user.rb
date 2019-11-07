@@ -47,4 +47,8 @@ class User < ApplicationRecord
   def confirmation_required?
     false
   end
+
+  def active_for_authentication?
+    skip_confirmation!
+  end
 end

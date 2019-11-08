@@ -9,19 +9,13 @@ import {
 import DateFnsUtils from '@date-io/date-fns'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import { ThemeProvider } from 'styled-components'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { fas, faSearch } from '@fortawesome/free-solid-svg-icons'
-import { es, enUS as en } from 'date-fns/locale'
+
+import es from 'date-fns/locale/es'
 
 import Header from './Header'
 import Footer from './Footer'
 import theme from './Theme/theme'
 
-library.add(fab, fas, faSearch)
-
-const localeMap = { en, es }
-const locale = 'es'
 
 const AppLayout = ({
   children,
@@ -36,15 +30,18 @@ const AppLayout = ({
 }) => {
   const [isTop, setIsTop] = useState(true)
   const myRef = useRef(null)
+
   const onScrollFrame = e => {
     const currentTop = e.scrollTop < 200
     if (currentTop !== isTop) setIsTop(currentTop)
   }
+
   const scrollToBottom = () => {
     myRef.current.scrollToBottom()
   }
+
   return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils} locale={localeMap[locale]}>
+    <MuiPickersUtilsProvider utils={DateFnsUtils} locale={es}>
       <StylesProvider injectFirst>
         <MuiThemeProvider theme={theme}>
           <ThemeProvider theme={theme}>

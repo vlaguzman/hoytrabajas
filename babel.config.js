@@ -16,6 +16,9 @@ module.exports = function(api) {
   }
 
   return {
+    ignore: [
+      /node_modules/,
+    ],
     presets: [
       isTestEnv && [
         require('@babel/preset-env').default,
@@ -44,6 +47,33 @@ module.exports = function(api) {
       ]
     ].filter(Boolean),
     plugins: [
+      [
+        'babel-plugin-transform-imports',
+        {
+          '@material-ui/core': {
+            // Use "transform: '@material-ui/core/${member}'," if your bundler does not support ES modules
+            'transform': '@material-ui/core/esm/${member}',
+            'preventFullImport': true
+          },
+          '@material-ui/icons': {
+            // Use "transform: '@material-ui/icons/${member}'," if your bundler does not support ES modules
+            'transform': '@material-ui/icons/esm/${member}',
+            'preventFullImport': true
+          },
+          "@fortawesome/pro-regular-svg-icons": {
+            "transform": "@fortawesome/pro-regular-svg-icons/${member}",
+            "skipDefaultConversion": true
+          },
+          "@fortawesome/pro-solid-svg-icons": {
+            "transform": "@fortawesome/pro-solid-svg-icons/${member}",
+            "skipDefaultConversion": true
+          },
+          "@fortawesome/pro-light-svg-icons": {
+            "transform": "@fortawesome/pro-light-svg-icons/${member}",
+            "skipDefaultConversion": true
+          }
+        }
+      ],
       require('babel-plugin-macros'),
       require('@babel/plugin-syntax-dynamic-import').default,
       isTestEnv && require('babel-plugin-dynamic-import-node'),

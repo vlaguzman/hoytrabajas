@@ -18,9 +18,9 @@ RSpec.describe "like an admin user", :type => :feature do
       end
 
       fill_in 'q[company_email_contains]', with: company.email
-      
+
       click_button 'Filtrar'
-      
+
       create_offers.each do |offer|
         expect(page).to_not have_content(offer.title)
       end

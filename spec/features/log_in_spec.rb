@@ -49,7 +49,7 @@ RSpec.describe "User can Log In", type: :feature do
 
       expect(current_path).to eq(users_dashboard_path("#{User.last.id}"))
     end
-    
+
     scenario "the user want to come back to home page", js: true do
       visit root_path
 
@@ -61,7 +61,7 @@ RSpec.describe "User can Log In", type: :feature do
       click_on("SIGN IN CANDIDATO")
       save_page("page.html")
       page.first(".ht-image").click
-     
+
       expect(page).to have_text("El empleo ideal para tu tiempo libre") 
       expect(current_path).to eq(root_path)
     end

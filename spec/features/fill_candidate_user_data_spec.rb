@@ -49,9 +49,9 @@ RSpec.describe "fill the principal candidate user data", :type => :feature do
 
       # a new user who has never been loged-in, i.e. sign_in_count is zero
       expect(candidate.sign_in_count).to be_zero
-      expect(page).to have_text(/El empleado ideal ¡si existe!/)
+      expect(page).to have_text(/El trabajo ideal ¡si existe!/)
 
-      click_on "Quiero publicar mi oferta"
+      click_on "Quiero completar mi perfil"
 
       expect(page).to have_text("Empecemos por conocernos")
 

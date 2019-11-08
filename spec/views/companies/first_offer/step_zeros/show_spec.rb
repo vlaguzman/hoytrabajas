@@ -10,7 +10,7 @@ RSpec.describe "companies/first_offer/step_zeros/show" do
 
     expect(rendered).to have_content("El empleado ideal")
     expect(rendered).to have_content("¡si existe!")
-    expect(rendered).to have_content("Y crear una oferta atractiva para llegar")
-    expect(rendered).to have_content("a el es muy facil ¡vamos a hacerlo!")
+    expect(rendered).to have_content("Crear tus ofertas con el uso de palabras claves, ")
+    expect(rendered).to have_content("que harán el match perfecto con tu empleado ideal.")
   end
 end

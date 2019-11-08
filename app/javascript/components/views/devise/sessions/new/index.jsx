@@ -172,6 +172,18 @@ export default class Index extends React.Component {
                 </Typography>
               </div>
             </DialogActions>
+            <DialogActions className="">
+              <div className="w-100 text-center">
+                <Typography
+                  component="a"
+                  variant="caption"
+                  style={{ color: '#00CED5' }}
+                  href="/"
+                >
+                  Home 
+                </Typography>
+              </div>
+            </DialogActions>
           </Dialog>
         </AppLayout>
       </div>

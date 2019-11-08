@@ -3,9 +3,9 @@
     "app_path": "/ht",
     "rails_version": "6.0.0",
     "security_warnings": 0,
-    "start_time": "2019-11-07 22:11:30 +0000",
-    "end_time": "2019-11-07 22:11:31 +0000",
-    "duration": 1.01550822,
+    "start_time": "2019-11-08 14:33:46 +0000",
+    "end_time": "2019-11-08 14:33:49 +0000",
+    "duration": 2.39404709,
     "checks_performed": [
       "BasicAuth",
       "BasicAuthTimingAttack",
@@ -76,7 +76,7 @@
     ],
     "number_of_controllers": 36,
     "number_of_models": 78,
-    "number_of_templates": 46,
+    "number_of_templates": 47,
     "ruby_version": "2.6.3",
     "brakeman_version": "4.7.0"
   },

@@ -33,12 +33,6 @@ ReactRailsUJS.useContext(componentRequireContext);
   j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-MC7RKNG');
 
-// Tracking google analytics
-
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'UA-108065726-1');
 
 // CLIENTIFY ANALYTICS
 
@@ -57,7 +51,7 @@ if (typeof trackerCode ==='undefined'){
   ana('trackPageview');
 }
 
-//PIXEL FACEBOOK
+// PIXEL FACEBOOK
 
 !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?

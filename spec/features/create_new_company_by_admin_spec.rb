@@ -6,7 +6,7 @@ RSpec.describe "Admin can create a company", type: :feature do
   context "a admin user must be able to create a new company" do
     scenario "the admin dont fill the password" do
       sign_in FactoryBot.create(:admin_user)
-      visit admin_dashboard_path 
+      visit admin_dashboard_path
       expect(page).to have_content("Active Admin")
 
       has_button?("Companies")
@@ -30,7 +30,7 @@ RSpec.describe "Admin can create a company", type: :feature do
 
     scenario "the admin dont fill the email" do
       sign_in FactoryBot.create(:admin_user)
-      visit admin_dashboard_path 
+      visit admin_dashboard_path
       expect(page).to have_content("Active Admin")
 
       has_button?("Companies")
@@ -55,7 +55,7 @@ RSpec.describe "Admin can create a company", type: :feature do
 
     scenario "the admin fill all the data" do
       sign_in FactoryBot.create(:admin_user)
-      visit admin_dashboard_path 
+      visit admin_dashboard_path
       expect(page).to have_content("Active Admin")
 
       has_button?("Companies")

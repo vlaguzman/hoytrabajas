@@ -21,13 +21,13 @@ RSpec.describe OffersPresenter do
     end
 
     context "when exist 3 related offers" do
-      let!(:main_job_category) { create(:job_category, id: 88, description: "TheMainCategory") }
+      let!(:main_job_category) { create(:job_category, description: "TheMainCategory") }
 
       let(:main_offer) { create(:offer, job_category: main_job_category) }
 
-      let!(:related_offer_one)   { Offers::IndexService.new(create(:offer, job_category_id: 88)).details }
-      let!(:related_offer_two)   { Offers::IndexService.new(create(:offer, job_category_id: 88)).details }
-      let!(:related_offer_three) { Offers::IndexService.new(create(:offer, job_category_id: 88)).details }
+      let!(:related_offer_one)   { Offers::IndexService.new(create(:offer, job_category_id: main_job_category.id)).details }
+      let!(:related_offer_two)   { Offers::IndexService.new(create(:offer, job_category_id: main_job_category.id)).details }
+      let!(:related_offer_three) { Offers::IndexService.new(create(:offer, job_category_id: main_job_category.id)).details }
 
       let!(:stuff_offers) do
         [create(:offer), create(:offer)]
@@ -60,7 +60,7 @@ RSpec.describe OffersPresenter do
       expect(response).to be_an_instance_of(Hash)
     end
 
-    let!(:main_job_category_2) { create(:job_category, id: 1, description: "TheMainCategory") }
+    let!(:main_job_category_2) { create(:job_category, description: "TheMainCategory") }
     let!(:related_offer) { create(:offer, job_category: main_job_category_2) }
 
     it "should have the expected keys in the arrays" do

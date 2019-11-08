@@ -6,7 +6,7 @@ RSpec.describe "like an admin user", :type => :feature do
   let!(:company) { create(:company, name: 'hoycamellas') }
 
   feature "When I create a offer" do
-    scenario "Should see the companies order by name", js: true do
+    scenario "Should see the companies order by name" do
       sign_in admin
 
       visit new_admin_offer_path

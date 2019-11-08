@@ -36,6 +36,7 @@ RSpec.describe "When company fill the step four form", :type => :feature do
     find(id: 'select-offer[sex_ids][]', visible: false).click
     find('li', text: data[:sex_two]).click
 
+
     find(id: 'select-offer[sex_ids][]', visible: false).click
     find('li', text: data[:sex_three]).click
 
@@ -63,7 +64,7 @@ RSpec.describe "When company fill the step four form", :type => :feature do
 
         expect(offer.contract_type_id).to eq(contract_type.id)
         expect(offer.vacancies_quantity).to eq(10)
-        expect(offer.sex_ids).to eq([sex_1.id, sex_2.id, sex_3.id])
+        expect(offer.sex_ids).to match_array([sex_1.id, sex_2.id, sex_3.id])
         expect(offer.close_date.strftime("%F") ).to eq(Time.now.strftime("%F"))
         expect(offer.immediate_start).to eq(false)
 

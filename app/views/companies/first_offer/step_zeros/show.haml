@@ -8,7 +8,7 @@
     step_zero_translation: @company.component_translations,
     user_signed_in: user_signed_in?,
     session_translation: I18n.t("session") },
-  prerender: true)
+  prerender: false)
 
 -# TODO With prerender the comp break de view
 = react_component('pages/offers', {}, prerender: false)

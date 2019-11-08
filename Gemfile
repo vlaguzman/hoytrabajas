@@ -49,6 +49,7 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'timecop'
+  gem 'database_cleaner'
 end
 
 group :development do

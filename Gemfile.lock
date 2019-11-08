@@ -153,6 +153,7 @@ GEM
     connection_pool (2.2.2)
     crass (1.0.5)
     curb (0.9.10)
+    database_cleaner (1.7.0)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     devise (4.7.1)
@@ -559,6 +560,7 @@ DEPENDENCIES
   capistrano-rvm!
   capybara (~> 3.18.0)
   curb
+  database_cleaner
   devise
   ed25519 (~> 1.2)
   factory_bot_rails

@@ -5,7 +5,7 @@ class Offer < ApplicationRecord
   validates_presence_of :title
 
   scope :active, -> { where(status: 'active') }
-  scope :related_job_category, -> (job_category) { where(job_category: job_category) }
+  scope :related_job_category, -> (job_categories_ids) { joins(:job_categories).where("job_categories.id in (?)", job_categories_ids).uniq }
   scope :by_company_email, -> (company_email) { joins(:company).where('companies.email LIKE ?', company_email) }
   scope :by_company_name, -> (company_name) { joins(:company).where('companies.name LIKE ?', company_name) }
   scope :by_applied_offer_cv, -> (curriculum_vitae_id) { joins(:applied_offers)
@@ -16,12 +16,12 @@ class Offer < ApplicationRecord
   has_many :applied_offers
 
   belongs_to :company
-  belongs_to :job_category
   belongs_to :city, optional: true
   belongs_to :offer_type, optional: true
   belongs_to :work_mode, optional: true
   belongs_to :contract_type, optional: true
 
+  has_and_belongs_to_many :job_categories, optional: true
   has_and_belongs_to_many :terms, optional: true
   has_and_belongs_to_many :functions, optional: true
   has_and_belongs_to_many :job_aids, optional: true

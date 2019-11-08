@@ -12,7 +12,7 @@ class OffersPresenter < ApplicationPresenter
   end
 
   def related_offer_show
-    OffersService.related_offers_show_details(source.id, source.job_category_id)
+    OffersService.related_offers_show_details(source.id, source.job_categories)
   end
 
   def index_details

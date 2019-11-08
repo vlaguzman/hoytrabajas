@@ -29,7 +29,6 @@ FactoryBot.define do
       offer.image.attach(io: File.open(Rails.root.join('spec', 'factories', 'images', 'photo.jpg')), filename: 'photo.jpg', content_type: 'image/jpeg')
     end
 
-    association :job_category, factory: :job_category
     association :company, factory: :company
     association :city, factory: :city
   end

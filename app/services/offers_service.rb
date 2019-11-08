@@ -8,10 +8,10 @@ module OffersService
       .map{|offer| Offers::IndexService.new(offer, current_user).details }
   end
 
-  def self.related_offers_show_details(id=nil, job_category_id=nil, current_user=nil)
+  def self.related_offers_show_details(id=nil, job_categories=[], current_user=nil)
     Offer
       .active
-      .related_job_category(job_category_id)
+      .related_job_category(job_categories.pluck(:id))
       .sample(10)
       .reject { |offer| offer.id.eql?(id) }
       .map { |offer| Offers::IndexService.new(offer, current_user).details }

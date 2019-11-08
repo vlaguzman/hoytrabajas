@@ -1,4 +1,6 @@
 FROM ruby:2.6.3
+ENV LANG=C.UTF-
+ENV LC_ALL=C.UTF-8
 RUN curl -sL https://deb.nodesource.com/setup_9.x | bash -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -

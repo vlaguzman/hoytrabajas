@@ -38,6 +38,11 @@ export default class Index extends React.Component {
             aria-labelledby="max-width-dialog-title"
           >
             <DialogTitle id="max-width-dialog-title" className="my-25">
+              <div className="px-40 text-right">
+                <a className="back-home" href="/" text-align="right">
+                  X
+                </a>
+              </div>
               <Row noGutters className="justify-content-center">
                 <a className="ht-image" href="/">
                   <img
@@ -137,7 +142,7 @@ export default class Index extends React.Component {
               </Row>
               <Row className="my-30">
                 <Col xs={12}>
-                  <MatButton variant="outlined">
+                  <MatButton variant="outlined" disabled>
                     {
                       this.props.session_translation.sign_in.button_action
                         .sign_in_facebook
@@ -147,7 +152,7 @@ export default class Index extends React.Component {
               </Row>
               <Row className="my-30">
                 <Col xs={12}>
-                  <MatButton variant="outlined">
+                  <MatButton variant="outlined" disabled>
                     {
                       this.props.session_translation.sign_in.button_action
                         .sign_in_google

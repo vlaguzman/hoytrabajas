@@ -39,7 +39,7 @@ export default class Index extends React.Component {
           >
             <DialogTitle id="max-width-dialog-title" className="my-25">
               <div className="px-40 text-right">
-                <a className="back-home" href="/" text-align="right">
+                <a className="button-close" href="/">
                   X
                 </a>
               </div>
@@ -182,7 +182,7 @@ export default class Index extends React.Component {
                 <Typography
                   component="a"
                   variant="caption"
-                  style={{ color: '#00CED5' }}
+                  style={{ color: 'robin-blue' }}
                   href="/"
                 >
                   Home 

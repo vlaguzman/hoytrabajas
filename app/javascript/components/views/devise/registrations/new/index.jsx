@@ -38,7 +38,7 @@ export default class Index extends React.Component {
           >
             <DialogTitle id="max-width-dialog-title" className="my-25">
               <div className="px-40 text-right">
-                <a className="back-home" href="/" text-align="right">
+                <a className="button-close" href="/">
                   X
                 </a>
               </div>

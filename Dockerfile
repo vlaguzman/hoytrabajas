@@ -14,3 +14,4 @@ RUN apt-get install -y w3m
 RUN apt-get install -y bc
 ENV BUNDLE_PATH /ht/.gems
 ENV GEM_HOME /ht/.gems
+COPY ./.ssh /root/.ssh/

@@ -23,7 +23,7 @@ RSpec.describe "When company fill the step four form", :type => :feature do
       with_tag(:input, with: { name: 'offer[immediate_start]', type: "hidden" })
     end
 
-    expect(page).to have_button('Publicar')
+    expect(page).to have_button('Siguiente')
   end
 
   def fill_form(data)
@@ -58,7 +58,7 @@ RSpec.describe "When company fill the step four form", :type => :feature do
             sex_two: sex_2.description,
             sex_three: sex_3.description
           })
-        click_link_or_button('Publicar')
+        click_link_or_button('Siguiente')
 
         offer.reload
 

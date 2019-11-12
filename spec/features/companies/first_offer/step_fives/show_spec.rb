@@ -3,42 +3,34 @@ require 'rails_helper'
 RSpec.describe "When company fill the step four form", :type => :feature do
   let(:company) { create(:company, :first_time, name: 'HoyTrabajas.com') }
   let(:offer)   { create(:offer) }
-
-  let!(:sex_1) { create(:sex, description: "Male") }
-  let!(:sex_2) { create(:sex, description: "Female") }
-  let!(:sex_3) { create(:sex, description: "Undefined") }
-
-  let!(:contract_type) { create(:contract_type) }
+  let(:salary_type_1) { create(:salary_type, description: "Fijo") }
+  let(:salary_type_2) { create(:salary_type, description: "Rango") }
+  let(:currency) { create(:currency, description: "COP") }
+  let(:salary_period) { create(:salary_period, description: "Diario") }
+  let(:working_day) { create(:working_days, description: "Mañana (7am-12pm)") }
+  let(:job_aids) { create(:job_aids, description: "Aux de transporte") }
 
   def expected_page_structure
     expect(page).to have_content("Conozcamos más de tu oferta")
     expect(page).to have_content("Brinda a tu candidato una relevante de tu empresa.")
 
     expect(page).to have_tag(:form, with: { class: "forms__candidate" }) do
-      with_tag(:input, with: { name: 'offer[contract_type_id]', type: "hidden" })
-      with_tag(:input, with: { name: 'offer[vacancies_quantity]', type: "hidden" })
-      with_tag(:input, with: { name: 'offer[sex_ids][]', type: "hidden" })
-      with_tag(:input, with: { name: 'offer[offer_age_range]', type: "hidden" })
-      with_tag(:input, with: { name: 'offer[close_date]', type: "text" })
-      with_tag(:input, with: { name: 'offer[immediate_start]', type: "hidden" })
+      with_tag(:input, with: { name: 'offer[offer_salaries][salary_type_id]',   type: "hidden" })
+      with_tag(:input, with: { name: 'offer[offer_salaries][currency_id]',      type: "hidden" })
+      with_tag(:input, with: { name: 'offer[offer_salaries][from]',             type: "hidden" })
+      with_tag(:input, with: { name: 'offer[offer_salaries][to]',               type: "hidden" })
+      with_tag(:input, with: { name: 'offer[offer_salaries][salary_period_id]', type: "hidden" })
+      with_tag(:input, with: { name: 'offer[offers_working_days][working_days_ids]', type: "hidden" })
+      with_tag(:input, with: { name: 'offer[available_work_days_offers][available_work_days_ids]', type: "hidden" })
+      with_tag(:input, with: { name: 'offer[job_aids_ids][]', type: "hidden" })
     end
 
     expect(page).to have_button('Publicar')
   end
 
   def fill_form(data)
-    find(id: 'select-offer[contract_type_id]', visible: false).click
-    find('li', text: data[:contract_type_id]).click
-
     find(id: 'select-offer[sex_ids][]', visible: false).click
     find('li', text: data[:sex_one]).click
-
-    find(id: 'select-offer[sex_ids][]', visible: false).click
-    find('li', text: data[:sex_two]).click
-
-
-    find(id: 'select-offer[sex_ids][]', visible: false).click
-    find('li', text: data[:sex_three]).click
 
     execute_script "window.scrollTo(0, (window.innerHeight * 2) )"
   end

@@ -12,26 +12,27 @@ import {
 
 const FormFields = props => {
   const { formFields } = props
+
   const {
-    offer_salary_id = null,
+    salary_type_id = null,
     currency_id = null,
     from = null,
     to = null,
-    salary_type_id = null,
-    available_work_day_id = null,
-    working_day_id = null,
-    job_aid_id = null
+    salary_period_id = null,
+    working_day_ids = null,
+    available_work_day_ids = null,
+    job_aid_ids = null
   } = formFields
 
   const [formValues, setFormValues] = useState({
-    [offer_salary_id.name]: offer_salary_id.current_value || '',
+    [salary_type_id.name]: salary_type_id.current_value || '',
     [currency_id.name]: currency_id.current_value || '',
     [from.name]: from.current_value || '',
     [to.name]: to.current_value || '',
-    [salary_type_id.name]: salary_type_id.current_value || '',
-    [available_work_day_id.name]: available_work_day_id.current_value || '',
-    [working_day_id.name]: working_day_id.current_value || '',
-    [job_aid_id.name]: job_aid_id.current_value || ''
+    [salary_period_id.name]: salary_period_id.current_value || '',
+    [working_day_ids.name]: working_day_ids.current_value || '',
+    [available_work_day_ids.name]: available_work_day_ids.current_value || '',
+    [job_aid_ids.name]: job_aid_ids.current_value || ''
   })
 
   const inputClassname = 'my-30 animated fadeIn inputField'
@@ -43,16 +44,16 @@ const FormFields = props => {
     () => (
       <Col className={controlledInputsClassname} xs={12} lg={3}>
         <Select
-          inputValue={formValues[offer_salary_id.name]}
+          inputValue={formValues[salary_type_id.name]}
           handleChange={handleChange(formValues, setFormValues)}
-          name={offer_salary_id.name}
-          label={offer_salary_id.label}
-          selectOptions={offer_salary_id.values}
-          isRequired={offer_salary_id.isRequired || false}
+          name={salary_type_id.name}
+          label={salary_type_id.label}
+          selectOptions={salary_type_id.values}
+          isRequired={salary_type_id.isRequired || false}
         />
       </Col>
     ),
-    [formValues[offer_salary_id.name]]
+    [formValues[salary_type_id.name]]
   )
 
   const offerSalaryCurrencyField = useMemo(
@@ -87,7 +88,7 @@ const FormFields = props => {
 
   const offerSalaryMaxField = useMemo(
     () =>
-      formValues[offer_salary_id.name] === 1 ? (
+      formValues[salary_type_id.name] === 1 ? (
         <Col className={`pr-0 ${controlledInputsClassname}`} xs={12} lg={2}>
           <StandardInput
             inputValue={formValues[to.name]}
@@ -99,77 +100,77 @@ const FormFields = props => {
           />
         </Col>
       ) : null,
-    [formValues[to.name], formValues[offer_salary_id.name]]
+    [formValues[to.name], formValues[salary_type_id.name]]
   )
 
   const offerSalaryIntervalField = useMemo(
     () => (
       <Col className={controlledInputsClassname} xs={12} lg={3}>
         <Select
-          inputValue={formValues[salary_type_id.name]}
+          inputValue={formValues[salary_period_id.name]}
           handleChange={handleChange(formValues, setFormValues)}
-          name={salary_type_id.name}
-          label={salary_type_id.label}
-          selectOptions={salary_type_id.values}
-          isRequired={salary_type_id.isRequired || false}
+          name={salary_period_id.name}
+          label={salary_period_id.label}
+          selectOptions={salary_period_id.values}
+          isRequired={salary_period_id.isRequired || false}
         />
       </Col>
     ),
-    [formValues[salary_type_id.name]]
+    [formValues[salary_period_id.name]]
   )
 
   const offerWorkingDaysField = useMemo(
     () => (
       <Col className={inputClassname} xs={12} lg={6}>
         <SelectChip
-          inputValue={formValues[available_work_day_id.name]}
+          inputValue={formValues[available_work_day_ids.name]}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
-          name={available_work_day_id.name}
-          label={available_work_day_id.label}
-          selectOptions={available_work_day_id.values}
-          isRequired={available_work_day_id.isRequired || false}
-          isMultiple={available_work_day_id.isMultiple || false}
+          name={available_work_day_ids.name}
+          label={available_work_day_ids.label}
+          selectOptions={available_work_day_ids.values}
+          isRequired={available_work_day_ids.isRequired || false}
+          isMultiple={available_work_day_ids.isMultiple || false}
         />
       </Col>
     ),
-    [formValues[available_work_day_id.name]]
+    [formValues[available_work_day_ids.name]]
   )
 
   const offerWorkingHoursField = useMemo(
     () => (
       <Col className={inputClassname} xs={12} lg={6}>
         <SelectChip
-          inputValue={formValues[working_day_id.name]}
+          inputValue={formValues[working_day_ids.name]}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
-          name={working_day_id.name}
-          label={working_day_id.label}
-          selectOptions={working_day_id.values}
-          isRequired={working_day_id.isRequired || false}
-          isMultiple={working_day_id.isMultiple || false}
+          name={working_day_ids.name}
+          label={working_day_ids.label}
+          selectOptions={working_day_ids.values}
+          isRequired={working_day_ids.isRequired || false}
+          isMultiple={working_day_ids.isMultiple || false}
         />
       </Col>
     ),
-    [formValues[working_day_id.name]]
+    [formValues[working_day_ids.name]]
   )
 
   const offerBenefitsField = useMemo(
     () => (
       <Col className={inputClassname} xs={12}>
         <SelectChip
-          inputValue={formValues[job_aid_id.name]}
+          inputValue={formValues[job_aid_ids.name]}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
-          name={job_aid_id.name}
-          label={job_aid_id.label}
-          selectOptions={job_aid_id.values}
-          isRequired={job_aid_id.isRequired || false}
-          isMultiple={job_aid_id.isMultiple || false}
+          name={job_aid_ids.name}
+          label={job_aid_ids.label}
+          selectOptions={job_aid_ids.values}
+          isRequired={job_aid_ids.isRequired || false}
+          isMultiple={job_aid_ids.isMultiple || false}
         />
       </Col>
     ),
-    [formValues[job_aid_id.name]]
+    [formValues[job_aid_ids.name]]
   )
 
   return (
@@ -190,13 +191,13 @@ export default FormFields
 
 FormFields.propTypes = {
   formFields: PropTypes.shape({
-    offer_salary_id: PropTypes.object,
+    salary_type_id: PropTypes.object,
     currency_id: PropTypes.object,
     from: PropTypes.object,
     to: PropTypes.object,
-    salary_type_id: PropTypes.object,
-    available_work_day_id: PropTypes.object,
-    working_day_id: PropTypes.object,
-    job_aid_id: PropTypes.object
+    salary_period_id: PropTypes.object,
+    working_day_ids: PropTypes.object,
+    available_work_day_ids: PropTypes.object,
+    job_aid_ids: PropTypes.object
   }).isRequired
 }

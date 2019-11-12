@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Dialog from '@material-ui/core/Dialog'
 import Typography from '@material-ui/core/Typography'
 import { Row } from 'reactstrap'
+import HighlightOff from '@material-ui/icons/HighlightOff'
 import styled from 'styled-components'
 
 const Wrapper = styled.button`
@@ -12,6 +13,14 @@ const Wrapper = styled.button`
   text-transform: none !important;
   background: transparent;
   border: none;
+`
+
+const StyledIcon = styled.div`
+  color: ${props => props.theme.palette.primary.main};
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  cursor: pointer;
 `
 
 const WelcomeModal = ({ isOpen, toggleOpenState }) => (
@@ -26,6 +35,9 @@ const WelcomeModal = ({ isOpen, toggleOpenState }) => (
       type="button"
       onClick={() => toggleOpenState(false)}
     >
+      <StyledIcon>
+        <HighlightOff style={{ fontSize: '24px' }} />
+      </StyledIcon>
       <Row noGutters className="justify-content-center">
         <img
           src="/assets/static/img/welcome-modal--hola.png"

@@ -1,36 +1,40 @@
 import React from 'react'
-import Head from 'next/head'
-
-// los componentes de React deben comenzar con mayúscula
-// Y el nombre asignado al componente
-// también debe coincidir con el nombre del archivo
-// import Presentation from './sections/presentation'
-
+import PropTypes from 'prop-types'
 import Presentation from './sections/Presentation'
 import FirstSection from './sections/FirstSection'
+import SecondSection from './sections/SecondSection'
+import ThirdSection from './sections/ThirdSection'
+import FourthSection from './sections/FourthSection'
 
-// preferiblemente, los nombres de las secciones
-// deben ser más explicativos.
+const ProfilePage = props => {
+  const { formInfo } = props
+  const {
+    basic_info,
+    about_user = null,
+    user_interests = null,
+    skills = null,
+    experience = null
+  } = formInfo
 
-import SecondSection from './sections/second'
-import ThirdSection from './sections/third'
-import FourthSection from './sections/fourth'
-
-const ProfilePage = ({ match }) => {
   return (
-    <div className="ecom-dashboard-wrapper">
-      <Head>
-        <title>Perfil de usuario</title>
-        <meta name="description" content="User profile" />
-      </Head>
-      <Presentation />
-      {/* Tiene Redux */}
-      {/* <FirstSection /> */}
-      {/* <SecondSection /> */}
-      {/* <ThirdSection /> */}
-      {/* <FourthSection /> */}
-    </div>
+    <>
+      <Presentation name={basic_info.fields.name.current_value || null} />
+      <FirstSection {...{ basic_info, about_user, user_interests }} />
+      {skills && <SecondSection {...skills} />}
+      {experience && <ThirdSection {...experience} />}
+      <FourthSection />
+    </>
   )
 }
 
 export default ProfilePage
+
+ProfilePage.propTypes = {
+  formInfo: PropTypes.shape({
+    basic_info: PropTypes.object.isRequired,
+    about_user: PropTypes.object,
+    user_interests: PropTypes.object,
+    skills: PropTypes.object,
+    experience: PropTypes.object
+  }).isRequired
+}

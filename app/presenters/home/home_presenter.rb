@@ -1,6 +1,11 @@
 class Home::HomePresenter < ApplicationPresenter
+  attr_accessor :current_user
 
-  def self.data_filter
+  def initialize(current_user=nil)
+    @current_user = current_user
+  end
+
+  def data_filter
     cities = ListConverter.model_list(City).map{ |value| {label: value.values.last, value: value.values.first} }
     {
       fields1: [
@@ -30,7 +35,7 @@ class Home::HomePresenter < ApplicationPresenter
     }
   end
 
-  def self.offers
-    OffersService.active_offers_index_details
+  def offers
+    OffersService.active_offers_index_details(current_user)
   end
 end

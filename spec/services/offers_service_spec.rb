@@ -4,7 +4,7 @@ include ActionView::Helpers::NumberHelper
 RSpec.describe OffersService do
 
   describe "#active_offers_index_details" do
-    context "When exist activer offers" do
+    context "When exist active offers" do
       let!(:offer) { create(:offer, status: "active") }
 
       it "should return the presenter of all active offers" do

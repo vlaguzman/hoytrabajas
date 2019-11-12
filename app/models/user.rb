@@ -14,7 +14,6 @@ class User < ApplicationRecord
   belongs_to :educational_degree, optional: true
   belongs_to :city,               optional: true
 
-
   has_many :curriculum_vitaes
 
   has_and_belongs_to_many :nationalities
@@ -28,6 +27,10 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :curriculum_vitaes
 
   has_one_attached :cv_file
+  
+  def curriculum_vitae
+    curriculum_vitaes.any? ? curriculum_vitaes.first : nil
+  end
 
   def self.new_with_session(params, session)
     super.tap do |user|

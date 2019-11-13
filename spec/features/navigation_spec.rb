@@ -71,22 +71,8 @@ RSpec.describe "Overall navigation" do
       end
 
       it "should visit 'ver mas ofertas' page from home page", js: true do
-        FactoryBot.create(:offer, title: "Titulo De Oferta")
-        FactoryBot.create(:offer, title: "Titulo De Oferta41")
-        FactoryBot.create(:offer, title: "Titulo De Oferta52")
-        FactoryBot.create(:offer, title: "Titulo De Oferta63")
-        FactoryBot.create(:offer, title: "Titulo De Oferta74")
-        FactoryBot.create(:offer, title: "Titulo De Oferta85")
-        FactoryBot.create(:offer, title: "Titulo De Oferta26")
-        FactoryBot.create(:offer, title: "Titulo De Oferta37")
-        FactoryBot.create(:offer, title: "Titulo De Oferta48")
-        FactoryBot.create(:offer, title: "Titulo De Oferta59")
-        FactoryBot.create(:offer, title: "Titulo De Oferta60")
-        FactoryBot.create(:offer, title: "Titulo De Oferta71")
-        FactoryBot.create(:offer, title: "Titulo De Oferta82")
-        FactoryBot.create(:offer, title: "Titulo De Oferta55")
-        FactoryBot.create(:offer, title: "Titulo De Oferta84")
-        FactoryBot.create(:offer, title: "Titulo De Oferta83")
+        create(:offer, title: "Esta oferta deberia aparecer")
+        create_list(:offer, 20)
 
         visit root_path
 
@@ -98,13 +84,18 @@ RSpec.describe "Overall navigation" do
         has_button?('VER MÁS OFERTAS')
         find('span', text:/Ver más ofertas/, visible: false).click
 
-        expect(page).to have_text(/Titulo De Oferta48/)
-        
         has_button?('VER EL LISTADO DE OFERTAS')
         find('span', text:/Ver el listado de ofertas/, visible: false).click
 
         expect(current_path).to eq(offers_path)
-        expect(page).to have_text("Titulo De Oferta48")
+
+        has_button?('VER MÁS OFERTAS')
+        find('span', text:/Ver más ofertas/, visible: false).click
+
+        has_button?('VER MÁS OFERTAS')
+        find('span', text:/Ver más ofertas/, visible: false).click
+
+        expect(page).to have_text("Esta Oferta Deberia Aparec...")
 
         click_on("INICIO")
 

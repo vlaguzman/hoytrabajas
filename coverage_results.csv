@@ -46,7 +46,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/level.rb",100,5,3,3,0
 "./app/models/limitation.rb",100,6,3,3,0
 "./app/models/nationality.rb",100,6,3,3,0
-"./app/models/offer.rb",100,53,41,41,0
+"./app/models/offer.rb",100,60,45,45,0
 "./app/models/offer_salary.rb",100,12,8,8,0
 "./app/models/offer_type.rb",100,5,3,3,0
 "./app/models/offers_responsibilities.rb",100,4,3,3,0
@@ -72,7 +72,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/technical_skill.rb",100,8,6,6,0
 "./app/models/technical_skill_category.rb",100,3,2,2,0
 "./app/models/term.rb",100,5,3,3,0
-"./app/models/user.rb",81,56,32,26,6
+"./app/models/user.rb",82,59,34,28,6
 "./app/models/users_limitations.rb",100,8,4,4,0
 "./app/models/users_nationalities.rb",100,6,3,3,0
 "./app/models/vehicle.rb",100,6,4,4,0
@@ -89,7 +89,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/companies/first_offer/step_three_presenter.rb",100,21,6,6,0
 "./app/presenters/companies/first_offer/step_two_presenter.rb",100,29,10,10,0
 "./app/presenters/companies/first_offer/step_zero_presenter.rb",100,7,3,3,0
-"./app/presenters/home/home_presenter.rb",100,42,6,6,0
+"./app/presenters/home/home_presenter.rb",100,41,9,9,0
 "./app/presenters/offers_presenter.rb",100,25,13,13,0
 "./app/presenters/users/wizards/step_eight_presenter.rb",100,43,19,19,0
 "./app/presenters/users/wizards/step_eleven_presenter.rb",100,20,8,8,0
@@ -115,10 +115,10 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/companies/first_offer/step_two/form_params_service.rb",100,7,2,2,0
 "./app/services/companies/first_offer/step_two_service.rb",100,11,6,6,0
 "./app/services/offers/applied_offer_service.rb",100,15,6,6,0
-"./app/services/offers/index_service.rb",100,16,6,6,0
+"./app/services/offers/index_service.rb",100,18,7,7,0
 "./app/services/offers/show_service.rb",100,70,25,25,0
-"./app/services/offers/views_service.rb",100,53,17,17,0
-"./app/services/offers_service.rb",100,16,7,7,0
+"./app/services/offers/views_service.rb",100,56,19,19,0
+"./app/services/offers_service.rb",100,20,9,9,0
 "./app/services/users/wizard_service.rb",100,39,18,18,0
 "./app/services/users/wizards/step_eight/form_params_service.rb",100,62,24,24,0
 "./app/services/users/wizards/step_eight_service.rb",100,29,15,15,0

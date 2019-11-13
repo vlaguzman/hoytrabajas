@@ -42,6 +42,9 @@ const Offers = props => {
   const {
     offers,
     offer_translations,
+    csrf_param,
+    csrf_token,
+    path_applied_offers,
     hasAllOffers = false,
     initialRows = 1,
     rowIncrement = 1,
@@ -95,6 +98,9 @@ const Offers = props => {
               key={o['title']}
               offer={o}
               offer_translations={offer_translations}
+              path_applied_offers={path_applied_offers}
+              csrf_param={csrf_param}
+              csrf_token={csrf_token}
             />
           ) : null
         )
@@ -130,6 +136,9 @@ const Offers = props => {
 export default Offers
 
 Offers.propTypes = {
+  path_applied_offers: PropTypes.string.isRequired,
+  csrf_param: PropTypes.string,
+  csrf_token: PropTypes.string,
   offers: PropTypes.array.isRequired,
   offer_translations: PropTypes.shape({
     index: PropTypes.shape({

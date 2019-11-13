@@ -11,7 +11,13 @@ const textContent = {
 }
 
 const OffersSection = props => {
-  const { offers, offer_translations } = props
+  const {
+    csrf_param,
+    csrf_token,
+    path_applied_offers,
+    offers,
+    offer_translations
+  } = props
 
   return (
     <>
@@ -24,6 +30,9 @@ const OffersSection = props => {
       <Offers
         offers={offers}
         offer_translations={offer_translations}
+        csrf_param={csrf_param}
+        csrf_token={csrf_token}
+        path_applied_offers={path_applied_offers}
         initialRows={1}
         maxOffers={12}
       />
@@ -34,6 +43,9 @@ const OffersSection = props => {
 export default OffersSection
 
 OffersSection.propTypes = {
+  path_applied_offers: PropTypes.string.isRequired,
+  csrf_param: PropTypes.string,
+  csrf_token: PropTypes.string,
   offers: PropTypes.array.isRequired,
   offer_translations: PropTypes.shape({
     index: PropTypes.shape({

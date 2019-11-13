@@ -31,5 +31,6 @@ FactoryBot.define do
 
     association :job_category, factory: :job_category
     association :company, factory: :company
+    association :city, factory: :city
   end
 end

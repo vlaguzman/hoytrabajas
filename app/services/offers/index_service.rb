@@ -1,7 +1,9 @@
 class Offers::IndexService < Offers::ViewsService
 
-  def initialize(offer)
-    super(offer)
+  attr_accessor :offer, :current_user
+
+  def initialize(offer, current_user=nil)
+    super(offer, current_user)
   end
 
   private

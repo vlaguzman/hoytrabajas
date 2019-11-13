@@ -19,7 +19,7 @@ ActiveAdmin.register Offer do
   filter :immediate_start, as: :check_boxes, collection: [['Inicio Inmediato', true]], label: ''
   filter :job_category, label: 'Categoria', as: :select, collection: ListConverter.model_array_list(JobCategory)
   filter :city, label: 'Ciudad', as: :select, collection:  ListConverter.model_array_list(City)
-  filter :status, label: 'Estado', as: :select, collection: ['active', 'expire']
+  filter :status, label: 'Estado', as: :select, collection: ['active', 'expired', 'hired']
 
   form do |f|
     f.semantic_errors *f.object.errors.keys

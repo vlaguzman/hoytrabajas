@@ -102,6 +102,7 @@ RSpec.describe OffersPresenter do
         :related_offers,
         :button_disactive,
         :button_active,
+        :btn_apply,
         :btn_lg_apply_offer,
         :btn_apply_offer,
         :btn_super_apply

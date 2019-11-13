@@ -37,4 +37,29 @@ RSpec.describe User, type: :model do
     it { should have_and_belong_to_many(:driving_licences) }
     it { should accept_nested_attributes_for(:curriculum_vitaes)}
   end
+  
+  describe "#curriculum_vitae" do
+    let(:user) { create(:user) }
+    context "the user has not the curriculum vitae" do
+      it "should return nil" do
+        expect(user.curriculum_vitae).to be_nil
+      end
+    end
+
+    context "the user has one curriculum vitae" do
+      it "should return the only curriculum vitae" do
+        curriculum_vitae =  FactoryBot.create(:curriculum_vitae, user: user)
+        expect(user.curriculum_vitae.about_me).to eq(curriculum_vitae.about_me)
+      end
+    end
+
+    context "the user has more than one curriculum vitae" do
+      it "should return the first curriculum vitae" do
+        curriculum_vitae =  FactoryBot.create(:curriculum_vitae, user: user, about_me: "the best worker")
+        curriculum_vitae_2 =  FactoryBot.create(:curriculum_vitae, user: user)
+        expect(user.curriculum_vitae.about_me).to eq(curriculum_vitae.about_me)
+      end
+    end
+  end 
+  
 end

@@ -1,8 +1,11 @@
 class Offers::ViewsService
   include ActionView::Helpers
 
-  def initialize(offer)
+  attr_accessor :offer, :current_user
+
+  def initialize(offer, current_user=nil)
     @offer = offer
+    @current_user = current_user
   end
 
   def details

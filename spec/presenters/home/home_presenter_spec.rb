@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Home::HomePresenter do
-  let(:subject) { described_class }
+  let(:subject) { described_class.new }
 
   describe "#data_filter" do
     it "should return a hash with data filter" do

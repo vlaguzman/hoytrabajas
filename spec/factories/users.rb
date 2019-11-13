@@ -26,6 +26,5 @@ FactoryBot.define do
       confirmed_at          { Date.today }
       sign_in_count         { 0 }
     end
-
   end
 end

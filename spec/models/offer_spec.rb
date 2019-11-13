@@ -7,7 +7,62 @@ RSpec.describe Offer, type: :model do
 
     describe "scopes" do
       it { should respond_to(:related_job_category) }
+      it { should respond_to(:by_applied_offer_cv) }
       it { should respond_to(:active) }
+    end
+
+    let!(:cv)                { create(:curriculum_vitae) }
+    let!(:cv_2)              { create(:curriculum_vitae) }
+    let!(:cv_3)              { create(:curriculum_vitae) }
+    let!(:offer)             { create(:offer, title: 'just_an_offer') }
+    let!(:offer_2)           { create(:offer, title: 'an_other_offer') }
+    let!(:applied_offer)     { create(:applied_offer, curriculum_vitae: cv, offer: offer) }
+    let!(:applied_offer_2)   { create(:applied_offer, curriculum_vitae: cv, offer: offer_2) }
+    let!(:applied_offer_3)   { create(:applied_offer, curriculum_vitae: cv_2, offer: offer_2) }
+
+    describe "#by_applied_offer_cv" do
+      context "there just one opply offer with a cv_id" do
+        it "should return the offers related to a curriculum vitae" do
+          expect(Offer.by_applied_offer_cv(cv_2.id).first.title).to eq('an_other_offer')
+          expect(Offer.by_applied_offer_cv(cv_2.id).count).to eq(1)
+        end
+      end
+
+      context "there are two opplied offers" do
+        it "should return the offers related to a curriculum vitae" do
+          expect(Offer.by_applied_offer_cv(cv.id).first.title).to eq('just_an_offer')
+          expect(Offer.by_applied_offer_cv(cv.id).count).to eq(2)
+        end
+      end
+
+      context "there not are any applied offers by cv_id" do
+        it "shold return an empty array" do
+          expect(Offer.by_applied_offer_cv(cv_3.id)).to eq([])
+          expect(Offer.by_applied_offer_cv(cv_3.id).count).to eq(0)
+        end
+      end
+    end
+
+    describe "#not_applied_offers_by_cv" do
+      context "there just one opply offer with a cv_id" do
+        it "should return the offers that is not related to a curriculum vitae" do
+          expect(Offer.not_applied_offers_by_cv(cv_2.id).count).to eq(1)
+          expect(Offer.not_applied_offers_by_cv(cv_2.id).first.title).to eq('just_an_offer')
+        end
+      end
+
+      context "there are two opplied offers" do
+        it "should return an empty array" do
+          expect(Offer.not_applied_offers_by_cv(cv.id).count).to eq(0)
+          expect(Offer.not_applied_offers_by_cv(cv.id)).to eq([])
+        end
+      end
+
+      context "there not are any applied offers by cv_id" do
+        it "shold return an array with all offers" do
+          expect(Offer.not_applied_offers_by_cv(cv_3.id).count).to eq(2)
+        end
+      end
     end
   end
 
@@ -113,4 +168,6 @@ RSpec.describe Offer, type: :model do
       expect(offer.slug).to eq('panalera-de-pinguinos-de-compania')
     end
   end
+
+
 end

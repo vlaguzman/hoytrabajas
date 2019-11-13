@@ -12,7 +12,7 @@ import EditInfoButton from '../../../../components/Cards/DataCard/EditInfoButton
 import PaperHeader from '../../../../components/PaperHeader'
 
 const StyledCategory = styled.div`
-  margin-top: 15px;
+  margin-top: auto;
   border-radius: 4px;
   text-transform: uppercase;
   background-color: #c67a90;
@@ -109,7 +109,7 @@ const ThirdSection = ({ list, editPath }) => {
                 )
               )}
             </Row>
-            <EditInfoButton editPath="editPath" text="Editar información" />
+            <EditInfoButton editPath={editPath} text="Editar información" />
           </>
         ) : (
           <Row className="w-100 justify-content-center">
@@ -124,6 +124,7 @@ const ThirdSection = ({ list, editPath }) => {
                 <EditInfoButton
                   editPath={editPath}
                   text="Agregar información"
+                  hasMarginTop
                 />
               </Typography>
             </Col>

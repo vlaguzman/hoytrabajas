@@ -12,7 +12,13 @@ import ProfileTechnicalSkills from '../../../../components/Cards/DataCard/Conten
 import ProfileOtherSkills from '../../../../components/Cards/DataCard/Content/ProfileOtherSkills'
 
 const SecondSection = props => {
-  const { soft_skills, technical_skills, other_skills, languages } = props
+  const {
+    editPath = null,
+    soft_skills,
+    technical_skills,
+    other_skills,
+    languages
+  } = props
 
   return (
     <>
@@ -38,7 +44,11 @@ const SecondSection = props => {
           </Row>
           <ProfileTechnicalSkills list={technical_skills.list || []} />
           <ProfileOtherSkills list={other_skills.list || []} />
-          <EditInfoButton editPath="/" text="Editar información" />
+          <EditInfoButton
+            editPath={editPath}
+            hasMarginTop
+            text="Editar información"
+          />
         </Paper>
       </Row>
     </>
@@ -48,6 +58,7 @@ const SecondSection = props => {
 export default SecondSection
 
 SecondSection.propTypes = {
+  editPath: PropTypes.string.isRequired,
   soft_skills: PropTypes.object,
   technical_skills: PropTypes.object,
   other_skills: PropTypes.object,

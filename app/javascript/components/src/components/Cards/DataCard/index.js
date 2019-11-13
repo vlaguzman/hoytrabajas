@@ -22,7 +22,7 @@ const DataCard = ({
   haveContent,
   ChipsTitle,
   headerKind,
-  cardContentStyles
+  cardContentStyles = {}
 }) => {
   return (
     <Card
@@ -64,7 +64,7 @@ const DataCard = ({
       {/* ************** */}
       {middleDivider && <Divider variant="middle" className="mx-0 my-10" />}
       {haveContent && (
-        <CardContent className="p-0" {...cardContentStyles}>
+        <CardContent className="p-0" style={{ ...cardContentStyles }}>
           {children}
           {Chips && <ChipsList {...{ ChipsTitle }} {...{ Chips }} />}
         </CardContent>

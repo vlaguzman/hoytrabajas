@@ -91,6 +91,7 @@ const formInfo = {
     }
   },
   skills: {
+    editPath: '/users/wizard/step_five',
     soft_skills: {
       list: [
         { label: 'Honestidad', value: 9 },
@@ -176,6 +177,60 @@ const formInfo = {
         still_in_progress: true
       }
     ]
+  },
+  education: {
+    education_degrees: {
+      editPath: '/users/wizard/step_eight',
+      list: [
+        {
+          degree: 'Auxiliar de impresión',
+          institution_name: 'Sena',
+          city_id: 'Bucaramanga',
+          start_date: new Date(1995, 6, 2),
+          finish_date: new Date(2005, 6, 2),
+          ongoing_study: ''
+        },
+        {
+          degree: 'Curso de impresión Offset',
+          institution_name: 'Sena',
+          city_id: 'Bucaramanga',
+          start_date: new Date(2005, 3, 11),
+          finish_date: new Date(2008, 2, 12),
+          ongoing_study: ''
+        },
+        {
+          degree: 'Bachiller académico',
+          institution_name: 'Don Bosco',
+          city_id: 'Bogotá',
+          start_date: new Date(2012, 1, 6),
+          finish_date: '',
+          ongoing_study: true
+        },
+        {
+          degree: 'Bachiller académico',
+          institution_name: 'Don Bosco',
+          city_id: 'Bogotá',
+          start_date: new Date(2016, 5, 10),
+          finish_date: '',
+          ongoing_study: true
+        }
+      ]
+    },
+    education_diplomas: {
+      editPath: '/users/wizard/step_nine',
+      list: [
+        {
+          title: 'Bartender',
+          institution: 'Instituto nacional de bartenders',
+          start_date: new Date(2016, 5, 10)
+        },
+        {
+          title: 'Diplomado de oratoria',
+          institution: 'Universidad de Buenos Aires',
+          start_date: new Date(2018, 5, 10)
+        }
+      ]
+    }
   }
 }
 

@@ -1,90 +1,58 @@
-import React from 'react'
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import Paper from '@material-ui/core/Paper'
-import Typography from '@material-ui/core/Typography'
-import { Row, Col } from 'reactstrap'
-import { map } from 'lodash'
-import DataCard from '../../../../components/Cards/DataCard'
-import EditInfoButton from '../../../../components/Cards/DataCard/EditInfoButton'
-import CarouselRow from '../../../../components/Carousel/CarouselRow'
+import { Row } from 'reactstrap'
 import PaperHeader from '../../../../components/PaperHeader'
 import AuxiliaryButtons from '../components/AuxiliaryButtons'
+import ProfileDegrees from '../../../../components/Cards/DataCard/Content/ProfileDegrees'
+import ProfileDiplomas from '../../../../components/Cards/DataCard/Content/ProfileDiplomas'
 
-const data = [
-  {
-    titleSec: 'Auxiliar de impresión',
-    subTitleSec: 'Sena',
-    smallTitleSec: 'Bucaramanga'
-  },
-  {
-    titleSec: 'Curso de impresión Offset',
-    subTitleSec: 'Sena',
-    smallTitleSec: 'Bucaramanga'
-  },
-  {
-    titleSec: 'Bachiller académico',
-    subTitleSec: 'Don Bosco',
-    smallTitleSec: 'Bogotá'
-  },
-  {
-    titleSec: 'Bachiller académico',
-    subTitleSec: 'Don Bosco',
-    smallTitleSec: 'Bogotá'
-  }
-]
+const FourthSection = ({ education_degrees, education_diplomas }) => {
+  const {
+    list: degreesList = null,
+    editPath: degreesEditPath = null
+  } = education_degrees
+  const {
+    list: diplomasList = null,
+    editPath: diplomasEditPath = null
+  } = education_diplomas
 
-const FourthSection = () => {
+  const [showDegrees, setShowDegrees] = useState(true)
+
   return (
     <Row className="justify-content-between w-100 px-20 mx-0 my-20">
       <Paper className="w-100 d-flex flex-column py-25 pr-20 paper-responsive-padding justify-content-center align-items-center">
         <PaperHeader titulo="Formación académica" />
-        <AuxiliaryButtons />
-        <Row className="w-100 external">
-          <CarouselRow>
-            {map(data, ({ titleSec, subTitleSec, smallTitleSec }, i) => (
-              <Col key={i} xs={12}>
-                <DataCard
-                  haveContent
-                  middleDivider
-                  headerKind="titleSubNoIconNoChipNoFavCloseEdit"
-                  {...{ titleSec, subTitleSec, smallTitleSec }}
-                >
-                  <Typography variant="caption" className="fw-bold text-muted">
-                    Enero 2019 - Estudio en curso
-                  </Typography>
-                </DataCard>
-              </Col>
-            ))}
-          </CarouselRow>
-        </Row>
-        <EditInfoButton text="Agregar información" />
-        <EditInfoButton text="Agregar información" />
-        <Row className="w-100 justify-content-center">
-          <Col
-            xs={10}
-            className="p-10"
-            style={{ border: '.01rem dashed rgba(211,211,211, .9)' }}
-          >
-            <Typography variant="body1" className="text-center d-inline">
-              Al parecer no has registrado tu experiencia,
-              <span className="fw-bold">¡Agrégala ahora!</span>
-              <EditInfoButton text="Agregar información" />
-            </Typography>
-          </Col>
-          <Col
-            xs={10}
-            className="p-10"
-            style={{ border: '.01rem dashed rgba(211,211,211, .9)' }}
-          >
-            <Typography variant="body1" className="text-center d-inline">
-              Al parecer no has registrado tu experiencia,
-              <span className="fw-bold">¡Agrégala ahora!</span>
-              <EditInfoButton text="Agregar información" />
-            </Typography>
-          </Col>
-        </Row>
+        <AuxiliaryButtons
+          showDegrees={showDegrees}
+          setShowDegrees={setShowDegrees}
+        />
+        {showDegrees ? (
+          <ProfileDegrees list={degreesList} editPath={degreesEditPath} />
+        ) : (
+          <ProfileDiplomas list={diplomasList} editPath={diplomasEditPath} />
+        )}
       </Paper>
     </Row>
   )
 }
 
 export default FourthSection
+
+FourthSection.propTypes = {
+  education_degrees: PropTypes.shape({
+    list: PropTypes.shape({
+      degree: PropTypes.string,
+      institution_name: PropTypes.string,
+      city_id: PropTypes.string,
+      start_date: PropTypes.object,
+      finish_date: PropTypes.object,
+      ongoing_study: PropTypes.bool
+    }),
+    editPath: PropTypes.string.isRequired
+  }),
+  education_diplomas: PropTypes.shape({
+    list: PropTypes.object,
+    editPath: PropTypes.string.isRequired
+  })
+}

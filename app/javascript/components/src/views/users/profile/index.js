@@ -13,7 +13,8 @@ const ProfilePage = props => {
     about_user = null,
     user_interests = null,
     skills = null,
-    experience = null
+    experience = null,
+    education = null
   } = formInfo
 
   return (
@@ -22,7 +23,7 @@ const ProfilePage = props => {
       <FirstSection {...{ basic_info, about_user, user_interests }} />
       {skills && <SecondSection {...skills} />}
       {experience && <ThirdSection {...experience} />}
-      <FourthSection />
+      {education && <FourthSection {...education} />}
     </>
   )
 }
@@ -34,7 +35,16 @@ ProfilePage.propTypes = {
     basic_info: PropTypes.object.isRequired,
     about_user: PropTypes.object,
     user_interests: PropTypes.object,
-    skills: PropTypes.object,
-    experience: PropTypes.object
+    skills: PropTypes.shape({
+      soft_skills: PropTypes.object,
+      technical_skills: PropTypes.object,
+      other_skills: PropTypes.object,
+      languages: PropTypes.object
+    }),
+    experience: PropTypes.object,
+    education: PropTypes.shape({
+      education_degrees: PropTypes.object,
+      education_diplomas: PropTypes.object
+    })
   }).isRequired
 }

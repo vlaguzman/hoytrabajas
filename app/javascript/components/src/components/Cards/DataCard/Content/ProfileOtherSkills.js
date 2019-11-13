@@ -14,7 +14,7 @@ const ProfileOtherSkills = ({ list }) => {
           Habilidades a aprender o reforzar
         </Typography>
       </Row>
-      <Row className="w-100 external my-30">
+      <Row className="w-100 external mt-30">
         {list.length > 0 ? (
           <>
             {list.map(title => (

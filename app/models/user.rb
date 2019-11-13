@@ -50,10 +50,12 @@ class User < ApplicationRecord
   end
 
   def confirmation_required?
-    false
+    puts "me estoy saltando la confirmacion"*100
+    true
   end
 
   def active_for_authentication?
+    puts "me estoy intentando autenticar"*100
     skip_confirmation!
   end
 end

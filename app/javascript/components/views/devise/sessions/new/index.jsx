@@ -38,6 +38,11 @@ export default class Index extends React.Component {
             aria-labelledby="max-width-dialog-title"
           >
             <DialogTitle id="max-width-dialog-title" className="my-25">
+              <div className="px-40 text-right">
+                <a className="button-close" href="/">
+                  X
+                </a>
+              </div>
               <Row noGutters className="justify-content-center">
                 <a className="ht-image" href="/">
                   <img
@@ -109,7 +114,7 @@ export default class Index extends React.Component {
                 <Typography
                   component="a"
                   variant="caption"
-                  style={{ color: '#00CED5' }}
+                  style={{ color: 'robin-blue' }}
                   href={`/${resource_name}/password/new`}
                 >
                   {this.props.session_translation.sign_in.forget_password}
@@ -137,7 +142,7 @@ export default class Index extends React.Component {
               </Row>
               <Row className="my-30">
                 <Col xs={12}>
-                  <MatButton variant="outlined">
+                  <MatButton variant="outlined" disabled>
                     {
                       this.props.session_translation.sign_in.button_action
                         .sign_in_facebook
@@ -147,7 +152,7 @@ export default class Index extends React.Component {
               </Row>
               <Row className="my-30">
                 <Col xs={12}>
-                  <MatButton variant="outlined">
+                  <MatButton variant="outlined" disabled>
                     {
                       this.props.session_translation.sign_in.button_action
                         .sign_in_google
@@ -165,10 +170,22 @@ export default class Index extends React.Component {
                   variant="caption"
                   className="ml-5"
                   component="a"
-                  style={{ color: '#00CED5', cursor: 'pointer' }}
+                  style={{ color: 'robin-blue', cursor: 'pointer' }}
                   href={`/${resource_name}/sign_up`}
                 >
                   {this.props.session_translation.sign_in.no_account.sign_up}
+                </Typography>
+              </div>
+            </DialogActions>
+            <DialogActions className="">
+              <div className="w-100 text-center">
+                <Typography
+                  component="a"
+                  variant="caption"
+                  style={{ color: 'robin-blue' }}
+                  href="/"
+                >
+                  Home 
                 </Typography>
               </div>
             </DialogActions>

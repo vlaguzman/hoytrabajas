@@ -51,8 +51,11 @@ RSpec.describe "Overall navigation" do
 
         expect(page).to have_text("Regístrate ahora")
 
-        #TODO the user cant return by easy way to home, should exist a return home button
-        visit root_path
+        expect(page).to have_text("X")
+
+        click_on("X")
+
+        expect(current_path).to eq(root_path)
       end
 
       it "should visit 'Empleador' page from home page", js: true do
@@ -66,8 +69,11 @@ RSpec.describe "Overall navigation" do
 
         expect(page).to have_text("Regístrate ahora")
 
-        #TODO the user cant return by easy way to home, should exist a return home button
-        visit root_path
+        expect(page).to have_text("X")
+
+        click_on("X")
+
+        expect(current_path).to eq(root_path)
       end
 
       it "should visit 'ver mas ofertas' page from home page", js: true do

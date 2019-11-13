@@ -39,7 +39,7 @@ RSpec.describe User, type: :model do
   end
   
   describe "#curriculum_vitae" do
-    let!(:user) { create(:user) }
+    let(:user) { create(:user) }
     context "the user has not the curriculum vitae" do
       it "should return nil" do
         expect(user.curriculum_vitae).to be_nil

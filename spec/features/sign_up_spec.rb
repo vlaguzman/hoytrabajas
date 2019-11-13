@@ -19,7 +19,7 @@ RSpec.describe "sign up user", js: true,  type: :feature do
 
       expect(page).to have_text("Regístrate")
     end
-    
+
     context "I want to return to the home page" do
       it "should return to the root_path" do
 
@@ -31,6 +31,7 @@ RSpec.describe "sign up user", js: true,  type: :feature do
         click_on 'SIGN UP CANDIDATO'
 
         expect(page).to have_text("Regístrate")
+
         expect(page).to have_text("X")
 
         click_on("X")
@@ -78,18 +79,20 @@ RSpec.describe "sign up user", js: true,  type: :feature do
 
       context "I want to return to the home page" do
         it "should return to the root_path" do
-     
+
           visit root_path
 
           skip_under_construction
-     
+
           expect(page).to have_text("SIGN UP EMPRESA") 
           click_on 'SIGN UP EMPRESA'
-     
+
           expect(page).to have_text("Regístrate")
-          page.first(".ht-image").click
-     
-          expect(page).to have_text("El empleo ideal para tu tiempo libre") 
+
+          expect(page).to have_text("X")
+
+          click_on("X")
+
           expect(current_path).to eq(root_path)
         end
       end

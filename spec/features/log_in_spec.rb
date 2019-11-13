@@ -59,7 +59,6 @@ RSpec.describe "User can Log In", type: :feature do
 
       has_button?("SIGN IN CANDIDATO")
       click_on("SIGN IN CANDIDATO")
-      save_page("page.html")
       page.first(".ht-image").click
 
       expect(page).to have_text("El empleo ideal para tu tiempo libre") 

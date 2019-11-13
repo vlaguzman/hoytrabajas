@@ -34,16 +34,4 @@ RSpec.describe Company, type: :model do
     it { should belong_to(:city) }
     it { should have_many(:offers) }
   end
-
-  describe "#active_for_authentication?" do
-    it {should respond_to(:active_for_authentication?)}
-
-    it "should change the cofirmed date" do
-      expect(subject.confirmed_at).to eq(nil)
-
-      subject.active_for_authentication?
-
-      expect(subject.confirmed_at).to eq(DateTime.now)
-    end
-  end
 end

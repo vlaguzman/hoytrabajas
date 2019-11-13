@@ -1,0 +1,19 @@
+es:
+  users:
+    wizards:
+      step_ones:
+        edit:
+          title: "Edita tu informacion basica"
+          subtitle: "Brinda a las empresas información valiosa sobre ti."
+          form:
+            buttons:
+              submit: "Actualizar"
+              previous: "Regresar"
+              next: "Saltar"
+            formFields:
+              name: "Nombre*"
+              last_name: "Apellido*"
+              nationality_ids: "Nacionalidad*"
+              document_type_id: "Tipo de documento de identidad*"
+              identification_number: "Número de documento*"
+              contact_number: "Número de contacto*"

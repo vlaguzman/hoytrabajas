@@ -1,6 +1,10 @@
 require "rails_helper"
 
 RSpec.describe UsersPresenter do
+  before { Timecop.freeze(Date.new(2019, 11, 5)) }
+
+  after { Timecop.return }
+
   let(:user) { create(:user,
     email: 'bat@man.com',
     name: 'Bruce',
@@ -21,10 +25,12 @@ RSpec.describe UsersPresenter do
     it "should return a hash with the required info to show template" do
       expect(subject.dashboard_main_data).to be_an_instance_of(Hash)
       expect(subject.dashboard_main_data).to eq({
-        :name=>"Bruce Wayne",
+        :name=>"Bruce",
+        :last_name=>'Wayne',
         :telephone=>"100-500-3030",
         :email=>"bat@man.com",
-        :location=>"Gothan"
+        :location=>"Gothan",
+        :last_update=>DateTime.now
       }
       )
     end

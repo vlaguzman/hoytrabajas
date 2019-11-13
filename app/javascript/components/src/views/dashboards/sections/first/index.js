@@ -21,7 +21,14 @@ function ListItemLink(props) {
   return <ListItem button component="a" {...props} />
 }
 
-const First = ({email, location, telephone, name}) => {
+const lastUpdateInDays = (last_update)=> {
+  return Math.round( (last_update - Date.now())/(1000 * 60 * 60 * 24) )
+}
+
+const First = ({ name, last_name, telephone, email, location, last_update }) => {
+
+  last_update = lastUpdateInDays(new Date(last_update))
+
   const theTitle = (texto) => (
     <Fragment>
     <IconButton className="p-0" aria-label="Settings">
@@ -62,7 +69,7 @@ const First = ({email, location, telephone, name}) => {
         />
         <CardContent className="px-25 d-none d-lg-block">
           <Typography className="mb-10" variant="h6">
-            {name}
+            {name} {last_name}
           </Typography>
           <Typography className="mb-10" variant="body1">
             {telephone}
@@ -76,35 +83,36 @@ const First = ({email, location, telephone, name}) => {
         </CardContent>
         <CardContent className="py-25 d-lg-none">
           <Typography className="fw-bold text-right mb-0" variant="h6">
-            {/* Carlos Andrés */}
+            { name }
           </Typography>
           <Typography className="mb-10 text-primary text-right" variant="h6">
-            {/* Gómez Gongora */}
+            { last_name }
           </Typography>
           <Typography className="mb-0 text-right" variant="body1">
-            {/* 310 123 456 789 */}
+            { telephone }
           </Typography>
           <Typography className="mb-0 text-right" variant="body1">
-            {/* vicmezquita@gmail.com */}
+            { email }
           </Typography>
           <Typography className="mb-25 text-right" variant="body1">
-            {/* Bogotá, Colombia */}
+            { location }
           </Typography>
         </CardContent>
         <Divider variant="middle" className="px-0" />
         <CardActions className="">
           <Row className="justify-content-between w-100 mr-0 px-30">
             <Typography variant="caption" component="span">
-              {/* Ultima actualización: Hace 25 días */}
+              Ultima actualización: {(last_update >= 1) ? `Hace ${lastUpdateInDays(last_update)} día(s)`: 'Hoy'}
             </Typography>
-            {/* <Typography
+            <Typography
+              onClick={()=>{window.location.assign('/users/wizards/step_one/edit') }}
               variant="caption"
-              className="text-info text-right"
+              className="text-info text-right add-pointer"
               component="span"
             >
               <i className="ti-pencil text-info mr-10" />
               Editar
-            </Typography> */}
+            </Typography>
           </Row>
         </CardActions>
       </Card>

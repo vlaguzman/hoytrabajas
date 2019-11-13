@@ -3,10 +3,12 @@ class UsersPresenter < ApplicationPresenter
 
   def dashboard_main_data
     {
-      name: complete_name,
+      name: source.name,
+      last_name: source.last_name,
       telephone: source.contact_number,
       email: source.email,
-      location: source.city_description
+      location: source.city_description,
+      last_update: source.updated_at
     }
   end
 
@@ -17,9 +19,4 @@ class UsersPresenter < ApplicationPresenter
     end if offers.present?
   end
 
-  private
-
-  def complete_name
-    "#{source.name} #{source.last_name}"
-  end
 end

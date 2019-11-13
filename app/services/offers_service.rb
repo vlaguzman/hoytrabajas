@@ -1,7 +1,7 @@
 module OffersService
 
   def self.active_offers_index_details(current_user=nil)
-    cv_id = current_user.nil? ? 0 : current_user.curriculum_vitae.id
+    cv_id = current_user.present? ? current_user.curriculum_vitae.id : 0
     Offer
       .active
       .not_applied_offers_by_cv(cv_id)

@@ -45,7 +45,8 @@ const OfferCard = ({
               })}
               style={{ borderRadius: '30px' }}
             >
-              {/* <span className="d-none d-lg-inline">
+              {/* TO-DO-VLADO: made a review of the responsive 
+                   <span className="d-none d-lg-inline">
                      {value_button_lg}
                    </span> */}
               {/* <span className="d-lg-none"> */}
@@ -66,7 +67,8 @@ const OfferCard = ({
             </a>
           </Button>
         </Row>
-        {/* <Row noGutters className="w-100 justify-content-center">
+        {/* TO-DO-ANYONE: ACTIVE THE SUPER-APPLY
+             <Row noGutters className="w-100 justify-content-center">
                <Button
                  style={{ borderRadius: '30px' }}
                  variant="contained"
@@ -76,7 +78,8 @@ const OfferCard = ({
                  {offer_translations.btn_super_apply}
                </Button>
              </Row> */}
-        {/* <Row noGutters className="w-100 justify-content-between px-50 mt-20">
+        {/* TO-DO-ANYONE: ACTIVE THE FAVORITE FEATURE
+             <Row noGutters className="w-100 justify-content-between px-50 mt-20">
                <IconButton aria-label="Add to favorites" className="text-danger">
                  <FavoriteIcon />
                </IconButton>
@@ -87,7 +90,8 @@ const OfferCard = ({
                  <Delete />
                </IconButton>
              </Row> */}
-        {/* <Row
+        {/* TO-DO-ANYONE: ACTIVE THE SHARE OPTIONS
+             <Row
                noGutters
                className="w-80 justify-content-between mt-20"
                style={{

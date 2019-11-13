@@ -86,7 +86,7 @@ A         • Offers::ViewsService                                7       36.4  
 A         • OffersController                                    13      20.31      0           1
 A         • OffersPresenter                                     6       17.8       0           4
 A         • OffersResponsibilities                              1       0.0        0           1
-A         • OffersService                                       9       22.95      0           2
+A         • OffersService                                       10      22.95      0           1
 A         • OffersSoftSkills                                    1       0.0        0           1
 A         • OffersTechnicalSkills                               1       0.0        0           1
 A         • OffersTerms                                         1       0.0        0           1

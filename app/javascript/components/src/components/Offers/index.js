@@ -94,7 +94,6 @@ const Offers = props => {
         offers.map((o, index) =>
           (!hasAllOffers && index < offersLimit && index < offersToDisplay) ||
           index < offersToDisplay ? (
-
             <StyledOfferCard
               key={o['title']}
               offer={o}
@@ -137,6 +136,9 @@ const Offers = props => {
 export default Offers
 
 Offers.propTypes = {
+  path_applied_offers: PropTypes.string.isRequired,
+  csrf_param: PropTypes.string,
+  csrf_token: PropTypes.string,
   offers: PropTypes.array.isRequired,
   offer_translations: PropTypes.shape({
     index: PropTypes.shape({

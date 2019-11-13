@@ -11,12 +11,13 @@ const textContent = {
 }
 
 const OffersSection = props => {
-  const { 
+  const {
     csrf_param,
     csrf_token,
     path_applied_offers,
     offers,
-    offer_translations } = props
+    offer_translations
+  } = props
 
   return (
     <>
@@ -42,6 +43,9 @@ const OffersSection = props => {
 export default OffersSection
 
 OffersSection.propTypes = {
+  path_applied_offers: PropTypes.string.isRequired,
+  csrf_param: PropTypes.string,
+  csrf_token: PropTypes.string,
   offers: PropTypes.array.isRequired,
   offer_translations: PropTypes.shape({
     index: PropTypes.shape({

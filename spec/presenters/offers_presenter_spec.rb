@@ -23,11 +23,11 @@ RSpec.describe OffersPresenter do
     context "when exist 3 related offers" do
       let!(:main_job_category) { create(:job_category, description: "TheMainCategory") }
 
-      let(:main_offer) { create(:offer, job_category: main_job_category) }
+      let(:main_offer) { create(:offer, job_categories: [main_job_category]) }
 
-      let!(:related_offer_one)   { Offers::IndexService.new(create(:offer, job_category_id: main_job_category.id)).details }
-      let!(:related_offer_two)   { Offers::IndexService.new(create(:offer, job_category_id: main_job_category.id)).details }
-      let!(:related_offer_three) { Offers::IndexService.new(create(:offer, job_category_id: main_job_category.id)).details }
+      let!(:related_offer_one)   { Offers::IndexService.new(create(:offer, job_categories: [main_job_category])).details }
+      let!(:related_offer_two)   { Offers::IndexService.new(create(:offer, job_categories: [main_job_category])).details }
+      let!(:related_offer_three) { Offers::IndexService.new(create(:offer, job_categories: [main_job_category])).details }
 
       let!(:stuff_offers) do
         [create(:offer), create(:offer)]
@@ -36,7 +36,6 @@ RSpec.describe OffersPresenter do
       let(:subject) { described_class.new(main_offer, user) }
 
       it "should return 3 expected objects" do
-
         response = subject.related_offer_show
 
         expected_response = [
@@ -61,7 +60,7 @@ RSpec.describe OffersPresenter do
     end
 
     let!(:main_job_category_2) { create(:job_category, description: "TheMainCategory") }
-    let!(:related_offer) { create(:offer, job_category: main_job_category_2) }
+    let!(:related_offer) { create(:offer, job_categories: [main_job_category_2]) }
 
     it "should have the expected keys in the arrays" do
       response = subject.index_details

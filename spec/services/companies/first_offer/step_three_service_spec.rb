@@ -20,7 +20,7 @@ RSpec.describe Companies::FirstOffer::StepThreeService do
           {
             id: offer.id,
             title: 'Oferta para el mejor desarrollador del mundo mundial',
-            job_category_id: job_category.id,
+            job_categories: [job_category],
             offer_type_id: offer_type.id,
             work_mode_id: work_mode.id,
             offers_work_positions: work_position.id
@@ -37,7 +37,7 @@ RSpec.describe Companies::FirstOffer::StepThreeService do
           expect(offer[:data]).to be_an_instance_of(Offer)
 
           expect(offer[:data].title).to eq(params[:title])
-          expect(offer[:data].job_category_id).to eq(params[:job_category_id])
+          expect(offer[:data].job_categories).to eq(params[:job_categories])
           expect(offer[:data].offer_type_id).to eq(params[:offer_type_id])
 
           expect(offer[:error]).to eq(nil)
@@ -50,7 +50,7 @@ RSpec.describe Companies::FirstOffer::StepThreeService do
             id: offer.id,
             company_id: '',
             title: '',
-            job_category_id: job_category.id,
+            job_categories: [job_category],
             offer_type_id: offer_type.id,
             work_mode_id: work_mode.id,
             offers_work_positions: work_position.id
@@ -76,7 +76,7 @@ RSpec.describe Companies::FirstOffer::StepThreeService do
         let(:params) do
           {
             title: 'Oferta para el mejor desarrollador del mundo mundial',
-            job_category_id: job_category.id,
+            job_categories: [job_category],
             offer_type_id: offer_type.id,
             work_mode_id: work_mode.id,
             offers_work_positions: work_position.id
@@ -103,7 +103,7 @@ RSpec.describe Companies::FirstOffer::StepThreeService do
           {
             company_id: '',
             title: '',
-            job_category_id: job_category.id,
+            job_categories: [job_category],
             offer_type_id: offer_type.id,
             work_mode_id: work_mode.id,
             offers_work_positions: work_position.id

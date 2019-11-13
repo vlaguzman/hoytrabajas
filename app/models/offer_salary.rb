@@ -3,7 +3,6 @@ class OfferSalary < ApplicationRecord
 
   belongs_to :offer
   belongs_to :salary_period
-  belongs_to :salary_type
   belongs_to :currency
 
   #delegates

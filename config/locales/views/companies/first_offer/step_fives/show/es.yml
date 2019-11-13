@@ -13,13 +13,13 @@ es:
               previous: "Regresar"
             type: "offer"
             formFields:
-              salary_type_id: 'Aspiracion salarial'
+              is_range: 'Aspiración salarial'
               currency_id,: ''
               from: ''
               to: ''
               salary_period_id: 'Pago'
-              working_day_ids: 'que dias de la semana?'
-              available_work_day_ids: 'en que jornada?'
+              working_day_ids: '¿Qué dias de la semana?'
+              available_work_day_ids: '¿En qué jornada?'
               job_aid_ids: 'Auxilios o prestaciones asociadas a tu oferta'
             placeholders:
               from: 'Ej: 750.000'

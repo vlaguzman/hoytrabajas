@@ -1,20 +1,20 @@
 import React, { useState, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col } from 'reactstrap'
-import Select from '../../../../components/FormsLayout/Fields/Select'
-import SelectChip from '../../../../components/FormsLayout/Fields/SelectChip'
-import StandardInput from '../../../../components/FormsLayout/Fields/StandardInput'
+import Select from '../../../../../components/FormsLayout/Fields/Select'
+import SelectChip from '../../../../../components/FormsLayout/Fields/SelectChip'
+import StandardInput from '../../../../../components/FormsLayout/Fields/StandardInput'
 import {
   handleDeleteChip,
   handleChange
-} from '../../../../components/FormsLayout/handleFunctions'
+} from '../../../../../components/FormsLayout/handleFunctions'
 
 
 const FormFields = props => {
   const { formFields } = props
 
   const {
-    salary_type_id = null,
+    is_range = null,
     currency_id = null,
     from = null,
     to = null,
@@ -25,7 +25,7 @@ const FormFields = props => {
   } = formFields
 
   const [formValues, setFormValues] = useState({
-    [salary_type_id.name]: salary_type_id.current_value || '',
+    [is_range.name]: is_range.current_value || '',
     [currency_id.name]: currency_id.current_value || '',
     [from.name]: from.current_value || '',
     [to.name]: to.current_value || '',
@@ -44,16 +44,16 @@ const FormFields = props => {
     () => (
       <Col className={controlledInputsClassname} xs={12} lg={3}>
         <Select
-          inputValue={formValues[salary_type_id.name]}
+          inputValue={formValues[is_range.name]}
           handleChange={handleChange(formValues, setFormValues)}
-          name={salary_type_id.name}
-          label={salary_type_id.label}
-          selectOptions={salary_type_id.values}
-          isRequired={salary_type_id.isRequired || false}
+          name={is_range.name}
+          label={is_range.label}
+          selectOptions={is_range.values}
+          isRequired={is_range.isRequired || false}
         />
       </Col>
     ),
-    [formValues[salary_type_id.name]]
+    [formValues[is_range.name]]
   )
 
   const offerSalaryCurrencyField = useMemo(
@@ -88,7 +88,7 @@ const FormFields = props => {
 
   const offerSalaryMaxField = useMemo(
     () =>
-      formValues[salary_type_id.name] === 1 ? (
+      formValues[is_range.name] === "true" ? (
         <Col className={`pr-0 ${controlledInputsClassname}`} xs={12} lg={2}>
           <StandardInput
             inputValue={formValues[to.name]}
@@ -100,7 +100,7 @@ const FormFields = props => {
           />
         </Col>
       ) : null,
-    [formValues[to.name], formValues[salary_type_id.name]]
+    [formValues[to.name], formValues[is_range.name]]
   )
 
   const offerSalaryIntervalField = useMemo(
@@ -130,7 +130,7 @@ const FormFields = props => {
           label={available_work_day_ids.label}
           selectOptions={available_work_day_ids.values}
           isRequired={available_work_day_ids.isRequired || false}
-          isMultiple={available_work_day_ids.isMultiple || false}
+          isMultiple
         />
       </Col>
     ),
@@ -148,7 +148,7 @@ const FormFields = props => {
           label={working_day_ids.label}
           selectOptions={working_day_ids.values}
           isRequired={working_day_ids.isRequired || false}
-          isMultiple={working_day_ids.isMultiple || false}
+          isMultiple
         />
       </Col>
     ),
@@ -166,7 +166,7 @@ const FormFields = props => {
           label={job_aid_ids.label}
           selectOptions={job_aid_ids.values}
           isRequired={job_aid_ids.isRequired || false}
-          isMultiple={job_aid_ids.isMultiple || false}
+          isMultiple
         />
       </Col>
     ),
@@ -191,7 +191,7 @@ export default FormFields
 
 FormFields.propTypes = {
   formFields: PropTypes.shape({
-    salary_type_id: PropTypes.object,
+    is_range: PropTypes.object,
     currency_id: PropTypes.object,
     from: PropTypes.object,
     to: PropTypes.object,

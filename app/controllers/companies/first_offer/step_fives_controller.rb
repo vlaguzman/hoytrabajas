@@ -34,22 +34,15 @@ class Companies::FirstOffer::StepFivesController < ApplicationController
     params
       .require(:offer)
       .permit(
-        offer: {
-          offer_salaries: [
-            :salary_type_id,
-            :currency_id,
-            :from,
-            :to,
-            :salary_period_id
-          ],
-          offers_working_days: [
-            :working_days_ids
-          ],
-          available_work_days_offers: [
-            :available_work_days_ids
-          ],
-          job_aids_ids: []
-        }
+        :id,
+        :is_range,
+        :currency_id,
+        :from,
+        :to,
+        :salary_period_id,
+        available_work_day_ids: [],
+        working_day_ids: [],
+        job_aid_ids: []
     ).to_h
   end
 end

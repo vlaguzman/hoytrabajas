@@ -6,7 +6,7 @@ class Companies::FirstOffer::StepFive::FormParamsService < BaseFormWizardsServic
   ]
 
   SELECT_FIELDS_KEYS = [
-    :salary_type_id,
+    :is_range,
     :currency_id,
     :salary_period_id
   ]
@@ -27,11 +27,6 @@ class Companies::FirstOffer::StepFive::FormParamsService < BaseFormWizardsServic
     source.salary_to
   end
 
-  def salary_type_id_current_value
-    object = OfferSalary.find_by(offer_id: source.id)
-    object.present? ? object.salary_type_id : ""
-  end
-
   def currency_id_current_value
     source.salary_currency_description
   end
@@ -40,8 +35,13 @@ class Companies::FirstOffer::StepFive::FormParamsService < BaseFormWizardsServic
     source.salary_period_description
   end
 
-  def salary_type_id_list
-    ListConverter.model_list(SalaryType).sort_by { |key,_| key[:description] }
+  def is_range_current_value
+    object = OfferSalary.find_by(offer_id: source.id)
+    object.present? ? object.is_range : ''
+  end
+
+  def is_range_list
+    [{ id: true, description: "Rango"}, {id: false, description: "Fijo" }]
   end
 
   def currency_id_list

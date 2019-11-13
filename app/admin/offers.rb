@@ -1,6 +1,6 @@
 ActiveAdmin.register Offer do
 
-  permit_params :title, :address, :cellphone, :description, :vacancies_quantity, :close_date, :immediate_start, :required_experience, :release_date, :status, :city_id, :job_category_ids, :offer_type_id, :contract_type_id, :work_mode_id, :sex_id, :company_id
+  permit_params :title, :address, :cellphone, :description, :vacancies_quantity, :close_date, :immediate_start, :required_experience, :release_date, :status, :city_id, :offer_type_id, :contract_type_id, :work_mode_id, :sex_id, :company_id, job_category_ids: []
 
   index do
     selectable_column
@@ -34,7 +34,7 @@ ActiveAdmin.register Offer do
       f.input :vacancies_quantity, label: t('admin.offers.form.vacancies_quantity')
       f.input :work_mode_id, label: t('admin.offers.form.work_mode'), as: :select, collection: ListConverter.model_array_list(WorkMode)
       f.input :city_id, label: t('admin.offers.form.city'), as: :select, collection: ListConverter.model_array_list(City)
-      f.input :job_category_ids, label: t('admin.offers.form.job_category'), as: :select, :input_html => { :multiple => true }, collection: ListConverter.model_array_list(JobCategory)
+      f.input :job_category_ids, label: t('admin.offers.form.job_category'), as: :select, :input_html => { :multiple => true, :size => 10 }, collection: ListConverter.model_array_list(JobCategory)
       f.input :contract_type, label: t('admin.offers.form.contract_type'), as: :select, collection: ListConverter.model_array_list(ContractType)
       f.input :required_experience, label: t('admin.offers.form.required_experience')
       f.input :immediate_start, label: t('admin.offers.form.inmediate_start')

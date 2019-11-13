@@ -114,7 +114,7 @@ export default class Index extends React.Component {
                 <Typography
                   component="a"
                   variant="caption"
-                  style={{ color: '#00CED5' }}
+                  style={{ color: 'robin-blue' }}
                   href={`/${resource_name}/password/new`}
                 >
                   {this.props.session_translation.sign_in.forget_password}
@@ -170,7 +170,7 @@ export default class Index extends React.Component {
                   variant="caption"
                   className="ml-5"
                   component="a"
-                  style={{ color: '#00CED5', cursor: 'pointer' }}
+                  style={{ color: 'robin-blue', cursor: 'pointer' }}
                   href={`/${resource_name}/sign_up`}
                 >
                   {this.props.session_translation.sign_in.no_account.sign_up}

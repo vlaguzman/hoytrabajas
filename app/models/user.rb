@@ -49,13 +49,15 @@ class User < ApplicationRecord
     end
   end
 
+
   def confirmation_required?
-    puts "me estoy saltando la confirmacion"*100
-    true
+    if self.email === "gabriel.meneses@hoytrabajas.com"
+      true
+      skip_confirmation!
+    else
+
+      false
+    end
   end
 
-  def active_for_authentication?
-    puts "me estoy intentando autenticar"*100
-    skip_confirmation!
-  end
 end

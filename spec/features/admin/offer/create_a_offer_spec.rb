@@ -13,10 +13,11 @@ RSpec.describe "like an admin user", :type => :feature do
 
       fill_in "offer[title]", with: "el titulo de la oferta"
       fill_in "offer[company_id]", with: company.id
-      select 'Marketing', from: 'offer[job_category_id]'
+      select 'Marketing', from: 'offer[job_category_ids][]'
 
       click_button 'Guardar Offer'
 
+      expect(Offer.last.job_categories.count).to eq(1)
       expect(Offer.count).to_not be_zero
       expect(page).to have_content(/el titulo de la oferta/)
       expect(page).to have_content(/hoycamellas/)

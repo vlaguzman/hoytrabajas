@@ -14,7 +14,6 @@ class User < ApplicationRecord
   belongs_to :educational_degree, optional: true
   belongs_to :city,               optional: true
 
-
   has_many :curriculum_vitaes
 
   has_and_belongs_to_many :nationalities
@@ -51,7 +50,7 @@ class User < ApplicationRecord
   end
 
   def confirmation_required?
-    if self.email === "gabriel.meneses@hoytrabajas.com"
+    if self.email.eql?("gabriel.meneses@hoytrabajas.com")
       true
     else
       false

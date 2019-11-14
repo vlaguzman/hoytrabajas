@@ -29,6 +29,10 @@ class User < ApplicationRecord
 
   has_one_attached :cv_file
 
+  def curriculum_vitae
+    curriculum_vitaes.any? ? curriculum_vitaes.first : nil
+  end
+
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
@@ -45,7 +49,6 @@ class User < ApplicationRecord
       user.image = auth.info.image # assuming the user model has an image
     end
   end
-
 
   def confirmation_required?
     if self.email === "gabriel.meneses@hoytrabajas.com"

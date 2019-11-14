@@ -62,6 +62,27 @@ RSpec.describe "sign up user", js: true,  type: :feature do
       end
     end
 
+    context  "when I use mail 'gabriel.meneses@hoytrabajas.com' to sing up" do
+      context "when I looking for a job" do
+
+        it "should redirect to cadidate step zero" do
+          actual_users = User.count
+
+          visit new_user_registration_path
+          fill_in 'user[email]', :with => "gabriel.meneses@hoytrabajas.com"
+          fill_in 'user[password]', :with => "1wantt$finda7ob"
+          fill_in 'user[password_confirmation]', :with => "1wantt$finda7ob"
+
+          click_on 'Regístrarme'
+
+          expect(User.count).to eq(actual_users + 1)
+
+          expect(current_path).to eq(users_wizards_step_zero_path)
+
+        end
+      end
+    end
+
     context "I am looking for a candidate" do
 
       it "Company visit home page and click on sign in" do

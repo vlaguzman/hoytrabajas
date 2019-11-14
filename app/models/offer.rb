@@ -40,9 +40,9 @@ class Offer < ApplicationRecord
   has_one_attached :image
 
   #delegates
-  delegate :description, :name, :web_site, :employees_range_description, to: :company, prefix: :company, allow_nil: true
-  delegate :from, :to, :currency_description, :period_description, to: :offer_salary, prefix: :salary, allow_nil: true
+  delegate :from, :to, :currency_description, :period_description, :currency_id, :period_id, :is_range, to: :offer_salary, prefix: :salary, allow_nil: true
   delegate :from, :to, to: :age_range, prefix: :age_range, allow_nil: true
+  delegate :description, :name, :web_site, :employees_range_description, to: :company, prefix: :company, allow_nil: true
   delegate :description, to: :city, prefix: :city, allow_nil: true
   delegate :description, to: :offer_type, prefix: :offer_type, allow_nil: true
   delegate :description, to: :work_mode, prefix: :work_mode, allow_nil: true

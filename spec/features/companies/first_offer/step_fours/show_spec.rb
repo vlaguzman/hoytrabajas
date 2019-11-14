@@ -48,7 +48,6 @@ RSpec.describe "When company fill the step four form", :type => :feature do
       scenario "should save succesfully data", js: true do
         sign_in company
         visit companies_first_offer_step_four_path(offer_id: offer.id)
-        save_page("daniel.html")
 
         expected_page_structure
         fill_form(

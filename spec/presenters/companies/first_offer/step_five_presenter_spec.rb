@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Companies::FirstOffer::StepFourPresenter do
+RSpec.describe Companies::FirstOffer::StepFivePresenter do
   let(:company) { create(:company) }
   let(:offer)   { create(:offer) }
   let(:subject) { described_class.new(offer) }
@@ -13,9 +13,7 @@ RSpec.describe Companies::FirstOffer::StepFourPresenter do
 
       expected_keys = [:title,
                        :subtitle,
-                       :immediate_start_description,
-                       :offer_age_range_before,
-                       :offer_age_range_after,
+                       :content,
                        :form,
                        :id]
 

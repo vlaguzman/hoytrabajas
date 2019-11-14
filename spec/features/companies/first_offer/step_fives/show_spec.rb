@@ -3,8 +3,6 @@ require 'rails_helper'
 RSpec.describe "When company fill the step four form", :type => :feature do
   let(:company) { create(:company, :first_time, name: 'HoyTrabajas.com') }
   let(:offer)   { create(:offer) }
-  let(:salary_type_1) { create(:salary_type, description: "Fijo") }
-  let(:salary_type_2) { create(:salary_type, description: "Rango") }
   let(:currency) { create(:currency, description: "COP") }
   let(:salary_period) { create(:salary_period, description: "Diario") }
   let(:working_day) { create(:working_days, description: "Mañana (7am-12pm)") }
@@ -15,13 +13,14 @@ RSpec.describe "When company fill the step four form", :type => :feature do
     expect(page).to have_content("Brinda a tu candidato una relevante de tu empresa.")
 
     expect(page).to have_tag(:form, with: { class: "forms__candidate" }) do
-      with_tag(:input, with: { name: 'offer[offer_salaries][salary_type_id]',   type: "hidden" })
-      with_tag(:input, with: { name: 'offer[offer_salaries][currency_id]',      type: "hidden" })
-      with_tag(:input, with: { name: 'offer[offer_salaries][from]',             type: "hidden" })
-      with_tag(:input, with: { name: 'offer[offer_salaries][to]',               type: "hidden" })
-      with_tag(:input, with: { name: 'offer[offer_salaries][salary_period_id]', type: "hidden" })
-      with_tag(:input, with: { name: 'offer[offers_working_days][working_days_ids]', type: "hidden" })
-      with_tag(:input, with: { name: 'offer[available_work_days_offers][available_work_days_ids]', type: "hidden" })
+      with_tag(:input, with: { name: 'offer[is_range]',    type: "hidden" })
+      with_tag(:input, with: { name: 'offer[currency_id]', type: "hidden" })
+      with_tag(:input, with: { name: 'offer[from]',        type: "hidden" })
+      with_tag(:input, with: { name: 'offer[to]',          type: "hidden" })
+      with_tag(:input, with: { name: 'offer[salary_period_id]', type: "hidden" })
+
+      with_tag(:input, with: { name: 'offer[offers_working_day_ids][]', type: "hidden" })
+      with_tag(:input, with: { name: 'offer[available_work_day_ids][]', type: "hidden" })
       with_tag(:input, with: { name: 'offer[job_aids_ids][]', type: "hidden" })
     end
 
@@ -29,26 +28,46 @@ RSpec.describe "When company fill the step four form", :type => :feature do
   end
 
   def fill_form(data)
-    find(id: 'select-offer[sex_ids][]', visible: false).click
-    find('li', text: data[:sex_one]).click
+    fill_in 'offer[is_range]', with: data[:is_range]
+    fill_in 'offer[currency_id]', with: data[:currency_id]
+    fill_in 'offer[from]', with: data[:from]
+    fill_in 'offer[to]', with: data[:to]
+    fill_in 'offer[salary_period_id]', with: data[:salary_period_id]
+
+    find(id: 'select-offer[offers_working_day_ids][]', visible: false).click
+    find('li', text: data[:offers_working_day_id_one]).click
+
+    execute_script "window.scrollTo(0, (window.innerHeight * 2) )"
+
+    find(id: 'select-offer[available_work_day_ids][]', visible: false).click
+    find('li', text: data[:available_work_day_id_one]).click
+
+    execute_script "window.scrollTo(0, (window.innerHeight * 2) )"
+
+    find(id: 'select-offer[job_aids_ids][]', visible: false).click
+    find('li', text: data[:job_aids_id_one]).click
 
     execute_script "window.scrollTo(0, (window.innerHeight * 2) )"
   end
 
-  describe "Fill the four form to update offer, all data is optionally" do
+  describe "Fill the five form to update offer, all data is optionally" do
     context "Data is correct" do
       scenario "should save succesfully data", js: true do
         sign_in company
-        visit companies_first_offer_step_four_path(offer_id: offer.id)
+        visit companies_first_offer_step_five_path(offer_id: offer.id)
         save_page("daniel.html")
 
         expected_page_structure
         fill_form(
           {
-            contract_type_id: contract_type.description,
-            sex_one: sex_1.description,
-            sex_two: sex_2.description,
-            sex_three: sex_3.description
+            is_range: 'true',
+            currency_id: current.id,
+            from: '750.000',
+            to: '750.000',
+            salary_period_id: salary_period.id,
+            offers_working_day_ids: offers_working_day_one.description,
+            available_work_day_ids: available_work_day_one.description,
+            job_aids_ids: job_aid_one.description
           })
         click_link_or_button('Publicar')
 

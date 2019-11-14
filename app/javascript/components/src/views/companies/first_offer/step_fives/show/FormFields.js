@@ -12,6 +12,8 @@ import {
 
 const FormFields = props => {
   const { formFields } = props
+  console.log("#####################")
+  console.log(formFields)
 
   const {
     is_range = null,
@@ -25,7 +27,7 @@ const FormFields = props => {
   } = formFields
 
   const [formValues, setFormValues] = useState({
-    [is_range.name]: is_range.current_value || '',
+    [is_range.name]: is_range.current_value || 'false',
     [currency_id.name]: currency_id.current_value || '',
     [from.name]: from.current_value || '',
     [to.name]: to.current_value || '',
@@ -49,7 +51,7 @@ const FormFields = props => {
           name={is_range.name}
           label={is_range.label}
           selectOptions={is_range.values}
-          isRequired={is_range.isRequired || false}
+          isRequired
         />
       </Col>
     ),
@@ -64,7 +66,7 @@ const FormFields = props => {
           handleChange={handleChange(formValues, setFormValues)}
           name={currency_id.name}
           selectOptions={currency_id.values}
-          isRequired={currency_id.isRequired || false}
+          isRequired
         />
       </Col>
     ),
@@ -112,7 +114,7 @@ const FormFields = props => {
           name={salary_period_id.name}
           label={salary_period_id.label}
           selectOptions={salary_period_id.values}
-          isRequired={salary_period_id.isRequired || false}
+          isRequired
         />
       </Col>
     ),
@@ -129,7 +131,7 @@ const FormFields = props => {
           name={available_work_day_ids.name}
           label={available_work_day_ids.label}
           selectOptions={available_work_day_ids.values}
-          isRequired={available_work_day_ids.isRequired || false}
+          isRequired
           isMultiple
         />
       </Col>
@@ -147,7 +149,7 @@ const FormFields = props => {
           name={working_day_ids.name}
           label={working_day_ids.label}
           selectOptions={working_day_ids.values}
-          isRequired={working_day_ids.isRequired || false}
+          isRequired
           isMultiple
         />
       </Col>
@@ -165,7 +167,7 @@ const FormFields = props => {
           name={job_aid_ids.name}
           label={job_aid_ids.label}
           selectOptions={job_aid_ids.values}
-          isRequired={job_aid_ids.isRequired || false}
+          isRequired
           isMultiple
         />
       </Col>

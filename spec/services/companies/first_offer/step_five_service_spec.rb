@@ -1,13 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe Companies::FirstOffer::StepFourService do
-  let(:company) {create(:company) }
+RSpec.describe Companies::FirstOffer::StepFiveService do
+  let(:company)       {create(:company) }
+  let(:offer)         { create(:offer) }
+  let(:currency)      { create(:currency, description: "COP") }
+  let(:salary_period) { create(:salary_period, description: "Diario") }
 
-  let!(:offer)         {create(:offer) }
-  let!(:contract_type) { create(:contract_type) }
-  let!(:sex_1)         { create(:sex, description: "Male") }
-  let!(:sex_2)         { create(:sex, description: "Female") }
-  let!(:sex_3)         { create(:sex, description: "Undefined") }
+  let(:available_work_day) { create(:working_days, description: "Lunes a Viernes") }
+  let(:working_day)        { create(:working_days, description: "Mañana (7am-12pm)") }
+  let(:job_aids)           { create(:job_aids, description: "Aux de transporte") }
 
   it { should be_an_instance_of(Module) }
 
@@ -15,13 +16,14 @@ RSpec.describe Companies::FirstOffer::StepFourService do
     context "when all data is correct" do
       let(:params) do
         {
-          id: offer.id,
-          contract_type_id: contract_type.id,
-          vacancies_quantity: '11',
-          sex_ids: ["#{sex_1.id}, #{sex_2.id}, #{sex_3.id}"],
-          offer_age_range: '18,24',
-          close_date: '2020-12-31',
-          immediate_start: false
+          currency_id:      currency.id,
+          salary_period_id: salary_period.id,
+          from:             '750.000',
+          to:               '950.000',
+          is_range:         true,
+          available_work_day_ids: ["#{available_work_day.id}"],
+          working_day_ids:        ["#{working_day.id}"],
+          job_aid_ids:            ["#{job_aid.id}"]
         }
       end
 
@@ -29,22 +31,19 @@ RSpec.describe Companies::FirstOffer::StepFourService do
         offer = subject.(company: company, update_params: params)
 
         expect(Offer.count).to eq(1)
-        expect(AgeRange.count).to eq(1)
 
         expect(offer[:status]).to eq(:ok)
 
         expect(offer[:data]).to be_an_instance_of(Offer)
 
-        expect(offer[:data].contract_type_id).to eq(params[:contract_type_id])
-        expect(offer[:data].vacancies_quantity).to eq(params[:vacancies_quantity].to_i)
-        expect(offer[:data].sex_ids).to eq([sex_1.id, sex_2.id, sex_3.id])
-        expect(offer[:data].close_date).to eq("Thu, 31 Dec 2020 00:00:00 -05 -05:00")
-        expect(offer[:data].immediate_start).to eq(params[:immediate_start])
-
-        age_range = AgeRange.find_by(offer_id: offer[:data].id)
-
-        expect(age_range.from).to eq(18)
-        expect(age_range.to).to eq(24)
+        expect(offer[:data].currency_id).to eq(params[:currency_id])
+        expect(offer[:data].salary_period_id).to eq(params[:salary_period_id])
+        expect(offer[:data].salary_from).to eq(params[:from])
+        expect(offer[:data].salary_to).to eq(params[:to])
+        expect(offer[:data].offer_salary.is_range).to eq(params[:is_range])
+        expect(offer[:data].available_work_day_ids).to match_array([available_work_day.id])
+        expect(offer[:data].working_day_ids).to match_array([working_day.id])
+        expect(offer[:data].job_aid_ids).to match_array([job_aid.id])
 
         expect(offer[:error]).to eq(nil)
       end
@@ -53,13 +52,14 @@ RSpec.describe Companies::FirstOffer::StepFourService do
     context "when all data is not correct" do
       let(:params) do
         {
-          id: offer.id,
-          contract_type_id: contract_type.id,
-          vacancies_quantity: '11',
-          sex_ids: ["#{sex_1.id}, #{sex_2.id}, #{sex_3.id}"],
-          offer_age_range: '18,24',
-          close_date: '2020-12-31',
-          immediate_start: true
+          currency_id:      currency.id,
+          salary_period_id: salary_period.id,
+          from:             '750.000',
+          to:               '950.000',
+          is_range:         true,
+          available_work_day_ids: ["#{available_work_day.id}"],
+          working_day_ids:        ["#{working_day.id}"],
+          job_aid_ids:            ["#{job_aid.id}"]
         }
       end
 

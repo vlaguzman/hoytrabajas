@@ -28,20 +28,19 @@ class Companies::FirstOffer::StepFive::FormParamsService < BaseFormWizardsServic
   end
 
   def currency_id_current_value
-    source.salary_currency_description
+    source.salary_currency_id
   end
 
   def salary_period_id_current_value
-    source.salary_period_description
+    source.salary_period_id
   end
 
   def is_range_current_value
-    object = OfferSalary.find_by(offer_id: source.id)
-    object.present? ? object.is_range : ''
+    source.salary_is_range.to_s
   end
 
   def is_range_list
-    [{ id: true, description: "Rango"}, {id: false, description: "Fijo" }]
+    [{ id: "true", description: "Rango"}, {id: "false", description: "Fijo" }]
   end
 
   def currency_id_list

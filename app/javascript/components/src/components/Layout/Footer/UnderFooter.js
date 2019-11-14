@@ -1,10 +1,8 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Row, Col } from 'reactstrap'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 import AppConfig from '../../../constants/AppConfig'
-
-// import FooterBar from './FooterBar'
 
 const UnderFooter = () => {
   return (
@@ -23,7 +21,6 @@ const UnderFooter = () => {
                 src="/assets/static/img/appLogoW.svg"
                 className="d-block"
                 alt="site logo"
-                // height="100%"
                 width="100%"
               />
             </Col>
@@ -31,9 +28,9 @@ const UnderFooter = () => {
               <Typography
                 variant="caption"
                 component="span"
-                className="d-inline-block mt-5"
+                className="d-inline-block mt-5 ml-5"
               >
-                &nbsp;&nbsp;&nbsp;Un proyeto 100%
+                Un proyecto 100% Colombiano
               </Typography>
             </Col>
           </Row>
@@ -105,7 +102,6 @@ const UnderFooter = () => {
                 src="/assets/static/img/appLogoW.svg"
                 className="d-block"
                 alt="site logo"
-                // height="100%"
                 width="100%"
               />
             </Col>
@@ -115,7 +111,7 @@ const UnderFooter = () => {
                 component="span"
                 className="d-inline-block mt-5"
               >
-                &nbsp;&nbsp;&nbsp;Un proyeto 100%
+                Un proyecto 100% Colombiano
               </Typography>
             </Col>
           </Row>

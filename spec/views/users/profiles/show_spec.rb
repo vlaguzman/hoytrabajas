@@ -6,6 +6,6 @@ RSpec.describe "users/profiles/show" do
 
     render
 
-    expect(rendered).to have_tag("div", with: { "data-react-class": "pages/users/profile"})
+    expect(rendered).to have_tag("div", with: { "data-react-class": "views/users/profile"})
   end
 end

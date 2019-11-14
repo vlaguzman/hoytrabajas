@@ -5,7 +5,6 @@ FactoryBot.define do
     to   { from*rand(2..10) }
 
     association :currency, factory: :currency
-    association :salary_type, factory: :salary_type
     association :salary_period, factory: :salary_period
   end
 end

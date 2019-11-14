@@ -55,11 +55,12 @@ RSpec.describe Companies::FirstOffer::StepFiveService do
     context "when all data is not correct" do
       let(:params) do
         {
-          currency_id:      currency.id,
-          salary_period_id: salary_period.id,
-          from:             '750.000',
-          to:               '950.000',
+          id:               offer.id,
           is_range:         true,
+          currency_id:      currency.id,
+          from:             '750000',
+          to:               '950000',
+          salary_period_id: salary_period.id,
           available_work_day_ids: ["#{available_work_day.id}"],
           working_day_ids:        ["#{working_day.id}"],
           job_aid_ids:            ["#{job_aid.id}"]
@@ -70,7 +71,6 @@ RSpec.describe Companies::FirstOffer::StepFiveService do
         offer = subject.(company: company, update_params: params)
 
         expect(Offer.count).to eq(1)
-        expect(AgeRange.count).to eq(1)
 
         expect(offer[:status]).to eq(:ok)
 

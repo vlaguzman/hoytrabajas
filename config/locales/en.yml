@@ -57,6 +57,10 @@ en:
           attributes:
             company:
               required: "Please select a company"
+            title:
+              blank: "Please enter a title to the offer, this field cannot be blank"
+            job_category_ids:
+              blank: "Please select a category, this field is required"
         educational_level:
           attributes:
             degree:
@@ -68,6 +72,8 @@ en:
               blank: "The work position cant be blank"
             job_category:
               required: "Please select a job category"
+              blank: "You must select a Job Category"
+
   time:
     formats:
       default: "%A, %-d de %B de %Y %H:%M:%S %z"

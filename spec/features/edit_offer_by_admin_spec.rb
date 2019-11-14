@@ -5,8 +5,7 @@ RSpec.describe "Admin can edit an offer", type: :feature do
 
   context "a admin user must be able to edit a created offer" do
 
-   #let(:job_category) { create(:job_category) }
-    let!(:offer)       { create(:offer, title: 'the best offer in the city') }
+    let!(:offer) { create(:offer, title: 'the best offer in the city') }
     
     scenario "the admin select an offer and edit all the data" do
       sign_in FactoryBot.create(:admin_user)

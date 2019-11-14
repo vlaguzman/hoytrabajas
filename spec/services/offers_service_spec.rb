@@ -30,15 +30,7 @@ RSpec.describe OffersService do
 
       let!(:stuff_offers) do
         [
-          create(:offer, job_categories: [related_job_category]),
-          create(:offer),
-          create(:offer, job_categories: [related_job_category]),
-          create(:offer),
-          create(:offer, job_categories: [related_job_category]),
-          create(:offer),
-          create(:offer, job_categories: [related_job_category]),
-          create(:offer),
-          create(:offer, job_categories: [related_job_category])
+          create_list(:offer, 5, job_categories: [related_job_category])
         ]
       end
 

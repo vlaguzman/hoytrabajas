@@ -21,7 +21,7 @@ class Companies::FirstOffer::StepFivePresenter < ApplicationPresenter
   end
 
   def companies_first_offer_step_four_path
-    rails_routes.companies_first_offer_step_four_path(source.id)
+    rails_routes.companies_first_offer_step_four_path(offer_id: source.id)
   end
 
   def companies_first_offer_step_eight_path

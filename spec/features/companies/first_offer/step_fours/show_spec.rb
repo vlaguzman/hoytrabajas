@@ -67,7 +67,7 @@ RSpec.describe "When company fill the step four form", :type => :feature do
         expect(offer.close_date.strftime("%F") ).to eq(Time.now.strftime("%F"))
         expect(offer.immediate_start).to eq(false)
 
-        expect(current_path).to eq(companies_first_offer_step_eight_path)
+        expect(current_path).to eq(companies_first_offer_step_five_path)
       end
     end
   end

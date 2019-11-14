@@ -14,8 +14,6 @@ import classNames from 'classnames'
 import styled from 'styled-components'
 import Offers from '../../components/Offers'
 
-const OfferWrapper = styled(Col)``
-
 const CompanyWrapper = styled(Col)`
   @media (max-width: 900px) {
     margin-top: 60px;
@@ -54,7 +52,7 @@ const DetallePage = ({
       </Row>
 
       <Row className="pcx align-items-start mb-30">
-        <OfferWrapper xs={12} lg={8}>
+        <Col xs={12} lg={8}>
           <Paper
             className="p-50"
             style={{ boxShadow: `0 2px 67px 0 rgba(41,44,28,0.08)` }}
@@ -67,7 +65,8 @@ const DetallePage = ({
               >
                 {offer.title}
               </Typography>
-              <Chip
+{/* TODO Oscar this is the chip of affinty percentage, uncomment when the funcionality is ready */}
+{/*               <Chip
                 color="primary"
                 className="text-white"
                 label={
@@ -89,7 +88,7 @@ const DetallePage = ({
                     </Typography>
                   </>
                 }
-              />
+              /> */}
             </Row>
             <Row className="my-10 mx-0">
               <Chip
@@ -98,7 +97,7 @@ const DetallePage = ({
                 label="Tecnología y programación"
               />
               {offer.immediate_start && (
-                <Badge color="primary">Incorporación inmediata </Badge>
+                <Badge color="primary"> Incorporación inmediata </Badge>
               )}
             </Row>
             <Row className="my-10 mx-0">
@@ -305,7 +304,7 @@ const DetallePage = ({
               </Col>
             </Row>
           </Paper>
-        </OfferWrapper>
+        </Col>
 
         {/* Company data */}
         <CompanyWrapper xs={12} lg={4}>

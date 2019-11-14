@@ -69,9 +69,9 @@ class BaseFormWizardsService
   def fields_builder(*other_fields)
 
     object = {}
-    .merge(input_fields_builder)
-    .merge(select_fields_builder)
-    .merge(multiple_select_fields_builder)
+      .merge(input_fields_builder)
+      .merge(select_fields_builder)
+      .merge(multiple_select_fields_builder)
 
     if other_fields.present?
       other_fields.inject(object) { |object, new_object| object.merge(new_object) }

@@ -2,7 +2,7 @@ class Offer < ApplicationRecord
 
   before_save -> { self.slug = self.title.parameterize }
 
-  validates_presence_of :title
+  validates_presence_of :title, :job_category_ids
 
   scope :active, -> { where(status: 'active') }
   scope :related_job_category, -> (job_categories_ids) { joins(:job_categories).where("job_categories.id in (?)", job_categories_ids).uniq }

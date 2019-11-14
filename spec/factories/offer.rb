@@ -12,6 +12,7 @@ FactoryBot.define do
     description_responsibilities  { "endSint esse anim consequat commodo." }
     release_date                  { Date.new }
     status                        { 'active' }
+    job_categories                { [FactoryBot.create(:job_category)] }
 
     trait :expired_offer do
       status                       { 'expired' }

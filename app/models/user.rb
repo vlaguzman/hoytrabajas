@@ -27,7 +27,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :curriculum_vitaes
 
   has_one_attached :cv_file
-  
+
   def curriculum_vitae
     curriculum_vitaes.any? ? curriculum_vitaes.first : nil
   end
@@ -50,10 +50,11 @@ class User < ApplicationRecord
   end
 
   def confirmation_required?
-    false
+    if self.email.eql?("gabriel.meneses@hoytrabajas.com")
+      true
+    else
+      false
+    end
   end
 
-  def active_for_authentication?
-    skip_confirmation!
-  end
 end

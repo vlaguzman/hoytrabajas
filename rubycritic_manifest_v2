@@ -5,7 +5,7 @@ A         • AdminUsers::SessionsController                      2       6.2   
 A         • AgeRange                                            1       0.0        0           1
 A         • ApplicationCable::Channel                           1       0.0        0           1
 A         • ApplicationCable::Connection                        1       0.0        0           1
-A         • ApplicationController                               20      13.43      0           1
+A         • ApplicationController                               22      13.43      0           1
 A         • ApplicationJob                                      1       0.0        0           1
 A         • ApplicationMailer                                   3       0.0        0           1
 A         • ApplicationPresenter                                3       10.35      0           3
@@ -109,11 +109,11 @@ A         • State                                               3       0.0   
 A         • TechnicalSkill                                      6       0.0        0           1
 A         • TechnicalSkillCategory                              1       0.0        0           1
 A         • Term                                                4       0.0        0           1
-A         • User                                                21      33.66      0           3
+A         • User                                                25      35.07      0           3
 A         • Users::DashboardsController                         10      5.69       0           1
 A         • Users::OmniauthCallbacksController                  1       21.49      0           5
 A         • Users::ProfilesController                           11      5.69       0           1
-A         • Users::RegistrationsController                      11      5.79       0           1
+A         • Users::RegistrationsController                      13      1.0        0           2
 A         • Users::SessionsController                           3       0.0        0           1
 A         • Users::WizardService                                2       17.38      0           2
 A         • Users::Wizards::StepEightService                    1       18.84      0           1

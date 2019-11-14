@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  puts "estoy pasando por el application controller"*100
   private
 
   def after_sign_in_path_for(resource)

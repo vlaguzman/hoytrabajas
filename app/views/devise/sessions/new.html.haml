@@ -1,1 +1,7 @@
-= react_component('views/devise/sessions/new/index', {session_translation: I18n.t("session"), csrf_param: request_forgery_protection_token, csrf_token: form_authenticity_token, sessions_path: session_path(resource), source_name: resource_name,  }, prerender: false )
+= react_component('views/devise/sessions/new/index',
+  {session_translation: I18n.t("session"),
+  csrf_param: request_forgery_protection_token,
+  csrf_token: form_authenticity_token,
+  sessions_path: session_path(resource),
+  source_name: resource_name,
+  }, prerender: false)

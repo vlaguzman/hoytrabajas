@@ -47,7 +47,12 @@ const FormFields = props => {
 
   const jobCategoryField = useMemo(
     () => (
-      <Col key={job_category_ids.name} className={inputClassname} xs={12} lg={6}>
+      <Col
+        key={job_category_ids.name}
+        className={inputClassname}
+        xs={12}
+        lg={6}
+      >
         <SelectChip
           inputValue={formValues[job_category_ids.name]}
           inputName={job_category_ids.name}
@@ -56,7 +61,7 @@ const FormFields = props => {
           name={job_category_ids.name}
           label={job_category_ids.label}
           selectOptions={job_category_ids.values}
-          isMultiple={true}
+          isMultiple
         />
       </Col>
     ),
@@ -138,7 +143,7 @@ export default FormFields
 FormFields.propTypes = {
   formFields: PropTypes.shape({
     title: PropTypes.object,
-    job_category_id: PropTypes.object,
+    job_category_ids: PropTypes.object,
     offer_type_id: PropTypes.object,
     work_mode_id: PropTypes.object,
     offers_work_positions: PropTypes.object

@@ -115,7 +115,7 @@ export default class Index extends React.Component {
                   component="a"
                   variant="caption"
                   style={{ color: 'robin-blue' }}
-                  href={`/${resource_name}/password/new`}
+                  href={`/${(resource_name === 'user') ?'users': 'companies'}/password/new`}
                 >
                   {this.props.session_translation.sign_in.forget_password}
                 </Typography>

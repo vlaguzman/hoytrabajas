@@ -47,7 +47,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/limitation.rb",100,6,3,3,0
 "./app/models/nationality.rb",100,6,3,3,0
 "./app/models/offer.rb",100,60,45,45,0
-"./app/models/offer_salary.rb",100,12,8,8,0
+"./app/models/offer_salary.rb",100,13,9,9,0
 "./app/models/offer_type.rb",100,5,3,3,0
 "./app/models/offers_responsibilities.rb",100,4,3,3,0
 "./app/models/offers_soft_skills.rb",100,4,3,3,0
@@ -65,7 +65,6 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/requirement.rb",100,3,2,2,0
 "./app/models/responsibility.rb",100,5,3,3,0
 "./app/models/salary_period.rb",100,6,4,4,0
-"./app/models/salary_type.rb",100,3,2,2,0
 "./app/models/sex.rb",100,5,3,3,0
 "./app/models/soft_skill.rb",100,7,5,5,0
 "./app/models/state.rb",100,3,2,2,0
@@ -84,6 +83,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/working_day.rb",100,6,4,4,0
 "./app/presenters/application_presenter.rb",100,19,11,11,0
 "./app/presenters/companies/first_offer/step_eight_presenter.rb",100,20,8,8,0
+"./app/presenters/companies/first_offer/step_five_presenter.rb",100,31,10,10,0
 "./app/presenters/companies/first_offer/step_four_presenter.rb",100,31,10,10,0
 "./app/presenters/companies/first_offer/step_one_presenter.rb",100,30,10,10,0
 "./app/presenters/companies/first_offer/step_three_presenter.rb",100,21,6,6,0
@@ -106,6 +106,8 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/users_presenter.rb",100,22,8,8,0
 "./app/services/base_form_wizards_service.rb",100,136,62,62,0
 "./app/services/companies/first_offer/step_eight/form_params_service.rb",100,37,17,17,0
+"./app/services/companies/first_offer/step_five/form_params_service.rb",96,65,27,26,1
+"./app/services/companies/first_offer/step_five_service.rb",96,54,27,26,1
 "./app/services/companies/first_offer/step_four/form_params_service.rb",100,88,22,22,0
 "./app/services/companies/first_offer/step_four_service.rb",95,35,19,18,1
 "./app/services/companies/first_offer/step_one/form_params_service.rb",100,25,8,8,0

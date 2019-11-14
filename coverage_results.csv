@@ -39,7 +39,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/industry.rb",100,3,2,2,0
 "./app/models/job_aid.rb",100,5,3,3,0
 "./app/models/job_aids_offers.rb",100,4,3,3,0
-"./app/models/job_category.rb",100,5,3,3,0
+"./app/models/job_category.rb",100,6,4,4,0
 "./app/models/labor_disponibility.rb",100,4,2,2,0
 "./app/models/language.rb",100,7,5,5,0
 "./app/models/languages_offers.rb",100,12,8,8,0
@@ -113,7 +113,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/companies/first_offer/step_one/form_params_service.rb",100,25,8,8,0
 "./app/services/companies/first_offer/step_one_service.rb",100,11,6,6,0
 "./app/services/companies/first_offer/step_three/form_params_service.rb",100,37,15,15,0
-"./app/services/companies/first_offer/step_three_service.rb",100,36,19,19,0
+"./app/services/companies/first_offer/step_three_service.rb",100,45,25,25,0
 "./app/services/companies/first_offer/step_two/form_params_service.rb",100,7,2,2,0
 "./app/services/companies/first_offer/step_two_service.rb",100,11,6,6,0
 "./app/services/offers/applied_offer_service.rb",100,15,6,6,0

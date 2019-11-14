@@ -5,6 +5,8 @@ import AppLayout from '../src/components/Layout/AppLayout'
 
 const HomePage = ({
   offers,
+  alert_message,
+  notice_message,
   csrf_param,
   csrf_token,
   user_signed_in,
@@ -17,6 +19,9 @@ const HomePage = ({
   filterForm
 }) => {
   return (
+  console.log("return"),
+  console.log({alert_message}),
+  console.log({notice_message}),
     <div className="main-wrapper">
       <AppLayout
         csrf_param={csrf_param}

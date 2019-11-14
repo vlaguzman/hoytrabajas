@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe "like candidate", js: true, type: :feature do
+RSpec.describe "like candidate", type: :feature do
   feature "When I click on 'editar' in 'Perfil' card" do
 
     let(:candidate) { create(:user, name: 'Seyma', last_name: 'Neim') }
 
-    scenario "should edit my basic info" do
+    scenario "should edit my basic info", js: true do
       sign_in candidate
 
       visit users_dashboard_path

@@ -115,7 +115,9 @@ export default class Index extends React.Component {
                   component="a"
                   variant="caption"
                   style={{ color: 'robin-blue' }}
-                  href={`/${(resource_name === 'user') ?'users': 'companies'}/password/new`}
+                  href={`/${
+                    resource_name === 'user' ? 'users' : 'companies'
+                  }/password/new`}
                 >
                   {this.props.session_translation.sign_in.forget_password}
                 </Typography>
@@ -171,7 +173,9 @@ export default class Index extends React.Component {
                   className="ml-5"
                   component="a"
                   style={{ color: '#00CED5', cursor: 'pointer' }}
-                  href={`/${ (resource_name == 'user') ? 'users': 'companies' }/sign_up`}
+                  href={`/${
+                    resource_name === 'user' ? 'users' : 'companies'
+                  }/sign_up`}
                 >
                   {this.props.session_translation.sign_in.no_account.sign_up}
                 </Typography>

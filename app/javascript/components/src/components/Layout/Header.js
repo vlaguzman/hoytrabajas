@@ -58,7 +58,7 @@ const Header = props => {
   }) : ({
     color: 'primary'
   })
-    
+
   return (
     <Navbar
       position="static"
@@ -95,25 +95,31 @@ const Header = props => {
             {...colorOfNavToggler()}
           />
         </NavbarToggler>
+        {/* Search bar in white nav bar */}
         <Collapse isOpen={openState.navbar} navbar id="navbarNav">
           {!isNavTransparent && (
             <Form
               className="d-flex search-bar-wrapper mt-10 navbar-search-form"
+              action="/offers/"
+              method="get"
               inline
             >
               <FormGroup className="search-bar">
-                <Label for="exampleEmail" hidden>
+                <Label for="title_cont" hidden>
                   Buscar ofertas
                 </Label>
                 <Input
                   style={{ width: '98%' }}
-                  type="email"
-                  name="email"
-                  id="exampleEmail"
+                  type="text"
+                  name="q[title_cont]"
+                  id="q[title_cont]"
                   placeholder="Buscar ofertas"
+                  autocomplete="off"
                 />
               </FormGroup>
               <Fab
+                id='searchbar_submit_button'
+                type="submit"
                 size="small"
                 style={{ marginTop: '1%' }}
                 className="mb-10 ml-10 text-white"

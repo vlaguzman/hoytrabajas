@@ -42,5 +42,5 @@ MainPage.propTypes = {
   log_out_user: PropTypes.string.isRequired,
   csrf_param: PropTypes.string.isRequired,
   csrf_token: PropTypes.string.isRequired,
-  session_translation: PropTypes.string.isRequired
+  session_translation: PropTypes.object.isRequired
 }

@@ -9,11 +9,8 @@ import {
   handleChange
 } from '../../../../../components/FormsLayout/handleFunctions'
 
-
 const FormFields = props => {
   const { formFields } = props
-  console.log("#####################")
-  console.log(formFields)
 
   const {
     is_range = null,
@@ -90,7 +87,7 @@ const FormFields = props => {
 
   const offerSalaryMaxField = useMemo(
     () =>
-      formValues[is_range.name] === "true" ? (
+      formValues[is_range.name] === 'true' ? (
         <Col className={`pr-0 ${controlledInputsClassname}`} xs={12} lg={2}>
           <StandardInput
             inputValue={formValues[to.name]}

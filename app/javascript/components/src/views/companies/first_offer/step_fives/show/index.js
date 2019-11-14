@@ -25,7 +25,7 @@ const CompaniesStepFive = ({ formInfo, csrf_param, csrf_token }) => {
           <>
             <FormTitle title={title} subtitle={subtitle} />
             <div className="w-80">
-              <form className="forms__candidate" action={action} method="post" >
+              <form className="forms__candidate" action={action} method="post">
                 <FormFields type={type} formFields={formFields} />
                 <input type="hidden" name={csrf_param} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />

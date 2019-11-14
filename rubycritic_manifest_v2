@@ -5,7 +5,7 @@ A         • AdminUsers::SessionsController                      2       6.2   
 A         • AgeRange                                            1       0.0        0           1
 A         • ApplicationCable::Channel                           1       0.0        0           1
 A         • ApplicationCable::Connection                        1       0.0        0           1
-A         • ApplicationController                               19      13.43      0           1
+A         • ApplicationController                               20      13.43      0           1
 A         • ApplicationJob                                      1       0.0        0           1
 A         • ApplicationMailer                                   3       0.0        0           1
 A         • ApplicationPresenter                                3       10.35      0           3
@@ -28,7 +28,7 @@ A         • Companies::FirstOffer::StepOne::FormParamsService   2       2.0   
 A         • Companies::FirstOffer::StepSevensController         1       0.0        0           1
 A         • Companies::FirstOffer::StepSixesController          1       0.0        0           1
 A         • Companies::FirstOffer::StepThree::FormParamsService 4       9.87       0           6
-A         • Companies::FirstOffer::StepThreePresenter           7       15.0       0           1
+A         • Companies::FirstOffer::StepThreePresenter           7       15.0       20          2
 A         • Companies::FirstOffer::StepThreeService             4       20.01      0           1
 A         • Companies::FirstOffer::StepThreesController         10      31.38      0           3
 A         • Companies::FirstOffer::StepTwo::FormParamsService   2       0.0        0           0
@@ -71,7 +71,7 @@ A         • JobCategoriesController                             1       0.0   
 A         • JobCategory                                         4       0.0        0           1
 A         • LaborDisponibility                                  1       0.0        0           1
 A         • Language                                            5       0.0        0           1
-A         • LanguagesOffers                                     3       2.0        0           1
+A         • LanguagesOffers                                     4       2.0        0           1
 A         • Level                                               4       0.0        0           1
 A         • Limitation                                          4       0.0        0           1
 A         • ListConverter                                       6       17.39      0           2
@@ -129,9 +129,9 @@ A         • Users::Wizards::StepFoursController                 5       20.5  
 A         • Users::Wizards::StepNineService                     3       23.25      0           1
 A         • Users::Wizards::StepNinesController                 6       26.71      0           1
 A         • Users::Wizards::StepOne::FormParamsService          2       2.0        0           3
-A         • Users::Wizards::StepOnePresenter                    9       12.4       0           1
+A         • Users::Wizards::StepOnePresenter                    10      20.4       20          2
 A         • Users::Wizards::StepOneService                      2       4.0        0           1
-A         • Users::Wizards::StepOnesController                  6       20.51      0           2
+A         • Users::Wizards::StepOnesController                  7       35.55      0           2
 A         • Users::Wizards::StepSeven::FormParamsService        2       21.93      0           1
 A         • Users::Wizards::StepSevenPresenter                  3       16.6       0           1
 A         • Users::Wizards::StepSevensController                8       4.62       0           1
@@ -153,7 +153,7 @@ A         • Users::Wizards::StepZerosController                 3       3.24  
 A         • UsersController                                     10      2.2        0           1
 A         • UsersLimitations                                    1       0.0        0           1
 A         • UsersNationalities                                  1       0.0        0           1
-A         • UsersPresenter                                      1       27.94      0           1
+A         • UsersPresenter                                      2       29.14      0           1
 A         • Vehicle                                             7       0.0        0           1
 A         • Visit                                               1       0.0        0           1
 A         • WorkExperience                                      2       0.0        0           1
@@ -168,7 +168,7 @@ B         • Companies::FirstOffer::StepOnesController           9       20.32 
 B         • Companies::FirstOffer::StepTwoPresenter             14      17.4       26          2
 B         • Companies::FirstOffer::StepTwoService               5       2.45       23          2
 B         • Companies::FirstOffer::StepTwosController           10      20.32      27          2
-B         • Offers::ShowService                                 13      75.79      0           2
+B         • Offers::ShowService                                 14      75.79      0           0
 B         • Users::Wizards::StepEightPresenter                  5       32.97      22          3
 B         • Users::Wizards::StepFivePresenter                   4       16.0       24          2
 B         • Users::Wizards::StepFourPresenter                   4       16.0       24          2

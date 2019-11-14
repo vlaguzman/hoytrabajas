@@ -1,8 +1,6 @@
 # The Offers::ShowService Class do build the hash  with the data used in offer/show template
 class Offers::ShowService < Offers::ViewsService
 
-  attr_accessor :offer, :current_user
-
   def initialize(offer, current_user)
     @offer = offer
     @current_user = current_user
@@ -30,6 +28,8 @@ class Offers::ShowService < Offers::ViewsService
   end
 
   private
+
+  attr_accessor :offer, :current_user
 
   def used_keys
     [:title, :address, :immediate_start, :description, :vacancies_quantity, :required_experience]

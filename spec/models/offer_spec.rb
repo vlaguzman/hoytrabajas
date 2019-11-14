@@ -2,6 +2,16 @@ require 'rails_helper'
 
 RSpec.describe Offer, type: :model do
 
+  describe "#languages_list" do
+    let(:subject) { create(:offer) }
+
+    it "should return languages list" do
+      expected_array = create_list(:languages_offers, 5, offer_id: subject.id)
+
+      expect(subject.languages_list).to eq(expected_array)
+    end
+  end
+
   describe "class methods" do
     let(:subject) { described_class }
 

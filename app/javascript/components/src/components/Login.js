@@ -138,15 +138,19 @@ const Login = ({
     </DialogContent>
     <DialogActions className="">
       <div className="w-100 text-center">
-        <Typography variant="caption" component="span">
+        <Typography
+          variant="caption"
+          component="a"
+          href="users/sign_up"
+          style={{ color: '#00CED5', cursor: 'pointer' }}>
           {session_translation.sign_in.no_account.title}
         </Typography>
         <Typography
           variant="caption"
           className="ml-5"
           component="a"
-          style={{ color: '#00CED5', cursor: 'pointer' }}
           href="users/sign_up"
+          style={{ color: '#00CED5', cursor: 'pointer' }}
         >
           {session_translation.sign_in.no_account.sign_in}
         </Typography>

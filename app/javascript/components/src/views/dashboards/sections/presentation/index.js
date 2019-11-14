@@ -4,7 +4,15 @@ import { Row, Col } from 'reactstrap'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 
-const Presentation = ({ title_one, title_two, title_decription }) => {
+const Presentation = ({
+  title_one,
+  title_two,
+  title_decription,
+  welcome_to_your,
+  dashborad,
+  grow_to_premium,
+  presentation_description
+}) => {
   return (
     <>
       <Row className="position-absolute" style={{ top: '0px', left: '0px' }}>
@@ -58,17 +66,17 @@ const Presentation = ({ title_one, title_two, title_decription }) => {
                 className="text-left text-center fw-bold mb-0"
                 variant="h5"
               >
-                Bienvenido a tu
+                {welcome_to_your}
               </Typography>
               <Typography
                 className="text-left text-center fw-bold text-warning"
                 variant="h5"
               >
-                dashboard.
+                {dashborad}
               </Typography>
             </Col>
             <Typography className="my-25 w-100 text-center" variant="body2">
-              Aqui encontraras toda la informacion de tu perfil.
+              {presentation_description}
             </Typography>
             <Button
               className="mt-25 fw-bold mx-auto"
@@ -76,7 +84,7 @@ const Presentation = ({ title_one, title_two, title_decription }) => {
               style={{ borderRadius: '30px', textTransform: 'none' }}
               variant="contained"
             >
-              <span className="text-white">Crecer a Premium</span>
+              <span className="text-white">{grow_to_premium}</span>
             </Button>
           </Row>
         </Col>
@@ -99,5 +107,9 @@ export default Presentation
 Presentation.propTypes = {
   title_one: PropTypes.string,
   title_two: PropTypes.string,
-  title_decription: PropTypes.string
+  title_decription: PropTypes.string,
+  welcome_to_your: PropTypes.string,
+  dashborad: PropTypes.string,
+  grow_to_premium: PropTypes.string,
+  presentation_description: PropTypes.string
 }

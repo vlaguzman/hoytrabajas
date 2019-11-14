@@ -70,7 +70,7 @@ RSpec.describe "sign up user", js: true,  type: :feature do
 
         skip_under_construction
 
-        expect(page).to have_text("SIGN UP EMPRESA") 
+        expect(page).to have_text("SIGN UP EMPRESA")
         click_on 'SIGN UP EMPRESA'
 
         expect(page).to have_text("Regístrate")
@@ -84,7 +84,7 @@ RSpec.describe "sign up user", js: true,  type: :feature do
 
           skip_under_construction
 
-          expect(page).to have_text("SIGN UP EMPRESA") 
+          expect(page).to have_text("SIGN UP EMPRESA")
           click_on 'SIGN UP EMPRESA'
 
           expect(page).to have_text("Regístrate")

@@ -170,8 +170,8 @@ export default class Index extends React.Component {
                   variant="caption"
                   className="ml-5"
                   component="a"
-                  style={{ color: 'robin-blue', cursor: 'pointer' }}
-                  href={`/${resource_name}/sign_up`}
+                  style={{ color: '#00CED5', cursor: 'pointer' }}
+                  href={`/${ (resource_name == 'user') ? 'users': 'companies' }/sign_up`}
                 >
                   {this.props.session_translation.sign_in.no_account.sign_up}
                 </Typography>
@@ -185,7 +185,7 @@ export default class Index extends React.Component {
                   style={{ color: 'robin-blue' }}
                   href="/"
                 >
-                  Home 
+                  Home
                 </Typography>
               </div>
             </DialogActions>

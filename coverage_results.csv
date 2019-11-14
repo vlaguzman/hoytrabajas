@@ -96,14 +96,14 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/users/wizards/step_five_presenter.rb",100,29,10,10,0
 "./app/presenters/users/wizards/step_four_presenter.rb",100,30,10,10,0
 "./app/presenters/users/wizards/step_nine_presenter.rb",100,44,19,19,0
-"./app/presenters/users/wizards/step_one_presenter.rb",100,23,8,8,0
+"./app/presenters/users/wizards/step_one_presenter.rb",100,34,10,10,0
 "./app/presenters/users/wizards/step_seven_presenter.rb",100,31,12,12,0
 "./app/presenters/users/wizards/step_six_presenter.rb",100,29,10,10,0
 "./app/presenters/users/wizards/step_ten_presenter.rb",100,42,19,19,0
 "./app/presenters/users/wizards/step_three_presenter.rb",100,28,10,10,0
 "./app/presenters/users/wizards/step_two_presenter.rb",100,28,10,10,0
 "./app/presenters/users/wizards/step_zero_presenter.rb",100,7,3,3,0
-"./app/presenters/users_presenter.rb",100,25,11,11,0
+"./app/presenters/users_presenter.rb",100,22,8,8,0
 "./app/services/base_form_wizards_service.rb",100,136,62,62,0
 "./app/services/companies/first_offer/step_eight/form_params_service.rb",100,37,17,17,0
 "./app/services/companies/first_offer/step_four/form_params_service.rb",100,88,22,22,0

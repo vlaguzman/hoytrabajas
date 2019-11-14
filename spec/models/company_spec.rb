@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Company, type: :model do
+  before { Timecop.freeze(Date.new(2019, 11, 5)) }
+
+  after { Timecop.return }
 
   describe "validations" do
     it { should respond_to(:name) }

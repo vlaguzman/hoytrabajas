@@ -40,7 +40,11 @@ class Companies::FirstOffer::StepFive::FormParamsService < BaseFormWizardsServic
   end
 
   def is_range_list
-    [{ id: "true", description: "Rango"}, {id: "false", description: "Fijo" }]
+    options = I18n.t("companies.first_offer.step_fives.show")
+    [
+      { id: options[:range_value], description: options[:range_description] },
+      { id: options[:permanent_value], description: options[:permanent_description] }
+    ]
   end
 
   def currency_id_list

@@ -48,7 +48,6 @@ const FormFields = props => {
           name={is_range.name}
           label={is_range.label}
           selectOptions={is_range.values}
-          isRequired
         />
       </Col>
     ),
@@ -63,7 +62,6 @@ const FormFields = props => {
           handleChange={handleChange(formValues, setFormValues)}
           name={currency_id.name}
           selectOptions={currency_id.values}
-          isRequired
         />
       </Col>
     ),
@@ -94,7 +92,6 @@ const FormFields = props => {
             handleChange={handleChange(formValues, setFormValues)}
             name={to.name}
             placeholder={to.placeholder || 'Ejem. 750.000'}
-            beforeLabel={to.beforeLabel || 'beforeLabel'}
             style={{ width: '100%' }}
           />
         </Col>
@@ -111,7 +108,6 @@ const FormFields = props => {
           name={salary_period_id.name}
           label={salary_period_id.label}
           selectOptions={salary_period_id.values}
-          isRequired
         />
       </Col>
     ),
@@ -128,7 +124,6 @@ const FormFields = props => {
           name={available_work_day_ids.name}
           label={available_work_day_ids.label}
           selectOptions={available_work_day_ids.values}
-          isRequired
           isMultiple
         />
       </Col>
@@ -146,7 +141,6 @@ const FormFields = props => {
           name={working_day_ids.name}
           label={working_day_ids.label}
           selectOptions={working_day_ids.values}
-          isRequired
           isMultiple
         />
       </Col>
@@ -164,7 +158,6 @@ const FormFields = props => {
           name={job_aid_ids.name}
           label={job_aid_ids.label}
           selectOptions={job_aid_ids.values}
-          isRequired
           isMultiple
         />
       </Col>

@@ -3,6 +3,10 @@ es:
     first_offer:
       step_fives:
         show:
+          range_value: "true"
+          permanent_value: "false"
+          range_description: "Rango"
+          permanent_description: "Fijo"
           title: "Conozcamos más de tu oferta"
           subtitle: "Brinda a tu candidato una relevante de tu empresa."
           content: "Aspiración salarial"

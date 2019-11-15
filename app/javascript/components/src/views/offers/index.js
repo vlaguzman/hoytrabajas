@@ -10,9 +10,9 @@ const StyledWrapper = styled.div`
   }
 `
 
-const OffersPage = ({ 
-  offers, 
-  offer_translations, 
+const OffersPage = ({
+  offers,
+  offer_translations,
   csrf_param,
   csrf_token,
   path_applied_offers

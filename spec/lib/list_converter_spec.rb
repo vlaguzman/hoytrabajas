@@ -16,7 +16,7 @@ RSpec.describe ListConverter do
       it "should return the expected object" do
         job_category_one = FactoryBot.create(:job_category, description: 'sales')
         job_category_two = FactoryBot.create(:job_category, description: 'bars')
-        expected_array_list = [['sales', job_category_one.id], ['bars', job_category_two.id]] 
+        expected_array_list = [['sales', job_category_one.id], ['bars', job_category_two.id]]
 
         the_response = subject.model_array_list(JobCategory)
 

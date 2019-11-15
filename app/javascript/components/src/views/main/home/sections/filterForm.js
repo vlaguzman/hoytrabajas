@@ -68,6 +68,9 @@ const currencies = [
 ]
 
 const FilterForm = ({ categorias, button1, fields1 }) => {
+  // TODO oscar remove this line when in rails when can searh by other fields
+  fields1 = [fields1[0]]
+
   const { value: state, toggleState } = dialogState({ open: false })
   const [open, setOpen] = React.useState(false)
 
@@ -132,7 +135,8 @@ const FilterForm = ({ categorias, button1, fields1 }) => {
   return (
     <Row className="justify-content-center" noGutters>
       <RctCollapsibleCard
-        colClasses="col-9 my-30 d-none d-lg-block "
+        /* TODO oscar i change 'col-9' to 'col-4' on 'colClasses' to reduce size bar */
+        colClasses="col-4 my-30 d-none d-lg-block "
         contentCustomClasses=""
       >
         <Form
@@ -141,13 +145,14 @@ const FilterForm = ({ categorias, button1, fields1 }) => {
           method="get"
         >
           <Col xs={12} md={1} className="pt-rem pl-0 p-0 align-items-center">
-            <Button
+            {/* TODO oscar ucomment this Button wheh find by categories exist */}
+            {/* <Button
               type="button"
               onClick={toggleState}
               className="text-primary h-50"
             >
               {button1}
-            </Button>
+            </Button> */}
           </Col>
           <FormGen fields={fields1} />
           <Fab
@@ -157,8 +162,9 @@ const FilterForm = ({ categorias, button1, fields1 }) => {
           >
             <FontAwesomeIcon icon="search" size="sm" />
           </Fab>
+          {/* TODO oscar Col form of advance search uncomment when advance searh is ready */}
           <Col xs={12} md={1} className="pl-0 p-0 align-items-center">
-            <IconButton
+            {/* <IconButton
               className="text-primary"
               style={{ width: '55%', height: '60%' }}
               onClick={handleClickOpen}
@@ -168,7 +174,10 @@ const FilterForm = ({ categorias, button1, fields1 }) => {
                 icon={['fas', 'list']}
                 size="xs"
               />
-            </IconButton>
+            </IconButton> */}
+
+            {/* TODO oscar this dialog is the advance form to searh */}
+
             <Dialog
               style={{ backgroundColor: '#F5F5F5' }}
               fullScreen

@@ -63,14 +63,58 @@ const Header = props => {
   const isNavTransparent =
     !openState.navbar && shouldChangeColorOfNav && isScrollTop
 
-  const colorOfNavToggler = () => isNavTransparent ? ({
-    style: {
-      color: 'white'
-    }
-  }) : ({
-    color: 'primary'
-  })
+  const colorOfNavToggler = () =>
+    isNavTransparent
+      ? {
+          style: {
+            color: 'white'
+          }
+        }
+      : {
+          color: 'primary'
+        }
 
+  /* TODO Oscar move the search bar to a component to have control of this */
+  const FullSearchBarInNavBar = () => (
+    <Row
+      className={`d-none d-lg-flex w-100 m-0 justify-content-around p-0 header-bar ${(!shouldChangeColorOfNav ||
+        !isScrollTop) &&
+        'show'}`}
+    >
+      <Col xs={12} md={1} className="pt-rem p-0 align-items-center">
+        <Typography
+          onClick={() => toggleOpenState('categories')}
+          variant="body2"
+          className="text-primary text-center"
+        >
+          Categorias
+        </Typography>
+      </Col>
+      <FormGen fields={fields1} />
+      <Col xs={12} md={2} className="pt-rem p-0 align-items-center text-center">
+        <Typography variant="caption" className="text-primary">
+          <FontAwesomeIcon
+            className="ml-auto text-primary mr-10"
+            icon={['fas', 'list']}
+            size="sm"
+          />
+          Búsqueda avanzada
+        </Typography>
+      </Col>
+      <Col xs={12} md={2} className="pt-rem align-items-center px-20">
+        <MatButton
+          type="button"
+          color="primary"
+          variant="contained"
+          style={{ borderRadius: '20px' }}
+          onClick={() => toggleOpenState('advancedSearch')}
+          className="text-white h-50"
+        >
+          <Typography variant="caption">Prueba Premium</Typography>
+        </MatButton>
+      </Col>
+    </Row>
+  )
   return (
     <Navbar
       position="static"
@@ -103,9 +147,7 @@ const Header = props => {
           className="mt-5"
           id="navbar-toggler"
         >
-          <MenuIcon
-            {...colorOfNavToggler()}
-          />
+          <MenuIcon {...colorOfNavToggler()} />
         </NavbarToggler>
         {/* Search bar in white nav bar */}
         <Collapse isOpen={openState.navbar} navbar id="navbarNav">
@@ -130,7 +172,7 @@ const Header = props => {
                 />
               </FormGroup>
               <Fab
-                id='searchbar_submit_button'
+                id="searchbar_submit_button"
                 type="submit"
                 size="small"
                 style={{ marginTop: '1%' }}
@@ -198,7 +240,7 @@ const Header = props => {
               <NavItem className="list-inline-item">
                 <MatButton
                   className="navbar-item-button"
-                  href={(user_signed_in) ? pathToOffers : pathToCreateOffer}
+                  href={user_signed_in ? pathToOffers : pathToCreateOffer}
                   style={{
                     color: isNavTransparent ? 'white' : 'black'
                   }}
@@ -211,7 +253,7 @@ const Header = props => {
             {(user_signed_in || company_signed_in) && (
               <NavItem className="list-inline-item">
                 <MatButton
-                  href={ pathToDashboard }
+                  href={pathToDashboard}
                   className="navbar-item-button"
                   style={{
                     color: isNavTransparent ? 'white' : 'black'
@@ -269,48 +311,8 @@ const Header = props => {
           isScrollTop &&
           'd-none'}`}
       >
-        <Row
-          className={`d-none d-lg-flex w-100 m-0 justify-content-around p-0 header-bar ${(!shouldChangeColorOfNav ||
-            !isScrollTop) &&
-            'show'}`}
-        >
-          <Col xs={12} md={1} className="pt-rem p-0 align-items-center">
-            <Typography
-              onClick={() => toggleOpenState('categories')}
-              variant="body2"
-              className="text-primary text-center"
-            >
-              Categorias
-            </Typography>
-          </Col>
-          <FormGen fields={fields1} />
-          <Col
-            xs={12}
-            md={2}
-            className="pt-rem p-0 align-items-center text-center"
-          >
-            <Typography variant="caption" className="text-primary">
-              <FontAwesomeIcon
-                className="ml-auto text-primary mr-10"
-                icon={['fas', 'list']}
-                size="sm"
-              />
-              Búsqueda avanzada
-            </Typography>
-          </Col>
-          <Col xs={12} md={2} className="pt-rem align-items-center px-20">
-            <MatButton
-              type="button"
-              color="primary"
-              variant="contained"
-              style={{ borderRadius: '20px' }}
-              onClick={() => toggleOpenState('advancedSearch')}
-              className="text-white h-50"
-            >
-              <Typography variant="caption">Prueba Premium</Typography>
-            </MatButton>
-          </Col>
-        </Row>
+        {/* TODO uncomment when advance search is ready */}
+        {/* <FullSearchBarInNavBar/> */}
         <Login
           {...props}
           isOpen={openState.login}

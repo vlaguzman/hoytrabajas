@@ -18,8 +18,8 @@ class Company < ApplicationRecord
 
   delegate :description, to: :employees_range, prefix: :employees_range
 
-  def confirmation_required?
-    false
+  def after_confirmation
+    self.update_attribute(:confirmed_at, DateTime.now)
   end
 
 end

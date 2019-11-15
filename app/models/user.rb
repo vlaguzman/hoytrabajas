@@ -51,7 +51,6 @@ class User < ApplicationRecord
 
   def after_confirmation
     self.update_attribute(:confirmed_at, DateTime.now)
-    puts "me confirme"*100
   end
 
 end

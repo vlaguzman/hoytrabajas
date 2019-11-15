@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_15_163850) do
+ActiveRecord::Schema.define(version: 2019_11_15_212102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -519,7 +519,6 @@ ActiveRecord::Schema.define(version: 2019_11_15_163850) do
     t.datetime "release_date"
     t.string "status"
     t.bigint "city_id"
-    t.bigint "job_category_id"
     t.bigint "offer_type_id"
     t.bigint "contract_type_id"
     t.datetime "created_at", precision: 6, null: false
@@ -530,7 +529,6 @@ ActiveRecord::Schema.define(version: 2019_11_15_163850) do
     t.index ["city_id"], name: "index_offers_on_city_id"
     t.index ["company_id"], name: "index_offers_on_company_id"
     t.index ["contract_type_id"], name: "index_offers_on_contract_type_id"
-    t.index ["job_category_id"], name: "index_offers_on_job_category_id"
     t.index ["offer_type_id"], name: "index_offers_on_offer_type_id"
     t.index ["work_mode_id"], name: "index_offers_on_work_mode_id"
   end
@@ -914,7 +912,6 @@ ActiveRecord::Schema.define(version: 2019_11_15_163850) do
   add_foreign_key "offer_salaries", "salary_periods"
   add_foreign_key "offers", "cities"
   add_foreign_key "offers", "contract_types"
-  add_foreign_key "offers", "job_categories"
   add_foreign_key "offers", "offer_types"
   add_foreign_key "offers", "work_modes"
   add_foreign_key "offers_responsibilities", "offers"

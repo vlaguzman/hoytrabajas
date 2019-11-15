@@ -28,7 +28,6 @@ A         • Companies::FirstOffer::StepSixesController          1       0.0   
 A         • Companies::FirstOffer::StepThree::FormParamsService 6       9.87       0           6
 A         • Companies::FirstOffer::StepThreePresenter           8       15.0       20          2
 A         • Companies::FirstOffer::StepThreeService             5       34.01      0           1
-A         • Companies::FirstOffer::StepThreesController         11      31.38      0           3
 A         • Companies::FirstOffer::StepTwo::FormParamsService   2       0.0        0           0
 A         • Companies::FirstOffer::StepZeroPresenter            2       1.0        0           2
 A         • Companies::FirstOffer::StepZerosController          3       3.24       0           1
@@ -74,8 +73,8 @@ A         • Level                                               4       0.0   
 A         • Limitation                                          4       0.0        0           1
 A         • ListConverter                                       6       17.39      0           2
 A         • Nationality                                         4       0.0        0           1
-A         • Offer                                               31      5.6        0           1
-A         • OfferSalary                                         5       0.0        0           1
+A         • Offer                                               32      5.6        0           1
+A         • OfferSalary                                         7       0.0        0           1
 A         • OfferType                                           5       0.0        0           1
 A         • Offers                                              12      0.0        0           0
 A         • Offers::AppliedOfferService                         2       13.25      0           1
@@ -167,7 +166,7 @@ B         • Companies::FirstOffer::StepFoursController          14      29.99 
 B         • Companies::FirstOffer::StepOnePresenter             13      17.4       26          2
 B         • Companies::FirstOffer::StepOneService               5       2.45       23          2
 B         • Companies::FirstOffer::StepOnesController           9       20.32      27          2
-B         • Companies::FirstOffer::StepThreesController         10      31.38      33          4
+B         • Companies::FirstOffer::StepThreesController         11      31.38      33          4
 B         • Companies::FirstOffer::StepTwoPresenter             14      17.4       26          2
 B         • Companies::FirstOffer::StepTwoService               5       2.45       23          2
 B         • Companies::FirstOffer::StepTwosController           10      20.32      27          2

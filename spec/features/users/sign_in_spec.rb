@@ -2,17 +2,14 @@ require 'rails_helper'
 
 RSpec.describe "User sign in", type: :feature do
 
-  def skip_under_construction
-    find("button[id='home-welcome-modal']", visible: false).click
-    execute_script "window.scrollTo(0, (window.innerHeight * 2))"
-  end
+  
 
   feature "like anonymous user" do
     feature "when enter in sign in path but a I dont have a account" do
       scenario "should see the sign up button 'Registrate'", js: true do
         visit root_path
 
-        skip_under_construction
+        
 
         find('span', text: "SIGN IN CANDIDATO").click
 
@@ -22,7 +19,7 @@ RSpec.describe "User sign in", type: :feature do
       scenario "should create account", js: true do
         visit root_path
 
-        skip_under_construction
+        
 
         find('span', text: "SIGN IN CANDIDATO").click
 

@@ -2,10 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "User can Log In", type: :feature do
 
-  def skip_under_construction
-    find("button[id='home-welcome-modal']", visible: false).click
-    execute_script "window.scrollTo(0, (window.innerHeight * 2))"
-  end
+  
 
   before {
     create(:user, email: "example@email.com", password: "Asdf1234")
@@ -33,7 +30,7 @@ RSpec.describe "User can Log In", type: :feature do
 
       visit root_path
 
-      skip_under_construction
+      
 
       expect(page).to have_content("SIGN IN CANDIDATO")
 
@@ -53,7 +50,7 @@ RSpec.describe "User can Log In", type: :feature do
     scenario "the user want to come back to home page", js: true do
       visit root_path
 
-      skip_under_construction
+      
 
       expect(page).to have_content("SIGN IN CANDIDATO")
 

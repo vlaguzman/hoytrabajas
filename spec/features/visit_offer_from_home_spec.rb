@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-def skip_under_construction
+def 
   find("button[id='home-welcome-modal']", visible: false).click
   execute_script "window.scrollTo(0, (window.innerHeight * 2))"
 end
@@ -14,7 +14,7 @@ RSpec.describe "visit offer from home", type: :feature do
         visited_offer = FactoryBot.create(:offer, title: "esto es un texto muuy largo para que se acorte")
         visit root_path
 
-        skip_under_construction
+        
 
         expect(page).to have_text(/Esto Es Un Texto Muuy Larg.../)
         find(".cardOffer").hover

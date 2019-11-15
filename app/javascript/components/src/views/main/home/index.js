@@ -9,7 +9,6 @@ import CompaniesSection from './sections/companies'
 import TurorialSection from './sections/tutorial'
 import Newsletter from './sections/newsletter'
 import { contenido } from './data'
-import WelcomeModal from './sections/components/WelcomeModal'
 
 const HomePage = ({
   offers,
@@ -30,7 +29,6 @@ const HomePage = ({
 
   return (
     <div className="home-wrapper">
-      <WelcomeModal isOpen={isModalOpen} toggleOpenState={setIsModalOpen} />
       <CoverSection {...cover} {...{ categorias }} {...{ filterForm }} />
       <OffersSection
         csrf_param={csrf_param}

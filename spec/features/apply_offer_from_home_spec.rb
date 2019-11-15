@@ -1,10 +1,5 @@
 require 'rails_helper'
 
-def skip_under_construction
-  find("button[id='home-welcome-modal']", visible: false).click
-  execute_script "window.scrollTo(0, (window.innerHeight * 2))"
-end
-
 RSpec.describe "apply offer from home", type: :feature, js: :true do
   include Capybara::DSL
 
@@ -17,8 +12,6 @@ RSpec.describe "apply offer from home", type: :feature, js: :true do
     it "should create the association" do
       sign_in user
       visit root_path
-
-      skip_under_construction
 
       expect(page).to have_text("I Am A Sexy Offer")
       find(".cardOffer", match: :first).hover
@@ -36,7 +29,6 @@ RSpec.describe "apply offer from home", type: :feature, js: :true do
       sign_in user
 
       visit root_path
-      skip_under_construction
 
       expect(page).to have_text("I Am A Sexy Offer")
       find(".cardOffer", match: :first).hover
@@ -48,7 +40,6 @@ RSpec.describe "apply offer from home", type: :feature, js: :true do
       expect(AppliedOffer.count).to eq(1)
 
       visit root_path
-      skip_under_construction
 
       expect(page).not_to have_text("I Am A Sexy Offer")
       expect(AppliedOffer.count).to eq(1)
@@ -58,8 +49,6 @@ RSpec.describe "apply offer from home", type: :feature, js: :true do
   context "When the user is not logged in" do
     it "should ask you to register" do
       visit root_path
-
-      skip_under_construction
 
       expect(page).to have_text("I Am A Sexy Offer")
       find(".cardOffer", match: :first).hover

@@ -1,9 +1,6 @@
 require 'rails_helper'
 
-def 
-  find("button[id='home-welcome-modal']", visible: false).click
-  execute_script "window.scrollTo(0, (window.innerHeight * 2))"
-end
+
 
 RSpec.describe "see offers at home", type: :feature, js: true do
   context "like not logged user" do

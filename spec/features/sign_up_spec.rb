@@ -1,9 +1,6 @@
 require 'rails_helper'
 
-def 
-  find("button[id='home-welcome-modal']", visible: false).click
-  execute_script "window.scrollTo(0, (window.innerHeight * 2))"
-end
+
 
 RSpec.describe "sign up user", js: true,  type: :feature do
   context "Like a external user, I should get in hoytrabajas.com and see the option 'registrarse'" do

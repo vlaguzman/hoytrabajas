@@ -2,10 +2,7 @@
 
 require 'rails_helper'
 
-def 
-  find("button[id='home-welcome-modal']", visible: false).click
-  execute_script "window.scrollTo(0, (window.innerHeight * 2))"
-end
+
 
 RSpec.describe "Overall navigation" do
   context "an anonimous user visits the public pages" do

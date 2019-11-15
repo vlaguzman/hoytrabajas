@@ -105,7 +105,7 @@ A         • State                                               3       0.0   
 A         • TechnicalSkill                                      6       0.0        0           1
 A         • TechnicalSkillCategory                              1       0.0        0           1
 A         • Term                                                4       0.0        0           1
-A         • User                                                28      34.86      0           3
+A         • User                                                29      6.91       0           1
 A         • Users::DashboardsController                         10      5.69       0           1
 A         • Users::OmniauthCallbacksController                  1       21.49      0           5
 A         • Users::ProfilesController                           12      2.2        0           1

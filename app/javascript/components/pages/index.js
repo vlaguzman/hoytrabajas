@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { DynamicHome } from '../src/views/DynamicViews'
 import AppLayout from '../src/components/Layout/AppLayout'
+import NotificationWrapper from '../src/components/Notification/NotificationWrapper'
 
 const HomePage = ({
   offers,
@@ -19,9 +20,6 @@ const HomePage = ({
   filterForm
 }) => {
   return (
-  console.log("return"),
-  console.log({alert_message}),
-  console.log({notice_message}),
     <div className="main-wrapper">
       <AppLayout
         csrf_param={csrf_param}
@@ -33,6 +31,10 @@ const HomePage = ({
         session_translation={session_translation}
         shouldChangeColorOfNav
       >
+        <NotificationWrapper
+          alert_message={alert_message}
+          notice_message={notice_message}
+        />
         <DynamicHome
           offers={offers}
           offer_translations={offer_translations}

@@ -19,10 +19,6 @@ const Index = props => {
 
   const resource_name = props.source_name
 
-  console.log('return - index devise')
-  console.log(props.alert_message)
-  console.log(props.notice_message)
-
   return (
     <div className="main-wrapper">
       <AppLayout

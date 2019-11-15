@@ -220,7 +220,7 @@ const Header = props => {
                     }}
                     onClick={() => toggleOpenState('login')}
                   >
-                    Login Candidato
+                    SIGN IN CANDIDATO
                   </MatButton>
                 </NavItem>
                 <NavItem className="list-inline-item">
@@ -231,7 +231,7 @@ const Header = props => {
                     }}
                     href="/companies/sign_in"
                   >
-                    Login Empresa
+                    SIGN IN EMPRESA
                   </MatButton>
                 </NavItem>
               </>
@@ -273,7 +273,7 @@ const Header = props => {
                     }}
                     href="/users/sign_up"
                   >
-                    Registro Candidato
+                    SIGN UP CANDIDATO
                   </MatButton>
                 </NavItem>
                 <NavItem className="list-inline-item">
@@ -284,7 +284,7 @@ const Header = props => {
                     }}
                     href="/companies/sign_up"
                   >
-                    Registro Empresa
+                    SIGN UP EMPRESA
                   </MatButton>
                 </NavItem>
               </>

@@ -22,9 +22,6 @@ export default class Index extends React.Component {
   render() {
     const resource_name = this.props.source_name
     return (
-      console.log("return - registration"),
-      console.log(this.props.alert_message),
-      console.log(this.props.notice_message),
       <div className="main-wrapper">
         <AppLayout
           user_signed_in={this.props.user_signed_in}

@@ -49,12 +49,9 @@ class User < ApplicationRecord
     end
   end
 
-  def confirmation_required?
-    if self.email.eql?("gabriel.meneses@hoytrabajas.com")
-      true
-    else
-      false
-    end
+  def after_confirmation
+    self.update_attribute(:confirmed_at, DateTime.now)
+    puts "me confirme"*100
   end
 
 end

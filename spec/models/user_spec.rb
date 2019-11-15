@@ -69,4 +69,9 @@ RSpec.describe User, type: :model do
     end
   end
 
+  #describe "#new_with_session" do
+  #  let(:subject) { described_class }
+  #  it {should respond_to(:new_with_session) }
+  #end
+
 end

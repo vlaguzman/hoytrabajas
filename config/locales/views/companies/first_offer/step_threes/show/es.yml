@@ -14,6 +14,6 @@ es:
             formFields:
               title: "Título de tu oferta"
               offers_work_positions: "Elige el cargo que deseas contratar"
-              job_category_id: "Selecciona la categoría de tu oferta"
+              job_category_ids: "Selecciona las categorías de tu oferta"
               offer_type_id: "Tipo de oferta"
               work_mode_id: "Modalidad de trabajo"

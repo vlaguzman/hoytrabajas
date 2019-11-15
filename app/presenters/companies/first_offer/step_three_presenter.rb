@@ -9,7 +9,7 @@ class Companies::FirstOffer::StepThreePresenter < ApplicationPresenter
       template_translation_path: "companies.first_offer.step_threes.show",
       form_method: :put
     ).form_params
-      .merge({offer_id: source.id})
+     .merge({offer_id: source.id})
   end
 
   private

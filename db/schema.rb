@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_13_191710) do
+ActiveRecord::Schema.define(version: 2019_11_15_163850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -427,6 +427,12 @@ ActiveRecord::Schema.define(version: 2019_11_13_191710) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "job_categories_offers", id: false, force: :cascade do |t|
+    t.bigint "offer_id", null: false
+    t.bigint "job_category_id", null: false
+    t.index ["offer_id", "job_category_id"], name: "index_job_categories_offers_on_offer_id_and_job_category_id", unique: true
+  end
+
   create_table "labor_disponibilities", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -513,7 +519,7 @@ ActiveRecord::Schema.define(version: 2019_11_13_191710) do
     t.datetime "release_date"
     t.string "status"
     t.bigint "city_id"
-    t.bigint "job_category_id", null: false
+    t.bigint "job_category_id"
     t.bigint "offer_type_id"
     t.bigint "contract_type_id"
     t.datetime "created_at", precision: 6, null: false
@@ -894,6 +900,8 @@ ActiveRecord::Schema.define(version: 2019_11_13_191710) do
   add_foreign_key "functions_offers", "offers"
   add_foreign_key "job_aids_offers", "job_aids"
   add_foreign_key "job_aids_offers", "offers"
+  add_foreign_key "job_categories_offers", "job_categories"
+  add_foreign_key "job_categories_offers", "offers"
   add_foreign_key "languages_offers", "languages"
   add_foreign_key "languages_offers", "levels"
   add_foreign_key "languages_offers", "offers"

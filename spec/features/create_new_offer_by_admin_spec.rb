@@ -24,7 +24,7 @@ RSpec.describe "Admin can create an Offer", type: :feature do
 
       within '#new_offer' do
         select('IBM', from: 'offer_company_id')
-        select('ventas', from: 'offer_job_category_id')
+        select('ventas', from: 'offer_job_category_ids')
         click_on 'Guardar Offer'
       end
 
@@ -68,7 +68,7 @@ RSpec.describe "Admin can create an Offer", type: :feature do
 
       within '#new_offer' do
         fill_in 'offer_title', with: 'ROR Dev'
-        select('ventas', from: 'offer_job_category_id')
+        select('ventas', from: 'offer_job_category_ids')
         click_on 'Guardar Offer'
       end
 
@@ -95,7 +95,7 @@ RSpec.describe "Admin can create an Offer", type: :feature do
         fill_in 'offer_description', with: 'work in the best company of the whole fucking world'
         fill_in 'offer_vacancies_quantity', with: '3'
         select('IBM', from: 'offer_company_id')
-        select('ventas', from: 'offer_job_category_id')
+        select('ventas', from: 'offer_job_category_ids')
         select('teletrabajo', from: 'offer_work_mode_id')
         select('Bogotá', from: 'offer_city_id')
         select('prestación de servicios', from: 'offer_contract_type_id')

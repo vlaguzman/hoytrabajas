@@ -13,7 +13,7 @@ const FormFields = props => {
 
   const {
     title = null,
-    job_category_id = null,
+    job_category_ids = null,
     offers_work_positions = null,
     offer_type_id = null,
     work_mode_id = null
@@ -21,7 +21,7 @@ const FormFields = props => {
 
   const [formValues, setFormValues] = useState({
     [title.name]: title.current_value || '',
-    [job_category_id.name]: job_category_id.current_value || '',
+    [job_category_ids.name]: job_category_ids.current_value || '',
     [offers_work_positions.name]: offers_work_positions.current_value || '',
     [offer_type_id.name]: offer_type_id.current_value || '',
     [work_mode_id.name]: work_mode_id.current_value || ''
@@ -47,20 +47,25 @@ const FormFields = props => {
 
   const jobCategoryField = useMemo(
     () => (
-      <Col key={job_category_id.name} className={inputClassname} xs={12} lg={6}>
+      <Col
+        key={job_category_ids.name}
+        className={inputClassname}
+        xs={12}
+        lg={6}
+      >
         <SelectChip
-          inputValue={formValues[job_category_id.name]}
-          inputName={job_category_id.name}
+          inputValue={formValues[job_category_ids.name]}
+          inputName={job_category_ids.name}
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
-          name={job_category_id.name}
-          label={job_category_id.label}
-          selectOptions={job_category_id.values}
-          isMultiple={false}
+          name={job_category_ids.name}
+          label={job_category_ids.label}
+          selectOptions={job_category_ids.values}
+          isMultiple
         />
       </Col>
     ),
-    [formValues[job_category_id.name]]
+    [formValues[job_category_ids.name]]
   )
 
   const offerTypeField = useMemo(
@@ -138,7 +143,7 @@ export default FormFields
 FormFields.propTypes = {
   formFields: PropTypes.shape({
     title: PropTypes.object,
-    job_category_id: PropTypes.object,
+    job_category_ids: PropTypes.object,
     offer_type_id: PropTypes.object,
     work_mode_id: PropTypes.object,
     offers_work_positions: PropTypes.object

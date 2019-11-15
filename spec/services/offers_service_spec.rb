@@ -23,33 +23,23 @@ RSpec.describe OffersService do
   end
 
   describe "#related_offers_show_details" do
-    let!(:related_job_category) { create(:job_category, id: 13, description: "AJobCategoryLol") }
-    let(:main_offer) { create(:offer, job_category_id: 13) }
+    let!(:related_job_category) { create(:job_category, description: "AJobCategoryLol") }
+    let(:main_offer) { create(:offer, job_categories: [related_job_category]) }
 
     context "When is needed show related offers by job category" do
 
       let!(:stuff_offers) do
         [
-          create(:offer, job_category_id: 13),
-          create(:offer),
-          create(:offer, job_category_id: 13),
-          create(:offer),
-          create(:offer, job_category_id: 13),
-          create(:offer),
-          create(:offer, job_category_id: 13),
-          create(:offer),
-          create(:offer, job_category_id: 13)
+          create_list(:offer, 5, job_categories: [related_job_category])
         ]
       end
 
       it "Should return maximun five presenter offers" do
-        expect(subject.related_offers_show_details(main_offer.id, 13).length).to eq(5)
+        expect(subject.related_offers_show_details(main_offer.id, main_offer.job_categories).length).to eq(5)
       end
 
       it "Should return hash with details" do
-        job_category_id = main_offer.job_category_id
-
-        expect(subject.related_offers_show_details(main_offer.id, job_category_id).last.keys).to match_array([
+        expect(subject.related_offers_show_details(main_offer.id, main_offer.job_categories).last.keys).to match_array([
           :id_offer, :city, :close_date, :company, :description, :immediate_start, :new_offer, :required_experience, :salary, :title
         ])
       end

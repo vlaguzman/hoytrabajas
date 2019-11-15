@@ -17,7 +17,7 @@ RSpec.describe "When company fill the step three form", :type => :feature do
       with_tag(:textarea, with: { name: 'offer[title]'})
 
       with_tag(:input, with: { name: 'offer[id]', type: "hidden" })
-      with_tag(:input, with: { name: 'offer[job_category_id]', type: "hidden" })
+      with_tag(:input, with: { name: 'offer[job_category_ids]', type: "hidden" })
       with_tag(:input, with: { name: 'offer[offers_work_positions]', type: "hidden" })
       with_tag(:input, with: { name: 'offer[offer_type_id]', type: "hidden" })
       with_tag(:input, with: { name: 'offer[work_mode_id]', type: "hidden" })
@@ -32,8 +32,8 @@ RSpec.describe "When company fill the step three form", :type => :feature do
   def fill_form(data)
     fill_in 'offer[title]', :with => data[:title]
 
-    find(id: 'select-offer[job_category_id]', visible: false).click
-    find('li', text: data[:job_category_id]).click
+    find(id: 'select-offer[job_category_ids]', visible: false).click
+    find('li', text: data[:job_category_ids]).click
 
     find(id: 'select-offer[offer_type_id]', visible: false).click
     find('li', text: data[:offer_type_id]).click
@@ -56,7 +56,7 @@ RSpec.describe "When company fill the step three form", :type => :feature do
         fill_form(
           {
             title: 'Oferta para el mejor desarrollador del mundo mundial',
-            job_category_id: job_category.description,
+            job_category_ids: job_category.description,
             offer_type_id: offer_type.description,
             work_mode_id: work_mode.description,
             offers_work_positions: work_position.description
@@ -66,7 +66,7 @@ RSpec.describe "When company fill the step three form", :type => :feature do
 
         offer = Offer.find_by(title: 'Oferta para el mejor desarrollador del mundo mundial')
 
-        expect(offer.job_category_id).not_to be_nil
+        expect(offer.job_category_ids).not_to be_nil
         expect(offer.work_mode_id).not_to be_nil
         expect(offer.offer_type_id).not_to be_nil
 

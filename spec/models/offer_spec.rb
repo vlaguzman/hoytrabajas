@@ -122,14 +122,11 @@ RSpec.describe Offer, type: :model do
   describe "assocciations" do
     it { should belong_to(:company) }
     it { should belong_to(:city) }
-    it { should belong_to(:job_category) }
     it { should belong_to(:offer_type) }
-    it { should belong_to(:job_category) }
-    it { should belong_to(:job_category) }
     it { should belong_to(:work_mode) }
-    it { should belong_to(:job_category) }
     it { should belong_to(:contract_type) }
     it { should have_one(:offer_salary) }
+    it { should have_and_belong_to_many(:job_categories) }
     it { should have_and_belong_to_many(:terms) }
     it { should have_and_belong_to_many(:functions) }
     it { should have_and_belong_to_many(:job_aids) }

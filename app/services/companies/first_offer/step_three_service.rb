@@ -9,15 +9,24 @@ module Companies::FirstOffer::StepThreeService
 
   def self.update_offer(params, work_position_id)
     offer = Offer.find(params[:id])
-    offer.update(params)
+    update_params = clean_params(params)
+    offer.update(update_params)
 
     persist_offer(offer, work_position_id)
   end
 
   def self.create_offer(params, work_position_id)
-    offer = Offer.new(params)
+    new_params = clean_params(params)
+    offer = Offer.new(new_params)
 
     persist_offer(offer, work_position_id)
+  end
+
+  def self.clean_params(params)
+    job_category_ids = params[:job_category_ids].split(",").map(&:to_i)
+    params
+      .inject({}) { |params, (key, value)| params[:job_category_ids] = job_category_ids; params }
+      .reverse_merge!(params)
   end
 
   def self.persist_offer(offer, work_position_id)

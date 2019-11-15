@@ -29,7 +29,7 @@ class Companies::FirstOffer::StepThreesController < ApplicationController
       .permit(
         :id,
         :title,
-        :job_category_id,
+        :job_category_ids,
         :offers_work_positions,
         :offer_type_id,
         :work_mode_id

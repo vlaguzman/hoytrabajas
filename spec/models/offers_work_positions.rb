@@ -4,6 +4,6 @@ RSpec.describe OffersWorkPositions, type: :model do
 
   describe "associations" do
     it  { should belong_to(:offer) }
-    it  { should belong_to(:positon) }
+    it  { should belong_to(:work_position) }
   end
 end

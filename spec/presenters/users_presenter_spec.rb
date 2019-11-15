@@ -39,10 +39,11 @@ RSpec.describe UsersPresenter do
   describe "#applied_offers" do
     it { should respond_to(:applied_offers) }
 
-    it "should return a hash with the required info to show template" do
+    it "should return an instance of Array" do
       applied_ofers
 
       expect(subject.applied_offers).to be_an_instance_of Array
+      expect(subject.applied_offers.map(&:keys).flatten.uniq).to match_array([:id, :title])
 
     end
   end

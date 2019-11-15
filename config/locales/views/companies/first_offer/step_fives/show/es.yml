@@ -1,0 +1,30 @@
+es:
+  companies:
+    first_offer:
+      step_fives:
+        show:
+          range_value: "true"
+          permanent_value: "false"
+          range_description: "Rango"
+          permanent_description: "Fijo"
+          title: "Conozcamos más de tu oferta"
+          subtitle: "Brinda a tu candidato una relevante de tu empresa."
+          content: "Aspiración salarial"
+          form:
+            buttons:
+              submit: "Publicar"
+              next: "Saltar"
+              previous: "Regresar"
+            type: "offer"
+            formFields:
+              is_range: 'Aspiración salarial'
+              currency_id,: ''
+              from: ''
+              to: ''
+              salary_period_id: 'Pago'
+              working_day_ids: '¿Qué dias de la semana?'
+              available_work_day_ids: '¿En qué jornada?'
+              job_aid_ids: 'Auxilios o prestaciones asociadas a tu oferta'
+            placeholders:
+              from: 'Ej: 750.000'
+              to: 'Ej: 750.000'

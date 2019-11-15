@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_07_211755) do
+ActiveRecord::Schema.define(version: 2019_11_13_191710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -485,14 +485,13 @@ ActiveRecord::Schema.define(version: 2019_11_07_211755) do
   create_table "offer_salaries", force: :cascade do |t|
     t.bigint "offer_id", null: false
     t.bigint "currency_id", null: false
-    t.bigint "salary_type_id", null: false
     t.bigint "salary_period_id", null: false
     t.integer "from"
     t.integer "to"
+    t.boolean "is_range"
     t.index ["currency_id"], name: "index_offer_salaries_on_currency_id"
     t.index ["offer_id"], name: "index_offer_salaries_on_offer_id"
     t.index ["salary_period_id"], name: "index_offer_salaries_on_salary_period_id"
-    t.index ["salary_type_id"], name: "index_offer_salaries_on_salary_type_id"
   end
 
   create_table "offer_types", force: :cascade do |t|
@@ -661,12 +660,6 @@ ActiveRecord::Schema.define(version: 2019_11_07_211755) do
   end
 
   create_table "salary_periods", force: :cascade do |t|
-    t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "salary_types", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -911,7 +904,6 @@ ActiveRecord::Schema.define(version: 2019_11_07_211755) do
   add_foreign_key "offer_salaries", "currencies"
   add_foreign_key "offer_salaries", "offers"
   add_foreign_key "offer_salaries", "salary_periods"
-  add_foreign_key "offer_salaries", "salary_types"
   add_foreign_key "offers", "cities"
   add_foreign_key "offers", "contract_types"
   add_foreign_key "offers", "job_categories"

@@ -2,6 +2,47 @@ class Companies::FirstOffer::StepFivesController < ApplicationController
   before_action :authenticate_company!
 
   def show
+    offer = Offer.find(show_params[:offer_id])
+    offer_presenter(offer)
   end
 
+  def update
+    offer = Companies::FirstOffer::StepFiveService.(company: current_company, update_params: step_five_params)
+
+    if offer[:status].eql?(:ok)
+      redirect_to companies_first_offer_step_eight_path
+    else
+      offer_presenter(offer[:data])
+      render 'show'
+    end
+  end
+
+  def offer_presenter(offer)
+    @offer = Companies::FirstOffer::StepFivePresenter.new(offer)
+  end
+
+  private
+
+  def show_params
+    params
+      .permit(
+        :offer_id
+    ).to_h
+  end
+
+  def step_five_params
+    params
+      .require(:offer)
+      .permit(
+        :id,
+        :is_range,
+        :currency_id,
+        :from,
+        :to,
+        :salary_period_id,
+        available_work_day_ids: [],
+        working_day_ids: [],
+        job_aid_ids: []
+    ).to_h
+  end
 end

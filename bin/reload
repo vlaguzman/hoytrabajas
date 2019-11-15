@@ -22,7 +22,7 @@ else
 fi
 
 echo "Running Puma................................................."
-RAILS_ENV=production SOCKET=$NEW_SOCKET PID_FILE=$NEW_PID bundle exec puma -C config/puma/production.rb -d
+source .env && RAILS_ENV=production SOCKET=$NEW_SOCKET PID_FILE=$NEW_PID bundle exec puma -C config/puma/production.rb -d
 echo "Puma Up......................................................"
 
 awakenings

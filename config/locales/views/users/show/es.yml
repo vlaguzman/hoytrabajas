@@ -10,7 +10,7 @@ es:
         title_two: 'de Candidato.'
         title_decription: 'Aqui podras editar tu información y ver las ofertas a las que aplicaste.'
       first_section:
-        my_profile: My Perfil
+        my_profile: Mi Perfil
         update:
           most_recent_update: 'Ultima actualización:'
           today: 'Hoy'
@@ -18,6 +18,6 @@ es:
         edit_profile: 'Editar'
       second_section:
         you_have_applied_to: 'Actualmente te estás postulando a '
-        offers_count: 'offerta(s)'
+        offers_count: 'oferta(s)'
         my_applys: 'Mis aplicaciones'
         one_offer: 'Oferta'

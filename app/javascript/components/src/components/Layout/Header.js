@@ -35,6 +35,18 @@ const Header = props => {
     session_translation
   } = props
 
+  const pathTo = (to = '') => {
+    if (user_signed_in) return `/users/${to}`
+    if (company_signed_in) return `/companies/${to}`
+    return '/'
+  }
+
+  const pathToProfile = pathTo('profile')
+  const pathToDashboard = pathTo('dashboard')
+
+  const pathToOffers = '/offers'
+  const pathToCreateOffer = pathTo('first_offer/step_three')
+
   const [openState, setOpenState] = useState({
     login: false,
     navbar: false,
@@ -114,7 +126,7 @@ const Header = props => {
                   name="q[title_cont]"
                   id="q[title_cont]"
                   placeholder="Buscar ofertas"
-                  autocomplete="off"
+                  autoComplete="off"
                 />
               </FormGroup>
               <Fab
@@ -143,10 +155,12 @@ const Header = props => {
             </NavItem>
             {/* TODO: With "Candidato" and "Empleador", to press button redirect me a static landing page.
             We must take into account to make the change in redirection */}
+            {/* TODO oscar uncommnet profile link when the profile is complete */}
             {user_signed_in || company_signed_in ? (
               <NavItem className="list-inline-item">
                 <MatButton
                   className="navbar-item-button"
+                  href={pathToProfile}
                   style={{
                     color: isNavTransparent ? 'white' : 'black'
                   }}
@@ -184,6 +198,7 @@ const Header = props => {
               <NavItem className="list-inline-item">
                 <MatButton
                   className="navbar-item-button"
+                  href={(user_signed_in) ? pathToOffers : pathToCreateOffer}
                   style={{
                     color: isNavTransparent ? 'white' : 'black'
                   }}
@@ -196,6 +211,7 @@ const Header = props => {
             {(user_signed_in || company_signed_in) && (
               <NavItem className="list-inline-item">
                 <MatButton
+                  href={ pathToDashboard }
                   className="navbar-item-button"
                   style={{
                     color: isNavTransparent ? 'white' : 'black'

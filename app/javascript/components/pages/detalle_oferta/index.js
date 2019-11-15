@@ -11,6 +11,7 @@ const MainPage = props => {
     log_out_user,
     csrf_param,
     csrf_token,
+    path_applied_offers,
     session_translation
   } = props
 
@@ -27,6 +28,7 @@ const MainPage = props => {
       <DynamicDetalle
         csrf_param={csrf_param}
         csrf_token={csrf_token}
+        path_applied_offers={path_applied_offers}
         {...props}
       />
     </AppLayout>
@@ -42,5 +44,6 @@ MainPage.propTypes = {
   log_out_user: PropTypes.string.isRequired,
   csrf_param: PropTypes.string.isRequired,
   csrf_token: PropTypes.string.isRequired,
+  path_applied_offers: PropTypes.object.isRequired,
   session_translation: PropTypes.object.isRequired
 }

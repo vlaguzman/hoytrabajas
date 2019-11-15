@@ -2,9 +2,9 @@ class OffersController < ApplicationController
   def index
     query = Offer.active.ransack(params[:q])
     if query.present?
-      @offers = query.result(distinct: true).map{ |offer| Offers::IndexService.new(offer).details }
+      @offers = query.result(distinct: true).map{ |offer| Offers::IndexService.new(offer, current_user).details }
     else
-      @offers = OffersService.active_offers_index_details
+      @offers = OffersService.active_offers_index_details(current_user)
     end
   end
 

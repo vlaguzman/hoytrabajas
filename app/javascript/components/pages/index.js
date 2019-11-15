@@ -2,12 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { DynamicHome } from '../src/views/DynamicViews'
 import AppLayout from '../src/components/Layout/AppLayout'
-import NotificationWrapper from '../src/components/Notification/NotificationWrapper'
 
 const HomePage = ({
   offers,
-  alert_message,
-  notice_message,
   csrf_param,
   csrf_token,
   user_signed_in,
@@ -31,10 +28,6 @@ const HomePage = ({
         session_translation={session_translation}
         shouldChangeColorOfNav
       >
-        <NotificationWrapper
-          alert_message={alert_message}
-          notice_message={notice_message}
-        />
         <DynamicHome
           offers={offers}
           offer_translations={offer_translations}

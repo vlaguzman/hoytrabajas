@@ -12,7 +12,6 @@ import MailOutline from '@material-ui/icons/MailOutline'
 import Lock from '@material-ui/icons/Lock'
 import Divider from '@material-ui/core/Divider'
 import AppLayout from '../../../../src/components/Layout/AppLayout'
-import NotificationWrapper from '../../../../src/components/Notification/NotificationWrapper'
 
 const Index = props => {
   const [open] = useState(true)
@@ -28,10 +27,6 @@ const Index = props => {
         log_out_companies={props.log_out_companies}
         session_translation={props.session_translation}
       >
-        <NotificationWrapper
-          alert_message={props.alert_message}
-          notice_message={props.notice_message}
-        />
         <Dialog
           fullWidth
           maxWidth="xs"

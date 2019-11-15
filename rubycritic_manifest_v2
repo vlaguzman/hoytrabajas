@@ -112,7 +112,7 @@ A         • Term                                                4       0.0   
 A         • User                                                26      35.07      0           3
 A         • Users::DashboardsController                         10      5.69       0           1
 A         • Users::OmniauthCallbacksController                  1       21.49      0           5
-A         • Users::ProfilesController                           11      5.69       0           1
+A         • Users::ProfilesController                           12      2.2        0           1
 A         • Users::RegistrationsController                      13      1.0        0           2
 A         • Users::SessionsController                           3       0.0        0           1
 A         • Users::WizardService                                2       17.38      0           2

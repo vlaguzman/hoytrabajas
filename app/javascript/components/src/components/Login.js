@@ -103,7 +103,7 @@ const Login = ({
           style={{ color: '#00CED5' }}
           href="users/password/new"
         >
-          {session_translation.forget_password}
+          {session_translation.sign_in.forget_password}
         </Typography>
         <Row noGutters className="justify-content-center my-25">
           <Col xs={12}>

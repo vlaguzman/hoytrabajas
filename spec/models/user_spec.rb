@@ -61,5 +61,12 @@ RSpec.describe User, type: :model do
       end
     end
   end 
-  
+
+  describe "#after_confirmation" do
+    it {should respond_to(:after_confirmation)}
+    it "update confirmed_at field" do
+      expect(subject.after_confirmation).to eq(true)
+    end
+  end
+
 end

@@ -10,4 +10,9 @@ class ApplicationController < ActionController::Base
     (current.sign_in_count <= 1) ? redirect_to(path) : render(render)
   end
 
+  def raise_login_count(current)
+    current.sign_in_count += 1
+    current.save
+  end
+
 end

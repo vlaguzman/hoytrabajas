@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "apply offer from offer index", type: :feature, js: :true do
-  include Capybara::DSL
-
   let(:user)                  { create(:user) }
   let!(:new_curriculum)       { create(:curriculum_vitae, user_id: user.id) }
   let!(:applied_offer_status) { create(:applied_offer_status, description: 'applied') }

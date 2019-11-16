@@ -1,10 +1,5 @@
 require 'rails_helper'
 
-def skip_under_construction
-  find("button[id='home-welcome-modal']", visible: false).click
-  execute_script "window.scrollTo(0, (window.innerHeight * 2))"
-end
-
 RSpec.describe "apply offer from offer index", type: :feature, js: :true do
   include Capybara::DSL
 

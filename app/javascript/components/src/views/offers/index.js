@@ -41,6 +41,9 @@ export default OffersPage
 
 OffersPage.propTypes = {
   offers: PropTypes.array.isRequired,
+  csrf_param: PropTypes.string.isRequired,
+  csrf_token: PropTypes.string.isRequired,
+  path_applied_offers: PropTypes.string.isRequired,
   offer_translations: PropTypes.shape({
     index: PropTypes.shape({
       title: PropTypes.string.isRequired,

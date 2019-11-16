@@ -27,13 +27,13 @@ const OffersPage = props => {
       log_out_companies={log_out_companies}
       session_translation={session_translation}
     >
-      <DynamicOffers 
+      <DynamicOffers
         offers={offers}
         offer_translations={offer_translations}
         path_applied_offers={path_applied_offers}
         csrf_param={csrf_param}
         csrf_token={csrf_token}
-       />
+      />
     </AppLayout>
   )
 }

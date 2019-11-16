@@ -477,6 +477,9 @@ const DetallePage = ({
         <Offers
           offers={relatedOffers}
           offer_translations={offer_translations}
+          path_applied_offers={pathAppliedOffers}
+          csrf_param={csrf_param}
+          csrf_token={csrf_token}
           loadMoreOffers={false}
         />
       </OffersWrapper>

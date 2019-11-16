@@ -25,8 +25,6 @@ const HomePage = ({
     companies
   } = contenido
 
-  const [isModalOpen, setIsModalOpen] = useState(true)
-
   return (
     <div className="home-wrapper">
       <CoverSection {...cover} {...{ categorias }} {...{ filterForm }} />

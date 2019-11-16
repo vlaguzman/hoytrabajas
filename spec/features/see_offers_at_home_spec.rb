@@ -1,9 +1,6 @@
 require 'rails_helper'
 
-def skip_under_construction
-  find("button[id='home-welcome-modal']", visible: false).click
-  execute_script "window.scrollTo(0, (window.innerHeight * 2))"
-end
+
 
 RSpec.describe "see offers at home", type: :feature, js: true do
   context "like not logged user" do
@@ -11,7 +8,7 @@ RSpec.describe "see offers at home", type: :feature, js: true do
       it "should show me a message: there are not offers" do
         visit root_path
 
-        skip_under_construction
+        
 
         expect(Offer.count).to eq(0)	
         expect(page).to have_text("No hay ningún trabajo en este momento")
@@ -28,7 +25,7 @@ RSpec.describe "see offers at home", type: :feature, js: true do
 
         visit root_path
 
-        skip_under_construction
+        
 
         expect(page).to have_text("The Name Of The Company Is Too ...")
         expect(page).to have_text("The Title Of The Offer Is ...")
@@ -43,7 +40,7 @@ RSpec.describe "see offers at home", type: :feature, js: true do
 
         visit root_path
 
-        skip_under_construction
+        
 
         expect(Offer.count).to eq(2)	
         expect(page).to have_text(offer.title.capitalize)
@@ -57,7 +54,7 @@ RSpec.describe "see offers at home", type: :feature, js: true do
 
         visit root_path
 
-        skip_under_construction
+        
 
         expect(page).to have_text(offer.title.capitalize)
         expect(page).to have_text("SIN EXPERIENCIA")
@@ -71,7 +68,7 @@ RSpec.describe "see offers at home", type: :feature, js: true do
 
         visit root_path
 
-        skip_under_construction
+        
 
         expect(page).to have_text(offer.title.capitalize)
         expect(page).to have_text("INICIO INMEDIATO")
@@ -85,7 +82,7 @@ RSpec.describe "see offers at home", type: :feature, js: true do
 	
         visit root_path
 
-        skip_under_construction
+        
 
         expect(page).to have_text(offer.title.capitalize)
         expect(page).to have_text("Nuevo")
@@ -100,7 +97,7 @@ RSpec.describe "see offers at home", type: :feature, js: true do
 
         visit root_path
 
-        skip_under_construction
+        
 
         expect(Offer.count).to eq(1)
         expect(page).to have_text(offer.title.capitalize)

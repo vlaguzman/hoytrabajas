@@ -8,6 +8,7 @@ const OffersPage = props => {
     offers,
     csrf_param,
     csrf_token,
+    path_applied_offers,
     user_signed_in,
     company_signed_in,
     log_out_user,
@@ -26,7 +27,13 @@ const OffersPage = props => {
       log_out_companies={log_out_companies}
       session_translation={session_translation}
     >
-      <DynamicOffers offers={offers} offer_translations={offer_translations} />
+      <DynamicOffers
+        offers={offers}
+        offer_translations={offer_translations}
+        path_applied_offers={path_applied_offers}
+        csrf_param={csrf_param}
+        csrf_token={csrf_token}
+      />
     </AppLayout>
   )
 }
@@ -41,6 +48,7 @@ OffersPage.propTypes = {
   log_out_user: PropTypes.string.isRequired,
   csrf_param: PropTypes.string.isRequired,
   csrf_token: PropTypes.string.isRequired,
+  path_applied_offers: PropTypes.object.isRequired,
   session_translation: PropTypes.object.isRequired,
   offer_translations: PropTypes.shape({
     index: PropTypes.shape({

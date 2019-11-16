@@ -10,7 +10,13 @@ const StyledWrapper = styled.div`
   }
 `
 
-const OffersPage = ({ offers, offer_translations }) => (
+const OffersPage = ({
+  offers,
+  offer_translations,
+  csrf_param,
+  csrf_token,
+  path_applied_offers
+}) => (
   <StyledWrapper>
     <h1
       className="sec-title mb-40 pt-20 mx-10 text-center"
@@ -21,6 +27,9 @@ const OffersPage = ({ offers, offer_translations }) => (
     <Offers
       offers={offers}
       offer_translations={offer_translations}
+      path_applied_offers={path_applied_offers}
+      csrf_param={csrf_param}
+      csrf_token={csrf_token}
       initialRows={3}
       hasAllOffers
       rowIncrement={2}
@@ -32,6 +41,9 @@ export default OffersPage
 
 OffersPage.propTypes = {
   offers: PropTypes.array.isRequired,
+  csrf_param: PropTypes.string.isRequired,
+  csrf_token: PropTypes.string.isRequired,
+  path_applied_offers: PropTypes.string.isRequired,
   offer_translations: PropTypes.shape({
     index: PropTypes.shape({
       title: PropTypes.string.isRequired,

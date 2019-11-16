@@ -4,6 +4,7 @@ import MatButton from '@material-ui/core/Button'
 import { Row, Col } from 'reactstrap'
 import Typography from '@material-ui/core/Typography'
 import Dialog from '@material-ui/core/Dialog'
+import DialogActions from '@material-ui/core/DialogActions'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
@@ -171,6 +172,24 @@ export default class Index extends React.Component {
                 </Col>
               </Row>
             </DialogContent>
+            <DialogActions className="">
+              <div className="w-100 text-center">
+                <Typography variant="caption" component="span">
+                  {this.props.session_translation.sign_up.with_account.title}
+                </Typography>
+                <Typography
+                  variant="caption"
+                  className="ml-5"
+                  component="a"
+                  style={{ color: '#00CED5', cursor: 'pointer' }}
+                  href={`/${
+                    resource_name === 'user' ? 'users' : 'companies'
+                  }/sign_in`}
+                >
+                  {this.props.session_translation.sign_up.with_account.sign_in}
+                </Typography>
+              </div>
+            </DialogActions>
           </Dialog>
         </AppLayout>
       </div>

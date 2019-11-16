@@ -61,6 +61,9 @@ es:
         sign_up_label: "Regístrarme"
         sign_up_facebook: "Continuar con Facebook"
         sign_up_google: "Continuar con Google"
+      with_account:
+        title: "Si ya tienes cuenta"
+        sign_in: "Inicia sesion"
 
   activerecord:
     errors:

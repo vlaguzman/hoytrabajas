@@ -1,6 +1,6 @@
 module Users::Wizards::StepTenService
   def self.call(candidate: _, update_params: {})
-    cv = candidate.curriculum_vitaes.first
+    cv = candidate.curriculum_vitae
 
     acknowledgment_params = update_params[:curriculum_vitae].delete(:acknowledgment)
 

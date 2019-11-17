@@ -1,6 +1,6 @@
 module Users::Wizards::StepSixService
   def self.call(candidate: _, update_params: {})
-    cv = candidate.curriculum_vitaes.first
+    cv = candidate.curriculum_vitae
 
     laguage_params = update_params[:curriculum_vitae].delete(:curriculum_vitaes_languages)
     create_curriculum_vitae_laguage( laguage_params: laguage_params.merge!(curriculum_vitae_id: cv.id) )

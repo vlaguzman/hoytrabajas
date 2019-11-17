@@ -1,6 +1,6 @@
 module Users::Wizards::StepEightService
   def self.call(candidate: _, update_params: {})
-    cv = candidate.curriculum_vitaes.first
+    cv = candidate.curriculum_vitae
 
     work_experience_params = update_params[:curriculum_vitae].delete(:work_experience)
     work_experience = creat_work_experience(work_experience_params: work_experience_params.merge!(curriculum_vitae_id: cv.id))

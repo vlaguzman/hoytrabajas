@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "User applied offer from the related offer section", type: :feature, js: :true do
-  let!(:user)                     { create(:user) }
-  let!(:current_user)                     { user }
+  let(:user)                     { create(:user) }
   let!(:job_category)            { create(:job_category, description: "sales") }
   let!(:offer)                   { create(:offer, title: "offer_a", job_categories: [job_category]) }
   let!(:offer_b)                 { create(:offer, title: "offer_b", job_categories: [job_category]) }
@@ -28,7 +27,7 @@ RSpec.describe "User applied offer from the related offer section", type: :featu
   end
   
   context "When the user is logged in and had applied to a offer" do
-    it "should not create the association again" do
+    it "should not see the applied offer" do
       sign_in user
 
       visit offer_path(offer.id)

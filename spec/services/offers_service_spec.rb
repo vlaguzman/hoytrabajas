@@ -47,9 +47,8 @@ RSpec.describe OffersService do
     
     context "when in the related offers are some applied offer" do
       
-      let!(:user)                  { create(:user) }
+      let(:user)                  { create(:user) }
       let!(:new_curriculum)       { create(:curriculum_vitae, user_id: user.id) }
-      let!(:applied_offer_status) { create(:applied_offer_status, description: 'applied') }
       let!(:stuff_offers) do
         [
           create_list(:offer, 3, job_categories: [related_job_category])

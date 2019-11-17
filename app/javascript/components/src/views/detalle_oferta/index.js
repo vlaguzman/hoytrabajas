@@ -65,8 +65,8 @@ const DetallePage = ({
               >
                 {offer.title}
               </Typography>
-{/* TODO Oscar this is the chip of affinty percentage, uncomment when the funcionality is ready */}
-{/*               <Chip
+              {/* TODO Oscar this is the chip of affinty percentage, uncomment when the funcionality is ready */}
+              {/*               <Chip
                 color="primary"
                 className="text-white"
                 label={

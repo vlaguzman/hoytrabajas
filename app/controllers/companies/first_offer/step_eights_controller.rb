@@ -2,6 +2,7 @@ class Companies::FirstOffer::StepEightsController < ApplicationController
   before_action :authenticate_company!
 
   def show
+    raise_login_count(current_company)
     company_presenter
   end
 

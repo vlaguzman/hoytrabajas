@@ -81,9 +81,9 @@ A         • Offers::AppliedOfferService                         2       13.25 
 A         • Offers::IndexService                                5       11.26      0           3
 A         • Offers::ViewsService                                7       36.4       0           3
 A         • OffersController                                    15      27.13      0           2
-A         • OffersPresenter                                     7       17.8       0           4
+A         • OffersPresenter                                     8       19.0       0           4
 A         • OffersResponsibilities                              1       0.0        0           1
-A         • OffersService                                       11      24.69      0           1
+A         • OffersService                                       12      35.96      0           1
 A         • OffersSoftSkills                                    1       0.0        0           1
 A         • OffersTechnicalSkills                               1       0.0        0           1
 A         • OffersTerms                                         1       0.0        0           1
@@ -105,7 +105,7 @@ A         • State                                               3       0.0   
 A         • TechnicalSkill                                      6       0.0        0           1
 A         • TechnicalSkillCategory                              1       0.0        0           1
 A         • Term                                                4       0.0        0           1
-A         • User                                                29      6.91       0           1
+A         • User                                                30      9.27       0           1
 A         • Users::DashboardsController                         10      5.69       0           1
 A         • Users::OmniauthCallbacksController                  1       21.49      0           5
 A         • Users::ProfilesController                           12      2.2        0           1

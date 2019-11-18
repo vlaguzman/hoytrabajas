@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   resources :job_categories, only:[:index]
 
   namespace :companies do
+    resource :dashboard, only: [:show]
+
     namespace :first_offer do
       resource :step_zero,  only: [:show]
       resource :step_one,   only: [:show, :update]

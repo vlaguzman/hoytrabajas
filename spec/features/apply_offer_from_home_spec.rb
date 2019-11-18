@@ -23,7 +23,7 @@ RSpec.describe "apply offer from home", type: :feature, js: :true do
       expect(AppliedOffer.count).to eq(1)
     end
   end
-  
+
   context "When the user is logged in and had applied to a offer" do
     it "should not create the association again" do
       sign_in user

@@ -2,7 +2,7 @@ module Users::WizardService
 
   def self.update_step(candidate, update_params: {})
 
-    curriculum = candidate.curriculum_vitaes.first
+    curriculum = candidate.curriculum_vitae
 
     verify_presence_curriculum(curriculum, update_params: update_params)
 

@@ -65,8 +65,8 @@ const DetallePage = ({
               >
                 {offer.title}
               </Typography>
-{/* TODO Oscar this is the chip of affinty percentage, uncomment when the funcionality is ready */}
-{/*               <Chip
+              {/* TODO Oscar this is the chip of affinty percentage, uncomment when the funcionality is ready */}
+              {/*               <Chip
                 color="primary"
                 className="text-white"
                 label={
@@ -477,6 +477,9 @@ const DetallePage = ({
         <Offers
           offers={relatedOffers}
           offer_translations={offer_translations}
+          path_applied_offers={pathAppliedOffers}
+          csrf_param={csrf_param}
+          csrf_token={csrf_token}
           loadMoreOffers={false}
         />
       </OffersWrapper>

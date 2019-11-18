@@ -44,6 +44,26 @@ RSpec.describe OffersService do
         ])
       end
     end
+    
+    context "when in the related offers are some applied offer" do
+      
+      let(:user)                  { create(:user) }
+      let!(:new_curriculum)       { create(:curriculum_vitae, user_id: user.id) }
+      let!(:stuff_offers) do
+        [
+          create_list(:offer, 3, job_categories: [related_job_category])
+        ]
+      end
+
+      it "should just return the not appliend offers" do
+        main_offer = Offer.first
+        applied_offer = Offer.last 
+
+        expect(subject.related_offers_show_details(main_offer.id, main_offer.job_categories, user).length).to eq(2)
+        FactoryBot.create(:applied_offer, offer: applied_offer, curriculum_vitae: new_curriculum) 
+        expect(subject.related_offers_show_details(main_offer.id, main_offer.job_categories, user).length).to eq(1)
+      end
+    end
 
     context "when the job category is not present" do
       it "Should return the main offer" do

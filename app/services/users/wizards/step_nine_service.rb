@@ -1,6 +1,6 @@
 module Users::Wizards::StepNineService
   def self.call(candidate: _, update_params: {})
-    cv = candidate.curriculum_vitaes.first
+    cv = candidate.curriculum_vitae
 
     educational_level_params = update_params[:curriculum_vitae].delete(:educational_level)
     educational_level = create_educational_level(educational_level_params: educational_level_params.merge!(curriculum_vitae_id: cv.id))

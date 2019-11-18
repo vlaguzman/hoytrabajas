@@ -29,7 +29,7 @@ class User < ApplicationRecord
   has_one_attached :cv_file
 
   def curriculum_vitae
-    curriculum_vitaes.any? ? curriculum_vitaes.first : nil
+    curriculum_vitaes.any? ? curriculum_vitaes.first : CurriculumVitae.create(user_id: self.id)
   end
 
   #def self.new_with_session(params, session)

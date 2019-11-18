@@ -12,7 +12,7 @@ class Users::Wizards::StepNinePresenter < ApplicationPresenter
   end
 
   def registered_studies
-    cv_id = source.curriculum_vitaes.first.id
+    cv_id = source.curriculum_vitae.id
     EducationalLevel.where(curriculum_vitae_id: cv_id).map { |study| [study.degree] }
   end
 

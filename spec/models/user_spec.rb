@@ -42,7 +42,7 @@ RSpec.describe User, type: :model do
     let(:user) { create(:user) }
     context "the user has not the curriculum vitae" do
       it "should return nil" do
-        expect(user.curriculum_vitae).to be_truthy
+        expect(user.curriculum_vitae).to be_present
         expect(CurriculumVitae.count).to eq(1)
       end
     end

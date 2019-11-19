@@ -141,7 +141,7 @@ const FilterForm = ({ common, button1, fields1 }) => {
     <Row className="justify-content-center" noGutters>
       <RctCollapsibleCard
         /* TODO oscar i change 'col-9' to 'col-4' on 'colClasses' to reduce size bar */
-        colClasses="col-4 my-30 d-none d-lg-block "
+        colClasses="col-9 my-30 d-none d-lg-block "
         contentCustomClasses=""
       >
         <Form
@@ -151,13 +151,13 @@ const FilterForm = ({ common, button1, fields1 }) => {
         >
           <Col xs={12} md={1} className="pt-rem pl-0 p-0 align-items-center">
             {/* TODO oscar ucomment this Button wheh find by categories exist */}
-            {/* <Button
+            {<Button
               type="button"
               onClick={toggleState}
               className="text-primary h-50"
             >
               {button1}
-            </Button> */}
+            </Button>}
           </Col>
           <FormGen fields={fields1} />
           <Fab
@@ -422,7 +422,7 @@ const FilterForm = ({ common, button1, fields1 }) => {
               </Col>
             </Dialog>
           </Col>
-          <input type="hidden" name='q[job_category_id_eq]' value={idJobCategory}/>
+          <input type="hidden" name='q[job_category_ids_eq]' value={idJobCategory}/>
         </Form>
         <Collapse isOpen={state.open}>
           <CarouselRow items={common} handleJobCategory={handleJobCategory}/>

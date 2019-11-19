@@ -22,13 +22,12 @@ const HomePage = ({
   const {
     cover,
     premium,
-    companies,
-    categories
+    companies
   } = contenido
 
   return (
     <div className="home-wrapper">
-      <CoverSection {...cover} {...{ categorias }} {...{ filterForm }} />
+      <CoverSection {...cover} {...{ common }} {...{ filterForm }} />
       <OffersSection
         csrf_param={csrf_param}
         csrf_token={csrf_token}

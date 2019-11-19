@@ -3,10 +3,6 @@ import {Row,Col} from 'reactstrap'
 import Typography from '@material-ui/core/Typography'
 
 export default ({ id, img, quantity, name, handleJobCategory }) => {
-  console.log('**************')
-  console.log(img)
-  console.log(name)
-  console.log('**************')
   const ellipsis = (word) => {
     return word.length > 20 ? `${word.substr(0, 18)}...` : word;
   }

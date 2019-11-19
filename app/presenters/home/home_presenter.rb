@@ -13,10 +13,7 @@ class Home::HomePresenter < ApplicationPresenter
     {
       fields1: [
         { type: 'text', label: 'Palabra clave', name: 'q[title_cont]', id: 'keyword' },
-        {
-          type: 'select',
-          label: 'Ciudad',
-          name: 'q[id_count]',
+        { type: 'select', label: 'Ciudad', name: 'q[id_count]',
           aux: cities
         },
         {
@@ -48,7 +45,7 @@ class Home::HomePresenter < ApplicationPresenter
         ["img", 'icon-bar.svg'],
         ["id", category.id],
         ["name", category.description],
-        ["quantity", Offer.where(job_category_id: category.id).count]
+        ["quantity", category.offers.count]
       ].to_h
     end
     {

@@ -13,6 +13,7 @@ const HomePage = ({
   log_out_companies,
   path_applied_offers,
   session_translation,
+   user_facebook_omniauth_authorize_path,
   offer_translations,
   filterForm
 }) => {
@@ -26,6 +27,7 @@ const HomePage = ({
         log_out_user={log_out_user}
         log_out_companies={log_out_companies}
         session_translation={session_translation}
+        user_facebook_omniauth_authorize_path={user_facebook_omniauth_authorize_path}
         shouldChangeColorOfNav
       >
         <DynamicHome
@@ -50,6 +52,7 @@ HomePage.propTypes = {
   log_out_user: PropTypes.string.isRequired,
   log_out_companies: PropTypes.string.isRequired,
   session_translation: PropTypes.object.isRequired,
+  user_facebook_omniauth_authorize_path: PropTypes.object.isRequired,
   offers: PropTypes.object.isRequired,
   offer_translations: PropTypes.object.isRequired,
   filterForm: PropTypes.object.isRequired

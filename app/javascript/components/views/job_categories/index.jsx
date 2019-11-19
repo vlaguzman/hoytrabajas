@@ -9,7 +9,8 @@ const JobCategory = ({
   company_signed_in,
   log_out_user,
   log_out_companies,
-  session_translation
+  session_translation,
+  user_facebook_omniauth_authorize_path
 }) => {
   return (
     <div className="main-wrapper">
@@ -21,6 +22,7 @@ const JobCategory = ({
         log_out_user={log_out_user}
         log_out_companies={log_out_companies}
         session_translation={session_translation}
+        user_facebook_omniauth_authorize_path={user_facebook_omniauth_authorize_path}
       >
         <h1>Categorias de empleo</h1>
       </AppLayout>
@@ -36,5 +38,6 @@ JobCategory.propTypes = {
   company_signed_in: PropTypes.bool.isRequired,
   log_out_user: PropTypes.string.isRequired,
   log_out_companies: PropTypes.string.isRequired,
-  session_translation: PropTypes.object.isRequired
+  session_translation: PropTypes.object.isRequired,
+  user_facebook_omniauth_authorize_path: PropTypes.object.isRequired
 }

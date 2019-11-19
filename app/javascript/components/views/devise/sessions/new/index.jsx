@@ -26,6 +26,7 @@ const Index = props => {
         log_out_user={props.log_out_user}
         log_out_companies={props.log_out_companies}
         session_translation={props.session_translation}
+        user_facebook_omniauth_authorize_path={props.user_facebook_omniauth_authorize_path}
       >
         <Dialog
           fullWidth
@@ -202,5 +203,6 @@ Index.propTypes = {
   company_signed_in: PropTypes.bool.isRequired,
   log_out_companies: PropTypes.string.isRequired,
   log_out_user: PropTypes.string.isRequired,
-  session_translation: PropTypes.object.isRequired
+  session_translation: PropTypes.object.isRequired,
+  user_facebook_omniauth_authorize_path: PropTypes.object.isRequired
 }

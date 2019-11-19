@@ -30,6 +30,7 @@ export default class Index extends React.Component {
           log_out_user={this.props.log_out_user}
           log_out_companies={this.props.log_out_companies}
           session_translation={this.props.session_translation}
+          user_facebook_omniauth_authorize_path={this.user_facebook_omniauth_authorize_path}
         >
           <Dialog
             fullWidth
@@ -206,5 +207,6 @@ Index.propTypes = {
   log_out_companies: PropTypes.string.isRequired,
   source_name: PropTypes.string.isRequired,
   registration_path: PropTypes.string.isRequired,
-  session_translation: PropTypes.object.isRequired
+  session_translation: PropTypes.object.isRequired,
+  user_facebook_omniauth_authorize_path: PropTypes.object.isRequired
 }

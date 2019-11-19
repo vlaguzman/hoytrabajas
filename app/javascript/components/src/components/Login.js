@@ -17,6 +17,7 @@ const Login = ({
   isOpen,
   toggleOpenState,
   session_translation,
+  user_facebook_omniauth_authorize_path,
   csrf_param,
   csrf_token
 }) => (
@@ -125,7 +126,7 @@ const Login = ({
       </Row>
       <Row className="my-30">
         <Col xs={12} className="mb-10">
-          <MatButton variant="outlined">
+          <MatButton variant="outlined" href={user_facebook_omniauth_authorize_path}>
             {session_translation.sign_in.button_action.sign_in_facebook}
           </MatButton>
         </Col>

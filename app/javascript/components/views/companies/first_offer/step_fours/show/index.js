@@ -11,7 +11,8 @@ const CompaniesStepFourPage = props => {
     company_signed_in,
     log_out_user,
     log_out_companies,
-    session_translation
+    session_translation,
+     user_facebook_omniauth_authorize_path
   } = props
 
   return (
@@ -24,6 +25,7 @@ const CompaniesStepFourPage = props => {
       log_out_user={log_out_user}
       log_out_companies={log_out_companies}
       session_translation={session_translation}
+      user_facebook_omniauth_authorize_path={user_facebook_omniauth_authorize_path}
     >
       <DynamicCompaniesStepFour {...props} />
     </AppLayout>
@@ -39,5 +41,6 @@ CompaniesStepFourPage.propTypes = {
   log_out_user: PropTypes.string.isRequired,
   csrf_param: PropTypes.string.isRequired,
   csrf_token: PropTypes.string.isRequired,
-  session_translation: PropTypes.object.isRequired
+  session_translation: PropTypes.object.isRequired,
+  user_facebook_omniauth_authorize_path: PropTypes.object.isRequired
 }

@@ -6,7 +6,7 @@ class Companies::FirstOffer::StepFivePresenter < ApplicationPresenter
       errors: source.errors,
       action_path: companies_first_offer_step_five_path,
       previous_path: companies_first_offer_step_four_path,
-      next_path: companies_first_offer_step_eight_path,
+      next_path: companies_first_offer_step_six_path,
       form_type: :offer,
       template_translation_path: "companies.first_offer.step_fives.show",
       form_method: :put
@@ -24,8 +24,8 @@ class Companies::FirstOffer::StepFivePresenter < ApplicationPresenter
     rails_routes.companies_first_offer_step_four_path(offer_id: source.id)
   end
 
-  def companies_first_offer_step_eight_path
-    rails_routes.companies_first_offer_step_eight_path
+  def companies_first_offer_step_six_path
+    rails_routes.companies_first_offer_step_six_path(offer_id: source.id)
   end
 
 end

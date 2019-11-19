@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Companies::FirstOffer::StepFivePresenter do
+RSpec.describe Companies::FirstOffer::StepSixPresenter do
   let(:company) { create(:company) }
   let(:offer)   { create(:offer) }
   let(:subject) { described_class.new(offer) }
@@ -12,13 +12,8 @@ RSpec.describe Companies::FirstOffer::StepFivePresenter do
       expect(response).to be_an_instance_of(Hash)
 
       expected_keys = [
-        :range_value,
-        :permanent_value,
-        :range_description,
-        :permanent_description,
         :title,
         :subtitle,
-        :content,
         :form,
         :id
       ]

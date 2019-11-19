@@ -1,0 +1,18 @@
+es:
+  companies:
+    first_offer:
+      step_sixes:
+        show:
+          title: "Conozcamos más de tu oferta"
+          subtitle: "Brinda a tu candidato una relevante de tu empresa."
+          form:
+            buttons:
+              submit: "Publicar"
+              next: "Saltar"
+              previous: "Regresar"
+            type: "offer"
+            formFields:
+              responsibility_ids: 'Campo Responsabilidades* Ej: técnico en gastronomia'
+              requirement_ids: 'Requerimientos'
+              vehicle_ids: 'Requiere tu oferta algún tipo de automotor'
+              driving_licence_ids: 'Licencia de conduccion requerida'

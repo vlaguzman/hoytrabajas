@@ -25,7 +25,7 @@ RSpec.describe "When company fill the step four form", :type => :feature do
       with_tag(:input, with: { name: 'offer[job_aid_ids][]', type: "hidden" })
     end
 
-    expect(page).to have_button('Publicar')
+    expect(page).to have_button('Siguiente')
   end
 
   def fill_form(data)
@@ -69,7 +69,7 @@ RSpec.describe "When company fill the step four form", :type => :feature do
             available_work_day_ids: available_work_day.description,
             job_aid_ids: job_aid.description
           })
-        click_link_or_button('Publicar')
+        click_link_or_button('Siguiente')
 
         offer.reload
 
@@ -83,7 +83,7 @@ RSpec.describe "When company fill the step four form", :type => :feature do
         expect(offer.working_day_ids).to match_array(working_day.id)
         expect(offer.job_aid_ids).to match_array(job_aid.id)
 
-        expect(current_path).to eq(companies_first_offer_step_eight_path)
+        expect(current_path).to eq(companies_first_offer_step_six_path)
       end
     end
   end

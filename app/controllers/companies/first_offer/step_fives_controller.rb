@@ -10,7 +10,7 @@ class Companies::FirstOffer::StepFivesController < ApplicationController
     offer = Companies::FirstOffer::StepFiveService.(company: current_company, update_params: step_five_params)
 
     if offer[:status].eql?(:ok)
-      redirect_to companies_first_offer_step_eight_path
+      redirect_to companies_first_offer_step_six_path(offer_id: offer[:data].id)
     else
       offer_presenter(offer[:data])
       render 'show'

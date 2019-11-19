@@ -1,7 +1,9 @@
 module ListConverter
 
   def self.model_list(klass)
-    klass.all.map { |object| object.attributes.deep_symbolize_keys.slice(:id, :description) }
+    klass.all
+    .map { |object| object.attributes.deep_symbolize_keys.slice(:id, :description) }
+    .sort_by { |object| object[:description] }
   end
 
   def self.model_array_list(klass, symbol=:description, order_by: nil)

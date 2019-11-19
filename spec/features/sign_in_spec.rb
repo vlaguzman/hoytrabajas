@@ -12,12 +12,12 @@ RSpec.describe "sign in", js: true, type: :feature do
 
         visit root_path
 
-        
+
 
         expect(page).to have_text("SIGN IN CANDIDATO")
         click_on 'SIGN IN CANDIDATO'
 
-        
+
         expect(page).to have_text(/INICIAR SESIÓN/)
 
         fill_in 'user[email]', with: "candidate@gmail.com"
@@ -39,12 +39,12 @@ RSpec.describe "sign in", js: true, type: :feature do
 
         visit root_path
 
-        
+
 
         expect(page).to have_text("SIGN IN EMPRESA")
         click_on 'SIGN IN EMPRESA'
 
-        
+
         expect(page).to have_text(/INICIAR SESIÓN/)
 
         fill_in 'company[email]', with: "company@gmail.com"
@@ -52,7 +52,7 @@ RSpec.describe "sign in", js: true, type: :feature do
 
         click_on 'Iniciar sesión'
 
-        expect(current_path).to eq(company_path(company))
+        expect(current_path).to eq(companies_dashboard_path)
       end
     end
   end

@@ -46,7 +46,7 @@ export const DynamicCompaniesStepFive = Loadable({
   loading: Loading
 })
 export const DynamicCompaniesStepSix = Loadable({
-  loader: () => import('./companies/first_offer/step_six'),
+  loader: () => import('./companies/first_offer/step_six/show'),
   loading: Loading
 })
 export const DynamicCompaniesStepSeven = Loadable({

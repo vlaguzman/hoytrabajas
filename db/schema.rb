@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_15_212102) do
+ActiveRecord::Schema.define(version: 2019_11_19_154415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -533,6 +533,15 @@ ActiveRecord::Schema.define(version: 2019_11_15_212102) do
     t.index ["work_mode_id"], name: "index_offers_on_work_mode_id"
   end
 
+  create_table "offers_requirements", force: :cascade do |t|
+    t.bigint "offer_id", null: false
+    t.bigint "requirement_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["offer_id"], name: "index_offers_requirements_on_offer_id"
+    t.index ["requirement_id"], name: "index_offers_requirements_on_requirement_id"
+  end
+
   create_table "offers_responsibilities", force: :cascade do |t|
     t.bigint "offer_id", null: false
     t.bigint "responsibility_id", null: false
@@ -914,6 +923,8 @@ ActiveRecord::Schema.define(version: 2019_11_15_212102) do
   add_foreign_key "offers", "contract_types"
   add_foreign_key "offers", "offer_types"
   add_foreign_key "offers", "work_modes"
+  add_foreign_key "offers_requirements", "offers"
+  add_foreign_key "offers_requirements", "requirements"
   add_foreign_key "offers_responsibilities", "offers"
   add_foreign_key "offers_responsibilities", "responsibilities"
   add_foreign_key "offers_sexes", "offers"

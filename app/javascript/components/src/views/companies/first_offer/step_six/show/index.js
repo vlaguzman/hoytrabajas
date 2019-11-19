@@ -2,17 +2,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Paper from '@material-ui/core/Paper'
 import { Row } from 'reactstrap'
-import FormProgress from '../../../../components/FormsLayout/FormProgress'
-import FormTitle from '../../../../components/FormsLayout/FormTitle'
-import FormButtons from '../../../../components/FormsLayout/FormButtons'
+import FormProgress from '../../../../../components/FormsLayout/FormProgress'
+import FormTitle from '../../../../../components/FormsLayout/FormTitle'
+import FormButtons from '../../../../../components/FormsLayout/FormButtons'
 import FormFields from './FormFields'
 
-const CompaniesStepSix = ({ formInfo, csrf_name, csrf_token }) => {
+const CompaniesStepSix = ({ formInfo, csrf_param, csrf_token }) => {
   const {
     title,
     subtitle,
-    form: { buttons, nextPath, previousPath, action, method, type, formFields }
+    id,
+    form: { buttons, action, method, type, formFields }
   } = formInfo
+
+  const { nextPath, previousPath } = buttons
 
   return (
     <div className="main-wrapper">
@@ -24,8 +27,9 @@ const CompaniesStepSix = ({ formInfo, csrf_name, csrf_token }) => {
             <div className="w-80">
               <form className="forms__candidate" action={action} method="post">
                 <FormFields type={type} formFields={formFields} />
-                {/* <input type="hidden" name={csrf_name} value={csrf_token} /> */}
+                <input type="hidden" name={csrf_param} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />
+                <input type="hidden" name="offer[id]" value={id} />
                 <FormButtons
                   nextPath={nextPath}
                   previousPath={previousPath}
@@ -43,12 +47,19 @@ const CompaniesStepSix = ({ formInfo, csrf_name, csrf_token }) => {
 export default CompaniesStepSix
 
 CompaniesStepSix.propTypes = {
+  csrf_param: PropTypes.string,
+  csrf_token: PropTypes.string,
   formInfo: PropTypes.shape({
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
     form: PropTypes.shape({
       buttons: PropTypes.shape({
-        submit: PropTypes.string.isRequired
+        submit: PropTypes.string.isRequired,
+        next: PropTypes.string.isRequired,
+        nextPath: PropTypes.string.isRequired,
+        previous: PropTypes.string.isRequired,
+        previousPath: PropTypes.string.isRequired
       }),
       nextPath: PropTypes.string.isRequired,
       previousPath: PropTypes.string.isRequired,

@@ -7,7 +7,8 @@
     csrf_token: form_authenticity_token,
     step_zero_translation: @company.component_translations,
     user_signed_in: user_signed_in?,
-    session_translation: I18n.t("session") },
+    session_translation: I18n.t("session"),
+    user_facebook_omniauth_authorize_path: user_facebook_omniauth_authorize_path },
   prerender: false)
 
 -# TODO With prerender the comp break de view

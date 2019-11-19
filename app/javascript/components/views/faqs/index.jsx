@@ -9,7 +9,8 @@ const Faqs= ({
   company_signed_in,
   log_out_user,
   log_out_companies,
-  session_translation
+  session_translation,
+  user_facebook_omniauth_authorize_path
 }) => {
   return (
     <div className="main-wrapper">
@@ -21,6 +22,7 @@ const Faqs= ({
         log_out_user={log_out_user}
         log_out_companies={log_out_companies}
         session_translation={session_translation}
+        user_facebook_omniauth_authorize_path={user_facebook_omniauth_authorize_path}
       >
         <h1>Faqs</h1>
       </AppLayout>
@@ -36,5 +38,6 @@ Faqs.propTypes = {
   company_signed_in: PropTypes.bool.isRequired,
   log_out_user: PropTypes.string.isRequired,
   log_out_companies: PropTypes.string.isRequired,
-  session_translation: PropTypes.object.isRequired
+  session_translation: PropTypes.object.isRequired,
+  user_facebook_omniauth_authorize_path: PropTypes.object.isRequired
 }

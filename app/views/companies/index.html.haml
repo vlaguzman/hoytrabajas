@@ -5,7 +5,8 @@
     log_out_companies: destroy_company_session_path,
     user_signed_in: user_signed_in?,
     company_signed_in: company_signed_in?,
-    session_translation: I18n.t("session") },
+    session_translation: I18n.t("session"),
+    user_facebook_omniauth_authorize_path: user_facebook_omniauth_authorize_path },
    prerender: false)
 = react_component('src/views/main/home/sections/companies', {}, prerender: false)
 = react_component('src/components/Layout/Footer/Footer', {}, prerender: false)

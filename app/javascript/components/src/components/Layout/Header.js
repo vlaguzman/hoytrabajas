@@ -32,7 +32,8 @@ const Header = props => {
     company_signed_in,
     log_out_user,
     log_out_companies,
-    session_translation
+    session_translation,
+    user_facebook_omniauth_authorize_path
   } = props
 
   const pathTo = (to = '') => {

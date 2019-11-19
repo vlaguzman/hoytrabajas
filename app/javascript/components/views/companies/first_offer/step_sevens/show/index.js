@@ -194,7 +194,8 @@ const CompaniesStepSevenPage = props => {
     log_out_user,
     csrf_param,
     csrf_token,
-    session_translation
+    session_translation,
+    user_facebook_omniauth_authorize_path
   } = props
   return (
     <AppLayout
@@ -205,6 +206,7 @@ const CompaniesStepSevenPage = props => {
       csrf_param={csrf_param}
       csrf_token={csrf_token}
       session_translation={session_translation}
+      user_facebook_omniauth_authorize_path={user_facebook_omniauth_authorize_path}
     >
       <DynamicCompaniesStepSeven formInfo={formInfo} {...props} />
     </AppLayout>
@@ -221,5 +223,6 @@ CompaniesStepSevenPage.propTypes = {
   csrf_param: PropTypes.string.isRequired,
   csrf_token: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,
-  session_translation: PropTypes.object.isRequired
+  session_translation: PropTypes.object.isRequired,
+  user_facebook_omniauth_authorize_path: PropTypes.object.isRequired
 }

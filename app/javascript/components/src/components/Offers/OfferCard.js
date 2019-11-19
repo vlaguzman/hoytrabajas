@@ -124,11 +124,11 @@ const OfferCard = ({
         <CardActionArea>
           <CardMedia
             component="img"
-            alt="Contemplative Reptile"
+            alt="Oferta laboral"
             height="180"
             width="300"
-            image="https://picsum.photos/id/397/300/180"
-            title="Contemplative Reptile"
+            image={offer.job_category_image}
+            title="Oferta laboral"
           />
           <OfferContent offer={offer} />
         </CardActionArea>

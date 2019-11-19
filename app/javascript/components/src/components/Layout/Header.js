@@ -75,6 +75,23 @@ const Header = props => {
           color: 'primary'
         }
 
+  const renderMyProfileButton = (user_signed_in) => {
+    if(user_signed_in) return (
+      <NavItem className="list-inline-item">
+        <MatButton
+          className="navbar-item-button"
+          href={pathToProfile}
+          style={{
+                  color: isNavTransparent ? 'white' : 'black'
+                }}
+        >
+          MI PERFIL
+        </MatButton>
+      </NavItem>
+
+    )
+  }
+
   /* TODO Oscar move the search bar to a component to have control of this */
   const FullSearchBarInNavBar = () => (
     <Row
@@ -199,19 +216,9 @@ const Header = props => {
             {/* TODO: With "Candidato" and "Empleador", to press button redirect me a static landing page.
             We must take into account to make the change in redirection */}
             {/* TODO oscar uncommnet profile link when the profile is complete */}
-            {user_signed_in || company_signed_in ? (
-              <NavItem className="list-inline-item">
-                <MatButton
-                  className="navbar-item-button"
-                  href={pathToProfile}
-                  style={{
-                    color: isNavTransparent ? 'white' : 'black'
-                  }}
-                >
-                  MI PERFIL
-                </MatButton>
-              </NavItem>
-            ) : (
+            {user_signed_in || company_signed_in ?
+              renderMyProfileButton(user_signed_in)
+            : (
               <>
                 <NavItem className="list-inline-item">
                   <MatButton

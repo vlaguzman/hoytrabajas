@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     params_origin = resource.class.name.underscore.to_sym
-    params_origin.eql?(:company) ? company_path(resource) : users_dashboard_path
+    params_origin.eql?(:company) ? companies_dashboard_path : users_dashboard_path
   end
 
   def first_sign_in?(current, path, render='show')

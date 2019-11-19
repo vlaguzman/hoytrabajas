@@ -6,7 +6,9 @@ import Button from '@material-ui/core/Button'
 const Presentation = () => {
   return (
     <>
-      <Row className="position-absolute" style={{ top: '0px', left: '0px' }}>
+      {
+        // TODO daniel, add this image when dashboards be implemented
+        /* <Row className="position-absolute" style={{ top: '0px', left: '0px' }}>
         <Col>
           <img
             width="100%"
@@ -15,6 +17,8 @@ const Presentation = () => {
           />
         </Col>
       </Row>
+      */
+      }
       <Row className="my-70 d-none d-lg-flex" />
       <Row className="my-30 d-lg-none" />
       <Row noGutters className="w-100 bg_dashCand p-30 pt-50">
@@ -43,14 +47,9 @@ const Presentation = () => {
                 por supuesto, la configuración de tu cuenta es posible, todo
                 desde un mismo lugar. ¡Simple y sin complicaciones!
               </Typography>
-              <Button
-                className="mt-25 fw-bold"
-                color="primary"
-                style={{ borderRadius: '30px', textTransform: 'none' }}
-                variant="contained"
-              >
+              {/* <Button className="mt-25 fw-bold" color="primary" style={{ borderRadius: '30px', textTransform: 'none' }} variant="contained" >
                 <span className="text-white">Crecer a Premium</span>
-              </Button>
+              </Button> */}
             </div>
           </Row>
         </Col>

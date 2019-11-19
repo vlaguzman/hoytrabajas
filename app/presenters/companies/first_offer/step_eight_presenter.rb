@@ -4,7 +4,7 @@ class Companies::FirstOffer::StepEightPresenter < ApplicationPresenter
     Companies::FirstOffer::StepEight::FormParamsService.new(
       template_translation_path: "offers.first_offer.step_eights.show",
       go_home_path: root_path,
-      next_path: company_path
+      next_path: companies_dashboard_path
     ).form_params
   end
 
@@ -14,7 +14,7 @@ class Companies::FirstOffer::StepEightPresenter < ApplicationPresenter
     rails_routes.root_path
   end
 
-  def company_path
-    rails_routes.company_path(source)
+  def companies_dashboard_path
+    rails_routes.companies_dashboard_path
   end
 end

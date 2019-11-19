@@ -12,10 +12,7 @@ RSpec.describe "like new company", :type => :feature do
 
       find(:button, text: 'Completar mi perfil').click
 
-      #TODO uncomment when company dashboard controller exist
-      #expect(current_path).to eq(companies_dashboard)
-
-      expect(current_path).to eq(company_path(company))
+      expect(current_path).to eq(companies_dashboard_path)
     end
   end
 end

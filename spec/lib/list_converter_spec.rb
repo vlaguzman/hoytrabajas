@@ -10,6 +10,10 @@ RSpec.describe ListConverter do
         expect(the_response).to be_an_instance_of(Array)
         expect(the_response).to be_empty
       end
+
+      it "Should return an array if the class doesnt exist" do
+        expect(subject.model_array_list(nil)).to eq([])
+      end
     end
 
     context "When the model have records" do
@@ -52,15 +56,33 @@ RSpec.describe ListConverter do
         ]
       end
 
-      it "should return the expected object" do
+      it "Should return the expected object" do
         expected_list = create_expected_job_categories_list
         response = subject.model_list(JobCategory)
 
         expect(response).to match_array(expected_list)
       end
 
-      it "should return an array if the class doesnt exist" do
-        expect(subject.model_array_list(nil)).to eq([])
+
+      let(:create_cities) do
+        [
+          create(:city, description: "Axioland"),
+          create(:city, description: "Abecity"),
+          create(:city, description: "Zapapolis"),
+          create(:city, description: "Someville")
+        ]
+      end
+
+      it "Should appear in alphabetic order" do
+
+        create_cities
+
+        response = subject.model_list(City)
+
+        expect(response.first[:description]).to eq("Abecity")
+        expect(response[1][:description]).to eq("Axioland")
+        expect(response[2][:description]).to eq("Someville")
+        expect(response.last[:description]).to eq("Zapapolis")
       end
     end
   end

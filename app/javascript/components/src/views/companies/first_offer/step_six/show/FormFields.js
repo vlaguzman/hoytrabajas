@@ -108,7 +108,6 @@ const FormFields = props => {
 export default FormFields
 
 FormFields.propTypes = {
-  type: PropTypes.oneOf(['user', 'company']),
   formFields: PropTypes.shape({
     responsibility_ids: PropTypes.object.isRequired,
     requirement_ids: PropTypes.object.isRequired,

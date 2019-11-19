@@ -2,6 +2,7 @@
       1 app/controllers/companies/first_offer/step_fives_controller.rb
       1 app/controllers/companies/first_offer/step_fours_controller.rb
       1 app/controllers/companies/first_offer/step_ones_controller.rb
+      1 app/controllers/companies/first_offer/step_sixes_controller.rb
       1 app/controllers/companies/first_offer/step_threes_controller.rb
       1 app/controllers/companies/first_offer/step_twos_controller.rb
       1 app/controllers/companies/first_offer/step_zeros_controller.rb

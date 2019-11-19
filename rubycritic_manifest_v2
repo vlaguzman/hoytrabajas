@@ -5,7 +5,7 @@ A         • AdminUsers::SessionsController                      2       6.2   
 A         • AgeRange                                            1       0.0        0           1
 A         • ApplicationCable::Channel                           1       0.0        0           1
 A         • ApplicationCable::Connection                        1       0.0        0           1
-A         • ApplicationController                               23      14.68      0           2
+A         • ApplicationController                               24      14.68      0           2
 A         • ApplicationJob                                      1       0.0        0           1
 A         • ApplicationMailer                                   3       0.0        0           1
 A         • ApplicationPresenter                                3       10.35      0           3
@@ -19,7 +19,8 @@ A         • AvailableWorkDay                                    3       0.0   
 A         • AvailableWorkDaysCurriculumVitaes                   1       0.0        0           1
 A         • AvailableWorkDaysOffers                             1       0.0        0           1
 A         • City                                                2       0.0        0           1
-A         • Companies::FirstOffer::StepEightPresenter           2       10.6       0           1
+A         • Companies::DashboardsController                     1       3.4        0           1
+A         • Companies::FirstOffer::StepEightPresenter           3       9.4        0           1
 A         • Companies::FirstOffer::StepEightsController         2       6.03       0           1
 A         • Companies::FirstOffer::StepFive::FormParamsService  5       22.5       0           7
 A         • Companies::FirstOffer::StepOne::FormParamsService   2       2.0        0           3

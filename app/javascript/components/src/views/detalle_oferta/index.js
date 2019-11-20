@@ -329,6 +329,7 @@ const DetallePage = ({
               <Typography variant="caption">
                 {offer.company.description}
               </Typography>
+              <Divider variant="middle" className="mx-0 my-10" />
               {/* <img
                 className="img-fluid my-20"
                 src="https://www.kulud-pharmacy.com/wp-content/uploads/2018/01/687474703a2f2f692e696d6775722e636f6d2f4f32454f4378662e706e67.png"
@@ -363,6 +364,8 @@ const DetallePage = ({
                   />
                 </Col>
               </Row>
+              {/*
+                 TO-DO Vlado: add the link
               <Row className="justify-content-between">
                 <Col xs={9}>
                   <Typography
@@ -381,6 +384,7 @@ const DetallePage = ({
                   />
                 </Col>
               </Row>
+               */}
               <Row className="justify-content-between">
                 <Col xs={9}>
                   <Typography variant="body1" className="fw-bold">

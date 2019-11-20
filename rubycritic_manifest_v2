@@ -74,7 +74,7 @@ A         • Level                                               4       0.0   
 A         • Limitation                                          4       0.0        0           1
 A         • ListConverter                                       7       20.66      0           2
 A         • Nationality                                         4       0.0        0           1
-A         • Offer                                               35      5.6        0           1
+A         • Offer                                               36      5.6        0           1
 A         • OfferSalary                                         7       0.0        0           1
 A         • OfferType                                           5       0.0        0           1
 A         • Offers                                              13      0.0        0           0
@@ -83,7 +83,7 @@ A         • Offers::IndexService                                5       11.26 
 A         • OffersController                                    16      27.13      0           2
 A         • OffersPresenter                                     8       19.0       0           4
 A         • OffersResponsibilities                              1       0.0        0           1
-A         • OffersService                                       14      39.44      0           1
+A         • OffersService                                       15      39.44      0           1
 A         • OffersSoftSkills                                    1       0.0        0           1
 A         • OffersTechnicalSkills                               1       0.0        0           1
 A         • OffersTerms                                         1       0.0        0           1

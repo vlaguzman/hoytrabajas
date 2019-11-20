@@ -139,9 +139,13 @@ const SignUp = props => (
           className="ml-5"
           component="a"
           style={{ color: '#00CED5', cursor: 'pointer' }}
-          href={`/${
-            props.source_name === 'user' ? 'users' : 'companies'
-          }/sign_in`}
+          onClick={() =>
+            props.setCurrentModal(
+              props.source_name === 'user'
+                ? 'users_sign_in'
+                : 'companies_sign_in'
+            )
+          }
         >
           {props.session_translation.sign_up.with_account.sign_in}
         </Typography>

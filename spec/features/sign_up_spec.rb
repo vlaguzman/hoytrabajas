@@ -44,7 +44,10 @@ RSpec.describe "sign up user", js: true,  type: :feature do
         it "should redirect to cadidate step zero" do
           actual_users = User.count
 
-          visit new_user_registration_path
+          visit root_path
+          expect(page).to have_text("SIGN UP CANDIDATO")
+          click_on 'SIGN UP CANDIDATO'
+
           fill_in 'user[email]', :with => "candidate@gmail.com"
           fill_in 'user[password]', :with => "1wantt$finda7ob"
           fill_in 'user[password_confirmation]', :with => "1wantt$finda7ob"
@@ -65,7 +68,10 @@ RSpec.describe "sign up user", js: true,  type: :feature do
         it "should redirect to cadidate step zero" do
           actual_users = User.count
 
-          visit new_user_registration_path
+          visit root_path
+          expect(page).to have_text("SIGN UP CANDIDATO")
+          click_on 'SIGN UP CANDIDATO'
+
           fill_in 'user[email]', :with => "gabriel.meneses@hoytrabajas.com"
           fill_in 'user[password]', :with => "1wantt$finda7ob"
           fill_in 'user[password_confirmation]', :with => "1wantt$finda7ob"
@@ -85,8 +91,6 @@ RSpec.describe "sign up user", js: true,  type: :feature do
       it "Company visit home page and click on sign in" do
 
         visit root_path
-
-        
 
         expect(page).to have_text("SIGN UP EMPRESA")
         click_on 'SIGN UP EMPRESA'
@@ -122,7 +126,9 @@ RSpec.describe "sign up user", js: true,  type: :feature do
 
         it "should redirect to company step zero" do
 
-          visit new_company_registration_path
+          visit root_path
+          expect(page).to have_text("SIGN UP EMPRESA")
+          click_on 'SIGN UP EMPRESA'
 
           fill_in "company[email]", :with => "employee@gmail.com"
           fill_in "company[password]", :with => "iwanttofindaemployee"

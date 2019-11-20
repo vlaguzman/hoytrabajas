@@ -58,6 +58,10 @@ Login.propTypes = {
   csrf_token: PropTypes.string.isRequired,
   csrf_param: PropTypes.string.isRequired,
   currentModal: PropTypes.string.isRequired,
+  companies_registration_path: PropTypes.string.isRequired,
+  users_registration_path: PropTypes.string.isRequired,
+  companies_sessions_path: PropTypes.string.isRequired,
+  users_sessions_path: PropTypes.string.isRequired,
   isOpen: PropTypes.bool.isRequired,
   toggleOpenState: PropTypes.func.isRequired,
   session_translation: PropTypes.object.isRequired

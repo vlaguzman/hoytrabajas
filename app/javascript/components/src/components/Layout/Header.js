@@ -328,6 +328,7 @@ const Header = props => {
         <Login
           {...props}
           currentModal={currentModal}
+          setCurrentModal={setCurrentModal}
           isOpen={openState.login}
           toggleOpenState={toggleOpenState}
         />

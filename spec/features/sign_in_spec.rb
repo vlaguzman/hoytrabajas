@@ -17,7 +17,6 @@ RSpec.describe "sign in", js: true, type: :feature do
         expect(page).to have_text("SIGN IN CANDIDATO")
         click_on 'SIGN IN CANDIDATO'
 
-
         expect(page).to have_text(/INICIAR SESIÓN/)
 
         fill_in 'user[email]', with: "candidate@gmail.com"

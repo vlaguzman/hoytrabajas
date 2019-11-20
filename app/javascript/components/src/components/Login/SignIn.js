@@ -135,23 +135,15 @@ const SignIn = props => (
           className="ml-5"
           component="a"
           style={{ color: '#00CED5', cursor: 'pointer' }}
-          href={`/${
-            props.source_name === 'user' ? 'users' : 'companies'
-          }/sign_up`}
+          onClick={() =>
+            props.setCurrentModal(
+              props.source_name === 'user'
+                ? 'users_sign_up'
+                : 'companies_sign_up'
+            )
+          }
         >
           {props.session_translation.sign_in.no_account.sign_up}
-        </Typography>
-      </div>
-    </DialogActions>
-    <DialogActions className="">
-      <div className="w-100 text-center">
-        <Typography
-          component="a"
-          variant="caption"
-          style={{ color: 'robin-blue' }}
-          href="/"
-        >
-          Home
         </Typography>
       </div>
     </DialogActions>

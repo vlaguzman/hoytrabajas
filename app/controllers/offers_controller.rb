@@ -3,10 +3,6 @@ class OffersController < ApplicationController
 
   def index
     query = Offer.active.ransack(params[:q])
-    puts "*"*100
-    puts params[:q]
-    puts query.result.count
-    puts "*"*100
     if query.present? && params[:q].present?
       @offers = query.result(distinct: true).map{ |offer| Offers::IndexService.new(offer, current_user).details }
     else

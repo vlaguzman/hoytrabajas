@@ -1,6 +1,6 @@
 ActiveAdmin.register Offer do
 
-  permit_params :title, :address, :cellphone, :description, :vacancies_quantity, :close_date, :immediate_start, :required_experience, :release_date, :status, :city_id, :offer_type_id, :contract_type_id, :work_mode_id, :sex_id, :company_id, job_category_ids: []
+  permit_params :title, :created_by_admin, :address, :cellphone, :description, :vacancies_quantity, :close_date, :immediate_start, :required_experience, :release_date, :status, :city_id, :offer_type_id, :contract_type_id, :work_mode_id, :sex_id, :company_id, job_category_ids: []
 
   index do
     selectable_column
@@ -25,6 +25,7 @@ ActiveAdmin.register Offer do
   form do |f|
     f.semantic_errors *f.object.errors.keys
     f.inputs do
+      f.input :created_by_admin, :input_html => { :value => true }, as: :hidden
       f.input :title, label: t('admin.offers.form.title')
       f.input :address, label: t('admin.offers.form.address')
       #TODO Oscar Show the name when de value is selected

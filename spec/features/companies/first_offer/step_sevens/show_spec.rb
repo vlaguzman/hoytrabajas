@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "When company fill the step four form", :type => :feature do
+RSpec.describe "When company fill the step seven form", :type => :feature do
   let(:company)   { create(:company, :first_time, name: 'HoyTrabajas.com') }
   let(:offer)     { create(:offer) }
 
@@ -14,17 +14,23 @@ RSpec.describe "When company fill the step four form", :type => :feature do
     expect(page).to have_content("Brinda a tu candidato una relevante de tu empresa.")
 
     expect(page).to have_tag(:form, with: { class: "forms__candidate" }) do
-      with_tag(:input, with: { name: 'offer[responsibility_ids][]',  type: "hidden" })
-      with_tag(:input, with: { name: 'offer[requirement_ids][]',     type: "hidden" })
-      with_tag(:input, with: { name: 'offer[vehicle_ids][]',         type: "hidden" })
-      with_tag(:input, with: { name: 'offer[driving_licence_ids][]', type: "hidden" })
+      with_tag(:input, with: { name: 'offer[city_id]', type: "hidden" })
+      with_tag(:input, with: { name: 'offer[educational_level_id]',type: "hidden" })
+      with_tag(:input, with: { name: 'offer[required_experiences][duration]', type: "hidden" })
+      with_tag(:input, with: { name: 'offer[required_experiences][duration_type]', type: "hidden" })
+      with_tag(:input, with: { name: 'offer[required_experience]', type: "hidden" })
+
+      # dynamic inputs
+      # with_tag(:input, with: { name: 'offer[technical_skills][ids]', type: "hidden" })
+      # with_tag(:input, with: { name: 'offer[technical_skills][levels_ids]', type: "hidden" })
     end
 
-    expect(page).to have_button('Siguiente')
+    expect(page).to have_button('Publicar')
   end
 
   def fill_form(data)
     find(id: 'select-offer[responsibility_ids][]', visible: false).click
+    save_page("daniel.html")
     find('li', text: data[:responsibility_ids]).click
 
     find(id: 'select-offer[requirement_ids][]', visible: false).click
@@ -51,7 +57,7 @@ RSpec.describe "When company fill the step four form", :type => :feature do
             vehicle_ids: vehicle.description,
             driving_licence_ids: driving_licence.description
           })
-        click_link_or_button('Siguiente')
+        click_link_or_button('Publicar')
 
         offer.reload
 

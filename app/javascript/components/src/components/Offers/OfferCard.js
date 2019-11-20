@@ -150,6 +150,7 @@ OfferCard.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string,
     immediate_start: PropTypes.bool,
+    job_category_image: PropTypes.string.isRequired,
     required_experience: PropTypes.bool,
     new_offer: PropTypes.bool,
     city: PropTypes.shape({

@@ -27,6 +27,7 @@ RSpec.describe Offers::IndexService do
     title: "District Facilitator",
     description: "endSint esse anim consequat commodo.",
     immediate_start: true,
+    job_category_image: "https://img-categorias-ht.s3.amazonaws.com/cat-card-gestion-administrativa2x.png",
     required_experience: true,
     city: {
       description: "Bogotá"

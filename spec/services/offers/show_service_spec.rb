@@ -69,6 +69,7 @@ RSpec.describe Offers::ShowService do
         title: "Desarrollador Front-end Sr. test",
         address: "Calle Falsa 123 # 00 99",
         immediate_start: false,
+        job_category_image: "https://img-categorias-ht.s3.amazonaws.com/cat-card-gestion-administrativa2x.png",
         is_applied: false,
         description: "endSint esse anim consequat commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaincididunt ut labore et dolore magna aliqua.",
         vacancies_quantity: 10,

@@ -108,7 +108,7 @@ RSpec.describe "Admin can create an Offer", type: :feature do
 
       expect(Offer.count).to eq(1)
       expect(Offer.last.title).to eq("ROR Dev")
-      expect(Offer.last.created_by_admin).to be true
+      expect(Offer.last.created_by_admin).to be_truthy
       Offer.destroy_all
     end
 

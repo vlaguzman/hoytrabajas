@@ -176,5 +176,14 @@ RSpec.describe Offer, type: :model do
     end
   end
 
+  describe "#created_at_desc" do
+    it "should return offers order descendingly" do
+      offer_1 = create(:offer, title: 'first created', created_at: Time.new(2018, 01, 01))
+      offer_2 = create(:offer, title: 'second created', created_at: Time.new(2019, 01, 02))
+
+      expect(described_class.created_at_desc.first).to eq(offer_2)
+      expect(described_class.created_at_desc.last).to eq(offer_1)
+    end
+  end
 
 end

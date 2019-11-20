@@ -4,7 +4,16 @@ import Dialog from '@material-ui/core/Dialog'
 import SignIn from './SignIn'
 import SignUp from './SignUp'
 
-const Login = ({ isOpen, toggleOpenState, currentModal, ...rest }) => (
+const Login = ({
+  isOpen,
+  toggleOpenState,
+  currentModal,
+  companies_registration_path,
+  users_registration_path,
+  companies_sessions_path,
+  users_sessions_path,
+  ...rest
+}) => (
   <Dialog
     fullWidth
     maxWidth="xs"
@@ -13,16 +22,32 @@ const Login = ({ isOpen, toggleOpenState, currentModal, ...rest }) => (
     aria-labelledby="max-width-dialog-title"
   >
     {currentModal === 'users_sign_in' && (
-      <SignIn source_name="user" {...rest} />
+      <SignIn
+        source_name="user"
+        sessions_path={users_sessions_path}
+        {...rest}
+      />
     )}
     {currentModal === 'users_sign_up' && (
-      <SignUp source_name="user" {...rest} />
+      <SignUp
+        source_name="user"
+        registration_path={users_registration_path}
+        {...rest}
+      />
     )}
     {currentModal === 'companies_sign_in' && (
-      <SignIn source_name="company" {...rest} />
+      <SignIn
+        source_name="company"
+        sessions_path={companies_sessions_path}
+        {...rest}
+      />
     )}
     {currentModal === 'companies_sign_up' && (
-      <SignUp source_name="company" {...rest} />
+      <SignUp
+        source_name="company"
+        registration_path={companies_registration_path}
+        {...rest}
+      />
     )}
   </Dialog>
 )

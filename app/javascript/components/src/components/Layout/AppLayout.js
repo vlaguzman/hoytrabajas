@@ -16,12 +16,15 @@ import Header from './Header'
 import Footer from './Footer'
 import theme from './Theme/theme'
 
-
 const AppLayout = ({
   children,
   csrf_param,
   csrf_token,
   user_signed_in,
+  companies_registration_path,
+  users_registration_path,
+  companies_sessions_path,
+  users_sessions_path,
   company_signed_in,
   log_out_user,
   log_out_companies,
@@ -68,6 +71,12 @@ const AppLayout = ({
                               csrf_token={csrf_token}
                               user_signed_in={user_signed_in}
                               company_signed_in={company_signed_in}
+                              companies_registration_path={
+                                companies_registration_path
+                              }
+                              users_registration_path={users_registration_path}
+                              companies_sessions_path={companies_sessions_path}
+                              users_sessions_path={users_sessions_path}
                               log_out_user={log_out_user}
                               log_out_companies={log_out_companies}
                               session_translation={session_translation}
@@ -100,6 +109,10 @@ AppLayout.propTypes = {
   log_out_companies: PropTypes.string.isRequired,
   company_signed_in: PropTypes.bool.isRequired,
   user_signed_in: PropTypes.bool.isRequired,
+  companies_registration_path: PropTypes.string.isRequired,
+  users_registration_path: PropTypes.string.isRequired,
+  companies_sessions_path: PropTypes.string.isRequired,
+  users_sessions_path: PropTypes.string.isRequired,
   log_out_user: PropTypes.string.isRequired,
   csrf_param: PropTypes.string.isRequired,
   csrf_token: PropTypes.string.isRequired,

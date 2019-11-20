@@ -1,6 +1,7 @@
 class Offers::ViewsService
   include ActionView::Helpers
 
+  DEFAULT_IMAGE_URL = "https://img-categorias-ht.s3.amazonaws.com/cat-card-gestion-administrativa2x.png"
   attr_accessor :offer, :current_user
 
   def initialize(offer, current_user=nil)
@@ -27,6 +28,7 @@ class Offers::ViewsService
   def build_details
     {
       id_offer:             offer.id,
+      job_category_image:   job_category_image,
       city:                 { description: offer.city_description },
       salary:               salary_details,
       company:              company_details,
@@ -52,5 +54,14 @@ class Offers::ViewsService
       name: offer.company_name,
     }
   end
+  
+  private 
 
+  def job_category_image
+    category_and_image_present? ? offer.job_categories.first.image : DEFAULT_IMAGE_URL 
+  end
+  
+  def category_and_image_present?
+    offer.job_categories.any? && offer.job_categories.first.image.present?
+  end
 end

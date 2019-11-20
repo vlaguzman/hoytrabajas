@@ -3,9 +3,9 @@
     "app_path": "/ht",
     "rails_version": "6.0.0",
     "security_warnings": 0,
-    "start_time": "2019-11-19 23:43:27 +0000",
-    "end_time": "2019-11-19 23:43:28 +0000",
-    "duration": 0.610992062,
+    "start_time": "2019-11-20 13:19:06 +0000",
+    "end_time": "2019-11-20 13:19:07 +0000",
+    "duration": 0.818347538,
     "checks_performed": [
       "BasicAuth",
       "BasicAuthTimingAttack",

@@ -80,7 +80,6 @@ A         • OfferType                                           5       0.0   
 A         • Offers                                              12      0.0        0           0
 A         • Offers::AppliedOfferService                         2       13.25      0           1
 A         • Offers::IndexService                                5       11.26      0           3
-A         • Offers::ViewsService                                7       36.4       0           3
 A         • OffersController                                    15      27.13      0           2
 A         • OffersPresenter                                     8       19.0       0           4
 A         • OffersResponsibilities                              1       0.0        0           1
@@ -168,6 +167,7 @@ B         • Companies::FirstOffer::StepTwoPresenter             14      17.4  
 B         • Companies::FirstOffer::StepTwoService               5       2.45       23          2
 B         • Companies::FirstOffer::StepTwosController           10      20.32      27          2
 B         • Offers::ShowService                                 14      75.79      0           0
+B         • Offers::ViewsService                                9       55.52      0           4
 B         • Users::Wizards::StepEightPresenter                  6       31.38      22          3
 B         • Users::Wizards::StepFivePresenter                   4       16.0       24          2
 B         • Users::Wizards::StepFourPresenter                   4       16.0       24          2

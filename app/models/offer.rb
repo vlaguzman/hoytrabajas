@@ -10,7 +10,7 @@ class Offer < ApplicationRecord
   scope :by_company_name, -> (company_name) { joins(:company).where('companies.name LIKE ?', company_name) }
   scope :by_applied_offer_cv, -> (curriculum_vitae_id) { joins(:applied_offers)
                                                          .where(applied_offers: {curriculum_vitae_id: curriculum_vitae_id}) }
-  scope :created_at_desc, -> { order(created_at: :desc)}
+  scope :created_at_desc, -> (limited) { order(created_at: :desc).limit(limited)}
 
   has_one :offer_salary
   has_one :age_range

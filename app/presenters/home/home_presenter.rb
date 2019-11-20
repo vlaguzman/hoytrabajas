@@ -1,4 +1,7 @@
 class Home::HomePresenter < ApplicationPresenter
+
+  MAX_OFFER_LIMIT = 50
+
   attr_accessor :current_user
 
   def initialize(current_user=nil)
@@ -36,6 +39,6 @@ class Home::HomePresenter < ApplicationPresenter
   end
 
   def offers
-    OffersService.active_offers_index_details(current_user)
+    OffersService.active_offers_index_details(current_user, MAX_OFFER_LIMIT)
   end
 end

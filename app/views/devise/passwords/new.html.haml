@@ -1,0 +1,14 @@
+%div.main-wrapper
+  %div.background
+    %div.container-big
+      %div.container-box
+        %h2 ¿Olvido su contraseña?
+        %br/
+        %p Introduce tu email, te enviaremos las instrucciones para reestablecer tu contraseña.
+        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+          = render "devise/shared/error_messages", resource: resource
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Correo electronico"
+          .actions
+            = f.submit "Send me reset password instructions"
+        = render "devise/shared/links"
+        %input{type: "text"}

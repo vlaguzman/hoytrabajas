@@ -1,14 +1,10 @@
 require 'rails_helper'
 
-
-
 RSpec.describe "see offers at home", type: :feature, js: true do
   context "like not logged user" do
     context "there are not any offers" do
       it "should show me a message: there are not offers" do
         visit root_path
-
-        
 
         expect(Offer.count).to eq(0)	
         expect(page).to have_text("No hay ningún trabajo en este momento")
@@ -25,8 +21,6 @@ RSpec.describe "see offers at home", type: :feature, js: true do
 
         visit root_path
 
-        
-
         expect(page).to have_text("The Name Of The Company Is Too ...")
         expect(page).to have_text("The Title Of The Offer Is ...")
         expect(page).to have_text("The Description Of The Offer Actually Is To Long, Really L...")
@@ -40,8 +34,6 @@ RSpec.describe "see offers at home", type: :feature, js: true do
 
         visit root_path
 
-        
-
         expect(Offer.count).to eq(2)	
         expect(page).to have_text(offer.title.capitalize)
         expect(page).not_to have_text(expired_offer.title.capitalize)
@@ -53,8 +45,6 @@ RSpec.describe "see offers at home", type: :feature, js: true do
         offer = FactoryBot.create(:offer, :no_required_experience_offer, title: 'active_offer_no_experience')
 
         visit root_path
-
-        
 
         expect(page).to have_text(offer.title.capitalize)
         expect(page).to have_text("SIN EXPERIENCIA")
@@ -68,8 +58,6 @@ RSpec.describe "see offers at home", type: :feature, js: true do
 
         visit root_path
 
-        
-
         expect(page).to have_text(offer.title.capitalize)
         expect(page).to have_text("INICIO INMEDIATO")
         expect(page).not_to have_text("SIN EXPERIENCIA")
@@ -81,8 +69,6 @@ RSpec.describe "see offers at home", type: :feature, js: true do
         offer = FactoryBot.create(:offer, title: 'new_offer')
 	
         visit root_path
-
-        
 
         expect(page).to have_text(offer.title.capitalize)
         expect(page).to have_text("Nuevo")
@@ -96,8 +82,6 @@ RSpec.describe "see offers at home", type: :feature, js: true do
         offer.save!
 
         visit root_path
-
-        
 
         expect(Offer.count).to eq(1)
         expect(page).to have_text(offer.title.capitalize)

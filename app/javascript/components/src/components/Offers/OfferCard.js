@@ -27,7 +27,11 @@ const OfferCard = ({
     <Col className="cardOffer position-relative mb-30 justify-content-center align-items-center px-5">
       <div className="bg-buttons-carusel MuiPaper-rounded position-absolute d-flex flex-column align-items-center justify-content-center">
         <Row noGutters className="w-100 justify-content-center">
-          <form action={path_applied_offers} method="post">
+          <form
+            action={path_applied_offers}
+            method="post"
+            className="w-100 justify-content-center row"
+          >
             <input type="hidden" name={csrf_param} value={csrf_token} />
             <input type="hidden" name="_method" value="post" />
             <input
@@ -40,7 +44,7 @@ const OfferCard = ({
               type="submit"
               size="large"
               color="primary"
-              className={classNames('btn-apply w-70 my-10 text-white fw-bold', {
+              className={classNames('btn-apply w-80 my-10 text-white fw-bold', {
                 'button-disabled': offer.is_applied
               })}
               style={{ borderRadius: '30px' }}
@@ -59,7 +63,7 @@ const OfferCard = ({
           <Button
             style={{ borderRadius: '30px' }}
             variant="contained"
-            className="w-70 bg-white my-10 text-primary fw-bold"
+            className="w-80 bg-white my-10 text-primary fw-bold"
             size="large"
           >
             <a href={`/offers/${offer['id_offer']}`}>

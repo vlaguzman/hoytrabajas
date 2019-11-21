@@ -17,7 +17,7 @@ RSpec.describe "sign in", js: true, type: :feature do
         expect(page).to have_text("SIGN IN CANDIDATO")
         click_on 'SIGN IN CANDIDATO'
 
-        expect(page).to have_text(/INICIAR SESIÓN/)
+        expect(page).to have_text(/Iniciar sesión/)
 
         fill_in 'user[email]', with: "candidate@gmail.com"
         fill_in 'user[password]', with: "1wantt$finda7ob"
@@ -44,7 +44,7 @@ RSpec.describe "sign in", js: true, type: :feature do
         click_on 'SIGN IN EMPRESA'
 
 
-        expect(page).to have_text(/INICIAR SESIÓN/)
+        expect(page).to have_text(/Iniciar sesión/)
 
         fill_in 'company[email]', with: "company@gmail.com"
         fill_in 'company[password]', with: "1wantt$finda7ob"

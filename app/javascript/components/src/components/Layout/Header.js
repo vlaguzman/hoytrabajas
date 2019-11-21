@@ -18,7 +18,7 @@ import {
   NavbarBrand,
   NavItem
 } from 'reactstrap'
-import Login from '../Login/Login'
+import Login from '../Login'
 import { fields1 } from './data'
 import FormGen from '../inlineFormgenerartor'
 

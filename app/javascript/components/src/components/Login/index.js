@@ -25,6 +25,7 @@ const Login = ({
       <SignIn
         source_name="user"
         sessions_path={users_sessions_path}
+        toggleOpenState={toggleOpenState}
         {...rest}
       />
     )}
@@ -32,6 +33,7 @@ const Login = ({
       <SignUp
         source_name="user"
         registration_path={users_registration_path}
+        toggleOpenState={toggleOpenState}
         {...rest}
       />
     )}
@@ -39,6 +41,7 @@ const Login = ({
       <SignIn
         source_name="company"
         sessions_path={companies_sessions_path}
+        toggleOpenState={toggleOpenState}
         {...rest}
       />
     )}
@@ -46,6 +49,7 @@ const Login = ({
       <SignUp
         source_name="company"
         registration_path={companies_registration_path}
+        toggleOpenState={toggleOpenState}
         {...rest}
       />
     )}

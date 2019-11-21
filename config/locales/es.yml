@@ -41,7 +41,7 @@ es:
   session:
     sign_in:
       title: "Bienvenido a HoyTrabajas"
-      email_label: "Correo electronico"
+      email_label: "Correo electrónico"
       password_label: "Contraseña"
       forget_password: "¿Olvidó su contraseña?"
       button_action:
@@ -49,21 +49,21 @@ es:
         sign_in_facebook: "Conectarse con Facebook"
         sign_in_google: "Conectarse con Google"
       no_account:
-        title: "No tienes una cuenta"
-        sign_up: "Registrate"
+        title: "¿No tienes una cuenta?"
+        sign_up: "Regístrate"
 
     sign_up:
       title: "Regístrate ahora"
-      email_label: "Correo electronico"
+      email_label: "Correo electrónico"
       password_label: "Contraseña"
       pass_confirm_label: "Confirma tu contraseña"
       button_action:
-        sign_up_label: "Regístrarme"
+        sign_up_label: "Registrarme"
         sign_up_facebook: "Continuar con Facebook"
         sign_up_google: "Continuar con Google"
       with_account:
-        title: "Si ya tienes cuenta"
-        sign_in: "Inicia sesion"
+        title: "¿Ya tienes cuenta?"
+        sign_in: "Inicia sesión"
 
   activerecord:
     errors:

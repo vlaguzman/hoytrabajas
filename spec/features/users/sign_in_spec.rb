@@ -10,14 +10,14 @@ RSpec.describe "User sign in", type: :feature do
     
         find('span', text: "SIGN IN CANDIDATO").click
 
-        expect(page).to have_text("No tienes una cuenta")
+        expect(page).to have_text("¿No tienes una cuenta?")
       end
 
       scenario "should create account", js: true do
         visit root_path        
 
         find('span', text:/SIGN IN CANDIDATO/).click
-        find('a', text: "Registrate", visible: false).click
+        find('a', text: "Regístrate", visible: false).click
 
         expect(User.count).to be_zero
 
@@ -25,7 +25,7 @@ RSpec.describe "User sign in", type: :feature do
         fill_in "user[password]", with: "JesiPickman"
         fill_in "user[password_confirmation]", with: "JesiPickman"
 
-        find('span', text: /REGÍSTRARME/).click
+        find('span', text: /Registrarme/).click
 
         expect(User.count).to eq(1)
 

@@ -52,7 +52,7 @@ RSpec.describe "sign up user", js: true,  type: :feature do
           fill_in 'user[password]', :with => "1wantt$finda7ob"
           fill_in 'user[password_confirmation]', :with => "1wantt$finda7ob"
 
-          click_on 'Regístrarme'
+          click_on 'Registrarme'
 
           expect(User.count).to eq(actual_users + 1)
 
@@ -76,7 +76,7 @@ RSpec.describe "sign up user", js: true,  type: :feature do
           fill_in 'user[password]', :with => "1wantt$finda7ob"
           fill_in 'user[password_confirmation]', :with => "1wantt$finda7ob"
 
-          click_on 'Regístrarme'
+          click_on 'Registrarme'
 
           expect(User.count).to eq(actual_users + 1)
 
@@ -134,7 +134,7 @@ RSpec.describe "sign up user", js: true,  type: :feature do
           fill_in "company[password]", :with => "iwanttofindaemployee"
           fill_in 'company[password_confirmation]', :with => "iwanttofindaemployee"
 
-          click_button 'Regístrarme'
+          click_button 'Registrarme'
 
           expect(Company.count).to eq(1)
 

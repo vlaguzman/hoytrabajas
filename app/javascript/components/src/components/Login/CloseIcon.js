@@ -21,11 +21,14 @@ const CloseIcon = props => (
       paddingRight: '20px',
       position: 'absolute',
       display: 'flex',
-      alignItems: 'center',
-      cursor: 'pointer'
+      alignItems: 'center'
     }}
   >
-    <HighlightOff {...props} />
+    <HighlightOff
+      {...props}
+      style={{ cursor: 'pointer' }}
+      className="modal--close-icon"
+    />
   </Wrapper>
 )
 

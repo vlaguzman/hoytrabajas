@@ -48,15 +48,13 @@ RSpec.describe "User can Log In", type: :feature do
     end
 
     scenario "the user want to come back to home page", js: true do
-      visit root_path
-
-      
+      visit root_path      
 
       expect(page).to have_content("SIGN IN CANDIDATO")
 
       has_button?("SIGN IN CANDIDATO")
       click_on("SIGN IN CANDIDATO")
-      page.first(".ht-image").click
+      find(".modal--close-icon", match: :first, visible: false).click
 
       expect(page).to have_text("El empleo ideal para tu tiempo libre") 
       expect(current_path).to eq(root_path)

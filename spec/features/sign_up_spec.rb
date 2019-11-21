@@ -28,10 +28,7 @@ RSpec.describe "sign up user", js: true,  type: :feature do
         click_on 'SIGN UP CANDIDATO'
 
         expect(page).to have_text("Regístrate")
-
-        expect(page).to have_text("X")
-
-        click_on("X")
+        find(".modal--close-icon", match: :first, visible: false).click
 
         expect(current_path).to eq(root_path)
 
@@ -111,9 +108,7 @@ RSpec.describe "sign up user", js: true,  type: :feature do
 
           expect(page).to have_text("Regístrate")
 
-          expect(page).to have_text("X")
-
-          click_on("X")
+          find(".modal--close-icon", match: :first, visible: false).click
 
           expect(current_path).to eq(root_path)
         end

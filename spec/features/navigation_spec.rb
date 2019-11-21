@@ -40,10 +40,7 @@ RSpec.describe "Overall navigation" do
         find('span', text:/SIGN UP CANDIDATO/, visible: false).click
 
         expect(page).to have_text("Regístrate ahora")
-
-        expect(page).to have_text("X")
-
-        click_on("X")
+        find(".modal--close-icon", match: :first, visible: false).click
 
         expect(current_path).to eq(root_path)
       end
@@ -55,10 +52,7 @@ RSpec.describe "Overall navigation" do
         find('span', text:/SIGN UP EMPRESA/, visible: false).click
 
         expect(page).to have_text("Regístrate ahora")
-
-        expect(page).to have_text("X")
-
-        click_on("X")
+        find(".modal--close-icon", match: :first, visible: false).click
 
         expect(current_path).to eq(root_path)
       end

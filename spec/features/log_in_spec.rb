@@ -53,8 +53,9 @@ RSpec.describe "User can Log In", type: :feature do
       expect(page).to have_content("SIGN IN CANDIDATO")
 
       has_button?("SIGN IN CANDIDATO")
-      click_on("SIGN IN CANDIDATO")
-      find(".modal--close-icon", match: :first, visible: false).click
+      find('span', text:/SIGN IN CANDIDATO/).click
+
+      find(".modal--close-icon").click
 
       expect(page).to have_text("El empleo ideal para tu tiempo libre") 
       expect(current_path).to eq(root_path)

@@ -28,6 +28,7 @@ const CloseIcon = props => (
       {...props}
       style={{ cursor: 'pointer' }}
       className="modal--close-icon"
+      focusable
     />
   </Wrapper>
 )

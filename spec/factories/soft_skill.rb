@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :soft_skill do
-    description { 'Creativity' }
+    description { Faker::Cosmere.allomancer }
   end
 end

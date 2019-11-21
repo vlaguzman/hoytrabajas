@@ -60,4 +60,32 @@ RSpec.describe Users::WizardService do
     end
 
   end
+
+  describe "#update_curriculum_vitae" do
+    describe "update soft skills" do
+      let!(:expected_soft_skill_ids) do
+        [
+          create(:soft_skill).id,
+          create(:soft_skill).id,
+          create(:soft_skill).id,
+        ]
+      end
+
+      let(:curriculum_params) do
+        {
+          soft_skill_ids: expected_soft_skill_ids
+        }
+      end
+
+      it "should have associated the passed soft skills" do
+        expect(new_curriculum.soft_skill_ids).to be_empty
+
+        response, updated = subject.update_curriculum_vitae(new_curriculum, update_params: curriculum_params)
+
+        expect(updated).to be_truthy
+        expect(response).to be_an_instance_of(CurriculumVitae)
+        expect(response.soft_skill_ids).to match_array(expected_soft_skill_ids)
+      end
+    end
+  end
 end

@@ -5,11 +5,12 @@ class Users::Wizards::StepSixesController < ApplicationController
     user_presenter
   end
 
-  def update
-    user = Users::Wizards::StepSixService.(candidate: current_user, update_params: step_six_params)
+  def create
+    curriculum_vitae = current_user.curriculum_vitae
+    updated_curriculum = Users::Wizards::StepSixService.(curriculum_vitae: curriculum_vitae, update_params: step_six_params)
 
-    if user.errors.details.any?
-      user_presenter(user: user)
+    if updated_curriculum.errors.details.any?
+      user_presenter
       render 'show'
     else
       redirect_to users_wizards_step_seven_path
@@ -24,9 +25,8 @@ class Users::Wizards::StepSixesController < ApplicationController
 
   def step_six_params
     params
-    .require(:user)
+    .require(:curriculum_vitae)
     .permit(
-      curriculum_vitae:{
         soft_skill_ids: [],
         curriculum_vitaes_technical_skills:[
           :job_category_id,
@@ -41,7 +41,6 @@ class Users::Wizards::StepSixesController < ApplicationController
           :language_id,
           :level_id
         ]
-      }
     ).to_h
   end
 

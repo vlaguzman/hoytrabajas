@@ -39,12 +39,12 @@ const UsersWizardsStepSeven = props => {
                 <div className="action-buttons-container">
                   <p>{haveExperience}</p>
                   <button  href={nextPath} className="accept">{acceptButton}</button>
-                  <button onClick={redirectTo(skipPath)} href={skipPath} className="skip">{skipButton}</button> 
-                </div> 
+                  <button onClick={redirectTo(skipPath)} href={skipPath} className="skip">{skipButton}</button>
+                </div>
 
                 <FormButtons
                   nextPath={nextPath}
-                  prevPath={previousPath}
+                  previousPath={previousPath}
                   buttons={buttons}
                 />
               </form>

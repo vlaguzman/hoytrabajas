@@ -31,7 +31,7 @@ const UsersWizardsStepFour = props => {
                 <FormFields type={type} formFields={formFields} />
                 <FormButtons
                   nextPath={nextPath}
-                  prevPath={previousPath}
+                  previousPath={previousPath}
                   buttons={buttons}
                 />
               </form>

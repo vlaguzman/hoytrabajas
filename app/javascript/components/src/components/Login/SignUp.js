@@ -11,7 +11,11 @@ import Lock from '@material-ui/icons/Lock'
 import Divider from '@material-ui/core/Divider'
 import CloseIcon from './CloseIcon'
 import LoginButton from './LoginButton'
-import { LoginInputWrapper, LoginInputContainer, LoginInput } from './LoginInput'
+import {
+  LoginInputWrapper,
+  LoginInputContainer,
+  LoginInput
+} from './LoginInput'
 
 const SignUp = props => (
   <>
@@ -105,11 +109,7 @@ const SignUp = props => (
         </LoginInputWrapper>
         <Row noGutters className="justify-content-center my-20">
           <Col xs={12}>
-            <LoginButton
-              type="submit"
-              color="primary"
-              variant="contained"
-            >
+            <LoginButton type="submit" color="primary" variant="contained">
               {props.session_translation.sign_up.button_action.sign_up_label}
             </LoginButton>
           </Col>
@@ -161,3 +161,13 @@ const SignUp = props => (
 )
 
 export default SignUp
+
+SignUp.propTypes = {
+  toggleOpenState: PropTypes.func.isRequired,
+  setCurrentModal: PropTypes.func.isRequired,
+  registration_path: PropTypes.string.isRequired,
+  csrf_token: PropTypes.string.isRequired,
+  csrf_param: PropTypes.string.isRequired,
+  source_name: PropTypes.string.isRequired,
+  session_translation: PropTypes.object.isRequired
+}

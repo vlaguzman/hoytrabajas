@@ -2,9 +2,9 @@
 FactoryBot.define do
   factory :work_experience do
     started_at          { Date.today }
-    finished_at         {  }
-    company_name        {  }
-    still_in_progress   {  }
+    finished_at         { Date.today + 3.years }
+    company_name        { Faker::Company.name }
+    still_in_progress   { false }
 
     association :job_category, factory: :job_category
     association :work_methodology, factory: :work_methodology

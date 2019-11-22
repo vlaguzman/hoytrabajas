@@ -5,7 +5,7 @@ class Users::Wizards::StepSevenPresenter < ApplicationPresenter
       skip_path: users_wizards_step_nine_path,
       action_path: users_wizards_step_seven_path,
       previous_path: users_wizards_step_six_path,
-      next_path: users_wizards_step_eight_path,
+      next_path: users_wizards_step_nine_path,
       form_method: :put
     ).form_params
   end

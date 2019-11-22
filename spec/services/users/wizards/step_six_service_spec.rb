@@ -44,6 +44,8 @@ RSpec.describe Users::Wizards::StepSixService do
       let(:params) do
         {
           soft_skill_ids: [soft_skills_ids.join(",")]
+
+          #TODO Oscar temporal comment untile complete de fields
           #,
           #curriculum_vitaes_technical_skills:{
           #  job_category_id: JobCategory.find_by(description: "Marketing").id,
@@ -73,6 +75,8 @@ RSpec.describe Users::Wizards::StepSixService do
         updated_cv = subject.(curriculum_vitae: new_curriculum_vitae, update_params: params)
 
         expect(updated_cv.soft_skill_ids.count).to eq(2)
+
+        #TODO Oscar temporal comment untile complete de fields
         # expect(CurriculumVitaesLanguages.count).to eq(1)
         # expect(new_curriculum_vitae.languages.count).to eq(1)
         # expect(CurriculumVitaesTechnicalSkills.count).to eq(2)
@@ -92,6 +96,7 @@ RSpec.describe Users::Wizards::StepSixService do
 
         updated_cv = subject.(curriculum_vitae: new_curriculum_vitae, update_params: params)
 
+        #TODO Oscar temporal comment untile complete de fields
         #expect(updated_cv.technical_skills.pluck(:description)).to match_array(["SEO","Redes sociales"])
         #expect(updated_cv.languages.pluck(:description)).to match_array(["Inglés"])
 

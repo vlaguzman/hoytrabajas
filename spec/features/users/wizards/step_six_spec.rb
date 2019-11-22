@@ -40,11 +40,9 @@ RSpec.describe "In wizards step six view", type: :feature do
 
         expect(candidate.curriculum_vitae.soft_skill_ids.count).to eq(2)
       end
-
-      scenario "Should redirect to step seven path" do
-      end
     end
 
+    #TOOD oscar in progress
     feature "When only fill the technical skills section"
 
     feature "When only fill the to learn skills section"

@@ -85,8 +85,7 @@ RSpec.describe "sign up user", js: true,  type: :feature do
         expect(page).to have_text("SIGN UP EMPRESA")
         click_on 'SIGN UP EMPRESA'
 
-        expect(page).to have_text("REGÍSTRARME")
-
+        expect(page).to have_text("REGISTRARME")
       end
 
       context "I want to return to the home page" do
@@ -97,7 +96,7 @@ RSpec.describe "sign up user", js: true,  type: :feature do
           expect(page).to have_text("SIGN UP EMPRESA")
           click_on 'SIGN UP EMPRESA'
 
-          expect(page).to have_text("REGÍSTRARME")
+          expect(page).to have_text("REGISTRARME")
 
           find(".modal--close-icon", match: :first, visible: false).click
 

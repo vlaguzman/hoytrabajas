@@ -36,9 +36,6 @@ const FormFields = props => {
     [formValues[soft_skill_ids.name]]
   )
 
-  // const controlledInputsClassname =
-  //  'animated fadeIn controlledInputs inputField mt-20'
-
   return <Row className="HT__FormGenerator">{softSkillIDsField}</Row>
 }
 

@@ -10,8 +10,7 @@ class Offer < ApplicationRecord
   scope :related_job_category, -> (job_categories_ids) { joins(:job_categories).where("job_categories.id in (?)", job_categories_ids).uniq }
   scope :by_company_email, -> (company_email) { joins(:company).where('companies.email LIKE ?', company_email) }
   scope :by_company_name, -> (company_name) { joins(:company).where('companies.name LIKE ?', company_name) }
-  scope :by_applied_offer_cv, -> (curriculum_vitae_id) { joins(:applied_offers)
-                                                         .where(applied_offers: {curriculum_vitae_id: curriculum_vitae_id}) }
+  scope :by_applied_offer_cv, -> (curriculum_vitae_id) { joins(:applied_offers).where(applied_offers: {curriculum_vitae_id: curriculum_vitae_id}) }
 
   has_one :offer_salary
   has_one :age_range

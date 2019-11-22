@@ -28,8 +28,4 @@ class Users::Wizards::StepTen::FormParamsService < BaseFormWizardsService
     super('curriculum_vitae', 'acknowledgment')
   end
 
-  def city_id_list
-    ListConverter.model_list City
-  end
-
 end

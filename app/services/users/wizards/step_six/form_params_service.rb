@@ -1,6 +1,7 @@
 class Users::Wizards::StepSix::FormParamsService < BaseFormWizardsService
 
   SELECT_FIELDS_KEYS = [
+    #TODO Oscar Temporal comment while complete the other fields
     #:job_category_id,
     #:technical_skill_id,
     #:level_id,
@@ -17,6 +18,7 @@ class Users::Wizards::StepSix::FormParamsService < BaseFormWizardsService
     ListConverter.model_list SoftSkill
   end
 
+  #TODO Oscar Temporal comment while complete the other fields
   #def job_category_id_list
   #  ListConverter.model_list JobCategory
   #end
@@ -32,9 +34,5 @@ class Users::Wizards::StepSix::FormParamsService < BaseFormWizardsService
   #def language_id_list
   #  ListConverter.model_list Language
   #end
-
-  def soft_skill_ids_current_value
-    source.soft_skill_ids
-  end
 
 end

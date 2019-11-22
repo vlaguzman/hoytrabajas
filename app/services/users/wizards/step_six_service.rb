@@ -1,6 +1,7 @@
 module Users::Wizards::StepSixService
   def self.call(curriculum_vitae: _, update_params: {})
 
+    #TODO Oscar temporal desiable function until create the other fields
     #laguage_params = update_params[:curriculum_vitae].delete(:curriculum_vitaes_languages)
     #update_curriculum_vitae_laguage( laguage_params: laguage_params.merge!(curriculum_vitae_id: curriculum_vitae.id) )
 
@@ -17,6 +18,7 @@ module Users::Wizards::StepSixService
 
   private
 
+  #TODO Oscar temporal desiable function until create the other fields
   #def self.update_curriculum_vitae_laguage(laguage_params: {})
   #  if laguage_params.present?
   #    CurriculumVitaesLanguages.create(laguage_params)

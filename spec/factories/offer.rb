@@ -5,7 +5,6 @@ FactoryBot.define do
     address                       { Faker::Address.full_address }
     cellphone                     { Faker::PhoneNumber.cell_phone }
     description                   { "endSint esse anim consequat commodo." }
-    vacancies_quantity            { 10 }
     close_date                    { Date.today + 1.month }
     immediate_start               { false }
     required_experience           { true }
@@ -13,6 +12,7 @@ FactoryBot.define do
     release_date                  { Date.new }
     status                        { 'active' }
     job_categories                { [FactoryBot.create(:job_category)] }
+    vacancies_quantity            { 10 }
 
     trait :expired_offer do
       status                       { 'expired' }

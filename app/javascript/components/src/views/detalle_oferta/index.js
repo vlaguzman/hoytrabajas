@@ -27,6 +27,279 @@ const OffersWrapper = styled(Row)`
   }
 `
 
+const SexDescriptionBlock = (translationOffer, offer) => (
+  <Row className="justify-content-between">
+    <Col xs={6}>
+      <Typography variant="body1" className="">
+        {translationOffer.targeted_offer}
+      </Typography>
+    </Col>
+    <Col xs={6}>
+      <Typography variant="body1" className="fw-bold">
+        {offer.sex.description}
+      </Typography>
+    </Col>
+  </Row>
+)
+
+const AgeRangeBlock = (translationOffer, offer) => (
+  <Row className="justify-content-between">
+    <Col xs={6}>
+      <Typography variant="body1" className="">
+        {translationOffer.age}
+      </Typography>
+    </Col>
+    <Col xs={6}>
+      <Typography
+        variant="body1"
+        className="fw-bold"
+      >{`${offer.age_range.from} a ${offer.age_range.to}`}</Typography>
+    </Col>
+  </Row>
+)
+
+const VacanciesQuantityBlock = (translationOffer, offer) => (
+  <Row className="justify-content-between">
+    <Col xs={6}>
+      <Typography variant="body1" className="">
+        {translationOffer.vacancy_numbers}
+      </Typography>
+    </Col>
+    <Col xs={6}>
+      <Typography variant="body1" className="fw-bold">
+        {offer.vacancies_quantity}
+      </Typography>
+    </Col>
+  </Row>
+)
+
+const CityDescriptionBlock = (translationOffer, offer) => (
+  <Row className="justify-content-between">
+    <Col xs={6}>
+      <Typography variant="body1" className="">
+        {translationOffer.recident}
+      </Typography>
+    </Col>
+    <Col xs={6}>
+      <Typography variant="body1" className="fw-bold">
+        {offer.city.description}
+      </Typography>
+    </Col>
+  </Row>
+)
+
+const RequiredExperienceBlock = (translationOffer, offer) => (
+  <Row className="justify-content-between">
+    <Col xs={6}>
+      <Typography variant="body1" className="">
+        {translationOffer.experience}
+      </Typography>
+    </Col>
+    <Col xs={6}>
+      <Typography variant="body1" className="fw-bold">
+        {' '}
+        {offer.required_experience
+          ? 'Requerida'
+          : 'No requerida'}{' '}
+      </Typography>
+    </Col>
+  </Row>
+)
+
+const LanguagesBlock = (translationOffer, offer) => (
+  <Row className="justify-content-between">
+    <Col xs={6}>
+      <Typography variant="body1" className="">
+        {translationOffer.lenguage}
+      </Typography>
+    </Col>
+    <Col xs={6}>
+      <Typography variant="body1" className="fw-bold">
+        {' '}
+        {offer.languages.map(language => (
+          <div>{language}</div>
+        ))}{' '}
+      </Typography>
+    </Col>
+  </Row>
+)
+
+const OfferTypeBlock = (translationOffer, offer) => (
+  <Row className="justify-content-between">
+    <Col xs={6}>
+      <Typography variant="body1" className="">
+        {translationOffer.type_ofert}
+      </Typography>
+    </Col>
+    <Col xs={6}>
+      <Typography variant="body1" className="fw-bold">
+        {offer.offer_type.description}
+      </Typography>
+    </Col>
+  </Row>
+)
+
+const WorkModeBlock = (translationOffer, offer) => (
+  <Row className="justify-content-between">
+    <Col xs={6}>
+      <Typography variant="body1" className="">
+        {translationOffer.work_mode}
+      </Typography>
+    </Col>
+    <Col xs={6}>
+      <Typography variant="body1" className="fw-bold">
+        {offer.work_mode.description}
+      </Typography>
+    </Col>
+  </Row>
+)
+
+const ContractTypeBlock = (translationOffer, offer) => (
+  <Row className="justify-content-between">
+    <Col xs={6}>
+      <Typography variant="body1" className="">
+        {translationOffer.terms}
+      </Typography>
+    </Col>
+    <Col xs={6}>
+      <Typography variant="body1" className="fw-bold">
+        {offer.contract_type.description}
+      </Typography>
+    </Col>
+  </Row>
+)
+
+const SalaryBlock = (translationOffer, offer) => (
+  <Row className="justify-content-between">
+    <Col xs={6}>
+      <Typography variant="body1" className="">
+        {translationOffer.salary}
+      </Typography>
+    </Col>
+    <Col xs={6}>
+      <Typography
+        variant="body1"
+        className="fw-bold"
+      >{`${offer.salary.currency.description} ${offer.salary.from}/${offer.salary.salary_period.description}`}</Typography>
+    </Col>
+  </Row>
+)
+
+const AvailableWorkDaysBlock = (translationOffer, offer) => (
+  <Row className="justify-content-between">
+    <Col xs={6}>
+      <Typography variant="body1" className="">
+        {translationOffer.days}
+      </Typography>
+    </Col>
+    <Col xs={6}>
+      <Typography variant="body1" className="fw-bold">
+        {offer.available_work_days.map(value => (
+          <div>{value}</div>
+        ))}
+      </Typography>
+    </Col>
+  </Row>
+)
+
+const WorkingDaysBlock = (translationOffer, offer) => (
+  <Row className="justify-content-between">
+    <Col xs={6}>
+      <Typography variant="body1" className="">
+        {translationOffer.working_day}
+      </Typography>
+    </Col>
+    <Col xs={6}>
+      <Typography variant="body1" className="fw-bold">
+        {offer.working_days.map(value => (
+          <div>{value}</div>
+        ))}
+      </Typography>
+    </Col>
+  </Row>
+)
+
+const JobAidsBlock = (translationOffer, offer) => (
+  <Row className="justify-content-between">
+    <Col xs={6}>
+      <Typography variant="body1" className="">
+        {translationOffer.benefits}
+      </Typography>
+    </Col>
+    <Col xs={6}>
+      <Typography variant="body1" className="fw-bold">
+        {offer.job_aids.map(value => (
+          <div>{value}</div>
+        ))}
+      </Typography>
+    </Col>
+  </Row>
+)
+
+const OfferAddressBlock = (offer) => (
+  <Row className="justify-content-between">
+    <Col xs={9}>
+      <Typography variant="body1" className="">
+        {offer.address}
+      </Typography>
+    </Col>
+    <Col xs={3}>
+      <FontAwesomeIcon
+        className="ml-auto text-primary"
+        icon={['fas', 'map-marker-alt']}
+        size="sm"
+      />
+    </Col>
+  </Row>
+)
+
+const CompanyNameBlock = (company) => (
+  <Typography variant="subtitle1" className="fw-bold" component="p">
+    {company.name}
+  </Typography>
+)
+
+const CompanyDescriptionBlock = (company) => (
+  <Typography variant="caption">
+    {company.description}
+  </Typography>
+)
+
+const CompanyEmployeesRangeBlock = (translationOffer, company) => (
+  <Row className="justify-content-between">
+    <Col xs={9}>
+      <Typography
+        variant="body1"
+        className=""
+      >{`${company.employees_range.description} ${translationOffer.employees}`}</Typography>
+    </Col>
+    <Col xs={3}>
+      <FontAwesomeIcon
+        className="ml-auto text-primary"
+        icon={['fas', 'users']}
+        size="sm"
+      />
+    </Col>
+  </Row>
+)
+
+const CompanyWebSiteBlock = (company) => (
+  <Row className="justify-content-between">
+    <Col xs={9}>
+      <Typography variant="body1" className="fw-bold">
+        {company.web_site}
+      </Typography>
+    </Col>
+    <Col xs={3}>
+      <FontAwesomeIcon
+        className="ml-auto text-primary"
+        icon={['fas', 'globe']}
+        size="sm"
+      />
+    </Col>
+  </Row>
+)
+
 const DetallePage = ({
   offer,
   relatedOffers,
@@ -39,7 +312,6 @@ const DetallePage = ({
   const valueButton = offer.is_applied
     ? translationOffer.button_disactive
     : translationOffer.button_active
-
   return (
     <>
       <Row
@@ -92,11 +364,13 @@ const DetallePage = ({
               /> */}
             </Row>
             <Row className="my-10 mx-0">
-              <Chip
-                className="mr-10"
-                variant="outlined"
-                label={offer.job_category}
-              />
+              {offer.job_categories.map(value => (
+                <Chip
+                  className="mr-10"
+                  variant="outlined"
+                  label={value}
+                />
+              ))}
               {offer.immediate_start && (
                 <Badge color="primary"> Incorporación inmediata </Badge>
               )}
@@ -106,12 +380,12 @@ const DetallePage = ({
                 <span className="fw-bold">{translationOffer.close}</span>
                 {offer.close_date}
               </Typography>
-              {/* <Typography className="ml-10" variant="caption">
+              <Typography className="ml-10" variant="caption">
                 {' '}
                 
-                <span className="fw-bold"> 26</span>
+                <span className="fw-bold"> {offer.total_applications} </span>
                 {translationOffer.aplications}
-              </Typography> */}
+              </Typography>
             </Row>
             <Divider variant="middle" className="mx-0 my-10" />
             <Typography variant="body1">{offer.description}</Typography>
@@ -135,176 +409,24 @@ const DetallePage = ({
                 {valueButton}
               </Button>
             </form>
-            <Row className="justify-content-between">
-              <Col xs={6}>
-                <Typography variant="body1" className="">
-                  {translationOffer.targeted_offer}
-                </Typography>
-              </Col>
-              <Col xs={6}>
-                <Typography variant="body1" className="fw-bold">
-                  {offer.sex.description}
-                </Typography>
-              </Col>
-            </Row>
-            <Row className="justify-content-between">
-              <Col xs={6}>
-                <Typography variant="body1" className="">
-                  {translationOffer.age}
-                </Typography>
-              </Col>
-              <Col xs={6}>
-                <Typography
-                  variant="body1"
-                  className="fw-bold"
-                >{`${offer.age_range.from} a ${offer.age_range.to}`}</Typography>
-              </Col>
-            </Row>
-            <Row className="justify-content-between">
-              <Col xs={6}>
-                <Typography variant="body1" className="">
-                  {translationOffer.vacancy_numbers}
-                </Typography>
-              </Col>
-              <Col xs={6}>
-                <Typography variant="body1" className="fw-bold">
-                  {offer.vacancies_quantity}
-                </Typography>
-              </Col>
-            </Row>
-            <Row className="justify-content-between">
-              <Col xs={6}>
-                <Typography variant="body1" className="">
-                  {translationOffer.recident}
-                </Typography>
-              </Col>
-              <Col xs={6}>
-                <Typography variant="body1" className="fw-bold">
-                  {offer.city.description}
-                </Typography>
-              </Col>
-            </Row>
-            <Row className="justify-content-between">
-              <Col xs={6}>
-                <Typography variant="body1" className="">
-                  {translationOffer.experience}
-                </Typography>
-              </Col>
-              <Col xs={6}>
-                <Typography variant="body1" className="fw-bold">
-                  {' '}
-                  {offer.required_experience
-                    ? 'Requerida'
-                    : 'No requerida'}{' '}
-                </Typography>
-              </Col>
-            </Row>
-            <Row className="justify-content-between">
-              <Col xs={6}>
-                <Typography variant="body1" className="">
-                  {translationOffer.lenguage}
-                </Typography>
-              </Col>
-              <Col xs={6}>
-                <Typography variant="body1" className="fw-bold">
-                  {' '}
-                  {offer.languages.map(language => (
-                    <div>{language}</div>
-                  ))}{' '}
-                </Typography>
-              </Col>
-            </Row>
+
+            {offer.sex.description.length != 0 && SexDescriptionBlock(translationOffer, offer)}
+            {offer.age_range.from != null && AgeRangeBlock(translationOffer, offer)}
+            {offer.vacancies_quantity != null && VacanciesQuantityBlock(translationOffer, offer)}
+            {offer.city.description != null && CityDescriptionBlock(translationOffer, offer)}
+            {offer.required_experience != null && RequiredExperienceBlock(translationOffer, offer)}
+            {offer.languages.length != 0 && LanguagesBlock(translationOffer, offer)}
+
             <Divider variant="middle" className="mx-0 my-30" />
 
-            <Row className="justify-content-between">
-              <Col xs={6}>
-                <Typography variant="body1" className="">
-                  {translationOffer.type_ofert}
-                </Typography>
-              </Col>
-              <Col xs={6}>
-                <Typography variant="body1" className="fw-bold">
-                  {offer.offer_type.description}
-                </Typography>
-              </Col>
-            </Row>
-            <Row className="justify-content-between">
-              <Col xs={6}>
-                <Typography variant="body1" className="">
-                  {translationOffer.work_mode}
-                </Typography>
-              </Col>
-              <Col xs={6}>
-                <Typography variant="body1" className="fw-bold">
-                  {offer.work_mode.description}
-                </Typography>
-              </Col>
-            </Row>
-            <Row className="justify-content-between">
-              <Col xs={6}>
-                <Typography variant="body1" className="">
-                  {translationOffer.terms}
-                </Typography>
-              </Col>
-              <Col xs={6}>
-                <Typography variant="body1" className="fw-bold">
-                  {offer.contract_type.description}
-                </Typography>
-              </Col>
-            </Row>
-            <Row className="justify-content-between">
-              <Col xs={6}>
-                <Typography variant="body1" className="">
-                  {translationOffer.salary}
-                </Typography>
-              </Col>
-              <Col xs={6}>
-                <Typography
-                  variant="body1"
-                  className="fw-bold"
-                >{`${offer.salary.currency.description} ${offer.salary.from}/${offer.salary.salary_period.description}`}</Typography>
-              </Col>
-            </Row>
-            <Row className="justify-content-between">
-              <Col xs={6}>
-                <Typography variant="body1" className="">
-                  {translationOffer.days}
-                </Typography>
-              </Col>
-              <Col xs={6}>
-                <Typography variant="body1" className="fw-bold">
-                  {offer.available_work_days.map(value => (
-                    <div>{value}</div>
-                  ))}
-                </Typography>
-              </Col>
-            </Row>
-            <Row className="justify-content-between">
-              <Col xs={6}>
-                <Typography variant="body1" className="">
-                  {translationOffer.working_day}
-                </Typography>
-              </Col>
-              <Col xs={6}>
-                <Typography variant="body1" className="fw-bold">
-                  {offer.working_days.map(value => (
-                    <div>{value}</div>
-                  ))}
-                </Typography>
-              </Col>
-            </Row>
-            <Row className="justify-content-between">
-              <Col xs={6}>
-                <Typography variant="body1" className="">
-                  {translationOffer.benefits}
-                </Typography>
-              </Col>
-              <Col xs={6}>
-                <Typography variant="body1" className="fw-bold">
-                  {translationOffer.transport_aid}
-                </Typography>
-              </Col>
-            </Row>
+            {offer.offer_type.description != null && OfferTypeBlock(translationOffer, offer)}
+            {offer.work_mode.description != null && WorkModeBlock(translationOffer, offer)}
+            {offer.contract_type.description != null && ContractTypeBlock(translationOffer, offer)}
+            {offer.salary.from != null && SalaryBlock(translationOffer, offer)}
+            {offer.available_work_days.length != 0 && AvailableWorkDaysBlock(translationOffer, offer)}
+            {offer.working_days.length != 0 && WorkingDaysBlock(translationOffer, offer)}
+            {offer.job_aids.length != 0 && JobAidsBlock(translationOffer, offer)}
+
           </Paper>
         </Col>
 
@@ -323,47 +445,16 @@ const DetallePage = ({
               >
                 H
               </Avatar> */}
-              <Typography variant="subtitle1" className="fw-bold" component="p">
-                {offer.company.name}
-              </Typography>
-              <Typography variant="caption">
-                {offer.company.description}
-              </Typography>
+              {offer.company.name != null && CompanyNameBlock(offer.company)}
+              {offer.company.description != null && CompanyDescriptionBlock(offer.company)}
               <Divider variant="middle" className="mx-0 my-10" />
               {/* <img
                 className="img-fluid my-20"
                 src="https://www.kulud-pharmacy.com/wp-content/uploads/2018/01/687474703a2f2f692e696d6775722e636f6d2f4f32454f4378662e706e67.png"
                 alt="address"
               /> */}
-              <Row className="justify-content-between">
-                <Col xs={9}>
-                  <Typography variant="body1" className="">
-                    {offer.address}
-                  </Typography>
-                </Col>
-                <Col xs={3}>
-                  <FontAwesomeIcon
-                    className="ml-auto text-primary"
-                    icon={['fas', 'map-marker-alt']}
-                    size="sm"
-                  />
-                </Col>
-              </Row>
-              <Row className="justify-content-between">
-                <Col xs={9}>
-                  <Typography
-                    variant="body1"
-                    className=""
-                  >{`${offer.company.employees_range.description} ${translationOffer.employees}`}</Typography>
-                </Col>
-                <Col xs={3}>
-                  <FontAwesomeIcon
-                    className="ml-auto text-primary"
-                    icon={['fas', 'users']}
-                    size="sm"
-                  />
-                </Col>
-              </Row>
+              {offer.address != null && OfferAddressBlock(offer)}
+              {offer.company.employees_range != null && CompanyEmployeesRangeBlock(translationOffer, offer.company)}
               {/*
                  TO-DO Vlado: add the link
               <Row className="justify-content-between">
@@ -385,20 +476,7 @@ const DetallePage = ({
                 </Col>
               </Row>
                */}
-              <Row className="justify-content-between">
-                <Col xs={9}>
-                  <Typography variant="body1" className="fw-bold">
-                    {offer.company.web_site}
-                  </Typography>
-                </Col>
-                <Col xs={3}>
-                  <FontAwesomeIcon
-                    className="ml-auto text-primary"
-                    icon={['fas', 'globe']}
-                    size="sm"
-                  />
-                </Col>
-              </Row>
+              {offer.company.web_site != null && CompanyWebSiteBlock(offer.company)}
               <Divider variant="middle" className="mx-0 my-10" />
               {/*
               <Row style={{ height: '2rem' }}>

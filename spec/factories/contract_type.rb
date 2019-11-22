@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :contract_type do
-    description { 'indefinite term contract' }
+    description { 'contrato por horas' }
   end
 end

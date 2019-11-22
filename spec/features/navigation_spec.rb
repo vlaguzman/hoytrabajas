@@ -13,8 +13,6 @@ RSpec.describe "Overall navigation" do
 
         visit root_path
 
-        
-
         expect(page).to have_content("INICIO")
         click_on("INICIO")
 
@@ -23,8 +21,6 @@ RSpec.describe "Overall navigation" do
 
       it "should visit ‘FAQ’ page from home page", js: true do
         visit root_path
-
-        
 
         expect(page).to have_link("FAQs", href: faqs_path)
 
@@ -40,17 +36,11 @@ RSpec.describe "Overall navigation" do
       it "should visit Candidato page from home page", js: true do
         visit root_path
 
-        
-
-        expect(page).to have_link("SIGN UP CANDIDATO", href: "/users/sign_up")
-
-        click_on("SIGN UP CANDIDATO")
+        expect(page).to have_text("SIGN UP CANDIDATO")
+        find('span', text:/SIGN UP CANDIDATO/, visible: false).click
 
         expect(page).to have_text("Regístrate ahora")
-
-        expect(page).to have_text("X")
-
-        click_on("X")
+        find(".modal--close-icon", match: :first, visible: false).click
 
         expect(current_path).to eq(root_path)
       end
@@ -58,17 +48,11 @@ RSpec.describe "Overall navigation" do
       it "should visit 'Empleador' page from home page", js: true do
         visit root_path
 
-        
-
-        expect(page).to have_link("SIGN UP EMPRESA", href: "/companies/sign_up")
-
-        click_on("SIGN UP EMPRESA")
+        expect(page).to have_text("SIGN UP EMPRESA")
+        find('span', text:/SIGN UP EMPRESA/, visible: false).click
 
         expect(page).to have_text("Regístrate ahora")
-
-        expect(page).to have_text("X")
-
-        click_on("X")
+        find(".modal--close-icon", match: :first, visible: false).click
 
         expect(current_path).to eq(root_path)
       end
@@ -78,14 +62,6 @@ RSpec.describe "Overall navigation" do
         create_list(:offer, 20)
 
         visit root_path
-
-        
-
-        has_button?('VER MÁS OFERTAS')
-        find('span', text:/Ver más ofertas/, visible: false).click
-
-        has_button?('VER MÁS OFERTAS')
-        find('span', text:/Ver más ofertas/, visible: false).click
 
         has_button?('VER EL LISTADO DE OFERTAS')
         find('span', text:/Ver el listado de ofertas/, visible: false).click

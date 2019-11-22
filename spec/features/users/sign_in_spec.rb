@@ -2,30 +2,22 @@ require 'rails_helper'
 
 RSpec.describe "User sign in", type: :feature do
 
-  
-
   feature "like anonymous user" do
     feature "when enter in sign in path but a I dont have a account" do
       scenario "should see the sign up button 'Registrate'", js: true do
         visit root_path
 
-        
-
+    
         find('span', text: "SIGN IN CANDIDATO").click
 
-        expect(page).to have_text("No tienes una cuenta")
+        expect(page).to have_text("¿No tienes una cuenta?")
       end
 
       scenario "should create account", js: true do
-        visit root_path
+        visit root_path        
 
-        
-
-        find('span', text: "SIGN IN CANDIDATO").click
-
-        find('a', text: "No tienes una cuenta").click
-
-        expect(current_path).to eq(new_user_registration_path)
+        find('span', text:/SIGN IN CANDIDATO/).click
+        find('a', text: "Regístrate", visible: false).click
 
         expect(User.count).to be_zero
 
@@ -33,7 +25,7 @@ RSpec.describe "User sign in", type: :feature do
         fill_in "user[password]", with: "JesiPickman"
         fill_in "user[password_confirmation]", with: "JesiPickman"
 
-        find('span', text: /REGÍSTRARME/).click
+        find('span', text: /Registrarme/).click
 
         expect(User.count).to eq(1)
 

@@ -9,6 +9,10 @@ const HomePage = ({
   csrf_token,
   user_signed_in,
   company_signed_in,
+  companies_registration_path,
+  users_registration_path,
+  companies_sessions_path,
+  users_sessions_path,
   log_out_user,
   log_out_companies,
   path_applied_offers,
@@ -24,6 +28,10 @@ const HomePage = ({
         csrf_token={csrf_token}
         user_signed_in={user_signed_in}
         company_signed_in={company_signed_in}
+        companies_registration_path={companies_registration_path}
+        users_registration_path={users_registration_path}
+        companies_sessions_path={companies_sessions_path}
+        users_sessions_path={users_sessions_path}
         log_out_user={log_out_user}
         log_out_companies={log_out_companies}
         session_translation={session_translation}
@@ -51,6 +59,10 @@ HomePage.propTypes = {
   company_signed_in: PropTypes.bool.isRequired,
   log_out_user: PropTypes.string.isRequired,
   log_out_companies: PropTypes.string.isRequired,
+  companies_registration_path: PropTypes.string.isRequired,
+  users_registration_path: PropTypes.string.isRequired,
+  companies_sessions_path: PropTypes.string.isRequired,
+  users_sessions_path: PropTypes.string.isRequired,
   session_translation: PropTypes.object.isRequired,
   user_facebook_omniauth_authorize_path: PropTypes.object.isRequired,
   offers: PropTypes.object.isRequired,

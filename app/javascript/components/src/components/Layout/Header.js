@@ -26,14 +26,10 @@ const Header = props => {
   const {
     isScrollTop = true,
     shouldChangeColorOfNav = false,
-    csrf_param,
-    csrf_token,
     user_signed_in,
     company_signed_in,
     log_out_user,
-    log_out_companies,
-    session_translation,
-    user_facebook_omniauth_authorize_path
+    log_out_companies
   } = props
 
   const pathTo = (to = '') => {
@@ -60,6 +56,13 @@ const Header = props => {
       ...prevState,
       [name]: newValue || !openState[name]
     }))
+
+  const [currentModal, setCurrentModal] = useState('')
+
+  const handleOpenModal = name => {
+    setCurrentModal(name)
+    toggleOpenState('login')
+  }
 
   const isNavTransparent =
     !openState.navbar && shouldChangeColorOfNav && isScrollTop
@@ -227,7 +230,7 @@ const Header = props => {
                     style={{
                       color: isNavTransparent ? 'white' : 'black'
                     }}
-                    onClick={() => toggleOpenState('login')}
+                    onClick={() => handleOpenModal('users_sign_in')}
                   >
                     SIGN IN CANDIDATO
                   </MatButton>
@@ -238,7 +241,7 @@ const Header = props => {
                     style={{
                       color: isNavTransparent ? 'white' : 'black'
                     }}
-                    href="/companies/sign_in"
+                    onClick={() => handleOpenModal('companies_sign_in')}
                   >
                     SIGN IN EMPRESA
                   </MatButton>
@@ -280,7 +283,7 @@ const Header = props => {
                     style={{
                       color: isNavTransparent ? 'white' : 'black'
                     }}
-                    href="/users/sign_up"
+                    onClick={() => handleOpenModal('users_sign_up')}
                   >
                     SIGN UP CANDIDATO
                   </MatButton>
@@ -291,7 +294,7 @@ const Header = props => {
                     style={{
                       color: isNavTransparent ? 'white' : 'black'
                     }}
-                    href="/companies/sign_up"
+                    onClick={() => handleOpenModal('companies_sign_up')}
                   >
                     SIGN UP EMPRESA
                   </MatButton>
@@ -324,6 +327,8 @@ const Header = props => {
         {/* <FullSearchBarInNavBar/> */}
         <Login
           {...props}
+          currentModal={currentModal}
+          setCurrentModal={setCurrentModal}
           isOpen={openState.login}
           toggleOpenState={toggleOpenState}
         />

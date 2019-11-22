@@ -422,7 +422,7 @@ const FilterForm = ({ common, button1, fields1 }) => {
               </Col>
             </Dialog>
           </Col>
-          <input type="hidden" name='q[job_category_ids_eq]' value={idJobCategory}/>
+          <input type="hidden" name='q[job_category_ids_cont][]' value={idJobCategory}/>
         </Form>
         <Collapse isOpen={state.open}>
           <CarouselRow items={common} handleJobCategory={handleJobCategory}/>

@@ -19,6 +19,7 @@ class Offers::ShowService < Offers::ViewsService
       working_days:         working_days_list,
       job_aids:             job_aids_list,
       is_applied:           query_applied,
+      job_category:         offer.job_categories.first.description
     })
   end
 

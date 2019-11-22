@@ -9,7 +9,8 @@ import Chip from '@material-ui/core/Chip'
 import Button from '@material-ui/core/Button'
 import Divider from '@material-ui/core/Divider'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Avatar from '@material-ui/core/Avatar'
+// TO-DO any How use it
+// import Avatar from '@material-ui/core/Avatar'
 import classNames from 'classnames'
 import styled from 'styled-components'
 import Offers from '../../components/Offers'
@@ -94,7 +95,7 @@ const DetallePage = ({
               <Chip
                 className="mr-10"
                 variant="outlined"
-                label="Tecnología y programación"
+                label={offer.job_category}
               />
               {offer.immediate_start && (
                 <Badge color="primary"> Incorporación inmediata </Badge>
@@ -105,11 +106,12 @@ const DetallePage = ({
                 <span className="fw-bold">{translationOffer.close}</span>
                 {offer.close_date}
               </Typography>
-              <Typography className="ml-10" variant="caption">
+              {/* <Typography className="ml-10" variant="caption">
                 {' '}
+                
                 <span className="fw-bold"> 26</span>
                 {translationOffer.aplications}
-              </Typography>
+              </Typography> */}
             </Row>
             <Divider variant="middle" className="mx-0 my-10" />
             <Typography variant="body1">{offer.description}</Typography>
@@ -310,7 +312,7 @@ const DetallePage = ({
         <CompanyWrapper xs={12} lg={4}>
           <Card style={{ boxShadow: `0 2px 67px 0 rgba(41,44,28,0.08)` }}>
             <CardContent className="p-50 position-relative">
-              <Avatar
+              {/* <Avatar
                 className="position-absolute MuiPaper-elevation5"
                 style={{
                   right: '3rem',
@@ -320,18 +322,19 @@ const DetallePage = ({
                 }}
               >
                 H
-              </Avatar>
+              </Avatar> */}
               <Typography variant="subtitle1" className="fw-bold" component="p">
                 {offer.company.name}
               </Typography>
               <Typography variant="caption">
                 {offer.company.description}
               </Typography>
-              <img
+              <Divider variant="middle" className="mx-0 my-10" />
+              {/* <img
                 className="img-fluid my-20"
                 src="https://www.kulud-pharmacy.com/wp-content/uploads/2018/01/687474703a2f2f692e696d6775722e636f6d2f4f32454f4378662e706e67.png"
                 alt="address"
-              />
+              /> */}
               <Row className="justify-content-between">
                 <Col xs={9}>
                   <Typography variant="body1" className="">
@@ -361,6 +364,8 @@ const DetallePage = ({
                   />
                 </Col>
               </Row>
+              {/*
+                 TO-DO Vlado: add the link
               <Row className="justify-content-between">
                 <Col xs={9}>
                   <Typography
@@ -379,6 +384,7 @@ const DetallePage = ({
                   />
                 </Col>
               </Row>
+               */}
               <Row className="justify-content-between">
                 <Col xs={9}>
                   <Typography variant="body1" className="fw-bold">
@@ -394,6 +400,7 @@ const DetallePage = ({
                 </Col>
               </Row>
               <Divider variant="middle" className="mx-0 my-10" />
+              {/*
               <Row style={{ height: '2rem' }}>
                 <div
                   className="h-100 p-5 text-center ml-10 mr-5"
@@ -452,12 +459,13 @@ const DetallePage = ({
                   />
                 </div>
               </Row>
+            */}
             </CardContent>
           </Card>
           <div className="p-30 w-100 d-none d-lg-block">
             <img
               className="img-fluid"
-              src="https://placeimg.com/480/640/tech"
+              src="https://ht-web-images.s3.amazonaws.com/mensaje-oferta-premium-hoytrabajas-com2x.png"
               alt="tech"
             />
           </div>
@@ -496,6 +504,7 @@ DetallePage.propTypes = {
   pathAppliedOffers: PropTypes.string.isRequired,
   offer_translations: PropTypes.object.isRequired,
   offer: PropTypes.shape({
+    job_category: PropTypes.string.isRequired,
     sex: PropTypes.object,
     city: PropTypes.object,
     offer_type: PropTypes.object,

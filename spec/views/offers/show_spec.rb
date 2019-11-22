@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "offers/show" do
-  let(:show_offer) { create(:offer) }
+  let(:job_category) { create(:job_category, description: "sales") }
+  let(:show_offer) { create(:offer, job_categories: [job_category]) }
   let(:user) { create(:user) }
 
   let!(:age_range) { create(:age_range, offer: show_offer) }
@@ -12,6 +13,7 @@ RSpec.describe "offers/show" do
     render
 
     expect(rendered).to have_tag('div', :with => { "data-react-class" => 'pages/detalle_oferta' })
+    expect(rendered).to match(/sales/)
   end
 
 end

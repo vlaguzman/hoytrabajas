@@ -35,7 +35,7 @@ const OffersSection = props => {
         path_applied_offers={path_applied_offers}
         initialRows={3}
         rowIncrement={3}
-        maxOffers={12}
+        maxOffers={24}
       />
     </>
   )

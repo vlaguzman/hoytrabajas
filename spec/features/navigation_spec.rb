@@ -59,13 +59,16 @@ RSpec.describe "Overall navigation" do
 
       it "should visit 'ver mas ofertas' page from home page", js: true do
         create(:offer, title: "Esta oferta deberia aparecer")
-        create_list(:offer, 20)
+        create_list(:offer, 25)
 
         visit root_path
 
+        has_button?('VER MÁS OFERTAS')
+        find('span', text:/Ver más ofertas/, visible: false).click
+
         has_button?('VER EL LISTADO DE OFERTAS')
         find('span', text:/Ver el listado de ofertas/, visible: false).click
-
+        
         expect(current_path).to eq(offers_path)
 
         has_button?('VER MÁS OFERTAS')

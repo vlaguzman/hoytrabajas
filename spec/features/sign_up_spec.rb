@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "sign up user", js: true,  type: :feature do
+RSpec.describe "sign up user", js: true, type: :feature do
   context "Like a external user, I should get in hoytrabajas.com and see the option 'registrarse'" do
 
     it "User visit home page and click on sign up" do
@@ -10,7 +10,7 @@ RSpec.describe "sign up user", js: true,  type: :feature do
       expect(page).to have_text("SIGN UP CANDIDATO")
       click_on 'SIGN UP CANDIDATO'
 
-      expect(page).to have_text("Regístrate")
+      expect(page).to have_text("Registrarme")
     end
 
     context "I want to return to the home page" do
@@ -85,7 +85,7 @@ RSpec.describe "sign up user", js: true,  type: :feature do
         expect(page).to have_text("SIGN UP EMPRESA")
         click_on 'SIGN UP EMPRESA'
 
-        expect(page).to have_text("REGISTRARME")
+        expect(page).to have_content(/Registrarme/)
       end
 
       context "I want to return to the home page" do
@@ -96,7 +96,7 @@ RSpec.describe "sign up user", js: true,  type: :feature do
           expect(page).to have_text("SIGN UP EMPRESA")
           click_on 'SIGN UP EMPRESA'
 
-          expect(page).to have_text("REGISTRARME")
+          expect(page).to have_content(/Registrarme/)
 
           find(".modal--close-icon", match: :first, visible: false).click
 

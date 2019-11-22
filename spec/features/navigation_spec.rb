@@ -68,7 +68,7 @@ RSpec.describe "Overall navigation" do
 
         has_button?('VER EL LISTADO DE OFERTAS')
         find('span', text:/Ver el listado de ofertas/, visible: false).click
-        
+
         expect(current_path).to eq(offers_path)
 
         has_button?('VER MÁS OFERTAS')

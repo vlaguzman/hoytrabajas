@@ -530,9 +530,11 @@ ActiveRecord::Schema.define(version: 2019_11_27_221906) do
     t.bigint "company_id"
     t.string "slug"
     t.boolean "created_by_admin", default: false
+    t.bigint "educational_degree_id"
     t.index ["city_id"], name: "index_offers_on_city_id"
     t.index ["company_id"], name: "index_offers_on_company_id"
     t.index ["contract_type_id"], name: "index_offers_on_contract_type_id"
+    t.index ["educational_degree_id"], name: "index_offers_on_educational_degree_id"
     t.index ["offer_type_id"], name: "index_offers_on_offer_type_id"
     t.index ["work_mode_id"], name: "index_offers_on_work_mode_id"
   end
@@ -926,6 +928,7 @@ ActiveRecord::Schema.define(version: 2019_11_27_221906) do
   add_foreign_key "offer_salaries", "salary_periods"
   add_foreign_key "offers", "cities"
   add_foreign_key "offers", "contract_types"
+  add_foreign_key "offers", "educational_degrees"
   add_foreign_key "offers", "offer_types"
   add_foreign_key "offers", "work_modes"
   add_foreign_key "offers_requirements", "offers"

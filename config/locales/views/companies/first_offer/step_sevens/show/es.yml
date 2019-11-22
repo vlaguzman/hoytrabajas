@@ -1,0 +1,23 @@
+es:
+  companies:
+    first_offer:
+      step_sevens:
+        show:
+          title: "Conozcamos más de tu oferta"
+          subtitle: "Brinda a tu candidato una relevante de tu empresa."
+          form:
+            buttons:
+              submit: "Publicar"
+              next: "Saltar"
+              previous: "Regresar"
+            type: "offer"
+            formFields:
+              city_id: 'Que resida en'
+              educational_degree_id: 'Nivel mínimo de educación'
+              duration: 'Con mínimo'
+              duration_type_id: ''
+              required_experience: 'de experiencia ó'
+              technical_skills_id: 'Con habilidades en'
+              technical_skills_level_id: 'con nivel'
+              language_id: 'Manejo de idioma'
+              language_level_id: 'con nivel'

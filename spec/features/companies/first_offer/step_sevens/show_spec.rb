@@ -4,43 +4,42 @@ RSpec.describe "When company fill the step seven form", :type => :feature do
   let(:company)   { create(:company, :first_time, name: 'HoyTrabajas.com') }
   let(:offer)     { create(:offer) }
 
-  let!(:responsibility)  { create(:responsibility)}
-  let!(:requirement)     { create(:requirement)}
-  let!(:vehicle)         { create(:vehicle)}
-  let!(:driving_licence) { create(:driving_licence)}
+  let!(:city)  { create(:city)}
+  let!(:educational_level)  { create(:educational_level)}
+  let!(:duration_type)  { create(:duration_type)}
+  let!(:language)  { create(:language)}
+  let!(:level)  { create(:level)}
 
   def expected_page_structure
     expect(page).to have_content("Conozcamos más de tu oferta")
     expect(page).to have_content("Brinda a tu candidato una relevante de tu empresa.")
 
     expect(page).to have_tag(:form, with: { class: "forms__candidate" }) do
-      with_tag(:input, with: { name: 'offer[city_id]', type: "hidden" })
-      with_tag(:input, with: { name: 'offer[educational_level_id]',type: "hidden" })
-      with_tag(:input, with: { name: 'offer[required_experiences][duration]', type: "hidden" })
-      with_tag(:input, with: { name: 'offer[required_experiences][duration_type]', type: "hidden" })
-      with_tag(:input, with: { name: 'offer[required_experience]', type: "hidden" })
+      with_tag(:input, with: { name: 'offer[city_id]',               type: "hidden" })
+      with_tag(:input, with: { name: 'offer[educational_degree_id]', type: "hidden" })
+      with_tag(:input, with: { name: 'offer[duration]',              type: "hidden" })
+      with_tag(:input, with: { name: 'offer[duration_type_id]',      type: "hidden" })
+      with_tag(:input, with: { name: 'offer[required_experience]',   type: "hidden" })
 
-      # dynamic inputs
-      # with_tag(:input, with: { name: 'offer[technical_skills][ids]', type: "hidden" })
-      # with_tag(:input, with: { name: 'offer[technical_skills][levels_ids]', type: "hidden" })
+      with_tag(:input, with: { name: 'offer[technical_skills_id][0]',       type: "hidden" })
+      with_tag(:input, with: { name: 'offer[technical_skills_level_id][0]', type: "hidden" })
+
+      with_tag(:input, with: { name: 'offer[language_id][0]',       type: "hidden" })
+      with_tag(:input, with: { name: 'offer[language_level_id][0]', type: "hidden" })
     end
 
     expect(page).to have_button('Publicar')
   end
 
   def fill_form(data)
-    find(id: 'select-offer[responsibility_ids][]', visible: false).click
-    save_page("daniel.html")
-    find('li', text: data[:responsibility_ids]).click
+    find(id: 'select-offer[city_id]', visible: false).click
+    find('li', text: data[:city_id]).click
 
-    find(id: 'select-offer[requirement_ids][]', visible: false).click
-    find('li', text: data[:requirement_ids]).click
+    find(id: 'select-offer[educational_degree_id][]', visible: false).click
+    find('li', text: data[:educational_degree_id]).click
 
-    find(id: 'select-offer[vehicle_ids][]', visible: false).click
-    find('li', text: data[:vehicle_ids]).click
-
-    find(id: 'select-offer[driving_licence_ids][]', visible: false).click
-    find('li', text: data[:driving_licence_ids]).click
+    find(id: 'select-offer[educational_level_ids][]', visible: false).click
+    find('li', text: data[:educational_level_ids]).click
   end
 
   describe "Fill the five form to update offer, all data is optionally" do

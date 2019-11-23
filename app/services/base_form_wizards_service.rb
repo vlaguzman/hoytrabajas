@@ -4,8 +4,6 @@ class BaseFormWizardsService
   SELECT_FIELDS_KEYS = []
   MULTIPLE_SELECT_FIELDS_KEYS = []
 
-  attr_accessor :skip_path, :source, :errors, :form_type, :template_translation_path, :action_path, :previous_path, :next_path, :form_method
-
   def initialize(
     skip_path: nil,
     source: nil,
@@ -33,6 +31,8 @@ class BaseFormWizardsService
   end
 
   private
+
+  attr_accessor :skip_path, :source, :errors, :form_type, :template_translation_path, :action_path, :previous_path, :next_path, :form_method
 
   def placeholders_translations
     template_translations[:form][:placeholders].present? ? {}.merge(template_translations[:form][:placeholders]) : {}

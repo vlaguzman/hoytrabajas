@@ -53,10 +53,6 @@ class Users::Wizards::StepFive::FormParamsService < BaseFormWizardsService
     ListConverter.model_list WorkingDay
   end
 
-  def state_id_list
-    ListConverter.model_list WorkingDay
-  end
-
   def range_type_builder
     {range_type: {
       name: 'user[curriculum_vitae][curriculum_vitae_salary][range_type]',

@@ -40,7 +40,7 @@ Rails.application.routes.draw do
       resource :step_three,   only: [:show, :update]
       resource :step_four,    only: [:show, :update]
       resource :step_five,    only: [:show, :update]
-      resource :step_six,     only: [:show, :update]
+      resource :step_six,     only: [:show, :create, :edit, :update]
       resource :step_seven,   only: [:show, :update]
       resource :step_eight,   only: [:show, :update]
       resource :step_nine,    only: [:show, :update]

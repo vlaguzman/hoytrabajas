@@ -31,10 +31,6 @@ class Companies::FirstOffer::StepFive::FormParamsService < BaseFormWizardsServic
     source.salary_currency_id
   end
 
-  def salary_period_id_current_value
-    source.salary_period_id
-  end
-
   def is_range_current_value
     source.salary_is_range.to_s
   end

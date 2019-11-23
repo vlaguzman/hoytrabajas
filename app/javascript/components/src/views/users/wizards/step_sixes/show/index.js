@@ -12,7 +12,7 @@ const UsersWizardsStepSix = props => {
   const {
     title,
     subtitle,
-    form: { buttons, action, method, type, formFields }
+    form: { buttons, action, method, formFields }
   } = formInfo
 
   const { nextPath, previousPath } = buttons
@@ -31,7 +31,7 @@ const UsersWizardsStepSix = props => {
                 <FormFields formFields={formFields} />
                 <FormButtons
                   nextPath={nextPath}
-                  prevPath={previousPath}
+                  previousPath={previousPath}
                   buttons={buttons}
                 />
               </form>

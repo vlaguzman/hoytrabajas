@@ -35,4 +35,13 @@ RSpec.describe CurriculumVitae, type: :model do
     it { should have_and_belong_to_many(:offer_types) }
     it { should have_and_belong_to_many(:work_modes) }
   end
+
+  describe '#soft_skills' do
+    let(:cv) { create(:curriculum_vitae) }
+
+    let!(:cv_soft_skills) { create_list(:curriculum_vitaes_soft_skills, 5, curriculum_vitae_id: cv.id) }
+    it "Should return the soft skills associated" do
+      expect(cv.soft_skills.count).to eq(5)
+    end
+  end
 end

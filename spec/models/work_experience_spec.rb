@@ -20,4 +20,21 @@ RSpec.describe WorkExperience, type: :model do
     it { should belong_to(:work_position) }
     it { should have_and_belong_to_many(:technical_skills) }
   end
+
+  describe "#user_wizard_step_eight_list" do
+    let(:subject) { described_class }
+
+    it { should respond_to(:user_wizard_step_eight_list) }
+
+    let(:curriculum_vitae_id) { create(:curriculum_vitae).id }
+    let(:work_experiences) { create_list(:work_experience, 5, curriculum_vitae_id: curriculum_vitae_id) }
+
+    context "When is need show registered work experience" do
+      it "should return a array with company name and description" do
+        expected_array = work_experiences.map { |exp| [exp.company_name, exp.work_position.description] }
+
+        expect(subject.user_wizard_step_eight_list(curriculum_vitae_id)).to match_array(expected_array)
+      end
+    end
+  end
 end

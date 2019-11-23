@@ -36,7 +36,6 @@ RSpec.describe "When company fill the step four form", :type => :feature do
     find(id: 'select-offer[sex_ids][]', visible: false).click
     find('li', text: data[:sex_two]).click
 
-
     find(id: 'select-offer[sex_ids][]', visible: false).click
     find('li', text: data[:sex_three]).click
 

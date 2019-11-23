@@ -12,12 +12,7 @@ module Companies::FirstOffer::StepFourService
 
     params = clean_params(update_params)
 
-    updated = offer.update(params)
-    if updated
-      { status: :ok, data: offer }
-    else
-      { status: :error, data: offer }
-    end
+    Companies::FirstOffer::CommonService.update_offer(offer, params)
   end
 
   def self.create_associations(offer, update_params)

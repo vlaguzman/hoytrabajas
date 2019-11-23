@@ -12,8 +12,8 @@ class Users::Wizards::StepEightPresenter < ApplicationPresenter
   end
 
   def registered_experience
-    cv = source.curriculum_vitae.id
-    WorkExperience.where(curriculum_vitae_id: cv).map { |exp| [exp.company_name, exp.work_position.description] }
+    cv = source.curriculum_vitae
+    WorkExperience.user_wizard_step_eight_list(cv.id)
   end
 
   def have_experience?

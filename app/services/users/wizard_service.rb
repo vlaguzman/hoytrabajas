@@ -14,15 +14,16 @@ module Users::WizardService
 
   end
 
+  def self.update_curriculum_vitae(curriculum, update_params: {})
+    [curriculum, curriculum.update(update_params)]
+  end
+
   private
 
   def self.update_candidate(candidate, update_params: {})
     [candidate, candidate.update(update_params)]
   end
 
-  def self.update_curriculum_vitae(curriculum, update_params: {})
-    [curriculum, curriculum.update(update_params)]
-  end
 
   def self.verify_presence_candidate(candidate, update_params: {})
     if candidate.present? && update_params.present?

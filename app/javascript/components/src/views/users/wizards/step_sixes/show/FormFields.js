@@ -2,8 +2,8 @@ import React, { useState, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col } from 'reactstrap'
 import SelectChip from '../../../../../components/FormsLayout/Fields/SelectChip'
-import Select from '../../../../../components/FormsLayout/Fields/Select'
-import StandardInput from '../../../../../components/FormsLayout/Fields/StandardInput'
+// import Select from '../../../../../components/FormsLayout/Fields/Select'
+// import StandardInput from '../../../../../components/FormsLayout/Fields/StandardInput'
 import {
   handleDeleteChip,
   handleChange
@@ -11,41 +11,39 @@ import {
 
 const FormFields = props => {
   const { formFields } = props
-  const {
-    job_category_id = null,
-    language_id = null,
-    level_id = null,
-    soft_skill_ids = null,
-    technical_skill_id = null
-  } = formFields
+  const { soft_skill_ids = null } = formFields
 
-/*   const [formValues, setFormValues] = useState({
-    [range_type.name]: 1,
-    [from.name]: '',
-    [to.name]: '',
-    [currency_id.name]: '',
-    [salary_period_id.name]: '',
-    [available_work_day_ids.name]: '',
-    [working_day_ids.name]: ''
-  }) */
+  const [formValues, setFormValues] = useState({
+    [soft_skill_ids.name]: soft_skill_ids.current_value || []
+  })
 
   const inputClassname = 'my-30 animated fadeIn'
 
-
-  const controlledInputsClassname =
-  'animated fadeIn controlledInputs inputField mt-20'
-
-  return (
-    <Row className="HT__FormGenerator">
-      {}
-    </Row>
+  const softSkillIDsField = useMemo(
+    () => (
+      <Col key={soft_skill_ids.name} className={inputClassname} xs={12} lg={12}>
+        <SelectChip
+          inputValue={formValues[soft_skill_ids.name]}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
+          name={soft_skill_ids.name}
+          label={soft_skill_ids.label}
+          selectOptions={soft_skill_ids.values}
+          isMultiple
+        />
+      </Col>
+    ),
+    [formValues[soft_skill_ids.name]]
   )
+
+  return <Row className="HT__FormGenerator">{softSkillIDsField}</Row>
 }
 
 export default FormFields
 
 FormFields.propTypes = {
   formFields: PropTypes.shape({
+    soft_skill_ids: PropTypes.object,
     range_type: PropTypes.object,
     from: PropTypes.object,
     to: PropTypes.object,

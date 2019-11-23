@@ -4,12 +4,7 @@ RSpec.describe BaseFormWizardsService do
   let(:company) { create(:company) }
 
   describe "instance methods" do
-    it { should respond_to(:form_type) }
-    it { should respond_to(:template_translation_path) }
-    it { should respond_to(:action_path) }
-    it { should respond_to(:previous_path) }
-    it { should respond_to(:next_path) }
-    it { should respond_to(:form_method) }
+    it { should respond_to(:form_params) }
   end
 
   describe "#form_params" do

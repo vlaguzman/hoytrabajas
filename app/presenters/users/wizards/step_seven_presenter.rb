@@ -20,10 +20,6 @@ class Users::Wizards::StepSevenPresenter < ApplicationPresenter
     rails_routes.users_wizards_step_seven_path
   end
 
-  def users_wizards_step_eight_path
-    rails_routes.users_wizards_step_eight_path
-  end
-
   def users_wizards_step_nine_path
     rails_routes.users_wizards_step_nine_path
   end

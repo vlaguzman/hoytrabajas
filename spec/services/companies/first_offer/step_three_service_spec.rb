@@ -66,7 +66,7 @@ RSpec.describe Companies::FirstOffer::StepThreeService do
 
           expect(offer[:data]).to be_an_instance_of(Offer)
 
-          expect(offer[:data].errors.details).to eq({:title=>[{:error=>:blank}]})
+          expect(offer[:data].errors.details).to eq({:title=>[{:error=>:blank}, {:count=>3, :error=>:too_short}]})
         end
       end
     end
@@ -119,7 +119,7 @@ RSpec.describe Companies::FirstOffer::StepThreeService do
 
           expect(offer[:data]).to be_an_instance_of(Offer)
 
-          expect(offer[:data].errors.details).to eq({:title=>[{:error=>:blank}]})
+          expect(offer[:data].errors.details).to eq({:title => [{:error=>:blank}, {:count=>3, :error=>:too_short}]})
         end
       end
     end

@@ -4,6 +4,8 @@ class Offer < ApplicationRecord
 
   validates_presence_of :title, :job_category_ids
 
+  validates_length_of :title, minimum: 3, maximum: 400
+
   scope :active, -> { where(status: 'active') }
   scope :max_offers, -> (max_offer_limit) { limit(max_offer_limit) }
   scope :created_at_desc, -> { order(created_at: :desc) }

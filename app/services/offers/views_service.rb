@@ -26,13 +26,14 @@ class Offers::ViewsService
   end
 
   def build_details
+    close_date = offer.close_date
     {
       id_offer:             offer.id,
       job_category_image:   job_category_image,
       city:                 { description: offer.city_description },
       salary:               salary_details,
       company:              company_details,
-      close_date:           DatesConverter.default(date: offer.close_date)
+      close_date:           close_date.present? ? DatesConverter.default(date: close_date) : DatesConverter.default(date: Date.today + 1.day )
     }
   end
 

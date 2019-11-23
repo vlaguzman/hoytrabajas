@@ -155,7 +155,6 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
 
             find("span", text: /SIGUIENTE/).click
             #click_button 'siguiente'
-            #byebug
 
             expect(page).to have_text("Debes seleccionar un Categoria de Trabajo")
           end

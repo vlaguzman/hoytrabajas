@@ -172,7 +172,7 @@ B         • Companies::FirstOffer::StepTwoPresenter             14      17.4  
 B         • Companies::FirstOffer::StepTwoService               5       2.45       23          2
 B         • Companies::FirstOffer::StepTwosController           10      20.32      27          2
 B         • Offers::ShowService                                 15      81.79      0           1
-B         • Offers::ViewsService                                9       55.52      0           4
+B         • Offers::ViewsService                                10      62.1       0           4
 B         • Users::Wizards::StepEightPresenter                  7       26.49      22          2
 B         • Users::Wizards::StepNinePresenter                   5       29.02      39          3
 B         • Users::Wizards::StepTenPresenter                    3       26.02      17          2

@@ -80,32 +80,20 @@ class BaseFormWizardsService
     end
   end
 
-  def input_fields
-    self.class::INPUT_FIELDS_KEYS
-  end
-
-  def select_fields
-    self.class::SELECT_FIELDS_KEYS
-  end
-
-  def multiple_select_fields
-    self.class::MULTIPLE_SELECT_FIELDS_KEYS
-  end
-
   def input_fields_builder(*subform_names)
-    Hash[input_fields.collect do |key|
+    Hash[self.class::INPUT_FIELDS_KEYS.collect do |key|
       field_data_builder(key, name: name_builder(key, false, subform_names), label: labels[key], current_value: current_value(key))
     end]
   end
 
   def select_fields_builder(*subform_names)
-    Hash[select_fields.collect do |key|
+    Hash[self.class::SELECT_FIELDS_KEYS.collect do |key|
       field_data_builder(key, name: name_builder(key, false, subform_names), label: labels[key], values: self.send("#{key}_list"), current_value: current_value(key))
     end]
   end
 
   def multiple_select_fields_builder(*subform_names)
-    Hash[multiple_select_fields.collect { |key| field_data_builder(key, name: name_builder(key, true, subform_names), label:labels[key], values: self.send("#{key}_list"), current_value: current_value(key)) } ]
+    Hash[self.class::MULTIPLE_SELECT_FIELDS_KEYS.collect { |key| field_data_builder(key, name: name_builder(key, true, subform_names), label:labels[key], values: self.send("#{key}_list"), current_value: current_value(key)) } ]
   end
 
   def name_builder(name, multiple=nil, subforms_names)

@@ -5,7 +5,6 @@ class Companies::FirstOffer::StepSeven::FormParamsService < BaseFormWizardsServi
     :educational_degree_id,
     :duration,
     :duration_type_id,
-    :required_experience,
     :technical_skills_id,
     :technical_skills_level_id,
     :language_id,
@@ -16,6 +15,17 @@ class Companies::FirstOffer::StepSeven::FormParamsService < BaseFormWizardsServi
 
   def fields_builder
     super(required_experience_field)
+  end
+
+  def required_experience_field
+    {
+      required_experience: {
+        name: 'offer[required_experience]',
+        label: template_translations[:form][:formFields][:required_experience],
+        label: template_translations[:required_experience_description],
+        current_value: source.required_experience
+      }
+    }
   end
 
   def city_id_list
@@ -45,14 +55,4 @@ class Companies::FirstOffer::StepSeven::FormParamsService < BaseFormWizardsServi
   def language_level_id_list
     ListConverter.model_list Level
   end
-   def required_experience_field
-     {
-       required_experience: {
-         name: 'offer[required_experience]',
-         label: template_translations[:form][:formFields][:required_experience],
-         current_value: source.required_experience
-       }
-     }
-   end
-
 end

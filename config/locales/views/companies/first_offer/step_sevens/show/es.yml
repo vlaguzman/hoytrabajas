@@ -5,6 +5,7 @@ es:
         show:
           title: "Conozcamos más de tu oferta"
           subtitle: "Brinda a tu candidato una relevante de tu empresa."
+          required_experience_description: 'sin experiencia'
           form:
             buttons:
               submit: "Publicar"
@@ -15,8 +16,8 @@ es:
               city_id: 'Que resida en'
               educational_degree_id: 'Nivel mínimo de educación'
               duration: 'Con mínimo'
-              duration_type_id: ''
-              required_experience: 'de experiencia ó'
+              duration_type_id: 'de experiencia'
+              required_experience: 'ó'
               technical_skills_id: 'Con habilidades en'
               technical_skills_level_id: 'con nivel'
               language_id: 'Manejo de idioma'

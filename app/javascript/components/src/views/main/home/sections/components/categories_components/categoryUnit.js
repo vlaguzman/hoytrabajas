@@ -1,14 +1,16 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import {Row,Col} from 'reactstrap'
 import Typography from '@material-ui/core/Typography'
+import classNames from 'classnames'
 
 export default ({ id, img, quantity, name, handleJobCategory }) => {
   const ellipsis = (word) => {
     return word.length > 20 ? `${word.substr(0, 18)}...` : word;
   }
+  const [selected, setSelected] = useState(false)
 
   return (
-    <Col className='align-items-center justify-content-center h-100' onClick={() => { handleJobCategory(id) }}>
+    <Col className={classNames('align-items-center justify-content-center h-100', {'is-selected': selected})} onClick={() => { handleJobCategory(id); setSelected(!selected) }}>
       <Row className="justify-content-center mb-5 mx-0">
         <img
           className="rounded"

@@ -6,8 +6,7 @@ class OffersController < ApplicationController
     if query.present? && params[:q].present?
       @offers = query
         .result(distinct: true)
-        .joins(:job_categories)
-        .where('job_category_id in (?)', params[:q][:job_category_ids_cont])
+        .by_job_categories(params[:q][:job_category_ids_cont])
         .map{ |offer| Offers::IndexService.new(offer, current_user).details }
     else
       @offers = OffersService.active_offers_index_details(current_user, MAX_OFFER_LIMIT)

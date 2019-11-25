@@ -1,0 +1,9 @@
+es:
+  devise:
+    passwords:
+      new:
+        title: '¿Olvidaste tu contraseña?'
+        description: 'Introduce tú email, te enviaremos las instruciones para reestablecer tú contraseña.'
+        textbox: 'Correo electronico'
+        button: 'ENVIAR CORREO ELECTRÓNICO'
+        link: '< Regresar a hoytrabajas.com'

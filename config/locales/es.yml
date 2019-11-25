@@ -88,6 +88,12 @@ es:
               blank: "Por favor ingrese un correo electrónico, este campo no puede estar en blanco" 
             password:
               blank: "Por favor ingrese el password, este campo no puede estar en blanco"
+        user:
+          attributes:
+            email:
+              blank: "Por favor ingrese un correo electrónico, este campo no puede estar en blanco" 
+            password:
+              blank: "Por favor ingrese el password, este campo no puede estar en blanco"
         offer:
           attributes:
             company:

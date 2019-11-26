@@ -52,16 +52,16 @@ class Offers::ViewsService
 
   def company_details
     {
-      name: offer.company_name,
+      name: offer.company_name
     }
   end
-  
-  private 
+
+  private
 
   def job_category_image
-    category_and_image_present? ? offer.job_categories.first.image : DEFAULT_IMAGE_URL 
+    category_and_image_present? ? offer.job_categories.first.image : DEFAULT_IMAGE_URL
   end
-  
+
   def category_and_image_present?
     offer.job_categories.any? && offer.job_categories.first.image.present?
   end

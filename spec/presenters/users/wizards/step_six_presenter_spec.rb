@@ -10,7 +10,7 @@ RSpec.describe Users::Wizards::StepSixPresenter do
 
       expect(response).to be_an_instance_of(Hash)
 
-      expected_keys = [:title, :subtitle, :form]
+      expected_keys = [:title, :subtitle, :form, :sub_forms]
 
       expect(response.keys).to eq(expected_keys)
     end

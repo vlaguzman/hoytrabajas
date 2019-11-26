@@ -30,10 +30,7 @@ const StyledCol = styled(Col)`
 `
 const FormFields = props => {
   const { formFields } = props
-  const {
-    soft_skill_ids = null,
-    technical_skills = null
-  } = formFields
+  const { soft_skill_ids = null, technical_skills = null } = formFields
 
   const setDefaultRowIDs = defaultValue => {
     if (defaultValue && defaultValue.length > 0) {
@@ -56,8 +53,6 @@ const FormFields = props => {
     [soft_skill_ids.name]: soft_skill_ids.current_value || [],
     [technical_skills.name]: setDefaultRowIDs(technical_skills.current_values)
   })
-
-  console.log(formValues[technical_skills.name])
 
   const addRow = ({ rowName }) => {
     const newTechnicalSkill = {
@@ -96,10 +91,13 @@ const FormFields = props => {
     }
   }
 
-  const railsFieldNameBuilder = (formKey, fieldKey, index = 0) => {
-    const principalFormKey = formKey[0]
-    const formSecuence = formKey.map(key => `[${key}]`).join('')
-    return `${principalFormKey}${formSecuence}[${index}][${fieldKey}]`
+  const railsFieldNameBuilder = (formKeys, fieldKey) => {
+    const principalFormKey = formKeys[0]
+    const formSecuence = formKeys
+      .slice(1, formKeys.leght)
+      .map(key => `[${key}]`)
+      .join('')
+    return `${principalFormKey}${formSecuence}[][${fieldKey}]`
   }
 
   const inputClassname = 'my-30 animated fadeIn'
@@ -133,19 +131,18 @@ const FormFields = props => {
               style={{ margin: '20px 0', padding: '0 20px' }}
             >
               <>
-                { technical_skills.field_keys.map(fieldKey => (
+                {technical_skills.field_keys.map(fieldKey => (
                   <input
                     key={uuidv4()}
                     type="hidden"
                     name={railsFieldNameBuilder(
                       technical_skills.form_keys,
-                      fieldKey,
-                      index
+                      fieldKey
                     )}
                     value={
-                      (formValues[technical_skills.name].length > 0)
-                      ? formValues[technical_skills.name][index][fieldKey]
-                      : null
+                      formValues[technical_skills.name].length > 0
+                        ? formValues[technical_skills.name][index][fieldKey]
+                        : null
                     }
                   />
                 ))}
@@ -180,8 +177,7 @@ const FormFields = props => {
                           handleChange={handleRowChanges}
                           handleDeleteChip={handleRowDeleteChip}
                           selectOptions={
-                            technical_skills.list_values
-                              .technical_skill_id
+                            technical_skills.list_values.technical_skill_id
                           }
                         />
                       </StyledCol>
@@ -192,9 +188,7 @@ const FormFields = props => {
                           inputValue={rowValue.level_id}
                           handleChange={handleRowChanges}
                           handleDeleteChip={handleRowDeleteChip}
-                          selectOptions={
-                            technical_skills.list_values.level_id
-                          }
+                          selectOptions={technical_skills.list_values.level_id}
                         />
                       </StyledCol>
                     </>
@@ -212,7 +206,6 @@ const FormFields = props => {
   return (
     <Row className="HT__FormGenerator">
       {softSkillIDsField}
-      <label>{technical_skills.main_label}</label>
       {techicalSkillsRows}
     </Row>
   )
@@ -223,6 +216,6 @@ export default FormFields
 FormFields.propTypes = {
   formFields: PropTypes.shape({
     soft_skill_ids: PropTypes.object,
-    tecnical_skills_example: PropTypes.object
+    technical_skills: PropTypes.object
   })
 }

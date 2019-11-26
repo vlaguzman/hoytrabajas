@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :job_category do
-    description { 'Marketing' }
+    description { Faker::Commerce.department }
   end
 end

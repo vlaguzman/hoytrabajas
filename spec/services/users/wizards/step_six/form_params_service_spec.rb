@@ -150,21 +150,21 @@ RSpec.describe Users::Wizards::StepSix::FormParamsService do
       let(:cv) { create(:curriculum_vitae) }
       let!(:expected_strong_params) do
         [create(:curriculum_vitaes_technical_skills,
-          job_category_id: 1,
-          technical_skill_id: 1,
-          level_id: 1,
+          job_category_id: job_categories[0].id,
+          technical_skill_id: technical_skills[0].id,
+          level_id: leves[0].id,
           curriculum_vitae: cv
         ),
         create(:curriculum_vitaes_technical_skills,
-          job_category_id: 1,
-          technical_skill_id: 2,
-          level_id: 3,
+          job_category_id: job_categories[0].id,
+          technical_skill_id: technical_skills[1].id,
+          level_id: leves[2].id,
           curriculum_vitae: cv
         ),
         create(:curriculum_vitaes_technical_skills,
-          job_category_id: 3,
-          technical_skill_id: 3,
-          level_id: 3,
+          job_category_id: job_categories[2].id,
+          technical_skill_id:technical_skills[2].id,
+          level_id: leves[2].id,
           curriculum_vitae: cv
         )]
       end
@@ -181,19 +181,19 @@ RSpec.describe Users::Wizards::StepSix::FormParamsService do
               level_id: create_levels_list
             },
             current_values: [{
-              job_category_id: 1,
-              technical_skill_id: 1,
-              level_id: 1
+              job_category_id: job_categories[0].id,
+              technical_skill_id: technical_skills[0].id,
+              level_id: leves[0].id
             },
             {
-              job_category_id: 1,
-              technical_skill_id: 2,
-              level_id: 3
+              job_category_id: job_categories[0].id,
+              technical_skill_id: technical_skills[1].id,
+              level_id: leves[2].id
             },
             {
-              job_category_id: 3,
-              technical_skill_id: 3,
-              level_id: 3
+              job_category_id: job_categories[2].id,
+              technical_skill_id:technical_skills[2].id,
+              level_id: leves[2].id
             }]
           }
 

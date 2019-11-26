@@ -34,9 +34,10 @@ class BaseFormWizardsService
   end
 
   def buttons_translation
-    template_translations[:form][:buttons]
+    buttons = template_translations[:form][:buttons]
       .merge(previousPath: previous_path)
-      .merge(nextPath: next_path) if template_translations.present?
+      .merge(nextPath: next_path)
+      .tap { |object| object.merge!(addOther: object.delete(:add_other) ) } if template_translations.present?
   end
 
   def build_form_params

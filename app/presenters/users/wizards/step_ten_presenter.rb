@@ -11,8 +11,8 @@ class Users::Wizards::StepTenPresenter < ApplicationPresenter
   end
 
   def registered_acknowledgments
-    cv_id = source.curriculum_vitae.id
-    Acknowledgment.where(curriculum_vitae_id: cv_id).map { |act| [act.title] }
+    acknowledgments = source.curriculum_vitae.acknowledgments
+    acknowledgments.map { |act| [act.title] }
   end
 
   def have_acknowledgments?

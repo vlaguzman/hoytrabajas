@@ -15,4 +15,13 @@ class ApplicationController < ActionController::Base
     current.save
   end
 
+  def redirect_to_offer_step(step, source)
+    if source[:status].eql?(:ok)
+      redirect_to self.send("companies_first_offer_step_#{step}_path")
+    else
+      offer_presenter(source[:data])
+      render 'show'
+    end
+  end
+
 end

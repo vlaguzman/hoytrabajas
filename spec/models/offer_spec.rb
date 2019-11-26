@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Offer, type: :model do
-
   describe "#languages_list" do
     let(:subject) { create(:offer) }
 
@@ -181,8 +180,10 @@ RSpec.describe Offer, type: :model do
       offer_1 = create(:offer, title: 'first created', created_at: Time.new(2018, 01, 01))
       offer_2 = create(:offer, title: 'second created', created_at: Time.new(2019, 01, 02))
 
-      expect(described_class.created_at_desc.first).to eq(offer_2)
-      expect(described_class.created_at_desc.last).to eq(offer_1)
+      response = described_class.created_at_desc
+
+      expect(response.first).to eq(offer_2)
+      expect(response.last).to eq(offer_1)
     end
   end
 

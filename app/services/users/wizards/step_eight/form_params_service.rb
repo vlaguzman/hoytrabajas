@@ -32,13 +32,6 @@ class Users::Wizards::StepEight::FormParamsService < BaseFormWizardsService
     super('curriculum_vitae', 'work_experience')
   end
 
-  def buttons_translation
-    buttons = template_translations[:form][:buttons]
-      .merge(previousPath: previous_path)
-      .merge(nextPath: next_path)
-      .tap { |object| object.merge!(addOther: object.delete(:add_other) ) } if template_translations.present?
-  end
-
   def job_category_id_list
     ListConverter.model_list JobCategory
   end

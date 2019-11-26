@@ -28,6 +28,7 @@ RSpec.describe Users::Wizards::StepSix::FormParamsService do
         sub_forms: {technical_skils: "Define técnicas de acuerdo a tu perfil*"},
         form: {
           buttons: {
+            addOther: nil,
             submit: 'Siguiente',
             next: 'Saltar',
             previous: 'Regresar',

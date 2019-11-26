@@ -19,6 +19,7 @@ RSpec.describe Companies::FirstOffer::StepOne::FormParamsService do
         subtitle: "Brinda a tu candidato información de tu empresa.",
         form: {
           buttons: {
+            addOther: nil,
             submit: 'Siguiente',
             previous: 'Regresar',
             next: 'Saltar',

@@ -4,26 +4,16 @@ class BaseFormWizardsService
   SELECT_FIELDS_KEYS = []
   MULTIPLE_SELECT_FIELDS_KEYS = []
 
-  def initialize(
-    skip_path: nil,
-    source: nil,
-    errors: nil,
-    form_type: :user,
-    template_translation_path: nil,
-    action_path: nil,
-    previous_path: nil,
-    next_path: nil,
-    form_method: :post)
-
-    @source                    = source
-    @errors                    = errors
-    @form_type                 = form_type
-    @template_translation_path = template_translation_path
-    @action_path               = action_path
-    @previous_path             = previous_path
-    @next_path                 = next_path
-    @form_method               = form_method
-    @skip_path                 = skip_path
+  def initialize( **params )
+    self.source                    = params[:source]
+    self.errors                    = params[:errors]
+    self.form_type                 = params[:form_type] || :user
+    self.template_translation_path = params[:template_translation_path]
+    self.action_path               = params[:action_path]
+    self.previous_path             = params[:previous_path]
+    self.next_path                 = params[:next_path]
+    self.form_method               = params[:form_method] || :post
+    self.skip_path                 = params[:skip_path]
   end
 
   def form_params
@@ -34,20 +24,19 @@ class BaseFormWizardsService
 
   attr_accessor :skip_path, :source, :errors, :form_type, :template_translation_path, :action_path, :previous_path, :next_path, :form_method
 
+  def template_translations
+    I18n.t(template_translation_path).deep_symbolize_keys
+  end
+
   def placeholders_translations
-    template_translations[:form][:placeholders].present? ? {}.merge(template_translations[:form][:placeholders]) : {}
+    object = template_translations[:form][:placeholders]
+    object.present? ? {}.merge(object) : {}
   end
 
   def buttons_translation
     template_translations[:form][:buttons]
       .merge(previousPath: previous_path)
       .merge(nextPath: next_path) if template_translations.present?
-  end
-
-  def template_translations
-    translation = I18n.t(template_translation_path)
-
-    translation.deep_symbolize_keys if translation.present?
   end
 
   def build_form_params
@@ -80,32 +69,20 @@ class BaseFormWizardsService
     end
   end
 
-  def input_fields
-    self.class::INPUT_FIELDS_KEYS
-  end
-
-  def select_fields
-    self.class::SELECT_FIELDS_KEYS
-  end
-
-  def multiple_select_fields
-    self.class::MULTIPLE_SELECT_FIELDS_KEYS
-  end
-
   def input_fields_builder(*subform_names)
-    Hash[input_fields.collect do |key|
+    Hash[self.class::INPUT_FIELDS_KEYS.collect do |key|
       field_data_builder(key, name: name_builder(key, false, subform_names), label: labels[key], current_value: current_value(key))
     end]
   end
 
   def select_fields_builder(*subform_names)
-    Hash[select_fields.collect do |key|
+    Hash[self.class::SELECT_FIELDS_KEYS.collect do |key|
       field_data_builder(key, name: name_builder(key, false, subform_names), label: labels[key], values: self.send("#{key}_list"), current_value: current_value(key))
     end]
   end
 
   def multiple_select_fields_builder(*subform_names)
-    Hash[multiple_select_fields.collect { |key| field_data_builder(key, name: name_builder(key, true, subform_names), label:labels[key], values: self.send("#{key}_list"), current_value: current_value(key)) } ]
+    Hash[self.class::MULTIPLE_SELECT_FIELDS_KEYS.collect { |key| field_data_builder(key, name: name_builder(key, true, subform_names), label:labels[key], values: self.send("#{key}_list"), current_value: current_value(key)) } ]
   end
 
   def name_builder(name, multiple=nil, subforms_names)
@@ -114,7 +91,7 @@ class BaseFormWizardsService
   end
 
   def labels
-    template_translations[:form][:formFields] if template_translations.present?
+    template_translations[:form][:formFields]
   end
 
   def field_data_builder(key, **params)
@@ -125,7 +102,7 @@ class BaseFormWizardsService
     if source.present?
       begin
         source.send(key)
-      rescue NoMethodError => e
+      rescue NoMethodError => error
         self.send("#{key}_current_value")
       end
     else

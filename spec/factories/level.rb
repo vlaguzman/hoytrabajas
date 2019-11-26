@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :level do
-    description { 'High' }
+    sequence(:description) { |n| "level_#{n}" }
   end
 end

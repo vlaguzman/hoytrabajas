@@ -18,7 +18,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/company.rb",100,25,11,11,0
 "./app/models/contract_type.rb",100,3,2,2,0
 "./app/models/currency.rb",100,3,2,2,0
-"./app/models/curriculum_vitae.rb",100,27,19,19,0
+"./app/models/curriculum_vitae.rb",100,35,23,23,0
 "./app/models/curriculum_vitae_salary.rb",100,7,5,5,0
 "./app/models/curriculum_vitaes_educational_degrees.rb",100,4,3,3,0
 "./app/models/curriculum_vitaes_languages.rb",100,5,4,4,0
@@ -105,7 +105,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/users/wizards/step_two_presenter.rb",100,28,10,10,0
 "./app/presenters/users/wizards/step_zero_presenter.rb",100,7,3,3,0
 "./app/presenters/users_presenter.rb",100,22,8,8,0
-"./app/services/base_form_wizards_service.rb",100,136,62,62,0
+"./app/services/base_form_wizards_service.rb",100,113,56,56,0
 "./app/services/companies/first_offer/common_service.rb",100,11,5,5,0
 "./app/services/companies/first_offer/step_eight/form_params_service.rb",100,37,17,17,0
 "./app/services/companies/first_offer/step_five/form_params_service.rb",100,65,26,26,0
@@ -138,8 +138,8 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/users/wizards/step_one/form_params_service.rb",100,28,9,9,0
 "./app/services/users/wizards/step_one_service.rb",100,10,5,5,0
 "./app/services/users/wizards/step_seven/form_params_service.rb",100,13,5,5,0
-"./app/services/users/wizards/step_six/form_params_service.rb",100,38,6,6,0
-"./app/services/users/wizards/step_six_service.rb",100,50,10,10,0
+"./app/services/users/wizards/step_six/form_params_service.rb",100,65,21,21,0
+"./app/services/users/wizards/step_six_service.rb",100,54,18,18,0
 "./app/services/users/wizards/step_ten/form_params_service.rb",100,31,12,12,0
 "./app/services/users/wizards/step_ten_service.rb",100,20,10,10,0
 "./app/services/users/wizards/step_three/form_params_service.rb",100,44,18,18,0
@@ -147,4 +147,4 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/users/wizards/step_two/form_params_service.rb",100,31,11,11,0
 "./app/services/users/wizards/step_two_service.rb",100,9,4,4,0
 "./lib/dates_converter.rb",100,5,3,3,0
-"./lib/list_converter.rb",100,17,9,9,0
+"./lib/list_converter.rb",100,25,13,13,0

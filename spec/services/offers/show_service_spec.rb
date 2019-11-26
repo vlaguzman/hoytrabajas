@@ -30,6 +30,7 @@ RSpec.describe Offers::ShowService do
     address: "Calle Falsa 123 # 00 99",
     close_date: Date.new(2019, 7, 25),
     description: "endSint esse anim consequat commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaincididunt ut labore et dolore magna aliqua.",
+    job_categories: [create(:job_category, description: "Marketing")]
   )}
 
   let!(:job_aids_offers) { create(:job_aids_offers, offer: offer, job_aid: job_aid) }

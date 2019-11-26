@@ -14,4 +14,12 @@ module ListConverter
    end
   end
 
+  def self.parameters_list(array_objects=[], parameters=[])
+    array_objects.map do |object|
+      Hash[parameters.map do |parameter|
+        [parameter, object.send(parameter)]
+      end]
+    end
+  end
+
 end

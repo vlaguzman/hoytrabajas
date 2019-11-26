@@ -12,6 +12,8 @@ RSpec.describe CurriculumVitae, type: :model do
     it { should respond_to(:labor_disponibility) }
     it { should respond_to(:photo) }
     it { should respond_to(:visits) }
+    it { should respond_to(:strong_skills) }
+    it { should respond_to(:to_learn_skills) }
   end
 
   context "attachments" do
@@ -42,6 +44,16 @@ RSpec.describe CurriculumVitae, type: :model do
     let!(:cv_soft_skills) { create_list(:curriculum_vitaes_soft_skills, 5, curriculum_vitae_id: cv.id) }
     it "Should return the soft skills associated" do
       expect(cv.soft_skills.count).to eq(5)
+    end
+  end
+
+  describe "#to_learn_skills" do
+    let(:cv) { create(:curriculum_vitae) }
+
+    let!(:to_learn_skills_list) { create_list(:curriculum_vitaes_technical_skills, 5, curriculum_vitae_id: cv.id, step_up: true) }
+
+    it "should respond" do
+      expect(cv.to_learn_skills.count).to eq(5)
     end
   end
 end

@@ -27,20 +27,21 @@ class Users::Wizards::StepSixesController < ApplicationController
     params
     .require(:curriculum_vitae)
     .permit(
-        soft_skill_ids: [],
-        curriculum_vitaes_technical_skills:[
-          :job_category_id,
-          :technical_skill_id,
-          :level_id
-        ],
-        to_learn_skills:[
-          :job_category_id,
-          :technical_skill_id
-        ],
-        curriculum_vitaes_languages:[
-          :language_id,
-          :level_id
-        ]
+      soft_skill_ids: [],
+      technical_skills: [[
+        :job_category_id,
+        :technical_skill_id,
+        :level_id
+      ]]
+      #TODO oscar uncomment after tech skills
+      #to_learn_skills:[
+      #  :job_category_id,
+      #  :technical_skill_id
+      #],
+      #curriculum_vitaes_languages:[
+      #  :language_id,
+      #  :level_id
+      #]
     ).to_h
   end
 

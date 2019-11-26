@@ -17,6 +17,7 @@ RSpec.describe Users::Wizards::StepSixService do
         [
           create(:job_category, description: "Marketing").id,
           create(:job_category, description: "Desarrollo de Software").id,
+          create(:job_category, description: "Cocina").id
         ]
       end
 
@@ -24,6 +25,7 @@ RSpec.describe Users::Wizards::StepSixService do
         [
           create(:technical_skill, description: "SEO").id,
           create(:technical_skill, description: "Redes sociales").id,
+          create(:technical_skill, description: "Ruby On Rails").id
         ]
       end
 
@@ -36,22 +38,34 @@ RSpec.describe Users::Wizards::StepSixService do
 
       let!(:levels_ids) do
         [
+          create(:level, description: "bajo").id,
           create(:level, description: "medio").id,
-          create(:level, description: "avanzado").id,
+          create(:level, description: "avanzado").id
         ]
       end
 
       let(:params) do
         {
-          soft_skill_ids: [soft_skills_ids.join(",")]
+          soft_skill_ids: [soft_skills_ids.join(",")],
+          technical_skills: [
+            {
+              job_category_id: job_categories_ids[0],
+              technical_skill_id: technical_skills_ids[0],
+              level_id: levels_ids[0]
+            },
+            {
+              job_category_id: job_categories_ids[0],
+              technical_skill_id: technical_skills_ids[1],
+              level_id: levels_ids[2]
+            },
+            {
+              job_category_id: job_categories_ids[1],
+              technical_skill_id: technical_skills_ids[2],
+              level_id: levels_ids[2]
+            }
+          ]
 
           #TODO Oscar temporal comment untile complete de fields
-          #,
-          #curriculum_vitaes_technical_skills:{
-          #  job_category_id: JobCategory.find_by(description: "Marketing").id,
-          #  technical_skill_id:TechnicalSkill.find_by(description: "SEO").id,
-          #  level_id:Level.find_by(description: "avanzado").id
-          #},
           #to_learn_skills:{
           #  job_category_id: JobCategory.find_by(description: "Marketing").id,
           #  technical_skill_id: TechnicalSkill.find_by(description: "Redes sociales").id
@@ -68,13 +82,14 @@ RSpec.describe Users::Wizards::StepSixService do
         updated_cv = subject.(curriculum_vitae: new_curriculum_vitae, update_params: params)
 
         expect(updated_cv).to be_an_instance_of(CurriculumVitae)
-        expect(updated_cv.soft_skill_ids).to match_array(soft_skills_ids)
       end
 
       it "Should update the curriculum vitae" do
         updated_cv = subject.(curriculum_vitae: new_curriculum_vitae, update_params: params)
 
         expect(updated_cv.soft_skill_ids.count).to eq(2)
+        expect(updated_cv.soft_skill_ids).to match_array(soft_skills_ids)
+        expect(updated_cv.strong_skills.count).to eq(3)
 
         #TODO Oscar temporal comment untile complete de fields
         # expect(CurriculumVitaesLanguages.count).to eq(1)

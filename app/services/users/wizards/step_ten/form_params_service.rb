@@ -9,13 +9,6 @@ class Users::Wizards::StepTen::FormParamsService < BaseFormWizardsService
 
   private
 
-  def buttons_translation
-    buttons = template_translations[:form][:buttons]
-      .merge(previousPath: previous_path)
-      .merge(nextPath: next_path)
-      .tap { |object| object.merge!(addOther: object.delete(:add_other) ) } if template_translations.present?
-  end
-
   def input_fields_builder
     super('curriculum_vitae', 'acknowledgment')
   end

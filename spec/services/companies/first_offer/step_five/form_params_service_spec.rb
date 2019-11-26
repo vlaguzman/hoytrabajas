@@ -23,6 +23,7 @@ RSpec.describe Companies::FirstOffer::StepFive::FormParamsService do
             :to=>"Ej: 750.000"
           },
           :buttons=> {
+            addOther: nil,
             :submit=>"Siguiente",
             :next=>"Saltar",
             :previous=>"Regresar",

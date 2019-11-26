@@ -7,11 +7,11 @@ module ListConverter
   end
 
   def self.model_array_list(klass, symbol=:description, order_by: nil)
-   begin
-     klass.any? ? klass.all.order(order_by).map { |object| [object.send(symbol), object.id] } : []
-   rescue Exception => e
-     []
-   end
+    begin
+      klass.any? ? klass.all.order(order_by).map { |object| [object.send(symbol), object.id] } : []
+    rescue Exception => error
+      []
+    end
   end
 
   def self.parameters_list(array_objects=[], parameters=[])

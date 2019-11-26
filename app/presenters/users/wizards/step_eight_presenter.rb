@@ -1,15 +1,11 @@
-class Users::Wizards::StepEightPresenter < ApplicationPresenter
+class Users::Wizards::StepEightPresenter < Users::WizardsPresenter
 
   def form_information
     Users::Wizards::StepEight::FormParamsService.new(
-      errors: source.errors,
-      template_translation_path: 'users.wizards.step_eights.show',
-      action_path: users_wizards_step_eight_path,
-      previous_path: users_wizards_step_six_path,
-      next_path: users_wizards_step_nine_path,
-      form_method: :put
+      service_params
     ).form_params
   end
+
 
   def registered_experience
     cv = source.curriculum_vitae
@@ -22,12 +18,19 @@ class Users::Wizards::StepEightPresenter < ApplicationPresenter
 
   def registered_experience_message
     count = registered_experience.count
-    if count >= 1
-      "Llevas #{count} registro(s) de experiencia laboral"
-    end
+    "Llevas #{count} registro(s) de experiencia laboral" if count > 0
   end
 
   private
+
+  def service_params
+    super(
+      template_translation_path: 'users.wizards.step_eights.show',
+      action_path: users_wizards_step_eight_path,
+      previous_path: users_wizards_step_six_path,
+      next_path: users_wizards_step_nine_path
+    )
+  end
 
   def users_wizards_step_nine_path
     rails_routes.users_wizards_step_nine_path

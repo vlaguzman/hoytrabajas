@@ -27,6 +27,7 @@ RSpec.describe BaseFormWizardsService do
           :subtitle=>"Brinda a las empresas información valiosa sobre ti.",
           :form=>{
             :buttons=>{
+              addOther: nil,
               :nextPath=>"users/wizards/step_three",
               :previousPath=>"users/wizards/step_one",
               :submit=>"Siguiente",

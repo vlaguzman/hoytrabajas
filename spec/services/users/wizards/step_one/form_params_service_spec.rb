@@ -36,6 +36,7 @@ RSpec.describe Users::Wizards::StepOne::FormParamsService do
         subtitle: "Brinda a las empresas información valiosa sobre ti.",
         form: {
           buttons: {
+            addOther: nil,
             submit: 'Siguiente',
             previous: 'Regresar',
             next: 'Saltar',

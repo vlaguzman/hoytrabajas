@@ -2,13 +2,13 @@ require 'rails_helper'
 
 RSpec.describe Companies::FirstOffer::CommonService do
 
-  describe "#update_offer" do
+  describe "#update_source" do
     let(:offer) { create(:offer) }
 
     it "should return expected object" do
       expected_object = { status: :ok, data: offer }
 
-      expect(subject.update_offer(offer)).to eq(expected_object)
+      expect(subject.update_source(offer)).to eq(expected_object)
     end
 
     context "When a param is invalid" do
@@ -21,7 +21,7 @@ RSpec.describe Companies::FirstOffer::CommonService do
       it "Should return expeted object with status error" do
         expected_object = { status: :error, data: offer }
 
-        expect(subject.update_offer(offer, update_param)).to eq(expected_object)
+        expect(subject.update_source(offer, update_param)).to eq(expected_object)
       end
     end
   end

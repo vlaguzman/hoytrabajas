@@ -12,8 +12,8 @@ class Users::Wizards::StepNinePresenter < ApplicationPresenter
   end
 
   def registered_studies
-    cv_id = source.curriculum_vitae.id
-    EducationalLevel.where(curriculum_vitae_id: cv_id).map { |study| [study.degree] }
+    educational_levels = source.curriculum_vitae.educational_levels
+    educational_levels.map { |study| [study.degree] }
   end
 
   def have_studies?
@@ -22,9 +22,7 @@ class Users::Wizards::StepNinePresenter < ApplicationPresenter
 
   def registered_studies_message
     count = registered_studies.count
-    if count >= 1
-      "Llevas #{count} registro(s) de informacion academica"
-    end
+    "Llevas #{count} registro(s) de informacion academica" if count > 0
   end
 
   private

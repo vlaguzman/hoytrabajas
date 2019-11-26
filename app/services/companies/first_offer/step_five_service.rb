@@ -10,7 +10,7 @@ module Companies::FirstOffer::StepFiveService
     create_associations(offer, params)
     update_params = clean_params(params)
 
-    Companies::FirstOffer::CommonService.update_offer(offer, update_params)
+    Companies::FirstOffer::CommonService.update_source(offer, update_params)
   end
 
   def self.create_associations(offer, params)

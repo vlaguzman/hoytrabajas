@@ -24,6 +24,7 @@ RSpec.describe Users::Wizards::StepFive::FormParamsService do
         subtitle: 'Brinda a las empresas información valiosa sobre ti.',
         form: {
           buttons: {
+            addOther: nil,
             submit: 'Siguiente',
             next: 'Saltar',
             previous: 'Regresar',

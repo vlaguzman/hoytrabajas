@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe "offers/show" do
+  let(:user) { create(:user) }
   let(:job_category) { create(:job_category, description: "sales") }
   let(:job_category_b) { create(:job_category, description: "marketing") }
   let!(:show_offer) { create(:offer, job_categories: [job_category, job_category_b]) }
-  let!(:user) { create(:user) }
 
   context "the offer has all information" do
     it "should render offers show template with all data" do

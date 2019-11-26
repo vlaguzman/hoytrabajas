@@ -16,7 +16,7 @@ class Company < ApplicationRecord
 
   has_one_attached :logo
 
-  delegate :description, to: :employees_range, prefix: :employees_range
+  delegate :description, to: :employees_range, prefix: :employees_range, allow_nil: true
 
   def after_confirmation
     self.update_attribute(:confirmed_at, DateTime.now)

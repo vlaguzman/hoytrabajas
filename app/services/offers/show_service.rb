@@ -1,6 +1,6 @@
 # The Offers::ShowService Class do build the hash  with the data used in offer/show template
 class Offers::ShowService < Offers::ViewsService
- 
+
   def initialize(offer, current_user)
     @offer = offer
     @current_user = current_user

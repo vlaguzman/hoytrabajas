@@ -454,7 +454,7 @@ const DetallePage = ({
                 alt="address"
               /> */}
               {offer.address != null && OfferAddressBlock(offer)}
-              {offer.company.employees_range != null && CompanyEmployeesRangeBlock(translationOffer, offer.company)}
+              {offer.company.employees_range.description != null && CompanyEmployeesRangeBlock(translationOffer, offer.company)}
               {/*
                  TO-DO Vlado: add the link
               <Row className="justify-content-between">

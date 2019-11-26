@@ -30,66 +30,10 @@ const StyledCol = styled(Col)`
 `
 const FormFields = props => {
   const { formFields } = props
-  const { soft_skill_ids = null } = formFields
-
-  const tecnical_skills_example = {
-    name: 'technical_skills',
-    form_keys: ['curriculum_vitae', 'tecnical_sills'],
-    field_keys: ['job_category_id', 'technical_skill_id', 'level_id'],
-    main_label: 'Define técnicas de acuerdo a tu perfil*',
-    list_values: {
-      job_category_id: [
-        { description: 'job 1', id: 1 },
-        { description: 'job 2', id: 2 },
-        { description: 'job 3', id: 3 }
-      ],
-      technical_skill_id: [
-        { description: 'techskil 1', id: 1 },
-        { description: 'techskil 2', id: 2 },
-        { description: 'techskil 3', id: 3 }
-      ],
-      level_id: [
-        { description: 'levl 1', id: 1 },
-        { description: 'levl 2', id: 2 },
-        { description: 'levl 3', id: 3 }
-      ]
-    },
-    current_values: [
-      {
-        job_category_id: {
-          current_value: 1
-        },
-        technical_skill_id: {
-          current_value: 1
-        },
-        level_id: {
-          current_value: 1
-        }
-      },
-      {
-        job_category_id: {
-          current_value: 1
-        },
-        technical_skill_id: {
-          current_value: 2
-        },
-        level_id: {
-          current_value: 3
-        }
-      },
-      {
-        job_category_id: {
-          current_value: 3
-        },
-        technical_skill_id: {
-          current_value: 3
-        },
-        level_id: {
-          current_value: 3
-        }
-      }
-    ]
-  }
+  const {
+    soft_skill_ids = null,
+    technical_skills = null
+  } = formFields
 
   const setDefaultRowIDs = defaultValue => {
     if (defaultValue && defaultValue.length > 0) {
@@ -100,23 +44,27 @@ const FormFields = props => {
     }
     return [
       {
-        rowID: uuidv4()
+        rowID: uuidv4(),
+        job_category_id: '',
+        technical_skill_id: '',
+        level_id: ''
       }
     ]
   }
 
   const [formValues, setFormValues] = useState({
     [soft_skill_ids.name]: soft_skill_ids.current_value || [],
-    [tecnical_skills_example.name]:
-      setDefaultRowIDs(tecnical_skills_example.current_values) || []
+    [technical_skills.name]: setDefaultRowIDs(technical_skills.current_values)
   })
+
+  console.log(formValues[technical_skills.name])
 
   const addRow = ({ rowName }) => {
     const newTechnicalSkill = {
       rowID: uuidv4(),
-      job_category_id: { current_value: null },
-      technical_skill_id: { current_value: null },
-      level_id: { current_value: null }
+      job_category_id: '',
+      technical_skill_id: '',
+      level_id: ''
     }
     const merged = [...formValues[rowName], newTechnicalSkill]
     setFormValues(prevFormValues => ({ ...prevFormValues, [rowName]: merged }))
@@ -176,36 +124,37 @@ const FormFields = props => {
   const techicalSkillsRows = useMemo(
     () => (
       <Paper className="FormRowWrapper">
-        {formValues[tecnical_skills_example.name].map(
-          (technicalSkill, index) => (
+        {formValues[technical_skills.name].map(
+          (technicalSkillObject, index) => (
             <Col
-              key={technicalSkill.rowID}
+              key={technicalSkillObject.rowID}
               className={inputClassname}
               xs={12}
               style={{ margin: '20px 0', padding: '0 20px' }}
             >
               <>
-                {tecnical_skills_example.field_keys.map(fieldKey => (
+                { technical_skills.field_keys.map(fieldKey => (
                   <input
                     key={uuidv4()}
                     type="hidden"
                     name={railsFieldNameBuilder(
-                      tecnical_skills_example.form_keys,
+                      technical_skills.form_keys,
                       fieldKey,
                       index
                     )}
                     value={
-                      formValues[tecnical_skills_example.name][index][fieldKey]
-                        .current_value || ''
+                      (formValues[technical_skills.name].length > 0)
+                      ? formValues[technical_skills.name][index][fieldKey]
+                      : null
                     }
                   />
                 ))}
               </>
               <StyledRow style={{ height: '55px' }}>
                 <FormRow
-                  allRows={formValues[tecnical_skills_example.name]}
-                  rowName={tecnical_skills_example.name}
-                  currentRow={technicalSkill}
+                  allRows={formValues[technical_skills.name]}
+                  rowName={technical_skills.name}
+                  currentRow={technicalSkillObject}
                   addRow={addRow}
                   removeRow={removeRow}
                   updateAllRows={updateAllRows}
@@ -214,32 +163,24 @@ const FormFields = props => {
                     <>
                       <StyledCol xs={12} lg={4}>
                         <SelectChip
-                          name="select-job_category_id"
-                          inputValue={
-                            rowValue.job_category_id
-                              ? rowValue.job_category_id.current_value
-                              : ''
-                          }
+                          name="job_category_id"
+                          inputValue={rowValue.job_category_id}
                           handleChange={handleRowChanges}
                           handleDeleteChip={handleRowDeleteChip}
                           selectOptions={
-                            tecnical_skills_example.list_values.job_category_id
+                            technical_skills.list_values.job_category_id
                           }
                         />
                       </StyledCol>
 
                       <StyledCol xs={12} lg={3}>
                         <SelectChip
-                          name="select-technical_skill_id"
-                          inputValue={
-                            rowValue.technical_skill_id
-                              ? rowValue.technical_skill_id.current_value
-                              : ''
-                          }
+                          name="technical_skill_id"
+                          inputValue={rowValue.technical_skill_id}
                           handleChange={handleRowChanges}
                           handleDeleteChip={handleRowDeleteChip}
                           selectOptions={
-                            tecnical_skills_example.list_values
+                            technical_skills.list_values
                               .technical_skill_id
                           }
                         />
@@ -247,16 +188,12 @@ const FormFields = props => {
 
                       <StyledCol xs={12} lg={3}>
                         <SelectChip
-                          name="select-level_id"
-                          inputValue={
-                            rowValue.level_id
-                              ? rowValue.level_id.current_value
-                              : ''
-                          }
+                          name="level_id"
+                          inputValue={rowValue.level_id}
                           handleChange={handleRowChanges}
                           handleDeleteChip={handleRowDeleteChip}
                           selectOptions={
-                            tecnical_skills_example.list_values.level_id
+                            technical_skills.list_values.level_id
                           }
                         />
                       </StyledCol>
@@ -269,12 +206,13 @@ const FormFields = props => {
         )}
       </Paper>
     ),
-    [formValues[tecnical_skills_example.name]]
+    [formValues[technical_skills.name]]
   )
 
   return (
     <Row className="HT__FormGenerator">
       {softSkillIDsField}
+      <label>{technical_skills.main_label}</label>
       {techicalSkillsRows}
     </Row>
   )
@@ -284,13 +222,7 @@ export default FormFields
 
 FormFields.propTypes = {
   formFields: PropTypes.shape({
-    soft_skill_ids: PropTypes.object
-    // range_type: PropTypes.object,
-    // from: PropTypes.object,
-    // to: PropTypes.object,
-    // currency_id: PropTypes.object,
-    // salary_period_id: PropTypes.object,
-    // available_work_day_ids: PropTypes.object,
-    // working_day_ids: PropTypes.object
+    soft_skill_ids: PropTypes.object,
+    tecnical_skills_example: PropTypes.object
   })
 }

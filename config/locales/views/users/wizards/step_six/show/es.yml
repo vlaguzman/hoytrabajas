@@ -18,3 +18,5 @@ es:
             placeholders:
               language_id: 'Selecciona el idioma'
               nivel_id: 'Nivel'
+          sub_forms:
+            technical_skils: 'Define técnicas de acuerdo a tu perfil*'

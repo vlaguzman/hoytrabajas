@@ -24,4 +24,8 @@ class CurriculumVitae < ApplicationRecord
 
   #delegates
   delegate :name, :email, to: :user, prefix: :user, allow_nil: true
+
+  def strong_skills
+    CurriculumVitaesTechnicalSkills.where(curriculum_vitae_id: self.id)
+  end
 end

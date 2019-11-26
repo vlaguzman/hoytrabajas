@@ -4,16 +4,6 @@ class BaseFormWizardsService
   SELECT_FIELDS_KEYS = []
   MULTIPLE_SELECT_FIELDS_KEYS = []
 
-  #skip_path: nil,
-  #source: nil,
-  #errors: nil,
-  #form_type: :user,
-  #template_translation_path: nil,
-  #action_path: nil,
-  #previous_path: nil,
-  #next_path: nil,
-  #form_method: :post
-
   def initialize( **params )
     self.source                    = params[:source]
     self.errors                    = params[:errors]

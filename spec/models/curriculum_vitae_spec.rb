@@ -12,6 +12,7 @@ RSpec.describe CurriculumVitae, type: :model do
     it { should respond_to(:labor_disponibility) }
     it { should respond_to(:photo) }
     it { should respond_to(:visits) }
+    it { should respond_to(:strong_skills) }
   end
 
   context "attachments" do

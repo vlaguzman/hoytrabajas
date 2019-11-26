@@ -63,7 +63,6 @@ RSpec.describe ListConverter do
         expect(response).to match_array(expected_list)
       end
 
-
       let(:create_cities) do
         [
           create(:city, description: "Axioland"),
@@ -84,6 +83,34 @@ RSpec.describe ListConverter do
         expect(response[2][:description]).to eq("Someville")
         expect(response.last[:description]).to eq("Zapapolis")
       end
+    end
+  end
+
+  describe "#parameters_list" do
+    it { should respond_to(:parameters_list) }
+
+    it "should return empty hash" do
+      expect(subject.parameters_list).to eq([])
+    end
+
+    context "When the params are passed" do
+      let(:cv) { create(:curriculum_vitae) }
+      let!(:create_strong_skills) { create_list(:curriculum_vitaes_technical_skills, 5, curriculum_vitae: cv) }
+
+      it "should return expected object" do
+        response = subject.parameters_list(cv.strong_skills, [:job_category_id, :technical_skill_id, :level_id])
+
+        expected_array = [
+          {:job_category_id=>5, :technical_skill_id=>1, :level_id=>1},
+          {:job_category_id=>6, :technical_skill_id=>2, :level_id=>2},
+          {:job_category_id=>7, :technical_skill_id=>3, :level_id=>3},
+          {:job_category_id=>8, :technical_skill_id=>4, :level_id=>4},
+          {:job_category_id=>9, :technical_skill_id=>5, :level_id=>5}
+        ]
+
+        expect(response).to match_array(expected_array)
+      end
+
     end
   end
 

@@ -30,6 +30,7 @@ import CarouselRow from './components/carousel/carousel'
 import ListaCategorias from './components/categories_components/categoriesList'
 import dialogState from '../../../../hooks/dialogState'
 import RctCollapsibleCard from '../../../../components/Reactify/CollapsibleCard'
+import { removeItemFromArr } from '../../../../../utils/array_functions'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />
@@ -73,10 +74,19 @@ const FilterForm = ({ common, button1, fields1 }) => {
 
   const { value: state, toggleState } = dialogState({ open: false })
   const [open, setOpen] = React.useState(false)
-  const [idJobCategory, setIdJobCategory] = useState(null)
+  const [idJobCategory, setIdJobCategory] = useState([])
+  const [valueFilterCategories, setValueFilterCategories] = useState(null)
 
-  function handleJobCategory(idJobCategoryValue) {
-    setIdJobCategory(idJobCategoryValue)
+  function handleJobCategory(idJobCategoryValue, selected) {
+    let idsCategories = idJobCategory
+    if (!selected) {
+      idsCategories.push(idJobCategoryValue)
+      setIdJobCategory(idsCategories)
+    }else {
+      removeItemFromArr(idsCategories, idJobCategoryValue)
+      setIdJobCategory(idsCategories)
+    }
+    setValueFilterCategories(idJobCategory.join())
   }
 
   function handleClickOpen() {
@@ -422,7 +432,7 @@ const FilterForm = ({ common, button1, fields1 }) => {
               </Col>
             </Dialog>
           </Col>
-          <input type="hidden" name='q[job_category_ids_cont][]' value={idJobCategory}/>
+          <input type="hidden" name='q[job_category_ids]' value={valueFilterCategories} multiple/>
         </Form>
         <Collapse isOpen={state.open}>
           <CarouselRow items={common} handleJobCategory={handleJobCategory}/>

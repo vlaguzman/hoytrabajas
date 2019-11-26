@@ -42,10 +42,10 @@ class Home::HomePresenter < ApplicationPresenter
   def categories
     categories = JobCategory.all.map do |category|
       [
-        ["img", 'icon-bar.svg'],
+        ["img", "icon_job_category_id_#{category.id}.png"],
         ["id", category.id],
         ["name", category.description],
-        ["quantity", category.offers.count]
+        ["quantity", category.offers.active.count]
       ].to_h
     end
     {

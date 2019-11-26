@@ -1,0 +1,74 @@
+/*########################################################################
+# NEW PASSWORD
+########################################################################*/
+
+
+.background {
+  background-color: #ffffff;
+}
+
+.container-big{
+    padding: 120px 0px 267px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 466px;
+  
+    .container-box{
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      box-shadow: 0 3px 15px 2px rgba(58, 58, 58, 0.1);
+      background-color: #fff;
+      border-radius: 8px;
+      text-align: center;
+      position: relative;
+  
+      h2 {
+        font-weight: normal;
+        font-size: 22px;
+        color: #0b5aa0;
+        margin-top: 2rem;
+      }
+  
+      p {
+        margin: 0.5rem 1rem;
+        font-size: 16px;
+        color: #647a99;
+      }
+  
+      input {
+        border-radius: 4px;
+        border: 1px solid #d5dbe3;
+        width: 80%;
+        margin: 1rem;
+      }
+  
+      .actions{
+        border: none;
+        background: #ff7b00;
+        align-self:center;
+        padding: 0.5rem;
+        margin: 1rem 3rem;
+        border-radius: 24.7px;
+      }
+  
+      button{
+        border: none;
+        background: #ff7b00;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 1rem;
+        color: #ffffff;
+      }
+  
+      .divider{
+        margin: 1rem;
+      }
+  
+      a {
+        padding: 18px 49px;
+        font-size: 14px;
+        color: #0b5aa0;
+      }
+    }
+}

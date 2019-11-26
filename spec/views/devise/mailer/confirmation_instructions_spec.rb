@@ -6,12 +6,12 @@ RSpec.describe "devise/mailer/confirmation_instructions" do
     let(:user) {create(:user, email: "soypepito@email.com")}
 
     it "Should render the body in html" do
-    assign(:resource, create(:user, email: "soypepito@email.com"))
-    render
+      assign(:resource, create(:user, email: "soypepito@email.com"))
+      render
 
-    expect(rendered).to match(/Bienvenido/)
+      expect(rendered).to match(/Bienvenido/)
 
-    expect(rendered).to match(/Confirmar email/)
+      expect(rendered).to match(/Confirmar email/)
 
     end
 

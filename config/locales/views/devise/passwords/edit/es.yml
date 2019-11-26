@@ -1,0 +1,11 @@
+es:
+  devise:
+    passwords:
+      edit:
+        title: '¡Crea tu contraseña!'
+        description: 'No olvides crear una contraseña fuerte y no olvides anotarla en un lugar seguro.'
+        textbox:
+          password: 'Contraseña'
+          password_confirmation: 'Confirmar contraseña'
+        button: 'CREAR CONTRASEÑA'
+        link: '< Regresar a hoytrabajas.com'

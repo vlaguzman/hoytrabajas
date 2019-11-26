@@ -39,6 +39,9 @@
 @import 'themify-icons/themify-icons.css';
 
 // COMPONENTS
+@import 'components/devise/passwords/new';
+@import 'components/devise/passwords/edit';
+
 @import 'components/users/dashboard';
 
 @import 'components/users/wizards/step_zero';

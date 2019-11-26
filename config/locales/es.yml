@@ -88,12 +88,16 @@ es:
               blank: "Por favor ingrese un correo electrónico, este campo no puede estar en blanco" 
             password:
               blank: "Por favor ingrese el password, este campo no puede estar en blanco"
+            password_confirmation:
+              confirmation: "Su contraseña no coincide con la confirmación, por favor haga que su contraseña se igual a la verificación"
         user:
           attributes:
             email:
               blank: "Por favor ingrese un correo electrónico, este campo no puede estar en blanco" 
             password:
               blank: "Por favor ingrese el password, este campo no puede estar en blanco"
+            password_confirmation:
+              confirmation: "Su contraseña no coincide con la confirmación, por favor haga que su contraseña se igual a la verificación"
         offer:
           attributes:
             company:

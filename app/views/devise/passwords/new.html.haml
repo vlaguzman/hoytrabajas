@@ -5,10 +5,10 @@
         %h2= t('devise.passwords.new.title')
         %br/
         %p= t('devise.passwords.new.description') 
-        = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+        = form_with(id: "new_#{resource_name}", class: "new_#{resource_name}", url: password_path(resource_name), scope: :post ) do
           = render "devise/shared/error_messages", resource: resource
           .field
-            = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: t('devise.passwords.new.textbox')
+            = email_field(resource_name, :email, autofocus: true, autocomplete: "email", placeholder: t('devise.passwords.new.textbox'))
           .actions
             %button{type: "submit"}= t('devise.passwords.new.button') 
         .divider

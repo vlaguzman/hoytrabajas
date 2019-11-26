@@ -53,6 +53,7 @@ app/views/devise/mailer/reset_password_instructions.html.haml:694:              
 app/views/devise/mailer/reset_password_instructions.html.haml:712:                                /[if mso]
 app/views/devise/mailer/reset_password_instructions.html.haml:714:                                /[if mso]
 app/views/devise/mailer/reset_password_instructions.html.haml:717:                  /[if (gte mso 9)|(IE)]
+app/views/devise/passwords/edit.html.haml:12:            - if @minimum_password_length
 app/views/devise/registrations/edit.html.haml:14:    %i (leave blank if you don't want to change it)
 app/views/devise/registrations/edit.html.haml:17:    - if @minimum_password_length
 app/views/devise/registrations/edit.html.haml:9:  - if devise_mapping.confirmable? && resource.pending_reconfirmation?

@@ -19,7 +19,8 @@ class Offers::ShowService < Offers::ViewsService
       working_days:         working_days_list,
       job_aids:             job_aids_list,
       is_applied:           query_applied,
-      job_category:         offer.job_categories.first.description
+      job_categories:       job_categories_list,
+      total_applications:   AppliedOffer.where(offer_id: offer.id).count 
     })
   end
 
@@ -57,6 +58,10 @@ class Offers::ShowService < Offers::ViewsService
 
   def job_aids_list
     JobAidsOffers.where(offer_id: offer.id).map { |object| object.job_aid.description }
+  end
+  
+  def job_categories_list
+    offer.job_categories.map { |object| object.description } 
   end
 
   def company_details

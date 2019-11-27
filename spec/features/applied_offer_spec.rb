@@ -13,10 +13,12 @@ RSpec.describe "User applied offer", type: :feature do
 
       expect(page).to have_content("Test sebas")
       expect(page).to have_button('Aplicar a esta oferta')
+      expect(page).to have_content("0 aplicaciones")
 
       click_button 'Aplicar a esta oferta'
 
       expect(page).to have_button('Aplicado')
+      expect(page).to have_content("1 aplicaciones")
     end
 
     scenario "When the user is not logged in, should ask you to register", js: true do

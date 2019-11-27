@@ -73,6 +73,7 @@ RSpec.describe Offers::ShowService do
         job_category_image: "https://img-categorias-ht.s3.amazonaws.com/cat-card-gestion-administrativa2x.png",
         is_applied: false,
         description: "endSint esse anim consequat commodo. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliquaincididunt ut labore et dolore magna aliqua.",
+        total_applications: 0,
         vacancies_quantity: 10,
         required_experience: true,
         sex: {
@@ -108,7 +109,7 @@ RSpec.describe Offers::ShowService do
         available_work_days:["Lunes a Viernes", "Sabado"],
         working_days: [ "Mañana 7 a 1pm", "Tarde 2pm a 7pm" ],
         job_aids: ["Auxilio de Transporte"],
-        job_category: "Marketing",
+        job_categories: ["Marketing"],
         company:{
           name: "Verdelógico S.A.S",
           description: "Sector de comunicaciones",

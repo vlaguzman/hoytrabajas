@@ -25,4 +25,15 @@ RSpec.describe Home::HomePresenter do
     end
   end
 
+  describe "#categories" do
+    let!(:offer) { create(:offer) }
+
+    it "should return a array" do
+      response = subject.categories
+
+      expect(response.count).to eq(1)
+      expect(response).to be_an_instance_of(Hash)
+    end
+  end
+
 end

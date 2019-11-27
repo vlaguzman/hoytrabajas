@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 
   def redirect_to_offer_step(step, source)
     if source[:status].eql?(:ok)
-      redirect_to self.send("companies_first_offer_step_#{step}_path")
+      redirect_to self.send("companies_first_offer_step_#{step}_path", offer_id: source[:data].id)
     else
       offer_presenter(source[:data])
       render 'show'

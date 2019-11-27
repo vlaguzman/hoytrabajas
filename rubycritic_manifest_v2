@@ -44,7 +44,7 @@ A         • Companies::FirstOffer::StepZerosController          3       3.24  
 A         • Companies::RegistrationsController                  6       1.0        0           2
 A         • CompaniesController                                 7       3.4        0           1
 A         • CompaniesUsers                                      1       0.0        0           1
-A         • Company                                             14      2.2        0           1
+A         • Company                                             15      2.2        0           1
 A         • ContractType                                        1       0.0        0           1
 A         • Currency                                            1       0.0        0           1
 A         • CurriculumVitae                                     26      4.4        0           1
@@ -185,7 +185,7 @@ B         • Companies::FirstOffer::StepOnesController           9       20.32 
 B         • Companies::FirstOffer::StepSixService               3       28.8       18          4
 B         • Companies::FirstOffer::StepTwoPresenter             14      17.4       26          2
 B         • Companies::FirstOffer::StepTwosController           10      20.32      27          2
-B         • Offers::ShowService                                 15      81.79      0           1
+B         • Offers::ShowService                                 17      87.8       0           1
 B         • Offers::ViewsService                                11      62.1       0           4
 C         • BaseFormWizardsService                              25      135.64     0           1
 C         • Companies                                           5       16.61      32          2

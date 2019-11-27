@@ -123,7 +123,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/companies/first_offer/step_two_service.rb",100,6,3,3,0
 "./app/services/offers/applied_offer_service.rb",100,15,6,6,0
 "./app/services/offers/index_service.rb",100,18,7,7,0
-"./app/services/offers/show_service.rb",100,71,25,25,0
+"./app/services/offers/show_service.rb",100,76,27,27,0
 "./app/services/offers/views_service.rb",100,68,27,27,0
 "./app/services/offers_service.rb",100,30,14,14,0
 "./app/services/users/wizard_service.rb",100,40,18,18,0

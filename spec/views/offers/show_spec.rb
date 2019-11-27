@@ -17,5 +17,5 @@ RSpec.describe "offers/show" do
       expect(rendered).to match(/marketing/)
     end
   end
-  
+
 end

@@ -13,9 +13,11 @@ RSpec.describe Home::HomePresenter do
   end
 
   describe "#offers" do
-    let!(:offer) { create(:offer) }
+    let(:create_offer) { create(:offer) }
 
     it "should return a array" do
+      create_offer
+
       response = subject.offers
 
       expect(response.count).to eq(1)

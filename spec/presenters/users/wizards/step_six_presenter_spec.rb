@@ -1,8 +1,8 @@
 require "rails_helper"
 
 RSpec.describe Users::Wizards::StepSixPresenter do
-  let(:candidate) { create(:user, :first_time_candidate) }
-  let(:subject) { described_class.new(candidate) }
+  let(:cv) { create(:curriculum_vitae) }
+  let(:subject) { described_class.new(cv) }
 
   describe '#form_information' do
     it 'should return a object used by the react component to build it' do

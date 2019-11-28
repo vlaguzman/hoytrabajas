@@ -20,7 +20,7 @@ class Users::Wizards::StepSixesController < ApplicationController
   private
 
   def user_presenter(user: current_user)
-    @user = Users::Wizards::StepSixPresenter.new(user)
+    @user = Users::Wizards::StepSixPresenter.new(user.curriculum_vitae)
   end
 
   def step_six_params
@@ -32,12 +32,12 @@ class Users::Wizards::StepSixesController < ApplicationController
         :job_category_id,
         :technical_skill_id,
         :level_id
-      ]]
-      #TODO oscar uncomment after tech skills
-      #to_learn_skills:[
-      #  :job_category_id,
-      #  :technical_skill_id
-      #],
+      ]],
+      to_learn_skills:[[
+        :job_category_id,
+        :technical_skill_id
+      ]],
+        #TODO oscar uncomment after tech skills
       #curriculum_vitaes_languages:[
       #  :language_id,
       #  :level_id

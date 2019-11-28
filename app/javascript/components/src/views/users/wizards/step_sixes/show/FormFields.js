@@ -7,6 +7,8 @@ import styled from 'styled-components'
 
 import SelectChip from '../../../../../components/FormsLayout/Fields/SelectChip'
 import FormRow from '../../../../../components/FormsLayout/Fields/FormRow'
+import FormLabel from '../../../../../components/FormsLayout/FormLabel'
+
 import {
   handleDeleteChip,
   handleChange
@@ -30,7 +32,11 @@ const StyledCol = styled(Col)`
 `
 const FormFields = props => {
   const { formFields } = props
-  const { soft_skill_ids = null, technical_skills = null } = formFields
+  const {
+    soft_skill_ids = null,
+    technical_skills = null,
+    to_learn_skills = null
+  } = formFields
 
   const setDefaultRowIDs = defaultValue => {
     if (defaultValue && defaultValue.length > 0) {
@@ -51,7 +57,10 @@ const FormFields = props => {
 
   const [formValues, setFormValues] = useState({
     [soft_skill_ids.name]: soft_skill_ids.current_value || [],
-    [technical_skills.name]: setDefaultRowIDs(technical_skills.current_values)
+    [technical_skills.name]:
+      setDefaultRowIDs(technical_skills.current_values) || [],
+    [to_learn_skills.name]:
+      setDefaultRowIDs(to_learn_skills.current_values) || []
   })
 
   const addRow = ({ rowName }) => {
@@ -121,27 +130,122 @@ const FormFields = props => {
 
   const techicalSkillsRows = useMemo(
     () => (
-      <Paper className="FormRowWrapper">
-        {formValues[technical_skills.name].map(
-          (technicalSkillObject, index) => (
+      <>
+        {technical_skills.main_label && (
+          <FormLabel>{technical_skills.main_label}</FormLabel>
+        )}
+        <Paper className="FormRowWrapper">
+          {formValues[technical_skills.name].map(
+            (technicalSkillObject, index) => (
+              <Col
+                key={technicalSkillObject.rowID}
+                className={inputClassname}
+                xs={12}
+                style={{ margin: '20px 0', padding: '0 20px' }}
+              >
+                <>
+                  {technical_skills.field_keys.map(fieldKey => (
+                    <input
+                      key={uuidv4()}
+                      type="hidden"
+                      name={railsFieldNameBuilder(
+                        technical_skills.form_keys,
+                        fieldKey
+                      )}
+                      value={
+                        formValues[technical_skills.name].length > 0
+                          ? formValues[technical_skills.name][index][fieldKey]
+                          : null
+                      }
+                    />
+                  ))}
+                </>
+                <StyledRow style={{ height: '55px' }}>
+                  <FormRow
+                    allRows={formValues[technical_skills.name]}
+                    rowName={technical_skills.name}
+                    currentRow={technicalSkillObject}
+                    addRow={addRow}
+                    removeRow={removeRow}
+                    updateAllRows={updateAllRows}
+                  >
+                    {({ rowValue, handleRowChanges, handleRowDeleteChip }) => (
+                      <>
+                        <StyledCol xs={12} lg={4}>
+                          <SelectChip
+                            name="job_category_id"
+                            inputValue={rowValue.job_category_id}
+                            handleChange={handleRowChanges}
+                            handleDeleteChip={handleRowDeleteChip}
+                            selectOptions={
+                              technical_skills.list_values.job_category_id
+                            }
+                          />
+                        </StyledCol>
+
+                        <StyledCol xs={12} lg={3}>
+                          <SelectChip
+                            name="technical_skill_id"
+                            inputValue={rowValue.technical_skill_id}
+                            handleChange={handleRowChanges}
+                            handleDeleteChip={handleRowDeleteChip}
+                            selectOptions={
+                              technical_skills.list_values.technical_skill_id
+                            }
+                          />
+                        </StyledCol>
+
+                        <StyledCol xs={12} lg={3}>
+                          <SelectChip
+                            name="level_id"
+                            inputValue={rowValue.level_id}
+                            handleChange={handleRowChanges}
+                            handleDeleteChip={handleRowDeleteChip}
+                            selectOptions={
+                              technical_skills.list_values.level_id
+                            }
+                          />
+                        </StyledCol>
+                      </>
+                    )}
+                  </FormRow>
+                </StyledRow>
+              </Col>
+            )
+          )}
+        </Paper>
+      </>
+    ),
+    [formValues[technical_skills.name]]
+  )
+
+  const toLearnSkillsRows = useMemo(
+    () => (
+      <>
+        {to_learn_skills.main_label && (
+          <FormLabel>{to_learn_skills.main_label}</FormLabel>
+        )}
+
+        <Paper className="FormRowWrapper">
+          {formValues[to_learn_skills.name].map((toLearnSkillObject, index) => (
             <Col
-              key={technicalSkillObject.rowID}
+              key={toLearnSkillObject.rowID}
               className={inputClassname}
               xs={12}
               style={{ margin: '20px 0', padding: '0 20px' }}
             >
               <>
-                {technical_skills.field_keys.map(fieldKey => (
+                {to_learn_skills.field_keys.map(fieldKey => (
                   <input
                     key={uuidv4()}
                     type="hidden"
                     name={railsFieldNameBuilder(
-                      technical_skills.form_keys,
+                      to_learn_skills.form_keys,
                       fieldKey
                     )}
                     value={
-                      formValues[technical_skills.name].length > 0
-                        ? formValues[technical_skills.name][index][fieldKey]
+                      formValues[to_learn_skills.name].length > 0
+                        ? formValues[to_learn_skills.name][index][fieldKey]
                         : null
                     }
                   />
@@ -149,9 +253,9 @@ const FormFields = props => {
               </>
               <StyledRow style={{ height: '55px' }}>
                 <FormRow
-                  allRows={formValues[technical_skills.name]}
-                  rowName={technical_skills.name}
-                  currentRow={technicalSkillObject}
+                  allRows={formValues[to_learn_skills.name]}
+                  rowName={to_learn_skills.name}
+                  currentRow={toLearnSkillObject}
                   addRow={addRow}
                   removeRow={removeRow}
                   updateAllRows={updateAllRows}
@@ -165,30 +269,20 @@ const FormFields = props => {
                           handleChange={handleRowChanges}
                           handleDeleteChip={handleRowDeleteChip}
                           selectOptions={
-                            technical_skills.list_values.job_category_id
+                            to_learn_skills.list_values.job_category_id
                           }
                         />
                       </StyledCol>
 
-                      <StyledCol xs={12} lg={3}>
+                      <StyledCol xs={12} lg={6}>
                         <SelectChip
                           name="technical_skill_id"
                           inputValue={rowValue.technical_skill_id}
                           handleChange={handleRowChanges}
                           handleDeleteChip={handleRowDeleteChip}
                           selectOptions={
-                            technical_skills.list_values.technical_skill_id
+                            to_learn_skills.list_values.technical_skill_id
                           }
-                        />
-                      </StyledCol>
-
-                      <StyledCol xs={12} lg={3}>
-                        <SelectChip
-                          name="level_id"
-                          inputValue={rowValue.level_id}
-                          handleChange={handleRowChanges}
-                          handleDeleteChip={handleRowDeleteChip}
-                          selectOptions={technical_skills.list_values.level_id}
                         />
                       </StyledCol>
                     </>
@@ -196,17 +290,18 @@ const FormFields = props => {
                 </FormRow>
               </StyledRow>
             </Col>
-          )
-        )}
-      </Paper>
+          ))}
+        </Paper>
+      </>
     ),
-    [formValues[technical_skills.name]]
+    [formValues[to_learn_skills.name]]
   )
 
   return (
     <Row className="HT__FormGenerator">
       {softSkillIDsField}
       {techicalSkillsRows}
+      {toLearnSkillsRows}
     </Row>
   )
 }
@@ -216,6 +311,7 @@ export default FormFields
 FormFields.propTypes = {
   formFields: PropTypes.shape({
     soft_skill_ids: PropTypes.object,
-    technical_skills: PropTypes.object
+    technical_skills: PropTypes.object,
+    to_learn_skills: PropTypes.object
   })
 }

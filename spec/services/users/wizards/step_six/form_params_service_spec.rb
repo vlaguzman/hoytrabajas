@@ -25,7 +25,10 @@ RSpec.describe Users::Wizards::StepSix::FormParamsService do
       expected_object = {
         title: 'Déjanos conocer tus habilidades',
         subtitle: 'Brinda a las empresas información valiosa sobre ti.',
-        sub_forms: {technical_skils: "Define técnicas de acuerdo a tu perfil*"},
+        sub_forms: {
+          technical_skills: "Define técnicas de acuerdo a tu perfil*",
+          to_learn_skills: "Define qué habilidades te gustaría aprender o reforzar*"
+        },
         form: {
           buttons: {
             addOther: nil,
@@ -56,29 +59,20 @@ RSpec.describe Users::Wizards::StepSix::FormParamsService do
                 level_id: create_levels_list
               },
               current_values: []
-            }
+            },
+            to_learn_skills:{
+              name: :to_learn_skills,
+              form_keys: [:curriculum_vitae, :to_learn_skills],
+              field_keys: [:job_category_id, :technical_skill_id],
+              main_label: "Define qué habilidades te gustaría aprender o reforzar*",
+              list_values: {
+                job_category_id: create_job_category_list,
+                technical_skill_id: create_technical_skills_list
+              },
+              :current_values=>[]
+            },
 
             #TODO Oscar uncoment when the fields reade to be showed
-
-            #,
-            #job_category_id: {
-            #  name: 'curriculum_vitae[job_category_id]',
-            #  label: nil,
-            #  values: create_job_category_list,
-            #  current_value: ''
-            #},
-            #technical_skill_id: {
-            #  name: 'curriculum_vitae[technical_skill_id]',
-            #  label: 'Define técnicas de acuerdo a tu perfil*',
-            #  values: create_technical_skills_list,
-            #  current_value: ''
-            #},
-            #level_id: {
-            #  name: 'curriculum_vitae[level_id]',
-            #  label: nil,
-            #  values: create_levels_list,
-            #  current_value: ''
-            #},
             #language_id: {
             #  name: 'curriculum_vitae[language_id]',
             #  label: '¿Qué idiomas deseas resaltar en tu perfil?',
@@ -209,6 +203,68 @@ RSpec.describe Users::Wizards::StepSix::FormParamsService do
         ).form_params
 
         expect(response[:form][:formFields][:technical_skills]).to eq(expected_object)
+
+      end
+    end
+
+    context "When curriculum have to learn skills" do
+      let(:cv) { create(:curriculum_vitae) }
+      let!(:expected_to_learn_skills_params) do
+        [create(:curriculum_vitaes_technical_skills,
+          step_up: true,
+          job_category_id: job_categories[0].id,
+          technical_skill_id: technical_skills[0].id,
+          curriculum_vitae: cv
+        ),
+        create(:curriculum_vitaes_technical_skills,
+          step_up: true,
+          job_category_id: job_categories[0].id,
+          technical_skill_id: technical_skills[1].id,
+          curriculum_vitae: cv
+        ),
+        create(:curriculum_vitaes_technical_skills,
+          step_up: true,
+          job_category_id: job_categories[2].id,
+          technical_skill_id:technical_skills[2].id,
+          curriculum_vitae: cv
+        )]
+      end
+
+      it "should return expected object" do
+        expected_object = {
+            name: :to_learn_skills,
+            form_keys: [:curriculum_vitae, :to_learn_skills],
+            field_keys: [:job_category_id, :technical_skill_id],
+            main_label: 'Define qué habilidades te gustaría aprender o reforzar*',
+            list_values: {
+              job_category_id: create_job_category_list,
+              technical_skill_id: create_technical_skills_list,
+            },
+            current_values: [{
+              job_category_id: job_categories[0].id,
+              technical_skill_id: technical_skills[0].id,
+            },
+            {
+              job_category_id: job_categories[0].id,
+              technical_skill_id: technical_skills[1].id,
+            },
+            {
+              job_category_id: job_categories[2].id,
+              technical_skill_id:technical_skills[2].id,
+            }]
+          }
+
+        response = subject.new(
+          source: cv,
+          form_type: :curriculum_vitae,
+          template_translation_path: "users.wizards.step_sixes.show",
+          action_path: "/users/wizards/step_six" ,
+          previous_path: "/users/wizards/step_five",
+          next_path: "/users/wizards/step_seven",
+          form_method: :post
+        ).form_params
+
+        expect(response[:form][:formFields][:to_learn_skills]).to eq(expected_object)
 
       end
     end

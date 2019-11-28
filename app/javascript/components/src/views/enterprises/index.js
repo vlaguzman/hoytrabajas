@@ -11,7 +11,7 @@ const EnterprisesPage = () => {
     <Fragment>
       <Head>
         <title>Dashboard Empresa</title>
-        <meta name="description" content="HoyTrabajas Enterprise Dashboard" />
+        <meta name="description" content="HoyTrabajas Company Dashboard" />
       </Head>
       <FirstSection />
       <SecondSection />

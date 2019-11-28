@@ -2,7 +2,7 @@ import React from 'react'
 import Slider from 'react-slick'
 import PropTypes from 'prop-types'
 import map from 'lodash/map'
-import Unidad from '../../../../../../views/main/home/sections/components/categories_components/categoryUnit'
+import Unidad from '../categories_components/categoryUnit'
 
 const CarouselRow = ({ items = [], handleJobCategory }) => {
   const settings = {
@@ -43,15 +43,16 @@ const CarouselRow = ({ items = [], handleJobCategory }) => {
   }
   return (
     <Slider {...settings} className=" p-10 my-25 carusel">
-      {map(items["categorias"], (item, i) => (
-        <Unidad  key={i} {...item} handleJobCategory={handleJobCategory} />
+      {map(items['categorias'], (item, i) => (
+        <Unidad key={i} {...item} handleJobCategory={handleJobCategory} />
       ))}
     </Slider>
   )
 }
 
 CarouselRow.propTypes = {
-  items: PropTypes.array
+  items: PropTypes.array,
+  handleJobCategory: PropTypes.func
 }
 
 export default CarouselRow

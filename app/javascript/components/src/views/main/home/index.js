@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Row } from 'reactstrap'
 import Introduccion from './sections/introduccion'
@@ -19,11 +19,7 @@ const HomePage = ({
   filterForm,
   common
 }) => {
-  const {
-    cover,
-    premium,
-    companies
-  } = contenido
+  const { cover, premium, companies } = contenido
 
   return (
     <div className="home-wrapper">
@@ -61,5 +57,6 @@ HomePage.propTypes = {
   csrf_param: PropTypes.string,
   csrf_token: PropTypes.string,
   offer_translations: PropTypes.object,
+  common: PropTypes.object,
   filterForm: PropTypes.object
 }

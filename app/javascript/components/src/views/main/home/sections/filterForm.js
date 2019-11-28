@@ -1,5 +1,5 @@
-import React, { Fragment, useState } from 'react'
-import { Form, FormText, Col, FormFeedback, Collapse, Row } from 'reactstrap'
+import React, { useState } from 'react'
+import { Form, Col, Collapse, Row } from 'reactstrap'
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import Fab from '@material-ui/core/Fab'
@@ -15,7 +15,6 @@ import Slide from '@material-ui/core/Slide'
 
 import Radio from '@material-ui/core/Radio'
 import RadioGroup from '@material-ui/core/RadioGroup'
-import FormHelperText from '@material-ui/core/FormHelperText'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormControl from '@material-ui/core/FormControl'
 import FormLabel from '@material-ui/core/FormLabel'
@@ -27,7 +26,6 @@ import Input from '@material-ui/core/Input'
 import InputLabel from '@material-ui/core/InputLabel'
 import FormGen from './components/formFieldGenerartor'
 import CarouselRow from './components/carousel/carousel'
-import ListaCategorias from './components/categories_components/categoriesList'
 import dialogState from '../../../../hooks/dialogState'
 import RctCollapsibleCard from '../../../../components/Reactify/CollapsibleCard'
 import { removeItemFromArr } from '../../../../../utils/array_functions'
@@ -78,11 +76,11 @@ const FilterForm = ({ common, button1, fields1 }) => {
   const [valueFilterCategories, setValueFilterCategories] = useState(null)
 
   function handleJobCategory(idJobCategoryValue, selected) {
-    let idsCategories = idJobCategory
+    const idsCategories = idJobCategory
     if (!selected) {
       idsCategories.push(idJobCategoryValue)
       setIdJobCategory(idsCategories)
-    }else {
+    } else {
       removeItemFromArr(idsCategories, idJobCategoryValue)
       setIdJobCategory(idsCategories)
     }
@@ -161,13 +159,15 @@ const FilterForm = ({ common, button1, fields1 }) => {
         >
           <Col xs={12} md={1} className="pt-rem pl-0 p-0 align-items-center">
             {/* TODO oscar ucomment this Button wheh find by categories exist */}
-            {<Button
-              type="button"
-              onClick={toggleState}
-              className="text-primary h-50"
-            >
-              {button1}
-            </Button>}
+            {
+              <Button
+                type="button"
+                onClick={toggleState}
+                className="text-primary h-50"
+              >
+                {button1}
+              </Button>
+            }
           </Col>
           <FormGen fields={fields1} />
           <Fab
@@ -432,10 +432,15 @@ const FilterForm = ({ common, button1, fields1 }) => {
               </Col>
             </Dialog>
           </Col>
-          <input type="hidden" name='q[job_category_ids]' value={valueFilterCategories} multiple/>
+          <input
+            type="hidden"
+            name="q[job_category_ids]"
+            value={valueFilterCategories}
+            multiple
+          />
         </Form>
         <Collapse isOpen={state.open}>
-          <CarouselRow items={common} handleJobCategory={handleJobCategory}/>
+          <CarouselRow items={common} handleJobCategory={handleJobCategory} />
         </Collapse>
       </RctCollapsibleCard>
     </Row>
@@ -444,7 +449,7 @@ const FilterForm = ({ common, button1, fields1 }) => {
 export default FilterForm
 
 FilterForm.propTypes = {
-  categorias: PropTypes.object.isRequired,
+  common: PropTypes.object.isRequired,
   button1: PropTypes.object.isRequired,
   fields1: PropTypes.object.isRequired
 }

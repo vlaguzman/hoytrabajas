@@ -17,7 +17,9 @@ RSpec.describe Users::Wizards::StepSixService do
         [
           create(:job_category, description: "Marketing").id,
           create(:job_category, description: "Desarrollo de Software").id,
-          create(:job_category, description: "Cocina").id
+          create(:job_category, description: "Cocina").id,
+          create(:job_category, description: "Mecanica").id,
+          create(:job_category, description: "Contruccion").id
         ]
       end
 
@@ -25,7 +27,9 @@ RSpec.describe Users::Wizards::StepSixService do
         [
           create(:technical_skill, description: "SEO").id,
           create(:technical_skill, description: "Redes sociales").id,
-          create(:technical_skill, description: "Ruby On Rails").id
+          create(:technical_skill, description: "Ruby On Rails").id,
+          create(:technical_skill, description: "Cocina Italiana").id,
+          create(:technical_skill, description: "Pintar").id
         ]
       end
 
@@ -63,17 +67,27 @@ RSpec.describe Users::Wizards::StepSixService do
               technical_skill_id: technical_skills_ids[2],
               level_id: levels_ids[2]
             }
+          ],
+          to_learn_skills: [
+            {
+              job_category_id: job_categories_ids[3],
+              technical_skill_id: technical_skills_ids[3]
+            },
+            {
+              job_category_id: job_categories_ids[4],
+              technical_skill_id: technical_skills_ids[4]
+            },
+            {
+              job_category_id: job_categories_ids[1],
+              technical_skill_id: technical_skills_ids[0]
+            }
+          ],
+          languages: [
+            {
+              level_id: levels_ids[0],
+              language_id: languages_ids[0]
+            }
           ]
-
-          #TODO Oscar temporal comment untile complete de fields
-          #to_learn_skills:{
-          #  job_category_id: JobCategory.find_by(description: "Marketing").id,
-          #  technical_skill_id: TechnicalSkill.find_by(description: "Redes sociales").id
-          #},
-          #curriculum_vitaes_languages:{
-          #  language_id:Language.find_by(description: 'Inglés').id,
-          #  level_id: Level.find_by(description: "avanzado").id
-          #}
 
         }
       end
@@ -90,13 +104,8 @@ RSpec.describe Users::Wizards::StepSixService do
         expect(updated_cv.soft_skill_ids.count).to eq(2)
         expect(updated_cv.soft_skill_ids).to match_array(soft_skills_ids)
         expect(updated_cv.strong_skills.count).to eq(3)
-
-        #TODO Oscar temporal comment untile complete de fields
-        # expect(CurriculumVitaesLanguages.count).to eq(1)
-        # expect(new_curriculum_vitae.languages.count).to eq(1)
-        # expect(CurriculumVitaesTechnicalSkills.count).to eq(2)
-        # expect(new_curriculum_vitae.technical_skills.count).to eq(2)
-        # expect(new_curriculum_vitae.soft_skills.count).to eq(2)
+        expect(updated_cv.to_learn_skills.count).to eq(3)
+        expect(updated_cv.languages.count).to eq(1)
       end
 
       it "should asociate a selected soft skills to the curriculum vitae" do
@@ -107,17 +116,19 @@ RSpec.describe Users::Wizards::StepSixService do
 
       it "should create a curriculum vitae techical skills object associated to the curriculum vitae" do
         expect(new_curriculum_vitae.technical_skills.count).to be_zero
-        expect(new_curriculum_vitae.languages.count).to be_zero
+        expect(new_curriculum_vitae.languages.count).to be_zero|
 
         updated_cv = subject.(curriculum_vitae: new_curriculum_vitae, update_params: params)
 
-        #TODO Oscar temporal comment untile complete de fields
-        #expect(updated_cv.technical_skills.pluck(:description)).to match_array(["SEO","Redes sociales"])
-        #expect(updated_cv.languages.pluck(:description)).to match_array(["Inglés"])
+        strong_skills = updated_cv.strong_skills
 
-        #saved_to_learn_skill = updated_cv.technical_skills.select {|skill| skill.step_up: true }
+        strong_technical_skills = strong_skills.map { |d| d.technical_skill.description }
+        strong_job_categories = strong_skills.map { |d| d.job_category.description }
+        strong_levels = strong_skills.map { |d| d.level.description }
 
-        #expect(saved_to_learn_skill.level).to eq(nil)
+        expect(strong_technical_skills).to match_array(["SEO","Redes sociales", "Ruby On Rails"])
+        expect(strong_levels).to match_array(["avanzado", "avanzado", "bajo"])
+        expect(strong_job_categories).to match_array(["Desarrollo de Software", "Marketing", "Marketing"])
       end
     end
   end

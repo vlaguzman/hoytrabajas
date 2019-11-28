@@ -4,45 +4,46 @@ class Users::Wizards::StepSix::FormParamsService < BaseFormWizardsService
     :soft_skill_ids
   ]
 
+  SUBFORMS = [:technical_skills, :to_learn_skills, :languages]
+
+  SUBFORMS_FIELDS = {
+    :technical_skills => [:job_category_id, :technical_skill_id, :level_id],
+    :to_learn_skills => [:job_category_id, :technical_skill_id],
+    :languages => [:language_id, :level_id]
+  }
+
   private
 
-  def soft_skill_ids_list
-    ListConverter.model_list SoftSkill
-  end
-
   def fields_builder
-    super(technical_skills_builder)
+    super(
+      skills_builder(:technical_skills),
+      skills_builder(:to_learn_skills),
+      skills_builder(:languages)
+    )
   end
 
-  def technical_skills_builder
+  def skills_builder(skills_type)
     {
-      technical_skills:{
-        name:       :technical_skills,
-        form_keys:  [:curriculum_vitae, :technical_skills],
-        field_keys: [:job_category_id, :technical_skill_id, :level_id],
-        main_label: template_translations[:sub_forms][:technical_skils],
-        list_values: {
-          job_category_id:    job_category_id_list,
-          technical_skill_id: technical_skill_id_list,
-          level_id:           level_id_list
-        },
-        current_values: sub_forms_current_values_builder(:technical_skills)
+      skills_type => {
+        name:        skills_type,
+        form_keys:   [:curriculum_vitae, skills_type],
+        field_keys:  SUBFORMS_FIELDS[skills_type],
+        main_label:  template_translations[:sub_forms][skills_type],
+        list_values: Hash[
+          SUBFORMS_FIELDS[skills_type].collect { |field| [field, self.send("#{field}_list")] }
+        ],
+        current_values: current_values_of(skills_type).()
       }
     }
   end
 
-  def sub_forms_current_values_builder(sub_form_key)
-    response = {
-      :technical_skills => technical_skills_current_values
-    }
-
-
-    response.default = -> { [] }
-    response[sub_form_key].()
+  def current_values_of(skills_type)
+    call_of_skills = skills_type.eql?(:technical_skills) ? :strong_skills : skills_type
+    source.present? ? -> { ListConverter.parameters_list(source.send(call_of_skills), SUBFORMS_FIELDS[skills_type])} : -> { [] }
   end
 
-  def technical_skills_current_values
-    source.present? ? -> { ListConverter.parameters_list(source.strong_skills, [:job_category_id, :technical_skill_id, :level_id]) } : -> { [] }
+  def soft_skill_ids_list
+    ListConverter.model_list SoftSkill
   end
 
   def job_category_id_list
@@ -57,9 +58,8 @@ class Users::Wizards::StepSix::FormParamsService < BaseFormWizardsService
     ListConverter.model_list Level
   end
 
-  #TODO Oscar Temporal comment while complete the other fields
-  #def language_id_list
-  #  ListConverter.model_list Language
-  #end
+  def language_id_list
+    ListConverter.model_list Language
+  end
 
 end

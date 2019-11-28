@@ -10,7 +10,7 @@ export default ({ id, img, quantity, name, handleJobCategory }) => {
   const [selected, setSelected] = useState(false)
 
   return (
-    <Col className={classNames('align-items-center justify-content-center h-100', {'is-selected': selected})} onClick={() => { handleJobCategory(id, selected); setSelected(!selected) }}>
+    <Col id={name} className={classNames('align-items-center justify-content-center h-100', {'is-selected': selected})} onClick={() => { handleJobCategory(id, selected); setSelected(!selected) }}>
       <Row className="justify-content-center mb-5 mx-0">
         <img
           className="rounded"

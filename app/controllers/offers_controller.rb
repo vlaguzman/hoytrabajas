@@ -3,16 +3,10 @@ class OffersController < ApplicationController
 
   def index
     query = Offer.active.ransack(params[:q])
-    test = query
-      .result(distinct: true)
-     #.by_job_categories(params[:q][:job_category_ids].split(","))
-    puts "*"*100
-    puts test.inspect
-    puts "*"*100
     if query.present? && params[:q].present?
-      @offers = query
-        .result(distinct: true)
-        .by_job_categories(params[:q][:job_category_ids].split(","))
+      results_query = query.result(distinct: true)
+      query_with_filter_categories = OffersService.query_offers_home(results_query, params[:q][:job_category_ids])
+      @offers = query_with_filter_categories
         .map{ |offer| Offers::IndexService.new(offer, current_user).details }
     else
       @offers = OffersService.active_offers_index_details(current_user, MAX_OFFER_LIMIT)

@@ -82,11 +82,12 @@ RSpec.describe Users::Wizards::StepSixService do
               technical_skill_id: technical_skills_ids[0]
             }
           ],
-
-          #curriculum_vitaes_languages:{
-          #  language_id:Language.find_by(description: 'Inglés').id,
-          #  level_id: Level.find_by(description: "avanzado").id
-          #}
+          languages: [
+            {
+              level_id: levels_ids[0],
+              language_id: languages_ids[0]
+            }
+          ]
 
         }
       end
@@ -104,10 +105,7 @@ RSpec.describe Users::Wizards::StepSixService do
         expect(updated_cv.soft_skill_ids).to match_array(soft_skills_ids)
         expect(updated_cv.strong_skills.count).to eq(3)
         expect(updated_cv.to_learn_skills.count).to eq(3)
-
-        #TODO Oscar temporal comment untile complete de fields
-        # expect(CurriculumVitaesLanguages.count).to eq(1)
-        # expect(new_curriculum_vitae.languages.count).to eq(1)
+        expect(updated_cv.languages.count).to eq(1)
       end
 
       it "should asociate a selected soft skills to the curriculum vitae" do
@@ -118,7 +116,7 @@ RSpec.describe Users::Wizards::StepSixService do
 
       it "should create a curriculum vitae techical skills object associated to the curriculum vitae" do
         expect(new_curriculum_vitae.technical_skills.count).to be_zero
-        expect(new_curriculum_vitae.languages.count).to be_zero
+        expect(new_curriculum_vitae.languages.count).to be_zero|
 
         updated_cv = subject.(curriculum_vitae: new_curriculum_vitae, update_params: params)
 
@@ -131,8 +129,6 @@ RSpec.describe Users::Wizards::StepSixService do
         expect(strong_technical_skills).to match_array(["SEO","Redes sociales", "Ruby On Rails"])
         expect(strong_levels).to match_array(["avanzado", "avanzado", "bajo"])
         expect(strong_job_categories).to match_array(["Desarrollo de Software", "Marketing", "Marketing"])
-
-        #TODO Oscar test laguages
       end
     end
   end

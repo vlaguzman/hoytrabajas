@@ -25,7 +25,6 @@ class Users::Wizards::StepEightPresenter < Users::WizardsPresenter
 
   def service_params
     super(
-      #TODO Oscar tmp source nil
       source: nil,
       template_translation_path: 'users.wizards.step_eights.show',
       action_path: users_wizards_step_eight_path,

@@ -4,11 +4,12 @@ class Users::Wizards::StepSix::FormParamsService < BaseFormWizardsService
     :soft_skill_ids
   ]
 
-  SUBFORMS = [:technical_skills, :to_learn_skills]
+  SUBFORMS = [:technical_skills, :to_learn_skills, :languages]
 
   SUBFORMS_FIELDS = {
     :technical_skills => [:job_category_id, :technical_skill_id, :level_id],
-    :to_learn_skills => [:job_category_id, :technical_skill_id]
+    :to_learn_skills => [:job_category_id, :technical_skill_id],
+    :languages => [:language_id, :level_id]
   }
 
   private
@@ -16,7 +17,8 @@ class Users::Wizards::StepSix::FormParamsService < BaseFormWizardsService
   def fields_builder
     super(
       skills_builder(:technical_skills),
-      skills_builder(:to_learn_skills)
+      skills_builder(:to_learn_skills),
+      skills_builder(:languages)
     )
   end
 
@@ -56,9 +58,8 @@ class Users::Wizards::StepSix::FormParamsService < BaseFormWizardsService
     ListConverter.model_list Level
   end
 
-  #TODO Oscar Temporal comment while complete the other fields
-  #def language_id_list
-  #  ListConverter.model_list Language
-  #end
+  def language_id_list
+    ListConverter.model_list Language
+  end
 
 end

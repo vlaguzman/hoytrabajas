@@ -16,7 +16,6 @@ class CurriculumVitae < ApplicationRecord
   has_and_belongs_to_many :educational_degrees
   has_and_belongs_to_many :working_days
   has_and_belongs_to_many :available_work_days
-  has_and_belongs_to_many :languages
   has_and_belongs_to_many :technical_skills
   has_and_belongs_to_many :job_categories
   has_and_belongs_to_many :offer_types
@@ -33,5 +32,9 @@ class CurriculumVitae < ApplicationRecord
 
   def to_learn_skills
     CurriculumVitaesTechnicalSkills.where(curriculum_vitae_id: self.id, step_up: true)
+  end
+
+  def languages
+    CurriculumVitaesLanguages.where(curriculum_vitae_id: self.id)
   end
 end

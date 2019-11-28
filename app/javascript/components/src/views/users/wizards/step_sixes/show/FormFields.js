@@ -35,7 +35,8 @@ const FormFields = props => {
   const {
     soft_skill_ids = null,
     technical_skills = null,
-    to_learn_skills = null
+    to_learn_skills = null,
+    languages = null
   } = formFields
 
   const setDefaultRowIDs = defaultValue => {
@@ -50,7 +51,8 @@ const FormFields = props => {
         rowID: uuidv4(),
         job_category_id: '',
         technical_skill_id: '',
-        level_id: ''
+        level_id: '',
+        language_id: ''
       }
     ]
   }
@@ -60,7 +62,8 @@ const FormFields = props => {
     [technical_skills.name]:
       setDefaultRowIDs(technical_skills.current_values) || [],
     [to_learn_skills.name]:
-      setDefaultRowIDs(to_learn_skills.current_values) || []
+      setDefaultRowIDs(to_learn_skills.current_values) || [],
+    [languages.name]: setDefaultRowIDs(languages.current_values) || []
   })
 
   const addRow = ({ rowName }) => {
@@ -68,7 +71,8 @@ const FormFields = props => {
       rowID: uuidv4(),
       job_category_id: '',
       technical_skill_id: '',
-      level_id: ''
+      level_id: '',
+      language_id: ''
     }
     const merged = [...formValues[rowName], newTechnicalSkill]
     setFormValues(prevFormValues => ({ ...prevFormValues, [rowName]: merged }))
@@ -297,11 +301,81 @@ const FormFields = props => {
     [formValues[to_learn_skills.name]]
   )
 
+  const languagesRows = useMemo(
+    () => (
+      <>
+        {languages.main_label && <FormLabel>{languages.main_label}</FormLabel>}
+
+        <Paper className="FormRowWrapper">
+          {formValues[languages.name].map((toLearnSkillObject, index) => (
+            <Col
+              key={toLearnSkillObject.rowID}
+              className={inputClassname}
+              xs={12}
+              style={{ margin: '20px 0', padding: '0 20px' }}
+            >
+              <>
+                {languages.field_keys.map(fieldKey => (
+                  <input
+                    key={uuidv4()}
+                    type="hidden"
+                    name={railsFieldNameBuilder(languages.form_keys, fieldKey)}
+                    value={
+                      formValues[languages.name].length > 0
+                        ? formValues[languages.name][index][fieldKey]
+                        : null
+                    }
+                  />
+                ))}
+              </>
+              <StyledRow style={{ height: '55px' }}>
+                <FormRow
+                  allRows={formValues[languages.name]}
+                  rowName={languages.name}
+                  currentRow={toLearnSkillObject}
+                  addRow={addRow}
+                  removeRow={removeRow}
+                  updateAllRows={updateAllRows}
+                >
+                  {({ rowValue, handleRowChanges, handleRowDeleteChip }) => (
+                    <>
+                      <StyledCol xs={12} lg={4}>
+                        <SelectChip
+                          name="language_id"
+                          inputValue={rowValue.language_id}
+                          handleChange={handleRowChanges}
+                          handleDeleteChip={handleRowDeleteChip}
+                          selectOptions={languages.list_values.language_id}
+                        />
+                      </StyledCol>
+
+                      <StyledCol xs={12} lg={6}>
+                        <SelectChip
+                          name="level_id"
+                          inputValue={rowValue.level_id}
+                          handleChange={handleRowChanges}
+                          handleDeleteChip={handleRowDeleteChip}
+                          selectOptions={languages.list_values.level_id}
+                        />
+                      </StyledCol>
+                    </>
+                  )}
+                </FormRow>
+              </StyledRow>
+            </Col>
+          ))}
+        </Paper>
+      </>
+    ),
+    [formValues[languages.name]]
+  )
+
   return (
     <Row className="HT__FormGenerator">
       {softSkillIDsField}
       {techicalSkillsRows}
       {toLearnSkillsRows}
+      {languagesRows}
     </Row>
   )
 }
@@ -312,6 +386,7 @@ FormFields.propTypes = {
   formFields: PropTypes.shape({
     soft_skill_ids: PropTypes.object,
     technical_skills: PropTypes.object,
-    to_learn_skills: PropTypes.object
+    to_learn_skills: PropTypes.object,
+    languages: PropTypes.object
   })
 }

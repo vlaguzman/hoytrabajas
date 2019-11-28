@@ -12,7 +12,7 @@ RSpec.describe Users::Wizards::StepSix::FormParamsService do
     let!(:technical_skills) { create_list(:technical_skill, 5) }
     let(:create_technical_skills_list) { ListConverter.model_list(TechnicalSkill) }
 
-    let!(:leves) { create_list(:level, 5) }
+    let!(:levels) { create_list(:level, 5) }
     let(:create_levels_list) { ListConverter.model_list(Level) }
 
     let!(:languages) { create_list(:language, 5) }
@@ -27,7 +27,8 @@ RSpec.describe Users::Wizards::StepSix::FormParamsService do
         subtitle: 'Brinda a las empresas información valiosa sobre ti.',
         sub_forms: {
           technical_skills: "Define técnicas de acuerdo a tu perfil*",
-          to_learn_skills: "Define qué habilidades te gustaría aprender o reforzar*"
+          to_learn_skills: "Define qué habilidades te gustaría aprender o reforzar*",
+          languages: "¿Que idiomas deseas resaltar en tu perfil?"
         },
         form: {
           buttons: {
@@ -71,14 +72,17 @@ RSpec.describe Users::Wizards::StepSix::FormParamsService do
               },
               :current_values=>[]
             },
-
-            #TODO Oscar uncoment when the fields reade to be showed
-            #language_id: {
-            #  name: 'curriculum_vitae[language_id]',
-            #  label: '¿Qué idiomas deseas resaltar en tu perfil?',
-            #  values: create_languages_list,
-            #  current_value: ''
-            #}
+            languages:{
+              name: :languages,
+              form_keys: [:curriculum_vitae, :languages],
+              field_keys: [:language_id, :level_id],
+              main_label: "¿Que idiomas deseas resaltar en tu perfil?",
+              list_values: {
+                language_id: create_languages_list,
+                level_id: create_levels_list
+              },
+              :current_values=>[]
+            },
           },
           placeholders:{
             language_id: 'Selecciona el idioma',
@@ -147,19 +151,19 @@ RSpec.describe Users::Wizards::StepSix::FormParamsService do
         [create(:curriculum_vitaes_technical_skills,
           job_category_id: job_categories[0].id,
           technical_skill_id: technical_skills[0].id,
-          level_id: leves[0].id,
+          level_id: levels[0].id,
           curriculum_vitae: cv
         ),
         create(:curriculum_vitaes_technical_skills,
           job_category_id: job_categories[0].id,
           technical_skill_id: technical_skills[1].id,
-          level_id: leves[2].id,
+          level_id: levels[2].id,
           curriculum_vitae: cv
         ),
         create(:curriculum_vitaes_technical_skills,
           job_category_id: job_categories[2].id,
           technical_skill_id:technical_skills[2].id,
-          level_id: leves[2].id,
+          level_id: levels[2].id,
           curriculum_vitae: cv
         )]
       end
@@ -178,17 +182,17 @@ RSpec.describe Users::Wizards::StepSix::FormParamsService do
             current_values: [{
               job_category_id: job_categories[0].id,
               technical_skill_id: technical_skills[0].id,
-              level_id: leves[0].id
+              level_id: levels[0].id
             },
             {
               job_category_id: job_categories[0].id,
               technical_skill_id: technical_skills[1].id,
-              level_id: leves[2].id
+              level_id: levels[2].id
             },
             {
               job_category_id: job_categories[2].id,
               technical_skill_id:technical_skills[2].id,
-              level_id: leves[2].id
+              level_id: levels[2].id
             }]
           }
 
@@ -265,6 +269,65 @@ RSpec.describe Users::Wizards::StepSix::FormParamsService do
         ).form_params
 
         expect(response[:form][:formFields][:to_learn_skills]).to eq(expected_object)
+
+      end
+    end
+
+    context "When curriculum have languages" do
+      let(:cv) { create(:curriculum_vitae) }
+      let!(:curriculum_vitaes_languages) do
+        [create(:curriculum_vitaes_languages,
+          language_id: languages[0].id,
+          level_id: levels[0].id,
+          curriculum_vitae: cv
+        ),
+        create(:curriculum_vitaes_languages,
+          language_id: languages[0].id,
+          level_id: levels[1].id,
+          curriculum_vitae: cv
+        ),
+        create(:curriculum_vitaes_languages,
+          language_id: languages[2].id,
+          level_id:levels[2].id,
+          curriculum_vitae: cv
+        )]
+      end
+
+      it "should return expected object" do
+        expected_object = {
+            name: :languages,
+            form_keys: [:curriculum_vitae, :languages],
+            field_keys: [:language_id, :level_id],
+            main_label: '¿Que idiomas deseas resaltar en tu perfil?',
+            list_values: {
+              level_id: create_levels_list,
+              language_id: create_languages_list,
+            },
+            current_values: [{
+              level_id: levels[0].id,
+              language_id: languages[0].id,
+            },
+            {
+              level_id: levels[1].id,
+              language_id: languages[0].id,
+            },
+            {
+              level_id: levels[2].id,
+              language_id:languages[2].id,
+            }]
+          }
+
+        response = subject.new(
+          source: cv,
+          form_type: :curriculum_vitae,
+          template_translation_path: "users.wizards.step_sixes.show",
+          action_path: "/users/wizards/step_six" ,
+          previous_path: "/users/wizards/step_five",
+          next_path: "/users/wizards/step_seven",
+          form_method: :post
+        ).form_params
+
+        expect(response[:form][:formFields][:languages]).to eq(expected_object)
 
       end
     end

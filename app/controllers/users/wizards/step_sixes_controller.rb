@@ -37,11 +37,10 @@ class Users::Wizards::StepSixesController < ApplicationController
         :job_category_id,
         :technical_skill_id
       ]],
-        #TODO oscar uncomment after tech skills
-      #curriculum_vitaes_languages:[
-      #  :language_id,
-      #  :level_id
-      #]
+      languages:[[
+        :level_id,
+        :language_id
+      ]],
     ).to_h
   end
 

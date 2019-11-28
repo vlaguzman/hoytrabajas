@@ -14,6 +14,7 @@ RSpec.describe CurriculumVitae, type: :model do
     it { should respond_to(:visits) }
     it { should respond_to(:strong_skills) }
     it { should respond_to(:to_learn_skills) }
+    it { should respond_to(:languages) }
   end
 
   context "attachments" do
@@ -33,7 +34,6 @@ RSpec.describe CurriculumVitae, type: :model do
     it { should have_and_belong_to_many(:soft_skills) }
     it { should have_and_belong_to_many(:working_days) }
     it { should have_and_belong_to_many(:available_work_days) }
-    it { should have_and_belong_to_many(:languages) }
     it { should have_and_belong_to_many(:technical_skills) }
     it { should have_and_belong_to_many(:job_categories) }
     it { should have_and_belong_to_many(:offer_types) }
@@ -51,11 +51,19 @@ RSpec.describe CurriculumVitae, type: :model do
 
   describe "#to_learn_skills" do
     let(:cv) { create(:curriculum_vitae) }
-
     let!(:to_learn_skills_list) { create_list(:curriculum_vitaes_technical_skills, 5, curriculum_vitae_id: cv.id, step_up: true) }
 
     it "should respond" do
       expect(cv.to_learn_skills.count).to eq(5)
+    end
+  end
+
+  describe "#languages" do
+    let(:cv) { create(:curriculum_vitae) }
+    let!(:laguanges_list) { create_list(:curriculum_vitaes_languages, 5, curriculum_vitae_id: cv.id) }
+
+    it "should respond" do
+      expect(cv.languages.count).to eq(5)
     end
   end
 end

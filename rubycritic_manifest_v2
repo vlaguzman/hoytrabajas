@@ -47,7 +47,7 @@ A         • CompaniesUsers                                      1       0.0   
 A         • Company                                             15      2.2        0           1
 A         • ContractType                                        1       0.0        0           1
 A         • Currency                                            1       0.0        0           1
-A         • CurriculumVitae                                     26      4.4        0           1
+A         • CurriculumVitae                                     26      6.6        0           1
 A         • CurriculumVitaeSalary                               2       0.0        0           1
 A         • CurriculumVitaes                                    1       0.0        0           0
 A         • CurriculumVitaesEducationalDegrees                  1       0.0        0           1
@@ -122,7 +122,7 @@ A         • Users::RegistrationsController                      13      1.0   
 A         • Users::SessionsController                           3       0.0        0           1
 A         • Users::WizardService                                4       16.21      0           2
 A         • Users::Wizards::StepEight::FormParamsService        3       8.0        0           6
-A         • Users::Wizards::StepEightPresenter                  8       24.41      0           1
+A         • Users::Wizards::StepEightPresenter                  9       24.41      0           1
 A         • Users::Wizards::StepEightService                    2       17.72      0           1
 A         • Users::Wizards::StepEightsController                7       29.16      0           1
 A         • Users::Wizards::StepEleven::FormParamsService       2       0.0        0           1
@@ -147,10 +147,9 @@ A         • Users::Wizards::StepOnesController                  7       35.55 
 A         • Users::Wizards::StepSeven::FormParamsService        2       21.93      0           1
 A         • Users::Wizards::StepSevenPresenter                  5       14.4       0           1
 A         • Users::Wizards::StepSevensController                8       4.62       0           1
-A         • Users::Wizards::StepSix::FormParamsService          5       33.73      0           7
-A         • Users::Wizards::StepSixPresenter                    4       14.2       0           1
-A         • Users::Wizards::StepSixService                      7       37.28      0           4
-A         • Users::Wizards::StepSixesController                 9       22.55      0           1
+A         • Users::Wizards::StepSix::FormParamsService          6       35.73      0           8
+A         • Users::Wizards::StepSixPresenter                    5       14.2       0           1
+A         • Users::Wizards::StepSixesController                 10      22.55      0           1
 A         • Users::Wizards::StepTen::FormParamsService          3       3.0        0           1
 A         • Users::Wizards::StepTenPresenter                    4       24.85      0           1
 A         • Users::Wizards::StepTenService                      2       10.68      0           1
@@ -165,7 +164,7 @@ A         • Users::Wizards::StepTwoService                      2       3.0   
 A         • Users::Wizards::StepTwosController                  6       20.5       23          2
 A         • Users::Wizards::StepZeroPresenter                   2       1.0        0           2
 A         • Users::Wizards::StepZerosController                 3       3.24       0           1
-A         • Users::WizardsPresenter                             1       4.8        0           1
+A         • Users::WizardsPresenter                             2       4.8        0           1
 A         • UsersController                                     10      2.2        0           1
 A         • UsersLimitations                                    1       0.0        0           1
 A         • UsersNationalities                                  1       0.0        0           1
@@ -187,6 +186,7 @@ B         • Companies::FirstOffer::StepTwoPresenter             14      17.4  
 B         • Companies::FirstOffer::StepTwosController           10      20.32      27          2
 B         • Offers::ShowService                                 17      87.8       0           1
 B         • Offers::ViewsService                                11      62.1       0           4
+B         • Users::Wizards::StepSixService                      8       57.31      0           2
 C         • BaseFormWizardsService                              25      135.64     0           1
 C         • Companies                                           5       16.61      32          2
 C         • Companies::FirstOffer::StepFivePresenter            3       27.8       31          2

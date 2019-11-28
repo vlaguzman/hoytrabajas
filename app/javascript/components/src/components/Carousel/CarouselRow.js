@@ -70,9 +70,7 @@ const CarouselRow = ({
       {...settings}
       className="align-items-stretch h-100 w-100 my-25 pl-5"
     >
-      <div>
-        {children}
-      </div>
+      {children}
     </Slider>
   )
 }

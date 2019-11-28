@@ -76,7 +76,7 @@ const FilterForm = ({ common, button1, fields1 }) => {
   const [valueFilterCategories, setValueFilterCategories] = useState(null)
 
   function handleJobCategory(idJobCategoryValue, selected) {
-    const idsCategories = idJobCategory
+    let idsCategories = idJobCategory
     if (!selected) {
       idsCategories.push(idJobCategoryValue)
       setIdJobCategory(idsCategories)

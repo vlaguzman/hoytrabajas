@@ -1,8 +1,8 @@
 const removeItemFromArr = (arr, item) => {
-  const i = arr.indexOf(item)
+  const indice = arr.indexOf(item)
 
-  if (i !== -1) {
-    arr.splice(i, 1)
+  if (indice !== -1) {
+    arr.splice(indice, 1)
   }
 }
 

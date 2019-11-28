@@ -24,7 +24,6 @@ class OffersController < ApplicationController
   end
 
   def index_params
-  # params.require(:q).permit(:title_cont, :job_category_ids)
     params.permit(
       {
         q: [

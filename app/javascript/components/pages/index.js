@@ -17,9 +17,10 @@ const HomePage = ({
   log_out_companies,
   path_applied_offers,
   session_translation,
-   user_facebook_omniauth_authorize_path,
+  user_facebook_omniauth_authorize_path,
   offer_translations,
-  filterForm
+  filterForm,
+  common
 }) => {
   return (
     <div className="main-wrapper">
@@ -35,7 +36,9 @@ const HomePage = ({
         log_out_user={log_out_user}
         log_out_companies={log_out_companies}
         session_translation={session_translation}
-        user_facebook_omniauth_authorize_path={user_facebook_omniauth_authorize_path}
+        user_facebook_omniauth_authorize_path={
+          user_facebook_omniauth_authorize_path
+        }
         shouldChangeColorOfNav
       >
         <DynamicHome
@@ -45,6 +48,7 @@ const HomePage = ({
           csrf_param={csrf_param}
           csrf_token={csrf_token}
           filterForm={filterForm}
+          common={common}
         />
       </AppLayout>
     </div>
@@ -61,11 +65,13 @@ HomePage.propTypes = {
   log_out_companies: PropTypes.string.isRequired,
   companies_registration_path: PropTypes.string.isRequired,
   users_registration_path: PropTypes.string.isRequired,
+  path_applied_offers: PropTypes.string.isRequired,
   companies_sessions_path: PropTypes.string.isRequired,
   users_sessions_path: PropTypes.string.isRequired,
   session_translation: PropTypes.object.isRequired,
   user_facebook_omniauth_authorize_path: PropTypes.object.isRequired,
   offers: PropTypes.object.isRequired,
   offer_translations: PropTypes.object.isRequired,
-  filterForm: PropTypes.object.isRequired
+  filterForm: PropTypes.object.isRequired,
+  common: PropTypes.object.isRequired
 }

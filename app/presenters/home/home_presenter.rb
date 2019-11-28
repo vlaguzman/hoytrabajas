@@ -13,10 +13,7 @@ class Home::HomePresenter < ApplicationPresenter
     {
       fields1: [
         { type: 'text', label: 'Palabra clave', name: 'q[title_cont]', id: 'keyword' },
-        {
-          type: 'select',
-          label: 'Ciudad',
-          name: 'q[id_count]',
+        { type: 'select', label: 'Ciudad', name: 'q[id_count]',
           aux: cities
         },
         {
@@ -40,5 +37,19 @@ class Home::HomePresenter < ApplicationPresenter
 
   def offers
     OffersService.active_offers_index_details(current_user, MAX_OFFER_LIMIT)
+  end
+
+  def categories
+    categories = JobCategory.all.map do |category|
+      [
+        ["img", "icon_job_category_id_#{category.id}.png"],
+        ["id", category.id],
+        ["name", category.description],
+        ["quantity", category.offers.active.count]
+      ].to_h
+    end
+    {
+      categorias: categories
+    }
   end
 end

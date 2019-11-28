@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { Row } from 'reactstrap'
 import Introduccion from './sections/introduccion'
@@ -16,18 +16,14 @@ const HomePage = ({
   csrf_token,
   path_applied_offers,
   offer_translations,
-  filterForm
+  filterForm,
+  common
 }) => {
-  const {
-    cover,
-    premium,
-    common: { categorias },
-    companies
-  } = contenido
+  const { cover, premium, companies } = contenido
 
   return (
     <div className="home-wrapper">
-      <CoverSection {...cover} {...{ categorias }} {...{ filterForm }} />
+      <CoverSection {...cover} {...{ common }} {...{ filterForm }} />
       <OffersSection
         csrf_param={csrf_param}
         csrf_token={csrf_token}
@@ -61,5 +57,6 @@ HomePage.propTypes = {
   csrf_param: PropTypes.string,
   csrf_token: PropTypes.string,
   offer_translations: PropTypes.object,
+  common: PropTypes.object,
   filterForm: PropTypes.object
 }

@@ -20,6 +20,14 @@ module OffersService
       .map { |offer| Offers::IndexService.new(offer, current_user).details }
   end
 
+  def self.query_offers_home(query, ids_categories)
+    if ids_categories.present?
+      query.by_job_categories(ids_categories.split(","))
+    else
+      query
+    end
+  end
+
   private
 
   def self.not_applied_offers(cv_id)

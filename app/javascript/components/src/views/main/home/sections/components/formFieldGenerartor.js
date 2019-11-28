@@ -8,7 +8,7 @@ export default ({ fields }) => {
     <>
       {fields.map(({ label, name, type, aux, id }, i) => (
         /* TODO oscar I change md valud from 2 to 12 to expand de input */
-        <Col key={i} xs={12} md={12} className=" p-0 pb-20 mx-5">
+        <Col key={i} xs={12} md={10} className=" p-0 pb-20 mx-5">
           {type.includes('text') ? (
             <TextField {...{ label }} className="pr-5" name={name} id={id} />
           ) : (

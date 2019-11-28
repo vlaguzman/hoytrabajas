@@ -71,4 +71,31 @@ RSpec.describe OffersService do
       end
     end
   end
+
+  describe "#query_offers_home" do
+    let!(:job_category)  { create(:job_category) }
+    let!(:job_category2) { create(:job_category) }
+    let!(:offer)  { create(:offer, description: 'oferta 1', job_categories: [job_category]) }
+    let!(:offer2) { create(:offer, description: 'oferta 2', job_categories: [job_category]) }
+    let!(:offer3) { create(:offer, description: 'oferta 3', job_categories: [job_category2]) }
+
+    context "When filtering by categories" do
+      it "Should return the result by categories" do
+        response = subject.query_offers_home(Offer.all, job_category.id.to_s)
+
+        expect(response).to be_present
+        expect(response.count).to eq(2)
+      end
+    end
+    
+    context "When filtered only by title and not by categories" do
+      it "Should return the original result without filtering" do
+        response = subject.query_offers_home(Offer.all, "")
+
+        expect(response).to be_present
+        expect(response.count).to eq(3)
+      end
+    end
+  end
+
 end

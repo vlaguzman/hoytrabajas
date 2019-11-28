@@ -18,16 +18,46 @@ RSpec.describe Offer, type: :model do
       it { should respond_to(:related_job_category) }
       it { should respond_to(:by_applied_offer_cv) }
       it { should respond_to(:active) }
+      it { should respond_to(:by_job_categories) }
     end
 
     let!(:cv)                { create(:curriculum_vitae) }
     let!(:cv_2)              { create(:curriculum_vitae) }
     let!(:cv_3)              { create(:curriculum_vitae) }
-    let!(:offer)             { create(:offer, title: 'just_an_offer') }
-    let!(:offer_2)           { create(:offer, title: 'an_other_offer') }
+    let!(:job_category)      { create(:job_category, description: 'Operario') }
+    let!(:job_category_2)    { create(:job_category, description: 'Marketing') }
+    let!(:job_category_3)    { create(:job_category, description: 'Seguridad') }
+    let!(:offer)             { create(:offer, title: 'just_an_offer', job_categories: [job_category]) }
+    let!(:offer_2)           { create(:offer, title: 'an_other_offer', job_categories: [job_category_2]) }
     let!(:applied_offer)     { create(:applied_offer, curriculum_vitae: cv, offer: offer) }
     let!(:applied_offer_2)   { create(:applied_offer, curriculum_vitae: cv, offer: offer_2) }
     let!(:applied_offer_3)   { create(:applied_offer, curriculum_vitae: cv_2, offer: offer_2) }
+
+    describe "#by_job_categories" do
+      let!(:offer_3)           { create(:offer, title: 'an_other_offer_three', job_categories: [job_category, job_category_2]) }
+      let!(:offer_4)           { create(:offer, title: 'an_other_offer_four', job_categories: [job_category]) }
+
+      context "When you search for a category and find results" do
+        it "Should return the results found" do
+          expect(Offer.by_job_categories(job_category.id).first.job_category_ids).to match_array(job_category.id)
+          expect(Offer.by_job_categories(job_category.id).count).to eq(3)
+        end
+      end
+
+      context "When you search through several categories and find results" do
+        it "Should return the results found" do
+          ids_categories = [job_category.id, job_category_2.id]
+          expect(Offer.by_job_categories(ids_categories).map(&:job_category_ids).flatten.uniq).to match_array([job_category.id, job_category_2.id])
+          expect(Offer.by_job_categories([job_category.id, job_category_2.id]).count).to eq(4)
+        end
+      end
+
+      context "When no results are found by the category sought" do
+        it "Should not return anything" do
+          expect(Offer.by_job_categories(job_category_3.id).count).to eq(0)
+        end
+      end
+    end
 
     describe "#by_applied_offer_cv" do
       context "there just one opply offer with a cv_id" do

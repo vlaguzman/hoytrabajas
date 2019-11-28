@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react'
-import { Form, FormText, Col, FormFeedback, Collapse, Row } from 'reactstrap'
+import React, { useState } from 'react'
+import { Form, Col, Collapse, Row } from 'reactstrap'
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
 import Fab from '@material-ui/core/Fab'
@@ -15,7 +15,6 @@ import Slide from '@material-ui/core/Slide'
 
 import Radio from '@material-ui/core/Radio'
 import RadioGroup from '@material-ui/core/RadioGroup'
-import FormHelperText from '@material-ui/core/FormHelperText'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormControl from '@material-ui/core/FormControl'
 import FormLabel from '@material-ui/core/FormLabel'
@@ -27,9 +26,9 @@ import Input from '@material-ui/core/Input'
 import InputLabel from '@material-ui/core/InputLabel'
 import FormGen from './components/formFieldGenerartor'
 import CarouselRow from './components/carousel/carousel'
-import ListaCategorias from './components/categories_components/categoriesList'
 import dialogState from '../../../../hooks/dialogState'
 import RctCollapsibleCard from '../../../../components/Reactify/CollapsibleCard'
+import { removeItemFromArr } from '../../../../../utils/array_functions'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />
@@ -67,12 +66,26 @@ const currencies = [
   }
 ]
 
-const FilterForm = ({ categorias, button1, fields1 }) => {
+const FilterForm = ({ common, button1, fields1 }) => {
   // TODO oscar remove this line when in rails when can searh by other fields
   fields1 = [fields1[0]]
 
   const { value: state, toggleState } = dialogState({ open: false })
   const [open, setOpen] = React.useState(false)
+  const [idJobCategory, setIdJobCategory] = useState([])
+  const [valueFilterCategories, setValueFilterCategories] = useState(null)
+
+  function handleJobCategory(idJobCategoryValue, selected) {
+    let idsCategories = idJobCategory
+    if (!selected) {
+      idsCategories.push(idJobCategoryValue)
+      setIdJobCategory(idsCategories)
+    } else {
+      removeItemFromArr(idsCategories, idJobCategoryValue)
+      setIdJobCategory(idsCategories)
+    }
+    setValueFilterCategories(idJobCategory.join())
+  }
 
   function handleClickOpen() {
     setOpen(true)
@@ -136,7 +149,7 @@ const FilterForm = ({ categorias, button1, fields1 }) => {
     <Row className="justify-content-center" noGutters>
       <RctCollapsibleCard
         /* TODO oscar i change 'col-9' to 'col-4' on 'colClasses' to reduce size bar */
-        colClasses="col-4 my-30 d-none d-lg-block "
+        colClasses="col-9 my-30 d-none d-lg-block "
         contentCustomClasses=""
       >
         <Form
@@ -146,13 +159,15 @@ const FilterForm = ({ categorias, button1, fields1 }) => {
         >
           <Col xs={12} md={1} className="pt-rem pl-0 p-0 align-items-center">
             {/* TODO oscar ucomment this Button wheh find by categories exist */}
-            {/* <Button
-              type="button"
-              onClick={toggleState}
-              className="text-primary h-50"
-            >
-              {button1}
-            </Button> */}
+            {
+              <Button
+                type="button"
+                onClick={toggleState}
+                className="text-primary h-50"
+              >
+                {button1}
+              </Button>
+            }
           </Col>
           <FormGen fields={fields1} />
           <Fab
@@ -417,9 +432,15 @@ const FilterForm = ({ categorias, button1, fields1 }) => {
               </Col>
             </Dialog>
           </Col>
+          <input
+            type="hidden"
+            name="q[job_category_ids]"
+            value={valueFilterCategories}
+            multiple
+          />
         </Form>
         <Collapse isOpen={state.open}>
-          <CarouselRow items={categorias} />
+          <CarouselRow items={common} handleJobCategory={handleJobCategory} />
         </Collapse>
       </RctCollapsibleCard>
     </Row>
@@ -428,7 +449,7 @@ const FilterForm = ({ categorias, button1, fields1 }) => {
 export default FilterForm
 
 FilterForm.propTypes = {
-  categorias: PropTypes.object.isRequired,
+  common: PropTypes.object.isRequired,
   button1: PropTypes.object.isRequired,
   fields1: PropTypes.object.isRequired
 }

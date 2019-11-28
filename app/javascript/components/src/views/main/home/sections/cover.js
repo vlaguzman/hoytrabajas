@@ -9,15 +9,14 @@ const WelcomeText = ({ welcome_Text, subtitle, common, filterForm }) => {
     <Row className="align-items-center justify-content-center bg-home mb-60">
       <Col className="align-items-center justify-content-center" xs={12}>
         {/* <div> */}
-        <Typography variant="h4" className="welcomeText d-none d-sm-inline">
+        <h1 className="welcomeText d-none d-sm-inline">
           {welcome_Text}
-        </Typography>
-        <Typography
-          variant="subtitle2"
+        </h1>
+        <h2
           className="welcomeText mb-20 mt-10 d-none d-sm-inline"
         >
           {subtitle}
-        </Typography>
+        </h2>
         {/* </div> */}
         <FilterFormSection {...{ common, ...filterForm }} />
       </Col>

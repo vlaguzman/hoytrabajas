@@ -1,7 +1,7 @@
 export const contenido = {
   cover: {
-    welcome_Text: `El empleo ideal para tu tiempo libre`,
-    subtitle: 'Temporal, por horas, por proyectos o simplemente fines de semana'
+    welcome_Text: `Encuentra trabajo compatible con tus habilidades y competencias`,
+    subtitle: 'El trabajo ideal lo encuentras en HoyTrabajas.com'
   },
   filterForm: {
     fields1: [

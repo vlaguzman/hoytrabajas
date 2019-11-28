@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_20_213040) do
+ActiveRecord::Schema.define(version: 2019_11_27_221906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,6 +127,8 @@ ActiveRecord::Schema.define(version: 2019_11_20_213040) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "state_id"
+    t.index ["state_id"], name: "index_cities_on_state_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -866,6 +868,7 @@ ActiveRecord::Schema.define(version: 2019_11_20_213040) do
   add_foreign_key "available_work_days_curriculum_vitaes", "curriculum_vitaes"
   add_foreign_key "available_work_days_offers", "available_work_days"
   add_foreign_key "available_work_days_offers", "offers"
+  add_foreign_key "cities", "states"
   add_foreign_key "companies", "cities"
   add_foreign_key "companies", "employees_ranges"
   add_foreign_key "companies", "industries"

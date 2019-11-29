@@ -11,7 +11,13 @@ const DashBoarEnterprisesPage = props => {
     company_signed_in,
     log_out_user,
     log_out_companies,
-    session_translation
+    session_translation,
+    companies_registration_path,
+    users_registration_path,
+    companies_sessions_path,
+    users_sessions_path,
+    my_offers,
+    component_translations
   } = props
 
   return (
@@ -24,8 +30,15 @@ const DashBoarEnterprisesPage = props => {
         log_out_user={log_out_user}
         log_out_companies={log_out_companies}
         session_translation={session_translation}
+        companies_registration_path={companies_registration_path}
+        users_registration_path={users_registration_path}
+        companies_sessions_path={companies_sessions_path}
+        users_sessions_path={users_sessions_path}
       >
-        <DynamicBoardsEnterprises />
+        <DynamicBoardsEnterprises
+          my_offers={my_offers}
+          component_translations={component_translations}
+        />
       </AppLayout>
     </div>
   )
@@ -34,11 +47,17 @@ const DashBoarEnterprisesPage = props => {
 export default DashBoarEnterprisesPage
 
 DashBoarEnterprisesPage.propTypes = {
+  my_offers: PropTypes.object.isRequired,
   log_out_companies: PropTypes.string.isRequired,
   company_signed_in: PropTypes.bool.isRequired,
   user_signed_in: PropTypes.bool.isRequired,
   log_out_user: PropTypes.string.isRequired,
   csrf_param: PropTypes.string.isRequired,
   csrf_token: PropTypes.string.isRequired,
-  session_translation: PropTypes.object.isRequired
+  session_translation: PropTypes.object.isRequired,
+  companies_registration_path: PropTypes.string.isRequired,
+  users_registration_path: PropTypes.string.isRequired,
+  companies_sessions_path: PropTypes.string.isRequired,
+  users_sessions_path: PropTypes.string.isRequired,
+  component_translations: PropTypes.object.isRequired
 }

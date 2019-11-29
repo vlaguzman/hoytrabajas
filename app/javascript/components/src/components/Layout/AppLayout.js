@@ -64,7 +64,10 @@ const AppLayout = ({
                           style={{ height: '100vh' }}
                           ref={myRef}
                         >
-                          <div className="app-header">
+                          <div
+                            style={{ marginRight: '0px', marginBottom: '0px' }}
+                            className="app-header"
+                          >
                             <Header
                               isScrollTop={isTop}
                               csrf_param={csrf_param}
@@ -80,7 +83,9 @@ const AppLayout = ({
                               log_out_user={log_out_user}
                               log_out_companies={log_out_companies}
                               session_translation={session_translation}
-                              user_facebook_omniauth_authorize_path={user_facebook_omniauth_authorize_path}
+                              user_facebook_omniauth_authorize_path={
+                                user_facebook_omniauth_authorize_path
+                              }
                               shouldChangeColorOfNav={shouldChangeColorOfNav}
                             />
                           </div>
@@ -106,6 +111,8 @@ const AppLayout = ({
 export default AppLayout
 
 AppLayout.propTypes = {
+  children: PropTypes.any,
+  user_facebook_omniauth_authorize_path: PropTypes.string.isRequired,
   log_out_companies: PropTypes.string.isRequired,
   company_signed_in: PropTypes.bool.isRequired,
   user_signed_in: PropTypes.bool.isRequired,

@@ -98,7 +98,7 @@ RSpec.describe Offers::ViewsService do
     company: {
       name: "Orellana S.A."
     },
-    close_date: "03 de Agosto del 2019",
+    close_date: "03 de Julio del 2019",
   } end
 
   let(:expected_object_default_url) do {
@@ -124,7 +124,7 @@ RSpec.describe Offers::ViewsService do
     company: {
       name: "Orellana S.A."
     },
-    close_date: "03 de Agosto del 2019",
+    close_date: "03 de Julio del 2019",
   } end
 
   let(:expected_object_default_url_2) do {
@@ -150,7 +150,7 @@ RSpec.describe Offers::ViewsService do
     company: {
       name: "Orellana S.A."
     },
-    close_date: "03 de Agosto del 2019",
+    close_date: "03 de Julio del 2019",
   } end
 
   describe "#details" do

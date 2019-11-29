@@ -132,6 +132,7 @@ es:
       long: "%-d de %B de %Y %H:%M"
       short: "%-d de %b %H:%M"
     day_names:
+    - ''
     - domingo
     - lunes
     - martes
@@ -140,6 +141,7 @@ es:
     - viernes
     - sábado
     month_names:
+    - ''
     - Enero
     - Febrero
     - Marzo

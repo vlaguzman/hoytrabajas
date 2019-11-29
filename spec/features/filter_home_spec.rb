@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "User searches for an offer", type: :feature do
-  
 
   context "When user search of offer" do
     let!(:job_category)  { create(:job_category, description: 'Operario') }
@@ -9,9 +8,9 @@ RSpec.describe "User searches for an offer", type: :feature do
     let!(:job_category3) { create(:job_category, description: 'Marketing') }
     let!(:job_category4) { create(:job_category, description: 'Servicios') }
     let!(:job_category5) { create_list(:job_category, 7, description: 'Otra categoria') }
-    let!(:offer)         { create_list(:offer, 200, title: "Test sebas", job_categories: [job_category]) }
-    let!(:offer1)        { create_list(:offer, 300, title: "Esto es un prueba de sebas", job_categories: [job_category, job_category2]) }
-    let!(:offer2)        { create_list(:offer, 115, title: "Que gran oferta sebas!", job_categories: [job_category3]) }
+    let!(:offer)         { create_list(:offer, 2, title: "Test sebas", job_categories: [job_category]) }
+    let!(:offer1)        { create_list(:offer, 13, title: "Esto es un prueba de sebas", job_categories: [job_category, job_category2]) }
+    let!(:offer2)        { create_list(:offer, 21, title: "Que gran oferta sebas!", job_categories: [job_category3]) }
 
     context "When you filter only by offer title" do
       context "When several offers are found" do
@@ -89,11 +88,11 @@ RSpec.describe "User searches for an offer", type: :feature do
           find("button[class='MuiButtonBase-root MuiButton-root text-primary h-50 MuiButton-text']", visible: false).click
 
           expect(page).to have_content("Operario")
-          expect(page).to have_content("500")
+          expect(page).to have_content("2")
           expect(page).to have_content("Tecnologia")
-          expect(page).to have_content("300")
+          expect(page).to have_content("13")
           expect(page).to have_content("Marketing")
-          expect(page).to have_content("115")
+          expect(page).to have_content("21")
           expect(page).to have_content("Servicios")
           expect(page).to have_content("0")
 
@@ -117,11 +116,11 @@ RSpec.describe "User searches for an offer", type: :feature do
           find("button[class='MuiButtonBase-root MuiButton-root text-primary h-50 MuiButton-text']", visible: false).click
 
           expect(page).to have_content("Operario")
-          expect(page).to have_content("500")
+          expect(page).to have_content("2")
           expect(page).to have_content("Tecnologia")
-          expect(page).to have_content("300")
+          expect(page).to have_content("13")
           expect(page).to have_content("Marketing")
-          expect(page).to have_content("115")
+          expect(page).to have_content("21")
           expect(page).to have_content("Servicios")
           expect(page).to have_content("0")
 
@@ -146,11 +145,11 @@ RSpec.describe "User searches for an offer", type: :feature do
           find("button[class='MuiButtonBase-root MuiButton-root text-primary h-50 MuiButton-text']", visible: false).click
 
           expect(page).to have_content("Operario")
-          expect(page).to have_content("500")
+          expect(page).to have_content("2")
           expect(page).to have_content("Tecnologia")
-          expect(page).to have_content("300")
+          expect(page).to have_content("13")
           expect(page).to have_content("Marketing")
-          expect(page).to have_content("115")
+          expect(page).to have_content("21")
           expect(page).to have_content("Servicios")
           expect(page).to have_content("0")
 
@@ -182,11 +181,11 @@ RSpec.describe "User searches for an offer", type: :feature do
           find("button[class='MuiButtonBase-root MuiButton-root text-primary h-50 MuiButton-text']", visible: false).click
 
           expect(page).to have_content("Operario")
-          expect(page).to have_content("500")
+          expect(page).to have_content("2")
           expect(page).to have_content("Tecnologia")
-          expect(page).to have_content("300")
+          expect(page).to have_content("13")
           expect(page).to have_content("Marketing")
-          expect(page).to have_content("115")
+          expect(page).to have_content("21")
           expect(page).to have_content("Servicios")
           expect(page).to have_content("0")
 
@@ -217,11 +216,11 @@ RSpec.describe "User searches for an offer", type: :feature do
           find("button[class='MuiButtonBase-root MuiButton-root text-primary h-50 MuiButton-text']", visible: false).click
 
           expect(page).to have_content("Operario")
-          expect(page).to have_content("500")
+          expect(page).to have_content("2")
           expect(page).to have_content("Tecnologia")
-          expect(page).to have_content("300")
+          expect(page).to have_content("13")
           expect(page).to have_content("Marketing")
-          expect(page).to have_content("115")
+          expect(page).to have_content("21")
           expect(page).to have_content("Servicios")
           expect(page).to have_content("0")
 

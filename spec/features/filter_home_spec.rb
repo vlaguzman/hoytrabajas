@@ -3,31 +3,49 @@ require 'rails_helper'
 RSpec.describe "User searches for an offer", type: :feature do
 
   context "When user search of offer" do
-    let!(:job_category)  { create(:job_category, description: 'Operario') }
-    let!(:job_category2) { create(:job_category, description: 'Tecnologia') }
-    let!(:job_category3) { create(:job_category, description: 'Marketing') }
+    let!(:job_category)   { create(:job_category, description: 'Operario') }
+    let!(:job_category2)  { create(:job_category, description: 'Tecnologia') }
+    let!(:job_category3)  { create(:job_category, description: 'Marketing') }
     let!(:job_category4) { create(:job_category, description: 'Servicios') }
     let!(:job_category5) { create_list(:job_category, 7, description: 'Otra categoria') }
-    let!(:offer)         { create_list(:offer, 2, title: "Test sebas", job_categories: [job_category]) }
-    let!(:offer1)        { create_list(:offer, 13, title: "Esto es un prueba de sebas", job_categories: [job_category, job_category2]) }
-    let!(:offer2)        { create_list(:offer, 21, title: "Que gran oferta sebas!", job_categories: [job_category3]) }
+    let!(:create_stuff_offers) do
+      create_list(:offer, 5, title: "Test sebas", job_categories: [job_category])
+      create_list(:offer, 6, title: "Esto es un prueba de sebas", job_categories: [job_category, job_category2])
+      create_list(:offer, 7, title: "Que gran oferta sebas!", job_categories: [job_category3])
+    end
+
+    context "When press categories button" do
+      it "Should show the title, carrousel and the filter inputs", js: true do
+        visit root_path
+
+        expect(page).to have_content("Encuentra trabajo compatible con tus habilidades y competencias")
+
+        expect(page).to have_tag(:form, with: { class: "row justify-content-around" }) do
+          with_tag(:input, with: { name: 'q[title_cont]'})
+        end
+
+        find("button[class='MuiButtonBase-root MuiButton-root text-primary h-50 MuiButton-text']", visible: false).click
+
+        expect(page).to have_content("Operario")
+        expect(page).to have_content("5")
+        expect(page).to have_content("Tecnologia")
+        expect(page).to have_content("6")
+        expect(page).to have_content("Marketing")
+        expect(page).to have_content("7")
+        expect(page).to have_content("Servicios")
+        expect(page).to have_content("0")
+      end
+    end
 
     context "When you filter only by offer title" do
       context "When several offers are found" do
         it "Should return offers related", js: true do
           visit root_path
 
-          expect(page).to have_content("Encuentra trabajo compatible con tus habilidades y competencias")
-
-          expect(page).to have_tag(:form, with: { class: "row justify-content-around" }) do
-            with_tag(:input, with: { name: 'q[title_cont]'})
-          end
-
           fill_in('q[title_cont]', with: 'sebas')
           find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
 
           expect(current_path).to eq("#{offers_path}/")
-          save_screenshot('sebas.png')
 
           expect(page).to have_content("Test Sebas")
           expect(page).to have_content("Esto Es Un Prueba De Sebas")
@@ -39,16 +57,8 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return the related offer", js: true do
           visit root_path
 
-          expect(page).to have_content("Encuentra trabajo compatible con tus habilidades y competencias")
-
-          expect(page).to have_tag(:form, with: { class: "row justify-content-around" }) do
-            with_tag(:input, with: { name: 'q[title_cont]'})
-          end
-
           fill_in('q[title_cont]', with: 'prueba')
           find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
-
-          expect(current_path).to eq("#{offers_path}/")
 
           expect(page).to have_content("Esto Es Un Prueba De Sebas")
           expect(page).to_not have_content("Test Sebas")
@@ -60,16 +70,8 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should be redirected to the offers page without any results", js: true do
           visit root_path
 
-          expect(page).to have_content("Encuentra trabajo compatible con tus habilidades y competencias")
-
-          expect(page).to have_tag(:form, with: { class: "row justify-content-around" }) do
-            with_tag(:input, with: { name: 'q[title_cont]'})
-          end
-
           fill_in('q[title_cont]', with: 'Jhoan')
           find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
-
-          expect(current_path).to eq("#{offers_path}/")
 
           expect(page).to_not have_content("Esto Es Un Prueba De Sebas")
           expect(page).to_not have_content("Test Sebas")
@@ -83,23 +85,10 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return results", js: true do
           visit root_path
 
-          expect(page).to have_content("Encuentra trabajo compatible con tus habilidades y competencias")
-
           find("button[class='MuiButtonBase-root MuiButton-root text-primary h-50 MuiButton-text']", visible: false).click
 
-          expect(page).to have_content("Operario")
-          expect(page).to have_content("2")
-          expect(page).to have_content("Tecnologia")
-          expect(page).to have_content("13")
-          expect(page).to have_content("Marketing")
-          expect(page).to have_content("21")
-          expect(page).to have_content("Servicios")
-          expect(page).to have_content("0")
-
-          find("div[id='Operario']").click
+          find("#Operario").click
           find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
-
-          expect(current_path).to eq("#{offers_path}/")
 
           expect(page).to have_content("Esto Es Un Prueba De Sebas")
           expect(page).to have_content("Test Sebas")
@@ -111,24 +100,11 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return results", js: true do
           visit root_path
 
-          expect(page).to have_content("Encuentra trabajo compatible con tus habilidades y competencias")
-
           find("button[class='MuiButtonBase-root MuiButton-root text-primary h-50 MuiButton-text']", visible: false).click
-
-          expect(page).to have_content("Operario")
-          expect(page).to have_content("2")
-          expect(page).to have_content("Tecnologia")
-          expect(page).to have_content("13")
-          expect(page).to have_content("Marketing")
-          expect(page).to have_content("21")
-          expect(page).to have_content("Servicios")
-          expect(page).to have_content("0")
 
           find("div[id='Tecnologia']").click
           find("div[id='Marketing']").click
           find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
-
-          expect(current_path).to eq("#{offers_path}/")
 
           expect(page).to have_content("Esto Es Un Prueba De Sebas")
           expect(page).to have_content("Que Gran Oferta Sebas!")
@@ -140,18 +116,7 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return message of empty", js: true do
           visit root_path
 
-          expect(page).to have_content("Encuentra trabajo compatible con tus habilidades y competencias")
-
           find("button[class='MuiButtonBase-root MuiButton-root text-primary h-50 MuiButton-text']", visible: false).click
-
-          expect(page).to have_content("Operario")
-          expect(page).to have_content("2")
-          expect(page).to have_content("Tecnologia")
-          expect(page).to have_content("13")
-          expect(page).to have_content("Marketing")
-          expect(page).to have_content("21")
-          expect(page).to have_content("Servicios")
-          expect(page).to have_content("0")
 
           find("div[id='Servicios']").click
           find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
@@ -170,30 +135,12 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return results", js: true do
           visit root_path
 
-          expect(page).to have_content("Encuentra trabajo compatible con tus habilidades y competencias")
-
-          expect(page).to have_tag(:form, with: { class: "row justify-content-around" }) do
-            with_tag(:input, with: { name: 'q[title_cont]'})
-          end
-
           fill_in('q[title_cont]', with: 'oferta')
 
           find("button[class='MuiButtonBase-root MuiButton-root text-primary h-50 MuiButton-text']", visible: false).click
-
-          expect(page).to have_content("Operario")
-          expect(page).to have_content("2")
-          expect(page).to have_content("Tecnologia")
-          expect(page).to have_content("13")
-          expect(page).to have_content("Marketing")
-          expect(page).to have_content("21")
-          expect(page).to have_content("Servicios")
-          expect(page).to have_content("0")
-
-
           find("div[id='Marketing']").click
-          find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
 
-          expect(current_path).to eq("#{offers_path}/")
+          find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
 
           expect(page).not_to have_content("Esto Es Un Prueba De Sebas")
           expect(page).to have_content("Que Gran Oferta Sebas!")
@@ -205,29 +152,12 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return message of empty", js: true do
           visit root_path
 
-          expect(page).to have_content("Encuentra trabajo compatible con tus habilidades y competencias")
-
-          expect(page).to have_tag(:form, with: { class: "row justify-content-around" }) do
-            with_tag(:input, with: { name: 'q[title_cont]'})
-          end
-
           fill_in('q[title_cont]', with: 'jhoan')
 
           find("button[class='MuiButtonBase-root MuiButton-root text-primary h-50 MuiButton-text']", visible: false).click
 
-          expect(page).to have_content("Operario")
-          expect(page).to have_content("2")
-          expect(page).to have_content("Tecnologia")
-          expect(page).to have_content("13")
-          expect(page).to have_content("Marketing")
-          expect(page).to have_content("21")
-          expect(page).to have_content("Servicios")
-          expect(page).to have_content("0")
-
           find("div[id='Marketing']").click
           find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
-
-          expect(current_path).to eq("#{offers_path}/")
 
           expect(page).not_to have_content("Esto Es Un Prueba De Sebas")
           expect(page).not_to have_content("Que Gran Oferta Sebas!")

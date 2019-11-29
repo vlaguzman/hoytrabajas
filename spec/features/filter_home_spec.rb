@@ -18,7 +18,7 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return offers related", js: true do
           visit root_path
 
-          expect(page).to have_content("El empleo ideal para tu tiempo libre")
+          expect(page).to have_content("Encuentra trabajo compatible con tus habilidades y competencias")
 
           expect(page).to have_tag(:form, with: { class: "row justify-content-around" }) do
             with_tag(:input, with: { name: 'q[title_cont]'})
@@ -40,7 +40,7 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return the related offer", js: true do
           visit root_path
 
-          expect(page).to have_content("El empleo ideal para tu tiempo libre")
+          expect(page).to have_content("Encuentra trabajo compatible con tus habilidades y competencias")
 
           expect(page).to have_tag(:form, with: { class: "row justify-content-around" }) do
             with_tag(:input, with: { name: 'q[title_cont]'})
@@ -61,7 +61,7 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should be redirected to the offers page without any results", js: true do
           visit root_path
 
-          expect(page).to have_content("El empleo ideal para tu tiempo libre")
+          expect(page).to have_content("Encuentra trabajo compatible con tus habilidades y competencias")
 
           expect(page).to have_tag(:form, with: { class: "row justify-content-around" }) do
             with_tag(:input, with: { name: 'q[title_cont]'})
@@ -84,7 +84,7 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return results", js: true do
           visit root_path
 
-          expect(page).to have_content("El empleo ideal para tu tiempo libre")
+          expect(page).to have_content("Encuentra trabajo compatible con tus habilidades y competencias")
 
           find("button[class='MuiButtonBase-root MuiButton-root text-primary h-50 MuiButton-text']", visible: false).click
 
@@ -112,7 +112,7 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return results", js: true do
           visit root_path
 
-          expect(page).to have_content("El empleo ideal para tu tiempo libre")
+          expect(page).to have_content("Encuentra trabajo compatible con tus habilidades y competencias")
 
           find("button[class='MuiButtonBase-root MuiButton-root text-primary h-50 MuiButton-text']", visible: false).click
 
@@ -141,7 +141,7 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return message of empty", js: true do
           visit root_path
 
-          expect(page).to have_content("El empleo ideal para tu tiempo libre")
+          expect(page).to have_content("Encuentra trabajo compatible con tus habilidades y competencias")
 
           find("button[class='MuiButtonBase-root MuiButton-root text-primary h-50 MuiButton-text']", visible: false).click
 
@@ -171,7 +171,7 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return results", js: true do
           visit root_path
 
-          expect(page).to have_content("El empleo ideal para tu tiempo libre")
+          expect(page).to have_content("Encuentra trabajo compatible con tus habilidades y competencias")
 
           expect(page).to have_tag(:form, with: { class: "row justify-content-around" }) do
             with_tag(:input, with: { name: 'q[title_cont]'})
@@ -206,7 +206,7 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return message of empty", js: true do
           visit root_path
 
-          expect(page).to have_content("El empleo ideal para tu tiempo libre")
+          expect(page).to have_content("Encuentra trabajo compatible con tus habilidades y competencias")
 
           expect(page).to have_tag(:form, with: { class: "row justify-content-around" }) do
             with_tag(:input, with: { name: 'q[title_cont]'})

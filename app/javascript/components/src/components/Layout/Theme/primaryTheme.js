@@ -30,7 +30,7 @@ const theme = createMuiTheme({
     },
     MuiFormLabel: {
       root: {
-        fontFamily: 'Rubik, sans-serif',
+        fontFamily: 'Nunito Sans, sans-serif',
         whiteSpace: 'pre',
         fontSize: '0.935rem',
         // lineHeight: '0rem',
@@ -55,41 +55,41 @@ const theme = createMuiTheme({
     MuiTypography: {
       subtitle1: {
         lineHeight: '1em',
-        fontFamily: 'inherit'
+        fontFamily: 'Nunito Sans'
       },
       body1: {
         // fontSize: '.875rem',
-        fontFamily: 'inherit'
+        fontFamily: 'Nunito Sans'
       },
       body2: {
         // fontSize: '1rem',
-        fontFamily: 'inherit'
+        fontFamily: 'Nunito Sans'
       },
       h5: {
-        fontFamily: 'inherit'
+        fontFamily: 'Nunito Sans'
       },
       h6: {
-        fontFamily: 'inherit',
+        fontFamily: 'Nunito Sans',
         textTransform: 'none'
       },
       h4: {
-        fontFamily: 'inherit',
+        fontFamily: 'Nunito Sans',
         textTransform: 'none'
       },
       h3: {
-        fontFamily: 'inherit',
+        fontFamily: 'Nunito Sans',
         textTransform: 'none'
       },
       h2: {
-        fontFamily: 'inherit',
+        fontFamily: 'Nunito Sans',
         textTransform: 'none'
       },
       h1: {
-        fontFamily: 'inherit',
+        fontFamily: 'Nunito Sans',
         textTransform: 'none'
       },
       subtitle2: {
-        fontFamily: 'inherit'
+        fontFamily: 'Nunito Sans'
       }
     },
     MuiChip: {

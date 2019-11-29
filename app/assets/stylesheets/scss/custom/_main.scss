@@ -1,4 +1,7 @@
 /*======== App Global (Main Structure) Mention Here =======*/
+*{
+  font-family: $font-family-nunito !important;
+}
 #root,
 .app {
   height: 100%;

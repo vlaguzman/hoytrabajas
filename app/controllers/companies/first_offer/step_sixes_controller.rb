@@ -1,4 +1,5 @@
 class Companies::FirstOffer::StepSixesController < ApplicationController
+  before_action :authenticate_company!
 
   def show
     offer = Offer.find(show_params[:offer_id])

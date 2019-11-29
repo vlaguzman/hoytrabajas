@@ -11,14 +11,21 @@ es:
               submit: "Publicar"
               next: "Saltar"
               previous: "Regresar"
-            type: "offer"
             formFields:
               city_id: 'Que resida en'
               educational_degree_id: 'Nivel mínimo de educación'
               duration: 'Con mínimo'
               duration_type_id: 'de experiencia'
               required_experience: 'ó'
-              technical_skills_id: 'Con habilidades en'
-              technical_skills_level_id: 'con nivel'
+              technical_skill_id: 'Con habilidades en'
               language_id: 'Manejo de idioma'
-              language_level_id: 'con nivel'
+            placeholders:
+              language_id: 'Selecciona el idioma'
+              nivel_id: 'con nivel'
+          sub_forms:
+            technical_skills:
+              skill: 'Con habilidades en'
+              level: 'con nivel'
+            languages: 
+              language: 'Manejo de idioma'
+              level: 'con nivel'

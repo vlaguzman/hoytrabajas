@@ -16,8 +16,8 @@ class Companies::FirstOffer::StepSevenPresenter < ApplicationPresenter
 
   private
 
-  def companies_first_offer_step_six_path
-    rails_routes.companies_first_offer_step_six_path
+  def companies_first_offer_step_seven_path
+    rails_routes.companies_first_offer_step_seven_path
   end
 
   def companies_first_offer_step_six_path

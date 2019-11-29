@@ -1,8 +1,9 @@
 class Companies::FirstOffer::StepSevensController < ApplicationController
+  before_action :authenticate_company!
 
   def show
-#   offer = Offer.find(show_params[:offer_id])
-#   offer_presenter(offer)
+    offer = Offer.find(show_params[:offer_id])
+    offer_presenter(offer)
   end
 
   def update
@@ -29,16 +30,25 @@ class Companies::FirstOffer::StepSevensController < ApplicationController
     ).to_h
   end
 
-  def step_six_params
+  def step_seven_params
     params
       .require(:offer)
       .permit(
         :id,
         :city_id,
         :educational_level_ids,
-        :required_experiences_duration,
-        :required_experiences_duration_type,
+        :duration,
+        :duration_type,
         :required_experience,
+        technical_skills: [[
+          :technical_skills_id,
+          :level_id
+        ]],
+        languages:[[
+          :level_id,
+          :language_id
+        ]],
     ).to_h
   end
+
 end

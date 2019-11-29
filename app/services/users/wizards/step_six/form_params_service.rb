@@ -16,9 +16,9 @@ class Users::Wizards::StepSix::FormParamsService < BaseFormWizardsService
 
   def fields_builder
     super(
-      subform_object_builder(:technical_skills),
-      subform_object_builder(:to_learn_skills),
-      subform_object_builder(:languages)
+      subform_object_builder(:curriculum_vitae, :technical_skills),
+      subform_object_builder(:curriculum_vitae, :to_learn_skills),
+      subform_object_builder(:curriculum_vitae, :languages)
     )
   end
 

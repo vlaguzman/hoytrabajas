@@ -2,7 +2,7 @@ class Companies::FirstOffer::StepSevensController < ApplicationController
   before_action :authenticate_company!
 
   def show
-    offer = Offer.find(show_params[:offer_id])
+    offer = get_offer
     offer_presenter(offer)
   end
 
@@ -23,6 +23,14 @@ class Companies::FirstOffer::StepSevensController < ApplicationController
 
   private
 
+  def get_offer
+    if show_params[:offer_id].present?
+      Offer.find(show_params[:offer_id])
+    else
+      redirect_to companies_first_offer_step_three_path
+    end
+  end
+
   def show_params
     params
       .permit(
@@ -36,12 +44,12 @@ class Companies::FirstOffer::StepSevensController < ApplicationController
       .permit(
         :id,
         :city_id,
-        :educational_level_ids,
+        :educational_degree_id,
         :duration,
-        :duration_type,
+        :duration_type_id,
         :required_experience,
         technical_skills: [[
-          :technical_skills_id,
+          :technical_skill_id,
           :level_id
         ]],
         languages:[[

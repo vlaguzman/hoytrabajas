@@ -34,7 +34,7 @@ class CurriculumVitae < ApplicationRecord
     CurriculumVitaesTechnicalSkills.where(curriculum_vitae_id: self.id, step_up: true)
   end
 
-  def languages
+  def strong_languages
     CurriculumVitaesLanguages.where(curriculum_vitae_id: self.id)
   end
 end

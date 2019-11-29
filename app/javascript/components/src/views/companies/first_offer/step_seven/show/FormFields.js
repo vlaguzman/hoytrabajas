@@ -8,7 +8,7 @@ import styled from 'styled-components'
 import SelectChip from '../../../../../components/FormsLayout/Fields/SelectChip'
 import FormRow from '../../../../../components/FormsLayout/Fields/FormRow'
 import Checkbox from '../../../../../components/FormsLayout/Fields/Checkbox'
-import FormLabel from '../../../../../components/FormsLayout/FormLabel'
+import StandardInput from '../../../../../components/FormsLayout/Fields/StandardInput'
 
 import {
   handleDeleteChip,
@@ -43,7 +43,6 @@ const AfterLabel = styled.span`
 
 const FormFields = props => {
   const { formFields } = props
-  console.log(formFields)
   const {
     city_id = null,
     educational_degree_id = null,
@@ -69,7 +68,7 @@ const FormFields = props => {
         duration: '',
         duration_type_id: '',
         required_experience: '',
-        technical_skills_id: '',
+        technical_skill_id: '',
         language_id: '',
         level_id: ''
       }
@@ -94,7 +93,7 @@ const FormFields = props => {
       duration: '',
       duration_type_id: '',
       required_experience: '',
-      technical_skills_id: '',
+      technical_skill_id: '',
       language_id: '',
       level_id: ''
     }
@@ -196,13 +195,11 @@ const FormFields = props => {
               <BeforeLabel marginAuto>
                 {duration.label}
               </BeforeLabel>
-              <SelectChip
+              <StandardInput
                 inputValue={formValues[duration.name]}
                 handleChange={handleChange(formValues, setFormValues)}
-                handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
                 name={duration.name}
-                selectOptions={duration.values}
-                isDisabled={formValues[required_experience.name] || false}
+                placeholder={duration.placeholder || 'ejem: 2'}
               />
             </StyledCol>
             <StyledCol xs={12} lg={4}>
@@ -246,7 +243,7 @@ const FormFields = props => {
         {formValues[technical_skills.name].map((toLearnSkillObject, index) => (
           <Col
             key={toLearnSkillObject.rowID}
-            className={inputClassname}
+            className={`${inputClassname} p-0`}
             xs={12}
             style={{ margin: '20px 0', padding: '0 20px' }}
           >
@@ -280,11 +277,11 @@ const FormFields = props => {
                         {technical_skills.main_label.skill}
                       </BeforeLabel>
                       <SelectChip
-                        name="technical_skills_id"
-                        inputValue={rowValue.technical_skills_id}
+                        name="technical_skill_id"
+                        inputValue={rowValue.technical_skill_id}
                         handleChange={handleRowChanges}
                         handleDeleteChip={handleRowDeleteChip}
-                        selectOptions={technical_skills.list_values.technical_skills_id}
+                        selectOptions={technical_skills.list_values.technical_skill_id}
                       />
                     </StyledCol>
 
@@ -317,7 +314,7 @@ const FormFields = props => {
         {formValues[languages.name].map((toLearnSkillObject, index) => (
           <Col
             key={toLearnSkillObject.rowID}
-            className={inputClassname}
+            className={`${inputClassname} p-0`}
             xs={12}
             style={{ margin: '20px 0', padding: '0 20px' }}
           >

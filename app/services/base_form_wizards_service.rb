@@ -114,11 +114,11 @@ class BaseFormWizardsService
     end
   end
 
-  def subform_object_builder(object_type)
+  def subform_object_builder(form_key, object_type)
     {
       object_type => {
         name:        object_type,
-        form_keys:   [:curriculum_vitae, object_type],
+        form_keys:   [form_key, object_type],
         field_keys:  self.class::SUBFORMS_FIELDS[object_type],
         main_label:  template_translations[:sub_forms][object_type],
         list_values: Hash[
@@ -130,8 +130,14 @@ class BaseFormWizardsService
   end
 
   def current_values_of(object_type)
-    call_of_object = object_type.eql?(:technical_skills) ? :strong_skills : object_type
-    source.present? ? -> { ListConverter.parameters_list(source.send(object_type), self.class::SUBFORMS_FIELDS[object_type])} : -> { [] }
+    options = {
+      :technical_skills => lambda { :strong_skills },
+      :languages => lambda { :strong_languages },
+      nil => lambda { object_type }
+    }
+
+    call_of_object = options[object_type].()
+    source.present? ? -> { ListConverter.parameters_list(source.send(call_of_object), self.class::SUBFORMS_FIELDS[object_type])} : -> { [] }
   end
 
 end

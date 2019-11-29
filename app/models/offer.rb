@@ -42,6 +42,7 @@ class Offer < ApplicationRecord
   has_and_belongs_to_many :educational_level, optional: true
   has_and_belongs_to_many :sexes, optional: true
   has_and_belongs_to_many :requirements, optional: true
+  has_and_belongs_to_many :required_experiences, optional: true
 
   has_one_attached :image
 
@@ -55,12 +56,21 @@ class Offer < ApplicationRecord
   delegate :description, to: :contract_type, prefix: :contract_type, allow_nil: true
   delegate :description, to: :available_work_days, prefix: :available_work_days, allow_nil: true
   delegate :description, to: :working_days, prefix: :working_days, allow_nil: true
+  delegate :duration, :duration_type_id, to: :required_experiences, prefix: :required_experiences, allow_nil: true
 
   def self.not_applied_offers_by_cv(curriculum_vitae_id)
     Offer.all - self.by_applied_offer_cv(curriculum_vitae_id)
   end
 
   def languages_list
+    LanguagesOffers.where(offer_id: self.id)
+  end
+
+  def strong_skills
+    OffersTechnicalSkills.where(offer_id: self.id)
+  end
+
+  def strong_languages
     LanguagesOffers.where(offer_id: self.id)
   end
 end

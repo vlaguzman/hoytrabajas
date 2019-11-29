@@ -1,16 +1,19 @@
 class Companies::FirstOffer::StepSeven::FormParamsService < BaseFormWizardsService
 
+  INPUT_FIELDS_KEYS = [
+    :duration
+  ]
+
   SELECT_FIELDS_KEYS = [
     :city_id,
     :educational_degree_id,
-    :duration,
     :duration_type_id,
   ]
 
   SUBFORMS = [:technical_skills, :languages]
 
   SUBFORMS_FIELDS = {
-    :technical_skills => [:technical_skills_id, :level_id],
+    :technical_skills => [:technical_skill_id, :level_id],
     :languages => [:language_id, :level_id]
   }
 
@@ -19,8 +22,8 @@ class Companies::FirstOffer::StepSeven::FormParamsService < BaseFormWizardsServi
   def fields_builder
     super(
       required_experience_field,
-      subform_object_builder(:technical_skills),
-      subform_object_builder(:languages)
+      subform_object_builder(:offer, :technical_skills),
+      subform_object_builder(:offer, :languages)
     )
   end
 
@@ -43,21 +46,19 @@ class Companies::FirstOffer::StepSeven::FormParamsService < BaseFormWizardsServi
     ListConverter.model_list EducationalDegree
   end
 
-  def duration_list
-    [{description: '2', id: 1}]
-  end
-
   def duration_current_value
+    source.required_experiences_duration
   end
 
   def duration_type_id_current_value
+    source.required_experiences_duration_type_id
   end
 
   def duration_type_id_list
     ListConverter.model_list DurationType
   end
 
-  def technical_skills_id_list
+  def technical_skill_id_list
     ListConverter.model_list TechnicalSkill
   end
 

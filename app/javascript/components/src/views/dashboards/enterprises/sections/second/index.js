@@ -21,29 +21,7 @@ import FavoriteBorder from '@material-ui/icons/FavoriteBorder'
 // import RemoveCircleOutline from '@material-ui/icons/RemoveCircleOutline'
 // import ChatBubbleOutline from '@material-ui/icons/ChatBubbleOutline'
 
-// companies.dashboards.show.my_offers.translations
-const myOffersTranslations = {
-  the_title: 'Mis ofertas',
-  offer: 'Oferta',
-  approved: 'Aprobada por HoyTrabajas',
-  approved_list: {
-    approved: 'Aprobada',
-    not_approved: 'No Aprobada'
-  },
-  candidates: 'Candidatos',
-  started_at: 'Inicio',
-  closed_at: 'Cierre',
-  status: 'Estado',
-  status_lists: {
-    expired: 'Expirada',
-    hired: 'Candidato Contratado',
-    active: 'Activa',
-    preview: 'En revision',
-    trash: 'Descartada'
-  }
-}
-
-const Second = ({ my_offers }) => {
+const Second = ({ my_offers, my_offers_section }) => {
   const theTitle = texto => (
     <>
       <IconButton className="p-0" aria-label="Settings">
@@ -63,7 +41,7 @@ const Second = ({ my_offers }) => {
       <Col xs={12} className="bg-primary">
         <Card className="p-25">
           <CardHeader
-            title={theTitle(myOffersTranslations['the_title'])}
+            title={theTitle(my_offers_section['the_title'])}
             subheader={
               <Typography
                 className="mb-10 fw-bold d-none d-lg-inline"
@@ -91,30 +69,30 @@ const Second = ({ my_offers }) => {
                       size="medium"
                       align="center"
                     >
-                      {myOffersTranslations['the_title']}
+                      {my_offers_section['the_title']}
                     </TableCell>
                     <TableCell className="text-info" align="left" size="small">
-                      {myOffersTranslations['approved']}
+                      {my_offers_section['approved']}
                     </TableCell>
                     <TableCell
                       className="text-info"
                       align="center"
                       size="small"
                     >
-                      {myOffersTranslations['candidates']}
+                      {my_offers_section['candidates']}
                     </TableCell>
                     {/* TODO OScar add this column when the company could entreview the candidates */}
                     {/* <TableCell className="text-info" align="center" size='small' >
                 Entrevistas
               </TableCell> */}
                     <TableCell className="text-info" align="left">
-                      {myOffersTranslations['started_at']}
+                      {my_offers_section['started_at']}
                     </TableCell>
                     <TableCell className="text-info" align="left">
-                      {myOffersTranslations['closed_at']}
+                      {my_offers_section['closed_at']}
                     </TableCell>
                     <TableCell className="text-info" align="left">
-                      {myOffersTranslations['status']}
+                      {my_offers_section['status']}
                     </TableCell>
                   </TableRow>
                 </TableHead>
@@ -131,8 +109,8 @@ const Second = ({ my_offers }) => {
                       </TableCell>
                       <TableCell align="left" size="small">
                         {row.approved
-                          ? myOffersTranslations.approved_list.approved
-                          : myOffersTranslations.approved_list.not_approved}
+                          ? my_offers_section.approved_list.approved
+                          : my_offers_section.approved_list.not_approved}
                         {/* <Switch
                     checked={row.approved}
                     value="checkedA"
@@ -147,7 +125,7 @@ const Second = ({ my_offers }) => {
                       <TableCell align="left">{row.start_date}</TableCell>
                       <TableCell align="left">{row.close_date}</TableCell>
                       <TableCell align="left">
-                        {myOffersTranslations.status_lists[`${row.status}`]}
+                        {my_offers_section.status_lists[`${row.status}`]}
                       </TableCell>
                     </TableRow>
                   ))}

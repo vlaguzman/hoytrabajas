@@ -6,12 +6,21 @@ import Second from './sections/second'
 // import Third from './sections/third'
 
 const DashEnterprises = props => {
-  const { my_offers } = props
+  const {
+    my_offers,
+    component_translations
+   } = props
 
+   const {
+    my_offers_section
+   } = component_translations
   return (
     <>
       <Presentation />
-      <Second my_offers={my_offers} />
+      <Second
+        my_offers={my_offers}
+        my_offers_section={my_offers_section}
+      />
       {
         // TODO: add this when dashboards be implemented
         /* <First />

@@ -25,4 +25,31 @@ RSpec.describe Companies::DashboardsPresenter do
       end
     end
   end
+
+  describe "#component_translations" do
+    context "component_translations" do
+      it "Should return the expected object" do
+        expected_object  = {
+          :my_offers_section=>{
+            :the_title=>"Mis ofertas",
+            :offer=>"Oferta",
+            :approved=>"Aprobada por HoyTrabajas",
+            :approved_list=>{
+            :approved=>"Aprobada",
+            :not_approved=>"No Aprobada"},
+            :candidates=>"Candidatos",
+            :started_at=>"Inicio",
+            :closed_at=>"Cierre",
+            :status=>"Estado",
+            :status_lists=>{
+            :expired=>"Expirada",
+            :hired=>"Candidato Contratado",
+            :active=>"Activa",
+            :preview=>"En revision",
+            :trash=>"Descartada"}}}
+
+        expect(subject.component_translations).to eq(expected_object)
+      end
+    end
+  end
 end

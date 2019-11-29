@@ -7,10 +7,10 @@ RSpec.describe DatesConverter do
   describe "#default" do
     it { should respond_to(:default) }
 
-    it "should return '26 de Octubre del 2019'" do
+    it "should return '26 de Septiembre del 2019'" do
       response = subject.default(date: test_date)
 
-      expect(response).to eq("26 de Octubre del 2019")
+      expect(response).to eq("26 de Septiembre del 2019")
     end
   end
 

@@ -19,7 +19,9 @@ A         • AvailableWorkDay                                    3       0.0   
 A         • AvailableWorkDaysCurriculumVitaes                   1       0.0        0           1
 A         • AvailableWorkDaysOffers                             1       0.0        0           1
 A         • City                                                3       0.0        0           1
-A         • Companies::DashboardsController                     1       3.4        0           1
+A         • Companies::Dashboards::OffersService                1       21.65      0           1
+A         • Companies::DashboardsController                     2       7.23       0           1
+A         • Companies::DashboardsPresenter                      1       2.2        0           1
 A         • Companies::FirstOffer::CommonService                2       2.45       0           1
 A         • Companies::FirstOffer::StepEight::FormParamsService 3       0.0        0           1
 A         • Companies::FirstOffer::StepEightPresenter           4       9.4        0           1

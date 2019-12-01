@@ -11,6 +11,8 @@ module Users::Wizards::StepFiveService
   private
 
   def self.create_curriculum_vitae_salary(create_params: {})
+    CurriculumVitaeSalary.where(curriculum_vitae: create_params[:curriculum_vitae]).destroy_all
+
     CurriculumVitaeSalary.create(create_params)
   end
 

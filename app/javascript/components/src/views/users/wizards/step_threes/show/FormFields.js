@@ -59,7 +59,7 @@ const FormFields = props => {
           name={offer_type_ids.name}
           label={offer_type_ids.label}
           selectOptions={offer_type_ids.values}
-          isMultiple={false}
+          isMultiple
         />
       </Col>
     ),

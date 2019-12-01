@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :document_type do
-    description { 'Cedula de Ciudadania' }
+    description { Faker::Science.element }
   end
 end

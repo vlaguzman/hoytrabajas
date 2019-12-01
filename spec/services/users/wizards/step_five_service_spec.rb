@@ -27,8 +27,8 @@ RSpec.describe Users::Wizards::StepFiveService do
       let(:params) do
         {
           curriculum_vitae: {
-            available_work_day_ids: available_work_day_ids,
-            working_day_ids: working_day_ids,
+            available_work_day_ids: [available_work_day_ids.join(",")],
+            working_day_ids: [working_day_ids.join(",")],
             curriculum_vitae_salary: {
               currency_id: currency_id,
               from: 4000, to: 10000,
@@ -65,7 +65,7 @@ RSpec.describe Users::Wizards::StepFiveService do
 
         update_candidate = subject.(candidate: candidate, update_params: params)
 
-        updated_cv_salary = update_candidate.curriculum_vitaes.first.curriculum_vitae_salary
+        updated_cv_salary = update_candidate.curriculum_vitae.curriculum_vitae_salary
 
         expect(CurriculumVitaeSalary.count).to eq(1)
 

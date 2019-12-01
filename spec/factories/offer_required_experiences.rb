@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :required_experience do
+  factory :offer_required_experiences do
     duration { 2 }
 
     association :offer, factory: :offer

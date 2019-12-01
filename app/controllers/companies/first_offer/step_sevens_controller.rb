@@ -2,7 +2,7 @@ class Companies::FirstOffer::StepSevensController < ApplicationController
   before_action :authenticate_company!
 
   def show
-    offer = get_offer
+    offer = get_offer(show_params)
     offer_presenter(offer)
   end
 
@@ -22,14 +22,6 @@ class Companies::FirstOffer::StepSevensController < ApplicationController
   end
 
   private
-
-  def get_offer
-    if show_params[:offer_id].present?
-      Offer.find(show_params[:offer_id])
-    else
-      redirect_to companies_first_offer_step_three_path
-    end
-  end
 
   def show_params
     params

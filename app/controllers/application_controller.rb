@@ -24,4 +24,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def get_offer(params)
+    if params[:offer_id].present?
+      Offer.find(params[:offer_id])
+    else
+      redirect_to companies_first_offer_step_three_path
+    end
+  end
+
+
 end

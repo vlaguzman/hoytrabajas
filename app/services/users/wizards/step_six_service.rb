@@ -25,7 +25,7 @@ module Users::Wizards::StepSixService
   end
 
   def self.update_languages_params(curriculum_vitae, languages_params: [])
-    curriculum_vitae.languages.destroy_all
+    curriculum_vitae.strong_languages.destroy_all
 
     languages_params
       .select {|language| not language.value?("") }

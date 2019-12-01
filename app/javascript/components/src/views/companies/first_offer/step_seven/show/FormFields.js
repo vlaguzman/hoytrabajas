@@ -81,7 +81,7 @@ const FormFields = props => {
     [duration.name]: duration.current_value || '',
     [duration_type_id.name]: duration_type_id.current_value || '',
     [required_experience.name]: required_experience.current_value || false,
-    [technical_skills.name]: setDefaultRowIDs(technical_skills.current_value) || [],
+    [technical_skills.name]: setDefaultRowIDs(technical_skills.current_values) || [],
     [languages.name]: setDefaultRowIDs(languages.current_values) || []
   })
 
@@ -209,7 +209,6 @@ const FormFields = props => {
                 handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
                 name={duration_type_id.name}
                 selectOptions={duration_type_id.values}
-                isDisabled={formValues[required_experience.name] || false}
               />
               <AfterLabel marginAuto>
                 {duration_type_id.label}

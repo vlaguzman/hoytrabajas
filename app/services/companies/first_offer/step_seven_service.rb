@@ -15,6 +15,8 @@ module Companies::FirstOffer::StepSevenService
   end
 
   def self.update_skills(offer, technical_skills_params)
+    offer.technical_skills.destroy_all
+
     technical_skills_params
       .select {|skill| not skill.value?("") }
       .map { |skill| skill.merge(offer_id: offer.id) }
@@ -24,6 +26,8 @@ module Companies::FirstOffer::StepSevenService
   end
 
   def self.update_languages(offer, languages_params: [])
+    offer.languages.destroy_all
+
     languages_params
       .select {|language| not language.value?("") }
       .map { |language| language.merge(offer_id: offer.id) }
@@ -33,7 +37,7 @@ module Companies::FirstOffer::StepSevenService
   end
 
   def self.update_experieces(offer, update_params)
-    RequiredExperience.create(
+    OfferRequiredExperiences.create(
       offer_id: offer.id,
       duration_type_id: update_params[:duration_type_id],
       duration: update_params[:duration]

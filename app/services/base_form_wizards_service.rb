@@ -132,11 +132,10 @@ class BaseFormWizardsService
   def current_values_of(object_type)
     options = {
       :technical_skills => lambda { :strong_skills },
-      :languages => lambda { :strong_languages },
-      nil => lambda { object_type }
+      :languages        => lambda { :strong_languages }
     }
 
-    call_of_object = options[object_type].()
+    call_of_object = options[object_type].present? ? options[object_type].() : object_type
     source.present? ? -> { ListConverter.parameters_list(source.send(call_of_object), self.class::SUBFORMS_FIELDS[object_type])} : -> { [] }
   end
 

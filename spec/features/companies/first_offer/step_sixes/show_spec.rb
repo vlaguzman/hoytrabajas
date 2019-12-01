@@ -60,7 +60,7 @@ RSpec.describe "When company fill the step four form", :type => :feature do
         expect(offer.vehicle_ids).to match_array(vehicle.id)
         expect(offer.driving_licence_ids).to match_array(driving_licence.id)
 
-        expect(current_path).to eq(companies_first_offer_step_eight_path)
+        expect(current_path).to eq(companies_first_offer_step_seven_path)
       end
     end
   end

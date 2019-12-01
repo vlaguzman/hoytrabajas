@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_27_221906) do
+ActiveRecord::Schema.define(version: 2019_12_01_025549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -491,6 +491,16 @@ ActiveRecord::Schema.define(version: 2019_11_27_221906) do
     t.index ["user_id"], name: "index_nationalities_users_on_user_id"
   end
 
+  create_table "offer_required_experiences", force: :cascade do |t|
+    t.integer "duration"
+    t.bigint "duration_type_id", null: false
+    t.bigint "offer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["duration_type_id"], name: "index_offer_required_experiences_on_duration_type_id"
+    t.index ["offer_id"], name: "index_offer_required_experiences_on_offer_id"
+  end
+
   create_table "offer_salaries", force: :cascade do |t|
     t.bigint "offer_id", null: false
     t.bigint "currency_id", null: false
@@ -529,8 +539,8 @@ ActiveRecord::Schema.define(version: 2019_11_27_221906) do
     t.bigint "work_mode_id"
     t.bigint "company_id"
     t.string "slug"
-    t.boolean "created_by_admin", default: false
     t.bigint "educational_degree_id"
+    t.boolean "created_by_admin", default: false
     t.index ["city_id"], name: "index_offers_on_city_id"
     t.index ["company_id"], name: "index_offers_on_company_id"
     t.index ["contract_type_id"], name: "index_offers_on_contract_type_id"
@@ -654,16 +664,6 @@ ActiveRecord::Schema.define(version: 2019_11_27_221906) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "required_experiences", force: :cascade do |t|
-    t.integer "duration"
-    t.bigint "duration_type_id", null: false
-    t.bigint "offer_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["duration_type_id"], name: "index_required_experiences_on_duration_type_id"
-    t.index ["offer_id"], name: "index_required_experiences_on_offer_id"
   end
 
   create_table "requirements", force: :cascade do |t|
@@ -923,6 +923,8 @@ ActiveRecord::Schema.define(version: 2019_11_27_221906) do
   add_foreign_key "limitations_users", "users"
   add_foreign_key "nationalities_users", "nationalities"
   add_foreign_key "nationalities_users", "users"
+  add_foreign_key "offer_required_experiences", "duration_types"
+  add_foreign_key "offer_required_experiences", "offers"
   add_foreign_key "offer_salaries", "currencies"
   add_foreign_key "offer_salaries", "offers"
   add_foreign_key "offer_salaries", "salary_periods"
@@ -954,8 +956,6 @@ ActiveRecord::Schema.define(version: 2019_11_27_221906) do
   add_foreign_key "recommendations_soft_skills", "soft_skills"
   add_foreign_key "recommendations_technical_skills", "recommendations"
   add_foreign_key "recommendations_technical_skills", "technical_skills"
-  add_foreign_key "required_experiences", "duration_types"
-  add_foreign_key "required_experiences", "offers"
   add_foreign_key "technical_skills_work_experiences", "technical_skills"
   add_foreign_key "technical_skills_work_experiences", "work_experiences"
   add_foreign_key "users", "cities"

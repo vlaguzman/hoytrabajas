@@ -11,17 +11,20 @@ module Users::WizardService
     verify_presence_candidate(candidate, update_params: update_params)
 
     candidate
-
   end
 
   def self.update_curriculum_vitae(curriculum, update_params: {})
-    [curriculum, curriculum.update(update_params)]
+    [curriculum, curriculum.update(
+      HashesConverter.sanitize_array_values(hash: update_params)
+    )]
   end
 
   private
 
   def self.update_candidate(candidate, update_params: {})
-    [candidate, candidate.update(update_params)]
+    [candidate, candidate.update(
+      HashesConverter.sanitize_array_values(hash: update_params)
+    )]
   end
 
 

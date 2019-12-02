@@ -24,7 +24,7 @@ RSpec.describe "like candidate", type: :feature do
     end
   end
 
-  feature "When click on 'Completar mi perfil'" do
+  feature "When click on 'Ir al Dashboard'" do
     let(:curriculum_vitae) do
     create(:curriculum_vitae, :new_curriculum_vitae, user: create(:user, :first_time_candidate))
     end
@@ -36,7 +36,7 @@ RSpec.describe "like candidate", type: :feature do
 
       visit users_wizards_step_eleven_path
 
-      find(:button, text: 'Completar mi perfil').click
+      find(:button, text: 'Ir al Dashboard').click
 
       expect(current_path).to eq('/users/dashboard')
     end

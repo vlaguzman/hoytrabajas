@@ -5,6 +5,8 @@ import SelectChip from '../../../../../components/FormsLayout/Fields/SelectChip'
 import StandardInput from '../../../../../components/FormsLayout/Fields/StandardInput'
 import DatePicker from '../../../../../components/FormsLayout/Fields/DatePicker'
 import Checkbox from '../../../../../components/FormsLayout/Fields/Checkbox'
+import FormLabel from '../../../../../components/FormsLayout/FormLabel'
+
 
 import {
   handleDeleteChip,
@@ -13,17 +15,17 @@ import {
   handleBoolean
 } from '../../../../../components/FormsLayout/handleFunctions'
 
-const inputClassname = 'my-30 animated fadeIn'
+const inputClassname = 'my-30 animated fadeIn inputField'
 
 const dateOptions = {
-  format: 'dd MMMM yyyy',
+  format: 'dd/MM/yyyy',
   disableFuture: false,
   emptyLabel: '...'
 }
 
 const FormFields = props => {
   const { formFields } = props
-  
+
   const {
     city_id = null,
     degree = null,
@@ -106,7 +108,7 @@ const FormFields = props => {
             formValues[ongoing_study.name] ? null : formValues[finish_date.name]
           }
           handleSimpleChange={handleSimpleChange(formValues, setFormValues)}
-          label={finish_date.label}
+          label={finish_date.label || ""}
           dateOptions={dateOptions}
         />
       </Col>
@@ -149,8 +151,8 @@ const FormFields = props => {
 
   const diplomaField = useMemo(
     () => (
-      <Col key={diploma.name} className={inputClassname} xs={12} lg={6}>
-        <label>{diploma.label}</label>
+      <Col key={diploma.name} className={inputClassname} xs={12} lg={6} style={{display: "flex", flexDirection: "column"}} >
+        <FormLabel style={{alignSelf: "flex-start"}}>{diploma.label}</FormLabel>
         <input name={diploma.name} type="file" accept="image/*, .pdf" />
       </Col>
     ),
@@ -158,7 +160,7 @@ const FormFields = props => {
   )
 
   return (
-    <Row className="HT__FormGenerator">
+    <Row className="HT__FormGenerator StepFive">
       {degreeField}
       {institutionNameField}
       {startDateField}

@@ -12,7 +12,7 @@ const UsersWizardsStepSix = props => {
   const {
     title,
     subtitle,
-    form: { buttons, action, method, formFields }
+    form: { buttons, action, method, formFields, placeholders }
   } = formInfo
 
   const { nextPath, previousPath } = buttons
@@ -28,7 +28,10 @@ const UsersWizardsStepSix = props => {
               <form className="forms__candidate" action={action} method="post">
                 <input type="hidden" name={csrf_param} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />
-                <FormFields formFields={formFields} />
+                <FormFields
+                  formFields={formFields}
+                  placeholders={placeholders}
+                />
                 <FormButtons
                   nextPath={nextPath}
                   previousPath={previousPath}

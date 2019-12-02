@@ -60,7 +60,7 @@ RSpec.describe "Overall navigation" do
       it "should visit 'ver mas ofertas' page from home page", js: true do
         job_category = create(:job_category)
         create(:offer, title: "Esta oferta deberia aparecer")
-        create_list(:offer, 25, job_categories: [job_category])
+        create_list(:offer, 24, job_categories: [job_category])
 
         visit root_path
 
@@ -87,8 +87,6 @@ RSpec.describe "Overall navigation" do
 
       it "should visit 'categorias de empĺeo' page from home page", js: true do
         visit root_path
-
-        
 
         expect(page).to have_link("Categorias de empleo", href: job_categories_path)
 

@@ -85,8 +85,10 @@ RSpec.describe Users::Wizards::StepSix::FormParamsService do
             },
           },
           placeholders:{
-            language_id: 'Selecciona el idioma',
-            nivel_id: 'Nivel'
+            language_id: 'Selecciona el Idioma',
+            level_id: 'Selecciona el Nivel',
+            job_category_id: 'Selecciona la Categoria',
+            technical_skill_id: 'Seleciona la Habilidad'
           }
         }
       }

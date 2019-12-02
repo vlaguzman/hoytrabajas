@@ -2,7 +2,7 @@ class Users::Wizards::StepThreePresenter < ApplicationPresenter
 
   def form_information
     Users::Wizards::StepThree::FormParamsService .new(
-      form_type: :user,
+      form_type: :curriculum_vitae,
       template_translation_path: "users.wizards.step_threes.show",
       action_path: users_wizards_step_three_path,
       previous_path: users_wizards_step_two_path,

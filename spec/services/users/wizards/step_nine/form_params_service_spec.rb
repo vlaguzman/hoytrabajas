@@ -43,7 +43,7 @@ RSpec.describe Users::Wizards::StepNine::FormParamsService do
               current_value: ''
             },
             finish_date: {
-              label: '',
+              label: 'Fecha de finalización',
               name: 'user[curriculum_vitae][educational_level][finish_date]',
               current_value: ''
             },

@@ -1,0 +1,24 @@
+es:
+  users:
+    dashboards:
+      show:
+        presentation_section:
+          presentation_description: 'Aquí encontraras toda la informacion de tu perfil.'
+          grow_to_premium: 'Crecer a Premium'
+          welcome_to_your: 'Bienvenido a tu'
+          dashborad: 'Dashboard'
+          title_one: 'Bienvenido al Dashboard'
+          title_two: 'de Candidato.'
+          title_decription: 'Aquí podrás editar tu información y ver las ofertas a las que aplicaste.'
+        first_section:
+          my_profile: Mi Perfil
+          update:
+            most_recent_update: 'Ultima actualización:'
+            today: 'Hoy'
+            remaining_days: 'día(s)'
+          edit_profile: 'Editar'
+        second_section:
+          you_have_applied_to: 'Actualmente te estás postulando a '
+          offers_count: 'oferta(s)'
+          my_applys: 'Mis aplicaciones'
+          one_offer: 'Oferta'

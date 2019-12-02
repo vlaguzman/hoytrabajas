@@ -25,7 +25,7 @@ A         • Companies::DashboardsPresenter                      2       3.2   
 A         • Companies::FirstOffer::CommonService                2       2.45       0           1
 A         • Companies::FirstOffer::StepEight::FormParamsService 3       0.0        0           1
 A         • Companies::FirstOffer::StepEightPresenter           4       9.4        0           1
-A         • Companies::FirstOffer::StepEightsController         2       6.03       0           1
+A         • Companies::FirstOffer::StepEightsController         3       5.44       0           1
 A         • Companies::FirstOffer::StepFive::FormParamsService  6       20.3       0           7
 A         • Companies::FirstOffer::StepFivesController          10      19.43      0           1
 A         • Companies::FirstOffer::StepFourService              7       28.41      0           2
@@ -71,6 +71,7 @@ A         • EmployeesRange                                      1       0.0   
 A         • FaqsController                                      2       0.0        0           1
 A         • Function                                            2       0.0        0           1
 A         • FunctionsOffers                                     1       0.0        0           1
+A         • HashesConverter                                     1       19.96      0           2
 A         • Home::HomePresenter                                 7       23.13      0           6
 A         • HomeController                                      9       2.42       0           1
 A         • Industry                                            3       0.0        0           1
@@ -122,7 +123,7 @@ A         • Users::OmniauthCallbacksController                  1       21.49 
 A         • Users::ProfilesController                           12      2.2        0           1
 A         • Users::RegistrationsController                      13      1.0        0           2
 A         • Users::SessionsController                           3       0.0        0           1
-A         • Users::WizardService                                4       16.21      0           2
+A         • Users::WizardService                                5       18.61      0           2
 A         • Users::Wizards::StepEight::FormParamsService        3       8.0        0           6
 A         • Users::Wizards::StepEightPresenter                  10      24.41      0           1
 A         • Users::Wizards::StepEightService                    2       17.72      0           1
@@ -132,8 +133,8 @@ A         • Users::Wizards::StepElevenPresenter                 3       9.4   
 A         • Users::Wizards::StepElevensController               4       5.44       0           1
 A         • Users::Wizards::StepFive::FormParamsService         2       16.7       0           5
 A         • Users::Wizards::StepFivePresenter                   5       16.0       24          2
-A         • Users::Wizards::StepFiveService                     3       8.47       0           1
-A         • Users::Wizards::StepFivesController                 7       20.5       0           2
+A         • Users::Wizards::StepFiveService                     4       12.07      0           1
+A         • Users::Wizards::StepFivesController                 8       20.5       0           2
 A         • Users::Wizards::StepFour::FormParamsService         1       5.0        0           5
 A         • Users::Wizards::StepFourPresenter                   4       16.0       24          2
 A         • Users::Wizards::StepFourService                     2       2.0        0           1
@@ -156,10 +157,10 @@ A         • Users::Wizards::StepTen::FormParamsService          3       3.0   
 A         • Users::Wizards::StepTenPresenter                    4       24.85      0           1
 A         • Users::Wizards::StepTenService                      2       10.68      0           1
 A         • Users::Wizards::StepTensController                  4       25.23      0           1
-A         • Users::Wizards::StepThree::FormParamsService        1       7.0        0           6
-A         • Users::Wizards::StepThreePresenter                  5       13.0       0           1
-A         • Users::Wizards::StepThreeService                    3       2.0        0           1
-A         • Users::Wizards::StepThreesController                4       22.04      0           3
+A         • Users::Wizards::StepThree::FormParamsService        2       5.0        0           6
+A         • Users::Wizards::StepThreePresenter                  6       13.0       0           1
+A         • Users::Wizards::StepThreeService                    4       3.2        0           1
+A         • Users::Wizards::StepThreesController                5       23.7       0           1
 A         • Users::Wizards::StepTwo::FormParamsService          2       3.0        0           4
 A         • Users::Wizards::StepTwoPresenter                    7       16.0       0           1
 A         • Users::Wizards::StepTwoService                      2       3.0        0           1

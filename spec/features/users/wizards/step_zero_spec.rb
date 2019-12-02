@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe "like new candidate", type: :feature do
   let(:curriculum_vitae) do
     create(:curriculum_vitae, :new_curriculum_vitae, user: create(:user, :first_time_candidate))
- end
+  end
 
- let(:candidate) { curriculum_vitae.user }
+  let(:candidate) { curriculum_vitae.user }
 
   feature "When Im the step zero page" do
     scenario "Should see the expected text", js:true do
@@ -21,7 +21,7 @@ RSpec.describe "like new candidate", type: :feature do
 
   feature "When click on 'Quiero completar mi perfil'" do
     scenario "Should redirect to step one", js: true do
-      sign_in candidate 
+      sign_in candidate
 
       visit users_wizards_step_zero_path
 

@@ -14,7 +14,7 @@ RSpec.describe Users::Wizards::StepEleven::FormParamsService do
         subtitle: 'Recuerda actualizar constantemente tu perfil para contar con mayores oportunidades.',
         form: {
           buttons: {
-            next: 'Completar mi perfil',
+            next: 'Ir al Dashboard',
             nextPath: "/users/#{candidate.id}",
             goHomePath: '/',
             goHome: 'Ir a la página principal'

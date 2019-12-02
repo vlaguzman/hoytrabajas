@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :sex do
-    description { 'masculino' }
+    description { Faker::Gender.type }
   end
 end

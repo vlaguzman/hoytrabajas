@@ -2,15 +2,15 @@ class Users::Wizards::StepThreesController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @user = user_presenter(current_user)
+    user_presenter
   end
 
   def update
-    @user = Users::Wizards::StepThreeService.(candidate: current_user, update_params: strong_params)
+    updated_curriculum = Users::Wizards::StepThreeService.(curriculum_vitae: current_user.curriculum_vitae, update_params: step_three_params)
 
-    if @user.errors.details.any?
-      @user = user_presenter(current_user)
-      render 'show'
+    if updated_curriculum.errors.details.any?
+      user_presenter(updated_curriculum.user)
+      render :show
     else
       redirect_to users_wizards_step_four_path
     end
@@ -18,21 +18,20 @@ class Users::Wizards::StepThreesController < ApplicationController
 
   private
 
-  def user_presenter(user)
-    Users::Wizards::StepThreePresenter.new(user)
+  def user_presenter(user= current_user)
+    @user = Users::Wizards::StepThreePresenter.new(user)
   end
 
-  def strong_params
+  def step_three_params
     params
-    .require(:user)
-    .permit(curriculum_vitae: [
-          :contract_type_id,
-          :labor_disponibility_id,
-          job_category_ids: [],
-          offer_type_ids:[],
-          work_mode_ids:[]
-    ])
-    .to_h
+    .require(:curriculum_vitae)
+    .permit(
+      :contract_type_id,
+      :labor_disponibility_id,
+      job_category_ids: [],
+      offer_type_ids:[],
+      work_mode_ids:[]
+    ).to_h
   end
 
 end

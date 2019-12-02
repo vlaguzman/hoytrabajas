@@ -85,7 +85,7 @@ RSpec.describe "sign up user", js: true, type: :feature do
         expect(page).to have_text("SIGN UP EMPRESA")
         click_on 'SIGN UP EMPRESA'
 
-        expect(page).to have_content(/Registrarme/)
+        expect(find('span', text: 'Regístrate ahora', visible: false)).to be_present
       end
 
       context "I want to return to the home page" do
@@ -96,7 +96,7 @@ RSpec.describe "sign up user", js: true, type: :feature do
           expect(page).to have_text("SIGN UP EMPRESA")
           click_on 'SIGN UP EMPRESA'
 
-          expect(page).to have_content(/Registrarme/)
+          expect(find('span', text: 'Regístrate ahora', visible: false)).to be_present
 
           find(".modal--close-icon", match: :first, visible: false).click
 
@@ -104,7 +104,6 @@ RSpec.describe "sign up user", js: true, type: :feature do
         end
       end
     end
-
 
     context "when company want to sign up with email adn password" do
       context "when company registrate in the website" do

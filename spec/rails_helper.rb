@@ -116,7 +116,7 @@ RSpec.configure do |config|
   ip.gsub!(/\n/, "")
 
   #TODO i dont know the propose of default_max_wait_time, only make slow the test
-  Capybara.default_max_wait_time = 1
+  Capybara.default_max_wait_time = 2
   Capybara.javascript_driver = :selenium_chrome
   Capybara.register_driver :selenium_chrome do |app|
     caps = Selenium::WebDriver::Remote::Capabilities.chrome(

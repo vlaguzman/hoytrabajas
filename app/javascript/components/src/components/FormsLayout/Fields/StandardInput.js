@@ -36,8 +36,8 @@ const StandardInput = props => {
 
   const textAreaProperties = {
     multiline: false,
-    rows: 3,
-    rowsMax: 3
+    rows: 2,
+    rowsMax: 2
   }
 
   if (isTextArea) textAreaProperties.multiline = true

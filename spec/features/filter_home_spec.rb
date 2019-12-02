@@ -26,14 +26,14 @@ RSpec.describe "User searches for an offer", type: :feature do
 
         find("button[class='MuiButtonBase-root MuiButton-root text-primary h-50 MuiButton-text']", visible: false).click
 
-        expect(page).to have_content("Operario")
-        expect(page).to have_content("5")
-        expect(page).to have_content("Tecnologia")
-        expect(page).to have_content("6")
-        expect(page).to have_content("Marketing")
-        expect(page).to have_content("7")
-        expect(page).to have_content("Servicios")
-        expect(page).to have_content("0")
+        expect(page).to have_text("Operario")
+        expect(page).to have_text("5")
+        expect(page).to have_text("Tecnologia")
+        expect(page).to have_text("6")
+        expect(page).to have_text("Marketing")
+        expect(page).to have_text("7")
+        expect(page).to have_text("Servicios")
+        expect(page).to have_text("0")
       end
     end
 

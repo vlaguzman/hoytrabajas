@@ -35,6 +35,7 @@ const FormFields = props => {
       <Col key={about_me.name} className={inputClassname} xs={12} lg={12}>
         <StandardInput
           isTextArea
+          multiline
           inputValue={formValues[about_me.name]}
           handleChange={handleChange(formValues, setFormValues)}
           name={about_me.name}
@@ -115,7 +116,7 @@ const FormFields = props => {
           name={educational_degree_id.name}
           label={educational_degree_id.label}
           selectOptions={educational_degree_id.values}
-          isMultiple
+          isMultiple={false}
         />
       </Col>
     ),

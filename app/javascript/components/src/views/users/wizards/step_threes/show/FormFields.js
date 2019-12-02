@@ -25,7 +25,7 @@ const FormFields = props => {
     [labor_disponibility_id.name]: ''
   })
 
-  const inputClassname = 'my-30 animated fadeIn'
+  const inputClassname = 'my-30 animated fadeIn inputField'
 
   const jobCategoryIDsField = useMemo(
     () => (

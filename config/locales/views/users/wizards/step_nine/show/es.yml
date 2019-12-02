@@ -15,7 +15,7 @@ es:
               degree: 'Título educativo*'
               institution_name: 'Institución'
               start_date: 'Fecha de inicio'
-              finish_date: ''
+              finish_date: 'Fecha de finalización'
               ongoing_study: 'Estudio en curso'
               city_id: 'Ubicación'
               diploma: 'Carga aquí tu diploma'

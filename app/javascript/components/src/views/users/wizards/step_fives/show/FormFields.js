@@ -31,7 +31,7 @@ const FormFields = props => {
     [working_day_ids.name]: ''
   })
 
-  const inputClassname = 'my-30 animated fadeIn'
+  const inputClassname = 'my-30 animated fadeIn inputField'
 
   const controlledInputsClassname =
     'animated fadeIn controlledInputs inputField mt-20'
@@ -103,6 +103,7 @@ const FormFields = props => {
           inputValue={formValues[currency_id.name]}
           handleChange={handleChange(formValues, setFormValues)}
           name={currency_id.name}
+          label={currency_id.label}
           selectOptions={currency_id.values}
           isRequired={currency_id.isRequired || false}
         />
@@ -118,6 +119,7 @@ const FormFields = props => {
           inputValue={formValues[from.name]}
           handleChange={handleChange(formValues, setFormValues)}
           name={from.name}
+          label={from.label}
           placeholder={from.placeholder || 'ejem: 750.000'}
           style={{ width: '100%' }}
         />
@@ -134,8 +136,8 @@ const FormFields = props => {
             inputValue={formValues[to.name]}
             handleChange={handleChange(formValues, setFormValues)}
             name={to.name}
+            label={to.label}
             placeholder={to.placeholder || 'ejem: 750.000'}
-            beforeLabel={to.beforeLabel || 'ejem: 750.000'}
             style={{ width: '100%' }}
           />
         </Col>
@@ -160,7 +162,7 @@ const FormFields = props => {
   )
 
   return (
-    <Row className="HT__FormGenerator">
+    <Row className="HT__FormGenerator StepFive">
       {workingDayIDsField}
       {availableWorkDayIDsField}
       {rangeTypeField}

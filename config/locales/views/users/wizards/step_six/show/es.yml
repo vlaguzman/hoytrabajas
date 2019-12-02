@@ -17,7 +17,10 @@ es:
               language_id: '¿Qué idiomas deseas resaltar en tu perfil?'
             placeholders:
               language_id: 'Selecciona el idioma'
-              nivel_id: 'Nivel'
+              level_id: 'Selecciona el Nivel'
+              job_category_id: 'Selecciona la Categoria'
+              technical_skill_id: 'Seleciona la habilidad'
+
           sub_forms:
             technical_skills: 'Define técnicas de acuerdo a tu perfil*'
             to_learn_skills: 'Define qué habilidades te gustaría aprender o reforzar*'

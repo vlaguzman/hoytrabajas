@@ -7,7 +7,7 @@ es:
           subtitle: "Brinda a tu candidato una relevante de tu empresa."
           form:
             buttons:
-              submit: "Publicar"
+              submit: "Siguiente"
               next: "Saltar"
               previous: "Regresar"
             type: "offer"

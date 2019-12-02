@@ -42,7 +42,7 @@ RSpec.describe "In wizards step six view", type: :feature do
       end
     end
 
-    #TOOD oscar in progress
+    #TODO oscar in progress
     feature "When only fill the technical skills section"
 
     feature "When only fill the to learn skills section"

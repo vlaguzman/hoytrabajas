@@ -15,12 +15,12 @@ RSpec.describe "When company fill the step four form", :type => :feature do
     expect(page).to have_content("Brinda a tu candidato una relevante de tu empresa.")
 
     expect(page).to have_tag(:form, with: { class: "forms__candidate" }) do
-      with_tag(:input, with: { name: 'offer[contract_type_id]', type: "hidden" })
+      with_tag(:input, with: { name: 'offer[contract_type_id]',   type: "hidden" })
       with_tag(:input, with: { name: 'offer[vacancies_quantity]', type: "hidden" })
-      with_tag(:input, with: { name: 'offer[sex_ids][]', type: "hidden" })
-      with_tag(:input, with: { name: 'offer[offer_age_range]', type: "hidden" })
-      with_tag(:input, with: { name: 'offer[close_date]', type: "text" })
-      with_tag(:input, with: { name: 'offer[immediate_start]', type: "hidden" })
+      with_tag(:input, with: { name: 'offer[sex_ids][]',          type: "hidden" })
+      with_tag(:input, with: { name: 'offer[offer_age_range]',    type: "hidden" })
+      with_tag(:input, with: { name: 'offer[close_date]',         type: "text" })
+      with_tag(:input, with: { name: 'offer[immediate_start]',    type: "hidden" })
     end
 
     expect(page).to have_button('Siguiente')
@@ -52,9 +52,9 @@ RSpec.describe "When company fill the step four form", :type => :feature do
         fill_form(
           {
             contract_type_id: contract_type.description,
-            sex_one: sex_1.description,
-            sex_two: sex_2.description,
-            sex_three: sex_3.description
+            sex_one:          sex_1.description,
+            sex_two:          sex_2.description,
+            sex_three:        sex_3.description
           })
         click_link_or_button('Siguiente')
 

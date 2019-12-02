@@ -16,30 +16,10 @@ class Users::Wizards::StepSix::FormParamsService < BaseFormWizardsService
 
   def fields_builder
     super(
-      skills_builder(:technical_skills),
-      skills_builder(:to_learn_skills),
-      skills_builder(:languages)
+      subform_object_builder(:curriculum_vitae, :technical_skills),
+      subform_object_builder(:curriculum_vitae, :to_learn_skills),
+      subform_object_builder(:curriculum_vitae, :languages)
     )
-  end
-
-  def skills_builder(skills_type)
-    {
-      skills_type => {
-        name:        skills_type,
-        form_keys:   [:curriculum_vitae, skills_type],
-        field_keys:  SUBFORMS_FIELDS[skills_type],
-        main_label:  template_translations[:sub_forms][skills_type],
-        list_values: Hash[
-          SUBFORMS_FIELDS[skills_type].collect { |field| [field, self.send("#{field}_list")] }
-        ],
-        current_values: current_values_of(skills_type).()
-      }
-    }
-  end
-
-  def current_values_of(skills_type)
-    call_of_skills = skills_type.eql?(:technical_skills) ? :strong_skills : skills_type
-    source.present? ? -> { ListConverter.parameters_list(source.send(call_of_skills), SUBFORMS_FIELDS[skills_type])} : -> { [] }
   end
 
   def soft_skill_ids_list

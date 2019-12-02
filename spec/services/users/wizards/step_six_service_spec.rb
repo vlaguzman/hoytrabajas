@@ -105,7 +105,7 @@ RSpec.describe Users::Wizards::StepSixService do
         expect(updated_cv.soft_skill_ids).to match_array(soft_skills_ids)
         expect(updated_cv.strong_skills.count).to eq(3)
         expect(updated_cv.to_learn_skills.count).to eq(3)
-        expect(updated_cv.languages.count).to eq(1)
+        expect(updated_cv.strong_languages.count).to eq(1)
       end
 
       it "should asociate a selected soft skills to the curriculum vitae" do
@@ -116,7 +116,7 @@ RSpec.describe Users::Wizards::StepSixService do
 
       it "should create a curriculum vitae techical skills object associated to the curriculum vitae" do
         expect(new_curriculum_vitae.technical_skills.count).to be_zero
-        expect(new_curriculum_vitae.languages.count).to be_zero|
+        expect(new_curriculum_vitae.strong_languages.count).to be_zero|
 
         updated_cv = subject.(curriculum_vitae: new_curriculum_vitae, update_params: params)
 

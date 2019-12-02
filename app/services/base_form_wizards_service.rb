@@ -4,6 +4,9 @@ class BaseFormWizardsService
   SELECT_FIELDS_KEYS = []
   MULTIPLE_SELECT_FIELDS_KEYS = []
 
+  SUBFORMS = []
+  SUBFORMS_FIELDS = {}
+
   def initialize( **params )
     self.source                    = params[:source]
     self.errors                    = params[:errors]
@@ -111,4 +114,28 @@ class BaseFormWizardsService
     end
   end
 
+  def subform_object_builder(form_key, object_type)
+    {
+      object_type => {
+        name:        object_type,
+        form_keys:   [form_key, object_type],
+        field_keys:  self.class::SUBFORMS_FIELDS[object_type],
+        main_label:  template_translations[:sub_forms][object_type],
+        list_values: Hash[
+          self.class::SUBFORMS_FIELDS[object_type].collect { |field| [field, self.send("#{field}_list")] }
+        ],
+        current_values: current_values_of(object_type).()
+      }
+    }
+  end
+
+  def current_values_of(object_type)
+    options = {
+      :technical_skills => -> { :strong_skills },
+      :languages        => -> { :strong_languages }
+    }
+
+    call_of_object = options[object_type].present? ? options[object_type].() : object_type
+    source.present? ? -> { ListConverter.parameters_list(source.send(call_of_object), self.class::SUBFORMS_FIELDS[object_type])} : -> { [] }
+  end
 end

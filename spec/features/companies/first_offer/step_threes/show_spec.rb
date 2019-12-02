@@ -1,13 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe "When company fill the step three form", :type => :feature do
-  let(:company) { FactoryBot.create(:company, :first_time, name: 'HoyTrabajas.com') }
+  let(:company) { create(:company, :first_time, name: 'HoyTrabajas.com') }
 
-  let!(:job_category) { FactoryBot.create(:job_category) }
-  let!(:offer_type)   { FactoryBot.create(:offer_type) }
-  let!(:work_mode)    { FactoryBot.create(:work_mode) }
-
-  let!(:work_position) { FactoryBot.create(:work_position) }
+  let!(:job_category)  { create(:job_category) }
+  let!(:offer_type)    { create(:offer_type) }
+  let!(:work_mode)     { create(:work_mode) }
+  let!(:work_position) { create(:work_position) }
 
   def expected_page_structure
     expect(page).to have_content("Creemos tu primera oferta")
@@ -55,10 +54,10 @@ RSpec.describe "When company fill the step three form", :type => :feature do
         expected_page_structure
         fill_form(
           {
-            title: 'Oferta para el mejor desarrollador del mundo mundial',
-            job_category_ids: job_category.description,
-            offer_type_id: offer_type.description,
-            work_mode_id: work_mode.description,
+            title:                 'Oferta para el mejor desarrollador del mundo mundial',
+            job_category_ids:      job_category.description,
+            offer_type_id:         offer_type.description,
+            work_mode_id:          work_mode.description,
             offers_work_positions: work_position.description
           }
         )
@@ -69,6 +68,7 @@ RSpec.describe "When company fill the step three form", :type => :feature do
         expect(offer.job_category_ids).not_to be_nil
         expect(offer.work_mode_id).not_to be_nil
         expect(offer.offer_type_id).not_to be_nil
+        expect(offer.status).to eq("preview")
 
         expect(current_path).to eq(companies_first_offer_step_four_path)
       end

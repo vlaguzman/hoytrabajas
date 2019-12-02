@@ -14,7 +14,7 @@ RSpec.describe CurriculumVitae, type: :model do
     it { should respond_to(:visits) }
     it { should respond_to(:strong_skills) }
     it { should respond_to(:to_learn_skills) }
-    it { should respond_to(:languages) }
+    it { should respond_to(:strong_languages) }
   end
 
   context "attachments" do
@@ -58,12 +58,12 @@ RSpec.describe CurriculumVitae, type: :model do
     end
   end
 
-  describe "#languages" do
+  describe "#strong_languages" do
     let(:cv) { create(:curriculum_vitae) }
     let!(:laguanges_list) { create_list(:curriculum_vitaes_languages, 5, curriculum_vitae_id: cv.id) }
 
     it "should respond" do
-      expect(cv.languages.count).to eq(5)
+      expect(cv.strong_languages.count).to eq(5)
     end
   end
 end

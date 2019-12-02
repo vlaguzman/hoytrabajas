@@ -155,6 +155,7 @@ RSpec.describe Offer, type: :model do
     it { should belong_to(:work_mode) }
     it { should belong_to(:contract_type) }
     it { should have_one(:offer_salary) }
+    it { should have_one(:offer_required_experiences) }
     it { should have_and_belong_to_many(:job_categories) }
     it { should have_and_belong_to_many(:terms) }
     it { should have_and_belong_to_many(:functions) }
@@ -216,5 +217,4 @@ RSpec.describe Offer, type: :model do
       expect(response.last).to eq(offer_1)
     end
   end
-
 end

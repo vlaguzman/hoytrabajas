@@ -5,7 +5,7 @@ A         • AdminUsers::SessionsController                      2       6.2   
 A         • AgeRange                                            1       0.0        0           1
 A         • ApplicationCable::Channel                           1       0.0        0           1
 A         • ApplicationCable::Connection                        1       0.0        0           1
-A         • ApplicationController                               27      35.98      0           4
+A         • ApplicationController                               28      35.98      0           4
 A         • ApplicationJob                                      1       0.0        0           1
 A         • ApplicationMailer                                   3       0.0        0           1
 A         • ApplicationPresenter                                3       10.35      0           3
@@ -33,6 +33,7 @@ A         • Companies::FirstOffer::StepFoursController          16      18.08 
 A         • Companies::FirstOffer::StepOne::FormParamsService   2       2.0        0           3
 A         • Companies::FirstOffer::StepOneService               6       2.0        0           1
 A         • Companies::FirstOffer::StepSeven::FormParamsService 4       24.0       22          8
+A         • Companies::FirstOffer::StepSevensController         6       18.08      0           1
 A         • Companies::FirstOffer::StepSix::FormParamsService   1       4.0        0           5
 A         • Companies::FirstOffer::StepSixesController          6       18.08      0           1
 A         • Companies::FirstOffer::StepThree::FormParamsService 6       9.87       0           6
@@ -190,12 +191,11 @@ B         • Companies::FirstOffer::StepTwoPresenter             14      17.4  
 B         • Companies::FirstOffer::StepTwosController           10      20.32      27          2
 B         • Offers::ShowService                                 17      87.8       0           1
 B         • Offers::ViewsService                                11      62.1       0           4
-C         • BaseFormWizardsService                              28      172.68     0           6
+C         • BaseFormWizardsService                              29      170.8      0           6
 C         • Companies                                           5       16.61      32          2
 C         • Companies::FirstOffer::StepFivePresenter            3       27.8       31          2
 C         • Companies::FirstOffer::StepFourPresenter            7       27.8       31          2
 C         • Companies::FirstOffer::StepSevenPresenter           3       25.2       31          2
-C         • Companies::FirstOffer::StepSevensController         5       25.45      27          2
 C         • Companies::FirstOffer::StepSixPresenter             2       27.8       31          2
 C         • Users                                               7       16.61      32          2
 C         • Users::Wizards::StepSixService                      10      57.31      31          3

@@ -9,7 +9,7 @@ class Companies::FirstOffer::StepSevensController < ApplicationController
   def update
     offer = Companies::FirstOffer::StepSevenService.(company: current_company, update_params: step_seven_params)
 
-    redirect_to_offer_step(:eight, source)
+    redirect_to_offer_step(:eight, offer)
   end
 
   def offer_presenter(offer)

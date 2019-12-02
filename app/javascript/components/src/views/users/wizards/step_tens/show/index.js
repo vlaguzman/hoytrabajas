@@ -38,7 +38,7 @@ const UsersWizardsStepTen = props => {
                 </div>
                 <FormButtons
                   nextPath={nextPath}
-                  prevPath={previousPath}
+                  previousPath={previousPath}
                   buttons={buttons}
                 />
               </form>

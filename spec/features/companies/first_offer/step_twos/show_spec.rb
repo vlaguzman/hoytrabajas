@@ -29,4 +29,5 @@ RSpec.describe "When company fill the step two form", :type => :feature do
       end
     end
   end
+
 end

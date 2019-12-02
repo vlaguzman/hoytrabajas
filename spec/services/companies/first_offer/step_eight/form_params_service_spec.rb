@@ -10,11 +10,11 @@ RSpec.describe Companies::FirstOffer::StepEight::FormParamsService do
     it "should return the expected object" do
 
       expected_object = {
-        title: '¡Perfecto! Has creado un perfil ganador',
-        subtitle: 'Recuerda actualizar constantemente tu perfil para contar con mayores oportunidades.',
+        title: '¡Eso es todo! Ahora espera el mejor talento para tu empresa',
+        subtitle: 'Recuerda que en tu Dashboard podrás consultar el estado de tu oferta y conocer a tus aplicantes!',
         form: {
           buttons: {
-            next: 'Completar mi perfil',
+            next: 'Ir al Dashboard',
             nextPath: "/companies/#{company.id}",
             goHomePath: '/',
             goHome: 'Ir a la página principal'

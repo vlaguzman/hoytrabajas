@@ -7,5 +7,5 @@ es:
           subtitle: 'Recuerda actualizar constantemente tu perfil para contar con mayores oportunidades.'
           form:
             buttons:
-              next: 'Completar mi perfil'
+              next: 'Ir al Dashboard'
               go_home: 'Ir a la página principal'

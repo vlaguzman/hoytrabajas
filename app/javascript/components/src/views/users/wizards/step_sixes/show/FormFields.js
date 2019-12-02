@@ -31,7 +31,7 @@ const StyledCol = styled(Col)`
   }
 `
 const FormFields = props => {
-  const { formFields } = props
+  const { formFields, placeholders } = props
   const {
     soft_skill_ids = null,
     technical_skills = null,
@@ -113,7 +113,7 @@ const FormFields = props => {
     return `${principalFormKey}${formSecuence}[][${fieldKey}]`
   }
 
-  const inputClassname = 'my-30 animated fadeIn'
+  const inputClassname = 'my-30 animated fadeIn inputField'
 
   const softSkillIDsField = useMemo(
     () => (
@@ -178,6 +178,7 @@ const FormFields = props => {
                         <StyledCol xs={12} lg={4}>
                           <SelectChip
                             name="job_category_id"
+                            label={placeholders["job_category_id"]}
                             inputValue={rowValue.job_category_id}
                             handleChange={handleRowChanges}
                             handleDeleteChip={handleRowDeleteChip}
@@ -190,6 +191,7 @@ const FormFields = props => {
                         <StyledCol xs={12} lg={3}>
                           <SelectChip
                             name="technical_skill_id"
+                            label={placeholders["technical_skill_id"]}
                             inputValue={rowValue.technical_skill_id}
                             handleChange={handleRowChanges}
                             handleDeleteChip={handleRowDeleteChip}
@@ -202,6 +204,7 @@ const FormFields = props => {
                         <StyledCol xs={12} lg={3}>
                           <SelectChip
                             name="level_id"
+                            label={placeholders["level_id"]}
                             inputValue={rowValue.level_id}
                             handleChange={handleRowChanges}
                             handleDeleteChip={handleRowDeleteChip}
@@ -269,6 +272,7 @@ const FormFields = props => {
                       <StyledCol xs={12} lg={4}>
                         <SelectChip
                           name="job_category_id"
+                          label={placeholders["job_category_id"]}
                           inputValue={rowValue.job_category_id}
                           handleChange={handleRowChanges}
                           handleDeleteChip={handleRowDeleteChip}
@@ -281,6 +285,7 @@ const FormFields = props => {
                       <StyledCol xs={12} lg={6}>
                         <SelectChip
                           name="technical_skill_id"
+                          label={placeholders["technical_skill_id"]}
                           inputValue={rowValue.technical_skill_id}
                           handleChange={handleRowChanges}
                           handleDeleteChip={handleRowDeleteChip}
@@ -342,6 +347,7 @@ const FormFields = props => {
                       <StyledCol xs={12} lg={4}>
                         <SelectChip
                           name="language_id"
+                          label={placeholders["language_id"]}
                           inputValue={rowValue.language_id}
                           handleChange={handleRowChanges}
                           handleDeleteChip={handleRowDeleteChip}
@@ -352,6 +358,7 @@ const FormFields = props => {
                       <StyledCol xs={12} lg={6}>
                         <SelectChip
                           name="level_id"
+                          label={placeholders["level_id"]}
                           inputValue={rowValue.level_id}
                           handleChange={handleRowChanges}
                           handleDeleteChip={handleRowDeleteChip}

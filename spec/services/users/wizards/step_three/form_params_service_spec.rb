@@ -33,34 +33,34 @@ RSpec.describe Users::Wizards::StepThree::FormParamsService do
           },
           action: '/users/wizards/step_three',
           method: :put,
-          type: :user,
+          type: :curriculum_vitae,
           formFields: {
             job_category_ids: {
-              name: 'user[curriculum_vitae][job_category_ids][]',
+              name: 'curriculum_vitae[job_category_ids][]',
               label: 'Elje las categorías en las que deseas buscar trabajo',
               values: create_job_categories_list,
               current_value: ''
             },
             offer_type_ids: {
-              name: 'user[curriculum_vitae][offer_type_ids][]',
+              name: 'curriculum_vitae[offer_type_ids][]',
               label: 'Tipo de oferta',
               values: create_offer_types_list,
               current_value: ''
             },
             contract_type_id: {
-              name: 'user[curriculum_vitae][contract_type_id]',
+              name: 'curriculum_vitae[contract_type_id]',
               label: 'Acuerdo legal',
               values: create_contract_type_list,
               current_value: ''
             },
             work_mode_ids: {
-              name: 'user[curriculum_vitae][work_mode_ids][]',
+              name: 'curriculum_vitae[work_mode_ids][]',
               label: 'Modalidad de trabajo',
               values: create_work_mode_list,
               current_value: ''
             },
             labor_disponibility_id: {
-              name: 'user[curriculum_vitae][labor_disponibility_id]',
+              name: 'curriculum_vitae[labor_disponibility_id]',
               label: 'Disponibilidad para trabajar',
               values: create_labor_disponibilities_list,
               current_value: ''
@@ -71,7 +71,7 @@ RSpec.describe Users::Wizards::StepThree::FormParamsService do
       }
 
       response = subject.new(
-        form_type: :user,
+        form_type: :curriculum_vitae,
         template_translation_path: "users.wizards.step_threes.show",
         action_path: "/users/wizards/step_three" ,
         previous_path: "/users/wizards/step_two",

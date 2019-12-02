@@ -12,7 +12,7 @@ class Users::Wizards::StepFivesController < ApplicationController
       user_presenter
       render 'show'
     else
-      redirect_to users_wizards_step_seven_path
+      redirect_to users_wizards_step_six_path
     end
   end
 

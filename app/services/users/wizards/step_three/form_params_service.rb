@@ -13,14 +13,6 @@ class Users::Wizards::StepThree::FormParamsService < BaseFormWizardsService
 
   private
 
-  def select_fields_builder
-    super("curriculum_vitae")
-  end
-
-  def multiple_select_fields_builder
-    super("curriculum_vitae")
-  end
-
   def contract_type_id_list
     ListConverter.model_list ContractType
   end

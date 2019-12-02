@@ -25,7 +25,7 @@ const FormFields = props => {
     [labor_disponibility_id.name]: ''
   })
 
-  const inputClassname = 'my-30 animated fadeIn'
+  const inputClassname = 'my-30 animated fadeIn inputField'
 
   const jobCategoryIDsField = useMemo(
     () => (
@@ -59,7 +59,7 @@ const FormFields = props => {
           name={offer_type_ids.name}
           label={offer_type_ids.label}
           selectOptions={offer_type_ids.values}
-          isMultiple={false}
+          isMultiple
         />
       </Col>
     ),

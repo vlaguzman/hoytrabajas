@@ -11,7 +11,7 @@ es:
               next: "Saltar"
               previous: "Regresar"
             formFields:
-              currency_id: ""
+              currency_id: "Divisa"
               available_work_day_ids: "¿Que días estas disponible para trabajar?"
               working_day_ids: "Franja horaria"
               range_type: "Aspiración salarial*"

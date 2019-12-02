@@ -27,7 +27,7 @@ const FormFields = props => {
     [vehicle_ids.name]: ''
   })
 
-  const inputClassname = 'my-30 animated fadeIn'
+  const inputClassname = 'my-30 animated fadeIn inputField'
 
   const stateIDField = useMemo(
     () => (

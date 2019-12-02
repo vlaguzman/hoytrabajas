@@ -15,7 +15,7 @@ import {
 } from '../../../../../components/FormsLayout/handleFunctions'
 
 
-const inputClassname = 'my-30 animated fadeIn'
+const inputClassname = 'my-30 animated fadeIn inputField'
 
 const controlledInputsClassname =
 'animated fadeIn controlledInputs inputField mt-20'
@@ -33,11 +33,11 @@ const FormFields = props => {
     company_name = null,
     work_position_id = null,
     work_methodology_id = null,
-    city_id = null, 
+    city_id = null,
     finished_at = null,
     started_at = null,
     technical_skill_ids = null,
-    still_in_progress = null, 
+    still_in_progress = null,
   } = formFields
 
   const [formValues, setFormValues] = useState({

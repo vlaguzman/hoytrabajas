@@ -63,7 +63,7 @@ const FormFields = props => {
   )
 
   const dateOptions = {
-    format: 'dd MMMM yyyy',
+    format: 'dd/MM/yyyy',
     disableFuture: false,
     emptyLabel: '...'
   }

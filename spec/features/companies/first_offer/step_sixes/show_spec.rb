@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "When company fill the step four form", :type => :feature do
+RSpec.describe "When company fill the step six form", :type => :feature do
   let(:company)   { create(:company, :first_time, name: 'HoyTrabajas.com') }
   let(:offer)     { create(:offer) }
 
@@ -37,7 +37,7 @@ RSpec.describe "When company fill the step four form", :type => :feature do
     find('li', text: data[:driving_licence_ids]).click
   end
 
-  describe "Fill the five form to update offer, all data is optionally" do
+  describe "Fill the six form to update offer, all data is optionally" do
     context "Data is correct" do
       scenario "should save succesfully data", js: true do
         sign_in company
@@ -46,9 +46,9 @@ RSpec.describe "When company fill the step four form", :type => :feature do
         expected_page_structure
         fill_form(
           {
-            responsibility_ids: responsibility.description,
-            requirement_ids: requirement.description,
-            vehicle_ids: vehicle.description,
+            responsibility_ids:  responsibility.description,
+            requirement_ids:     requirement.description,
+            vehicle_ids:         vehicle.description,
             driving_licence_ids: driving_licence.description
           })
         click_link_or_button('Siguiente')

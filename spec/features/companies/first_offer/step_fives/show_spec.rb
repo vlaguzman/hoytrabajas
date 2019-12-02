@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "When company fill the step four form", :type => :feature do
+RSpec.describe "When company fill the step five form", :type => :feature do
   let(:company)   { create(:company, :first_time, name: 'HoyTrabajas.com') }
   let(:offer)     { create(:offer) }
   let!(:currency) { create(:currency) }
@@ -15,9 +15,9 @@ RSpec.describe "When company fill the step four form", :type => :feature do
     expect(page).to have_content("Brinda a tu candidato una relevante de tu empresa.")
 
     expect(page).to have_tag(:form, with: { class: "forms__candidate" }) do
-      with_tag(:input, with: { name: 'offer[is_range]',    type: "hidden" })
-      with_tag(:input, with: { name: 'offer[currency_id]', type: "hidden" })
-      with_tag(:input, with: { name: 'offer[from]',        type: "text" })
+      with_tag(:input, with: { name: 'offer[is_range]',         type: "hidden" })
+      with_tag(:input, with: { name: 'offer[currency_id]',      type: "hidden" })
+      with_tag(:input, with: { name: 'offer[from]',             type: "text" })
       with_tag(:input, with: { name: 'offer[salary_period_id]', type: "hidden" })
 
       with_tag(:input, with: { name: 'offer[available_work_day_ids][]', type: "hidden" })
@@ -60,14 +60,14 @@ RSpec.describe "When company fill the step four form", :type => :feature do
         expected_page_structure
         fill_form(
           {
-            is_range: 'Rango',
-            currency_id: currency.description,
-            from: '750000',
-            to: '750000',
-            salary_period_id: salary_period.description,
-            working_day_ids: working_day.description,
+            is_range:               'Rango',
+            currency_id:            currency.description,
+            from:                   '750000',
+            to:                     '750000',
+            salary_period_id:       salary_period.description,
+            working_day_ids:        working_day.description,
             available_work_day_ids: available_work_day.description,
-            job_aid_ids: job_aid.description
+            job_aid_ids:            job_aid.description
           })
         click_link_or_button('Siguiente')
 

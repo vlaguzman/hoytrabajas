@@ -1,21 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe "When company fill the step one form", :type => :feature do
-  let(:company) { FactoryBot.create(:company, :first_time, name: 'HoyTrabajas.com') }
+  let(:company) { create(:company, :first_time, name: 'HoyTrabajas.com') }
 
-  let!(:industry) { FactoryBot.create(:industry) }
+  let!(:industry) { create(:industry) }
 
   def expected_page_structure
     expect(page).to have_content("Empecemos por conocernos")
     expect(page).to have_content("Brinda a tu candidato información de tu empresa.")
 
     expect(page).to have_tag(:form, with: { class: "forms__candidate" }) do
-      with_tag(:input, with: { name: 'company[name]', type: "text" })
-      with_tag(:input, with: { name: 'company[industry_id]', type: "hidden" })
-      with_tag(:input, with: { name: 'company[contact_name]', type: "text" })
+      with_tag(:input, with: { name: 'company[name]',                  type: "text" })
+      with_tag(:input, with: { name: 'company[industry_id]',           type: "hidden" })
+      with_tag(:input, with: { name: 'company[contact_name]',          type: "text" })
       with_tag(:input, with: { name: 'company[contact_work_position]', type: "text" })
-      with_tag(:input, with: { name: 'company[contact_cellphone]', type: "text" })
-      with_tag(:input, with: { name: 'company[employees_range_id]', type: "hidden" })
+      with_tag(:input, with: { name: 'company[contact_cellphone]',     type: "text" })
+      with_tag(:input, with: { name: 'company[employees_range_id]',    type: "hidden" })
     end
 
     expect(page).to have_button('Siguiente')
@@ -46,10 +46,10 @@ RSpec.describe "When company fill the step one form", :type => :feature do
         expected_page_structure
         fill_form(
           {
-            name: '',
-            contact_name: 'Ruben Cordoba',
+            name:                  '',
+            contact_name:          'Ruben Cordoba',
             contact_work_position: 'CEO',
-            contact_cellphone: '3101234567'
+            contact_cellphone:     '3101234567'
           }
         )
         click_link_or_button('Siguiente')

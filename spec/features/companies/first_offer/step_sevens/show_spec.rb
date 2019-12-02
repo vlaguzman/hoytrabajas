@@ -53,10 +53,10 @@ RSpec.describe "When company fill the step seven form", :type => :feature do
         expected_page_structure
         fill_form(
           {
-            city_id: city.description,
+            city_id:               city.description,
             educational_degree_id: educational_degree.description,
-            duration: '2',
-            duration_type_id: duration_type.description
+            duration:              '2',
+            duration_type_id:      duration_type.description
           })
         click_link_or_button('Publicar')
 
@@ -72,4 +72,11 @@ RSpec.describe "When company fill the step seven form", :type => :feature do
       end
     end
   end
+
+  #TOOD daniel in progress
+  feature "When only fill the technical skills section"
+
+  feature "When only fill the language section"
+
+  feature "When fill the all sections"
 end

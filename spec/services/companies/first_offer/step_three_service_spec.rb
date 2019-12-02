@@ -3,11 +3,11 @@ require 'rails_helper'
 RSpec.describe Companies::FirstOffer::StepThreeService do
   let(:company)  {create(:company) }
 
-  let!(:job_category) { FactoryBot.create(:job_category) }
-  let!(:offer_type)   { FactoryBot.create(:offer_type) }
-  let!(:work_mode)    { FactoryBot.create(:work_mode) }
+  let!(:job_category) { create(:job_category) }
+  let!(:offer_type)   { create(:offer_type) }
+  let!(:work_mode)    { create(:work_mode) }
 
-  let!(:work_position) { FactoryBot.create(:work_position) }
+  let!(:work_position) { create(:work_position) }
 
   it { should be_an_instance_of(Module) }
 

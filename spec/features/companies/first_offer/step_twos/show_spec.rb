@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "When company fill the step two form", :type => :feature do
-  let(:company) { FactoryBot.create(:company, :first_time, name: 'HoyTrabajas.com') }
+  let(:company) { create(:company, :first_time, name: 'HoyTrabajas.com') }
 
   describe "Fill the description company data" do
     context "Data is correct" do

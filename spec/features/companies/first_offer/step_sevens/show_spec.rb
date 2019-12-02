@@ -73,7 +73,7 @@ RSpec.describe "When company fill the step seven form", :type => :feature do
     end
   end
 
-  #TOOD daniel in progress
+  #TODO daniel in progress
   feature "When only fill the technical skills section"
 
   feature "When only fill the language section"

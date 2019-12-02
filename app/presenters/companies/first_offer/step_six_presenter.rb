@@ -1,3 +1,4 @@
+#TODO daniel, refactor this class
 class Companies::FirstOffer::StepSixPresenter < ApplicationPresenter
 
   def form_information

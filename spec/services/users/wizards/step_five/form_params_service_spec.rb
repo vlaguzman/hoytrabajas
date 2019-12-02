@@ -54,7 +54,7 @@ RSpec.describe Users::Wizards::StepFive::FormParamsService do
             },
             currency_id: {
               name: "user[curriculum_vitae][curriculum_vitae_salary][currency_id]",
-              label: '',
+              label: 'Divisa',
               values: create_currencies_list,
               current_value: ''
             },

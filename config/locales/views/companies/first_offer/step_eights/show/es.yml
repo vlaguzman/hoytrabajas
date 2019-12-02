@@ -7,5 +7,5 @@ es:
           subtitle: 'Recuerda que en tu Dashboard podrás consultar el estado de tu oferta y conocer a tus aplicantes!'
           form:
             buttons:
-              next: 'Ir al Dasborad'
+              next: 'Ir al Dashboard'
               go_home: 'Ir a la página principal'

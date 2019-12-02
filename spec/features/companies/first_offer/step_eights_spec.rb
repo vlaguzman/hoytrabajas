@@ -10,7 +10,7 @@ RSpec.describe "like new company", :type => :feature do
 
       visit companies_first_offer_step_eight_path
 
-      find(:button, text: 'Completar mi perfil').click
+      find(:button, text: 'Ir al Dashboard').click
 
       expect(current_path).to eq(companies_dashboard_path)
     end

@@ -68,6 +68,7 @@ RSpec.describe "When company fill the step three form", :type => :feature do
         expect(offer.job_category_ids).not_to be_nil
         expect(offer.work_mode_id).not_to be_nil
         expect(offer.offer_type_id).not_to be_nil
+        expect(offer.status).to eq("preview")
 
         expect(current_path).to eq(companies_first_offer_step_four_path)
       end

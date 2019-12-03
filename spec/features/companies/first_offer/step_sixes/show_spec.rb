@@ -25,16 +25,16 @@ RSpec.describe "When company fill the step six form", :type => :feature do
 
   def fill_form(data)
     find(id: 'select-offer[responsibility_ids][]', visible: false).click
-    find('li', text: data[:responsibility_ids]).click
+    find('li.MuiListItem-button', text: data[:responsibility_ids]).click
 
     find(id: 'select-offer[requirement_ids][]', visible: false).click
-    find('li', text: data[:requirement_ids]).click
+    find('li.MuiListItem-button', text: data[:requirement_ids]).click
 
     find(id: 'select-offer[vehicle_ids][]', visible: false).click
-    find('li', text: data[:vehicle_ids]).click
+    find('li.MuiListItem-button', text: data[:vehicle_ids]).click
 
     find(id: 'select-offer[driving_licence_ids][]', visible: false).click
-    find('li', text: data[:driving_licence_ids]).click
+    find('li.MuiListItem-button', text: data[:driving_licence_ids]).click
   end
 
   describe "Fill the six form to update offer, all data is optionally" do

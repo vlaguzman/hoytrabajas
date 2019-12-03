@@ -25,9 +25,9 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
 
     create(:labor_disponibility, description: "Inmediato")
 
-    create(:state, description: "Caldas")
+    create(:state, description: "Caldas", id: 99)
 
-    create(:city, description: "La Dorada")
+    create(:city, description: "La Dorada", state_id: 99)
 
     create(:vehicle, description: "Moto")
     create(:vehicle, description: "Carro")
@@ -134,7 +134,9 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
 
     find("span", text: "Disponibilidad para trabajar en otra ciudades").click
 
+    save_screenshot("javi.png")
     find("div[id='select-user[city_id]", visible: false).click
+    save_screenshot("javi1.png")
     find("li", text: "La Dorada").click
 
     find("div[id='select-user[vehicle_ids][]", visible: false).click

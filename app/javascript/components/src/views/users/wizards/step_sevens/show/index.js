@@ -7,7 +7,6 @@ import FormTitle from '../../../../../components/FormsLayout/FormTitle'
 import FormButtons from '../../../../../components/FormsLayout/FormButtons'
 
 const UsersWizardsStepSeven = props => {
-
   const { formInfo, csrf_param, csrf_token } = props
   const {
     title,
@@ -15,10 +14,17 @@ const UsersWizardsStepSeven = props => {
     form: { buttons, action, method }
   } = formInfo
 
-  const {haveExperience, acceptButton, skipButton, skipPath, nextPath, previousPath} = buttons
+  const {
+    haveExperience,
+    acceptButton,
+    skipButton,
+    skipPath,
+    nextPath,
+    previousPath
+  } = buttons
 
-  const redirectTo = (path) => {
-    return (e) => {
+  const redirectTo = path => {
+    return e => {
       e.preventDefault()
       window.location.assign(path)
     }
@@ -38,8 +44,16 @@ const UsersWizardsStepSeven = props => {
 
                 <div className="action-buttons-container">
                   <p>{haveExperience}</p>
-                  <button  href={nextPath} className="accept">{acceptButton}</button>
-                  <button onClick={redirectTo(skipPath)} href={skipPath} className="skip">{skipButton}</button>
+                  <button href={nextPath} className="accept">
+                    {acceptButton}
+                  </button>
+                  <button
+                    onClick={redirectTo(skipPath)}
+                    href={skipPath}
+                    className="skip"
+                  >
+                    {skipButton}
+                  </button>
                 </div>
 
                 <FormButtons

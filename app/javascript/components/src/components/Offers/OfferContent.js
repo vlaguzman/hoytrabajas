@@ -83,7 +83,7 @@ const OfferContent = ({ offer }) => {
       >
         {WordsShortener(offer['description'], 58)}
       </Typography>
-      {/*<Typography variant="caption" className="text-secondary">
+      {/* <Typography variant="caption" className="text-secondary">
         <i
           className="ti-location-pin fw-bold mr-5"
           style={{ fontSize: '1rem' }}
@@ -94,7 +94,7 @@ const OfferContent = ({ offer }) => {
           style={{ fontSize: '1rem' }}
         />
         100
-      </Typography>*/}
+      </Typography> */}
       <Row className="mr-0 justify-content-between align-items-end px-10 my-10">
         <Row className="mr-0 px-10">
           {offer['required_experience'] === false && RequiredExperienceBlock()}
@@ -103,7 +103,7 @@ const OfferContent = ({ offer }) => {
       </Row>
       <Divider variant="middle" className="mx-0" />
       <Row className="justify-content-between mt-10 mr-0">
-        {/*<Typography
+        {/* <Typography
           variant="h6"
           className="text-muted text-right ml-10"
           component="span"
@@ -117,14 +117,14 @@ const OfferContent = ({ offer }) => {
             {' '}
             de afinidad{' '}
           </Typography>
-        </Typography>*/}
-        {/*<Typography variant="body1" className="fw-bold mt-10" component="span">
+        </Typography> */}
+        {/* <Typography variant="body1" className="fw-bold mt-10" component="span">
           <i
             className="ti-timer fw-bold text-primary mr-5"
             style={{ fontSize: '1rem' }}
           />
           24:00
-        </Typography>*/}
+        </Typography> */}
         {/* <Typography variant="body1" >
               <i className="ti-eye fw-bold text-primary mr-5" style={{fontSize: '1rem'}}></i> 
               2 días atrás

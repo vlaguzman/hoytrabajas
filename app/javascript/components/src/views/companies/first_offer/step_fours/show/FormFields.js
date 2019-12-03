@@ -24,7 +24,9 @@ const FormFields = props => {
   } = formFields
 
   function closeDateCurrentValue() {
-    return (close_date.current_value === '') ? Date.now() : new Date(close_date.current_value)
+    return close_date.current_value === ''
+      ? Date.now()
+      : new Date(close_date.current_value)
   }
 
   const [formValues, setFormValues] = useState({

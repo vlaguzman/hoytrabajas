@@ -9,36 +9,11 @@ const OffersPage = props => {
     csrf_param,
     csrf_token,
     path_applied_offers,
-    user_signed_in,
-    company_signed_in,
-    log_out_user,
-    log_out_companies,
-    session_translation,
-    user_facebook_omniauth_authorize_path,
-    offer_translations,
-    users_sessions_path,
-    users_registration_path,
-    companies_sessions_path,
-    companies_registration_path
+    offer_translations
   } = props
 
   return (
-    <AppLayout
-      csrf_param={csrf_param}
-      csrf_token={csrf_token}
-      user_signed_in={user_signed_in}
-      company_signed_in={company_signed_in}
-      session_translation={session_translation}
-      user_facebook_omniauth_authorize_path={
-        user_facebook_omniauth_authorize_path
-      }
-      companies_registration_path={companies_registration_path}
-      companies_sessions_path={companies_sessions_path}
-      log_out_companies={log_out_companies}
-      users_registration_path={users_registration_path}
-      users_sessions_path={users_sessions_path}
-      log_out_user={log_out_user}
-    >
+    <AppLayout>
       <DynamicOffers
         offers={offers}
         offer_translations={offer_translations}
@@ -54,19 +29,9 @@ export default OffersPage
 
 OffersPage.propTypes = {
   offers: PropTypes.array.isRequired,
-  log_out_companies: PropTypes.string.isRequired,
-  company_signed_in: PropTypes.bool.isRequired,
-  user_signed_in: PropTypes.bool.isRequired,
-  log_out_user: PropTypes.string.isRequired,
   csrf_param: PropTypes.string.isRequired,
   csrf_token: PropTypes.string.isRequired,
   path_applied_offers: PropTypes.object.isRequired,
-  session_translation: PropTypes.object.isRequired,
-  user_facebook_omniauth_authorize_path: PropTypes.object.isRequired,
-  users_sessions_path: PropTypes.string.isRequired,
-  users_registration_path: PropTypes.string.isRequired,
-  companies_sessions_path: PropTypes.string.isRequired,
-  companies_registration_path: PropTypes.string.isRequired,
   offer_translations: PropTypes.shape({
     index: PropTypes.shape({
       title: PropTypes.string.isRequired,

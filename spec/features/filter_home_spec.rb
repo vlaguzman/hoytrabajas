@@ -42,7 +42,7 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return offers related", js: true do
           visit root_path
 
-          fill_in('q[title_cont]', with: 'sebas')
+          fill_in('keyword', with: 'sebas')
           find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
 
           expect(current_path).to eq("#{offers_path}/")
@@ -57,7 +57,7 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return the related offer", js: true do
           visit root_path
 
-          fill_in('q[title_cont]', with: 'prueba')
+          fill_in('keyword', with: 'prueba')
           find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
 
           expect(page).to have_content("Esto Es Un Prueba De Sebas")
@@ -70,7 +70,7 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should be redirected to the offers page without any results", js: true do
           visit root_path
 
-          fill_in('q[title_cont]', with: 'Jhoan')
+          fill_in('keyword', with: 'Jhoan')
           find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
 
           expect(page).to_not have_content("Esto Es Un Prueba De Sebas")
@@ -135,7 +135,7 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return results", js: true do
           visit root_path
 
-          fill_in('q[title_cont]', with: 'oferta')
+          fill_in('keyword', with: 'oferta')
 
           find("button[class='MuiButtonBase-root MuiButton-root text-primary h-50 MuiButton-text']", visible: false).click
           find("div[id='Marketing']").click
@@ -152,7 +152,7 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return message of empty", js: true do
           visit root_path
 
-          fill_in('q[title_cont]', with: 'jhoan')
+          fill_in('keyword', with: 'jhoan')
 
           find("button[class='MuiButtonBase-root MuiButton-root text-primary h-50 MuiButton-text']", visible: false).click
 

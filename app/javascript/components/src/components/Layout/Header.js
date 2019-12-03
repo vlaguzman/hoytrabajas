@@ -147,7 +147,7 @@ const Header = props => {
         backgroundColor: isNavTransparent ? 'transparent' : 'white'
       }}
     >
-      <div className="navbar-row">
+      <div className="navbar-row mui-fixed">
         <div className="d-flex align-items-center">
           <div className="site-logo">
             <NavbarBrand href="/" className="logo-mini mr-auto">
@@ -218,7 +218,7 @@ const Header = props => {
               </MatButton>
             </NavItem>
             {/* TODO: With "Candidato" and "Empleador", to press button redirect me a static landing page.
-            We must take into account to make the change in redirection */}
+              We must take into account to make the change in redirection */}
             {/* TODO oscar uncommnet profile link when the profile is complete */}
             {user_signed_in || company_signed_in ? (
               renderMyProfileButton()

@@ -29,9 +29,9 @@ const FormFields = props => {
 
   const jobCategoryIDsField = useMemo(
     () => (
-      <Col className={inputClassname}
-        key={job_category_ids.name}
+      <Col
         className={inputClassname}
+        key={job_category_ids.name}
         xs={12}
         lg={12}
       >

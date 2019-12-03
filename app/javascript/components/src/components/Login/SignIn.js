@@ -10,7 +10,11 @@ import Lock from '@material-ui/icons/Lock'
 import { Row, Col } from 'reactstrap'
 import CloseIcon from './CloseIcon'
 import LoginButton from './LoginButton'
-import { LoginInputWrapper, LoginInputContainer, LoginInput } from './LoginInput'
+import {
+  LoginInputWrapper,
+  LoginInputContainer,
+  LoginInput
+} from './LoginInput'
 
 const SignIn = props => (
   <>
@@ -97,11 +101,7 @@ const SignIn = props => (
         </Typography>
         <Row noGutters className="justify-content-center my-20">
           <Col xs={12}>
-            <LoginButton
-              type="submit"
-              color="primary"
-              variant="contained"
-            >
+            <LoginButton type="submit" color="primary" variant="contained">
               {props.session_translation.sign_in.button_action.sign_in_label}
             </LoginButton>
           </Col>

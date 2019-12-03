@@ -12,11 +12,11 @@ const CompaniesStepFourPage = props => {
     log_out_user,
     log_out_companies,
     session_translation,
-     user_facebook_omniauth_authorize_path
+    user_facebook_omniauth_authorize_path
   } = props
 
   return (
-    //TODO daniel, remove AppLayout and fix to implements datepiker
+    // TODO daniel, remove AppLayout and fix to implements datepiker
     <AppLayout
       csrf_param={csrf_param}
       csrf_token={csrf_token}
@@ -25,7 +25,9 @@ const CompaniesStepFourPage = props => {
       log_out_user={log_out_user}
       log_out_companies={log_out_companies}
       session_translation={session_translation}
-      user_facebook_omniauth_authorize_path={user_facebook_omniauth_authorize_path}
+      user_facebook_omniauth_authorize_path={
+        user_facebook_omniauth_authorize_path
+      }
     >
       <DynamicCompaniesStepFour {...props} />
     </AppLayout>

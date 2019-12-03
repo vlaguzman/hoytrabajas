@@ -254,7 +254,9 @@ const UsersProfilePage = props => {
       log_out_user={log_out_user}
       log_out_companies={log_out_companies}
       session_translation={session_translation}
-      user_facebook_omniauth_authorize_path={user_facebook_omniauth_authorize_path}
+      user_facebook_omniauth_authorize_path={
+        user_facebook_omniauth_authorize_path
+      }
     >
       <DynamicUsersProfile formInfo={formInfo} {...props} />
     </AppLayout>

@@ -4,9 +4,8 @@ import map from 'lodash/map'
 
 const CompaniesList = ({ catalogo }) => {
   return (
-    <Fragment>
-      {
-      map(catalogo,(e, i) => {
+    <>
+      {map(catalogo, (e, i) => {
         return (
           <Col
             xs={12}
@@ -26,7 +25,7 @@ const CompaniesList = ({ catalogo }) => {
           </Col>
         )
       })}
-    </Fragment>
+    </>
   )
 }
 export default CompaniesList

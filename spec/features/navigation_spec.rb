@@ -101,10 +101,14 @@ RSpec.describe "Overall navigation" do
 
         expect(page).to have_link("Empresas", href: companies_path)
 
+        save_screenshot("javi1.png")
         click_on("Empresas")
+        save_screenshot("javi2.png")
 
         expect(page).to have_content(/Ellos hoy confian en nosotros/)
         expect(page).to have_content(/para encontrar su empleado ideal/)
+
+        save_screenshot("javi3.png")
 
         click_on("INICIO")
 

@@ -1,4 +1,4 @@
-export const handleBoolean = (setFormValues) => {
+export const handleBoolean = setFormValues => {
   return (e, inputName) => {
     if (e.persist) e.persist()
     setFormValues(prevFormValues => ({

@@ -9,7 +9,13 @@ import FormFields from './FormFields'
 import { showMessage, showExperience } from '../../shared/message'
 
 const UsersWizardsStepEight = props => {
-  const { formInfo, csrf_param, csrf_token, registered_messages, registered_experience } = props
+  const {
+    formInfo,
+    csrf_param,
+    csrf_token,
+    registered_messages,
+    registered_experience
+  } = props
   const {
     title,
     subtitle,
@@ -26,7 +32,12 @@ const UsersWizardsStepEight = props => {
           <>
             <FormTitle title={title} subtitle={subtitle} />
             <div className="w-80">
-              <form className="forms__candidate" action={action} method="post" encType="multipart/form-data">
+              <form
+                className="forms__candidate"
+                action={action}
+                method="post"
+                encType="multipart/form-data"
+              >
                 <p>{registered_messages}</p>
                 {showExperience(registered_experience)}
                 {showMessage(errors)}
@@ -35,7 +46,14 @@ const UsersWizardsStepEight = props => {
                 <input type="hidden" name="_method" value={method} />
                 <FormFields formFields={formFields} />
                 <div className="action-buttons-container">
-                  {<button  name="add_other_experience" type='submit'value="1" className="accept">{addOther}</button>}
+                  <button
+                    name="add_other_experience"
+                    type="submit"
+                    value="1"
+                    className="accept"
+                  >
+                    {addOther}
+                  </button>
                 </div>
                 <FormButtons
                   nextPath={nextPath}

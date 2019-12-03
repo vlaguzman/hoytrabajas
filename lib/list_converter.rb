@@ -2,7 +2,7 @@ module ListConverter
 
   def self.model_list(klass)
     klass.all
-    .map { |object| object.attributes.deep_symbolize_keys.slice(:id, :description) }
+    .map { |object| object.attributes.deep_symbolize_keys.slice(:id, :description, :state_id) }
     .sort_by { |object| object[:description] }
   end
 

@@ -69,7 +69,7 @@ export default {
         className: 'my-0',
         name: 'email',
         id: 'email',
-        label: 'Correo electrónico',
+        label: 'Correo electrónico'
       }
     }
   ]

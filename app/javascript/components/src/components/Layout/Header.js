@@ -217,9 +217,6 @@ const Header = props => {
                 INICIO
               </MatButton>
             </NavItem>
-            {/* TODO: With "Candidato" and "Empleador", to press button redirect me a static landing page.
-              We must take into account to make the change in redirection */}
-            {/* TODO oscar uncommnet profile link when the profile is complete */}
             {user_signed_in || company_signed_in ? (
               renderMyProfileButton()
             ) : (

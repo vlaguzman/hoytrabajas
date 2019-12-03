@@ -20,6 +20,7 @@ import FavoriteBorder from '@material-ui/icons/FavoriteBorder'
 // import CheckCircle from '@material-ui/icons/CheckCircle'
 // import RemoveCircleOutline from '@material-ui/icons/RemoveCircleOutline'
 // import ChatBubbleOutline from '@material-ui/icons/ChatBubbleOutline'
+import EditIcon from '@material-ui/icons/Edit'
 
 const Second = ({ my_offers, my_offers_section }) => {
   const theTitle = texto => (
@@ -100,12 +101,16 @@ const Second = ({ my_offers, my_offers_section }) => {
                   {my_offers.map(row => (
                     <TableRow key={uuidv4()}>
                       <TableCell align="right" padding="checkbox">
-                        <a href={`/offers/${row.id}`}>
-                          <i className="ti-pencil-alt" />
-                        </a>
+                        <IconButton
+                          href={`/companies/first_offer/step_three?offer_id=${row.id}`}
+                          className="p-0"
+                          // aria-label="Settings"
+                        >
+                          <EditIcon />
+                        </IconButton>
                       </TableCell>
                       <TableCell align="center" size="medium">
-                        {row.title}
+                        <a href={`/offers/${row.id}`}>{row.title}</a>
                       </TableCell>
                       <TableCell align="left" size="small">
                         {row.approved
@@ -142,5 +147,6 @@ const Second = ({ my_offers, my_offers_section }) => {
 export default Second
 
 Second.propTypes = {
-  my_offers: PropTypes.array.isRequired
+  my_offers: PropTypes.array.isRequired,
+  my_offers_section: PropTypes.object.isRequired
 }

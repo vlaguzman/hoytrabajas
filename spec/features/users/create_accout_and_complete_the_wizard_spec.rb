@@ -134,9 +134,7 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
 
     find("span", text: "Disponibilidad para trabajar en otra ciudades").click
 
-    save_screenshot("javi.png")
     find("div[id='select-user[city_id]", visible: false).click
-    save_screenshot("javi1.png")
     find("li", text: "La Dorada").click
 
     find("div[id='select-user[vehicle_ids][]", visible: false).click

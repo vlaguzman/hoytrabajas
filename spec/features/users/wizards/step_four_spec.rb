@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Like new candidate", :type => :feature do
   before do
-    create(:state, description: "Caldas", id: 99)
-    create(:city, description: "La Dorada", state_id: 99)
+    create(:city, description: "La Dorada", state: create(:state, description: "Caldas"))
 
     create(:vehicle, description: "Moto")
     create(:vehicle, description: "Carro")

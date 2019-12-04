@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { DynamicBoards } from '../../src/views/DynamicViews'
 import AppLayout from '../../src/components/Layout/AppLayout'
 
-const MainPage = (props) => (
- <AppLayout {...props}>
+const MainPage = props => (
+  <AppLayout {...props}>
     <div className="dashboards-wrapper pcx">
       <DynamicBoards {...props} />
     </div>
@@ -20,5 +20,5 @@ MainPage.propTypes = {
   company_signed_in: PropTypes.bool.isRequired,
   log_out_user: PropTypes.string.isRequired,
   log_out_companies: PropTypes.string.isRequired,
-  session_translation: PropTypes.object.isRequired,
+  session_translation: PropTypes.object.isRequired
 }

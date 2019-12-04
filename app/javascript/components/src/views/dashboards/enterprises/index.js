@@ -8,18 +8,21 @@ import Second from './sections/second'
 const DashEnterprises = props => {
   const {
     my_offers,
-    component_translations
-   } = props
+    component_translations,
+    edit_offer_path
+  } = props
 
-   const {
+  const {
     my_offers_section
-   } = component_translations
+  } = component_translations
+
   return (
     <>
       <Presentation />
       <Second
         my_offers={my_offers}
         my_offers_section={my_offers_section}
+        edit_offer_path={edit_offer_path}
       />
       {
         // TODO: add this when dashboards be implemented
@@ -34,5 +37,7 @@ const DashEnterprises = props => {
 export default DashEnterprises
 
 DashEnterprises.propTypes = {
-  my_offers: PropTypes.array.isRequired
+  my_offers: PropTypes.array.isRequired,
+  edit_offer_path: PropTypes.string.isRequired,
+  my_offers_section: PropTypes.object.isRequired
 }

@@ -17,7 +17,8 @@ const DashBoarEnterprisesPage = props => {
     companies_sessions_path,
     users_sessions_path,
     my_offers,
-    component_translations
+    component_translations,
+    edit_offer_path
   } = props
 
   return (
@@ -38,6 +39,7 @@ const DashBoarEnterprisesPage = props => {
         <DynamicBoardsEnterprises
           my_offers={my_offers}
           component_translations={component_translations}
+          edit_offer_path={edit_offer_path}
         />
       </AppLayout>
     </div>
@@ -47,7 +49,7 @@ const DashBoarEnterprisesPage = props => {
 export default DashBoarEnterprisesPage
 
 DashBoarEnterprisesPage.propTypes = {
-  my_offers: PropTypes.object.isRequired,
+  my_offers: PropTypes.array.isRequired,
   log_out_companies: PropTypes.string.isRequired,
   company_signed_in: PropTypes.bool.isRequired,
   user_signed_in: PropTypes.bool.isRequired,
@@ -59,5 +61,6 @@ DashBoarEnterprisesPage.propTypes = {
   users_registration_path: PropTypes.string.isRequired,
   companies_sessions_path: PropTypes.string.isRequired,
   users_sessions_path: PropTypes.string.isRequired,
-  component_translations: PropTypes.object.isRequired
+  component_translations: PropTypes.object.isRequired,
+  edit_offer_path: PropTypes.string.isRequired
 }

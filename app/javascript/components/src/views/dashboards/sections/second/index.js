@@ -20,25 +20,19 @@ import FavoriteBorder from '@material-ui/icons/FavoriteBorder'
 import RemoveCircleOutline from '@material-ui/icons/RemoveCircleOutline'
 // import ChatBubbleOutline from '@material-ui/icons/ChatBubbleOutline'
 
-/* const rows = [
-  {
-    oferta: 'Community manager proactivo',
-    timer: '20:00',
-    aplicaiones: '10',
-    inicio: '5/5/2019',
-    cierre: '20/5/2019',
-    estado: true
-  }
-] */
-
-const Second = ({ applied_offers, second_section }) => {
-  applied_offers = applied_offers || []
+const Second = ({ applied_offers = [], second_section }) => {
 
   const {
     you_have_applied_to,
     my_applys,
     offers_count,
-    one_offer
+    one_offer,
+    people_applied,
+    closed_at,
+    started_at,
+    status,
+    offer_status,
+    no_applied_offers_present
   } = second_section
 
   const theTitle = text => (
@@ -101,66 +95,73 @@ const Second = ({ applied_offers, second_section }) => {
                 color="primary"
               />
             </Row>
-            <div className="container">
-              <Table style={{ minWidth: '650' }}>
-                <TableHead className="bg-white">
-                  <TableRow>
-                    <TableCell
-                      className="text-info"
-                      align="left"
-                      padding="checkbox"
-                    />
-                    <TableCell
-                      className="text-info"
-                      align="center"
-                      size="medium"
-                    >
-                      {one_offer}
-                    </TableCell>
-                    {/* <TableCell className="text-info" align="left">
+            <div>
+              {(applied_offers.length === 0) && (<h2>{no_applied_offers_present}</h2>)}
+              {applied_offers.length > 0 && (
+                <Table style={{ minWidth: '650' }}>
+                  <TableHead className="bg-white">
+                    <TableRow>
+                      <TableCell
+                        className="text-info"
+                        align="left"
+                        padding="checkbox"
+                      />
+                      <TableCell
+                        className="text-info"
+                        align="center"
+                        size="medium"
+                      >
+                        {one_offer}
+                      </TableCell>
+                      {/* <TableCell className="text-info" align="left">
                     Chat
                   </TableCell> */}
-                    {/* <TableCell className="text-info" align="left">
+                      {/* <TableCell className="text-info" align="left">
                     <i className="ti-timer"></i>
                   </TableCell> */}
-                    {/* <TableCell className="text-info" align="left">
-                    Aplicaciones
-                  </TableCell> */}
-                    {/* <TableCell className="text-info" align="left">
-                    Inicio
-                  </TableCell> */}
-                    {/* <TableCell className="text-info" align="left">
-                    Cierre
-                  </TableCell> */}
-                    {/* <TableCell className="text-info" align="left">
-                    Estado
-                  </TableCell> */}
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {applied_offers &&
-                    applied_offers.map(offer => (
-                      <TableRow key={offer.title}>
-                        <TableCell align="left" padding="checkbox">
-                          <RemoveCircleOutline />
-                        </TableCell>
-                        <TableCell align="center" size="medium">
-                          {offer.title}
-                        </TableCell>
-                        {/* <TableCell component="th" scope="row">
+                      <TableCell className="text-info" align="left">
+                        {people_applied}
+                      </TableCell>
+                      <TableCell className="text-info" align="left">
+                        {started_at}
+                      </TableCell>
+                      <TableCell className="text-info" align="left">
+                        {closed_at}
+                      </TableCell>
+                      <TableCell className="text-info" align="left">
+                        {status}
+                      </TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {applied_offers &&
+                      applied_offers.map(offer => (
+                        <TableRow key={offer.title}>
+                          <TableCell align="left" padding="checkbox">
+                            <RemoveCircleOutline />
+                          </TableCell>
+                          <TableCell align="center" size="medium">
+                            <a href={offer.visit_offer_path}>{offer.title}</a>
+                          </TableCell>
+                          {/* <TableCell component="th" scope="row">
                       <ChatBubbleOutline />
                     </TableCell> */}
-                        {/* <TableCell align="left">{row.timer}</TableCell> */}
-                        {/* <TableCell align="left">{row.aplicaiones}</TableCell> */}
-                        {/* <TableCell align="left">{row.inicio}</TableCell> */}
-                        {/* <TableCell align="left">{row.cierre}</TableCell> */}
-                        {/* <TableCell align="left">
-                      {row.estado ? 'Abierto' : 'Cerrado'}
-                    </TableCell> */}
-                      </TableRow>
-                    ))}
-                </TableBody>
-              </Table>
+                          {/* <TableCell align="left">{row.timer}</TableCell> */}
+                          <TableCell align="center">
+                            {offer.people_applied}
+                          </TableCell>
+                          <TableCell align="left">{offer.start_date}</TableCell>
+                          <TableCell align="left">{offer.close_date}</TableCell>
+                          <TableCell align="left">
+                            {offer.status
+                              ? offer_status['open_offer']
+                              : offer_status['close_offer']}
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                  </TableBody>
+                </Table>
+              )}
             </div>
           </CardContent>
         </Card>
@@ -171,12 +172,7 @@ const Second = ({ applied_offers, second_section }) => {
 
 Second.propTypes = {
   applied_offers: PropTypes.array,
-  second_section: PropTypes.shape({
-    you_have_applied_to: PropTypes.string,
-    my_applys: PropTypes.string,
-    offers_count: PropTypes.string,
-    one_offer: PropTypes.string
-  })
+  second_section: PropTypes.object
 }
 
 export default Second

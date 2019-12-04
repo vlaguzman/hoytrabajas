@@ -13,10 +13,7 @@ class UsersPresenter < ApplicationPresenter
   end
 
   def applied_offers
-    offers = AppliedOffer.where(curriculum_vitae_id: source.curriculum_vitaes.last.id) if source.curriculum_vitaes.any?
-    offers.map do |applied|
-      { id: applied.id, title: applied.offer_title }
-    end if offers.present?
+    Users::Dashboards::OffersService.(source)
   end
 
 end

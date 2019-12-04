@@ -43,8 +43,7 @@ RSpec.describe UsersPresenter do
       applied_ofers
 
       expect(subject.applied_offers).to be_an_instance_of Array
-      expect(subject.applied_offers.map(&:keys).flatten.uniq).to match_array([:id, :title])
-
+      expect(subject.applied_offers.last.keys).to match_array([:id, :title, :people_applied, :start_date, :close_date, :visit_offer_path, :status])
     end
   end
 

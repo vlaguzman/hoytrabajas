@@ -11,6 +11,7 @@ class CurriculumVitae < ApplicationRecord
   has_many :visits
   has_many :acknowledgments
   has_many :educational_levels
+  has_many :applied_offers
 
   has_and_belongs_to_many :soft_skills
   has_and_belongs_to_many :educational_degrees

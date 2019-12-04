@@ -50,7 +50,7 @@ A         • CompaniesUsers                                      1       0.0   
 A         • Company                                             15      2.2        0           1
 A         • ContractType                                        1       0.0        0           1
 A         • Currency                                            1       0.0        0           1
-A         • CurriculumVitae                                     28      6.6        0           1
+A         • CurriculumVitae                                     29      6.6        0           1
 A         • CurriculumVitaeSalary                               2       0.0        0           1
 A         • CurriculumVitaes                                    1       0.0        0           0
 A         • CurriculumVitaesEducationalDegrees                  1       0.0        0           1
@@ -119,6 +119,7 @@ A         • TechnicalSkill                                      6       0.0   
 A         • TechnicalSkillCategory                              1       0.0        0           1
 A         • Term                                                4       0.0        0           1
 A         • User                                                30      9.27       0           1
+A         • Users::Dashboards::OffersService                    1       31.49      0           2
 A         • Users::DashboardsController                         10      5.69       0           1
 A         • Users::OmniauthCallbacksController                  1       21.49      0           5
 A         • Users::ProfilesController                           12      2.2        0           1
@@ -172,7 +173,7 @@ A         • Users::WizardsPresenter                             2       4.8   
 A         • UsersController                                     10      2.2        0           1
 A         • UsersLimitations                                    1       0.0        0           1
 A         • UsersNationalities                                  1       0.0        0           1
-A         • UsersPresenter                                      2       29.14      0           1
+A         • UsersPresenter                                      3       15.4       0           0
 A         • Vehicle                                             7       0.0        0           1
 A         • Visit                                               1       0.0        0           1
 A         • WizardsLastStepService                              1       26.61      0           1

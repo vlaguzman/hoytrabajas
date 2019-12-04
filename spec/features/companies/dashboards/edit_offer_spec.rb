@@ -13,15 +13,13 @@ RSpec.describe "Like a company", type: :feature do
 
       edit_path = "#{companies_first_offer_step_three_path}?offer_id=#{create_selctable_offer.id}"
 
-      find("a[href='#{edit_path}']").click
+      find("a[href='#{edit_path}']", visible: false).click
 
       fill_in 'offer[title]', :with => "Titulo Editado ajam"
 
       click_link_or_button('Siguiente')
-      click_link_or_button('Siguiente')
-      click_link_or_button('Siguiente')
-      click_link_or_button('Siguiente')
-      click_link_or_button('Publicar')
+
+      visit companies_first_offer_step_eight_path
 
       find(:button, text: 'Ir al Dashboard').click
       expect(page).to have_content(/Titulo Editado ajam/)

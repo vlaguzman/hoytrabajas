@@ -15,7 +15,10 @@ const DashBoardClientes = props => {
     <>
       <Presentation {...presentation_section} />
       <First {...dashboard_main_data} first_section={first_section} />
-      <Second applied_offers={applied_offers} second_section={second_section} />
+      <Second
+        applied_offers={applied_offers}
+        second_section={second_section}
+        />
       {/* <Third /> */}
       {/* <Fourth /> */}
       {/* <Typography className="my-25 fw-bold" variant="h5">
@@ -32,7 +35,7 @@ DashBoardClientes.propTypes = {
     second_section: PropTypes.object
   }),
   dashboard_main_data: PropTypes.object,
-  applied_offers: PropTypes.object
+  applied_offers: PropTypes.object,
 }
 
 export default DashBoardClientes

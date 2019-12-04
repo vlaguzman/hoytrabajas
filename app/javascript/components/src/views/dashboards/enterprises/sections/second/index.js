@@ -22,7 +22,7 @@ import FavoriteBorder from '@material-ui/icons/FavoriteBorder'
 // import ChatBubbleOutline from '@material-ui/icons/ChatBubbleOutline'
 import EditIcon from '@material-ui/icons/Edit'
 
-const Second = ({ my_offers, my_offers_section }) => {
+const Second = ({ my_offers, my_offers_section, edit_offer_path }) => {
   const theTitle = texto => (
     <>
       <IconButton className="p-0" aria-label="Settings">
@@ -102,7 +102,7 @@ const Second = ({ my_offers, my_offers_section }) => {
                     <TableRow key={uuidv4()}>
                       <TableCell align="right" padding="checkbox">
                         <IconButton
-                          href={`/companies/first_offer/step_three?offer_id=${row.id}`}
+                          href={`${edit_offer_path}?offer_id=${row.id}`}
                           className="p-0"
                           // aria-label="Settings"
                         >
@@ -148,5 +148,6 @@ export default Second
 
 Second.propTypes = {
   my_offers: PropTypes.array.isRequired,
-  my_offers_section: PropTypes.object.isRequired
+  my_offers_section: PropTypes.object.isRequired,
+  edit_offer_path:PropTypes.string.isRequired,
 }

@@ -31,24 +31,8 @@
     %noscript
       %iframe{:height => "0", :src => "https://www.googletagmanager.com/ns.html?id=GTM-MC7RKNG", :style => "display:none;visibility:hidden", :width => "0"}
 
-    = react_component('src/components/Layout/Header',
-    {csrf_param: request_forgery_protection_token,
-    csrf_token: form_authenticity_token,
-    user_signed_in: user_signed_in?,
-    company_signed_in: company_signed_in?,
-    companies_registration_path: company_registration_path,
-    users_registration_path: user_registration_path,
-    companies_sessions_path: company_session_path,
-    users_sessions_path: user_session_path,
-    log_out_user: destroy_user_session_path,
-    log_out_companies: destroy_company_session_path,
-    session_translation: I18n.t("session"),
-    user_facebook_omniauth_authorize_path: user_facebook_omniauth_authorize_path}, prerender: false)
-
     = yield
 
-    = react_component('src/components/Layout/Footer', {}, prerender: false)
-    
     = react_component('src/components/Notification/NotificationWrapper',
     {alert_message: alert,
     notice_message: notice}, prerender: false)

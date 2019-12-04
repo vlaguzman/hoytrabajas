@@ -1,17 +1,6 @@
+= render '/shared/header'
 = react_component('pages/dashboards/enterprises/index',
-    {csrf_param: request_forgery_protection_token,
-    csrf_token: form_authenticity_token,
-    log_out_user: destroy_user_session_path,
-    log_out_companies: destroy_company_session_path,
-    companies_registration_path: company_registration_path,
-    companies_sessions_path: company_session_path,
-    users_registration_path: user_registration_path,
-    users_sessions_path: user_session_path,
-    user_signed_in: user_signed_in?,
-    company_signed_in: company_signed_in?,
-    session_translation: I18n.t("session"),
+    {component_translations: @company.component_translations,
     edit_offer_path: companies_first_offer_step_three_path,
-    component_translations: @company.component_translations,
-    my_offers: @company.my_offers,
-    user_facebook_omniauth_authorize_path: user_facebook_omniauth_authorize_path },
-  prerender: false)
+    my_offers: @company.my_offers }, prerender: false)
+= render '/shared/footer'

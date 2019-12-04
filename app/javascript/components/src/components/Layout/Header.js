@@ -25,7 +25,7 @@ import FormGen from '../inlineFormgenerartor'
 const Header = props => {
   const {
     isScrollTop = true,
-    shouldChangeColorOfNav = false,
+    should_change_nav_color = false,
     user_signed_in,
     company_signed_in,
     log_out_user,
@@ -65,7 +65,7 @@ const Header = props => {
   }
 
   const isNavTransparent =
-    !openState.navbar && shouldChangeColorOfNav && isScrollTop
+    !openState.navbar && should_change_nav_color && isScrollTop
 
   const colorOfNavToggler = () =>
     isNavTransparent
@@ -99,7 +99,7 @@ const Header = props => {
   /* TODO Oscar move the search bar to a component to have control of this */
   const FullSearchBarInNavBar = () => (
     <Row
-      className={`d-none d-lg-flex w-100 m-0 justify-content-around p-0 header-bar ${(!shouldChangeColorOfNav ||
+      className={`d-none d-lg-flex w-100 m-0 justify-content-around p-0 header-bar ${(!should_change_nav_color ||
         !isScrollTop) &&
         'show'}`}
     >
@@ -316,7 +316,7 @@ const Header = props => {
         </Collapse>
       </div>
       <div
-        className={`navbar-row ${shouldChangeColorOfNav &&
+        className={`navbar-row ${should_change_nav_color &&
           isScrollTop &&
           'd-none'}`}
       >
@@ -343,7 +343,7 @@ Header.propTypes = {
   csrf_param: PropTypes.string.isRequired,
   csrf_token: PropTypes.string.isRequired,
   session_translation: PropTypes.object.isRequired,
-  shouldChangeColorOfNav: PropTypes.bool,
+  should_change_nav_color: PropTypes.bool,
   isScrollTop: PropTypes.bool,
   user_facebook_omniauth_authorize_path: PropTypes.string
 }

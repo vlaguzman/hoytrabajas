@@ -30,11 +30,11 @@ const HomePage = ({
         user_signed_in={user_signed_in}
         company_signed_in={company_signed_in}
         companies_registration_path={companies_registration_path}
-        users_registration_path={users_registration_path}
         companies_sessions_path={companies_sessions_path}
+        log_out_companies={log_out_companies}
+        users_registration_path={users_registration_path}
         users_sessions_path={users_sessions_path}
         log_out_user={log_out_user}
-        log_out_companies={log_out_companies}
         session_translation={session_translation}
         user_facebook_omniauth_authorize_path={
           user_facebook_omniauth_authorize_path

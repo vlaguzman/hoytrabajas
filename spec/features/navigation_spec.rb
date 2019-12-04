@@ -26,7 +26,7 @@ RSpec.describe "Overall navigation" do
 
         click_on("FAQs")
 
-        expect(page).to have_text("Faqs")
+        expect(page).to have_content("Faqs")
 
         click_on("INICIO")
 
@@ -36,25 +36,22 @@ RSpec.describe "Overall navigation" do
       it "should visit Candidato page from home page", js: true do
         visit root_path
 
-        expect(page).to have_text("SIGN UP CANDIDATO")
+        expect(page).to have_content("SIGN UP CANDIDATO")
         find('span', text:/SIGN UP CANDIDATO/, visible: false).click
 
-        expect(page).to have_text("Regístrate ahora")
+        expect(find('span', text: 'Regístrate ahora', visible: false)).to be_present
         find(".modal--close-icon", match: :first, visible: false).click
 
         expect(current_path).to eq(root_path)
       end
 
-      it "should visit 'Empleador' page from home page", js: true do
+      it "should visit 'SIGN UP EMPRESA' page from home page", js: true do
         visit root_path
 
-        expect(page).to have_text("SIGN UP EMPRESA")
         find('span', text:/SIGN UP EMPRESA/, visible: false).click
 
-        expect(page).to have_text("Regístrate ahora")
+        expect(find('span', text: 'Regístrate ahora', visible: false)).to be_present
         find(".modal--close-icon", match: :first, visible: false).click
-
-        expect(current_path).to eq(root_path)
       end
 
       it "should visit 'ver mas ofertas' page from home page", js: true do
@@ -78,7 +75,7 @@ RSpec.describe "Overall navigation" do
         has_button?('VER MÁS OFERTAS')
         find('span', text:/Ver más ofertas/, visible: false).click
 
-        expect(page).to have_text("Esta Oferta Deberia Aparec...")
+        expect(page).to have_content("Esta Oferta Deberia Aparec...")
 
         click_on("INICIO")
 
@@ -92,7 +89,7 @@ RSpec.describe "Overall navigation" do
 
         click_on("Categorias de empleo")
 
-        expect(page).to have_text("Categorias de empleo")
+        expect(page).to have_content("Categorias de empleo")
 
         click_on("INICIO")
 
@@ -102,14 +99,12 @@ RSpec.describe "Overall navigation" do
       it "should visit 'empresas' page from home page", js: true do
         visit root_path
 
-        
-
         expect(page).to have_link("Empresas", href: companies_path)
 
         click_on("Empresas")
 
-        expect(page).to have_text(/Ellos hoy confian en nosotros/)
-        expect(page).to have_text(/para encontrar su empleado ideal/)
+        expect(page).to have_content(/Ellos hoy confian en nosotros/)
+        expect(page).to have_content(/para encontrar su empleado ideal/)
 
         click_on("INICIO")
 

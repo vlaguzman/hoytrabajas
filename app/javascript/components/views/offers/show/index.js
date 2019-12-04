@@ -14,8 +14,12 @@ const OffersPage = props => {
     log_out_user,
     log_out_companies,
     session_translation,
-     user_facebook_omniauth_authorize_path,
-    offer_translations
+    user_facebook_omniauth_authorize_path,
+    offer_translations,
+    users_sessions_path,
+    users_registration_path,
+    companies_sessions_path,
+    companies_registration_path
   } = props
 
   return (
@@ -24,10 +28,16 @@ const OffersPage = props => {
       csrf_token={csrf_token}
       user_signed_in={user_signed_in}
       company_signed_in={company_signed_in}
-      log_out_user={log_out_user}
-      log_out_companies={log_out_companies}
       session_translation={session_translation}
-      user_facebook_omniauth_authorize_path={user_facebook_omniauth_authorize_path}
+      user_facebook_omniauth_authorize_path={
+        user_facebook_omniauth_authorize_path
+      }
+      companies_registration_path={companies_registration_path}
+      companies_sessions_path={companies_sessions_path}
+      log_out_companies={log_out_companies}
+      users_registration_path={users_registration_path}
+      users_sessions_path={users_sessions_path}
+      log_out_user={log_out_user}
     >
       <DynamicOffers
         offers={offers}
@@ -53,6 +63,10 @@ OffersPage.propTypes = {
   path_applied_offers: PropTypes.object.isRequired,
   session_translation: PropTypes.object.isRequired,
   user_facebook_omniauth_authorize_path: PropTypes.object.isRequired,
+  users_sessions_path: PropTypes.string.isRequired,
+  users_registration_path: PropTypes.string.isRequired,
+  companies_sessions_path: PropTypes.string.isRequired,
+  companies_registration_path: PropTypes.string.isRequired,
   offer_translations: PropTypes.shape({
     index: PropTypes.shape({
       title: PropTypes.string.isRequired,

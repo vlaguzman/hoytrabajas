@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import MatButton from '@material-ui/core/Button'
 import MenuIcon from '@material-ui/icons/Menu'
@@ -24,7 +24,6 @@ import FormGen from '../inlineFormgenerartor'
 
 const Header = props => {
   const {
-    isScrollTop = true,
     should_change_nav_color = false,
     user_signed_in,
     company_signed_in,
@@ -37,6 +36,19 @@ const Header = props => {
     if (company_signed_in) return `/companies/${to}`
     return '/'
   }
+
+  const [isTop, setIsTop] = useState(true)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentTop = window.scrollY < 200
+      if (currentTop !== isTop) setIsTop(currentTop)
+    }
+    document.addEventListener('scroll', handleScroll)
+    return () => {
+      document.removeEventListener('scroll', handleScroll)
+    }
+  }, [isTop])
 
   const pathToProfile = pathTo('profile')
   const pathToDashboard = pathTo('dashboard')
@@ -64,8 +76,7 @@ const Header = props => {
     toggleOpenState('login')
   }
 
-  const isNavTransparent =
-    !openState.navbar && should_change_nav_color && isScrollTop
+  const isNavTransparent = !openState.navbar && should_change_nav_color && isTop
 
   const colorOfNavToggler = () =>
     isNavTransparent
@@ -100,7 +111,7 @@ const Header = props => {
   const FullSearchBarInNavBar = () => (
     <Row
       className={`d-none d-lg-flex w-100 m-0 justify-content-around p-0 header-bar ${(!should_change_nav_color ||
-        !isScrollTop) &&
+        !isTop) &&
         'show'}`}
     >
       <Col xs={12} md={1} className="pt-rem p-0 align-items-center">
@@ -316,9 +327,7 @@ const Header = props => {
         </Collapse>
       </div>
       <div
-        className={`navbar-row ${should_change_nav_color &&
-          isScrollTop &&
-          'd-none'}`}
+        className={`navbar-row ${should_change_nav_color && isTop && 'd-none'}`}
       >
         {/* TODO uncomment when advance search is ready */}
         {/* <FullSearchBarInNavBar/> */}
@@ -344,6 +353,6 @@ Header.propTypes = {
   csrf_token: PropTypes.string.isRequired,
   session_translation: PropTypes.object.isRequired,
   should_change_nav_color: PropTypes.bool,
-  isScrollTop: PropTypes.bool,
+  isTop: PropTypes.bool,
   user_facebook_omniauth_authorize_path: PropTypes.string
 }

@@ -22,3 +22,11 @@ es:
           offers_count: 'oferta(s)'
           my_applys: 'Mis aplicaciones'
           one_offer: 'Oferta'
+          people_applied: 'Aplicaciones'
+          started_at: 'Fecha de Inicio'
+          closed_at: 'Fecha de Cierre'
+          status: "Estado"
+          offer_status:
+            close_offer: "Cerrada"
+            open_offer: "Abierta"
+          no_applied_offers_present: "Aún no has aplicado a ninguna oferta"

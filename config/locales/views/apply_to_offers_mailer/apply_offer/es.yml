@@ -1,0 +1,17 @@
+es:
+  apply_to_offers_mailer:
+    apply_offer:
+      title: 'Has aplicado a la oferta'
+      message:
+        first_text: 'Pronto recibiras respuesta sobre el estado'
+        second_text: 'de tú aplicación'
+      button: 'Ver mis aplicaciones'
+      farewell:
+        goodbye: 'Saludos, '
+        person: 'Helena Tello'
+        position: 'Operaciones'
+        link: 'HoyTrabajas.com'
+      rights:
+        copy_right: '  HoyTrabajas.com 2019 - Todos los derechos reservados.'
+        address: 'Calle 101B #45A - 41  Bogota, Colombia  /  +(57) 350 705 2990'
+        unsubscribe: 'Quiero dejar de recibir correo electronicos de HoyTrabajas.com'

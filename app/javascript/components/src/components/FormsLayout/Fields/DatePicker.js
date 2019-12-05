@@ -13,7 +13,7 @@ function capitalize(string) {
 }
 
 const DatePicker = props => {
-  const { inputValue, handleSimpleChange, name, label, dateOptions } = props
+  const { inputValue, handleSimpleChange, name, label, maxDate, minDate, dateOptions } = props
   const formatString = dateOptions && dateOptions.format
 
   const formatLabel = date => {
@@ -58,6 +58,8 @@ DatePicker.propTypes = {
   handleSimpleChange: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  maxDate: PropTypes.string.isRequired,
+  minDate: PropTypes.string.isRequired,
   dateOptions: PropTypes.shape({
     format: PropTypes.string,
     disableFuture: PropTypes.bool,

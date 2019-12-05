@@ -75,7 +75,7 @@ const FormFields = props => {
           inputValue={formValues[from.name]}
           handleChange={handleChange(formValues, setFormValues)}
           name={from.name}
-          placeholder={from.placeholder || 'Ejem. 750.000'}
+          placeholder={from.placeholder || 'Ejem. 750000'}
           style={{ width: '100%' }}
         />
       </Col>
@@ -91,7 +91,7 @@ const FormFields = props => {
             inputValue={formValues[to.name]}
             handleChange={handleChange(formValues, setFormValues)}
             name={to.name}
-            placeholder={to.placeholder || 'Ejem. 750.000'}
+            placeholder={to.placeholder || 'Ejem. 750000'}
             style={{ width: '100%' }}
           />
         </Col>

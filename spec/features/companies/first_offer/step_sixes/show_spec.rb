@@ -14,8 +14,9 @@ RSpec.describe "When company fill the step six form", :type => :feature do
     expect(page).to have_content("Brinda a tu candidato una relevante de tu empresa.")
 
     expect(page).to have_tag(:form, with: { class: "forms__candidate" }) do
-      with_tag(:input, with: { name: 'offer[responsibility_ids][]',  type: "hidden" })
-      with_tag(:input, with: { name: 'offer[requirement_ids][]',     type: "hidden" })
+     #TODO daniel, uncomment when responsabilities and requirement has been defined
+     #with_tag(:input, with: { name: 'offer[responsibility_ids][]',  type: "hidden" })
+     #with_tag(:input, with: { name: 'offer[requirement_ids][]',     type: "hidden" })
       with_tag(:input, with: { name: 'offer[vehicle_ids][]',         type: "hidden" })
       with_tag(:input, with: { name: 'offer[driving_licence_ids][]', type: "hidden" })
     end
@@ -24,11 +25,12 @@ RSpec.describe "When company fill the step six form", :type => :feature do
   end
 
   def fill_form(data)
-    find(id: 'mui-component-select-offer[responsibility_ids][]', visible: false).click
-    find('li.MuiListItem-button', text: data[:responsibility_ids]).click
+    #TODO daniel, uncomment when responsabilities and requirement has been defined
+    #find(id: 'select-offer[responsibility_ids][]', visible: false).click
+    #find('li', text: data[:responsibility_ids]).click
 
-    find(id: 'mui-component-select-offer[requirement_ids][]', visible: false).click
-    find('li.MuiListItem-button', text: data[:requirement_ids]).click
+    #find(id: 'select-offer[requirement_ids][]', visible: false).click
+    #find('li', text: data[:requirement_ids]).click
 
     find(id: 'mui-component-select-offer[vehicle_ids][]', visible: false).click
     find('li.MuiListItem-button', text: data[:vehicle_ids]).click

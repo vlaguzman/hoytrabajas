@@ -3,6 +3,6 @@ en:
     first_offer:
       step_zeros:
         show:
-          title: 'The ideal employee does exist!'
-          description: 'Create your offers with the use of keywords, which will make the perfect match with your ideal employee.'
-          button_action: 'Publish my offer'
+          title: 'The fastest way to create a winning offer!'
+          description: 'Create your offers with keywords, which will make the perfect match with your ideal employee.'
+          button_action: 'Create your offer'

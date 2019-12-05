@@ -97,8 +97,10 @@ const FormFields = props => {
 
   return (
     <Row className="HT__FormGenerator">
-      {responsabilityField}
-      {requirementField}
+      { /* TODO daniel, uncomment when responsabilities and requirement has been defined
+        {responsabilityField}
+        {requirementField}
+      */}
       {vehicleField}
       {drivingLicenseField}
     </Row>

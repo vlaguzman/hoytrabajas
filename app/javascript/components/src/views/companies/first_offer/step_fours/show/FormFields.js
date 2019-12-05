@@ -29,6 +29,18 @@ const FormFields = props => {
       : new Date(close_date.current_value)
   }
 
+  function maxDate() {
+    const date = new Date();
+    const maxDate = new Date(date.getFullYear() + 1, date.getMonth(), date.getDate())
+    return maxDate
+  }
+
+  function minDate() {
+    const date = new Date();
+    const minDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() - 1)
+    return minDate
+  }
+
   const [formValues, setFormValues] = useState({
     [contract_type_id.name]: contract_type_id.current_value || '',
     [vacancies_quantity.name]: vacancies_quantity.current_value || '',
@@ -123,6 +135,8 @@ const FormFields = props => {
           handleSimpleChange={handleSimpleChange(formValues, setFormValues)}
           name={close_date.name}
           label={close_date.label}
+          maxDate={maxDate()}
+          minDate={minDate()}
           dateOptions={close_date.dateOptions}
           isRequired={false}
         />

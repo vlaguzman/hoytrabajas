@@ -48,8 +48,9 @@ RSpec.describe "When company fill the step six form", :type => :feature do
         expected_page_structure
         fill_form(
           {
-            responsibility_ids:  responsibility.description,
-            requirement_ids:     requirement.description,
+            #TODO daniel, uncomment when responsabilities and requirement has been defined
+            #responsibility_ids:  responsibility.description,
+            #requirement_ids:     requirement.description,
             vehicle_ids:         vehicle.description,
             driving_licence_ids: driving_licence.description
           })

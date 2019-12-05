@@ -6,11 +6,6 @@ const NotificationWrapper = ({ alert_message, notice_message }) => {
   const [showAlert, setShowAlert] = useState(true)
   const [showNotice, setShowNotice] = useState(true)
 
-  // useEffect(() => (
-  //   if (alert_message) setShowAlert(true)
-  //   if (notice_message) setShowNotice(true)
-  // ), [])
-
   return (
     <>
       {alert_message ? (

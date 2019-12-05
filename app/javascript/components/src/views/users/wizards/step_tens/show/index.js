@@ -9,7 +9,13 @@ import FormFields from './FormFields'
 import { showMessage } from '../../shared/message'
 
 const UsersWizardsStepTen = props => {
-  const { formInfo, csrf_param, csrf_token, registered_acknowledgments, registered_acknowledgments_message } = props
+  const {
+    formInfo,
+    csrf_param,
+    csrf_token,
+    registered_acknowledgments,
+    registered_acknowledgments_message
+  } = props
   const {
     title,
     subtitle,
@@ -26,7 +32,12 @@ const UsersWizardsStepTen = props => {
           <>
             <FormTitle title={title} subtitle={subtitle} />
             <div className="w-80">
-              <form className="forms__candidate" action={action} method="post" encType="multipart/form-data">
+              <form
+                className="forms__candidate"
+                action={action}
+                method="post"
+                encType="multipart/form-data"
+              >
                 <p>{registered_acknowledgments_message}</p>
                 {showMessage(registered_acknowledgments)}
                 {showMessage(errors, 'red')}
@@ -34,7 +45,14 @@ const UsersWizardsStepTen = props => {
                 <input type="hidden" name="_method" value={method} />
                 <FormFields formFields={formFields} />
                 <div className="action-buttons-container">
-                  <button name="add_other_acknowledgment" type='submit' value="1" className="accept">{addOther}</button>
+                  <button
+                    name="add_other_acknowledgment"
+                    type="submit"
+                    value="1"
+                    className="accept"
+                  >
+                    {addOther}
+                  </button>
                 </div>
                 <FormButtons
                   nextPath={nextPath}

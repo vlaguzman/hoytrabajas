@@ -6,15 +6,9 @@ import Second from './sections/second'
 // import Third from './sections/third'
 
 const DashEnterprises = props => {
-  const {
-    my_offers,
-    component_translations,
-    edit_offer_path
-  } = props
+  const { my_offers, component_translations, edit_offer_path } = props
 
-  const {
-    my_offers_section
-  } = component_translations
+  const { my_offers_section } = component_translations
 
   return (
     <>
@@ -39,5 +33,5 @@ export default DashEnterprises
 DashEnterprises.propTypes = {
   my_offers: PropTypes.array.isRequired,
   edit_offer_path: PropTypes.string.isRequired,
-  my_offers_section: PropTypes.object.isRequired
+  component_translations: PropTypes.object.isRequired
 }

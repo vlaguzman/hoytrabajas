@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col } from 'reactstrap'
 import SelectChip from '../../../../../components/FormsLayout/Fields/SelectChip'
@@ -26,6 +26,17 @@ const FormFields = props => {
     [driving_licence_ids.name]: '',
     [vehicle_ids.name]: ''
   })
+
+  const [citiesOfCurrentState, setCitiesOfCurrentState] = useState([])
+
+  useEffect(() => {
+    setFormValues({ ...formValues, [city_id.name]: '' })
+    setCitiesOfCurrentState(
+      city_id.values.filter(
+        ({ state_id: stateID }) => stateID === formValues[state_id.name]
+      )
+    )
+  }, [formValues[state_id.name]])
 
   const inputClassname = 'my-30 animated fadeIn inputField'
 
@@ -65,16 +76,20 @@ const FormFields = props => {
     () => (
       <Col key={city_id.name} className={inputClassname} xs={12} lg={6}>
         <SelectChip
-          inputValue={formValues[city_id.name]}
+          inputValue={
+            (formValues[state_id.name] && formValues[city_id.name]) || ''
+          }
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={city_id.name}
           label={city_id.label}
-          selectOptions={city_id.values}
+          selectOptions={
+            (formValues[state_id.name] && citiesOfCurrentState) || []
+          }
         />
       </Col>
     ),
-    [formValues[city_id.name]]
+    [formValues[city_id.name], formValues[state_id.name], citiesOfCurrentState]
   )
 
   const vehicleIDsField = useMemo(

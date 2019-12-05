@@ -33,33 +33,33 @@ const SlideOne = () => {
   const open = Boolean(anchorEl)
   const id = open ? 'simple-popper' : undefined
   return (
-    <Fragment>
+    <>
       <Poper contenido="Hello" {...{ id }} {...{ open }} {...{ anchorEl }} />
-        <img
-          src="/assets/static/img/node.png"
-          onClick={handleClick}
-          className="position-absolute animated fadeIn first_node"
-          alt=""
-        />
-        <img
-          src="/assets/static/img/node.png"
-          onClick={handleClick}
-          className="position-absolute animated fadeIn second_node"
-          alt="Node"
-        />
-        <img
-          src="/assets/static/img/node.png"
-          onClick={handleClick}
-          className="position-absolute animated fadeIn thrid_node"
-          alt="Node"
-        />
-        <img
-          src="/assets/static/img/box-oferta.png"
-          className="position-absolute oferta-box oferta_acostada MuiPaper-elevation20 animated fadeIn"
-          alt=""
-          width="44%"
-        />
-    </Fragment>
+      <img
+        src="/assets/static/img/node.png"
+        onClick={handleClick}
+        className="position-absolute animated fadeIn first_node"
+        alt=""
+      />
+      <img
+        src="/assets/static/img/node.png"
+        onClick={handleClick}
+        className="position-absolute animated fadeIn second_node"
+        alt="Node"
+      />
+      <img
+        src="/assets/static/img/node.png"
+        onClick={handleClick}
+        className="position-absolute animated fadeIn thrid_node"
+        alt="Node"
+      />
+      <img
+        src="/assets/static/img/box-oferta.png"
+        className="position-absolute oferta-box oferta_acostada MuiPaper-elevation20 animated fadeIn"
+        alt=""
+        width="44%"
+      />
+    </>
   )
 }
 

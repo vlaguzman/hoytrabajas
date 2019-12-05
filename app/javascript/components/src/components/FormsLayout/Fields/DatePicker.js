@@ -24,7 +24,6 @@ const DatePicker = props => {
   const onChange = value => handleSimpleChange(value, name)
 
   return (
-
     <MaterialDatePicker
       format={dateOptions.format || 'dd MMM yyyy'}
       name={name}
@@ -47,7 +46,6 @@ const DatePicker = props => {
       leftArrowIcon={<ArrowBackIcon />}
       rightArrowIcon={<ArrowForwardIcon />}
     />
-
   )
 }
 

@@ -3,7 +3,7 @@ import { DynamicSearch } from '../../src/views/DynamicViews'
 
 const RegPage = () => (
   <div className="search-wrapper pcx">
-      <DynamicSearch />
+    <DynamicSearch />
   </div>
 )
 

@@ -1,5 +1,5 @@
-import React, {Fragment} from 'react'
-import {Row, Col} from 'reactstrap'
+import React, { Fragment } from 'react'
+import { Row, Col } from 'reactstrap'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import IconButton from '@material-ui/core/IconButton'
@@ -32,96 +32,113 @@ const rows2 = [
     Inicio: '5/5/2019',
     Cierre: '20/5/2019',
     Estado: true
-  },
+  }
 ]
 
-
 const Third = () => {
-  const theTitle = (texto) => (
-    <Fragment>
-    <IconButton className="p-0" aria-label="Settings">
-      <FavoriteBorder />
-    </IconButton>
-    <Typography className="mb-10 ml-10 fw-bold d-lg-none" component='span' variant="h6">
-                {texto}
-    </Typography>
-    </Fragment>
+  const theTitle = texto => (
+    <>
+      <IconButton className="p-0" aria-label="Settings">
+        <FavoriteBorder />
+      </IconButton>
+      <Typography
+        className="mb-10 ml-10 fw-bold d-lg-none"
+        component="span"
+        variant="h6"
+      >
+        {texto}
+      </Typography>
+    </>
   )
   return (
     <Row noGutters className="w-100 justify-content-between my-30 p-10">
-    <Col xs={12} className="bg-primary">
-      <Card className="p-25">
-        <CardHeader
-          action={
-            <Typography className="mt-20 d-lg-inline d-none" variant="body2">
-              Has agregado <span className="text-info">2 ofertas</span> a
-              tus favoritos
-            </Typography>
-          }
-          title={theTitle('Mis Favoritos')}
-          subheader={
-            <Typography className="mb-10 fw-bold d-none d-lg-inline" variant="h5">
-              Mis Favoritos
-            </Typography>
-          }
-        />
-        <CardContent className='px-0-dash'>
-          <div className='container'>
-            <Table style={{minWidth: '650'}}>
-              <TableHead className="bg-white text-info">
-                <TableRow>
-                  <TableCell className="text-info" align="left" padding="checkbox" />
-                  <TableCell className="text-info" align="center" size='medium' >Oferta</TableCell>
-                  <TableCell className="text-info" align="left" size='small'>
-                    Aplicaciones
-                  </TableCell>
-                  <TableCell className="text-info" align="left">
-                    Afinidad
-                  </TableCell>
-                  <TableCell className="text-info" align="left">
-                    Aplicar
-                  </TableCell>
-                  <TableCell className="text-info" align="left">
-                    Inicio
-                  </TableCell>
-                  <TableCell className="text-info" align="left">
-                    Cierre
-                  </TableCell>
-                  <TableCell className="text-info" align="left">
-                    Estado
-                  </TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {rows2.map((row, i) => (
-                  <TableRow key={i}>
-                    <TableCell align="left" padding="checkbox" >
-                      <RemoveCircleOutline />
+      <Col xs={12} className="bg-primary">
+        <Card className="p-25">
+          <CardHeader
+            action={
+              <Typography className="mt-20 d-lg-inline d-none" variant="body2">
+                Has agregado <span className="text-info">2 ofertas</span> a tus
+                favoritos
+              </Typography>
+            }
+            title={theTitle('Mis Favoritos')}
+            subheader={
+              <Typography
+                className="mb-10 fw-bold d-none d-lg-inline"
+                variant="h5"
+              >
+                Mis Favoritos
+              </Typography>
+            }
+          />
+          <CardContent className="px-0-dash">
+            <div className="container">
+              <Table style={{ minWidth: '650' }}>
+                <TableHead className="bg-white text-info">
+                  <TableRow>
+                    <TableCell
+                      className="text-info"
+                      align="left"
+                      padding="checkbox"
+                    />
+                    <TableCell
+                      className="text-info"
+                      align="center"
+                      size="medium"
+                    >
+                      Oferta
                     </TableCell>
-                    <TableCell align="center" size='medium' >
-                      {row.Oferta}
+                    <TableCell className="text-info" align="left" size="small">
+                      Aplicaciones
                     </TableCell>
-                    <TableCell align="left" size='small'>{row.Aplicaciones}</TableCell>
-                    <TableCell align="left">{row.Afinidad}</TableCell>
-                    <TableCell align="left">
-                      <TouchApp />
+                    <TableCell className="text-info" align="left">
+                      Afinidad
                     </TableCell>
-                    <TableCell align="left">{row.Inicio}</TableCell>
-                    <TableCell align="left">{row.Cierre}</TableCell>
-                    <TableCell align="left">
-                      {row.estado ? 'Abierto' : 'Cerrado'}
+                    <TableCell className="text-info" align="left">
+                      Aplicar
+                    </TableCell>
+                    <TableCell className="text-info" align="left">
+                      Inicio
+                    </TableCell>
+                    <TableCell className="text-info" align="left">
+                      Cierre
+                    </TableCell>
+                    <TableCell className="text-info" align="left">
+                      Estado
                     </TableCell>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </div>
-        </CardContent>
-      </Card>
-    </Col>
-  </Row>
+                </TableHead>
+                <TableBody>
+                  {rows2.map((row, i) => (
+                    <TableRow key={i}>
+                      <TableCell align="left" padding="checkbox">
+                        <RemoveCircleOutline />
+                      </TableCell>
+                      <TableCell align="center" size="medium">
+                        {row.Oferta}
+                      </TableCell>
+                      <TableCell align="left" size="small">
+                        {row.Aplicaciones}
+                      </TableCell>
+                      <TableCell align="left">{row.Afinidad}</TableCell>
+                      <TableCell align="left">
+                        <TouchApp />
+                      </TableCell>
+                      <TableCell align="left">{row.Inicio}</TableCell>
+                      <TableCell align="left">{row.Cierre}</TableCell>
+                      <TableCell align="left">
+                        {row.estado ? 'Abierto' : 'Cerrado'}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          </CardContent>
+        </Card>
+      </Col>
+    </Row>
   )
 }
-
 
 export default Third

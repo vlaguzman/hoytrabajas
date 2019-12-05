@@ -32,7 +32,7 @@
       %iframe{:height => "0", :src => "https://www.googletagmanager.com/ns.html?id=GTM-MC7RKNG", :style => "display:none;visibility:hidden", :width => "0"}
 
     = yield
-    
+
     = react_component('src/components/Notification/NotificationWrapper',
     {alert_message: alert,
     notice_message: notice}, prerender: false)

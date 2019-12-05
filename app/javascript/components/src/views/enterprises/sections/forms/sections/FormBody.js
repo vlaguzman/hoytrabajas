@@ -1,6 +1,9 @@
 import React, { Fragment, useContext } from 'react'
 import FormGenerator from '../../../../../components/FormGenerator'
-import { FormContext, FormNameContext } from '../../../../../context/formContext'
+import {
+  FormContext,
+  FormNameContext
+} from '../../../../../context/formContext'
 import FormButtons from './FormButtons'
 
 const FormBody = ({ scrollAction }) => {
@@ -12,7 +15,7 @@ const FormBody = ({ scrollAction }) => {
   }
 
   return (
-    <Fragment>
+    <>
       <div className="ancho_form_empresas">
         <form
           className="forms__candidate"
@@ -27,7 +30,7 @@ const FormBody = ({ scrollAction }) => {
           />
         </form>
       </div>
-    </Fragment>
+    </>
   )
 }
 

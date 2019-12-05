@@ -5,8 +5,8 @@ import PaperHeader from '../../../../components/PaperHeader'
 import { FormProvider } from '../../../../context/formContext'
 
 // // utilizar rutas absolutas para importar
-import FormBody from '../../../../views/enterprises/sections/forms/sections/FormBody'
-import allForms from '../../../../views/enterprises/sections/forms/formJson'
+import FormBody from '../forms/sections/FormBody'
+import allForms from '../forms/formJson'
 
 const ThirdSection = () => {
   const myRef = React.createRef()

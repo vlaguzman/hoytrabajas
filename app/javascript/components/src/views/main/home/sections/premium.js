@@ -16,12 +16,14 @@ const content = [
   {
     img: 'tag.png',
     headline: 'Ofertas indicadas',
-    desc: 'Gracias a los porcentajes de afinidad revisa las mejores ofertas para ti'
+    desc:
+      'Gracias a los porcentajes de afinidad revisa las mejores ofertas para ti'
   },
   {
     img: 'call.png',
     headline: 'Chat directo con el empleador',
-    desc: 'Habla directamente con el empleador para conecer de primera mano su feedback'
+    desc:
+      'Habla directamente con el empleador para conecer de primera mano su feedback'
   }
 ]
 
@@ -90,16 +92,17 @@ const PremiumSection = () => {
           <Typography className="fw-bold marker" variant="h4">
             Paola hoy es <span className="text-primary">Premium</span>
           </Typography>
-          <Typography className="fw-bold home__small-subtitle" variant="caption">
+          <Typography
+            className="fw-bold home__small-subtitle"
+            variant="caption"
+          >
             Muchas ventajas para encontrar tu empleo ideal
           </Typography>
           <Typography
             className="my-30 d-none d-md-block"
             variant="caption"
             style={{ fontFamily: 'Rubik', color: `rgba(0, 0, 0, 0.54)` }}
-          >
-            
-          </Typography>
+          />
         </Col>
       </Row>
       <Col className="pcx">

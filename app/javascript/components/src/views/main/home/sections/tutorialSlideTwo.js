@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 
 const SlideOne = () => {
   return (
-    <Fragment>
+    <>
       <img
         src="/assets/static/img/node.png"
         className="second_first_node position-absolute animated fadeIn"
@@ -29,7 +29,7 @@ const SlideOne = () => {
         alt=""
         width="44%"
       />
-    </Fragment>
+    </>
   )
 }
 

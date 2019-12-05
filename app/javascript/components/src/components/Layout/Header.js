@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import MatButton from '@material-ui/core/Button'
 import MenuIcon from '@material-ui/icons/Menu'
@@ -24,8 +24,7 @@ import FormGen from '../inlineFormgenerartor'
 
 const Header = props => {
   const {
-    isScrollTop = true,
-    shouldChangeColorOfNav = false,
+    should_change_nav_color = false,
     user_signed_in,
     company_signed_in,
     log_out_user,
@@ -37,6 +36,19 @@ const Header = props => {
     if (company_signed_in) return `/companies/${to}`
     return '/'
   }
+
+  const [isTop, setIsTop] = useState(true)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentTop = window.scrollY < 200
+      if (currentTop !== isTop) setIsTop(currentTop)
+    }
+    document.addEventListener('scroll', handleScroll)
+    return () => {
+      document.removeEventListener('scroll', handleScroll)
+    }
+  }, [isTop])
 
   const pathToProfile = pathTo('profile')
   const pathToDashboard = pathTo('dashboard')
@@ -64,8 +76,7 @@ const Header = props => {
     toggleOpenState('login')
   }
 
-  const isNavTransparent =
-    !openState.navbar && shouldChangeColorOfNav && isScrollTop
+  const isNavTransparent = !openState.navbar && should_change_nav_color && isTop
 
   const colorOfNavToggler = () =>
     isNavTransparent
@@ -99,8 +110,8 @@ const Header = props => {
   /* TODO Oscar move the search bar to a component to have control of this */
   const FullSearchBarInNavBar = () => (
     <Row
-      className={`d-none d-lg-flex w-100 m-0 justify-content-around p-0 header-bar ${(!shouldChangeColorOfNav ||
-        !isScrollTop) &&
+      className={`d-none d-lg-flex w-100 m-0 justify-content-around p-0 header-bar ${(!should_change_nav_color ||
+        !isTop) &&
         'show'}`}
     >
       <Col xs={12} md={1} className="pt-rem p-0 align-items-center">
@@ -147,7 +158,7 @@ const Header = props => {
         backgroundColor: isNavTransparent ? 'transparent' : 'white'
       }}
     >
-      <div className="navbar-row">
+      <div className="navbar-row mui-fixed">
         <div className="d-flex align-items-center">
           <div className="site-logo">
             <NavbarBrand href="/" className="logo-mini mr-auto">
@@ -217,9 +228,6 @@ const Header = props => {
                 INICIO
               </MatButton>
             </NavItem>
-            {/* TODO: With "Candidato" and "Empleador", to press button redirect me a static landing page.
-            We must take into account to make the change in redirection */}
-            {/* TODO oscar uncommnet profile link when the profile is complete */}
             {user_signed_in || company_signed_in ? (
               renderMyProfileButton()
             ) : (
@@ -319,9 +327,7 @@ const Header = props => {
         </Collapse>
       </div>
       <div
-        className={`navbar-row ${shouldChangeColorOfNav &&
-          isScrollTop &&
-          'd-none'}`}
+        className={`navbar-row ${should_change_nav_color && isTop && 'd-none'}`}
       >
         {/* TODO uncomment when advance search is ready */}
         {/* <FullSearchBarInNavBar/> */}
@@ -346,7 +352,7 @@ Header.propTypes = {
   csrf_param: PropTypes.string.isRequired,
   csrf_token: PropTypes.string.isRequired,
   session_translation: PropTypes.object.isRequired,
-  shouldChangeColorOfNav: PropTypes.bool,
-  isScrollTop: PropTypes.bool,
+  should_change_nav_color: PropTypes.bool,
+  isTop: PropTypes.bool,
   user_facebook_omniauth_authorize_path: PropTypes.string
 }

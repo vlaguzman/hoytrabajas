@@ -3,8 +3,8 @@ import Paper from '@material-ui/core/Paper'
 import { Row } from 'reactstrap'
 import PaperHeader from '../../../../components/PaperHeader'
 import { FormProvider } from '../../../../context/formContext'
-import FormBody from '../../../../views/enterprises/sections/forms/sections/FormBody'
-import allForms from '../../../../views/enterprises/sections/forms/formJson'
+import FormBody from '../../../enterprises/sections/forms/sections/FormBody'
+import allForms from '../../../enterprises/sections/forms/formJson'
 
 const ThirdSection = () => {
   const myRef = React.createRef()

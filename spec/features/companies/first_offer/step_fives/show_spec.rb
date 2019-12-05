@@ -42,13 +42,13 @@ RSpec.describe "When company fill the step five form", :type => :feature do
     find('li', text: data[:salary_period_id]).click
 
     find(id: 'select-offer[available_work_day_ids][]', visible: false).click
-    find('li', text: data[:available_work_day_id_one]).click
+    find('li.MuiListItem-button', text: data[:available_work_day_id_one]).click
 
     find(id: 'select-offer[working_day_ids][]', visible: false).click
-    find('li', text: data[:working_day_id_one]).click
+    find('li.MuiListItem-button', text: data[:working_day_id_one]).click
 
     find(id: 'select-offer[job_aid_ids][]', visible: false).click
-    find('li', text: data[:job_aid_id_one]).click
+    find('li.MuiListItem-button', text: data[:job_aid_id_one]).click
   end
 
   describe "Fill the five form to update offer, all data is optionally" do

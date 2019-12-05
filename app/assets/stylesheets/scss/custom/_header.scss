@@ -1,29 +1,27 @@
 /*======== Header Scss ========*/
 
-.app-header {
-  .navbar-wrapper {
-    position: fixed;
-    background-color: transparent;
-    z-index: 999 !important;
-    transition: all 500ms ease-in-out;
-    color: white;
-    top: 0;
-    width: 100%;
-    padding: 0 5%;
-    flex-direction: column;
-    .site-logo {
-      padding: 1rem 0rem 0.8rem 0rem;
-      // background-color: $primary;
-    }
-    .navbar-left {
-      margin-left: 0.85rem;
-    }
-    .cart-icon {
-      .dropdown-menu {
-        .dropdown-foot {
-          a {
-            color: $white !important;
-          }
+.navbar-wrapper {
+  position: fixed;
+  background-color: transparent;
+  z-index: 999 !important;
+  transition: all 500ms ease-in-out;
+  color: white;
+  top: 0;
+  width: 100%;
+  padding: 0 5%;
+  flex-direction: column;
+  .site-logo {
+    padding: 1rem 0rem 0.8rem 0rem;
+    // background-color: $primary;
+  }
+  .navbar-left {
+    margin-left: 0.85rem;
+  }
+  .cart-icon {
+    .dropdown-menu {
+      .dropdown-foot {
+        a {
+          color: $white !important;
         }
       }
     }
@@ -43,7 +41,7 @@
     }
   }
 
-  .navbar-item-wrapper { 
+  .navbar-item-wrapper {
     flex: 0 1 50%;
     margin-left: auto;
   }
@@ -239,11 +237,6 @@
 }
 
 @media (max-width: 1199px) and (min-width: 320px) {
-  .rct-header {
-    &.mui-fixed {
-      left: 0;
-    }
-  }
   .rct-app-content {
     width: 100% !important;
   }
@@ -441,13 +434,6 @@
 }
 
 @media (max-width: 991px) {
-  .app-main-container {
-    > div {
-      > div {
-        box-shadow: none !important;
-      }
-    }
-  }
   .notification-dropdown,
   .language-dropdown,
   .cart-dropdown {

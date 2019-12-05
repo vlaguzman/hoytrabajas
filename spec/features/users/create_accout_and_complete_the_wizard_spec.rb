@@ -25,9 +25,7 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
 
     create(:labor_disponibility, description: "Inmediato")
 
-    create(:state, description: "Caldas")
-
-    create(:city, description: "La Dorada")
+    create(:city, description: "La Dorada", state: create(:state, description: "Caldas"))
 
     create(:vehicle, description: "Moto")
     create(:vehicle, description: "Carro")

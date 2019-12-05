@@ -22,12 +22,9 @@ module Companies::FirstOffer::StepFourService
 
   def self.clean_params(update_params)
     sex_ids = update_params[:sex_ids].first.split(",").map(&:to_i)
-    close_date = {close_date: Date.parse(update_params[:close_date])}
-
     update_params
       .inject({}) { |params, (key, value)| params[:sex_ids] = sex_ids; params }
       .reverse_merge!(update_params)
-      .merge!(close_date)
   end
 
 end

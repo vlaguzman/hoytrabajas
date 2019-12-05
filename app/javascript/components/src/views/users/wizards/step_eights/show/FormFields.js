@@ -17,7 +17,7 @@ import {
 const inputClassname = 'my-30 animated fadeIn inputField'
 
 const dateOptions = {
-  format: 'dd MMMM yyyy',
+  format: 'dd/MM/yyyy',
   disableFuture: false,
   emptyLabel: '...'
 }

@@ -45,7 +45,7 @@ const OfferCard = ({
               size="large"
               color="primary"
               className={classNames('btn-apply w-80 my-10 text-white fw-bold', {
-                'button-disabled': offer.is_applied
+                'a-button--disabled': offer.is_applied
               })}
               style={{ borderRadius: '30px' }}
             >

@@ -11,7 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  */
-
+@import 'variables';
 @import 'scss/bootstrap';
 
 // //Slick Slider
@@ -47,8 +47,5 @@
 
 @import 'components/filter_home';
 
-// ATOMS
-@import 'atoms/buttons';
-
-// VARIABLES
-@import 'variables/colors';
+@import 'application_temporal';
+@import 'atomic';

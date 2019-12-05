@@ -24,14 +24,7 @@ export default class Index extends React.Component {
     const resource_name = this.props.source_name
     return (
       <div className="main-wrapper">
-        <AppLayout
-          user_signed_in={this.props.user_signed_in}
-          company_signed_in={this.props.company_signed_in}
-          log_out_user={this.props.log_out_user}
-          log_out_companies={this.props.log_out_companies}
-          session_translation={this.props.session_translation}
-          user_facebook_omniauth_authorize_path={this.user_facebook_omniauth_authorize_path}
-        >
+        <AppLayout>
           <Dialog
             fullWidth
             maxWidth="xs"
@@ -40,7 +33,7 @@ export default class Index extends React.Component {
           >
             <DialogTitle id="max-width-dialog-title" className="my-25">
               <div className="px-40 text-right">
-                <a className="button-close" href="/">
+                <a className="a-button--close" href="/">
                   X
                 </a>
               </div>
@@ -201,12 +194,7 @@ export default class Index extends React.Component {
 Index.propTypes = {
   csrf_token: PropTypes.string.isRequired,
   csrf_param: PropTypes.string.isRequired,
-  user_signed_in: PropTypes.bool.isRequired,
-  company_signed_in: PropTypes.bool.isRequired,
-  log_out_user: PropTypes.string.isRequired,
-  log_out_companies: PropTypes.string.isRequired,
   source_name: PropTypes.string.isRequired,
   registration_path: PropTypes.string.isRequired,
-  session_translation: PropTypes.object.isRequired,
-  user_facebook_omniauth_authorize_path: PropTypes.object.isRequired
+  session_translation: PropTypes.object.isRequired
 }

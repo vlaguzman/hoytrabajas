@@ -393,7 +393,7 @@ const DetallePage = ({
                 type="submit"
                 color="primary"
                 className={classNames('text-white my-50', {
-                  'button-disabled': offer.is_applied
+                  'a-button--disabled': offer.is_applied
                 })}
                 style={{ borderRadius: '50px' }}
               >

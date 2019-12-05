@@ -1,0 +1,22 @@
+.a-tag__base {
+  padding: 3px;
+  border-radius: 3.6px;
+}
+
+.a-tag__orange {
+  @extend .a-tag__base;
+  color: $color__orange-main;
+  background-color: $color__orange-light;
+}
+
+.a-tag__aqua {
+  @extend .a-tag__base;
+  color: $color__aqua-main;
+  background-color: $color__aqua-light;
+}
+
+.a-tag__blue {
+  @extend .a-tag__base;
+  color: $color__blue-main;
+  background-color: $color__blue-light;
+}

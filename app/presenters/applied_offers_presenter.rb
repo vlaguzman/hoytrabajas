@@ -6,8 +6,7 @@ class AppliedOffersPresenter < ApplicationPresenter
 
     {
       offer_title:        capitalize_text(source.title),
-      user_name:          capitalize_text(user.name),
-      user_last_name:     capitalize_text(user.last_name),
+      user_full_name:     full_name(user),
       company_name:       capitalize_text(offer_company.name),
       user_email:         user.email,
       company_email:      offer_company.email
@@ -20,4 +19,8 @@ class AppliedOffersPresenter < ApplicationPresenter
     StringConverter.capitalize_text(text)
   end
 
+  def full_name(user)
+    full_name =  [user.name, user.last_name].join(' ')
+    capitalize_text(full_name)
+  end
 end

@@ -5,6 +5,7 @@ class AppliedOffersController < ApplicationController
       Offers::AppliedOfferService.(user: current_user, params_offer: permit_params)
       redirect_to offer_path(permit_params[:offer_id])
       AppliedOffersMailer.candidate_notification(offer_presenter.mail_data).deliver_later
+      AppliedOffersMailer.company_notification(offer_presenter.mail_data).deliver_later
     else
       redirect_to new_user_registration_path
     end

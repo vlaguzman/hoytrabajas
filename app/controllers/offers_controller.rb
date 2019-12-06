@@ -28,7 +28,8 @@ class OffersController < ApplicationController
       {
         q: [
           :title_cont,
-          :job_category_ids
+          :job_category_ids,
+          :city_id_eq
         ]
       }
     )

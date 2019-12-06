@@ -13,9 +13,6 @@ class Home::HomePresenter < ApplicationPresenter
     {
       fields1: [
         { type: 'text', label: 'Palabra clave', name: 'q[title_cont]', id: 'keyword' },
-        { type: 'select', label: 'Ciudad', name: 'q[id_count]',
-          aux: cities
-        },
         {
           type: 'select',
           label: 'Tiempo',
@@ -31,7 +28,8 @@ class Home::HomePresenter < ApplicationPresenter
           ]
         }
       ],
-      button1: 'Categories'
+      button1: 'Categories',
+      cities: cities
     }
   end
 

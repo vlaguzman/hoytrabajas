@@ -30,10 +30,10 @@ RSpec.describe "In wizards step six view", type: :feature do
 
         visit users_wizards_step_six_path
 
-        find("div[id='select-curriculum_vitae[soft_skill_ids][]", visible: false).click
+        find("div[id='mui-component-select-curriculum_vitae[soft_skill_ids][]", visible: false).click
         find("li", text: "Seeker").click
 
-        find("div[id='select-curriculum_vitae[soft_skill_ids][]", visible: false).click
+        find("div[id='mui-component-select-curriculum_vitae[soft_skill_ids][]", visible: false).click
         find("li", text: "Archer").click
 
         find("span", text: /SIGUIENTE/).click

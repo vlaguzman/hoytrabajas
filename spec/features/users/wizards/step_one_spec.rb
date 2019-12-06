@@ -1,14 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe "Like new candidate", :type => :feature do
+
+  def form_field_value(field_name, multiple= nil)
+    find("input[name='candidate[#{field_name}]#{'[]' if multiple}']", visible: false).value
+  end
+
   before do
     create(:nationality, description: "Colombiana")
     create(:document_type, description: "Cedula de Ciudadania")
   end
 
-  let(:candidate) { create(:user, :first_time_candidate, email: "nuevousuario@gmail.com") }
-
   describe "When visit step one" do
+    let(:candidate) { create(:user) }
+
     it "Should show the expected text", js: true do
       sign_in candidate
 
@@ -19,6 +24,8 @@ RSpec.describe "Like new candidate", :type => :feature do
   end
 
   feature "When im in step one" do
+    let(:candidate) { create(:user, :first_time_candidate, email: "nuevousuario@gmail.com") }
+
     scenario "Should edit my basic information", js: true do
       sign_in candidate
 
@@ -27,10 +34,10 @@ RSpec.describe "Like new candidate", :type => :feature do
       fill_in 'candidate[name]', with: 'Carlos'
       fill_in 'candidate[last_name]', with: 'Rojas'
 
-      find("div[id='select-candidate[nationality_ids][]']", visible: false).click
+      find("div[id='mui-component-select-candidate[nationality_ids][]']", visible: false).click
       find("li", text: "Colombiana").click
 
-      find("div[id='select-candidate[document_type_id]']", visible: false).click
+      find("div[id='mui-component-select-candidate[document_type_id]']", visible: false).click
       find("li", text: "Cedula de Ciudadania").click
 
       fill_in "candidate[identification_number]", :with => "1063558224"
@@ -47,6 +54,26 @@ RSpec.describe "Like new candidate", :type => :feature do
       expect(candidate.nationalities.last.description).to eq('Colombiana')
       expect(candidate.identification_number).to eq('1063558224')
       expect(candidate.contact_number).to eq('3183638789')
+    end
+  end
+
+  feature "When i have saved data" do
+    let!(:old_candidate) { create(
+      :user,
+      nationalities: create_list(:nationality, 2)
+    ) }
+
+    scenario "Should show the saved data",js: true do
+      sign_in old_candidate
+
+      visit users_wizards_step_one_path
+
+      expect(form_field_value(:name)).to have_content(old_candidate.name)
+      expect(form_field_value(:last_name)).to have_content(old_candidate.last_name)
+      expect(form_field_value(:nationality_ids, :true)).to have_content(old_candidate.nationality_ids.join(","))
+      expect(form_field_value(:document_type_id)).to have_content(old_candidate.document_type.id)
+      expect(form_field_value(:identification_number)).to have_content(old_candidate.identification_number)
+      expect(form_field_value(:contact_number)).to have_content(old_candidate.contact_number)
     end
   end
 end

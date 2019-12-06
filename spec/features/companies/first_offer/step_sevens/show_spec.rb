@@ -32,15 +32,15 @@ RSpec.describe "When company fill the step seven form", :type => :feature do
   end
 
   def fill_form(data)
-    find(id: 'select-offer[city_id]', visible: false).click
+    find(id: 'mui-component-select-offer[city_id]', visible: false).click
     find('li', text: data[:city_id]).click
 
-    find(id: 'select-offer[educational_degree_id]', visible: false).click
+    find(id: 'mui-component-select-offer[educational_degree_id]', visible: false).click
     find('li', text: data[:educational_degree_id]).click
 
     fill_in 'offer[duration]', with: '2'
 
-    find(id: 'select-offer[duration_type_id]', visible: false).click
+    find(id: 'mui-component-select-offer[duration_type_id]', visible: false).click
     find('li', text: data[:duration_type_id]).click
   end
 

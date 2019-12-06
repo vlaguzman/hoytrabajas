@@ -101,18 +101,18 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
 
             expect(page).to have_text(/Cuentanos un poco de tu experiencia/)
 
-            find("div[id='select-user[curriculum_vitae][work_experience][job_category_id]']", visible: false).click
+            find("div[id='mui-component-select-user[curriculum_vitae][work_experience][job_category_id]']", visible: false).click
             find("li", text: "Marketing").click
 
             fill_in "user[curriculum_vitae][work_experience][company_name]", :with => 'HoyTrabajas.com'
 
-            find("div[id='select-user[curriculum_vitae][work_experience][work_position_id]']", visible: false).click
+            find("div[id='mui-component-select-user[curriculum_vitae][work_experience][work_position_id]']", visible: false).click
             find("li", text: "Community manager").click
 
-            find("div[id='select-user[curriculum_vitae][work_experience][work_methodology_id]']", visible: false).click
+            find("div[id='mui-component-select-user[curriculum_vitae][work_experience][work_methodology_id]']", visible: false).click
             find("li", text: "Teletrabajo").click
 
-            find("div[id='select-user[curriculum_vitae][work_experience][city_id]']", visible: false).click
+            find("div[id='mui-component-select-user[curriculum_vitae][work_experience][city_id]']", visible: false).click
             find("li", text: "Bogota").click
 
             #TODO Uncomment when the we implement 'localidades'
@@ -125,10 +125,10 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
             #TODO find the way to check the boolean with capybara
             #check 'user[curriculum_vitae][work_experience][still_in_progress]'
 
-            find("div[id='select-user[curriculum_vitae][work_experience][technical_skill_ids][]']", visible: false).click
+            find("div[id='mui-component-select-user[curriculum_vitae][work_experience][technical_skill_ids][]']", visible: false).click
             find("li", text: "Redes sociales").click
 
-            find("div[id='select-user[curriculum_vitae][work_experience][technical_skill_ids][]']", visible: false).click
+            find("div[id='mui-component-select-user[curriculum_vitae][work_experience][technical_skill_ids][]']", visible: false).click
             find("li", text: "Photoshop").click
 
             find("span", text: /SIGUIENTE/).click
@@ -148,7 +148,7 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
 
             expect(page).to have_text("Cuentanos un poco de tu experiencia")
 
-            find("div[id='select-user[curriculum_vitae][work_experience][work_position_id]']", visible: false).click
+            find("div[id='mui-component-select-user[curriculum_vitae][work_experience][work_position_id]']", visible: false).click
             find("li", text: "Community manager").click
 
             execute_script "window.scrollTo(0, (window.innerHeight * 2) )"
@@ -169,7 +169,7 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
 
             expect(page).to have_text("Cuentanos un poco de tu experiencia")
 
-            find("div[id='select-user[curriculum_vitae][work_experience][job_category_id]']", visible: false).click
+            find("div[id='mui-component-select-user[curriculum_vitae][work_experience][job_category_id]']", visible: false).click
             find("li", text: "Marketing").click
 
             find("span", text: /SIGUIENTE/).click
@@ -208,18 +208,18 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
 
             expect(page).to have_text("Cuentanos un poco de tu experiencia")
 
-            find("div[id='select-user[curriculum_vitae][work_experience][job_category_id]", visible: false).click
+            find("div[id='mui-component-select-user[curriculum_vitae][work_experience][job_category_id]", visible: false).click
             find("li", text: "Marketing").click
 
             fill_in "user[curriculum_vitae][work_experience][company_name]", :with => 'HoyTrabajas.com'
 
-            find("div[id='select-user[curriculum_vitae][work_experience][work_position_id]", visible: false).click
+            find("div[id='mui-component-select-user[curriculum_vitae][work_experience][work_position_id]", visible: false).click
             find("li", text: "Community manager").click
 
-            find("div[id='select-user[curriculum_vitae][work_experience][work_methodology_id]", visible: false).click
+            find("div[id='mui-component-select-user[curriculum_vitae][work_experience][work_methodology_id]", visible: false).click
             find("li", text: "Teletrabajo").click
 
-            find("div[id='select-user[curriculum_vitae][work_experience][city_id]", visible: false).click
+            find("div[id='mui-component-select-user[curriculum_vitae][work_experience][city_id]", visible: false).click
             find("li", text: "Bogota").click
 
             #TODO  field 'localidad' is pending
@@ -229,10 +229,10 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
             #fill_in "user[curriculum_vitae][work_experience][finished_at]", :with => nil
 
             #check 'user[curriculum_vitae][work_experience][still_in_progress]'
-            find("div[id='select-user[curriculum_vitae][work_experience][technical_skill_ids][]", visible: false).click
+            find("div[id='mui-component-select-user[curriculum_vitae][work_experience][technical_skill_ids][]", visible: false).click
             find("li", text: "Redes sociales").click
 
-            find("div[id='select-user[curriculum_vitae][work_experience][technical_skill_ids][]", visible: false).click
+            find("div[id='mui-component-select-user[curriculum_vitae][work_experience][technical_skill_ids][]", visible: false).click
             find("li", text: "Photoshop").click
 
             click_button 'Agregar otra experiencia'
@@ -242,18 +242,18 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
 
             expect(page).to have_text("Cuentanos un poco de tu experiencia")
 
-            find("div[id='select-user[curriculum_vitae][work_experience][job_category_id]", visible: false).click
+            find("div[id='mui-component-select-user[curriculum_vitae][work_experience][job_category_id]", visible: false).click
             find("li", text: "Marketing").click
 
             fill_in "user[curriculum_vitae][work_experience][company_name]", :with => 'Verde Logico'
 
-            find("div[id='select-user[curriculum_vitae][work_experience][work_position_id]", visible: false).click
+            find("div[id='mui-component-select-user[curriculum_vitae][work_experience][work_position_id]", visible: false).click
             find("li", text: "Community manager").click
 
-            find("div[id='select-user[curriculum_vitae][work_experience][work_methodology_id]", visible: false).click
+            find("div[id='mui-component-select-user[curriculum_vitae][work_experience][work_methodology_id]", visible: false).click
             find("li", text: "Teletrabajo").click
 
-            find("div[id='select-user[curriculum_vitae][work_experience][city_id]", visible: false).click
+            find("div[id='mui-component-select-user[curriculum_vitae][work_experience][city_id]", visible: false).click
             find("li", text: "Bogota").click
 
             #TODO  field 'localidad' is pending
@@ -263,10 +263,10 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
             #fill_in "user[curriculum_vitae][work_experience][started_at]", :with => '2015/01/01'
             #fill_in "user[curriculum_vitae][work_experience][finished_at]", :with => '2016/12/13'
 
-            find("div[id='select-user[curriculum_vitae][work_experience][technical_skill_ids][]", visible: false).click
+            find("div[id='mui-component-select-user[curriculum_vitae][work_experience][technical_skill_ids][]", visible: false).click
             find("li", text: "Redes sociales").click
 
-            find("div[id='select-user[curriculum_vitae][work_experience][technical_skill_ids][]", visible: false).click
+            find("div[id='mui-component-select-user[curriculum_vitae][work_experience][technical_skill_ids][]", visible: false).click
             find("li", text: "Photoshop").click
 
             click_button 'Agregar otra experiencia'
@@ -275,12 +275,12 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
             expect(page).to have_text("en HoyTrabajas.com como Community manager")
             expect(page).to have_text("en Verde Logico como Community manager")
 
-            find("div[id='select-user[curriculum_vitae][work_experience][job_category_id]", visible: false).click
+            find("div[id='mui-component-select-user[curriculum_vitae][work_experience][job_category_id]", visible: false).click
             find("li", text: "Marketing").click
 
             fill_in "user[curriculum_vitae][work_experience][company_name]", :with => 'DataWifi'
 
-            find("div[id='select-user[curriculum_vitae][work_experience][work_position_id]", visible: false).click
+            find("div[id='mui-component-select-user[curriculum_vitae][work_experience][work_position_id]", visible: false).click
             find("li", text: "Community manager").click
 
             find("span", text: /SIGUIENTE/).click

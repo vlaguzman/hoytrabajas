@@ -67,10 +67,10 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     fill_in 'candidate[name]', with: 'Carlos'
     fill_in 'candidate[last_name]', with: 'Rojas'
 
-    find("div[id='select-candidate[nationality_ids][]']", visible: false).click
+    find("div[id='mui-component-select-candidate[nationality_ids][]']", visible: false).click
     find("li", text: "Colombiana").click
 
-    find("div[id='select-candidate[document_type_id]']", visible: false).click
+    find("div[id='mui-component-select-candidate[document_type_id]']", visible: false).click
     find("li", text: "Cedula de Ciudadania").click
 
     fill_in "candidate[identification_number]", :with => "1063558224"
@@ -82,7 +82,7 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     #Step_Two
     fill_in "user[about_me]", :with => "I am the best chef in the world"
 
-    find("div[id='select-user[sex_id]']", visible: false).click
+    find("div[id='mui-component-select-user[sex_id]']", visible: false).click
     find("li", text: "Masculino").click
 
     find("input[name='user[birthday]']").click
@@ -91,87 +91,87 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     find("p[class='MuiTypography-root MuiTypography-body2 MuiTypography-colorInherit']", text: "29").click
     click_on "OK"
 
-    find("div[id='select-user[limitation_ids][]']", visible: false).click
+    find("div[id='mui-component-select-user[limitation_ids][]']", visible: false).click
     find("li", text: "Ninguna").click
 
-    find("div[id='select-user[educational_degree_id]']", visible: false).click
+    find("div[id='mui-component-select-user[educational_degree_id]']", visible: false).click
     find("li", text: "Profesional").click
 
     find("span", text: /SIGUIENTE/).click
 
     #Step_Three
-    find("div[id='select-curriculum_vitae[job_category_ids][]", visible: false).click
+    find("div[id='mui-component-select-curriculum_vitae[job_category_ids][]", visible: false).click
     find("li", text: "logistica y transporte").click
 
-    find("div[id='select-curriculum_vitae[job_category_ids][]", visible: false).click
+    find("div[id='mui-component-select-curriculum_vitae[job_category_ids][]", visible: false).click
     find("li", text: "seguridad").click
 
-    find("div[id='select-curriculum_vitae[offer_type_ids][]", visible: false).click
+    find("div[id='mui-component-select-curriculum_vitae[offer_type_ids][]", visible: false).click
     find("li", text: "Tiempo completo").click
 
-    find("div[id='select-curriculum_vitae[offer_type_ids][]", visible: false).click
+    find("div[id='mui-component-select-curriculum_vitae[offer_type_ids][]", visible: false).click
     find("li", text: "Medio tiempo").click
 
-    find("div[id='select-curriculum_vitae[contract_type_id]", visible: false).click
+    find("div[id='mui-component-select-curriculum_vitae[contract_type_id]", visible: false).click
     find("li", text: "Indiferente").click
 
-    find("div[id='select-curriculum_vitae[work_mode_ids][]", visible: false).click
+    find("div[id='mui-component-select-curriculum_vitae[work_mode_ids][]", visible: false).click
     find("li", text: "Indiferente").click
 
-    find("div[id='select-curriculum_vitae[work_mode_ids][]", visible: false).click
+    find("div[id='mui-component-select-curriculum_vitae[work_mode_ids][]", visible: false).click
     find("li", text: "Remoto").click
 
-    find("div[id='select-curriculum_vitae[labor_disponibility_id]", visible: false).click
+    find("div[id='mui-component-select-curriculum_vitae[labor_disponibility_id]", visible: false).click
     find("li", text: "Inmediato").click
 
     find("span", text: /SIGUIENTE/).click
 
     #Step_Four
-    find("div[id='select-user[state_id]", visible: false).click
+    find("div[id='mui-component-select-user[state_id]", visible: false).click
     find("li", text: "Caldas").click
 
     find("span", text: "Disponibilidad para trabajar en otra ciudades").click
 
-    find("div[id='select-user[city_id]", visible: false).click
+    find("div[id='mui-component-select-user[city_id]", visible: false).click
     find("li", text: "La Dorada").click
 
-    find("div[id='select-user[vehicle_ids][]", visible: false).click
+    find("div[id='mui-component-select-user[vehicle_ids][]", visible: false).click
     find("li", text: "Moto").click
 
-    find("div[id='select-user[vehicle_ids][]", visible: false).click
+    find("div[id='mui-component-select-user[vehicle_ids][]", visible: false).click
     find("li", text: "Carro").click
 
-    find("div[id='select-user[driving_licence_ids][]", visible: false).click
+    find("div[id='mui-component-select-user[driving_licence_ids][]", visible: false).click
     find("li", text: "B2").click
 
-    find("div[id='select-user[driving_licence_ids][]", visible: false).click
+    find("div[id='mui-component-select-user[driving_licence_ids][]", visible: false).click
     find("li", text: "B1").click
 
     find("span", text: /SIGUIENTE/).click
 
     #Step_Five
-    find("div[id='select-user[curriculum_vitae][available_work_day_ids][]", visible: false).click
+    find("div[id='mui-component-select-user[curriculum_vitae][available_work_day_ids][]", visible: false).click
     find("li", text: "jueves").click
 
-    find("div[id='select-user[curriculum_vitae][available_work_day_ids][]", visible: false).click
+    find("div[id='mui-component-select-user[curriculum_vitae][available_work_day_ids][]", visible: false).click
     find("li", text: "fines de semana").click
 
-    find("div[id='select-user[curriculum_vitae][working_day_ids][]", visible: false).click
+    find("div[id='mui-component-select-user[curriculum_vitae][working_day_ids][]", visible: false).click
     find("li", text: "Mañana 7am-12pm").click
 
-    find("div[id='select-user[curriculum_vitae][working_day_ids][]", visible: false).click
+    find("div[id='mui-component-select-user[curriculum_vitae][working_day_ids][]", visible: false).click
     find("li", text: "Noche 10pm-3am").click
 
-    find("div[id='select-user[curriculum_vitae][curriculum_vitae_salary][range_type]", visible: false).click
+    find("div[id='mui-component-select-user[curriculum_vitae][curriculum_vitae_salary][range_type]", visible: false).click
     find("li", text: "Rango").click
 
-    find("div[id='select-user[curriculum_vitae][curriculum_vitae_salary][currency_id]", visible: false).click
+    find("div[id='mui-component-select-user[curriculum_vitae][curriculum_vitae_salary][currency_id]", visible: false).click
     find("li", text: "COP").click
 
     fill_in "user[curriculum_vitae][curriculum_vitae_salary][from]", :with => '4000'
     fill_in "user[curriculum_vitae][curriculum_vitae_salary][to]", :with => '10000'
 
-    find("div[id='select-user[curriculum_vitae][curriculum_vitae_salary][salary_period_id]", visible: false).click
+    find("div[id='mui-component-select-user[curriculum_vitae][curriculum_vitae_salary][salary_period_id]", visible: false).click
     find("li", text: "Diario").click
 
     find("span", text: /SIGUIENTE/).click

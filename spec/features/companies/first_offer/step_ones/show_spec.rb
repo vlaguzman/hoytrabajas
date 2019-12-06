@@ -24,7 +24,7 @@ RSpec.describe "When company fill the step one form", :type => :feature do
   def fill_form(data)
     fill_in 'company[name]', :with => data[:name]
 
-    find(id: 'select-company[industry_id]', visible: false).click
+    find(id: 'mui-component-select-company[industry_id]', visible: false).click
     find('li', text: 'Sales').click
 
     fill_in 'company[contact_name]', :with => data[:contact_name]
@@ -33,7 +33,7 @@ RSpec.describe "When company fill the step one form", :type => :feature do
 
     execute_script "window.scrollTo(0, (window.innerHeight * 2) )"
 
-    find(id: 'select-company[employees_range_id]', visible: false).click
+    find(id: 'mui-component-select-company[employees_range_id]', visible: false).click
     find('li', text: '1-10').click
   end
 

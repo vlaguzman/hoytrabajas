@@ -40,24 +40,24 @@ RSpec.describe "Like new candidate", :type => :feature do
 
       visit users_wizards_step_four_path
 
-      find("div[id='select-user[state_id]", visible: false).click
+      find("div[id='mui-component-select-user[state_id]", visible: false).click
       find("li", text: "Caldas").click
 
       find("span", text: "Disponibilidad para trabajar en otra ciudades").click
 
-      find("div[id='select-user[city_id]", visible: false).click
+      find("div[id='mui-component-select-user[city_id]", visible: false).click
       find("li", text: "La Dorada").click
 
-      find("div[id='select-user[vehicle_ids][]", visible: false).click
+      find("div[id='mui-component-select-user[vehicle_ids][]", visible: false).click
       find("li", text: "Moto").click
 
-      find("div[id='select-user[vehicle_ids][]", visible: false).click
+      find("div[id='mui-component-select-user[vehicle_ids][]", visible: false).click
       find("li", text: "Carro").click
 
-      find("div[id='select-user[driving_licence_ids][]", visible: false).click
+      find("div[id='mui-component-select-user[driving_licence_ids][]", visible: false).click
       find("li", text: "B2").click
 
-      find("div[id='select-user[driving_licence_ids][]", visible: false).click
+      find("div[id='mui-component-select-user[driving_licence_ids][]", visible: false).click
       find("li", text: "B1").click
 
       find("span", text: /SIGUIENTE/).click

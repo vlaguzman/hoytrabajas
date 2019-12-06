@@ -31,16 +31,16 @@ RSpec.describe "When company fill the step three form", :type => :feature do
   def fill_form(data)
     fill_in 'offer[title]', :with => data[:title]
 
-    find(id: 'select-offer[job_category_ids]', visible: false).click
+    find(id: 'mui-component-select-offer[job_category_ids]', visible: false).click
     find('li.MuiListItem-button', text: data[:job_category_ids]).click
 
-    find(id: 'select-offer[offer_type_id]', visible: false).click
+    find(id: 'mui-component-select-offer[offer_type_id]', visible: false).click
     find('li.MuiListItem-button', text: data[:offer_type_id]).click
 
-    find(id: 'select-offer[work_mode_id]', visible: false).click
+    find(id: 'mui-component-select-offer[work_mode_id]', visible: false).click
     find('li.MuiListItem-button', text: data[:work_mode_id].gsub(' ', '')).click
 
-    find(id: 'select-offer[offers_work_positions]', visible: false).click
+    find(id: 'mui-component-select-offer[offers_work_positions]', visible: false).click
     find('li.MuiListItem-button', text: data[:offers_work_positions]).click
   end
 

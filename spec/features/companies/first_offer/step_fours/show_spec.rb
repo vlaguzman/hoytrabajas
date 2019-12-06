@@ -27,16 +27,16 @@ RSpec.describe "When company fill the step four form", :type => :feature do
   end
 
   def fill_form(data)
-    find(id: 'select-offer[contract_type_id]', visible: false).click
+    find(id: 'mui-component-select-offer[contract_type_id]', visible: false).click
     find('li', text: data[:contract_type_id]).click
 
-    find(id: 'select-offer[sex_ids][]', visible: false).click
+    find(id: 'mui-component-select-offer[sex_ids][]', visible: false).click
     find('li', text: data[:sex_one]).click
 
-    find(id: 'select-offer[sex_ids][]', visible: false).click
+    find(id: 'mui-component-select-offer[sex_ids][]', visible: false).click
     find('li', text: data[:sex_two]).click
 
-    find(id: 'select-offer[sex_ids][]', visible: false).click
+    find(id: 'mui-component-select-offer[sex_ids][]', visible: false).click
     find('li', text: data[:sex_three]).click
 
     execute_script "window.scrollTo(0, (window.innerHeight * 2) )"

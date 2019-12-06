@@ -42,28 +42,28 @@ RSpec.describe "Like new candidate", :type => :feature do
 
       visit users_wizards_step_three_path
 
-      find("div[id='select-curriculum_vitae[job_category_ids][]", visible: false).click
+      find("div[id='mui-component-select-curriculum_vitae[job_category_ids][]", visible: false).click
       find("li", text: "logistica y transporte").click
 
-      find("div[id='select-curriculum_vitae[job_category_ids][]", visible: false).click
+      find("div[id='mui-component-select-curriculum_vitae[job_category_ids][]", visible: false).click
       find("li", text: "seguridad").click
 
-      find("div[id='select-curriculum_vitae[offer_type_ids][]", visible: false).click
+      find("div[id='mui-component-select-curriculum_vitae[offer_type_ids][]", visible: false).click
       find("li", text: "Tiempo completo").click
 
-      find("div[id='select-curriculum_vitae[offer_type_ids][]", visible: false).click
+      find("div[id='mui-component-select-curriculum_vitae[offer_type_ids][]", visible: false).click
       find("li", text: "Medio tiempo").click
 
-      find("div[id='select-curriculum_vitae[contract_type_id]", visible: false).click
+      find("div[id='mui-component-select-curriculum_vitae[contract_type_id]", visible: false).click
       find("li", text: "Indiferente").click
 
-      find("div[id='select-curriculum_vitae[work_mode_ids][]", visible: false).click
+      find("div[id='mui-component-select-curriculum_vitae[work_mode_ids][]", visible: false).click
       find("li", text: "Indiferente").click
 
-      find("div[id='select-curriculum_vitae[work_mode_ids][]", visible: false).click
+      find("div[id='mui-component-select-curriculum_vitae[work_mode_ids][]", visible: false).click
       find("li", text: "Remoto").click
 
-      find("div[id='select-curriculum_vitae[labor_disponibility_id]", visible: false).click
+      find("div[id='mui-component-select-curriculum_vitae[labor_disponibility_id]", visible: false).click
       find("li", text: "Inmediato").click
 
       find("span", text: /SIGUIENTE/).click

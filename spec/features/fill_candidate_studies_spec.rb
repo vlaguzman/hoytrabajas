@@ -61,7 +61,7 @@ RSpec.describe "fill the canditate user data, studies and acknowledgments", :typ
 
           find("span", text:"Estudio en curso").click
 
-          find("div[id='select-user[curriculum_vitae][educational_level][city_id]", visible: false).click
+          find("div[id='mui-component-select-user[curriculum_vitae][educational_level][city_id]", visible: false).click
           find("li", text: "Bogota").click
 
           find("span", text: /SIGUIENTE/).click
@@ -85,7 +85,7 @@ RSpec.describe "fill the canditate user data, studies and acknowledgments", :typ
 
           find("span", text:"Estudio en curso").click
 
-          find("div[id='select-user[curriculum_vitae][educational_level][city_id]", visible: false).click
+          find("div[id='mui-component-select-user[curriculum_vitae][educational_level][city_id]", visible: false).click
           find("li", text: "Bogota").click
 
           #TODO add file from caybara is failing
@@ -118,7 +118,7 @@ RSpec.describe "fill the canditate user data, studies and acknowledgments", :typ
 
         find("span", text:"Estudio en curso").click
 
-        find("div[id='select-user[curriculum_vitae][educational_level][city_id]", visible: false).click
+        find("div[id='mui-component-select-user[curriculum_vitae][educational_level][city_id]", visible: false).click
         find("li", text: "Bogota").click
 
         attach_file("user[curriculum_vitae][educational_level][diploma]", Rails.root + "spec/factories/pdfs/diploma.pdf" )
@@ -137,7 +137,7 @@ RSpec.describe "fill the canditate user data, studies and acknowledgments", :typ
         #fill_in "user[curriculum_vitae][educational_level][finish_date]", :with => '2017/01/01'
 
         find("span", text:"Estudio en curso").click
-        find("div[id='select-user[curriculum_vitae][educational_level][city_id]", visible: false).click
+        find("div[id='mui-component-select-user[curriculum_vitae][educational_level][city_id]", visible: false).click
         find("li", text: "Bogota").click
 
         find("span", text: /SIGUIENTE/).click

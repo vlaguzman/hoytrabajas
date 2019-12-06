@@ -16,6 +16,7 @@ FactoryBot.define do
     association :work_mode, factory: :work_mode
 
     trait :first_time_candidate do
+      document_type         { nil }
       name                  { nil }
       last_name             { nil }
       birthday              { nil }

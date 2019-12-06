@@ -24,7 +24,7 @@ RSpec.describe "User searches for an offer", type: :feature do
           with_tag(:input, with: { name: 'q[title_cont]'})
         end
 
-        find("button[class='MuiButtonBase-root MuiButton-root text-primary h-50 MuiButton-text']", visible: false).click
+        find("button[class='MuiButtonBase-root MuiButton-root MuiButton-text text-primary h-50']", visible: false).click
 
         expect(page).to have_text("Operario")
         expect(page).to have_text("5")
@@ -85,7 +85,7 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return results", js: true do
           visit root_path
 
-          find("button[class='MuiButtonBase-root MuiButton-root text-primary h-50 MuiButton-text']", visible: false).click
+          find("button[class='MuiButtonBase-root MuiButton-root MuiButton-text text-primary h-50']", visible: false).click
 
           find("#Operario").click
           find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
@@ -100,7 +100,7 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return results", js: true do
           visit root_path
 
-          find("button[class='MuiButtonBase-root MuiButton-root text-primary h-50 MuiButton-text']", visible: false).click
+          find("button[class='MuiButtonBase-root MuiButton-root MuiButton-text text-primary h-50']", visible: false).click
 
           find("div[id='Tecnologia']").click
           find("div[id='Marketing']").click
@@ -116,7 +116,7 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return message of empty", js: true do
           visit root_path
 
-          find("button[class='MuiButtonBase-root MuiButton-root text-primary h-50 MuiButton-text']", visible: false).click
+          find("button[class='MuiButtonBase-root MuiButton-root MuiButton-text text-primary h-50']", visible: false).click
 
           find("div[id='Servicios']").click
           find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
@@ -137,7 +137,7 @@ RSpec.describe "User searches for an offer", type: :feature do
 
           fill_in('keyword', with: 'oferta')
 
-          find("button[class='MuiButtonBase-root MuiButton-root text-primary h-50 MuiButton-text']", visible: false).click
+          find("button[class='MuiButtonBase-root MuiButton-root MuiButton-text text-primary h-50']", visible: false).click
           find("div[id='Marketing']").click
 
           find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
@@ -154,7 +154,7 @@ RSpec.describe "User searches for an offer", type: :feature do
 
           fill_in('keyword', with: 'jhoan')
 
-          find("button[class='MuiButtonBase-root MuiButton-root text-primary h-50 MuiButton-text']", visible: false).click
+          find("button[class='MuiButtonBase-root MuiButton-root MuiButton-text text-primary h-50']", visible: false).click
 
           find("div[id='Marketing']").click
           find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click

@@ -15,14 +15,16 @@ RSpec.describe "Like a company", type: :feature do
 
       find("a[href='#{edit_path}']", visible: false).click
 
-      fill_in 'offer[title]', :with => "Titulo Editado ajam"
+      find("textarea[name='offer[title]']").set("")
+      find("textarea[name='offer[title]']").set("Titulo Editado ajam")
 
       click_link_or_button('Siguiente')
 
       visit companies_first_offer_step_eight_path
 
       find(:button, text: 'Ir al Dashboard').click
-      expect(page).to have_content(/Titulo Editado ajam/)
+
+      expect(find("a", text: 'Titulo Editado ajam', visible: false)).to be_present
     end
   end
 end

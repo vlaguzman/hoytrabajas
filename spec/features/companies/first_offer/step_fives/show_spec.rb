@@ -29,25 +29,25 @@ RSpec.describe "When company fill the step five form", :type => :feature do
   end
 
   def fill_form(data)
-    find(id: 'select-offer[is_range]', visible: false).click
+    find(id: 'mui-component-select-offer[is_range]', visible: false).click
     find('li', text: data[:is_range]).click
 
-    find(id: 'select-offer[currency_id]', visible: false).click
+    find(id: 'mui-component-select-offer[currency_id]', visible: false).click
     find('li', text: data[:currency_id]).click
 
     fill_in 'offer[from]', with: data[:from]
     fill_in 'offer[to]', with: data[:to]
 
-    find(id: 'select-offer[salary_period_id]', visible: false).click
+    find(id: 'mui-component-select-offer[salary_period_id]', visible: false).click
     find('li', text: data[:salary_period_id]).click
 
-    find(id: 'select-offer[available_work_day_ids][]', visible: false).click
+    find(id: 'mui-component-select-offer[available_work_day_ids][]', visible: false).click
     find('li.MuiListItem-button', text: data[:available_work_day_id_one]).click
 
-    find(id: 'select-offer[working_day_ids][]', visible: false).click
+    find(id: 'mui-component-select-offer[working_day_ids][]', visible: false).click
     find('li.MuiListItem-button', text: data[:working_day_id_one]).click
 
-    find(id: 'select-offer[job_aid_ids][]', visible: false).click
+    find(id: 'mui-component-select-offer[job_aid_ids][]', visible: false).click
     find('li.MuiListItem-button', text: data[:job_aid_id_one]).click
   end
 

@@ -24,16 +24,16 @@ RSpec.describe "When company fill the step six form", :type => :feature do
   end
 
   def fill_form(data)
-    find(id: 'select-offer[responsibility_ids][]', visible: false).click
+    find(id: 'mui-component-select-offer[responsibility_ids][]', visible: false).click
     find('li.MuiListItem-button', text: data[:responsibility_ids]).click
 
-    find(id: 'select-offer[requirement_ids][]', visible: false).click
+    find(id: 'mui-component-select-offer[requirement_ids][]', visible: false).click
     find('li.MuiListItem-button', text: data[:requirement_ids]).click
 
-    find(id: 'select-offer[vehicle_ids][]', visible: false).click
+    find(id: 'mui-component-select-offer[vehicle_ids][]', visible: false).click
     find('li.MuiListItem-button', text: data[:vehicle_ids]).click
 
-    find(id: 'select-offer[driving_licence_ids][]', visible: false).click
+    find(id: 'mui-component-select-offer[driving_licence_ids][]', visible: false).click
     find('li.MuiListItem-button', text: data[:driving_licence_ids]).click
   end
 

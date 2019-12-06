@@ -234,6 +234,7 @@ const Header = props => {
               <>
                 <NavItem className="list-inline-item">
                   <MatButton
+                    id="nav_sign_in_candidate"
                     className="navbar-item-button"
                     style={{
                       color: isNavTransparent ? 'white' : 'black'

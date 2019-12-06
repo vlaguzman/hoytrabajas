@@ -29,7 +29,7 @@ RSpec.describe "Like new candidate", :type => :feature do
 
       fill_in "user[about_me]", :with => "I am the best chef in the world"
 
-      find("div[id='select-user[sex_id]']", visible: false).click
+      find("div[id='mui-component-select-user[sex_id]']", visible: false).click
       find("li", text: "Masculino").click
 
       find("input[name='user[birthday]']").click
@@ -38,10 +38,10 @@ RSpec.describe "Like new candidate", :type => :feature do
       find("p[class='MuiTypography-root MuiTypography-body2 MuiTypography-colorInherit']", text: "29").click
       click_on "OK"
 
-      find("div[id='select-user[limitation_ids][]']", visible: false).click
+      find("div[id='mui-component-select-user[limitation_ids][]']", visible: false).click
       find("li", text: "Ninguna").click
 
-      find("div[id='select-user[educational_degree_id]']", visible: false).click
+      find("div[id='mui-component-select-user[educational_degree_id]']", visible: false).click
       find("li", text: "Profesional").click
 
       find("span", text: /SIGUIENTE/).click

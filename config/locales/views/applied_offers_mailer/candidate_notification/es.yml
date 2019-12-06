@@ -1,6 +1,7 @@
 es:
-  apply_to_offers_mailer:
-    apply_offer:
+  applied_offers_mailer:
+    candidate_notification:
+      subject: '!Aplicación a oferta¡'
       title: 'Has aplicado a la oferta'
       message:
         first_text: 'Pronto recibiras respuesta sobre el estado'

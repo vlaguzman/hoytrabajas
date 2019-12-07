@@ -114,8 +114,8 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/companies/first_offer/step_eight/form_params_service.rb",100,2,1,1,0
 "./app/services/companies/first_offer/step_five/form_params_service.rb",100,65,26,26,0
 "./app/services/companies/first_offer/step_five_service.rb",100,49,24,24,0
-"./app/services/companies/first_offer/step_four/form_params_service.rb",100,88,22,22,0
-"./app/services/companies/first_offer/step_four_service.rb",100,33,17,17,0
+"./app/services/companies/first_offer/step_four/form_params_service.rb",100,83,22,22,0
+"./app/services/companies/first_offer/step_four_service.rb",100,30,16,16,0
 "./app/services/companies/first_offer/step_one/form_params_service.rb",100,25,8,8,0
 "./app/services/companies/first_offer/step_one_service.rb",100,6,3,3,0
 "./app/services/companies/first_offer/step_seven/form_params_service.rb",100,73,26,26,0

@@ -45,10 +45,11 @@ RSpec.describe "When company fill the step four form", :type => :feature do
   describe "Fill the four form to update offer, all data is optionally" do
     context "Data is correct" do
       scenario "should save succesfully data", js: true do
+        expected_close_date = Date.today + 1.month
+
         sign_in company
         visit companies_first_offer_step_four_path(offer_id: offer.id)
 
-        expected_close_date = Date.today + 1.month
         expected_page_structure
         fill_form(
           {
@@ -64,7 +65,7 @@ RSpec.describe "When company fill the step four form", :type => :feature do
         expect(offer.contract_type_id).to eq(contract_type.id)
         expect(offer.vacancies_quantity).to eq(10)
         expect(offer.sex_ids).to match_array([sex_1.id, sex_2.id, sex_3.id])
-        expect(offer.close_date.strftime("%F") ).to eq(expected_page_structure.strftime("%F"))
+        expect(offer.close_date.strftime("%F") ).to eq(expected_close_date.strftime("%F"))
         expect(offer.immediate_start).to eq(false)
 
         expect(current_path).to eq(companies_first_offer_step_five_path)

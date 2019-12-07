@@ -73,7 +73,7 @@ A         • FaqsController                                      2       0.0   
 A         • Function                                            2       0.0        0           1
 A         • FunctionsOffers                                     1       0.0        0           1
 A         • HashesConverter                                     1       19.96      0           2
-A         • Home::HomePresenter                                 8       23.13      0           6
+A         • Home::HomePresenter                                 9       21.86      0           5
 A         • HomeController                                      9       2.42       0           1
 A         • Industry                                            3       0.0        0           1
 A         • JobAid                                              4       0.0        0           1
@@ -93,8 +93,8 @@ A         • OfferSalary                                         8       0.0   
 A         • OfferType                                           5       0.0        0           1
 A         • Offers                                              13      0.0        0           0
 A         • Offers::AppliedOfferService                         2       13.25      0           1
-A         • Offers::IndexService                                6       11.26      0           3
-A         • OffersController                                    25      38.15      0           4
+A         • Offers::IndexService                                5       11.26      0           3
+A         • OffersController                                    26      38.15      0           4
 A         • OffersPresenter                                     8       19.0       0           4
 A         • OffersResponsibilities                              1       0.0        0           1
 A         • OffersService                                       17      42.98      0           1

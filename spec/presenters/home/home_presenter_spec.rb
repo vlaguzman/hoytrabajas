@@ -8,7 +8,7 @@ RSpec.describe Home::HomePresenter do
       response = subject.data_filter
 
       expect(response).to be_an_instance_of(Hash)
-      expect(response.keys).to match_array([:fields1, :button1])
+      expect(response.keys).to match_array([:fields1, :button1, :cities])
     end
   end
 

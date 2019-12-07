@@ -165,5 +165,88 @@ RSpec.describe "User searches for an offer", type: :feature do
         end
       end
     end
+
+    context "When you filter by offer city only" do
+      let!(:city_2) { create(:city, description: "Medellin") }
+      let!(:city_3) { create(:city, description: "Cali") }
+      let!(:offer_query_for_city) { create(:offer, description: "Este es el query por ciudad", city_id: city_2.id, job_categories: [job_category]) }
+
+      context "When you filter by a single city and find results" do
+        it "Should return results", js: true do
+          visit root_path
+
+          find("input#combo-box-demo", visible: false).set("mede")
+          find("div[class='MuiAutocomplete-popper']").click
+
+          find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
+
+          expect(current_path).to eq("#{offers_path}/")
+          expect(page).to have_content("Este Es El Query Por Ciudad")
+        end
+      end
+
+      context "When you filter by city and find no results" do
+        it "Should return message of empty", js: true do
+          visit root_path
+
+          find("input#combo-box-demo", visible: false).set("cali")
+          find("div[class='MuiAutocomplete-popper']").click
+
+          find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
+
+          expect(current_path).to eq("#{offers_path}/")
+          expect(page).to have_content("No hay ningún trabajo en este momento")
+          expect(page).not_to have_content("Este Es El Query Por Ciudad")
+        end
+      end
+    end
+
+    context "When you filter by title and offer categories and city" do
+      let!(:city_4) { create(:city, description: "Chia") }
+      let!(:city_5) { create(:city, description: "Cajica") }
+      let!(:offer_query_for_city_2) { create(:offer, title: "oferta de sebas", city_id: city_4.id, job_categories: [job_category3]) }
+
+      context "When you search by title and category and city and find results" do
+        it "Should return results", js: true do
+          visit root_path
+
+          fill_in('keyword', with: 'oferta de sebas')
+
+          find("button[class='MuiButtonBase-root MuiButton-root MuiButton-text text-primary h-50']", visible: false).click
+          find("div[id='Marketing']").click
+
+          find("input#combo-box-demo", visible: false).set("chia")
+          find("div[class='MuiAutocomplete-popper']").click
+
+          find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
+
+          expect(page).to have_content("Oferta De Sebas")
+          expect(page).not_to have_content("Esto Es Un Prueba De Sebas")
+          expect(page).not_to have_content("Test Sebas")
+        end
+      end
+
+      context "When you search by title and category and city and find no results" do
+        it "Should return message of empty", js: true do
+          visit root_path
+
+          fill_in('keyword', with: 'jhoan')
+
+          find("button[class='MuiButtonBase-root MuiButton-root MuiButton-text text-primary h-50']", visible: false).click
+          find("div[id='Marketing']").click
+
+          find("input#combo-box-demo", visible: false).set("caji")
+          find("div[class='MuiAutocomplete-popper']").click
+
+          find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
+
+          expect(page).not_to have_content("Esto Es Un Prueba De Sebas")
+          expect(page).not_to have_content("Que Gran Oferta Sebas!")
+          expect(page).not_to have_content("Test Sebas")
+          expect(page).not_to have_content("Esta Oferta Tambien Es De Sebas")
+          expect(page).not_to have_content("Oferta De Sebas")
+        end
+      end
+    end
   end
 end

@@ -6,6 +6,9 @@
     "start_time": "2019-12-09 17:02:19 +0000",
     "end_time": "2019-12-09 17:02:20 +0000",
     "duration": 1.285649726,
+    "start_time": "2019-12-07 00:43:03 +0000",
+    "end_time": "2019-12-07 00:43:05 +0000",
+    "duration": 1.297642805,
     "checks_performed": [
       "BasicAuth",
       "BasicAuthTimingAttack",

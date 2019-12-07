@@ -14,9 +14,8 @@ RSpec.describe AppliedOffersPresenter do
 
       expected_response = {
         offer_title:     "Esto Deberia Estar Capitalizado",
-        user_name:       "Eugenio",
-        user_last_name:  "Derbez",
-        company_name:    "La Empresita S.A.S.",
+        user_full_name:  "Eugenio Derbez",
+        company_name:    "La Empresita S.A.S",
         user_email:      "eleugedb@email.com",
         company_email:   "laempresita@empresita.com"
       }

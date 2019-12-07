@@ -13,8 +13,9 @@ A         • ApplicationRecord                                   1       0.0   
 A         • AppliedOffer                                        3       0.0        0           1
 A         • AppliedOfferStatus                                  1       0.0        0           1
 A         • AppliedOffers                                       3       0.0        0           0
-A         • AppliedOffersController                             5       22.43      0           1
-A         • ApplyToOffersMailer                                 5       4.71       0           2
+A         • AppliedOffersController                             8       36.1       0           3
+A         • AppliedOffersMailer                                 2       9.41       34          3
+A         • AppliedOffersPresenter                              2       18.86      0           3
 A         • AvailableWorkDay                                    3       0.0        0           1
 A         • AvailableWorkDaysCurriculumVitaes                   1       0.0        0           1
 A         • AvailableWorkDaysOffers                             1       0.0        0           1
@@ -87,7 +88,7 @@ A         • Level                                               4       0.0   
 A         • Limitation                                          4       0.0        0           1
 A         • ListConverter                                       11      29.49      0           2
 A         • Nationality                                         4       0.0        0           1
-A         • Offer                                               42      10.0       0           1
+A         • Offer                                               43      10.0       0           1
 A         • OfferRequiredExperiences                            1       0.0        0           1
 A         • OfferSalary                                         8       0.0        0           1
 A         • OfferType                                           5       0.0        0           1
@@ -115,6 +116,7 @@ A         • SalaryPeriod                                        6       0.0   
 A         • Sex                                                 4       0.0        0           1
 A         • SoftSkill                                           4       0.0        0           1
 A         • State                                               4       0.0        0           1
+A         • StringConverter                                     2       21.71      0           1
 A         • TechnicalSkill                                      6       0.0        0           1
 A         • TechnicalSkillCategory                              1       0.0        0           1
 A         • Term                                                4       0.0        0           1

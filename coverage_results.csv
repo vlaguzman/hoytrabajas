@@ -3,7 +3,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/channels/application_cable/connection.rb",100,4,2,2,0
 "./app/jobs/application_job.rb",100,7,1,1,0
 "./app/mailers/application_mailer.rb",100,4,3,3,0
-"./app/mailers/apply_to_offers_mailer.rb",100,8,4,4,0
+"./app/mailers/applied_offers_mailer.rb",100,14,7,7,0
 "./app/models/acknowledgment.rb",100,7,3,3,0
 "./app/models/admin_user.rb",100,6,3,3,0
 "./app/models/age_range.rb",100,5,3,3,0
@@ -82,6 +82,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/work_position.rb",100,5,3,3,0
 "./app/models/working_day.rb",100,6,4,4,0
 "./app/presenters/application_presenter.rb",100,19,11,11,0
+"./app/presenters/applied_offers_presenter.rb",100,26,11,11,0
 "./app/presenters/companies/dashboards_presenter.rb",100,10,5,5,0
 "./app/presenters/companies/first_offer/step_eight_presenter.rb",100,21,8,8,0
 "./app/presenters/companies/first_offer/step_five_presenter.rb",100,32,10,10,0

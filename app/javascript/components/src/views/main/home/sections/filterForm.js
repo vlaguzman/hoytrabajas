@@ -171,9 +171,7 @@ const FilterForm = ({ common, button1, fields1, cities }) => {
             }
           </Col>
           <FormGen fields={fields1} />
-          <ComboBox
-            cities={cities}
-          />
+          <ComboBox cities={cities} />
           <Fab
             className="mb-10 search_button text-white"
             color="primary"
@@ -455,5 +453,6 @@ export default FilterForm
 FilterForm.propTypes = {
   common: PropTypes.object.isRequired,
   button1: PropTypes.object.isRequired,
-  fields1: PropTypes.object.isRequired
+  fields1: PropTypes.object.isRequired,
+  cities: PropTypes.object.isRequired
 }

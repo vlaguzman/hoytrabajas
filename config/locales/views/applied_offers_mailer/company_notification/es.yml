@@ -1,0 +1,24 @@
+es:
+  applied_offers_mailer:
+    company_notification:
+      subject: '!Aplicaron a tú oferta¡'
+      title: 'Han aplicado a tú oferta'
+      message:
+        first_text: 'se ha postulado a tu oferta recuerda brindarle'
+        second_text: 'respuesta a su solicitud en el menor tiempo posible.'
+      button: 'Ver perfil'
+      tip:
+        first_text: 'Tip:'
+        second_text: 'Recuerda que puedes llevar el control de tus ofertas desde'
+        third_text: 'tu'
+        fourth_text: 'Dashboard'
+        fifth_text: 'apartado'
+        sixth_text: 'Mis Ofertas'
+      farewell:
+        goodbye: 'Saludos, '
+        position: 'Operaciones'
+        link: 'HoyTrabajas.com'
+      rights:
+        copy_right: '© HoyTrabajas.com 2019 - Todos los derechos reservados.'
+        address: 'Calle 101B #45A - 41  Bogota, Colombia  /  +(57) 350 705 2990'
+        unsubscribe: 'Quiero dejar de recibir correo electronicos de HoyTrabajas.com'

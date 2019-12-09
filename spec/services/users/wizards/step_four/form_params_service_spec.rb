@@ -17,71 +17,164 @@ RSpec.describe Users::Wizards::StepFour::FormParamsService do
 
     let(:subject) { described_class }
 
-    it "should return the expected object" do
+    context "When user does not have data" do
+      let(:user) { create(:user, :first_time_candidate) }
 
-      expected_object = {
-        title: '¡Búsquemos las mejores ofertas!',
-        subtitle: 'Brinda a las empresas información valiosa sobre ti.',
-        form: {
-          buttons: {
-            addOther: nil,
-            submit: 'Siguiente',
-            next: 'Saltar',
-            previous: 'Regresar',
-            nextPath: '/users/wizards/step_five',
-            previousPath: '/users/wizards/step_three'
-          },
-          action: '/users/wizards/step_four',
-          method: :put,
-          type: :user,
-          formFields: {
-            city_id: {
-              name: 'user[city_id]',
-              label: 'Ciudad',
-              values: create_cities_list,
-              current_value: ''
+      it "should return the expected object" do
+
+        expected_object = {
+          title: '¡Búsquemos las mejores ofertas!',
+          subtitle: 'Brinda a las empresas información valiosa sobre ti.',
+          form: {
+            buttons: {
+              addOther: nil,
+              submit: 'Siguiente',
+              next: 'Saltar',
+              previous: 'Regresar',
+              nextPath: '/users/wizards/step_five',
+              previousPath: '/users/wizards/step_three'
             },
-            state_id: {
-              name: 'user[state_id]',
-              label: 'Departamento',
-              values: create_states_list,
-              current_value: ''
+            action: '/users/wizards/step_four',
+            method: :post,
+            type: :user,
+            formFields: {
+              city_id: {
+                name: 'user[city_id]',
+                label: 'Ciudad',
+                values: create_cities_list,
+                current_value: nil
+              },
+              state_id: {
+                name: 'user[state_id]',
+                label: 'Departamento',
+                values: create_states_list,
+                current_value: nil
+              },
+              driving_licence_ids: {
+                name: 'user[driving_licence_ids][]',
+                label: 'Licencia de conducción requerida',
+                values: create_driving_licences_list,
+                current_value: []
+              },
+              vehicle_ids: {
+                name: 'user[vehicle_ids][]',
+                label: 'Cuentas con algún tipo de vehículo',
+                values: create_vehicles_list,
+                current_value: []
+              },
+              travel_disponibility: {
+                name: 'user[curriculum_vitae][travel_disponibility]',
+                label: 'Disponibilidad para trabajar en otra ciudades',
+                current_value: nil
+              }
             },
-            driving_licence_ids: {
-              name: 'user[driving_licence_ids][]',
-              label: 'Licencia de conducción requerida',
-              values: create_driving_licences_list,
-              current_value: ''
-            },
-            vehicle_ids: {
-              name: 'user[vehicle_ids][]',
-              label: 'Cuentas con algún tipo de vehículo',
-              values: create_vehicles_list,
-              current_value: ''
-            },
-            travel_disponibility: {
-              name: 'user[curriculum_vitae][travel_disponibility]',
-              label: 'Disponibilidad para trabajar en otra ciudades',
-              current_value: ''
-            }
-          },
-          placeholders: {}
+            placeholders: {}
+          }
         }
-      }
 
-      response = subject.new(
-        form_type: :user,
-        template_translation_path: "users.wizards.step_fours.show",
-        action_path: "/users/wizards/step_four" ,
-        previous_path: "/users/wizards/step_three",
-        next_path: "/users/wizards/step_five",
-        form_method: :put
-      ).form_params
+        response = subject.new(
+          source: user,
+          errors: user.errors,
+          form_type: :user,
+          template_translation_path: "users.wizards.step_fours.show",
+          action_path: "/users/wizards/step_four" ,
+          previous_path: "/users/wizards/step_three",
+          next_path: "/users/wizards/step_five",
+          form_method: :post
+        ).form_params
 
-      expect(response[:form][:formFields]).to eq(expected_object[:form][:formFields])
+        expect(response[:form][:formFields]).to eq(expected_object[:form][:formFields])
 
-      expect(response.keys).to match_array(expected_object.keys)
-      expect(response).to eq(expected_object)
+        expect(response.keys).to match_array(expected_object.keys)
+        expect(response).to eq(expected_object)
+      end
+    end
+
+    context "When user have data" do
+
+      let(:expected_driving_licences) { [driving_licences[0], driving_licences[1]] }
+      let(:expected_vehicles) { [vehicles[0], vehicles[1]] }
+
+      let(:cv) { create(:curriculum_vitae, :new_curriculum_vitae,
+        city: nil,
+        travel_disponibility: true,
+        user: create(:user,
+          city: cities.last,
+          driving_licences: expected_driving_licences,
+          vehicles: expected_vehicles
+        )
+      ) }
+
+      let(:user_with_data) { cv.user }
+
+      it "should return the expected object" do
+
+        expected_object = {
+          title: '¡Búsquemos las mejores ofertas!',
+          subtitle: 'Brinda a las empresas información valiosa sobre ti.',
+          form: {
+            buttons: {
+              addOther: nil,
+              submit: 'Siguiente',
+              next: 'Saltar',
+              previous: 'Regresar',
+              nextPath: '/users/wizards/step_five',
+              previousPath: '/users/wizards/step_three'
+            },
+            action: '/users/wizards/step_four',
+            method: :put,
+            type: :user,
+            formFields: {
+              city_id: {
+                name: 'user[city_id]',
+                label: 'Ciudad',
+                values: create_cities_list,
+                current_value: cities.last.id
+              },
+              state_id: {
+                name: 'user[state_id]',
+                label: 'Departamento',
+                values: create_states_list,
+                current_value: cities.last.state_id
+              },
+              driving_licence_ids: {
+                name: 'user[driving_licence_ids][]',
+                label: 'Licencia de conducción requerida',
+                values: create_driving_licences_list,
+                current_value: expected_driving_licences.pluck(:id)
+              },
+              vehicle_ids: {
+                name: 'user[vehicle_ids][]',
+                label: 'Cuentas con algún tipo de vehículo',
+                values: create_vehicles_list,
+                current_value: expected_vehicles.pluck(:id)
+              },
+              travel_disponibility: {
+                name: 'user[curriculum_vitae][travel_disponibility]',
+                label: 'Disponibilidad para trabajar en otra ciudades',
+                current_value: true
+              }
+            },
+            placeholders: {}
+          }
+        }
+
+        response = subject.new(
+          source: user_with_data,
+          errors: user_with_data.errors,
+          form_type: :user,
+          template_translation_path: "users.wizards.step_fours.show",
+          action_path: "/users/wizards/step_four" ,
+          previous_path: "/users/wizards/step_three",
+          next_path: "/users/wizards/step_five",
+          form_method: :put
+        ).form_params
+
+        expect(response[:form][:formFields]).to eq(expected_object[:form][:formFields])
+
+        expect(response.keys).to match_array(expected_object.keys)
+        expect(response).to eq(expected_object)
+      end
     end
   end
 

@@ -35,4 +35,12 @@ class Users::Wizards::StepFour::FormParamsService < BaseFormWizardsService
   def vehicle_ids_list
     ListConverter.model_list Vehicle
   end
+
+  def travel_disponibility_current_value
+    source.curriculum_vitae.travel_disponibility
+  end
+
+  def state_id_current_value
+    source.city_state_id
+  end
 end

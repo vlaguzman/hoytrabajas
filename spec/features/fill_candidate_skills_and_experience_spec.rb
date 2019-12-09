@@ -58,7 +58,7 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
 
     let!(:city_id) do
       [
-        create(:city, description: "Bogota").id
+        create(:city, description: "Central City").id
       ]
     end
 
@@ -113,10 +113,10 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
             find("li", text: "Teletrabajo").click
 
             find("div[id='mui-component-select-user[curriculum_vitae][work_experience][city_id]']", visible: false).click
-            find("li", text: "Bogota").click
+            find("li", text: "Central City").click
 
             #TODO Uncomment when the we implement 'localidades'
-            #page.select 'Bogota', from: 'user[curriculum_vitae][work_experience][location_id]'
+            #page.select 'Central City', from: 'user[curriculum_vitae][work_experience][location_id]'
 
             #TODO build a way to use easly the datepicker with capybara
             #fill_in "user[curriculum_vitae][work_experience][started_at]", :with => '2017/01/01'
@@ -220,7 +220,7 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
             find("li", text: "Teletrabajo").click
 
             find("div[id='mui-component-select-user[curriculum_vitae][work_experience][city_id]", visible: false).click
-            find("li", text: "Bogota").click
+            find("li", text: "Central City").click
 
             #TODO  field 'localidad' is pending
             #page.select 'Suba', from: 'job_location'
@@ -254,7 +254,7 @@ RSpec.describe "fill the canditate user data, skills and experience", :type => :
             find("li", text: "Teletrabajo").click
 
             find("div[id='mui-component-select-user[curriculum_vitae][work_experience][city_id]", visible: false).click
-            find("li", text: "Bogota").click
+            find("li", text: "Central City").click
 
             #TODO  field 'localidad' is pending
             #page.select 'Suba', from: 'job_location'

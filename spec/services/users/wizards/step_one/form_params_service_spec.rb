@@ -106,7 +106,7 @@ RSpec.describe Users::Wizards::StepOne::FormParamsService do
       let!(:user_nationalities) { create_list(:nationality, 2) }
       let!(:user_document_type) { create(:document_type) }
 
-      let(:user) { create(:user,
+      let(:user) { create(:user, :first_time_candidate,
         name: "Alfred",
         last_name: "Niuman",
         nationality_ids: user_nationalities.pluck(:id),

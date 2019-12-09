@@ -19,7 +19,7 @@ es:
               still_in_progress: 'Altualmente laborando'
               technical_skill_ids: 'Habilidades desempeñadas'
               started_at: 'Fecha de inicio'
-              finished_at: ''
+              finished_at: 'Fecha de finalización'
             placeholders:
               finished_at: 'Terminación'
 

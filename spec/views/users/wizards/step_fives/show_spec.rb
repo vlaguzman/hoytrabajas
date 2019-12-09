@@ -19,7 +19,7 @@ RSpec.describe "users/wizards/step_fives/show" do
 
     assign(:currency, create(:currency))
 
-    assign(:user, Users::Wizards::StepFivePresenter.new(create(:user, :first_time_candidate)))
+    assign(:user, Users::Wizards::StepFivePresenter.new(create(:user, :first_time_candidate).curriculum_vitae))
 
     render
 

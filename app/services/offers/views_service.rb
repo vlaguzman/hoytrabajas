@@ -4,7 +4,7 @@ class Offers::ViewsService
   DEFAULT_IMAGE_URL = "https://img-categorias-ht.s3.amazonaws.com/cat-card-gestion-administrativa2x.png"
   attr_accessor :offer, :current_user
 
-  def initialize(offer, current_user=nil)
+  def initialize(offer, current_user = nil)
     @offer = offer
     @current_user = current_user
   end

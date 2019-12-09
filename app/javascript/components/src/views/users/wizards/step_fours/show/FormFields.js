@@ -20,20 +20,24 @@ const FormFields = props => {
   } = formFields
 
   const [formValues, setFormValues] = useState({
-    [state_id.name]: '',
-    [travel_disponibility.name]: false,
-    [city_id.name]: '',
-    [driving_licence_ids.name]: '',
-    [vehicle_ids.name]: ''
+    [state_id.name]: state_id.current_value || '',
+    [travel_disponibility.name]: travel_disponibility.current_value || false,
+    [city_id.name]: city_id.current_value ||'',
+    [driving_licence_ids.name]: driving_licence_ids.current_value ||'',
+    [vehicle_ids.name]: vehicle_ids.current_value ||''
   })
 
-  const [citiesOfCurrentState, setCitiesOfCurrentState] = useState([])
+  const [citiesOfCurrentState, setCitiesOfCurrentState] = useState(
+    city_id.values.filter(
+      (city) => city['state_id'] === formValues[state_id.name]
+    )
+  )
 
   useEffect(() => {
     setFormValues({ ...formValues, [city_id.name]: '' })
     setCitiesOfCurrentState(
       city_id.values.filter(
-        ({ state_id: stateID }) => stateID === formValues[state_id.name]
+        (city) => city['state_id'] === formValues[state_id.name]
       )
     )
   }, [formValues[state_id.name]])

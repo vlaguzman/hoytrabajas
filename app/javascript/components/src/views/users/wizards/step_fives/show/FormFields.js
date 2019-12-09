@@ -22,13 +22,13 @@ const FormFields = props => {
   } = formFields
 
   const [formValues, setFormValues] = useState({
-    [range_type.name]: 1,
-    [from.name]: '',
-    [to.name]: '',
-    [currency_id.name]: '',
-    [salary_period_id.name]: '',
-    [available_work_day_ids.name]: '',
-    [working_day_ids.name]: ''
+    [range_type.name]: range_type.current_value || 1,
+    [from.name]: from.current_value || '',
+    [to.name]: to.current_value || '',
+    [currency_id.name]: currency_id.current_value || '',
+    [salary_period_id.name]: salary_period_id.current_value || '',
+    [available_work_day_ids.name]: available_work_day_ids.current_value || '',
+    [working_day_ids.name]: working_day_ids.current_value || ''
   })
 
   const inputClassname = 'my-30 animated fadeIn inputField'
@@ -120,7 +120,7 @@ const FormFields = props => {
           handleChange={handleChange(formValues, setFormValues)}
           name={from.name}
           label={from.label}
-          placeholder={from.placeholder || 'ejem: 750.000'}
+          placeholder={from.placeholder || 'ejem: 750000'}
           style={{ width: '100%' }}
         />
       </Col>

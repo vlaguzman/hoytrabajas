@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :offer_type do
-    description {'trabajo tiempo completo'}
+    description { Faker::Job.employment_type }
   end
 end

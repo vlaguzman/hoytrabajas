@@ -23,7 +23,7 @@ const FormFields = props => {
   const [formValues, setFormValues] = useState({
     [about_me.name]: about_me.current_value || '',
     [sex_id.name]: sex_id.current_value || '',
-    [birthday.name]: birthday.current_value || new Date(),
+    [birthday.name]: (birthday.current_value) ? new Date(`${birthday.current_value} 0:00`) : new Date(),
     [limitation_ids.name]: limitation_ids.current_value || '',
     [educational_degree_id.name]: educational_degree_id.current_value || ''
   })
@@ -56,7 +56,6 @@ const FormFields = props => {
           name={sex_id.name}
           label={sex_id.label}
           selectOptions={sex_id.values}
-          isMultiple
         />
       </Col>
     ),

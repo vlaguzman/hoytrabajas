@@ -6,7 +6,8 @@ class Users::WizardsPresenter < ApplicationPresenter
     {
       source: source,
       errors: source.errors,
-      form_method: :put
+      form_method: :post,
+      form_type: :user
     }.merge(params)
   end
 

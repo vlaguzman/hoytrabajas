@@ -64,17 +64,17 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     click_on "Quiero completar mi perfil"
 
     #Step_One
-    fill_in 'candidate[name]', with: 'Carlos'
-    fill_in 'candidate[last_name]', with: 'Rojas'
+    fill_in 'user[name]', with: 'Carlos'
+    fill_in 'user[last_name]', with: 'Rojas'
 
-    find("div[id='mui-component-select-candidate[nationality_ids][]']", visible: false).click
+    find("div[id='mui-component-select-user[nationality_ids][]']", visible: false).click
     find("li", text: "Colombiana").click
 
-    find("div[id='mui-component-select-candidate[document_type_id]']", visible: false).click
+    find("div[id='mui-component-select-user[document_type_id]']", visible: false).click
     find("li", text: "Cedula de Ciudadania").click
 
-    fill_in "candidate[identification_number]", :with => "1063558224"
-    fill_in "candidate[contact_number]", :with => "3183638789"
+    fill_in "user[identification_number]", :with => "1063558224"
+    fill_in "user[contact_number]", :with => "3183638789"
 
     execute_script "window.scrollTo(0, (window.innerHeight * 2) )"
     find("span", text: /SIGUIENTE/).click
@@ -150,28 +150,28 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     find("span", text: /SIGUIENTE/).click
 
     #Step_Five
-    find("div[id='mui-component-select-user[curriculum_vitae][available_work_day_ids][]", visible: false).click
+    find("div[id='mui-component-select-curriculum_vitae[available_work_day_ids][]", visible: false).click
     find("li", text: "jueves").click
 
-    find("div[id='mui-component-select-user[curriculum_vitae][available_work_day_ids][]", visible: false).click
+    find("div[id='mui-component-select-curriculum_vitae[available_work_day_ids][]", visible: false).click
     find("li", text: "fines de semana").click
 
-    find("div[id='mui-component-select-user[curriculum_vitae][working_day_ids][]", visible: false).click
+    find("div[id='mui-component-select-curriculum_vitae[working_day_ids][]", visible: false).click
     find("li", text: "Mañana 7am-12pm").click
 
-    find("div[id='mui-component-select-user[curriculum_vitae][working_day_ids][]", visible: false).click
+    find("div[id='mui-component-select-curriculum_vitae[working_day_ids][]", visible: false).click
     find("li", text: "Noche 10pm-3am").click
 
-    find("div[id='mui-component-select-user[curriculum_vitae][curriculum_vitae_salary][range_type]", visible: false).click
+    find("div[id='mui-component-select-curriculum_vitae[curriculum_vitae_salary][range_type]", visible: false).click
     find("li", text: "Rango").click
 
-    find("div[id='mui-component-select-user[curriculum_vitae][curriculum_vitae_salary][currency_id]", visible: false).click
+    find("div[id='mui-component-select-curriculum_vitae[curriculum_vitae_salary][currency_id]", visible: false).click
     find("li", text: "COP").click
 
-    fill_in "user[curriculum_vitae][curriculum_vitae_salary][from]", :with => '4000'
-    fill_in "user[curriculum_vitae][curriculum_vitae_salary][to]", :with => '10000'
+    fill_in "curriculum_vitae[curriculum_vitae_salary][from]", :with => '4000'
+    fill_in "curriculum_vitae[curriculum_vitae_salary][to]", :with => '10000'
 
-    find("div[id='mui-component-select-user[curriculum_vitae][curriculum_vitae_salary][salary_period_id]", visible: false).click
+    find("div[id='mui-component-select-curriculum_vitae[curriculum_vitae_salary][salary_period_id]", visible: false).click
     find("li", text: "Diario").click
 
     find("span", text: /SIGUIENTE/).click

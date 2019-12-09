@@ -52,12 +52,13 @@ const SelectChip = props => {
             />
           }
           renderValue={selected => {
-            const selectValues = Array.isArray(selected)
+            let selectValues = Array.isArray(selected)
               ? selected.map(item => selectOptions.find(a => a.id === item))
               : selectOptions.find(({ id }) => id === selected)
             return (
               <div className="d-flex flex-wrap">
-                {Array.isArray(selected) ? (
+                {Array.isArray(selected)
+                ? (
                   selectValues.map(({ id, description }) => (
                     <Chip
                       key={id}
@@ -68,7 +69,8 @@ const SelectChip = props => {
                       className="mr-5 mt-5"
                     />
                   ))
-                ) : (
+                )
+                : (
                   <Chip
                     key={selected}
                     label={selectValues.description}

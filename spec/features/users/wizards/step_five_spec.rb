@@ -32,28 +32,28 @@ RSpec.describe "Like new candidate", :type => :feature do
 
       visit users_wizards_step_five_path
 
-      find("div[id='mui-component-select-user[curriculum_vitae][available_work_day_ids][]", visible: false).click
+      find("div[id='mui-component-select-curriculum_vitae[available_work_day_ids][]", visible: false).click
       find("li", text: "jueves").click
 
-      find("div[id='mui-component-select-user[curriculum_vitae][available_work_day_ids][]", visible: false).click
+      find("div[id='mui-component-select-curriculum_vitae[available_work_day_ids][]", visible: false).click
       find("li", text: "fines de semana").click
 
-      find("div[id='mui-component-select-user[curriculum_vitae][working_day_ids][]", visible: false).click
+      find("div[id='mui-component-select-curriculum_vitae[working_day_ids][]", visible: false).click
       find("li", text: "Mañana 7am-12pm").click
 
-      find("div[id='mui-component-select-user[curriculum_vitae][working_day_ids][]", visible: false).click
+      find("div[id='mui-component-select-curriculum_vitae[working_day_ids][]", visible: false).click
       find("li", text: "Noche 10pm-3am").click
 
-      find("div[id='mui-component-select-user[curriculum_vitae][curriculum_vitae_salary][range_type]", visible: false).click
+      find("div[id='mui-component-select-curriculum_vitae[curriculum_vitae_salary][range_type]", visible: false).click
       find("li", text: "Rango").click
 
-      find("div[id='mui-component-select-user[curriculum_vitae][curriculum_vitae_salary][currency_id]", visible: false).click
+      find("div[id='mui-component-select-curriculum_vitae[curriculum_vitae_salary][currency_id]", visible: false).click
       find("li", text: "COP").click
 
-      fill_in "user[curriculum_vitae][curriculum_vitae_salary][from]", :with => '4000'
-      fill_in "user[curriculum_vitae][curriculum_vitae_salary][to]", :with => '10000'
+      fill_in "curriculum_vitae[curriculum_vitae_salary][from]", :with => '4000'
+      fill_in "curriculum_vitae[curriculum_vitae_salary][to]", :with => '10000'
 
-      find("div[id='mui-component-select-user[curriculum_vitae][curriculum_vitae_salary][salary_period_id]", visible: false).click
+      find("div[id='mui-component-select-curriculum_vitae[curriculum_vitae_salary][salary_period_id]", visible: false).click
       find("li", text: "Diario").click
 
       find("span", text: /SIGUIENTE/).click

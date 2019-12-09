@@ -4,9 +4,9 @@ RSpec.describe Users::Wizards::StepOnePresenter do
   let(:candidate) { create(:user, :first_time_candidate) }
   let(:subject) { described_class.new(candidate) }
 
-  describe "#form_information" do
+  describe "#show_form_information" do
     it "should return a object used by the react component to build it" do
-      response = subject.form_information
+      response = subject.show_form_information
 
       expect(response).to be_an_instance_of(Hash)
 

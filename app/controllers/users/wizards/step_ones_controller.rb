@@ -1,5 +1,4 @@
-class Users::Wizards::StepOnesController < ApplicationController
-  before_action :authenticate_user!
+class Users::Wizards::StepOnesController < Users::WizardsController
 
   def show
     user_presenters
@@ -10,17 +9,11 @@ class Users::Wizards::StepOnesController < ApplicationController
 
     user_presenters(user)
 
-    if not user.errors.present?
-      redirect_to users_wizards_step_two_path
-    else
-      render :show
-    end
+    validate_redirect_to(source: user, users_wizard_path: users_wizards_step_two_path)
   end
 
   def edit
-    @user = Users::Wizards::StepOnePresenter.new(current_user)
-
-    render :edit
+    user_presenters
   end
 
   def update
@@ -28,11 +21,7 @@ class Users::Wizards::StepOnesController < ApplicationController
 
     user_presenters(user)
 
-    if not @user.errors.present?
-      redirect_to users_dashboard_path
-    else
-      render :edit
-    end
+    validate_redirect_to(source: user, users_wizard_path: users_dashboard_path, view: :edit)
   end
 
 
@@ -43,7 +32,7 @@ class Users::Wizards::StepOnesController < ApplicationController
   end
 
   def strong_params
-    params.require(:candidate).permit(:name, :last_name, :document_type_id, :contact_number, :identification_number, nationality_ids: []).to_h
+    params.require(:user).permit(:name, :last_name, :document_type_id, :contact_number, :identification_number, nationality_ids: []).to_h
   end
 
 end

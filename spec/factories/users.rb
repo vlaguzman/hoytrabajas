@@ -8,12 +8,16 @@ FactoryBot.define do
     email                 { Faker::Internet.email }
     password              { Faker::Blockchain::Bitcoin.address }
     confirmed_at          { Date.today }
+    nationalities         { [create(:nationality)] }
+    vehicles              { [create(:vehicle)] }
+    driving_licences      { [create(:driving_licence)] }
     sign_in_count         { 1323 }
 
     association :sex, factory: :sex
     association :contract_type, factory: :contract_type
     association :document_type, factory: :document_type
     association :work_mode, factory: :work_mode
+    association :city, factory: :city
 
     trait :first_time_candidate do
       document_type         { nil }
@@ -22,10 +26,14 @@ FactoryBot.define do
       birthday              { nil }
       contact_number        { nil }
       identification_number { nil }
+      nationalities         { [] }
       email                 { Faker::Internet.email }
       password              { Faker::Blockchain::Bitcoin.address }
       confirmed_at          { Date.today }
       sign_in_count         { 0 }
+      city                  { nil }
+      driving_licences      { [] }
+      vehicles              { [] }
     end
   end
 end

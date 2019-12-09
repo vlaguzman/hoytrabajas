@@ -38,7 +38,7 @@ RSpec.describe "When company fill the step three form", :type => :feature do
     find('li.MuiListItem-button', text: data[:offer_type_id]).click
 
     find(id: 'mui-component-select-offer[work_mode_id]', visible: false).click
-    find('li.MuiListItem-button', text: data[:work_mode_id].gsub(' ', '')).click
+    find('li.MuiListItem-button', text: data[:work_mode_id]).click
 
     find(id: 'mui-component-select-offer[offers_work_positions]', visible: false).click
     find('li.MuiListItem-button', text: data[:offers_work_positions]).click

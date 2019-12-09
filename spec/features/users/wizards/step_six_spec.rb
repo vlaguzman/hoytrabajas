@@ -2,15 +2,17 @@ require 'rails_helper'
 
 RSpec.describe "In wizards step six view", type: :feature do
 
+  before do
+    create(:soft_skill, description: "Seeker")
+    create(:soft_skill, description: "Archer")
+
+    create(:language, description: "Spanish")
+
+    create(:level, description: "Expert")
+  end
+
   feature "Like a new candidate" do
     let(:candidate) { create(:user) }
-
-    let!(:create_soft_skils) do
-      [
-        create(:soft_skill, description: "Seeker"),
-        create(:soft_skill, description: "Archer")
-      ]
-    end
 
     feature "When dont fill nothing and press 'Siguiente' buttom" do
       scenario "Should redirect to step seven path",js: true do
@@ -42,13 +44,51 @@ RSpec.describe "In wizards step six view", type: :feature do
       end
     end
 
-    #TODO oscar in progress
-    feature "When only fill the technical skills section"
+    feature "When only fill the technical skills section" do
+      it "Should add the select technical skills to cv", js: true do
+        sign_in candidate
 
-    feature "When only fill the to learn skills section"
+        visit users_wizards_step_six_path
 
-    feature "When only fill the language section"
+        #TODO Oscar complete when the tech skills selector will be able
 
-    feature "When fill the four sections"
+        find("span", text: /SIGUIENTE/).click
+
+        expect(candidate.curriculum_vitae.strong_skills.count).to eq(0)
+      end
+    end
+
+    feature "When only fill the to learn skills section" do
+      it "Should add the to learn skills to CV", js: true do
+        sign_in candidate
+
+        visit users_wizards_step_six_path
+
+        #TODO Oscar complete when the tech skills selector will be able
+
+        find("span", text: /SIGUIENTE/).click
+
+        expect(candidate.curriculum_vitae.to_learn_skills.count).to eq(0)
+      end
+    end
+
+    feature "When only fill the language section" do
+      scenario "Should add the selected lenguages to CV", js: true do
+        sign_in candidate
+
+        visit users_wizards_step_six_path
+
+        find("div[id='mui-component-select-language_id']", visible: false).click
+        find("li", text: "Spanish").click
+
+        find("div[id='mui-component-select-level_id']", visible: false).click
+        find("li", text: "Expert").click
+
+        find("span", text: /SIGUIENTE/).click
+
+        expect(candidate.curriculum_vitae.strong_languages.count).to eq(1)
+      end
+    end
+
   end
 end

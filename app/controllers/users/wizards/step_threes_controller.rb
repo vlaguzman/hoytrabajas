@@ -1,24 +1,20 @@
-class Users::Wizards::StepThreesController < ApplicationController
-  before_action :authenticate_user!
+class Users::Wizards::StepThreesController < Users::WizardsController
 
   def show
-    user_presenter
+    user_presenter(current_user.curriculum_vitae)
   end
 
-  def update
+  def create
     updated_curriculum = Users::Wizards::StepThreeService.(curriculum_vitae: current_user.curriculum_vitae, update_params: step_three_params)
 
-    if updated_curriculum.errors.details.any?
-      user_presenter(updated_curriculum.user)
-      render :show
-    else
-      redirect_to users_wizards_step_four_path
-    end
+    user_presenter(updated_curriculum)
+
+    validate_redirect_to(source: updated_curriculum, users_wizard_path: users_wizards_step_four_path)
   end
 
   private
 
-  def user_presenter(user= current_user)
+  def user_presenter(user = current_user)
     @user = Users::Wizards::StepThreePresenter.new(user)
   end
 

@@ -24,8 +24,8 @@ RSpec.describe Users::Wizards::StepFourService do
       let(:params) do
         {
           city_id: create(:city, description: "Bogota").id,
-          vehicle_ids: vehicle_ids,
-          driving_licence_ids: driving_licence_ids,
+          vehicle_ids: [vehicle_ids.join(",")],
+          driving_licence_ids: [driving_licence_ids.join(",")],
           curriculum_vitae: {
             travel_disponibility: true
           }

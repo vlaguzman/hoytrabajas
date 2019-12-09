@@ -17,22 +17,18 @@ class Users::Wizards::StepFive::FormParamsService < BaseFormWizardsService
 
   private
 
-  def curriculum_vitae_multiple_select_fields_builder
-    multiple_select_fields_builder('curriculum_vitae')
-  end
 
-  def curriculum_vitae_salary_select_fields_builder()
-    select_fields_builder('curriculum_vitae', 'curriculum_vitae_salary')
+  def curriculum_vitae_salary_select_fields_builder
+    select_fields_builder('curriculum_vitae_salary')
   end
 
   def input_fields_builder
-    super('curriculum_vitae', 'curriculum_vitae_salary')
+    super('curriculum_vitae_salary')
   end
 
   def fields_builder
     super(
       curriculum_vitae_salary_select_fields_builder,
-      curriculum_vitae_multiple_select_fields_builder,
       range_type_builder
     )
   end
@@ -55,10 +51,22 @@ class Users::Wizards::StepFive::FormParamsService < BaseFormWizardsService
 
   def range_type_builder
     {range_type: {
-      name: 'user[curriculum_vitae][curriculum_vitae_salary][range_type]',
+      name: 'curriculum_vitae[curriculum_vitae_salary][range_type]',
       label: template_translations[:form][:formFields][:range_type],
       values: [{id: 1, description: "Rango"}, {id: 2, description: "Fijo"}]
       }}
+  end
+
+  def currency_id_current_value
+    source.salary_currency_id
+  end
+
+  def from_current_value
+    source.salary_from
+  end
+
+  def to_current_value
+    source.salary_to
   end
 
 end

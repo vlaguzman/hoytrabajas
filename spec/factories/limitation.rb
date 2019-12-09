@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :limitation do
-    description { "Blind" }
+    description { Faker::Games::Pokemon.move }
   end
 end

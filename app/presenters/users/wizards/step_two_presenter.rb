@@ -1,17 +1,21 @@
-class Users::Wizards::StepTwoPresenter < ApplicationPresenter
+class Users::Wizards::StepTwoPresenter < Users::WizardsPresenter
 
-  def form_information
+  def show_form_information
     Users::Wizards::StepTwo::FormParamsService.new(
-      errors: source.errors,
-      action_path: users_wizards_step_two_path,
-      next_path: users_wizards_step_three_path,
-      previous_path: users_wizards_step_one_path,
-      template_translation_path: "users.wizards.step_twos.show",
-      form_method: :put
+      build_step_two_show_service_params
     ).form_params
   end
 
   private
+
+  def build_step_two_show_service_params
+    service_params(
+      action_path: users_wizards_step_two_path,
+      next_path: users_wizards_step_three_path,
+      previous_path: users_wizards_step_one_path,
+      template_translation_path: "users.wizards.step_twos.show",
+    )
+  end
 
   def users_wizards_step_two_path
     rails_routes.users_wizards_step_two_path

@@ -1,27 +1,21 @@
-class Users::Wizards::StepTwosController < ApplicationController
-  before_action :authenticate_user!
-
-  attr_reader :user
+class Users::Wizards::StepTwosController < Users::WizardsController
 
   def show
     user_presenters
   end
 
-  def update
+  def create
     user = Users::Wizards::StepTwoService.(candidate: current_user, update_params: strong_params)
 
-    if user.errors.details.any?
-      user_presenters
-      render 'show'
-    else
-      redirect_to users_wizards_step_three_path
-    end
+    user_presenters(user)
+
+    validate_redirect_to(source: user, users_wizard_path: users_wizards_step_three_path)
   end
 
   private
 
-  def user_presenters
-    @user = Users::Wizards::StepTwoPresenter.new(current_user)
+  def user_presenters(user = current_user)
+    @user = Users::Wizards::StepTwoPresenter.new(user)
   end
 
   def strong_params

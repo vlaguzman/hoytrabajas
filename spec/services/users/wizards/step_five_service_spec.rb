@@ -26,32 +26,24 @@ RSpec.describe Users::Wizards::StepFiveService do
 
       let(:params) do
         {
-          curriculum_vitae: {
-            available_work_day_ids: [available_work_day_ids.join(",")],
-            working_day_ids: [working_day_ids.join(",")],
-            curriculum_vitae_salary: {
-              currency_id: currency_id,
-              from: 4000, to: 10000,
-              salary_period_id: salary_period_id
-            }
+          available_work_day_ids: [available_work_day_ids.join(",")],
+          working_day_ids: [working_day_ids.join(",")],
+          curriculum_vitae_salary: {
+            currency_id: currency_id,
+            from: 4000, to: 10000,
+            salary_period_id: salary_period_id
           }
         }
       end
 
       it "Should return a modifiend User" do
-        candidate = new_curriculum_vitae.user
+        update_curriculum = subject.(curriculum_vitae: new_curriculum_vitae, update_params: params)
 
-        update_candidate = subject.(candidate: candidate, update_params: params)
-
-        expect(update_candidate).to be_an_instance_of(User)
+        expect(update_curriculum).to be_an_instance_of(CurriculumVitae)
       end
 
       it "Should update the curriculum vitae" do
-        candidate = new_curriculum_vitae.user
-
-        update_candidate = subject.(candidate: candidate, update_params: params)
-
-        expect(update_candidate.curriculum_vitaes.count).to eq(1)
+        update_curriculum = subject.(curriculum_vitae: new_curriculum_vitae, update_params: params)
 
         expect(new_curriculum_vitae.available_work_days.pluck(:description)).to match_array(["jueves", "lunes", "martes"])
         expect(new_curriculum_vitae.working_days.pluck(:description)).to match_array(["Mañana tarde", "Todo el dia"])
@@ -61,11 +53,9 @@ RSpec.describe Users::Wizards::StepFiveService do
       it "should create a curriculum vitae salary object associated to the curriculum vitae" do
         expect(new_curriculum_vitae.curriculum_vitae_salary).to be_nil
 
-        candidate = new_curriculum_vitae.user
+        update_curriculum = subject.(curriculum_vitae: new_curriculum_vitae, update_params: params)
 
-        update_candidate = subject.(candidate: candidate, update_params: params)
-
-        updated_cv_salary = update_candidate.curriculum_vitae.curriculum_vitae_salary
+        updated_cv_salary = update_curriculum.curriculum_vitae_salary
 
         expect(CurriculumVitaeSalary.count).to eq(1)
 

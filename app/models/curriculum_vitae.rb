@@ -26,6 +26,9 @@ class CurriculumVitae < ApplicationRecord
 
   #delegates
   delegate :name, :email, to: :user, prefix: :user, allow_nil: true
+  delegate :state_id, to: :city, prefix: :city, allow_nil: true
+  delegate :salary_period_id, to: :curriculum_vitae_salary, allow_nil: true
+  delegate :currency_id, :from, :to, to: :curriculum_vitae_salary,  prefix: :salary, allow_nil: true
 
   def strong_skills
     CurriculumVitaesTechnicalSkills.where(curriculum_vitae_id: self.id, step_up: false)

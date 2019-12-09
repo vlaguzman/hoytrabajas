@@ -49,7 +49,7 @@ RSpec.describe Users::Wizards::StepThree::FormParamsService do
             },
             contract_type_id: {
               name: 'curriculum_vitae[contract_type_id]',
-              label: 'Acuerdo legal',
+              label: '¿A que tipo de contrato te gustaría aplicar? ',
               values: create_contract_type_list,
               current_value: ''
             },

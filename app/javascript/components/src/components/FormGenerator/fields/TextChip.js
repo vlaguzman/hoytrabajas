@@ -210,8 +210,6 @@ const TextChip = props => {
   }, [formSection, rowValue, parentInputValue])
 
   const [updateRowValue] = useDebouncedCallback(() => {
-    console.log('updateRowValue')
-    console.log(selectedItem)
     setRowValue(prevState => ({
       ...prevState,
       [name]: [...selectedItem]

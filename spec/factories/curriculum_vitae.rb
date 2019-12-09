@@ -18,6 +18,7 @@ FactoryBot.define do
       about_me              { nil }
       release_date          { nil }
       travel_disponibility  { false }
+      city                  { nil }
     end
   end
 end

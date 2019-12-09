@@ -1,32 +1,33 @@
-class Users::Wizards::StepOnePresenter < ApplicationPresenter
+class Users::Wizards::StepOnePresenter < Users::WizardsPresenter
 
-  def edit_form_information
+  def show_form_information
     Users::Wizards::StepOne::FormParamsService.new(
-      build_presenter_params(
-        template_translation_path: "users.wizards.step_ones.edit",
-        form_method: :put
-      )
+      build_step_one_show_service_params
     ).form_params
   end
 
-  def form_information
+  def edit_form_information
     Users::Wizards::StepOne::FormParamsService.new(
-      build_presenter_params(
-        next_path: users_wizards_step_two_path,
-        template_translation_path: "users.wizards.step_ones.show"
-      )
+      build_step_one_edit_service_params
     ).form_params
   end
 
   private
 
-  def build_presenter_params(**changes)
-    {
-      source: source,
-      errors: source.errors,
+  def build_step_one_show_service_params
+    service_params(
       action_path: users_wizards_step_one_path,
-      form_type: :candidate
-    }.merge(changes)
+      next_path: users_wizards_step_two_path,
+      template_translation_path: "users.wizards.step_ones.show"
+    )
+  end
+
+  def build_step_one_edit_service_params
+    service_params(
+      action_path: users_wizards_step_one_path,
+      template_translation_path: "users.wizards.step_ones.edit",
+      form_method: :put
+    )
   end
 
   def users_wizards_step_one_path

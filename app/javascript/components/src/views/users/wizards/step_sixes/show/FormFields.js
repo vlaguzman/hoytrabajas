@@ -380,8 +380,9 @@ const FormFields = props => {
   return (
     <Row className="HT__FormGenerator">
       {softSkillIDsField}
-      {techicalSkillsRows}
-      {toLearnSkillsRows}
+      {/* TODO Oscar temporaly comment until add technical skills */}
+      {/* {techicalSkillsRows}
+      {toLearnSkillsRows} */}
       {languagesRows}
     </Row>
   )

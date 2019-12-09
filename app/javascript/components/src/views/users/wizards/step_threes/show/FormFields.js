@@ -18,11 +18,11 @@ const FormFields = props => {
   } = formFields
 
   const [formValues, setFormValues] = useState({
-    [job_category_ids.name]: '',
-    [offer_type_ids.name]: '',
-    [contract_type_id.name]: '',
-    [work_mode_ids.name]: '',
-    [labor_disponibility_id.name]: ''
+    [job_category_ids.name]: job_category_ids.current_value || '',
+    [offer_type_ids.name]: offer_type_ids.current_value || '',
+    [contract_type_id.name]: contract_type_id.current_value || '',
+    [work_mode_ids.name]: work_mode_ids.current_value || '',
+    [labor_disponibility_id.name]: labor_disponibility_id.current_value || ''
   })
 
   const inputClassname = 'my-30 animated fadeIn inputField'

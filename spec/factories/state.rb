@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :state do
-    description { 'Huila' }
+    description { Faker::Nation.capital_city }
   end
 end

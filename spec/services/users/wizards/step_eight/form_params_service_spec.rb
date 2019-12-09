@@ -74,7 +74,7 @@ RSpec.describe Users::Wizards::StepEight::FormParamsService do
             },
             finished_at: {
               name: 'user[curriculum_vitae][work_experience][finished_at]',
-              label: '',
+              label: 'Fecha de finalización',
               current_value: ''
             },
             still_in_progress: {

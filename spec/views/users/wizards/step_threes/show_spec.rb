@@ -16,7 +16,7 @@ RSpec.describe "users/wizards/step_threes/show" do
     assign(:work_mode, create(:work_mode))
     assign(:labor_disponibility, create(:labor_disponibility))
 
-    assign(:user, Users::Wizards::StepThreePresenter.new(create(:user, :first_time_candidate)))
+    assign(:user, Users::Wizards::StepThreePresenter.new(create(:user, :first_time_candidate).curriculum_vitae))
 
     render
 

@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :educational_degree do
-    description { 'BasicPrimary' }
+    description { Faker::Military.army_rank }
   end
 end

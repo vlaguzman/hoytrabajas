@@ -1,19 +1,21 @@
-class Users::Wizards::StepFourPresenter < ApplicationPresenter
+class Users::Wizards::StepFourPresenter < Users::WizardsPresenter
 
-  def form_information
+  def show_form_information
     Users::Wizards::StepFour::FormParamsService.new(
-      errors: source.errors,
-      form_type: :user,
+      build_step_four_show_service_params
+    ).form_params
+  end
+
+  private
+
+  def build_step_four_show_service_params
+    service_params(
       template_translation_path: "users.wizards.step_fours.show",
       action_path: users_wizards_step_four_path,
       previous_path: users_wizards_step_three_path,
       next_path: users_wizards_step_five_path,
-      form_method: :put
-    ).form_params
-
+    )
   end
-
-  private
 
   def users_wizards_step_five_path
     rails_routes.users_wizards_step_five_path

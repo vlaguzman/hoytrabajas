@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Admin can create an Offer", type: :feature do
   include Devise::Test::IntegrationHelpers
-
+  let!(:city) { create(:city, description: 'Bogotá') }
   let!(:company) { create(:company, name: 'IBM') }
   let!(:job_category) { create(:job_category, description: 'ventas') }
   let!(:work_mode) { create(:work_mode, description: 'teletrabajo') }
@@ -10,7 +10,7 @@ RSpec.describe "Admin can create an Offer", type: :feature do
 
   context "a admin user must be able to create a new offer" do
     scenario "the admin dont fill the title for the company" do
-      sign_in FactoryBot.create(:admin_user)
+      sign_in create(:admin_user)
 
       visit admin_dashboard_path
       expect(page).to have_content("Active Admin")
@@ -33,7 +33,7 @@ RSpec.describe "Admin can create an Offer", type: :feature do
     end
 
     scenario "the admin dont select the category data" do
-      sign_in FactoryBot.create(:admin_user)
+      sign_in create(:admin_user)
       visit admin_dashboard_path 
       expect(page).to have_content("Active Admin")
 
@@ -55,13 +55,12 @@ RSpec.describe "Admin can create an Offer", type: :feature do
     end
 
     scenario "the admin dont select the company data" do
-      sign_in FactoryBot.create(:admin_user)
-      visit admin_dashboard_path 
+      sign_in create(:admin_user)
+      visit admin_dashboard_path
       expect(page).to have_content("Active Admin")
 
-      has_button?("Offers")
       click_on("Offers")
-      has_button?("Añadir Offer")
+
       click_on("Añadir Offer")
 
       expect(page).to have_content("Añadir Offer")
@@ -77,13 +76,12 @@ RSpec.describe "Admin can create an Offer", type: :feature do
     end
 
     scenario "the admin fill all the data" do
-      sign_in FactoryBot.create(:admin_user)
-      visit admin_dashboard_path 
+      sign_in create(:admin_user)
+      visit admin_dashboard_path
       expect(page).to have_content("Active Admin")
 
-      has_button?("Offers")
       click_on("Offers")
-      has_button?("Añadir Offer")
+
       click_on("Añadir Offer")
 
       expect(page).to have_content("Añadir Offer")

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "Like new candidate", :type => :feature do
 
   def form_field_value(field_name, multiple= nil)
-    find("input[name='candidate[#{field_name}]#{'[]' if multiple}']", visible: false).value
+    find("input[name='user[#{field_name}]#{'[]' if multiple}']", visible: false).value
   end
 
   before do
@@ -24,24 +24,27 @@ RSpec.describe "Like new candidate", :type => :feature do
   end
 
   feature "When im in step one" do
-    let(:candidate) { create(:user, :first_time_candidate, email: "nuevousuario@gmail.com") }
+    let(:candidate) { create(:user, :first_time_candidate,
+      email: "nuevousuario@gmail.com",
+      nationalities: []
+    ) }
 
     scenario "Should edit my basic information", js: true do
       sign_in candidate
 
       visit users_wizards_step_one_path
 
-      fill_in 'candidate[name]', with: 'Carlos'
-      fill_in 'candidate[last_name]', with: 'Rojas'
+      fill_in 'user[name]', with: 'Carlos'
+      fill_in 'user[last_name]', with: 'Rojas'
 
-      find("div[id='mui-component-select-candidate[nationality_ids][]']", visible: false).click
+      find("div[id='mui-component-select-user[nationality_ids][]']", visible: false).click
       find("li", text: "Colombiana").click
 
-      find("div[id='mui-component-select-candidate[document_type_id]']", visible: false).click
+      find("div[id='mui-component-select-user[document_type_id]']", visible: false).click
       find("li", text: "Cedula de Ciudadania").click
 
-      fill_in "candidate[identification_number]", :with => "1063558224"
-      fill_in "candidate[contact_number]", :with => "3183638789"
+      fill_in "user[identification_number]", :with => "1063558224"
+      fill_in "user[contact_number]", :with => "3183638789"
 
       execute_script "window.scrollTo(0, (window.innerHeight * 2) )"
       find("span", text: /SIGUIENTE/).click
@@ -51,7 +54,7 @@ RSpec.describe "Like new candidate", :type => :feature do
       expect(candidate.name).to eq('Carlos')
       expect(candidate.last_name).to eq('Rojas')
       expect(candidate.document_type.description).to eq('Cedula de Ciudadania')
-      expect(candidate.nationalities.last.description).to eq('Colombiana')
+      expect(candidate.nationalities.pluck(:description).include?('Colombiana')).to be_truthy
       expect(candidate.identification_number).to eq('1063558224')
       expect(candidate.contact_number).to eq('3183638789')
     end

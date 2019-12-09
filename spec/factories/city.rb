@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :city do
-    description {'Bogotá'}
+    description { Faker::Nation.capital_city }
 
     association :state, factory: :state
   end

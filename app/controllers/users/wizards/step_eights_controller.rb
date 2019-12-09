@@ -5,8 +5,8 @@ class Users::Wizards::StepEightsController < ApplicationController
     user_presenter
   end
 
-  def update
-    user = step_service.()
+  def create
+    user = Users::Wizards::StepEightService.(candidate: current_user, update_params: step_eight_params)
 
     if user.errors.details.present? || add_other_experience.any?
       user_presenter(user: user)
@@ -19,9 +19,6 @@ class Users::Wizards::StepEightsController < ApplicationController
 
   private
 
-  def step_service
-    -> (user: current_user) { Users::Wizards::StepEightService.(candidate: user, update_params: step_eight_params) }
-  end
 
   def user_presenter(user: current_user)
     @user = Users::Wizards::StepEightPresenter.new(user)

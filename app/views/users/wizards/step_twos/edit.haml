@@ -1,5 +1,5 @@
-= react_component('views/users/wizards/step_fives/show',
-  {formInfo: @user.show_form_information,
+= react_component('views/users/wizards/step_twos/show',
+  {formInfo: @user.edit_form_information,
   csrf_param: request_forgery_protection_token,
   csrf_token: form_authenticity_token,
   log_out_user: destroy_user_session_path,
@@ -7,4 +7,4 @@
   user_signed_in: user_signed_in?,
   company_signed_in: company_signed_in?,
   session_translation: I18n.t("session"),
-  user_facebook_omniauth_authorize_path: user_facebook_omniauth_authorize_path }, prerender: false)
+  user_facebook_omniauth_authorize_path: user_facebook_omniauth_authorize_path },prerender: false)

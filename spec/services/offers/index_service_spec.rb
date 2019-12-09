@@ -43,7 +43,8 @@ RSpec.describe Offers::IndexService do
       }
     },
     company: {
-      name: "Orellana S.A."
+      name: "Orellana S.A.",
+      url_image_logo: "https://ht-web-images.s3.amazonaws.com/perfiles/avatar-empresa.png"
     },
     close_date: "03 de Julio del 2019",
     new_offer: false

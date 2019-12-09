@@ -9,7 +9,8 @@ class AppliedOffersPresenter < ApplicationPresenter
       user_full_name:     full_name(user),
       company_name:       capitalize_text(offer_company.name),
       user_email:         user.email,
-      company_email:      offer_company.email
+      company_email:      offer_company.email,
+      operations_person:  ENV['OPERATIONS_PERSON'].to_s
     }
   end
 

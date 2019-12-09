@@ -9,7 +9,6 @@ es:
       button: 'Ver mis aplicaciones'
       farewell:
         goodbye: 'Saludos, '
-        person: 'Helena Tello'
         position: 'Operaciones'
         link: 'HoyTrabajas.com'
       rights:

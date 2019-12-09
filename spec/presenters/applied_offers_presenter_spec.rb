@@ -13,11 +13,12 @@ RSpec.describe AppliedOffersPresenter do
       response = subject.mail_data
 
       expected_response = {
-        offer_title:     "Esto Deberia Estar Capitalizado",
-        user_full_name:  "Eugenio Derbez",
-        company_name:    "La Empresita S.A.S",
-        user_email:      "eleugedb@email.com",
-        company_email:   "laempresita@empresita.com"
+        offer_title:       "Esto Deberia Estar Capitalizado",
+        user_full_name:    "Eugenio Derbez",
+        company_name:      "La Empresita S.A.S",
+        user_email:        "eleugedb@email.com",
+        company_email:     "laempresita@empresita.com",
+        operations_person:  ENV['OPERATIONS_PERSON'].to_s
       }
 
       expect(response).to eq(expected_response)

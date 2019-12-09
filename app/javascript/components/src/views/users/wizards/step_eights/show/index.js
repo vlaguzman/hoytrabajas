@@ -72,13 +72,17 @@ const UsersWizardsStepEight = props => {
 export default UsersWizardsStepEight
 
 UsersWizardsStepEight.propTypes = {
+  registered_experience: PropTypes.any,
+  registered_messages: PropTypes.string,
   csrf_param: PropTypes.string,
   csrf_token: PropTypes.string,
   formInfo: PropTypes.shape({
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string,
     form: PropTypes.shape({
+      errors: PropTypes.object,
       buttons: PropTypes.shape({
+        addOther: PropTypes.string,
         submit: PropTypes.string.isRequired,
         next: PropTypes.string.isRequired,
         nextPath: PropTypes.string.isRequired,

@@ -7,7 +7,7 @@ es:
           form:
             buttons:
               previous: 'Regresar'
-              submit: 'Siguiente'
+              submit: 'Guardar y Continuar'
               next: 'Saltar'
               add_other: 'Agregar otra experiencia'
             formFields:

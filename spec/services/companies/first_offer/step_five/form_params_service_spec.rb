@@ -27,12 +27,12 @@ RSpec.describe Companies::FirstOffer::StepFive::FormParamsService do
             to: 'Ej: 750000'
           },
           buttons:  {
-           addOther: nil,
-           submit: 'Siguiente',
-           next: 'Saltar',
-           previous: 'Regresar',
-           previousPath: '/companies/first_offer/step_four',
-           nextPath: '/companies/first_offer/step_six'
+            addOther: nil,
+            submit: 'Siguiente',
+            next: 'Saltar',
+            previous: 'Regresar',
+            previousPath: '/companies/first_offer/step_four',
+            nextPath: '/companies/first_offer/step_six'
           },
           action: '/companies/first_offer/step_five',
           method: :put,

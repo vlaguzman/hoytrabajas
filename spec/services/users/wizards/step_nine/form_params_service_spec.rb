@@ -17,7 +17,7 @@ RSpec.describe Users::Wizards::StepNine::FormParamsService do
         form: {
           buttons: {
             addOther: 'Agregar otro estudio',
-            submit: 'Siguiente',
+            submit: 'Guardar y Continuar',
             next: 'Saltar',
             previous: 'Regresar',
             previousPath: '/users/wizards/step_eight',

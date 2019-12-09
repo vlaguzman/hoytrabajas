@@ -14,7 +14,7 @@ RSpec.describe Users::Wizards::StepTen::FormParamsService do
         form: {
           buttons: {
             addOther: 'Agregar otro reconocimiento',
-            submit: 'Publicar',
+            submit: 'Guardar y Publicar',
             next: 'Saltar',
             previous: 'Regresar',
             previousPath: '/users/wizards/step_nine',

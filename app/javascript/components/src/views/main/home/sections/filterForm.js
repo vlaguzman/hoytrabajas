@@ -29,6 +29,7 @@ import CarouselRow from './components/carousel/carousel'
 import dialogState from '../../../../hooks/dialogState'
 import RctCollapsibleCard from '../../../../components/Reactify/CollapsibleCard'
 import { removeItemFromArr } from '../../../../../utils/array_functions'
+import ComboBox from '../../../../../views/home/index/cityFilter'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />
@@ -66,7 +67,7 @@ const currencies = [
   }
 ]
 
-const FilterForm = ({ common, button1, fields1 }) => {
+const FilterForm = ({ common, button1, fields1, cities }) => {
   // TODO oscar remove this line when in rails when can searh by other fields
   fields1 = [fields1[0]]
 
@@ -170,6 +171,7 @@ const FilterForm = ({ common, button1, fields1 }) => {
             }
           </Col>
           <FormGen fields={fields1} />
+          <ComboBox cities={cities} />
           <Fab
             className="mb-10 search_button text-white"
             color="primary"
@@ -451,5 +453,6 @@ export default FilterForm
 FilterForm.propTypes = {
   common: PropTypes.object.isRequired,
   button1: PropTypes.object.isRequired,
-  fields1: PropTypes.object.isRequired
+  fields1: PropTypes.object.isRequired,
+  cities: PropTypes.object.isRequired
 }

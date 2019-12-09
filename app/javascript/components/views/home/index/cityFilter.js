@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
+import Autocomplete from '../../../src/components/FormsLayout/Fields/FieldAutocomplete'
 import { Col } from 'reactstrap'
 
 export default function cityFilter(cities) {
   const [value, setValue] = useState("")
   const [idCityQuery, setIdCity] = useState("")
 
-  function filterCity(value) {
+  const filterCity = (value) => {
     let idCity = cities["cities"].filter(city => city.label === value)
       .map(city => city.value)
       .join("")
@@ -18,14 +18,10 @@ export default function cityFilter(cities) {
     <>
       <Col ds={12} md={5} className=" p-0 pb-20 mx-5">
         <Autocomplete
-          id="combo-box-demo"
-          inputValue={value}
-          onInputChange={ (event, value)=> {setValue(value); filterCity(value)} }
-          options={cities["cities"]}
-          getOptionLabel={option => option.label}
-          renderInput={params => (
-            <TextField {...params} label="Ciudad" fullWidth />
-          )}
+          value={value}
+          cities={cities}
+          filterCity={filterCity}
+          setValue={setValue}
         />
         <input
           type="hidden"

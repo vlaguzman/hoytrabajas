@@ -3,6 +3,6 @@ es:
     first_offer:
       step_zeros:
         show:
-          title: 'El empleado ideal ¡si existe!'
+          title: 'La manera más rápida de crear una oferta ¡ganadora!'
           description: 'Crear tus ofertas con el uso de palabras claves, que harán el match perfecto con tu empleado ideal.'
-          button_action: 'Quiero publicar mi oferta'
+          button_action: 'Crear tu oferta'

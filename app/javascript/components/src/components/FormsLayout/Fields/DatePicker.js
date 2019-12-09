@@ -29,10 +29,12 @@ const DatePicker = props => {
       name={name}
       style={{ textTransform: 'capitalize' }}
       label={label}
-      maxDate={new Date()}
+      maxDate={dateOptions.maxDate || new Date()}
       onChange={onChange}
       value={inputValue || ''}
       labelFunc={formatLabel}
+      disableFuture={dateOptions.disableFuture || false}
+      disablePast={dateOptions.disablePast || false}
       InputProps={{
         endAdornment: (
           <InputAdornment position="end" className="date-picker-icon">
@@ -59,6 +61,7 @@ DatePicker.propTypes = {
   dateOptions: PropTypes.shape({
     format: PropTypes.string,
     disableFuture: PropTypes.bool,
+    disablePast: PropTypes.bool,
     emptyLabel: PropTypes.string,
     views: PropTypes.array
   }).isRequired

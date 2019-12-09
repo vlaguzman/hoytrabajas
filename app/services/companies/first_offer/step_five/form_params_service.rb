@@ -56,7 +56,7 @@ class Companies::FirstOffer::StepFive::FormParamsService < BaseFormWizardsServic
   end
 
   def available_work_day_ids_list
-    ListConverter.model_list AvailableWorkDay
+    ListConverter.model_list AvailableWorkDay, :no_sort
   end
 
   def job_aid_ids_list

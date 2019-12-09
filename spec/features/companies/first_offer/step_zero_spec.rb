@@ -10,19 +10,19 @@ RSpec.describe "like new company", type: :feature do
 
       visit companies_first_offer_step_zero_path
 
-      expect(page).to have_text(/El empleado ideal ¡si existe!/)
+      expect(page).to have_text(/La manera más rápida de crear una oferta ¡ganadora!/)
       expect(page).to have_text(/Crear tus ofertas con el uso de palabras claves, que harán el match perfecto con tu empleado ideal./)
-      expect(page).to have_text(/Quiero publicar mi oferta/)
+      expect(page).to have_text(/Crear tu oferta/)
     end
   end
 
-  feature "When click on 'Quiero completar mi perfil'" do
+  feature "When click on 'Crear tu oferta'" do
     scenario "Should redirect to step one", js: true do
       sign_in company
 
       visit companies_first_offer_step_zero_path
 
-      click_on('Quiero publicar mi oferta')
+      click_on('Crear tu oferta')
 
       expect(current_path).to eq(companies_first_offer_step_one_path)
     end

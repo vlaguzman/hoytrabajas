@@ -18,8 +18,8 @@ RSpec.describe ListConverter do
 
     context "When the model have records" do
       it "should return the expected object" do
-        job_category_one = FactoryBot.create(:job_category, description: 'sales')
-        job_category_two = FactoryBot.create(:job_category, description: 'bars')
+        job_category_one = create(:job_category, description: 'sales')
+        job_category_two = create(:job_category, description: 'bars')
         expected_array_list = [['sales', job_category_one.id], ['bars', job_category_two.id]]
 
         the_response = subject.model_array_list(JobCategory)
@@ -63,25 +63,40 @@ RSpec.describe ListConverter do
         expect(response).to match_array(expected_list)
       end
 
-      let(:create_cities) do
-        [
-          create(:city, description: "Axioland"),
-          create(:city, description: "Abecity"),
-          create(:city, description: "Zapapolis"),
-          create(:city, description: "Someville")
-        ]
-      end
+      context "return object in order" do
 
-      it "Should appear in alphabetic order" do
+        let(:create_cities) do
+          [
+            create(:city, description: "Zapapolis"),
+            create(:city, description: "Someville"),
+            create(:city, description: "Axioland"),
+            create(:city, description: "Abecity")
+          ]
+        end
 
-        create_cities
+        it "Should appear in alphabetic order by default" do
 
-        response = subject.model_list(City)
+          create_cities
 
-        expect(response.first[:description]).to eq("Abecity")
-        expect(response[1][:description]).to eq("Axioland")
-        expect(response[2][:description]).to eq("Someville")
-        expect(response.last[:description]).to eq("Zapapolis")
+          response = subject.model_list(City)
+
+          expect(response.first[:description]).to eq("Abecity")
+          expect(response[1][:description]).to eq("Axioland")
+          expect(response[2][:description]).to eq("Someville")
+          expect(response.last[:description]).to eq("Zapapolis")
+        end
+
+        it "Should not appear in alphabetic order by default" do
+
+          create_cities
+
+          response = subject.model_list(City, :no_sort)
+
+          expect(response.first[:description]).to eq("Zapapolis")
+          expect(response[1][:description]).to eq("Someville")
+          expect(response[2][:description]).to eq("Axioland")
+          expect(response.last[:description]).to eq("Abecity")
+        end
       end
     end
   end

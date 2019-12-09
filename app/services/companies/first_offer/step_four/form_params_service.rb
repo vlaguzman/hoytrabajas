@@ -64,11 +64,6 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
       close_date: {
         name: 'offer[close_date]',
         label: template_translations[:form][:formFields][:close_date],
-        dateOptions: {
-          format: 'dd MMMM yyyy',
-          disableFuture: false,
-          emptyLabel: '...'
-        },
         current_value: close_date
       }
     }

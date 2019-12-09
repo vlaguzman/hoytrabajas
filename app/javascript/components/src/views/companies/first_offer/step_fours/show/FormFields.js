@@ -5,6 +5,7 @@ import SelectChip from '../../../../../components/FormsLayout/Fields/SelectChip'
 import Slider from '../../../../../components/FormsLayout/Fields/Slider'
 import DatePicker from '../../../../../components/FormsLayout/Fields/DatePicker'
 import Checkbox from '../../../../../components/FormsLayout/Fields/Checkbox'
+import { maxDate } from '../../../../../../utils/date_functions'
 import {
   handleDeleteChip,
   handleChange,
@@ -39,6 +40,13 @@ const FormFields = props => {
   })
 
   const inputClassname = 'my-30 animated fadeIn inputField'
+
+  const dateOptions = {
+    format: 'dd/MM/yyyy',
+    disablePast: true,
+    maxDate: maxDate(),
+    emptyLabel: '...'
+  }
 
   const contractTypeField = useMemo(
     () => (
@@ -123,7 +131,7 @@ const FormFields = props => {
           handleSimpleChange={handleSimpleChange(formValues, setFormValues)}
           name={close_date.name}
           label={close_date.label}
-          dateOptions={close_date.dateOptions}
+          dateOptions={dateOptions}
           isRequired={false}
         />
       </Col>

@@ -22,9 +22,9 @@ es:
               from: ''
               to: ''
               salary_period_id: 'Pago'
-              working_day_ids: '¿Qué dias de la semana?'
-              available_work_day_ids: '¿En qué jornada?'
+              working_day_ids: '¿En qué jornada?'
+              available_work_day_ids: '¿Qué dias de la semana?'
               job_aid_ids: 'Auxilios o prestaciones asociadas a tu oferta'
             placeholders:
-              from: 'Ej: 750.000'
-              to: 'Ej: 750.000'
+              from: 'Ej: 750000'
+              to: 'Ej: 750000'

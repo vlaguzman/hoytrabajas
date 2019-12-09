@@ -13,15 +13,17 @@ module Companies::FirstOffer::StepSixService
   end
 
   def self.clean_params(params)
-    responsibility_ids  = prepare_params(params[:responsibility_ids])
-    requirement_ids     = prepare_params(params[:requirement_ids])
+    #TODO daniel, uncomment when responsabilities and requirement has been defined
+    #responsibility_ids  = prepare_params(params[:responsibility_ids])
+    #requirement_ids     = prepare_params(params[:requirement_ids])
     vehicle_ids         = prepare_params(params[:vehicle_ids])
     driving_licence_ids = prepare_params(params[:driving_licence_ids])
 
     params
       .inject({}) { |params, (key, value)|
-        params[:responsibility_ids]  = responsibility_ids;
-        params[:requirement_ids]     = requirement_ids;
+        #TODO daniel, uncomment when responsabilities and requirement has been defined
+        #params[:responsibility_ids]  = responsibility_ids;
+        #params[:requirement_ids]     = requirement_ids;
         params[:vehicle_ids]         = vehicle_ids;
         params[:driving_licence_ids] = driving_licence_ids;
         params

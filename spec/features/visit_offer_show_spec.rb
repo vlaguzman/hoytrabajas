@@ -9,7 +9,7 @@ RSpec.describe "visit offer path", type: :feature do
       it "should see the offer title", js: true do
         visit offers_path(visited_offer)
 
-        expect(page).to have_text(/Testing Title/)
+        expect(page).to have_text(/Testing title/)
       end
     end
   end

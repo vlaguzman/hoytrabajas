@@ -24,7 +24,7 @@ RSpec.describe "User searches for an offer", type: :feature do
           with_tag(:input, with: { name: 'q[title_cont]'})
         end
 
-        find("button[class='MuiButtonBase-root MuiButton-root MuiButton-text text-primary h-50']", visible: false).click
+        find(".filterForm__categoriesButton", visible: false).click
 
         expect(page).to have_text("Operario")
         expect(page).to have_text("5")
@@ -178,10 +178,10 @@ RSpec.describe "User searches for an offer", type: :feature do
           find("input#combo-box-demo", visible: false).set("mede")
           find("div[class='MuiAutocomplete-popper']").click
 
-          find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
+          find(".filterForm__searchButton", visible: false).click
 
           expect(current_path).to eq("#{offers_path}/")
-          expect(page).to have_content("Este Es El Query Por Ciudad")
+          expect(page).to have_content("Este es el query por ciudad")
         end
       end
 
@@ -192,11 +192,11 @@ RSpec.describe "User searches for an offer", type: :feature do
           find("input#combo-box-demo", visible: false).set("cali")
           find("div[class='MuiAutocomplete-popper']").click
 
-          find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
+          find(".filterForm__searchButton", visible: false).click
 
           expect(current_path).to eq("#{offers_path}/")
           expect(page).to have_content("No hay ningún trabajo en este momento")
-          expect(page).not_to have_content("Este Es El Query Por Ciudad")
+          expect(page).not_to have_content("Este es el query por ciudad")
         end
       end
     end
@@ -212,17 +212,17 @@ RSpec.describe "User searches for an offer", type: :feature do
 
           fill_in('keyword', with: 'oferta de sebas')
 
-          find("button[class='MuiButtonBase-root MuiButton-root MuiButton-text text-primary h-50']", visible: false).click
+          find(".filterForm__categoriesButton", visible: false).click
           find("div[id='Marketing']").click
 
           find("input#combo-box-demo", visible: false).set("chia")
           find("div[class='MuiAutocomplete-popper']").click
 
-          find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
+          find(".filterForm__searchButton", visible: false).click
 
-          expect(page).to have_content("Oferta De Sebas")
-          expect(page).not_to have_content("Esto Es Un Prueba De Sebas")
-          expect(page).not_to have_content("Test Sebas")
+          expect(page).to have_content("Oferta de sebas")
+          expect(page).not_to have_content("Esto es un prueba de sebas")
+          expect(page).not_to have_content("Test sebas")
         end
       end
 
@@ -232,19 +232,19 @@ RSpec.describe "User searches for an offer", type: :feature do
 
           fill_in('keyword', with: 'jhoan')
 
-          find("button[class='MuiButtonBase-root MuiButton-root MuiButton-text text-primary h-50']", visible: false).click
+          find(".filterForm__categoriesButton", visible: false).click
           find("div[id='Marketing']").click
 
           find("input#combo-box-demo", visible: false).set("caji")
           find("div[class='MuiAutocomplete-popper']").click
 
-          find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
+          find(".filterForm__searchButton", visible: false).click
 
-          expect(page).not_to have_content("Esto Es Un Prueba De Sebas")
-          expect(page).not_to have_content("Que Gran Oferta Sebas!")
-          expect(page).not_to have_content("Test Sebas")
-          expect(page).not_to have_content("Esta Oferta Tambien Es De Sebas")
-          expect(page).not_to have_content("Oferta De Sebas")
+          expect(page).not_to have_content("Esto es un prueba de sebas")
+          expect(page).not_to have_content("Que gran oferta sebas!")
+          expect(page).not_to have_content("Test sebas")
+          expect(page).not_to have_content("Esta oferta tambien es de sebas")
+          expect(page).not_to have_content("Oferta de sebas")
         end
       end
     end

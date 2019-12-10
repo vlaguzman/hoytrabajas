@@ -62,13 +62,15 @@ const OfferContent = ({ offer }) => {
         <Typography variant="caption" className="mt-10 text-secondary">
           <i className="ti-location-pin fw-bold" style={{ fontSize: '1rem' }} />{' '}
           {offer.city.description}
-          <i
+          {/* TODO Javier : add number of applications */}
+          {/* <i
             className="ti-hand-point-up fw-bold ml-10"
             style={{ fontSize: '1rem' }}
           />{' '}
-          100 Candidatos
+          100 Candidatos */}
         </Typography>
-        <div className="d-flex align-items-center justify-content-between mt-10">
+        {/* TODO anyone : add % of affinity and timer */}
+        {/* <div className="d-flex align-items-center justify-content-between mt-10">
           <Typography variant="h6" className="offerAffinity" component="span">
             64%
           </Typography>
@@ -83,7 +85,7 @@ const OfferContent = ({ offer }) => {
             />
             <span>24:00</span>
           </Typography>
-        </div>
+        </div> */}
       </div>
     </CardContent>
   )

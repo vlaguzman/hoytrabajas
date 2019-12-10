@@ -13,9 +13,9 @@ RSpec.describe "visit offer from home", type: :feature do
 
         
 
-        expect(page).to have_text(/Esto Es Un Texto Muuy Larg.../)
+        expect(page).to have_text(/Esto es un texto muuy larg.../)
         find(".cardOffer").hover
-        click_on("ver oferta", match: :first)
+        click_on("Ver oferta", match: :first)
 
         expect(page).to have_text(visited_offer.title)
         expect(page).to have_text(visited_offer.description)

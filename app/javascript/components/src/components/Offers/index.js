@@ -118,6 +118,7 @@ const Offers = props => {
         <Row className="justify-content-center align-items-center  my-30 ">
           <button
             type="button"
+            id="loadMoreOffers"
             className="a-button a-button--secondary a-button--big my-20"
             onClick={() => updateOffers()}
           >

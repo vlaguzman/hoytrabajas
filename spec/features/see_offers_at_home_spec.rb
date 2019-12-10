@@ -22,8 +22,8 @@ RSpec.describe "see offers at home", type: :feature, js: true do
         visit root_path
 
         expect(page).to have_text("The Name Of The Company Is Too ...")
-        expect(page).to have_text("The Title Of The Offer Is ...")
-        expect(page).to have_text("The Description Of The Offer Actually Is To Long, Really L...")
+        expect(page).to have_text("The title of the offer is ...")
+        expect(page).to have_text("The description of the offer actually is to long, really l...")
       end
     end
 
@@ -41,26 +41,26 @@ RSpec.describe "see offers at home", type: :feature, js: true do
     end 
     
     context "There are one not required_experience offer" do
-      it "should show me a message 'Sin Experiencia'" do
+      it "should show me a message 'Sin experiencia'" do
         offer = FactoryBot.create(:offer, :no_required_experience_offer, title: 'active_offer_no_experience')
 
         visit root_path
 
         expect(page).to have_text(offer.title.capitalize)
-        expect(page).to have_text("SIN EXPERIENCIA")
-        expect(page).not_to have_text("INICIO INMEDIATO")
+        expect(page).to have_text("Sin experiencia")
+        expect(page).not_to have_text("Inicio inmediato")
       end
     end
 
     context "There are inmediate_start offer" do
-      it "should show me a message 'INICIO INMEDIATO'" do
+      it "should show me a message 'Inicio inmediato'" do
         offer = FactoryBot.create(:offer, :immediate_start_offer, title: 'offer_inmediate_start')
 
         visit root_path
 
         expect(page).to have_text(offer.title.capitalize)
-        expect(page).to have_text("INICIO INMEDIATO")
-        expect(page).not_to have_text("SIN EXPERIENCIA")
+        expect(page).to have_text("Inicio inmediato")
+        expect(page).not_to have_text("Sin experiencia")
       end
     end
 

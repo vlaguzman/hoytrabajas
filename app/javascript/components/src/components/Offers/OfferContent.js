@@ -10,28 +10,45 @@ const RequiredExperienceBlock = ({ content }) => (
   <div className="offerTag a-tag__orange mr-5">{content}</div>
 )
 
-const InmediateStartBlock = ({ content }) => (
+RequiredExperienceBlock.propTypes = {
+  content: PropTypes.string.isRequired
+}
+
+const ImmediateStartBlock = ({ content }) => (
   <div color="success" className="offerTag a-tag__aqua">
     {content}
   </div>
 )
 
+ImmediateStartBlock.propTypes = {
+  content: PropTypes.string.isRequired
+}
+
 const NewFlagBlock = ({ content }) => (
   <div className="offerNewBadge a-badge__newOffer">{content}</div>
 )
+
+NewFlagBlock.propTypes = {
+  content: PropTypes.string.isRequired
+}
 
 const wordsShortener = (words, maxSize) => {
   return words.length > maxSize ? `${words.substring(0, maxSize)}...` : words
 }
 
-const OfferContent = ({ offer }) => {
+const OfferContent = ({ offer, translations }) => {
+  const {
+    tag_immediate_start,
+    tag_new_offer,
+    tag_without_required_experience
+  } = translations
   return (
     <CardContent className="offerContent pt-0 pb-5">
       <Avatar
         className="offerCompanyIcon"
         src={offer['company']['url_image_logo']}
       />
-      {offer.new_offer && <NewFlagBlock content="Nuevo" />}
+      {offer.new_offer && <NewFlagBlock content={tag_new_offer} />}
       <div className="a-badge__price px-0">
         <span>{`${offer.salary.currency.description} ${offer.salary.from}`}</span>
       </div>
@@ -52,10 +69,12 @@ const OfferContent = ({ offer }) => {
         <Row className="mr-0 justify-content-between align-items-end px-10 mb-10">
           <Row className="mr-0 px-10">
             {!offer.required_experience && (
-              <RequiredExperienceBlock content="Sin experiencia" />
+              <RequiredExperienceBlock
+                content={tag_without_required_experience}
+              />
             )}
             {offer.immediate_start && (
-              <InmediateStartBlock content="Inicio inmediato" />
+              <ImmediateStartBlock content={tag_immediate_start} />
             )}
           </Row>
         </Row>
@@ -94,6 +113,11 @@ const OfferContent = ({ offer }) => {
 export default OfferContent
 
 OfferContent.propTypes = {
+  translations: PropTypes.shape({
+    tag_new_offer: PropTypes.string.isRequired,
+    tag_immediate_start: PropTypes.string.isRequired,
+    tag_without_required_experience: PropTypes.string.isRequired
+  }).isRequired,
   offer: PropTypes.shape({
     title: PropTypes.string.isRequired,
     description: PropTypes.string,

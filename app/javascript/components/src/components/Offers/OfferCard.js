@@ -23,6 +23,12 @@ const OfferCard = ({
   const value_button = offer.is_applied
     ? offer_translations.button_disactive
     : offer_translations.button_active
+
+  const {
+    tag_without_required_experience,
+    tag_immediate_start,
+    tag_new_offer
+  } = offer_translations
   return (
     <Col className="m-offer cardOffer position-relative m-0 justify-content-center align-items-center px-0">
       <div className="bg-buttons-carusel MuiPaper-rounded position-absolute d-flex flex-column align-items-center justify-content-center">
@@ -67,8 +73,6 @@ const OfferCard = ({
             </button>
           </form>
         </Row>
-        {/* UNCOMMENT THIS ^^^^ */}
-
         {/* TO-DO-ANYONE: ACTIVE THE SUPER-APPLY
              <Row noGutters className="w-100 justify-content-center">
                <Button
@@ -132,7 +136,14 @@ const OfferCard = ({
               title="Oferta laboral"
             />
           </div>
-          <OfferContent offer={offer} />
+          <OfferContent
+            offer={offer}
+            translations={{
+              tag_new_offer,
+              tag_immediate_start,
+              tag_without_required_experience
+            }}
+          />
         </CardActionArea>
       </Card>
     </Col>
@@ -169,10 +180,14 @@ OfferCard.propTypes = {
   }),
   offer_translations: PropTypes.shape({
     button_active: PropTypes.string.isRequired,
+    button_disactive: PropTypes.string.isRequired,
     btn_apply: PropTypes.string.isRequired,
     btn_lg_apply_offer: PropTypes.string.isRequired,
     btn_apply_offer: PropTypes.string.isRequired,
     see_offer: PropTypes.string.isRequired,
-    btn_super_apply: PropTypes.string.isRequired
+    btn_super_apply: PropTypes.string.isRequired,
+    tag_new_offer: PropTypes.string.isRequired,
+    tag_immediate_start: PropTypes.string.isRequired,
+    tag_without_required_experience: PropTypes.string.isRequired
   })
 }

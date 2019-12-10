@@ -1,0 +1,22 @@
+en:
+  home:
+    cover:
+      welcome_text: 'Get access to more than 3000 job offers that we have for you'
+      filterForm:
+        categories: 'Categories'
+      call_to_action_text:
+        text: 'Are you a company?'
+        link: 'Post your offer now!'
+    offers:
+      title: 'Offers that may interest you'
+    categories:
+      title: 'Find your ideal job by categories'
+      subtitle: 'All related to your profile'
+      call_to_action_text:
+        text: 'Are you looking for a specific role?'
+        link: 'See roles by category'
+    info:
+      title: 'We guarantee a direct contact with the employer in less than 24 hours.'
+    affiliates:
+      title: 'Many companies trust us'
+      subtitle: 'with the talent of their companies'

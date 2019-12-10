@@ -32,3 +32,6 @@ es:
     btn_apply: 'Aplicar'
     btn_apply_offer: 'Aplicar oferta'
     btn_super_apply: 'Super Aplicación'
+    tag_new_offer: 'Nuevo'
+    tag_immediate_start: 'Inicio inmediato'
+    tag_without_required_experience: 'Sin experiencia'

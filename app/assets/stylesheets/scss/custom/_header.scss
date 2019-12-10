@@ -1,6 +1,7 @@
 /*======== Header Scss ========*/
 
 .navbar-wrapper {
+  @extend .a-shadow__1;
   position: fixed;
   background-color: transparent;
   z-index: 999 !important;
@@ -12,7 +13,6 @@
   flex-direction: column;
   .site-logo {
     padding: 1rem 0rem 0.8rem 0rem;
-    // background-color: $primary;
   }
   .navbar-left {
     margin-left: 0.85rem;

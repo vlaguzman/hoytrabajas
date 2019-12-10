@@ -21,11 +21,21 @@ const OfferCard = ({
   offer_translations
 }) => {
   const value_button = offer.is_applied
-    ? offer_translations.btn_apply
+    ? offer_translations.button_disactive
     : offer_translations.button_active
   return (
-    <Col className="cardOffer position-relative mb-30 justify-content-center align-items-center px-5">
+    <Col className="m-offer cardOffer position-relative m-0 justify-content-center align-items-center px-0">
       <div className="bg-buttons-carusel MuiPaper-rounded position-absolute d-flex flex-column align-items-center justify-content-center">
+        <Row noGutters className="w-100 justify-content-center">
+          <button
+            type="button"
+            className="w-80 a-button offerButton__seeOffer bg-white my-10 fw-bold"
+          >
+            <a href={`/offers/${offer['id_offer']}`}>
+              {offer_translations.see_offer}
+            </a>
+          </button>
+        </Row>
         <Row noGutters className="w-100 justify-content-center">
           <form
             action={path_applied_offers}
@@ -39,38 +49,26 @@ const OfferCard = ({
               name="applied_offer[offer_id]"
               value={offer.id_offer}
             />
-            <Button
+            <button
               variant="contained"
               type="submit"
-              size="large"
-              color="primary"
-              className={classNames('btn-apply w-80 my-10 text-white fw-bold', {
-                'a-button--disabled': offer.is_applied
-              })}
-              style={{ borderRadius: '30px' }}
+              className={classNames(
+                'a-button offerButton__apply btn-apply w-80 my-10 text-white fw-bold',
+                {
+                  'a-button--disabled': offer.is_applied
+                }
+              )}
             >
               {/* TO-DO-VLADO: made a review of the responsive 
                    <span className="d-none d-lg-inline">
                      {value_button_lg}
                    </span> */}
-              {/* <span className="d-lg-none"> */}
               {value_button}
-              {/* </span> */}
-            </Button>
+            </button>
           </form>
         </Row>
-        <Row noGutters className="w-100 justify-content-center">
-          <Button
-            style={{ borderRadius: '30px' }}
-            variant="contained"
-            className="w-80 bg-white my-10 text-primary fw-bold"
-            size="large"
-          >
-            <a href={`/offers/${offer['id_offer']}`}>
-              {offer_translations.see_offer}
-            </a>
-          </Button>
-        </Row>
+        {/* UNCOMMENT THIS ^^^^ */}
+
         {/* TO-DO-ANYONE: ACTIVE THE SUPER-APPLY
              <Row noGutters className="w-100 justify-content-center">
                <Button
@@ -123,21 +121,20 @@ const OfferCard = ({
                </IconButton>
              </Row> */}
       </div>
-      {/* <div className="content"> */}
-      <Card className="tarjeta mx-5" raised>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            alt="Oferta laboral"
-            height="180"
-            width="300"
-            image={offer.job_category_image}
-            title="Oferta laboral"
-          />
+      <Card className="h-100 tarjeta a-shadow__offerCard">
+        <CardActionArea className="offerWrapper">
+          <div className="offerImage__wrapper">
+            <CardMedia
+              component="img"
+              alt="Oferta laboral"
+              height="100%"
+              image={offer.job_category_image}
+              title="Oferta laboral"
+            />
+          </div>
           <OfferContent offer={offer} />
         </CardActionArea>
       </Card>
-      {/* </div> */}
     </Col>
   )
 }

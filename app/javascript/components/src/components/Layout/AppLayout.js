@@ -19,7 +19,7 @@ const AppLayout = ({ children }) => {
           <ThemeProvider theme={theme}>
             <div className="rct-app-content">
               <div className="rct-page" style={{ background: 'white' }}>
-                <CssBaseline />
+                {/* <CssBaseline /> */}
                 <div className="rct-page-content">{children}</div>
               </div>
             </div>

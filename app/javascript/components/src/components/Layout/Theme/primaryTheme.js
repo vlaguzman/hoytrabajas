@@ -10,6 +10,16 @@ const theme = createMuiTheme({
       main: AppConfig.themeColors.secondary
     }
   },
+  typography: {
+    fontFamily: 'Nunito Sans',
+    body1: {
+      fontFamily: 'Nunito Sans'
+    },
+    body2: {
+      fontFamily: 'Nunito Sans',
+      fontSize: '1rem'
+    }
+  },
   overrides: {
     MuiPickersModal: {
       dialog: {
@@ -107,6 +117,11 @@ const theme = createMuiTheme({
     MuiDialog: {
       paperWidthXs: {
         maxWidth: '400px'
+      }
+    },
+    MuiPaper: {
+      elevation1: {
+        boxShadow: `0 4px 33px 4px rgba(0, 0, 0, 0.2)`
       }
     }
   }

@@ -17,7 +17,7 @@ RSpec.describe "apply offer from offer index", type: :feature, js: :true do
       find(".btn-apply", match: :first).click
 
       expect(current_path).to eq(offer_path(offer.id))
-      expect(page).to have_button('Aplicado')
+      expect(page).to have_button('¡Has aplicado!')
       expect(AppliedOffer.count).to eq(1)
     end
   end
@@ -33,7 +33,7 @@ RSpec.describe "apply offer from offer index", type: :feature, js: :true do
       find(".btn-apply", match: :first).click
 
       expect(current_path).to eq(offer_path(offer.id))
-      expect(page).to have_button('Aplicado')
+      expect(page).to have_button('¡Has aplicado!')
       expect(AppliedOffer.count).to eq(1)
 
       visit offers_path

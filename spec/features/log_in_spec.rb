@@ -50,7 +50,7 @@ RSpec.describe "User can Log In", type: :feature do
 
       find(".modal--close-icon").click
 
-      expect(page).to have_text("Encuentra trabajo compatible con tus habilidades y competencias") 
+      expect(page).to have_text("Accede hoy a más de 3000 ofertas laborales que tenemos para ti de forma fácil") 
       expect(current_path).to eq(root_path)
     end
   end

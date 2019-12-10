@@ -1,8 +1,4 @@
-export const contenido = {
-  cover: {
-    welcome_Text: `Encuentra trabajo compatible con tus habilidades y competencias`,
-    subtitle: 'El trabajo ideal lo encuentras en HoyTrabajas.com'
-  },
+export default {
   filterForm: {
     fields1: [
       { type: 'text', label: 'Palabra clave', name: 'keyWord' },
@@ -36,8 +32,7 @@ export const contenido = {
           { label: 'text', value: 'test' }
         ]
       }
-    ],
-    button1: 'Categories'
+    ]
   },
   categories: {
     title: {

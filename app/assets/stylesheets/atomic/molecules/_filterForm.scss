@@ -1,0 +1,12 @@
+.m-filterForm {
+  .filterForm__categoriesButton,
+  .filterForm__searchButton {
+    background-color: $color__orange-main;
+    color: white;
+  }
+  .filterForm__categoriesButton {
+    text-transform: none !important;
+    padding: 6px 16px;
+    border-radius: 7px;
+  }
+}

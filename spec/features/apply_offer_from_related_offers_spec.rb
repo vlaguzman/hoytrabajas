@@ -21,7 +21,7 @@ RSpec.describe "User applied offer from the related offer section", type: :featu
       find(".btn-apply", match: :first).click
 
       expect(current_path).to eq(offer_path(offer_b.id))
-      expect(page).to have_button('Aplicado')
+      expect(page).to have_button('¡Has aplicado!')
       expect(AppliedOffer.count).to eq(1)
     end
   end
@@ -39,7 +39,7 @@ RSpec.describe "User applied offer from the related offer section", type: :featu
       find(".btn-apply", match: :first).click
 
       expect(current_path).to eq(offer_path(offer_b.id))
-      expect(page).to have_button('Aplicado')
+      expect(page).to have_button('¡Has aplicado!')
       expect(AppliedOffer.count).to eq(1)
 
       visit offer_path(offer.id)

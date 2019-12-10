@@ -11,7 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  */
-@import 'variables';
+@import 'variables/colors';
 @import 'scss/bootstrap';
 
 // //Slick Slider
@@ -21,7 +21,7 @@
 // /*==== Core Mixins ====*/
 @import 'scss/custom/mixins/mixin';
 // /*==== Google Fonts  ====*/
-@import url('https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700,800,900&display=swap');
 // // Custom themes Files
 @import 'scss/custom/themes/themes';
 // /*==== Core Utilities =====*/
@@ -47,4 +47,15 @@
 
 @import 'components/filter_home';
 
-@import 'atomic';
+@import 'atomic/atoms/typography';
+@import 'atomic/atoms/shadows';
+@import 'atomic/atoms/buttons';
+@import 'atomic/atoms/badges';
+@import 'atomic/atoms/tags';
+
+@import 'atomic/molecules/offer';
+@import 'atomic/molecules/filterForm';
+
+@import 'atomic/organisms/offers';
+
+@import 'atomic/templates/home';

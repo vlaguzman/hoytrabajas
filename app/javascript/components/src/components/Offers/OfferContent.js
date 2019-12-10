@@ -2,133 +2,89 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
 import Avatar from '@material-ui/core/Avatar'
-import Divider from '@material-ui/core/Divider'
-import { Badge, Row } from 'reactstrap'
+import { Row } from 'reactstrap'
 import CardContent from '@material-ui/core/CardContent'
+import { capitalizeFirstLetter } from '../../helpers'
 
-const RequiredExperienceBlock = () => (
-  <Badge color="primary" className="text-uppercase mr-5 d-block">
-    <small>Sin Experiencia</small>
-  </Badge>
+const RequiredExperienceBlock = ({ content }) => (
+  <div className="offerTag a-tag__orange mr-5">{content}</div>
 )
 
-const InmediateStartBlock = () => (
-  <Badge color="success" className="text-uppercase d-block">
-    <small>Inicio Inmediato</small>
-  </Badge>
+const InmediateStartBlock = ({ content }) => (
+  <div color="success" className="offerTag a-tag__aqua">
+    {content}
+  </div>
 )
 
-const NewFlagBlock = () => (
-  <Badge
-    color="primary"
-    className="px-4 position-absolute font-weight-bolder new_badge"
-    style={{ top: '-0.8rem', right: '1rem' }}
-  >
-    <span className="font-weight-bolder position-relative ml-20">
-      <i
-        className="ti-eye mr-5 pt-5 position-absolute"
-        style={{ fontSize: '1rem', top: '-7px', left: '-20px' }}
-      />
-      <strong>Nuevo</strong>
-    </span>
-  </Badge>
+const NewFlagBlock = ({ content }) => (
+  <div className="offerNewBadge a-badge__newOffer">{content}</div>
 )
 
-const WordsShortener = (words, maxSize) => {
+const wordsShortener = (words, maxSize) => {
   return words.length > maxSize ? `${words.substring(0, maxSize)}...` : words
 }
 
 const OfferContent = ({ offer }) => {
   return (
-    <CardContent className="position-relative pb-5">
+    <CardContent className="offerContent pt-0 pb-5">
       <Avatar
-        className="position-absolute"
-        style={{ top: '-10rem', left: '6%', width: '4rem', height: '4rem' }}
+        className="offerCompanyIcon"
         src={offer['company']['url_image_logo']}
       />
-      {offer['new_offer'] && NewFlagBlock()}
-      <Badge
-        color="light"
-        className="p-14 position-absolute font-weight-bolder text-dark bg-white"
-        style={{ top: '-1.4rem', left: '1rem', fontSize: '0.93rem' }}
-      >
-        <span className="font-weight-bolder">
-          <strong>{offer['salary']['currency']['description']}</strong>
-          <strong>{offer['salary']['from']}</strong>
-        </span>
-      </Badge>
-      <Typography
-        gutterBottom
-        variant="h6"
-        component="h1"
-        className="mb-0 mt-10 fw-bold"
-        style={{ fontSize: '18px' }}
-      >
-        {WordsShortener(offer['title'], 26)}
+      {offer.new_offer && <NewFlagBlock content="Nuevo" />}
+      <div className="a-badge__price px-0">
+        <span>{`${offer.salary.currency.description} ${offer.salary.from}`}</span>
+      </div>
+      <Typography variant="h6" component="h2" className="offerTitle my-0">
+        {capitalizeFirstLetter(wordsShortener(offer.title, 26))}
+      </Typography>
+      <Typography variant="h6" component="h4" className="offerSubtitle mb-10">
+        {wordsShortener(offer.company.name, 31)}
       </Typography>
       <Typography
-        gutterBottom
-        variant="subtitle1"
-        component="div"
-        className="mb-10"
-        style={{ fontWeight: '500', fontSize: '14px' }}
-      >
-        {WordsShortener(offer['company']['name'], 31)}
-      </Typography>
-      <Typography
-        className="text-secondary mb-10"
         variant="body2"
         component="p"
+        className="offerDescription mb-10"
       >
-        {WordsShortener(offer['description'], 58)}
+        {capitalizeFirstLetter(wordsShortener(offer.description, 58))}
       </Typography>
-      {/* <Typography variant="caption" className="text-secondary">
-        <i
-          className="ti-location-pin fw-bold mr-5"
-          style={{ fontSize: '1rem' }}
-        />{' '}
-        {offer['city']['description']}
-        <i
-          className="ti-hand-point-up fw-bold ml-20"
-          style={{ fontSize: '1rem' }}
-        />
-        100
-      </Typography> */}
-      <Row className="mr-0 justify-content-between align-items-end px-10 my-10">
-        <Row className="mr-0 px-10">
-          {offer['required_experience'] === false && RequiredExperienceBlock()}
-          {offer['immediate_start'] && InmediateStartBlock()}
+      <div className="mt-auto">
+        <Row className="mr-0 justify-content-between align-items-end px-10 mb-10">
+          <Row className="mr-0 px-10">
+            {!offer.required_experience && (
+              <RequiredExperienceBlock content="Sin experiencia" />
+            )}
+            {offer.immediate_start && (
+              <InmediateStartBlock content="Inicio inmediato" />
+            )}
+          </Row>
         </Row>
-      </Row>
-      <Divider variant="middle" className="mx-0" />
-      <Row className="justify-content-between mt-10 mr-0">
-        {/* <Typography
-          variant="h6"
-          className="text-muted text-right ml-10"
-          component="span"
-        >
-          <strong>64%</strong>
-          <Typography
-            style={{ textTransform: 'none' }}
-            component="span"
-            variant="body1"
-          >
-            {' '}
-            de afinidad{' '}
-          </Typography>
-        </Typography> */}
-        {/* <Typography variant="body1" className="fw-bold mt-10" component="span">
+        <Typography variant="caption" className="mt-10 text-secondary">
+          <i className="ti-location-pin fw-bold" style={{ fontSize: '1rem' }} />{' '}
+          {offer.city.description}
           <i
-            className="ti-timer fw-bold text-primary mr-5"
+            className="ti-hand-point-up fw-bold ml-10"
             style={{ fontSize: '1rem' }}
-          />
-          24:00
-        </Typography> */}
-        {/* <Typography variant="body1" >
-              <i className="ti-eye fw-bold text-primary mr-5" style={{fontSize: '1rem'}}></i> 
-              2 días atrás
-            </Typography> */}
-      </Row>
+          />{' '}
+          100 Candidatos
+        </Typography>
+        <div className="d-flex align-items-center justify-content-between mt-10">
+          <Typography variant="h6" className="offerAffinity" component="span">
+            64%
+          </Typography>
+          <Typography
+            variant="body1"
+            className="fw-bold offerTimer color__slategray-dark"
+            component="span"
+          >
+            <i
+              className="ti-timer fw-bold mt-5 mr-5"
+              style={{ fontSize: '12px ' }}
+            />
+            <span>24:00</span>
+          </Typography>
+        </div>
+      </div>
     </CardContent>
   )
 }

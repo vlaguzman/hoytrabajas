@@ -3,13 +3,14 @@ import PropTypes from 'prop-types'
 import { Row } from 'reactstrap'
 import Button from '@material-ui/core/Button'
 import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import OfferCard from './OfferCard'
 import useWindowSize from '../../hooks/useWindowSize'
 
 const OfferCardsWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  padding: 0 2.5%;
+  grid-gap: 35px;
   margin: auto;
   @media (max-width: 575px) {
     grid-template-columns: 1fr;
@@ -115,18 +116,21 @@ const Offers = props => {
       <OfferCardsWrapper>{offerCards}</OfferCardsWrapper>
       {loadMoreOffers && offers.length >= 1 && offers.length > offersToDisplay && (
         <Row className="justify-content-center align-items-center  my-30 ">
-          <StyledButton
-            color="primary"
-            windowSize="large"
-            variant="outlined"
-            className="my-20 text-wrap"
+          <button
+            type="button"
+            className="a-button a-button--secondary a-button--big my-20"
             onClick={() => updateOffers()}
           >
             {(!hasAllOffers && offersToDisplay >= offersLimit) ||
-            (!hasAllOffers && offersToDisplay >= offers.length)
-              ? 'Ver el listado de ofertas »'
-              : `${offer_translations.index.btn_more_offers}`}
-          </StyledButton>
+            (!hasAllOffers && offersToDisplay >= offers.length) ? (
+              offer_translations.index.btn_all_offers
+            ) : (
+              <>
+                <FontAwesomeIcon icon="search" size="sm" className="mr-10" />
+                {offer_translations.index.btn_more_offers}
+              </>
+            )}
+          </button>
         </Row>
       )}
     </>
@@ -143,7 +147,8 @@ Offers.propTypes = {
   offer_translations: PropTypes.shape({
     index: PropTypes.shape({
       no_offers: PropTypes.string.isRequired,
-      btn_more_offers: PropTypes.string.isRequired
+      btn_more_offers: PropTypes.string.isRequired,
+      btn_all_offers: PropTypes.string.isRequired
     })
   }),
   hasAllOffers: PropTypes.bool,

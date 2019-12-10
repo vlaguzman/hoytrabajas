@@ -1,22 +1,25 @@
 .a-tag__base {
-  padding: 3px;
+  font-size: 10px;
+  padding: 3px 6px;
+  font-weight: 700;
   border-radius: 3.6px;
+  text-transform: none;
 }
 
 .a-tag__orange {
   @extend .a-tag__base;
   color: $color__orange-main;
-  background-color: $color__orange-light;
+  background-color: $color__orange-extralight;
 }
 
 .a-tag__aqua {
   @extend .a-tag__base;
-  color: $color__aqua-main;
-  background-color: $color__aqua-light;
+  color: $color__aqua-dark;
+  background-color: $color__aqua-extralight;
 }
 
 .a-tag__blue {
   @extend .a-tag__base;
   color: $color__blue-main;
-  background-color: $color__blue-light;
+  background-color: $color__blue-extralight;
 }

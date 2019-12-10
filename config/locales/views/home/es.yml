@@ -1,0 +1,22 @@
+es:
+  home:
+    cover:
+      welcome_text: 'Accede hoy a más de 3000 ofertas laborales que tenemos para ti de forma fácil'
+      filterForm:
+        categories: 'Categorías'
+      call_to_action_text:
+        text: '¿Eres una empresa?'
+        link: '¡Publica tu oferta ahora!'
+    offers:
+      title: 'Ofertas que podrían interesarte'
+    categories:
+      title: 'Encuentra tu empleo ideal por categorías'
+      subtitle: 'Todas afines a tu perfil'
+      call_to_action_text:
+        text: '¿Buscas un cargo específico?'
+        link: 'Ver cargos por categoría'
+    info:
+      title: 'Garantizamos una conexión directa con el empleador en menos de 24 horas a la aplicación.'
+    affiliates:
+      title: 'Muchas empresas confían en nosotros'
+      subtitle: 'el talento de su empresa'

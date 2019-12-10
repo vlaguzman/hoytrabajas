@@ -1,69 +1,99 @@
-.a-typo__title-h1 {
-  font-size: 96px;
-  letter-spacing: -1.5px;
-  font-weight: 300;
+@mixin get-typo($name) {
+  @if ($name == titleH1) {
+    font-size: 96px;
+    letter-spacing: -1.5px;
+    font-weight: 300;
+  } @else if ($name == titleH2) {
+    font-size: 60px;
+    letter-spacing: -0.5px;
+    font-weight: 300;
+  } @else if ($name == titleH3) {
+    font-size: 48px;
+    letter-spacing: 0;
+  } @else if ($name == titleH4) {
+    font-size: 34px;
+    letter-spacing: 0.25px;
+  } @else if ($name == titleH5) {
+    font-size: 24px;
+    letter-spacing: 0.5px;
+  } @else if ($name == titleH6) {
+    font-size: 20px;
+    letter-spacing: 0.25px;
+  } @else if ($name == body1) {
+    font-size: 16px;
+    letter-spacing: 0.5px;
+  } @else if ($name == body2) {
+    font-size: 14px;
+    letter-spacing: 0.25px;
+  } @else if ($name == subtitle1) {
+    font-size: 16px;
+    letter-spacing: 0.15px;
+  } @else if ($name == subtitle2) {
+    font-size: 14px;
+    letter-spacing: 0.1px;
+  } @else if ($name == button) {
+    font-size: 14px;
+    letter-spacing: 1.25px;
+    text-transform: uppercase !important;
+    font-weight: 800 !important;
+  } @else if ($name == caption) {
+    font-size: 12px;
+    letter-spacing: 0.4px;
+  } @else if ($name == overline) {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
 }
 
-.a-typo__title-h2 {
-  font-size: 60px;
-  letter-spacing: -0.5px;
-  font-weight: 300;
+.a-typo__titleH1 {
+  @include get-typo('titleH1');
 }
 
-.a-typo__title-h3 {
-  font-size: 48px;
-  letter-spacing: 0;
+.a-typo__titleH2 {
+  @include get-typo('titleH2');
 }
 
-.a-typo__title-h4 {
-  font-size: 34px;
-  letter-spacing: 0.25px;
+.a-typo__titleH3 {
+  @include get-typo('titleH3');
 }
 
-.a-typo__title-h5 {
-  font-size: 24px;
-  letter-spacing: 0.5px;
+.a-typo__titleH4 {
+  @include get-typo('titleH4');
 }
 
-.a-typo__title-h5 {
-  font-size: 20px;
-  letter-spacing: 0.25px;
+.a-typo__titleH5 {
+  @include get-typo('titleH5');
 }
 
-.a-typo__body-1 {
-  font-size: 16px;
-  letter-spacing: 0.5px;
+.a-typo__titleH6 {
+  @include get-typo('titleH6');
 }
 
-.a-typo__body-2 {
-  font-size: 14px;
-  letter-spacing: 0.25px;
+.a-typo__body1 {
+  @include get-typo('body1');
 }
 
-.a-typo__subtitle-1 {
-  font-size: 16px;
-  letter-spacing: 0.15px;
+.a-typo__body2 {
+  @include get-typo('body2');
 }
 
-.a-typo__subtitle-2 {
-  font-size: 14px;
-  letter-spacing: 0.1px;
+.a-typo__subtitle1 {
+  @include get-typo('subtitle1');
+}
+
+.a-typo__subtitle2 {
+  @include get-typo('subtitle2');
 }
 
 .a-typo__button {
-  font-size: 14px;
-  letter-spacing: 1.25px;
-  text-transform: uppercase;
-  font-weight: 800;
+  @include get-typo('button');
 }
 
 .a-typo__caption {
-  font-size: 12px;
-  letter-spacing: 0.4px;
+  @include get-typo('caption');
 }
 
 .a-typo__overline {
-  font-size: 10px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+  @include get-typo('overline');
 }

@@ -34,7 +34,7 @@ const OfferCard = ({
         <Row noGutters className="w-100 justify-content-center">
           <a
             href={`/offers/${offer['id_offer']}`}
-            className="w-80 a-button offerButton__seeOffer bg-white my-10 fw-bold"
+            className="w-80 a-button offerButton__seeOffer bg-white my-10"
           >
             {offer_translations.see_offer}
           </a>
@@ -56,7 +56,7 @@ const OfferCard = ({
               variant="contained"
               type="submit"
               className={classNames(
-                'a-button offerButton__apply btn-apply w-80 my-10 text-white fw-bold',
+                'a-button offerButton__apply btn-apply w-80 my-10 text-white',
                 {
                   'a-button--disabled': offer.is_applied
                 }
@@ -75,7 +75,7 @@ const OfferCard = ({
                <Button
                  style={{ borderRadius: '30px' }}
                  variant="contained"
-                 className="w-70 my-10 blueGreen-btn fw-bold"
+                 className="w-70 my-10 blueGreen-btn"
                  size="large"
                >
                  {offer_translations.btn_super_apply}

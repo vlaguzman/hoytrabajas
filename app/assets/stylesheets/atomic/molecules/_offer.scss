@@ -1,18 +1,24 @@
 .m-offer {
+  max-width: 400px;
+  margin: auto;
+
   .offerWrapper {
     height: 100%;
     justify-content: flex-start;
     display: flex;
     flex-direction: column;
   }
+
   .offerImage__wrapper {
     height: 140px;
   }
+
   .offerContent {
     flex: 1;
     display: flex;
     flex-direction: column;
   }
+
   .offerCompanyIcon {
     position: absolute;
     top: 10px;
@@ -20,6 +26,7 @@
     width: 45px;
     height: 45px;
   }
+
   .offerTitle {
     @include get-typo('subtitle1');
     color: $color__slategray-dark;
@@ -27,29 +34,35 @@
     text-transform: none;
     padding-top: 10px;
   }
+
   .offerSubtitle {
     @include get-typo('subtitle2');
     color: $color__blue-main;
     font-weight: 700;
   }
+
   .offerDescription {
     @include get-typo('subtitle2');
     color: $color__gray-main;
     text-transform: none;
   }
+
   .offerAffinity {
     color: $color__blue-main;
     font-weight: 800;
   }
+
   .offerTimer {
     font-weight: 900;
   }
+
   .offerButton__apply,
   .offerButton__seeOffer {
     border-radius: 50px;
     padding: 8px;
-    text-transform: none !important;
+    text-transform: none;
   }
+
   .offerButton__apply {
     background: $color__orange-main;
     color: white;

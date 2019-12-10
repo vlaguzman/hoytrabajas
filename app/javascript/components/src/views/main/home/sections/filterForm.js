@@ -173,7 +173,7 @@ const FilterForm = ({ translations, common, button1, fields1, cities }) => {
           <FormGen fields={fields1} />
           <ComboBox cities={cities} />
           <button
-            className="a-button__fab a-button--primary mb-10 search_button filterForm__searchButton"
+            className="a-buttonFab a-button--primary mb-10 search_button filterForm__searchButton"
             type="submit"
           >
             <FontAwesomeIcon icon="search" style={{ fontSize: '26px' }} />

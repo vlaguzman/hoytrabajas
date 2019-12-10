@@ -28,6 +28,7 @@ html {
 }
 html {
   font-family: $font-family-base;
+  font-size: 1rem;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -300,6 +301,12 @@ address {
   font-family: $font-family-base !important;
 }
 
+// temporary fix to shadows overrides without !important
+.MuiPaper-root.a-shadow__offerCard {
+  box-shadow: 0 3px 15px 2px transparentize($color__palelilac-main, 0.8),
+    0 36px 40px -13px $color__palelilac-main;
+}
+
 // MATERIAL-UI STYLES //
 
 .SvgIcon-root {
@@ -322,7 +329,7 @@ address {
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-family: $font-family-base;
   font-weight: 500;
   line-height: 1.75;
   border-radius: 4px;

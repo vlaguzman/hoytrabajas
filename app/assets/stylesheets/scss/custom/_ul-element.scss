@@ -8,7 +8,7 @@
   .alert {
     padding: 0;
     .alert-addon {
-      background-color: rgba(0,0,0,0.2);
+      background-color: rgba(0, 0, 0, 0.2);
       display: flex;
       font-size: 1.563rem; //25px;
       width: 50px;
@@ -46,7 +46,8 @@
 }
 /*========== Avatar Scss ==========*/
 .avatar-wrapper {
-  [class^="border-"], [class*="border-"] {
+  [class^='border-'],
+  [class*='border-'] {
     border-width: 2px;
     border-style: solid;
   }
@@ -82,25 +83,29 @@
   margin-bottom: 1.875rem; //30px;
   text-transform: capitalize;
 }
-.btn *, a[role=button], button[type=button] {
-  outline: none;
+.btn {
   text-transform: capitalize;
-  font-weight: $font-weight-normal;
 }
-.btn-lg, .btn-group-lg > .btn {
-	padding: 0.8rem 1rem !important;
-	font-size: 1.1rem !important;
-	line-height: 1.5 !important;
+.btn-lg,
+.btn-group-lg > .btn {
+  padding: 0.8rem 1rem !important;
+  font-size: 1.1rem !important;
+  line-height: 1.5 !important;
 }
-[class^="btn-"], [class*="btn-"], button {
+[class^='btn-'],
+[class*='btn-'],
+button {
   &:focus {
     box-shadow: none !important;
     outline: none;
   }
 }
-.btn-warning, .btn-info {
+.btn-warning,
+.btn-info {
   color: $white;
-  &:hover, &:focus, &.active {
+  &:hover,
+  &:focus,
+  &.active {
     color: $white;
   }
 }
@@ -110,10 +115,10 @@
     margin: 0 5px;
   }
 }
-.btn-icon-square{
-   span{
-      display: inline-block;
-   }
+.btn-icon-square {
+  span {
+    display: inline-block;
+  }
 }
 .btn-small {
   padding: 4px 15px;
@@ -124,11 +129,11 @@
   font-size: 12px !important;
   min-height: 30px !important;
 }
-.btn-sm:not(.btn-group .btn){
-  font-size:1rem !important;
-  height:2rem !important;
-  width:auto !important;
-  min-height:2rem !important;
+.btn-sm:not(.btn-group .btn) {
+  font-size: 1rem !important;
+  height: 2rem !important;
+  width: auto !important;
+  min-height: 2rem !important;
 }
 
 .btn-transparent {
@@ -173,7 +178,9 @@
 .badge:not(.badge-xs) {
   padding: 5px 15px 4px;
   color: $white;
-  &:hover, &:focus, &.active {
+  &:hover,
+  &:focus,
+  &.active {
     color: $white;
   }
 }
@@ -182,11 +189,11 @@
 }
 /*========== Cards Scss ==========*/
 .card-img-overlay {
-  opacity: .8;
+  opacity: 0.8;
   color: $white;
 }
 /*========== Chip Scss ==========*/
-.chip-wrapper:not([class*="chip-outline-"]) {
+.chip-wrapper:not([class*='chip-outline-']) {
   path {
     fill: $white !important;
   }
@@ -198,7 +205,12 @@
 }
 /*======== GridList Scss =========*/
 .gradient-overlay {
-  background: -webkit-linear-gradient(180deg,rgba(0,0,0,.7) 0,rgba(0,0,0,.3) 70%,transparent) !important
+  background: -webkit-linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.7) 0,
+    rgba(0, 0, 0, 0.3) 70%,
+    transparent
+  ) !important;
 }
 /*========== Lists Scss ==========*/
 .list-wrapper {
@@ -213,7 +225,7 @@
 @media (max-width: 1024px) and (min-width: 320px) {
   .cardsmasonry-wrapper {
     .card-columns {
-    	column-count: 2;
+      column-count: 2;
     }
   }
 }
@@ -246,7 +258,7 @@
 @media (max-width: 390px) {
   .app-wrapper {
     .navbar-right {
-      li:nth-child(n+2) {
+      li:nth-child(n + 2) {
         display: none;
       }
     }

@@ -100,7 +100,7 @@ const OfferContent = ({ offer, translations }) => {
           >
             <i
               className="ti-timer fw-bold mt-5 mr-5"
-              style={{ fontSize: '12px ' }}
+              style={{ fontSize: '12px' }}
             />
             <span>24:00</span>
           </Typography>

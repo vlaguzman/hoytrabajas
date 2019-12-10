@@ -1,44 +1,10 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { Row } from 'reactstrap'
-import Button from '@material-ui/core/Button'
-import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import OfferCard from './OfferCard'
 import useWindowSize from '../../hooks/useWindowSize'
 
-const OfferCardsWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 35px;
-  margin: auto;
-  @media (max-width: 575px) {
-    grid-template-columns: 1fr;
-    padding: 0 10%;
-  }
-  @media (max-width: 900px) and (min-width: 576px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @media (max-width: 1200px) and (min-width: 901px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-`
-
-const StyledOfferCard = styled(OfferCard)`
-  max-width: 400px;
-  margin: auto;
-`
-
-const StyledButton = styled(Button)`
-  text-transform: uppercase !important;
-  padding: 15px 60px;
-  border-radius: 50px;
-  @media (max-width: 575px) {
-    text-transform: none !important;
-    font-size: 16px;
-    line-height: 26px;
-  }
-`
 const Offers = props => {
   const {
     offers,
@@ -95,7 +61,7 @@ const Offers = props => {
         offers.map((o, index) =>
           (!hasAllOffers && index < offersLimit && index < offersToDisplay) ||
           index < offersToDisplay ? (
-            <StyledOfferCard
+            <OfferCard
               key={o['title']}
               offer={o}
               offer_translations={offer_translations}
@@ -113,7 +79,7 @@ const Offers = props => {
 
   return (
     <>
-      <OfferCardsWrapper>{offerCards}</OfferCardsWrapper>
+      <div className="offersGrid">{offerCards}</div>
       {loadMoreOffers && offers.length >= 1 && offers.length > offersToDisplay && (
         <Row className="justify-content-center align-items-center  my-30 ">
           <button

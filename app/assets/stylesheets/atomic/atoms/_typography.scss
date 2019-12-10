@@ -1,46 +1,46 @@
 @mixin get-typo($name) {
   @if ($name == titleH1) {
-    font-size: 96px;
+    font-size: 6rem;
     letter-spacing: -1.5px;
     font-weight: 300;
   } @else if ($name == titleH2) {
-    font-size: 60px;
+    font-size: 3.75rem;
     letter-spacing: -0.5px;
     font-weight: 300;
   } @else if ($name == titleH3) {
-    font-size: 48px;
+    font-size: 3rem;
     letter-spacing: 0;
   } @else if ($name == titleH4) {
-    font-size: 34px;
+    font-size: 2.125rem;
     letter-spacing: 0.25px;
   } @else if ($name == titleH5) {
-    font-size: 24px;
+    font-size: 1.5rem;
     letter-spacing: 0.5px;
   } @else if ($name == titleH6) {
-    font-size: 20px;
+    font-size: 1.25rem;
     letter-spacing: 0.25px;
   } @else if ($name == body1) {
-    font-size: 16px;
+    font-size: 1rem;
     letter-spacing: 0.5px;
   } @else if ($name == body2) {
-    font-size: 14px;
+    font-size: 0.875rem;
     letter-spacing: 0.25px;
   } @else if ($name == subtitle1) {
-    font-size: 16px;
+    font-size: 1rem;
     letter-spacing: 0.15px;
   } @else if ($name == subtitle2) {
-    font-size: 14px;
+    font-size: 0.875rem;
     letter-spacing: 0.1px;
   } @else if ($name == button) {
-    font-size: 14px;
+    font-size: 0.875rem;
     letter-spacing: 1.25px;
-    text-transform: uppercase !important;
-    font-weight: 800 !important;
+    text-transform: uppercase;
+    font-weight: 800;
   } @else if ($name == caption) {
-    font-size: 12px;
+    font-size: 0.75rem;
     letter-spacing: 0.4px;
   } @else if ($name == overline) {
-    font-size: 10px;
+    font-size: 0.625rem;
     letter-spacing: 1.5px;
     text-transform: uppercase;
   }

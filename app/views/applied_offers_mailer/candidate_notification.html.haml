@@ -12,7 +12,7 @@
     %meta{:charset => "UTF-8"}/
     %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
-    %title= t('applied_offers_mailer.candidate_notification.title')
+    %title= t('applied_offers_mailer.candidate_notification.subject')
     :css
       p {
         margin: 10px 0;
@@ -486,7 +486,6 @@
       
       }
   %body
-    / *|IF:MC_PREVIEW_TEXT|*
     / [if !gte mso 9]><!--
     %span.mcnPreviewText{:style => "display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;"} *|MC_PREVIEW_TEXT|*
     / <![endif]
@@ -644,7 +643,7 @@
                                   %tbody
                                     %tr
                                       %td.mcnButtonContent{:align => "center", :style => "font-family: \"Source Sans Pro\", \"Helvetica Neue\", Helvetica, Arial, sans-serif; font-size: 18px; padding: 18px;", :valign => "middle"}
-                                        %a.mcnButton{:href => "https://hoytrabajas.com/users/dashboard", :style => "font-weight: bold;letter-spacing: 1px;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;", :target => "_blank", :title => "Ver mis aplicaciones"}= t('applied_offers_mailer.candidate_notification.button')
+                                        %a.mcnButton{:href => @mail_data[:user_path], :style => "font-weight: bold;letter-spacing: 1px;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;", :target => "_blank", :title => "Ver mis aplicaciones"}= t('applied_offers_mailer.candidate_notification.button')
                         %table.mcnTextBlock{:border => "0", :cellpadding => "0", :cellspacing => "0", :style => "min-width:100%;", :width => "100%"}
                           %tbody.mcnTextBlockOuter
                             %tr

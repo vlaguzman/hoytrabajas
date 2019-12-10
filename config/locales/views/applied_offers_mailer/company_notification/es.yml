@@ -1,10 +1,10 @@
 es:
   applied_offers_mailer:
     company_notification:
-      subject: '!Aplicaron a tú oferta¡'
-      title: 'Han aplicado a tú oferta'
+      subject: '¡Aplicaron a tú oferta!'
+      title: 'Han aplicado a tu oferta'
       message:
-        first_text: 'se ha postulado a tu oferta recuerda brindarle'
+        first_text: 'Se ha postulado a tu oferta recuerda brindarle'
         second_text: 'respuesta a su solicitud en el menor tiempo posible.'
       button: 'Ver perfil'
       tip:

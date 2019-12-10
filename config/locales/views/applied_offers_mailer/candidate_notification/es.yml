@@ -1,11 +1,11 @@
 es:
   applied_offers_mailer:
     candidate_notification:
-      subject: '!Aplicación a oferta¡'
+      subject: '¡Aplicación a oferta!'
       title: 'Has aplicado a la oferta'
       message:
-        first_text: 'Pronto recibiras respuesta sobre el estado'
-        second_text: 'de tú aplicación'
+        first_text: 'Pronto recibirás respuesta sobre el estado'
+        second_text: 'de tu aplicación'
       button: 'Ver mis aplicaciones'
       farewell:
         goodbye: 'Saludos, '

@@ -3,7 +3,6 @@ import React from 'react'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardMedia from '@material-ui/core/CardMedia'
-import Button from '@material-ui/core/Button'
 import { Row, Col } from 'reactstrap'
 import classNames from 'classnames'
 import OfferContent from './OfferContent'
@@ -33,14 +32,12 @@ const OfferCard = ({
     <Col className="m-offer cardOffer position-relative m-0 justify-content-center align-items-center px-0">
       <div className="bg-buttons-carusel MuiPaper-rounded position-absolute d-flex flex-column align-items-center justify-content-center">
         <Row noGutters className="w-100 justify-content-center">
-          <button
-            type="button"
+          <a
+            href={`/offers/${offer['id_offer']}`}
             className="w-80 a-button offerButton__seeOffer bg-white my-10 fw-bold"
           >
-            <a href={`/offers/${offer['id_offer']}`}>
-              {offer_translations.see_offer}
-            </a>
-          </button>
+            {offer_translations.see_offer}
+          </a>
         </Row>
         <Row noGutters className="w-100 justify-content-center">
           <form

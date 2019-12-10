@@ -56,8 +56,7 @@
   }
   .offerButton__seeOffer {
     background: white;
-    a {
-      color: $color__blue-main;
-    }
+    color: $color__blue-main;
+    text-align: center;
   }
 }

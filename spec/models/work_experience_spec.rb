@@ -37,4 +37,35 @@ RSpec.describe WorkExperience, type: :model do
       end
     end
   end
+  describe "#total_time" do
+    let(:curriculum_vitae_id) { create(:curriculum_vitae).id }
+    let(:work_experience)     { create(:work_experience, curriculum_vitae_id: curriculum_vitae_id) }
+
+    describe "When is need show see the total time of work_experience" do
+
+      context "when total_time is days" do
+        it "should return diffence with 'day(s)'" do
+          work_experience.update(started_at: Date.new(2019, 01, 01), finished_at: Date.new(2019, 01, 19))
+          work_experience.total_time.eql?("19 day(s)")
+
+        end
+      end
+
+      context "when total_time is months" do
+        it "should return diffence with 'months(s)'" do
+          work_experience.update(started_at: Date.new(2019, 01, 01), finished_at: Date.new(2019, 06, 19))
+          work_experience.total_time.eql?("6 months(s)")
+
+        end
+      end
+
+      context "when total_time is years" do
+        it "should return diffence with 'years(s)'" do
+          work_experience.update(started_at: Date.new(2019, 01, 01), finished_at: Date.new(2020, 01, 19))
+          work_experience.total_time.eql?("1 year(s)")
+
+        end
+      end
+    end
+  end
 end

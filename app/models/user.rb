@@ -7,6 +7,9 @@ class User < ApplicationRecord
 
   validates_presence_of :email, :sign_in_count
 
+  has_one :city, foreign_key: 'residence_city_id'
+  has_one :city, foreign_key: 'born_city_id'
+
   belongs_to :sex,                optional: true
   belongs_to :contract_type,      optional: true
   belongs_to :document_type,      optional: true

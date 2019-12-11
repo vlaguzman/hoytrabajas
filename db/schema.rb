@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_02_142725) do
+ActiveRecord::Schema.define(version: 2019_12_10_204409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -183,6 +183,12 @@ ActiveRecord::Schema.define(version: 2019_12_02_142725) do
   end
 
   create_table "contract_types", force: :cascade do |t|
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "countries", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -482,6 +488,8 @@ ActiveRecord::Schema.define(version: 2019_12_02_142725) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "country_id"
+    t.index ["country_id"], name: "index_nationalities_on_country_id"
   end
 
   create_table "nationalities_users", force: :cascade do |t|
@@ -700,6 +708,8 @@ ActiveRecord::Schema.define(version: 2019_12_02_142725) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "country_id"
+    t.index ["country_id"], name: "index_states_on_country_id"
   end
 
   create_table "technical_skill_categories", force: :cascade do |t|
@@ -763,6 +773,9 @@ ActiveRecord::Schema.define(version: 2019_12_02_142725) do
     t.bigint "city_id"
     t.text "image"
     t.string "cv_file"
+    t.integer "residence_city_id"
+    t.integer "born_city_id"
+    t.index ["born_city_id"], name: "index_users_on_born_city_id"
     t.index ["city_id"], name: "index_users_on_city_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["contract_type_id"], name: "index_users_on_contract_type_id"
@@ -770,6 +783,7 @@ ActiveRecord::Schema.define(version: 2019_12_02_142725) do
     t.index ["educational_degree_id"], name: "index_users_on_educational_degree_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["residence_city_id"], name: "index_users_on_residence_city_id"
     t.index ["sex_id"], name: "index_users_on_sex_id"
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
     t.index ["work_mode_id"], name: "index_users_on_work_mode_id"
@@ -921,6 +935,7 @@ ActiveRecord::Schema.define(version: 2019_12_02_142725) do
   add_foreign_key "languages_offers", "offers"
   add_foreign_key "limitations_users", "limitations"
   add_foreign_key "limitations_users", "users"
+  add_foreign_key "nationalities", "countries"
   add_foreign_key "nationalities_users", "nationalities"
   add_foreign_key "nationalities_users", "users"
   add_foreign_key "offer_required_experiences", "duration_types"
@@ -956,6 +971,7 @@ ActiveRecord::Schema.define(version: 2019_12_02_142725) do
   add_foreign_key "recommendations_soft_skills", "soft_skills"
   add_foreign_key "recommendations_technical_skills", "recommendations"
   add_foreign_key "recommendations_technical_skills", "technical_skills"
+  add_foreign_key "states", "countries"
   add_foreign_key "technical_skills_work_experiences", "technical_skills"
   add_foreign_key "technical_skills_work_experiences", "work_experiences"
   add_foreign_key "users", "cities"

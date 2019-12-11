@@ -14,4 +14,8 @@ class WorkExperience < ApplicationRecord
   def self.user_wizard_step_eight_list(curriculum_id)
     where(curriculum_vitae_id: curriculum_id).map { |exp| [exp.company_name, exp.work_position.description] }
   end
+
+  def self.total_time
+    (finished_at - started_at).to_i
+  end
 end

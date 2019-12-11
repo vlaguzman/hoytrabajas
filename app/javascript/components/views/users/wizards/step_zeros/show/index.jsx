@@ -9,7 +9,7 @@ export default class Show extends React.Component {
 
   render() {
     const {
-      users_wizards_step_one_path,
+      users_wizards_step_zeros_curriculum_vitae_path,
       log_out_companies,
       company_signed_in,
       user_signed_in,
@@ -29,7 +29,7 @@ export default class Show extends React.Component {
               <div className="container-specific">
                 <h1>{step_zero_translation.title}</h1>
                 <p>{step_zero_translation.description}</p>
-                <a href={users_wizards_step_one_path}>
+                <a href={users_wizards_step_zeros_curriculum_vitae_path}>
                   {step_zero_translation.button_action}
                 </a>
               </div>
@@ -41,7 +41,7 @@ export default class Show extends React.Component {
 }
 
 Show.propTypes = {
-  users_wizards_step_one_path: PropTypes.string.isRequired,
+  users_wizards_step_zeros_curriculum_vitae_path: PropTypes.string.isRequired,
   log_out_companies: PropTypes.string.isRequired,
   company_signed_in: PropTypes.bool.isRequired,
   user_signed_in: PropTypes.bool.isRequired,

@@ -35,6 +35,9 @@ Rails.application.routes.draw do
 
     namespace :wizards do
       resource :step_zero,    only: [:show]
+      namespace :step_zeros do
+        resource :curriculum_vitae, only: [:show, :update]
+      end
       resource :step_one,     except: [:new, :destroy]
       resource :step_two,     except: [:new, :destroy]
       resource :step_three,   except: [:new, :destroy]
@@ -47,6 +50,7 @@ Rails.application.routes.draw do
       resource :step_ten,     except: [:new, :destroy]
       resource :step_eleven,  only: [:show]
     end
+
   end
 
   resource :users, only: [:show, :edit]

@@ -43,7 +43,7 @@ RSpec.describe WorkExperience, type: :model do
 
     describe "When is need show see the total time of work_experience" do
 
-      context "when total_time is days" do
+      context "when total_time is in days" do
         it "should return diffence with 'day(s)'" do
           work_experience.update(started_at: Date.new(2019, 01, 01), finished_at: Date.new(2019, 01, 19))
           expect(work_experience.total_time).to eq("18 day(s)")
@@ -51,7 +51,7 @@ RSpec.describe WorkExperience, type: :model do
         end
       end
 
-      context "when total_time is months" do
+      context "when total_time is in months" do
         it "should return diffence with 'months(s)'" do
           work_experience.update(started_at: Date.new(2019, 01, 01), finished_at: Date.new(2019, 06, 19))
           expect(work_experience.total_time).to eq("5.6 month(s)")
@@ -59,7 +59,7 @@ RSpec.describe WorkExperience, type: :model do
         end
       end
 
-      context "when total_time is years" do
+      context "when total_time is in years" do
         it "should return diffence with 'years(s)'" do
           work_experience.update(started_at: Date.new(2019, 01, 01), finished_at: Date.new(2020, 06, 19))
           expect(work_experience.total_time).to eq("1.5 year(s)")

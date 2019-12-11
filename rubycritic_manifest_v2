@@ -9,7 +9,7 @@ A         • ApplicationController                               28      35.98 
 A         • ApplicationJob                                      1       0.0        0           1
 A         • ApplicationMailer                                   3       0.0        0           1
 A         • ApplicationPresenter                                3       10.35      0           3
-A         • ApplicationRecord                                   1       0.0        0           1
+A         • ApplicationRecord                                   2       4.53       0           2
 A         • AppliedOffer                                        3       0.0        0           1
 A         • AppliedOfferStatus                                  1       0.0        0           1
 A         • AppliedOffers                                       3       0.0        0           0
@@ -50,6 +50,7 @@ A         • CompaniesController                                 7       3.4   
 A         • CompaniesUsers                                      1       0.0        0           1
 A         • Company                                             15      2.2        0           1
 A         • ContractType                                        1       0.0        0           1
+A         • Country                                             4       0.0        0           1
 A         • Currency                                            1       0.0        0           1
 A         • CurriculumVitae                                     30      6.6        0           1
 A         • CurriculumVitaeSalary                               2       0.0        0           1
@@ -87,7 +88,7 @@ A         • LanguagesOffers                                     4       2.0   
 A         • Level                                               4       0.0        0           1
 A         • Limitation                                          4       0.0        0           1
 A         • ListConverter                                       11      29.49      0           2
-A         • Nationality                                         4       0.0        0           1
+A         • Nationality                                         5       0.0        0           1
 A         • Offer                                               43      10.0       0           1
 A         • OfferRequiredExperiences                            1       0.0        0           1
 A         • OfferSalary                                         8       0.0        0           1
@@ -115,12 +116,12 @@ A         • Responsibility                                      2       0.0   
 A         • SalaryPeriod                                        6       0.0        0           1
 A         • Sex                                                 4       0.0        0           1
 A         • SoftSkill                                           4       0.0        0           1
-A         • State                                               4       0.0        0           1
+A         • State                                               5       0.0        0           1
 A         • StringConverter                                     3       21.71      0           1
 A         • TechnicalSkill                                      6       0.0        0           1
 A         • TechnicalSkillCategory                              1       0.0        0           1
 A         • Term                                                4       0.0        0           1
-A         • User                                                31      9.27       0           1
+A         • User                                                33      13.67      0           1
 A         • Users::Dashboards::OffersService                    1       31.49      0           2
 A         • Users::DashboardsController                         10      5.69       0           1
 A         • Users::OmniauthCallbacksController                  1       21.49      0           5
@@ -180,7 +181,7 @@ A         • UsersPresenter                                      3       15.4  
 A         • Vehicle                                             7       0.0        0           1
 A         • Visit                                               1       0.0        0           1
 A         • WizardsLastStepService                              1       26.61      0           1
-A         • WorkExperience                                      3       5.79       0           1
+A         • WorkExperience                                      5       20.6       0           2
 A         • WorkMethodology                                     1       0.0        0           1
 A         • WorkMode                                            3       0.0        0           1
 A         • WorkPosition                                        2       0.0        0           1

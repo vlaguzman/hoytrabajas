@@ -12,8 +12,6 @@ FactoryBot.define do
     vehicles              { [create(:vehicle)] }
     driving_licences      { [create(:driving_licence)] }
     sign_in_count         { 1323 }
-    residence_city_id     { create(:city).id }
-    born_city_id          { create(:city).id }
 
     association :sex, factory: :sex
     association :contract_type, factory: :contract_type

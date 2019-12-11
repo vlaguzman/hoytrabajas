@@ -1,8 +1,9 @@
 class Offers::ViewsService
   include ActionView::Helpers
 
-  DEFAULT_IMAGE_CATEGORY_URL = "https://img-categorias-ht.s3.amazonaws.com/cat-card-gestion-administrativa2x.png"
-  DEFAULT_IMAGE_LOGO_URL = "https://ht-web-images.s3.amazonaws.com/perfiles/avatar-empresa.png"
+  DEFAULT_IMAGE_CATEGORY_URL = ENV['DEFAULT_IMAGE_CATEGORY_URL'] 
+  DEFAULT_IMAGE_LOGO_URL = ENV['DEFAULT_IMAGE_LOGO_URL']
+
   attr_accessor :offer, :current_user
 
   def initialize(offer, current_user = nil)

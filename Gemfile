@@ -19,6 +19,7 @@ gem 'omniauth-google'
 gem "haml-rails", "~> 2.0"
 gem "simple_token_authentication", "~> 1.0"
 gem 'ransack'
+gem "aws-sdk-s3"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
@@ -46,7 +47,6 @@ group :development, :test do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'timecop'
   gem 'database_cleaner'
-  gem "aws-sdk-s3", require: false
 end
 
 group :development do

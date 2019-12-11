@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types'
-import Button from '@material-ui/core/Button'
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
 import Avatar from '@material-ui/core/Avatar'
 import Divider from '@material-ui/core/Divider'
-import { Badge, Row, Col } from 'reactstrap'
+import { Badge, Row } from 'reactstrap'
 import CardContent from '@material-ui/core/CardContent'
 
 const RequiredExperienceBlock = () => (
@@ -45,7 +44,7 @@ const OfferContent = ({ offer }) => {
       <Avatar
         className="position-absolute"
         style={{ top: '-10rem', left: '6%', width: '4rem', height: '4rem' }}
-        src="/assets/static/img/logos/clientes-ht.jpg"
+        src={offer['company']['url_image_logo']}
       />
       {offer['new_offer'] && NewFlagBlock()}
       <Badge
@@ -147,7 +146,8 @@ OfferContent.propTypes = {
       description: PropTypes.string.isRequired
     }),
     company: PropTypes.shape({
-      name: PropTypes.string.isRequired
+      name: PropTypes.string.isRequired,
+      url_image_logo: PropTypes.string.isRequired
     }),
     salary: PropTypes.shape({
       from: PropTypes.number,

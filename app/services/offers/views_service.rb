@@ -1,7 +1,9 @@
 class Offers::ViewsService
   include ActionView::Helpers
 
-  DEFAULT_IMAGE_URL = "https://img-categorias-ht.s3.amazonaws.com/cat-card-gestion-administrativa2x.png"
+  DEFAULT_IMAGE_CATEGORY_URL = ENV['DEFAULT_IMAGE_CATEGORY_URL'] 
+  DEFAULT_IMAGE_LOGO_URL = ENV['DEFAULT_IMAGE_LOGO_URL']
+
   attr_accessor :offer, :current_user
 
   def initialize(offer, current_user = nil)
@@ -52,14 +54,21 @@ class Offers::ViewsService
 
   def company_details
     {
-      name: offer.company_name
+      name: offer.company_name,
+      url_image_logo: company_logo_image
     }
   end
 
   private
 
+  def company_logo_image
+    offer.company.logo.attached? ? 
+      Rails.application.routes.url_helpers.rails_blob_path(offer.company.logo, disposition: "attachment", only_path: true) 
+      : DEFAULT_IMAGE_LOGO_URL
+  end
+
   def job_category_image
-    category_and_image_present? ? offer.job_categories.first.image : DEFAULT_IMAGE_URL
+    category_and_image_present? ? offer.job_categories.first.image : DEFAULT_IMAGE_CATEGORY_URL
   end
 
   def category_and_image_present?

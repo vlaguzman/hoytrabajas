@@ -21,7 +21,8 @@ RSpec.describe Offers::ViewsService do
       job_categories: [job_category],
       required_experience: true,
       city: create(:city, description: "Bogotá"),
-      company: create(:company, name: "Orellana S.A.")
+      company: create(:with_logo_company,
+                 name: "Orellana S.A.")
     )
   end
 
@@ -46,7 +47,8 @@ RSpec.describe Offers::ViewsService do
       immediate_start: true,
       required_experience: true,
       city: create(:city, description: "Bogotá"),
-      company: create(:company, name: "Orellana S.A.")
+      company: create(:with_logo_company,
+                 name: "Orellana S.A.")
     )
   end
 
@@ -59,7 +61,8 @@ RSpec.describe Offers::ViewsService do
       job_categories: [job_category],
       required_experience: true,
       city: create(:city, description: "Bogotá"),
-      company: create(:company, name: "Orellana S.A.")
+      company: create(:with_logo_company,
+                  name: "Orellana S.A.")
     )
   end
 
@@ -96,7 +99,8 @@ RSpec.describe Offers::ViewsService do
       }
     },
     company: {
-      name: "Orellana S.A."
+      name: "Orellana S.A.",
+      url_image_logo: Rails.application.routes.url_helpers.rails_blob_path(offer.company.logo, disposition: "attachment", only_path: true)
     },
     close_date: "03 de Julio del 2019",
   } end
@@ -122,7 +126,8 @@ RSpec.describe Offers::ViewsService do
       }
     },
     company: {
-      name: "Orellana S.A."
+      name: "Orellana S.A.",
+      url_image_logo: "https://ht-web-images.s3.amazonaws.com/perfiles/avatar-empresa.png"
     },
     close_date: "03 de Julio del 2019",
   } end
@@ -148,7 +153,8 @@ RSpec.describe Offers::ViewsService do
       }
     },
     company: {
-      name: "Orellana S.A."
+      name: "Orellana S.A.",
+      url_image_logo: Rails.application.routes.url_helpers.rails_blob_path(offer_no_job_category.company.logo, disposition: "attachment", only_path: true)
     },
     close_date: "03 de Julio del 2019",
   } end
@@ -167,8 +173,8 @@ RSpec.describe Offers::ViewsService do
       end
     end
 
-    context "the job category of the offer has not any image" do
-      it "should return a hash with the DEFAULT_IMAGE_URL" do
+    context "neither the job category of the offer has image nor the company logo" do
+      it "should return a hash with the DEFAULT_IMAGE_URL and the DEFAULT_LOGO_IMAGE_URL" do
         expect(subject_no_image.details).to eq(expected_object_default_url)
       end
     end

@@ -15,7 +15,7 @@ A         • AppliedOfferStatus                                  1       0.0   
 A         • AppliedOffers                                       3       0.0        0           0
 A         • AppliedOffersController                             9       35.72      0           2
 A         • AppliedOffersMailer                                 3       7.09       0           1
-A         • AppliedOffersPresenter                              3       25.41      0           3
+A         • AppliedOffersPresenter                              6       25.41      0           3
 A         • AvailableWorkDay                                    3       0.0        0           1
 A         • AvailableWorkDaysCurriculumVitaes                   1       0.0        0           1
 A         • AvailableWorkDaysOffers                             1       0.0        0           1
@@ -194,10 +194,10 @@ B         • Companies::FirstOffer::StepSixService               4       22.62 
 B         • Companies::FirstOffer::StepTwoPresenter             14      17.4       26          2
 B         • Companies::FirstOffer::StepTwosController           10      20.32      27          2
 B         • Offers::ShowService                                 17      87.8       0           1
-B         • Offers::ViewsService                                12      62.1       0           4
+B         • Offers::ViewsService                                14      78.43      0           6
 B         • Users::Wizards::StepSixService                      11      35.03      31          2
 C         • BaseFormWizardsService                              29      170.8      0           6
-C         • Companies                                           5       16.61      32          2
+C         • Companies                                           6       16.61      32          2
 C         • Companies::FirstOffer::StepFivePresenter            4       27.8       31          1
 C         • Companies::FirstOffer::StepFourPresenter            8       27.8       31          1
 C         • Companies::FirstOffer::StepSevenPresenter           4       25.2       31          1

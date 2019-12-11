@@ -82,7 +82,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/work_position.rb",100,5,3,3,0
 "./app/models/working_day.rb",100,6,4,4,0
 "./app/presenters/application_presenter.rb",100,19,11,11,0
-"./app/presenters/applied_offers_presenter.rb",100,29,11,11,0
+"./app/presenters/applied_offers_presenter.rb",100,30,11,11,0
 "./app/presenters/companies/dashboards_presenter.rb",100,10,5,5,0
 "./app/presenters/companies/first_offer/step_eight_presenter.rb",100,21,8,8,0
 "./app/presenters/companies/first_offer/step_five_presenter.rb",100,32,10,10,0
@@ -130,7 +130,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/offers/applied_offer_service.rb",100,15,6,6,0
 "./app/services/offers/index_service.rb",100,18,7,7,0
 "./app/services/offers/show_service.rb",100,76,27,27,0
-"./app/services/offers/views_service.rb",100,68,27,27,0
+"./app/services/offers/views_service.rb",100,76,31,31,0
 "./app/services/offers_service.rb",100,38,18,18,0
 "./app/services/users/dashboards/offers_service.rb",100,51,21,21,0
 "./app/services/users/wizard_service.rb",100,43,18,18,0

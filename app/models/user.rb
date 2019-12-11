@@ -7,9 +7,6 @@ class User < ApplicationRecord
 
   validates_presence_of :email, :sign_in_count
 
-  has_one :city, foreign_key: 'residence_city_id'
-  has_one :city, foreign_key: 'born_city_id'
-
   belongs_to :sex,                optional: true
   belongs_to :contract_type,      optional: true
   belongs_to :document_type,      optional: true
@@ -57,4 +54,11 @@ class User < ApplicationRecord
     self.update_attribute(:confirmed_at, DateTime.now)
   end
 
+  def born_city
+    rescue_record("City", :find, self.born_city_id)
+  end
+
+  def residence_city
+    rescue_record("City", :find, self.residence_city_id)
+  end
 end

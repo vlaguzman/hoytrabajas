@@ -15,7 +15,25 @@ class WorkExperience < ApplicationRecord
     where(curriculum_vitae_id: curriculum_id).map { |exp| [exp.company_name, exp.work_position.description] }
   end
 
-  def self.total_time
-    (finished_at - started_at).to_i
+  def total_time
+    diff = (finished_at - started_at).to_f
+
+    if diff > 365
+      calculate_time(diff, 365, "year(s)")
+
+    elsif diff > 30
+      calculate_time(diff, 30, "month(s)")
+
+    else
+      "#{diff.to_i} day(s)"
+    end
   end
+
+  private
+
+  def calculate_time(diff, div, pred)
+    value = (diff / div).round(1)
+    "#{value} #{pred}"
+  end
+
 end

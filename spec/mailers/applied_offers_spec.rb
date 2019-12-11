@@ -12,7 +12,7 @@ RSpec.describe AppliedOffersMailer, type: :mailer do
 
     it "render the header" do
 
-      expect(email.subject).to match(/!Aplicación a oferta¡/)
+      expect(email.subject).to match(/¡Aplicación a oferta!/)
       expect(email.to.last).to eq(mail_data[:user_email])
       expect(email.from.last).to eq(ENV['EMAIL_DEFAULT_DELIVER'])
 
@@ -31,7 +31,7 @@ RSpec.describe AppliedOffersMailer, type: :mailer do
 
     it "render the header" do
 
-      expect(email.subject).to match(/!Aplicaron a tú oferta¡/)
+      expect(email.subject).to match(/¡Aplicaron a tú oferta!/)
       expect(email.to.last).to eq(mail_data[:company_email])
       expect(email.from.last).to eq(ENV['EMAIL_DEFAULT_DELIVER'])
 
@@ -39,7 +39,7 @@ RSpec.describe AppliedOffersMailer, type: :mailer do
 
     it "render the body" do
 
-      expect(email.body.encoded).to match(/Han aplicado a tú oferta/)
+      expect(email.body.encoded).to match(/Han aplicado a tu oferta/)
 
     end
 

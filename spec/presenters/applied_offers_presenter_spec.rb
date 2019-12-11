@@ -18,7 +18,9 @@ RSpec.describe AppliedOffersPresenter do
         company_name:      "La Empresita S.A.S",
         user_email:        "eleugedb@email.com",
         company_email:     "laempresita@empresita.com",
-        operations_person:  ENV['OPERATIONS_PERSON'].to_s
+        operations_person:  ENV['OPERATIONS_PERSON'].to_s,
+        user_path:         "http://hoytrabajas.com/users/dashboard",
+        company_path:      "http://hoytrabajas.com/companies/dashboard"
       }
 
       expect(response).to eq(expected_response)

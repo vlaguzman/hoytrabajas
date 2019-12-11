@@ -15,7 +15,7 @@ A         • AppliedOfferStatus                                  1       0.0   
 A         • AppliedOffers                                       3       0.0        0           0
 A         • AppliedOffersController                             9       35.72      0           2
 A         • AppliedOffersMailer                                 3       7.09       0           1
-A         • AppliedOffersPresenter                              3       21.04      0           3
+A         • AppliedOffersPresenter                              3       25.41      0           3
 A         • AvailableWorkDay                                    3       0.0        0           1
 A         • AvailableWorkDaysCurriculumVitaes                   1       0.0        0           1
 A         • AvailableWorkDaysOffers                             1       0.0        0           1

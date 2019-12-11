@@ -10,7 +10,10 @@ class AppliedOffersPresenter < ApplicationPresenter
       company_name:       capitalize_text(offer_company.name),
       user_email:         user.email,
       company_email:      offer_company.email,
-      operations_person:  ENV['OPERATIONS_PERSON'].to_s
+      operations_person:  ENV['OPERATIONS_PERSON'].to_s,
+      user_path:          rails_routes.users_dashboard_url,
+      #TODO: GABRIEL: Change the company_path in the 'notification company' email when the user profile is available
+      company_path:       rails_routes.companies_dashboard_url
     }
   end
 

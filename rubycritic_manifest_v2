@@ -194,7 +194,7 @@ B         • Companies::FirstOffer::StepSixService               4       22.62 
 B         • Companies::FirstOffer::StepTwoPresenter             14      17.4       26          2
 B         • Companies::FirstOffer::StepTwosController           10      20.32      27          2
 B         • Offers::ShowService                                 17      87.8       0           1
-B         • Offers::ViewsService                                14      78.43      0           6
+B         • Offers::ViewsService                                15      78.43      0           6
 B         • Users::Wizards::StepSixService                      11      35.03      31          2
 C         • BaseFormWizardsService                              29      170.8      0           6
 C         • Companies                                           6       16.61      32          2

@@ -15,8 +15,10 @@ FactoryBot.define do
     password              { Faker::Blockchain::Bitcoin.address }
     confirmed_at          { Date.today }
 
-    after(:build) do |company|
-      company.logo.attach(io: File.open(Rails.root.join('spec', 'factories', 'images', 'photo.jpg')), filename: 'photo.jpg', content_type: 'image/jpeg')
+    trait :with_logo do
+      after(:build) do |company|
+        company.logo.attach(io: File.open(Rails.root.join('spec', 'factories', 'images', 'photo.jpg')), filename: 'photo.jpg', content_type: 'image/jpeg')
+      end
     end
 
     trait :first_time do
@@ -38,5 +40,7 @@ FactoryBot.define do
 
     association :city, factory: :city
     association :employees_range, factory: :employees_range
+
+    factory :with_logo_company, traits: [:with_logo]
   end
 end

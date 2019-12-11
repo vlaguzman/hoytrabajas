@@ -13,7 +13,7 @@ ActiveAdmin.register Company do
     end
   end
 
-  permit_params :name, :contact_name, :cellphone, :contact_cellphone, :nit, :address, :web_site, :contact_web_site, :description, :contact_work_position, :email, :password, :password_confirmation, :employees_range_id, :city_id
+  permit_params :name, :contact_name, :cellphone, :contact_cellphone, :nit, :address, :web_site, :contact_web_site, :description, :contact_work_position, :email, :password, :password_confirmation, :employees_range_id, :city_id, :logo
 
   index do
     selectable_column
@@ -32,6 +32,7 @@ ActiveAdmin.register Company do
 
   form do |f|
     f.inputs do
+      f.input :logo, as: :file
       f.input :name, label: t('admin.companies.form.name')
       f.input :description, label: t('admin.companies.form.description')
       f.input :email, label: t('admin.companies.form.email')

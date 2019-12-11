@@ -61,7 +61,9 @@ class Offers::ViewsService
   private
 
   def company_logo_image
-    offer.company.url_image_logo.present? ? offer.company.url_image_logo : DEFAULT_IMAGE_LOGO_URL
+    offer.company.logo.attached? ? 
+      Rails.application.routes.url_helpers.rails_blob_path(offer.company.logo, disposition: "attachment", only_path: true) 
+      : DEFAULT_IMAGE_LOGO_URL
   end
 
   def job_category_image

@@ -46,6 +46,7 @@ group :development, :test do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'timecop'
   gem 'database_cleaner'
+  gem "aws-sdk-s3", require: false
 end
 
 group :development do

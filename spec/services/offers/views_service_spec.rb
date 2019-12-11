@@ -21,9 +21,8 @@ RSpec.describe Offers::ViewsService do
       job_categories: [job_category],
       required_experience: true,
       city: create(:city, description: "Bogotá"),
-      company: create(:company, 
-                 name: "Orellana S.A.", 
-                 url_image_logo: "https://img-categorias-ht.s3.amazonaws.com/any-logo.png")
+      company: create(:with_logo_company,
+                 name: "Orellana S.A.") 
     )
   end
 
@@ -48,9 +47,8 @@ RSpec.describe Offers::ViewsService do
       immediate_start: true,
       required_experience: true,
       city: create(:city, description: "Bogotá"),
-      company: create(:company, 
-                 name: "Orellana S.A.",
-                 url_image_logo: "https://img-categorias-ht.s3.amazonaws.com/any-logo.png")
+      company: create(:with_logo_company,
+                 name: "Orellana S.A.")
     )
   end
 
@@ -63,9 +61,8 @@ RSpec.describe Offers::ViewsService do
       job_categories: [job_category],
       required_experience: true,
       city: create(:city, description: "Bogotá"),
-      company: create(:company,
-                  name: "Orellana S.A.",
-                  url_image_logo: "https://img-categorias-ht.s3.amazonaws.com/any-logo.png")
+      company: create(:with_logo_company,
+                  name: "Orellana S.A.")
     )
   end
 
@@ -103,7 +100,7 @@ RSpec.describe Offers::ViewsService do
     },
     company: {
       name: "Orellana S.A.",
-      url_image_logo: "https://img-categorias-ht.s3.amazonaws.com/any-logo.png"
+      url_image_logo: Rails.application.routes.url_helpers.rails_blob_path(offer.company.logo, disposition: "attachment", only_path: true)
     },
     close_date: "03 de Julio del 2019",
   } end
@@ -157,7 +154,7 @@ RSpec.describe Offers::ViewsService do
     },
     company: {
       name: "Orellana S.A.",
-      url_image_logo: "https://img-categorias-ht.s3.amazonaws.com/any-logo.png"
+      url_image_logo: Rails.application.routes.url_helpers.rails_blob_path(offer_no_job_category.company.logo, disposition: "attachment", only_path: true)
     },
     close_date: "03 de Julio del 2019",
   } end

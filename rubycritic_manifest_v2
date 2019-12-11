@@ -9,7 +9,7 @@ A         • ApplicationController                               28      35.98 
 A         • ApplicationJob                                      1       0.0        0           1
 A         • ApplicationMailer                                   3       0.0        0           1
 A         • ApplicationPresenter                                3       10.35      0           3
-A         • ApplicationRecord                                   2       4.53       0           2
+A         • ApplicationRecord                                   4       0.0        0           1
 A         • AppliedOffer                                        3       0.0        0           1
 A         • AppliedOfferStatus                                  1       0.0        0           1
 A         • AppliedOffers                                       3       0.0        0           0
@@ -20,7 +20,7 @@ A         • AvailableWorkDay                                    3       0.0   
 A         • AvailableWorkDaysCurriculumVitaes                   1       0.0        0           1
 A         • AvailableWorkDaysOffers                             1       0.0        0           1
 A         • City                                                4       0.0        0           1
-A         • Companies::Dashboards::OffersService                1       21.65      0           1
+A         • Companies::Dashboards::OffersService                2       21.65      0           1
 A         • Companies::DashboardsController                     2       7.23       0           1
 A         • Companies::DashboardsPresenter                      2       3.2        0           2
 A         • Companies::FirstOffer::CommonService                2       2.45       0           1
@@ -62,7 +62,7 @@ A         • CurriculumVitaesTechnicalSkills                     3       0.0   
 A         • CurriculumVitaesVehicles                            1       0.0        0           1
 A         • CurriculumVitaesWorkingDays                         1       0.0        0           1
 A         • Dashboard                                           2       12.33      0           0
-A         • DatesConverter                                      1       2.0        0           1
+A         • DatesManager                                        1       14.09      0           1
 A         • DocumentType                                        2       0.0        0           1
 A         • DrivingLicence                                      3       0.0        0           1
 A         • DrivingLicencesOffers                               1       0.0        0           1
@@ -121,8 +121,8 @@ A         • StringConverter                                     3       21.71 
 A         • TechnicalSkill                                      6       0.0        0           1
 A         • TechnicalSkillCategory                              1       0.0        0           1
 A         • Term                                                4       0.0        0           1
-A         • User                                                33      13.67      0           1
-A         • Users::Dashboards::OffersService                    1       31.49      0           2
+A         • User                                                34      13.67      0           1
+A         • Users::Dashboards::OffersService                    2       31.49      0           2
 A         • Users::DashboardsController                         10      5.69       0           1
 A         • Users::OmniauthCallbacksController                  1       21.49      0           5
 A         • Users::ProfilesController                           12      2.2        0           1
@@ -181,7 +181,7 @@ A         • UsersPresenter                                      3       15.4  
 A         • Vehicle                                             7       0.0        0           1
 A         • Visit                                               1       0.0        0           1
 A         • WizardsLastStepService                              1       26.61      0           1
-A         • WorkExperience                                      5       20.6       0           2
+A         • WorkExperience                                      6       9.19       0           1
 A         • WorkMethodology                                     1       0.0        0           1
 A         • WorkMode                                            3       0.0        0           1
 A         • WorkPosition                                        2       0.0        0           1
@@ -195,7 +195,7 @@ B         • Companies::FirstOffer::StepSixService               4       22.62 
 B         • Companies::FirstOffer::StepTwoPresenter             14      17.4       26          2
 B         • Companies::FirstOffer::StepTwosController           10      20.32      27          2
 B         • Offers::ShowService                                 17      87.8       0           1
-B         • Offers::ViewsService                                15      78.43      0           6
+B         • Offers::ViewsService                                16      78.43      0           6
 B         • Users::Wizards::StepSixService                      11      35.03      31          2
 C         • BaseFormWizardsService                              29      170.8      0           6
 C         • Companies                                           6       16.61      32          2

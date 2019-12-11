@@ -16,24 +16,6 @@ class WorkExperience < ApplicationRecord
   end
 
   def total_time
-    diff = (finished_at - started_at).to_f
-
-    if diff > 365
-      calculate_time(diff, 365, "year(s)")
-
-    elsif diff > 30
-      calculate_time(diff, 30, "month(s)")
-
-    else
-      "#{diff.to_i} day(s)"
-    end
+    DatesManager.calculate_difference_time(finished_at, started_at)
   end
-
-  private
-
-  def calculate_time(diff, div, pred)
-    value = (diff / div).round(1)
-    "#{value} #{pred}"
-  end
-
 end

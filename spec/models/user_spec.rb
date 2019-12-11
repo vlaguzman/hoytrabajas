@@ -74,7 +74,6 @@ RSpec.describe User, type: :model do
   #  let(:subject) { described_class }
   #  it {should respond_to(:new_with_session) }
   #end
-  #
 
   describe "#born_city" do
     let(:user) { create(:user, born_city_id: nil) }
@@ -86,14 +85,12 @@ RSpec.describe User, type: :model do
         user.reload
 
         expect(user.born_city).to eq(city)
-
       end
     end
 
     context "when has not born_city_id" do
       it "should return nil" do
         expect(user.born_city).to eq(nil)
-
       end
     end
   end
@@ -105,17 +102,15 @@ RSpec.describe User, type: :model do
     context "when has a residence_city_id" do
       it "should return the city object" do
         user.update(residence_city_id: city.id)
-
         user.reload
-        expect(user.residence_city).to eq(city)
 
+        expect(user.residence_city).to eq(city)
       end
     end
 
     context "when has not residence_city_id" do
       it "should return nil" do
         expect(user.residence_city).to eq(nil)
-
       end
     end
   end

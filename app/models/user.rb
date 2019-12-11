@@ -55,10 +55,10 @@ class User < ApplicationRecord
   end
 
   def born_city
-    rescue_record("City", :find, self.born_city_id)
+    City.find_by(id: self.born_city_id)
   end
 
   def residence_city
-    rescue_record("City", :find, self.residence_city_id)
+    City.find_by(id: self.residence_city_id)
   end
 end

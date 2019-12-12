@@ -32,6 +32,39 @@ NewFlagBlock.propTypes = {
   content: PropTypes.string.isRequired
 }
 
+const onDemandBlock = ({ content }) => (
+  <div className="offerNewBadge a-badge__newOffer">{content}</div>
+)
+
+/*onDemandBlock.propTypes = {
+  content: PropTypes.string.isRequired
+}*/
+
+const NewFlagBlock = () => (
+  <Badge
+    color="primary"
+    className="px-4 position-absolute font-weight-bolder new_badge"
+    style={{ top: '-0.8rem', right: '1rem' }}
+  >
+    <span className="font-weight-bolder position-relative ml-20">
+      <i
+        className="ti-eye mr-5 pt-5 position-absolute"
+        style={{ fontSize: '1rem', top: '-7px', left: '-20px' }}
+      />
+      <strong>Nuevo</strong>
+    </span>
+  </Badge>
+)
+
+NewFlagBlock.propTypes = {
+  content: PropTypes.string.isRequired
+}
+
+const wordsShortener = (words, maxSize) => {
+  return words.length > maxSize ? `${words.substring(0, maxSize)}...` : words
+}
+
+>>>>>>> create offer on demand, and add statesman gem, and add models and config to this
 const OfferContent = ({ offer, translations }) => {
   const {
     tag_immediate_start,
@@ -101,8 +134,19 @@ const OfferContent = ({ offer, translations }) => {
             />
             <span>24:00</span>
           </Typography>
-        </div> */}
-      </div>
+        </Typography> */}
+        {/* <Typography variant="body1" className="fw-bold mt-10" component="span">
+          <i
+            className="ti-timer fw-bold text-primary mr-5"
+            style={{ fontSize: '1rem' }}
+          />
+          24:00
+        </Typography> */}
+        {/* <Typography variant="body1" >
+              <i className="ti-eye fw-bold text-primary mr-5" style={{fontSize: '1rem'}}></i>
+              2 días atrás
+            </Typography> */}
+      </Row>
     </CardContent>
   )
 }

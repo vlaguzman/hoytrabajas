@@ -35,7 +35,7 @@ module Companies::Dashboards::OffersService
   end
 
   def self.date_parser(date)
-    DatesConverter.default(date: date) if date.present?
+    DatesManager.default(date: date) if date.present?
   end
 
 end

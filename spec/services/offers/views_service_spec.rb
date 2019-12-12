@@ -181,7 +181,7 @@ RSpec.describe Offers::ViewsService do
 
     context "the offer has not any close date" do
       it "Should return a close date tomorrow" do
-        expect(subject_no_close_date.details[:close_date]).to eq(DatesConverter.default(date: Date.today + 1.day ))
+        expect(subject_no_close_date.details[:close_date]).to eq(DatesManager.default(date: Date.today + 1.day ))
       end
     end
 

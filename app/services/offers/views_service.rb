@@ -35,7 +35,7 @@ class Offers::ViewsService
       city:                 { description: offer.city_description },
       salary:               salary_details,
       company:              company_details,
-      close_date:           close_date.present? ? DatesConverter.default(date: close_date) : DatesConverter.default(date: Date.today + 1.day )
+      close_date:           close_date.present? ? DatesManager.default(date: close_date) : DatesManager.default(date: Date.today + 1.day )
     }
   end
 

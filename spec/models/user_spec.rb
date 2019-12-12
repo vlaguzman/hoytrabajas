@@ -37,7 +37,7 @@ RSpec.describe User, type: :model do
     it { should have_and_belong_to_many(:driving_licences) }
     it { should accept_nested_attributes_for(:curriculum_vitaes)}
   end
-  
+
   describe "#curriculum_vitae" do
     let(:user) { create(:user) }
     context "the user has not the curriculum vitae" do
@@ -61,7 +61,7 @@ RSpec.describe User, type: :model do
         expect(user.curriculum_vitae.about_me).to eq(curriculum_vitae.about_me)
       end
     end
-  end 
+  end
 
   describe "#after_confirmation" do
     it {should respond_to(:after_confirmation)}
@@ -75,4 +75,43 @@ RSpec.describe User, type: :model do
   #  it {should respond_to(:new_with_session) }
   #end
 
+  describe "#born_city" do
+    let(:user) { create(:user, born_city_id: nil) }
+    let(:city) { create(:city) }
+
+    context "when has born_city_id" do
+      it "should return the city object" do
+        user.update(born_city_id: city.id)
+        user.reload
+
+        expect(user.born_city).to eq(city)
+      end
+    end
+
+    context "when has not born_city_id" do
+      it "should return nil" do
+        expect(user.born_city).to eq(nil)
+      end
+    end
+  end
+
+  describe "#residence_city" do
+    let(:user) { create(:user, residence_city_id: nil) }
+    let(:city) { create(:city) }
+
+    context "when has a residence_city_id" do
+      it "should return the city object" do
+        user.update(residence_city_id: city.id)
+        user.reload
+
+        expect(user.residence_city).to eq(city)
+      end
+    end
+
+    context "when has not residence_city_id" do
+      it "should return nil" do
+        expect(user.residence_city).to eq(nil)
+      end
+    end
+  end
 end

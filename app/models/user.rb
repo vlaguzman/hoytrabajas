@@ -54,4 +54,11 @@ class User < ApplicationRecord
     self.update_attribute(:confirmed_at, DateTime.now)
   end
 
+  def born_city
+    City.find_by(id: self.born_city_id)
+  end
+
+  def residence_city
+    City.find_by(id: self.residence_city_id)
+  end
 end

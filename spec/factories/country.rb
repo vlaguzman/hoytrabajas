@@ -1,7 +1,5 @@
 FactoryBot.define do
-  factory :nationality do
+  factory :country do
     description { Faker::Nation.nationality }
-
-    association :country, factory: :country
   end
 end

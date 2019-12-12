@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Users::Wizards::StepTenService do
   describe "#call" do
     let!(:city_id) { build_stubbed(:city).id }
-    let(:new_curriculum_vitae) { create(:curriculum_vitae, :new_curriculum_vitae) }
+    let(:new_curriculum_vitae) { create(:curriculum_vitae, :empty) }
 
     let(:params) do
       {

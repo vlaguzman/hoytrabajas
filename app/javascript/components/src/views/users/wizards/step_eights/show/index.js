@@ -6,15 +6,13 @@ import FormProgress from '../../../../../components/FormsLayout/FormProgress'
 import FormTitle from '../../../../../components/FormsLayout/FormTitle'
 import FormButtons from '../../../../../components/FormsLayout/FormButtons'
 import FormFields from './FormFields'
-import { showMessage, showExperience } from '../../shared/message'
+import { showMessage } from '../../shared/message'
 
 const UsersWizardsStepEight = props => {
   const {
     formInfo,
     csrf_param,
-    csrf_token,
-    registered_messages,
-    registered_experience
+    csrf_token
   } = props
   const {
     title,
@@ -22,7 +20,7 @@ const UsersWizardsStepEight = props => {
     form: { buttons, action, method, formFields, errors = null }
   } = formInfo
 
-  const { nextPath, previousPath, addOther } = buttons
+  const { nextPath, previousPath } = buttons
 
   return (
     <div className="main-wrapper">
@@ -38,22 +36,12 @@ const UsersWizardsStepEight = props => {
                 method="post"
                 encType="multipart/form-data"
               >
-                <p>{registered_messages}</p>
-                {showExperience(registered_experience)}
-                {showMessage(errors)}
+                {showMessage(errors, 'red')}
 
                 <input type="hidden" name={csrf_param} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />
                 <FormFields formFields={formFields} />
                 <div className="action-buttons-container">
-                  <button
-                    name="add_other_experience"
-                    type="submit"
-                    value="1"
-                    className="accept"
-                  >
-                    {addOther}
-                  </button>
                 </div>
                 <FormButtons
                   nextPath={nextPath}

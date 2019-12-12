@@ -4,7 +4,7 @@ RSpec.describe Users::Wizards::StepFourService do
 
   describe "#call" do
     let(:candidate) { create(:user, :first_time_candidate) }
-    let(:new_curriculum_vitae) { create(:curriculum_vitae, user: candidate) }
+    let(:empty) { create(:curriculum_vitae, user: candidate) }
 
     context "When the params are valids" do
       let!(:vehicle_ids) do

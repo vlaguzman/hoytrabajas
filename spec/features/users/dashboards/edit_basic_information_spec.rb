@@ -27,7 +27,7 @@ RSpec.describe "like candidate", type: :feature do
 
   feature "When click on 'Ir al Dashboard'" do
     let(:curriculum_vitae) do
-    create(:curriculum_vitae, :new_curriculum_vitae, user: create(:user, :first_time_candidate))
+    create(:curriculum_vitae, :empty, user: create(:user, :first_time_candidate))
     end
 
     let(:candidate) { curriculum_vitae.user }

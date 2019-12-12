@@ -7,7 +7,7 @@ es:
           form:
             buttons:
               previous: 'Regresar'
-              submit: 'Guardar y Continuar'
+              submit: 'Continuar'
               next: 'Saltar'
               add_other: 'Agregar otra experiencia'
             formFields:
@@ -16,7 +16,7 @@ es:
               work_position_id: 'Cargo*'
               work_methodology_id: 'Modalidad de trabajo'
               city_id: 'Ciudad'
-              still_in_progress: 'Altualmente laborando'
+              still_in_progress: 'Actualmente laborando'
               technical_skill_ids: 'Habilidades desempeñadas'
               started_at: 'Fecha de inicio'
               finished_at: 'Fecha de finalización'

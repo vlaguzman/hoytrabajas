@@ -70,11 +70,6 @@ RSpec.describe User, type: :model do
     end
   end
 
-  #describe "#new_with_session" do
-  #  let(:subject) { described_class }
-  #  it {should respond_to(:new_with_session) }
-  #end
-
   describe "#born_city" do
     let(:user) { create(:user, born_city_id: nil) }
     let(:city) { create(:city) }

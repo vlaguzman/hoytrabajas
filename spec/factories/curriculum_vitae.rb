@@ -13,7 +13,7 @@ FactoryBot.define do
       curriculum.photo.attach(io: File.open(Rails.root.join('spec', 'factories', 'images', 'photo.jpg')), filename: 'photo.jpg', content_type: 'image/jpeg')
     end
 
-    trait :new_curriculum_vitae do
+    trait :empty do
       area_code             { nil }
       about_me              { nil }
       release_date          { nil }

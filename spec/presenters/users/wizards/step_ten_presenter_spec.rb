@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe Users::Wizards::StepTenPresenter do
 
-  let!(:curriculum) { create(:curriculum_vitae, :new_curriculum_vitae, user: create(:user, :first_time_candidate)) }
+  let!(:curriculum) { create(:curriculum_vitae, :empty, user: create(:user, :first_time_candidate)) }
   let(:candidate) { curriculum.user }
   let(:subject) { described_class.new(candidate) }
 

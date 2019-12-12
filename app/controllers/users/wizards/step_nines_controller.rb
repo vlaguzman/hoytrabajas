@@ -1,47 +1,42 @@
-class Users::Wizards::StepNinesController < ApplicationController
-  before_action :authenticate_user!
+class Users::Wizards::StepNinesController < Users::WizardsController
 
   def show
-    user_presenter
+    new_educational_level = EducationalLevel.new(curriculum_vitae: current_user.curriculum_vitae)
+    educational_level_presenter(new_educational_level)
   end
 
-  def update
-    user = Users::Wizards::StepNineService.(candidate: current_user, update_params: step_nine_params)
+  def create
+    new_educational_level = EducationalLevel.new(curriculum_vitae: current_user.curriculum_vitae)
 
-    if user.errors.details.any? || add_other_study.any?
-      user_presenter(user: user)
-      render 'show'
-    else
-      redirect_to users_wizards_step_ten_path
-    end
+    added_educational_level, updated = Users::Wizards::StepNineService.(
+      educational_level: new_educational_level,
+      update_params: step_nine_params
+    )
+
+    educational_level_presenter(added_educational_level)
+
+    validate_redirect_to(
+      source: added_educational_level,
+      users_wizard_path: verify_path(educational_level: added_educational_level, updated: updated)
+    )
+
   end
 
   private
 
-  def user_presenter(user: current_user)
-    @user = Users::Wizards::StepNinePresenter.new(user)
-  end
-
-  def add_other_study
-    params.permit(:add_other_study).to_h
+  def educational_level_presenter(educational_level)
+    @educational_level = Users::Wizards::StepNinePresenter.new(educational_level)
   end
 
   def step_nine_params
-      params
-      .require(:user)
-      .permit(
-        curriculum_vitae: {
-          educational_level: [
-            :degree,
-            :institution_name,
-            :start_date,
-            :finish_date,
-            :ongoing_study,
-            :city_id,
-            :diploma
-          ]
-        }
-      ).to_h
+    params
+      .require(:educational_level)
+      .permit(:degree, :institution_name, :start_date, :finish_date, :ongoing_study, :city_id, :diploma)
+      .to_h
+  end
+
+  def verify_path(educational_level: _, updated: _)
+    updated ? users_wizards_step_nines_added_educational_level_path(educational_level) : users_wizards_step_nine_path
   end
 
 end

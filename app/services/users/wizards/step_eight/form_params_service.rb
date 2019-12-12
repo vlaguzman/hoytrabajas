@@ -20,18 +20,6 @@ class Users::Wizards::StepEight::FormParamsService < BaseFormWizardsService
 
   private
 
-  def input_fields_builder
-    super('curriculum_vitae', 'work_experience')
-  end
-
-  def select_fields_builder
-    super('curriculum_vitae', 'work_experience')
-  end
-
-  def multiple_select_fields_builder
-    super('curriculum_vitae', 'work_experience')
-  end
-
   def job_category_id_list
     ListConverter.model_list JobCategory
   end

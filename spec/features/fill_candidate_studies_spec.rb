@@ -4,7 +4,7 @@ RSpec.describe "fill the canditate user data, studies and acknowledgments", :typ
   context "like a candidate user after the experience deta is filled" do
 
     #Create a user with the principal information, and the offert details - Use a factory
-    let(:curriculum_vitae) { create(:curriculum_vitae, :new_curriculum_vitae) }
+    let(:curriculum_vitae) { create(:curriculum_vitae, :empty) }
     let(:candidate) { curriculum_vitae.user }
 
     context "I dont have any study" do

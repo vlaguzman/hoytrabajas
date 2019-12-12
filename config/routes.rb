@@ -69,6 +69,12 @@ Rails.application.routes.draw do
   resource :users, only: [:show, :edit]
   resources :companies, only: [:edit, :update, :show, :index]
 
+  #The next one url canonicals
+
+  get 'ofertas-de-empleo', to: 'offers#index'
+  get 'buscador-de-empleo', to: 'offers#index'
+
+  ###########################################
   root to: "home#index"
 
 end

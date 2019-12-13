@@ -1,7 +1,11 @@
-= simple_form_for(current_user, url: users_wizards_step_zeros_curriculum_vitae_path) do |f|
-  %h1 Cuentas con una hoja de vida?
+= render '/shared/header'
+= simple_form_for(current_user, url: users_wizards_step_zeros_curriculum_vitae_path, :html => { class: "upload_cv" }) do |f|
+  %h1 ¿Cuentas con una hoja de vida?
   %p Subiendo tu Curriculum podras simplificar el diligenciamiento de tu perfil
   = f.file_field :file_cv
   = f.input :test, as: :hidden, input_html: { name: request_forgery_protection_token, value: form_authenticity_token }
   = f.input :test2, as: :hidden, input_html: { name: "_method", value: "put" }
-  = f.button :submit, "Continuar"
+  .actions
+    = link_to("Regresar", users_wizards_step_zero_path)
+    = f.button :submit, "Continuar"
+    = link_to("Omitir", users_wizards_step_one_path)

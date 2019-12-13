@@ -35,7 +35,9 @@ class Offers::ViewsService
       city:                 { description: offer.city_description },
       salary:               salary_details,
       company:              company_details,
-      close_date:           close_date.present? ? DatesManager.default(date: close_date) : DatesManager.default(date: Date.today + 1.day )
+      close_date:           close_date.present? ? DatesManager.default(date: close_date) : DatesManager.default(date: Date.today + 1.day ),
+      on_demand:            offer_on_demand_details,
+
     }
   end
 
@@ -57,6 +59,11 @@ class Offers::ViewsService
       name: offer.company_name,
       url_image_logo: company_logo_image
     }
+  end
+
+  def offer_on_demand_details
+    offer_on_demand = OfferOnDemand.find_by(offer_id: offer.id)
+    offer_on_demand.present? ? offer_on_demand.status : nil
   end
 
   private

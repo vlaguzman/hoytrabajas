@@ -10,4 +10,8 @@ class CompanyStateMachine
   after_transition(to: :premium) do |company, transition|
     CompanyService.up_offers_on_demands(company)
   end
+
+  after_transition(to: :no_premium) do |company, transition|
+    CompanyService.down_offers_on_demands(company)
+  end
 end

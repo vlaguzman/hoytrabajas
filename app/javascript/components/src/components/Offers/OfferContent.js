@@ -20,12 +20,10 @@ const ImmediateStartBlock = ({ content }) => (
   </div>
 )
 
-ImmediateStartBlock.propTypes = {
-  content: PropTypes.string.isRequired
-}
-
-const NewFlagBlock = ({ content }) => (
-  <div className="offerNewBadge a-badge__newOffer">{content}</div>
+const onDemandBlock = () => (
+  <Badge color="primary" className="mr-5 d-block">
+    <small>OnDemand</small>
+  </Badge>
 )
 
 NewFlagBlock.propTypes = {
@@ -77,33 +75,59 @@ const OfferContent = ({ offer, translations }) => {
         className="offerCompanyIcon"
         src={offer['company']['url_image_logo']}
       />
-      {offer.new_offer && <NewFlagBlock content={tag_new_offer} />}
-      {offer.salary && offer.salary.from && (
-        <div className="a-typo__subtitle2 a-badge__price px-0">
-          <span>{`${offer.salary.currency.description} ${offer.salary.from}`}</span>
-        </div>
-      )}
-      <h2 className="offerTitle a-typo__subtitle1 my-0">
-        {capitalizeFirstLetter(wordsShortener(offer.title, 26))}
-      </h2>
-      <h4 className="offerSubtitle a-typo__subtitle2 mb-10">
-        {wordsShortener(offer.company.name, 31)}
-      </h4>
-      <p className="offerDescription a-typo__subtitle2 mb-10">
-        {capitalizeFirstLetter(wordsShortener(offer.description, 58))}
-      </p>
-      <div className="mt-auto">
-        <Row className="mr-0 justify-content-between align-items-end px-10 mb-10">
-          <Row className="mr-0 px-10">
-            {!offer.required_experience && (
-              <RequiredExperienceBlock
-                content={tag_without_required_experience}
-              />
-            )}
-            {offer.immediate_start && (
-              <ImmediateStartBlock content={tag_immediate_start} />
-            )}
-          </Row>
+      {offer['new_offer'] && NewFlagBlock()}
+      <Badge
+        color="light"
+        className="p-14 position-absolute font-weight-bolder text-dark bg-white"
+        style={{ top: '-1.4rem', left: '1rem', fontSize: '0.93rem' }}
+      >
+        <span className="font-weight-bolder">
+          <strong>{offer['salary']['currency']['description']}</strong>
+          <strong>{offer['salary']['from']}</strong>
+        </span>
+      </Badge>
+      <Typography
+        gutterBottom
+        variant="h6"
+        component="h1"
+        className="mb-0 mt-10 fw-bold"
+        style={{ fontSize: '18px' }}
+      >
+        {WordsShortener(offer['title'], 26)}
+      </Typography>
+      <Typography
+        gutterBottom
+        variant="subtitle1"
+        component="div"
+        className="mb-10"
+        style={{ fontWeight: '500', fontSize: '14px' }}
+      >
+        {WordsShortener(offer['company']['name'], 31)}
+      </Typography>
+      <Typography
+        className="text-secondary mb-10"
+        variant="body2"
+        component="p"
+      >
+        {WordsShortener(offer['description'], 58)}
+      </Typography>
+      {/* <Typography variant="caption" className="text-secondary">
+        <i
+          className="ti-location-pin fw-bold mr-5"
+          style={{ fontSize: '1rem' }}
+        />{' '}
+        {offer['city']['description']}
+        <i
+          className="ti-hand-point-up fw-bold ml-20"
+          style={{ fontSize: '1rem' }}
+        />
+        100
+      </Typography> */}
+      <Row className="mr-0 justify-content-between align-items-end px-10 my-10">
+        <Row className="mr-0 px-10">
+          {offer['required_experience'] === false && RequiredExperienceBlock()}
+          {offer['immediate_start'] && InmediateStartBlock()}
+          {offer['on_demand'] === 'up' && onDemandBlock()}
         </Row>
         <Typography
           variant="caption"

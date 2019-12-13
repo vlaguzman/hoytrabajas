@@ -32,7 +32,6 @@ module CompanyService
   end
 
   def self.update_offer_on_demand(offer_id)
-    puts "!" * 100
     offer_on_demand = OfferOnDemand.find_by(offer_id: offer_id)
     offer_on_demand.update(status: DEFAULT_STATE_DOWN)
   end

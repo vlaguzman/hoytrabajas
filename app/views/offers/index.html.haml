@@ -1,5 +1,4 @@
 = render '/shared/header'
-%h1 Hola
 = react_component('views/offers/show',
   {offers: @offers,
     csrf_param: request_forgery_protection_token,

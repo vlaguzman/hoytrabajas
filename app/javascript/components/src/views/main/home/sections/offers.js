@@ -14,9 +14,7 @@ const OffersSection = props => {
 
   return (
     <div className="o-offers__wrapper">
-      <h2 className="a-typo__titleH4 color__blue-main mb-60">
-        {section_title}
-      </h2>
+      <h4 className="color__blue-main mb-60">{section_title}</h4>
       <Offers
         offers={offers}
         offer_translations={offer_translations}

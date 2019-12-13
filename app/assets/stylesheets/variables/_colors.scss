@@ -32,6 +32,7 @@ $color__snow-light: #f4f6f8;
 $color__snow-extralight: #f9fafb;
 $color__palelilac-main: #ebebf0;
 $color__gray-main: #77818f;
+$color__purple-main: #831fc6;
 
 $color-list: (
   orange-main: $color__orange-main,
@@ -58,7 +59,8 @@ $color-list: (
   snow-light: $color__snow-light,
   snow-extralight: $color__snow-extralight,
   palelilac-main: $color__palelilac-main,
-  gray-main: $color__gray-main
+  gray-main: $color__gray-main,
+  purple-main: $color__purple-main
 );
 
 @each $name, $color in $color-list {

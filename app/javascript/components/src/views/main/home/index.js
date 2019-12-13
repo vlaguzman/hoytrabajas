@@ -1,13 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Row } from 'reactstrap'
-import Introduccion from './sections/introduccion'
+// import { Row } from 'reactstrap'
+// import Introduccion from './sections/introduccion'
 import CoverSection from './sections/cover'
 import OffersSection from './sections/offers'
-import PremiumSection from './sections/premium'
+// import PremiumSection from './sections/premium'
 import CompaniesSection from './sections/companies'
-import TurorialSection from './sections/tutorial'
-import Newsletter from './sections/newsletter'
+// import TurorialSection from './sections/tutorial'
 import content from './data'
 
 const HomePage = ({
@@ -21,8 +20,9 @@ const HomePage = ({
   filterForm,
   common
 }) => {
-  const { premium, companies } = content
+  const { companies } = content
   const { cover, offers: offersTranslations } = home_translations
+
   return (
     <div className="home-wrapper">
       <CoverSection
@@ -38,7 +38,7 @@ const HomePage = ({
         section_title={offersTranslations.title}
         offer_translations={offer_translations}
       />
-      <Introduccion />
+      {/* <Introduccion />
       <div
         className="w-100 position-absolute d-none d-lg-block clipping-shit"
         style={{ height: '1000px', background: 'rgba(211, 211, 211, 0.3)' }}
@@ -49,9 +49,8 @@ const HomePage = ({
       <Row className="mb-70 d-none d-lg-flex" />
       <Row className="mb-70 d-none d-lg-flex" />
       <Row className="mb-70 d-none d-lg-flex" />
-      <PremiumSection {...premium} />
+      <PremiumSection {...premium} /> */}
       <CompaniesSection {...companies} />
-      <Newsletter />
     </div>
   )
 }

@@ -30,4 +30,7 @@ en:
     button_disactive: 'Offer applied'
     btn_lg_apply_offer: 'Apply to this offer'
     btn_apply_offer: 'Apply offer'
-    btn_super_apply: 'Super Aplicación'
+    btn_super_apply: 'Super application'
+    tag_new_offer: 'New'
+    tag_immediate_start: 'Immediate start'
+    tag_without_required_experience: 'Without experience'

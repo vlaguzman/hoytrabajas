@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react'
-import { Row, Col } from 'reactstrap'
+import React from 'react'
+import { Col } from 'reactstrap'
 import map from 'lodash/map'
 
 const CompaniesList = ({ catalogo }) => {
@@ -19,7 +19,7 @@ const CompaniesList = ({ catalogo }) => {
           >
             <img
               className="rounded"
-              src={`/assets/static/img/logos/clientes-ht-${i + 1}.jpg`}
+              src={`/assets/static/img/logos/clientes-ht-${i + 1}.png`}
               alt="client"
             />
           </Col>

@@ -28,7 +28,6 @@
   }
 
   .offerTitle {
-    @include get-typo('subtitle1');
     color: $color__slategray-dark;
     font-weight: 800;
     text-transform: none;
@@ -36,14 +35,18 @@
   }
 
   .offerSubtitle {
-    @include get-typo('subtitle2');
     color: $color__blue-main;
     font-weight: 700;
+    text-transform: capitalize;
   }
 
   .offerDescription {
-    @include get-typo('subtitle2');
     color: $color__gray-main;
+    text-transform: none;
+    font-weight: 400;
+  }
+
+  .offerLocation {
     text-transform: none;
   }
 
@@ -67,6 +70,7 @@
     background: $color__orange-main;
     color: white;
   }
+
   .offerButton__seeOffer {
     background: white;
     color: $color__blue-main;

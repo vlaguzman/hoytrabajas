@@ -82,6 +82,7 @@ RSpec.describe "Like new candidate", :type => :feature do
         visit users_wizards_step_five_path
 
         execute_script "window.scrollTo(0, (window.innerHeight * 2) )"
+        save_screenshot("javi.png")
         find("span", text: /Regresar/).click
 
         expect(current_path).to eq(users_wizards_step_four_path)

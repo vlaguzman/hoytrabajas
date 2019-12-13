@@ -45,7 +45,9 @@ const FormButtons = props => {
             className="position-absolute text-wrap text-muted fw-bold mt-0 mx-5 w-20 animated fadeIn"
           >
             <i className="ti-arrow-circle-left mx-10" />
-            <small className="fw-bold text-muted">{previous}</small>
+            <small className="fw-bold transform-none text-muted">
+              {previous}
+            </small>
           </Button>
         )}
         {nextPath && next && (
@@ -55,7 +57,9 @@ const FormButtons = props => {
             style={{ bottom: '0', right: '0' }}
             className="position-absolute text-wrap text-muted fw-bold mx-5 mt-0 w-20 animated fadeIn"
           >
-            <small className="fw-bold text-muted mx-10">{next}</small>
+            <small className="fw-bold transform-none text-muted mx-10">
+              {next}
+            </small>
             <i className="ti-arrow-circle-right" />
           </Button>
         )}

@@ -103,8 +103,8 @@ RSpec.describe "Overall navigation" do
 
         click_on("Empresas")
 
-        expect(page).to have_content(/Ellos hoy confian en nosotros/)
-        expect(page).to have_content(/para encontrar su empleado ideal/)
+        expect(page).to have_content(/Muchas empresas confían en nosotros/)
+        expect(page).to have_content(/el talento de su empresa/)
 
         click_on("INICIO")
 

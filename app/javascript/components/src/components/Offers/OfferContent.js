@@ -49,22 +49,20 @@ const OfferContent = ({ offer, translations }) => {
         src={offer['company']['url_image_logo']}
       />
       {offer.new_offer && <NewFlagBlock content={tag_new_offer} />}
-      <div className="a-badge__price px-0">
-        <span>{`${offer.salary.currency.description} ${offer.salary.from}`}</span>
-      </div>
-      <Typography variant="h6" component="h2" className="offerTitle my-0">
+      {offer.salary && offer.salary.from && (
+        <div className="a-typo__subtitle2 a-badge__price px-0">
+          <span>{`${offer.salary.currency.description} ${offer.salary.from}`}</span>
+        </div>
+      )}
+      <h2 className="offerTitle a-typo__subtitle1 my-0">
         {capitalizeFirstLetter(wordsShortener(offer.title, 26))}
-      </Typography>
-      <Typography variant="h6" component="h4" className="offerSubtitle mb-10">
+      </h2>
+      <h4 className="offerSubtitle a-typo__subtitle2 mb-10">
         {wordsShortener(offer.company.name, 31)}
-      </Typography>
-      <Typography
-        variant="body2"
-        component="p"
-        className="offerDescription mb-10"
-      >
+      </h4>
+      <p className="offerDescription a-typo__subtitle2 mb-10">
         {capitalizeFirstLetter(wordsShortener(offer.description, 58))}
-      </Typography>
+      </p>
       <div className="mt-auto">
         <Row className="mr-0 justify-content-between align-items-end px-10 mb-10">
           <Row className="mr-0 px-10">
@@ -78,7 +76,10 @@ const OfferContent = ({ offer, translations }) => {
             )}
           </Row>
         </Row>
-        <Typography variant="caption" className="mt-10 text-secondary">
+        <Typography
+          variant="caption"
+          className="offerLocation mt-10 text-secondary"
+        >
           <i className="ti-location-pin fw-bold" style={{ fontSize: '1rem' }} />{' '}
           {offer.city.description}
           {/* TODO Javier : add number of applications */}

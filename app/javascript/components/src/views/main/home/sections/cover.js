@@ -10,17 +10,27 @@ const WelcomeText = ({ translations, common, new_offer_path, filterForm }) => {
     call_to_action_text
   } = translations
 
+  const welcomeTextFirst = welcome_text.slice(0, welcome_text.search(/\d/))
+  const welcomeTextBold = welcome_text.slice(
+    welcome_text.search(/\d/),
+    welcome_text.search(/\d/) + welcome_text.replace(/[^0-9]/g, '').length
+  )
+  const welcomeTextEnd = welcome_text.slice(
+    welcome_text.search(/\d/) + welcome_text.replace(/[^0-9]/g, '').length
+  )
   return (
     <Row className="align-items-center justify-content-center mb-60">
       <Col
         className="align-items-center justify-content-center t-home__cover"
         xs={12}
       >
-        <h4 className="welcomeText a-typo__titleH4 color__blue-main d-none d-sm-inline">
-          {welcome_text}
+        <h4 className="welcomeText mb-20 a-typo__titleH4 color__blue-main d-sm-inline">
+          {welcomeTextFirst}
+          <strong> {welcomeTextBold} </strong>
+          {welcomeTextEnd}
         </h4>
-        <div className="welcomeImage">
-          <img src="/assets/static/img/bg-home.png" alt="Buildings" />
+        <div className="welcomeImage mb-30 d-none d-lg-block">
+          <img src="/assets/static/img/home-banner.jpg" alt="Banner" />
         </div>
         <FilterFormSection
           {...{ common, ...filterForm }}
@@ -46,6 +56,10 @@ WelcomeText.propTypes = {
   common: PropTypes.object.isRequired,
   filterForm: PropTypes.object.isRequired,
   translations: PropTypes.shape({
+    step1: PropTypes.string.isRequired,
+    step2: PropTypes.string.isRequired,
+    step3: PropTypes.string.isRequired,
+    step4: PropTypes.string.isRequired,
     welcome_text: PropTypes.string.isRequired,
     filterForm: PropTypes.object.isRequired,
     call_to_action_text: PropTypes.shape({

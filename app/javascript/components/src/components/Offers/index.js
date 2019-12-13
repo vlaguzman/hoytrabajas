@@ -81,7 +81,7 @@ const Offers = props => {
     <>
       <div className="offersGrid">{offerCards}</div>
       {loadMoreOffers && offers.length >= 1 && offers.length > offersToDisplay && (
-        <Row className="justify-content-center align-items-center  my-30 ">
+        <Row className="justify-content-center align-items-center mt-30">
           <button
             type="button"
             id="loadMoreOffers"

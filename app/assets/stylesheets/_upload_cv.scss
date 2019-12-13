@@ -1,10 +1,23 @@
 body {
   background-color: white;
+  height: auto;
+}
+
+.background {
+  background-image: url('/assets/static/img/background-city.png');
+  background-repeat: no-repeat;
+  background-color: white;
+  position: absolute;
+  height: 82%;
+  width: 100%;
+  z-index: -1;
+  top: 126px;
 }
 
 .upload_cv {
   box-shadow: 0 11px 27px 1px #ecebf0;
   padding: 76px 100px 47px;
+  background-color: white;
   margin: 185px 260px 0;
   border-radius: 7.2px;
   text-align: center;

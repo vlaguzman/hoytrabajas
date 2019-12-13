@@ -5,13 +5,18 @@ class Users::Wizards::StepZeros::CurriculumVitaesController < ApplicationControl
   end
 
   def update
-    Users::Wizards::StepZero::CurriculumVitaeService.upload_curriculum_vitae(current_user, permit_params[:file_cv])
+    parameter = permit_params[:user]
+    if parameter.present?
+      Users::Wizards::StepZero::CurriculumVitaeService.upload_curriculum_vitae(current_user, parameter[:file_cv])
+    else
+      redirect_to users_wizards_step_one_path
+    end
   end
 
   private
 
   def permit_params
-    params.require(:user).permit(:file_cv)
+    params.permit(user: :file_cv)
   end
 
 end

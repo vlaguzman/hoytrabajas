@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe "like new candidate", type: :feature do
   let(:user) { create(:user) }
 
-  feature "When Im the step zero page" do
-    scenario "Should see the expected text", js:true do
-      sign_in user 
+  feature "When Im the upload curriculum vitae page" do
+    scenario "When the resume goes up and goes to step zero", js:true do
+      sign_in user
 
       visit users_wizards_step_zeros_curriculum_vitae_path
 
@@ -18,7 +18,58 @@ RSpec.describe "like new candidate", type: :feature do
 
       click_button("Continuar")
 
-      expect(current_path)
+      expect(users_wizards_step_one_path)
+      expect(user.curriculum_vitae.file_cv.attached?).to be_truthy
+    end
+
+    scenario "When no resume goes up and on to continue", js:true do
+      sign_in user
+
+      visit users_wizards_step_zeros_curriculum_vitae_path
+
+      expect(page).to have_content("Cuentas con una hoja de vida?")
+      expect(page).to have_content("Subiendo tu Curriculum podras simplificar el diligenciamiento de tu perfil")
+      expect(page).to have_field("user[file_cv]")
+      expect(page).to have_button("Continuar")
+
+      click_button("Continuar")
+
+      expect(users_wizards_step_one_path)
+      expect(user.curriculum_vitae.file_cv.attached?).to be_falsey
+    end
+
+    scenario "When he returns", js:true do
+      sign_in user
+
+      visit users_wizards_step_zeros_curriculum_vitae_path
+
+      expect(page).to have_content("Cuentas con una hoja de vida?")
+      expect(page).to have_content("Subiendo tu Curriculum podras simplificar el diligenciamiento de tu perfil")
+      expect(page).to have_field("user[file_cv]")
+      expect(page).to have_link("Regresar")
+      expect(page).to have_button("Continuar")
+      expect(page).to have_link("Omitir")
+
+      click_link("Regresar")
+
+      expect(users_wizards_step_zeros_curriculum_vitae_path)
+    end
+
+    scenario "When you skip", js:true do
+      sign_in user
+
+      visit users_wizards_step_zeros_curriculum_vitae_path
+
+      expect(page).to have_content("Cuentas con una hoja de vida?")
+      expect(page).to have_content("Subiendo tu Curriculum podras simplificar el diligenciamiento de tu perfil")
+      expect(page).to have_field("user[file_cv]")
+      expect(page).to have_link("Regresar")
+      expect(page).to have_button("Continuar")
+      expect(page).to have_link("Omitir")
+
+      click_link("Omitir")
+
+      expect(users_wizards_step_one_path)
     end
   end
 end

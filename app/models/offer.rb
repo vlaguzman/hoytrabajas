@@ -64,6 +64,14 @@ class Offer < ApplicationRecord
     Offer.where(id: ids)
   end
 
+  def attributes_to_compare
+    [:city_id, :work_mode_id, :contract_type_id, :educational_degree_id]
+  end
+
+  def lists_to_compare
+    [:job_categories, :working_days, :available_work_days, :languages_list, :technical_skills, :vehicles, :driving_licences, :soft_skills, :sexes]
+  end
+
   def languages_list
     LanguagesOffers.where(offer_id: self.id)
   end

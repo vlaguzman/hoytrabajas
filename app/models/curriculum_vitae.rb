@@ -32,6 +32,22 @@ class CurriculumVitae < ApplicationRecord
   delegate :salary_period_id, to: :curriculum_vitae_salary, allow_nil: true
   delegate :currency_id, :from, :to, to: :curriculum_vitae_salary,  prefix: :salary, allow_nil: true
 
+  def attributes_to_compare
+    [:city_id, :work_mode_id, :sex]   
+  end
+
+  def lists_to_compare
+    [:job_categories, :working_days, :available_work_days, :technical_skills, :languages_list, :to_learn_skills, :soft_skills]
+  end
+  
+  def languages_list
+    strong_languages
+  end
+
+  def technical_skills
+    strong_skills
+  end
+
   def strong_skills
     CurriculumVitaesTechnicalSkills.where(curriculum_vitae_id: self.id, step_up: false)
   end

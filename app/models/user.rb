@@ -46,6 +46,14 @@ class User < ApplicationRecord
     end
   end
 
+  def attributes_to_compare
+    [:contract_type_id, :educational_degree_id]   
+  end
+
+  def lists_to_compare
+    [:vehicles, :driving_licences]
+  end
+
   def after_confirmation
     self.update_attribute(:confirmed_at, DateTime.now)
   end

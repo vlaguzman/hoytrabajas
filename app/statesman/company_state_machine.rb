@@ -1,4 +1,4 @@
-class CompanyPremiumStateMachine
+class CompanyStateMachine
   include Statesman::Machine
 
   state :no_premium, initial: true

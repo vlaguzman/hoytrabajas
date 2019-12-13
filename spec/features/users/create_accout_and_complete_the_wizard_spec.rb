@@ -63,6 +63,9 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     #Step_Zero
     click_on "Quiero completar mi perfil"
 
+    #Upload_cv
+    click_button('Continuar')
+
     #Step_One
     fill_in 'user[name]', with: 'Carlos'
     fill_in 'user[last_name]', with: 'Rojas'

@@ -6,9 +6,9 @@ class Users::Wizards::StepTensController < Users::WizardsController
   end
 
   def create
-    new_acknowledgment = Acknowledgment.new(curriculum_vitae: current_user.curriculum_vitae)
-
-    added_acknowledgment, updated = Users::Wizards::StepTenService.(acknowledgment: new_acknowledgment, update_params: step_ten_params)
+    added_acknowledgment, updated = Users::Wizards::StepTenService.(
+      acknowledgment: build_associate_object(Acknowledgment),
+      update_params: step_ten_params)
 
     acknowledgment_presenter(added_acknowledgment)
 

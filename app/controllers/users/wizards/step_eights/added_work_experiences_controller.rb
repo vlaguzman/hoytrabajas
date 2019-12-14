@@ -1,7 +1,9 @@
 class Users::Wizards::StepEights::AddedWorkExperiencesController < ApplicationController
 
   def show
-    work_experience_presenter(WorkExperience.find_by(id: work_experience_id))
+    work_experience_presenter(
+      WorkExperience.find_by(id: work_experience_id)
+    )
   end
 
   private
@@ -11,7 +13,7 @@ class Users::Wizards::StepEights::AddedWorkExperiencesController < ApplicationCo
   end
 
   def work_experience_id
-    params[:id]
+    params.permit(:id).to_h[:id]
   end
 
 end

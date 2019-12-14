@@ -10,4 +10,8 @@ class Users::WizardsController < ApplicationController
       render view
     end
   end
+
+  def build_associate_object(klass)
+    new_work_experience = klass.new(curriculum_vitae: current_user.curriculum_vitae)
+  end
 end

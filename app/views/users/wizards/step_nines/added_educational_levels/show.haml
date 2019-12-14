@@ -1,1 +1,18 @@
-%h1 Added Educational levels view
+%div.o-stepPage__mainContainer
+  %div.m-container
+    %span.a-title= t('.title')
+    %div.m-informationCard
+      %div.m-titles
+        %span.m-titles__title= @educational_level.degree
+        %span.m-titles__subtitle= @educational_level.institution_name
+        %span= @educational_level.location
+      %span.a-dividingLine
+      %span.a-rangeOfTime= @educational_level.range_of_time
+
+    %div.m-buttons
+      %a{href: @educational_level.return_path}
+        %button.--addElement
+          = t('.add_other')
+      %a{href: @educational_level.next_path}
+        %button
+          = t('.continue')

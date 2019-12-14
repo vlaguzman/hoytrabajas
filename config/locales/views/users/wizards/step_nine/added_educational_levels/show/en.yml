@@ -1,0 +1,10 @@
+en:
+  users:
+    wizards:
+      step_nines:
+        added_educational_levels:
+          show:
+            title: 'Perfect! We have your academic training'
+            ongoing_study: 'Ongoing study'
+            add_other: 'Add more'
+            continue: 'Continue'

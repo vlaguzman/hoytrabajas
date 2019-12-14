@@ -6,10 +6,8 @@ class Users::Wizards::StepEightsController < Users::WizardsController
   end
 
   def create
-    new_work_experience = WorkExperience.new(curriculum_vitae: current_user.curriculum_vitae)
-
     added_work_experience, updated = Users::Wizards::StepEightService.(
-      work_experience: new_work_experience,
+      work_experience: build_associate_object(WorkExperience),
       update_params: step_eight_params
     )
 

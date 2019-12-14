@@ -6,10 +6,8 @@ class Users::Wizards::StepNinesController < Users::WizardsController
   end
 
   def create
-    new_educational_level = EducationalLevel.new(curriculum_vitae: current_user.curriculum_vitae)
-
     added_educational_level, updated = Users::Wizards::StepNineService.(
-      educational_level: new_educational_level,
+      educational_level:  build_associate_object(EducationalLevel),
       update_params: step_nine_params
     )
 

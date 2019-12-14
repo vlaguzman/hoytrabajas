@@ -1,6 +1,6 @@
 module Users::Wizards::StepNineService
-  def self.call(educational_level: _, update_params: {})
-    persist_educational_level(educational_level, params: update_params)
+  def self.call(source: _, update_params: {})
+    persist_educational_level(source, params: update_params)
   end
 
   private

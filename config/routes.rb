@@ -69,11 +69,6 @@ Rails.application.routes.draw do
   resource :users, only: [:show, :edit]
   resources :companies, only: [:edit, :update, :show, :index]
 
-  #Follow this routes to see a demo of styles
-  namespace :style_guides do
-    resources :typographic_escalas, only: :index
-  end
-
   root to: "home#index"
 
 end

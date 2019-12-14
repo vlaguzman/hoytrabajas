@@ -48,7 +48,7 @@ RSpec.describe Users::Wizards::StepEightService do
 
 
       it "Should return a modifiend User" do
-        updated_work_experience, updated = subject.(work_experience: new_work_experience, update_params: params)
+        updated_work_experience, updated = subject.(source: new_work_experience, update_params: params)
 
         expect(updated).to be_truthy
 
@@ -58,7 +58,7 @@ RSpec.describe Users::Wizards::StepEightService do
       it "should create a work eperience user asocc with the user" do
         WorkExperience.destroy_all
 
-        updated_work_experience, updated = subject.(work_experience: new_work_experience, update_params: params)
+        updated_work_experience, updated = subject.(source: new_work_experience, update_params: params)
 
         expect(updated).to be_truthy
 
@@ -82,7 +82,7 @@ RSpec.describe Users::Wizards::StepEightService do
               object[:work_position_id] = nil
             end
 
-            updated_work_experience, _ = subject.(work_experience: new_work_experience, update_params: params)
+            updated_work_experience, _ = subject.(source: new_work_experience, update_params: params)
 
             expect(updated_work_experience.errors.any?).to be_truthy
             expect(updated_work_experience.errors.full_messages).to match_array(["Work position El Cargo no puede estar vacío","Work position Debes seleccionar un Cargo"])

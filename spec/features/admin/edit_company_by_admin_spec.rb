@@ -4,13 +4,13 @@ RSpec.describe "Admin can edit an Company", type: :feature do
   include Devise::Test::IntegrationHelpers
 
   context "an admin user must be able to edit a created company" do
-    
+
     let!(:company) { create(:company, name: 'rocknroll', email: 'rocknroll@company.com') }
 
     scenario "the admin select a company and edit all the data" do
-      
+
       sign_in FactoryBot.create(:admin_user)
-      visit admin_dashboard_path 
+      visit admin_dashboard_path
       expect(page).to have_content("Active Admin")
 
       has_button?("Companies")
@@ -38,9 +38,9 @@ RSpec.describe "Admin can edit an Company", type: :feature do
     end
 
     scenario "the admin select an user and edit just the email" do
-      
+
       sign_in FactoryBot.create(:admin_user)
-      visit admin_dashboard_path 
+      visit admin_dashboard_path
       expect(page).to have_content("Active Admin")
       click_on("Companies")
 

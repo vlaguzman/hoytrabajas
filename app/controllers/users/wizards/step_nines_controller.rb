@@ -6,16 +6,12 @@ class Users::Wizards::StepNinesController < Users::WizardsController
   end
 
   def create
-    added_educational_level, updated = Users::Wizards::StepNineService.(
-      educational_level:  build_associate_object(EducationalLevel),
-      update_params: step_nine_params
-    )
-
-    educational_level_presenter(added_educational_level)
-
-    validate_redirect_to(
-      source: added_educational_level,
-      users_wizard_path: verify_path(educational_level: added_educational_level, updated: updated)
+    add_associate_object(
+      service:  Users::Wizards::StepNineService,
+      klass: EducationalLevel,
+      strong_params: step_nine_params,
+      presenter: :educational_level_presenter,
+      source_path: :users_wizards_step_nines_added_educational_level_path
     )
   end
 
@@ -31,9 +27,4 @@ class Users::Wizards::StepNinesController < Users::WizardsController
       .permit(:degree, :institution_name, :start_date, :finish_date, :ongoing_study, :city_id, :diploma)
       .to_h
   end
-
-  def verify_path(educational_level: _, updated: _)
-    updated ? users_wizards_step_nines_added_educational_level_path(educational_level) : users_wizards_step_nine_path
-  end
-
 end

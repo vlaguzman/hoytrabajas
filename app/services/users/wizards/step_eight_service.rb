@@ -1,6 +1,6 @@
 module Users::Wizards::StepEightService
-  def self.call(work_experience: _, update_params: {})
-    persist_work_experience(work_experience, params: update_params)
+  def self.call(source: _, update_params: {})
+    persist_work_experience(source, params: update_params)
   end
 
   private

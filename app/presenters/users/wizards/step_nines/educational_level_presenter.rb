@@ -1,14 +1,7 @@
 class Users::Wizards::StepNines::EducationalLevelPresenter < ApplicationPresenter
 
   def range_of_time
-    start = "#{ t('date.month_names')[start_date.month]} #{start_date.year}"
-    finish = "#{ t('date.month_names')[finish_date.month] } #{finish_date.year}" if finish_date.present?
-
-    difference = DatesManager.calculate_difference_time(finish_date.present? ? finish_date : Date.today, start_date)
-
-    not_in_progress = "#{finish} - #{difference}"
-
-    "#{start} - #{ (ongoing_study) ? t('users.wizards.step_nines.added_educational_levels.show.ongoing_study') : not_in_progress }"
+    super(start_date, finish_date, ongoing_study, t('users.wizards.step_nines.added_educational_levels.show.ongoing_study') )
   end
 
   def location

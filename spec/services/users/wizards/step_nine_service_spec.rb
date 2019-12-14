@@ -20,7 +20,7 @@ RSpec.describe Users::Wizards::StepNineService do
 
     context "When all strong params are valid" do
       it "should return a instace of User" do
-        response, updated = subject.(educational_level: new_educational_level, update_params: params)
+        response, updated = subject.(source: new_educational_level, update_params: params)
 
         expect(response).to be_an_instance_of(EducationalLevel)
         expect(updated).to be_truthy
@@ -29,13 +29,13 @@ RSpec.describe Users::Wizards::StepNineService do
       it "should create a educational level object" do
         expect(EducationalLevel.count).to eq(0)
 
-        subject.(educational_level: new_educational_level, update_params: params)
+        subject.(source: new_educational_level, update_params: params)
 
         expect(EducationalLevel.count).to eq(1)
       end
 
       it "educational level object should be assoc with the cv" do
-        response, = subject.(educational_level: new_educational_level, update_params: params)
+        response, = subject.(source: new_educational_level, update_params: params)
 
         expect(EducationalLevel.find_by(curriculum_vitae_id: response.curriculum_vitae.id)).to be_present
       end
@@ -47,7 +47,7 @@ RSpec.describe Users::Wizards::StepNineService do
           field[:degree] = nil
         end
 
-        response, updated = subject.(educational_level: new_educational_level, update_params: params)
+        response, updated = subject.(source: new_educational_level, update_params: params)
 
         expect(updated).to be_falsy
         expect(response.errors.details).to be_present
@@ -59,7 +59,7 @@ RSpec.describe Users::Wizards::StepNineService do
           field[:degree] = nil
         end
 
-        response, = subject.(educational_level: new_educational_level, update_params: params)
+        response, = subject.(source: new_educational_level, update_params: params)
 
         expect(response.errors.full_messages).to be_present
         expect(response.errors.full_messages).to match_array(['Degree El Titulo Educativo no puede estar vacío'])

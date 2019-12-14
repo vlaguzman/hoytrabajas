@@ -6,17 +6,14 @@ class Users::Wizards::StepEightsController < Users::WizardsController
   end
 
   def create
-    added_work_experience, updated = Users::Wizards::StepEightService.(
-      work_experience: build_associate_object(WorkExperience),
-      update_params: step_eight_params
+    add_associate_object(
+      service:  Users::Wizards::StepEightService,
+      klass: WorkExperience,
+      strong_params: step_eight_params,
+      presenter: :work_experience_presenter,
+      source_path: :users_wizards_step_eights_added_work_experience_path
     )
 
-    work_experience_presenter(added_work_experience)
-
-    validate_redirect_to(
-      source: added_work_experience,
-      users_wizard_path: verify_path(work_experience: added_work_experience, updated: updated)
-    )
   end
 
   private
@@ -41,10 +38,6 @@ class Users::Wizards::StepEightsController < Users::WizardsController
         technical_skill_ids: [],
       }
     ).to_h
-  end
-
-  def verify_path(work_experience: _, updated: _)
-    updated ? users_wizards_step_eights_added_work_experience_path(work_experience) : users_wizards_step_eight_path
   end
 
 end

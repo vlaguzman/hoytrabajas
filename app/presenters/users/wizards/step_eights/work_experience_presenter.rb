@@ -1,14 +1,7 @@
 class Users::Wizards::StepEights::WorkExperiencePresenter < ApplicationPresenter
 
   def range_of_time
-    start = "#{ t('date.month_names')[started_at.month]} #{started_at.year}"
-    finish = "#{ t('date.month_names')[finished_at.month] } #{finished_at.year}" if finished_at.present?
-
-    difference = DatesManager.calculate_difference_time(finished_at.present? ? finished_at : Date.today, started_at)
-
-    not_in_progress = "#{finish} - #{difference}"
-
-    "#{start} - #{ (still_in_progress) ? t('date.today') : not_in_progress }"
+    super(started_at, finished_at, still_in_progress, t('date.today') )
   end
 
   def responsabilities

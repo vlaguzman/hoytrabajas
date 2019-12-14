@@ -1,15 +1,14 @@
-class Companies::FirstOffer::StepTwoPresenter < ApplicationPresenter
+class Companies::FirstOffer::StepTwoPresenter < Companies::FirstOfferPresenter
 
   def form_information
     Companies::FirstOffer::StepTwo::FormParamsService.new(
-      source: source,
-      errors: source.errors,
-      action_path: companies_first_offer_step_two_path,
-      next_path: new_companies_first_offer_step_three_path,
-      previous_path: companies_first_offer_step_one_path,
-      form_type: :company,
-      template_translation_path: "companies.first_offer.step_twos.show",
-      form_method: :put
+      service_params(
+        action_path: companies_first_offer_step_two_path,
+        next_path: new_companies_first_offer_step_three_path,
+        previous_path: companies_first_offer_step_one_path,
+        template_translation_path: "companies.first_offer.step_twos.show",
+        form_type: :company
+      )
     ).form_params
   end
 

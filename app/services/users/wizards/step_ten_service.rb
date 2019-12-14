@@ -1,6 +1,6 @@
 module Users::Wizards::StepTenService
-  def self.call(acknowledgment: _, update_params: {})
-    persist_acknowledgment(acknowledgment, params: update_params)
+  def self.call(source: _, update_params: {})
+    persist_acknowledgment(source, params: update_params)
   end
 
   private

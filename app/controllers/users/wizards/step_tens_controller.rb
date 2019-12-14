@@ -6,15 +6,12 @@ class Users::Wizards::StepTensController < Users::WizardsController
   end
 
   def create
-    added_acknowledgment, updated = Users::Wizards::StepTenService.(
-      acknowledgment: build_associate_object(Acknowledgment),
-      update_params: step_ten_params)
-
-    acknowledgment_presenter(added_acknowledgment)
-
-    validate_redirect_to(
-      source: added_acknowledgment,
-      users_wizard_path: verify_path(acknowledgment: added_acknowledgment, updated: updated)
+    add_associate_object(
+      service: Users::Wizards::StepTenService,
+      klass: Acknowledgment,
+      strong_params: step_ten_params,
+      presenter: :acknowledgment_presenter,
+      source_path: :users_wizards_step_tens_added_acknowledgment_path
     )
   end
 
@@ -34,10 +31,6 @@ class Users::Wizards::StepTensController < Users::WizardsController
       :diploma,
       :city_id
     ).to_h
-  end
-
-  def verify_path(acknowledgment: _, updated: _)
-    updated ? users_wizards_step_tens_added_acknowledgment_path(acknowledgment) : users_wizards_step_ten_path
   end
 
 end

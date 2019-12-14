@@ -11,7 +11,27 @@ class Users::WizardsController < ApplicationController
     end
   end
 
-  def build_associate_object(klass)
-    new_work_experience = klass.new(curriculum_vitae: current_user.curriculum_vitae)
+  def add_associate_object(
+    service: _,
+    klass: _,
+    strong_params: {},
+    presenter: _,
+    source_path: _
+  )
+
+    added_associate_object, updated = service.(
+      source: klass.new(curriculum_vitae: current_user.curriculum_vitae),
+      update_params: strong_params
+    )
+
+    self.send(presenter, added_associate_object)
+
+    path = updated ? self.send(source_path, added_associate_object) : root_path
+
+    validate_redirect_to(
+      source: added_associate_object,
+      users_wizard_path: path
+    )
   end
+
 end

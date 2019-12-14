@@ -16,7 +16,7 @@ RSpec.describe Users::Wizards::StepTenService do
 
     context 'When all strong params are valid' do
       it 'should return a instace of User' do
-        response, updated = subject.(acknowledgment: new_acknowledgment, update_params: params)
+        response, updated = subject.(source: new_acknowledgment, update_params: params)
 
         expect(response).to be_an_instance_of(Acknowledgment)
         expect(updated).to be_truthy
@@ -29,13 +29,13 @@ RSpec.describe Users::Wizards::StepTenService do
       it 'should create a acknowledgment object' do
         expect(Acknowledgment.count).to eq(0)
 
-        subject.(acknowledgment: new_acknowledgment, update_params: params)
+        subject.(source: new_acknowledgment, update_params: params)
 
         expect(Acknowledgment.count).to eq(1)
       end
 
       it 'acknowledgment object should be assoc with the cv' do
-        response, = subject.(acknowledgment: new_acknowledgment, update_params: params)
+        response, = subject.(source: new_acknowledgment, update_params: params)
 
         expect(Acknowledgment.find_by(curriculum_vitae_id: new_curriculum_vitae.id)).to be_present
       end

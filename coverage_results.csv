@@ -4,7 +4,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/jobs/application_job.rb",100,7,1,1,0
 "./app/mailers/application_mailer.rb",100,4,3,3,0
 "./app/mailers/applied_offers_mailer.rb",100,14,8,8,0
-"./app/models/acknowledgment.rb",100,8,4,4,0
+"./app/models/acknowledgment.rb",100,9,5,5,0
 "./app/models/admin_user.rb",100,6,3,3,0
 "./app/models/age_range.rb",100,5,3,3,0
 "./app/models/application_record.rb",100,3,2,2,0
@@ -13,7 +13,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/available_work_day.rb",100,6,4,4,0
 "./app/models/available_work_days_curriculum_vitaes.rb",100,4,3,3,0
 "./app/models/available_work_days_offers.rb",100,4,3,3,0
-"./app/models/city.rb",100,5,3,3,0
+"./app/models/city.rb",100,7,4,4,0
 "./app/models/companies_users.rb",100,4,3,3,0
 "./app/models/company.rb",100,25,11,11,0
 "./app/models/contract_type.rb",100,3,2,2,0
@@ -102,10 +102,12 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/users/wizards/step_five_presenter.rb",100,33,12,12,0
 "./app/presenters/users/wizards/step_four_presenter.rb",100,32,12,12,0
 "./app/presenters/users/wizards/step_nine_presenter.rb",100,33,12,12,0
+"./app/presenters/users/wizards/step_nines/educational_level_presenter.rb",100,26,13,13,0
 "./app/presenters/users/wizards/step_one_presenter.rb",100,41,14,14,0
 "./app/presenters/users/wizards/step_seven_presenter.rb",100,27,10,10,0
 "./app/presenters/users/wizards/step_six_presenter.rb",100,34,12,12,0
 "./app/presenters/users/wizards/step_ten_presenter.rb",100,32,12,12,0
+"./app/presenters/users/wizards/step_tens/acknowledgment_presenter.rb",100,19,9,9,0
 "./app/presenters/users/wizards/step_three_presenter.rb",100,33,12,12,0
 "./app/presenters/users/wizards/step_two_presenter.rb",100,32,12,12,0
 "./app/presenters/users/wizards/step_zero_presenter.rb",100,7,3,3,0
@@ -150,7 +152,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/users/wizards/step_seven/form_params_service.rb",100,13,5,5,0
 "./app/services/users/wizards/step_six/form_params_service.rb",100,45,17,17,0
 "./app/services/users/wizards/step_six_service.rb",100,72,20,20,0
-"./app/services/users/wizards/step_ten/form_params_service.rb",100,10,2,2,0
+"./app/services/users/wizards/step_ten/form_params_service.rb",100,21,6,6,0
 "./app/services/users/wizards/step_ten_service.rb",100,13,7,7,0
 "./app/services/users/wizards/step_three/form_params_service.rb",100,36,14,14,0
 "./app/services/users/wizards/step_three_service.rb",100,5,3,3,0

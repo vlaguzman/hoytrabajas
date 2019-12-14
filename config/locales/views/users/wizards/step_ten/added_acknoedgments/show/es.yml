@@ -1,0 +1,9 @@
+es:
+  users:
+    wizards:
+      step_tens:
+        added_acknowledgments:
+          show:
+            title: '¡Perfecto! Hemos agregado tu reconocimiento'
+            add_other: 'Agregar más'
+            continue: 'Continuar'

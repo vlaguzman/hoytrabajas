@@ -7,4 +7,14 @@ class Users::Wizards::StepTen::FormParamsService < BaseFormWizardsService
     :diploma
   ]
 
+  SELECT_FIELDS_KEYS = [
+    :city_id
+  ]
+
+  private
+
+  def city_id_list
+    ListConverter.model_list City
+  end
+
 end

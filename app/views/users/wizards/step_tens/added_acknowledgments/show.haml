@@ -1,1 +1,18 @@
-%h1 Ack view
+%div.o-stepPage__mainContainer
+  %div.m-container
+    %span.a-title= t('.title')
+    %div.m-informationCard
+      %div.m-titles
+        %span.m-titles__title= @acknowledgment.title
+        %span.m-titles__subtitle= @acknowledgment.entity_name
+        %span= @acknowledgment.location
+      %span.a-dividingLine
+      %span.a-rangeOfTime= @acknowledgment.award_date
+
+    %div.m-buttons
+      %a{href: @acknowledgment.return_path}
+        %button.--addElement
+          = t('.add_other')
+      %a{href: @acknowledgment.next_path}
+        %button
+          = t('.continue')

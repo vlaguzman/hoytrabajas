@@ -280,7 +280,7 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
 
     attach_file("acknowledgment[diploma]", Rails.root + "spec/factories/pdfs/diploma.pdf" )
 
-    find("span", text: /PUBLICAR/).click
+    find("span", text: /CONTINUAR/).click
 
     visit users_wizards_step_eleven_path
 

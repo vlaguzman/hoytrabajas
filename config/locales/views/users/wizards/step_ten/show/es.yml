@@ -8,7 +8,7 @@ es:
           form:
             buttons:
               previous: 'Regresar'
-              submit: 'Publicar'
+              submit: 'Continuar'
               next: 'Saltar'
               add_other: 'Agregar otro reconocimiento'
             formFields:
@@ -16,3 +16,4 @@ es:
               start_date: 'Fecha de inicio'
               entity_name: 'Institución o entidad'
               diploma: 'Carga aquí tu diploma'
+              city_id: 'Ubicación'

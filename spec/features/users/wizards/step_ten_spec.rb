@@ -13,7 +13,7 @@ RSpec.describe 'In wizards step ten view', type: :feature do
 
         fill_in 'acknowledgment[title]', with: 'Valid Title'
 
-        click_on 'Publicar'
+        click_on 'Continuar'
 
         expect(current_path).to eq(users_wizards_step_tens_added_acknowledgment_path(1))
       end
@@ -38,7 +38,7 @@ RSpec.describe 'In wizards step ten view', type: :feature do
 
         attach_file("acknowledgment[diploma]", Rails.root + "spec/factories/pdfs/diploma.pdf" )
 
-        find("span", text: /PUBLICAR/).click
+        find("span", text: /CONTINUAR/).click
 
         expect(candidate.curriculum_vitae.acknowledgments.count).to eq(1)
 

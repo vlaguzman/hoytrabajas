@@ -4,7 +4,6 @@ en:
       step_nines:
         added_educational_levels:
           show:
-            title: 'Perfect! We have added your academic training'
-            ongoing_study: 'Ongoing study'
+            title: 'Perfect! We have added your acknowedgment'
             add_other: 'Add more'
             continue: 'Continue'

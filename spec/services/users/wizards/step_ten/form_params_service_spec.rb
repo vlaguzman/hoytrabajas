@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe Users::Wizards::StepTen::FormParamsService do
 
   describe '#form_params' do
+    let!(:cities) { create_list(:city, 5) }
+    let(:create_cites_list) { ListConverter.model_list(City) }
 
     let(:subject) { described_class }
 
@@ -17,7 +19,7 @@ RSpec.describe Users::Wizards::StepTen::FormParamsService do
           form: {
             buttons: {
               addOther: 'Agregar otro reconocimiento',
-              submit: 'Publicar',
+              submit: 'Continuar',
               next: 'Saltar',
               previous: 'Regresar',
               previousPath: '/users/wizards/step_nine',
@@ -46,6 +48,12 @@ RSpec.describe Users::Wizards::StepTen::FormParamsService do
                 name: 'acknowledgment[diploma]',
                 label: 'Carga aquí tu diploma',
                 current_value: new_acknowledgment.diploma
+              },
+              city_id: {
+                name: 'acknowledgment[city_id]',
+                label: 'Ubicación',
+                values: create_cites_list,
+                current_value: nil
               }
             },
             placeholders:{}
@@ -73,7 +81,8 @@ RSpec.describe Users::Wizards::StepTen::FormParamsService do
       let(:expected_acknowledgment) { build(:acknowledgment,
         title: 'Food manager of the year',
         start_date: DateTime.new(2000, 12, 30),
-        entity_name: 'Food cooker master center'
+        entity_name: 'Food cooker master center',
+        city: cities.last
       ) }
 
       it "should return expected object" do
@@ -83,7 +92,7 @@ RSpec.describe Users::Wizards::StepTen::FormParamsService do
           form: {
             buttons: {
               addOther: 'Agregar otro reconocimiento',
-              submit: 'Publicar',
+              submit: 'Continuar',
               next: 'Saltar',
               previous: 'Regresar',
               previousPath: '/users/wizards/step_nine',
@@ -112,6 +121,12 @@ RSpec.describe Users::Wizards::StepTen::FormParamsService do
                 name: 'acknowledgment[diploma]',
                 label: 'Carga aquí tu diploma',
                 current_value: expected_acknowledgment.diploma
+              },
+              city_id: {
+                name: 'acknowledgment[city_id]',
+                label: 'Ubicación',
+                values: create_cites_list,
+                current_value: cities.last.id
               }
             },
             placeholders:{}

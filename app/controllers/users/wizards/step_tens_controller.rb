@@ -31,7 +31,8 @@ class Users::Wizards::StepTensController < Users::WizardsController
       :title,
       :start_date,
       :entity_name,
-      :diploma
+      :diploma,
+      :city_id
     ).to_h
   end
 

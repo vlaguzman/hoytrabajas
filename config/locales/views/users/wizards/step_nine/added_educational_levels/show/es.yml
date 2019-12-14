@@ -4,7 +4,7 @@ es:
       step_nines:
         added_educational_levels:
           show:
-            title: '¡Perfecto! Hemos tu formación académica'
+            title: '¡Perfecto! Hemos agregado tu formación académica'
             ongoing_study: 'Estudio en curso'
             add_other: 'Agregar más'
             continue: 'Continuar'

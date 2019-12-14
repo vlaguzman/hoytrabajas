@@ -1,32 +1,22 @@
-class Users::Wizards::StepTenPresenter < ApplicationPresenter
+class Users::Wizards::StepTenPresenter < Users::WizardsPresenter
 
-  def form_information
+  def show_form_information
     Users::Wizards::StepTen::FormParamsService.new(
-      template_translation_path: 'users.wizards.step_tens.show',
-      action_path: users_wizards_step_ten_path,
-      previous_path: users_wizards_step_nine_path,
-      next_path: users_wizards_step_eleven_path,
-      form_method: :put
+      service_params
     ).form_params
   end
 
-  def registered_acknowledgments
-    acknowledgments = source.curriculum_vitae.acknowledgments
-    acknowledgments.map { |act| [act.title] }
-  end
-
-  def have_acknowledgments?
-    registered_acknowledgments.any?
-  end
-
-  def registered_acknowledgments_message
-    count = registered_acknowledgments.count
-    if count >= 1
-      "Llevas #{count} registro(s) de reconocimientos"
-    end
-  end
-
   private
+
+  def service_params
+    super(
+      template_translation_path: 'users.wizards.step_tens.show',
+      form_type: :acknowledgment,
+      action_path: users_wizards_step_ten_path,
+      previous_path: users_wizards_step_nine_path,
+      next_path: users_wizards_step_eleven_path,
+    )
+  end
 
   def users_wizards_step_nine_path
     rails_routes.users_wizards_step_nine_path

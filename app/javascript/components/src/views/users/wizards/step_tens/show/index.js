@@ -12,9 +12,7 @@ const UsersWizardsStepTen = props => {
   const {
     formInfo,
     csrf_param,
-    csrf_token,
-    registered_acknowledgments,
-    registered_acknowledgments_message
+    csrf_token
   } = props
   const {
     title,
@@ -22,7 +20,7 @@ const UsersWizardsStepTen = props => {
     form: { buttons, action, method, formFields, errors }
   } = formInfo
 
-  const { nextPath, previousPath, addOther } = buttons
+  const { nextPath, previousPath } = buttons
 
   return (
     <div className="main-wrapper">
@@ -38,21 +36,11 @@ const UsersWizardsStepTen = props => {
                 method="post"
                 encType="multipart/form-data"
               >
-                <p>{registered_acknowledgments_message}</p>
-                {showMessage(registered_acknowledgments)}
                 {showMessage(errors, 'red')}
                 <input type="hidden" name={csrf_param} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />
                 <FormFields formFields={formFields} />
                 <div className="action-buttons-container">
-                  <button
-                    name="add_other_acknowledgment"
-                    type="submit"
-                    value="1"
-                    className="accept"
-                  >
-                    {addOther}
-                  </button>
                 </div>
                 <FormButtons
                   nextPath={nextPath}

@@ -19,7 +19,7 @@ es:
         nit: "Nit"
         contact_work_position: "Posición de la persona de contacto"
         address: "Dirección"
-        website:  "Website"
+        website: "Website"
     offers:
       form:
         title: "Título"
@@ -118,6 +118,10 @@ es:
             job_category:
               required: "La Categoria de Trabajo no puede estar vacío"
               blank: "Debes seleccionar un Categoria de Trabajo"
+        acknowledgment:
+          attributes:
+            title:
+              blank: "El Titulo reconocimiento no puede estar vacio"
 
   time:
     am: am
@@ -127,6 +131,10 @@ es:
       short: "%-d de %b %H:%M"
     pm: pm
   date:
+    today: 'Hoy'
+    days: 'Día(s)'
+    years: 'Año(s)'
+    months: 'Mes(es)'
     formats:
       default: "%A, %-d de %B de %Y %H:%M:%S %z"
       long: "%-d de %B de %Y %H:%M"

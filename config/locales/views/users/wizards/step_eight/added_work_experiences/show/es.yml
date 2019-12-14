@@ -1,0 +1,10 @@
+es:
+  users:
+    wizards:
+      step_eights:
+        added_work_experiences:
+          show:
+            title: '¡Perfecto! Hemos registrado tu experiencia'
+            responsabilities: 'Responsabilidades'
+            add_other: 'Agregar más'
+            continue: 'Continuar'

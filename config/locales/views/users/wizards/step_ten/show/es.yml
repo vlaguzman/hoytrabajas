@@ -8,11 +8,11 @@ es:
           form:
             buttons:
               previous: 'Regresar'
-              submit: 'Guardar y Publicar'
+              submit: 'Publicar'
               next: 'Saltar'
               add_other: 'Agregar otro reconocimiento'
             formFields:
-              title: 'Título reconocimiento'
+              title: 'Título reconocimiento*'
               start_date: 'Fecha de inicio'
               entity_name: 'Institución o entidad'
               diploma: 'Carga aquí tu diploma'

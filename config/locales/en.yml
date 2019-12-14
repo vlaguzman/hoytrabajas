@@ -33,7 +33,7 @@ en:
         contract_type: "Tipo de contrato"
         required_experience: "¿Requiere experiencia?"
         inmediate_start: "Inicio inmediato"
-        status: 
+        status:
           label: "Estado"
           active: "active"
   activerecord:

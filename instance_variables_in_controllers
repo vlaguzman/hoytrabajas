@@ -12,6 +12,7 @@
       1 app/controllers/users/dashboards_controller.rb
       1 app/controllers/users/omniauth_callbacks_controller.rb
       1 app/controllers/users/profiles_controller.rb
+      1 app/controllers/users/wizards/step_eights/added_work_experiences_controller.rb
       1 app/controllers/users/wizards/step_eights_controller.rb
       1 app/controllers/users/wizards/step_elevens_controller.rb
       1 app/controllers/users/wizards/step_fives_controller.rb

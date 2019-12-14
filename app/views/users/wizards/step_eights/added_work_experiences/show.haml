@@ -1,0 +1,23 @@
+%div.o-stepEightPage__mainContainer
+  %div.m-container
+    %span.a-title= t('.title')
+    %div.m-workExperienceCard
+      %div.m-titles
+        %span.m-titles__title= @work_experience.work_position_description
+        %span.m-titles__subtitle= @work_experience.company_name
+      %span.a-dividingLine
+      %span.a-rangeOfTime= @work_experience.range_of_time
+      %span.m-titles__subtitle--responsibilities= @work_experience.responsabilities.any? ? t('.responsabilities') : ''
+      %div.m-chips
+        - @work_experience.responsabilities.each do |responsability|
+          %span.a-chip= responsability
+
+      %span.a-chip.--jobCategory= @work_experience.job_category_description
+
+    %div.m-buttons
+      %a{href: @work_experience.return_path}
+        %button.--addElement
+          = t('.add_other')
+      %a{href: @work_experience.next_path}
+        %button
+          = t('.continue')

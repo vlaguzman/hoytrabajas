@@ -39,7 +39,7 @@ RSpec.describe Offer, type: :model do
 
       context "When you search for a category and find results" do
         it "Should return the results found" do
-          expect(Offer.by_job_categories(job_category.id).first.job_category_ids).to match_array(job_category.id)
+          expect(Offer.by_job_categories(job_category.id).first.job_category_ids).to include(job_category.id)
           expect(Offer.by_job_categories(job_category.id).count).to eq(3)
         end
       end

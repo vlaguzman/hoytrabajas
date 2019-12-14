@@ -242,7 +242,51 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
 
     find("span", text: /CONTINUAR/).click
 
-  #Expects
+    visit users_wizards_step_nine_path
+
+  #Step_Nine
+    fill_in 'educational_level[degree]', with: 'Supa Engineer'
+
+    fill_in 'educational_level[institution_name]', with: 'MIT'
+
+    find("input[name='educational_level[start_date]']").click
+    find("h6[class='MuiTypography-root MuiPickersToolbarText-toolbarTxt MuiTypography-subtitle1']").click
+    find("div[class='MuiTypography-root MuiPickersYear-root MuiTypography-subtitle1']", text:"2000", visible: false).click
+    find("p[class='MuiTypography-root MuiTypography-body2 MuiTypography-colorInherit']", text: "23").click
+    click_on 'OK'
+
+    find("input[name='educational_level[finish_date]']").click
+    find("h6[class='MuiTypography-root MuiPickersToolbarText-toolbarTxt MuiTypography-subtitle1']").click
+    find("div[class='MuiTypography-root MuiPickersYear-root MuiTypography-subtitle1']", text:"2018", visible: false).click
+    find("p[class='MuiTypography-root MuiTypography-body2 MuiTypography-colorInherit']", text: "30").click
+    click_on 'OK'
+
+    attach_file("educational_level[diploma]", Rails.root + "spec/factories/pdfs/diploma.pdf" )
+
+    find('span', text: /CONTINUAR/).click
+
+    visit users_wizards_step_ten_path
+
+  #Step_ten
+    fill_in 'acknowledgment[title]', with: 'Supa Engineer'
+
+    fill_in 'acknowledgment[entity_name]', with: 'MIT'
+
+    find("input[name='acknowledgment[start_date]']").click
+    find("h6[class='MuiTypography-root MuiPickersToolbarText-toolbarTxt MuiTypography-subtitle1']").click
+    find("div[class='MuiTypography-root MuiPickersYear-root MuiTypography-subtitle1']", text:"2000", visible: false).click
+    find("p[class='MuiTypography-root MuiTypography-body2 MuiTypography-colorInherit']", text: "23").click
+    click_on 'OK'
+
+    attach_file("acknowledgment[diploma]", Rails.root + "spec/factories/pdfs/diploma.pdf" )
+
+    find("span", text: /PUBLICAR/).click
+
+    visit users_wizards_step_eleven_path
+
+    find(:button, text: 'Ir al Dashboard').click
+
+    #Expects
     expect(User.count).to eq(1)
 
     registered_user = User.find_by(email: 'nuevousuario@gmail.com')
@@ -310,5 +354,26 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     expect(work_experience.finished_at).to eq(Date.new(2010, Date.today.month, 12))
     expect(work_experience.still_in_progress).to be_falsy
 
+  #Step_Nine
+    added_educational_level = cv.educational_levels.last
+
+    expect(added_educational_level.degree).to eq('Supa Engineer')
+    expect(added_educational_level.institution_name).to eq('MIT')
+    expect(added_educational_level.start_date).to eq(Date.new(2000, Date.today.month, 23))
+    expect(added_educational_level.finish_date).to eq(Date.new(2018, Date.today.month, 30))
+    expect(added_educational_level.diploma).to be_present
+    expect(added_educational_level.ongoing_study).to be_falsy
+
+  #Step_Ten
+    expect(cv.acknowledgments.count).to eq(1)
+
+    added_acknowledgment = cv.acknowledgments.last
+
+    expect(added_acknowledgment.title).to eq('Supa Engineer')
+    expect(added_acknowledgment.entity_name).to eq('MIT')
+    expect(added_acknowledgment.start_date).to eq(Date.new(2000, Date.today.month, 23))
+    expect(added_acknowledgment.diploma).to be_present
+
+    expect(current_path).to eq('/users/dashboard')
   end
 end

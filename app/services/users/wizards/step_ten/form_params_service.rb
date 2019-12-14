@@ -7,18 +7,4 @@ class Users::Wizards::StepTen::FormParamsService < BaseFormWizardsService
     :diploma
   ]
 
-  private
-
-  def input_fields_builder
-    super('curriculum_vitae', 'acknowledgment')
-  end
-
-  def select_fields_builder
-    super('curriculum_vitae', 'acknowledgment')
-  end
-
-  def multiple_select_fields_builder
-    super('curriculum_vitae', 'acknowledgment')
-  end
-
 end

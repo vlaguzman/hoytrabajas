@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'In wizards step eight view', type: :feature do
+RSpec.describe 'In wizards step nine view', type: :feature do
 
   before do
     create(:city, description: 'Neverland City')

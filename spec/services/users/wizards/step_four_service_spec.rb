@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Users::Wizards::StepFourService do
 
   describe "#call" do
+
     let(:candidate) { create(:user, :first_time_candidate) }
-    let(:empty) { create(:curriculum_vitae, user: candidate) }
 
     context "When the params are valids" do
       let!(:vehicle_ids) do
@@ -33,7 +33,6 @@ RSpec.describe Users::Wizards::StepFourService do
       end
 
       it "Should return a modifiend User" do
-        new_curriculum_vitae
 
         update_candidate = subject.(candidate: candidate, update_params: params)
         update_curriculum = update_candidate.curriculum_vitaes.first

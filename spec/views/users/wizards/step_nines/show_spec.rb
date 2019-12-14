@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "users/wizards/step_nines/show" do
-  let(:curriculum) { create(:curriculum_vitae, :empty) }
+  let(:educational_level) { create(:educational_level, curriculum_vitae: create(:curriculum_vitae, :empty)) }
+
   it "Should render users/wizards/step_nines#show template" do
 
-    assign(:user, Users::Wizards::StepNinePresenter.new(curriculum.user))
+    assign(:educational_level, Users::Wizards::StepNinePresenter.new(educational_level))
 
     render
 

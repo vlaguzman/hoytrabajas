@@ -19,7 +19,6 @@ class Users::Wizards::StepNinesController < Users::WizardsController
       source: added_educational_level,
       users_wizard_path: verify_path(educational_level: added_educational_level, updated: updated)
     )
-
   end
 
   private

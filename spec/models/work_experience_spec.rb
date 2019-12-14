@@ -7,6 +7,7 @@ RSpec.describe WorkExperience, type: :model do
     it { should respond_to(:started_at) }
     it { should respond_to(:finished_at) }
     it { should respond_to(:company_name) }
+    it { should respond_to(:work_position_description) }
     it { should validate_presence_of(:job_category) }
     it { should validate_presence_of(:work_position) }
   end
@@ -47,7 +48,7 @@ RSpec.describe WorkExperience, type: :model do
         it "should return diffence with 'day(s)'" do
           work_experience.update(started_at: Date.new(2019, 01, 01), finished_at: Date.new(2019, 01, 19))
 
-          expect(work_experience.total_time).to eq("18 day(s)")
+          expect(work_experience.total_time).to eq("18 Día(s)")
         end
       end
     end

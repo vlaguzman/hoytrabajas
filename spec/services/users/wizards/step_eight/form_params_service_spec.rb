@@ -87,7 +87,7 @@ RSpec.describe Users::Wizards::StepEight::FormParamsService do
               },
               still_in_progress: {
                 name: 'work_experience[still_in_progress]',
-                label: 'Altualmente laborando',
+                label: 'Actualmente laborando',
                 current_value: nil
               },
               technical_skill_ids: {
@@ -196,7 +196,7 @@ RSpec.describe Users::Wizards::StepEight::FormParamsService do
               },
               still_in_progress: {
                 name: 'work_experience[still_in_progress]',
-                label: 'Altualmente laborando',
+                label: 'Actualmente laborando',
                 current_value: true
               },
               technical_skill_ids: {

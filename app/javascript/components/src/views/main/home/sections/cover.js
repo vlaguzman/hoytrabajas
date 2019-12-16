@@ -36,9 +36,9 @@ const WelcomeText = ({ translations, common, new_offer_path, filterForm }) => {
           {...{ common, ...filterForm }}
           translations={filterFormTranslations}
         />
-        <p className="addOffer">
+        <p className="a-callToAction__inline">
           {call_to_action_text.text}{' '}
-          <a className="addOffer__link color__blue-main" href={new_offer_path}>
+          <a className="color__blue-main" href={new_offer_path}>
             {call_to_action_text.link}
           </a>
         </p>
@@ -50,16 +50,10 @@ const WelcomeText = ({ translations, common, new_offer_path, filterForm }) => {
 export default WelcomeText
 
 WelcomeText.propTypes = {
-  welcome_text: PropTypes.string.isRequired,
   new_offer_path: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
   common: PropTypes.object.isRequired,
   filterForm: PropTypes.object.isRequired,
   translations: PropTypes.shape({
-    step1: PropTypes.string.isRequired,
-    step2: PropTypes.string.isRequired,
-    step3: PropTypes.string.isRequired,
-    step4: PropTypes.string.isRequired,
     welcome_text: PropTypes.string.isRequired,
     filterForm: PropTypes.object.isRequired,
     call_to_action_text: PropTypes.shape({

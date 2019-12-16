@@ -122,7 +122,7 @@ const OfferCard = ({
                </IconButton>
              </Row> */}
       </div>
-      <Card className="h-100 tarjeta a-shadow__offerCard">
+      <Card className="h-100 tarjeta a-shadow__card">
         <CardActionArea className="offerWrapper">
           <div className="offerImage__wrapper">
             <CardMedia

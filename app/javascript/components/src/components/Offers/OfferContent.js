@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography'
 import Avatar from '@material-ui/core/Avatar'
 import { Row } from 'reactstrap'
 import CardContent from '@material-ui/core/CardContent'
-import { capitalizeFirstLetter } from '../../helpers'
+import { wordsShortener, capitalizeFirstLetter } from '../../helpers'
 
 const RequiredExperienceBlock = ({ content }) => (
   <div className="offerTag a-tag__orange mr-5">{content}</div>
@@ -30,10 +30,6 @@ const NewFlagBlock = ({ content }) => (
 
 NewFlagBlock.propTypes = {
   content: PropTypes.string.isRequired
-}
-
-const wordsShortener = (words, maxSize) => {
-  return words.length > maxSize ? `${words.substring(0, maxSize)}...` : words
 }
 
 const OfferContent = ({ offer, translations }) => {

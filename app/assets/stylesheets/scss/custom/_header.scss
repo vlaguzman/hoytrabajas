@@ -9,8 +9,12 @@
   color: white;
   top: 0;
   width: 100%;
-  padding: 0 5%;
   flex-direction: column;
+  padding: 0 60px;
+
+  @media (max-width: 576) {
+    padding: 0 30px;
+  }
   .site-logo {
     padding: 1rem 0rem 0.8rem 0rem;
   }

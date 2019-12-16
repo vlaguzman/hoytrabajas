@@ -29,6 +29,7 @@ en:
     button_active: 'Apply to this offer'
     button_disactive: 'Offer applied'
     btn_lg_apply_offer: 'Apply to this offer'
+    btn_apply: 'Apply'
     btn_apply_offer: 'Apply offer'
     btn_super_apply: 'Super application'
     tag_new_offer: 'New'

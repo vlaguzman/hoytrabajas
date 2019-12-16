@@ -20,6 +20,10 @@ export function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
+export const wordsShortener = (words, maxSize) => {
+  return words.length > maxSize ? `${words.substring(0, maxSize)}...` : words
+}
+
 export function getTimestamp(date) {
   return getTime(date)
 }

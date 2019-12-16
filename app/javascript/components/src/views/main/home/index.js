@@ -45,22 +45,11 @@ const HomePage = ({
         section_title={offersTranslations.title}
         offer_translations={offer_translations}
       />
-      <JobCategories categories={common.categorias} translations={categories} />
+      {/* TODO Javier: uncomment sections when they have real data */}
+      {/* <JobCategories categories={common.categorias} translations={categories} /> */}
       <Banner translations={info} />
-      <SearchTrends translations={search_trends} />
-      <PostList translations={post_list} />
-      {/* <Introduccion />
-      <div
-        className="w-100 position-absolute d-none d-lg-block clipping-shit"
-        style={{ height: '1000px', background: 'rgba(211, 211, 211, 0.3)' }}
-      />
-      <Row className="mt-70 d-none d-lg-flex" />
-      <Row className="mt-70 d-none d-lg-flex" />
-      <TurorialSection />
-      <Row className="mb-70 d-none d-lg-flex" />
-      <Row className="mb-70 d-none d-lg-flex" />
-      <Row className="mb-70 d-none d-lg-flex" />
-      <PremiumSection {...premium} /> */}
+      {/* <SearchTrends translations={search_trends} /> */}
+      {/* <PostList translations={post_list} /> */}
       <CompaniesSection {...companies} />
     </div>
   )

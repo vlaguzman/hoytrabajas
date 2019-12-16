@@ -60,7 +60,7 @@ A          • Company                                                     15   
 A          • ContractType                                                1       0.0        0           1
 A          • Country                                                     4       0.0        0           1
 A          • Currency                                                    1       0.0        0           1
-A          • CurriculumVitae                                             31      6.6        0           1
+A          • CurriculumVitae                                             32      6.6        0           1
 A          • CurriculumVitaeSalary                                       3       0.0        0           1
 A          • CurriculumVitaes                                            1       0.0        0           0
 A          • CurriculumVitaesEducationalDegrees                          1       0.0        0           1
@@ -185,7 +185,9 @@ A          • Users::Wizards::StepTwo::FormParamsService                  2    
 A          • Users::Wizards::StepTwoPresenter                            8       14.8       0           1
 A          • Users::Wizards::StepTwoService                              2       3.0        0           1
 A          • Users::Wizards::StepTwosController                          7       15.7       20          2
+A          • Users::Wizards::StepZero::CurriculumVitaeService            1       3.6        0           1
 A          • Users::Wizards::StepZeroPresenter                           2       1.0        0           2
+A          • Users::Wizards::StepZeros::CurriculumVitaesController       4       14.48      0           2
 A          • Users::Wizards::StepZerosController                         3       3.24       0           1
 A          • Users::WizardsController                                    3       25.94      0           2
 A          • Users::WizardsPresenter                                     3       4.8        0           1

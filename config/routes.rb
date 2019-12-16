@@ -71,8 +71,31 @@ Rails.application.routes.draw do
 
   #The next one url canonicals
 
+  # Offers
+
   get 'ofertas-de-empleo', to: 'offers#index'
   get 'buscador-de-empleo', to: 'offers#index'
+
+  # User Session and Registration
+
+  devise_scope :user do
+
+    get '/registro/candidato/', to: 'devise/sessions#new'
+
+  end
+
+  # Company Session and Registration
+
+  devise_scope :company do
+
+    get '/registro/empresa/', to: 'devise/sessions#new'
+
+  end
+
+  # Dashboars
+
+  get '/panel/empresa/', to: 'companies/dashboards#show'
+  get '/panel/candidato/', to: 'users/dashboards#show'
 
   ###########################################
   root to: "home#index"

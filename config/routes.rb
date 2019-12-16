@@ -73,8 +73,8 @@ Rails.application.routes.draw do
 
   # Offers
 
-  get 'ofertas-de-empleo', to: 'offers#index'
-  get 'buscador-de-empleo', to: 'offers#index'
+  get '/ofertas-de-empleo', to: 'offers#index'
+  get '/buscador-de-empleo', to: 'offers#index'
 
   # User Session and Registration
 
@@ -92,7 +92,7 @@ Rails.application.routes.draw do
 
   end
 
-  # Dashboars
+  # Dashboards
 
   get '/panel/empresa/', to: 'companies/dashboards#show'
   get '/panel/candidato/', to: 'users/dashboards#show'

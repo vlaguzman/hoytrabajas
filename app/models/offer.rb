@@ -64,12 +64,13 @@ class Offer < ApplicationRecord
     Offer.where(id: ids)
   end
 
-  def attributes_to_compare
-    [:city_id, :work_mode_id, :contract_type_id, :educational_degree_id]
+  def self.attributes_to_compare
+    [:city_id, :work_mode_id, :contract_type_id]
   end
 
-  def lists_to_compare
-    [:job_categories, :working_days, :available_work_days, :languages_list, :technical_skills, :vehicles, :driving_licences, :soft_skills, :sexes]
+  #TO-DO: Evaluate educational_level values and quantity
+  def self.lists_to_compare
+    [:job_categories, :working_days, :available_work_days, :languages_list, :technical_skills, :vehicles, :driving_licences, :soft_skills, :sexes, :educational_level]
   end
 
   def languages_list

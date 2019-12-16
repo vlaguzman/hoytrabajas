@@ -46,11 +46,11 @@ class User < ApplicationRecord
     end
   end
 
-  def attributes_to_compare
-    [:contract_type_id, :educational_degree_id]   
+  def self.attributes_to_compare
+    [:contract_type_id, :educational_degree_id, :sex_id]   
   end
 
-  def lists_to_compare
+  def self.lists_to_compare
     [:vehicles, :driving_licences]
   end
 

@@ -33,6 +33,21 @@ RSpec.describe Offer, type: :model do
     let!(:applied_offer_2)   { create(:applied_offer, curriculum_vitae: cv, offer: offer_2) }
     let!(:applied_offer_3)   { create(:applied_offer, curriculum_vitae: cv_2, offer: offer_2) }
 
+    let(:expected_offer_attr_array) { [:city_id, :work_mode_id, :contract_type_id, :educational_degree_id] }
+    let(:expected_offer_list_array) { [:job_categories, :working_days, :available_work_days, :languages_list, :technical_skills, :vehicles, :driving_licences, :soft_skills, :sexes] }
+
+    describe "#attributes_to_compare " do
+      it "Should return the array with principal attributes" do
+        expect(Offer.attributes_to_compare).to match_array(expected_offer_attr_array) 
+      end
+    end
+
+    describe "#lists_to_compare" do
+      it "Should return the array with principal list attributes" do
+        expect(Offer.lists_to_compare).to match_array(expected_offer_list_array) 
+      end
+    end
+
     describe "#by_job_categories" do
       let!(:offer_3)           { create(:offer, title: 'an_other_offer_three', job_categories: [job_category, job_category_2]) }
       let!(:offer_4)           { create(:offer, title: 'an_other_offer_four', job_categories: [job_category]) }

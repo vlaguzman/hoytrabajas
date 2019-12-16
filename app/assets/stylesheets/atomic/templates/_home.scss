@@ -42,21 +42,6 @@
     padding: 15px 10px;
   }
 
-  .jobCategory__image {
-    img {
-      margin: auto;
-      max-width: 100px;
-      filter: gray; /* IE6-9 */
-      -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
-      filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
-    }
-  }
-
-  .jobCategory:hover .jobCategory__image img {
-    -webkit-filter: grayscale(0);
-    filter: none;
-  }
-
   .jobCategory__title {
     text-align: center;
   }

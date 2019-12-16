@@ -13,9 +13,12 @@ export default ({ id, img, quantity, name, handleJobCategory }) => {
   return (
     <Col
       id={name}
-      className={classNames('align-items-center justify-content-center h-100', {
-        'is-selected': selected
-      })}
+      className={classNames(
+        'align-items-center a-filter__gray justify-content-center h-100',
+        {
+          'is-selected': selected
+        }
+      )}
       onClick={() => {
         handleJobCategory(id, selected)
         setSelected(!selected)

@@ -32,6 +32,7 @@ RSpec.describe CurriculumVitae, type: :model do
     it { should have_many(:acknowledgments) }
     it { should have_many(:educational_levels) }
     it { should have_many(:applied_offers) }
+    it { should have_many(:work_experiences) }
     it { should have_and_belong_to_many(:soft_skills) }
     it { should have_and_belong_to_many(:working_days) }
     it { should have_and_belong_to_many(:available_work_days) }

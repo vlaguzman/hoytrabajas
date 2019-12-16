@@ -15,18 +15,6 @@ class Users::Wizards::StepNine::FormParamsService < BaseFormWizardsService
 
   private
 
-  def input_fields_builder
-    super('curriculum_vitae', 'educational_level')
-  end
-
-  def select_fields_builder
-    super('curriculum_vitae', 'educational_level')
-  end
-
-  def multiple_select_fields_builder
-    super('curriculum_vitae', 'educational_level')
-  end
-
   def city_id_list
     ListConverter.model_list City
   end

@@ -13,7 +13,6 @@
  */
 @import 'variables/colors';
 @import 'scss/bootstrap';
-
 // //Slick Slider
 @import 'scss/slick/slick-theme.css';
 @import 'scss/slick/slick.css';
@@ -43,6 +42,7 @@
 
 @import 'components/users/wizards/step_zero';
 @import 'components/users/wizards/step_seven';
+@import 'components/users/wizards/step_eights/work_experience';
 @import 'components/users/wizards/step_eleven';
 
 @import 'components/filter_home';

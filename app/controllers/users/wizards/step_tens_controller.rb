@@ -1,44 +1,36 @@
-class Users::Wizards::StepTensController < ApplicationController
-  before_action :authenticate_user!
+class Users::Wizards::StepTensController < Users::WizardsController
 
   def show
-    user_presenter
+    new_acknowledgment = Acknowledgment.new(curriculum_vitae: current_user.curriculum_vitae)
+    acknowledgment_presenter(new_acknowledgment)
   end
 
-  def update
-    user = Users::Wizards::StepTenService.(candidate: current_user, update_params: step_ten_params)
-    if user.errors.any? || add_other_acknowledgment.any?
-      user_presenter(user: user)
-      render "show"
-    else
-      redirect_to users_wizards_step_eleven_path
-    end
+  def create
+    add_associate_object(
+      service: Users::Wizards::StepTenService,
+      klass: Acknowledgment,
+      strong_params: step_ten_params,
+      presenter: :acknowledgment_presenter,
+      source_path: :users_wizards_step_tens_added_acknowledgment_path
+    )
   end
 
   private
 
-  def user_presenter(user: current_user)
-    @user = Users::Wizards::StepTenPresenter.new(user)
-  end
-
-  def add_other_acknowledgment
-    params.permit(:add_other_acknowledgment).to_h
+  def acknowledgment_presenter(acknowledgment)
+    @acknowledgment = Users::Wizards::StepTenPresenter.new(acknowledgment)
   end
 
   def step_ten_params
     params
-    .require(:user)
+    .require(:acknowledgment)
     .permit(
-      {
-      curriculum_vitae:{
-        acknowledgment: [
-          :title,
-          :start_date,
-          :entity_name,
-          :diploma
-        ]
-      }
-    }).to_h
+      :title,
+      :start_date,
+      :entity_name,
+      :diploma,
+      :city_id
+    ).to_h
   end
 
 end

@@ -1,0 +1,9 @@
+en:
+  users:
+    wizards:
+      step_nines:
+        added_educational_levels:
+          show:
+            title: 'Perfect! We have added your acknowedgment'
+            add_other: 'Add more'
+            continue: 'Continue'

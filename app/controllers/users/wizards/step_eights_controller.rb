@@ -1,51 +1,41 @@
-class Users::Wizards::StepEightsController < ApplicationController
-  before_action :authenticate_user!
+class Users::Wizards::StepEightsController < Users::WizardsController
 
   def show
-    user_presenter
+    new_work_experience = WorkExperience.new(curriculum_vitae: current_user.curriculum_vitae)
+    work_experience_presenter(new_work_experience)
   end
 
   def create
-    user = Users::Wizards::StepEightService.(candidate: current_user, update_params: step_eight_params)
-
-    if user.errors.details.present? || add_other_experience.any?
-      user_presenter(user: user)
-      render :show
-    else
-      redirect_to users_wizards_step_nine_path
-    end
+    add_associate_object(
+      service:  Users::Wizards::StepEightService,
+      klass: WorkExperience,
+      strong_params: step_eight_params,
+      presenter: :work_experience_presenter,
+      source_path: :users_wizards_step_eights_added_work_experience_path
+    )
 
   end
 
   private
 
-
-  def user_presenter(user: current_user)
-    @user = Users::Wizards::StepEightPresenter.new(user)
-  end
-
-  def add_other_experience
-    params.permit(:add_other_experience).to_h
+  def work_experience_presenter(work_experience)
+    @work_experience = Users::Wizards::StepEightPresenter.new(work_experience)
   end
 
   def step_eight_params
     params
-    .require(:user)
+    .require(:work_experience)
     .permit(
-      curriculum_vitae:{
-        work_experience:[
-          :job_category_id,
-          :company_name,
-          :work_position_id,
-          :work_methodology_id,
-          :city_id,
-          :started_at,
-          :finished_at,
-          :still_in_progress,
-          {
-            technical_skill_ids: [],
-          }
-        ]
+      :job_category_id,
+      :company_name,
+      :work_position_id,
+      :work_methodology_id,
+      :city_id,
+      :started_at,
+      :finished_at,
+      :still_in_progress,
+      {
+        technical_skill_ids: [],
       }
     ).to_h
   end

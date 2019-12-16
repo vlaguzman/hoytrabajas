@@ -1,47 +1,30 @@
-class Users::Wizards::StepNinesController < ApplicationController
-  before_action :authenticate_user!
+class Users::Wizards::StepNinesController < Users::WizardsController
 
   def show
-    user_presenter
+    new_educational_level = EducationalLevel.new(curriculum_vitae: current_user.curriculum_vitae)
+    educational_level_presenter(new_educational_level)
   end
 
-  def update
-    user = Users::Wizards::StepNineService.(candidate: current_user, update_params: step_nine_params)
-
-    if user.errors.details.any? || add_other_study.any?
-      user_presenter(user: user)
-      render 'show'
-    else
-      redirect_to users_wizards_step_ten_path
-    end
+  def create
+    add_associate_object(
+      service:  Users::Wizards::StepNineService,
+      klass: EducationalLevel,
+      strong_params: step_nine_params,
+      presenter: :educational_level_presenter,
+      source_path: :users_wizards_step_nines_added_educational_level_path
+    )
   end
 
   private
 
-  def user_presenter(user: current_user)
-    @user = Users::Wizards::StepNinePresenter.new(user)
-  end
-
-  def add_other_study
-    params.permit(:add_other_study).to_h
+  def educational_level_presenter(educational_level)
+    @educational_level = Users::Wizards::StepNinePresenter.new(educational_level)
   end
 
   def step_nine_params
-      params
-      .require(:user)
-      .permit(
-        curriculum_vitae: {
-          educational_level: [
-            :degree,
-            :institution_name,
-            :start_date,
-            :finish_date,
-            :ongoing_study,
-            :city_id,
-            :diploma
-          ]
-        }
-      ).to_h
+    params
+      .require(:educational_level)
+      .permit(:degree, :institution_name, :start_date, :finish_date, :ongoing_study, :city_id, :diploma)
+      .to_h
   end
-
 end

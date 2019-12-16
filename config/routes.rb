@@ -46,8 +46,21 @@ Rails.application.routes.draw do
       resource :step_six,     except: [:new, :destroy]
       resource :step_seven,   except: [:new, :destroy]
       resource :step_eight,   except: [:new, :destroy]
+
+      namespace :step_eights  do
+        resources :added_work_experiences,   only: [:show]
+      end
+
       resource :step_nine,    except: [:new, :destroy]
+      namespace :step_nines   do
+        resources :added_educational_levels,  only: [:show]
+      end
+
       resource :step_ten,     except: [:new, :destroy]
+      namespace :step_tens    do
+        resources :added_acknowledgments,     only: [:show]
+      end
+
       resource :step_eleven,  only: [:show]
     end
 

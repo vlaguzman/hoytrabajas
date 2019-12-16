@@ -18,7 +18,7 @@ RSpec.describe Users::Wizards::StepFive::FormParamsService do
     let(:subject) { described_class }
 
     context "When user does not have data" do
-      let(:cv) { create(:curriculum_vitae, :new_curriculum_vitae) }
+      let(:cv) { create(:curriculum_vitae, :empty) }
 
       it "should return the expected object" do
 

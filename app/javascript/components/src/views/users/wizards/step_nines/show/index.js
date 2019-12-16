@@ -13,15 +13,14 @@ const UsersWizardsStepNine = props => {
     formInfo,
     csrf_param,
     csrf_token,
-    registered_messages,
-    registered_studies
+    registered_messages
   } = props
   const {
     title,
     subtitle,
     form: { buttons, action, method, formFields, errors }
   } = formInfo
-  const { nextPath, previousPath, addOther } = buttons
+  const { nextPath, previousPath } = buttons
 
   return (
     <div className="main-wrapper">
@@ -39,19 +38,10 @@ const UsersWizardsStepNine = props => {
               >
                 <p>{registered_messages}</p>
                 {showMessage(errors, 'red')}
-                {showMessage(registered_studies)}
                 <input type="hidden" name={csrf_param} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />
                 <FormFields formFields={formFields} />
                 <div className="action-buttons-container">
-                  <button
-                    name="add_other_study"
-                    type="submit"
-                    value="1"
-                    className="accept"
-                  >
-                    {addOther}
-                  </button>
                 </div>
                 <FormButtons
                   nextPath={nextPath}

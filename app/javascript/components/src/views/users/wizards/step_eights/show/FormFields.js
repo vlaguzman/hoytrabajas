@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col } from 'reactstrap'
 import SelectChip from '../../../../../components/FormsLayout/Fields/SelectChip'
-import Select from '../../../../../components/FormsLayout/Fields/Select'
+// import Select from '../../../../../components/FormsLayout/Fields/Select'
 import StandardInput from '../../../../../components/FormsLayout/Fields/StandardInput'
 import DatePicker from '../../../../../components/FormsLayout/Fields/DatePicker'
 import Checkbox from '../../../../../components/FormsLayout/Fields/Checkbox'
@@ -224,7 +224,8 @@ const FormFields = props => {
       {workPositionIDField}
       {workMethodologyIDField}
       {cityIDField}
-      {technicalSkillIDsField}
+      {/* TODO oscar comment until the technical skills will be able */}
+      {/* {technicalSkillIDsField} */}
       {startedAtField}
       {!formValues[still_in_progress.name] && finishedAtField}
       {inProgressField}

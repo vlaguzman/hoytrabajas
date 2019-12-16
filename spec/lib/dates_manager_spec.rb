@@ -17,26 +17,32 @@ RSpec.describe DatesManager do
   describe "#calculate_difference_time" do
     describe "When is need show see the difference of two dates in days or months and years" do
       context "when total_time is in days" do
-        it "should return diffence with 'day(s)'" do
+        it "should return diffence with 'Hoy'" do
+          response = subject.calculate_difference_time
+
+          expect(response).to eq("Hoy")
+        end
+
+        it "should return diffence with 'Días(s)'" do
           response = subject.calculate_difference_time(Date.new(2019, 01, 19), Date.new(2019, 01, 01))
 
-          expect(response).to eq("18 day(s)")
+          expect(response).to eq("18 Día(s)")
         end
       end
 
       context "when total_time is in months" do
-        it "should return diffence with 'months(s)'" do
+        it "should return diffence with 'Mes(es)'" do
           response = subject.calculate_difference_time(Date.new(2019, 06, 19), Date.new(2019, 01, 01))
 
-          expect(response).to eq("5.6 month(s)")
+          expect(response).to eq("5 Mes(es)")
         end
       end
 
       context "when total_time is in years" do
-        it "should return diffence with 'years(s)'" do
+        it "should return diffence with 'Año(s)'" do
           response = subject.calculate_difference_time(Date.new(2020, 06, 19), Date.new(2019, 01, 01))
 
-          expect(response).to eq("1.5 year(s)")
+          expect(response).to eq("1 Año(s)")
         end
       end
     end

@@ -72,6 +72,37 @@ RSpec.describe "Like new candidate", :type => :feature do
       expect(salary.to).to eq(10000)
       expect(salary.salary_period.description).to eq("Diario")
     end
+
+    feature "When set the salary with fixed range" do
+      scenario "should create a offer salary with olny from 'from' value", js: true do
+        sign_in candidate
+
+        visit users_wizards_step_five_path
+
+        find("div[id='mui-component-select-curriculum_vitae[curriculum_vitae_salary][range_type]", visible: false).click
+        find("li", text: "Fijo").click
+
+        find("div[id='mui-component-select-curriculum_vitae[curriculum_vitae_salary][currency_id]", visible: false).click
+        find("li", text: "COP").click
+
+        fill_in "curriculum_vitae[curriculum_vitae_salary][from]", :with => '4000'
+
+        find("div[id='mui-component-select-curriculum_vitae[curriculum_vitae_salary][salary_period_id]", visible: false).click
+        find("li", text: "Diario").click
+
+        find("span", text: /SIGUIENTE/).click
+
+        candidate.reload
+
+        salary = candidate.curriculum_vitae.curriculum_vitae_salary
+
+        expect(salary).to be_present
+
+        expect(salary.from).to eq(4000)
+        expect(salary.to).to be_nil
+        expect(salary.salary_period.description).to eq("Diario")
+      end
+    end
   end
 
   describe "visit step three but the user need return to step four" do

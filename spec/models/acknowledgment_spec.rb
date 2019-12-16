@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Acknowledgment, type: :model do
 
   describe "validations" do
-    it { is_expected.to respond_to(:title) }
+    it { is_expected.to validate_presence_of(:title) }
     it { is_expected.to respond_to(:start_date) }
     it { is_expected.to respond_to(:entity_name) }
     it { is_expected.to respond_to(:diploma) }

@@ -3,10 +3,12 @@ import PropTypes from 'prop-types'
 import { Row, Col } from 'reactstrap'
 import StandardInput from '../../../../../components/FormsLayout/Fields/StandardInput'
 import DatePicker from '../../../../../components/FormsLayout/Fields/DatePicker'
+import SelectChip from '../../../../../components/FormsLayout/Fields/SelectChip'
 
 import {
   handleChange,
-  handleSimpleChange
+  handleSimpleChange,
+  handleDeleteChip
 } from '../../../../../components/FormsLayout/handleFunctions'
 
 const inputClassname = 'my-30 animated fadeIn inputField'
@@ -20,6 +22,7 @@ const dateOptions = {
 const FormFields = props => {
   const { formFields } = props
   const {
+    city_id = null,
     diploma = null,
     entity_name = null,
     start_date = null,
@@ -27,6 +30,7 @@ const FormFields = props => {
   } = formFields
 
   const [formValues, setFormValues] = useState({
+    [city_id.name]: '',
     [title.name]: '',
     [entity_name.name]: '',
     [diploma.name]: '',
@@ -76,9 +80,27 @@ const FormFields = props => {
     [formValues[entity_name.name]]
   )
 
+  const cityIDField = useMemo(
+    () => (
+      <Col key={city_id.name} className={inputClassname} xs={12} lg={6}>
+        <SelectChip
+          inputValue={formValues[city_id.name]}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
+          name={city_id.name}
+          label={city_id.label}
+          selectOptions={city_id.values}
+          isMultiple={false}
+        />
+      </Col>
+    ),
+    [formValues[city_id.name]]
+  )
+
+
   const diplomaField = useMemo(
     () => (
-      <Col key={diploma.name} className={inputClassname} xs={12} lg={12}>
+      <Col key={diploma.name} className={inputClassname} xs={12} lg={6}>
         <label>{diploma.label}</label>
         <input name={diploma.name} type="file" accept="image/*, .pdf" />
       </Col>
@@ -91,6 +113,7 @@ const FormFields = props => {
       {titleField}
       {startDateField}
       {entityNameField}
+      {cityIDField}
       {diplomaField}
     </Row>
   )
@@ -100,6 +123,7 @@ export default FormFields
 
 FormFields.propTypes = {
   formFields: PropTypes.shape({
+    city_id: PropTypes.object,
     diploma: PropTypes.object,
     entity_name: PropTypes.object,
     start_date: PropTypes.object,

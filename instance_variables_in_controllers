@@ -12,14 +12,17 @@
       1 app/controllers/users/dashboards_controller.rb
       1 app/controllers/users/omniauth_callbacks_controller.rb
       1 app/controllers/users/profiles_controller.rb
+      1 app/controllers/users/wizards/step_eights/added_work_experiences_controller.rb
       1 app/controllers/users/wizards/step_eights_controller.rb
       1 app/controllers/users/wizards/step_elevens_controller.rb
       1 app/controllers/users/wizards/step_fives_controller.rb
       1 app/controllers/users/wizards/step_fours_controller.rb
+      1 app/controllers/users/wizards/step_nines/added_educational_levels_controller.rb
       1 app/controllers/users/wizards/step_nines_controller.rb
       1 app/controllers/users/wizards/step_ones_controller.rb
       1 app/controllers/users/wizards/step_sevens_controller.rb
       1 app/controllers/users/wizards/step_sixes_controller.rb
+      1 app/controllers/users/wizards/step_tens/added_acknowledgments_controller.rb
       1 app/controllers/users/wizards/step_tens_controller.rb
       1 app/controllers/users/wizards/step_threes_controller.rb
       1 app/controllers/users/wizards/step_twos_controller.rb

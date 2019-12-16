@@ -4,7 +4,7 @@ RSpec.describe Companies::FirstOffer::StepSevenService do
   let!(:company)  { create(:company) }
   let!(:offer)    { create(:offer, company_id: company.id) }
 
-  let!(:city)               { create(:city, description: "Buenos Aires")}
+  let(:city)                { create(:city, description: "Buenos Aires")}
   let!(:educational_degree) { create(:educational_degree)}
   let!(:technical_skiil)    { create(:technical_skill)}
   let!(:duration_type)      { create(:duration_type)}
@@ -82,7 +82,7 @@ RSpec.describe Companies::FirstOffer::StepSevenService do
 
         offer.reload
 
-        expect(offer.city_id).to eq(city.id)
+        expect(offer.city.description).to eq("Buenos Aires")
         expect(offer.educational_degree_id).to eq(educational_degree.id)
         expect(offer.required_experience).to be_truthy
         expect(offer.required_experiences_duration).to eq(2)

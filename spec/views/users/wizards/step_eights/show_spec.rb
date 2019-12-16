@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "users/wizards/step_eights/show" do
-  let(:curriculum) { create(:curriculum_vitae, user: create(:user, :first_time_candidate)) }
+  let(:work_experience) { create(:work_experience, curriculum_vitae: create(:curriculum_vitae, :empty)) }
 
   it "Should render users/wizards/step_eights#show template" do
 
-    assign(:user, Users::Wizards::StepEightPresenter.new(curriculum.user))
+    assign(:work_experience, Users::Wizards::StepEightPresenter.new(work_experience))
 
     render
 

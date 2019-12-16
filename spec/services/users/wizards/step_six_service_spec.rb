@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Users::Wizards::StepSixService do
 
   describe "#call" do
-    let!(:new_curriculum_vitae) { create(:curriculum_vitae, :new_curriculum_vitae) }
+    let!(:new_curriculum_vitae) { create(:curriculum_vitae, :empty) }
 
     context "When the params are valids" do
       let!(:soft_skills_ids) do

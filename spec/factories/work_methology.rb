@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :work_methodology do
-    description { 'TeleWorking' }
+    description { Faker::BossaNova.song }
   end
 end

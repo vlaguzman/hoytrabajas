@@ -1,18 +1,15 @@
 #TODO daniel, refactor this class
-class Companies::FirstOffer::StepFivePresenter < ApplicationPresenter
+class Companies::FirstOffer::StepFivePresenter < Companies::FirstOfferPresenter
 
   def form_information
     Companies::FirstOffer::StepFive::FormParamsService.new(
-      source: source,
-      errors: source.errors,
-      action_path: companies_first_offer_step_five_path,
-      previous_path: companies_first_offer_step_four_path,
-      next_path: companies_first_offer_step_six_path,
-      form_type: :offer,
-      template_translation_path: "companies.first_offer.step_fives.show",
-      form_method: :put
-    ).form_params
-      .merge({id: source.id})
+      service_params(
+        action_path: companies_first_offer_step_five_path,
+        previous_path: companies_first_offer_step_four_path,
+        next_path: companies_first_offer_step_six_path,
+        template_translation_path: "companies.first_offer.step_fives.show",
+      )
+    ).form_params.merge({id: source.id})
   end
 
   private

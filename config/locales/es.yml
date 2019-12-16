@@ -19,7 +19,7 @@ es:
         nit: "Nit"
         contact_work_position: "Posición de la persona de contacto"
         address: "Dirección"
-        website:  "Website"
+        website: "Website"
     offers:
       form:
         title: "Título"
@@ -68,24 +68,24 @@ es:
   activerecord:
     errors:
       messages:
-        record_invalid: "Error al grabar el objeto"
+        record_invalid: "Error al guardar en la base de datos: %{errors}"
       models:
         applied_offer:
           attributes:
             offer_id:
-              blank: "Por favor seleccione un oferta, este campo no puede estar en blanco" 
+              blank: "Por favor seleccione un oferta, este campo no puede estar en blanco"
             curriculum_vitae_id:
-              blank: "Por favor seleccione un valor para curriculum vitae, este campo no puede estar en blanco" 
+              blank: "Por favor seleccione un valor para curriculum vitae, este campo no puede estar en blanco"
             applied_date:
-              blank: "Por favor seleccione una fecha, este campo no puede estar en blanco" 
+              blank: "Por favor seleccione una fecha, este campo no puede estar en blanco"
             applied_offer_status_id:
-              blank: "Por favor seleccione un estado, este campo no puede estar en blanco" 
+              blank: "Por favor seleccione un estado, este campo no puede estar en blanco"
             applied_offer_status:
-              required: "Por favor seleccione un estado, este campo es requerido" 
+              required: "Por favor seleccione un estado, este campo es requerido"
         company:
           attributes:
             email:
-              blank: "Por favor ingrese un correo electrónico, este campo no puede estar en blanco" 
+              blank: "Por favor ingrese un correo electrónico, este campo no puede estar en blanco"
             password:
               blank: "Por favor ingrese el password, este campo no puede estar en blanco"
             password_confirmation:
@@ -93,7 +93,7 @@ es:
         user:
           attributes:
             email:
-              blank: "Por favor ingrese un correo electrónico, este campo no puede estar en blanco" 
+              blank: "Por favor ingrese un correo electrónico, este campo no puede estar en blanco"
             password:
               blank: "Por favor ingrese el password, este campo no puede estar en blanco"
             password_confirmation:
@@ -118,6 +118,10 @@ es:
             job_category:
               required: "La Categoria de Trabajo no puede estar vacío"
               blank: "Debes seleccionar un Categoria de Trabajo"
+        acknowledgment:
+          attributes:
+            title:
+              blank: "El Titulo reconocimiento no puede estar vacio"
 
   time:
     am: am
@@ -127,6 +131,10 @@ es:
       short: "%-d de %b %H:%M"
     pm: pm
   date:
+    today: 'Hoy'
+    days: 'Día(s)'
+    years: 'Año(s)'
+    months: 'Mes(es)'
     formats:
       default: "%A, %-d de %B de %Y %H:%M:%S %z"
       long: "%-d de %B de %Y %H:%M"

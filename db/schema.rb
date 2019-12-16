@@ -10,17 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_10_204409) do
+ActiveRecord::Schema.define(version: 2019_12_14_155415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "acknowledgments", force: :cascade do |t|
     t.string "title"
-    t.datetime "start_date"
+    t.date "start_date"
     t.string "entity_name"
     t.bigint "curriculum_vitae_id", null: false
     t.bigint "curriculum_vitaes_id"
+    t.bigint "city_id"
+    t.index ["city_id"], name: "index_acknowledgments_on_city_id"
     t.index ["curriculum_vitae_id"], name: "index_acknowledgments_on_curriculum_vitae_id"
     t.index ["curriculum_vitaes_id"], name: "index_acknowledgments_on_curriculum_vitaes_id"
   end
@@ -876,6 +878,7 @@ ActiveRecord::Schema.define(version: 2019_12_10_204409) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "acknowledgments", "cities"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "age_ranges", "offers"
   add_foreign_key "applied_offers", "applied_offer_statuses"

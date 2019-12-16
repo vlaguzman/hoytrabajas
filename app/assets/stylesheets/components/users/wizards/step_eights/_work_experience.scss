@@ -1,0 +1,176 @@
+/*########################################################################
+# STEP EIGHT
+########################################################################*/
+%flexbox { @include flexbox; }
+%inline-flex { @include inline-flex; }
+
+.a-chip {
+  border-radius:13px;
+  padding-inline: 2px;
+  cursor:pointer;
+  padding:1px 16px;
+  background-color:$color__yellow-extralight;
+  border:1px solid $color__yellow-extralight;
+  color:#77818f;
+
+  &.--jobCategory {
+    background:linear-gradient(to bottom, $color__orange-main 5%, $color__orange-main 100%);
+    background-color:$color__orange-main;
+    border:1px solid $color__yellow-main;
+    color: white;
+    font-size:0.9rem;
+    font-weight:bold;
+    display: block;
+    margin-block: 10px;
+    align-self: first baseline;
+  }
+
+}
+
+.o-stepPage {
+
+  &__mainContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    backdrop-filter: blur(22px);
+    background-color: rgba(247, 248, 250, 0.9);
+    height: 100vh;
+    -webkit-backdrop-filter: blur(22px);
+    background-image:url('/img/backgrounds/steps/primary.png');
+    background-repeat: no-repeat;
+    background-position: bottom;
+
+    .m-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: column;
+
+      .a-title {
+        font-size: 1.5rem;
+        font-weight: 800;
+        line-height: 1.25;
+        color: #374456;
+        margin-block: 50px;
+      }
+
+      .m-informationCard {
+        max-width: 70vw;
+        margin-block: 50px;
+        display: flex;
+        flex-direction: column;
+        padding-block: 20px;
+        padding-inline: 46px;
+        border-radius: 17px;
+        box-shadow: 0 -2px 42px 0 rgba(236, 235, 240, 0.37), 0 12px 30px 1px #ecebf0;
+        background-color: white;
+
+        .m-titles {
+          display: flex;
+          flex-direction: column;
+          font-weight: 800;
+          font-stretch: normal;
+          font-style: normal;
+          letter-spacing: normal;
+
+          &__title {
+            font-size: 1.5rem;
+            line-height: 1.62;
+            color: #00111f;
+          }
+
+          &__subtitle {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            letter-spacing: 0.15px;
+            color: #003a69;
+
+            &--responsibilities {
+              font-size: 1rem;
+              font-weight: bold;
+              line-height: 1.44;
+              letter-spacing: 0.17px;
+            }
+          }
+        }
+
+        .a-dividingLine {
+          display: block;
+          height: 2px;
+          margin-block: 14px;
+          -webkit-backdrop-filter: blur(22px);
+          backdrop-filter: blur(22px);
+          background-color: rgba(247, 248, 250, 0.9);
+        }
+
+        .a-rangeOfTime {
+          font-size: 1rem;
+          font-weight: bold;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: 1.44;
+          letter-spacing: 0.17px;
+          color: $color__blue-main;
+        }
+
+        .m-chips {
+          display: flex;
+          flex-wrap: wrap;
+          margin-block: 10px;
+          font-size:14px;
+        }
+
+      }
+
+      .m-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: row wrap;
+        margin-block: 50px;
+
+        & > * {
+          align-self: center;
+          margin-inline: 10px;
+          margin-block: 10px;
+        }
+
+        button {
+          background:linear-gradient(to bottom, $color__orange-main 5%, $color__orange-main 100%);
+          background-color:$color__orange-main;
+          border-radius:24px;
+          border:1px solid $color__yellow-main;
+          display:inline-block;
+          cursor:pointer;
+          color: white;
+          font-size:14px;
+          font-weight:bold;
+          padding:13px 80px;
+
+          &:hover {
+            background:linear-gradient(to bottom, $color__orange-main 5%, $color__orange-main 100%);
+            background-color:$color__orange-main;
+          }
+
+          &:active{
+            position:relative;
+            top:1px;
+          }
+
+          &.--addElement {
+            color:$color__blue-main;
+            background:white;
+            border: 1px solid$color__blue-main;
+          }
+
+        }
+      }
+
+    }
+
+  }
+
+
+}

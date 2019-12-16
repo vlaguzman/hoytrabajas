@@ -1,0 +1,10 @@
+en:
+  users:
+      wizards:
+        step_eights:
+          added_work_experiences:
+            show:
+              title: '¡Perfect! We have registered your experience'
+              responsabilities: 'Responsibilities'
+              add_other: 'Add more'
+              continue: 'Continue'

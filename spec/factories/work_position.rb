@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :work_position do
-    description { 'Ruby on Rails Developer' }
+    description { Faker::Games::ElderScrolls.creature }
   end
 end

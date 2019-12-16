@@ -8,7 +8,7 @@ es:
           form:
             buttons:
               previous: 'Regresar'
-              submit: 'Siguiente'
+              submit: 'Continuar'
               next: 'Saltar'
               add_other: 'Agregar otro estudio'
             formFields:

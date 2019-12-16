@@ -12,9 +12,9 @@ RSpec.describe "In wizards step six view", type: :feature do
   end
 
   feature "Like a new candidate" do
-    let(:candidate) { create(:user) }
+    let(:candidate) { create(:user, :first_time_candidate) }
 
-    feature "When dont fill nothing and press 'Siguiente' buttom" do
+    feature "When dont fill only required fields and press 'Siguiente' button" do
       scenario "Should redirect to step seven path",js: true do
         sign_in candidate
 

@@ -4,7 +4,7 @@ RSpec.describe CurriculumVitaeSalary, type: :model do
 
   describe "validations" do
     it { should validate_presence_of(:from) }
-    it { should validate_presence_of(:to) }
+    it { should respond_to(:to) }
   end
 
   describe "associations" do

@@ -67,7 +67,7 @@ const currencies = [
   }
 ]
 
-const FilterForm = ({ common, button1, fields1, cities }) => {
+const FilterForm = ({ translations, common, button1, fields1, cities }) => {
   // TODO oscar remove this line when in rails when can searh by other fields
   fields1 = [fields1[0]]
 
@@ -147,38 +147,37 @@ const FilterForm = ({ common, button1, fields1, cities }) => {
   }
 
   return (
-    <Row className="justify-content-center" noGutters>
+    <Row className="m-filterForm justify-content-center" noGutters>
       <RctCollapsibleCard
         /* TODO oscar i change 'col-9' to 'col-4' on 'colClasses' to reduce size bar */
-        colClasses="col-9 my-30 d-none d-lg-block "
+        colClasses="col-9 d-none d-lg-block "
         contentCustomClasses=""
+        customClasses="m-0"
       >
         <Form
-          className="row justify-content-around"
+          className="row justify-content-around align-items-center"
           action="offers/"
           method="get"
         >
-          <Col xs={12} md={1} className="pt-rem pl-0 p-0 align-items-center">
-            {/* TODO oscar ucomment this Button wheh find by categories exist */}
-            {
-              <Button
-                type="button"
-                onClick={toggleState}
-                className="text-primary h-50"
-              >
-                {button1}
-              </Button>
-            }
-          </Col>
+          {/* TODO oscar ucomment this Button wheh find by categories exist */}
+          {
+            <button
+              type="button"
+              onClick={toggleState}
+              className="a-button a-button--primary filterForm__categoriesButton h-50"
+            >
+              {translations.categories}
+            </button>
+          }
+
           <FormGen fields={fields1} />
           <ComboBox cities={cities} />
-          <Fab
-            className="mb-10 search_button text-white"
-            color="primary"
+          <button
+            className="a-buttonFab a-button--primary mb-10 search_button filterForm__searchButton"
             type="submit"
           >
-            <FontAwesomeIcon icon="search" size="sm" />
-          </Fab>
+            <FontAwesomeIcon icon="search" style={{ fontSize: '26px' }} />
+          </button>
           {/* TODO oscar Col form of advance search uncomment when advance searh is ready */}
           <Col xs={12} md={1} className="pl-0 p-0 align-items-center">
             {/* <IconButton
@@ -452,6 +451,9 @@ export default FilterForm
 
 FilterForm.propTypes = {
   common: PropTypes.object.isRequired,
+  translations: PropTypes.shape({
+    categories: PropTypes.string.isRequired
+  }).isRequired,
   button1: PropTypes.object.isRequired,
   fields1: PropTypes.object.isRequired,
   cities: PropTypes.object.isRequired

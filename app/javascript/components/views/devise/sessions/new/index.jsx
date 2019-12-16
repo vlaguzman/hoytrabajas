@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import MatButton from '@material-ui/core/Button'
 import { Row, Col } from 'reactstrap'
@@ -20,14 +20,7 @@ const Index = props => {
 
   return (
     <div className="main-wrapper">
-      <AppLayout
-        user_signed_in={props.user_signed_in}
-        company_signed_in={props.company_signed_in}
-        log_out_user={props.log_out_user}
-        log_out_companies={props.log_out_companies}
-        session_translation={props.session_translation}
-        user_facebook_omniauth_authorize_path={props.user_facebook_omniauth_authorize_path}
-      >
+      <AppLayout>
         <Dialog
           fullWidth
           maxWidth="xs"
@@ -36,7 +29,7 @@ const Index = props => {
         >
           <DialogTitle id="max-width-dialog-title" className="my-25">
             <div className="px-40 text-right">
-              <a className="button-close" href="/">
+              <a className="a-button--close" href="/">
                 X
               </a>
             </div>
@@ -199,10 +192,5 @@ Index.propTypes = {
   csrf_param: PropTypes.string.isRequired,
   source_name: PropTypes.string.isRequired,
   sessions_path: PropTypes.string.isRequired,
-  user_signed_in: PropTypes.bool.isRequired,
-  company_signed_in: PropTypes.bool.isRequired,
-  log_out_companies: PropTypes.string.isRequired,
-  log_out_user: PropTypes.string.isRequired,
-  session_translation: PropTypes.object.isRequired,
-  user_facebook_omniauth_authorize_path: PropTypes.object.isRequired
+  session_translation: PropTypes.object.isRequired
 }

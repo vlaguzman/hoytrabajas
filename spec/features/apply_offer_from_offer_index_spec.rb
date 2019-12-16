@@ -11,13 +11,13 @@ RSpec.describe "apply offer from offer index", type: :feature, js: :true do
       sign_in user
       visit offers_path
 
-      expect(page).to have_text("I Am A Sexy Offer")
+      expect(page).to have_text("I am a sexy offer")
       find(".cardOffer", match: :first).hover
       has_css?('.btn-apply')
       find(".btn-apply", match: :first).click
 
       expect(current_path).to eq(offer_path(offer.id))
-      expect(page).to have_button('Aplicado')
+      expect(page).to have_button('¡Has aplicado!')
       expect(AppliedOffer.count).to eq(1)
     end
   end
@@ -27,17 +27,17 @@ RSpec.describe "apply offer from offer index", type: :feature, js: :true do
       sign_in user
 
       visit offers_path
-      expect(page).to have_text("I Am A Sexy Offer")
+      expect(page).to have_text("I am a sexy offer")
       find(".cardOffer", match: :first).hover
       has_css?('.btn-apply')
       find(".btn-apply", match: :first).click
 
       expect(current_path).to eq(offer_path(offer.id))
-      expect(page).to have_button('Aplicado')
+      expect(page).to have_button('¡Has aplicado!')
       expect(AppliedOffer.count).to eq(1)
 
       visit offers_path
-      expect(page).not_to have_text("I Am A Sexy Offer")
+      expect(page).not_to have_text("I am a sexy offer")
       expect(AppliedOffer.count).to eq(1)
     end
   end
@@ -46,7 +46,7 @@ RSpec.describe "apply offer from offer index", type: :feature, js: :true do
     it "should ask you to register" do
       visit offers_path
 
-      expect(page).to have_text("I Am A Sexy Offer")
+      expect(page).to have_text("I am a sexy offer")
       find(".cardOffer", match: :first).hover
       has_css?('.btn-apply')
       find(".btn-apply", match: :first).click

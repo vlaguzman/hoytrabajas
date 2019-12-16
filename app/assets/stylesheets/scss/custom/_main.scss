@@ -1,7 +1,4 @@
 /*======== App Global (Main Structure) Mention Here =======*/
-*{
-  font-family: $font-family-nunito !important;
-}
 #root,
 .app {
   height: 100%;
@@ -217,8 +214,10 @@
     // border: 11px solid #f8f9fa;
     width: 100%;
     height: 100%;
-    top: -1px;
-    left: 0.5rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 99;
     border-radius: 1%;
     background-color: rgba(233, 227, 227, 0.5);
@@ -228,32 +227,6 @@
     transition: opacity 0.5s ease-in;
     &:hover {
       opacity: 1;
-    }
-    @media (max-width: 2560px) {
-      width: 95%;
-    }
-    @media (max-width: 1440px) {
-      width: 98%;
-    }
-    @media (max-width: 1290px) {
-      width: 95%;
-    }
-    @media (max-width: 1024px) {
-      width: 96%;
-    }
-    @media (max-width: 768px) {
-      width: 96%;
-    }
-    @media (max-width: 425px) {
-      width: 96%;
-    }
-    @media (max-width: 375px) {
-      width: 96%;
-      left: 0.4rem;
-    }
-    @media (max-width: 320px) {
-      width: 97%;
-      left: 0.3rem;
     }
   }
 }

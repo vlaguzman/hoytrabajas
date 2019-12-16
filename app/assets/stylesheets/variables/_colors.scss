@@ -1,11 +1,73 @@
-/*#############################################################################
-# Colors
-#############################################################################*/
+// /*/////////////////////////////////////////
+// /              Primary Colors             /
+// /////////////////////////////////////////*/
 
+$color__orange-main: #ff7b00;
+$color__orange-light: #ff9c40;
+$color__orange-extralight: #ffdebf;
+$color__blue-main: #0b5aa0;
+$color__blue-light: #4884b8;
+$color__blue-extralight: #c2d6e7;
 
-/*///////////////////////////////////
-/ General Colors
-///////////////////////////////////*/
+// /*/////////////////////////////////////////
+// /             Secondary Colors            /
+// /////////////////////////////////////////*/
 
-// Secundary colors
-$secundary-periwinkle-gray:                          #b7d0e2;
+$color__yellow-main: #ffb400;
+$color__yellow-light: #ffc740;
+$color__yellow-extralight: #ffecbf;
+$color__pink-main: #ee4266;
+$color__pink-light: #f3728d;
+$color__pink-extralight: #fbd0d9;
+$color__aqua-dark: #26b2a0;
+$color__aqua-main: #41ead4;
+$color__aqua-light: #71f0df;
+$color__aqua-extralight: #cffaf4;
+$color__slategray-dark: #374456;
+$color__slategray-main: #647a99;
+$color__slategray-light: #92a7ba;
+$color__slategray-extralight: #b7d0e2;
+$color__snow-main: #d5dbe3;
+$color__snow-light: #f4f6f8;
+$color__snow-extralight: #f9fafb;
+$color__palelilac-main: #ebebf0;
+$color__gray-main: #77818f;
+$color__purple-main: #831fc6;
+
+$color-list: (
+  orange-main: $color__orange-main,
+  orange-light: $color__orange-light,
+  orange-extralight: $color__orange-extralight,
+  blue-main: $color__blue-main,
+  blue-light: $color__blue-light,
+  blue-extralight: $color__blue-extralight,
+  yellow-main: $color__yellow-main,
+  yellow-light: $color__yellow-light,
+  yellow-extralight: $color__yellow-extralight,
+  pink-main: $color__pink-main,
+  pink-light: $color__pink-light,
+  pink-extralight: $color__pink-extralight,
+  aqua-dark: $color__aqua-dark,
+  aqua-main: $color__aqua-main,
+  aqua-light: $color__aqua-light,
+  aqua-extralight: $color__aqua-extralight,
+  slategray-dark: $color__slategray-dark,
+  slategray-main: $color__slategray-main,
+  slategray-light: $color__slategray-light,
+  slategray-extralight: $color__slategray-extralight,
+  snow-main: $color__snow-main,
+  snow-light: $color__snow-light,
+  snow-extralight: $color__snow-extralight,
+  palelilac-main: $color__palelilac-main,
+  gray-main: $color__gray-main,
+  purple-main: $color__purple-main
+);
+
+@each $name, $color in $color-list {
+  .color__#{$name} {
+    color: $color;
+  }
+  .bg__#{$name} {
+    background-color: $color;
+  }
+}

@@ -6,14 +6,10 @@ import IconButton from '@material-ui/core/IconButton'
 import CalendarIcon from '@material-ui/icons/CalendarToday'
 import ArrowBackIcon from '@material-ui/icons/ArrowBackIos'
 import ArrowForwardIcon from '@material-ui/icons/ArrowForwardIos'
-import { format } from '../../../helpers'
+import { format, capitalize } from '../../../helpers'
 
 const style = {
   textTransform: 'capitalize'
-}
-
-function capitalize(string) {
-  return string.replace(/(?:^|\s)\S/g, a => a.toUpperCase())
 }
 
 const DatePicker = props => {

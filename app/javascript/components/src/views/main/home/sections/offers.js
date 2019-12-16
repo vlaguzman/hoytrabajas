@@ -2,31 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Offers from '../../../../components/Offers'
 
-const textContent = {
-  title: {
-    main: 'El trabajo ideal',
-    highlighted: 'si existe',
-    last: 'esta en Hoy Trabajas'
-  }
-}
-
 const OffersSection = props => {
   const {
     csrf_param,
     csrf_token,
     path_applied_offers,
     offers,
+    section_title,
     offer_translations
   } = props
 
   return (
-    <>
-      <div className="sec-title mt-20 mb-40 mx-10  text-center">
-        {textContent.title.main} <br className="d-sm-none" />
-        <span className="text-primary">{textContent.title.highlighted}</span>
-        &nbsp;
-        {textContent.title.last}
-      </div>
+    <div className="o-offers__wrapper">
+      <h4 className="color__blue-main mb-60">{section_title}</h4>
       <Offers
         offers={offers}
         offer_translations={offer_translations}
@@ -37,7 +25,7 @@ const OffersSection = props => {
         rowIncrement={3}
         maxOffers={24}
       />
-    </>
+    </div>
   )
 }
 
@@ -48,6 +36,7 @@ OffersSection.propTypes = {
   csrf_param: PropTypes.string,
   csrf_token: PropTypes.string,
   offers: PropTypes.array.isRequired,
+  section_title: PropTypes.string.isRequired,
   offer_translations: PropTypes.shape({
     index: PropTypes.shape({
       no_offers: PropTypes.string.isRequired,

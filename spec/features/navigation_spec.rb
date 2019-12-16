@@ -62,20 +62,20 @@ RSpec.describe "Overall navigation" do
         visit root_path
 
         has_button?('VER MÁS OFERTAS')
-        find('span', text:/Ver más ofertas/, visible: false).click
+        find("#loadMoreOffers", visible: false).click
 
         has_button?('VER EL LISTADO DE OFERTAS')
-        find('span', text:/Ver el listado de ofertas/, visible: false).click
+        find("#loadMoreOffers", visible: false).click
 
         expect(current_path).to eq(offers_path)
 
         has_button?('VER MÁS OFERTAS')
-        find('span', text:/Ver más ofertas/, visible: false).click
+        find("#loadMoreOffers", visible: false).click
 
         has_button?('VER MÁS OFERTAS')
-        find('span', text:/Ver más ofertas/, visible: false).click
+        find("#loadMoreOffers", visible: false).click
 
-        expect(page).to have_content("Esta Oferta Deberia Aparec...")
+        expect(page).to have_content("Esta oferta deberia aparec...")
 
         click_on("INICIO")
 
@@ -103,8 +103,8 @@ RSpec.describe "Overall navigation" do
 
         click_on("Empresas")
 
-        expect(page).to have_content(/Ellos hoy confian en nosotros/)
-        expect(page).to have_content(/para encontrar su empleado ideal/)
+        expect(page).to have_content(/Muchas empresas confían en nosotros/)
+        expect(page).to have_content(/el talento de su empresa/)
 
         click_on("INICIO")
 

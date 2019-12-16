@@ -104,7 +104,10 @@ RSpec.describe OffersPresenter do
         :btn_apply,
         :btn_lg_apply_offer,
         :btn_apply_offer,
-        :btn_super_apply
+        :btn_super_apply,
+        :tag_immediate_start,
+        :tag_new_offer,
+        :tag_without_required_experience
       ]
 
       expect(response.keys).to match_array(expected_keys)

@@ -18,13 +18,13 @@ RSpec.describe "User searches for an offer", type: :feature do
       it "Should show the title, carrousel and the filter inputs", js: true do
         visit root_path
 
-        expect(page).to have_content("Encuentra trabajo compatible con tus habilidades y competencias")
+        expect(page).to have_content("Accede hoy a más de 3000 ofertas laborales que tenemos para ti de forma fácil")
 
         expect(page).to have_tag(:form, with: { class: "row justify-content-around" }) do
           with_tag(:input, with: { name: 'q[title_cont]'})
         end
 
-        find("button[class='MuiButtonBase-root MuiButton-root MuiButton-text text-primary h-50']", visible: false).click
+        find(".filterForm__categoriesButton", visible: false).click
 
         expect(page).to have_text("Operario")
         expect(page).to have_text("5")
@@ -43,13 +43,13 @@ RSpec.describe "User searches for an offer", type: :feature do
           visit root_path
 
           fill_in('keyword', with: 'sebas')
-          find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
+          find(".filterForm__searchButton", visible: false).click
 
           expect(current_path).to eq("#{offers_path}/")
 
-          expect(page).to have_content("Test Sebas")
-          expect(page).to have_content("Esto Es Un Prueba De Sebas")
-          expect(page).to have_content("Que Gran Oferta Sebas!")
+          expect(page).to have_content("Test sebas")
+          expect(page).to have_content("Esto es un prueba de sebas")
+          expect(page).to have_content("Que gran oferta sebas!")
         end
       end
 
@@ -58,11 +58,11 @@ RSpec.describe "User searches for an offer", type: :feature do
           visit root_path
 
           fill_in('keyword', with: 'prueba')
-          find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
+          find(".filterForm__searchButton", visible: false).click
 
-          expect(page).to have_content("Esto Es Un Prueba De Sebas")
-          expect(page).to_not have_content("Test Sebas")
-          expect(page).to_not have_content("Que Gran Oferta Sebas!")
+          expect(page).to have_content("Esto es un prueba de sebas")
+          expect(page).to_not have_content("Test sebas")
+          expect(page).to_not have_content("Que gran oferta sebas!")
         end
       end
 
@@ -71,11 +71,11 @@ RSpec.describe "User searches for an offer", type: :feature do
           visit root_path
 
           fill_in('keyword', with: 'Jhoan')
-          find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
+          find(".filterForm__searchButton", visible: false).click
 
-          expect(page).to_not have_content("Esto Es Un Prueba De Sebas")
-          expect(page).to_not have_content("Test Sebas")
-          expect(page).to_not have_content("Que Gran Oferta Sebas!")
+          expect(page).to_not have_content("Esto es un prueba de sebas")
+          expect(page).to_not have_content("Test sebas")
+          expect(page).to_not have_content("Que gran oferta sebas!")
         end
       end
     end
@@ -85,14 +85,14 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return results", js: true do
           visit root_path
 
-          find("button[class='MuiButtonBase-root MuiButton-root MuiButton-text text-primary h-50']", visible: false).click
+          find(".filterForm__categoriesButton", visible: false).click
 
           find("#Operario").click
-          find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
+          find(".filterForm__searchButton", visible: false).click
 
-          expect(page).to have_content("Esto Es Un Prueba De Sebas")
-          expect(page).to have_content("Test Sebas")
-          expect(page).to_not have_content("Que Gran Oferta Sebas!")
+          expect(page).to have_content("Esto es un prueba de sebas")
+          expect(page).to have_content("Test sebas")
+          expect(page).to_not have_content("Que gran oferta sebas!")
         end
       end
 
@@ -100,15 +100,15 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return results", js: true do
           visit root_path
 
-          find("button[class='MuiButtonBase-root MuiButton-root MuiButton-text text-primary h-50']", visible: false).click
+          find(".filterForm__categoriesButton", visible: false).click
 
           find("div[id='Tecnologia']").click
           find("div[id='Marketing']").click
-          find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
-
-          expect(page).to have_content("Esto Es Un Prueba De Sebas")
-          expect(page).to have_content("Que Gran Oferta Sebas!")
-          expect(page).not_to have_content("Test Sebas")
+          find(".filterForm__searchButton", visible: false).click
+     
+          expect(page).to have_content("Esto es un prueba de sebas")
+          expect(page).to have_content("Que gran oferta sebas!")
+          expect(page).not_to have_content("Test sebas")
         end
       end
 
@@ -116,16 +116,16 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return message of empty", js: true do
           visit root_path
 
-          find("button[class='MuiButtonBase-root MuiButton-root MuiButton-text text-primary h-50']", visible: false).click
+          find(".filterForm__categoriesButton", visible: false).click
 
           find("div[id='Servicios']").click
-          find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
+          find(".filterForm__searchButton", visible: false).click
 
           expect(current_path).to eq("#{offers_path}/")
 
-          expect(page).not_to have_content("Esto Es Un Prueba De Sebas")
-          expect(page).not_to have_content("Que Gran Oferta Sebas!")
-          expect(page).not_to have_content("Test Sebas")
+          expect(page).not_to have_content("Esto es un prueba de sebas")
+          expect(page).not_to have_content("Que gran oferta sebas!")
+          expect(page).not_to have_content("Test sebas")
         end
       end
     end
@@ -137,14 +137,14 @@ RSpec.describe "User searches for an offer", type: :feature do
 
           fill_in('keyword', with: 'oferta')
 
-          find("button[class='MuiButtonBase-root MuiButton-root MuiButton-text text-primary h-50']", visible: false).click
+          find(".filterForm__categoriesButton", visible: false).click
           find("div[id='Marketing']").click
 
-          find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
+          find(".filterForm__searchButton", visible: false).click
 
-          expect(page).not_to have_content("Esto Es Un Prueba De Sebas")
-          expect(page).to have_content("Que Gran Oferta Sebas!")
-          expect(page).not_to have_content("Test Sebas")
+          expect(page).not_to have_content("Esto es un prueba de sebas")
+          expect(page).to have_content("Que gran oferta sebas!")
+          expect(page).not_to have_content("Test sebas")
         end
       end
 
@@ -154,14 +154,14 @@ RSpec.describe "User searches for an offer", type: :feature do
 
           fill_in('keyword', with: 'jhoan')
 
-          find("button[class='MuiButtonBase-root MuiButton-root MuiButton-text text-primary h-50']", visible: false).click
+          find(".filterForm__categoriesButton", visible: false).click
 
           find("div[id='Marketing']").click
-          find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
+          find(".filterForm__searchButton", visible: false).click
 
-          expect(page).not_to have_content("Esto Es Un Prueba De Sebas")
-          expect(page).not_to have_content("Que Gran Oferta Sebas!")
-          expect(page).not_to have_content("Test Sebas")
+          expect(page).not_to have_content("Esto es un prueba de sebas")
+          expect(page).not_to have_content("Que gran oferta sebas!")
+          expect(page).not_to have_content("Test sebas")
         end
       end
     end
@@ -178,10 +178,10 @@ RSpec.describe "User searches for an offer", type: :feature do
           find("input#combo-box-demo", visible: false).set("mede")
           find("div[class='MuiAutocomplete-popper']").click
 
-          find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
+          find(".filterForm__searchButton", visible: false).click
 
           expect(current_path).to eq("#{offers_path}/")
-          expect(page).to have_content("Este Es El Query Por Ciudad")
+          expect(page).to have_content("Este es el query por ciudad")
         end
       end
 
@@ -192,11 +192,11 @@ RSpec.describe "User searches for an offer", type: :feature do
           find("input#combo-box-demo", visible: false).set("cali")
           find("div[class='MuiAutocomplete-popper']").click
 
-          find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
+          find(".filterForm__searchButton", visible: false).click
 
           expect(current_path).to eq("#{offers_path}/")
           expect(page).to have_content("No hay ningún trabajo en este momento")
-          expect(page).not_to have_content("Este Es El Query Por Ciudad")
+          expect(page).not_to have_content("Este es el query por ciudad")
         end
       end
     end
@@ -212,17 +212,17 @@ RSpec.describe "User searches for an offer", type: :feature do
 
           fill_in('keyword', with: 'oferta de sebas')
 
-          find("button[class='MuiButtonBase-root MuiButton-root MuiButton-text text-primary h-50']", visible: false).click
+          find(".filterForm__categoriesButton", visible: false).click
           find("div[id='Marketing']").click
 
           find("input#combo-box-demo", visible: false).set("chia")
           find("div[class='MuiAutocomplete-popper']").click
 
-          find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
+          find(".filterForm__searchButton", visible: false).click
 
-          expect(page).to have_content("Oferta De Sebas")
-          expect(page).not_to have_content("Esto Es Un Prueba De Sebas")
-          expect(page).not_to have_content("Test Sebas")
+          expect(page).to have_content("Oferta de sebas")
+          expect(page).not_to have_content("Esto es un prueba de sebas")
+          expect(page).not_to have_content("Test sebas")
         end
       end
 
@@ -232,19 +232,19 @@ RSpec.describe "User searches for an offer", type: :feature do
 
           fill_in('keyword', with: 'jhoan')
 
-          find("button[class='MuiButtonBase-root MuiButton-root MuiButton-text text-primary h-50']", visible: false).click
+          find(".filterForm__categoriesButton", visible: false).click
           find("div[id='Marketing']").click
 
           find("input#combo-box-demo", visible: false).set("caji")
           find("div[class='MuiAutocomplete-popper']").click
 
-          find("button[class='MuiButtonBase-root MuiFab-root mb-10 search_button text-white MuiFab-primary']", visible: false).click
+          find(".filterForm__searchButton", visible: false).click
 
-          expect(page).not_to have_content("Esto Es Un Prueba De Sebas")
-          expect(page).not_to have_content("Que Gran Oferta Sebas!")
-          expect(page).not_to have_content("Test Sebas")
-          expect(page).not_to have_content("Esta Oferta Tambien Es De Sebas")
-          expect(page).not_to have_content("Oferta De Sebas")
+          expect(page).not_to have_content("Esto es un prueba de sebas")
+          expect(page).not_to have_content("Que gran oferta sebas!")
+          expect(page).not_to have_content("Test sebas")
+          expect(page).not_to have_content("Esta oferta tambien es de sebas")
+          expect(page).not_to have_content("Oferta de sebas")
         end
       end
     end

@@ -5,7 +5,11 @@ import Offers from '../../components/Offers'
 
 const StyledWrapper = styled.div`
   margin-top: 180px;
-  padding: 0 5%;
+  padding: 0 60px;
+
+  @media (max-width: 576) {
+    padding: 0 30px;
+  }
   @media (max-width: 900px) {
     margin-top: 80px;
   }

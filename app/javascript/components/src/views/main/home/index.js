@@ -45,7 +45,7 @@ const HomePage = ({
         section_title={offersTranslations.title}
         offer_translations={offer_translations}
       />
-      {/* TODO Javier: uncomment sections when they have real data */}
+      {/* TODO any: uncomment sections when they have real data */}
       {/* <JobCategories categories={common.categorias} translations={categories} /> */}
       <Banner translations={info} />
       {/* <SearchTrends translations={search_trends} /> */}

@@ -15,7 +15,12 @@
 }
 
 .t-home__companies {
-  padding: 0 5%;
+  max-width: 1250x;
+  padding: 0 60px;
+
+  @media (max-width: 576) {
+    padding: 0 30px;
+  }
 
   .companiesSubtitle {
     color: transparentize($color__slategray-main, 0.25);
@@ -23,8 +28,14 @@
 }
 
 .t-home__jobCategories {
-  padding: 0 5%;
   margin-top: 120px;
+  max-width: 1250px;
+  padding: 0 60px;
+
+  @media (max-width: 576) {
+    padding: 0 30px;
+  }
+
   .jobCategory {
     padding: 15px 10px;
   }
@@ -50,8 +61,13 @@
 }
 
 .t-home__banner {
-  padding: 0 5%;
   margin-top: 120px;
+  max-width: 1250px;
+  padding: 0 60px;
+
+  @media (max-width: 576) {
+    padding: 0 30px;
+  }
   .bannerText {
     padding: 0 50px;
   }
@@ -61,8 +77,13 @@
 }
 
 .t-home__searchTrends {
-  padding: 0 5%;
   margin-top: 120px;
+  max-width: 1250px;
+  padding: 0 60px;
+
+  @media (max-width: 576) {
+    padding: 0 30px;
+  }
 
   .trendsGrid {
     width: 100%;
@@ -84,8 +105,13 @@
 }
 
 .t-home__postList {
-  padding: 0 5%;
   margin-top: 120px;
+  max-width: 1250px;
+  padding: 0 60px;
+
+  @media (max-width: 576) {
+    padding: 0 30px;
+  }
 
   .postListGrid {
     width: 100%;

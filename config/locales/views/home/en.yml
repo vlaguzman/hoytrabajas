@@ -17,6 +17,17 @@ en:
         link: 'See roles by category'
     info:
       title: 'We guarantee a direct contact with the employer in less than 24 hours.'
+    search_trends:
+      title: 'Search trends'
+      subtitles:
+        cities: 'Cities'
+        categories: 'Categories'
+        positions: 'Positions'
+        work_mode: 'Work mode'
+        working_hours: 'Working hours'
+      post_list:
+        title: 'We work to give you more opportunities'
+        btn_see_more: 'See more'
     affiliates:
       title: 'Many companies trust us'
       subtitle: 'with the talent of their companies'

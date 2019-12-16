@@ -107,10 +107,11 @@ RSpec.configure do |config|
   #FactoryBot Helper
   config.include FactoryBot::Syntax::Methods
 
-  #Devise helpder
+  #Devise Helper
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :view
   config.include Devise::Test::IntegrationHelpers, type: :feature
+  config.include Devise::Test::IntegrationHelpers, type: :request
 
   ip = `/sbin/ip route|awk '/scope/ { print $9 }'`
   ip.gsub!(/\n/, "")

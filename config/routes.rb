@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     namespace :wizards do
       resource :step_zero,    only: [:show]
       namespace :step_zeros do
-        resource :curriculum_vitae, only: [:show, :update]
+        resource :curriculum_vitae, only: [:show, :create]
       end
       resource :step_one,     except: [:new, :destroy]
       resource :step_two,     except: [:new, :destroy]

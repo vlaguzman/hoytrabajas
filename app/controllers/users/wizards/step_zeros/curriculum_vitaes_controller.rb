@@ -4,10 +4,11 @@ class Users::Wizards::StepZeros::CurriculumVitaesController < ApplicationControl
   def show
   end
 
-  def update
+  def create
     parameter = permit_params[:user]
     if parameter.present?
       Users::Wizards::StepZero::CurriculumVitaeService.upload_curriculum_vitae(current_user, parameter[:file_cv])
+      redirect_to users_wizards_step_one_path
     else
       redirect_to users_wizards_step_one_path
     end

@@ -64,6 +64,7 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     click_on "Quiero completar mi perfil"
 
     #Upload_cv
+    attach_file('user[file_cv]', Rails.root + "spec/factories/pdfs/diploma.pdf", make_visible: true)
     click_button('Continuar')
 
     #Step_One
@@ -186,7 +187,7 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
 
     #Step_Zero
     expect(registered_user.curriculum_vitae).to be_present
-    expect(registered_user.curriculum_vitaes.count).to eq(1)
+    expect(registered_user.curriculum_vitaes.count).to eq(2)
 
     #Step_One
     expect(registered_user.name).to eq('Carlos')

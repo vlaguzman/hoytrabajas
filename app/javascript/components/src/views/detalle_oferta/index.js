@@ -20,13 +20,6 @@ const CompanyWrapper = styled(Col)`
     margin-top: 60px;
   }
 `
-
-const OffersWrapper = styled(Row)`
-  @media (max-width: 900px) {
-    padding-bottom: 60px;
-  }
-`
-
 const SexDescriptionBlock = (translationOffer, offer) => (
   <Row className="justify-content-between">
     <Col xs={6}>
@@ -564,7 +557,7 @@ const DetallePage = ({
         </Typography>
       </Row>
 
-      <OffersWrapper>
+      <div className="o-offers__wrapper">
         <Offers
           offers={relatedOffers}
           offer_translations={offer_translations}
@@ -573,7 +566,7 @@ const DetallePage = ({
           csrf_token={csrf_token}
           loadMoreOffers={false}
         />
-      </OffersWrapper>
+      </div>
     </>
   )
 }

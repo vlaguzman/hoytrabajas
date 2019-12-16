@@ -57,29 +57,33 @@ const Offers = props => {
 
   const offerCards = useMemo(
     () =>
-      offers.length >= 1 ? (
-        offers.map((o, index) =>
-          (!hasAllOffers && index < offersLimit && index < offersToDisplay) ||
-          index < offersToDisplay ? (
-            <OfferCard
-              key={o['title']}
-              offer={o}
-              offer_translations={offer_translations}
-              path_applied_offers={path_applied_offers}
-              csrf_param={csrf_param}
-              csrf_token={csrf_token}
-            />
-          ) : null
-        )
-      ) : (
-        <h1 className="text-center"> {offer_translations.index.no_offers}</h1>
-      ),
+      offers.length >= 1
+        ? offers.map((o, index) =>
+            (!hasAllOffers && index < offersLimit && index < offersToDisplay) ||
+            index < offersToDisplay ? (
+              <OfferCard
+                key={o['title']}
+                offer={o}
+                offer_translations={offer_translations}
+                path_applied_offers={path_applied_offers}
+                csrf_param={csrf_param}
+                csrf_token={csrf_token}
+              />
+            ) : null
+          )
+        : null,
     [offers, offersToDisplay, offersLimit]
   )
 
   return (
     <>
-      <div className="offersGrid">{offerCards}</div>
+      {offerCards ? (
+        <div className="offersGrid">{offerCards}</div>
+      ) : (
+        <h6 className="text-center my-30">
+          {offer_translations.index.no_offers}
+        </h6>
+      )}
       {loadMoreOffers && offers.length >= 1 && offers.length > offersToDisplay && (
         <Row className="justify-content-center align-items-center mt-30">
           <button

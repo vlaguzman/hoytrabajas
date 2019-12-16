@@ -25,16 +25,18 @@ const OffersPage = ({
     >
       {offer_translations.index.title}
     </h1>
-    <Offers
-      offers={offers}
-      offer_translations={offer_translations}
-      path_applied_offers={path_applied_offers}
-      csrf_param={csrf_param}
-      csrf_token={csrf_token}
-      initialRows={3}
-      hasAllOffers
-      rowIncrement={2}
-    />
+    <div className="o-offers__wrapper pb-60">
+      <Offers
+        offers={offers}
+        offer_translations={offer_translations}
+        path_applied_offers={path_applied_offers}
+        csrf_param={csrf_param}
+        csrf_token={csrf_token}
+        initialRows={3}
+        hasAllOffers
+        rowIncrement={2}
+      />
+    </div>
   </StyledWrapper>
 )
 

@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import { Row } from 'reactstrap'
-// import Introduccion from './sections/introduccion'
 import CoverSection from './sections/cover'
 import OffersSection from './sections/offers'
-// import PremiumSection from './sections/premium'
 import CompaniesSection from './sections/companies'
-// import TurorialSection from './sections/tutorial'
+import JobCategories from './sections/JobCategories'
+import Banner from './sections/Banner'
+import SearchTrends from './sections/SearchTrends'
+import PostList from './sections/PostList'
 import content from './data'
 
 const HomePage = ({
@@ -21,7 +21,14 @@ const HomePage = ({
   common
 }) => {
   const { companies } = content
-  const { cover, offers: offersTranslations } = home_translations
+  const {
+    cover,
+    offers: offersTranslations,
+    categories,
+    info,
+    search_trends,
+    post_list
+  } = home_translations
 
   return (
     <div className="home-wrapper">
@@ -38,6 +45,10 @@ const HomePage = ({
         section_title={offersTranslations.title}
         offer_translations={offer_translations}
       />
+      <JobCategories categories={common.categorias} translations={categories} />
+      <Banner translations={info} />
+      <SearchTrends translations={search_trends} />
+      <PostList translations={post_list} />
       {/* <Introduccion />
       <div
         className="w-100 position-absolute d-none d-lg-block clipping-shit"

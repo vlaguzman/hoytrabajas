@@ -16,7 +16,7 @@ const CompaniesSection = () => {
         <h4 className="companiesTitle a-typo__titleH4 color__blue-main">
           Muchas empresas confían en nosotros
         </h4>
-        <h5 className="companiesSubtitle a-typo__titleH5 color-blue-light">
+        <h5 className="companiesSubtitle a-typo__titleH5">
           el talento de su empresa
         </h5>
       </div>

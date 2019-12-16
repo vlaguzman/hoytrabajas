@@ -67,7 +67,7 @@ $theme-colors: map-merge((
 ), $theme-colors);
 
 // html font
-$html-font-size:                  16px;
+$html-font-size:                  100%;
 
 // Block Settings
 $block-bg:                       $white;

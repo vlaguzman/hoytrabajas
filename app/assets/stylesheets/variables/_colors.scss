@@ -64,7 +64,8 @@ $color-list: (
 );
 
 @each $name, $color in $color-list {
-  .color__#{$name} {
+  .color__#{$name},
+  a.color__#{$name}:hover {
     color: $color;
   }
   .bg__#{$name} {

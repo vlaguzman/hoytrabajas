@@ -17,6 +17,17 @@ es:
         link: 'Ver cargos por categoría'
     info:
       title: 'Garantizamos una conexión directa con el empleador en menos de 24 horas a la aplicación.'
+    search_trends:
+      title: 'Tendencias de búsqueda'
+      subtitles:
+        cities: 'Ciudades'
+        categories: 'Categorías'
+        positions: 'Cargos'
+        work_mode: 'Tipo de empleo'
+        working_hours: 'Jornada'
+    post_list:
+      title: 'Trabajamos para brindarte más oportunidades'
+      btn_see_more: 'Conoce más'
     affiliates:
       title: 'Muchas empresas confían en nosotros'
       subtitle: 'el talento de su empresa'

@@ -46,10 +46,10 @@ const HomePage = ({
         offer_translations={offer_translations}
       />
       {/* TODO any: uncomment sections when they have real data */}
-      {/* <JobCategories categories={common.categorias} translations={categories} /> */}
+      <JobCategories categories={common.categorias} translations={categories} />
       <Banner translations={info} />
-      {/* <SearchTrends translations={search_trends} /> */}
-      {/* <PostList translations={post_list} /> */}
+      <SearchTrends translations={search_trends} />
+      <PostList translations={post_list} />
       <CompaniesSection {...companies} />
     </div>
   )

@@ -17,6 +17,7 @@
 .t-home__companies {
   max-width: 1250x;
   padding: 0 60px;
+  margin: auto;
 
   @media (max-width: 576) {
     padding: 0 30px;
@@ -28,6 +29,7 @@
 }
 
 .t-home__jobCategories {
+  margin: auto;
   margin-top: 120px;
   max-width: 1250px;
   padding: 0 60px;
@@ -61,6 +63,7 @@
 }
 
 .t-home__banner {
+  margin: auto;
   margin-top: 120px;
   max-width: 1250px;
   padding: 0 60px;
@@ -77,6 +80,7 @@
 }
 
 .t-home__searchTrends {
+  margin: auto;
   margin-top: 120px;
   max-width: 1250px;
   padding: 0 60px;
@@ -105,6 +109,7 @@
 }
 
 .t-home__postList {
+  margin: auto;
   margin-top: 120px;
   max-width: 1250px;
   padding: 0 60px;

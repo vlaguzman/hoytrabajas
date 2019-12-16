@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Offers from '../../components/Offers'
 
 const StyledWrapper = styled.div`
+  margin: auto;
   margin-top: 180px;
   padding: 0 60px;
 

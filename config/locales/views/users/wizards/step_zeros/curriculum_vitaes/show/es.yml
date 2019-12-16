@@ -1,0 +1,8 @@
+es:
+  info:
+    title: '¿Cuentas con una hoja de vida?'
+    description: 'Subiendo tu Curriculum podras simplificar el diligenciamiento de tu perfil'
+  actions:
+    return: 'Regresar'
+    continue: 'Continuar'
+    skip: 'Omitir'

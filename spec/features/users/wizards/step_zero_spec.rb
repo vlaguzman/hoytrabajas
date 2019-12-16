@@ -27,7 +27,7 @@ RSpec.describe "like new candidate", type: :feature do
 
       click_on('Quiero completar mi perfil')
 
-      expect(current_path).to eq(users_wizards_step_one_path)
+      expect(current_path).to eq(users_wizards_step_zeros_curriculum_vitae_path)
     end
   end
 end

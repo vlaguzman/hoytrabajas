@@ -1,0 +1,89 @@
+body {
+  background-color: white;
+  height: auto;
+}
+
+.background {
+  background-image: url('/assets/static/img/background-city.png');
+  background-repeat: no-repeat;
+  background-color: white;
+  position: absolute;
+  height: 82%;
+  width: 100%;
+  z-index: -1;
+  top: 126px;
+}
+
+.upload_cv {
+  box-shadow: 0 11px 27px 1px #ecebf0;
+  padding: 76px 100px 47px;
+  background-color: white;
+  margin: 185px 260px 0;
+  border-radius: 7.2px;
+  text-align: center;
+
+  @media only screen and (max-width : 480px) {
+    padding: 100px 10px 0;
+    margin: 0;
+  }
+
+  h1 {
+    margin-bottom: 3px;
+    font-weight: 800;
+    font-size: 24px;
+    color: #374456;
+  }
+
+  p {
+    margin-bottom: 90px;
+    font-weight: normal;
+    font-size: 16px;
+    color: #647a99;
+  }
+
+  input[type='file'] {
+    margin-bottom: 90px;
+  }
+
+  .actions {
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+
+    a {
+      justify-content: center;
+      align-items: center;
+      font-weight: 900;
+      font-size: 14px;
+      color: #b1b1b1;
+      display: flex;
+      width: 102px;
+      height: 36px;
+
+      &:hover {
+        background: #e8ecec;
+        color: #000000;
+      }
+    }
+
+    @media only screen and (max-width : 480px) {
+      display: unset;
+
+      a {
+        display: none;
+      }
+    }
+
+    input {
+      box-shadow: 0 4px 4px -3px #ecebf0, 0 3px 12px 2px #ecebf0, 0 9px 23px 1px #ecebf0;
+      background-color: #ff7b00;
+      border-radius: 24.7px;
+      font-weight: 900;
+      font-size: 14px;
+      width: 240.6px;
+      height: 48.9px;
+      color: white;
+      border: none;
+    }
+  }
+}

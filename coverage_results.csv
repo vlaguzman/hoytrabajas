@@ -19,7 +19,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/contract_type.rb",100,3,2,2,0
 "./app/models/country.rb",100,3,2,2,0
 "./app/models/currency.rb",100,3,2,2,0
-"./app/models/curriculum_vitae.rb",100,44,30,30,0
+"./app/models/curriculum_vitae.rb",100,45,31,31,0
 "./app/models/curriculum_vitae_salary.rb",100,7,5,5,0
 "./app/models/curriculum_vitaes_educational_degrees.rb",100,4,3,3,0
 "./app/models/curriculum_vitaes_languages.rb",100,5,4,4,0
@@ -155,6 +155,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/users/wizards/step_three_service.rb",100,5,3,3,0
 "./app/services/users/wizards/step_two/form_params_service.rb",100,31,11,11,0
 "./app/services/users/wizards/step_two_service.rb",100,9,4,4,0
+"./app/services/users/wizards/step_zero/curriculum_vitae_service.rb",100,8,3,3,0
 "./app/services/wizards_last_step_service.rb",100,26,17,17,0
 "./lib/dates_manager.rb",100,22,13,13,0
 "./lib/hashes_converter.rb",100,14,6,6,0

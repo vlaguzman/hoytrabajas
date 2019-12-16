@@ -1,0 +1,8 @@
+en:
+  info:
+    title: 'Do you have a resume?'
+    description: 'Uploading your Curriculum you can simplify the completion of your profile'
+  actions:
+    return: 'Return'
+    continue: 'Continue'
+    skip: 'Skip'

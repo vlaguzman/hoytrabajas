@@ -5,6 +5,18 @@ import Avatar from '@material-ui/core/Avatar'
 import { Row } from 'reactstrap'
 import CardContent from '@material-ui/core/CardContent'
 import { wordsShortener, capitalizeFirstLetter } from '../../helpers'
+import StarsIcon from '@material-ui/icons/Stars'
+
+const OnDemandBlock = ({ content }) => (
+  <div className="offerTag a-tag-with_icon a-tag-orange_inverse">
+    <StarsIcon />
+    {content}
+  </div>
+)
+
+OnDemandBlock.propTypes = {
+  content: PropTypes.string.isRequired
+}
 
 const RequiredExperienceBlock = ({ content }) => (
   <div className="offerTag a-tag__orange mr-5">{content}</div>
@@ -36,7 +48,8 @@ const OfferContent = ({ offer, translations }) => {
   const {
     tag_immediate_start,
     tag_new_offer,
-    tag_without_required_experience
+    tag_without_required_experience,
+    tag_on_demand
   } = translations
   return (
     <CardContent className="offerContent pt-0 pb-5">
@@ -62,6 +75,9 @@ const OfferContent = ({ offer, translations }) => {
       <div className="mt-auto">
         <Row className="mr-0 justify-content-between align-items-end px-10 mb-10">
           <Row className="mr-0 px-10">
+            {offer.on_demand === 'up' && (
+              <OnDemandBlock content={tag_on_demand} />
+            )}
             {!offer.required_experience && (
               <RequiredExperienceBlock
                 content={tag_without_required_experience}
@@ -113,7 +129,8 @@ OfferContent.propTypes = {
   translations: PropTypes.shape({
     tag_new_offer: PropTypes.string.isRequired,
     tag_immediate_start: PropTypes.string.isRequired,
-    tag_without_required_experience: PropTypes.string.isRequired
+    tag_without_required_experience: PropTypes.string.isRequired,
+    tag_on_demand: PropTypes.string.isRequired
   }).isRequired,
   offer: PropTypes.shape({
     title: PropTypes.string.isRequired,
@@ -121,6 +138,7 @@ OfferContent.propTypes = {
     immediate_start: PropTypes.bool,
     required_experience: PropTypes.bool,
     new_offer: PropTypes.bool,
+    on_demand: PropTypes.string,
     city: PropTypes.shape({
       description: PropTypes.string.isRequired
     }),

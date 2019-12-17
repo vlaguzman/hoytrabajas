@@ -15,7 +15,8 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/available_work_days_offers.rb",100,4,3,3,0
 "./app/models/city.rb",100,7,4,4,0
 "./app/models/companies_users.rb",100,4,3,3,0
-"./app/models/company.rb",100,25,11,11,0
+"./app/models/company.rb",100,31,15,15,0
+"./app/models/company_transition.rb",100,4,3,3,0
 "./app/models/contract_type.rb",100,3,2,2,0
 "./app/models/country.rb",100,3,2,2,0
 "./app/models/currency.rb",100,3,2,2,0
@@ -47,7 +48,8 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/level.rb",100,5,3,3,0
 "./app/models/limitation.rb",100,6,3,3,0
 "./app/models/nationality.rb",100,7,4,4,0
-"./app/models/offer.rb",100,76,56,56,0
+"./app/models/offer.rb",100,77,57,57,0
+"./app/models/offer_on_demand.rb",100,5,3,3,0
 "./app/models/offer_required_experiences.rb",100,9,5,5,0
 "./app/models/offer_salary.rb",100,11,7,7,0
 "./app/models/offer_type.rb",100,5,3,3,0
@@ -136,10 +138,11 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/companies/first_offer/step_three_service.rb",100,45,25,25,0
 "./app/services/companies/first_offer/step_two/form_params_service.rb",100,7,2,2,0
 "./app/services/companies/first_offer/step_two_service.rb",100,6,3,3,0
+"./app/services/company_service.rb",100,38,20,20,0
 "./app/services/offers/applied_offer_service.rb",100,15,6,6,0
 "./app/services/offers/index_service.rb",100,18,7,7,0
 "./app/services/offers/show_service.rb",100,76,27,27,0
-"./app/services/offers/views_service.rb",100,77,31,31,0
+"./app/services/offers/views_service.rb",100,83,34,34,0
 "./app/services/offers_service.rb",100,38,18,18,0
 "./app/services/users/dashboards/offers_service.rb",100,51,21,21,0
 "./app/services/users/wizard_service.rb",100,43,18,18,0
@@ -165,6 +168,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/users/wizards/step_two_service.rb",100,9,4,4,0
 "./app/services/users/wizards/step_zero/curriculum_vitae_service.rb",100,8,3,3,0
 "./app/services/wizards_last_step_service.rb",100,26,17,17,0
+"./app/state_machines/company_state_machine.rb",100,17,10,10,0
 "./lib/dates_manager.rb",100,24,15,15,0
 "./lib/hashes_converter.rb",100,18,8,8,0
 "./lib/list_converter.rb",100,25,12,12,0

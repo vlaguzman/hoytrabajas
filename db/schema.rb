@@ -184,6 +184,18 @@ ActiveRecord::Schema.define(version: 2019_12_14_155415) do
     t.index ["user_id"], name: "index_companies_users_on_user_id"
   end
 
+  create_table "company_transitions", force: :cascade do |t|
+    t.string "to_state", null: false
+    t.json "metadata", default: {}
+    t.integer "sort_key", null: false
+    t.integer "company_id", null: false
+    t.boolean "most_recent", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id", "most_recent"], name: "index_company_transitions_parent_most_recent", unique: true, where: "most_recent"
+    t.index ["company_id", "sort_key"], name: "index_company_transitions_parent_sort", unique: true
+  end
+
   create_table "contract_types", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
@@ -499,6 +511,16 @@ ActiveRecord::Schema.define(version: 2019_12_14_155415) do
     t.bigint "user_id", null: false
     t.index ["nationality_id"], name: "index_nationalities_users_on_nationality_id"
     t.index ["user_id"], name: "index_nationalities_users_on_user_id"
+  end
+
+  create_table "offer_on_demands", force: :cascade do |t|
+    t.string "status"
+    t.date "start_at"
+    t.date "finish_at"
+    t.bigint "offer_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["offer_id"], name: "index_offer_on_demands_on_offer_id"
   end
 
   create_table "offer_required_experiences", force: :cascade do |t|
@@ -893,6 +915,7 @@ ActiveRecord::Schema.define(version: 2019_12_14_155415) do
   add_foreign_key "companies", "industries"
   add_foreign_key "companies_users", "companies"
   add_foreign_key "companies_users", "users"
+  add_foreign_key "company_transitions", "companies"
   add_foreign_key "curriculum_vitae_salaries", "currencies"
   add_foreign_key "curriculum_vitae_salaries", "curriculum_vitaes"
   add_foreign_key "curriculum_vitae_salaries", "salary_periods"
@@ -941,6 +964,7 @@ ActiveRecord::Schema.define(version: 2019_12_14_155415) do
   add_foreign_key "nationalities", "countries"
   add_foreign_key "nationalities_users", "nationalities"
   add_foreign_key "nationalities_users", "users"
+  add_foreign_key "offer_on_demands", "offers"
   add_foreign_key "offer_required_experiences", "duration_types"
   add_foreign_key "offer_required_experiences", "offers"
   add_foreign_key "offer_salaries", "currencies"

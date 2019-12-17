@@ -76,6 +76,7 @@ RSpec.describe Offers::ShowService do
         total_applications: 0,
         vacancies_quantity: 10,
         required_experience: true,
+        on_demand: nil,
         sex: {
           description: ["Mujer"]
         },

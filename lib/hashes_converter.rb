@@ -16,9 +16,4 @@ module HashesConverter
     object.delete_if { |_, value| not value.present? }
   end
 
-  def self.values_are_present?(object={})
-    object
-      .map {|key, value| value.present? }
-      .all? { |value| value.present? }
-  end
 end

@@ -7,11 +7,11 @@ module Users::Wizards::ErrorsService
   end
 
   def self.validate_nationalities_precense(user, update_params: {})
-    update_params[:nationality_ids].present? && !update_params[:nationality_ids].last.present? && user.errors.add(:nationalities, :blank)
+    update_params.key?(:nationality_ids) && !update_params[:nationality_ids].last.present? && !update_params[:nationality_ids].last.present? && user.errors.add(:nationalities, :blank)
   end
 
   def self.validate_document_type_precense(user, update_params: {})
-    !update_params[:document_type_id].present? && user.errors.add(:document_type_id, :blank)
+    update_params.key?(:document_type_id) && !update_params[:document_type_id].present? && user.errors.add(:document_type_id, :blank)
   end
 
 end

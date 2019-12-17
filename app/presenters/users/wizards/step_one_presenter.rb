@@ -33,8 +33,4 @@ class Users::Wizards::StepOnePresenter < Users::WizardsPresenter
     rails_routes.users_wizards_step_one_path
   end
 
-  def users_wizards_step_two_path
-    rails_routes.users_wizards_step_two_path
-  end
-
 end

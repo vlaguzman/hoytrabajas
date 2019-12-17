@@ -3,11 +3,16 @@ class Users::WizardsController < ApplicationController
 
   private
 
-  def validate_redirect_to(source: current_user, users_wizard_path: users_wizards_step_zero_path, view: :show)
-    if not source.errors.present?
-      redirect_to users_wizard_path
-    else
+  def validate_redirect_to(
+    source: current_user,
+    users_wizard_path: users_wizards_step_zero_path,
+    view: :show,
+    other_validation: false
+  )
+    if source.errors.present? || other_validation
       render view
+    else
+      redirect_to users_wizard_path
     end
   end
 

@@ -6,12 +6,13 @@ import FormProgress from '../../../../../components/FormsLayout/FormProgress'
 import FormTitle from '../../../../../components/FormsLayout/FormTitle'
 import FormButtons from '../../../../../components/FormsLayout/FormButtons'
 import FormFields from './FormFields'
+import { ShowMessage } from '../../shared/message'
 
 const UsersWizardsStepOne = ({ csrf_param, csrf_token, formInfo }) => {
   const {
     title,
     subtitle,
-    form: { buttons, action, method, type, formFields }
+    form: { buttons, action, method, type, formFields, errors = null }
   } = formInfo
 
   const { nextPath, previousPath } = buttons
@@ -24,6 +25,7 @@ const UsersWizardsStepOne = ({ csrf_param, csrf_token, formInfo }) => {
           <>
             <FormTitle title={title} subtitle={subtitle} />
             <div className="w-80">
+              { ShowMessage(errors, 'red') }
               <form className="forms__candidate" action={action} method="post">
                 <input type="hidden" name={csrf_param} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />

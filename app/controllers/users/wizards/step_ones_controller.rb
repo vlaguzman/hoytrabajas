@@ -9,7 +9,10 @@ class Users::Wizards::StepOnesController < Users::WizardsController
 
     user_presenters(user)
 
-    validate_redirect_to(source: user, users_wizard_path: users_wizards_step_two_path)
+    validate_redirect_to(
+      source: user,
+      users_wizard_path: users_wizards_step_two_path
+    )
   end
 
   def edit

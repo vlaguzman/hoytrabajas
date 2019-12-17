@@ -22,9 +22,14 @@ module Users::WizardService
   private
 
   def self.update_candidate(candidate, update_params: {})
-    [candidate, candidate.update(
+
+    first_valid = candidate.update(
       HashesConverter.sanitize_array_values(hash: update_params)
-    )]
+    )
+
+    validate_candidate = Users::Wizards::ErrorsService.(candidate, update_params: update_params)
+
+    [validate_candidate, first_valid && validate_candidate.errors.any? ]
   end
 
 

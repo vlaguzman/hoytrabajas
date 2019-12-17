@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const showMessage = (messageList, color = 'black') => {
+export const ShowMessage = (messageList, color = 'black') => {
   if (messageList) {
     return messageList.map(messages =>
       messages.map((message, index) => (
@@ -12,7 +12,7 @@ export const showMessage = (messageList, color = 'black') => {
   }
 }
 
-export const showExperience = experienceList => {
+export const ShowExperience = experienceList => {
   if (experienceList) {
     return experienceList.map((experience, index) => (
       <p key={`${experience[1]}_${index}`}>

@@ -56,7 +56,10 @@ A          • Companies::FirstOfferPresenter                              4    
 A          • Companies::RegistrationsController                          6       1.0        0           2
 A          • CompaniesController                                         7       3.4        0           1
 A          • CompaniesUsers                                              1       0.0        0           1
-A          • Company                                                     15      2.2        0           1
+A          • Company                                                     17      3.61       0           1
+A          • CompanyService                                              4       12.89      0           1
+A          • CompanyStateMachine                                         3       4.0        0           1
+A          • CompanyTransition                                           2       0.0        0           1
 A          • ContractType                                                1       0.0        0           1
 A          • Country                                                     4       0.0        0           1
 A          • Currency                                                    1       0.0        0           1
@@ -97,7 +100,8 @@ A          • Level                                                       4    
 A          • Limitation                                                  4       0.0        0           1
 A          • ListConverter                                               11      29.49      0           2
 A          • Nationality                                                 5       0.0        0           1
-A          • Offer                                                       43      10.0       0           1
+A          • Offer                                                       45      10.0       0           1
+A          • OfferOnDemand                                               2       0.0        0           1
 A          • OfferRequiredExperiences                                    1       0.0        0           1
 A          • OfferSalary                                                 8       0.0        0           1
 A          • OfferType                                                   5       0.0        0           1
@@ -215,5 +219,5 @@ B          • Companies::FirstOffer::StepSixPresenter                     4    
 B          • Companies::FirstOffer::StepSixService                       4       22.62      18          4
 B          • Companies::FirstOffer::StepTwosController                   10      20.32      27          2
 B          • Offers::ShowService                                         17      87.8       0           1
-B          • Offers::ViewsService                                        16      78.43      0           6
+B          • Offers::ViewsService                                        18      85.3       0           7
 B          • Users::Wizards::StepSixService                              11      35.03      31          2

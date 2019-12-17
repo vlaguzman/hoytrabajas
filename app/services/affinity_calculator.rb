@@ -7,6 +7,8 @@ class AffinityCalculator
   def initialize(offer, user)
     @offer = offer
     @user = user
+    initialize_not_empty_to_compare_hashes
+    initialize_not_nil_attributes_to_compare_hashes
   end
 
   def offer
@@ -17,32 +19,27 @@ class AffinityCalculator
     @user
   end
 
-  def curriculum_vitae
-    user.curriculum_vitae
+  def initialize_not_empty_to_compare_hashes
+    @offer_lists_hash = not_empty_lists_to_compare(Offer, offer)
+    @user_lists_hash = not_empty_lists_to_compare(User, user)
+    @cv_lists_hash = not_empty_lists_to_compare(CurriculumVitae, user.curriculum_vitae)
   end
 
-  def amount_offer_data(klass, object)
-    not_nil_attributes_to_compare(klass, object).count
+  def initialize_not_nil_attributes_to_compare_hashes
+    @offer_attr_hash = not_nil_attributes_to_compare(Offer, offer)
+    @user_attr_hash = not_nil_attributes_to_compare(User, user)
+    @cv_attr_hash = not_nil_attributes_to_compare(CurriculumVitae, user.curriculum_vitae)
+  end
+
+  def affinity_percentage
+    total_base = @offer_attr_hash.count
+    total_eq_values = total_equal_values(@offer_lists_hash, @user_lists_hash, @cv_lists_hash) + 
+                      total_equal_values(@offer_attr_hash, @user_attr_hash, @cv_attr_hash)
+    (total_eq_values/total_base)*100
   end
   
-  def calculate_total_equal_values
-    total_equal_lists + total_equal_attributes
-  end
-
-  def total_equal_lists
-    offer_hash = not_empty_lists_to_compare(Offer, offer)
-    user_hash = not_empty_lists_to_compare(User, user)
-    curriculum_vitae_hash = not_empty_lists_to_compare(CurriculumVitae, curriculum_vitae)
-    total_equal_values = compare_hashes_count(offer_hash, user_hash)
-    total_equal_values += compare_hashes_count(offer_hash, curriculum_vitae_hash)
-  end
-
-  def total_equal_attributes
-    offer_hash = not_nil_attributes_to_compare(Offer, offer)
-    user_hash = not_nil_attributes_to_compare(User, user)
-    curriculum_vitae_hash = not_nil_attributes_to_compare(CurriculumVitae, curriculum_vitae)
-    total_equal_values = compare_hashes_count(offer_hash, user_hash)
-    total_equal_values += compare_hashes_count(offer_hash, curriculum_vitae_hash)
+  def total_equal_values(offer_hash, user_hash, cv_hash)
+    compare_hashes_count(offer_hash, user_hash) + compare_hashes_count(offer_hash, cv_hash)
   end
 
   def not_nil_attributes_to_compare(klass, object)

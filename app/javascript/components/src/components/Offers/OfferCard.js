@@ -26,10 +26,16 @@ const OfferCard = ({
   const {
     tag_without_required_experience,
     tag_immediate_start,
-    tag_new_offer
+    tag_new_offer,
+    tag_on_demand
   } = offer_translations
+
+  function isOfferOnDemand() {
+    return offer.on_demand === 'up' ? 'cardOfferOnDemand' : ''
+  }
+
   return (
-    <Col className="m-offer cardOffer position-relative m-0 justify-content-center align-items-center px-0">
+    <Col className={`m-offer cardOffer position-relative m-0 justify-content-center align-items-center px-0 ${isOfferOnDemand()}`}>
       <div className="bg-buttons-carusel MuiPaper-rounded position-absolute d-flex flex-column align-items-center justify-content-center">
         <Row noGutters className="w-100 justify-content-center">
           <a
@@ -62,7 +68,7 @@ const OfferCard = ({
                 }
               )}
             >
-              {/* TO-DO-VLADO: made a review of the responsive 
+              {/* TO-DO-VLADO: made a review of the responsive
                    <span className="d-none d-lg-inline">
                      {value_button_lg}
                    </span> */}
@@ -138,7 +144,8 @@ const OfferCard = ({
             translations={{
               tag_new_offer,
               tag_immediate_start,
-              tag_without_required_experience
+              tag_without_required_experience,
+              tag_on_demand
             }}
           />
         </CardActionArea>
@@ -162,6 +169,7 @@ OfferCard.propTypes = {
     job_category_image: PropTypes.string.isRequired,
     required_experience: PropTypes.bool,
     new_offer: PropTypes.bool,
+    on_demand: PropTypes.string,
     city: PropTypes.shape({
       description: PropTypes.string.isRequired
     }),
@@ -185,6 +193,7 @@ OfferCard.propTypes = {
     btn_super_apply: PropTypes.string.isRequired,
     tag_new_offer: PropTypes.string.isRequired,
     tag_immediate_start: PropTypes.string.isRequired,
-    tag_without_required_experience: PropTypes.string.isRequired
+    tag_without_required_experience: PropTypes.string.isRequired,
+    tag_on_demand: PropTypes.string.isRequired
   })
 }

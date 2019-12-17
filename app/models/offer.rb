@@ -18,7 +18,7 @@ class Offer < ApplicationRecord
   has_one :offer_salary
   has_one :age_range
   has_one :offer_required_experiences
-  has_one :offer_on_demands
+  has_one :offer_on_demand
 
   has_many :applied_offers
 

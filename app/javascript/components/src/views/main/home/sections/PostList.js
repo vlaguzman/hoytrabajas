@@ -3,39 +3,34 @@ import PropTypes from 'prop-types'
 
 const posts = [
   {
-    name: 'HoyTrabajas OnDemand',
+    key: 'ondemand',
     path: '/',
-    imagePath: '/assets/static/img/hoytrabajas-on-demand.jpg',
-    description:
-      'Publica tus ofertas de trabajo y encuentra el mejor talento. HoyTrabajas.com OnDemand te da mejor visibilidad de tus ofertas y te entregamos candidatos afines al puesto de trabajo.'
+    imagePath: '/assets/static/img/hoytrabajas-on-demand.jpg'
   },
   {
-    name: 'HoyTrabajas Flexi',
+    key: 'flexi',
     path: '/',
-    imagePath: '/assets/static/img/hoytrabajas-flexi.jpg',
-    description:
-      'Contrata personal por turnos rápido y fácil. HoyTrabajas.com Flexi, conecta a tu empresa con trabajadores por turnos con experiencia entrevistados, validados y asegurados.'
+    imagePath: '/assets/static/img/hoytrabajas-flexi.jpg'
   },
   {
-    name: 'HoyTrabajas Línea Ejecutiva',
+    key: 'company_prime',
     path: '/',
-    imagePath: '/assets/static/img/hoytrabajas-linea-ejecutiva.jpg',
-    description:
-      'Encuentra el talento adecuado para tu empresa. HoyTrabajas.com línea Ejecutiva te ayuda en los procesos de reclutamiento, evaluación, selección y desarrollo de talentos.'
+    imagePath: '/assets/static/img/hoytrabajas-linea-ejecutiva.jpg'
   }
 ]
 
 const PostList = ({ translations }) => {
+  const { title, btn_see_more, content } = translations
   return (
     <div className="t-home__postList">
-      <h4 className="color__blue-main mb-60">{translations.title}</h4>
+      <h4 className="color__blue-main mb-60">{title}</h4>
       <div className="postListGrid">
         {posts.map(post => (
           <div className="a-shadow__card singlePost d-flex flex-column">
-            <p className="a-badge__service">{post.name}</p>
+            <p className="a-badge__service">{content[post.key].tag}</p>
             <img src={post.imagePath} alt="Post Thumbnail" />
             <p className="mt-20 px-20" style={{ textAlign: 'justify' }}>
-              {post.description}
+              {content[post.key].description}
             </p>
             <a
               className="mt-auto p-20 color__blue-main fw-bold"
@@ -43,7 +38,7 @@ const PostList = ({ translations }) => {
               // href={post.path}
               href="mailto:operaciones@hoytrabajas.com"
             >
-              {translations.btn_see_more}
+              {btn_see_more}
             </a>
           </div>
         ))}
@@ -55,6 +50,11 @@ const PostList = ({ translations }) => {
 PostList.propTypes = {
   translations: PropTypes.shape({
     title: PropTypes.string.isRequired,
+    content: PropTypes.shape({
+      ondemand: PropTypes.object.isRequired,
+      flexi: PropTypes.object.isRequired,
+      company_prime: PropTypes.object.isRequired
+    }).isRequired,
     btn_see_more: PropTypes.string.isRequired
   }).isRequired
 }

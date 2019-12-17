@@ -36,8 +36,7 @@ class Offers::ViewsService
       salary:               salary_details,
       company:              company_details,
       close_date:           close_date.present? ? DatesManager.default(date: close_date) : DatesManager.default(date: Date.today + 1.day ),
-      on_demand:            offer_on_demand_details,
-
+      on_demand:            offer_on_demand_details
     }
   end
 

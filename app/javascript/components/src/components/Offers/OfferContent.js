@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography'
 import Avatar from '@material-ui/core/Avatar'
 import { Row } from 'reactstrap'
 import CardContent from '@material-ui/core/CardContent'
-import { capitalizeFirstLetter } from '../../helpers'
+import { wordsShortener, capitalizeFirstLetter } from '../../helpers'
 import StarsIcon from '@material-ui/icons/Stars'
 
 const OnDemandBlock = ({ content }) => (
@@ -44,11 +44,6 @@ NewFlagBlock.propTypes = {
   content: PropTypes.string.isRequired
 }
 
-const wordsShortener = (words, maxSize) => {
-  return words.length > maxSize ? `${words.substring(0, maxSize)}...` : words
-}
-
->>>>>>> create offer on demand, and add statesman gem, and add models and config to this
 const OfferContent = ({ offer, translations }) => {
   const {
     tag_immediate_start,

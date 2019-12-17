@@ -27,6 +27,16 @@ en:
         working_hours: 'Working hours'
       post_list:
         title: 'We work to give you more opportunities'
+        content:
+          ondemand:
+            tag: 'HoyTrabajas OnDemand'
+            description: 'Publish your job offers and find the best talent. HoyTrabajas.com OnDemand gives you better visibility on your offers and gives you candidates related to the job.'
+          flexi:
+            tag: 'HoyTrabajas Flexi'
+            description: 'Hire staff for quick and easy shifts. HoyTrabajas.com Flexi, connect your company with experienced shift workers interviewed, validated and insured.'
+          company_prime:
+            tag: 'HoyTrabajas Company Prime'
+            description: 'Find the right talent for your company. HoyTrabajas.com Company Prime helps you in the processes of recruitment, evaluation, selection and development of talents.'
         btn_see_more: 'See more'
     affiliates:
       title: 'Many companies trust us'

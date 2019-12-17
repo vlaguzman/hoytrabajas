@@ -27,6 +27,16 @@ es:
         working_hours: 'Jornada'
     post_list:
       title: 'Trabajamos para brindarte más oportunidades'
+      content:
+        ondemand:
+          tag: 'HoyTrabajas OnDemand'
+          description: 'Publica tus ofertas de trabajo y encuentra el mejor talento. HoyTrabajas.com OnDemand te da mejor visibilidad de tus ofertas y te entregamos candidatos afines al puesto de trabajo.'
+        flexi:
+          tag: 'HoyTrabajas Flexi'
+          description: 'Contrata personal por turnos rápido y fácil. HoyTrabajas.com Flexi, conecta a tu empresa con trabajadores por turnos con experiencia entrevistados, validados y asegurados.'
+        company_prime:
+          tag: 'HoyTrabajas Línea Ejecutiva'
+          description: 'Encuentra el talento adecuado para tu empresa. HoyTrabajas.com línea Ejecutiva te ayuda en los procesos de reclutamiento, evaluación, selección y desarrollo de talentos.'
       btn_see_more: 'Conoce más'
     affiliates:
       title: 'Muchas empresas confían en nosotros'

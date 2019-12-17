@@ -4,7 +4,7 @@ import UpperFooter from './UpperFooter'
 import UnderFooter from './UnderFooter'
 import SocialBar from './socialBar'
 
-const Footer = ({ scrollToBottom }) => {
+const Footer = ({ scrollToBottom, footer_translations, terms_and_conditions_file_path }) => {
   const [state, setState] = useState({ collapse: true })
 
   const scrol = () => {
@@ -29,7 +29,10 @@ const Footer = ({ scrollToBottom }) => {
         <div className="rct-footer d-flex flex-column bg-image animated fadeIn">
           <SocialBar />
           <UpperFooter />
-          <UnderFooter />
+          <UnderFooter
+            underFooterTranslations={footer_translations.under_footer}
+            termAndConditionsPath={terms_and_conditions_file_path}
+          />
         </div>
       </Collapse>
     </>

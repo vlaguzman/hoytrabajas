@@ -1,0 +1,24 @@
+.a-chip {
+  border-radius:13px;
+  padding-left: 2px;
+  padding-right: 2px;
+  cursor:pointer;
+  padding:1px 16px;
+  background-color:$color__yellow-extralight;
+  border:1px solid $color__yellow-extralight;
+  color:#77818f;
+
+  &.--jobCategory {
+    background:linear-gradient(to bottom, $color__orange-main 5%, $color__orange-main 100%);
+    background-color:$color__orange-main;
+    border:1px solid $color__yellow-main;
+    color: white;
+    font-size:0.9rem;
+    font-weight:bold;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-self: first baseline;
+  }
+
+}

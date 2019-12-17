@@ -41,4 +41,19 @@ RSpec.describe Company, type: :model do
       expect(subject.after_confirmation).to eq(true)
     end
   end
+
+  describe "#state_machine" do
+    let!(:company) { create(:company) }
+
+    context "company has two states" do
+      context "when company is no_premium" do
+        it "should update state to premium" do
+          expect(company.state_machine.current_state).to eq("no_premium")
+
+          company.state_machine.transition_to(:premium)
+          expect(company.state_machine.current_state).to eq("premium")
+        end
+      end
+    end
+  end
 end

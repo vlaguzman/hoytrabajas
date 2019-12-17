@@ -10,13 +10,11 @@ import Lock from '@material-ui/icons/Lock'
 import { Row, Col } from 'reactstrap'
 import CloseIcon from './CloseIcon'
 import LoginButton from './LoginButton'
-import Checkbox from '../FormsLayout/Fields/Checkbox'
 import {
   LoginInputWrapper,
   LoginInputContainer,
   LoginInput
 } from './LoginInput'
-
 
 const SignIn = props => (
   <>
@@ -89,16 +87,8 @@ const SignIn = props => (
               placeholder={props.session_translation.sign_in.password_label}
               type="password"
             />
-
-
           </LoginInputContainer>
         </LoginInputWrapper>
-
-        <Checkbox
-          description={'aceptar términos y condiciones.'}
-          isRequired
-        />
-
         <Typography
           component="a"
           variant="caption"

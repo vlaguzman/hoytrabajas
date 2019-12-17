@@ -11,6 +11,7 @@ import Lock from '@material-ui/icons/Lock'
 import Divider from '@material-ui/core/Divider'
 import CloseIcon from './CloseIcon'
 import LoginButton from './LoginButton'
+import TermsAndConditionsTLink from '../../../views/devise/registrations/new/terms_and_conditions_tLink'
 import {
   LoginInputWrapper,
   LoginInputContainer,
@@ -107,6 +108,12 @@ const SignUp = props => (
             />
           </LoginInputContainer>
         </LoginInputWrapper>
+
+        <TermsAndConditionsTLink
+          session_translation={props.session_translation.sign_up}
+          terms_and_conditions_file_path={props.terms_and_conditions_file_path}
+        />
+
         <Row noGutters className="justify-content-center my-20">
           <Col xs={12}>
             <LoginButton type="submit" color="primary" variant="contained">

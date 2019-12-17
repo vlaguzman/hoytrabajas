@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 import AppConfig from '../../../constants/AppConfig'
 
-const UnderFooter = () => {
+const UnderFooter = ({underFooterTranslations={}, termAndConditionsPath=''}) => {
   return (
     <div className="row" style={{ backgroundColor: 'rgba(41, 39, 39, 1)' }}>
       <Row
@@ -64,7 +64,9 @@ const UnderFooter = () => {
               <Typography variant="body2">Contacto</Typography>
             </Col>
             <Col xs={12} md={4} className="text-center">
-              <Typography variant="body2">Terminos y Condiciones</Typography>
+              <a href={termAndConditionsPath} target='blank'>
+                <Typography variant="body2">{underFooterTranslations.terms_and_conditions}</Typography>
+              </a>
             </Col>
           </Row>
         </Col>
@@ -83,7 +85,9 @@ const UnderFooter = () => {
               <Typography variant="body2">Contacto</Typography>
             </Col>
             <Col xs={12} md={4} className="align-items-center">
-              <Typography variant="body2">Terminos y Condiciones</Typography>
+              <a href={termAndConditionsPath} target='blank'>
+                <Typography variant="body2">{underFooterTranslations.terms_and_conditions}</Typography>
+              </a>
             </Col>
           </Row>
         </Col>

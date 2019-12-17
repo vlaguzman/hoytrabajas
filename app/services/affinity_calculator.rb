@@ -32,10 +32,10 @@ class AffinityCalculator
   end
 
   def affinity_percentage
-    total_base = @offer_attr_hash.count
+    total_base = @offer_attr_hash.count + @offer_lists_hash.count
     total_eq_values = total_equal_values(@offer_lists_hash, @user_lists_hash, @cv_lists_hash) + 
                       total_equal_values(@offer_attr_hash, @user_attr_hash, @cv_attr_hash)
-    (total_eq_values/total_base)*100
+    (total_eq_values.to_f/total_base.to_f)*100
   end
   
   def total_equal_values(offer_hash, user_hash, cv_hash)
@@ -61,7 +61,7 @@ class AffinityCalculator
   private 
 
   def compare_hashes_count(hash, hash_b)
-    cont = 0 
+    cont = 0
     hash.each{|k, v| cont += 1 if hash[k] == hash_b[k]}
     cont
   end

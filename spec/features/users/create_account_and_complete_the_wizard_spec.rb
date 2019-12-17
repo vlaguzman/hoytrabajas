@@ -73,6 +73,9 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     fill_in 'user_email', with: 'nuevousuario@gmail.com'
     fill_in 'user_password', with: 'hola12345'
     fill_in 'user_password_confirmation', with: 'hola12345'
+
+    find('span', text: 'Aceptar términos y condiciones.').click
+
     click_on "Registrarme"
 
   #Step_Zero

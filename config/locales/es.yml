@@ -64,6 +64,8 @@ es:
       with_account:
         title: "¿Ya tienes cuenta?"
         sign_in: "Inicia sesión"
+      tc_link: 'Ver terminos y condiciones'
+      tc_label: 'Aceptar términos y condiciones.'
 
   activerecord:
     errors:

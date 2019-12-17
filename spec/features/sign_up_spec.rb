@@ -43,6 +43,8 @@ RSpec.describe "sign up user", js: true, type: :feature do
           fill_in 'user[password]', :with => "1wantt$finda7ob"
           fill_in 'user[password_confirmation]', :with => "1wantt$finda7ob"
 
+          find('span', text: 'Aceptar términos y condiciones.').click
+
           click_on 'Registrarme'
 
           expect(User.count).to eq(actual_users + 1)
@@ -66,6 +68,8 @@ RSpec.describe "sign up user", js: true, type: :feature do
           fill_in 'user[email]', :with => "gabriel.meneses@hoytrabajas.com"
           fill_in 'user[password]', :with => "1wantt$finda7ob"
           fill_in 'user[password_confirmation]', :with => "1wantt$finda7ob"
+
+          find('span', text: 'Aceptar términos y condiciones.').click
 
           click_on 'Registrarme'
 
@@ -117,6 +121,8 @@ RSpec.describe "sign up user", js: true, type: :feature do
           fill_in "company[email]", :with => "employee@gmail.com"
           fill_in "company[password]", :with => "iwanttofindaemployee"
           fill_in 'company[password_confirmation]', :with => "iwanttofindaemployee"
+
+          find('span', text: 'Aceptar términos y condiciones.').click
 
           click_button 'Registrarme'
 

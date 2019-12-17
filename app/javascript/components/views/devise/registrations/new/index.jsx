@@ -12,6 +12,7 @@ import MailOutline from '@material-ui/icons/MailOutline'
 import Lock from '@material-ui/icons/Lock'
 import Divider from '@material-ui/core/Divider'
 import AppLayout from '../../../../src/components/Layout/AppLayout'
+import TermsAndConditionsTLink from './terms_and_conditions_tLink'
 
 export default class Index extends React.Component {
   constructor(props) {
@@ -124,6 +125,10 @@ export default class Index extends React.Component {
                     }}
                   />
                 </div>
+                <TermsAndConditionsTLink
+                  session_translation={this.props.session_translation.sign_up}
+                  terms_and_conditions_file_path={this.props.terms_and_conditions_file_path}
+                />
                 <Row noGutters className="justify-content-center my-25">
                   <Col xs={12}>
                     <MatButton

@@ -7,14 +7,13 @@ RSpec.describe "User sign in", type: :feature do
       scenario "should see the sign up button 'Registrate'", js: true do
         visit root_path
 
-    
         find('span', text: "SIGN IN CANDIDATO").click
 
         expect(page).to have_text("¿No tienes una cuenta?")
       end
 
       scenario "should create account", js: true do
-        visit root_path        
+        visit root_path
 
         find('span', text:/SIGN IN CANDIDATO/).click
         find('a', text: "Regístrate", visible: false).click
@@ -24,6 +23,8 @@ RSpec.describe "User sign in", type: :feature do
         fill_in "user[email]", with: "walter.h.white@meta.com"
         fill_in "user[password]", with: "JesiPickman"
         fill_in "user[password_confirmation]", with: "JesiPickman"
+
+        find('span', text: 'Aceptar términos y condiciones.').click
 
         find('span', text: /Registrarme/).click
 

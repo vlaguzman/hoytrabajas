@@ -44,14 +44,24 @@ RSpec.describe Company, type: :model do
 
   describe "#state_machine" do
     let!(:company) { create(:company) }
+    let!(:offer_1)   { create(:offer, company: company) }
+    let!(:offer_2)   { create(:offer, company: company) }
 
     context "company has two states" do
       context "when company is no_premium" do
         it "should update state to premium" do
           expect(company.state_machine.current_state).to eq("no_premium")
+          expect(OfferOnDemand.count).to eq(0)
 
           company.state_machine.transition_to(:premium)
+
+          offer_on_demand = OfferOnDemand.find_by(offer_id: offer_1.id)
+
+          expect(OfferOnDemand.count).to eq(2)
+
           expect(company.state_machine.current_state).to eq("premium")
+          expect(offer_on_demand.offer).to eq(offer_1)
+          expect(offer_on_demand.status).to eq('up')
         end
       end
     end

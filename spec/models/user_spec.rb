@@ -109,4 +109,12 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe ".from_omniauth" do
+    it "creates a new user with the params given" do
+      request = double(provider: 'facebook', uid: '101566359522040331902', info: double(email: 'pepito@gmaile.com', name: 'Pepe Perez', image: 'http://graph.facebook.com/v2.10/10156635952204033/picture'))
+      user = User.from_omniauth(request)
+      expect(user.uid).to eq('101566359522040331902')
+    end
+  end
 end

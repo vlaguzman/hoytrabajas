@@ -29,7 +29,7 @@ module Users::WizardService
 
     validate_candidate = Users::Wizards::ErrorsService.(candidate, update_params: update_params)
 
-    [validate_candidate, first_valid && validate_candidate.errors.any? ]
+    [validate_candidate, first_valid && validate_candidate.errors.any?]
   end
 
 

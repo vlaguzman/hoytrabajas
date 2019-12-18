@@ -17,7 +17,6 @@ class Users::Wizards::StepOnePresenter < Users::WizardsPresenter
   def build_step_one_show_service_params
     service_params(
       action_path: users_wizards_step_one_path,
-      next_path: users_wizards_step_two_path,
       template_translation_path: "users.wizards.step_ones.show"
     )
   end
@@ -32,10 +31,6 @@ class Users::Wizards::StepOnePresenter < Users::WizardsPresenter
 
   def users_wizards_step_one_path
     rails_routes.users_wizards_step_one_path
-  end
-
-  def users_wizards_step_two_path
-    rails_routes.users_wizards_step_two_path
   end
 
 end

@@ -11,7 +11,7 @@ const UsersWizardsStepTwo = ({ formInfo, csrf_param, csrf_token }) => {
   const {
     title,
     subtitle,
-    form: { buttons, action, method, type, formFields }
+    form: { buttons, action, method, type, formFields, errors }
   } = formInfo
 
   const { nextPath, previousPath } = buttons

@@ -94,12 +94,25 @@ es:
               confirmation: "Su contraseña no coincide con la confirmación, por favor haga que su contraseña se igual a la verificación"
         user:
           attributes:
+            name:
+              blank: "Por favor ingrese su Nombre, este campo no puede estar en blanco"
+            last_name:
+              blank: "Por favor ingrese su Apellido, este campo no puede estar en blanco"
             email:
               blank: "Por favor ingrese un correo electrónico, este campo no puede estar en blanco"
             password:
               blank: "Por favor ingrese el password, este campo no puede estar en blanco"
             password_confirmation:
               confirmation: "Su contraseña no coincide con la confirmación, por favor haga que su contraseña se igual a la verificación"
+            identification_number:
+              blank: "Por favor ingrese su numero de documento, este campo no puede estar en blanco"
+            contact_number:
+              blank: "Por favor ingrese su numero de contacto, este campo no puede estar en blanco"
+            nationalities:
+              blank: "Debes selecionar por lo menos una nacionalidad"
+            document_type_id:
+              blank: "Debes selecionar el tipo de documento de identidad"
+
         offer:
           attributes:
             company:

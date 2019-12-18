@@ -6,7 +6,7 @@ import FormProgress from '../../../../../components/FormsLayout/FormProgress'
 import FormTitle from '../../../../../components/FormsLayout/FormTitle'
 import FormButtons from '../../../../../components/FormsLayout/FormButtons'
 import FormFields from './FormFields'
-import { showMessage } from '../../shared/message'
+import { ShowMessage } from '../../shared/message'
 
 const UsersWizardsStepNine = props => {
   const {
@@ -37,7 +37,7 @@ const UsersWizardsStepNine = props => {
                 encType="multipart/form-data"
               >
                 <p>{registered_messages}</p>
-                {showMessage(errors, 'red')}
+                {ShowMessage(errors, 'red')}
                 <input type="hidden" name={csrf_param} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />
                 <FormFields formFields={formFields} />

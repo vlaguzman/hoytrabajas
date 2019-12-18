@@ -15,4 +15,5 @@ module HashesConverter
   def self.validate_presence_values(object={})
     object.delete_if { |_, value| not value.present? }
   end
+
 end

@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+
+  validates :name, :last_name, :identification_number, :contact_number,
+            :document_type_id, presence: true, allow_nil: true
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise  :database_authenticatable, :registerable,
@@ -53,4 +57,5 @@ class User < ApplicationRecord
   def residence_city
     City.find_by(id: self.residence_city_id)
   end
+
 end

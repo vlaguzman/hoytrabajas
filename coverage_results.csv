@@ -74,7 +74,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/technical_skill.rb",100,8,6,6,0
 "./app/models/technical_skill_category.rb",100,3,2,2,0
 "./app/models/term.rb",100,5,3,3,0
-"./app/models/user.rb",100,56,33,33,0
+"./app/models/user.rb",100,61,34,34,0
 "./app/models/users_limitations.rb",100,8,4,4,0
 "./app/models/users_nationalities.rb",100,6,3,3,0
 "./app/models/vehicle.rb",100,6,4,4,0
@@ -106,7 +106,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/users/wizards/step_four_presenter.rb",100,32,12,12,0
 "./app/presenters/users/wizards/step_nine_presenter.rb",100,33,12,12,0
 "./app/presenters/users/wizards/step_nines/educational_level_presenter.rb",100,19,9,9,0
-"./app/presenters/users/wizards/step_one_presenter.rb",100,41,14,14,0
+"./app/presenters/users/wizards/step_one_presenter.rb",100,36,12,12,0
 "./app/presenters/users/wizards/step_seven_presenter.rb",100,27,10,10,0
 "./app/presenters/users/wizards/step_six_presenter.rb",100,34,12,12,0
 "./app/presenters/users/wizards/step_ten_presenter.rb",100,32,12,12,0
@@ -145,7 +145,8 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/offers/views_service.rb",100,83,34,34,0
 "./app/services/offers_service.rb",100,38,18,18,0
 "./app/services/users/dashboards/offers_service.rb",100,51,21,21,0
-"./app/services/users/wizard_service.rb",100,43,18,18,0
+"./app/services/users/wizard_service.rb",100,48,20,20,0
+"./app/services/users/wizards/errors_service.rb",100,17,9,9,0
 "./app/services/users/wizards/step_eight/form_params_service.rb",100,43,15,15,0
 "./app/services/users/wizards/step_eight_service.rb",100,12,6,6,0
 "./app/services/users/wizards/step_eleven/form_params_service.rb",100,2,1,1,0
@@ -170,6 +171,6 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/wizards_last_step_service.rb",100,26,17,17,0
 "./app/state_machines/company_state_machine.rb",100,17,10,10,0
 "./lib/dates_manager.rb",100,24,15,15,0
-"./lib/hashes_converter.rb",100,18,8,8,0
+"./lib/hashes_converter.rb",100,19,8,8,0
 "./lib/list_converter.rb",100,25,12,12,0
 "./lib/string_converter.rb",100,12,7,7,0

@@ -22,7 +22,7 @@ Devise.setup do |config|
   config.omniauth :facebook, ENV['FACEBOOK_APP_ID'],
     ENV['FACEBOOK_APP_SECRET'],
     token_params: { parse: :json },
-    callback_url: "http://localhost:3000/users/auth/facebook/callback"
+    callback_url: "#{ENV['EMAIL_USER_DOMAIN']}/users/auth/facebook/callback"
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'

@@ -1,0 +1,23 @@
+.a-chip__base {
+  display: flex;
+  align-items: center;
+  font-size: 0.75rem;
+  padding: 3px 6px;
+  margin-right: 8px;
+  font-weight: 700;
+  border-radius: 16px;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.a-chip__gray {
+  @extend .a-chip__base;
+  background: $color__gray-extralight;
+  color: $color__slategray-main;
+}
+
+.a-chip__orange {
+  @extend .a-chip__base;
+  background: $color__orange-main;
+  color: white;
+}

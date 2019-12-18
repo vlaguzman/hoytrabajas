@@ -1,0 +1,15 @@
+.skillsGrid {
+  .gridItem {
+    display: grid;
+    max-width: 700px;
+    grid-gap: 10px 30px;
+    align-content: center;
+    grid-template-columns: 2fr 1fr auto;
+    grid-template-areas:
+      'a b c'
+      'a b c';
+    .languageLevel {
+      grid-area: c;
+    }
+  }
+}

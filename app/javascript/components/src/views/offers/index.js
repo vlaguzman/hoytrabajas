@@ -2,6 +2,9 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 import Offers from '../../components/Offers'
+import SoftSkills from '../../components/Charts/Skills'
+import Education from '../../components/Cards/PublicProfile/Education'
+import Experience from '../../components/Cards/PublicProfile/Experience'
 
 const StyledWrapper = styled.div`
   margin: auto;
@@ -41,6 +44,22 @@ const OffersPage = ({
         hasAllOffers
         rowIncrement={2}
       />
+    </div>
+    {/* TEST PROFILE CMOPONENTS* /}
+    {/* SKILLS */}
+    <div className="mt-60">
+      <h4 className="color__blue-main fw-black">Habilidades</h4>
+      <SoftSkills />
+    </div>
+    {/* EDUCATION */}
+    <div className="mt-60">
+      <h4 className="color__blue-main fw-black">Formación académica</h4>
+      <Education />
+    </div>
+    {/* EXPERIENCE */}
+    <div className="mt-60">
+      <h4 className="color__blue-main fw-black">Experiencia</h4>
+      <Experience />
     </div>
   </StyledWrapper>
 )

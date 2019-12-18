@@ -32,7 +32,10 @@ $color__snow-light: #f4f6f8;
 $color__snow-extralight: #f9fafb;
 $color__palelilac-main: #ebebf0;
 $color__gray-main: #77818f;
+$color__gray-light: #979797;
+$color__gray-extralight: #f1f2f3;
 $color__purple-main: #831fc6;
+$color__black-light: #00111f;
 
 $color-list: (
   orange-main: $color__orange-main,
@@ -60,6 +63,8 @@ $color-list: (
   snow-extralight: $color__snow-extralight,
   palelilac-main: $color__palelilac-main,
   gray-main: $color__gray-main,
+  gray-light: $color__gray-light,
+  gray-extralight: $color__gray-extralight,
   purple-main: $color__purple-main
 );
 

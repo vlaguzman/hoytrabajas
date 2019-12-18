@@ -47,6 +47,7 @@
 
 @import 'components/filter_home';
 
+@import 'atomic/atoms/chips';
 @import 'atomic/atoms/typography';
 @import 'atomic/atoms/shadows';
 @import 'atomic/atoms/buttons';
@@ -60,12 +61,11 @@
 @import 'atomic/molecules/filterForm';
 @import 'atomic/molecules/informationCard';
 @import 'atomic/molecules/chatBot';
+@import 'atomic/molecules/cards';
 
 @import 'atomic/organisms/offers';
 
 @import 'atomic/templates/home';
-// VARIABLES
-@import 'variables/colors';
+@import 'atomic/templates/profile';
 
-// UPLOAD CV
-@import 'upload_cv'
+@import 'upload_cv';

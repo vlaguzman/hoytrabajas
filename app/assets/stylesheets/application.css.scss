@@ -13,18 +13,23 @@
  */
 @import 'variables/colors';
 @import 'scss/bootstrap';
+
 // //Slick Slider
 @import 'scss/slick/slick-theme.css';
 @import 'scss/slick/slick.css';
 
 // /*==== Core Mixins ====*/
 @import 'scss/custom/mixins/mixin';
+
 // /*==== Google Fonts  ====*/
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700,800,900&display=swap');
+
 // /*==== Google MAterial Icons ====*/
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons&display=swap');
+
 // // Custom themes Files
 @import 'scss/custom/themes/themes';
+
 // /*==== Core Utilities =====*/
 @import 'scss/custom/utilities/utilities';
 
@@ -32,48 +37,50 @@
 @import 'scss/custom';
 
 // // Custom Layout Files
+@import 'themify-icons/themify-icons.css';
 @import 'scss/custom/layouts/layout';
 
-@import 'themify-icons/themify-icons.css';
-
 // COMPONENTS
-@import 'components/devise/passwords/new';
-@import 'components/devise/passwords/edit';
-
-@import 'components/users/dashboard';
-
-@import 'components/users/wizards/step_zero';
-@import 'components/users/wizards/step_seven';
 @import 'components/users/wizards/step_eights/work_experience';
 @import 'components/users/wizards/step_eleven';
-
 @import 'components/companies/list_candidates';
-
+@import 'components/users/wizards/step_seven';
+@import 'components/users/wizards/step_zero';
+@import 'components/devise/passwords/edit';
+@import 'components/devise/passwords/new';
+@import 'components/users/dashboard';
 @import 'components/filter_home';
 
-@import 'atomic/atoms/chips';
+// ATOMS
+@import 'atomic/atoms/callToAction';
 @import 'atomic/atoms/typography';
 @import 'atomic/atoms/shadows';
 @import 'atomic/atoms/buttons';
 @import 'atomic/atoms/badges';
-@import 'atomic/atoms/tags';
-@import 'atomic/atoms/callToAction';
 @import 'atomic/atoms/utils';
+@import 'atomic/atoms/skill';
+@import 'atomic/atoms/chips';
 @import 'atomic/atoms/chip';
+@import 'atomic/atoms/tags';
 
-@import 'atomic/molecules/offer';
-@import 'atomic/molecules/filterForm';
+// MOLECULES
 @import 'atomic/molecules/informationCard';
-@import 'atomic/molecules/chatBot';
-@import 'atomic/molecules/cards';
 @import 'atomic/molecules/profileSkills';
+@import 'atomic/molecules/filterForm';
 @import 'atomic/molecules/navItems';
-@import 'atomic/molecules/login';
+@import 'atomic/molecules/chatBot';
 @import 'atomic/molecules/footer';
 @import 'atomic/molecules/basicForm';
+@import 'atomic/molecules/cards';
+@import 'atomic/molecules/login';
+@import 'atomic/molecules/boxes';
+@import 'atomic/molecules/offer';
 
+// ORGANISMS
+@import 'atomic/organisms/profile_candidate';
 @import 'atomic/organisms/offers';
 
+// TEMPLATES
 @import 'atomic/templates/home';
 
 // UPLOAD CV

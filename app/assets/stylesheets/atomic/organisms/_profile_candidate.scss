@@ -1,0 +1,170 @@
+/*########################################################################
+# PROFILE CANDIDATE
+########################################################################*/
+
+.o-boxPrincipal {
+  margin: 217px 220px 165px;
+  padding-top: 74px;
+
+  .headerBox {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 148px;
+    display: flex;
+
+    img {
+      box-shadow: 0 3px 15px 2px rgba(235, 235, 240, 0.8), 0 12px 30px 1px #ebebf0;
+      border: solid 6.1px #fff;
+      border-radius: 85px;
+      margin-bottom: 38px;
+      width: 211.2px;
+      height: 215px;
+    }
+
+    h1 {
+      letter-spacing: normal;
+      font-stretch: normal;
+      font-style: normal;
+      text-align: center;
+      line-height: 1.63;
+      font-weight: 800;
+      font-size: 3rem;
+      color: #374456;
+    }
+
+    .infoCandidate {
+      justify-content: space-between;
+      display: flex;
+      width: 100%;
+
+      span {
+        margin-bottom: 30px;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #77818f;
+      }
+    }
+  }
+
+  .bodyBox {
+    padding: 57px 13px 59px;
+    margin: 0 95px;
+    border-top: solid 1px #d5dbe3;
+
+    h2 {
+      margin-bottom: 19px;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #0b5aa0;
+    }
+
+    h3 {
+      margin-bottom: 25px;
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #0b5aa0;
+    }
+
+    h4 {
+      margin-bottom: 9px;
+      font-weight: bold;
+      font-size: 1rem;
+      color: #374456;
+
+      &.nameSkill {
+        color: #77818f;
+        margin: 0px;
+        width: 33%;
+      }
+
+      &.levelSkill {
+        margin: 0;
+      }
+    }
+
+    p {
+      font-weight: normal;
+      font-size: 1rem;
+      color: #77818f;
+    }
+
+    span.additionalInformation {
+      font-size: 0.875rem;
+      font-weight: bold;
+      color: #0b5aa0;
+    }
+
+    .boxInterests {
+      grid-template-columns: 2fr 2fr;
+      grid-row-gap: 28px;
+      display: grid;
+    }
+
+    .boxSkills {
+      margin-bottom: 40px;
+
+      .skillSpecific {
+        flex-direction: row;
+        margin-bottom: 14px;
+        align-items: center;
+        display: flex;
+
+        .contentTags {
+          width: calc(67% - 47%);
+        }
+      }
+    }
+
+    .boxLenguages {
+      .skillSpecific {
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 17px;
+        flex-direction: row;
+        display: flex;
+        width: 70%;
+      }
+    }
+  }
+
+  .footerBox {
+    border-radius: 0 0 20px 20px;
+    background-color: #ff7b00;
+    padding: 48px 53px;
+
+    p {
+      font-size: 1.125rem;
+      font-weight: bold;
+      color: #fff;
+      width: 35%;
+      margin: 0;
+    }
+  }
+
+  @media only screen and (max-width : 480px) {
+    margin: 130px 10px;
+
+    .headerBox {
+      padding: 0 70px;
+
+      h1 {
+        font-size: 1.5625rem;
+      }
+
+      .infoCandidate {
+        flex-direction: column;
+        
+        span {
+          font-size: 0.9375rem;
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    .bodyBox {
+      padding: 57px 10px;
+      margin: 0 30px;
+    }
+  }
+
+}

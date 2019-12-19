@@ -6,7 +6,7 @@ class OffersController < ApplicationController
     if index_params[:q].present?
       results_query = query.result(distinct: true)
       query_with_filter_categories = OffersService.query_offers_home(results_query, index_params[:q][:job_category_ids])
-      @offers = query_with_filter_categories.order_by_demand_and_created_at
+      @offers = query_with_filter_categories
         .map { |offer| Offers::IndexService.new(offer, current_user).details }
     else
       @offers = OffersService.active_offers_index_details(current_user, MAX_OFFER_LIMIT)

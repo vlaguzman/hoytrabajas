@@ -3,7 +3,7 @@ class OffersController < ApplicationController
 
   def index
     query = Offer.active.ransack(index_params[:q])
-    if query.present? && index_params[:q].present?
+    if index_params[:q].present?
       results_query = query.result(distinct: true)
       query_with_filter_categories = OffersService.query_offers_home(results_query, index_params[:q][:job_category_ids])
       @offers = query_with_filter_categories

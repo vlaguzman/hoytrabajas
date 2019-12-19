@@ -8,12 +8,12 @@ class Offer < ApplicationRecord
 
   scope :active, -> { where(status: 'active') }
   scope :max_offers, -> (max_offer_limit) { limit(max_offer_limit) }
-  scope :created_at_desc, -> { order(created_at: :desc) }
   scope :related_job_category, -> (job_categories_ids) { joins(:job_categories).where("job_categories.id in (?)", job_categories_ids).uniq }
   scope :by_company_email, -> (company_email) { joins(:company).where('companies.email LIKE ?', company_email) }
   scope :by_company_name, -> (company_name) { joins(:company).where('companies.name LIKE ?', company_name) }
   scope :by_applied_offer_cv, -> (curriculum_vitae_id) { joins(:applied_offers).where(applied_offers: {curriculum_vitae_id: curriculum_vitae_id}) }
   scope :by_job_categories, -> (job_category_ids) { joins(:job_categories).where('job_category_id in (?)', job_category_ids).uniq }
+  scope :order_by_demand_and_created_at, -> { includes(:offer_on_demand).order("offer_on_demands.start_at ASC", created_at: :desc) }
 
   has_one :offer_salary
   has_one :age_range
@@ -60,7 +60,8 @@ class Offer < ApplicationRecord
   delegate :duration, :duration_type_id, to: :offer_required_experiences, prefix: :required_experiences, allow_nil: true
 
   def self.not_applied_offers_by_cv(curriculum_vitae_id)
-    Offer.all - self.by_applied_offer_cv(curriculum_vitae_id)
+    ids = (Offer.all - self.by_applied_offer_cv(curriculum_vitae_id)).map(&:id)
+    Offer.where(id: ids)
   end
 
   def languages_list

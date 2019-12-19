@@ -100,7 +100,7 @@ A          • Level                                                       4    
 A          • Limitation                                                  4       0.0        0           1
 A          • ListConverter                                               11      29.49      0           2
 A          • Nationality                                                 5       0.0        0           1
-A          • Offer                                                       45      10.0       0           1
+A          • Offer                                                       46      15.06      0           1
 A          • OfferOnDemand                                               2       0.0        0           1
 A          • OfferRequiredExperiences                                    1       0.0        0           1
 A          • OfferSalary                                                 8       0.0        0           1
@@ -108,10 +108,10 @@ A          • OfferType                                                   5    
 A          • Offers                                                      13      0.0        0           0
 A          • Offers::AppliedOfferService                                 2       13.25      0           1
 A          • Offers::IndexService                                        6       11.26      0           3
-A          • OffersController                                            26      38.15      0           4
+A          • OffersController                                            27      36.69      0           3
 A          • OffersPresenter                                             8       19.0       0           4
 A          • OffersResponsibilities                                      1       0.0        0           1
-A          • OffersService                                               17      42.98      0           1
+A          • OffersService                                               18      41.77      0           2
 A          • OffersSoftSkills                                            1       0.0        0           1
 A          • OffersTechnicalSkills                                       1       0.0        0           1
 A          • OffersTerms                                                 1       0.0        0           1

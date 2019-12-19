@@ -47,9 +47,12 @@ RSpec.describe "User searches for an offer", type: :feature do
 
           expect(current_path).to eq("#{offers_path}/")
 
-          expect(page).to have_content("Test sebas")
-          expect(page).to have_content("Esto es un prueba de sebas")
           expect(page).to have_content("Que gran oferta sebas!")
+          expect(page).to have_content("Esto es un prueba de sebas")
+
+          find("#loadMoreOffers", visible: false).click
+
+          expect(page).to have_content("Test sebas")
         end
       end
 

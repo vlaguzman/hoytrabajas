@@ -29,6 +29,14 @@ FactoryBot.define do
       contract_type                 { nil }
       work_mode                     { nil }
     end
+    
+    trait :with_relations_offer do
+      working_days                  { [FactoryBot.create(:working_day)] }
+      available_work_days           { [FactoryBot.create(:available_work_day)] }
+      technical_skills              { [FactoryBot.create(:technical_skill)] }
+      soft_skills                   { [FactoryBot.create(:soft_skill)] }
+      job_categories                { [FactoryBot.create(:job_category)] }
+    end
 
     trait :expired_offer do
       status                       { 'expired' }

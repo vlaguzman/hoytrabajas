@@ -3,10 +3,15 @@ require "rails_helper"
 RSpec.describe AffinityCalculator do
   let(:contract_type)       { create(:contract_type, description: "Indefinido")}
   let(:city)                { create(:city, description: "Cali")}
+  let(:vehicles)            { [create(:vehicle, description: "Moto")] }
+  let(:soft_skills)         { [create(:soft_skill, description: "Empatia")] }
+  let(:job_categories)      { [create(:job_category)] }
+  let(:working_days)        { [create(:working_day)] }
 
-  let(:empty_offer)         { create(:empty_offer, title: "empty_offer") }
-  let(:the_offer)           { create(:offer, title: "the_offer") }
-  let(:offer_contract)      { create(:empty_offer, contract_type: contract_type)}
+  let(:empty_offer)          { create(:empty_offer, title: "empty_offer") }
+  let(:the_offer)            { create(:offer, title: "the_offer") }
+  let(:relations_offer)      { create(:offer, title: "relations_offer", vehicles: vehicles, soft_skills: soft_skills) }
+  let(:offer_contract)       { create(:empty_offer, contract_type: contract_type)}
 
   let(:empty_user)          { create(:user, :first_time_candidate, name: "empty_user") }
   let(:the_user)            { create(:user, name: "arnold")}
@@ -17,6 +22,7 @@ RSpec.describe AffinityCalculator do
   let(:empty_curriculum_vitae)    { create(:empty_curriculum_vitae) }
   let(:the_curriculum_vitae)      { create(:curriculum_vitae) }
   let(:curriculum_job_categories) { create(:empty_curriculum_vitae, user: user_contract_c)}
+  let(:relations_curriculum)      { create(:curriculum_vitae, job_categories: job_categories, working_days: working_days) }
   
   let(:subject) { AffinityCalculator.new(the_offer, the_user) }
 
@@ -27,6 +33,7 @@ RSpec.describe AffinityCalculator do
         expect(response).to eq(0)
       end
     end
+
     context "The offer has one field equal with the user and just two fields to compare" do
       it "should return 50" do
         ac = AffinityCalculator.new(offer_contract, user_contract)
@@ -34,6 +41,7 @@ RSpec.describe AffinityCalculator do
         expect(response).to eq(50)
       end
     end
+
     context "The offer has one field equal with the curriculum vitae but ten fields to compare" do
       it "should return 25" do
         ac = AffinityCalculator.new(the_offer, user_contract_b)
@@ -41,6 +49,7 @@ RSpec.describe AffinityCalculator do
         expect(response).to eq(25)
       end
     end
+
     context "The offer has all data equal with the user" do
       it "should return 100" do
         user_contract_c.curriculum_vitae.job_categories = offer_contract.job_categories
@@ -109,16 +118,21 @@ RSpec.describe AffinityCalculator do
     end 
   end
   
-  describe "#not_empty_list_to_compare" do
+  describe "#not_empty_lists_to_compare" do
     context "The class is Offer" do
       context "The offer just has the categories job list" do
         it "should return a empty hash" do
-          response = subject.not_empty_list_to_compare(Offer, the_offer)
+          response = subject.not_empty_lists_to_compare(Offer, empty_offer)
+          expect(response.count).to eq(1)
+          expect(response[:job_categories].first).to eq(empty_offer.job_categories.first)
         end
       end
       
-      context "The offer has data in all lists" do
+      context "The offer has more than one list" do
         it "should return a hash with all the offer lists data" do
+          response = subject.not_empty_lists_to_compare(Offer, relations_offer)
+          expect(response.count).to eq(3)
+          expect(response[:job_categories].first).to eq(relations_offer.job_categories.first)
         end
       end
     end
@@ -126,11 +140,16 @@ RSpec.describe AffinityCalculator do
     context "The class is User" do
       context "The user has not any lists" do
         it "should return a empty hash" do
+          response = subject.not_empty_lists_to_compare(User, empty_user)
+          expect(response).to be_empty
         end
       end
       
-      context "The user has data in all lists" do
+      context "The user has more than one list" do
         it "should return a hash with all the user lists data" do
+          response = subject.not_empty_lists_to_compare(User, the_user)
+          expect(response.count).to eq(2)
+          expect(response[:vehicles].first).to eq(the_user.vehicles.first)
         end
       end
     end
@@ -138,11 +157,16 @@ RSpec.describe AffinityCalculator do
     context "The class is Curriculum Vitae" do
       context "The curriculum vitae has not any lists" do
         it "should return a empty hash" do
+          response = subject.not_empty_lists_to_compare(CurriculumVitae, empty_curriculum_vitae)
+          expect(response).to be_empty
         end
       end
       
-      context "The curriculum_vitae has data in all lists" do
+      context "The curriculum_vitae has more than one list" do
         it "should return a hash with all the offer lists data" do
+          response = subject.not_empty_lists_to_compare(CurriculumVitae, relations_curriculum)
+          expect(response.count).to eq(2)
+          expect(response[:job_categories].first).to eq(relations_curriculum.job_categories.first)
         end
       end
     end

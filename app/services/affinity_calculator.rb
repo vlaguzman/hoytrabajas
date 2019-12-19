@@ -62,8 +62,21 @@ class AffinityCalculator
 
   def compare_hashes_count(hash, hash_b)
     cont = 0
+    hash.each{|k, v| cont += 1 if (hash[k] == hash_b[k] || is_a_collection_and_has_any_equal_value?(hash[k], hash_b[k]))}
+    cont
+  end
+
+  def is_a_collection_and_has_any_equal_value?(collection, collection_b)
+    is_a_collection?(collection) ? collection_b.all? { |e| collection.include?(e) } : false
+  end
+
+  def compare_hashes_count(hash, hash_b)
+    cont = 0
     hash.each{|k, v| cont += 1 if hash[k] == hash_b[k]}
     cont
   end
- 
+
+  def is_a_collection?(value)
+    value.is_a? ActiveRecord::Associations::CollectionProxy
+  end
 end

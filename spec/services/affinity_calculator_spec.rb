@@ -111,8 +111,9 @@ RSpec.describe AffinityCalculator do
   
   describe "#not_empty_list_to_compare" do
     context "The class is Offer" do
-      context "The offer has not any lists" do
+      context "The offer just has the categories job list" do
         it "should return a empty hash" do
+          response = subject.not_empty_list_to_compare(Offer, the_offer)
         end
       end
       

@@ -51,6 +51,8 @@ RSpec.describe "Like new candidate", :type => :feature do
 
       candidate.reload
 
+      expect(candidate.curriculum_vitaes.count).to eq(1)
+
       expect(candidate.name).to eq('Carlos')
       expect(candidate.last_name).to eq('Rojas')
       expect(candidate.document_type.description).to eq('Cedula de Ciudadania')

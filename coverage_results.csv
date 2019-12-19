@@ -157,7 +157,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/users/wizards/step_nine/form_params_service.rb",100,22,6,6,0
 "./app/services/users/wizards/step_nine_service.rb",100,13,7,7,0
 "./app/services/users/wizards/step_one/form_params_service.rb",100,28,9,9,0
-"./app/services/users/wizards/step_one_service.rb",100,10,5,5,0
+"./app/services/users/wizards/step_one_service.rb",100,8,4,4,0
 "./app/services/users/wizards/step_seven/form_params_service.rb",100,13,5,5,0
 "./app/services/users/wizards/step_six/form_params_service.rb",100,45,17,17,0
 "./app/services/users/wizards/step_six_service.rb",100,72,20,20,0

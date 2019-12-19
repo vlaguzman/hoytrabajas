@@ -6,10 +6,11 @@ RSpec.describe "Like new candidate", :type => :feature do
     find("input[name='user[#{field_name}]#{'[]' if multiple}']", visible: false).value
   end
 
-  before do
-    create(:nationality, description: "Colombiana")
-    create(:document_type, description: "Cedula de Ciudadania")
-  end
+  let!(:country)       { create(:country, description: "Colombia") }
+  let!(:state)         { create(:state, description: "Huila")
+  let!(:city)          { create(:city, description: "Timaná")
+  let!(:nationality)   { create(:nationality, description: "Colombiana")
+  let!(:document_type) { create(:document_type, description: "Cedula de Ciudadania")
 
   describe "When visit step one" do
     let(:candidate) { create(:user) }
@@ -37,6 +38,24 @@ RSpec.describe "Like new candidate", :type => :feature do
       fill_in 'user[name]', with: 'Carlos'
       fill_in 'user[last_name]', with: 'Rojas'
 
+      find("div[id='mui-component-select-user[country_id]", visible: false).click
+      find("li", text: "Colombia").click
+
+      find("div[id='mui-component-select-user[state_id]", visible: false).click
+      find("li", text: "Huila").click
+
+      find("div[id='mui-component-select-user[born_city_id]", visible: false).click
+      find("li", text: "Timaná").click
+
+      find("div[id='mui-component-select-user[country_id]", visible: false).click
+      find("li", text: "Colombia").click
+
+      find("div[id='mui-component-select-user[state_id]", visible: false).click
+      find("li", text: "Huila").click
+
+      find("div[id='mui-component-select-user[residence_city_id]", visible: false).click
+      find("li", text: "Timaná").click
+
       find("div[id='mui-component-select-user[nationality_ids][]']", visible: false).click
       find("li", text: "Colombiana").click
 
@@ -55,6 +74,8 @@ RSpec.describe "Like new candidate", :type => :feature do
 
       expect(candidate.name).to eq('Carlos')
       expect(candidate.last_name).to eq('Rojas')
+      expect(candidate.born_city_id).to eq(city.id)
+      expect(candidate.residence_city_id).to eq(city.id)
       expect(candidate.document_type.description).to eq('Cedula de Ciudadania')
       expect(candidate.nationalities.pluck(:description).include?('Colombiana')).to be_truthy
       expect(candidate.identification_number).to eq('1063558224')

@@ -206,21 +206,24 @@ RSpec.describe Offer, type: :model do
     end
   end
 
-  describe "#created_at_desc" do
-    let!(:stuffed_orders) do
-      [
-        create(:offer, title: 'first created', created_at: Time.new(2018, 01, 01)),
-        create(:offer, title: 'second created', created_at: Time.new(2018, 02, 02)),
-        create(:offer, title: '3th created', created_at: Time.new(2018, 03, 01)),
-        create(:offer, title: '4th created', created_at: Time.new(2018, 04, 01)),
-        create(:offer, title: '5th created', created_at: Time.new(2019, 12, 30))
-      ]
-    end
-    it "should return offers order descendingly" do
-      response = described_class.created_at_desc
+  describe "#order_by_demand_and_created_at" do
+    it "should return offers ordered by the start_at of the offer_on_demand ascendingly and ordered by created_at descendingly of created_at of offer" do
+      offer_1 = create(:offer, title: 'first created', created_at: Time.new(2019, 01, 01))
 
-      expect(response.first.title).to eq('5th created' )
-      expect(response.last.title).to eq('first created')
+      offer_2 = create(:offer, title: 'second created', created_at: Time.new(2019, 01, 03))
+      create(:offer_on_demand, offer_id: offer_2.id, status: "up", start_at: Time.new(2019, 01, 04))
+
+      offer_3 = create(:offer, title: 'third created', created_at: Time.new(2019, 01, 03))
+      create(:offer_on_demand, offer_id: offer_3.id, status: "up", start_at: Time.new(2019, 01, 03))
+
+      offer_4 = create(:offer, title: 'quarter created', created_at: Time.new(2019, 01, 04))
+
+      response = described_class.order_by_demand_and_created_at
+
+      expect(response[0]).to eq(offer_3)
+      expect(response[1]).to eq(offer_2)
+      expect(response[2]).to eq(offer_4)
+      expect(response[3]).to eq(offer_1)
     end
   end
 end

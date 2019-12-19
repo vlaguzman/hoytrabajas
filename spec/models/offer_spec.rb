@@ -207,14 +207,20 @@ RSpec.describe Offer, type: :model do
   end
 
   describe "#created_at_desc" do
+    let!(:stuffed_orders) do
+      [
+        create(:offer, title: 'first created', created_at: Time.new(2018, 01, 01)),
+        create(:offer, title: 'second created', created_at: Time.new(2018, 02, 02)),
+        create(:offer, title: '3th created', created_at: Time.new(2018, 03, 01)),
+        create(:offer, title: '4th created', created_at: Time.new(2018, 04, 01)),
+        create(:offer, title: '5th created', created_at: Time.new(2019, 12, 30))
+      ]
+    end
     it "should return offers order descendingly" do
-      offer_1 = create(:offer, title: 'first created', created_at: Time.new(2018, 01, 01))
-      offer_2 = create(:offer, title: 'second created', created_at: Time.new(2019, 01, 02))
-
       response = described_class.created_at_desc
 
-      expect(response.first).to eq(offer_2)
-      expect(response.last).to eq(offer_1)
+      expect(response.first.title).to eq('5th created' )
+      expect(response.last.title).to eq('first created')
     end
   end
 end

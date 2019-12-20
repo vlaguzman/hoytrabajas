@@ -1,3 +1,4 @@
+
 class AffinityCalculator
 
   # NOTES TO THE FINAL CALCULATE
@@ -39,13 +40,9 @@ class AffinityCalculator
   end
   
   def total_equal_values(offer_hash, user_hash, cv_hash)
-    compare_hashes_count(offer_hash, user_hash) + compare_hashes_count(offer_hash, cv_hash)
+    HashesCompare.compare_hashes_count(offer_hash, user_hash) + HashesCompare.compare_hashes_count(offer_hash, cv_hash)
   end
   
-  def hashes_not_nil(hash_a, hash_b)
-    hash_a.present? && hash_b.present?
-  end
-
   def not_nil_attributes_to_compare(klass, object)
     not_nil_att = []
     klass.attributes_to_compare.each do |att|
@@ -64,20 +61,4 @@ class AffinityCalculator
 
   #private 
 
-  def compare_hashes_count(hash, hash_b)
-    cont = 0
-    hash.each{|k, v| cont += 1 if (v == hash_b[k] || any_equal_value?(v, hash_b[k]))}
-    cont
-  end
-
-  def any_equal_value?(collection, collection_b)
-    if is_a_collection?(collection_b)
-      responses = collection_b.map { |v| collection.include?(v) }
-      responses.include?(true)
-    end
-  end
-
-  def is_a_collection?(value)
-    value.is_a? ActiveRecord::Associations::CollectionProxy
-  end
 end

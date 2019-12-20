@@ -74,9 +74,9 @@
       "XMLDoS",
       "YAMLParsing"
     ],
-    "number_of_controllers": 42,
-    "number_of_models": 80,
-    "number_of_templates": 58,
+    "number_of_controllers": 38,
+    "number_of_models": 77,
+    "number_of_templates": 54,
     "ruby_version": "2.6.3",
     "brakeman_version": "4.7.0"
   },

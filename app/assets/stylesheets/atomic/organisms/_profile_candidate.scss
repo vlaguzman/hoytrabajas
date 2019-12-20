@@ -2,8 +2,25 @@
 # PROFILE CANDIDATE
 ########################################################################*/
 
+.backgroundImage {
+  background-image: url('/assets/static/img/background-user-profile.png');
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  top: 75px;
+}
+
+.contentBox {
+  padding: 217px 220px 165px;
+
+  @media only screen and (max-width : 480px) {
+    padding: 130px 10px;
+  }
+}
+
 .o-boxPrincipal {
-  margin: 217px 220px 165px;
   padding-top: 74px;
 
   .headerBox {
@@ -110,7 +127,9 @@
         display: flex;
 
         .contentTags {
-          width: calc(67% - 47%);
+          justify-content: space-between;
+          width: calc(67% - 30%);
+          display: flex;
         }
       }
     }
@@ -142,8 +161,6 @@
   }
 
   @media only screen and (max-width : 480px) {
-    margin: 130px 10px;
-
     .headerBox {
       padding: 0 70px;
 
@@ -164,7 +181,38 @@
     .bodyBox {
       padding: 57px 10px;
       margin: 0 30px;
+
+      .boxInterests {
+        grid-template-columns: 2fr;
+      }
+
+      .boxSkills .skillSpecific {
+        flex-direction: column;
+        align-items: initial;
+
+        h4 {
+          margin-bottom: 10px;
+          width: 100%;
+        }
+
+        .contentTags {
+          width: 100%;
+
+          h4 {
+            width: auto;
+          }
+        }
+      }
+
+      .boxLenguages .skillSpecific {
+        width: 100%;
+      }
+    }
+
+    .footerBox {
+      p {
+        width: 100%;
+      }
     }
   }
-
 }

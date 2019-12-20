@@ -1,5 +1,66 @@
 = render '/shared/header'
-= react_component('views/users/profile',
-  {csrf_param: request_forgery_protection_token,
-  csrf_token: form_authenticity_token}, prerender: false)
+.backgroundImage
+.contentBox
+  .m-box.o-boxPrincipal
+    .headerBox
+      %img{src: image_path("/assets/static/avatars/user-10.jpg"), alt: 'Photo Profile'}
+      %h1 Juan Camilo Ramirez Roa
+      .infoCandidate
+        %span Bogota
+        %span vicmezquita@gmail.com
+        %span 310 123 456 789
+    .bodyBox
+      %h2 Sobre Mi
+      %p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      %span.additionalInformation Disponible para trabajar en otra ciudad
+    .bodyBox
+      %h2 Mis intereses
+      .boxInterests
+        .typeSkill
+          %h4 Categorias de interes
+          %span.a-skill Marketing
+          %span.a-skill Programacion y tecnologia
+        .typeSkill
+          %h4 tipos de oferta de interes
+          %span.a-skill Tiempo completo
+          %span.a-skill Medio tiempo
+        .typeSkill
+          %h4 Modalidad de trabajo
+          %span.a-skill Teletrabajo / Remoto
+          %span.a-skill Presencial
+        .typeSkill
+          %h4 Tipos de acuerdo
+          %span.a-skill Termino indefinido
+    .bodyBox
+      %h2 Habilidades
+      %h3 Habilidades blandas validadas
+      .boxSkills
+        %h3 Habilidades tecnicas
+        .skillSpecific
+          %h4.nameSkill Marketing y ventas
+          .contentTags
+            %span.a-skill Redes sociales
+            %h4.levelSkill Nivel Avanzado
+        .skillSpecific
+          %h4.nameSkill Belleza bienestar y sulud
+          .contentTags
+            %span.a-skill Redes sociales
+            %h4.levelSkill Nivel Avanzado
+      .boxLenguages
+        %h3 Idiomas
+        .skillSpecific
+          %h4.nameSkill Español
+          %h4.levelSkill Lengua nativa
+        .skillSpecific
+          %h4.nameSkill Ingles
+          %h4.levelSkill Avanzado
+        .skillSpecific
+          %h4.nameSkill Frances
+          %h4.levelSkill Basico
+    .bodyBox
+      %h2 Formacion academica
+    .bodyBox
+      %h2 Experiencia
+    .footerBox
+      %p="La manera más fácil, rápida y económica de conseguir empleo."
 = render '/shared/footer'

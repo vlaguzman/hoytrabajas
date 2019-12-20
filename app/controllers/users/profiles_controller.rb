@@ -7,7 +7,7 @@ class Users::ProfilesController < ApplicationController
     #@user = UsersPresenter.new(current_user)
     #first_sign_in?(current_user, users_wizards_step_zero_path)
 
-    redirect_to users_dashboard_path
+#   redirect_to users_dashboard_path
   end
 
 end

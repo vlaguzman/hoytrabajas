@@ -62,8 +62,7 @@ RSpec.describe "hide the empty information", type: :feature, js: :true do
 
   context "the offer has not to much information" do
     it "should render offers show template as well" do
-      empty_offer = FactoryBot.create(:offer, vacancies_quantity: nil, city: nil, required_experience: nil, 
-				              job_categories: [job_category, job_category_b])
+      empty_offer = FactoryBot.create(:empty_offer, job_categories: [job_category, job_category_b])
       sign_in user
       visit offer_path(empty_offer.id)
 

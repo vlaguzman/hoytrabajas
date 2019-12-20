@@ -4,6 +4,7 @@ RSpec.describe AffinityCalculator do
   let(:contract_type)       { create(:contract_type, description: "Indefinido")}
   let(:city)                { create(:city, description: "Cali")}
   let(:vehicles)            { [create(:vehicle, description: "Moto")] }
+  let(:vehicles_b)          { [vehicles.first, create(:vehicle, description: "Carro")] }
   let(:soft_skills)         { [create(:soft_skill, description: "Empatia")] }
   let(:job_categories)      { [create(:job_category)] }
   let(:working_days)        { [create(:working_day)] }
@@ -12,12 +13,14 @@ RSpec.describe AffinityCalculator do
   let(:the_offer)            { create(:offer, title: "the_offer") }
   let(:relations_offer)      { create(:offer, title: "relations_offer", vehicles: vehicles, soft_skills: soft_skills) }
   let(:offer_contract)       { create(:empty_offer, contract_type: contract_type)}
+  let(:offer_vehicles)       { create(:empty_offer, vehicles: vehicles)}
 
   let(:empty_user)          { create(:user, :first_time_candidate, name: "empty_user") }
   let(:the_user)            { create(:user, name: "arnold")}
   let(:user_contract)       { create(:user, :first_time_candidate, name: "helga", contract_type: contract_type)}
   let(:user_contract_b)     { create(:user, :first_time_candidate, name: "alex", contract_type: the_offer.contract_type)}
   let(:user_contract_c)     { create(:user, :first_time_candidate, name: "conan", contract_type: contract_type)}
+  let(:user_vehicles)       { create(:user, :first_time_candidate, name: "barbaro", vehicles: vehicles_b)}
 
   let(:empty_curriculum_vitae)    { create(:empty_curriculum_vitae) }
   let(:the_curriculum_vitae)      { create(:curriculum_vitae) }
@@ -31,6 +34,14 @@ RSpec.describe AffinityCalculator do
       it "should return 0" do
         response = subject.affinity_percentage
         expect(response).to eq(0)
+      end
+    end
+
+    context "The offer has one value in a list equal with the user and just two fields to compare" do
+      it "should return 50" do
+        ac = AffinityCalculator.new(offer_vehicles, user_vehicles)
+        response = ac.affinity_percentage
+        expect(response).to eq(50)
       end
     end
 

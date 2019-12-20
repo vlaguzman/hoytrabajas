@@ -28,6 +28,7 @@ FactoryBot.define do
       city                          { nil }
       contract_type                 { nil }
       work_mode                     { nil }
+      vacancies_quantity            { nil }
     end
     
     trait :with_relations_offer do

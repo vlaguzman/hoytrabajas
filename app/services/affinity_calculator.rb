@@ -59,6 +59,4 @@ class AffinityCalculator
     not_empty_lists.to_h
   end
 
-  #private 
-
 end

@@ -108,10 +108,10 @@ A          • OfferType                                                   5    
 A          • Offers                                                      13      0.0        0           0
 A          • Offers::AppliedOfferService                                 2       13.25      0           1
 A          • Offers::IndexService                                        6       11.26      0           3
-A          • OffersController                                            27      36.69      0           3
+A          • OffersController                                            28      36.69      0           3
 A          • OffersPresenter                                             8       19.0       0           4
 A          • OffersResponsibilities                                      1       0.0        0           1
-A          • OffersService                                               18      41.77      0           2
+A          • OffersService                                               19      41.77      0           2
 A          • OffersSoftSkills                                            1       0.0        0           1
 A          • OffersTechnicalSkills                                       1       0.0        0           1
 A          • OffersTerms                                                 1       0.0        0           1

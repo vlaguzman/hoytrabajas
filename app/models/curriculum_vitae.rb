@@ -1,4 +1,7 @@
 class CurriculumVitae < ApplicationRecord
+  ATTRIBUTES_TO_COMPARE = [:city_id]   
+  LISTS_TO_COMPARE = [:job_categories, :working_days, :available_work_days, :technical_skills, :languages_list, :to_learn_skills, :soft_skills, :work_modes]
+  
   validates_presence_of :user
 
   belongs_to :user,                 optional: true
@@ -33,11 +36,11 @@ class CurriculumVitae < ApplicationRecord
   delegate :currency_id, :from, :to, to: :curriculum_vitae_salary,  prefix: :salary, allow_nil: true
 
   def self.attributes_to_compare
-    [:city_id]   
+    ATTRIBUTES_TO_COMPARE
   end
 
   def self.lists_to_compare
-    [:job_categories, :working_days, :available_work_days, :technical_skills, :languages_list, :to_learn_skills, :soft_skills, :work_modes]
+    LISTS_TO_COMPARE
   end
   
   def languages_list

@@ -5,19 +5,13 @@ class AffinityCalculator
   # CurriculumVitae has work_modes Offer has work mode
   # User has educational_degree Offer has educational_level (more than one)
 
+  attr_reader :offer, :user
+
   def initialize(offer, user)
     @offer = offer
     @user = user
     initialize_not_empty_to_compare_hashes
     initialize_not_nil_attributes_to_compare_hashes
-  end
-
-  def offer
-    @offer
-  end
-
-  def user
-    @user
   end
 
   def initialize_not_empty_to_compare_hashes

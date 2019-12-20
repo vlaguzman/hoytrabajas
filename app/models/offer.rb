@@ -1,4 +1,6 @@
 class Offer < ApplicationRecord
+  ATTRIBUTES_TO_COMPARE = [:city_id, :work_mode_id, :contract_type_id]
+  LISTS_TO_COMPARE = [:job_categories, :working_days, :available_work_days, :languages_list, :technical_skills, :vehicles, :driving_licences, :soft_skills, :sexes, :educational_level]
 
   before_save -> { self.slug = self.title.parameterize }
 
@@ -65,12 +67,12 @@ class Offer < ApplicationRecord
   end
 
   def self.attributes_to_compare
-    [:city_id, :work_mode_id, :contract_type_id]
+    ATTRIBUTES_TO_COMPARE
   end
 
   #TO-DO: Evaluate educational_level values and quantity
   def self.lists_to_compare
-    [:job_categories, :working_days, :available_work_days, :languages_list, :technical_skills, :vehicles, :driving_licences, :soft_skills, :sexes, :educational_level]
+    LISTS_TO_COMPARE
   end
 
   def languages_list

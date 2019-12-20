@@ -1,5 +1,8 @@
 class User < ApplicationRecord
 
+  ATTRIBUTES_TO_COMPARE = [:contract_type_id, :educational_degree_id, :sex_id] 
+  LISTS_TO_COMPARE = [:vehicles, :driving_licences]
+
   validates :name, :last_name, :identification_number, :contact_number,
             :document_type_id, presence: true, allow_nil: true
 
@@ -47,11 +50,11 @@ class User < ApplicationRecord
   end
 
   def self.attributes_to_compare
-    [:contract_type_id, :educational_degree_id, :sex_id]   
+    ATTRIBUTES_TO_COMPARE
   end
 
   def self.lists_to_compare
-    [:vehicles, :driving_licences]
+    LISTS_TO_COMPARE
   end
 
   def after_confirmation

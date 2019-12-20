@@ -20,18 +20,20 @@ const JobCategories = ({ categories, translations }) => {
         {categories.map(
           (item, index) =>
             index <= 13 && (
-              <div key={item.id} className="jobCategory a-filter__gray">
-                <div className="jobCategory__image">
-                  <img
-                    width="100%"
-                    src={`/assets/static/img/${item.img}`}
-                    alt={`${item.name} Icon`}
-                  />
+              <a href={`/offers/?q[job_category_ids]=${item.id}`}>
+                <div key={item.id} className="jobCategory a-filter__gray">
+                  <div className="jobCategory__image">
+                    <img
+                      width="100%"
+                      src={`/assets/static/img/${item.img}`}
+                      alt={`${item.name} Icon`}
+                    />
+                  </div>
+                  <p className="jobCategory__title color__blue-main fw-bold">
+                    {item.name}
+                  </p>
                 </div>
-                <p className="jobCategory__title color__blue-main fw-bold">
-                  {item.name}
-                </p>
-              </div>
+              </a>
             )
         )}
       </CarouselRow>

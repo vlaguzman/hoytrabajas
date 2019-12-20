@@ -19,9 +19,15 @@ RSpec.describe Users::Wizards::StepOne::FormParamsService do
   end
 
   describe "#form_params" do
-    let!(:nationalities) { create_list(:nationality, 5) }
+    let!(:countries)      { create_list(:country, 5) }
+    let!(:states)         { create_list(:state, 5) }
+    let!(:cities)         { create_list(:city, 5) }
+    let!(:nationalities)  { create_list(:nationality, 5) }
     let!(:document_types) { create_list(:document_type, 5) }
 
+    let(:create_countries_list)     { ListConverter.model_list(Country) }
+    let(:create_states_list)        { ListConverter.model_list(State) }
+    let(:create_cities_list)        { ListConverter.model_list(City) }
     let(:create_document_type_list) { ListConverter.model_list(DocumentType) }
     let(:create_nationalities_list) { ListConverter.model_list(Nationality) }
 
@@ -56,6 +62,42 @@ RSpec.describe Users::Wizards::StepOne::FormParamsService do
               last_name:{
                 name: "candidate[last_name]",
                 label: "Apellido*",
+                current_value: nil
+              },
+              born_country_id:{
+                name: "candidate[country_id]",
+                label: "País de nacimiento*",
+                values: create_countries_list,
+                current_value: nil
+              },
+              born_state_id:{
+                name: "candidate[state_id]",
+                label: "Departamento de nacimiento*",
+                values: create_states_list,
+                current_value: nil
+              },
+              born_city_id:{
+                name: "candidate[born_city_id]",
+                label: "Lugar de nacimiento*",
+                values: create_cities_list,
+                current_value: nil
+              },
+              residence_country_id:{
+                name: "candidate[country_id]",
+                label: "País de residencia*",
+                values: create_countries_list,
+                current_value: nil
+              },
+              residence_state_id:{
+                name: "candidate[state_id]",
+                label: "Departamento de residencia*",
+                values: create_states_list,
+                current_value: nil
+              },
+              residence_city_id:{
+                name: "candidate[residence_city_id]",
+                label: "Lugar de residencia*",
+                values: create_cities_list,
                 current_value: nil
               },
               nationality_ids:{

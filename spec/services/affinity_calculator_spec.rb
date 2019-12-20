@@ -53,7 +53,7 @@ RSpec.describe AffinityCalculator do
       end
     end
 
-    context "The offer has one field equal with the curriculum vitae but ten fields to compare" do
+    context "The offer has one field equal with the curriculum vitae but four fields to compare" do
       it "should return 25" do
         ac = AffinityCalculator.new(the_offer, user_contract_b)
         response = ac.affinity_percentage

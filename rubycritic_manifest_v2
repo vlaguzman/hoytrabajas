@@ -63,7 +63,11 @@ A          • CompanyTransition                                           2    
 A          • ContractType                                                1       0.0        0           1
 A          • Country                                                     4       0.0        0           1
 A          • Currency                                                    1       0.0        0           1
+<<<<<<< HEAD
 A          • CurriculumVitae                                             32      6.6        0           1
+=======
+A          • CurriculumVitae                                             34      8.6        0           1
+>>>>>>> bin/shot
 A          • CurriculumVitaeSalary                                       3       0.0        0           1
 A          • CurriculumVitaes                                            1       0.0        0           0
 A          • CurriculumVitaesEducationalDegrees                          1       0.0        0           1
@@ -85,6 +89,10 @@ A          • EmployeesRange                                              1    
 A          • FaqsController                                              2       0.0        0           1
 A          • Function                                                    2       0.0        0           1
 A          • FunctionsOffers                                             1       0.0        0           1
+<<<<<<< HEAD
+=======
+A          • HashesCompare                                               1       16.41      0           4
+>>>>>>> bin/shot
 A          • HashesConverter                                             4       23.64      0           2
 A          • Home::HomePresenter                                         10      21.86      0           5
 A          • HomeController                                              9       2.42       0           1
@@ -100,7 +108,11 @@ A          • Level                                                       4    
 A          • Limitation                                                  4       0.0        0           1
 A          • ListConverter                                               11      29.49      0           2
 A          • Nationality                                                 5       0.0        0           1
+<<<<<<< HEAD
 A          • Offer                                                       46      15.06      0           1
+=======
+A          • Offer                                                       48      15.06      0           1
+>>>>>>> bin/shot
 A          • OfferOnDemand                                               2       0.0        0           1
 A          • OfferRequiredExperiences                                    1       0.0        0           1
 A          • OfferSalary                                                 8       0.0        0           1
@@ -133,7 +145,11 @@ A          • StringConverter                                             3    
 A          • TechnicalSkill                                              6       0.0        0           1
 A          • TechnicalSkillCategory                                      1       0.0        0           1
 A          • Term                                                        4       0.0        0           1
+<<<<<<< HEAD
 A          • User                                                        37      30.17      0           2
+=======
+A          • User                                                        39      30.17      0           2
+>>>>>>> bin/shot
 A          • Users                                                       8       1.3        0           1
 A          • Users::Dashboards::OffersService                            2       31.49      0           2
 A          • Users::DashboardsController                                 10      5.69       0           1
@@ -206,6 +222,7 @@ A          • WorkMethodology                                             1    
 A          • WorkMode                                                    3       0.0        0           1
 A          • WorkPosition                                                2       0.0        0           1
 A          • WorkingDay                                                  5       0.0        0           1
+B          • AffinityCalculator                                          7       63.18      46          14
 B          • BaseFormWizardsService                                      30      98.36      0           1
 B          • Companies::FirstOffer::StepFivePresenter                    5       25.0       23          1
 B          • Companies::FirstOffer::StepFiveService                      4       38.92      18          6

@@ -39,7 +39,7 @@ class AffinityCalculator
   
   def not_nil_attributes_to_compare(klass, object)
     not_nil_att = []
-    klass.attributes_to_compare.each do |att|
+    klass::ATTRIBUTES_TO_COMPARE.each do |att|
       not_nil_att << [att, object.send(att)] if object.send(att).present?
     end
     not_nil_att.to_h
@@ -47,7 +47,7 @@ class AffinityCalculator
 
   def not_empty_lists_to_compare(klass, object)
     not_empty_lists = []
-    klass.lists_to_compare.each do |att|
+    klass::LISTS_TO_COMPARE.each do |att|
       not_empty_lists << [att, object.send(att)] if object.send(att).any?
     end
     not_empty_lists.to_h

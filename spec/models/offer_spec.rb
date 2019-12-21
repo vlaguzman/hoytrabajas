@@ -38,13 +38,13 @@ RSpec.describe Offer, type: :model do
 
     describe "#attributes_to_compare " do
       it "Should return the array with principal attributes" do
-        expect(subject.attributes_to_compare).to match_array(expected_offer_attr_array) 
+        expect(subject::ATTRIBUTES_TO_COMPARE).to match_array(expected_offer_attr_array) 
       end
     end
 
     describe "#lists_to_compare" do
       it "Should return the array with principal list attributes" do
-        expect(subject.lists_to_compare).to match_array(expected_offer_list_array) 
+        expect(subject::LISTS_TO_COMPARE).to match_array(expected_offer_list_array) 
       end
     end
 

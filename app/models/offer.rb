@@ -1,5 +1,6 @@
 class Offer < ApplicationRecord
   ATTRIBUTES_TO_COMPARE = [:city_id, :work_mode_id, :contract_type_id]
+  #TO-DO: Evaluate educational_level values and quantity
   LISTS_TO_COMPARE = [:job_categories, :working_days, :available_work_days, :languages_list, :technical_skills, :vehicles, :driving_licences, :soft_skills, :sexes, :educational_level]
 
   before_save -> { self.slug = self.title.parameterize }
@@ -64,15 +65,6 @@ class Offer < ApplicationRecord
   def self.not_applied_offers_by_cv(curriculum_vitae_id)
     ids = (Offer.all - self.by_applied_offer_cv(curriculum_vitae_id)).map(&:id)
     Offer.where(id: ids)
-  end
-
-  def self.attributes_to_compare
-    ATTRIBUTES_TO_COMPARE
-  end
-
-  #TO-DO: Evaluate educational_level values and quantity
-  def self.lists_to_compare
-    LISTS_TO_COMPARE
   end
 
   def languages_list

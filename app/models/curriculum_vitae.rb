@@ -35,14 +35,6 @@ class CurriculumVitae < ApplicationRecord
   delegate :salary_period_id, to: :curriculum_vitae_salary, allow_nil: true
   delegate :currency_id, :from, :to, to: :curriculum_vitae_salary,  prefix: :salary, allow_nil: true
 
-  def self.attributes_to_compare
-    ATTRIBUTES_TO_COMPARE
-  end
-
-  def self.lists_to_compare
-    LISTS_TO_COMPARE
-  end
-  
   def languages_list
     strong_languages
   end

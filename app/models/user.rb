@@ -49,14 +49,6 @@ class User < ApplicationRecord
     end
   end
 
-  def self.attributes_to_compare
-    ATTRIBUTES_TO_COMPARE
-  end
-
-  def self.lists_to_compare
-    LISTS_TO_COMPARE
-  end
-
   def after_confirmation
     self.update_attribute(:confirmed_at, DateTime.now)
   end

@@ -38,6 +38,24 @@ RSpec.describe User, type: :model do
     it { should accept_nested_attributes_for(:curriculum_vitaes)}
   end
 
+  describe "class methods" do
+    let(:subject) { described_class }
+    let(:expected_offer_attr_array) { [:contract_type_id, :educational_degree_id, :sex_id] }
+    let(:expected_offer_list_array) { [:vehicles, :driving_licences] }
+
+    describe "#attributes_to_compare " do
+      it "Should return the array with principal attributes" do
+        expect(subject::ATTRIBUTES_TO_COMPARE).to match_array(expected_offer_attr_array) 
+      end
+    end
+
+    describe "#lists_to_compare" do
+      it "Should return the array with principal list attributes" do
+        expect(subject::LISTS_TO_COMPARE).to match_array(expected_offer_list_array) 
+      end
+    end
+  end
+
   describe "#curriculum_vitae" do
     let(:user) { create(:user) }
     context "the user has not the curriculum vitae" do

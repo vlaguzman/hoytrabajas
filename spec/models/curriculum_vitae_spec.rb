@@ -42,6 +42,24 @@ RSpec.describe CurriculumVitae, type: :model do
     it { should have_and_belong_to_many(:work_modes) }
   end
 
+  describe "class methods" do
+    let(:subject) { described_class }
+    let(:expected_offer_attr_array) { [:city_id] }
+    let(:expected_offer_list_array) { [:job_categories, :working_days, :available_work_days, :technical_skills, :languages_list, :to_learn_skills, :soft_skills, :work_modes] }
+
+    describe "#attributes_to_compare " do
+      it "Should return the array with principal attributes" do
+        expect(subject::ATTRIBUTES_TO_COMPARE).to match_array(expected_offer_attr_array)
+      end
+    end
+
+    describe "#lists_to_compare" do
+      it "Should return the array with principal list attributes" do
+        expect(subject::LISTS_TO_COMPARE).to match_array(expected_offer_list_array) 
+      end
+    end
+  end
+
   describe '#soft_skills' do
     let(:cv) { create(:curriculum_vitae) }
 

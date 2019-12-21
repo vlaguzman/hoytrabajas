@@ -1,4 +1,7 @@
 class Offer < ApplicationRecord
+  ATTRIBUTES_TO_COMPARE = [:city_id, :work_mode_id, :contract_type_id]
+  #TO-DO: Evaluate educational_level values and quantity
+  LISTS_TO_COMPARE = [:job_categories, :working_days, :available_work_days, :languages_list, :technical_skills, :vehicles, :driving_licences, :soft_skills, :sexes, :educational_level]
 
   before_save -> { self.slug = self.title.parameterize }
 

@@ -20,5 +20,7 @@ FactoryBot.define do
       travel_disponibility  { false }
       city                  { nil }
     end
+
+    factory :empty_curriculum_vitae, traits: [:empty]
   end
 end

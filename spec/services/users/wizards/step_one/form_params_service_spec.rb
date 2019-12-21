@@ -5,6 +5,42 @@ RSpec.describe Users::Wizards::StepOne::FormParamsService do
   context "private methods" do
     let(:subject) { described_class.new }
 
+    describe "#born_country_id_list" do
+      it "should return array" do
+        expect(subject.send(:born_country_id_list)).to be_empty
+      end
+    end
+
+    describe "#born_state_id_list" do
+      it "should return array" do
+        expect(subject.send(:born_state_id_list)).to be_empty
+      end
+    end
+
+    describe "#born_city_id_list" do
+      it "should return array" do
+        expect(subject.send(:born_city_id_list)).to be_empty
+      end
+    end
+
+    describe "#residence_country_id_list" do
+      it "should return array" do
+        expect(subject.send(:residence_country_id_list)).to be_empty
+      end
+    end
+
+    describe "#residence_state_id_list" do
+      it "should return array" do
+        expect(subject.send(:residence_state_id_list)).to be_empty
+      end
+    end
+
+    describe "#residence_city_id_list" do
+      it "should return array" do
+        expect(subject.send(:residence_city_id_list)).to be_empty
+      end
+    end
+
     describe "#nationality_ids_list" do
       it "should return array" do
         expect(subject.send(:nationality_ids_list)).to be_empty
@@ -25,11 +61,14 @@ RSpec.describe Users::Wizards::StepOne::FormParamsService do
     let!(:nationalities)  { create_list(:nationality, 5) }
     let!(:document_types) { create_list(:document_type, 5) }
 
-    let(:create_countries_list)     { ListConverter.model_list(Country) }
-    let(:create_states_list)        { ListConverter.model_list(State) }
-    let(:create_cities_list)        { ListConverter.model_list(City) }
-    let(:create_document_type_list) { ListConverter.model_list(DocumentType) }
-    let(:create_nationalities_list) { ListConverter.model_list(Nationality) }
+    let(:create_born_country_list)            { ListConverter.model_list(Country) }
+    let(:create_born_state_list)              { ListConverter.model_list(State) }
+    let(:create_born_city_list)               { ListConverter.model_list(City) }
+    let(:create_residence_country_list)       { ListConverter.model_list(Country) }
+    let(:create_residence_state_list)         { ListConverter.model_list(State) }
+    let(:create_residence_city_list)          { ListConverter.model_list(City) }
+    let(:create_document_type_list)           { ListConverter.model_list(DocumentType) }
+    let(:create_nationalities_list)           { ListConverter.model_list(Nationality) }
 
     let(:subject) { described_class }
 
@@ -65,39 +104,39 @@ RSpec.describe Users::Wizards::StepOne::FormParamsService do
                 current_value: nil
               },
               born_country_id:{
-                name: "candidate[country_id]",
+                name: "candidate[born_country_id]",
                 label: "País de nacimiento*",
-                values: create_countries_list,
+                values: create_born_country_list,
                 current_value: nil
               },
               born_state_id:{
-                name: "candidate[state_id]",
+                name: "candidate[born_state_id]",
                 label: "Departamento de nacimiento*",
-                values: create_states_list,
+                values: create_born_state_list,
                 current_value: nil
               },
               born_city_id:{
                 name: "candidate[born_city_id]",
                 label: "Lugar de nacimiento*",
-                values: create_cities_list,
+                values: create_born_city_list,
                 current_value: nil
               },
               residence_country_id:{
-                name: "candidate[country_id]",
+                name: "candidate[residence_country_id]",
                 label: "País de residencia*",
-                values: create_countries_list,
+                values: create_residence_country_list,
                 current_value: nil
               },
               residence_state_id:{
-                name: "candidate[state_id]",
+                name: "candidate[residence_state_id]",
                 label: "Departamento de residencia*",
-                values: create_states_list,
+                values: create_residence_state_list,
                 current_value: nil
               },
               residence_city_id:{
                 name: "candidate[residence_city_id]",
                 label: "Lugar de residencia*",
-                values: create_cities_list,
+                values: create_residence_city_list,
                 current_value: nil
               },
               nationality_ids:{
@@ -145,12 +184,16 @@ RSpec.describe Users::Wizards::StepOne::FormParamsService do
     end
 
     context "When user have data" do
-      let!(:user_nationalities) { create_list(:nationality, 2) }
-      let!(:user_document_type) { create(:document_type) }
+      let!(:user_nationalities)   { create_list(:nationality, 2) }
+      let!(:user_document_type)   { create(:document_type) }
+      let!(:user_born_city)       { create(:city) }
+      let!(:user_residence_city)  { create(:city) }
 
       let(:user) { create(:user, :first_time_candidate,
         name: "Alfred",
         last_name: "Niuman",
+        residence_city_id: user_residence_city.id,
+        born_city_id: user_born_city.id,
         nationality_ids: user_nationalities.pluck(:id),
         contact_number: "123-321",
         identification_number: "999986",
@@ -184,6 +227,42 @@ RSpec.describe Users::Wizards::StepOne::FormParamsService do
                 name: "candidate[last_name]",
                 label: "Apellido*",
                 current_value: "Niuman"
+              },
+              born_country_id:{
+                name: "candidate[born_country_id]",
+                label: "País de nacimiento*",
+                values: create_born_country_list,
+                current_value: user_born_city.state.country_id
+              },
+              born_state_id:{
+                name: "candidate[born_state_id]",
+                label: "Departamento de nacimiento*",
+                values: create_born_state_list,
+                current_value: user_born_city.state_id
+              },
+              born_city_id:{
+                name: "candidate[born_city_id]",
+                label: "Lugar de nacimiento*",
+                values: create_born_city_list,
+                current_value: user_born_city.id 
+              },
+              residence_country_id:{
+                name: "candidate[residence_country_id]",
+                label: "País de residencia*",
+                values: create_residence_country_list,
+                current_value: user_residence_city.state.country_id
+              },
+              residence_state_id:{
+                name: "candidate[residence_state_id]",
+                label: "Departamento de residencia*",
+                values: create_residence_state_list,
+                current_value: user_residence_city.state_id
+              },
+              residence_city_id:{
+                name: "candidate[residence_city_id]",
+                label: "Lugar de residencia*",
+                values: create_residence_city_list,
+                current_value: user_residence_city.id
               },
               nationality_ids:{
                 name:"candidate[nationality_ids][]",

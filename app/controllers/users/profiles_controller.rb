@@ -3,11 +3,14 @@ class Users::ProfilesController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    #TODO oscar temporaily redirect to dashboard, uncomment when profile is ready
-    #@user = UsersPresenter.new(current_user)
-    #first_sign_in?(current_user, users_wizards_step_zero_path)
+     user = User.find(permit_params[:user_id])
+     @user = UsersPresenter.new(user)
+  end
 
-#   redirect_to users_dashboard_path
+  private
+
+  def permit_params
+    params.permit(:user_id)
   end
 
 end

@@ -33,6 +33,8 @@
 
     = yield
 
+    %link{href: "https://fonts.googleapis.com/icon?family=Material+Icons", rel: "stylesheet"}
+
     = react_component('src/components/Notification/NotificationWrapper',
     {alert_message: alert,
     notice_message: notice}, prerender: false)

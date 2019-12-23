@@ -54,11 +54,22 @@
       display: flex;
       width: 100%;
 
-      span {
+      .iconMoreText {
         margin-bottom: 30px;
-        font-size: 1.25rem;
-        font-weight: 600;
-        color: #77818f;
+        align-items: center;
+        display: flex;
+
+        i {
+          margin-right: 10.5px;
+          font-size: 1.125rem;
+          color: #0b5aa0;
+        }
+
+        span {
+          font-size: 1.25rem;
+          font-weight: 600;
+          color: #77818f;
+        }
       }
     }
   }
@@ -170,7 +181,7 @@
 
       .infoCandidate {
         flex-direction: column;
-        
+
         span {
           font-size: 0.9375rem;
           margin-bottom: 10px;

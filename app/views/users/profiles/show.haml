@@ -4,11 +4,17 @@
   .m-box.o-boxPrincipal
     .headerBox
       %img{src: image_path("/assets/static/avatars/user-10.jpg"), alt: 'Photo Profile'}
-      %h1 Juan Camilo Ramirez Roa
+      %h1="#{@user.name} #{@user.last_name}"
       .infoCandidate
-        %span Bogota
-        %span vicmezquita@gmail.com
-        %span 310 123 456 789
+        .iconMoreText
+          %i.material-icons location_city
+          %span Bogota
+        .iconMoreText
+          %i.material-icons email
+          %span vicmezquita@gmail.com
+        .iconMoreText
+          %i.material-icons phone_iphone
+          %span 310 123 456 789
     .bodyBox
       %h2 Sobre Mi
       %p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.

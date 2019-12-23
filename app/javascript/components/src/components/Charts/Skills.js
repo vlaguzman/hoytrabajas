@@ -87,59 +87,6 @@ const Skills = ({ list = defaultList }) => (
         </>
       ) : null}
     </div>
-    {/* HTML TO HAML SECTION */}
-    <h6 className="fw-bold color__blue-main mt-50">Habilidades técnicas</h6>
-    <div className="skillsGrid mt-30">
-      <div className="gridItem">
-        <p className="color__gray-main a-typo__body1 fw-bold m-0">
-          Marketing y ventas
-        </p>
-        <div className="skillTag">
-          <span className="a-chip__gray fw-normal d-inline-flex">
-            Redes sociales
-          </span>
-        </div>
-        <p className="a-typo__body1 fw-bolder m-0">Nivel avanzado</p>
-      </div>
-      <div className="gridItem">
-        <p className="color__gray-main a-typo__body1 fw-bold m-0">
-          Belleza bienestar y salud
-        </p>
-        <div className="skillTag">
-          <span className="a-chip__gray fw-normal d-inline-flex">
-            Redes sociales
-          </span>
-        </div>
-        <p className="a-typo__body1 fw-bolder m-0">Nivel avanzado</p>
-      </div>
-      <div className="gridItem">
-        <p className="color__gray-main a-typo__body1 fw-bold m-0">
-          Ruby on rails
-        </p>
-        <div className="skillTag">
-          <span className="a-chip__gray fw-normal d-inline-flex">
-            Desarrollo de software
-          </span>
-        </div>
-        <p className="a-typo__body1 fw-bolder m-0">Nivel intermedio</p>
-      </div>
-    </div>
-    {/* LANGUAGES */}
-    <h6 className="fw-bold color__blue-main mt-50">Idiomas</h6>
-    <div className="skillsGrid mt-30">
-      <div className="gridItem">
-        <p className="color__gray-main a-typo__body1 fw-bold m-0">Español</p>
-        <p className="a-typo__body1 languageLevel fw-bolder">Lengua nativa</p>
-      </div>
-      <div className="gridItem">
-        <p className="color__gray-main a-typo__body1 fw-bold m-0">Inglés</p>
-        <p className="a-typo__body1 languageLevel fw-bolder">Avanzado</p>
-      </div>
-      <div className="gridItem">
-        <p className="color__gray-main a-typo__body1 fw-bold m-0">Francés</p>
-        <p className="a-typo__body1 languageLevel fw-bolder">Básico</p>
-      </div>
-    </div>
   </>
 )
 

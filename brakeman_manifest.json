@@ -80,16 +80,8 @@
     "ruby_version": "2.6.3",
     "brakeman_version": "4.7.0"
   },
-  "warnings": [
-
-  ],
-  "ignored_warnings": [
-
-  ],
-  "errors": [
-
-  ],
-  "obsolete": [
-
-  ]
+  "warnings": [],
+  "ignored_warnings": [],
+  "errors": [],
+  "obsolete": []
 }

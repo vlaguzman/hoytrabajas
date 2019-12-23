@@ -91,7 +91,7 @@ RSpec.describe Users::Wizards::StepEight::FormParamsService do
                 current_value: nil
               },
               technical_skills: {
-                name: 'work_experience[technical_skills][]',
+                name: 'work_experience[technical_skills]',
                 label: 'Habilidades desempeñadas',
                 values: create_technical_skills_list,
                 current_value: []
@@ -200,7 +200,7 @@ RSpec.describe Users::Wizards::StepEight::FormParamsService do
                 current_value: true
               },
               technical_skills: {
-                name: 'work_experience[technical_skills][]',
+                name: 'work_experience[technical_skills]',
                 label: 'Habilidades desempeñadas',
                 values: create_technical_skills_list,
                 current_value: expected_skills.pluck(:description)

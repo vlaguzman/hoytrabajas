@@ -20,7 +20,7 @@
     margin: 0 2.5px;
 
     button:before {
-      font-size: 10px;
+      font-size: 0.625rem;
       color: $color__snow-main;
       opacity: 1;
     }
@@ -37,7 +37,6 @@
   }
 
   .a-educationCard__attachIcon {
-    flex: 0 1 10%;
     text-align: right;
     color: $color__gray-light;
 

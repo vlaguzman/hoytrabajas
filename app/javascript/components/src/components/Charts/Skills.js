@@ -3,18 +3,6 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import { Row, Col } from 'reactstrap'
-import styled from 'styled-components'
-
-const ColorBlock = styled.div`
-  width: 20px;
-  height: 20px;
-  background-color: ${props => props.backgroundColor};
-  margin-left: 10px;
-  border-radius: 3.6px;
-  @media (max-width: 700px) {
-    margin: 0 10px 0 0;
-  }
-`
 
 const BorderLinearProgress = withStyles({
   root: {
@@ -30,17 +18,21 @@ const BorderLinearProgress = withStyles({
 })(LinearProgress)
 
 const colors = ['#51e9d5', '#94dad0', '#64b7ac']
+
+// TODO any: remove defaults when we have real data
 const defaultList = [
   { description: 'Honestidad', value: 97 },
   { description: 'Empatía', value: 70 },
   { description: 'Responsabilidad', value: 30 }
 ]
 
-const Skills = ({ list = defaultList }) => (
+const defaultTranslations = {
+  title: 'Habilidades blandas validadas'
+}
+
+const Skills = ({ list = defaultList, translations = defaultTranslations }) => (
   <>
-    <h6 className="fw-bold color__blue-main mt-30">
-      Habilidades blandas validadas
-    </h6>
+    <h6 className="fw-bold color__blue-main mt-30">{translations.title}</h6>
     <div className="skillsChart py-20">
       {list.length > 0 ? (
         <>
@@ -80,7 +72,10 @@ const Skills = ({ list = defaultList }) => (
                 <p className="a-typo__subtitle2 m-0 fw-bolder">
                   {skill.description}
                 </p>
-                <ColorBlock backgroundColor={colors[index]} />
+                <div
+                  className="skillColorBlock"
+                  style={{ backgroundColor: colors[index] || colors[0] }}
+                />
               </div>
             ))}
           </Row>
@@ -98,5 +93,8 @@ Skills.propTypes = {
       description: PropTypes.string.isRequired,
       value: PropTypes.number.isRequired
     })
-  ).isRequired
+  ).isRequired,
+  translations: PropTypes.shape({
+    title: PropTypes.string.isRequired
+  }).isRequired
 }

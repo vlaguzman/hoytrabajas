@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Divider from '@material-ui/core/Divider'
 import { es } from 'date-fns/locale'
 import { format } from 'date-fns'
@@ -7,7 +8,7 @@ import CarouselRow from '../../Carousel/CarouselRow'
 
 const formatDate = date => format(date, 'MMMM yyyy', { locale: es })
 
-const list = [
+const defaultList = [
   {
     title: 'Comunicador social',
     institution_name: 'Universidad autónoma de Colombia',
@@ -50,7 +51,16 @@ const list = [
   }
 ]
 
-const Education = () => (
+const defaultTranslations = {
+  ongoing_study: 'Estudio en curso'
+}
+
+// TODO any: remove defaults when we have real data
+
+const Education = ({
+  list = defaultList,
+  translations = defaultTranslations
+}) => (
   <div className="m-educationCards mt-60">
     <CarouselRow slidesToShow={2} autoplay={false}>
       {list.map(item => (
@@ -76,7 +86,7 @@ const Education = () => (
             <p className="a-educationCard__date a-typo__caption mt-10 fw-bold color__blue-main">
               {formatDate(item.start_date)} -{' '}
               {item.ongoing_study
-                ? 'Estudio en curso'
+                ? translations.ongoing_study
                 : formatDate(item.finish_date)}
             </p>
           </div>
@@ -87,3 +97,19 @@ const Education = () => (
 )
 
 export default Education
+
+Education.propTypes = {
+  list: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      institution_name: PropTypes.string.isRequired,
+      city_id: PropTypes.string.isRequired,
+      start_date: PropTypes.object,
+      finish_date: PropTypes.object,
+      ongoing_study: PropTypes.bool
+    })
+  ).isRequired,
+  translations: PropTypes.shape({
+    ongoing_study: PropTypes.string.isRequired
+  }).isRequired
+}

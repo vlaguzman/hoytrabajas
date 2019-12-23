@@ -1,12 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { es } from 'date-fns/locale'
 import { format } from 'date-fns'
-import Chip from '@material-ui/core/Chip'
 import CarouselRow from '../../Carousel/CarouselRow'
 
 const formatDate = date => format(date, 'MMMM yyyy', { locale: es })
 
-const list = [
+const defaultList = [
   {
     company_name: 'CineColombia',
     work_position: 'Community Manager',
@@ -45,7 +45,17 @@ const list = [
   }
 ]
 
-const Experience = () => (
+const defaultTranslations = {
+  responsibilities: 'Responsabilidades',
+  still_in_progress: 'En curso'
+}
+
+// TODO any: remove defaults when we have real data
+
+const Experience = ({
+  list = defaultList,
+  translations = defaultTranslations
+}) => (
   <div className="m-experienceCards mt-60">
     <CarouselRow slidesToShow={2} autoplay={false}>
       {list.map(item => (
@@ -59,14 +69,14 @@ const Experience = () => (
               <span className="a-experienceCard__date fw-bold color__gray-main">
                 {formatDate(item.started_at)} -{' '}
                 {item.still_in_progress
-                  ? 'Estudio en curso'
+                  ? translations.still_in_progress
                   : formatDate(item.finished_at)}
               </span>
             </div>
             {item.responsibilities && item.responsibilities.length > 0 && (
               <>
                 <p className="a-typo__caption m-0 mt-5 fw-bold">
-                  Responsabilidades
+                  {translations.responsibilities}
                 </p>
                 <div className="flex-wrap justify-content-start my-10">
                   {item.responsibilities.map(resp => (
@@ -90,3 +100,21 @@ const Experience = () => (
 )
 
 export default Experience
+
+Experience.propTypes = {
+  list: PropTypes.arrayOf(
+    PropTypes.shape({
+      company_name: PropTypes.string.isRequired,
+      work_position: PropTypes.string.isRequired,
+      job_category: PropTypes.string.isRequired,
+      responsibilities: PropTypes.arrayOf(PropTypes.string),
+      started_at: PropTypes.object,
+      finished_at: PropTypes.object,
+      still_in_progress: PropTypes.bool
+    })
+  ).isRequired,
+  translations: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    still_in_progress: PropTypes.string.isRequired
+  }).isRequired
+}

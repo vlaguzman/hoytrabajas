@@ -15,10 +15,25 @@ class Users::Wizards::StepEight::FormParamsService < BaseFormWizardsService
   ]
 
   MULTIPLE_SELECT_FIELDS_KEYS = [
-    :technical_skill_ids
+    :technical_skills
   ]
 
   private
+
+  def multiple_select_fields_builder
+    Hash[
+      self.class::MULTIPLE_SELECT_FIELDS_KEYS.collect { |key| [key, technical_skills_builder(key)] }
+    ]
+  end
+
+  def technical_skills_builder(key)
+    {
+      name: name_builder(key, false, []),
+      label:labels[key],
+      values: self.send("#{key}_list"),
+      current_value: source.technical_skills.pluck(:description)
+    }
+  end
 
   def job_category_id_list
     ListConverter.model_list JobCategory
@@ -32,7 +47,7 @@ class Users::Wizards::StepEight::FormParamsService < BaseFormWizardsService
     ListConverter.model_list WorkMethodology
   end
 
-  def technical_skill_ids_list
+  def technical_skills_list
     ListConverter.model_list TechnicalSkill
   end
 

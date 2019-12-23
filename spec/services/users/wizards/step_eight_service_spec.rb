@@ -17,10 +17,9 @@ RSpec.describe Users::Wizards::StepEightService do
 
       let!(:city_id) { create(:city, description: "Bogota").id }
 
-      let!(:technical_skills_ids) do
+      let!(:technical_skills) do
         [
-          create(:technical_skill, description: "SEO").id,
-          create(:technical_skill, description: "Redes sociales").id,
+          create(:technical_skill, description: "SEO").description,
         ]
       end
 
@@ -31,7 +30,7 @@ RSpec.describe Users::Wizards::StepEightService do
           work_position_id: work_position_id,
           work_methodology_id: work_methodology_id,
           city_id: city_id,
-          technical_skill_ids: technical_skills_ids,
+          technical_skills: "SEO, Redes sociales",
           started_at: "5/10/2017",
           finished_at: "5/10/2018",
           still_in_progress: "1"
@@ -43,7 +42,8 @@ RSpec.describe Users::Wizards::StepEightService do
       let(:new_work_experience) { build(:work_experience, :empty,
         curriculum_vitae: empty_cv,
         job_category: nil,
-        work_position: nil
+        work_position: nil,
+        technical_skills: []
       ) }
 
 
@@ -52,6 +52,7 @@ RSpec.describe Users::Wizards::StepEightService do
 
         expect(updated).to be_truthy
 
+        expect(updated_work_experience.technical_skills.pluck(:description)).to match_array(["SEO", "Redes sociales"])
         expect(updated_work_experience).to be_an_instance_of(WorkExperience)
       end
 

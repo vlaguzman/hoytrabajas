@@ -34,9 +34,7 @@ class Users::Wizards::StepEightsController < Users::WizardsController
       :started_at,
       :finished_at,
       :still_in_progress,
-      {
-        technical_skill_ids: [],
-      }
+      :technical_skills
     ).to_h
   end
 

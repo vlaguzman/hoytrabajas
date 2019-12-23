@@ -8,15 +8,15 @@
     = csrf_meta_tags
     = csp_meta_tag
 
-    / Global site tag (gtag.js) - Google Analytics
+    -# Global site tag (gtag.js) - Google Analytics
     %script{:async => "", :src => "https://www.googletagmanager.com/gtag/js?id=UA-108065726-1"}
 
-    / Crazy egg
+    -# Crazy egg
     %script{:async => "async", :src => "//script.crazyegg.com/pages/scripts/0090/2467.js", :type => "text/javascript"}
 
-    / Facebook pixel
+    -# Facebook pixel
     %noscript
-      %img{:height => "1", :src => "https://www.facebook.com/tr?id=349189892310764&ev=PageView&noscript=1", :style => "display:none", :width => "1"}/
+      %img{:height => "1", :src => "https://www.facebook.com/tr?id=349189892310764&ev=PageView&noscript=1", :style => "display:none", :width => "1"}
 
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_pack_tag 'application'
@@ -27,7 +27,7 @@
       = javascript_pack_tag 'analytics/facebook_pixel'
       = javascript_pack_tag 'analytics/tag_manager'
   %body
-    / Google Tag Manager (noscript)
+    -# Google Tag Manager (noscript)
     %noscript
       %iframe{:height => "0", :src => "https://www.googletagmanager.com/ns.html?id=GTM-MC7RKNG", :style => "display:none;visibility:hidden", :width => "0"}
 
@@ -38,4 +38,5 @@
     notice_message: notice}, prerender: false)
 
     - if Rails.env.production?
-      = javascript_pack_tag 'analytics/chat_bot'
+      %div.m-chatBot--hiddenOnMobile
+        = javascript_pack_tag 'analytics/chat_bot'

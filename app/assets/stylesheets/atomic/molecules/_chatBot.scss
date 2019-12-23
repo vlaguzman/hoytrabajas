@@ -1,0 +1,7 @@
+.m-chatBot {
+  &--hiddenOnMobile {
+    @media only screen and (max-width: 1026px) {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,37 @@
+.m-navItems {
+  .a-navItem {
+    @media (max-width: 992px) {
+      margin: 20px 0;
+    }
+  }
+
+  .a-navItem a,
+  .a-navItem button {
+    font-weight: bold;
+    color: $color__purple-darkest;
+    margin: 0 25px;
+    font-size: 1rem;
+    -webkit-appearance: none;
+    background: none;
+    letter-spacing: normal;
+    cursor: pointer;
+  }
+
+  .a-navItem__button {
+    @media (max-width: 576px) {
+      width: 100%;
+    }
+
+    a {
+      text-transform: none;
+      padding: 6px 16px;
+      @media (max-width: 576px) {
+        justify-content: center;
+      }
+    }
+
+    svg.MuiSvgIcon-root {
+      font-size: 1.25rem;
+    }
+  }
+}

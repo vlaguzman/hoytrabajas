@@ -2,16 +2,20 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import MatButton from '@material-ui/core/Button'
 import MenuIcon from '@material-ui/icons/Menu'
-import Fab from '@material-ui/core/Fab'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Typography from '@material-ui/core/Typography'
+import Input from '@material-ui/core/Input'
+import InputAdornment from '@material-ui/core/InputAdornment'
+import IconButton from '@material-ui/core/IconButton'
+import AddCircleIcon from '@material-ui/icons/AddCircle'
+import StarsIcon from '@material-ui/icons/Stars'
+import CloseIcon from '@material-ui/icons/Close'
 import {
   Row,
   Col,
   Form,
   FormGroup,
   Label,
-  Input,
   Collapse,
   Navbar,
   NavbarToggler,
@@ -78,6 +82,11 @@ const Header = props => {
 
   const isNavTransparent = !openState.navbar && should_change_nav_color && isTop
 
+  const [searchValue, setSearchValue] = useState('')
+
+  const handleSearchChange = event => setSearchValue(event.target.value)
+  const handleSearchReset = () => setSearchValue('')
+
   const colorOfNavToggler = () =>
     isNavTransparent
       ? {
@@ -106,6 +115,75 @@ const Header = props => {
       )
     return false
   }
+
+  const LoggedInNav = () => (
+    <>
+      <NavItem className="list-inline-item a-navItem">
+        <a href="/">Inicio</a>
+      </NavItem>
+      <NavItem className="list-inline-item a-navItem">
+        <a href={pathToDashboard}>Ver mi tablero</a>
+      </NavItem>
+      <NavItem className="list-inline-item a-navItem">
+        <a href="/">Mi perfil</a>
+      </NavItem>
+      <NavItem className="list-inline-item a-navItem">
+        <a href={user_signed_in ? log_out_user : log_out_companies}>
+          Cerrar sesión
+        </a>
+      </NavItem>
+      {user_signed_in ? (
+        <NavItem className="list-inline-item a-navItem__button">
+          <a className="a-button a-button--primary d-flex align-items-center">
+            <StarsIcon className="text-white mr-5" />
+            Crecer a premium
+          </a>
+        </NavItem>
+      ) : (
+        <NavItem className="list-inline-item a-navItem__button">
+          <a
+            href={pathToCreateOffer}
+            className="a-button a-button--primary d-flex align-items-center"
+          >
+            <AddCircleIcon className="text-white mr-5" />
+            Publicar oferta
+          </a>
+        </NavItem>
+      )}
+    </>
+  )
+
+  const LoggedOutNav = () => (
+    <>
+      <NavItem className="list-inline-item a-navItem">
+        <a href="/">Inicio</a>
+      </NavItem>
+      <NavItem className="list-inline-item a-navItem">
+        <a href={pathToOffers}>Busco empleo</a>
+      </NavItem>
+      <NavItem className="list-inline-item a-navItem">
+        <a href="/">Ofrezco trabajo</a>
+      </NavItem>
+      <NavItem className="list-inline-item a-navItem">
+        <button
+          type="button"
+          className="default a-navOpenLogin"
+          onClick={() => handleOpenModal('sign_in')}
+        >
+          Ingresar
+        </button>
+      </NavItem>
+      <NavItem className="list-inline-item a-navItem">
+        <button
+          type="button"
+          className="default a-navOpenSignUp"
+          onClick={() => handleOpenModal('sign_up')}
+        >
+          Registrarme
+        </button>
+      </NavItem>
+    </>
+  )
 
   /* TODO Oscar move the search bar to a component to have control of this */
   const FullSearchBarInNavBar = () => (
@@ -163,11 +241,7 @@ const Header = props => {
           <div className="site-logo">
             <NavbarBrand href="/" className="logo-mini mr-auto">
               <img
-                src={
-                  isNavTransparent
-                    ? '/assets/static/img/appLogoW.svg'
-                    : '/assets/static/img/appLogoC.svg'
-                }
+                src="/assets/static/img/hoytrabajas-logo-color.png"
                 className="mr-15 logo animated fadeIn"
                 alt="site logo"
                 height="100%"
@@ -186,7 +260,7 @@ const Header = props => {
         <Collapse isOpen={openState.navbar} navbar id="navbarNav">
           {!isNavTransparent && (
             <Form
-              className="d-flex search-bar-wrapper mt-10 navbar-search-form"
+              className="d-flex search-bar-wrapper navbar-search-form"
               action="/offers/"
               method="get"
               inline
@@ -196,15 +270,47 @@ const Header = props => {
                   Buscar ofertas
                 </Label>
                 <Input
-                  style={{ width: '98%' }}
-                  type="text"
                   name="q[title_cont]"
                   id="q[title_cont]"
-                  placeholder="Buscar ofertas"
-                  autoComplete="off"
+                  type="text"
+                  className="searchBar__input"
+                  value={searchValue}
+                  placeholder="Palabra clave"
+                  onChange={handleSearchChange}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <div className="d-flex">
+                        {searchValue ? (
+                          <IconButton
+                            className="mr-5"
+                            aria-label="Reset search"
+                            onClick={handleSearchReset}
+                          >
+                            <CloseIcon
+                              {...props}
+                              style={{ cursor: 'pointer' }}
+                              className="searchBar--resetIcon"
+                              focusable
+                            />
+                          </IconButton>
+                        ) : null}
+                        <IconButton
+                          className="searchBar__searchIcon"
+                          aria-label="Search"
+                          type="submit"
+                        >
+                          <FontAwesomeIcon icon="search" size="sm" />
+                        </IconButton>
+                      </div>
+                    </InputAdornment>
+                  }
+                  aria-describedby="standard-weight-helper-text"
+                  inputProps={{
+                    'aria-label': 'weight'
+                  }}
                 />
               </FormGroup>
-              <Fab
+              {/* <Fab
                 id="searchbar_submit_button"
                 type="submit"
                 size="small"
@@ -213,11 +319,16 @@ const Header = props => {
                 color="primary"
               >
                 <FontAwesomeIcon icon="search" size="sm" />
-              </Fab>
+              </Fab> */}
             </Form>
           )}
-          <ul className="navbar-nav navbar-item-wrapper">
-            <NavItem className="list-inline-item">
+          <ul className="navbar-nav align-items-center m-navItems navbar-item-wrapper">
+            {user_signed_in || company_signed_in ? (
+              <LoggedInNav />
+            ) : (
+              <LoggedOutNav />
+            )}
+            {/* <NavItem className="list-inline-item">
               <MatButton
                 className="navbar-item-button"
                 style={{
@@ -323,23 +434,23 @@ const Header = props => {
                   </MatButton>
                 </NavItem>
               </>
-            )}
+            )} */}
           </ul>
         </Collapse>
       </div>
-      <div
+      {/* TODO uncomment when advance search is ready */}
+      {/* <div
         className={`navbar-row ${should_change_nav_color && isTop && 'd-none'}`}
       >
-        {/* TODO uncomment when advance search is ready */}
-        {/* <FullSearchBarInNavBar/> */}
-        <Login
-          {...props}
-          currentModal={currentModal}
-          setCurrentModal={setCurrentModal}
-          isOpen={openState.login}
-          toggleOpenState={toggleOpenState}
-        />
-      </div>
+        <FullSearchBarInNavBar/> 
+      </div> */}
+      <Login
+        {...props}
+        currentModal={currentModal}
+        setCurrentModal={setCurrentModal}
+        isOpen={openState.login}
+        toggleOpenState={toggleOpenState}
+      />
     </Navbar>
   )
 }

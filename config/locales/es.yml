@@ -2,148 +2,148 @@ es:
   admin:
     applied_offers:
       form:
-        offer_title: "Oferta"
-        curriculum_vitae_user_email: "Email del usuario"
-        applied_date: "Fecha de aplicación"
-        status: "Estado"
+        offer_title: 'Oferta'
+        curriculum_vitae_user_email: 'Email del usuario'
+        applied_date: 'Fecha de aplicación'
+        status: 'Estado'
     companies:
       form:
-        name: "Nombre"
-        description: "Descripción"
-        email: "Email"
-        password: "Password"
-        password_confirmation: "Confirmación de password"
-        city: "Ciudad"
-        contact_name: "Nombre de contacto"
-        contact_cellphone: "Celular de contacto"
-        nit: "Nit"
-        contact_work_position: "Posición de la persona de contacto"
-        address: "Dirección"
-        website: "Website"
+        name: 'Nombre'
+        description: 'Descripción'
+        email: 'Email'
+        password: 'Password'
+        password_confirmation: 'Confirmación de password'
+        city: 'Ciudad'
+        contact_name: 'Nombre de contacto'
+        contact_cellphone: 'Celular de contacto'
+        nit: 'Nit'
+        contact_work_position: 'Posición de la persona de contacto'
+        address: 'Dirección'
+        website: 'Website'
     offers:
       form:
-        title: "Título"
-        address: "Dirección"
-        company: "Compañía"
-        cellphone: "Celular de contacto"
-        offer_description: "Descripción de la oferta"
-        vacancies_quantity: "Vacantes disponibles"
-        work_mode: "Modo de trabajo"
-        city: "Ciudad"
-        job_category: "Categoría de trabajo"
-        contract_type: "Tipo de contrato"
-        required_experience: "¿Requiere experiencia?"
-        inmediate_start: "Inicio inmediato"
+        title: 'Título'
+        address: 'Dirección'
+        company: 'Compañía'
+        cellphone: 'Celular de contacto'
+        offer_description: 'Descripción de la oferta'
+        vacancies_quantity: 'Vacantes disponibles'
+        work_mode: 'Modo de trabajo'
+        city: 'Ciudad'
+        job_category: 'Categoría de trabajo'
+        contract_type: 'Tipo de contrato'
+        required_experience: '¿Requiere experiencia?'
+        inmediate_start: 'Inicio inmediato'
         status:
-          label: "Estado"
-          active: "active"
-          expire: "expire"
+          label: 'Estado'
+          active: 'active'
+          expire: 'expire'
   session:
     sign_in:
-      title: "Bienvenido a HoyTrabajas"
-      email_label: "Correo electrónico"
-      password_label: "Contraseña"
-      forget_password: "¿Olvidó su contraseña?"
+      title: 'Bienvenido a HoyTrabajas'
+      email_label: 'Correo electrónico'
+      password_label: 'Contraseña'
+      forget_password: '¿Olvidó su contraseña?'
       button_action:
-        sign_in_label: "Iniciar sesión"
-        sign_in_facebook: "Conectarse con Facebook"
-        sign_in_google: "Conectarse con Google"
+        sign_in_label: 'Iniciar sesión'
+        sign_in_facebook: 'Conectarse con Facebook'
+        sign_in_google: 'Conectarse con Google'
       no_account:
-        title: "¿No tienes una cuenta?"
-        sign_up: "Regístrate"
+        title: '¿No tienes una cuenta?'
+        sign_up: 'Regístrate'
 
     sign_up:
-      title: "Regístrate ahora"
-      email_label: "Correo electrónico"
-      password_label: "Contraseña"
-      pass_confirm_label: "Confirma tu contraseña"
+      title: 'Regístrate ahora'
+      email_label: 'Correo electrónico'
+      password_label: 'Contraseña'
+      pass_confirm_label: 'Confirma tu contraseña'
       button_action:
-        sign_up_label: "Registrarme"
-        sign_up_facebook: "Continuar con Facebook"
-        sign_up_google: "Continuar con Google"
+        sign_up_label: 'Registrarme'
+        sign_up_facebook: 'Continuar con Facebook'
+        sign_up_google: 'Continuar con Google'
       with_account:
-        title: "¿Ya tienes cuenta?"
-        sign_in: "Inicia sesión"
-      tc_link: 'Ver terminos y condiciones'
+        title: '¿Ya tienes cuenta?'
+        sign_in: 'Inicia sesión'
+      tc_link: 'Ver términos y condiciones'
       tc_label: 'Aceptar términos y condiciones.'
 
   activerecord:
     errors:
       messages:
-        record_invalid: "Error al guardar en la base de datos: %{errors}"
+        record_invalid: 'Error al guardar en la base de datos: %{errors}'
       models:
         applied_offer:
           attributes:
             offer_id:
-              blank: "Por favor seleccione un oferta, este campo no puede estar en blanco"
+              blank: 'Por favor seleccione un oferta, este campo no puede estar en blanco'
             curriculum_vitae_id:
-              blank: "Por favor seleccione un valor para curriculum vitae, este campo no puede estar en blanco"
+              blank: 'Por favor seleccione un valor para curriculum vitae, este campo no puede estar en blanco'
             applied_date:
-              blank: "Por favor seleccione una fecha, este campo no puede estar en blanco"
+              blank: 'Por favor seleccione una fecha, este campo no puede estar en blanco'
             applied_offer_status_id:
-              blank: "Por favor seleccione un estado, este campo no puede estar en blanco"
+              blank: 'Por favor seleccione un estado, este campo no puede estar en blanco'
             applied_offer_status:
-              required: "Por favor seleccione un estado, este campo es requerido"
+              required: 'Por favor seleccione un estado, este campo es requerido'
         company:
           attributes:
             email:
-              blank: "Por favor ingrese un correo electrónico, este campo no puede estar en blanco"
+              blank: 'Por favor ingrese un correo electrónico, este campo no puede estar en blanco'
             password:
-              blank: "Por favor ingrese el password, este campo no puede estar en blanco"
+              blank: 'Por favor ingrese el password, este campo no puede estar en blanco'
             password_confirmation:
-              confirmation: "Su contraseña no coincide con la confirmación, por favor haga que su contraseña se igual a la verificación"
+              confirmation: 'Su contraseña no coincide con la confirmación, por favor haga que su contraseña se igual a la verificación'
         user:
           attributes:
             name:
-              blank: "Por favor ingrese su Nombre, este campo no puede estar en blanco"
+              blank: 'Por favor ingrese su Nombre, este campo no puede estar en blanco'
             last_name:
-              blank: "Por favor ingrese su Apellido, este campo no puede estar en blanco"
+              blank: 'Por favor ingrese su Apellido, este campo no puede estar en blanco'
             email:
-              blank: "Por favor ingrese un correo electrónico, este campo no puede estar en blanco"
+              blank: 'Por favor ingrese un correo electrónico, este campo no puede estar en blanco'
             password:
-              blank: "Por favor ingrese el password, este campo no puede estar en blanco"
+              blank: 'Por favor ingrese el password, este campo no puede estar en blanco'
             password_confirmation:
-              confirmation: "Su contraseña no coincide con la confirmación, por favor haga que su contraseña se igual a la verificación"
+              confirmation: 'Su contraseña no coincide con la confirmación, por favor haga que su contraseña se igual a la verificación'
             identification_number:
-              blank: "Por favor ingrese su numero de documento, este campo no puede estar en blanco"
+              blank: 'Por favor ingrese su numero de documento, este campo no puede estar en blanco'
             contact_number:
-              blank: "Por favor ingrese su numero de contacto, este campo no puede estar en blanco"
+              blank: 'Por favor ingrese su numero de contacto, este campo no puede estar en blanco'
             nationalities:
-              blank: "Debes selecionar por lo menos una nacionalidad"
+              blank: 'Debes selecionar por lo menos una nacionalidad'
             document_type_id:
-              blank: "Debes selecionar el tipo de documento de identidad"
+              blank: 'Debes selecionar el tipo de documento de identidad'
 
         offer:
           attributes:
             company:
-              required: "Por favor seleccione una compañía, este campo es requerido"
+              required: 'Por favor seleccione una compañía, este campo es requerido'
             title:
-              blank: "Por favor ingrese un título a la oferta, este campo no puede estar en blanco"
+              blank: 'Por favor ingrese un título a la oferta, este campo no puede estar en blanco'
             job_category_ids:
-              blank: "Por favor seleccione una categoría, este campo es requerido"
+              blank: 'Por favor seleccione una categoría, este campo es requerido'
         educational_level:
           attributes:
             degree:
-              blank: "El Titulo Educativo no puede estar vacío"
+              blank: 'El Titulo Educativo no puede estar vacío'
         work_experience:
           attributes:
             work_position:
-              required: "El Cargo no puede estar vacío"
-              blank: "Debes seleccionar un Cargo"
+              required: 'El Cargo no puede estar vacío'
+              blank: 'Debes seleccionar un Cargo'
             job_category:
-              required: "La Categoria de Trabajo no puede estar vacío"
-              blank: "Debes seleccionar un Categoria de Trabajo"
+              required: 'La Categoria de Trabajo no puede estar vacío'
+              blank: 'Debes seleccionar un Categoria de Trabajo'
         acknowledgment:
           attributes:
             title:
-              blank: "El Titulo reconocimiento no puede estar vacio"
+              blank: 'El Titulo reconocimiento no puede estar vacio'
 
   time:
     am: am
     formats:
-      default: "%A, %-d de %B de %Y %H:%M:%S %z"
-      long: "%-d de %B de %Y %H:%M"
-      short: "%-d de %b %H:%M"
+      default: '%A, %-d de %B de %Y %H:%M:%S %z'
+      long: '%-d de %B de %Y %H:%M'
+      short: '%-d de %b %H:%M'
     pm: pm
   date:
     today: 'Hoy'
@@ -151,29 +151,29 @@ es:
     years: 'Año(s)'
     months: 'Mes(es)'
     formats:
-      default: "%A, %-d de %B de %Y %H:%M:%S %z"
-      long: "%-d de %B de %Y %H:%M"
-      short: "%-d de %b %H:%M"
+      default: '%A, %-d de %B de %Y %H:%M:%S %z'
+      long: '%-d de %B de %Y %H:%M'
+      short: '%-d de %b %H:%M'
     day_names:
-    - ''
-    - domingo
-    - lunes
-    - martes
-    - miércoles
-    - jueves
-    - viernes
-    - sábado
+      - ''
+      - domingo
+      - lunes
+      - martes
+      - miércoles
+      - jueves
+      - viernes
+      - sábado
     month_names:
-    - ''
-    - Enero
-    - Febrero
-    - Marzo
-    - Abril
-    - Mayo
-    - Junio
-    - Julio
-    - Agosto
-    - Septiembre
-    - Octubre
-    - Noviembre
-    - Diciembre
+      - ''
+      - Enero
+      - Febrero
+      - Marzo
+      - Abril
+      - Mayo
+      - Junio
+      - Julio
+      - Agosto
+      - Septiembre
+      - Octubre
+      - Noviembre
+      - Diciembre

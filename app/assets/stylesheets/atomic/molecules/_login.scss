@@ -1,0 +1,18 @@
+.m-loginHeader {
+  .modal--close-icon {
+    color: $color__slategray-light;
+  }
+}
+
+.m-loginContent {
+  .a-radioItems {
+    .MuiRadio-colorSecondary,
+    .MuiRadio-colorSecondary.Mui-checked {
+      color: $color__slategray-light;
+    }
+    .MuiRadio-colorSecondary:hover,
+    .MuiRadio-colorSecondary.Mui-checked:hover {
+      background-color: transparentize($color__slategray-main, 0.92);
+    }
+  }
+}

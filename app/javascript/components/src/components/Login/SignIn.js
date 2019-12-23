@@ -21,7 +21,7 @@ const SignIn = props => (
     <div
       id="max-width-dialog-title"
       style={{ position: 'relative' }}
-      className="mt-25"
+      className="m-loginHeader mt-25"
     >
       <CloseIcon
         color="primary"
@@ -101,9 +101,18 @@ const SignIn = props => (
         </Typography>
         <Row noGutters className="justify-content-center my-20">
           <Col xs={12}>
-            <LoginButton type="submit" color="primary" variant="contained">
+            <button
+              type="submit"
+              className="a-button a-button--primary fw-bold"
+              style={{
+                textTransform: 'uppercase',
+                fontSize: '1rem',
+                paddingTop: 12,
+                paddingBottom: 12
+              }}
+            >
               {props.session_translation.sign_in.button_action.sign_in_label}
-            </LoginButton>
+            </button>
           </Col>
         </Row>
       </form>
@@ -137,16 +146,14 @@ const SignIn = props => (
         </Typography>
         <Typography
           variant="caption"
-          className="ml-5"
+          className="ml-5 color__blue-main fw-bold"
           component="a"
-          style={{ color: '#00CED5', cursor: 'pointer' }}
-          onClick={() =>
-            props.setCurrentModal(
-              props.source_name === 'user'
-                ? 'users_sign_up'
-                : 'companies_sign_up'
-            )
-          }
+          style={{
+            color: '#0b5aa0',
+            textDecoration: 'underline',
+            cursor: 'pointer'
+          }}
+          onClick={() => props.setCurrentModal('sign_up')}
         >
           {props.session_translation.sign_in.no_account.sign_up}
         </Typography>

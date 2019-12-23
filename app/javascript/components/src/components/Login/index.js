@@ -21,38 +21,39 @@ const Login = ({
     onClose={() => toggleOpenState('login', false)}
     aria-labelledby="max-width-dialog-title"
   >
-    {currentModal === 'users_sign_in' && (
+    {currentModal === 'sign_in' && (
       <SignIn
-        source_name="user"
-        sessions_path={users_sessions_path}
+        sessions_path={{ users_sessions_path, companies_registration_path }}
         toggleOpenState={toggleOpenState}
         {...rest}
       />
     )}
-    {currentModal === 'users_sign_up' && (
+    {currentModal === 'sign_up' && (
       <SignUp
-        source_name="user"
-        registration_path={users_registration_path}
+        registration_path={{
+          user: users_registration_path,
+          company: companies_registration_path
+        }}
         toggleOpenState={toggleOpenState}
         {...rest}
       />
     )}
-    {currentModal === 'companies_sign_in' && (
+    {/* {currentModal === 'companies_sign_in' && (
       <SignIn
         source_name="company"
         sessions_path={companies_sessions_path}
         toggleOpenState={toggleOpenState}
         {...rest}
       />
-    )}
-    {currentModal === 'companies_sign_up' && (
+    )} */}
+    {/* {currentModal === 'companies_sign_up' && (
       <SignUp
         source_name="company"
         registration_path={companies_registration_path}
         toggleOpenState={toggleOpenState}
         {...rest}
       />
-    )}
+    )} */}
   </Dialog>
 )
 

@@ -1,4 +1,5 @@
 ActiveAdmin.register Offer do
+  actions :index, :show, :create, :destroy
 
   permit_params :title, :created_by_admin, :address, :cellphone, :description, :vacancies_quantity, :close_date, :immediate_start, :required_experience, :release_date, :status, :city_id, :offer_type_id, :contract_type_id, :work_mode_id, :sex_id, :company_id, job_category_ids: []
 
@@ -10,7 +11,9 @@ ActiveAdmin.register Offer do
     column :immediate_start
     column :required_experience
     column :status
-    actions
+    actions do
+      link_to 'Editar', edit_admins_offer_path(self.id)
+    end
   end
 
   filter :company_name, as: :string, label: 'Nombre compañia'
@@ -29,7 +32,7 @@ ActiveAdmin.register Offer do
       f.input :title, label: t('admin.offers.form.title')
       f.input :address, label: t('admin.offers.form.address')
       #TODO Oscar Show the name when de value is selected
-      f.input :company_id, as: :datalist, collection: ListConverter.model_array_list(Company, :name, order_by: :name), :input_html => { autoComplete: "off" } 
+      f.input :company_id, as: :datalist, collection: ListConverter.model_array_list(Company, :name, order_by: :name), :input_html => { autoComplete: "off" }
       f.input :cellphone, label: t('admin.offers.form.cellphone')
       f.input :description, label: t('admin.offers.form.offer_description')
       f.input :vacancies_quantity, label: t('admin.offers.form.vacancies_quantity')

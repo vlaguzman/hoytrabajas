@@ -6,6 +6,7 @@ import SelectChip from '../../../../../components/FormsLayout/Fields/SelectChip'
 import StandardInput from '../../../../../components/FormsLayout/Fields/StandardInput'
 import DatePicker from '../../../../../components/FormsLayout/Fields/DatePicker'
 import Checkbox from '../../../../../components/FormsLayout/Fields/Checkbox'
+import SelectFindOrCreate from '../../../../../components/FormsLayout/Fields/SelectFindOrCreate'
 
 import {
   handleDeleteChip,
@@ -32,7 +33,7 @@ const FormFields = props => {
     city_id = null,
     finished_at = null,
     started_at = null,
-    technical_skill_ids = null,
+    technical_skills = null,
     still_in_progress = null
   } = formFields
 
@@ -42,7 +43,7 @@ const FormFields = props => {
     [work_position_id.name]: '',
     [work_methodology_id.name]: '',
     [city_id.name]: '',
-    [technical_skill_ids.name]: '',
+    [technical_skills.name]: '',
     [started_at.name]: new Date(),
     [finished_at.name]: new Date(),
     [still_in_progress.name]: false
@@ -140,26 +141,24 @@ const FormFields = props => {
     [formValues[city_id.name]]
   )
 
-  const technicalSkillIDsField = useMemo(
+  const technicalSkillsField = useMemo(
     () => (
       <Col
-        key={technical_skill_ids.name}
+        key={technical_skills.name}
         className={inputClassname}
         xs={12}
         lg={12}
       >
-        <SelectChip
-          inputValue={formValues[technical_skill_ids.name]}
-          handleChange={handleChange(formValues, setFormValues)}
-          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
-          name={technical_skill_ids.name}
-          label={technical_skill_ids.label}
-          selectOptions={technical_skill_ids.values}
+        <SelectFindOrCreate
+          label={technical_skills.label}
+          name={technical_skills.name}
+          input_value={technical_skills.current_value}
+          options={technical_skills.values}
           isMultiple
         />
       </Col>
     ),
-    [formValues[technical_skill_ids.name]]
+    []
   )
 
   const startedAtField = useMemo(
@@ -224,8 +223,8 @@ const FormFields = props => {
       {workPositionIDField}
       {workMethodologyIDField}
       {cityIDField}
-      {/* TODO oscar comment until the technical skills will be able */}
-      {/* {technicalSkillIDsField} */}
+      {/* TODO OScar uncommen when the basic tech skills be able in production */}
+      {/* {technicalSkillsField} */}
       {startedAtField}
       {!formValues[still_in_progress.name] && finishedAtField}
       {inProgressField}

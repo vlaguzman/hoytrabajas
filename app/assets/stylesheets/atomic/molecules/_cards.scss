@@ -1,0 +1,73 @@
+.m-educationCards,
+.m-experienceCards {
+  .slick-track {
+    display: flex;
+    padding-bottom: 60px;
+  }
+
+  .slick-slide {
+    height: auto;
+    & > div {
+      height: 100%;
+    }
+  }
+
+  .slick-dots {
+    text-align: right;
+  }
+
+  .slick-dots li {
+    margin: 0 2.5px;
+
+    button:before {
+      font-size: 0.625rem;
+      color: $color__snow-main;
+      opacity: 1;
+    }
+  }
+
+  .slick-dots li.slick-active button:before {
+    color: $color__blue-main;
+  }
+}
+
+.m-educationCards {
+  .a-educationCard__date {
+    text-transform: capitalize;
+  }
+
+  .a-educationCard__attachIcon {
+    text-align: right;
+    color: $color__gray-light;
+
+    svg {
+      cursor: pointer;
+      width: 25px;
+      height: 25px;
+    }
+  }
+  .a-educationCard__title {
+    flex: 1;
+  }
+}
+
+.m-experienceCards {
+  .companyWithDate {
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 576px) {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+  .a-experienceCard__date {
+    text-transform: capitalize;
+    margin-left: 10px;
+    font-size: 0.75rem;
+
+    @media (max-width: 576px) {
+      margin-left: 0;
+    }
+  }
+}

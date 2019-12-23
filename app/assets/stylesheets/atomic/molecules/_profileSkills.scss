@@ -1,0 +1,77 @@
+.skillsChart {
+  .skillBar {
+    @media (max-width: 700px) {
+      padding-right: 20px;
+    }
+  }
+
+  .skillColorBlock {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    border-radius: 3.6px;
+    @media (max-width: 576px) {
+      margin: 0 10px 0 0;
+    }
+  }
+
+  .skillChartNames {
+    .skillChartName {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 576px) {
+      flex-direction: column;
+      .skillChartName {
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        margin: 10px 0;
+      }
+    }
+  }
+}
+
+.skillsGrid {
+  .gridItem {
+    display: grid;
+    max-width: 700px;
+    grid-gap: 10px 30px;
+    align-content: center;
+    grid-template-columns: 2fr 1fr auto;
+    grid-template-areas:
+      'a b c'
+      'a b c';
+
+    .languageLevel {
+      grid-area: c;
+      margin: 0;
+    }
+    @media (max-width: 700px) {
+      display: flex;
+      flex-wrap: wrap;
+
+      .skillTag,
+      .languageLevel {
+        margin-left: auto;
+      }
+    }
+
+    &:before {
+      content: '';
+      width: 100%;
+      height: 1px;
+      background: $color__slategray-light;
+      display: none;
+      margin: 20px 0;
+      @media (max-width: 700px) {
+        display: block;
+      }
+    }
+  }
+
+  .gridItem:first-child:before {
+    display: none;
+  }
+}

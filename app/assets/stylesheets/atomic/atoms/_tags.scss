@@ -40,3 +40,9 @@
   color: $color__blue-main;
   background-color: $color__blue-extralight;
 }
+
+.a-tag__gray {
+  @extend .a-tag__base;
+  color: $color__gray-light;
+  background-color: $color__gray-extralight;
+}

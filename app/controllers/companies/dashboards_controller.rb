@@ -10,7 +10,7 @@ class Companies::DashboardsController < ApplicationController
   private
 
   def company_presenter(company = current_company)
-     @company = Companies::DashboardsPresenter.new(company)
+    @company = Companies::DashboardsPresenter.new(company)
   end
 
 end

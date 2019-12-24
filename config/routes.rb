@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   namespace :companies do
     resource :dashboard, only: [:show]
+    resource :list_candidates, only: [:show]
 
     namespace :first_offer do
       resource :step_zero,  only: [:show]

@@ -109,7 +109,7 @@ const Header = props => {
               color: isNavTransparent ? 'white' : 'black'
             }}
           >
-            MI PERFIL
+            Mi perfil
           </MatButton>
         </NavItem>
       )
@@ -119,24 +119,38 @@ const Header = props => {
   const LoggedInNav = () => (
     <>
       <NavItem className="list-inline-item a-navItem">
-        <a href="/">Inicio</a>
+        <a href="/">{props.session_translation.nav.home}</a>
       </NavItem>
       <NavItem className="list-inline-item a-navItem">
-        <a href={pathToDashboard}>Ver mi tablero</a>
+        <a href={pathToDashboard}>{props.session_translation.nav.dashboard}</a>
       </NavItem>
-      <NavItem className="list-inline-item a-navItem">
-        <a href="/">Mi perfil</a>
-      </NavItem>
+      {/* TODO any: uncomment when profile is ready */}
+      {/* <NavItem className="list-inline-item a-navItem">
+        <a href="/">{props.session_translation.nav.profile}</a>
+      </NavItem> */}
       <NavItem className="list-inline-item a-navItem">
         <a href={user_signed_in ? log_out_user : log_out_companies}>
-          Cerrar sesión
+          {props.session_translation.nav.sign_out}
         </a>
       </NavItem>
-      {user_signed_in ? (
+      {/* TODO any: replace code below with commented one when premium page is ready */}
+      {company_signed_in && (
+        <NavItem className="list-inline-item a-navItem__button">
+          <a
+            href={pathToCreateOffer}
+            className="a-button a-button--primary d-flex align-items-center"
+          >
+            <AddCircleIcon className="text-white mr-5" />
+            {props.session_translation.nav.create_offer}
+          </a>
+        </NavItem>
+      )}
+      {/* TODO any: uncomment when premium page is ready */}
+      {/* {user_signed_in ? (
         <NavItem className="list-inline-item a-navItem__button">
           <a className="a-button a-button--primary d-flex align-items-center">
             <StarsIcon className="text-white mr-5" />
-            Crecer a premium
+            {props.session_translation.nav.premium}
           </a>
         </NavItem>
       ) : (
@@ -146,31 +160,32 @@ const Header = props => {
             className="a-button a-button--primary d-flex align-items-center"
           >
             <AddCircleIcon className="text-white mr-5" />
-            Publicar oferta
+            {props.session_translation.nav.create_offer}
           </a>
         </NavItem>
-      )}
+      )} */}
     </>
   )
 
   const LoggedOutNav = () => (
     <>
       <NavItem className="list-inline-item a-navItem">
-        <a href="/">Inicio</a>
+        <a href="/">{props.session_translation.nav.home}</a>
       </NavItem>
       <NavItem className="list-inline-item a-navItem">
-        <a href={pathToOffers}>Busco empleo</a>
+        <a href={pathToOffers}>{props.session_translation.nav.i_need_job}</a>
       </NavItem>
-      <NavItem className="list-inline-item a-navItem">
-        <a href="/">Ofrezco trabajo</a>
-      </NavItem>
+      {/* TODO any: uncomment when companies landing page is ready */}
+      {/* <NavItem className="list-inline-item a-navItem">
+        <a href="/">{props.session_translation.nav.i_offer_job}</a>
+      </NavItem> */}
       <NavItem className="list-inline-item a-navItem">
         <button
           type="button"
           className="default a-navOpenLogin"
           onClick={() => handleOpenModal('sign_in')}
         >
-          Ingresar
+          {props.session_translation.nav.sign_in}
         </button>
       </NavItem>
       <NavItem className="list-inline-item a-navItem">
@@ -179,7 +194,7 @@ const Header = props => {
           className="default a-navOpenSignUp"
           onClick={() => handleOpenModal('sign_up')}
         >
-          Registrarme
+          {props.session_translation.nav.sign_up}
         </button>
       </NavItem>
     </>
@@ -310,16 +325,6 @@ const Header = props => {
                   }}
                 />
               </FormGroup>
-              {/* <Fab
-                id="searchbar_submit_button"
-                type="submit"
-                size="small"
-                style={{ marginTop: '1%' }}
-                className="mb-10 ml-10 text-white"
-                color="primary"
-              >
-                <FontAwesomeIcon icon="search" size="sm" />
-              </Fab> */}
             </Form>
           )}
           <ul className="navbar-nav align-items-center m-navItems navbar-item-wrapper">
@@ -328,113 +333,6 @@ const Header = props => {
             ) : (
               <LoggedOutNav />
             )}
-            {/* <NavItem className="list-inline-item">
-              <MatButton
-                className="navbar-item-button"
-                style={{
-                  color: isNavTransparent ? 'white' : 'black'
-                }}
-                href="/"
-              >
-                INICIO
-              </MatButton>
-            </NavItem>
-            {user_signed_in || company_signed_in ? (
-              renderMyProfileButton()
-            ) : (
-              <>
-                <NavItem className="list-inline-item">
-                  <MatButton
-                    id="nav_sign_in_candidate"
-                    className="navbar-item-button"
-                    style={{
-                      color: isNavTransparent ? 'white' : 'black'
-                    }}
-                    onClick={() => handleOpenModal('users_sign_in')}
-                  >
-                    SIGN IN CANDIDATO
-                  </MatButton>
-                </NavItem>
-                <NavItem className="list-inline-item">
-                  <MatButton
-                    className="navbar-item-button"
-                    style={{
-                      color: isNavTransparent ? 'white' : 'black'
-                    }}
-                    onClick={() => handleOpenModal('companies_sign_in')}
-                  >
-                    SIGN IN EMPRESA
-                  </MatButton>
-                </NavItem>
-              </>
-            )}
-            {(user_signed_in || company_signed_in) && (
-              <NavItem className="list-inline-item">
-                <MatButton
-                  className="navbar-item-button"
-                  href={user_signed_in ? pathToOffers : pathToCreateOffer}
-                  style={{
-                    color: isNavTransparent ? 'white' : 'black'
-                  }}
-                >
-                  {(user_signed_in && 'BUSCAR OFERTAS') ||
-                    (company_signed_in && 'PUBLICAR OFERTAS')}
-                </MatButton>
-              </NavItem>
-            )}
-            {(user_signed_in || company_signed_in) && (
-              <NavItem className="list-inline-item">
-                <MatButton
-                  href={pathToDashboard}
-                  className="navbar-item-button"
-                  style={{
-                    color: isNavTransparent ? 'white' : 'black'
-                  }}
-                >
-                  VER MI TABLERO
-                </MatButton>
-              </NavItem>
-            )}
-            {!user_signed_in && !company_signed_in ? (
-              <>
-                <NavItem className="list-inline-item">
-                  <MatButton
-                    className="navbar-item-button"
-                    style={{
-                      color: isNavTransparent ? 'white' : 'black'
-                    }}
-                    onClick={() => handleOpenModal('users_sign_up')}
-                  >
-                    SIGN UP CANDIDATO
-                  </MatButton>
-                </NavItem>
-                <NavItem className="list-inline-item">
-                  <MatButton
-                    className="navbar-item-button"
-                    style={{
-                      color: isNavTransparent ? 'white' : 'black'
-                    }}
-                    onClick={() => handleOpenModal('companies_sign_up')}
-                  >
-                    SIGN UP EMPRESA
-                  </MatButton>
-                </NavItem>
-              </>
-            ) : (
-              <>
-                <NavItem className="list-inline-item">
-                  <MatButton
-                    className="navbar-item-button"
-                    href={user_signed_in ? log_out_user : log_out_companies}
-                    style={{
-                      color: isNavTransparent ? 'white' : 'black'
-                    }}
-                  >
-                    CERRAR SESIÓN
-                  </MatButton>
-                </NavItem>
-              </>
-            )} */}
           </ul>
         </Collapse>
       </div>

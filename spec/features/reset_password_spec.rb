@@ -6,8 +6,8 @@ RSpec.describe "view reset password for user or company", type: :feature do
        scenario "go home and click '¿Olvidó su contraseña?'", js: true do
          visit root_path
 
-         expect(page).to have_text("SIGN IN CANDIDATO")
-         click_on 'SIGN IN CANDIDATO'
+         expect(page).to have_text("Ingresar")
+         click_on 'Ingresar'
 
          expect(page).to have_text("¿Olvidó su contraseña?")
          click_on '¿Olvidó su contraseña?'
@@ -23,8 +23,10 @@ RSpec.describe "view reset password for user or company", type: :feature do
        scenario "go home and click '¿Olvidó su contraseña?'", js: true do
          visit root_path
 
-         expect(page).to have_text("SIGN IN EMPRESA")
-         click_on 'SIGN IN EMPRESA'
+         expect(page).to have_text("Ingresar")
+         click_on 'Ingresar'
+
+         find('span', text:/Empleador/, visible: false).click
 
          expect(page).to have_text("¿Olvidó su contraseña?")
          click_on '¿Olvidó su contraseña?'

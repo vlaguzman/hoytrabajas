@@ -9,20 +9,18 @@ RSpec.describe "sign in", js: true, type: :feature do
     context 'when I visit "HoyTrabajas.com" and click in "sign in candidato"' do
       scenario "Should login me and redirect to my dashboard" do
         create_candidate
-
         visit root_path
 
+        expect(page).to have_text("Ingresar")
+        click_on 'Ingresar'
 
-
-        expect(page).to have_text("SIGN IN CANDIDATO")
-        click_on 'SIGN IN CANDIDATO'
-
-        expect(page).to have_text(/Iniciar sesión/)
+        expect(page).to have_text(/INICIAR SESIÓN/)
 
         fill_in 'user[email]', with: "candidate@gmail.com"
         fill_in 'user[password]', with: "1wantt$finda7ob"
 
-        click_on 'Iniciar sesión'
+        has_button?("Iniciar sesión")
+        find(".a-button", text: "Iniciar sesión", visible: false).click
 
         expect(current_path).to eq(users_dashboard_path)
       end
@@ -38,18 +36,18 @@ RSpec.describe "sign in", js: true, type: :feature do
 
         visit root_path
 
+        expect(page).to have_text("Ingresar")
+        click_on 'Ingresar'
 
+        expect(page).to have_text(/INICIAR SESIÓN/)
 
-        expect(page).to have_text("SIGN IN EMPRESA")
-        click_on 'SIGN IN EMPRESA'
-
-
-        expect(page).to have_text(/Iniciar sesión/)
+        find('span', text:/Empleador/, visible: false).click
 
         fill_in 'company[email]', with: "company@gmail.com"
         fill_in 'company[password]', with: "1wantt$finda7ob"
 
-        click_on 'Iniciar sesión'
+        has_button?("Iniciar sesión")
+        find(".a-button", text: "Iniciar sesión", visible: false).click
 
         expect(current_path).to eq(companies_dashboard_path)
       end

@@ -12,10 +12,8 @@ RSpec.describe "like sign in user", type: :feature do
       sign_in candidate
 
       visit root_path
-
       
-
-      click_on 'CERRAR SESIÓN'
+      click_on 'Cerrar sesión'
 
       expect(current_path).to eq(root_path)
 

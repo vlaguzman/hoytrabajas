@@ -7,8 +7,8 @@ RSpec.describe "sign up user", js: true, type: :feature do
 
       visit root_path
 
-      expect(page).to have_text("SIGN UP CANDIDATO")
-      click_on 'SIGN UP CANDIDATO'
+      expect(page).to have_text("Registrarme")
+      click_on 'Registrarme'
 
       expect(page).to have_text("Registrarme")
     end
@@ -18,8 +18,8 @@ RSpec.describe "sign up user", js: true, type: :feature do
 
         visit root_path
 
-        expect(page).to have_text("SIGN UP CANDIDATO")
-        click_on 'SIGN UP CANDIDATO'
+        expect(page).to have_text("Registrarme")
+        click_on 'Registrarme'
 
         expect(page).to have_text("Regístrate")
         find(".modal--close-icon", match: :first, visible: false).click
@@ -36,8 +36,8 @@ RSpec.describe "sign up user", js: true, type: :feature do
           actual_users = User.count
 
           visit root_path
-          expect(page).to have_text("SIGN UP CANDIDATO")
-          click_on 'SIGN UP CANDIDATO'
+          expect(page).to have_text("Registrarme")
+          click_on 'Registrarme'
 
           fill_in 'user[email]', :with => "candidate@gmail.com"
           fill_in 'user[password]', :with => "1wantt$finda7ob"
@@ -45,7 +45,8 @@ RSpec.describe "sign up user", js: true, type: :feature do
 
           find('span', text: 'Aceptar términos y condiciones.').click
 
-          click_on 'Registrarme'
+          has_button?("Registrarme")
+          find(".a-button", text: "Registrarme", visible: false).click
 
           expect(User.count).to eq(actual_users + 1)
 
@@ -62,8 +63,8 @@ RSpec.describe "sign up user", js: true, type: :feature do
           actual_users = User.count
 
           visit root_path
-          expect(page).to have_text("SIGN UP CANDIDATO")
-          click_on 'SIGN UP CANDIDATO'
+          expect(page).to have_text("Registrarme")
+          click_on 'Registrarme'
 
           fill_in 'user[email]', :with => "gabriel.meneses@hoytrabajas.com"
           fill_in 'user[password]', :with => "1wantt$finda7ob"
@@ -71,7 +72,8 @@ RSpec.describe "sign up user", js: true, type: :feature do
 
           find('span', text: 'Aceptar términos y condiciones.').click
 
-          click_on 'Registrarme'
+          has_button?("Registrarme")
+          find(".a-button", text: "Registrarme", visible: false).click
 
           expect(User.count).to eq(actual_users + 1)
 
@@ -86,10 +88,10 @@ RSpec.describe "sign up user", js: true, type: :feature do
 
         visit root_path
 
-        expect(page).to have_text("SIGN UP EMPRESA")
-        click_on 'SIGN UP EMPRESA'
+        expect(page).to have_text("Registrarme")
+        click_on 'Registrarme'
 
-        expect(find('span', text: 'Regístrate ahora', visible: false)).to be_present
+        expect(find('h5', text: '¡Regístrate ahora!', visible: false)).to be_present
       end
 
       context "I want to return to the home page" do
@@ -97,10 +99,10 @@ RSpec.describe "sign up user", js: true, type: :feature do
 
           visit root_path
 
-          expect(page).to have_text("SIGN UP EMPRESA")
-          click_on 'SIGN UP EMPRESA'
+          expect(page).to have_text("Registrarme")
+          click_on 'Registrarme'
 
-          expect(find('span', text: 'Regístrate ahora', visible: false)).to be_present
+          expect(find('h5', text: '¡Regístrate ahora!', visible: false)).to be_present
 
           find(".modal--close-icon", match: :first, visible: false).click
 
@@ -115,8 +117,10 @@ RSpec.describe "sign up user", js: true, type: :feature do
         it "should redirect to company step zero" do
 
           visit root_path
-          expect(page).to have_text("SIGN UP EMPRESA")
-          click_on 'SIGN UP EMPRESA'
+          expect(page).to have_text("Registrarme")
+          click_on 'Registrarme'
+
+          find('span', text:/Empleador/, visible: false).click
 
           fill_in "company[email]", :with => "employee@gmail.com"
           fill_in "company[password]", :with => "iwanttofindaemployee"
@@ -124,7 +128,8 @@ RSpec.describe "sign up user", js: true, type: :feature do
 
           find('span', text: 'Aceptar términos y condiciones.').click
 
-          click_button 'Registrarme'
+          has_button?("Registrarme")
+          find(".a-button", text: "Registrarme", visible: false).click
 
           expect(Company.count).to eq(1)
 

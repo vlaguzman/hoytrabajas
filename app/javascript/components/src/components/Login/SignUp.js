@@ -139,28 +139,6 @@ const SignUp = props => {
               />
             </div>
           </div>
-          {/* <LoginInputWrapper>
-            <LoginInputContainer>
-              <Lock
-                style={{
-                  color: 'lightgrey',
-                  top: '0.75rem',
-                  left: '.5rem',
-                  marginLeft: '15px'
-                }}
-              />
-              <LoginInput
-                name={`${sourceName}[password_confirmation]`}
-                id={`${sourceName}_password_confirmation`}
-                className="pl-15 py-10"
-                placeholder={
-                  props.session_translation.sign_up.pass_confirm_label
-                }
-                type="password"
-              />
-            </LoginInputContainer>
-          </LoginInputWrapper> */}
-
           <TermsAndConditionsTLink
             session_translation={props.session_translation.sign_up}
             terms_and_conditions_file_path={

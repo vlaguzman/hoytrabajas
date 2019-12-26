@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
-import Divider from '@material-ui/core/Divider'
 import Typography from '@material-ui/core/Typography'
 import MailOutline from '@material-ui/icons/MailOutline'
 import Radio from '@material-ui/core/Radio'
@@ -84,12 +83,8 @@ const SignIn = props => {
           <div>
             <div className="loginInputContainer">
               <MailOutline
-                className="color__slategray-light"
-                style={{
-                  top: '0.75rem',
-                  left: '.5rem',
-                  marginLeft: '15px'
-                }}
+                className="loginInput__icon color__slategray-light"
+                style={{}}
               />
               <input
                 name={`${sourceName}[email]`}
@@ -101,14 +96,7 @@ const SignIn = props => {
               />
             </div>
             <div className="loginInputContainer">
-              <Lock
-                className="color__slategray-light"
-                style={{
-                  top: '0.75rem',
-                  left: '.5rem',
-                  marginLeft: '15px'
-                }}
-              />
+              <Lock className="loginInput__icon color__slategray-light" />
               <input
                 name={`${sourceName}[password]`}
                 id={`${sourceName}_password`}
@@ -126,7 +114,7 @@ const SignIn = props => {
                 className="m-0 mt-20 color__blue-main fw-bold"
                 style={{ textAlign: 'center', fontSize: '1rem' }}
               >
-                Deseas ingresar como:
+                {props.session_translation.sign_in.sign_in_as}
               </p>
               <RadioGroup
                 aria-label="gender"

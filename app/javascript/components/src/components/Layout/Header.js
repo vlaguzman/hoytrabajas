@@ -98,24 +98,6 @@ const Header = props => {
           color: 'primary'
         }
 
-  function renderMyProfileButton() {
-    if (user_signed_in)
-      return (
-        <NavItem className="list-inline-item">
-          <MatButton
-            className="navbar-item-button"
-            href={pathToProfile}
-            style={{
-              color: isNavTransparent ? 'white' : 'black'
-            }}
-          >
-            Mi perfil
-          </MatButton>
-        </NavItem>
-      )
-    return false
-  }
-
   const LoggedInNav = () => (
     <>
       <NavItem className="list-inline-item a-navItem">
@@ -200,47 +182,6 @@ const Header = props => {
     </>
   )
 
-  /* TODO Oscar move the search bar to a component to have control of this */
-  const FullSearchBarInNavBar = () => (
-    <Row
-      className={`d-none d-lg-flex w-100 m-0 justify-content-around p-0 header-bar ${(!should_change_nav_color ||
-        !isTop) &&
-        'show'}`}
-    >
-      <Col xs={12} md={1} className="pt-rem p-0 align-items-center">
-        <Typography
-          onClick={() => toggleOpenState('categories')}
-          variant="body2"
-          className="text-primary text-center"
-        >
-          Categorias
-        </Typography>
-      </Col>
-      <FormGen fields={fields1} />
-      <Col xs={12} md={2} className="pt-rem p-0 align-items-center text-center">
-        <Typography variant="caption" className="text-primary">
-          <FontAwesomeIcon
-            className="ml-auto text-primary mr-10"
-            icon={['fas', 'list']}
-            size="sm"
-          />
-          Búsqueda avanzada
-        </Typography>
-      </Col>
-      <Col xs={12} md={2} className="pt-rem align-items-center px-20">
-        <MatButton
-          type="button"
-          color="primary"
-          variant="contained"
-          style={{ borderRadius: '20px' }}
-          onClick={() => toggleOpenState('advancedSearch')}
-          className="text-white h-50"
-        >
-          <Typography variant="caption">Prueba Premium</Typography>
-        </MatButton>
-      </Col>
-    </Row>
-  )
   return (
     <Navbar
       position="static"
@@ -336,12 +277,6 @@ const Header = props => {
           </ul>
         </Collapse>
       </div>
-      {/* TODO uncomment when advance search is ready */}
-      {/* <div
-        className={`navbar-row ${should_change_nav_color && isTop && 'd-none'}`}
-      >
-        <FullSearchBarInNavBar/> 
-      </div> */}
       <Login
         {...props}
         currentModal={currentModal}

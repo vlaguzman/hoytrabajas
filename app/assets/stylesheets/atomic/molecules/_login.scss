@@ -26,6 +26,12 @@
       border-color: $color__slategray-light;
       transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     }
+
+    .loginInput__icon {
+      top: 0.75rem;
+      left: 0.5rem;
+      margin-left: 15px;
+    }
   }
 
   .a-radioItems {

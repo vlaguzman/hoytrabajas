@@ -7,44 +7,50 @@
       %span.a-tag__aqua Belleza, Bienestar y Salud
     %div.m-detailsContainer
       %div.m-ditails
-        %div.m-closeDateContainer
+        %div.m-detailBox
           Cierre de la oferta
-          %span.a-closeDate 25 Agosto 2019
-        %div.m-candidatesCountContainer
+          %span.a-detail 25 Agosto 2019
+        %div.m-detailBox
           Aplicaciones
-          %span.a-candidatesCount 26 Candidatos
-        %a{href: '/'}
-          %button Ver oferta
+          %span.a-detail 26 Candidatos
+      %a{href: '/'}
+        %button
+          %i.material-icons remove_red_eye
+          %span Ver oferta
+
     %div.o-listCandidates
-
-      %div.o-listCandidates__container
+      %div.o-listCandidates__container.--desktop
         %div.m-candidateBox
           %img.a-avatar{src: 'http://bit.ly/2SmJyNg'}
           %div.m-detailsContainer
             %div.m-nameContaintainer
               %span.a-name Oscar Hernan Guzman
+              %i.material-icons room
               %span.a-location La Dorada, Caldas
             %div.m-skillsContainer
-              %span.a-title--skills
-              %span.a-skills
+              %span.a-title--skills Habilidades:
+              %span Diseño Gráfico, Redes Sociales, Pauta Digital
           %div.m-affinityPercentageContainer
             %span.a-affinityPercentage 99%
+            %i.material-icons info
           %div.m-profileButtonContainer
             %a
-              %button.--profileButton Ver perfil
+              %button.--watchProfile Ver perfil
 
-      %div.o-listCandidates__container
-        %div.m-candidateBox
-          %img.a-avatar{src: 'http://bit.ly/2SmJyNg'}
-          %div.m-detailsContainer
-            %div.m-nameContaintainer
-              %span.a-name Oscar Hernan Guzman
-              %span.a-location La Dorada, Caldas
-            %div.m-skillsContainer
-              %span.a-title--skills
-              %span.a-skills
-          %div.m-affinityPercentageContainer
-            %span.a-affinityPercentage 99%
-          %div.m-profileButtonContainer
-            %a
-              %button.--profileButton Ver perfil
+      %div.o-listCandidates__container.--mobile
+        %a{href: '/'}
+          %div.m-candidateBox.--mobile
+            %div.m-detailsContainer
+              %div.m-nameContaintainer.--mobile
+                %span.a-name Oscar Hernan Guzman
+                %div
+                  %i.material-icons room
+                  %span.a-location La Dorada, Caldas
+              %div.m-skillsContainer
+                %span.a-title--skills Habilidades:
+                %span Diseño Gráfico, Redes Sociales, Pauta Digital
+            %div.m-affinityPercentageContainer.--mobile
+              %img.a-avatar{src: 'http://bit.ly/2SmJyNg'}
+              %div
+                %span.a-affinityPercentage 99%
+                %i.material-icons info

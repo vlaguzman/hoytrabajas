@@ -1,9 +1,10 @@
-= react_component('views/devise/sessions/new/index',
+= react_component('src/components/Login',
   {session_translation: I18n.t("session"),
    alert_message: alert,
    notice_message: notice,
    csrf_param: request_forgery_protection_token,
    csrf_token: form_authenticity_token,
-   sessions_path: session_path(resource),
+   session_path: session_path(resource),
    source_name: resource_name,
+   currentModal: 'sign_in',
    user_facebook_omniauth_authorize_path: user_facebook_omniauth_authorize_path }, prerender: false)

@@ -15,7 +15,7 @@ RSpec.describe "like sign in user", type: :feature do
 
       
 
-      click_on 'VER MI TABLERO'
+      click_on 'Ver mi tablero'
 
       expect(current_path).to eq(users_dashboard_path)
     end

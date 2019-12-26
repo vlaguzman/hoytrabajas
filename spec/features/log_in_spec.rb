@@ -11,13 +11,13 @@ RSpec.describe "User can Log In", type: :feature do
     scenario "redirect after login to the active admin views", js: true do
 
       visit new_admin_user_session_path
-      expect(page).to have_content("Bienvenido a HoyTrabajas")
+      expect(page).to have_content("Es momento de encontrar tu empleo o empleado ideal")
 
       within "#new_admin_user" do
         fill_in "admin_user_email", with: 'admin@email.com'
         fill_in "admin_user_password", with: 'admin1234'
         has_button?("Iniciar sesión")
-        find("span", text: "Iniciar sesión", visible: false).click
+        find(".a-button", text: "Iniciar sesión", visible: false).click
       end
       expect(page).to have_content("Active Admin")
     end
@@ -28,13 +28,13 @@ RSpec.describe "User can Log In", type: :feature do
 
       visit root_path
 
-      find("#nav_sign_in_candidate").click
+      find(".a-navOpenLogin").click
 
       within "#new_user" do
         fill_in "user_email", with: 'example@email.com'
         fill_in "user_password", with: 'Asdf1234'
 
-        find("span", text: "Iniciar sesión", visible: false).click
+        find(".a-button", text: "Iniciar sesión", visible: false).click
       end
 
       expect(current_path).to eq(users_dashboard_path)
@@ -43,10 +43,10 @@ RSpec.describe "User can Log In", type: :feature do
     scenario "the user want to come back to home page", js: true do
       visit root_path
 
-      expect(page).to have_content("SIGN IN CANDIDATO")
+      expect(page).to have_content("Ingresar")
 
-      has_button?("SIGN IN CANDIDATO")
-      find('span', text:/SIGN IN CANDIDATO/).click
+      has_button?("Ingresar")
+      find('.a-navOpenLogin', text:/Ingresar/).click
 
       find(".modal--close-icon").click
 

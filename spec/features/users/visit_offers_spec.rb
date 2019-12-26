@@ -9,13 +9,10 @@ RSpec.describe "like sign in user", type: :feature do
     let(:candidate) { curriculum_vitae.user }
 
     scenario "should redirect to offers path", js: true do
-      sign_in candidate
 
       visit root_path
 
-      
-
-      click_on 'BUSCAR OFERTAS'
+      click_on 'Busco empleo'
 
       expect(current_path).to eq(offers_path)
     end

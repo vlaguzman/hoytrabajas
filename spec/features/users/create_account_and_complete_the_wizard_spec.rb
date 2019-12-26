@@ -68,7 +68,7 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     visit root_path
 
   #Sign_Up
-    click_on "SIGN UP CANDIDATO"
+    click_on "Registrarme"
 
     fill_in 'user_email', with: 'nuevousuario@gmail.com'
     fill_in 'user_password', with: 'hola12345'
@@ -76,7 +76,8 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
 
     find('span', text: 'Aceptar términos y condiciones.').click
 
-    click_on "Registrarme"
+    has_button?("Registrarme")
+    find(".a-button", text: "Registrarme", visible: false).click
 
   #Step_Zero
     click_on "Quiero completar mi perfil"

@@ -11,7 +11,7 @@ RSpec.describe "like anonymoyus user", type: :feature do
       expect(page).to have_text(/somebody visitedme/)
 
       fill_in 'q[title_cont]', with: 'searchme'
-      find('#searchbar_submit_button').click
+      find('.searchBar__searchIcon').click
 
       expect(page).to have_text('Somebody searchme please')
       expect(page).to_not have_text('Somebody visitedme')

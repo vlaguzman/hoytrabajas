@@ -13,8 +13,8 @@ RSpec.describe "Overall navigation" do
 
         visit root_path
 
-        expect(page).to have_content("INICIO")
-        click_on("INICIO")
+        expect(page).to have_content("Inicio")
+        click_on("Inicio")
 
         expect(current_path).to eq(root_path)
       end
@@ -28,7 +28,7 @@ RSpec.describe "Overall navigation" do
 
         expect(page).to have_content("Faqs")
 
-        click_on("INICIO")
+        click_on("Inicio")
 
         expect(current_path).to eq(root_path)
       end
@@ -36,21 +36,21 @@ RSpec.describe "Overall navigation" do
       it "should visit Candidato page from home page", js: true do
         visit root_path
 
-        expect(page).to have_content("SIGN UP CANDIDATO")
-        find('span', text:/SIGN UP CANDIDATO/, visible: false).click
+        expect(page).to have_content("Registrarme")
+        find('.a-navOpenSignUp', text:/Registrarme/, visible: false).click
 
-        expect(find('span', text: 'Regístrate ahora', visible: false)).to be_present
+        expect(find('h5', text: '¡Regístrate ahora!', visible: false)).to be_present
         find(".modal--close-icon", match: :first, visible: false).click
 
         expect(current_path).to eq(root_path)
       end
 
-      it "should visit 'SIGN UP EMPRESA' page from home page", js: true do
+      it "should visit 'Registrarme' page from home page", js: true do
         visit root_path
 
-        find('span', text:/SIGN UP EMPRESA/, visible: false).click
+        find('.a-navOpenSignUp', text:/Registrarme/, visible: false).click
 
-        expect(find('span', text: 'Regístrate ahora', visible: false)).to be_present
+        expect(find('h5', text: '¡Regístrate ahora!', visible: false)).to be_present
         find(".modal--close-icon", match: :first, visible: false).click
       end
 
@@ -77,7 +77,7 @@ RSpec.describe "Overall navigation" do
 
         expect(page).to have_content("Esta oferta deberia aparec...")
 
-        click_on("INICIO")
+        click_on("Inicio")
 
         expect(current_path).to eq(root_path)
       end
@@ -91,7 +91,7 @@ RSpec.describe "Overall navigation" do
 
         expect(page).to have_content("Categorias de empleo")
 
-        click_on("INICIO")
+        click_on("Inicio")
 
         expect(current_path).to eq(root_path)
       end
@@ -106,7 +106,7 @@ RSpec.describe "Overall navigation" do
         expect(page).to have_content(/Muchas empresas confían en nosotros/)
         expect(page).to have_content(/el talento de su empresa/)
 
-        click_on("INICIO")
+        click_on("Inicio")
 
         expect(current_path).to eq(root_path)
       end

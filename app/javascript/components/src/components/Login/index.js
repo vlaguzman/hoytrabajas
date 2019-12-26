@@ -5,50 +5,48 @@ import SignIn from './SignIn'
 import SignUp from './SignUp'
 
 const Login = ({
-  isOpen,
-  toggleOpenState,
-  currentModal,
-  companies_registration_path,
-  users_registration_path,
-  companies_sessions_path,
-  users_sessions_path,
+  isOpen = true,
+  toggleOpenState = null,
+  currentModal = null,
+  companies_registration_path = null,
+  users_registration_path = null,
+  companies_sessions_path = null,
+  users_sessions_path = null,
+  source_name = null,
+  session_path = null,
+  registration_path = null,
   ...rest
 }) => (
   <Dialog
     fullWidth
     maxWidth="xs"
     open={isOpen}
-    onClose={() => toggleOpenState('login', false)}
+    onClose={() => {
+      if (toggleOpenState) toggleOpenState('login', false)
+      else window.location.assign('/')
+    }}
     aria-labelledby="max-width-dialog-title"
   >
-    {currentModal === 'users_sign_in' && (
+    {currentModal === 'sign_in' && (
       <SignIn
-        source_name="user"
-        sessions_path={users_sessions_path}
+        source_name={source_name || null}
+        session={session_path || null}
+        sessions_path={{
+          user: users_sessions_path,
+          company: companies_sessions_path
+        }}
         toggleOpenState={toggleOpenState}
         {...rest}
       />
     )}
-    {currentModal === 'users_sign_up' && (
+    {currentModal === 'sign_up' && (
       <SignUp
-        source_name="user"
-        registration_path={users_registration_path}
-        toggleOpenState={toggleOpenState}
-        {...rest}
-      />
-    )}
-    {currentModal === 'companies_sign_in' && (
-      <SignIn
-        source_name="company"
-        sessions_path={companies_sessions_path}
-        toggleOpenState={toggleOpenState}
-        {...rest}
-      />
-    )}
-    {currentModal === 'companies_sign_up' && (
-      <SignUp
-        source_name="company"
-        registration_path={companies_registration_path}
+        source_name={source_name || null}
+        registration={registration_path || null}
+        registration_path={{
+          user: users_registration_path,
+          company: companies_registration_path
+        }}
         toggleOpenState={toggleOpenState}
         {...rest}
       />
@@ -62,11 +60,14 @@ Login.propTypes = {
   csrf_token: PropTypes.string.isRequired,
   csrf_param: PropTypes.string.isRequired,
   currentModal: PropTypes.string.isRequired,
-  companies_registration_path: PropTypes.string.isRequired,
-  users_registration_path: PropTypes.string.isRequired,
-  companies_sessions_path: PropTypes.string.isRequired,
-  users_sessions_path: PropTypes.string.isRequired,
-  isOpen: PropTypes.bool.isRequired,
-  toggleOpenState: PropTypes.func.isRequired,
+  companies_registration_path: PropTypes.string,
+  users_registration_path: PropTypes.string,
+  companies_sessions_path: PropTypes.string,
+  users_sessions_path: PropTypes.string,
+  source_name: PropTypes.string,
+  session_path: PropTypes.string,
+  registration_path: PropTypes.string,
+  isOpen: PropTypes.bool,
+  toggleOpenState: PropTypes.func,
   session_translation: PropTypes.object.isRequired
 }

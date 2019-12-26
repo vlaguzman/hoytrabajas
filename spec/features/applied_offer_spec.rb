@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "User applied offer", type: :feature do
-  let(:offer)                 { create(:offer, title: "Test sebas") }
   let(:user)                  { create(:user) }
+  let(:offer)                 { create(:offer, title: "Test sebas") }
   let!(:new_curriculum)       { create(:curriculum_vitae, user_id: user.id) }
   let!(:applied_offer_status) { create(:applied_offer_status, description: 'applied') }
 

@@ -1,1 +1,49 @@
-%h1 hola
+%h1= "Editar #{@offer.title}"
+= form_for @offer do |f|
+  -#= f.input :test, as: :hidden, input_html: { name: request_forgery_protection_token, value: form_authenticity_token }
+  -#= f.input :test2, as: :hidden, input_html: { name: "_method", value: "post" }
+
+  = f.label 'Title'
+  = f.text_field :title
+  %br
+  = f.label 'Categorias de empleo'
+  = f.collection_select :job_categories, JobCategory.all, :id, :description, prompt: true, selected: @offer.job_category_ids
+  %br
+  = f.submit
+
+-#with_tag(:input, with: { name: 'offer[job_category_ids]',      type: "hidden" })
+-#with_tag(:input, with: { name: 'offer[offers_work_positions]', type: "hidden" })
+-#with_tag(:input, with: { name: 'offer[offer_type_id]',         type: "hidden" })
+-#with_tag(:input, with: { name: 'offer[work_mode_id]',          type: "hidden" })
+
+-#with_tag(:input, with: { name: 'offer[contract_type_id]',   type: "hidden" })
+-#with_tag(:input, with: { name: 'offer[vacancies_quantity]', type: "hidden" })
+-#with_tag(:input, with: { name: 'offer[sex_ids][]',          type: "hidden" })
+-#with_tag(:input, with: { name: 'offer[offer_age_range]',    type: "hidden" })
+-#with_tag(:input, with: { name: 'offer[close_date]',         type: "text" })
+-#with_tag(:input, with: { name: 'offer[immediate_start]',    type: "hidden" })
+
+-#with_tag(:input, with: { name: 'offer[is_range]',         type: "hidden" })
+-#with_tag(:input, with: { name: 'offer[currency_id]',      type: "hidden" })
+-#with_tag(:input, with: { name: 'offer[from]',             type: "text" })
+-#with_tag(:input, with: { name: 'offer[salary_period_id]', type: "hidden" })
+
+-#with_tag(:input, with: { name: 'offer[available_work_day_ids][]', type: "hidden" })
+-#with_tag(:input, with: { name: 'offer[working_day_ids][]',        type: "hidden" })
+-#with_tag(:input, with: { name: 'offer[job_aid_ids][]',            type: "hidden" })
+
+-#with_tag(:input, with: { name: 'offer[responsibility_ids][]',  type: "hidden" })
+-#with_tag(:input, with: { name: 'offer[requirement_ids][]',     type: "hidden" })
+-#with_tag(:input, with: { name: 'offer[vehicle_ids][]',         type: "hidden" })
+-#with_tag(:input, with: { name: 'offer[driving_licence_ids][]', type: "hidden" })
+-#with_tag(:input, with: { name: 'offer[city_id]',               type: "hidden" })
+-#with_tag(:input, with: { name: 'offer[educational_degree_id]', type: "hidden" })
+-#with_tag(:input, with: { name: 'offer[duration]',              type: "text" })
+-#with_tag(:input, with: { name: 'offer[duration_type_id]',      type: "hidden" })
+-#with_tag(:input, with: { name: 'offer[required_experience]',   type: "hidden" })
+
+-#with_tag(:input, with: { name: 'offer[technical_skills][][technical_skill_id]', type: "hidden" })
+-#with_tag(:input, with: { name: 'offer[technical_skills][][level_id]',           type: "hidden" })
+
+-#with_tag(:input, with: { name: 'offer[languages][][language_id]', type: "hidden" })
+-#with_tag(:input, with: { name: 'offer[languages][][level_id]',    type: "hidden" })

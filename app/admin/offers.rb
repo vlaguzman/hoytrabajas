@@ -11,8 +11,8 @@ ActiveAdmin.register Offer do
     column :immediate_start
     column :required_experience
     column :status
-    actions do
-      link_to 'Editar', edit_admins_offer_path(self.id)
+    actions do |offer|
+      link_to 'Editar', edit_admins_offer_path(offer_id: offer.id)
     end
   end
 

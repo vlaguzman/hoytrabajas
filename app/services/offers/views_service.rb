@@ -1,7 +1,7 @@
 class Offers::ViewsService
   include ActionView::Helpers
 
-  DEFAULT_IMAGE_CATEGORY_URL = ENV['DEFAULT_IMAGE_CATEGORY_URL'] 
+  DEFAULT_IMAGE_CATEGORY_URL = ENV['DEFAULT_IMAGE_CATEGORY_URL']
   DEFAULT_IMAGE_LOGO_URL = ENV['DEFAULT_IMAGE_LOGO_URL']
 
   attr_accessor :offer, :current_user
@@ -68,8 +68,8 @@ class Offers::ViewsService
   private
 
   def company_logo_image
-    offer.company.logo.attached? ? 
-      Rails.application.routes.url_helpers.rails_blob_path(offer.company.logo, disposition: "attachment", only_path: true) 
+    offer.company.logo.attached? ?
+      Rails.application.routes.url_helpers.rails_blob_path(offer.company.logo, disposition: "attachment", only_path: true)
       : DEFAULT_IMAGE_LOGO_URL
   end
 

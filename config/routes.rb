@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   namespace :companies do
     resource :dashboard, only: [:show]
+    resources :list_candidates, only: [:show]
 
     namespace :first_offer do
       resource :step_zero,  only: [:show]
@@ -31,7 +32,7 @@ Rails.application.routes.draw do
 
   namespace :users do
     resource :dashboard, only: [:show]
-    resource :profile, only: [:show]
+    resources :profile, only: [:show]
 
     namespace :wizards do
       resource :step_zero,    only: [:show]

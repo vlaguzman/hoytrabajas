@@ -110,7 +110,7 @@ const Second = ({ my_offers, my_offers_section, edit_offer_path }) => {
                         </IconButton>
                       </TableCell>
                       <TableCell align="center" size="medium">
-                        <a href={`/offers/${row.id}`}>{row.title}</a>
+                        <a href={row.list_candidates_path}>{row.title}</a>
                       </TableCell>
                       <TableCell align="left" size="small">
                         {row.approved

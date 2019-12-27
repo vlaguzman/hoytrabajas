@@ -26,7 +26,7 @@ RSpec.describe AffinityCalculator do
   let(:the_curriculum_vitae)      { create(:curriculum_vitae) }
   let(:curriculum_job_categories) { create(:empty_curriculum_vitae, user: user_contract_c)}
   let(:relations_curriculum)      { create(:curriculum_vitae, job_categories: job_categories, working_days: working_days) }
-  
+
   let(:subject) { AffinityCalculator.new(the_offer, the_user) }
 
   describe "#affinity_percentage" do
@@ -73,26 +73,30 @@ RSpec.describe AffinityCalculator do
   end
 
   describe "#not_nil_attributes_to_compare" do
-    context "The class is Offer" do 
+    context "The class is Offer" do
       context "The offer has not any data" do
         it "should return a empty hash" do
           response = subject.not_nil_attributes_to_compare(Offer, empty_offer)
+
           expect(response).to be_empty
         end
       end
 
       context "The offer has all data" do
         it "should return a hash with all the offer to compare data" do
-          expected_object = {:city_id=>the_offer.city.id, 
-                             :work_mode_id=>the_offer.work_mode.id, 
-                             :contract_type_id=>the_offer.contract_type.id}
+          expected_object = {
+            city_id: the_offer.city.id,
+            work_mode_id: the_offer.work_mode.id,
+            contract_type_id: the_offer.contract_type.id
+          }
+
           response = subject.not_nil_attributes_to_compare(Offer, the_offer)
           expect(response).to eq(expected_object)
         end
       end
-    end 
+    end
 
-    context "The class is User" do 
+    context "The class is User" do
       context "The user has not any data" do
         it "should return a empty hash" do
           response = subject.not_nil_attributes_to_compare(User, empty_user)
@@ -102,16 +106,19 @@ RSpec.describe AffinityCalculator do
 
       context "The user has all data" do
         it "should return a hash with all the user to compare data" do
-          expected_object = {:contract_type_id=>the_user.contract_type.id, 
-                             :educational_degree_id=>the_user.educational_degree.id, 
-                             :sex_id=>the_user.sex.id}
+          expected_object = {
+            contract_type_id: the_user.contract_type.id,
+            educational_degree_id: the_user.educational_degree.id,
+            sex_id: the_user.sex.id
+          }
+
           response = subject.not_nil_attributes_to_compare(User, the_user)
           expect(response).to eq(expected_object)
         end
       end
-    end 
+    end
 
-    context "The class is Curriculum Vitae" do 
+    context "The class is Curriculum Vitae" do
       context "The curriculum vitae has not any data" do
         it "should return a empty hash" do
           response = subject.not_nil_attributes_to_compare(CurriculumVitae, empty_curriculum_vitae)
@@ -121,14 +128,14 @@ RSpec.describe AffinityCalculator do
 
       context "The curriculum vitae has all data" do
         it "should return a hash with all the user to compare data" do
-          expected_object = {:city_id=>the_curriculum_vitae.city.id} 
+          expected_object = {:city_id=>the_curriculum_vitae.city.id}
           response = subject.not_nil_attributes_to_compare(CurriculumVitae, the_curriculum_vitae)
           expect(response).to eq(expected_object)
         end
       end
-    end 
+    end
   end
-  
+
   describe "#not_empty_lists_to_compare" do
     context "The class is Offer" do
       context "The offer just has the categories job list" do
@@ -138,7 +145,7 @@ RSpec.describe AffinityCalculator do
           expect(response[:job_categories].first).to eq(empty_offer.job_categories.first)
         end
       end
-      
+
       context "The offer has more than one list" do
         it "should return a hash with all the offer lists data" do
           response = subject.not_empty_lists_to_compare(Offer, relations_offer)
@@ -155,7 +162,7 @@ RSpec.describe AffinityCalculator do
           expect(response).to be_empty
         end
       end
-      
+
       context "The user has more than one list" do
         it "should return a hash with all the user lists data" do
           response = subject.not_empty_lists_to_compare(User, the_user)
@@ -172,7 +179,7 @@ RSpec.describe AffinityCalculator do
           expect(response).to be_empty
         end
       end
-      
+
       context "The curriculum_vitae has more than one list" do
         it "should return a hash with all the offer lists data" do
           response = subject.not_empty_lists_to_compare(CurriculumVitae, relations_curriculum)

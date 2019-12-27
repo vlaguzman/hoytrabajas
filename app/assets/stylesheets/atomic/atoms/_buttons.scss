@@ -57,3 +57,28 @@
   border-radius: 50%;
   text-transform: uppercase;
 }
+
+button {
+  &.--watchProfile {
+    background-color:#ffffff;
+    border-radius:5px;
+    border:1px solid #d5dbe3;
+    display:inline-block;
+    cursor:pointer;
+    color:#0b5ba0;
+    font-family:Arial;
+    font-size:0.9rem;
+    font-weight:bold;
+    padding:1vh 3vw;
+    text-decoration:none;
+
+    &:hover {
+      background-color: $color__gray-extralight;
+    }
+    &:active {
+      position:relative;
+      top:1px;
+    }
+
+  }
+}

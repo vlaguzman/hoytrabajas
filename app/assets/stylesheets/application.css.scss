@@ -21,6 +21,8 @@
 @import 'scss/custom/mixins/mixin';
 // /*==== Google Fonts  ====*/
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700,800,900&display=swap');
+// /*==== Google MAterial Icons ====*/
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons&display=swap');
 // // Custom themes Files
 @import 'scss/custom/themes/themes';
 // /*==== Core Utilities =====*/
@@ -44,6 +46,8 @@
 @import 'components/users/wizards/step_seven';
 @import 'components/users/wizards/step_eights/work_experience';
 @import 'components/users/wizards/step_eleven';
+
+@import 'components/companies/list_candidates';
 
 @import 'components/filter_home';
 

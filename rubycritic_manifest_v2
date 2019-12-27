@@ -26,8 +26,8 @@ A          • BaseForms::WizardsSubFormsService                           1    
 A          • BaseForms::WizardsTranslationsService                       1       30.83      0           1
 A          • City                                                        5       0.0        0           1
 A          • Companies                                                   7       1.3        0           1
-A          • Companies::Dashboards::OffersService                        2       21.65      0           1
-A          • Companies::DashboardsController                             2       7.23       0           1
+A          • Companies::Dashboards::OffersService                        3       28.65      0           2
+A          • Companies::DashboardsController                             3       7.23       0           1
 A          • Companies::DashboardsPresenter                              2       3.2        0           2
 A          • Companies::FirstOffer::CommonService                        2       2.45       0           1
 A          • Companies::FirstOffer::StepEight::FormParamsService         3       0.0        0           1
@@ -54,6 +54,9 @@ A          • Companies::FirstOffer::StepTwoService                       6    
 A          • Companies::FirstOffer::StepZeroPresenter                    2       1.0        0           2
 A          • Companies::FirstOffer::StepZerosController                  3       3.24       0           1
 A          • Companies::FirstOfferPresenter                              4       4.8        0           1
+A          • Companies::ListCandidates::AppliedCandidatesService         1       43.67      0           2
+A          • Companies::ListCandidatesController                         2       6.94       0           1
+A          • Companies::ListCandidatesPresenter                          1       20.6       0           1
 A          • Companies::RegistrationsController                          6       1.0        0           2
 A          • CompaniesController                                         7       3.4        0           1
 A          • CompaniesUsers                                              1       0.0        0           1
@@ -64,7 +67,7 @@ A          • CompanyTransition                                           2    
 A          • ContractType                                                1       0.0        0           1
 A          • Country                                                     4       0.0        0           1
 A          • Currency                                                    1       0.0        0           1
-A          • CurriculumVitae                                             36      8.6        0           1
+A          • CurriculumVitae                                             37      8.6        0           1
 A          • CurriculumVitaeSalary                                       3       0.0        0           1
 A          • CurriculumVitaes                                            1       0.0        0           0
 A          • CurriculumVitaesEducationalDegrees                          1       0.0        0           1
@@ -135,8 +138,9 @@ A          • StringConverter                                             3    
 A          • TechnicalSkill                                              6       0.0        0           1
 A          • TechnicalSkillCategory                                      1       0.0        0           1
 A          • Term                                                        4       0.0        0           1
-A          • User                                                        41      30.17      0           2
+A          • User                                                        42      30.17      0           2
 A          • Users                                                       8       1.3        0           1
+A          • Users::CurriculumVitaes::ProfilePhotoService                1       19.43      0           2
 A          • Users::Dashboards::OffersService                            2       31.49      0           2
 A          • Users::DashboardsController                                 10      5.69       0           1
 A          • Users::OmniauthCallbacksController                          1       21.49      0           5
@@ -221,7 +225,7 @@ B          • Companies::FirstOffer::StepSixPresenter                     4    
 B          • Companies::FirstOffer::StepSixService                       4       22.62      18          4
 B          • Companies::FirstOffer::StepTwosController                   10      20.32      27          2
 B          • Offers::ShowService                                         17      87.8       0           1
-B          • Offers::ViewsService                                        18      85.3       0           7
+B          • Offers::ViewsService                                        19      85.3       0           7
 B          • Users::Wizards::StepOneService                              3       3.0        19          2
 B          • Users::Wizards::StepSixService                              11      35.03      31          2
 B          • Users::Wizards::StepTwoService                              2       3.0        19          2

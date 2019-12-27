@@ -60,25 +60,61 @@
 
 button {
   &.--watchProfile {
-    background-color:#ffffff;
-    border-radius:5px;
-    border:1px solid #d5dbe3;
-    display:inline-block;
-    cursor:pointer;
-    color:#0b5ba0;
-    font-family:Arial;
-    font-size:0.9rem;
-    font-weight:bold;
-    padding:1vh 3vw;
-    text-decoration:none;
+    background-color: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #d5dbe3;
+    display: inline-block;
+    cursor: pointer;
+    color: #0b5ba0;
+    font-family: Arial;
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 1vh 3vw;
+    text-decoration: none;
 
     &:hover {
       background-color: $color__gray-extralight;
     }
     &:active {
-      position:relative;
-      top:1px;
+      position: relative;
+      top: 1px;
     }
+  }
+}
 
+.a-button__toggleFooter {
+  color: $color__blue-main;
+  font-weight: bold;
+  letter-spacing: normal;
+  line-height: normal;
+  background: none;
+  width: 100%;
+  cursor: pointer;
+  padding: 10px 30px;
+  text-align: left;
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1rem;
+  }
+
+  span:after {
+    content: '';
+    height: 0;
+    width: 0;
+    margin: 0 0 2px 7px;
+    border: solid $color__blue-main;
+    border-width: 0 2px 2px 0;
+    padding: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+
+  span.opened:after {
+    margin: 0 0 -4px 7px;
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
   }
 }

@@ -1,0 +1,13 @@
+es:
+  companies:
+    list_candidates:
+        show:
+          tags:
+            immediate_start: 'Immediate start'
+          close_date: 'Close Date'
+          applied_candidadtes: 'Applied Candidates'
+          candidates: 'Candidate(s)'
+          buttons:
+            visit_offer: 'Visit offer'
+            visit_profile: 'Visit Profile'
+          skills: 'Skills:'

@@ -22,7 +22,8 @@ module Companies::Dashboards::OffersService
       applied_candidates: applied_offers_count(offer),
       start_date: date_parser(offer.created_at),
       close_date: date_parser(offer.close_date),
-      status: offer.status
+      status: offer.status,
+      list_candidates_path: rails_routes.companies_list_candidate_path(offer.id)
     }
   end
 
@@ -36,6 +37,10 @@ module Companies::Dashboards::OffersService
 
   def self.date_parser(date)
     DatesManager.default(date: date) if date.present?
+  end
+
+  def self.rails_routes
+    Rails.application.routes.url_helpers
   end
 
 end

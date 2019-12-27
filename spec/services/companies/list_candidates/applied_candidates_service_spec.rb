@@ -4,18 +4,15 @@ RSpec.describe Companies::ListCandidates::AppliedCandidatesService do
 
   let(:vehicles) { [create(:vehicle, description: "Moto")] }
 
-  let!(:categories) do
-    [
-      create(:job_category, description: 'Moda'),
-      create(:job_category, description: 'Salud')
-    ]
-  end
+  let(:technical_skills) { [
+    create(:technical_skill, description: "PHP"),
+    create(:technical_skill, description: "Ruby")
+  ] }
 
   let(:main_offer) { create(:offer, vehicles: vehicles) }
 
   let(:curriculum_vitae1) do
-    create(:curriculum_vitae,
-      job_categories: categories,
+    create(:curriculum_vitae, :empty,
       user: create(:user,
         name: 'Alfred',
         last_name: 'Dito',
@@ -28,9 +25,13 @@ RSpec.describe Companies::ListCandidates::AppliedCandidatesService do
     )
   end
 
+  let!(:skill_1) do
+    create(:curriculum_vitaes_technical_skills, curriculum_vitae: curriculum_vitae1, technical_skill: technical_skills[0])
+    create(:curriculum_vitaes_technical_skills, curriculum_vitae: curriculum_vitae1, technical_skill: technical_skills[1])
+  end
+
   let(:curriculum_vitae2) do
-    create(:curriculum_vitae,
-      job_categories: categories,
+    cv = create(:curriculum_vitae, :empty,
       user: create(:user,
         name: 'Ali',
         last_name: 'Kater',
@@ -40,6 +41,10 @@ RSpec.describe Companies::ListCandidates::AppliedCandidatesService do
         ).id
       )
     )
+  end
+
+  let!(:skill_2) do
+    create(:curriculum_vitaes_technical_skills, curriculum_vitae: curriculum_vitae2, technical_skill: technical_skills[1])
   end
 
   let!(:applied_offer1) { create(:applied_offer, curriculum_vitae: curriculum_vitae1, offer: main_offer) }
@@ -52,16 +57,18 @@ RSpec.describe Companies::ListCandidates::AppliedCandidatesService do
         {
           name: 'Alfred Dito',
           location: 'La Dorada, Caldas',
-          technical_skills: ['Moda', 'Salud'],
-          affinity_percentage: 20,
-          profile_path: "/users/profile/#{curriculum_vitae1.user.id}"
+          technical_skills: "PHP, Ruby",
+          affinity_percentage: "20%",
+          profile_path: "/users/profile/#{curriculum_vitae1.user.id}",
+          avatar: Rails.application.routes.url_helpers.rails_blob_path(curriculum_vitae1.photo, disposition: "attachment", only_path: true)
         },
         {
           name: 'Ali Kater',
           location: 'Puerto Salgar, Cundinamarca',
-          technical_skills: ['Moda', 'Salud'],
-          affinity_percentage: 0,
-          profile_path:"/users/profile/#{curriculum_vitae2.user.id}"
+          technical_skills: "Ruby",
+          affinity_percentage: "0%",
+          profile_path:"/users/profile/#{curriculum_vitae2.user.id}",
+          avatar: Rails.application.routes.url_helpers.rails_blob_path(curriculum_vitae2.photo, disposition: "attachment", only_path: true)
         },
       ]
 

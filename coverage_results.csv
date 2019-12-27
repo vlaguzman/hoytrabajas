@@ -20,7 +20,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/contract_type.rb",100,3,2,2,0
 "./app/models/country.rb",100,3,2,2,0
 "./app/models/currency.rb",100,3,2,2,0
-"./app/models/curriculum_vitae.rb",100,57,38,38,0
+"./app/models/curriculum_vitae.rb",100,61,40,40,0
 "./app/models/curriculum_vitae_salary.rb",100,10,7,7,0
 "./app/models/curriculum_vitaes_educational_degrees.rb",100,4,3,3,0
 "./app/models/curriculum_vitaes_languages.rb",100,5,4,4,0
@@ -74,7 +74,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/technical_skill.rb",100,8,6,6,0
 "./app/models/technical_skill_category.rb",100,3,2,2,0
 "./app/models/term.rb",100,5,3,3,0
-"./app/models/user.rb",100,64,36,36,0
+"./app/models/user.rb",100,65,37,37,0
 "./app/models/users_limitations.rb",100,8,4,4,0
 "./app/models/users_nationalities.rb",100,6,3,3,0
 "./app/models/vehicle.rb",100,6,4,4,0
@@ -97,6 +97,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/companies/first_offer/step_two_presenter.rb",100,28,10,10,0
 "./app/presenters/companies/first_offer/step_zero_presenter.rb",100,7,3,3,0
 "./app/presenters/companies/first_offer_presenter.rb",100,13,4,4,0
+"./app/presenters/companies/list_candidates_presenter.rb",100,33,16,16,0
 "./app/presenters/home/home_presenter.rb",100,53,14,14,0
 "./app/presenters/offers_presenter.rb",100,25,13,13,0
 "./app/presenters/users/wizards/step_eight_presenter.rb",100,32,12,12,0
@@ -123,7 +124,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/base_forms/wizards_errors_service.rb",100,7,3,3,0
 "./app/services/base_forms/wizards_sub_forms_service.rb",100,32,9,9,0
 "./app/services/base_forms/wizards_translations_service.rb",100,22,11,11,0
-"./app/services/companies/dashboards/offers_service.rb",100,41,16,16,0
+"./app/services/companies/dashboards/offers_service.rb",100,46,18,18,0
 "./app/services/companies/first_offer/common_service.rb",100,11,5,5,0
 "./app/services/companies/first_offer/step_eight/form_params_service.rb",100,2,1,1,0
 "./app/services/companies/first_offer/step_five/form_params_service.rb",100,65,26,26,0
@@ -140,12 +141,14 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/companies/first_offer/step_three_service.rb",100,45,25,25,0
 "./app/services/companies/first_offer/step_two/form_params_service.rb",100,7,2,2,0
 "./app/services/companies/first_offer/step_two_service.rb",100,6,3,3,0
+"./app/services/companies/list_candidates/applied_candidates_service.rb",100,54,23,23,0
 "./app/services/company_service.rb",100,38,20,20,0
 "./app/services/offers/applied_offer_service.rb",100,15,6,6,0
 "./app/services/offers/index_service.rb",100,18,7,7,0
 "./app/services/offers/show_service.rb",100,76,27,27,0
 "./app/services/offers/views_service.rb",100,83,34,34,0
 "./app/services/offers_service.rb",100,33,14,14,0
+"./app/services/users/curriculum_vitaes/profile_photo_service.rb",100,24,12,12,0
 "./app/services/users/dashboards/offers_service.rb",100,51,21,21,0
 "./app/services/users/wizard_service.rb",100,48,20,20,0
 "./app/services/users/wizards/errors_service.rb",100,17,9,9,0

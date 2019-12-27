@@ -13,7 +13,7 @@ RSpec.describe "Like a company", type: :feature do
 
       find('a', text:'Selectable offer').click
 
-      expect(current_path).to eq(offer_path(create_selctable_offer))
+      expect(current_path).to eq(companies_list_candidate_path(create_selctable_offer))
     end
   end
 end

@@ -22,8 +22,8 @@
           %span= t('.buttons.visit_offer')
 
     %div.o-listCandidates
-      - @offer.list_applied_candidates.each do |candidate|
-        %div.o-listCandidates__container.--desktop
+      %div.o-listCandidates__container.--desktop
+        - @offer.list_applied_candidates.each do |candidate|
           %div.m-candidateBox
             %img.a-avatar{src: candidate[:avatar]}
             %div.m-detailsContainer
@@ -44,8 +44,8 @@
             -#  %a{href: candidate[:profile_path]}
             -#    %button.--watchProfile= t('.buttons.visit_profile')
 
-      - @offer.list_applied_candidates.each do |candidate|
-        %div.o-listCandidates__container.--mobile
+      %div.o-listCandidates__container.--mobile
+        - @offer.list_applied_candidates.each do |candidate|
           -#TODO Oscar Uncommnet when the profile view is complete
           -#%a{href: candidate[:profile_path]}
           %div.m-candidateBox.--mobile

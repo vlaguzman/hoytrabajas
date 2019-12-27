@@ -97,7 +97,7 @@
         border:1px solid $color__yellow-main;
         cursor:pointer;
         color: white;
-        font-size:14px;
+        font-size:0.9rem;
         font-weight:bold;
         padding: 1vh 2vw;
 
@@ -126,7 +126,7 @@
       align-items: stretch;
       justify-content: center;
       flex-direction: column;
-      margin-top: 5vh 1vw 1vw 1vw;
+      margin: 5vh 0 3vh 0;
 
       &.--desktop {
         @media screen and (max-width: 768px) {
@@ -135,6 +135,8 @@
       }
 
       &.--mobile {
+        margin: 0;
+
         @media screen and (min-width: 768px) {
           display: none;
         }
@@ -144,7 +146,7 @@
     .m-candidateBox {
       display: flex;
       align-items: center;
-      justify-content: space-around;
+      justify-content: space-between;
       border-radius: 6px;
       margin: 4vh 2vw 1vh 2vw;
       box-shadow: 0 12px 30px 1px #ebebf0;
@@ -161,6 +163,7 @@
       }
 
       .m-detailsContainer {
+        width:40vh;
         background-color: white;
         display: flex;
         flex-direction: column;

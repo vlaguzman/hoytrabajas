@@ -13,7 +13,9 @@ RSpec.describe Users::CurriculumVitaes::ProfilePhotoService do
   context "When user have a profile photo" do
 
     it "Should return the profile photo path" do
-      expect(subject.(curriculum_vitae: cv)).to eq('/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--427671d8e69d3368c6c3ddf915219c44d5c11539/photo.jpg?disposition=attachment')
+      photo_path = Rails.application.routes.url_helpers.rails_blob_path(cv.photo, disposition: "attachment", only_path: true)
+
+      expect(subject.(curriculum_vitae: cv)).to eq(photo_path)
     end
   end
 

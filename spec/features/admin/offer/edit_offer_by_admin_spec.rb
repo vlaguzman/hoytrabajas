@@ -5,8 +5,11 @@ RSpec.describe "Admin can edit an offer", type: :feature do
 
   context "a admin user must be able to edit a created offer" do
 
-    let!(:job_category) { create(:job_category, description: 'Computation & Programming') }
-    let!(:offer)        { create(:offer, title: 'Oferta para devs chidos', job_category_ids: [job_category.id]) }
+    let!(:job_category_1) { create(:job_category, description: 'Programming') }
+    let!(:offer)          { create(:offer, title: 'Oferta para devs chidos', job_category_ids: [job_category_1.id]) }
+
+   #let!(:job_category_1) { create(:job_category, description: 'Programming') }
+    let!(:job_category_2) { create(:job_category, description: 'Computation') }
 
     scenario "the admin select an offer and edit all the data" do
       sign_in FactoryBot.create(:admin_user)
@@ -68,7 +71,12 @@ RSpec.describe "Admin can edit an offer", type: :feature do
 
       within "#edit_offer_#{offer.id}" do
         fill_in 'offer[title]', with: 'Oferta para devs suaves'
-        select("#{job_category.description}", from: 'offer[job_categories]')
+
+#       select = page.find('select#offer_job_categories')
+#       select.select "#{job_category_1.description}"
+#       select.select "#{job_category_2.description}"
+
+#       save_page('daniel.html')
         click_on('Update Offer')
       end
 

@@ -1,17 +1,9 @@
 %h1= "Editar #{@offer.title}"
-= form_for @offer do |f|
-  -#= f.input :test, as: :hidden, input_html: { name: request_forgery_protection_token, value: form_authenticity_token }
-  -#= f.input :test2, as: :hidden, input_html: { name: "_method", value: "post" }
-
-  = f.label 'Title'
-  = f.text_field :title
-  %br
-  = f.label 'Categorias de empleo'
-  = f.collection_select :job_categories, JobCategory.all, :id, :description, prompt: true, selected: @offer.job_category_ids
-  %br
-  = f.submit
-
--#with_tag(:input, with: { name: 'offer[job_category_ids]',      type: "hidden" })
+= simple_form_for @offer, url: admins_offer_path do |f|
+  = f.input :title, label: 'Titulo'
+  = f.input :job_categories, collection: JobCategory.all.pluck(:description), checked: @offer.job_categories.pluck(:description), as: :check_boxes
+  = f.input :job_categories, collection: JobCategory.all.pluck(:description), selected: @offer.job_categories.pluck(:description)
+  = f.button :submit
 -#with_tag(:input, with: { name: 'offer[offers_work_positions]', type: "hidden" })
 -#with_tag(:input, with: { name: 'offer[offer_type_id]',         type: "hidden" })
 -#with_tag(:input, with: { name: 'offer[work_mode_id]',          type: "hidden" })
@@ -47,3 +39,18 @@
 
 -#with_tag(:input, with: { name: 'offer[languages][][language_id]', type: "hidden" })
 -#with_tag(:input, with: { name: 'offer[languages][][level_id]',    type: "hidden" })
+-#################################################################################################
+
+-#= form_for @offer, url: admins_offer_path do |f|
+-#  = f.hidden_field :form_authenticity_token, name: request_forgery_protection_token, value: form_authenticity_token
+-#  = f.hidden_field :method, name: "_method", value: "put"
+-#
+-#  = f.label 'Title'
+-#  = f.text_field :title
+-#  %br
+-#  = f.label 'Categorias de empleo'
+-#  = f.select :job_categories, JobCategory.all.collect {|p| [ p.description, p.id ] }, {}, {:multiple => true, :selected => @offer.job_category_ids}
+-#  = f.select :job_categories, options_for_select(JobCategory.all.pluck(:description, :id), selected: @offer.job_categories.pluck(:description, :id)), { multiple: true }
+-#  %br
+-#  = f.submit
+-#-#= f.collection_select :job_categories, JobCategory.all, :id, :description, promnt: true, selected: @offer.job_category_ids, multiple: true

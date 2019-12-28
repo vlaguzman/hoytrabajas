@@ -61,15 +61,15 @@ const Education = ({
   list = defaultList,
   translations = defaultTranslations
 }) => (
-  <div className="m-educationCards mt-60">
+  <div className="m-educationCards">
     <CarouselRow slidesToShow={2} autoplay={false}>
       {list.map(item => (
         <div className="pt-20 h-100">
-          <div className="d-flex flex-column mx-20 a-shadow__card p-20 h-100">
+          <div className="d-flex flex-column a-shadow__card singleCard m-boxSmallInformation">
             <div className="d-flex">
               <div className="a-educationCard__title">
-                <p className="a-typo__body1 fw-bolder m-0">{item.title}</p>
-                <p className="a-typo__body2 fw-bold color__blue-main">
+                <p className="a-typo__body1 fw-bolder m-0 title">{item.title}</p>
+                <p className="a-typo__body2 fw-bold color__blue-main subtitle">
                   {item.institution_name}
                 </p>
               </div>
@@ -81,9 +81,9 @@ const Education = ({
                 />
               </div>
             </div>
-            <p className="a-typo__caption fw-bold">{item.city_id}</p>
-            <Divider className="mt-auto" />
-            <p className="a-educationCard__date a-typo__caption mt-10 fw-bold color__blue-main">
+            <p className="a-typo__caption fw-bold infoCity">{item.city_id}</p>
+            <Divider/>
+            <p className="a-educationCard__date a-typo__caption mt-10 fw-bold color__blue-main infoCity infoDates">
               {formatDate(item.start_date)} -{' '}
               {item.ongoing_study
                 ? translations.ongoing_study

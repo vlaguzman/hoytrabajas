@@ -9,4 +9,9 @@ span.a-skill {
   font-size: 0.75rem;
   padding: 3px 9px;
   color: #979797;
+
+  &.color-orange {
+    background-color: #ff7b00;
+    color: #fff;
+  }
 }

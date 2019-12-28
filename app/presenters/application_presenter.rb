@@ -27,4 +27,8 @@ class ApplicationPresenter < SimpleDelegator
   def rails_routes
     Rails.application.routes.url_helpers
   end
+
+  def yield_if(condition)
+    yield if condition
+  end
 end

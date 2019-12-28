@@ -56,17 +56,17 @@ const Experience = ({
   list = defaultList,
   translations = defaultTranslations
 }) => (
-  <div className="m-experienceCards mt-60">
+  <div className="m-experienceCards">
     <CarouselRow slidesToShow={2} autoplay={false}>
       {list.map(item => (
         <div className="pt-20 h-100">
-          <div className="d-flex flex-column mx-20 a-shadow__card p-20 h-100">
-            <p className="a-typo__body1 fw-bolder m-0">{item.work_position}</p>
+          <div className="d-flex flex-column a-shadow__card p-20 h-100 m-boxSmallInformation singleCard">
+            <p className="a-typo__body1 fw-bolder m-0 titleCardExperience">{item.work_position}</p>
             <div className="companyWithDate">
-              <span className="a-typo__body2 fw-bold color__blue-main">
+              <span className="a-typo__body2 fw-bold color__blue-main titleCompany">
                 {item.company_name}
               </span>
-              <span className="a-experienceCard__date fw-bold color__gray-main">
+              <span className="a-experienceCard__date fw-bold color__gray-main dateExperience">
                 {formatDate(item.started_at)} -{' '}
                 {item.still_in_progress
                   ? translations.still_in_progress
@@ -75,12 +75,12 @@ const Experience = ({
             </div>
             {item.responsibilities && item.responsibilities.length > 0 && (
               <>
-                <p className="a-typo__caption m-0 mt-5 fw-bold">
+                <p className="a-typo__caption m-0 mt-5 fw-bold titleResponsibilities">
                   {translations.responsibilities}
                 </p>
                 <div className="flex-wrap justify-content-start my-10">
                   {item.responsibilities.map(resp => (
-                    <span className="a-chip__gray d-inline-flex mr-5">
+                    <span className="a-chip__gray d-inline-flex mr-5 a-skill">
                       {resp}
                     </span>
                   ))}
@@ -88,7 +88,7 @@ const Experience = ({
               </>
             )}
             <div>
-              <span className="a-chip__orange d-inline-flex jobCategory a-typo__caption mt-10 fw-bold color__blue-main fw-bold">
+              <span className="a-chip__orange d-inline-flex jobCategory a-typo__caption fw-bold color__blue-main fw-bold a-skill color-orange">
                 {item.job_category}
               </span>
             </div>

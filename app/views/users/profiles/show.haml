@@ -4,69 +4,76 @@
   .m-box.o-boxPrincipal
     .headerBox
       %img{src: image_path("/assets/static/avatars/user-10.jpg"), alt: 'Photo Profile'}
-      %h1="#{@user.name} #{@user.last_name}"
+      - puts @user.inspect
+      %h1=raw "#{@user.name} <strong>#{@user.last_name}</strong>"
       .infoCandidate
         .iconMoreText
           %i.material-icons location_city
-          %span Bogota
+          %span= @user.city.description
         .iconMoreText
           %i.material-icons email
-          %span vicmezquita@gmail.com
+          %span= @user.email
         .iconMoreText
           %i.material-icons phone_iphone
-          %span 310 123 456 789
+          %span= @user.contact_number_with_format
     .bodyBox
       %h2 Sobre Mi
-      %p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      %span.additionalInformation Disponible para trabajar en otra ciudad
+      %p.aboutMe= @user.about_me
+      - @user.yield_if(@user.curriculum_vitae.travel_disponibility) do
+        %span.additionalInformation Disponible para trabajar en otra ciudad
     .bodyBox
       %h2 Mis intereses
       .boxInterests
         .typeSkill
           %h4 Categorias de interes
-          %span.a-skill Marketing
-          %span.a-skill Programacion y tecnologia
+          .contentSkills
+            - @user.curriculum_vitae.job_categories.each do |job_category|
+              %span.a-skill=job_category.description
         .typeSkill
           %h4 tipos de oferta de interes
-          %span.a-skill Tiempo completo
-          %span.a-skill Medio tiempo
+          .contentSkills
+            - @user.curriculum_vitae.offer_types.each do |offer_type|
+              %span.a-skill= offer_type.description
         .typeSkill
           %h4 Modalidad de trabajo
-          %span.a-skill Teletrabajo / Remoto
-          %span.a-skill Presencial
+          .contentSkills
+            - @user.curriculum_vitae.work_modes.each do |work_mode|
+              %span.a-skill= work_mode.description
         .typeSkill
           %h4 Tipos de acuerdo
-          %span.a-skill Termino indefinido
+          .contentSkills
+            %span.a-skill= @user.curriculum_vitae.contract_type.description
     .bodyBox
       %h2 Habilidades
-      %h3 Habilidades blandas validadas
-      .boxSkills
-        %h3 Habilidades tecnicas
-        .skillSpecific
-          %h4.nameSkill Marketing y ventas
-          .contentTags
-            %span.a-skill Redes sociales
-            %h4.levelSkill Nivel Avanzado
-        .skillSpecific
-          %h4.nameSkill Belleza bienestar y sulud
-          .contentTags
-            %span.a-skill Redes sociales
-            %h4.levelSkill Nivel Avanzado
+      .softSkills
+        %h3 Habilidades blandas validadas
+        - @user.curriculum_vitae.soft_skills.each do |soft_skill|
+          %span.a-skill= soft_skill.description
+      - if params[:tester].present?
+        .boxSkills
+          %h3 Habilidades tecnicas
+          .skillSpecific
+            %h4.nameSkill Marketing y ventas
+            .contentTags
+              %span.a-skill Redes sociales
+              %h4.levelSkill Nivel Avanzado
+          .skillSpecific
+            %h4.nameSkill Belleza bienestar y sulud
+            .contentTags
+              %span.a-skill Redes sociales
+              %h4.levelSkill Nivel Avanzado
       .boxLenguages
         %h3 Idiomas
-        .skillSpecific
-          %h4.nameSkill Español
-          %h4.levelSkill Lengua nativa
-        .skillSpecific
-          %h4.nameSkill Ingles
-          %h4.levelSkill Avanzado
-        .skillSpecific
-          %h4.nameSkill Frances
-          %h4.levelSkill Basico
-    .bodyBox
+        - @user.curriculum_vitae.languages_list.each do |language|
+          .skillSpecific
+            %h4.nameSkill=language.language.description
+            %h4.levelSkill=language.level.description
+    .bodyBox.boxAcademy
       %h2 Formacion academica
-    .bodyBox
+      = react_component('src/components/Cards/PublicProfile/Education', {}, prerender: false)
+    .bodyBox.boxAcademy
       %h2 Experiencia
+      = react_component('src/components/Cards/PublicProfile/Experience', {}, prerender: false)
     .footerBox
       %p="La manera más fácil, rápida y económica de conseguir empleo."
 = render '/shared/footer'

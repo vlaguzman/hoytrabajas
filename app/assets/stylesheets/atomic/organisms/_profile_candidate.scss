@@ -45,8 +45,13 @@
       text-align: center;
       line-height: 1.63;
       font-weight: 800;
-      font-size: 3rem;
+      font-size: 2.5rem;
       color: #374456;
+
+      strong {
+        font-weight: 800;
+        color: #0b5aa0;
+      }
     }
 
     .infoCandidate {
@@ -75,9 +80,17 @@
   }
 
   .bodyBox {
+    border-top: solid 1px #d5dbe3;
     padding: 57px 13px 59px;
     margin: 0 95px;
-    border-top: solid 1px #d5dbe3;
+
+    &.boxAcademy {
+      padding: 57px 0px 40px;
+
+      h2 {
+        padding: 0 13px;
+      }
+    }
 
     h2 {
       margin-bottom: 19px;
@@ -110,7 +123,7 @@
       }
     }
 
-    p {
+    p.aboutMe {
       font-weight: normal;
       font-size: 1rem;
       color: #77818f;
@@ -126,6 +139,23 @@
       grid-template-columns: 2fr 2fr;
       grid-row-gap: 28px;
       display: grid;
+
+      .typeSkill .contentSkills {
+        flex-wrap: wrap;
+        display: flex;
+
+        span {
+          margin: 0 5px 5px 0;
+        }
+      }
+    }
+    
+    .softSkills {
+      margin-bottom: 25px;
+
+      h3 {
+        margin-bottom: 15px;
+      }
     }
 
     .boxSkills {

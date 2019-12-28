@@ -3,8 +3,8 @@ class Users::ProfilesController < ApplicationController
   before_action :authenticate_user!
 
   def show
-     user = User.find(permit_params[:user_id])
-     @user = UsersPresenter.new(user)
+    user = User.find(permit_params[:user_id])
+    @user = Users::ProfilesPresenter.new(user)
   end
 
   private

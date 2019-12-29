@@ -70,10 +70,10 @@
             %h4.levelSkill=language.level.description
     .bodyBox.boxAcademy
       %h2 Formacion academica
-      = react_component('src/components/Cards/PublicProfile/Education', {}, prerender: false)
+      = react_component('src/components/Cards/PublicProfile/Education', {defaultList: @user.data_education}, prerender: false)
     .bodyBox.boxAcademy
       %h2 Experiencia
-      = react_component('src/components/Cards/PublicProfile/Experience', {}, prerender: false)
+      = react_component('src/components/Cards/PublicProfile/Experience', {defaultList: @user.data_experience}, prerender: false)
     .footerBox
       %p="La manera más fácil, rápida y económica de conseguir empleo."
 = render '/shared/footer'

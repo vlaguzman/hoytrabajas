@@ -6,6 +6,7 @@ RSpec.describe Users::Wizards::StepNine::FormParamsService do
 
     let!(:cities) { create_list(:city, 5) }
     let(:create_cites_list) { ListConverter.model_list(City) }
+    let(:create_states_list) { ListConverter.model_list(State) }
 
     let(:subject) { described_class }
 
@@ -64,10 +65,16 @@ RSpec.describe Users::Wizards::StepNine::FormParamsService do
                 current_value: false
               },
               city_id: {
-                label: 'Ubicación',
+                label: 'Ciudad',
                 name: 'educational_level[city_id]',
                 values: create_cites_list,
                 current_value: cities.last.id.to_s
+              },
+              state_id: {
+                label: 'Departamento',
+                name: 'educational_level[state_id]',
+                values: create_states_list,
+                current_value: cities.last.state.id
               },
               diploma: {
                 label: 'Carga aquí tu diploma',
@@ -148,9 +155,15 @@ RSpec.describe Users::Wizards::StepNine::FormParamsService do
                 current_value: nil
               },
               city_id: {
-                label: 'Ubicación',
+                label: 'Ciudad',
                 name: 'educational_level[city_id]',
                 values: create_cites_list,
+                current_value: nil
+              },
+              state_id: {
+                label: 'Departamento',
+                name: 'educational_level[state_id]',
+                values: create_states_list,
                 current_value: nil
               },
               diploma: {

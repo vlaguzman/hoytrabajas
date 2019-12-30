@@ -11,7 +11,8 @@ class Users::Wizards::StepEight::FormParamsService < BaseFormWizardsService
     :job_category_id,
     :work_position_id,
     :work_methodology_id,
-    :city_id
+    :city_id,
+    :state_id
   ]
 
   MULTIPLE_SELECT_FIELDS_KEYS = [
@@ -55,4 +56,11 @@ class Users::Wizards::StepEight::FormParamsService < BaseFormWizardsService
     ListConverter.model_list City
   end
 
+  def state_id_list
+    ListConverter.model_list State
+  end
+
+  def state_id_current_value
+    source.city_state_id
+  end
 end

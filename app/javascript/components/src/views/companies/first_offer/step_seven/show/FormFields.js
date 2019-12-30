@@ -81,7 +81,8 @@ const FormFields = props => {
     [duration.name]: duration.current_value || '',
     [duration_type_id.name]: duration_type_id.current_value || '',
     [required_experience.name]: required_experience.current_value || false,
-    [technical_skills.name]: setDefaultRowIDs(technical_skills.current_values) || [],
+    [technical_skills.name]:
+      setDefaultRowIDs(technical_skills.current_values) || [],
     [languages.name]: setDefaultRowIDs(languages.current_values) || []
   })
 
@@ -144,9 +145,7 @@ const FormFields = props => {
         <Paper className="SimpleRowWrapper" style={{ padding: '20px' }}>
           <StyledRow>
             <StyledCol>
-              <BeforeLabel>
-                {city_id.label}
-              </BeforeLabel>
+              <BeforeLabel>{city_id.label}</BeforeLabel>
               <SelectChip
                 inputValue={formValues[city_id.name]}
                 handleChange={handleChange(formValues, setFormValues)}
@@ -168,9 +167,7 @@ const FormFields = props => {
         <Paper className="SimpleRowWrapper" style={{ padding: '20px' }}>
           <StyledRow>
             <StyledCol>
-              <BeforeLabel>
-                {educational_degree_id.label}
-              </BeforeLabel>
+              <BeforeLabel>{educational_degree_id.label}</BeforeLabel>
               <SelectChip
                 inputValue={formValues[educational_degree_id.name]}
                 handleChange={handleChange(formValues, setFormValues)}
@@ -192,9 +189,7 @@ const FormFields = props => {
         <Paper className="SimpleRowWrapper" style={{ padding: '20px' }}>
           <StyledRow>
             <StyledCol xs={12} lg={4}>
-              <BeforeLabel marginAuto>
-                {duration.label}
-              </BeforeLabel>
+              <BeforeLabel marginAuto>{duration.label}</BeforeLabel>
               <StandardInput
                 inputValue={formValues[duration.name]}
                 handleChange={handleChange(formValues, setFormValues)}
@@ -210,14 +205,10 @@ const FormFields = props => {
                 name={duration_type_id.name}
                 selectOptions={duration_type_id.values}
               />
-              <AfterLabel marginAuto>
-                {duration_type_id.label}
-              </AfterLabel>
+              <AfterLabel marginAuto>{duration_type_id.label}</AfterLabel>
             </StyledCol>
             <StyledCol xs={12} lg={4} marginAuto>
-              <BeforeLabel marginAuto>
-                {required_experience.label}
-              </BeforeLabel>
+              <BeforeLabel marginAuto>{required_experience.label}</BeforeLabel>
               <Checkbox
                 inputValue={formValues[required_experience.name]}
                 handleBoolean={handleBoolean(setFormValues)}
@@ -251,7 +242,10 @@ const FormFields = props => {
                 <input
                   key={uuidv4()}
                   type="hidden"
-                  name={railsFieldNameBuilder(technical_skills.form_keys, fieldKey)}
+                  name={railsFieldNameBuilder(
+                    technical_skills.form_keys,
+                    fieldKey
+                  )}
                   value={
                     formValues[technical_skills.name].length > 0
                       ? formValues[technical_skills.name][index][fieldKey]
@@ -280,7 +274,9 @@ const FormFields = props => {
                         inputValue={rowValue.technical_skill_id}
                         handleChange={handleRowChanges}
                         handleDeleteChip={handleRowDeleteChip}
-                        selectOptions={technical_skills.list_values.technical_skill_id}
+                        selectOptions={
+                          technical_skills.list_values.technical_skill_id
+                        }
                       />
                     </StyledCol>
 
@@ -399,6 +395,6 @@ FormFields.propTypes = {
     duration_type_id: PropTypes.object.isRequired,
     required_experience: PropTypes.object,
     technical_skills: PropTypes.object.isRequired,
-    languages: PropTypes.object.isRequired,
+    languages: PropTypes.object.isRequired
   }).isRequired
 }

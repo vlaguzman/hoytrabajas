@@ -22,14 +22,14 @@ const FormFields = props => {
   const [formValues, setFormValues] = useState({
     [state_id.name]: state_id.current_value || '',
     [travel_disponibility.name]: travel_disponibility.current_value || false,
-    [city_id.name]: city_id.current_value ||'',
-    [driving_licence_ids.name]: driving_licence_ids.current_value ||'',
-    [vehicle_ids.name]: vehicle_ids.current_value ||''
+    [city_id.name]: city_id.current_value || '',
+    [driving_licence_ids.name]: driving_licence_ids.current_value || '',
+    [vehicle_ids.name]: vehicle_ids.current_value || ''
   })
 
   const [citiesOfCurrentState, setCitiesOfCurrentState] = useState(
     city_id.values.filter(
-      (city) => city['state_id'] === formValues[state_id.name]
+      city => city['state_id'] === formValues[state_id.name]
     )
   )
 
@@ -37,7 +37,7 @@ const FormFields = props => {
     setFormValues({ ...formValues, [city_id.name]: '' })
     setCitiesOfCurrentState(
       city_id.values.filter(
-        (city) => city['state_id'] === formValues[state_id.name]
+        city => city['state_id'] === formValues[state_id.name]
       )
     )
   }, [formValues[state_id.name]])

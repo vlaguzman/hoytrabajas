@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col } from 'reactstrap'
 import SelectChip from '../../../../../components/FormsLayout/Fields/SelectChip'
@@ -6,7 +6,6 @@ import StandardInput from '../../../../../components/FormsLayout/Fields/Standard
 import DatePicker from '../../../../../components/FormsLayout/Fields/DatePicker'
 import Checkbox from '../../../../../components/FormsLayout/Fields/Checkbox'
 import FormLabel from '../../../../../components/FormsLayout/FormLabel'
-
 
 import {
   handleDeleteChip,
@@ -28,6 +27,7 @@ const FormFields = props => {
 
   const {
     city_id = null,
+    state_id = null,
     degree = null,
     diploma = null,
     finish_date = null,
@@ -45,6 +45,21 @@ const FormFields = props => {
     [ongoing_study.name]: false,
     [start_date.name]: Date.now()
   })
+
+  const [citiesOfCurrentState, setCitiesOfCurrentState] = useState(
+    city_id.values.filter(
+      city => city['state_id'] === formValues[state_id.name]
+    )
+  )
+
+  useEffect(() => {
+    setFormValues({ ...formValues, [city_id.name]: '' })
+    setCitiesOfCurrentState(
+      city_id.values.filter(
+        city => city['state_id'] === formValues[state_id.name]
+      )
+    )
+  }, [formValues[state_id.name]])
 
   const degreeField = useMemo(
     () => (
@@ -108,7 +123,7 @@ const FormFields = props => {
             formValues[ongoing_study.name] ? null : formValues[finish_date.name]
           }
           handleSimpleChange={handleSimpleChange(formValues, setFormValues)}
-          label={finish_date.label || ""}
+          label={finish_date.label || ''}
           dateOptions={dateOptions}
         />
       </Col>
@@ -132,27 +147,54 @@ const FormFields = props => {
     [formValues[ongoing_study.name]]
   )
 
+  const stateIDField = useMemo(
+    () => (
+      <Col key={state_id.name} className={inputClassname} xs={12} lg={3}>
+        <SelectChip
+          inputValue={formValues[state_id.name]}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
+          name={state_id.name}
+          label={state_id.label}
+          selectOptions={state_id.values}
+        />
+      </Col>
+    ),
+    [formValues[state_id.name]]
+  )
+
   const cityIDField = useMemo(
     () => (
-      <Col key={city_id.name} className={inputClassname} xs={12} lg={6}>
+      <Col key={city_id.name} className={inputClassname} xs={12} lg={3}>
         <SelectChip
-          inputValue={formValues[city_id.name]}
+          inputValue={
+            (formValues[state_id.name] && formValues[city_id.name]) || ''
+          }
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={city_id.name}
           label={city_id.label}
-          selectOptions={city_id.values}
-          isMultiple={false}
+          selectOptions={
+            (formValues[state_id.name] && citiesOfCurrentState) || []
+          }
         />
       </Col>
     ),
-    [formValues[city_id.name]]
+    [formValues[city_id.name], formValues[state_id.name], citiesOfCurrentState]
   )
 
   const diplomaField = useMemo(
     () => (
-      <Col key={diploma.name} className={inputClassname} xs={12} lg={6} style={{display: "flex", flexDirection: "column"}} >
-        <FormLabel style={{alignSelf: "flex-start"}}>{diploma.label}</FormLabel>
+      <Col
+        key={diploma.name}
+        className={inputClassname}
+        xs={12}
+        lg={6}
+        style={{ display: 'flex', flexDirection: 'column' }}
+      >
+        <FormLabel style={{ alignSelf: 'flex-start' }}>
+          {diploma.label}
+        </FormLabel>
         <input name={diploma.name} type="file" accept="image/*, .pdf" />
       </Col>
     ),
@@ -166,6 +208,7 @@ const FormFields = props => {
       {startDateField}
       {!formValues[ongoing_study.name] && finishDateField}
       {onGoingStudyField}
+      {stateIDField}
       {cityIDField}
       {diplomaField}
     </Row>
@@ -182,6 +225,7 @@ FormFields.propTypes = {
     finish_date: PropTypes.object,
     ongoing_study: PropTypes.object,
     city_id: PropTypes.object,
+    state_id: PropTypes.object,
     diploma: PropTypes.object
   }).isRequired
 }

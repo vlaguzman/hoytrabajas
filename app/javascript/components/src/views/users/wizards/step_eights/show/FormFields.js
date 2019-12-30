@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col } from 'reactstrap'
 import SelectChip from '../../../../../components/FormsLayout/Fields/SelectChip'
@@ -31,6 +31,7 @@ const FormFields = props => {
     work_position_id = null,
     work_methodology_id = null,
     city_id = null,
+    state_id = null,
     finished_at = null,
     started_at = null,
     technical_skills = null,
@@ -43,11 +44,27 @@ const FormFields = props => {
     [work_position_id.name]: '',
     [work_methodology_id.name]: '',
     [city_id.name]: '',
+    [state_id.name]: '',
     [technical_skills.name]: '',
     [started_at.name]: new Date(),
     [finished_at.name]: new Date(),
     [still_in_progress.name]: false
   })
+
+  const [citiesOfCurrentState, setCitiesOfCurrentState] = useState(
+    city_id.values.filter(
+      city => city['state_id'] === formValues[state_id.name]
+    )
+  )
+
+  useEffect(() => {
+    setFormValues({ ...formValues, [city_id.name]: '' })
+    setCitiesOfCurrentState(
+      city_id.values.filter(
+        city => city['state_id'] === formValues[state_id.name]
+      )
+    )
+  }, [formValues[state_id.name]])
 
   const jobCategoryIDField = useMemo(
     () => (
@@ -124,21 +141,40 @@ const FormFields = props => {
     [formValues[work_methodology_id.name]]
   )
 
+  const stateIDField = useMemo(
+    () => (
+      <Col key={state_id.name} className={inputClassname} xs={12} lg={3}>
+        <SelectChip
+          inputValue={formValues[state_id.name]}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
+          name={state_id.name}
+          label={state_id.label}
+          selectOptions={state_id.values}
+        />
+      </Col>
+    ),
+    [formValues[state_id.name]]
+  )
+
   const cityIDField = useMemo(
     () => (
-      <Col key={city_id.name} className={inputClassname} xs={12} lg={6}>
+      <Col key={city_id.name} className={inputClassname} xs={12} lg={3}>
         <SelectChip
-          inputValue={formValues[city_id.name]}
+          inputValue={
+            (formValues[state_id.name] && formValues[city_id.name]) || ''
+          }
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={city_id.name}
           label={city_id.label}
-          selectOptions={city_id.values}
-          isMultiple={false}
+          selectOptions={
+            (formValues[state_id.name] && citiesOfCurrentState) || []
+          }
         />
       </Col>
     ),
-    [formValues[city_id.name]]
+    [formValues[city_id.name], formValues[state_id.name], citiesOfCurrentState]
   )
 
   const technicalSkillsField = useMemo(
@@ -222,6 +258,7 @@ const FormFields = props => {
       {jobCategoryIDField}
       {workPositionIDField}
       {workMethodologyIDField}
+      {stateIDField}
       {cityIDField}
       {/* TODO OScar uncommen when the basic tech skills be able in production */}
       {/* {technicalSkillsField} */}

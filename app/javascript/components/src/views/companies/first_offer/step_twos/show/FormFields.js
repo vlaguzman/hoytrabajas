@@ -11,13 +11,12 @@ const FormFields = ({ formFields }) => {
     [description.name]: description.current_value || ''
   })
 
-  const inputClassname = 'my-30 animated fadeIn'
+  const inputClassname = 'my-30 animated fadeIn inputField'
 
   const descriptionField = useMemo(
     () => (
       <Col key={description.name} className={inputClassname} xs={12} lg={12}>
         <StandardInput
-          isTextArea
           inputValue={formValues[description.name]}
           inputName={description.name}
           handleChange={handleChange(formValues, setFormValues)}

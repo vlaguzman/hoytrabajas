@@ -12,4 +12,4 @@ es:
               previous: "Regresar"
             type: "company"
             formFields:
-              description: ""
+              description: "Agrega la descripción de tu empresa/negocio"

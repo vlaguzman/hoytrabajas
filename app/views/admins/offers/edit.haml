@@ -1,16 +1,19 @@
 %h1= "Editar #{@offer.title}"
 = simple_form_for @offer, url: admins_offer_path do |f|
-  = f.input :title, label: 'Titulo'
-  = f.input :job_categories, collection: JobCategory.all.pluck(:description), checked: @offer.job_categories.pluck(:description), as: :check_boxes
-  = f.input :job_categories, collection: JobCategory.all.pluck(:description), selected: @offer.job_categories.pluck(:description)
-  = f.button :submit
--#with_tag(:input, with: { name: 'offer[offers_work_positions]', type: "hidden" })
--#with_tag(:input, with: { name: 'offer[offer_type_id]',         type: "hidden" })
--#with_tag(:input, with: { name: 'offer[work_mode_id]',          type: "hidden" })
+  = f.input :id,                 value: @offer.id, as: :hidden
+  = f.input :title,              value: @offer.title
+  = f.input :vacancies_quantity, value: @offer.vacancies_quantity
 
--#with_tag(:input, with: { name: 'offer[contract_type_id]',   type: "hidden" })
--#with_tag(:input, with: { name: 'offer[vacancies_quantity]', type: "hidden" })
--#with_tag(:input, with: { name: 'offer[sex_ids][]',          type: "hidden" })
+  = f.input :offer_type_id,    collection: @offer.collection(OfferType), selected: @offer.offer_type_id, label_method: :first, value_method: :second
+  = f.input :work_mode_id,     collection: @offer.collection(WorkMode), selected: @offer.work_mode_id, label_method: :first, value_method: :second
+  = f.input :contract_type_id, collection: @offer.collection(ContractType), selected: @offer.contract_type_id, label_method: :first, value_method: :second
+
+  = f.input :job_categories,   collection: @offer.collection(JobCategory), checked: @offer.job_category_ids, label_method: :first, value_method: :second, as: :check_boxes
+  = f.input :work_positions,   collection: @offer.collection(WorkPosition), checked: @offer.work_position_ids, label_method: :first, value_method: :second, as: :check_boxes
+  = f.input :sexes,            collection: @offer.collection(Sex), checked: @offer.work_position_ids, label_method: :first, value_method: :second, as: :check_boxes
+
+  = f.button :submit
+
 -#with_tag(:input, with: { name: 'offer[offer_age_range]',    type: "hidden" })
 -#with_tag(:input, with: { name: 'offer[close_date]',         type: "text" })
 -#with_tag(:input, with: { name: 'offer[immediate_start]',    type: "hidden" })

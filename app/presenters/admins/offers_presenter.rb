@@ -1,5 +1,6 @@
 class Admins::OffersPresenter < ApplicationPresenter
 
-  def model_list(klass)
+  def collection(klass)
+    klass.all.pluck(:description, :id)
   end
 end

@@ -7,8 +7,7 @@ class Admins::OffersController < ApplicationController
   end
 
   def update
-    puts "+" * 100
-    puts params.inspect
+    offer = Admins::OffersService.(update_params: update_params)
   end
 
   private
@@ -22,6 +21,18 @@ class Admins::OffersController < ApplicationController
   end
 
   def update_params
-    params.require(:offer).permit(:title, :job_categories)
+    params
+      .require(:offer)
+      .permit(
+        :id,
+        :title,
+        :vacancies_quantity,
+        :offer_type_id,
+        :work_mode_id,
+        :contract_type_id,
+        job_categories: [],
+        work_positions: [],
+        sexes: []
+    ).to_h
   end
 end

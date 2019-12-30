@@ -48,9 +48,13 @@ RSpec.describe "Admin can edit an offer", type: :feature do
       expect(page).to have_content("Editar #{offer.title}")
 
       expect(page).to have_tag(:form, with: { id: "edit_offer_#{offer.id}" }) do
-        with_tag(:input, with: { name: 'offer[id]', type: 'hidden'})
-        with_tag(:input, with: { name: 'offer[title]', type: 'text'})
+        with_tag(:input, with: { name: 'offer[id]',                 type: 'hidden'})
+        with_tag(:input, with: { name: 'offer[title]',              type: 'text'})
         with_tag(:input, with: { name: 'offer[vacancies_quantity]', type: 'number'})
+
+        with_tag(:input, with: { name: 'offer[age_range][to]',       type: 'number'})
+        with_tag(:input, with: { name: 'offer[age_range][from]',     type: 'number'})
+        with_tag(:input, with: { name: 'offer[age_range][offer_id]', type: 'hidden'})
 
         with_tag(:select, with: { name: 'offer[offer_type_id]'})
         with_tag(:select, with: { name: 'offer[work_mode_id]'})
@@ -67,6 +71,9 @@ RSpec.describe "Admin can edit an offer", type: :feature do
       within "#edit_offer_#{offer.id}" do
         fill_in 'offer[title]',              with: 'Offer for only devs'
         fill_in 'offer[vacancies_quantity]', with: 2
+
+        fill_in 'offer[age_range][to]',   with: 750000
+        fill_in 'offer[age_range][from]', with: 750000
 
         select("#{offer_type_2.description}",    from: 'offer_offer_type_id')
         select("#{work_mode_2.description}",     from: 'offer_work_mode_id')

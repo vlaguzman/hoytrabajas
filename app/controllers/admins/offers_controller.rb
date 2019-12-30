@@ -30,6 +30,7 @@ class Admins::OffersController < ApplicationController
         :offer_type_id,
         :work_mode_id,
         :contract_type_id,
+        age_range:
         job_categories: [],
         work_positions: [],
         sexes: []

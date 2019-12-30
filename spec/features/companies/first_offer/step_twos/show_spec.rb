@@ -13,7 +13,7 @@ RSpec.describe "When company fill the step two form", :type => :feature do
         expect(page).to have_content("Brinda a tu candidato información de tu empresa.")
 
         expect(page).to have_tag(:form, with: { class: "forms__candidate" }) do
-          with_tag(:textarea, with: { name: 'company[description]' })
+          with_tag(:input, with: { name: 'company[description]' })
         end
 
         expect(page).to have_button('Siguiente')

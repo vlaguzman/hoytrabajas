@@ -9,7 +9,7 @@ class Home::HomePresenter < ApplicationPresenter
   end
 
   def data_filter
-    cities = ListConverter.model_list(City).map{ |value| {label: value[:description], value: value.values.first} }
+    cities = Cities::CitiesWithOffersListService.()
     {
       fields1: [
         { type: 'text', label: 'Palabra clave', name: 'q[title_cont]', id: 'keyword' },

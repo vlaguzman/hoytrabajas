@@ -7,7 +7,7 @@ es:
           subtitle: 'Brinda a las empresas información valiosa sobre ti.'
           form:
             buttons:
-              submit: 'Siguiente'
+              #submit: 'Siguiente'
               next: 'Saltar'
               previous: 'Regresar'
               acceptButton: 'Sí, quiero adicionarla'

@@ -108,7 +108,7 @@ RSpec.describe "User searches for an offer", type: :feature do
           find("div[id='Tecnologia']").click
           find("div[id='Marketing']").click
           find(".filterForm__searchButton", visible: false).click
-     
+
           expect(page).to have_content("Esto es un prueba de sebas")
           expect(page).to have_content("Que gran oferta sebas!")
           expect(page).not_to have_content("Test sebas")
@@ -172,7 +172,11 @@ RSpec.describe "User searches for an offer", type: :feature do
     context "When you filter by offer city only" do
       let!(:city_2) { create(:city, description: "Medellin") }
       let!(:city_3) { create(:city, description: "Cali") }
-      let!(:offer_query_for_city) { create(:offer, description: "Este es el query por ciudad", city_id: city_2.id, job_categories: [job_category]) }
+      let!(:offer_query_for_city) { create(:offer,
+        description: "Este es el query por ciudad",
+        city_id: city_2.id,
+        job_categories: [job_category]
+      ) }
 
       context "When you filter by a single city and find results" do
         it "Should return results", js: true do
@@ -193,13 +197,8 @@ RSpec.describe "User searches for an offer", type: :feature do
           visit root_path
 
           find("input#combo-box-demo", visible: false).set("cali")
-          find("div[class='MuiAutocomplete-popper']").click
 
-          find(".filterForm__searchButton", visible: false).click
-
-          expect(current_path).to eq("#{offers_path}/")
-          expect(page).to have_content("No hay ningún trabajo en este momento")
-          expect(page).not_to have_content("Este es el query por ciudad")
+          expect(page).to have_content("No options")
         end
       end
     end

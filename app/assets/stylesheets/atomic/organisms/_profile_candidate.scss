@@ -15,8 +15,29 @@
 .contentBox {
   padding: 217px 220px 165px;
 
+  a {
+    border-radius: 0 0 10px 10px;
+    background-color: #0b5aa0;
+    transform: rotate(-90deg);
+    font-size: 1.1875rem;
+    position: absolute;
+    padding: 15px 20px;
+    font-weight: bold;
+    left: 1044px;
+    color: #fff;
+    top: 675px;
+  }
+
+  a:not([href]):not([tabindex]) {
+    color: #fff;
+  }
+
   @media only screen and (max-width : 480px) {
     padding: 130px 10px;
+    
+    a {
+      display: none;
+    }
   }
 }
 
@@ -254,6 +275,20 @@
       p {
         width: 100%;
       }
+    }
+
+    a {
+      background-color: #0b5aa0;
+      text-align: center;
+      padding: 15px 20px;
+      position: initial;
+      border-radius: 0;
+      display: initial;
+      transform: none;
+      font-size: 1rem;
+      display: block;
+      color: #fff;
+      width: 100%;
     }
   }
 }

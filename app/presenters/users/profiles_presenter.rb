@@ -39,4 +39,8 @@ class Users::ProfilesPresenter < ApplicationPresenter
         }
       end
   end
+
+  def download_cv
+    rails_routes.rails_blob_path(source.curriculum_vitae.file_cv, disposition: 'attachment')
+  end
 end

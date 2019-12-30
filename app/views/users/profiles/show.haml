@@ -1,6 +1,7 @@
 = render '/shared/header'
 .backgroundImage
 .contentBox
+  %a{href: @user.download_cv, target: "_blank"} Descargar Curriculum
   .m-box.o-boxPrincipal
     .headerBox
       %img{src: image_path("/assets/static/avatars/user-10.jpg"), alt: 'Photo Profile'}
@@ -74,6 +75,7 @@
     .bodyBox.boxAcademy
       %h2 Experiencia
       = react_component('src/components/Cards/PublicProfile/Experience', {defaultList: @user.data_experience}, prerender: false)
+    %a{href: @user.download_cv, target: "_blank"} Descargar Curriculum
     .footerBox
       %p="La manera más fácil, rápida y económica de conseguir empleo."
 = render '/shared/footer'

@@ -2,6 +2,8 @@ es:
   companies:
     list_candidates:
         show:
+          tooltips:
+            affinity_percentage: 'Este porcentaje representa la afinidad que tiene este candidato con tu oferta'
           tags:
             immediate_start: 'Inicio inmediato'
           close_date: 'Cierre de la oferta'

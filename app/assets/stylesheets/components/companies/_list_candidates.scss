@@ -152,6 +152,10 @@
       box-shadow: 0 12px 30px 1px #ebebf0;
       background-color: white;
 
+      &.--mobile {
+        justify-content: space-around;
+      }
+
       img.a-avatar {
         width: 68px;
         height: 70px;
@@ -213,6 +217,11 @@
         align-items: flex-start;
         margin: 0 3vw;
         color: $color__blue-main;
+
+        &__group {
+          display: flex;
+          flex-wrap: nowrap;
+        }
 
         &.--mobile {
           flex-direction: column;

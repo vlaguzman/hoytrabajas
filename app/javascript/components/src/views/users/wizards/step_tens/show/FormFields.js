@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col } from 'reactstrap'
 import StandardInput from '../../../../../components/FormsLayout/Fields/StandardInput'
@@ -23,6 +23,7 @@ const FormFields = props => {
   const { formFields } = props
   const {
     city_id = null,
+    state_id = null,
     diploma = null,
     entity_name = null,
     start_date = null,
@@ -31,11 +32,27 @@ const FormFields = props => {
 
   const [formValues, setFormValues] = useState({
     [city_id.name]: '',
+    [state_id.name]: '',
     [title.name]: '',
     [entity_name.name]: '',
     [diploma.name]: '',
     [start_date.name]: Date.now()
   })
+
+  const [citiesOfCurrentState, setCitiesOfCurrentState] = useState(
+    city_id.values.filter(
+      city => city['state_id'] === formValues[state_id.name]
+    )
+  )
+
+  useEffect(() => {
+    setFormValues({ ...formValues, [city_id.name]: '' })
+    setCitiesOfCurrentState(
+      city_id.values.filter(
+        city => city['state_id'] === formValues[state_id.name]
+      )
+    )
+  }, [formValues[state_id.name]])
 
   const titleField = useMemo(
     () => (
@@ -80,21 +97,40 @@ const FormFields = props => {
     [formValues[entity_name.name]]
   )
 
+  const stateIDField = useMemo(
+    () => (
+      <Col key={state_id.name} className={inputClassname} xs={12} lg={3}>
+        <SelectChip
+          inputValue={formValues[state_id.name]}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
+          name={state_id.name}
+          label={state_id.label}
+          selectOptions={state_id.values}
+        />
+      </Col>
+    ),
+    [formValues[state_id.name]]
+  )
+
   const cityIDField = useMemo(
     () => (
-      <Col key={city_id.name} className={inputClassname} xs={12} lg={6}>
+      <Col key={city_id.name} className={inputClassname} xs={12} lg={3}>
         <SelectChip
-          inputValue={formValues[city_id.name]}
+          inputValue={
+            (formValues[state_id.name] && formValues[city_id.name]) || ''
+          }
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={city_id.name}
           label={city_id.label}
-          selectOptions={city_id.values}
-          isMultiple={false}
+          selectOptions={
+            (formValues[state_id.name] && citiesOfCurrentState) || []
+          }
         />
       </Col>
     ),
-    [formValues[city_id.name]]
+    [formValues[city_id.name], formValues[state_id.name], citiesOfCurrentState]
   )
 
 
@@ -113,6 +149,7 @@ const FormFields = props => {
       {titleField}
       {startDateField}
       {entityNameField}
+      {stateIDField}
       {cityIDField}
       {diplomaField}
     </Row>
@@ -124,6 +161,7 @@ export default FormFields
 FormFields.propTypes = {
   formFields: PropTypes.shape({
     city_id: PropTypes.object,
+    state_id: PropTypes.object,
     diploma: PropTypes.object,
     entity_name: PropTypes.object,
     start_date: PropTypes.object,

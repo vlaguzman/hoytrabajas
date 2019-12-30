@@ -16,4 +16,5 @@ es:
               start_date: 'Fecha de inicio'
               entity_name: 'Institución o entidad'
               diploma: 'Carga aquí tu diploma'
-              city_id: 'Ubicación'
+              city_id: 'Ciudad'
+              state_id: 'Departamento'

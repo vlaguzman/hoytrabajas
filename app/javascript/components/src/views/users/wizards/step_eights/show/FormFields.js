@@ -278,6 +278,8 @@ FormFields.propTypes = {
     work_position_id: PropTypes.object,
     work_methodology_id: PropTypes.object,
     city_id: PropTypes.object,
+    state_id: PropTypes.object,
+    technical_skills: PropTypes.object,
     finished_at: PropTypes.object,
     started_at: PropTypes.object,
     technical_skill_ids: PropTypes.object,

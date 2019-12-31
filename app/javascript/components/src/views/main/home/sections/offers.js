@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Offers from '../../../../components/Offers'
+import OffersCarousel from '../../../../components/Offers/OffersCarousel'
+import useWindowSize from '../../../../hooks/useWindowSize'
 
 const OffersSection = props => {
   const {
@@ -8,23 +10,37 @@ const OffersSection = props => {
     csrf_token,
     path_applied_offers,
     offers,
+    offers_path,
     section_title,
     offer_translations
   } = props
 
+  const windowSize = useWindowSize()
+
   return (
     <div className="o-offers__wrapper">
-      <h4 className="color__blue-main mb-60">{section_title}</h4>
-      <Offers
-        offers={offers}
-        offer_translations={offer_translations}
-        csrf_param={csrf_param}
-        csrf_token={csrf_token}
-        path_applied_offers={path_applied_offers}
-        initialRows={3}
-        rowIncrement={3}
-        maxOffers={24}
-      />
+      <h4 className="offersTitle color__blue-main">{section_title}</h4>
+      {windowSize.width > 576 ? (
+        <Offers
+          offers={offers}
+          offer_translations={offer_translations}
+          csrf_param={csrf_param}
+          csrf_token={csrf_token}
+          path_applied_offers={path_applied_offers}
+          initialRows={3}
+          rowIncrement={3}
+          maxOffers={24}
+        />
+      ) : (
+        <OffersCarousel
+          offers={offers}
+          offers_path={offers_path}
+          offer_translations={offer_translations}
+          csrf_param={csrf_param}
+          csrf_token={csrf_token}
+          path_applied_offers={path_applied_offers}
+        />
+      )}
     </div>
   )
 }

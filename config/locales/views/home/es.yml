@@ -41,3 +41,7 @@ es:
     affiliates:
       title: 'Muchas empresas confían en nosotros'
       subtitle: 'el talento de su empresa'
+    newsletter:
+      title: 'Suscríbete a nuestro boletín'
+      subtitle: 'para estar al tanto de la industria laboral'
+      placeholder: 'Ingresa tu correo electrónico'

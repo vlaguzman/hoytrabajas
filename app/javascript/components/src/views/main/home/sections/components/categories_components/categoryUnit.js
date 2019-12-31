@@ -24,7 +24,7 @@ export default ({ id, img, quantity, name, handleJobCategory }) => {
         setSelected(!selected)
       }}
     >
-      <Row className="justify-content-center mb-5 mx-0">
+      <Row className="filterForm__image justify-content-center">
         <img
           className="rounded"
           src={`/assets/static/img/${img}`}
@@ -33,10 +33,7 @@ export default ({ id, img, quantity, name, handleJobCategory }) => {
           height="40"
         />
       </Row>
-      <Row
-        className={`justify-content-center w-100 mt-5 ${name.length < 10 &&
-          'mt-15 mb-10'} mx-0`}
-      >
+      <Row className="justify-content-center w-100 mx-0">
         <Typography
           variant="caption"
           component="div"

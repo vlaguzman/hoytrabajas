@@ -7,12 +7,15 @@ import JobCategories from './sections/JobCategories'
 import Banner from './sections/Banner'
 import SearchTrends from './sections/SearchTrends'
 import PostList from './sections/PostList'
+import Newsletter from './sections/Newsletter'
 import content from './data'
+import useWindowSize from '../../../hooks/useWindowSize'
 
 const HomePage = ({
   offers,
   csrf_param,
   csrf_token,
+  offers_path,
   path_applied_offers,
   new_offer_path,
   home_translations,
@@ -27,8 +30,11 @@ const HomePage = ({
     categories,
     info,
     search_trends,
-    post_list
+    post_list,
+    affiliates,
+    newsletter
   } = home_translations
+  const windowSize = useWindowSize()
 
   return (
     <div className="home-wrapper">
@@ -44,13 +50,21 @@ const HomePage = ({
         path_applied_offers={path_applied_offers}
         section_title={offersTranslations.title}
         offer_translations={offer_translations}
+        offers_path={offers_path}
       />
-      {/* TODO any: uncomment sections when they have real data */}
       <JobCategories categories={common.categorias} translations={categories} />
       <Banner translations={info} />
       <SearchTrends translations={search_trends} />
       <PostList translations={post_list} />
-      <CompaniesSection {...companies} />
+      <CompaniesSection translations={affiliates} {...companies} />
+      {/* TODO: use when we have the newsletter working right */}
+      {/* {windowSize.width <= 576 && (
+        <Newsletter
+          translations={newsletter}
+          csrf_param={csrf_param}
+          csrf_token={csrf_token}
+        />
+      )} */}
     </div>
   )
 }
@@ -63,6 +77,7 @@ HomePage.propTypes = {
   offers: PropTypes.object.isRequired,
   csrf_param: PropTypes.string,
   csrf_token: PropTypes.string,
+  offers_path: PropTypes.string,
   home_translations: PropTypes.object.isRequired,
   offer_translations: PropTypes.object,
   common: PropTypes.object,

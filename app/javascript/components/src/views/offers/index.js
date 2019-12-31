@@ -8,7 +8,7 @@ const StyledWrapper = styled.div`
   margin-top: 180px;
   padding: 0 60px;
 
-  @media (max-width: 576) {
+  @media (max-width: 576px) {
     padding: 0 30px;
   }
   @media (max-width: 900px) {
@@ -23,9 +23,13 @@ const OffersPage = ({
   csrf_token,
   path_applied_offers
 }) => (
-  <StyledWrapper>
+  <div
+    style={{
+      margin: '120px auto auto auto'
+    }}
+  >
     <h1
-      className="sec-title mb-40 pt-20 mx-10 text-center"
+      className="sec-title mb-40 px-30 pt-20 mx-10 text-center"
       style={{ marginTop: '100px' }}
     >
       {offer_translations.index.title}
@@ -42,7 +46,7 @@ const OffersPage = ({
         rowIncrement={2}
       />
     </div>
-  </StyledWrapper>
+  </div>
 )
 
 export default OffersPage

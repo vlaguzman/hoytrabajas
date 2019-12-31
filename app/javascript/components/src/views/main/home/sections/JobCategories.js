@@ -16,7 +16,13 @@ const JobCategories = ({ categories, translations }) => {
           {translations.subtitle}
         </h5>
       </div>
-      <CarouselRow slidesToShow={8} dots={false}>
+      <CarouselRow
+        slidesToShow={8}
+        dots={false}
+        slidesToShowResp={2}
+        centerModeResp
+        autoplay={false}
+      >
         {categories.map(
           (item, index) =>
             index <= 13 && (

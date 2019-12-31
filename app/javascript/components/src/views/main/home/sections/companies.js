@@ -3,22 +3,33 @@ import PropTypes from 'prop-types'
 import { Row, Col } from 'reactstrap'
 import CompaniesList from './components/companiesList'
 import CarouselRow from '../../../../components/Carousel/CarouselRow'
+import useWindowSize from '../../../../hooks/useWindowSize'
 
 const catalogo = Array(12).fill(null)
 
-const CompaniesSection = () => {
+const CompaniesSection = ({ translations }) => {
+  const windowSize = useWindowSize()
+
   return (
     <div className="t-home__companies py-60">
       <div
         className="mt-20 mb-40 d-flex flex-column justify-content-center align-items-center"
         style={{ textAlign: 'center' }}
       >
-        <h4 className="companiesTitle a-typo__titleH4 color__blue-main">
-          Muchas empresas confían en nosotros
-        </h4>
-        <h5 className="companiesSubtitle a-typo__titleH5">
-          el talento de su empresa
-        </h5>
+        {windowSize.width > 576 ? (
+          <>
+            <h4 className="companiesTitle a-typo__titleH4 color__blue-main">
+              {translations.title}
+            </h4>
+            <h5 className="companiesSubtitle a-typo__titleH5">
+              {translations.subtitle}
+            </h5>
+          </>
+        ) : (
+          <h4 className="companiesTitle a-typo__titleH4 color__blue-main">
+            {`${translations.title} ${translations.subtitle}`}
+          </h4>
+        )}
       </div>
       <Row className="flex-wrap justify-content-center align-items-center d-none d-md-flex px-20">
         <CompaniesList {...{ catalogo }} />

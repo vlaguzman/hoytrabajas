@@ -14,8 +14,8 @@ RSpec.describe "User searches for an offer", type: :feature do
       create_list(:offer, 7, title: "Que gran oferta sebas!", job_categories: [job_category3])
     end
 
-    context "When press categories button" do
-      it "Should show the title, carrousel and the filter inputs", js: true do
+    context "Visit home" do
+      it "Should show the title, carousel and the filter inputs", js: true do
         visit root_path
 
         expect(page).to have_content("Accede hoy a más de 3000 ofertas laborales que tenemos para ti de forma fácil")
@@ -23,8 +23,6 @@ RSpec.describe "User searches for an offer", type: :feature do
         expect(page).to have_tag(:form, with: { class: "row justify-content-around" }) do
           with_tag(:input, with: { name: 'q[title_cont]'})
         end
-
-        find(".filterForm__categoriesButton", visible: false).click
 
         expect(page).to have_text("Operario")
         expect(page).to have_text("5")
@@ -88,7 +86,6 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return results", js: true do
           visit root_path
 
-          find(".filterForm__categoriesButton", visible: false).click
 
           find("#Operario").click
           find(".filterForm__searchButton", visible: false).click
@@ -103,7 +100,6 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return results", js: true do
           visit root_path
 
-          find(".filterForm__categoriesButton", visible: false).click
 
           find("div[id='Tecnologia']").click
           find("div[id='Marketing']").click
@@ -119,7 +115,6 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return message of empty", js: true do
           visit root_path
 
-          find(".filterForm__categoriesButton", visible: false).click
 
           find("div[id='Servicios']").click
           find(".filterForm__searchButton", visible: false).click
@@ -140,7 +135,6 @@ RSpec.describe "User searches for an offer", type: :feature do
 
           fill_in('keyword', with: 'oferta')
 
-          find(".filterForm__categoriesButton", visible: false).click
           find("div[id='Marketing']").click
 
           find(".filterForm__searchButton", visible: false).click
@@ -157,7 +151,6 @@ RSpec.describe "User searches for an offer", type: :feature do
 
           fill_in('keyword', with: 'jhoan')
 
-          find(".filterForm__categoriesButton", visible: false).click
 
           find("div[id='Marketing']").click
           find(".filterForm__searchButton", visible: false).click
@@ -214,7 +207,6 @@ RSpec.describe "User searches for an offer", type: :feature do
 
           fill_in('keyword', with: 'oferta de sebas')
 
-          find(".filterForm__categoriesButton", visible: false).click
           find("div[id='Marketing']").click
 
           find("input#combo-box-demo", visible: false).set("chia")
@@ -234,7 +226,6 @@ RSpec.describe "User searches for an offer", type: :feature do
 
           fill_in('keyword', with: 'jhoan')
 
-          find(".filterForm__categoriesButton", visible: false).click
           find("div[id='Marketing']").click
 
           find("input#combo-box-demo", visible: false).set("caji")

@@ -6,7 +6,37 @@ import UnderFooter from './UnderFooter'
 import SocialBar from './SocialBar'
 import useWindowSize from '../../../hooks/useWindowSize'
 
-const Footer = ({ footer_translations, terms_and_conditions_file_path }) => {
+const Footer = ({
+  footer_translations,
+  terms_and_conditions_file_path,
+  search_offers,
+  companies,
+  create_offers,
+  faqs
+}) => {
+  const underFooterPaths = {
+    faq: faqs,
+    contact: null,
+    terms_and_conditions: terms_and_conditions_file_path
+  }
+
+  const upperFooterPaths = {
+    candidates: {
+      search_offers,
+      roles: null,
+      premium: null,
+      companies
+    },
+    companies: {
+      create_offers,
+      on_demand: null,
+      company_prime: null
+    },
+    contact_us: {
+      email: 'mailto:info@hoytrabajas.com'
+    }
+  }
+
   const windowSize = useWindowSize()
   const [isOpen, setIsOpen] = useState(windowSize.width > 576)
 
@@ -33,8 +63,12 @@ const Footer = ({ footer_translations, terms_and_conditions_file_path }) => {
       )}
       <Collapse isOpen={isOpen}>
         <SocialBar translations={footer_translations.social_bar} />
-        <UpperFooter translations={footer_translations.upper_footer} />
+        <UpperFooter
+          translations={footer_translations.upper_footer}
+          paths={upperFooterPaths}
+        />
         <UnderFooter
+          paths={underFooterPaths}
           windowSize={windowSize}
           translations={footer_translations.under_footer}
           termAndConditionsPath={terms_and_conditions_file_path}
@@ -48,5 +82,9 @@ export default Footer
 
 Footer.propTypes = {
   footer_translations: PropTypes.object.isRequired,
-  terms_and_conditions_file_path: PropTypes.string.isRequired
+  terms_and_conditions_file_path: PropTypes.string.isRequired,
+  search_offers: PropTypes.string.isRequired,
+  companies: PropTypes.string.isRequired,
+  create_offers: PropTypes.string.isRequired,
+  faqs: PropTypes.string.isRequired
 }

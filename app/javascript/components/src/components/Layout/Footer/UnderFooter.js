@@ -1,12 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-
-const defaultPaths = {
-  faq: '/faqs',
-  contact: '/',
-  terms_and_conditions:
-    '/https://ht-web-docs.s3.amazonaws.com/hoytrabajas_tyc.pdf'
-}
+// import TextField from '@material-ui/core/TextField'
+// import LanguageIcon from '@material-ui/icons/Language'
 
 const Logo = () => (
   <div className="underFooter__logo">
@@ -18,7 +13,24 @@ const Logo = () => (
   </div>
 )
 
-const UnderFooter = ({ translations, windowSize, paths = defaultPaths }) => {
+// const languages = [
+//   {
+//     id: '123',
+//     name: 'Español'
+//   },
+//   {
+//     id: '456',
+//     name: 'English'
+//   }
+// ]
+
+const UnderFooter = ({ translations, windowSize, paths }) => {
+  // TODO: uncomment to activate the language button
+  // const [languageId, setLanguageId] = useState(languages[0].id)
+  // const handleChange = event => setLanguageId(event.target.value)
+  // const languageDisplayName = languages.find(item => item.id === languageId)
+  //   .name
+
   return (
     <div className="m-footer__underFooter">
       <div className="underFooter__wrapper">
@@ -36,7 +48,31 @@ const UnderFooter = ({ translations, windowSize, paths = defaultPaths }) => {
                 )
             )}
           </ul>
-          <div className="underFooter__language">Selecthere</div>
+          {/* <div className="underFooter__language">
+            <TextField
+              select
+              value={languageId}
+              onChange={handleChange}
+              variant="outlined"
+              SelectProps={{
+                renderValue: () => (
+                  <div
+                    className="d-flex align-items-center"
+                    style={{ padding: '12px 30px' }}
+                  >
+                    <LanguageIcon style={{ marginRight: '10px' }} />
+                    {languageDisplayName}
+                  </div>
+                )
+              }}
+            >
+              {languages.map(option => (
+                <option key={option.id} value={option.id}>
+                  {option.name}
+                </option>
+              ))}
+            </TextField>
+          </div> */}
         </div>
         <div className="underFooter__divider" />
         <div className="underFooter__copyright">
@@ -77,5 +113,6 @@ UnderFooter.propTypes = {
     faq: PropTypes.string.isRequired,
     contact: PropTypes.string.isRequired,
     terms_and_conditions: PropTypes.string.isRequired
-  }).isRequired
+  }).isRequired,
+  windowSize: PropTypes.object
 }

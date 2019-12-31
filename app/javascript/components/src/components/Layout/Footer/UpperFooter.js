@@ -1,24 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const defaultPaths = {
-  candidates: {
-    search_offers: '/offers',
-    roles: '',
-    premium: '',
-    companies: '/companies'
-  },
-  companies: {
-    create_offers: '/companies/first_offer/step_zero',
-    on_demand: '',
-    company_prime: ''
-  },
-  contact_us: {
-    email: 'mailto:info@hoytrabajas.com'
-  }
-}
-
-const UpperFooter = ({ translations, paths = defaultPaths }) => (
+const UpperFooter = ({ translations, paths }) => (
   <div className="m-footer__upperFooter">
     <div className="upperFooter__gridContainer">
       {Object.keys(translations).map(key =>
@@ -33,6 +16,7 @@ const UpperFooter = ({ translations, paths = defaultPaths }) => (
                       {translations[key]['paths'][pathKey]}
                     </a>
                   ) : (
+                    paths[key][pathKey] !== null &&
                     translations[key]['paths'][pathKey]
                   )}
                 </li>

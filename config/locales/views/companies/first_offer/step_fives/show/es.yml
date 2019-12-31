@@ -18,7 +18,7 @@ es:
             type: "offer"
             formFields:
               is_range: 'Aspiración salarial'
-              currency_id,: ''
+              currency_id: 'Moneda'
               from: ''
               to: ''
               salary_period_id: 'Pago'

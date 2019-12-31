@@ -59,6 +59,7 @@ const FormFields = props => {
       <Col className={controlledInputsClassname} xs={12} lg={2}>
         <Select
           inputValue={formValues[currency_id.name]}
+          label={currency_id.label}
           handleChange={handleChange(formValues, setFormValues)}
           name={currency_id.name}
           selectOptions={currency_id.values}

@@ -5,4 +5,4 @@ es:
   actions:
     return: 'Regresar'
     continue: 'Continuar'
-    skip: 'Omitir'
+    skip: 'No tengo hoja de vida'

@@ -48,7 +48,7 @@ RSpec.describe "like new candidate", type: :feature do
       expect(page).to have_field("user[file_cv]")
       expect(page).to have_link("Regresar")
       expect(page).to have_button("Continuar")
-      expect(page).to have_link("Omitir")
+      expect(page).to have_link("No tengo hoja de vida")
 
       click_link("Regresar")
 
@@ -65,9 +65,9 @@ RSpec.describe "like new candidate", type: :feature do
       expect(page).to have_field("user[file_cv]")
       expect(page).to have_link("Regresar")
       expect(page).to have_button("Continuar")
-      expect(page).to have_link("Omitir")
+      expect(page).to have_link("No tengo hoja de vida")
 
-      click_link("Omitir")
+      click_link("No tengo hoja de vida")
 
       expect(users_wizards_step_one_path)
     end

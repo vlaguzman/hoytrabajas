@@ -51,6 +51,11 @@ RSpec.describe "Admin can edit an offer", type: :feature do
         with_tag(:input, with: { name: 'offer[id]',                 type: 'hidden'})
         with_tag(:input, with: { name: 'offer[title]',              type: 'text'})
         with_tag(:input, with: { name: 'offer[vacancies_quantity]', type: 'number'})
+        with_tag(:input, with: { name: 'offer[vacancies_quantity]', type: 'number'})
+        with_tag(:select, with: { name: 'offer[close_date(3i)]'})
+        with_tag(:select, with: { name: 'offer[close_date(2i)]'})
+        with_tag(:select, with: { name: 'offer[close_date(1i)]'})
+        with_tag(:input, with: { name: 'offer[immediate_start]', type: 'hidden'})
 
         with_tag(:input, with: { name: 'offer[age_range][to]',       type: 'number'})
         with_tag(:input, with: { name: 'offer[age_range][from]',     type: 'number'})
@@ -71,6 +76,9 @@ RSpec.describe "Admin can edit an offer", type: :feature do
       within "#edit_offer_#{offer.id}" do
         fill_in 'offer[title]',              with: 'Offer for only devs'
         fill_in 'offer[vacancies_quantity]', with: 2
+        select('4', from: 'offer[close_date(3i)]')
+        select('Enero', from: 'offer[close_date(2i)]')
+        select('2020', from: 'offer[close_date(1i)]')
 
         fill_in 'offer[age_range][to]',   with: 750000
         fill_in 'offer[age_range][from]', with: 750000
@@ -90,6 +98,10 @@ RSpec.describe "Admin can edit an offer", type: :feature do
 
       expect(offer.title).to eq('Offer for only devs')
       expect(offer.vacancies_quantity).to eq(2)
+      expect(offer.close_date.strftime("%F")).to eq(Time.new(2020, 01, 3).strftime("%F"))
+
+      expect(offer.age_range_to).to eq(750000)
+      expect(offer.age_range_from).to eq(750000)
 
       expect(offer.offer_type_id).to eq(offer_type_2.id)
       expect(offer.work_mode_id).to eq(work_mode_2.id)

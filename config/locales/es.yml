@@ -168,6 +168,10 @@ es:
       short: '%-d de %b %H:%M'
     pm: pm
   date:
+    order:
+      - :day
+      - :month
+      - :year
     today: 'Hoy'
     days: 'Día(s)'
     years: 'Año(s)'

@@ -3,11 +3,13 @@
   = f.input :id,                 value: @offer.id, as: :hidden
   = f.input :title,              value: @offer.title
   = f.input :vacancies_quantity, value: @offer.vacancies_quantity
+  = f.input :close_date, as: :date, order: [:day, :month, :year], value: @offer.close_date
+  = f.check_box :immediate_start, value: @offer.immediate_start
 
   = f.simple_fields_for :age_range do |ar|
-    = ar.input :to,       value: @offer.age_range_to
-    = ar.input :from,     value: @offer.age_range_from
-    = ar.input :offer_id, value: @offer.id, as: :hidden
+    = ar.input :offer_id, input_html: { value: @offer.id }, as: :hidden
+    = ar.input :to,       value: @offer.age_range_to,   input_html: { type: 'number' }
+    = ar.input :from,     value: @offer.age_range_from, input_html: { type: 'number' }
 
   = f.input :offer_type_id,    collection: @offer.collection(OfferType), selected: @offer.offer_type_id, label_method: :first, value_method: :second
   = f.input :work_mode_id,     collection: @offer.collection(WorkMode), selected: @offer.work_mode_id, label_method: :first, value_method: :second

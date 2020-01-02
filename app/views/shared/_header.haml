@@ -9,6 +9,7 @@
   companies_sessions_path: company_session_path,
   users_sessions_path: user_session_path,
   log_out_user: destroy_user_session_path,
+  profile_path: users_profile_path(user_id: current_user.id),
   log_out_companies: destroy_company_session_path,
   session_translation: I18n.t("session"),
   terms_and_conditions_file_path: ENV['TERMS_AND_CONDITIONS_FILE_PATH'],

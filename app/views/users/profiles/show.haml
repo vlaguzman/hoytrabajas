@@ -1,11 +1,10 @@
 = render '/shared/header'
 .backgroundImage
 .contentBox
-  %a{href: @user.download_cv, target: "_blank"} Descargar Curriculum
+  %a{href: @user.download_cv}=t('profile.download_cv')
   .m-box.o-boxPrincipal
     .headerBox
-      %img{src: image_path("/assets/static/avatars/user-10.jpg"), alt: 'Photo Profile'}
-      - puts @user.inspect
+      %img{src: image_path("/assets/static/avatars/profile.jpg"), alt: 'Photo Profile'}
       %h1=raw "#{@user.name} <strong>#{@user.last_name}</strong>"
       .infoCandidate
         .iconMoreText
@@ -18,41 +17,42 @@
           %i.material-icons phone_iphone
           %span= @user.contact_number_with_format
     .bodyBox
-      %h2 Sobre Mi
+      %h2=t('profile.about_me')
       %p.aboutMe= @user.about_me
       - @user.yield_if(@user.curriculum_vitae.travel_disponibility) do
         %span.additionalInformation Disponible para trabajar en otra ciudad
     .bodyBox
-      %h2 Mis intereses
+      %h2=t('profile.my_interests')
       .boxInterests
         .typeSkill
-          %h4 Categorias de interes
+          %h4=t('profile.interest_categories')
           .contentSkills
             - @user.curriculum_vitae.job_categories.each do |job_category|
               %span.a-skill=job_category.description
         .typeSkill
-          %h4 tipos de oferta de interes
+          %h4=t('profile.offer_interest_rates')
           .contentSkills
             - @user.curriculum_vitae.offer_types.each do |offer_type|
               %span.a-skill= offer_type.description
         .typeSkill
-          %h4 Modalidad de trabajo
+          %h4=t('profile.work_mode')
           .contentSkills
             - @user.curriculum_vitae.work_modes.each do |work_mode|
               %span.a-skill= work_mode.description
         .typeSkill
-          %h4 Tipos de acuerdo
+          %h4=t('profile.types_of_agreement')
           .contentSkills
             %span.a-skill= @user.curriculum_vitae.contract_type.description
     .bodyBox
-      %h2 Habilidades
+      %h2=t('profile.abilities')
       .softSkills
-        %h3 Habilidades blandas validadas
+        %h3=t('profile.valid_soft_skills')
         - @user.curriculum_vitae.soft_skills.each do |soft_skill|
           %span.a-skill= soft_skill.description
+      // TODO We don't have valid soft skills yet
       - if params[:tester].present?
         .boxSkills
-          %h3 Habilidades tecnicas
+          %h3=t('profile.technical_skills')
           .skillSpecific
             %h4.nameSkill Marketing y ventas
             .contentTags
@@ -64,18 +64,18 @@
               %span.a-skill Redes sociales
               %h4.levelSkill Nivel Avanzado
       .boxLenguages
-        %h3 Idiomas
+        %h3=t('profile.languages')
         - @user.curriculum_vitae.languages_list.each do |language|
           .skillSpecific
             %h4.nameSkill=language.language.description
             %h4.levelSkill=language.level.description
     .bodyBox.boxAcademy
-      %h2 Formacion academica
+      %h2=t('profile.academic_training')
       = react_component('src/components/Cards/PublicProfile/Education', {defaultList: @user.data_education}, prerender: false)
     .bodyBox.boxAcademy
-      %h2 Experiencia
+      %h2=t('profile.experience')
       = react_component('src/components/Cards/PublicProfile/Experience', {defaultList: @user.data_experience}, prerender: false)
-    %a{href: @user.download_cv, target: "_blank"} Descargar Curriculum
+    %a{href: @user.download_cv}=t('profile.download_cv')
     .footerBox
-      %p="La manera más fácil, rápida y económica de conseguir empleo."
+      %p=t('profile.slogan')
 = render '/shared/footer'

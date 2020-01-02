@@ -1,0 +1,17 @@
+es:
+  profile:
+    download_cv: 'Descargar Curriculum'
+    about_me: 'Sobre mi'
+    my_interests: 'Mis intereses'
+    interest_categories: 'Categorias de interes'
+    offer_interest_rates: 'Tipos de interés de oferta'
+    work_mode: 'Modalidad de trabajo'
+    types_of_agreement: 'Tipos de acuerdo'
+    abilities: 'Habilidades'
+    valid_soft_skills: 'Habilidades blandas válidas'
+    technical_skills: 'Habilidades técnicas'
+    languages: 'Idiomas'
+    academic_training: 'Formación académica'
+    experience: 'Experiencia'
+    slogan: 'La manera más fácil, rápida y económica de conseguir empleo.'
+

@@ -1,10 +1,12 @@
 class Users::ProfilesController < ApplicationController
 
-  before_action :authenticate_user!
-
   def show
-    user = User.find(permit_params[:user_id])
-    @user = Users::ProfilesPresenter.new(user)
+    if user_signed_in? || company_signed_in?
+      user = User.find(permit_params[:user_id])
+      @user = Users::ProfilesPresenter.new(user)
+    else
+      redirect_to root_path
+    end
   end
 
   private

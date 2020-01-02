@@ -82,26 +82,26 @@ RSpec.describe "Overall navigation" do
         expect(current_path).to eq(root_path)
       end
 
-      it "should visit 'categorias de empĺeo' page from home page", js: true do
+      it "should visit 'Offers' page from footer in home page", js: true do
         visit root_path
 
-        expect(page).to have_link("Categorias de empleo", href: job_categories_path)
+        expect(page).to have_link("Buscar ofertas", href: offers_path)
 
-        click_on("Categorias de empleo")
+        click_on("Buscar ofertas")
 
-        expect(page).to have_content("Categorias de empleo")
+        expect(current_path).to eq(offers_path)
 
         click_on("Inicio")
 
         expect(current_path).to eq(root_path)
       end
 
-      it "should visit 'empresas' page from home page", js: true do
+      it "should visit 'Companies' page from footer in home page", js: true do
         visit root_path
 
-        expect(page).to have_link("Empresas", href: companies_path)
+        expect(page).to have_link("Compañías", href: companies_path)
 
-        click_on("Empresas")
+        click_on("Compañías")
 
         expect(page).to have_content(/Muchas empresas confían en nosotros/)
         expect(page).to have_content(/el talento de su empresa/)

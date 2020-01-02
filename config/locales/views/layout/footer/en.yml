@@ -1,5 +1,40 @@
 en:
   layout:
     footer:
+      toggle_button: 'More about HoyTrabajas'
+      social_bar:
+        description: 'In HoyTrabajas you look for temporary, informal, flexible or hourly job offers'
+        follow_us: 'Follow us:'
+      upper_footer:
+        candidates:
+          title: 'Candidates'
+          paths:
+            search_offers: 'Search offers'
+            roles: 'Executive roles'
+            premium: 'Premium plan'
+            companies: 'Companies'
+        companies:
+          title: 'Companies'
+          paths:
+            create_offers: 'Publish offers'
+            on_demand: 'On Demand'
+            company_prime: 'Company Prime'
+        contact_us:
+          title: 'Contact us'
+          paths:
+            phone: '+(57) 350 705 2990'
+            email: 'info@hoytrabajas.com'
+            address: 'Calle 101B #45A - 41'
+            country: 'Bogotá, Colombia'
+        coming_soon:
+          title: 'Coming soon'
+          description: 'Find thousands of job offers from our Mobile App'
       under_footer:
-        terms_and_conditions: 'Terms and Conditions'
+        nav_links:
+          faq: 'FAQs'
+          contact: 'Contact'
+          terms_and_conditions: 'Terms and Conditions'
+        copyright:
+          support_of: 'With the support of:'
+          developed_by: 'Development: © HoyTrabajas TI'
+          reserved_rights: 'All rights reserved.'

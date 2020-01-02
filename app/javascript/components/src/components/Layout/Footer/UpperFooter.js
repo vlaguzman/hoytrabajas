@@ -1,98 +1,64 @@
 import React from 'react'
-import { Row, Col } from 'reactstrap'
-import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
+import PropTypes from 'prop-types'
 
-const UpperFooter = () => {
-  return (
-    <Row
-      className="p-upper-footer text-white"
-      style={{ background: '#00CED5' }}
-    >
-      <Col xs={12} md={3}>
-        <Typography variant="subtitle1" className="mb-20 fw-bold">
-          Empresas
-        </Typography>
-        <ul>
-          <li>
-            <Typography variant="body1" className="d-inline-block mb-10">
-              Blog del Trabajo
-            </Typography>
-          </li>
-          <li>
-            <Typography variant="body1" className="d-inline-block mb-10">
-              Planes Corporativos
-            </Typography>
-          </li>
-          <li>
-            <Typography variant="body1" className="">
-              On Demand
-            </Typography>
-          </li>
-        </ul>
-      </Col>
-      <Col xs={12} md={3}>
-        <Typography variant="subtitle1" className="mb-20 fw-bold">
-          Candidatos
-        </Typography>
-        <ul>
-          <li>
-            <Typography variant="body1" className="d-inline-block mb-10">
-              Mapa de Empleo
-            </Typography>
-          </li>
-          <li>
-            <Typography variant="body1" className="d-inline-block mb-10">
-              Compañias
-            </Typography>
-          </li>
-          <li>
-            <Typography variant="body1" className="">
-              Perfiles
-            </Typography>
-          </li>
-        </ul>
-      </Col>
-      <Col xs={12} md={3}>
-        <Typography variant="subtitle1" className="mb-20 fw-bold">
-          HOYTRABAJAS
-        </Typography>
-        <ul>
-          <li>
-            <Typography variant="body1" component="p">
-              Calle 102 #45A - 46
-            </Typography>
-            <Typography variant="body1" component="p" className="mb-10">
-              Bogotá, Colombia
-            </Typography>
-          </li>
-          <li>
-            <Typography variant="body1">+(57) 350 705 2990</Typography>
-          </li>
-        </ul>
-      </Col>
-      <Col xs={12} md={3}>
-        <Row className="justify-content-start align-items-center d-none d-md-flex">
-          <div className="w-70 mx-auto ">
-            <Typography
-              variant="h6"
-              className="text-white text-center d-inline-block mb-20 marker"
-            >
-              ¿SuperPoderes?
-            </Typography>
-            <Button
-              style={{ borderRadius: '50px', color: '#00CED5' }}
-              className="bg-white d-block px-20"
-            >
-              <Typography variant="caption" className="fw-bold text-center">
-                Crece a Premium
-              </Typography>
-            </Button>
+const UpperFooter = ({ translations, paths }) => (
+  <div className="m-footer__upperFooter">
+    <div className="upperFooter__gridContainer">
+      {Object.keys(translations).map(key =>
+        key === 'coming_soon' ? null : (
+          <div className="upperFooter__gridItem">
+            <h6 className="title">{translations[key].title}</h6>
+            <ul>
+              {Object.keys(translations[key].paths).map(pathKey => (
+                <li className="li-item">
+                  {paths[key] && paths[key][pathKey] ? (
+                    <a href={paths[key][pathKey]}>
+                      {translations[key]['paths'][pathKey]}
+                    </a>
+                  ) : (
+                    paths[key][pathKey] !== null &&
+                    translations[key]['paths'][pathKey]
+                  )}
+                </li>
+              ))}
+            </ul>
           </div>
-        </Row>
-      </Col>
-    </Row>
-  )
-}
+        )
+      )}
+      <div className="upperFooter__gridItem">
+        <h6 className="title">{translations.coming_soon.title}</h6>
+        <ul>
+          <li className="li-item">{translations.coming_soon.description}</li>
+        </ul>
+        <div className="upperFooter__appIcons">
+          <img
+            src="/assets/static/img/icon-apple-store.png"
+            alt="Apple Store"
+            className="mr-10 mt-10"
+          />
+          <img
+            src="/assets/static/img/icon-google-play.png"
+            alt="Google Play"
+            className="mt-10"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+)
 
 export default UpperFooter
+
+UpperFooter.propTypes = {
+  translations: PropTypes.shape({
+    candidates: PropTypes.object.isRequired,
+    companies: PropTypes.object.isRequired,
+    contact_us: PropTypes.object.isRequired,
+    coming_soon: PropTypes.object.isRequired
+  }).isRequired,
+  paths: PropTypes.shape({
+    candidates: PropTypes.object.isRequired,
+    companies: PropTypes.object.isRequired,
+    contact_us: PropTypes.object.isRequired
+  })
+}

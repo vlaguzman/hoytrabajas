@@ -1,5 +1,40 @@
 es:
   layout:
     footer:
+      toggle_button: 'Más de HoyTrabajas'
+      social_bar:
+        description: 'En HoyTrabajas busca ofertas de empleos temporales, informales, flexibles o por horas'
+        follow_us: 'Síguenos en:'
+      upper_footer:
+        candidates:
+          title: 'Candidatos'
+          paths:
+            search_offers: 'Buscar ofertas'
+            roles: 'Cargos ejecutivos'
+            premium: 'Plan premium'
+            companies: 'Compañías'
+        companies:
+          title: 'Empresas'
+          paths:
+            create_offers: 'Publicar ofertas'
+            on_demand: 'On Demand'
+            company_prime: 'Línea Ejecutiva'
+        contact_us:
+          title: 'Contáctanos'
+          paths:
+            phone: '+(57) 350 705 2990'
+            email: 'info@hoytrabajas.com'
+            address: 'Calle 101B #45A - 41'
+            country: 'Bogotá, Colombia'
+        coming_soon:
+          title: 'Próximamente'
+          description: 'Encuentra miles de ofertas de empleo desde nuestra App Móvil'
       under_footer:
-        terms_and_conditions: 'Términos y Condiciones'
+        nav_links:
+          faq: 'FAQs'
+          contact: 'Contacto'
+          terms_and_conditions: 'Términos y Condiciones'
+        copyright:
+          support_of: 'Con el apoyo de:'
+          developed_by: 'Desarrollo: © HoyTrabajas TI'
+          reserved_rights: 'Todos los derechos reservados.'

@@ -1,1 +1,5 @@
-= react_component('src/components/Layout/Footer', { footer_translations: t('layout.footer'), terms_and_conditions_file_path: ENV['TERMS_AND_CONDITIONS_FILE_PATH'] }, prerender: false)
+= react_component('src/components/Layout/Footer', { footer_translations: t('layout.footer'), 
+search_offers: offers_path, 
+companies: companies_path, 
+create_offers: companies_first_offer_step_three_path,
+faqs: faqs_path, terms_and_conditions_file_path: ENV['TERMS_AND_CONDITIONS_FILE_PATH'] }, prerender: false)

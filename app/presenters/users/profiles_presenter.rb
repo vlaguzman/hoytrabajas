@@ -41,6 +41,31 @@ class Users::ProfilesPresenter < ApplicationPresenter
   end
 
   def download_cv
-    rails_routes.rails_blob_path(source.curriculum_vitae.file_cv, disposition: 'attachment')
+    if source.curriculum_vitae.photo.attached?
+      rails_routes.rails_blob_path(source.curriculum_vitae.file_cv, disposition: 'attachment')
+    end
+  end
+
+  def interests_present?
+    curriculum_vitae = source.curriculum_vitae
+    {
+      job_categories: curriculum_vitae.job_categories.present?,
+      contract_type:  curriculum_vitae.contract_type.present?,
+      offer_types:    curriculum_vitae.offer_types.present?,
+      work_modes:     curriculum_vitae.work_modes.present?
+    }
+  end
+  
+  def abilities_present?
+    curriculum_vitae = source.curriculum_vitae
+    {
+      languages_list: curriculum_vitae.languages_list.present?,
+      soft_skills:    curriculum_vitae.soft_skills.present?
+    }
+  end
+
+  def all_attributes_present?(attributes)
+    value = attributes.values.uniq
+    value.count.eql?(1) ? value.last : true
   end
 end

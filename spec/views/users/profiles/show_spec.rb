@@ -1,11 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe "users/profiles/show" do
+  let!(:user) { create(:user) }
   it "Should render users/profiles#show template" do
-    assign(:user, create(:user))
+    assign(:user, Users::ProfilesPresenter.new(user))
 
     render
-
-    expect(rendered).to have_tag("div", with: { "data-react-class": "views/users/profile"})
   end
 end

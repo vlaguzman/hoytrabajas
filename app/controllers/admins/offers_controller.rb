@@ -31,10 +31,19 @@ class Admins::OffersController < ApplicationController
         :work_mode_id,
         :contract_type_id,
         :close_date,
+        :immediate_start,
         age_range: [
           :to,
           :from,
           :offer_id
+        ],
+        offer_salary: [
+          :to,
+          :from,
+          :is_range,
+          :offer_id,
+          :salary_period_id,
+          :currency_id
         ],
         job_categories: [],
         work_positions: [],

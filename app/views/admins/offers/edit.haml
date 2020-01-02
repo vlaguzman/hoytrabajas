@@ -11,6 +11,14 @@
     = ar.input :to,       value: @offer.age_range_to,   input_html: { type: 'number' }
     = ar.input :from,     value: @offer.age_range_from, input_html: { type: 'number' }
 
+  = f.simple_fields_for :offer_salary do |os|
+    = os.input :offer_id,         input_html: { value: @offer.id }, as: :hidden
+    = os.input :to,               value: @offer.salary_to,   input_html: { type: 'number' }
+    = os.input :from,             value: @offer.salary_from, input_html: { type: 'number' }
+    = os.check_box :is_range,     value: @offer.salary_is_range
+    = os.input :currency_id,      collection: @offer.collection(Currency), selected: @offer.salary_currency_id, label_method: :first, value_method: :second
+    = os.input :salary_period_id, collection: @offer.collection(SalaryPeriod), selected: @offer.salary_period_id, label_method: :first, value_method: :second
+
   = f.input :offer_type_id,    collection: @offer.collection(OfferType), selected: @offer.offer_type_id, label_method: :first, value_method: :second
   = f.input :work_mode_id,     collection: @offer.collection(WorkMode), selected: @offer.work_mode_id, label_method: :first, value_method: :second
   = f.input :contract_type_id, collection: @offer.collection(ContractType), selected: @offer.contract_type_id, label_method: :first, value_method: :second

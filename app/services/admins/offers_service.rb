@@ -7,11 +7,15 @@ module Admins::OffersService
   end
 
   def self.clean_params(params)
+    puts "PARAMS -- \n"
+    puts params.inspect
+    puts "PARAMS -- \n"
     create_or_update_associations(params)
     {
       title:              params[:title],
       vacancies_quantity: params[:vacancies_quantity],
       close_date:         prepare_date(params),
+      immediate_start:    params[:immediate_start],
       offer_type_id:      params[:offer_type_id],
       work_mode_id:       params[:work_mode_id],
       contract_type_id:   params[:contract_type_id],
@@ -23,6 +27,7 @@ module Admins::OffersService
 
   def self.create_or_update_associations(params)
     persist_association("age_range", params) if params[:age_range].present?
+    persist_association("offer_salary", params) if params[:offer_salary].present?
   end
 
   def self.persist_association(model, params)

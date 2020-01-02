@@ -59,7 +59,7 @@ RSpec.describe Companies::FirstOffer::StepFive::FormParamsService do
             },
             currency_id:  {
               name: 'offer[currency_id]',
-              label: nil,
+              label: 'Moneda',
               values: [],
               current_value: ''
             },

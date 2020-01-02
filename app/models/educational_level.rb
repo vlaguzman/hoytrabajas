@@ -6,4 +6,7 @@ class EducationalLevel < ApplicationRecord
   has_and_belongs_to_many :offers
 
   has_one_attached :diploma
+
+  delegate :state_id, to: :city, prefix: :city, allow_nil: true
+
 end

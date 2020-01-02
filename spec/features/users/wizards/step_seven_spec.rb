@@ -17,11 +17,11 @@ RSpec.describe "like new candidate", :type => :feature do
     end
   end
 
-  feature "When click on 'Siguiente'" do
+  feature "When click on 'Sí, quiero adicionarla'" do
     it "Should redirect to the expected path", js: true do
       sign_in_and_visit_step_seven
 
-      click_on 'Siguiente'
+      click_on 'Sí, quiero adicionarla'
 
       expect(current_path).to eq(users_wizards_step_eight_path)
     end

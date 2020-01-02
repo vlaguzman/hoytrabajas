@@ -5,6 +5,7 @@ RSpec.describe Users::Wizards::StepTen::FormParamsService do
   describe '#form_params' do
     let!(:cities) { create_list(:city, 5) }
     let(:create_cites_list) { ListConverter.model_list(City) }
+    let(:create_states_list) { ListConverter.model_list(State) }
 
     let(:subject) { described_class }
 
@@ -51,8 +52,14 @@ RSpec.describe Users::Wizards::StepTen::FormParamsService do
               },
               city_id: {
                 name: 'acknowledgment[city_id]',
-                label: 'Ubicación',
+                label: 'Ciudad',
                 values: create_cites_list,
+                current_value: nil
+              },
+              state_id: {
+                name: 'acknowledgment[state_id]',
+                label: 'Departamento',
+                values: create_states_list,
                 current_value: nil
               }
             },
@@ -124,9 +131,15 @@ RSpec.describe Users::Wizards::StepTen::FormParamsService do
               },
               city_id: {
                 name: 'acknowledgment[city_id]',
-                label: 'Ubicación',
+                label: 'Ciudad',
                 values: create_cites_list,
                 current_value: cities.last.id
+              },
+              state_id: {
+                name: 'acknowledgment[state_id]',
+                label: 'Departamento',
+                values: create_states_list,
+                current_value: cities.last.state.id
               }
             },
             placeholders:{}

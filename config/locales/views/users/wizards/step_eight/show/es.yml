@@ -16,6 +16,7 @@ es:
               work_position_id: 'Cargo*'
               work_methodology_id: 'Modalidad de trabajo'
               city_id: 'Ciudad'
+              state_id: 'Departamento'
               still_in_progress: 'Actualmente laborando'
               technical_skills: 'Habilidades desempeñadas'
               started_at: 'Fecha de inicio'

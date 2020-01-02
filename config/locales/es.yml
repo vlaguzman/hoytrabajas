@@ -104,8 +104,10 @@ es:
           attributes:
             email:
               blank: 'Por favor ingrese un correo electrónico, este campo no puede estar en blanco'
+              taken: 'Por favor ingrese un correo electrónico, ese ya esta en uso'
             password:
               blank: 'Por favor ingrese el password, este campo no puede estar en blanco'
+              too_short: 'La contraseña es muy corta'
             password_confirmation:
               confirmation: 'Su contraseña no coincide con la confirmación, por favor haga que su contraseña se igual a la verificación'
         user:
@@ -116,8 +118,10 @@ es:
               blank: 'Por favor ingrese su Apellido, este campo no puede estar en blanco'
             email:
               blank: 'Por favor ingrese un correo electrónico, este campo no puede estar en blanco'
+              taken: 'Por favor ingrese un correo electrónico, ese ya esta en uso'
             password:
               blank: 'Por favor ingrese el password, este campo no puede estar en blanco'
+              too_short: 'La contraseña es muy corta'
             password_confirmation:
               confirmation: 'Su contraseña no coincide con la confirmación, por favor haga que su contraseña se igual a la verificación'
             identification_number:

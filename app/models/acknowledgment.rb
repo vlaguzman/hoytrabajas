@@ -4,6 +4,8 @@ class Acknowledgment < ApplicationRecord
   belongs_to :curriculum_vitae
   belongs_to :city, optional: true
 
+  delegate :state_id, to: :city, prefix: :city, allow_nil: true
+
   has_one_attached :diploma
 
 end

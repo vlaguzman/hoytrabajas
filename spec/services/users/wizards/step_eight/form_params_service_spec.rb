@@ -19,6 +19,8 @@ RSpec.describe Users::Wizards::StepEight::FormParamsService do
     let!(:cities) { create_list(:city, 5) }
     let(:create_cities_list ) { ListConverter.model_list(City) }
 
+    let(:create_states_list) { ListConverter.model_list(State) }
+
     let(:subject) { described_class }
 
     context "When user is new and want add a work experience" do
@@ -73,6 +75,12 @@ RSpec.describe Users::Wizards::StepEight::FormParamsService do
                 name: 'work_experience[city_id]',
                 label: 'Ciudad',
                 values: create_cities_list,
+                current_value: nil
+              },
+              state_id: {
+                name: 'work_experience[state_id]',
+                label: 'Departamento',
+                values: create_states_list,
                 current_value: nil
               },
               started_at: {
@@ -183,6 +191,12 @@ RSpec.describe Users::Wizards::StepEight::FormParamsService do
                 label: 'Ciudad',
                 values: create_cities_list,
                 current_value: cities.last.id
+              },
+              state_id: {
+                name: 'work_experience[state_id]',
+                label: 'Departamento',
+                values: create_states_list,
+                current_value: cities.last.state.id
               },
               started_at: {
                 name: 'work_experience[started_at]',

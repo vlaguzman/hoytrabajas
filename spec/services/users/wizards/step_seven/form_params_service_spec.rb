@@ -13,7 +13,6 @@ RSpec.describe Users::Wizards::StepSeven::FormParamsService do
         subtitle: 'Brinda a las empresas información valiosa sobre ti.',
         form: {
           buttons: {
-            submit: 'Siguiente',
             next: 'Saltar',
             previous: 'Regresar',
             previousPath: '/users/wizards/step_six',

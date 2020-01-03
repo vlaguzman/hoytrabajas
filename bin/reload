@@ -33,4 +33,6 @@ echo "Doing reload...................................................."
 sudo systemctl reload nginx.service
 echo "Killing old puma process....................................."
 sudo kill -QUIT $(cat $OLD_PID)
+echo "Updating the cronotab....................................."
+bundle exec whenever --update-crontab
 echo "Finished!"

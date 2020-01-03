@@ -13,7 +13,7 @@ FactoryBot.define do
     status                        { 'active' }
     job_categories                { [FactoryBot.create(:job_category)] }
     vacancies_quantity            { 10 }
-    
+
     trait :empty do
       title                         { Faker::Lorem.sentence(word_count: 8) }
       address                       { nil }
@@ -24,13 +24,12 @@ FactoryBot.define do
       required_experience           { nil }
       description_responsibilities  { nil }
       release_date                  { nil }
-      status                        { nil }
       city                          { nil }
       contract_type                 { nil }
       work_mode                     { nil }
       vacancies_quantity            { nil }
     end
-    
+
     trait :with_relations_offer do
       working_days                  { [FactoryBot.create(:working_day)] }
       available_work_days           { [FactoryBot.create(:available_work_day)] }
@@ -59,7 +58,7 @@ FactoryBot.define do
     association :city, factory: :city
     association :work_mode, factory: :work_mode
     association :contract_type, factory: :contract_type
-    
+
     factory :empty_offer, traits: [:empty]
   end
 end

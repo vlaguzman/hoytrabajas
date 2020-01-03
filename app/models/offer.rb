@@ -1,13 +1,17 @@
 class Offer < ApplicationRecord
   ATTRIBUTES_TO_COMPARE = [:city_id, :work_mode_id, :contract_type_id]
-  #TO-DO: Evaluate educational_level values and quantity
+  #TODO: Evaluate educational_level values and quantity
   LISTS_TO_COMPARE = [:job_categories, :working_days, :available_work_days, :languages_list, :technical_skills, :vehicles, :driving_licences, :soft_skills, :sexes, :educational_level]
+
+  OFFER_STATUS = ["expired", "hired", "active", "preview", "trash"]
 
   before_save -> { self.slug = self.title.parameterize }
 
   validates_presence_of :title, :job_category_ids
 
   validates_length_of :title, minimum: 3, maximum: 400
+
+  validates :status, inclusion: { in: OFFER_STATUS }
 
   scope :active, -> { where(status: 'active') }
   scope :max_offers, -> (max_offer_limit) { limit(max_offer_limit) }

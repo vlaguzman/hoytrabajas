@@ -22,6 +22,7 @@ gem 'ransack'
 gem "aws-sdk-s3"
 gem 'simple_form'
 gem 'statesman', '~> 5.1.0'
+gem 'whenever', require: false
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password

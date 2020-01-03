@@ -61,6 +61,8 @@ en:
               blank: "Please enter a title to the offer, this field cannot be blank"
             job_category_ids:
               blank: "Please select a category, this field is required"
+            status:
+              inclusion: "%{value} Invalid offer status, valid: [:expired, :hired, :active, :preview, :trash]"
         educational_level:
           attributes:
             degree:

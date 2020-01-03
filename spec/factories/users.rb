@@ -2,7 +2,6 @@ FactoryBot.define do
   factory :user do
     name                  { Faker::FunnyName.name }
     last_name             { Faker::FunnyName.two_word_name }
-    about_me              { "Quis minim aliquip ea tempor reprehenderit voluptate." }
     birthday              { Faker::Date.birthday(min_age: 18, max_age: 65) }
     contact_number        { 3113535522 }
     identification_number { Faker::IDNumber.valid }

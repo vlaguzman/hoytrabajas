@@ -5,7 +5,7 @@ RSpec.describe "users/profiles/show" do
   let!(:educational_level) { create(:educational_level) }
   let!(:work_experience)   { create(:work_experience) }
   let!(:soft_skill)        { create(:soft_skill) }
-  let!(:user)              { create(:user, name: 'Sebastian', last_name: 'Castro', email: 'test@test.com') }
+  let!(:user)              { create(:user, name: 'Sebastian', last_name: 'Castro', email: 'test@test.com', about_me: 'Quis minim aliquip ea tempor reprehenderit voluptate.') }
   let!(:curriculum_vitae)  { create(:curriculum_vitae, user: user, educational_level_ids: [educational_level.id], work_experience_ids: [work_experience.id], job_category_ids: [job_category.id], soft_skill_ids: soft_skill.id) }
 
   it "Should render users/profiles#show template" do

@@ -1,0 +1,52 @@
+es:
+  offer:
+    form:
+      messages:
+        succesfully_update: 'La oferta %{offer_title} actualizada exitosamente!'
+      labels:
+        title: 'Titulo'
+        vacancies_quantity: 'Cantidad de vacantes'
+        close_date: 'Fecha de finalización'
+        immediate_start: 'Inicio inmediato'
+        required_experience: 'Requiere experiencia'
+        status: 'Seleccione el estado'
+        age_range:
+          label: 'Rango de edad'
+          to: 'Desde'
+          from: 'Hasta'
+        offer_salary:
+          label: 'Información del salario'
+          to: 'Desde'
+          from: 'hasta'
+          is_range: 'Es rango'
+          currency_id: 'Selecciona la moneda'
+          salary_period_id: 'Selecciona el periodo de pago'
+        offer_required_experiences:
+          label: 'Información de experiencia'
+          duration: 'Con mínimo'
+          duration_type_id: 'De experiencia'
+        offers_technical_skills:
+          label: 'Habilidades técnicas'
+          technical_skill_id: 'Selecciona una habilidad técnica'
+          level_id: 'Selecciona un nivel'
+        languages_offers:
+          label: 'Lenguajes requeridos'
+          language_id: 'Selecciona un idioma'
+          level_id: 'Selecciona un nivel'
+        offer_type_id: 'Selecciona el tipo de oferta'
+        work_mode_id: 'Selecciona la modalidad de trabajo'
+        contract_type_id: 'Selecciona el tipo de contrato'
+        city_id: 'Selecciona la ciudad'
+        educational_degree_id: 'Selecciona el nivel mínimo de educación'
+        job_categories: 'Selecciona las categorías'
+        work_positions: 'Selecciona las posiciones'
+        sexes: 'Selecciona los géneros'
+        available_work_days: 'Selecciona los días hábiles'
+        working_days: 'Selecciona los días de trabajo'
+        job_aids: 'Selecciona las ayudas'
+        responsibilities: 'Selecciona las responsabilidades'
+        requirements: 'Selecciona los requerimientos'
+        vehicles: 'Selecciona los vehículos'
+        driving_licences: 'Selecciona las licencias de conducción'
+      buttons:
+        save: 'Guardar'

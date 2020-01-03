@@ -1,3 +1,4 @@
+      1 app/controllers/admins/offers_controller.rb
       1 app/controllers/companies/dashboards_controller.rb
       1 app/controllers/companies/first_offer/step_eights_controller.rb
       1 app/controllers/companies/first_offer/step_fives_controller.rb

@@ -85,6 +85,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/work_mode.rb",100,5,3,3,0
 "./app/models/work_position.rb",100,5,3,3,0
 "./app/models/working_day.rb",100,6,4,4,0
+"./app/presenters/admins/offers_presenter.rb",100,6,3,3,0
 "./app/presenters/application_presenter.rb",100,30,17,17,0
 "./app/presenters/applied_offers_presenter.rb",100,30,11,11,0
 "./app/presenters/companies/dashboards_presenter.rb",100,10,5,5,0
@@ -118,6 +119,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/users/wizards/step_zero_presenter.rb",100,7,3,3,0
 "./app/presenters/users/wizards_presenter.rb",100,14,4,4,0
 "./app/presenters/users_presenter.rb",100,19,5,5,0
+"./app/services/admins/offers_service.rb",100,62,20,20,0
 "./app/services/admins_service.rb",100,15,8,8,0
 "./app/services/affinity_calculator.rb",100,56,31,31,0
 "./app/services/base_form_wizards_service.rb",100,96,50,50,0

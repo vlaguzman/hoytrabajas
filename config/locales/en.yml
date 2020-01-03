@@ -36,6 +36,8 @@ en:
         status:
           label: "Estado"
           active: "active"
+      actions:
+        edit: 'Edit'
   activerecord:
     errors:
       messages:
@@ -58,6 +60,7 @@ en:
             company:
               required: "Please select a company"
             title:
+              too_short: 'Title is too short'
               blank: "Please enter a title to the offer, this field cannot be blank"
             job_category_ids:
               blank: "Please select a category, this field is required"
@@ -82,6 +85,10 @@ en:
       long: "%-d de %B de %Y %H:%M"
       short: "%-d de %b %H:%M"
   date:
+    order:
+      - :day
+      - :month
+      - :year
     am: am
     formats:
       default: "%A, %-d de %B de %Y %H:%M:%S %z"

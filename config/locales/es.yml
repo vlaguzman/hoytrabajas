@@ -38,6 +38,8 @@ es:
           label: 'Estado'
           active: 'active'
           expire: 'expire'
+      actions:
+        edit: 'Editar'
   session:
     nav:
       home: 'Inicio'
@@ -138,6 +140,7 @@ es:
             company:
               required: 'Por favor seleccione una compañía, este campo es requerido'
             title:
+              too_short: 'El título es muy corto'
               blank: 'Por favor ingrese un título a la oferta, este campo no puede estar en blanco'
             job_category_ids:
               blank: 'Por favor seleccione una categoría, este campo es requerido'
@@ -168,6 +171,10 @@ es:
       short: '%-d de %b %H:%M'
     pm: pm
   date:
+    order:
+      - :day
+      - :month
+      - :year
     today: 'Hoy'
     days: 'Día(s)'
     years: 'Año(s)'

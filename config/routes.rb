@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   resources :applied_offers, only: [:create]
   resources :job_categories, only:[:index]
 
+  namespace :admins do
+    resource :offer, only: [:edit, :update]
+  end
+
   namespace :companies do
     resource :dashboard, only: [:show]
     resources :list_candidates, only: [:show]

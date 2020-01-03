@@ -7,7 +7,7 @@ RSpec.describe "users/wizards/step_zeros/curriculum_vitaes/show.haml" do
     render
 
     expect(rendered).to have_content("Cuentas con una hoja de vida?")
-    expect(rendered).to have_content("Subiendo tu Curriculum podras simplificar el diligenciamiento de tu perfil")
+    expect(rendered).to have_content("Subiendo tu hoja de vida podras simplificar el diligenciamiento de tu perfil")
     expect(rendered).to have_field("user[file_cv]")
     expect(rendered).to have_button("Continuar")
   end

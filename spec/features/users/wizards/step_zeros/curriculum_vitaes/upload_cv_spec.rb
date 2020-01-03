@@ -12,7 +12,7 @@ RSpec.describe "like new candidate", type: :feature do
       attach_file('user[file_cv]', Rails.root + "spec/factories/pdfs/diploma.pdf", make_visible: true)
 
       expect(page).to have_content("Cuentas con una hoja de vida?")
-      expect(page).to have_content("Subiendo tu Curriculum podras simplificar el diligenciamiento de tu perfil")
+      expect(page).to have_content("Subiendo tu hoja de vida podras simplificar el diligenciamiento de tu perfil")
       expect(page).to have_field("user[file_cv]")
       expect(page).to have_button("Continuar")
 
@@ -28,7 +28,7 @@ RSpec.describe "like new candidate", type: :feature do
       visit users_wizards_step_zeros_curriculum_vitae_path
 
       expect(page).to have_content("Cuentas con una hoja de vida?")
-      expect(page).to have_content("Subiendo tu Curriculum podras simplificar el diligenciamiento de tu perfil")
+      expect(page).to have_content("Subiendo tu hoja de vida podras simplificar el diligenciamiento de tu perfil")
       expect(page).to have_field("user[file_cv]")
       expect(page).to have_button("Continuar")
 
@@ -44,7 +44,7 @@ RSpec.describe "like new candidate", type: :feature do
       visit users_wizards_step_zeros_curriculum_vitae_path
 
       expect(page).to have_content("Cuentas con una hoja de vida?")
-      expect(page).to have_content("Subiendo tu Curriculum podras simplificar el diligenciamiento de tu perfil")
+      expect(page).to have_content("Subiendo tu hoja de vida podras simplificar el diligenciamiento de tu perfil")
       expect(page).to have_field("user[file_cv]")
       expect(page).to have_link("Regresar")
       expect(page).to have_button("Continuar")
@@ -61,7 +61,7 @@ RSpec.describe "like new candidate", type: :feature do
       visit users_wizards_step_zeros_curriculum_vitae_path
 
       expect(page).to have_content("Cuentas con una hoja de vida?")
-      expect(page).to have_content("Subiendo tu Curriculum podras simplificar el diligenciamiento de tu perfil")
+      expect(page).to have_content("Subiendo tu hoja de vida podras simplificar el diligenciamiento de tu perfil")
       expect(page).to have_field("user[file_cv]")
       expect(page).to have_link("Regresar")
       expect(page).to have_button("Continuar")

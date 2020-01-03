@@ -141,6 +141,8 @@ es:
               blank: 'Por favor ingrese un título a la oferta, este campo no puede estar en blanco'
             job_category_ids:
               blank: 'Por favor seleccione una categoría, este campo es requerido'
+            status:
+              inclusion: '%{value} no es un estado valido, estados validos: [:expired, :hired, :active, :preview, :trash]'
         educational_level:
           attributes:
             degree:

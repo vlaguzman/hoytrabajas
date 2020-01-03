@@ -115,13 +115,9 @@ RSpec.describe ListConverter do
       it "should return expected object" do
         response = subject.parameters_list(cv.strong_skills, [:job_category_id, :technical_skill_id, :level_id])
 
-        expected_array = [
-          {:job_category_id=>5, :technical_skill_id=>1, :level_id=>1},
-          {:job_category_id=>6, :technical_skill_id=>2, :level_id=>2},
-          {:job_category_id=>7, :technical_skill_id=>3, :level_id=>3},
-          {:job_category_id=>8, :technical_skill_id=>4, :level_id=>4},
-          {:job_category_id=>9, :technical_skill_id=>5, :level_id=>5}
-        ]
+        expected_array = create_strong_skills.map do |sk|
+          { job_category_id: sk.job_category_id, technical_skill_id: sk.technical_skill_id, level_id: sk.level_id }
+        end
 
         expect(response).to match_array(expected_array)
       end

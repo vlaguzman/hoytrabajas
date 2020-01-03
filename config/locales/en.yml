@@ -36,6 +36,8 @@ en:
         status:
           label: "Estado"
           active: "active"
+      actions:
+        edit: 'Edit'
   activerecord:
     errors:
       messages:

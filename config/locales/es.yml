@@ -38,6 +38,8 @@ es:
           label: 'Estado'
           active: 'active'
           expire: 'expire'
+      actions:
+        edit: 'Editar'
   session:
     nav:
       home: 'Inicio'

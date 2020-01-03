@@ -12,7 +12,7 @@ ActiveAdmin.register Offer do
     column :required_experience
     column :status
     actions do |offer|
-      link_to 'Editar', edit_admins_offer_path(offer_id: offer.id)
+      link_to t('admin.offers.actions.edit'), edit_admins_offer_path(offer_id: offer.id)
     end
   end
 

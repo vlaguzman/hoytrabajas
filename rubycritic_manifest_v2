@@ -2,6 +2,8 @@ A          • Acknowledgment                                              6    
 A          • AdminUser                                                   2       0.0        0           1
 A          • AdminUsers                                                  1       0.0        0           0
 A          • AdminUsers::SessionsController                              2       6.2        0           1
+A          • Admins::OffersController                                    11      34.23      0           3
+A          • Admins::OffersPresenter                                     2       2.2        0           2
 A          • AdminsService                                               1       13.19      0           1
 A          • AgeRange                                                    1       0.0        0           1
 A          • ApplicationCable::Channel                                   1       0.0        0           1
@@ -106,12 +108,12 @@ A          • Level                                                       4    
 A          • Limitation                                                  4       0.0        0           1
 A          • ListConverter                                               11      29.49      0           2
 A          • Nationality                                                 5       0.0        0           1
-A          • Offer                                                       51      15.06      0           1
+A          • Offer                                                       52      15.06      0           1
 A          • OfferOnDemand                                               3       0.0        0           1
 A          • OfferRequiredExperiences                                    1       0.0        0           1
 A          • OfferSalary                                                 8       0.0        0           1
 A          • OfferType                                                   5       0.0        0           1
-A          • Offers                                                      13      0.0        0           0
+A          • Offers                                                      16      0.0        0           0
 A          • Offers::AppliedOfferService                                 2       13.25      0           1
 A          • Offers::ExpiredService                                      1       10.82      0           1
 A          • Offers::IndexService                                        6       11.26      0           3
@@ -216,6 +218,7 @@ A          • WorkMethodology                                             1    
 A          • WorkMode                                                    3       0.0        0           1
 A          • WorkPosition                                                2       0.0        0           1
 A          • WorkingDay                                                  5       0.0        0           1
+B          • Admins::OffersService                                       6       66.75      0           1
 B          • AffinityCalculator                                          10      60.81      46          14
 B          • BaseFormWizardsService                                      30      98.36      0           1
 B          • Companies::FirstOffer::StepFivePresenter                    5       25.0       23          1

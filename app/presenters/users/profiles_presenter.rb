@@ -4,7 +4,7 @@ class Users::ProfilesPresenter < ApplicationPresenter
     grouped_number = source
       .contact_number
       .to_s
-      .match(/(\d{3})(\d{3})(\d{4})/)
+      .match(/(\d{1,3})(\d{1,3})(\d{1,4})|\d/)
     "#{grouped_number[1]} #{grouped_number[2]} #{grouped_number[3]}"
   end
 
@@ -41,7 +41,7 @@ class Users::ProfilesPresenter < ApplicationPresenter
   end
 
   def download_cv
-    if source.curriculum_vitae.photo.attached?
+    if source.curriculum_vitae.file_cv.attached?
       rails_routes.rails_blob_path(source.curriculum_vitae.file_cv, disposition: 'attachment')
     end
   end

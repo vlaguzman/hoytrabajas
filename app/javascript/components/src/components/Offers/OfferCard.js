@@ -35,7 +35,9 @@ const OfferCard = ({
   }
 
   return (
-    <Col className={`m-offer cardOffer position-relative m-0 justify-content-center align-items-center px-0 ${isOfferOnDemand()}`}>
+    <Col
+      className={`m-offer cardOffer position-relative m-0 justify-content-center align-items-center ${isOfferOnDemand()}`}
+    >
       <div className="bg-buttons-carusel MuiPaper-rounded position-absolute d-flex flex-column align-items-center justify-content-center">
         <Row noGutters className="w-100 justify-content-center">
           <a

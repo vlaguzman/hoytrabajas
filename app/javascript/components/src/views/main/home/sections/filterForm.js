@@ -160,15 +160,6 @@ const FilterForm = ({ translations, common, button1, fields1, cities }) => {
           method="get"
         >
           {/* TODO oscar ucomment this Button wheh find by categories exist */}
-          {
-            <button
-              type="button"
-              onClick={toggleState}
-              className="a-button a-button--primary filterForm__categoriesButton h-50"
-            >
-              {translations.categories}
-            </button>
-          }
 
           <FormGen fields={fields1} />
           <ComboBox cities={cities} />
@@ -440,9 +431,7 @@ const FilterForm = ({ translations, common, button1, fields1, cities }) => {
             multiple
           />
         </Form>
-        <Collapse isOpen={state.open}>
-          <CarouselRow items={common} handleJobCategory={handleJobCategory} />
-        </Collapse>
+        <CarouselRow items={common} handleJobCategory={handleJobCategory} />
       </RctCollapsibleCard>
     </Row>
   )

@@ -183,108 +183,111 @@ const Header = props => {
   )
 
   return (
-    <Navbar
-      position="static"
-      className={`navbar-wrapper navbar-expand-lg ${
-        !isNavTransparent ? 'bg-header' : ''
-      }`}
-      style={{
-        backgroundColor: isNavTransparent ? 'transparent' : 'white'
-      }}
-    >
-      <div className="navbar-row mui-fixed">
-        <div className="d-flex align-items-center">
-          <div className="site-logo">
-            <NavbarBrand href="/" className="logo-mini mr-auto">
-              <img
-                src="/assets/static/img/hoytrabajas-logo-color.png"
-                className="mr-15 logo animated fadeIn"
-                alt="site logo"
-                height="100%"
-              />
-            </NavbarBrand>
-          </div>
-        </div>
-        <NavbarToggler
-          onClick={() => toggleOpenState('navbar')}
-          className="mt-5"
-          id="navbar-toggler"
-        >
-          <MenuIcon {...colorOfNavToggler()} />
-        </NavbarToggler>
-        {/* Search bar in white nav bar */}
-        <Collapse isOpen={openState.navbar} navbar id="navbarNav">
-          {!isNavTransparent && (
-            <Form
-              className="d-flex search-bar-wrapper navbar-search-form"
-              action="/offers/"
-              method="get"
-              inline
-            >
-              <FormGroup className="search-bar">
-                <Label for="title_cont" hidden>
-                  Buscar ofertas
-                </Label>
-                <Input
-                  name="q[title_cont]"
-                  id="q[title_cont]"
-                  type="text"
-                  className="searchBar__input"
-                  value={searchValue}
-                  placeholder="Palabra clave"
-                  onChange={handleSearchChange}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <div className="d-flex">
-                        {searchValue ? (
-                          <IconButton
-                            className="mr-5"
-                            aria-label="Reset search"
-                            onClick={handleSearchReset}
-                          >
-                            <CloseIcon
-                              {...props}
-                              style={{ cursor: 'pointer' }}
-                              className="searchBar--resetIcon"
-                              focusable
-                            />
-                          </IconButton>
-                        ) : null}
-                        <IconButton
-                          className="searchBar__searchIcon"
-                          aria-label="Search"
-                          type="submit"
-                        >
-                          <FontAwesomeIcon icon="search" size="sm" />
-                        </IconButton>
-                      </div>
-                    </InputAdornment>
-                  }
-                  aria-describedby="standard-weight-helper-text"
-                  inputProps={{
-                    'aria-label': 'weight'
-                  }}
+    <>
+      <Navbar
+        position="static"
+        className={`navbar-wrapper navbar-expand-lg ${
+          !isNavTransparent ? 'bg-header' : ''
+        }`}
+        style={{
+          backgroundColor: isNavTransparent ? 'transparent' : 'white'
+        }}
+      >
+        <div className="navbar-row mt-10 mui-fixed">
+          <div className="d-flex align-items-center">
+            <div className="site-logo">
+              <NavbarBrand href="/" className="logo-mini mr-auto">
+                <img
+                  src="/assets/static/img/hoytrabajas-logo-color.png"
+                  className="mr-15 logo animated fadeIn"
+                  alt="site logo"
+                  height="100%"
                 />
-              </FormGroup>
-            </Form>
-          )}
-          <ul className="navbar-nav align-items-center m-navItems navbar-item-wrapper">
-            {user_signed_in || company_signed_in ? (
-              <LoggedInNav />
-            ) : (
-              <LoggedOutNav />
+              </NavbarBrand>
+            </div>
+          </div>
+          <NavbarToggler
+            onClick={() => toggleOpenState('navbar')}
+            className="mt-5"
+            id="navbar-toggler"
+          >
+            <MenuIcon {...colorOfNavToggler()} />
+          </NavbarToggler>
+          {/* Search bar in white nav bar */}
+          <Collapse isOpen={openState.navbar} navbar id="navbarNav">
+            {!isNavTransparent && (
+              <Form
+                className="d-flex search-bar-wrapper navbar-search-form"
+                action="/offers/"
+                method="get"
+                inline
+              >
+                <FormGroup className="search-bar">
+                  <Label for="title_cont" hidden>
+                    Buscar ofertas
+                  </Label>
+                  <Input
+                    name="q[title_cont]"
+                    id="q[title_cont]"
+                    type="text"
+                    className="searchBar__input"
+                    value={searchValue}
+                    placeholder="Palabra clave"
+                    onChange={handleSearchChange}
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <div className="d-flex">
+                          {searchValue ? (
+                            <IconButton
+                              className="mr-5"
+                              aria-label="Reset search"
+                              onClick={handleSearchReset}
+                            >
+                              <CloseIcon
+                                {...props}
+                                style={{ cursor: 'pointer' }}
+                                className="searchBar--resetIcon"
+                                focusable
+                              />
+                            </IconButton>
+                          ) : null}
+                          <IconButton
+                            className="searchBar__searchIcon"
+                            aria-label="Search"
+                            type="submit"
+                          >
+                            <FontAwesomeIcon icon="search" size="sm" />
+                          </IconButton>
+                        </div>
+                      </InputAdornment>
+                    }
+                    aria-describedby="standard-weight-helper-text"
+                    inputProps={{
+                      'aria-label': 'weight'
+                    }}
+                  />
+                </FormGroup>
+              </Form>
             )}
-          </ul>
-        </Collapse>
-      </div>
-      <Login
-        {...props}
-        currentModal={currentModal}
-        setCurrentModal={setCurrentModal}
-        isOpen={openState.login}
-        toggleOpenState={toggleOpenState}
-      />
-    </Navbar>
+            <ul className="navbar-nav align-items-center m-navItems navbar-item-wrapper">
+              {user_signed_in || company_signed_in ? (
+                <LoggedInNav />
+              ) : (
+                <LoggedOutNav />
+              )}
+            </ul>
+          </Collapse>
+        </div>
+        <Login
+          {...props}
+          currentModal={currentModal}
+          setCurrentModal={setCurrentModal}
+          isOpen={openState.login}
+          toggleOpenState={toggleOpenState}
+        />
+      </Navbar>
+      <div className="pt-60" />
+    </>
   )
 }
 export default Header

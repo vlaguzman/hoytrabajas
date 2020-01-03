@@ -8,9 +8,11 @@ const CarouselRow = props => {
     slidesToShow = 3,
     arrows,
     slidesToShowResp = 1,
+    centerModeResp = true,
     autoplay = true,
     centerMode = false,
     infinite = false,
+    infiniteResp = true,
     dots = true
   } = props
   const settings = {
@@ -43,17 +45,21 @@ const CarouselRow = props => {
         }
       },
       {
-        breakpoint: 427,
+        breakpoint: 576,
         settings: {
           slidesToShow: slidesToShowResp,
-          slidesToScroll: 1
+          slidesToScroll: 1,
+          centerMode: centerModeResp,
+          infinite: infiniteResp
         }
       },
       {
         breakpoint: 377,
         settings: {
           slidesToShow: slidesToShowResp,
-          slidesToScroll: 1
+          slidesToScroll: 1,
+          centerMode: centerModeResp,
+          infinite: infiniteResp
         }
       },
       {
@@ -61,7 +67,8 @@ const CarouselRow = props => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          centerMode: false
+          centerMode: centerModeResp,
+          infinite: infiniteResp
         }
       }
     ]

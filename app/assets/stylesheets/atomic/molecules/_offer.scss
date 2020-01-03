@@ -1,6 +1,11 @@
 .m-offer {
   max-width: 400px;
   margin: auto;
+  padding: 0;
+
+  @media (max-width: 576px) {
+    padding: 0 15px 30px;
+  }
 
   .offerWrapper {
     height: 100%;

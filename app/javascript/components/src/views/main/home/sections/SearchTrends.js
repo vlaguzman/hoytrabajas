@@ -44,7 +44,9 @@ const trends = [
 const SearchTrends = ({ translations }) => {
   return (
     <div className="t-home__searchTrends">
-      <h4 className="color__blue-main mb-60">{translations.title}</h4>
+      <h4 className="searchTrends__title color__blue-main">
+        {translations.title}
+      </h4>
       <div className="trendsGrid">
         {trends.map(singleTrend => (
           <div className="singleTrend">

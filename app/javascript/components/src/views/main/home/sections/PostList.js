@@ -23,7 +23,7 @@ const PostList = ({ translations }) => {
   const { title, btn_see_more, content } = translations
   return (
     <div className="t-home__postList">
-      <h4 className="color__blue-main mb-60">{title}</h4>
+      <h4 className="postList__title color__blue-main">{title}</h4>
       <div className="postListGrid">
         {posts.map(post => (
           <div className="a-shadow__card singlePost d-flex flex-column">

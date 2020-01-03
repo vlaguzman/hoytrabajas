@@ -42,7 +42,7 @@ const CarouselRow = ({ items = [], handleJobCategory }) => {
     ]
   }
   return (
-    <Slider {...settings} className=" p-10 my-25 carusel">
+    <Slider {...settings} className="filterForm__carousel">
       {map(items['categorias'], (item, i) => (
         <Unidad key={i} {...item} handleJobCategory={handleJobCategory} />
       ))}

@@ -12,6 +12,21 @@ RUN apt-get update
 RUN apt-get install -y postgresql-client-9.5
 RUN apt-get install -y w3m
 RUN apt-get install -y bc
+RUN apt-get update && \
+  apt-get install -qq -y --no-install-recommends cron && \
+  rm -rf /var/lib/apt/lists/*
+
+ENV APP_HOME /ht
+ENV RAILS_LOG_TO_STDOUT true
+
+RUN mkdir -p $APP_HOME
+WORKDIR $APP_HOME
+
 ENV BUNDLE_PATH /ht/.gems
 ENV GEM_HOME /ht/.gems
 COPY ./.ssh /root/.ssh/
+
+COPY Gemfile $APP_HOME/Gemfile
+COPY Gemfile.lock $APP_HOME/Gemfile.lock
+RUN gem install bundler:2.0.2
+RUN gem install whenever:0.9.4

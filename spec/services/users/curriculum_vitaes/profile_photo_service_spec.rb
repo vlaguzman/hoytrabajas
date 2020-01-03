@@ -21,7 +21,6 @@ RSpec.describe Users::CurriculumVitaes::ProfilePhotoService do
 
   describe "User does not have a profile photo" do
       context "When the user is male" do
-
         it "should return the default male photo" do
           cv.photo = nil
           cv.save

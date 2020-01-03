@@ -1,6 +1,8 @@
 es:
   offer:
     form:
+      messages:
+        succesfully_update: 'La oferta %{offer_title} actualizada exitosamente!'
       labels:
         title: 'Titulo'
         vacancies_quantity: 'Cantidad de vacantes'

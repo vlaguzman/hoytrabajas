@@ -1,0 +1,42 @@
+es:
+  offer:
+    form:
+      labels:
+        title: 'Titulo'
+        vacancies_quantity: 'Cantidad de vacantes'
+        close_date: 'Fecha de finalizacion'
+        immediate_start: 'Inicio inmediato'
+        required_experience: 'Requiere experencia'
+        age_range:
+          to: 'Desde'
+          from: 'Hasta'
+        offer_salary:
+          to: 'Desde'
+          from: 'hasta'
+          is_range: 'Es rango'
+          currency_id: 'Selecciona la moneda'
+          salary_period_id: 'Selecciona el periodo de pago'
+        offer_required_experiences:
+          duration: 'Con minimo'
+          duration_type_id: 'De experiencia'
+        offers_technical_skills:
+          technical_skill_id: 'Selecciona una habilidad tecnica'
+          level_id: 'Selecciona un nivel'
+        languages_offers:
+          language_id: 'Selecciona un idioma'
+          level_id: 'Selecciona un nivel'
+        offer_type_id: 'Selecciona el tipo de oferta'
+        work_mode_id: 'Selecciona la modalidad de trabajo'
+        contract_type_id: 'Selecciona el tipo de contrato'
+        city_id: 'Selecciona la ciudad'
+        educational_degree_id: 'Nivel minimo de educacion'
+        job_categories: 'Selecciona las categorias'
+        work_positions: 'Selecciona las posiciones'
+        sexes: 'Selecciona los generos'
+        available_work_days: 'Selecciona los dias habiles'
+        working_days: 'Selecciona los dias de trabajo'
+        job_aids: 'Selecciona las ayudas'
+        responsibilities: 'Selecciona las responsibilidades'
+        requirements: 'Selecciona los requerimientos'
+        vehicles: 'Selecciona los vehiculos'
+        driving_licences: 'Selecciona las lincencias de conduccion'

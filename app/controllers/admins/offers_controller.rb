@@ -30,8 +30,11 @@ class Admins::OffersController < ApplicationController
         :offer_type_id,
         :work_mode_id,
         :contract_type_id,
+        :city_id,
+        :educational_degree_id,
         :close_date,
         :immediate_start,
+        :required_experience,
         age_range: [
           :to,
           :from,
@@ -45,9 +48,31 @@ class Admins::OffersController < ApplicationController
           :salary_period_id,
           :currency_id
         ],
+        offer_required_experiences: [
+          :duration,
+          :duration_type_id,
+          :offer_id
+        ],
+        offers_technical_skills: [
+          :technical_skill_id,
+          :level_id,
+          :offer_id
+        ],
+        languages_offers: [
+          :language_id,
+          :level_id,
+          :offer_id
+        ],
         job_categories: [],
         work_positions: [],
-        sexes: []
+        sexes: [],
+        available_work_days: [],
+        working_days: [],
+        job_aids: [],
+        responsibilities: [],
+        requirements: [],
+        vehicles: [],
+        driving_licences: []
     ).to_h
   end
 end

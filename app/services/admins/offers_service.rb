@@ -12,22 +12,34 @@ module Admins::OffersService
     puts "PARAMS -- \n"
     create_or_update_associations(params)
     {
-      title:              params[:title],
-      vacancies_quantity: params[:vacancies_quantity],
-      close_date:         prepare_date(params),
-      immediate_start:    params[:immediate_start],
-      offer_type_id:      params[:offer_type_id],
-      work_mode_id:       params[:work_mode_id],
-      contract_type_id:   params[:contract_type_id],
-      job_category_ids:   prepare_ids(params[:job_categories]),
-      work_position_ids:  prepare_ids(params[:work_positions]),
-      sex_ids:            prepare_ids(params[:sexes]),
+      title:               params[:title],
+      vacancies_quantity:  params[:vacancies_quantity],
+      close_date:          prepare_date(params),
+      immediate_start:     params[:immediate_start],
+      offer_type_id:       params[:offer_type_id],
+      work_mode_id:        params[:work_mode_id],
+      contract_type_id:    params[:contract_type_id],
+      city_id:             params[:city_id],
+      educational_degree_id: params[:educational_degree_id],
+      job_category_ids:    prepare_ids(params[:job_categories]),
+      work_position_ids:   prepare_ids(params[:work_positions]),
+      sex_ids:             prepare_ids(params[:sexes]),
+      available_work_day_ids: prepare_ids(params[:available_work_days]),
+      working_day_ids:        prepare_ids(params[:working_days]),
+      job_aid_ids:            prepare_ids(params[:job_aids]),
+      responsibility_ids:    prepare_ids(params[:responsibilities]),
+      requirement_ids:        prepare_ids(params[:requirements]),
+      vehicle_ids:            prepare_ids(params[:vehicles]),
+      driving_licence_ids:    prepare_ids(params[:driving_licences]),
     }
   end
 
   def self.create_or_update_associations(params)
     persist_association("age_range", params) if params[:age_range].present?
     persist_association("offer_salary", params) if params[:offer_salary].present?
+    persist_association("offer_required_experiences", params) if params[:offer_required_experiences].present?
+    persist_association("offers_technical_skills", params) if params[:offers_technical_skills].present?
+    persist_association("languages_offers", params) if params[:languages_offers].present?
   end
 
   def self.persist_association(model, params)

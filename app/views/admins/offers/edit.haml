@@ -1,74 +1,55 @@
 %h1= "Editar #{@offer.title}"
 = simple_form_for @offer, url: admins_offer_path do |f|
   = f.input :id,                 value: @offer.id, as: :hidden
-  = f.input :title,              value: @offer.title
-  = f.input :vacancies_quantity, value: @offer.vacancies_quantity
-  = f.input :close_date, as: :date, order: [:day, :month, :year], value: @offer.close_date
-  = f.check_box :immediate_start, value: @offer.immediate_start
+  = f.input :title,              value: @offer.title, label: t('offer.form.labels.title')
+  = f.input :vacancies_quantity, value: @offer.vacancies_quantity, label: t('offer.form.labels.vacancies_quantity')
+  = f.input :close_date, as: :date, order: [:day, :month, :year], value: @offer.close_date, label: t('offer.form.labels.close_date')
+  = f.check_box :immediate_start,     value: @offer.immediate_start, label: t('offer.form.labels.immediate_start')
+  = f.check_box :required_experience, value: @offer.required_experience, label: t('offer.form.labels.required_experience')
 
   = f.simple_fields_for :age_range do |ar|
     = ar.input :offer_id, input_html: { value: @offer.id }, as: :hidden
-    = ar.input :to,       value: @offer.age_range_to,   input_html: { type: 'number' }
-    = ar.input :from,     value: @offer.age_range_from, input_html: { type: 'number' }
+    = ar.input :to,       value: @offer.age_range_to,   input_html: { type: 'number' }, label: t('offer.form.labels.age_range.to')
+    = ar.input :from,     value: @offer.age_range_from, input_html: { type: 'number' }, label: t('offer.form.labels.age_range.from')
 
   = f.simple_fields_for :offer_salary do |os|
     = os.input :offer_id,         input_html: { value: @offer.id }, as: :hidden
-    = os.input :to,               value: @offer.salary_to,   input_html: { type: 'number' }
-    = os.input :from,             value: @offer.salary_from, input_html: { type: 'number' }
-    = os.check_box :is_range,     value: @offer.salary_is_range
-    = os.input :currency_id,      collection: @offer.collection(Currency), selected: @offer.salary_currency_id, label_method: :first, value_method: :second
-    = os.input :salary_period_id, collection: @offer.collection(SalaryPeriod), selected: @offer.salary_period_id, label_method: :first, value_method: :second
+    = os.input :to,               value: @offer.salary_to,   input_html: { type: 'number' }, label: t('offer.form.labels.offer_salary.to')
+    = os.input :from,             value: @offer.salary_from, input_html: { type: 'number' }, label: t('offer.form.labels.offer_salary.from')
+    = os.check_box :is_range,     value: @offer.salary_is_range, label: t('offer.form.labels.offer_salary.is_range')
+    = os.input :currency_id,      collection: @offer.collection(Currency), selected: @offer.salary_currency_id, label_method: :first, value_method: :second, label: t('offer.form.labels.offer_salary.currency_id')
+    = os.input :salary_period_id, collection: @offer.collection(SalaryPeriod), selected: @offer.salary_period_id, label_method: :first, value_method: :second, label: t('offer.form.labels.offer_salary.salary_period_id')
 
-  = f.input :offer_type_id,    collection: @offer.collection(OfferType), selected: @offer.offer_type_id, label_method: :first, value_method: :second
-  = f.input :work_mode_id,     collection: @offer.collection(WorkMode), selected: @offer.work_mode_id, label_method: :first, value_method: :second
-  = f.input :contract_type_id, collection: @offer.collection(ContractType), selected: @offer.contract_type_id, label_method: :first, value_method: :second
+  = f.simple_fields_for :offer_required_experiences do |ore|
+    = ore.input :offer_id,         input_html: { value: @offer.id }, as: :hidden
+    = ore.input :duration,         value: @offer.required_experiences_duration, input_html: { type: 'number' }, label: t('offer.form.labels.offer_required_experiences.duration')
+    = ore.input :duration_type_id, collection: @offer.collection(DurationType), selected: @offer.required_experiences_duration_type_id, label_method: :first, value_method: :second, label: t('offer.form.labels.offer_required_experiences.duration_type_id')
 
-  = f.input :job_categories,   collection: @offer.collection(JobCategory), checked: @offer.job_category_ids, label_method: :first, value_method: :second, as: :check_boxes
-  = f.input :work_positions,   collection: @offer.collection(WorkPosition), checked: @offer.work_position_ids, label_method: :first, value_method: :second, as: :check_boxes
-  = f.input :sexes,            collection: @offer.collection(Sex), checked: @offer.work_position_ids, label_method: :first, value_method: :second, as: :check_boxes
+  = f.simple_fields_for :offers_technical_skills do |ots|
+    = ots.input :offer_id,           input_html: { value: @offer.id }, as: :hidden
+    = ots.input :technical_skill_id, collection: @offer.collection(TechnicalSkill), label_method: :first, value_method: :second, label: t('offer.form.labels.offers_technical_skills.technical_skill_id')
+    = ots.input :level_id,           collection: @offer.collection(Level),          label_method: :first, value_method: :second, label: t('offer.form.labels.offers_technical_skills.level_id')
+
+  = f.simple_fields_for :languages_offers do |lo|
+    = lo.input :offer_id,    input_html: { value: @offer.id }, as: :hidden
+    = lo.input :language_id, collection: @offer.collection(Language), label_method: :first, value_method: :second, label: t('offer.form.labels.languages_offers.language_id')
+    = lo.input :level_id,    collection: @offer.collection(Level),    label_method: :first, value_method: :second, label: t('offer.form.labels.languages_offers.level_id')
+
+  = f.input :offer_type_id,    collection: @offer.collection(OfferType),    selected: @offer.offer_type_id,    label_method: :first, value_method: :second, label: t('offer.form.labels.offer_type_id')
+  = f.input :work_mode_id,     collection: @offer.collection(WorkMode),     selected: @offer.work_mode_id,     label_method: :first, value_method: :second, label: t('offer.form.labels.work_mode_id')
+  = f.input :contract_type_id, collection: @offer.collection(ContractType), selected: @offer.contract_type_id, label_method: :first, value_method: :second, label: t('offer.form.labels.contract_type_id')
+  = f.input :city_id,          collection: @offer.collection(City),         selected: @offer.city_id,          label_method: :first, value_method: :second, label: t('offer.form.labels.city_id')
+  = f.input :educational_degree_id, collection: @offer.collection(EducationalDegree), selected: @offer.educational_degree_id, label_method: :first, value_method: :second, label: t('offer.form.labels.educational_degree_id')
+
+  = f.input :job_categories,      collection: @offer.collection(JobCategory),      checked: @offer.job_category_ids,       label_method: :first, value_method: :second, as: :check_boxes, label: t('offer.form.labels.job_categories')
+  = f.input :work_positions,      collection: @offer.collection(WorkPosition),     checked: @offer.work_position_ids,      label_method: :first, value_method: :second, as: :check_boxes, label: t('offer.form.labels.work_positions')
+  = f.input :sexes,               collection: @offer.collection(Sex),              checked: @offer.work_position_ids,      label_method: :first, value_method: :second, as: :check_boxes, label: t('offer.form.labels.sexes')
+  = f.input :available_work_days, collection: @offer.collection(AvailableWorkDay), checked: @offer.available_work_day_ids, label_method: :first, value_method: :second, as: :check_boxes, label: t('offer.form.labels.available_work_days')
+  = f.input :working_days,        collection: @offer.collection(WorkingDay),       checked: @offer.working_day_ids,        label_method: :first, value_method: :second, as: :check_boxes, label: t('offer.form.labels.working_days')
+  = f.input :job_aids,            collection: @offer.collection(JobAid),           checked: @offer.job_aid_ids,            label_method: :first, value_method: :second, as: :check_boxes, label: t('offer.form.labels.job_aids')
+  = f.input :responsibilities,    collection: @offer.collection(Responsibility),   checked: @offer.responsibility_ids,     label_method: :first, value_method: :second, as: :check_boxes, label: t('offer.form.labels.responsibilities')
+  = f.input :requirements,        collection: @offer.collection(Requirement),      checked: @offer.requirement_ids,        label_method: :first, value_method: :second, as: :check_boxes, label: t('offer.form.labels.requirements')
+  = f.input :vehicles,            collection: @offer.collection(Vehicle),          checked: @offer.vehicle_ids,            label_method: :first, value_method: :second, as: :check_boxes, label: t('offer.form.labels.vehicles')
+  = f.input :driving_licences,    collection: @offer.collection(DrivingLicence),   checked: @offer.driving_licence_ids,    label_method: :first, value_method: :second, as: :check_boxes, label: t('offer.form.labels.driving_licences')
 
   = f.button :submit
-
--#with_tag(:input, with: { name: 'offer[offer_age_range]',    type: "hidden" })
--#with_tag(:input, with: { name: 'offer[close_date]',         type: "text" })
--#with_tag(:input, with: { name: 'offer[immediate_start]',    type: "hidden" })
-
--#with_tag(:input, with: { name: 'offer[is_range]',         type: "hidden" })
--#with_tag(:input, with: { name: 'offer[currency_id]',      type: "hidden" })
--#with_tag(:input, with: { name: 'offer[from]',             type: "text" })
--#with_tag(:input, with: { name: 'offer[salary_period_id]', type: "hidden" })
-
--#with_tag(:input, with: { name: 'offer[available_work_day_ids][]', type: "hidden" })
--#with_tag(:input, with: { name: 'offer[working_day_ids][]',        type: "hidden" })
--#with_tag(:input, with: { name: 'offer[job_aid_ids][]',            type: "hidden" })
-
--#with_tag(:input, with: { name: 'offer[responsibility_ids][]',  type: "hidden" })
--#with_tag(:input, with: { name: 'offer[requirement_ids][]',     type: "hidden" })
--#with_tag(:input, with: { name: 'offer[vehicle_ids][]',         type: "hidden" })
--#with_tag(:input, with: { name: 'offer[driving_licence_ids][]', type: "hidden" })
--#with_tag(:input, with: { name: 'offer[city_id]',               type: "hidden" })
--#with_tag(:input, with: { name: 'offer[educational_degree_id]', type: "hidden" })
--#with_tag(:input, with: { name: 'offer[duration]',              type: "text" })
--#with_tag(:input, with: { name: 'offer[duration_type_id]',      type: "hidden" })
--#with_tag(:input, with: { name: 'offer[required_experience]',   type: "hidden" })
-
--#with_tag(:input, with: { name: 'offer[technical_skills][][technical_skill_id]', type: "hidden" })
--#with_tag(:input, with: { name: 'offer[technical_skills][][level_id]',           type: "hidden" })
-
--#with_tag(:input, with: { name: 'offer[languages][][language_id]', type: "hidden" })
--#with_tag(:input, with: { name: 'offer[languages][][level_id]',    type: "hidden" })
--#################################################################################################
-
--#= form_for @offer, url: admins_offer_path do |f|
--#  = f.hidden_field :form_authenticity_token, name: request_forgery_protection_token, value: form_authenticity_token
--#  = f.hidden_field :method, name: "_method", value: "put"
--#
--#  = f.label 'Title'
--#  = f.text_field :title
--#  %br
--#  = f.label 'Categorias de empleo'
--#  = f.select :job_categories, JobCategory.all.collect {|p| [ p.description, p.id ] }, {}, {:multiple => true, :selected => @offer.job_category_ids}
--#  = f.select :job_categories, options_for_select(JobCategory.all.pluck(:description, :id), selected: @offer.job_categories.pluck(:description, :id)), { multiple: true }
--#  %br
--#  = f.submit
--#-#= f.collection_select :job_categories, JobCategory.all, :id, :description, promnt: true, selected: @offer.job_category_ids, multiple: true

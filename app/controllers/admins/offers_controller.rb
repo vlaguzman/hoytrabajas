@@ -42,6 +42,7 @@ class Admins::OffersController < ApplicationController
         :close_date,
         :immediate_start,
         :required_experience,
+        :status,
         age_range: [
           :to,
           :from,

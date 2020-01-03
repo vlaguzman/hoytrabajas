@@ -14,6 +14,7 @@ module Admins::OffersService
       vacancies_quantity:     params[:vacancies_quantity],
       close_date:             prepare_date(params),
       immediate_start:        params[:immediate_start],
+      status:                 params[:status],
       offer_type_id:          params[:offer_type_id],
       work_mode_id:           params[:work_mode_id],
       contract_type_id:       params[:contract_type_id],

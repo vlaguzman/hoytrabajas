@@ -9,6 +9,7 @@ es:
         close_date: 'Fecha de finalización'
         immediate_start: 'Inicio inmediato'
         required_experience: 'Requiere experiencia'
+        status: 'Seleccione el estado'
         age_range:
           label: 'Rango de edad'
           to: 'Desde'

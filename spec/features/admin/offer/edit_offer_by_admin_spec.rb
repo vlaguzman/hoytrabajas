@@ -93,6 +93,7 @@ RSpec.describe "Admin can edit an offer", type: :feature do
         with_tag(:select, with: { name: 'offer[close_date(1i)]'})
         with_tag(:input,  with: { name: 'offer[immediate_start]',     type: 'hidden'})
         with_tag(:input,  with: { name: 'offer[required_experience]', type: 'hidden'})
+        with_tag(:select, with: { name: 'offer[status]'})
 
         with_tag(:input, with: { name: 'offer[age_range][to]',       type: 'number'})
         with_tag(:input, with: { name: 'offer[age_range][from]',     type: 'number'})
@@ -153,6 +154,7 @@ RSpec.describe "Admin can edit an offer", type: :feature do
         select('2020', from: 'offer[close_date(1i)]')
         find(:css, "#offer_immediate_start[value='1']").set(true)
         find(:css, "#offer_required_experience[value='1']").set(true)
+        select('active', from: 'offer[status]')
 
         fill_in 'offer[age_range][to]',   with: 750000
         fill_in 'offer[age_range][from]', with: 750000
@@ -199,6 +201,7 @@ RSpec.describe "Admin can edit an offer", type: :feature do
       expect(offer.close_date.strftime("%F")).to eq(Time.new(2020, 01, 4).strftime("%F"))
       expect(offer.immediate_start).to be_truthy
       expect(offer.required_experience).to be_truthy
+      expect(offer.status).to eq('active')
 
       expect(AgeRange.count).to eq(1)
 

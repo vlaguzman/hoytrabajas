@@ -4,6 +4,7 @@
   = f.input :title,              value: @offer.title, label: t('offer.form.labels.title')
   = f.input :vacancies_quantity, value: @offer.vacancies_quantity, label: t('offer.form.labels.vacancies_quantity')
   = f.input :close_date, as: :date, order: [:day, :month, :year], value: @offer.close_date, label: t('offer.form.labels.close_date')
+  = f.input :status, collection: ['active', 'expire'], selected: @offer.status, label: t('offer.form.labels.status')
   %div.input
     = f.label :immediate_start, label: t('offer.form.labels.immediate_start')
     = f.check_box :immediate_start,     value: @offer.immediate_start
@@ -75,7 +76,7 @@
   %div
     %span=t('offer.form.labels.sexes')
     %div.group
-      = f.input :sexes, collection: @offer.collection(Sex), checked: @offer.work_position_ids, label_method: :first, value_method: :second, as: :check_boxes, label: false
+      = f.input :sexes, collection: @offer.collection(Sex), checked: @offer.sex_ids, label_method: :first, value_method: :second, as: :check_boxes, label: false
 
   %div
     %span=t('offer.form.labels.available_work_days')

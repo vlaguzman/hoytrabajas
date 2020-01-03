@@ -8,8 +8,13 @@ class Admins::OffersController < ApplicationController
 
   def update
     offer = Admins::OffersService.(update_params: update_params)
-    redirect_to admin_offers_path
-    flash[:notice] = t('offer.form.messages.succesfully_update', offer_title: offer[:data].title)
+    if offer[:status].eql?(:error)
+      redirect_to admin_offers_path
+      flash[:error] = offer[:data].errors.full_messages
+    else
+      redirect_to admin_offers_path
+      flash[:notice] = t('offer.form.messages.succesfully_update', offer_title: offer[:data].title)
+    end
   end
 
   private

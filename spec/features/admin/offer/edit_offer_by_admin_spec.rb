@@ -35,8 +35,6 @@ RSpec.describe "Admin can edit an offer", type: :feature do
     let!(:job_category_2)       { create(:job_category,       description: 'Computation') }
     let!(:work_position_2)      { create(:work_position,      description: 'Tester') }
     let!(:sex_2)                { create(:sex,                description: 'Female') }
-   #let!(:currency_2)           { create(:currency,           description: 'USD') }
-   #let!(:salary_period_2)      { create(:salary_period,      description: 'Monthly') }
     let!(:available_work_day_2) { create(:available_work_day, description: 'Weekend') }
     let!(:working_day_2)        { create(:working_day,        description: 'Morning') }
     let!(:job_aid_2)            { create(:job_aid,            description: 'Transport aux') }
@@ -68,7 +66,7 @@ RSpec.describe "Admin can edit an offer", type: :feature do
       driving_licence_ids:    [driving_licence_1.id],
     ) }
 
-    scenario "the admin select an offer and edit all the data" do
+    scenario "the admin select an offer and edit all the data and save succesfully" do
       sign_in FactoryBot.create(:admin_user)
       visit admin_dashboard_path
       expect(page).to have_content("Active Admin")
@@ -82,7 +80,6 @@ RSpec.describe "Admin can edit an offer", type: :feature do
       has_button?("Editar")
 
       click_on("Editar")
-      save_page('daniel.html')
       expect(current_path).to eq(edit_admins_offer_path)
       expect(page).to have_content("Editar #{offer.title}")
 
@@ -192,14 +189,14 @@ RSpec.describe "Admin can edit an offer", type: :feature do
         find(:css, "#offer_vehicles_#{vehicle_2.id}[value='#{vehicle_2.id}']").set(true)
         find(:css, "#offer_driving_licences_#{driving_licence_2.id}[value='#{driving_licence_2.id}']").set(true)
 
-        click_on('Update Offer')
+        click_on('Guardar')
       end
 
       offer.reload
 
       expect(offer.title).to eq('Offer for only devs')
       expect(offer.vacancies_quantity).to eq(2)
-      expect(offer.close_date.strftime("%F")).to eq(Time.new(2020, 01, 3).strftime("%F"))
+      expect(offer.close_date.strftime("%F")).to eq(Time.new(2020, 01, 4).strftime("%F"))
       expect(offer.immediate_start).to be_truthy
       expect(offer.required_experience).to be_truthy
 
@@ -252,10 +249,31 @@ RSpec.describe "Admin can edit an offer", type: :feature do
       expect(offer.vehicle_ids).to match_array([vehicle_1.id, vehicle_2.id])
       expect(offer.driving_licence_ids).to match_array([driving_licence_1.id, driving_licence_2.id])
     end
-  end
-  context "a admin user must be able to edit a created offer with all information" do
-    scenario "should return all fields with values in form" do
-      expect(true).to eq(false)
+
+    scenario "admin has an errors when edit one offer" do
+      sign_in FactoryBot.create(:admin_user)
+      visit admin_dashboard_path
+      expect(page).to have_content("Active Admin")
+
+      has_button?("Offers")
+      click_on("Offers")
+
+      expect(page).to have_content("Offer for great devs!")
+      has_button?("Ver")
+      has_button?("Eliminar")
+      has_button?("Editar")
+
+      click_on("Editar")
+      expect(current_path).to eq(edit_admins_offer_path)
+      expect(page).to have_content("Editar #{offer.title}")
+
+      within "#edit_offer_#{offer.id}" do
+        fill_in 'offer[title]', with: ''
+
+        click_on('Guardar')
+      end
+
+      expect(page).to have_content("Por favor ingrese un título a la oferta, este campo no puede estar en blanco")
     end
   end
 end

@@ -1,0 +1,51 @@
+en:
+  offer:
+    form:
+      messages:
+        succesfully_update: 'Offer %{offer_title} updated succesfully!'
+      labels:
+        title: 'Title'
+        vacancies_quantity: 'Vacancies quantity'
+        close_date: 'Close date'
+        immediate_start: 'Immediate start'
+        required_experience: 'Required experience'
+        age_range:
+          label: 'Age range'
+          to: 'To'
+          from: 'From'
+        offer_salary:
+          label: 'Offer salary'
+          to: 'To'
+          from: 'From'
+          is_range: 'Is range'
+          currency_id: 'Select currency'
+          salary_period_id: 'Select salary period'
+        offer_required_experiences:
+          label: 'Offer required experiences'
+          duration: 'With minimum'
+          duration_type_id: 'Of experience'
+        offers_technical_skills:
+          label: 'Technical skills'
+          technical_skill_id: 'Select technical skill'
+          level_id: 'Select level'
+        languages_offers:
+          label: 'Languages'
+          language_id: 'Select language'
+          level_id: 'Select level'
+        offer_type_id: 'Select offer type'
+        work_mode_id: 'Select work mode'
+        contract_type_id: 'Select contract type'
+        city_id: 'Select city'
+        educational_degree_id: 'Educational degree'
+        job_categories: 'Select job categories'
+        work_positions: 'Select work positions'
+        sexes: 'Select sexes'
+        available_work_days: 'Select available work days'
+        working_days: 'Select working days'
+        job_aids: 'Select job aids'
+        responsibilities: 'Select responsibilities'
+        requirements: 'Select requirements'
+        vehicles: 'Select vehicles'
+        driving_licences: 'Select driving licences'
+      buttons:
+        save: 'Save'

@@ -58,6 +58,7 @@ en:
             company:
               required: "Please select a company"
             title:
+              too_short: 'Title is too short'
               blank: "Please enter a title to the offer, this field cannot be blank"
             job_category_ids:
               blank: "Please select a category, this field is required"

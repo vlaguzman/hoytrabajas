@@ -34,5 +34,15 @@ RSpec.describe Offers::ExpiredService do
         expect(Offer.where(status: 'active').count).to eq(2)
       end
     end
+
+    context "When close date is nil" do
+      let!(:empty_offer) { create(:offer, :empty) }
+
+      it "should not change the state" do
+        response = subject.(limit_date: Date.today)
+
+        expect(empty_offer.status).to eq('active')
+      end
+    end
   end
 end

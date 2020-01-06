@@ -27,5 +27,15 @@ RSpec.describe OffersOnDemand::SetInactiveService do
         expect(OfferOnDemand.where(status: 'down').count).to eq(2)
       end
     end
+
+    context "When offer on demand is empty" do
+      let!(:demand_empty) { create(:offer_on_demand, :empty) }
+
+      it "Should not change the state" do
+        subject.()
+
+        expect(demand_empty.status).to eq('up')
+      end
+    end
   end
 end

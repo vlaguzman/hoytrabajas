@@ -4,6 +4,7 @@ module OffersOnDemand::SetInactiveService
 
     active_offers = OfferOnDemand
       .where(status: 'up')
+      .select { |on_demans| on_demans.finish_at.present? }
       .select { |on_demans| on_demans.finish_at <= limit_date }
 
     switch_to_down(active_offers)

@@ -7,7 +7,7 @@ RSpec.describe "Dashboard templete visible with url canonical '/panel/candidato/
 
     sign_in user
 
-    get "/panel/candidato/"
+    get "/panel/candidato"
 
     expect(response).to render_template("users/dashboards/show")
 
@@ -18,7 +18,7 @@ RSpec.describe "Dashboard templete visible with url canonical '/panel/candidato/
 
     sign_in company
 
-    get "/panel/empresa/"
+    get "/panel/empresa"
 
     expect(response).to render_template("companies/dashboards/show")
 

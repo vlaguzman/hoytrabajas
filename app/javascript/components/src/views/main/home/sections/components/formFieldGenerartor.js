@@ -8,9 +8,14 @@ export default ({ fields }) => {
     <>
       {fields.map(({ label, name, type, aux, id }, i) => (
         /* TODO oscar I change md valud from 2 to 12 to expand de input */
-        <Col key={i} xs={12} md={5} className=" p-0 pb-20 mx-5">
+        <div className=" p-0 pb-20 mx-5" style={{ flex: 1 }}>
           {type.includes('text') ? (
-            <TextField {...{ label }} className="pr-5" name={name} id={id} />
+            <TextField
+              {...{ label }}
+              className="pr-5 w-100"
+              name={name}
+              id={id}
+            />
           ) : (
             <TextField
               select
@@ -26,7 +31,7 @@ export default ({ fields }) => {
               ))}
             </TextField>
           )}
-        </Col>
+        </div>
       ))}
     </>
   )

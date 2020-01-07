@@ -112,6 +112,8 @@
     text-decoration: none;
   }
 
+  color: $color__orange-main;
+
   // Opinionated: add "hand" cursor to non-disabled .navbar-toggler elements
   &:not(:disabled):not(.disabled) {
     cursor: pointer;

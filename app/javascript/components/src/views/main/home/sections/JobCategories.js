@@ -26,7 +26,7 @@ const JobCategories = ({ categories, translations }) => {
         {categories.map(
           (item, index) =>
             index <= 13 && (
-              <a href={`/offers/?q[job_category_ids]=${item.id}`}>
+              <a key={item.id} href={`/offers/?q[job_category_ids]=${item.id}`}>
                 <div key={item.id} className="jobCategory a-filter__gray">
                   <div className="jobCategory__image">
                     <img

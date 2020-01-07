@@ -109,7 +109,9 @@
 
   .jobCategory__image {
     img {
+      margin: auto;
       object-fit: contain;
+      max-width: 120px;
       @media (max-width: 576px) {
         -webkit-filter: grayscale(0);
         filter: none;

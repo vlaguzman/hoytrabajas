@@ -7,6 +7,7 @@ const WelcomeText = ({ translations, common, new_offer_path, filterForm }) => {
   const {
     welcome_text,
     filterForm: filterFormTranslations,
+    advanced_search: advancedSearchTranslations,
     call_to_action_text
   } = translations
 
@@ -34,7 +35,10 @@ const WelcomeText = ({ translations, common, new_offer_path, filterForm }) => {
         </div>
         <FilterFormSection
           {...{ common, ...filterForm }}
-          translations={filterFormTranslations}
+          translations={{
+            filterForm: filterFormTranslations,
+            advancedSearch: advancedSearchTranslations
+          }}
         />
         <p className="a-callToAction__inline">
           {call_to_action_text.text}{' '}

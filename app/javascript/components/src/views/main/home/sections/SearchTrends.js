@@ -49,13 +49,15 @@ const SearchTrends = ({ translations }) => {
       </h4>
       <div className="trendsGrid">
         {trends.map(singleTrend => (
-          <div className="singleTrend">
+          <div key={singleTrend.name} className="singleTrend">
             <h6 className="a-typo__body1 color__blue-main fw-bold mb-30">
               {translations.subtitles[singleTrend.name]}
             </h6>
             <ul>
               {singleTrend.list.map(listItem => (
-                <li className="color__slategray-main">{listItem}</li>
+                <li key={listItem} className="color__slategray-main">
+                  {listItem}
+                </li>
               ))}
             </ul>
           </div>

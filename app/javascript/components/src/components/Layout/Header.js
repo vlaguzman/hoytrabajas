@@ -87,17 +87,6 @@ const Header = props => {
   const handleSearchChange = event => setSearchValue(event.target.value)
   const handleSearchReset = () => setSearchValue('')
 
-  const colorOfNavToggler = () =>
-    isNavTransparent
-      ? {
-          style: {
-            color: 'white'
-          }
-        }
-      : {
-          color: 'primary'
-        }
-
   const LoggedInNav = () => (
     <>
       <NavItem className="list-inline-item a-navItem">
@@ -210,7 +199,7 @@ const Header = props => {
             className="mt-5"
             id="navbar-toggler"
           >
-            <MenuIcon {...colorOfNavToggler()} />
+            <MenuIcon />
           </NavbarToggler>
           {/* Search bar in white nav bar */}
           <Collapse isOpen={openState.navbar} navbar id="navbarNav">

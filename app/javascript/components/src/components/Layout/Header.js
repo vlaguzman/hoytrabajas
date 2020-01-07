@@ -32,7 +32,8 @@ const Header = props => {
     user_signed_in,
     company_signed_in,
     log_out_user,
-    log_out_companies
+    log_out_companies,
+    profile_path
   } = props
 
   const pathTo = (to = '') => {
@@ -54,7 +55,6 @@ const Header = props => {
     }
   }, [isTop])
 
-  const pathToProfile = pathTo('profile')
   const pathToDashboard = pathTo('dashboard')
 
   const pathToOffers = '/offers'
@@ -106,10 +106,9 @@ const Header = props => {
       <NavItem className="list-inline-item a-navItem">
         <a href={pathToDashboard}>{props.session_translation.nav.dashboard}</a>
       </NavItem>
-      {/* TODO any: uncomment when profile is ready */}
-      {/* <NavItem className="list-inline-item a-navItem">
-        <a href="/">{props.session_translation.nav.profile}</a>
-      </NavItem> */}
+      {<NavItem className="list-inline-item a-navItem">
+        <a href={profile_path}>{props.session_translation.nav.profile}</a>
+      </NavItem>}
       <NavItem className="list-inline-item a-navItem">
         <a href={user_signed_in ? log_out_user : log_out_companies}>
           {props.session_translation.nav.sign_out}

@@ -1,8 +1,12 @@
+/*########################################################################
+# CARDS
+########################################################################*/
+
 .m-educationCards,
 .m-experienceCards {
   .slick-track {
+    padding-bottom: 20px;
     display: flex;
-    padding-bottom: 60px;
   }
 
   .slick-slide {
@@ -17,12 +21,18 @@
   }
 
   .slick-dots li {
-    margin: 0 2.5px;
+    margin: 0 5.8px;
+    height: 5.8px;
+    width: 5.8px;
 
     button:before {
       font-size: 0.625rem;
       color: $color__snow-main;
       opacity: 1;
+    }
+
+    &:last-of-type {
+      margin: 0 40px 0 5.8px;
     }
   }
 
@@ -31,9 +41,15 @@
   }
 }
 
-.m-educationCards {
+.m-educationCards,
+.m-experienceCards {
   .a-educationCard__date {
     text-transform: capitalize;
+  }
+
+  .singleCard {
+    padding: 20px 15px 0;
+    margin: 0 15px;
   }
 
   .a-educationCard__attachIcon {
@@ -46,8 +62,54 @@
       height: 25px;
     }
   }
+
   .a-educationCard__title {
     flex: 1;
+
+    .title {
+      letter-spacing: 0.17px;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.44;
+      font-weight: 800;
+      color: #00111f;
+    }
+
+    .subtitle {
+      letter-spacing: 0.1px;
+      font-stretch: normal;
+      line-height: normal;
+      margin-bottom: 3px;
+      font-style: normal;
+      font-weight: bold;
+      color: #0b5aa0;
+    }
+  }
+
+  .infoCity {
+    letter-spacing: normal;
+    font-stretch: normal;
+    line-height: normal;
+    font-size: 0.625rem;
+    font-style: normal;
+    font-weight: bold;
+    color: #36434e;
+
+    &.infoDates {
+      letter-spacing: 0.11px;
+      margin-bottom: 9px;
+      font-weight: 800;
+      text-align: end;
+      color: #0b5aa0;
+    }
+  }
+
+  .titleCardExperience {
+    color: #00111f;
+  }
+
+  .titleResponsibilities {
+    font-size: 0.75rem;
   }
 }
 
@@ -55,6 +117,14 @@
   .companyWithDate {
     display: flex;
     align-items: center;
+    
+    .titleCompany {
+      font-size: 0.75rem;
+    }
+
+    .dateExperience {
+      font-size: 0.625rem;
+    }
 
     @media (max-width: 576px) {
       align-items: flex-start;

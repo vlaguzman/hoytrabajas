@@ -1,0 +1,294 @@
+/*########################################################################
+# PROFILE CANDIDATE
+########################################################################*/
+
+.backgroundImage {
+  background-image: url('/assets/static/img/background-user-profile.png');
+  background-repeat: repeat-x;
+  position: absolute;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  top: 75px;
+}
+
+.contentBox {
+  padding: 217px 220px 165px;
+
+  a {
+    border-radius: 0 0 10px 10px;
+    background-color: #0b5aa0;
+    transform: rotate(-90deg);
+    font-size: 1.1875rem;
+    position: absolute;
+    padding: 15px 20px;
+    font-weight: bold;
+    left: 1044px;
+    color: #fff;
+    top: 675px;
+  }
+
+  a:not([href]):not([tabindex]) {
+    color: #fff;
+  }
+
+  @media only screen and (max-width : 480px) {
+    padding: 130px 10px;
+    
+    a {
+      display: none;
+    }
+  }
+}
+
+.o-boxPrincipal {
+  padding-top: 74px;
+
+  .headerBox {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 148px;
+    display: flex;
+
+    img {
+      box-shadow: 0 3px 15px 2px rgba(235, 235, 240, 0.8), 0 12px 30px 1px #ebebf0;
+      border: solid 6.1px #fff;
+      border-radius: 85px;
+      margin-bottom: 38px;
+      width: 211.2px;
+      height: 215px;
+    }
+
+    h1 {
+      letter-spacing: normal;
+      font-stretch: normal;
+      font-style: normal;
+      text-align: center;
+      line-height: 1.63;
+      font-weight: 800;
+      font-size: 2.5rem;
+      color: #374456;
+
+      strong {
+        font-weight: 800;
+        color: #0b5aa0;
+      }
+    }
+
+    .infoCandidate {
+      justify-content: space-between;
+      display: flex;
+      width: 100%;
+
+      .iconMoreText {
+        margin-bottom: 30px;
+        align-items: center;
+        display: flex;
+
+        i {
+          margin-right: 10.5px;
+          font-size: 1.125rem;
+          color: #0b5aa0;
+        }
+
+        span {
+          font-size: 1.25rem;
+          font-weight: 600;
+          color: #77818f;
+        }
+      }
+    }
+  }
+
+  .bodyBox {
+    border-top: solid 1px #d5dbe3;
+    padding: 57px 13px 59px;
+    margin: 0 95px;
+
+    &.boxAcademy {
+      padding: 57px 0px 40px;
+
+      h2 {
+        padding: 0 13px;
+      }
+    }
+
+    h2 {
+      margin-bottom: 19px;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #0b5aa0;
+    }
+
+    h3 {
+      margin-bottom: 25px;
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #0b5aa0;
+    }
+
+    h4 {
+      margin-bottom: 9px;
+      font-weight: bold;
+      font-size: 1rem;
+      color: #374456;
+
+      &.nameSkill {
+        color: #77818f;
+        margin: 0px;
+        width: 33%;
+      }
+
+      &.levelSkill {
+        margin: 0;
+      }
+    }
+
+    p.aboutMe {
+      font-weight: normal;
+      font-size: 1rem;
+      color: #77818f;
+    }
+
+    span.additionalInformation {
+      font-size: 0.875rem;
+      font-weight: bold;
+      color: #0b5aa0;
+    }
+
+    .boxInterests {
+      grid-template-columns: 2fr 2fr;
+      grid-row-gap: 28px;
+      display: grid;
+
+      .typeSkill .contentSkills {
+        flex-wrap: wrap;
+        display: flex;
+
+        span {
+          margin: 0 5px 5px 0;
+        }
+      }
+    }
+    
+    .softSkills {
+      margin-bottom: 25px;
+
+      h3 {
+        margin-bottom: 15px;
+      }
+    }
+
+    .boxSkills {
+      margin-bottom: 40px;
+
+      .skillSpecific {
+        flex-direction: row;
+        margin-bottom: 14px;
+        align-items: center;
+        display: flex;
+
+        .contentTags {
+          justify-content: space-between;
+          width: calc(67% - 30%);
+          display: flex;
+        }
+      }
+    }
+
+    .boxLenguages {
+      .skillSpecific {
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 17px;
+        flex-direction: row;
+        display: flex;
+        width: 70%;
+      }
+    }
+  }
+
+  .footerBox {
+    border-radius: 0 0 20px 20px;
+    background-color: #ff7b00;
+    padding: 48px 53px;
+
+    p {
+      font-size: 1.125rem;
+      font-weight: bold;
+      color: #fff;
+      width: 35%;
+      margin: 0;
+    }
+  }
+
+  @media only screen and (max-width : 480px) {
+    .headerBox {
+      padding: 0 70px;
+
+      h1 {
+        font-size: 1.5625rem;
+      }
+
+      .infoCandidate {
+        flex-direction: column;
+
+        span {
+          font-size: 0.9375rem;
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    .bodyBox {
+      padding: 57px 10px;
+      margin: 0 30px;
+
+      .boxInterests {
+        grid-template-columns: 2fr;
+      }
+
+      .boxSkills .skillSpecific {
+        flex-direction: column;
+        align-items: initial;
+
+        h4 {
+          margin-bottom: 10px;
+          width: 100%;
+        }
+
+        .contentTags {
+          width: 100%;
+
+          h4 {
+            width: auto;
+          }
+        }
+      }
+
+      .boxLenguages .skillSpecific {
+        width: 100%;
+      }
+    }
+
+    .footerBox {
+      p {
+        width: 100%;
+      }
+    }
+
+    a {
+      background-color: #0b5aa0;
+      text-align: center;
+      padding: 15px 20px;
+      position: initial;
+      border-radius: 0;
+      display: initial;
+      transform: none;
+      font-size: 1rem;
+      display: block;
+      color: #fff;
+      width: 100%;
+    }
+  }
+}

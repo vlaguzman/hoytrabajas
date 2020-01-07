@@ -25,7 +25,7 @@ module Companies::ListCandidates::AppliedCandidatesService
       location: build_location(candidate),
       technical_skills: technical_skills(curriculum_vitae),
       affinity_percentage: build_affinity_percentage(offer: offer, candidate: candidate),
-      profile_path: profile_path(candidate),
+      profile_path: profile_path(user_id: candidate.id),
       avatar: Users::CurriculumVitaes::ProfilePhotoService.(curriculum_vitae: curriculum_vitae)
     }
   end

@@ -1,5 +1,6 @@
 = react_component('src/components/Layout/Header',
   {should_change_nav_color: defined?(should_change_nav_color) && should_change_nav_color,
+  profile_path: users_profile_path(user_id: current_user.try(:id)),
   csrf_param: request_forgery_protection_token,
   csrf_token: form_authenticity_token,
   user_signed_in: user_signed_in?,

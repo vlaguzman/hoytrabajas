@@ -3,7 +3,7 @@ FactoryBot.define do
     name                  { Faker::FunnyName.name }
     last_name             { Faker::FunnyName.two_word_name }
     birthday              { Faker::Date.birthday(min_age: 18, max_age: 65) }
-    contact_number        { Faker::PhoneNumber.cell_phone }
+    contact_number        { 3113535522 }
     identification_number { Faker::IDNumber.valid }
     email                 { Faker::Internet.email }
     password              { Faker::Blockchain::Bitcoin.address }

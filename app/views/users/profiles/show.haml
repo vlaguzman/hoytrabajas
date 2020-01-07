@@ -1,5 +1,97 @@
 = render '/shared/header'
-= react_component('views/users/profile',
-  {csrf_param: request_forgery_protection_token,
-  csrf_token: form_authenticity_token}, prerender: false)
+.backgroundImage
+.contentBox
+  - @user.yield_if(@user.curriculum_vitae.file_cv.attached?) do
+    %a{href: @user.download_cv}=t('profile.download_cv')
+  .m-box.o-boxPrincipal
+    .headerBox
+      %img{src: image_path("/assets/static/avatars/profile.jpg"), alt: 'Photo Profile'}
+      %h1
+        = @user.name
+        %strong=@user.last_name
+      .infoCandidate
+        - @user.yield_if(@user.city.present?) do
+          .iconMoreText
+            %i.material-icons location_city
+            %span= @user.city.description
+        .iconMoreText
+          %i.material-icons email
+          %span= @user.email
+        .iconMoreText
+          %i.material-icons phone_iphone
+          %span= @user.contact_number_with_format
+    - @user.yield_if(@user.about_me.present?) do
+      .bodyBox
+        %h2=t('profile.about_me')
+        %p.aboutMe= @user.about_me
+        - @user.yield_if(@user.curriculum_vitae.travel_disponibility) do
+          %span.additionalInformation Disponible para trabajar en otra ciudad
+    - @user.yield_if(@user.all_attributes_present?(@user.interests_present?)) do
+      .bodyBox
+        %h2=t('profile.my_interests')
+        .boxInterests
+          - @user.yield_if(@user.interests_present?[:job_categories]) do
+            .typeSkill
+              %h4=t('profile.interest_categories')
+              .contentSkills
+                - @user.curriculum_vitae.job_categories.each do |job_category|
+                  %span.a-skill=job_category.description
+          - @user.yield_if(@user.interests_present?[:offer_types]) do
+            .typeSkill
+              %h4=t('profile.offer_interest_rates')
+              .contentSkills
+                - @user.curriculum_vitae.offer_types.each do |offer_type|
+                  %span.a-skill= offer_type.description
+          - @user.yield_if(@user.interests_present?[:work_modes]) do
+            .typeSkill
+              %h4=t('profile.work_mode')
+              .contentSkills
+                - @user.curriculum_vitae.work_modes.each do |work_mode|
+                  %span.a-skill= work_mode.description
+          - @user.yield_if(@user.interests_present?[:contract_type]) do
+            .typeSkill
+              %h4=t('profile.types_of_agreement')
+              .contentSkills
+                %span.a-skill= @user.curriculum_vitae.contract_type.description
+    - @user.yield_if(@user.all_attributes_present?(@user.abilities_present?)) do
+      .bodyBox
+        %h2=t('profile.abilities')
+        - @user.yield_if(@user.abilities_present?[:soft_skills]) do
+          .softSkills
+            %h3=t('profile.valid_soft_skills')
+            - @user.curriculum_vitae.soft_skills.each do |soft_skill|
+              %span.a-skill= soft_skill.description
+        // TODO We don't have valid soft skills yet
+        - if params[:tester].present?
+          .boxSkills
+            %h3=t('profile.technical_skills')
+            .skillSpecific
+              %h4.nameSkill Marketing y ventas
+              .contentTags
+                %span.a-skill Redes sociales
+                %h4.levelSkill Nivel Avanzado
+            .skillSpecific
+              %h4.nameSkill Belleza bienestar y sulud
+              .contentTags
+                %span.a-skill Redes sociales
+                %h4.levelSkill Nivel Avanzado
+        - @user.yield_if(@user.abilities_present?[:languages_list]) do
+          .boxLenguages
+            %h3=t('profile.languages')
+            - @user.curriculum_vitae.languages_list.each do |language|
+              .skillSpecific
+                %h4.nameSkill=language.language.description
+                %h4.levelSkill=language.level.description
+    - @user.yield_if(@user.data_education.present?) do
+      .bodyBox.boxAcademy
+        %h2=t('profile.academic_training')
+        = react_component('src/components/Cards/PublicProfile/Education', {defaultList: @user.data_education}, prerender: false)
+    - @user.yield_if(@user.data_experience.present?) do
+      .bodyBox.boxAcademy
+        %h2=t('profile.experience')
+        = react_component('src/components/Cards/PublicProfile/Experience', {defaultList: @user.data_experience}, prerender: false)
+    - @user.yield_if(@user.curriculum_vitae.file_cv.attached?) do
+      %a{href: @user.download_cv}=t('profile.download_cv')
+    .footerBox
+      %p=t('profile.slogan')
 = render '/shared/footer'

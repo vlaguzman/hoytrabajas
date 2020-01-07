@@ -40,15 +40,13 @@
             %div.m-affinityPercentageContainer
               %span.a-affinityPercentage= candidate[:affinity_percentage]
               = react_component('views/companies/affinity_percentage_info', description: t('.tooltips.affinity_percentage') )
-              %i.material-icons info
             %div.m-profileButtonContainer
               %a{href: candidate[:profile_path]}
                 %button.--watchProfile= t('.buttons.visit_profile')
 
       %div.o-listCandidates__container.--mobile
         - @offer.list_applied_candidates.each do |candidate|
-          -#TODO Oscar Uncommnet when the profile view is complete
-          -#%a{href: candidate[:profile_path]}
+          %a{href: candidate[:profile_path]}
           %div.m-candidateBox.--mobile
             %div.m-detailsContainer
               %div.m-nameContaintainer.--mobile
@@ -66,4 +64,3 @@
               %div.m-affinityPercentageContainer__group.--mobile
                 %span.a-affinityPercentage= candidate[:affinity_percentage]
                 = react_component('views/companies/affinity_percentage_info', description: t('.tooltips.affinity_percentage') )
-                %i.material-icons info

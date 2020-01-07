@@ -14,7 +14,8 @@ RSpec.describe "users/profiles/show" do
 
     render
 
-    expect(rendered).to have_content("Sebastian Castro")
+    expect(rendered).to have_content("Sebastian")
+    expect(rendered).to have_content("Castro")
     expect(rendered).to have_content("test@test.com")
     expect(rendered).to have_content("311 353 5522")
     expect(rendered).to have_link("Descargar Curriculum")

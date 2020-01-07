@@ -6,7 +6,9 @@
   .m-box.o-boxPrincipal
     .headerBox
       %img{src: image_path("/assets/static/avatars/profile.jpg"), alt: 'Photo Profile'}
-      %h1=raw "#{@user.name} <strong>#{@user.last_name}</strong>"
+      %h1
+        = @user.name
+        %strong=@user.last_name
       .infoCandidate
         - @user.yield_if(@user.city.present?) do
           .iconMoreText

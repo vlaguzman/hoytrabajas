@@ -86,7 +86,6 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/work_position.rb",100,5,3,3,0
 "./app/models/working_day.rb",100,6,4,4,0
 "./app/presenters/admins/offers_presenter.rb",100,6,3,3,0
-"./app/presenters/application_presenter.rb",100,30,17,17,0
 "./app/presenters/application_presenter.rb",100,34,19,19,0
 "./app/presenters/applied_offers_presenter.rb",100,30,11,11,0
 "./app/presenters/companies/dashboards_presenter.rb",100,10,5,5,0

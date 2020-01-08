@@ -142,6 +142,8 @@ es:
             title:
               too_short: 'El título es muy corto'
               blank: 'Por favor ingrese un título a la oferta, este campo no puede estar en blanco'
+            description:
+              blank: 'Por favor ingrese una descripción a la oferta, este campo no puede estar en blanco'
             job_category_ids:
               blank: 'Por favor seleccione una categoría, este campo es requerido'
             status:

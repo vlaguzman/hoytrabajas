@@ -150,14 +150,14 @@ A          • Users::CurriculumVitaes::ProfilePhotoService                1    
 A          • Users::Dashboards::OffersService                            2       31.49      0           2
 A          • Users::DashboardsController                                 10      5.69       0           1
 A          • Users::OmniauthCallbacksController                          1       21.49      0           5
-A          • Users::ProfilesController                                   16      12.68      0           1
+A          • Users::ProfilesController                                   17      16.81      0           1
 A          • Users::RegistrationsController                              13      1.0        0           2
 A          • Users::SessionsController                                   3       0.0        0           1
 A          • Users::WizardService                                        7       22.44      0           2
 A          • Users::Wizards::ErrorsService                               2       26.81      0           5
 A          • Users::Wizards::StepEight::FormParamsService                6       23.04      0           7
 A          • Users::Wizards::StepEightPresenter                          11      14.2       0           1
-A          • Users::Wizards::StepEightService                            7       21.29      0           1
+A          • Users::Wizards::StepEightService                            8       22.32      0           1
 A          • Users::Wizards::StepEights::AddedWorkExperiencesController  2       10.21      0           1
 A          • Users::Wizards::StepEights::WorkExperiencePresenter         2       14.21      0           1
 A          • Users::Wizards::StepEightsController                        12      13.52      16          2

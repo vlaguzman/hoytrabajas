@@ -13,6 +13,7 @@ es:
             type: "offer"
             formFields:
               title: "Título de tu oferta"
+              description: "Agrega una descripción detallada de tu oferta"
               offers_work_positions: "Elige el cargo que deseas contratar"
               job_category_ids: "Selecciona las categorías de tu oferta"
               offer_type_id: "Tipo de oferta"

@@ -12,6 +12,7 @@ RSpec.describe "like an admin user", :type => :feature do
       visit new_admin_offer_path
 
       fill_in "offer[title]", with: "el titulo de la oferta"
+      fill_in "offer[description]", with: "la descripcion de la oferta"
       fill_in "offer[company_id]", with: company.id
       select 'Marketing', from: 'offer[job_category_ids][]'
       select 'active', from: 'offer[status]'

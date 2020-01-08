@@ -7,7 +7,7 @@ class Offer < ApplicationRecord
 
   before_save -> { self.slug = self.title.parameterize }
 
-  validates_presence_of :title, :job_category_ids
+  validates_presence_of :title, :description, :job_category_ids
 
   validates_length_of :title, minimum: 3, maximum: 400
 

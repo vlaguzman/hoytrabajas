@@ -260,8 +260,7 @@ const FormFields = props => {
       {workMethodologyIDField}
       {stateIDField}
       {cityIDField}
-      {/* TODO OScar uncommen when the basic tech skills be able in production */}
-      {/* {technicalSkillsField} */}
+      {technicalSkillsField}
       {startedAtField}
       {!formValues[still_in_progress.name] && finishedAtField}
       {inProgressField}

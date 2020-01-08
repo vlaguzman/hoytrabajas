@@ -50,6 +50,7 @@ RSpec.describe Companies::FirstOffer::StepThreeService do
             id: offer.id,
             company_id: '',
             title: '',
+            description: '',
             job_category_ids: "#{job_category.id}",
             offer_type_id: offer_type.id,
             work_mode_id: work_mode.id,
@@ -66,7 +67,10 @@ RSpec.describe Companies::FirstOffer::StepThreeService do
 
           expect(offer[:data]).to be_an_instance_of(Offer)
 
-          expect(offer[:data].errors.details).to eq({:title=>[{:error=>:blank}, {:count=>3, :error=>:too_short}]})
+          expect(offer[:data].errors.details).to eq({
+            :description => [{:error=>:blank}],
+            :title=>[{:error=>:blank}, {:count=>3, :error=>:too_short}]
+          })
         end
       end
     end
@@ -76,6 +80,7 @@ RSpec.describe Companies::FirstOffer::StepThreeService do
         let(:params) do
           {
             title: 'Oferta para el mejor desarrollador del mundo mundial',
+            description: 'una oferta que no te puedes perder',
             job_category_ids: "#{job_category.id}",
             offer_type_id: offer_type.id,
             work_mode_id: work_mode.id,
@@ -119,7 +124,10 @@ RSpec.describe Companies::FirstOffer::StepThreeService do
 
           expect(offer[:data]).to be_an_instance_of(Offer)
 
-          expect(offer[:data].errors.details).to eq({:title => [{:error=>:blank}, {:count=>3, :error=>:too_short}]})
+          expect(offer[:data].errors.details).to eq({
+            :description => [{:error=>:blank}],
+            :title => [{:error=>:blank}, {:count=>3, :error=>:too_short}]
+          })
         end
       end
     end

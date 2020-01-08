@@ -31,6 +31,11 @@ RSpec.describe Companies::FirstOffer::StepThree::FormParamsService do
               label: 'Título de tu oferta',
               current_value: ''
             },
+            description: {
+              name: 'company[description]',
+              label: 'Agrega una descripción detallada de tu oferta',
+              current_value: ''
+            },
             job_category_ids: {
               name: 'company[job_category_ids]',
               label: 'Selecciona las categorías de tu oferta',

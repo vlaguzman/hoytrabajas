@@ -35,7 +35,7 @@ class Users::Wizards::StepOnesController < Users::WizardsController
   end
 
   def strong_params
-    params.require(:user).permit(:name, :last_name, :document_type_id, :contact_number, :identification_number, nationality_ids: []).to_h
+    params.require(:user).permit(:name, :last_name, :born_city_id, :residence_city_id, :document_type_id, :contact_number, :identification_number, nationality_ids: []).to_h
   end
 
 end

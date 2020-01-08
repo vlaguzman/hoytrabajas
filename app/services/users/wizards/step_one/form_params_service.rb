@@ -28,7 +28,7 @@ class Users::Wizards::StepOne::FormParamsService < BaseFormWizardsService
   end
 
   def born_state_id_list
-    ListConverter.model_list State
+    ListConverter.model_list(State, nil, additional_key: :country_id)
   end
 
   def born_city_id_list
@@ -40,7 +40,7 @@ class Users::Wizards::StepOne::FormParamsService < BaseFormWizardsService
   end
 
   def residence_state_id_list
-    ListConverter.model_list State
+    ListConverter.model_list(State, nil, additional_key: :country_id)
   end
 
   def residence_city_id_list
@@ -56,19 +56,27 @@ class Users::Wizards::StepOne::FormParamsService < BaseFormWizardsService
   end
 
   def born_country_id_current_value
-    source.born_city.state.country.id if source.born_city_id.present?
+    source.born_country.id if source.born_country.present?
   end
 
   def born_state_id_current_value
-    source.born_city.state.id if source.born_city_id.present?
+    source.born_state.id if source.born_state.present?
+  end
+
+  def born_city_id_current_value
+    source.born_city.id if source.born_city.present?
   end
 
   def residence_country_id_current_value
-    source.residence_city.state.country.id if source.residence_city_id.present?
+    source.residence_country.id if source.residence_country.present?
   end
 
   def residence_state_id_current_value
-    source.residence_city.state.id if source.residence_city_id.present?
+    source.residence_state.id if source.residence_state.present?
+  end
+
+  def residence_city_id_current_value
+    source.residence_city.id if source.residence_city.present?
   end
 
 end

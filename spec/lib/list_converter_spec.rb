@@ -30,6 +30,37 @@ RSpec.describe ListConverter do
   end
 
   describe "#model_list" do
+    context 'When need additional param' do
+      let!(:create_country) do
+
+        [
+          create(:country, description: 'Colombia'),
+          create(:country, description: 'Venezuela')
+        ]
+
+      end
+
+      let!(:create_states) do
+
+        [
+          create(:state, description: 'Boyaca', country_id: create_country[0].id),
+          create(:state, description: 'Cundinamarca', country_id: create_country[0].id),
+          create(:state, description: 'Caracas', country_id: create_country[1].id)
+        ]
+      end
+      it 'Should return spected object' do
+        expected_object = [
+          {id: create_states[0].id, description: create_states[0].description, country_id: create_country[0].id},
+          {id: create_states[1].id, description: create_states[1].description, country_id: create_country[0].id},
+          {id: create_states[2].id, description: create_states[2].description, country_id: create_country[1].id}
+        ]
+
+        response = subject.model_list(State, nil, additional_key: :country_id)
+
+        expect(expected_object).to match_array(response)
+      end
+
+    end
     context "When model does not have records" do
       it "Should return a empty array" do
         response = subject.model_list(JobCategory)

@@ -7,11 +7,11 @@ RSpec.describe "Like new candidate", :type => :feature do
   end
 
   let!(:born_country)              { create(:country, description: "Argentina") }
-  let!(:born_state)                { create(:state, description: "Buenos Aires") }
-  let!(:born_city)                 { create(:city, description: "Capital Federal") }
+  let!(:born_state)                { create(:state, description: "Buenos Aires", country: born_country) }
+  let!(:born_city)                 { create(:city, description: "Capital Federal", state: born_state) }
   let!(:residence_country)         { create(:country, description: "Colombia") }
-  let!(:residence_state)           { create(:state, description: "Buenos Aires") }
-  let!(:residence_city)            { create(:city, description: "Capital Federal") }
+  let!(:residence_state)           { create(:state, description: "Huila", country: residence_country) }
+  let!(:residence_city)            { create(:city, description: "Neiva", state: residence_state) }
   let!(:nationality_one)           { create(:nationality, description: "Colombiana") }
   let!(:nationality_two)           { create(:nationality, description: "Argentina") }
   let!(:document_type)             { create(:document_type, description: "Cedula de Ciudadania") }
@@ -42,30 +42,30 @@ RSpec.describe "Like new candidate", :type => :feature do
       fill_in 'user[name]', with: 'Carlos'
       fill_in 'user[last_name]', with: 'Rojas'
 
-      find("div[id='mui-component-select-user[country_id]", visible: false).click
-      find("li", text: :born_country).click
+      find("div[id='mui-component-select-user[born_country_id]", visible: false).click
+      find("li", text: "Argentina").click
 
-      find("div[id='mui-component-select-user[state_id]", visible: false).click
-      find("li", text: :born_state).click
+      find("div[id='mui-component-select-user[born_state_id]", visible: false).click
+      find("li", text: "Buenos Aires").click
 
       find("div[id='mui-component-select-user[born_city_id]", visible: false).click
-      find("li", text: :born_city).click
+      find("li", text: "Capital Federal").click
 
-      find("div[id='mui-component-select-user[country_id]", visible: false).click
-      find("li", text: :residence_country).click
+      find("div[id='mui-component-select-user[residence_country_id]", visible: false).click
+      find("li", text: "Colombia").click
 
-      find("div[id='mui-component-select-user[state_id]", visible: false).click
-      find("li", text: :residence_state).click
+      find("div[id='mui-component-select-user[residence_state_id]", visible: false).click
+      find("li", text: "Huila").click
 
       find("div[id='mui-component-select-user[residence_city_id]", visible: false).click
-      find("li", text: :residence_city).click
+      find("li", text: "Neiva").click
 
       find("div[id='mui-component-select-user[nationality_ids][]']", visible: false).click
-      find("li", text: :nationality_one).click
-      find("li", text: :nationality_two).click
+      find("li", text: "Argentina").click
+      find("li", text: "Colombiana").click
 
       find("div[id='mui-component-select-user[document_type_id]']", visible: false).click
-      find("li", text: :document_type ).click
+      find("li", text: "Cedula de Ciudadania").click
 
       fill_in "user[identification_number]", :with => "1063558224"
       fill_in "user[contact_number]", :with => "3183638789"
@@ -79,8 +79,8 @@ RSpec.describe "Like new candidate", :type => :feature do
 
       expect(candidate.name).to eq('Carlos')
       expect(candidate.last_name).to eq('Rojas')
-      expect(candidate.born_city_id).to eq(city.id)
-      expect(candidate.residence_city_id).to eq(city.id)
+      expect(candidate.born_city_id).to eq(born_city.id)
+      expect(candidate.residence_city_id).to eq(residence_city.id)
       expect(candidate.document_type.description).to eq('Cedula de Ciudadania')
       expect(candidate.nationalities.pluck(:description).include?('Colombiana')).to be_truthy
       expect(candidate.identification_number).to eq('1063558224')
@@ -92,7 +92,8 @@ RSpec.describe "Like new candidate", :type => :feature do
     let!(:old_candidate) { create(
       :user,
       nationalities: create_list(:nationality, 2),
-      city: create(:city)
+      born_city_id: born_city.id,
+      residence_city_id: residence_city.id
     ) }
 
     scenario "Should show the saved data",js: true do
@@ -102,8 +103,9 @@ RSpec.describe "Like new candidate", :type => :feature do
 
       expect(form_field_value(:name)).to have_content(old_candidate.name)
       expect(form_field_value(:last_name)).to have_content(old_candidate.last_name)
-      expect(form_field_value(:born_city_id)).to have_content(old_candidate.city_id)
-      expect(form_field_value(:residence_city_id)).to have_content(old_candidate.city_id)
+      expect(form_field_value(:born_city_id)).to have_content(born_city.id)
+      save_screenshot("lafoto.png")
+      expect(form_field_value(:residence_city_id)).to have_content(residence_city.id)
       expect(form_field_value(:nationality_ids, :true)).to have_content(old_candidate.nationality_ids.join(","))
       expect(form_field_value(:document_type_id)).to have_content(old_candidate.document_type.id)
       expect(form_field_value(:identification_number)).to have_content(old_candidate.identification_number)

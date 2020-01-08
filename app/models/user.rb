@@ -58,8 +58,24 @@ class User < ApplicationRecord
     City.find_by(id: self.born_city_id)
   end
 
+  def born_state
+    born_city.state if born_city.present?
+  end
+
+  def born_country
+    born_state.country if born_state.present? && born_city.present?
+  end
+
   def residence_city
     City.find_by(id: self.residence_city_id)
+  end
+
+  def residence_state
+    residence_city.state if residence_city.present?
+  end
+
+  def residence_country
+    residence_state.country if residence_state.present? && residence_city.present?
   end
 
 end

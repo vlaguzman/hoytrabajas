@@ -141,7 +141,7 @@ RSpec.describe Users::Wizards::StepOne::FormParamsService do
               },
               nationality_ids:{
                 name:"candidate[nationality_ids][]",
-                label: "Nacionalidad*",
+                label: "Nacionalidad(es)*",
                 values: create_nationalities_list,
                 current_value: []
               },
@@ -266,7 +266,7 @@ RSpec.describe Users::Wizards::StepOne::FormParamsService do
               },
               nationality_ids:{
                 name:"candidate[nationality_ids][]",
-                label: "Nacionalidad*",
+                label: "Nacionalidad(es)*",
                 values: create_nationalities_list,
                 current_value: user_nationalities.pluck(:id)
 

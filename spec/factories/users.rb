@@ -9,6 +9,8 @@ FactoryBot.define do
     password              { Faker::Blockchain::Bitcoin.address }
     confirmed_at          { Date.today }
     nationalities         { [create(:nationality)] }
+    born_city_id          { create(:city).id }
+    residence_city_id     { create(:city).id }
     vehicles              { [create(:vehicle)] }
     driving_licences      { [create(:driving_licence)] }
     sign_in_count         { 1323 }
@@ -37,6 +39,8 @@ FactoryBot.define do
       sex                   { nil }
       educational_degree    { nil }
       driving_licences      { [] }
+      born_city_id          { nil }
+      residence_city_id     { nil }
       vehicles              { [] }
     end
 

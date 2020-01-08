@@ -19,7 +19,6 @@ RSpec.describe "like candidate", type: :feature do
       fill_in 'user[name]', with: 'Walter W.'
       find('span', text: /ACTUALIZAR/).click
 
-
       expect(current_path).to eq(users_dashboard_path)
       expect(page).to have_text(/Walter W. Neim/)
     end

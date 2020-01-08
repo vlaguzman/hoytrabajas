@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe "Anonymous user create a candidate user account and complete the wizards", type: :feature do
   before do
     #Step_One
+    create(:city, description: "Capital Federal", state: create(:state, description: "Buenos Aires", country: create(:country, description: "Argentina")))
+    create(:city, description: "Neiva", state: create(:state, description: "Huila", country: create(:country, description: "Colombia")))
     create(:nationality, description: "Colombiana")
     create(:document_type, description: "Cedula de Ciudadania")
 
@@ -92,6 +94,24 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
 
     find("div[id='mui-component-select-user[nationality_ids][]']", visible: false).click
     find("li", text: "Colombiana").click
+
+    find("div[id='mui-component-select-user[born_country_id]", visible: false).click
+    find("li", text: "Argentina").click
+
+    find("div[id='mui-component-select-user[born_state_id]", visible: false).click
+    find("li", text: "Buenos Aires").click
+
+    find("div[id='mui-component-select-user[born_city_id]", visible: false).click
+    find("li", text: "Capital Federal").click
+
+    find("div[id='mui-component-select-user[residence_country_id]", visible: false).click
+    find("li", text: "Colombia").click
+
+    find("div[id='mui-component-select-user[residence_state_id]", visible: false).click
+    find("li", text: "Huila").click
+
+    find("div[id='mui-component-select-user[residence_city_id]", visible: false).click
+    find("li", text: "Neiva").click
 
     find("div[id='mui-component-select-user[document_type_id]']", visible: false).click
     find("li", text: "Cedula de Ciudadania").click

@@ -2,7 +2,8 @@
 .backgroundImage
 .contentBox
   - @user.yield_if(@user.curriculum_vitae.file_cv.attached?) do
-    %a{href: @user.download_cv}=t('profile.download_cv')
+    %a.buttonDownload{href: @user.download_cv}
+      %p=t('profile.download_cv')
   .m-box.o-boxPrincipal
     .headerBox
       %img{src: image_path("/assets/static/avatars/profile.jpg"), alt: 'Photo Profile'}
@@ -62,7 +63,7 @@
             - @user.curriculum_vitae.soft_skills.each do |soft_skill|
               %span.a-skill= soft_skill.description
         // TODO We don't have valid soft skills yet
-        - if params[:tester].present?
+        - @user.yield_if(params[:tester].present?) do
           .boxSkills
             %h3=t('profile.technical_skills')
             .skillSpecific
@@ -91,7 +92,7 @@
         %h2=t('profile.experience')
         = react_component('src/components/Cards/PublicProfile/Experience', {defaultList: @user.data_experience}, prerender: false)
     - @user.yield_if(@user.curriculum_vitae.file_cv.attached?) do
-      %a{href: @user.download_cv}=t('profile.download_cv')
+      %a.buttonDownloadMovile{href: @user.download_cv}=t('profile.download_cv')
     .footerBox
       %p=t('profile.slogan')
 = render '/shared/footer'

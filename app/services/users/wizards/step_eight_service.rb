@@ -13,7 +13,9 @@ module Users::Wizards::StepEightService
   end
 
   def self.validate_skill_presence(work_experience, update_params)
-    update_params[:technical_skills].present? ? update_params.tap { |field| field[:technical_skills] = persist_technical_skills(work_experience, field[:technical_skills]) } : update_params
+    update_params[:technical_skills].present? ?
+      update_params.tap { |field| field[:technical_skills] = persist_technical_skills(work_experience, field[:technical_skills]) }
+      : update_params.except(:technical_skills)
   end
 
   def self.persist_technical_skills(work_experience, technical_skills)

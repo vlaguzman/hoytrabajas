@@ -19,7 +19,7 @@ es:
               residence_country_id: "País de residencia*"
               residence_state_id: "Departamento de residencia*"
               residence_city_id: "Lugar de residencia*"
-              nationality_ids: "Nacionalidad*"
+              nationality_ids: "Nacionalidad(es)*"
               document_type_id: "Tipo de documento de identidad*"
               identification_number: "Número de documento*"
               contact_number: "Número de contacto*"

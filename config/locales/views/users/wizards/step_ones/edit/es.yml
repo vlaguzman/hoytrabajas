@@ -13,7 +13,7 @@ es:
             formFields:
               name: "Nombre*"
               last_name: "Apellido*"
-              nationality_ids: "Nacionalidad*"
+              nationality_ids: "Nacionalidad(es)*"
               document_type_id: "Tipo de documento de identidad*"
               identification_number: "Número de documento*"
               contact_number: "Número de contacto*"

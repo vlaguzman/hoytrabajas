@@ -62,10 +62,10 @@ RSpec.describe Users::Wizards::StepOne::FormParamsService do
     let!(:document_types) { create_list(:document_type, 5) }
 
     let(:create_born_country_list)            { ListConverter.model_list(Country) }
-    let(:create_born_state_list)              { ListConverter.model_list(State) }
+    let(:create_born_state_list)              { ListConverter.model_list(State, nil, additional_key: :country_id) }
     let(:create_born_city_list)               { ListConverter.model_list(City) }
     let(:create_residence_country_list)       { ListConverter.model_list(Country) }
-    let(:create_residence_state_list)         { ListConverter.model_list(State) }
+    let(:create_residence_state_list)         { ListConverter.model_list(State, nil, additional_key: :country_id) }
     let(:create_residence_city_list)          { ListConverter.model_list(City) }
     let(:create_document_type_list)           { ListConverter.model_list(DocumentType) }
     let(:create_nationalities_list)           { ListConverter.model_list(Nationality) }

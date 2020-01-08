@@ -34,7 +34,7 @@ const FormFields = props => {
   )
 
   useEffect(() => {
-    setFormValues({ ...formValues, [city_id.name]: '' })
+    setFormValues({ ...formValues, [city_id.name]: formValues[city_id.name] || '' })
     setCitiesOfCurrentState(
       city_id.values.filter(
         city => city['state_id'] === formValues[state_id.name]

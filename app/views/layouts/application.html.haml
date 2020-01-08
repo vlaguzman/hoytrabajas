@@ -26,6 +26,7 @@
       = javascript_pack_tag 'analytics/clientify_analytics'
       = javascript_pack_tag 'analytics/facebook_pixel'
       = javascript_pack_tag 'analytics/tag_manager'
+      %link{:href => "#{ENV['HT_PROTOCOL']}#{ENV['HT_DOMAIN']}#{url_for(:page => params[:page])}", :rel => "canonical"}/
   %body
     -# Google Tag Manager (noscript)
     %noscript

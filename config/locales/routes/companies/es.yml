@@ -1,0 +1,14 @@
+es:
+  routes:
+    companies: 'empresa'
+    dashboard: 'panel'
+    list_candidates: 'lista-de-candidatos'
+    first_offer: 'registro'
+    step_one: 'paso-uno'
+    step_two: 'paso-dos'
+    step_three: 'paso-tres'
+    step_four: 'paso-cuatro'
+    step_five: 'paso-cinco'
+    step_six: 'paso-seis'
+    step_seven: 'paso-siete'
+    step_eight: 'oferta-creada'

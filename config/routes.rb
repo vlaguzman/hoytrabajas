@@ -10,6 +10,11 @@ Rails.application.routes.draw do
 
   resources :faqs, only: [:index]
   resources :offers
+
+  localized do
+    resources :offers
+  end
+
   resources :applied_offers, only: [:create]
   resources :job_categories, only:[:index]
 
@@ -31,6 +36,26 @@ Rails.application.routes.draw do
       resource :step_six,   only: [:show, :update]
       resource :step_seven, only: [:show, :update]
       resource :step_eight, only: [:show]
+    end
+  end
+
+  #localized Companies
+  localized do
+    namespace :companies do
+      resource :dashboard, only: [:show]
+      resources :list_candidates, only: [:show]
+
+      namespace :first_offer do
+        resource :step_zero,  only: [:show]
+        resource :step_one,   only: [:show, :update]
+        resource :step_two,   only: [:show, :update]
+        resource :step_three, only: [:show, :update]
+        resource :step_four,  only: [:show, :update]
+        resource :step_five,  only: [:show, :update]
+        resource :step_six,   only: [:show, :update]
+        resource :step_seven, only: [:show, :update]
+        resource :step_eight, only: [:show]
+      end
     end
   end
 
@@ -71,6 +96,47 @@ Rails.application.routes.draw do
 
   end
 
+  #localized Users
+  localized do
+    namespace :users do
+      resource :dashboard, only: [:show]
+      resources :profile, only: [:show]
+
+
+      namespace :wizards do
+        resource :step_zero,    only: [:show]
+        namespace :step_zeros do
+          resource :curriculum_vitae, only: [:show, :create]
+        end
+        resource :step_one,     except: [:new, :destroy]
+        resource :step_two,     except: [:new, :destroy]
+        resource :step_three,   except: [:new, :destroy]
+        resource :step_four,    except: [:new, :destroy]
+        resource :step_five,    except: [:new, :destroy]
+        resource :step_six,     except: [:new, :destroy]
+        resource :step_seven,   except: [:new, :destroy]
+        resource :step_eight,   except: [:new, :destroy]
+
+        namespace :step_eights  do
+          resources :added_work_experiences,   only: [:show]
+        end
+
+        resource :step_nine,    except: [:new, :destroy]
+        namespace :step_nines   do
+          resources :added_educational_levels,  only: [:show]
+        end
+
+        resource :step_ten,     except: [:new, :destroy]
+        namespace :step_tens    do
+          resources :added_acknowledgments,     only: [:show]
+        end
+
+        resource :step_eleven,  only: [:show]
+      end
+
+    end
+  end
+
   resource :users, only: [:show, :edit]
   resources :companies, only: [:edit, :update, :show, :index]
 
@@ -78,29 +144,22 @@ Rails.application.routes.draw do
 
   # Offers
 
-  get '/ofertas-de-empleo', to: 'offers#index'
-  get '/buscador-de-empleo', to: 'offers#index'
+  get RoutesService.build_path('job-offers'), to: 'offers#index'
+  get RoutesService.build_path('offers-search'), to: 'offers#index'
 
   # User Session and Registration
-
   devise_scope :user do
-
-    get '/registro/candidato/', to: 'devise/sessions#new'
-
+    get RoutesService.build_path(:wizards, :users), to: 'devise/sessions#new'
   end
 
   # Company Session and Registration
-
   devise_scope :company do
-
-    get '/registro/empresa/', to: 'devise/sessions#new'
-
+    get RoutesService.build_path(:first_offer, :companies), to: 'devise/sessions#new'
   end
 
   # Dashboards
-
-  get '/panel/empresa/', to: 'companies/dashboards#show'
-  get '/panel/candidato/', to: 'users/dashboards#show'
+  get RoutesService.build_path(:dashboard, :companies), to: 'companies/dashboards#show'
+  get RoutesService.build_path(:dashboard, :users), to: 'users/dashboards#show'
 
   ###########################################
   root to: "home#index"

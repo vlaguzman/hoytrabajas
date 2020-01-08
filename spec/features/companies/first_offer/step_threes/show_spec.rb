@@ -14,6 +14,7 @@ RSpec.describe "When company fill the step three form", :type => :feature do
 
     expect(page).to have_tag(:form, with: { class: "forms__candidate" }) do
       with_tag(:textarea, with: { name: 'offer[title]'})
+      with_tag(:textarea, with: { name: 'offer[description]'})
 
       with_tag(:input, with: { name: 'offer[id]', type: "hidden" })
       with_tag(:input, with: { name: 'offer[job_category_ids]', type: "hidden" })
@@ -30,6 +31,8 @@ RSpec.describe "When company fill the step three form", :type => :feature do
 
   def fill_form(data)
     fill_in 'offer[title]', :with => data[:title]
+
+    fill_in 'offer[description]', :with => data[:description]
 
     find(id: 'mui-component-select-offer[job_category_ids]', visible: false).click
     find('li.MuiListItem-button', text: data[:job_category_ids]).click
@@ -51,20 +54,23 @@ RSpec.describe "When company fill the step three form", :type => :feature do
 
         visit companies_first_offer_step_three_path
 
+        expected_data = {
+          title:                 'Oferta para el mejor desarrollador del mundo mundial',
+          description:           'Se busca desarrollador con 10 años de experiencia en COBOL y HASKEL, salirio: mucho money',
+          job_category_ids:      job_category.description,
+          offer_type_id:         offer_type.description,
+          work_mode_id:          work_mode.description,
+          offers_work_positions: work_position.description
+        }
+
         expected_page_structure
-        fill_form(
-          {
-            title:                 'Oferta para el mejor desarrollador del mundo mundial',
-            job_category_ids:      job_category.description,
-            offer_type_id:         offer_type.description,
-            work_mode_id:          work_mode.description,
-            offers_work_positions: work_position.description
-          }
-        )
+        fill_form(expected_data)
+
         click_link_or_button('Siguiente')
 
         offer = Offer.find_by(title: 'Oferta para el mejor desarrollador del mundo mundial')
 
+        expect(offer.description).to eq(expected_data[:description])
         expect(offer.job_category_ids).not_to be_nil
         expect(offer.work_mode_id).not_to be_nil
         expect(offer.offer_type_id).not_to be_nil
@@ -82,6 +88,7 @@ RSpec.describe "When company fill the step three form", :type => :feature do
         fill_form(
           {
             title: '',
+            description: '',
             job_category_id: job_category.description,
             offer_type_id: offer_type.description,
             work_mode_id: work_mode.description,
@@ -91,6 +98,7 @@ RSpec.describe "When company fill the step three form", :type => :feature do
         click_link_or_button('Siguiente')
 
         expect(page).to have_content("Por favor ingrese un título a la oferta, este campo no puede estar en blanco")
+        expect(page).to have_content("Por favor ingrese una descripción a la oferta, este campo no puede estar en blanco")
       end
     end
   end

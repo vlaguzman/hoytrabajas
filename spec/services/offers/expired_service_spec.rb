@@ -36,7 +36,7 @@ RSpec.describe Offers::ExpiredService do
     end
 
     context "When close date is nil" do
-      let!(:empty_offer) { create(:offer, :empty) }
+      let!(:empty_offer) { create(:offer, :empty, description: 'a little desc') }
 
       it "should not change the state" do
         response = subject.(limit_date: Date.today)

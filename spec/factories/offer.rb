@@ -16,9 +16,9 @@ FactoryBot.define do
 
     trait :empty do
       title                         { Faker::Lorem.sentence(word_count: 8) }
+      description                   { Faker::Lorem.sentence(word_count: 8) }
       address                       { nil }
       cellphone                     { nil }
-      description                   { nil }
       close_date                    { nil }
       immediate_start               { nil }
       required_experience           { nil }

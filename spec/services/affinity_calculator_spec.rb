@@ -9,11 +9,11 @@ RSpec.describe AffinityCalculator do
   let(:job_categories)      { [create(:job_category)] }
   let(:working_days)        { [create(:working_day)] }
 
-  let(:empty_offer)          { create(:empty_offer, title: "empty_offer") }
+  let(:empty_offer)          { create(:empty_offer, title: "empty_offer", description: 'a description') }
   let(:the_offer)            { create(:offer, title: "the_offer") }
   let(:relations_offer)      { create(:offer, title: "relations_offer", vehicles: vehicles, soft_skills: soft_skills) }
-  let(:offer_contract)       { create(:empty_offer, contract_type: contract_type)}
-  let(:offer_vehicles)       { create(:empty_offer, vehicles: vehicles)}
+  let(:offer_contract)       { create(:empty_offer, contract_type: contract_type, description: 'a description')}
+  let(:offer_vehicles)       { create(:empty_offer, vehicles: vehicles, description: 'a description')}
 
   let(:empty_user)          { create(:user, :first_time_candidate, name: "empty_user") }
   let(:the_user)            { create(:user, name: "arnold")}

@@ -13,6 +13,7 @@ const FormFields = props => {
 
   const {
     title = null,
+    description = null,
     job_category_ids = null,
     offers_work_positions = null,
     offer_type_id = null,
@@ -21,6 +22,7 @@ const FormFields = props => {
 
   const [formValues, setFormValues] = useState({
     [title.name]: title.current_value || '',
+    [description.name]: description.current_value || '',
     [job_category_ids.name]: job_category_ids.current_value || '',
     [offers_work_positions.name]: offers_work_positions.current_value || '',
     [offer_type_id.name]: offer_type_id.current_value || '',
@@ -43,6 +45,22 @@ const FormFields = props => {
       </Col>
     ),
     [formValues[title.name]]
+  )
+
+  const descriptionField = useMemo(
+    () => (
+      <Col key={description.name} className={inputClassname} xs={12} lg={12}>
+        <StandardInput
+          isTextArea
+          inputValue={formValues[description.name]}
+          inputName={description.name}
+          handleChange={handleChange(formValues, setFormValues)}
+          name={description.name}
+          label={description.label}
+        />
+      </Col>
+    ),
+    [formValues[description.name]]
   )
 
   const jobCategoryField = useMemo(
@@ -130,6 +148,7 @@ const FormFields = props => {
   return (
     <Row className="HT__FormGenerator">
       {titleField}
+      {descriptionField}
       {jobCategoryField}
       {offerTypeField}
       {workModeField}

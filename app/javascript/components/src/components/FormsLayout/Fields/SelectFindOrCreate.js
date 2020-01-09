@@ -4,6 +4,7 @@ import Autocomplete, {
 } from '@material-ui/lab/Autocomplete'
 import TextField from '@material-ui/core/TextField'
 import { PropTypes } from 'prop-types'
+import Tooltip from '@material-ui/core/Tooltip'
 
 const filterOptions = createFilterOptions({
   trim: true
@@ -18,7 +19,8 @@ const SelectFindOrCreate = ({
   text_key = 'description',
   input_value,
   no_options_text,
-  isMultiple = false
+  isMultiple = false,
+  tooltip_description
 }) => {
   const [interValue, setInterValue] = useState(input_value)
   const [updateOptions, setUpdateOptions] = useState(options)
@@ -39,22 +41,24 @@ const SelectFindOrCreate = ({
 
   return (
     <>
-      <Autocomplete
-        freeSolo
-        multiple={isMultiple}
-        includeInputInList
-        noOptionsText={no_options_text}
-        options={updateOptions.map(option => option[text_key])}
-        filterOptions={filterOptions}
-        value={interValue}
-        onChange={(e, value) => {
-          setInterValue(value)
-        }}
-        onInputChange={handleValueNoPresent}
-        renderInput={params => (
-          <TextField {...params} label={label} margin="normal" fullWidth />
-        )}
-      />
+      <Tooltip title={tooltip_description} arrow>
+        <Autocomplete
+          freeSolo
+          multiple={isMultiple}
+          includeInputInList
+          noOptionsText={no_options_text}
+          options={updateOptions.map(option => option[text_key])}
+          filterOptions={filterOptions}
+          value={interValue}
+          onChange={(e, value) => {
+            setInterValue(value)
+          }}
+          onInputChange={handleValueNoPresent}
+          renderInput={params => (
+            <TextField {...params} label={label} margin="normal" fullWidth />
+          )}
+        />
+      </Tooltip>
       <input name={name} type="hidden" value={interValue} />
     </>
   )

@@ -24,7 +24,7 @@ const dateOptions = {
 }
 
 const FormFields = props => {
-  const { formFields } = props
+  const { formFields, tooltip_description } = props
   const {
     job_category_id = null,
     company_name = null,
@@ -39,16 +39,16 @@ const FormFields = props => {
   } = formFields
 
   const [formValues, setFormValues] = useState({
-    [job_category_id.name]: '',
-    [company_name.name]: '',
-    [work_position_id.name]: '',
-    [work_methodology_id.name]: '',
-    [city_id.name]: '',
-    [state_id.name]: '',
-    [technical_skills.name]: '',
-    [started_at.name]: new Date(),
-    [finished_at.name]: new Date(),
-    [still_in_progress.name]: false
+    [job_category_id.name]: job_category_id.current_value || '',
+    [company_name.name]: company_name.current_value || '',
+    [work_position_id.name]: work_position_id.current_value || '',
+    [work_methodology_id.name]: work_methodology_id.current_value || '',
+    [city_id.name]: city_id.current_value || '',
+    [state_id.name]: state_id.current_value || '',
+    [technical_skills.name]: technical_skills.current_value || '',
+    [started_at.name]: started_at.current_value || new Date(),
+    [finished_at.name]: finished_at.current_value || new Date(),
+    [still_in_progress.name]: still_in_progress.current_value || false
   })
 
   const [citiesOfCurrentState, setCitiesOfCurrentState] = useState(
@@ -190,6 +190,7 @@ const FormFields = props => {
           name={technical_skills.name}
           input_value={technical_skills.current_value}
           options={technical_skills.values}
+          tooltip_description={tooltip_description}
           isMultiple
         />
       </Col>

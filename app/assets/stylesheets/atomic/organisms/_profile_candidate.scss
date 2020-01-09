@@ -15,6 +15,7 @@
 .contentBox {
   flex-direction: row-reverse;
   padding: 38vh 7vw 24vh 13vw;
+  justify-content: flex-end;
   display: flex;
 
   .--buttonDownloadMobile {
@@ -43,7 +44,7 @@
   margin-top: 380px;
   display: flex;
   height: 247px;
-  width: 130px;
+  width: 5%;
 
   p {
     transform-origin: 70px 59px;
@@ -71,6 +72,7 @@
 
 .o-boxPrincipal {
   padding-top: 74px;
+  width: 95%;
 
   .headerBox {
     flex-direction: column;

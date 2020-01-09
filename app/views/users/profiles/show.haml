@@ -18,9 +18,10 @@
         .iconMoreText
           %i.material-icons email
           %span= @user.email
-        .iconMoreText
-          %i.material-icons phone_iphone
-          %span= @user.contact_number_with_format
+        - @user.yield_if(@user.contact_number.present?) do
+          .iconMoreText
+            %i.material-icons phone_iphone
+            %span= @user.contact_number_with_format
     - @user.yield_if(@user.about_me.present?) do
       .bodyBox
         %h2=t('profile.about_me')

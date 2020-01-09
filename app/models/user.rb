@@ -3,7 +3,7 @@ class User < ApplicationRecord
   ATTRIBUTES_TO_COMPARE = [:contract_type_id, :educational_degree_id, :sex_id] 
   LISTS_TO_COMPARE = [:vehicles, :driving_licences]
 
-  validates :name, :last_name, :identification_number, :contact_number,
+  validates :name, :last_name, :born_city_id, :residence_city_id, :identification_number, :contact_number,
             :document_type_id, presence: true, allow_nil: true
 
   # Include default devise modules. Others available are:
@@ -58,8 +58,24 @@ class User < ApplicationRecord
     City.find_by(id: self.born_city_id)
   end
 
+  def born_state
+    born_city.state if born_city.present?
+  end
+
+  def born_country
+    born_state.country if born_state.present? && born_city.present?
+  end
+
   def residence_city
     City.find_by(id: self.residence_city_id)
+  end
+
+  def residence_state
+    residence_city.state if residence_city.present?
+  end
+
+  def residence_country
+    residence_state.country if residence_state.present? && residence_city.present?
   end
 
 end

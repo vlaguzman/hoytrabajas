@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col } from 'reactstrap'
 import StandardInput from '../../../../../components/FormsLayout/Fields/StandardInput'
@@ -13,6 +13,12 @@ const FormFields = props => {
   const {
     name = null,
     last_name = null,
+    born_country_id = null,
+    born_state_id = null,
+    born_city_id = null,
+    residence_country_id = null,
+    residence_state_id = null,
+    residence_city_id = null,
     nationality_ids = null,
     document_type_id = null,
     identification_number = null,
@@ -22,11 +28,100 @@ const FormFields = props => {
   const [formValues, setFormValues] = useState({
     [name.name]: name.current_value || '',
     [last_name.name]: last_name.current_value || '',
+    [born_country_id.name]: born_country_id.current_value || '',
+    [born_state_id.name]: born_state_id.current_value || '',
+    [born_city_id.name]: born_city_id.current_value || '',
+    [residence_country_id.name]: residence_country_id.current_value || '',
+    [residence_state_id.name]: residence_state_id.current_value || '',
+    [residence_city_id.name]: residence_city_id.current_value || '',
     [nationality_ids.name]: nationality_ids.current_value || '',
     [document_type_id.name]: document_type_id.current_value || '',
     [identification_number.name]: identification_number.current_value || '',
     [contact_number.name]: contact_number.current_value || ''
   })
+
+  //##### born states
+  const [bornStatesOfCurrentCountry, setbornStatesOfCurrentCountry] = useState(
+    born_state_id.values.filter(
+      born_state =>
+        born_state['country_id'] === formValues[born_country_id.name]
+    )
+  )
+
+  useEffect(() => {
+    setFormValues({ ...formValues, [born_state_id.name]: '' })
+    setbornStatesOfCurrentCountry(
+      born_state_id.values.filter(
+        born_state =>
+          born_state['country_id'] === formValues[born_country_id.name]
+      )
+    )
+  }, [formValues[born_country_id.name]])
+
+  //##### born cities
+  const [bornCitiesOfCurrentState, setbornCitiesOfCurrentState] = useState(
+    born_city_id.values.filter(
+      born_city => born_city['state_id'] === formValues[born_state_id.name]
+    )
+  )
+
+  useEffect(() => {
+    setFormValues({
+      ...formValues,
+      [born_city_id.name]: formValues[born_city_id.name] || ''
+    })
+    setbornCitiesOfCurrentState(
+      born_city_id.values.filter(
+        born_city => born_city['state_id'] === formValues[born_state_id.name]
+      )
+    )
+  }, [formValues[born_state_id.name]])
+
+  //### reesidence states
+  const [
+    residenceStatesOfCurrentCountry,
+    setResidenceStatesOfCurrentCountry
+  ] = useState(
+    residence_state_id.values.filter(
+      residence_state =>
+        residence_state['country_id'] === formValues[residence_country_id.name]
+    )
+  )
+
+  useEffect(() => {
+    setFormValues({ ...formValues, [residence_state_id.name]: '' })
+    setResidenceStatesOfCurrentCountry(
+      residence_state_id.values.filter(
+        residence_state =>
+          residence_state['country_id'] ===
+          formValues[residence_country_id.name]
+      )
+    )
+  }, [formValues[residence_country_id.name]])
+
+  //### reesidence cities
+  const [
+    residenceCitiesOfCurrentState,
+    setresidenceCitiesOfCurrentState
+  ] = useState(
+    residence_city_id.values.filter(
+      residence_city =>
+        residence_city['state_id'] === formValues[residence_state_id.name]
+    )
+  )
+
+  useEffect(() => {
+    setFormValues({
+      ...formValues,
+      [residence_city_id.name]: formValues[residence_city_id.name] || ''
+    })
+    setresidenceCitiesOfCurrentState(
+      residence_city_id.values.filter(
+        residence_city =>
+          residence_city['state_id'] === formValues[residence_state_id.name]
+      )
+    )
+  }, [formValues[residence_state_id.name]])
 
   const inputClassname = 'mt-30 animated fadeIn inputField'
 
@@ -56,6 +151,161 @@ const FormFields = props => {
       </Col>
     ),
     [formValues[last_name.name]]
+  )
+
+  const bornCountryIDsField = useMemo(
+    () => (
+      <Col key={born_country_id.name} className={inputClassname} xs={12} lg={4}>
+        <SelectChip
+          inputValue={formValues[born_country_id.name]}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
+          name={born_country_id.name}
+          label={born_country_id.label}
+          selectOptions={born_country_id.values}
+        />
+      </Col>
+    ),
+    [formValues[born_country_id.name]]
+  )
+
+  const residenceCountryIDsField = useMemo(
+    () => (
+      <Col
+        key={residence_country_id.name}
+        className={inputClassname}
+        xs={12}
+        lg={4}
+      >
+        <SelectChip
+          inputValue={formValues[residence_country_id.name]}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
+          name={residence_country_id.name}
+          label={residence_country_id.label}
+          selectOptions={residence_country_id.values}
+        />
+      </Col>
+    ),
+    [formValues[residence_country_id.name]]
+  )
+
+  const bornStateIDsField = useMemo(
+    () => (
+      <Col key={born_state_id.name} className={inputClassname} xs={12} lg={4}>
+        <SelectChip
+          inputValue={
+            (formValues[born_country_id.name] &&
+              formValues[born_state_id.name]) ||
+            ''
+          }
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
+          name={born_state_id.name}
+          label={born_state_id.label}
+          selectOptions={
+            (formValues[born_country_id.name] && bornStatesOfCurrentCountry) ||
+            []
+          }
+        />
+      </Col>
+    ),
+    [
+      formValues[born_state_id.name],
+      formValues[born_country_id.name],
+      bornStatesOfCurrentCountry
+    ]
+  )
+
+  const residenceStateIDsField = useMemo(
+    () => (
+      <Col
+        key={residence_state_id.name}
+        className={inputClassname}
+        xs={12}
+        lg={4}
+      >
+        <SelectChip
+          inputValue={
+            (formValues[residence_country_id.name] &&
+              formValues[residence_state_id.name]) ||
+            ''
+          }
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
+          name={residence_state_id.name}
+          label={residence_state_id.label}
+          selectOptions={
+            (formValues[residence_country_id.name] &&
+              residenceStatesOfCurrentCountry) ||
+            []
+          }
+        />
+      </Col>
+    ),
+    [
+      formValues[residence_state_id.name],
+      formValues[residence_country_id.name],
+      residenceStatesOfCurrentCountry
+    ]
+  )
+
+  const bornCityIDsField = useMemo(
+    () => (
+      <Col key={born_city_id.name} className={inputClassname} xs={12} lg={4}>
+        <SelectChip
+          inputValue={
+            (formValues[born_state_id.name] && formValues[born_city_id.name]) ||
+            ''
+          }
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
+          name={born_city_id.name}
+          label={born_city_id.label}
+          selectOptions={
+            (formValues[born_state_id.name] && bornCitiesOfCurrentState) || []
+          }
+        />
+      </Col>
+    ),
+    [
+      formValues[born_city_id.name],
+      formValues[born_state_id.name],
+      bornCitiesOfCurrentState
+    ]
+  )
+
+  const residenceCityIDsField = useMemo(
+    () => (
+      <Col
+        key={residence_city_id.name}
+        className={inputClassname}
+        xs={12}
+        lg={4}
+      >
+        <SelectChip
+          inputValue={
+            (formValues[residence_state_id.name] &&
+              formValues[residence_city_id.name]) ||
+            ''
+          }
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
+          name={residence_city_id.name}
+          label={residence_city_id.label}
+          selectOptions={
+            (formValues[residence_state_id.name] &&
+              residenceCitiesOfCurrentState) ||
+            []
+          }
+        />
+      </Col>
+    ),
+    [
+      formValues[residence_city_id.name],
+      formValues[residence_state_id.name],
+      residenceCitiesOfCurrentState
+    ]
   )
 
   const nationalityIDsField = useMemo(
@@ -128,6 +378,12 @@ const FormFields = props => {
     <Row className="HT__FormGenerator">
       {nameField}
       {lastNameField}
+      {bornCountryIDsField}
+      {bornStateIDsField}
+      {bornCityIDsField}
+      {residenceCountryIDsField}
+      {residenceStateIDsField}
+      {residenceCityIDsField}
       {nationalityIDsField}
       {documentTypeIDField}
       {identificationNumberField}
@@ -142,7 +398,13 @@ FormFields.propTypes = {
   formFields: PropTypes.shape({
     name: PropTypes.object,
     last_name: PropTypes.object,
+    born_country_id: PropTypes.object,
+    born_state_id: PropTypes.object,
+    born_city_id: PropTypes.object,
     nationality_ids: PropTypes.object,
+    residence_country_id: PropTypes.object,
+    residence_state_id: PropTypes.object,
+    residence_city_id: PropTypes.object,
     document_type_id: PropTypes.object,
     identification_number: PropTypes.object,
     contact_number: PropTypes.object

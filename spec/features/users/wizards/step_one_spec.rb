@@ -6,10 +6,15 @@ RSpec.describe "Like new candidate", :type => :feature do
     find("input[name='user[#{field_name}]#{'[]' if multiple}']", visible: false).value
   end
 
-  before do
-    create(:nationality, description: "Colombiana")
-    create(:document_type, description: "Cedula de Ciudadania")
-  end
+  let!(:born_country)              { create(:country, description: "Argentina") }
+  let!(:born_state)                { create(:state, description: "Buenos Aires", country: born_country) }
+  let!(:born_city)                 { create(:city, description: "Capital Federal", state: born_state) }
+  let!(:residence_country)         { create(:country, description: "Colombia") }
+  let!(:residence_state)           { create(:state, description: "Huila", country: residence_country) }
+  let!(:residence_city)            { create(:city, description: "Neiva", state: residence_state) }
+  let!(:nationality_one)           { create(:nationality, description: "Colombiana") }
+  let!(:nationality_two)           { create(:nationality, description: "Argentina") }
+  let!(:document_type)             { create(:document_type, description: "Cedula de Ciudadania") }
 
   describe "When visit step one" do
     let(:candidate) { create(:user) }
@@ -37,6 +42,26 @@ RSpec.describe "Like new candidate", :type => :feature do
       fill_in 'user[name]', with: 'Carlos'
       fill_in 'user[last_name]', with: 'Rojas'
 
+      find("div[id='mui-component-select-user[born_country_id]", visible: false).click
+      find("li", text: "Argentina").click
+
+      find("div[id='mui-component-select-user[born_state_id]", visible: false).click
+      find("li", text: "Buenos Aires").click
+
+      find("div[id='mui-component-select-user[born_city_id]", visible: false).click
+      find("li", text: "Capital Federal").click
+
+      find("div[id='mui-component-select-user[residence_country_id]", visible: false).click
+      find("li", text: "Colombia").click
+
+      find("div[id='mui-component-select-user[residence_state_id]", visible: false).click
+      find("li", text: "Huila").click
+
+      find("div[id='mui-component-select-user[residence_city_id]", visible: false).click
+      find("li", text: "Neiva").click
+
+      find("div[id='mui-component-select-user[nationality_ids][]']", visible: false).click
+      find("li", text: "Argentina").click
       find("div[id='mui-component-select-user[nationality_ids][]']", visible: false).click
       find("li", text: "Colombiana").click
 
@@ -55,6 +80,8 @@ RSpec.describe "Like new candidate", :type => :feature do
 
       expect(candidate.name).to eq('Carlos')
       expect(candidate.last_name).to eq('Rojas')
+      expect(candidate.born_city_id).to eq(born_city.id)
+      expect(candidate.residence_city_id).to eq(residence_city.id)
       expect(candidate.document_type.description).to eq('Cedula de Ciudadania')
       expect(candidate.nationalities.pluck(:description).include?('Colombiana')).to be_truthy
       expect(candidate.identification_number).to eq('1063558224')
@@ -65,7 +92,9 @@ RSpec.describe "Like new candidate", :type => :feature do
   feature "When i have saved data" do
     let!(:old_candidate) { create(
       :user,
-      nationalities: create_list(:nationality, 2)
+      nationalities: create_list(:nationality, 2),
+      born_city_id: born_city.id,
+      residence_city_id: residence_city.id
     ) }
 
     scenario "Should show the saved data",js: true do
@@ -75,6 +104,9 @@ RSpec.describe "Like new candidate", :type => :feature do
 
       expect(form_field_value(:name)).to have_content(old_candidate.name)
       expect(form_field_value(:last_name)).to have_content(old_candidate.last_name)
+      expect(form_field_value(:born_city_id)).to have_content(born_city.id)
+      save_screenshot("lafoto.png")
+      expect(form_field_value(:residence_city_id)).to have_content(residence_city.id)
       expect(form_field_value(:nationality_ids, :true)).to have_content(old_candidate.nationality_ids.join(","))
       expect(form_field_value(:document_type_id)).to have_content(old_candidate.document_type.id)
       expect(form_field_value(:identification_number)).to have_content(old_candidate.identification_number)

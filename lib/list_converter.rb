@@ -1,7 +1,7 @@
 module ListConverter
 
-  def self.model_list(klass, sort = :sort)
-    model_list = klass.all.map { |object| object.attributes.deep_symbolize_keys.slice(:id, :description, :state_id) }
+  def self.model_list(klass, sort = :sort, additional_key: nil)
+    model_list = klass.all.map { |object| object.attributes.deep_symbolize_keys.slice(:id, :description, :state_id, additional_key) }
 
     sort.eql?(:no_sort) ? model_list : model_list.sort_by { |object| object[:description] }
   end

@@ -132,6 +132,10 @@ es:
               blank: 'Por favor ingrese su numero de contacto, este campo no puede estar en blanco'
             nationalities:
               blank: 'Debes selecionar por lo menos una nacionalidad'
+            born_city_id:
+              blank: 'Debes selecionar lugar de nacimiento'
+            residence_city_id:
+              blank: 'Debes selecionar lugar de residencia'
             document_type_id:
               blank: 'Debes selecionar el tipo de documento de identidad'
 

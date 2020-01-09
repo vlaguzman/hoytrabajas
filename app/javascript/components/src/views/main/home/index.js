@@ -20,6 +20,7 @@ const HomePage = ({
   new_offer_path,
   home_translations,
   offer_translations,
+  advanced_search_translations,
   filterForm,
   common
 }) => {
@@ -41,6 +42,7 @@ const HomePage = ({
       <CoverSection
         {...{ common, filterForm }}
         translations={cover}
+        advanced_search_translations={advanced_search_translations}
         new_offer_path={new_offer_path}
       />
       <OffersSection
@@ -80,6 +82,7 @@ HomePage.propTypes = {
   offers_path: PropTypes.string,
   home_translations: PropTypes.object.isRequired,
   offer_translations: PropTypes.object,
+  advanced_search_translations: PropTypes.object.isRequired,
   common: PropTypes.object,
   filterForm: PropTypes.object
 }

@@ -1,18 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import MatButton from '@material-ui/core/Button'
 import MenuIcon from '@material-ui/icons/Menu'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Typography from '@material-ui/core/Typography'
-import Input from '@material-ui/core/Input'
+import InputBase from '@material-ui/core/InputBase'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import IconButton from '@material-ui/core/IconButton'
 import AddCircleIcon from '@material-ui/icons/AddCircle'
 import StarsIcon from '@material-ui/icons/Stars'
 import CloseIcon from '@material-ui/icons/Close'
 import {
-  Row,
-  Col,
   Form,
   FormGroup,
   Label,
@@ -23,8 +19,8 @@ import {
   NavItem
 } from 'reactstrap'
 import Login from '../Login'
-import { fields1 } from './data'
-import FormGen from '../inlineFormgenerartor'
+import useWindowSize from '../../hooks/useWindowSize'
+import AdvancedSearch from '../AdvancedSearch'
 
 const Header = props => {
   const {
@@ -35,6 +31,8 @@ const Header = props => {
     log_out_companies,
     profile_path
   } = props
+
+  const windowSize = useWindowSize()
 
   const pathTo = (to = '') => {
     if (user_signed_in) return `/users/${to}`
@@ -67,17 +65,24 @@ const Header = props => {
     advancedSearch: false
   })
 
-  const toggleOpenState = (name, newValue = null) =>
+  const toggleOpenState = (name, bool = null) => {
+    const newValue = bool !== null ? bool : !openState[name]
     setOpenState(prevState => ({
       ...prevState,
-      [name]: newValue || !openState[name]
+      [name]: newValue
     }))
+  }
 
   const [currentModal, setCurrentModal] = useState('')
 
   const handleOpenModal = name => {
     setCurrentModal(name)
     toggleOpenState('login')
+  }
+
+  const handleOpenNav = () => {
+    toggleOpenState('advancedSearch', false)
+    toggleOpenState('navbar')
   }
 
   const isNavTransparent = !openState.navbar && should_change_nav_color && isTop
@@ -87,6 +92,13 @@ const Header = props => {
   const handleSearchChange = event => setSearchValue(event.target.value)
   const handleSearchReset = () => setSearchValue('')
 
+  const handleNavFocus = e => {
+    if (windowSize.width <= 992) {
+      toggleOpenState('navbar', false)
+      toggleOpenState('advancedSearch', true)
+    }
+  }
+
   const LoggedInNav = () => (
     <>
       <NavItem className="list-inline-item a-navItem">
@@ -95,9 +107,11 @@ const Header = props => {
       <NavItem className="list-inline-item a-navItem">
         <a href={pathToDashboard}>{props.session_translation.nav.dashboard}</a>
       </NavItem>
-      {user_signed_in && (<NavItem className="list-inline-item a-navItem">
-        <a href={profile_path}>{props.session_translation.nav.profile}</a>
-      </NavItem>)}
+      {user_signed_in && (
+        <NavItem className="list-inline-item a-navItem">
+          <a href={profile_path}>{props.session_translation.nav.profile}</a>
+        </NavItem>
+      )}
       <NavItem className="list-inline-item a-navItem">
         <a href={user_signed_in ? log_out_user : log_out_companies}>
           {props.session_translation.nav.sign_out}
@@ -175,18 +189,15 @@ const Header = props => {
       <Navbar
         position="static"
         className={`navbar-wrapper navbar-expand-lg ${
-          !isNavTransparent ? 'bg-header' : ''
+          openState.advancedSearch ? 'navbar-advancedSearch-opened' : ''
         }`}
-        style={{
-          backgroundColor: isNavTransparent ? 'transparent' : 'white'
-        }}
       >
         <div className="navbar-row mt-10 mui-fixed">
           <div className="d-flex align-items-center">
             <div className="site-logo">
               <NavbarBrand href="/" className="logo-mini mr-auto">
                 <img
-                  src="/assets/static/img/hoytrabajas-logo-color.png"
+                  src="/assets/static/img/hoytrabajas-logo-color.svg"
                   className="mr-15 logo animated fadeIn"
                   alt="site logo"
                   height="100%"
@@ -194,69 +205,67 @@ const Header = props => {
               </NavbarBrand>
             </div>
           </div>
+          <Form
+            className="d-flex search-bar-wrapper navbar-search-form"
+            action="/offers/"
+            method="get"
+            inline
+          >
+            <FormGroup className="search-bar">
+              <Label for="title_cont" hidden>
+                Buscar ofertas
+              </Label>
+              <InputBase
+                name="q[title_cont]"
+                id="q[title_cont]"
+                type="text"
+                className="searchBar__input"
+                value={searchValue}
+                placeholder="Palabra clave"
+                onChange={handleSearchChange}
+                onFocus={handleNavFocus}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <div className="d-flex">
+                      {searchValue ? (
+                        <IconButton
+                          className="mr-5"
+                          aria-label="Reset search"
+                          onClick={handleSearchReset}
+                        >
+                          <CloseIcon
+                            {...props}
+                            style={{ cursor: 'pointer' }}
+                            className="searchBar--resetIcon"
+                            focusable
+                          />
+                        </IconButton>
+                      ) : null}
+                      <IconButton
+                        className="searchBar__searchIcon"
+                        aria-label="Search"
+                        type="submit"
+                      >
+                        <FontAwesomeIcon icon="search" size="sm" />
+                      </IconButton>
+                    </div>
+                  </InputAdornment>
+                }
+                aria-describedby="standard-weight-helper-text"
+                inputProps={{
+                  'aria-label': 'weight'
+                }}
+              />
+            </FormGroup>
+          </Form>
           <NavbarToggler
-            onClick={() => toggleOpenState('navbar')}
+            onClick={handleOpenNav}
             className="mt-5"
             id="navbar-toggler"
           >
             <MenuIcon />
           </NavbarToggler>
-          {/* Search bar in white nav bar */}
           <Collapse isOpen={openState.navbar} navbar id="navbarNav">
-            {!isNavTransparent && (
-              <Form
-                className="d-flex search-bar-wrapper navbar-search-form"
-                action="/offers/"
-                method="get"
-                inline
-              >
-                <FormGroup className="search-bar">
-                  <Label for="title_cont" hidden>
-                    Buscar ofertas
-                  </Label>
-                  <Input
-                    name="q[title_cont]"
-                    id="q[title_cont]"
-                    type="text"
-                    className="searchBar__input"
-                    value={searchValue}
-                    placeholder="Palabra clave"
-                    onChange={handleSearchChange}
-                    endAdornment={
-                      <InputAdornment position="end">
-                        <div className="d-flex">
-                          {searchValue ? (
-                            <IconButton
-                              className="mr-5"
-                              aria-label="Reset search"
-                              onClick={handleSearchReset}
-                            >
-                              <CloseIcon
-                                {...props}
-                                style={{ cursor: 'pointer' }}
-                                className="searchBar--resetIcon"
-                                focusable
-                              />
-                            </IconButton>
-                          ) : null}
-                          <IconButton
-                            className="searchBar__searchIcon"
-                            aria-label="Search"
-                            type="submit"
-                          >
-                            <FontAwesomeIcon icon="search" size="sm" />
-                          </IconButton>
-                        </div>
-                      </InputAdornment>
-                    }
-                    aria-describedby="standard-weight-helper-text"
-                    inputProps={{
-                      'aria-label': 'weight'
-                    }}
-                  />
-                </FormGroup>
-              </Form>
-            )}
             <ul className="navbar-nav align-items-center m-navItems navbar-item-wrapper">
               {user_signed_in || company_signed_in ? (
                 <LoggedInNav />
@@ -273,6 +282,14 @@ const Header = props => {
           isOpen={openState.login}
           toggleOpenState={toggleOpenState}
         />
+        {windowSize.width <= 992 && (
+          <AdvancedSearch
+            translations={props.session_translation.nav.advanced_search}
+            open={openState.advancedSearch}
+            onClose={() => toggleOpenState('advancedSearch', false)}
+            responsive
+          />
+        )}
       </Navbar>
       <div className="pt-60" />
     </>

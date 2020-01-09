@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Popper from '@material-ui/core/Popper'
 import DropdownContent from './DropdownContent'
-import useWindowSize from '../../../../../hooks/useWindowSize'
+import useWindowSize from '../../hooks/useWindowSize'
 
 const SingleField = ({
   translations,
@@ -62,7 +62,7 @@ SingleField.propTypes = {
   name: PropTypes.string.isRequired,
   inputValue: PropTypes.object.isRequired,
   handleOpenDropdown: PropTypes.func.isRequired,
-  openDropdown: PropTypes.func.isRequired,
+  openDropdown: PropTypes.string,
   field: PropTypes.object,
   currentValues: PropTypes.object,
   setFormValues: PropTypes.func.isRequired,
@@ -111,9 +111,9 @@ const AdvancedSearchFields = ({
   const secondGrid = [
     city,
     experience,
-    age,
     job_category,
     work_mode,
+    // age, uncomment to add age field in the future
     legal_agreement,
     offer_type,
     working_days,
@@ -122,21 +122,7 @@ const AdvancedSearchFields = ({
 
   return (
     <>
-      <div className="advancedSearch__fieldsGrid publishDate">
-        <SingleField
-          translations={translations['publish_date']}
-          name="publish_date"
-          inputValue={formValues['publish_date']}
-          handleOpenDropdown={handleOpenDropdown}
-          openDropdown={openDropdown}
-          field={formFields[openDropdown]}
-          currentValues={formValues[openDropdown]}
-          setFormValues={setFormValues}
-          handleClose={handleClose}
-          windowSize={windowSize}
-        />
-        <div className="advancedSearch__emptyMD" />
-        <div className="advancedSearch__emptyMD" />
+      <div className="advancedSearch__fieldsGrid">
         {secondGrid.map(field => (
           <SingleField
             key={field.name}

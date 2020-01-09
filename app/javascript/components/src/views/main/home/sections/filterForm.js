@@ -14,7 +14,7 @@ import dialogState from '../../../../hooks/dialogState'
 import RctCollapsibleCard from '../../../../components/Reactify/CollapsibleCard'
 import { removeItemFromArr } from '../../../../../utils/array_functions'
 import CityFilter from '../../../../../views/home/index/cityFilter'
-import AdvancedSearch from './AdvancedSearch/index'
+import AdvancedSearch from '../../../../components/AdvancedSearch'
 
 const names = [
   'Oliver Hansen',

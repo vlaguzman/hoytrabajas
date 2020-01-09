@@ -1,21 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import Slide from '@material-ui/core/Slide'
-import Dialog from '@material-ui/core/Dialog'
+import Popper from '@material-ui/core/Popper'
 import MenuIcon from '@material-ui/icons/Menu'
 import CloseIcon from '@material-ui/icons/Close'
 import IconButton from '@material-ui/core/IconButton'
 import Fields from './Fields'
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />
-})
-
 const temporaryFields = {
-  publish_date: {
-    name: 'publish_date',
-    values: []
-  },
   city: {
     name: 'city',
     multiple: true,
@@ -139,10 +130,10 @@ const AdvancedSearch = ({
   open,
   onClose,
   translations,
-  formFields = temporaryFields
+  formFields = temporaryFields,
+  responsive = false
 }) => {
   const {
-    publish_date = null,
     city = null,
     experience = null,
     age = null,
@@ -159,7 +150,6 @@ const AdvancedSearch = ({
   } = formFields
 
   const defaultValues = {
-    [publish_date.name]: [],
     [city.name]: [],
     [experience.name]: [],
     [age.name]: [],
@@ -179,17 +169,28 @@ const AdvancedSearch = ({
 
   const handleClean = () => setFormValues(defaultValues)
 
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflowY = 'scroll'
+      document.body.style.position = 'fixed'
+    } else {
+      document.body.removeAttribute('style')
+    }
+    return () => document.body.removeAttribute('style')
+  }, [open])
+
   return (
-    <Dialog
+    <Popper
       style={{ backgroundColor: '#F5F5F5' }}
-      fullScreen
-      open={open}
-      className="m-advancedSearch"
       onClose={onClose}
-      disableBackdropClick
-      TransitionComponent={Transition}
+      open={open}
+      className={`m-advancedSearch ${
+        responsive
+          ? 'm-advancedSearch--responsive'
+          : 'm-advancedSearch--desktop'
+      }`}
     >
-      <form action="/">
+      <form className="advancedSearch__form" action="/">
         <div className="advancedSearch__topBar">
           <div className="advancedSearch__container advancedSearch__responsiveContainer d-flex">
             <div className="advancedSearch__titleWrapper">
@@ -238,10 +239,16 @@ const AdvancedSearch = ({
           </div>
         </div>
       </form>
-    </Dialog>
+    </Popper>
   )
 }
 
-AdvancedSearch.propTypes = {}
+AdvancedSearch.propTypes = {
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  translations: PropTypes.object.isRequired,
+  formFields: PropTypes.object.isRequired,
+  responsive: PropTypes.bool
+}
 
 export default AdvancedSearch

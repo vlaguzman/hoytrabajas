@@ -7,54 +7,6 @@ es:
       call_to_action_text:
         text: '¿Eres una empresa?'
         link: '¡Publica tu oferta ahora!'
-      advanced_search:
-        title: 'Búsqueda avanzada'
-        clean_search: 'Limpiar búsqueda'
-        search_offer: 'Buscar tu oferta'
-        search_offer_input: 'Buscar oferta'
-        fields:
-          publish_date:
-            label: 'Fecha de publicación'
-            placeholder: 'Selecciona la fecha de publicación'
-          city:
-            label: 'Ciudad'
-            placeholder: 'Selecciona tu ciudad'
-          experience:
-            label: 'Experiencia'
-            placeholder: 'Selecciona tu experiencia'
-          age:
-            label: 'Edad'
-            placeholder: 'Selecciona el rango de edad'
-          job_category:
-            label: 'Categorías de trabajo'
-            placeholder: 'Selecciona la categoría de trabajo'
-          work_mode:
-            label: 'Modalidad de trabajo'
-            placeholder: 'Selecciona una modalidad de trabajo'
-          legal_agreement:
-            label: 'Acuerdo legal'
-            placeholder: 'Selecciona el acuerdo legal'
-          offer_type:
-            label: 'Tipo de oferta'
-            placeholder: 'Selecciona el tipo de oferta'
-          working_days:
-            label: 'Días'
-            placeholder: 'Selecciona los días laborales'
-          working_hours:
-            label: 'Jornada'
-            placeholder: 'Selecciona tu jornada'
-          offer_aux:
-            label: 'Auxilios o prestaciones'
-            placeholder: 'Auxilio de prestaciones'
-          offer_salary:
-            label: 'Salario'
-            placeholder: 'Selecciona el rango salarial'
-          offer_date:
-            label: 'Tiempo'
-            placeholder: 'Día'
-          offer_language:
-            label: 'Idiomas'
-            placeholder: 'Selecciona el idioma'
     offers:
       title: 'Ofertas acordes al ADN de tu perfil'
     categories:

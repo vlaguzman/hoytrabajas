@@ -2,6 +2,7 @@
   .a-navItem {
     @media (max-width: 992px) {
       margin: 20px 0;
+      text-align: center;
     }
   }
 
@@ -9,12 +10,12 @@
   .a-navItem button {
     font-weight: bold;
     color: $color__purple-darkest;
-    margin: 0 25px;
     font-size: 1rem;
     -webkit-appearance: none;
     background: none;
     letter-spacing: normal;
     cursor: pointer;
+    padding: 0;
   }
 
   .a-navItem__button {

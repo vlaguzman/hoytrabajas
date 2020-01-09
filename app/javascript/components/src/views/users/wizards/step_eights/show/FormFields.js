@@ -230,10 +230,12 @@ const FormFields = props => {
           handleSimpleChange={handleSimpleChange(formValues, setFormValues)}
           label={finished_at.label}
           dateOptions={dateOptions}
+          minDate={formValues[started_at.name] || null}
+          minDateMessage="La fecha de finalización debe ser posterior a la de inicio." // TODO: replace with translation string
         />
       </Col>
     ),
-    [formValues[finished_at.name]]
+    [formValues[started_at.name], formValues[finished_at.name]]
   )
 
   const inProgressField = useMemo(

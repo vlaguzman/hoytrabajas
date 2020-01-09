@@ -29,6 +29,10 @@ const StyledCol = styled(Col)`
   & .MuiFormControl-root {
     flex: 1;
   }
+
+  .MuiFormLabel-root.MuiInputLabel-shrink {
+    position: relative;
+  }
 `
 const FormFields = props => {
   const { formFields, placeholders } = props
@@ -178,7 +182,7 @@ const FormFields = props => {
                         <StyledCol xs={12} lg={4}>
                           <SelectChip
                             name="job_category_id"
-                            label={placeholders["job_category_id"]}
+                            label={placeholders['job_category_id']}
                             inputValue={rowValue.job_category_id}
                             handleChange={handleRowChanges}
                             handleDeleteChip={handleRowDeleteChip}
@@ -191,7 +195,7 @@ const FormFields = props => {
                         <StyledCol xs={12} lg={3}>
                           <SelectChip
                             name="technical_skill_id"
-                            label={placeholders["technical_skill_id"]}
+                            label={placeholders['technical_skill_id']}
                             inputValue={rowValue.technical_skill_id}
                             handleChange={handleRowChanges}
                             handleDeleteChip={handleRowDeleteChip}
@@ -204,7 +208,7 @@ const FormFields = props => {
                         <StyledCol xs={12} lg={3}>
                           <SelectChip
                             name="level_id"
-                            label={placeholders["level_id"]}
+                            label={placeholders['level_id']}
                             inputValue={rowValue.level_id}
                             handleChange={handleRowChanges}
                             handleDeleteChip={handleRowDeleteChip}
@@ -272,7 +276,7 @@ const FormFields = props => {
                       <StyledCol xs={12} lg={4}>
                         <SelectChip
                           name="job_category_id"
-                          label={placeholders["job_category_id"]}
+                          label={placeholders['job_category_id']}
                           inputValue={rowValue.job_category_id}
                           handleChange={handleRowChanges}
                           handleDeleteChip={handleRowDeleteChip}
@@ -285,7 +289,7 @@ const FormFields = props => {
                       <StyledCol xs={12} lg={6}>
                         <SelectChip
                           name="technical_skill_id"
-                          label={placeholders["technical_skill_id"]}
+                          label={placeholders['technical_skill_id']}
                           inputValue={rowValue.technical_skill_id}
                           handleChange={handleRowChanges}
                           handleDeleteChip={handleRowDeleteChip}
@@ -347,7 +351,7 @@ const FormFields = props => {
                       <StyledCol xs={12} lg={4}>
                         <SelectChip
                           name="language_id"
-                          label={placeholders["language_id"]}
+                          label={placeholders['language_id']}
                           inputValue={rowValue.language_id}
                           handleChange={handleRowChanges}
                           handleDeleteChip={handleRowDeleteChip}
@@ -358,7 +362,7 @@ const FormFields = props => {
                       <StyledCol xs={12} lg={6}>
                         <SelectChip
                           name="level_id"
-                          label={placeholders["level_id"]}
+                          label={placeholders['level_id']}
                           inputValue={rowValue.level_id}
                           handleChange={handleRowChanges}
                           handleDeleteChip={handleRowDeleteChip}

@@ -21,7 +21,6 @@ import RemoveCircleOutline from '@material-ui/icons/RemoveCircleOutline'
 // import ChatBubbleOutline from '@material-ui/icons/ChatBubbleOutline'
 
 const Second = ({ applied_offers = [], second_section }) => {
-
   const {
     you_have_applied_to,
     my_applys,
@@ -55,19 +54,16 @@ const Second = ({ applied_offers = [], second_section }) => {
         <Card className="p-25">
           <CardHeader
             action={
-              <Chip
-                className="text-white mt-20 mr-20 d-none d-lg-block"
-                label={
-                  <Typography variant="body1" className="m-5">
-                    {you_have_applied_to}
-                    <span className="fw-bold">
-                      {applied_offers.length} {offers_count}
-                    </span>
-                  </Typography>
-                }
-                clickable
-                color="primary"
-              />
+              <Typography
+                variant="body1"
+                className="m-5 d-none d-lg-block bg__orange-main text-white"
+                style={{ padding: '5px 10px', borderRadius: '35px' }}
+              >
+                {you_have_applied_to}
+                <span className="fw-bold">
+                  {applied_offers.length} {offers_count}
+                </span>
+              </Typography>
             }
             title={theTitle(my_applys)}
             subheader={
@@ -96,7 +92,9 @@ const Second = ({ applied_offers = [], second_section }) => {
               />
             </Row>
             <div>
-              {(applied_offers.length === 0) && (<h2>{no_applied_offers_present}</h2>)}
+              {applied_offers.length === 0 && (
+                <h2>{no_applied_offers_present}</h2>
+              )}
               {applied_offers.length > 0 && (
                 <Table style={{ minWidth: '650' }}>
                   <TableHead className="bg-white">

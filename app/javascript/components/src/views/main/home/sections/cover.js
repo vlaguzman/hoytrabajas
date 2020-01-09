@@ -3,11 +3,16 @@ import { Row, Col } from 'reactstrap'
 import PropTypes from 'prop-types'
 import FilterFormSection from './filterForm'
 
-const WelcomeText = ({ translations, common, new_offer_path, filterForm }) => {
+const WelcomeText = ({
+  translations,
+  advanced_search_translations,
+  common,
+  new_offer_path,
+  filterForm
+}) => {
   const {
     welcome_text,
     filterForm: filterFormTranslations,
-    advanced_search: advancedSearchTranslations,
     call_to_action_text
   } = translations
 
@@ -37,7 +42,7 @@ const WelcomeText = ({ translations, common, new_offer_path, filterForm }) => {
           {...{ common, ...filterForm }}
           translations={{
             filterForm: filterFormTranslations,
-            advancedSearch: advancedSearchTranslations
+            advancedSearch: advanced_search_translations
           }}
         />
         <p className="a-callToAction__inline">
@@ -57,6 +62,7 @@ WelcomeText.propTypes = {
   new_offer_path: PropTypes.string.isRequired,
   common: PropTypes.object.isRequired,
   filterForm: PropTypes.object.isRequired,
+  advanced_search_translations: PropTypes.object.isRequired,
   translations: PropTypes.shape({
     welcome_text: PropTypes.string.isRequired,
     filterForm: PropTypes.object.isRequired,

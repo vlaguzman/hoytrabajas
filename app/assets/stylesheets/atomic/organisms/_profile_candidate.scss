@@ -17,7 +17,7 @@
   padding: 38vh 7vw 24vh 13vw;
   display: flex;
 
-  .buttonDownloadMovile {
+  .--buttonDownloadMobile {
     display: none;
   }
 
@@ -26,10 +26,10 @@
 
     a {
       display: none;
-    }
 
-    .buttonDownloadMovile {
-      display: block;
+      &.--buttonDownloadMobile {
+        display: block;
+      }
     }
   }
 }

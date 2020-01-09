@@ -92,7 +92,7 @@
         %h2=t('profile.experience')
         = react_component('src/components/Cards/PublicProfile/Experience', {defaultList: @user.data_experience}, prerender: false)
     - @user.yield_if(@user.curriculum_vitae.file_cv.attached?) do
-      %a.buttonDownloadMovile{href: @user.download_cv}=t('profile.download_cv')
+      %a.--buttonDownloadMobile{href: @user.download_cv}=t('profile.download_cv')
     .footerBox
       %p=t('profile.slogan')
 = render '/shared/footer'

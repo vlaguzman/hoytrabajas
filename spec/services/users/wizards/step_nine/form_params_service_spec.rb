@@ -11,7 +11,7 @@ RSpec.describe Users::Wizards::StepNine::FormParamsService do
     let(:subject) { described_class }
 
     context 'When user want edit the education level' do
-      let(:expected_educational_level) { build(:educational_level,
+      let!(:expected_educational_level) { build(:educational_level,
         degree: 'Irrelevant Topics Engineer',
         institution_name: 'Centrar City University',
         start_date: Date.today,
@@ -107,7 +107,7 @@ RSpec.describe Users::Wizards::StepNine::FormParamsService do
     end
 
     context 'When user is new and want add educational level' do
-      let(:expected_educational_level) { build(:educational_level, :empty,
+      let!(:expected_educational_level) { build(:educational_level, :empty,
         institution_name: nil
         ) }
 

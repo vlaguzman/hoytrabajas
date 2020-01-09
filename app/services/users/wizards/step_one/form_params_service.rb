@@ -63,20 +63,12 @@ class Users::Wizards::StepOne::FormParamsService < BaseFormWizardsService
     source.born_state.id if source.born_state.present?
   end
 
-  def born_city_id_current_value
-    source.born_city.id if source.born_city.present?
-  end
-
   def residence_country_id_current_value
     source.residence_country.id if source.residence_country.present?
   end
 
   def residence_state_id_current_value
     source.residence_state.id if source.residence_state.present?
-  end
-
-  def residence_city_id_current_value
-    source.residence_city.id if source.residence_city.present?
   end
 
 end

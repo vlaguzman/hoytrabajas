@@ -62,6 +62,7 @@ RSpec.describe "Like new candidate", :type => :feature do
 
       find("div[id='mui-component-select-user[nationality_ids][]']", visible: false).click
       find("li", text: "Argentina").click
+      find("div[id='mui-component-select-user[nationality_ids][]']", visible: false).click
       find("li", text: "Colombiana").click
 
       find("div[id='mui-component-select-user[document_type_id]']", visible: false).click

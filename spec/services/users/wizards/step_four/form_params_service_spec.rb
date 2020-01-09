@@ -95,7 +95,7 @@ RSpec.describe Users::Wizards::StepFour::FormParamsService do
       let(:expected_driving_licences) { [driving_licences[0], driving_licences[1]] }
       let(:expected_vehicles) { [vehicles[0], vehicles[1]] }
 
-      let(:cv) { create(:curriculum_vitae, :empty,
+      let!(:cv) { create(:curriculum_vitae, :empty,
         city: nil,
         travel_disponibility: true,
         user: create(:user,

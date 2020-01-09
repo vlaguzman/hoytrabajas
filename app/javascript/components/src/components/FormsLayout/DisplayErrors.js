@@ -6,7 +6,7 @@ const DisplayErrors = ({ errors }) => {
     <>
       <div>
         {errors.map(error => (
-          <span> {error} </span>
+          <span className="a-sourceError" > {error} </span>
         ))}
       </div>
     </>

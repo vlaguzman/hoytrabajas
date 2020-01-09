@@ -213,7 +213,10 @@ const Header = props => {
           >
             <FormGroup className="search-bar">
               <Label for="title_cont" hidden>
-                Buscar ofertas
+                {
+                  props.session_translation.nav.advanced_search
+                    .search_offer_input
+                }
               </Label>
               <InputBase
                 name="q[title_cont]"
@@ -282,14 +285,15 @@ const Header = props => {
           isOpen={openState.login}
           toggleOpenState={toggleOpenState}
         />
-        {windowSize.width <= 992 && (
+        {/* TODO: uncomment to activate the advanced search */}
+        {/* {windowSize.width <= 992 && (
           <AdvancedSearch
             translations={props.session_translation.nav.advanced_search}
             open={openState.advancedSearch}
             onClose={() => toggleOpenState('advancedSearch', false)}
             responsive
           />
-        )}
+        )} */}
       </Navbar>
       <div className="pt-60" />
     </>

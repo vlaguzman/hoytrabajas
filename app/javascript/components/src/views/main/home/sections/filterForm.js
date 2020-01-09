@@ -141,11 +141,12 @@ const FilterForm = ({ translations, common, button1, fields1, cities }) => {
                 size="xs"
               />
             </IconButton>
-            <AdvancedSearch
+            {/* TODO: uncomment to activate the advanced search */}
+            {/* <AdvancedSearch
               translations={translations.advancedSearch}
               open={open}
               onClose={handleClose}
-            />
+            /> */}
           </div>
           <input
             type="hidden"

@@ -113,7 +113,7 @@ const AdvancedSearchFields = ({
     experience,
     job_category,
     work_mode,
-    // age, uncomment to add age field in the future
+    // TODO: age, uncomment to add age field
     legal_agreement,
     offer_type,
     working_days,

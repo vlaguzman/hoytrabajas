@@ -178,6 +178,7 @@ A          • Users::Wizards::StepNineService                             7    
 A          • Users::Wizards::StepNines::AddedEducationalLevelsController 2       10.21      0           1
 A          • Users::Wizards::StepNines::EducationalLevelPresenter        2       16.47      0           1
 A          • Users::Wizards::StepNinesController                         10      13.52      16          2
+A          • Users::Wizards::StepOne::FormParamsService                  5       38.27      0           13
 A          • Users::Wizards::StepOnePresenter                            15      17.2       0           1
 A          • Users::Wizards::StepOnesController                          10      23.38      20          2
 A          • Users::Wizards::StepSeven::FormParamsService                2       21.93      0           1
@@ -234,7 +235,6 @@ B          • Offers::ShowService                                         17   
 B          • Offers::ViewsService                                        19      85.3       0           7
 B          • User                                                        44      54.53      0           2
 B          • Users::ProfilesPresenter                                    5       72.56      0           9
-B          • Users::Wizards::StepOne::FormParamsService                  4       53.4       0           15
 B          • Users::Wizards::StepOneService                              3       3.0        19          2
 B          • Users::Wizards::StepSixService                              11      35.03      31          2
 B          • Users::Wizards::StepTwoService                              2       3.0        19          2

@@ -106,9 +106,9 @@ const Header = props => {
       <NavItem className="list-inline-item a-navItem">
         <a href={pathToDashboard}>{props.session_translation.nav.dashboard}</a>
       </NavItem>
-      {<NavItem className="list-inline-item a-navItem">
+      {user_signed_in && (<NavItem className="list-inline-item a-navItem">
         <a href={profile_path}>{props.session_translation.nav.profile}</a>
-      </NavItem>}
+      </NavItem>)}
       <NavItem className="list-inline-item a-navItem">
         <a href={user_signed_in ? log_out_user : log_out_companies}>
           {props.session_translation.nav.sign_out}

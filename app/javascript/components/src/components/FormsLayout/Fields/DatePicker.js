@@ -15,7 +15,7 @@ function capitalize(string) {
 const DatePicker = props => {
   const {
     inputValue,
-    minDate = null,
+    minDate = new Date(1900),
     minDateMessage = null,
     handleSimpleChange,
     name,

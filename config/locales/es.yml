@@ -1,4 +1,6 @@
 es:
+  common:
+    use_coma: "Usa una coma ',' despues de cada elemento para agregar otro"
   admin:
     applied_offers:
       form:
@@ -203,6 +205,8 @@ es:
               blank: 'El Titulo Educativo no puede estar vacío'
         work_experience:
           attributes:
+            technical_skills:
+              invalid: 'Una de las habilidades desempeñadas que quieres agregar esta en la lista y la puedes seleccionar, no permitimos habilidades repetidas'
             work_position:
               required: 'El Cargo no puede estar vacío'
               blank: 'Debes seleccionar un Cargo'

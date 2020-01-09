@@ -1,4 +1,6 @@
 en:
+  common:
+    use_coma: "use a coma ',' to add other element"
   admin:
     applied_offers:
       form:
@@ -74,6 +76,8 @@ en:
               blank: "Please select a educational_level"
         work_experience:
           attributes:
+            technical_skills:
+              invalid: 'One of the skills you want to add is in the list and you can select it, we do not allow repeated skills'
             work_position:
               required: "Please select a work position"
               blank: "The work position cant be blank"

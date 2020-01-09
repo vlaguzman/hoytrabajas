@@ -25,7 +25,7 @@ const WelcomeText = ({
     welcome_text.search(/\d/) + welcome_text.replace(/[^0-9]/g, '').length
   )
   return (
-    <Row className="align-items-center justify-content-center mb-60">
+    <div className="align-items-center d-flex justify-content-center mb-60">
       <Col
         className="align-items-center justify-content-center t-home__cover"
         xs={12}
@@ -52,7 +52,7 @@ const WelcomeText = ({
           </a>
         </p>
       </Col>
-    </Row>
+    </div>
   )
 }
 

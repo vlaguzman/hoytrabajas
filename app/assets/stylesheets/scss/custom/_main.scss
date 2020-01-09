@@ -857,6 +857,9 @@
 
 .logo {
   object-fit: contain;
+  @media (max-width: 992px) {
+    width: 100%;
+  }
 }
 
 .responsive-papers-entpr {

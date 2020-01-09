@@ -197,7 +197,11 @@ const Header = props => {
             <div className="site-logo">
               <NavbarBrand href="/" className="logo-mini mr-auto">
                 <img
-                  src="/assets/static/img/hoytrabajas-logo-color.svg"
+                  src={`/assets/static/img/${
+                    windowSize.width > 992
+                      ? 'hoytrabajas-logo-color.svg'
+                      : 'icon-hoytrabajas-logo.svg'
+                  }`}
                   className="mr-15 logo animated fadeIn"
                   alt="site logo"
                   height="100%"

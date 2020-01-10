@@ -51,16 +51,20 @@
   }
 }
 
-// Navbar nav
-//
-// Custom navbar navigation (doesn't require `.nav`, but does make use of `.nav-link`).
-
 .navbar-nav {
-  display: flex;
-  flex-direction: column; // cannot use `inherit` to get the `.navbar`s value
-  padding-left: 0;
-  margin-bottom: 0;
+  display: grid;
+  grid-auto-flow: column;
   list-style: none;
+  grid-gap: 30px;
+
+  @media only screen and (max-width: 1200px) {
+    grid-gap: 20px;
+  }
+
+  @media only screen and (max-width: 992px) {
+    grid-auto-flow: row;
+    justify-content: center;
+  }
 
   .nav-link {
     padding-right: 0;
@@ -112,6 +116,8 @@
     text-decoration: none;
   }
 
+  color: $color__orange-main;
+
   // Opinionated: add "hand" cursor to non-disabled .navbar-toggler elements
   &:not(:disabled):not(.disabled) {
     cursor: pointer;
@@ -151,8 +157,6 @@
         justify-content: flex-start;
 
         .navbar-nav {
-          flex-direction: row;
-
           .dropdown-menu {
             position: absolute;
           }

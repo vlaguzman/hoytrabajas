@@ -3,13 +3,13 @@ import { Col } from 'reactstrap'
 import PropTypes from 'prop-types'
 import Autocomplete from '../../../src/components/FormsLayout/Fields/FieldAutocomplete'
 
-export default function cityFilter(cities) {
+const CityFilter = cities => {
   const [value, setValue] = useState('')
   const [idCityQuery, setIdCity] = useState('')
 
-  const filterCity = value => {
+  const filterCity = val => {
     const idCity = cities['cities']
-      .filter(city => city.label === value)
+      .filter(city => city.label === val)
       .map(city => city.value)
       .join('')
     setIdCity(idCity)
@@ -17,7 +17,7 @@ export default function cityFilter(cities) {
 
   return (
     <>
-      <Col ds={12} md={5} className=" p-0 pb-20 mx-5">
+      <div className="p-0 pb-20 mx-5" style={{ flex: 1 }}>
         <Autocomplete
           value={value}
           cities={cities}
@@ -25,11 +25,13 @@ export default function cityFilter(cities) {
           setValue={setValue}
         />
         <input type="hidden" name="q[city_id_eq]" value={idCityQuery} />
-      </Col>
+      </div>
     </>
   )
 }
 
-cityFilter.propTypes = {
+CityFilter.propTypes = {
   cities: PropTypes.object.isRequired
 }
+
+export default CityFilter

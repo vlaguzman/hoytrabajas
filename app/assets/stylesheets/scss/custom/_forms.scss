@@ -60,11 +60,12 @@
   align-items: flex-end;
   .MuiFormHelperText-root.Mui-error {
     position: absolute;
-    bottom: -1.25rem;
+    top: 100%;
+    text-transform: none;
   }
   .MuiFormHelperText-root.standard_input__charCount {
     position: absolute;
-    bottom: -1.25rem;
+    top: 100%;
     right: 0;
   }
   .MuiInputLabel-formControl {

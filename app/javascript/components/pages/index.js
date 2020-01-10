@@ -12,6 +12,7 @@ const HomePage = ({
   new_offer_path,
   home_translations,
   offer_translations,
+  advanced_search_translations,
   filterForm,
   common
 }) => {
@@ -23,6 +24,7 @@ const HomePage = ({
           offers_path={offers_path}
           home_translations={home_translations}
           offer_translations={offer_translations}
+          advanced_search_translations={advanced_search_translations}
           new_offer_path={new_offer_path}
           path_applied_offers={path_applied_offers}
           csrf_param={csrf_param}
@@ -45,6 +47,7 @@ HomePage.propTypes = {
   offers: PropTypes.object.isRequired,
   offer_translations: PropTypes.object.isRequired,
   home_translations: PropTypes.object.isRequired,
+  advanced_search_translations: PropTypes.object.isRequired,
   filterForm: PropTypes.object.isRequired,
   common: PropTypes.object.isRequired
 }

@@ -1,25 +1,9 @@
 import React, { useState } from 'react'
-import { Form, Col, Collapse, Row } from 'reactstrap'
-import Button from '@material-ui/core/Button'
+import { Form, Col, Row } from 'reactstrap'
 import IconButton from '@material-ui/core/IconButton'
-import Fab from '@material-ui/core/Fab'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PropTypes from 'prop-types'
-
-import Dialog from '@material-ui/core/Dialog'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import CloseIcon from '@material-ui/icons/Close'
-import Slide from '@material-ui/core/Slide'
-
-import Radio from '@material-ui/core/Radio'
-import RadioGroup from '@material-ui/core/RadioGroup'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormControl from '@material-ui/core/FormControl'
-import FormLabel from '@material-ui/core/FormLabel'
-import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked'
-import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import Input from '@material-ui/core/Input'
@@ -29,11 +13,8 @@ import CarouselRow from './components/carousel/carousel'
 import dialogState from '../../../../hooks/dialogState'
 import RctCollapsibleCard from '../../../../components/Reactify/CollapsibleCard'
 import { removeItemFromArr } from '../../../../../utils/array_functions'
-import ComboBox from '../../../../../views/home/index/cityFilter'
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />
-})
+import CityFilter from '../../../../../views/home/index/cityFilter'
+import AdvancedSearch from '../../../../components/AdvancedSearch'
 
 const names = [
   'Oliver Hansen',
@@ -46,25 +27,6 @@ const names = [
   'Bradley Wilkerson',
   'Virginia Andrews',
   'Kelly Snyder'
-]
-
-const currencies = [
-  {
-    value: 'USD',
-    label: '$'
-  },
-  {
-    value: 'EUR',
-    label: '€'
-  },
-  {
-    value: 'BTC',
-    label: '฿'
-  },
-  {
-    value: 'JPY',
-    label: '¥'
-  }
 ]
 
 const FilterForm = ({ translations, common, button1, fields1, cities }) => {
@@ -162,7 +124,8 @@ const FilterForm = ({ translations, common, button1, fields1, cities }) => {
           {/* TODO oscar ucomment this Button wheh find by categories exist */}
 
           <FormGen fields={fields1} />
-          <ComboBox cities={cities} />
+          <CityFilter cities={cities} />
+          {/* <ListIcon /> */}
           <button
             className="a-buttonFab a-button--primary mb-10 search_button filterForm__searchButton"
             type="submit"
@@ -170,260 +133,21 @@ const FilterForm = ({ translations, common, button1, fields1, cities }) => {
             <FontAwesomeIcon icon="search" style={{ fontSize: '26px' }} />
           </button>
           {/* TODO oscar Col form of advance search uncomment when advance searh is ready */}
-          <Col xs={12} md={1} className="pl-0 p-0 align-items-center">
-            {/* <IconButton
-              className="text-primary"
-              style={{ width: '55%', height: '60%' }}
-              onClick={handleClickOpen}
-            >
+          <div className="pl-10 p-0 align-items-center">
+            <IconButton className="text-primary" onClick={handleClickOpen}>
               <FontAwesomeIcon
                 className="mx-auto text-primary"
                 icon={['fas', 'list']}
                 size="xs"
               />
-            </IconButton> */}
-
-            {/* TODO oscar this dialog is the advance form to searh */}
-
-            <Dialog
-              style={{ backgroundColor: '#F5F5F5' }}
-              fullScreen
+            </IconButton>
+            {/* TODO: uncomment to activate the advanced search */}
+            {/* <AdvancedSearch
+              translations={translations.advancedSearch}
               open={open}
               onClose={handleClose}
-              TransitionComponent={Transition}
-            >
-              <AppBar className="position-relative text-white">
-                <Toolbar>
-                  <FontAwesomeIcon
-                    className="mx-auto text-primary"
-                    icon={['fas', 'list']}
-                  />
-                  <Typography variant="h6" style={{ flex: '1' }}>
-                    Busqueda Avanzada
-                  </Typography>
-                  <Button
-                    variant="outlined"
-                    style={{
-                      borderRadius: '30px',
-                      color: 'white',
-                      borderColor: 'white'
-                    }}
-                    className="mx-5"
-                  >
-                    Borrar
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    style={{
-                      borderRadius: '30px',
-                      borderColor: 'white',
-                      color: 'white'
-                    }}
-                    className="mx-20"
-                  >
-                    Buscar
-                  </Button>
-                  <IconButton
-                    edge="start"
-                    color="inherit"
-                    onClick={handleClose}
-                    aria-label="close"
-                  >
-                    <CloseIcon />
-                  </IconButton>
-                </Toolbar>
-              </AppBar>
-
-              <Col xs={12} className="px-auto py-50 mb-70 align-items-center">
-                {/* ************************** */}
-                {/* Primera Linea  */}
-                {/* *********************** */}
-                <Row className="mx-0 px-40">
-                  <Col>
-                    <FormControl component="fieldset">
-                      <FormLabel component="legend">
-                        Fecha de publicación
-                      </FormLabel>
-                      <RadioGroup aria-label="gender" name="gender1">
-                        {[
-                          'Últimas 24 horas',
-                          'Semana pasada',
-                          'Mes pasado',
-                          'Cualquier Momento'
-                        ].map((e, i) => (
-                          <FormControlLabel
-                            key={i}
-                            className="m-0"
-                            value={e}
-                            control={
-                              <Radio
-                                icon={
-                                  <RadioButtonUncheckedIcon fontSize="small" />
-                                }
-                                checkedIcon={
-                                  <RadioButtonCheckedIcon fontSize="small" />
-                                }
-                              />
-                            }
-                            label={<Typography variant="body2">{e}</Typography>}
-                          />
-                        ))}
-                      </RadioGroup>
-                    </FormControl>
-                  </Col>
-                  <Col>
-                    <FormControl component="fieldset">
-                      <FormLabel component="legend">
-                        Fecha de publicación
-                      </FormLabel>
-                      <RadioGroup aria-label="gender" name="gender1">
-                        {['1 año', '2 años', 'sin experiencia'].map((e, i) => (
-                          <FormControlLabel
-                            key={i}
-                            className="m-0"
-                            value={e}
-                            control={
-                              <Radio
-                                icon={
-                                  <RadioButtonUncheckedIcon fontSize="small" />
-                                }
-                                checkedIcon={
-                                  <RadioButtonCheckedIcon fontSize="small" />
-                                }
-                              />
-                            }
-                            label={<Typography variant="body2">{e}</Typography>}
-                          />
-                        ))}
-                      </RadioGroup>
-                    </FormControl>
-                  </Col>
-                  <Col>
-                    <FormControl component="fieldset">
-                      <FormLabel component="legend">
-                        Fecha de publicación
-                      </FormLabel>
-                      <RadioGroup aria-label="gender" name="gender1">
-                        {['1 año', '2 años', 'sin experiencia'].map((e, i) => (
-                          <FormControlLabel
-                            key={i}
-                            className="m-0"
-                            value="female"
-                            control={
-                              <Radio
-                                icon={
-                                  <RadioButtonUncheckedIcon fontSize="small" />
-                                }
-                                checkedIcon={
-                                  <RadioButtonCheckedIcon fontSize="small" />
-                                }
-                              />
-                            }
-                            label={<Typography variant="body2">{e}</Typography>}
-                          />
-                        ))}
-                      </RadioGroup>
-                    </FormControl>
-                  </Col>
-                </Row>
-                {/* ************************** */}
-                {/* segunda Linea  */}
-                {/* *********************** */}
-                <Row className="mx-0 px-40">
-                  {arregloCampos([
-                    {
-                      label: 'Cargo',
-                      placeholder: 'Escribe el cargo a buscar'
-                    },
-                    {
-                      label: 'Categorias de trabajo',
-                      placeholder: 'Categorias de trabajo'
-                    },
-                    {
-                      label: 'Ciudad',
-                      placeholder: 'Selecciona la ciudad de interes'
-                    }
-                  ])}
-                </Row>
-                {/* ************************** */}
-                {/* tercera Linea  */}
-                {/* *********************** */}
-                <Row className="mx-0 px-40">
-                  {arregloCampos([
-                    {
-                      label: 'Localidad',
-                      placeholder: 'Selecciona la localidad de interes'
-                    },
-
-                    {
-                      label: 'Tipo de oferta',
-                      placeholder: 'Selecciona el tipo de oferta de interes'
-                    },
-
-                    {
-                      label: 'Tipo de contratación',
-                      placeholder: 'Selecciona la ciudad de interes'
-                    }
-                  ])}
-                </Row>
-                {/* ************************** */}
-                {/* cuarta Linea  */}
-                {/* *********************** */}
-                <Row className="mx-0 px-40">
-                  {arregloCampos([
-                    {
-                      label: 'Modalidad de trabajo',
-                      placeholder: 'Selecciona la localidad de interes'
-                    },
-
-                    {
-                      label: 'Auxilios o prestaciones',
-                      placeholder: 'Selecciona el tipo de oferta de interes'
-                    },
-
-                    {
-                      label: 'Días disponibles para trabajar',
-                      placeholder: 'Selecciona el tipo de oferta de interes'
-                    }
-                  ])}
-                </Row>
-                {/* ************************** */}
-                {/* quinta Linea  */}
-                {/* *********************** */}
-                <Row className="mx-0 px-40">
-                  {arregloCampos([
-                    {
-                      label: 'Jornada',
-                      placeholder: 'Selecciona la ciudad de interes'
-                    },
-                    {
-                      label: 'Aspiración salarial',
-                      placeholder: 'Selecciona el salario'
-                    },
-                    {
-                      label: 'Tiempo',
-                      placeholder: 'Periodo de tu aspiracion salarial'
-                    }
-                  ])}
-                </Row>
-                {/* ************************** */}
-                {/* sexta Linea  */}
-                {/* *********************** */}
-                <Row className="px-40 mx-0 mb-30 w-100 justify-content-start">
-                  {arregloCampos([
-                    {
-                      label: 'Nivel de educación',
-                      placeholder: 'Selecciona alguna de las opciones'
-                    },
-                    {
-                      label: 'Idiomas',
-                      placeholder: 'Selecciona alguna de las opciones'
-                    }
-                  ])}
-                </Row>
-              </Col>
-            </Dialog>
-          </Col>
+            /> */}
+          </div>
           <input
             type="hidden"
             name="q[job_category_ids]"

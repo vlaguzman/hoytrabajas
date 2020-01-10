@@ -3,7 +3,13 @@ import { Row, Col } from 'reactstrap'
 import PropTypes from 'prop-types'
 import FilterFormSection from './filterForm'
 
-const WelcomeText = ({ translations, common, new_offer_path, filterForm }) => {
+const WelcomeText = ({
+  translations,
+  advanced_search_translations,
+  common,
+  new_offer_path,
+  filterForm
+}) => {
   const {
     welcome_text,
     filterForm: filterFormTranslations,
@@ -19,7 +25,7 @@ const WelcomeText = ({ translations, common, new_offer_path, filterForm }) => {
     welcome_text.search(/\d/) + welcome_text.replace(/[^0-9]/g, '').length
   )
   return (
-    <Row className="align-items-center justify-content-center mb-60">
+    <div className="align-items-center d-flex justify-content-center mb-60">
       <Col
         className="align-items-center justify-content-center t-home__cover"
         xs={12}
@@ -34,7 +40,10 @@ const WelcomeText = ({ translations, common, new_offer_path, filterForm }) => {
         </div>
         <FilterFormSection
           {...{ common, ...filterForm }}
-          translations={filterFormTranslations}
+          translations={{
+            filterForm: filterFormTranslations,
+            advancedSearch: advanced_search_translations
+          }}
         />
         <p className="a-callToAction__inline">
           {call_to_action_text.text}{' '}
@@ -43,7 +52,7 @@ const WelcomeText = ({ translations, common, new_offer_path, filterForm }) => {
           </a>
         </p>
       </Col>
-    </Row>
+    </div>
   )
 }
 
@@ -53,6 +62,7 @@ WelcomeText.propTypes = {
   new_offer_path: PropTypes.string.isRequired,
   common: PropTypes.object.isRequired,
   filterForm: PropTypes.object.isRequired,
+  advanced_search_translations: PropTypes.object.isRequired,
   translations: PropTypes.shape({
     welcome_text: PropTypes.string.isRequired,
     filterForm: PropTypes.object.isRequired,

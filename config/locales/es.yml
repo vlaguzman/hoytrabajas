@@ -52,6 +52,51 @@ es:
       create_offer: 'Publicar oferta'
       dashboard: 'Ver mi tablero'
       profile: 'Mi perfil'
+      advanced_search:
+        title: 'Búsqueda avanzada'
+        clean_search: 'Limpiar búsqueda'
+        search_offer: 'Buscar tu oferta'
+        search_offer_input: 'Buscar oferta'
+        fields:
+          city:
+            label: 'Ciudad'
+            placeholder: 'Selecciona tu ciudad'
+          experience:
+            label: 'Experiencia'
+            placeholder: 'Selecciona tu experiencia'
+          age:
+            label: 'Edad'
+            placeholder: 'Selecciona el rango de edad'
+          job_category:
+            label: 'Categorías de trabajo'
+            placeholder: 'Selecciona la categoría de trabajo'
+          work_mode:
+            label: 'Modalidad de trabajo'
+            placeholder: 'Selecciona una modalidad de trabajo'
+          legal_agreement:
+            label: 'Acuerdo legal'
+            placeholder: 'Selecciona el acuerdo legal'
+          offer_type:
+            label: 'Tipo de oferta'
+            placeholder: 'Selecciona el tipo de oferta'
+          working_days:
+            label: 'Días'
+            placeholder: 'Selecciona los días laborales'
+          working_hours:
+            label: 'Jornada'
+            placeholder: 'Selecciona tu jornada'
+          offer_aux:
+            label: 'Auxilios o prestaciones'
+            placeholder: 'Auxilio de prestaciones'
+          offer_salary:
+            label: 'Salario'
+            placeholder: 'Selecciona el rango salarial'
+          offer_date:
+            label: 'Tiempo'
+            placeholder: 'Día'
+          offer_language:
+            label: 'Idiomas'
+            placeholder: 'Selecciona el idioma'
 
     sign_in:
       subtitle: 'Es momento de encontrar tu empleo o empleado ideal'

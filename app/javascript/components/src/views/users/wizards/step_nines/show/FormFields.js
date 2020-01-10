@@ -125,10 +125,12 @@ const FormFields = props => {
           handleSimpleChange={handleSimpleChange(formValues, setFormValues)}
           label={finish_date.label || ''}
           dateOptions={dateOptions}
+          minDate={formValues[start_date.name] || null}
+          minDateMessage="La fecha de finalización debe ser posterior a la de inicio." // TODO: replace with translation string
         />
       </Col>
     ),
-    [formValues[finish_date.name]]
+    [formValues[start_date.name], formValues[finish_date.name]]
   )
 
   const onGoingStudyField = useMemo(

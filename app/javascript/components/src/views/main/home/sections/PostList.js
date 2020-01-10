@@ -26,7 +26,10 @@ const PostList = ({ translations }) => {
       <h4 className="postList__title color__blue-main">{title}</h4>
       <div className="postListGrid">
         {posts.map(post => (
-          <div className="a-shadow__card singlePost d-flex flex-column">
+          <div
+            key={post.key}
+            className="a-shadow__card singlePost d-flex flex-column"
+          >
             <p className="a-badge__service">{content[post.key].tag}</p>
             <img src={post.imagePath} alt="Post Thumbnail" />
             <p className="mt-20 px-20" style={{ textAlign: 'justify' }}>

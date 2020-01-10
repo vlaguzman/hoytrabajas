@@ -3,7 +3,7 @@
 .navbar-wrapper {
   @extend .a-shadow__1;
   position: fixed;
-  background-color: transparent;
+  background-color: $color__palelilac-extralight;
   z-index: 999 !important;
   transition: all 500ms ease-in-out;
   color: white;
@@ -13,8 +13,12 @@
   flex-direction: column;
   padding: 0 60px;
 
-  @media (max-width: 576px) {
+  @media (max-width: 992px) {
     padding: 0 30px;
+  }
+
+  @media (max-width: 576px) {
+    padding: 0 15px;
   }
 
   .site-logo {
@@ -48,7 +52,7 @@
   }
 
   .navbar-item-wrapper {
-    margin-left: auto;
+    margin: auto 0 auto auto;
     justify-content: flex-end;
   }
 
@@ -62,6 +66,8 @@
   @media (max-width: 992px) {
     .navbar-item-wrapper {
       margin: 20px 0;
+      justify-content: center;
+
       .navbar-item-button {
         width: 100%;
       }
@@ -89,6 +95,15 @@
 
   .searchBar__input {
     flex: 1;
+    border-bottom: 1px solid $color__gray-light;
+
+    @media (max-width: 992px) {
+      background: white;
+      border: 1px solid $color__snow-light;
+      padding: 5px 10px;
+      border-radius: 4px;
+      width: 100%;
+    }
   }
 
   .searchBar__searchIcon {

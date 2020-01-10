@@ -4,7 +4,7 @@ module Offers::ExpiredService
     no_expired_offers = Offer
       .where.not(status: 'expired')
       .select { |offer|  offer.close_date.present? }
-      .select { |offer|  offer.close_date <= limit_date }
+      .select { |offer|  offer.close_date.to_date <= limit_date }
 
     change_to_expired(no_expired_offers)
   end

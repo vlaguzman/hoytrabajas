@@ -13,6 +13,7 @@ const filterOptions = createFilterOptions({
 // Internal Functions
 
 const SelectFindOrCreate = ({
+  id,
   label,
   name,
   options = [],
@@ -37,6 +38,8 @@ const SelectFindOrCreate = ({
           : value.split(',').join('')
       )
     }
+
+    if(!isMultiple) setInterValue(value)
   }
 
   return (
@@ -44,6 +47,7 @@ const SelectFindOrCreate = ({
       <Tooltip title={tooltip_description} arrow>
         <Autocomplete
           freeSolo
+          id={id}
           multiple={isMultiple}
           includeInputInList
           noOptionsText={no_options_text}
@@ -65,6 +69,7 @@ const SelectFindOrCreate = ({
 }
 
 SelectFindOrCreate.propTypes = {
+  id: PropTypes.string,
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,

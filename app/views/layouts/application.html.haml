@@ -19,7 +19,6 @@
       %img{:height => "1", :src => "https://www.facebook.com/tr?id=349189892310764&ev=PageView&noscript=1", :style => "display:none", :width => "1"}
 
     = stylesheet_link_tag 'application', media: 'all'
-    = javascript_pack_tag 'application'
 
     - if Rails.env.production?
       = render 'layouts/google_analytics'
@@ -43,3 +42,5 @@
     - if Rails.env.production?
       %div.m-chatBot--hiddenOnMobile
         = javascript_pack_tag 'analytics/chat_bot'
+
+    = javascript_pack_tag 'application'

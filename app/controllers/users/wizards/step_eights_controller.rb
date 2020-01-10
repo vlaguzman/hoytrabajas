@@ -28,7 +28,7 @@ class Users::Wizards::StepEightsController < Users::WizardsController
     .permit(
       :job_category_id,
       :company_name,
-      :work_position_id,
+      :work_position,
       :work_methodology_id,
       :city_id,
       :started_at,

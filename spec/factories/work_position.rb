@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :work_position do
-    description { Faker::Games::ElderScrolls.creature }
+    sequence(:description) { |n| "#{Faker::Games::ElderScrolls.creature}_#{n}" }
+
   end
 end

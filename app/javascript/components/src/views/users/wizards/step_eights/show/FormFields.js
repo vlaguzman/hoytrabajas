@@ -28,7 +28,7 @@ const FormFields = props => {
   const {
     job_category_id = null,
     company_name = null,
-    work_position_id = null,
+    work_position = null,
     work_methodology_id = null,
     city_id = null,
     state_id = null,
@@ -41,7 +41,7 @@ const FormFields = props => {
   const [formValues, setFormValues] = useState({
     [job_category_id.name]: job_category_id.current_value || '',
     [company_name.name]: company_name.current_value || '',
-    [work_position_id.name]: work_position_id.current_value || '',
+    [work_position.name]: work_position.current_value || '',
     [work_methodology_id.name]: work_methodology_id.current_value || '',
     [city_id.name]: city_id.current_value || '',
     [state_id.name]: state_id.current_value || '',
@@ -97,26 +97,20 @@ const FormFields = props => {
     [formValues[company_name.name]]
   )
 
-  const workPositionIDField = useMemo(
+  const workPositionField = useMemo(
     () => (
-      <Col
-        key={work_position_id.name}
-        className={inputClassname}
-        xs={12}
-        lg={6}
-      >
-        <SelectChip
-          inputValue={formValues[work_position_id.name]}
-          handleChange={handleChange(formValues, setFormValues)}
-          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
-          name={work_position_id.name}
-          label={work_position_id.label}
-          selectOptions={work_position_id.values}
-          isMultiple={false}
+      <Col key={work_position.name} className={inputClassname} xs={12} lg={6}>
+        <SelectFindOrCreate
+          id={work_position.name}
+          label={work_position.label}
+          name={work_position.name}
+          input_value={work_position.current_value}
+          options={work_position.values}
+          tooltip_description={tooltip_description['press_enter']}
         />
       </Col>
     ),
-    [formValues[work_position_id.name]]
+    []
   )
 
   const workMethodologyIDField = useMemo(
@@ -188,9 +182,10 @@ const FormFields = props => {
         <SelectFindOrCreate
           label={technical_skills.label}
           name={technical_skills.name}
+          id={technical_skills.name}
           input_value={technical_skills.current_value}
           options={technical_skills.values}
-          tooltip_description={tooltip_description}
+          tooltip_description={tooltip_description['use_coma']}
           isMultiple
         />
       </Col>
@@ -259,7 +254,7 @@ const FormFields = props => {
     <Row className="HT__FormGenerator">
       {companyNameField}
       {jobCategoryIDField}
-      {workPositionIDField}
+      {workPositionField}
       {workMethodologyIDField}
       {stateIDField}
       {cityIDField}
@@ -277,7 +272,7 @@ FormFields.propTypes = {
   formFields: PropTypes.shape({
     job_category_id: PropTypes.object,
     company_name: PropTypes.object,
-    work_position_id: PropTypes.object,
+    work_position: PropTypes.object,
     work_methodology_id: PropTypes.object,
     city_id: PropTypes.object,
     state_id: PropTypes.object,

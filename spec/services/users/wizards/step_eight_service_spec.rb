@@ -27,7 +27,7 @@ RSpec.describe Users::Wizards::StepEightService do
         {
           job_category_id: job_categories_ids[0],
           company_name: "HoyTrabajas.com",
-          work_position_id: work_position_id,
+          work_position: 'Dev RoR',
           work_methodology_id: work_methodology_id,
           city_id: city_id,
           technical_skills: "SEO, Redes sociales",
@@ -67,7 +67,7 @@ RSpec.describe Users::Wizards::StepEightService do
 
         expect(updated_work_experience.job_category.description).to eq("Marketing")
         expect(updated_work_experience.company_name).to eq("HoyTrabajas.com")
-        expect(updated_work_experience.work_position.description).to eq("Developer")
+        expect(updated_work_experience.work_position.description).to eq("Dev RoR")
         expect(updated_work_experience.work_methodology.description).to eq("Telework")
         expect(updated_work_experience.city.description).to eq("Bogota")
         expect(updated_work_experience.technical_skills.pluck(:description)).to match_array(["SEO", "Redes sociales"])

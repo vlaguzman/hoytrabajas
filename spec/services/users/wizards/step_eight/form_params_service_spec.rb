@@ -17,7 +17,7 @@ RSpec.describe Users::Wizards::StepEight::FormParamsService do
     let(:create_work_methodologies_list ) { ListConverter.model_list(WorkMethodology) }
 
     let!(:cities) { create_list(:city, 5) }
-    let(:create_cities_list ) { ListConverter.model_list(City) }
+    let(:create_cities_list) { ListConverter.model_list(City) }
 
     let(:create_states_list) { ListConverter.model_list(State) }
 
@@ -59,8 +59,8 @@ RSpec.describe Users::Wizards::StepEight::FormParamsService do
                 label: 'Empresa',
                 current_value: nil
               },
-              work_position_id: {
-                name: 'work_experience[work_position_id]',
+              work_position: {
+                name: 'work_experience[work_position]',
                 label: 'Cargo*',
                 values: create_work_position_list,
                 current_value: nil
@@ -174,11 +174,11 @@ RSpec.describe Users::Wizards::StepEight::FormParamsService do
                 label: 'Empresa',
                 current_value: "Hoy Trabajas"
               },
-              work_position_id: {
-                name: 'work_experience[work_position_id]',
+              work_position: {
+                name: 'work_experience[work_position]',
                 label: 'Cargo*',
                 values: create_work_position_list,
-                current_value: work_positions.last.id
+                current_value: work_positions.last.description
               },
               work_methodology_id: {
                 name: 'work_experience[work_methodology_id]',

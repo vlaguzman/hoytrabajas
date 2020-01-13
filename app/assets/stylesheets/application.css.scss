@@ -41,6 +41,7 @@
 @import 'scss/custom/layouts/layout';
 
 // COMPONENTS
+@import 'components/users/wizards/step_eights';
 @import 'components/users/wizards/step_eights/work_experience';
 @import 'components/users/wizards/step_eleven';
 @import 'components/companies/list_candidates';
@@ -62,6 +63,7 @@
 @import 'atomic/atoms/chips';
 @import 'atomic/atoms/chip';
 @import 'atomic/atoms/tags';
+@import 'atomic/atoms/spans';
 
 // MOLECULES
 @import 'atomic/molecules/filterForm';

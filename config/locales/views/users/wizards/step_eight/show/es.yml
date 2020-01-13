@@ -13,7 +13,7 @@ es:
             formFields:
               job_category_id: 'Úbica tu empleo dentro de una categoría*'
               company_name: 'Empresa'
-              work_position_id: 'Cargo*'
+              work_position: 'Cargo*'
               work_methodology_id: 'Modalidad de trabajo'
               city_id: 'Ciudad'
               state_id: 'Departamento'

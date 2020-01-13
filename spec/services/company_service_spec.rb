@@ -19,8 +19,8 @@ RSpec.describe CompanyService do
 
         expect(offer_on_demand.offer).to eq(offer_1)
         expect(offer_on_demand.status).to eq('up')
-        expect(offer_on_demand.start_at.strftime("%F")).to eq(Time.now.strftime("%F"))
-        expect(offer_on_demand.finish_at.strftime("%F")).to eq((Time.now + 10.days).strftime("%F"))
+        expect(offer_on_demand.start_at.to_date).to eq(Time.now.to_date)
+        expect(offer_on_demand.finish_at.to_date).to eq((Time.now + 10.days).to_date)
       end
     end
 

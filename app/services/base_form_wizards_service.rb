@@ -2,10 +2,12 @@ class BaseFormWizardsService
   include BaseForms::WizardsTranslationsService
   include BaseForms::WizardsErrorsService
   include BaseForms::WizardsSubFormsService
+  include BaseForms::WizardsAutocompleteService
 
   INPUT_FIELDS_KEYS = []
   SELECT_FIELDS_KEYS = []
   MULTIPLE_SELECT_FIELDS_KEYS = []
+  AUTCOMPLETE_SELECT_FIELDS_KEYS = []
   SUBFORMS = []
   SUBFORMS_FIELDS = {}
 
@@ -47,6 +49,7 @@ class BaseFormWizardsService
       .merge(input_fields_builder)
       .merge(select_fields_builder)
       .merge(multiple_select_fields_builder)
+      .merge(autocomplete_select_fields_builder)
 
     if other_fields.present?
       other_fields.inject(object) { |object, new_object| object.merge(new_object) }

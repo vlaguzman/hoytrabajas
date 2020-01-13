@@ -60,6 +60,7 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     create(:job_category, description: "Sales")
     create(:work_position, description: "Dev RoR")
     create(:work_methodology, description: "Full Time")
+    create(:technical_skill, description: "Poo")
     create(:city, description: "Neverland City", state: create(:state, description: 'Neverland North'))
 
   end
@@ -243,7 +244,7 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     find("div[id='mui-component-select-work_experience[job_category_id]']", visible: false).click
     find("li", text: "Sales").click
 
-    find("div[id='mui-component-select-work_experience[work_position_id]']", visible: false).click
+    find("input[id='work_experience[work_position]']", visible: false).click
     find("li", text: "Dev RoR").click
 
     find("div[id='mui-component-select-work_experience[work_methodology_id]']", visible: false).click
@@ -254,6 +255,9 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
 
     find("div[id='mui-component-select-work_experience[city_id]']", visible: false).click
     find("li", text:  "Neverland City").click
+
+    find("input[id='work_experience[technical_skills]']", visible: false).click
+    find("li", text: "Poo").click
 
     find("input[name='work_experience[started_at]']").click
     find("h6[class='MuiTypography-root MuiPickersToolbarText-toolbarTxt MuiTypography-subtitle1']").click
@@ -374,6 +378,7 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     expect(work_experience.company_name).to eq('Hoy Trabajas')
     expect(work_experience.job_category.description).to eq('Sales')
     expect(work_experience.work_position.description).to eq('Dev RoR')
+    expect(work_experience.technical_skills.pluck(:description).include?('Poo')).to be_truthy
     expect(work_experience.work_methodology.description).to eq('Full Time')
     expect(work_experience.city.description).to eq('Neverland City')
 

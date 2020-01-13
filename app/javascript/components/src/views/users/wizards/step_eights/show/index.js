@@ -9,7 +9,7 @@ import FormFields from './FormFields'
 import { ShowMessage } from '../../shared/message'
 
 const UsersWizardsStepEight = props => {
-  const { formInfo, csrf_param, csrf_token } = props
+  const { formInfo, csrf_param, csrf_token, tooltip_description } = props
   const {
     title,
     subtitle,
@@ -36,7 +36,10 @@ const UsersWizardsStepEight = props => {
 
                 <input type="hidden" name={csrf_param} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />
-                <FormFields formFields={formFields} />
+                <FormFields
+                  formFields={formFields}
+                  tooltip_description={tooltip_description}
+                />
                 <div className="action-buttons-container" />
                 <FormButtons
                   nextPath={nextPath}

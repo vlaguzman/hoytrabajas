@@ -154,7 +154,7 @@ es:
           attributes:
             email:
               blank: 'Por favor ingrese un correo electrónico, este campo no puede estar en blanco'
-              taken: 'Por favor ingrese un correo electróico diferente, ese ya esta en uso'
+              taken: 'Por favor ingrese un correo electrónico diferente, ese ya esta en uso'
             password:
               blank: 'Por favor ingrese el password, este campo no puede estar en blanco'
               too_short: 'La contraseña es muy corta'

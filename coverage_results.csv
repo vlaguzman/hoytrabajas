@@ -122,7 +122,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/users_presenter.rb",100,19,5,5,0
 "./app/services/admins/offers_service.rb",100,62,20,20,0
 "./app/services/admins_service.rb",100,15,8,8,0
-"./app/services/affinity_calculator.rb",100,56,31,31,0
+"./app/services/affinity_calculator.rb",100,77,35,35,0
 "./app/services/base_form_wizards_service.rb",100,99,52,52,0
 "./app/services/base_forms/find_or_create_record_service.rb",100,16,8,8,0
 "./app/services/base_forms/wizards_autocomplete_service.rb",100,23,10,10,0

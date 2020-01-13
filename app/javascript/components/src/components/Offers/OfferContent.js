@@ -4,8 +4,8 @@ import Typography from '@material-ui/core/Typography'
 import Avatar from '@material-ui/core/Avatar'
 import { Row } from 'reactstrap'
 import CardContent from '@material-ui/core/CardContent'
-import { wordsShortener, capitalizeFirstLetter } from '../../helpers'
 import StarsIcon from '@material-ui/icons/Stars'
+import { wordsShortener, capitalizeFirstLetter } from '../../helpers'
 
 const OnDemandBlock = ({ content }) => (
   <div className="offerTag a-tag-with_icon a-tag-orange_inverse">
@@ -69,7 +69,7 @@ const OfferContent = ({ offer, translations }) => {
       <h4 className="offerSubtitle a-typo__subtitle2 mb-10">
         {wordsShortener(offer.company.name, 31)}
       </h4>
-      <p className="offerDescription a-typo__subtitle2 mb-10">
+      <p className="offerDescription a-typo__subtitle2 mb-5">
         {capitalizeFirstLetter(wordsShortener(offer.description, 58))}
       </p>
       <div className="mt-auto">

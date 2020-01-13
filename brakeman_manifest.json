@@ -3,9 +3,9 @@
     "app_path": "/ht",
     "rails_version": "6.0.0",
     "security_warnings": 0,
-    "start_time": "2020-01-09 19:42:02 +0000",
-    "end_time": "2020-01-09 19:42:04 +0000",
-    "duration": 2.22239841,
+    "start_time": "2020-01-13 05:47:10 +0000",
+    "end_time": "2020-01-13 05:47:11 +0000",
+    "duration": 1.627003602,
     "checks_performed": [
       "BasicAuth",
       "BasicAuthTimingAttack",
@@ -80,8 +80,16 @@
     "ruby_version": "2.6.3",
     "brakeman_version": "4.7.0"
   },
-  "warnings": [],
-  "ignored_warnings": [],
-  "errors": [],
-  "obsolete": []
+  "warnings": [
+
+  ],
+  "ignored_warnings": [
+
+  ],
+  "errors": [
+
+  ],
+  "obsolete": [
+
+  ]
 }

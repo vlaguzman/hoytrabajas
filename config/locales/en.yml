@@ -50,7 +50,7 @@ en:
           attributes:
             email:
               blank: "Please write a email, it cant be blank"
-              taken: 'Por favor ingrese un correo electrónio diferente, ese ya esta en uso'
+              taken: 'Please write an email different, it already exists.'
             password:
               blank: "Please write a password, it cant be blank"
               too_short: 'The password is too short'
@@ -64,7 +64,7 @@ en:
               blank: "Please write a last name, it cant be blank"
             email:
               blank: "Please write an email, it cant be blank"
-              taken: 'Plese write an email different, it already exists.'
+              taken: 'Please write an email different, it already exists.'
             password:
               blank: "Please write a password, it cant be blank"
               too_short: 'The password is too short'

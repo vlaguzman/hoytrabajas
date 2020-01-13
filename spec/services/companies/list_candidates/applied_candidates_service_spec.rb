@@ -58,7 +58,7 @@ RSpec.describe Companies::ListCandidates::AppliedCandidatesService do
           name: 'Alfred Dito',
           location: 'La Dorada, Caldas',
           technical_skills: "PHP, Ruby",
-          affinity_percentage: "20%",
+          affinity_percentage: "27%",
           profile_path: "/users/profile?user_id=#{curriculum_vitae1.user.id}",
           avatar: Rails.application.routes.url_helpers.rails_blob_path(curriculum_vitae1.photo, disposition: "attachment", only_path: true)
         },

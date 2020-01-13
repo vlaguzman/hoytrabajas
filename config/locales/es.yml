@@ -14,8 +14,8 @@ es:
         name: 'Nombre'
         description: 'Descripción'
         email: 'Email'
-        password: 'Password'
-        password_confirmation: 'Confirmación de password'
+        password: 'Contraseña'
+        password_confirmation: 'Confirmación de contraseña'
         city: 'Ciudad'
         contact_name: 'Nombre de contacto'
         contact_cellphone: 'Celular de contacto'
@@ -156,7 +156,7 @@ es:
               blank: 'Por favor ingrese un correo electrónico, este campo no puede estar en blanco'
               taken: 'Por favor ingrese un correo electrónico diferente, ese ya esta en uso'
             password:
-              blank: 'Por favor ingrese el password, este campo no puede estar en blanco'
+              blank: 'Por favor ingrese la contraseña, este campo no puede estar en blanco'
               too_short: 'La contraseña es muy corta'
             password_confirmation:
               confirmation: 'Su contraseña no coincide con la confirmación, por favor haga que su contraseña se igual a la verificación'
@@ -170,7 +170,7 @@ es:
               blank: 'Por favor ingrese un correo electrónico, este campo no puede estar en blanco'
               taken: 'Por favor ingrese un correo electrónico diferente, ese ya esta en uso'
             password:
-              blank: 'Por favor ingrese el password, este campo no puede estar en blanco'
+              blank: 'Por favor ingrese la contraseña, este campo no puede estar en blanco'
               too_short: 'La contraseña es muy corta'
             password_confirmation:
               confirmation: 'Su contraseña no coincide con la confirmación, por favor haga que su contraseña se igual a la verificación'

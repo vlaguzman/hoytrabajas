@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import FormControl from '@material-ui/core/FormControl'
 import InputLabel from '@material-ui/core/InputLabel'
@@ -25,7 +25,20 @@ const SelectChip = props => {
   } = props
 
   const defaultValue = isMultiple ? [] : ''
-  const onChange = ev => handleChange(ev, name, isMultiple)
+
+  const [openState, setOpenState] = useState(false)
+
+  const toggleOpenState = e => {
+    e.stopPropagation()
+    setOpenState(!openState)
+  }
+
+  const onChange = e => {
+    e.stopPropagation()
+
+    handleChange(e, name, isMultiple)
+    setOpenState(false)
+  }
   const hasErrors = false
 
   return (
@@ -43,6 +56,8 @@ const SelectChip = props => {
         )}
         <Select
           value={inputValue || defaultValue}
+          open={openState}
+          onClick={toggleOpenState}
           input={
             <Input
               id="select-multiple-chip"
@@ -52,25 +67,24 @@ const SelectChip = props => {
             />
           }
           renderValue={selected => {
-            let selectValues = Array.isArray(selected)
+            const selectValues = Array.isArray(selected)
               ? selected.map(item => selectOptions.find(a => a.id === item))
               : selectOptions.find(({ id }) => id === selected)
             return (
               <div className="d-flex flex-wrap">
-                {Array.isArray(selected)
-                ? (
+                {Array.isArray(selected) ? (
                   selectValues.map(({ id, description }) => (
                     <Chip
                       key={id}
                       label={description}
+                      onClick={e => e.stopPropagation()}
                       onDelete={() => {
                         handleDeleteChip(id, name, isMultiple)
                       }}
                       className="mr-5 mt-5"
                     />
                   ))
-                )
-                : (
+                ) : (
                   <Chip
                     key={selected}
                     label={selectValues.description}

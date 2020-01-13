@@ -40,45 +40,53 @@ RSpec.describe AffinityCalculator do
       end
     end
 
-    context "The offer has one value in a list equal with the user and just two fields to compare" do
-      it "should return 60" do
-        ac = AffinityCalculator.new(offer_vehicles, user_vehicles)
-        response = ac.affinity_percentage
-        expect(response).to eq(60)
+    describe "The offer has the fields of job categories and vehicle" do
+      context "When the user only matches the vehicle field" do
+        it "should return 60" do
+          ac = AffinityCalculator.new(offer_vehicles, user_vehicles)
+          response = ac.affinity_percentage
+          expect(response).to eq(60)
+        end
       end
     end
 
-    context "The offer has one field equal with the user and just two fields to compare" do
-      it "should return 50" do
-        ac = AffinityCalculator.new(offer_contract, user_contract)
-        response = ac.affinity_percentage
-        expect(response).to eq(50)
+    describe "The offer has the fields of job categories and contract type" do
+      context "When the user only matches the contract type field" do
+        it "should return 50" do
+          ac = AffinityCalculator.new(offer_contract, user_contract)
+          response = ac.affinity_percentage
+          expect(response).to eq(50)
+        end
+      end
+
+      context "When the user matches all fields" do
+        it "should return 100" do
+          user_contract_c.curriculum_vitae.job_categories = offer_contract.job_categories
+          user_contract_c.curriculum_vitae.save!
+          ac = AffinityCalculator.new(offer_contract, user_contract_c)
+          response = ac.affinity_percentage
+          expect(response).to eq(100)
+        end
       end
     end
 
-    context "The offer has one field equal with the curriculum vitae but four fields to compare" do
-      it "should return 25" do
-        ac = AffinityCalculator.new(the_offer, user_contract_b)
-        response = ac.affinity_percentage
-        expect(response).to eq(25)
+    describe "The offer has the fields of job categories, contract type, work mode and city" do
+      context "When the user only matches the contract type field" do
+        it "should return 25" do
+          ac = AffinityCalculator.new(the_offer, user_contract_b)
+          response = ac.affinity_percentage
+          expect(response).to eq(25)
+        end
       end
     end
 
-    context "The offer has all data equal with the user" do
-      it "should return 100" do
-        user_contract_c.curriculum_vitae.job_categories = offer_contract.job_categories
-        user_contract_c.curriculum_vitae.save!
-        ac = AffinityCalculator.new(offer_contract, user_contract_c)
-        response = ac.affinity_percentage
-        expect(response).to eq(100)
-      end
-    end
-
-    context "The offer has two of four equal fields" do
-      it "should return 55" do
-        ac = AffinityCalculator.new(offer_soft_skills, user_soft_skills)
-        response = ac.affinity_percentage
-        expect(response).to eq(55)
+    describe "The offes has the fields of job categories, city, vehicle and soft skills" do
+      context "When the user matches the soft skills and vehicle fields" do
+        it "should return 55" do
+          ac = AffinityCalculator.new(offer_soft_skills, user_soft_skills)
+          response = ac.affinity_percentage
+          expect(response).to eq(55)
+        end
       end
     end
   end

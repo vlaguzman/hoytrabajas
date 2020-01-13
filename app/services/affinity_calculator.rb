@@ -1,5 +1,21 @@
-
 class AffinityCalculator
+  ATTRIBUTE_WEIGHT = {
+    available_work_days: 1,
+    educational_degree:  3,
+    educational_level:   1,
+    driving_licences:    2,
+    technical_skills:    2,
+    contract_type_id:    2,
+    to_learn_skills:     1,
+    languages_list:      2,
+    job_categories:      2,
+    working_days:        1,
+    work_mode_id:        1,
+    soft_skills:         3,
+    vehicles:            3,
+    city_id:             3,
+    sexes:               3
+  }
 
   # NOTES TO THE FINAL CALCULATE
   # CurriculumVitae has work_modes Offer has work mode
@@ -27,14 +43,14 @@ class AffinityCalculator
   end
 
   def affinity_percentage
-    total_base = @offer_attr_hash.count + @offer_lists_hash.count
-    total_eq_values = total_equal_values(@offer_lists_hash, @user_lists_hash, @cv_lists_hash) + 
+    total_base = count_attributes(@offer_attr_hash) + count_attributes(@offer_lists_hash)
+    total_eq_values = total_equal_values(@offer_lists_hash, @user_lists_hash, @cv_lists_hash) +
                       total_equal_values(@offer_attr_hash, @user_attr_hash, @cv_attr_hash)
-    (total_eq_values.to_f/total_base.to_f)*100
+    ((total_eq_values.to_f/total_base.to_f) * 100).round(0)
   end
   
   def total_equal_values(offer_hash, user_hash, cv_hash)
-    HashesCompare.compare_hashes_count(offer_hash, user_hash) + HashesCompare.compare_hashes_count(offer_hash, cv_hash)
+    HashesCompare.compare_hashes_count(offer_hash, user_hash, ATTRIBUTE_WEIGHT) + HashesCompare.compare_hashes_count(offer_hash, cv_hash, ATTRIBUTE_WEIGHT)
   end
   
   def not_nil_attributes_to_compare(klass, object)
@@ -53,4 +69,9 @@ class AffinityCalculator
     not_empty_lists.to_h
   end
 
+  private
+
+  def count_attributes(hash)
+    hash.inject(0) { |sum, key| sum + ATTRIBUTE_WEIGHT[key[0]] }
+  end
 end

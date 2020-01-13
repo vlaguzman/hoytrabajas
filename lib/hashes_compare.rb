@@ -2,9 +2,9 @@
 module HashesCompare
 
 #count how many values in the hashes are equal
-  def self.compare_hashes_count(hash, hash_b)
+  def self.compare_hashes_count(hash, hash_b, attribute_weight)
     cont = 0
-    hash.each{|k, v| cont += 1 if (v == hash_b[k] || any_equal_value?(v, hash_b[k]))}
+    hash.each{|k, v| cont += attribute_weight[k] if (v == hash_b[k] || any_equal_value?(v, hash_b[k]))}
     cont
   end
 

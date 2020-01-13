@@ -14,6 +14,7 @@ RSpec.describe AffinityCalculator do
   let(:relations_offer)      { create(:offer, title: "relations_offer", vehicles: vehicles, soft_skills: soft_skills) }
   let(:offer_contract)       { create(:empty_offer, contract_type: contract_type, description: 'a description')}
   let(:offer_vehicles)       { create(:empty_offer, vehicles: vehicles, description: 'a description')}
+  let(:offer_soft_skills)    { create(:empty_offer, description: 'a description', city_id: city.id, soft_skills: soft_skills, vehicles: vehicles)}
 
   let(:empty_user)          { create(:user, :first_time_candidate, name: "empty_user") }
   let(:the_user)            { create(:user, name: "arnold")}
@@ -21,11 +22,13 @@ RSpec.describe AffinityCalculator do
   let(:user_contract_b)     { create(:user, :first_time_candidate, name: "alex", contract_type: the_offer.contract_type)}
   let(:user_contract_c)     { create(:user, :first_time_candidate, name: "conan", contract_type: contract_type)}
   let(:user_vehicles)       { create(:user, :first_time_candidate, name: "barbaro", vehicles: vehicles_b)}
+  let(:user_soft_skills)    { create(:user, :first_time_candidate, name: "Sebas", vehicles: vehicles_b, city_id: city.id, curriculum_vitae_ids: [curriculum_vitae_soft_skills.id])}
 
-  let(:empty_curriculum_vitae)    { create(:empty_curriculum_vitae) }
-  let(:the_curriculum_vitae)      { create(:curriculum_vitae) }
-  let(:curriculum_job_categories) { create(:empty_curriculum_vitae, user: user_contract_c)}
-  let(:relations_curriculum)      { create(:curriculum_vitae, job_categories: job_categories, working_days: working_days) }
+  let(:empty_curriculum_vitae)        { create(:empty_curriculum_vitae) }
+  let(:the_curriculum_vitae)          { create(:curriculum_vitae) }
+  let(:curriculum_vitae_soft_skills)  { create(:curriculum_vitae, soft_skills: soft_skills) }
+  let(:curriculum_job_categories)     { create(:empty_curriculum_vitae, user: user_contract_c)}
+  let(:relations_curriculum)          { create(:curriculum_vitae, job_categories: job_categories, working_days: working_days) }
 
   let(:subject) { AffinityCalculator.new(the_offer, the_user) }
 
@@ -38,10 +41,10 @@ RSpec.describe AffinityCalculator do
     end
 
     context "The offer has one value in a list equal with the user and just two fields to compare" do
-      it "should return 50" do
+      it "should return 60" do
         ac = AffinityCalculator.new(offer_vehicles, user_vehicles)
         response = ac.affinity_percentage
-        expect(response).to eq(50)
+        expect(response).to eq(60)
       end
     end
 
@@ -68,6 +71,14 @@ RSpec.describe AffinityCalculator do
         ac = AffinityCalculator.new(offer_contract, user_contract_c)
         response = ac.affinity_percentage
         expect(response).to eq(100)
+      end
+    end
+
+    context "The offer has two of four equal fields" do
+      it "should return 55" do
+        ac = AffinityCalculator.new(offer_soft_skills, user_soft_skills)
+        response = ac.affinity_percentage
+        expect(response).to eq(55)
       end
     end
   end

@@ -2,6 +2,15 @@ require 'rails_helper'
 
 RSpec.describe HashesCompare do
   describe '#compare_hashes_count' do
+    let(:attribute_weight) do
+      {
+        list_a: 1,
+        list_b: 1,
+        name:   1,
+        sex:    3,
+        age:    2
+      }
+    end
     let(:values_hash_a) do
       {
         name: 'Jose',
@@ -58,19 +67,19 @@ RSpec.describe HashesCompare do
     context "the hashes just have values" do
       context "ther are not any equal values" do
         it "should return 0" do
-          expect(subject.compare_hashes_count(values_hash_a, values_hash_c)).to eq(0)
+          expect(subject.compare_hashes_count(values_hash_a, values_hash_c, attribute_weight)).to eq(0)
         end
       end
 
       context "there are one equal vales" do
-        it "should return 1" do
-          expect(subject.compare_hashes_count(values_hash_a, values_hash_b)).to eq(1)
+        it "should return 2" do
+          expect(subject.compare_hashes_count(values_hash_a, values_hash_b, attribute_weight)).to eq(2)
         end
       end
       
       context "there are more than one equal values" do
-        it "should return 2" do
-          expect(subject.compare_hashes_count(values_hash_a, values_hash_d)).to eq(2)
+        it "should return 5" do
+          expect(subject.compare_hashes_count(values_hash_a, values_hash_d, attribute_weight)).to eq(5)
         end
       end
     end
@@ -78,19 +87,19 @@ RSpec.describe HashesCompare do
    context "the hashes just have lists" do
      context "there are not any equal value in the lists" do
        it "should return 0" do
-          expect(subject.compare_hashes_count(list_hash_a, list_hash_c)).to eq(0)
+          expect(subject.compare_hashes_count(list_hash_a, list_hash_c, attribute_weight)).to eq(0)
        end
      end
 
      context "there are one equal value in one of the lists" do
        it "should return 1" do
-          expect(subject.compare_hashes_count(list_hash_a, list_hash_b)).to eq(1)
+          expect(subject.compare_hashes_count(list_hash_a, list_hash_b, attribute_weight)).to eq(1)
        end
      end
 
      context "there are more than one equal values" do
        it "should return 2" do
-          expect(subject.compare_hashes_count(list_hash_a, list_hash_d)).to eq(2)
+          expect(subject.compare_hashes_count(list_hash_a, list_hash_d, attribute_weight)).to eq(2)
        end
      end
    end

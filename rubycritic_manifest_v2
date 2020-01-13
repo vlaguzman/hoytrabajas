@@ -93,7 +93,7 @@ A          • EmployeesRange                                              1    
 A          • FaqsController                                              2       0.0        0           1
 A          • Function                                                    2       0.0        0           1
 A          • FunctionsOffers                                             1       0.0        0           1
-A          • HashesCompare                                               1       16.41      0           4
+A          • HashesCompare                                               2       17.36      0           4
 A          • HashesConverter                                             4       23.64      0           2
 A          • Home::HomePresenter                                         11      17.4       0           5
 A          • HomeController                                              9       2.42       0           1
@@ -221,7 +221,8 @@ A          • WorkMode                                                    3    
 A          • WorkPosition                                                3       0.0        0           1
 A          • WorkingDay                                                  5       0.0        0           1
 B          • Admins::OffersService                                       6       66.75      0           1
-B          • AffinityCalculator                                          10      60.81      46          14
+B          • AffinityCalculator                                          11      68.63      46          15
+B          • BaseFormWizardsService                                      30      98.36      0           1
 B          • Companies::FirstOffer::StepFivePresenter                    5       25.0       23          1
 B          • Companies::FirstOffer::StepFiveService                      4       38.92      18          6
 B          • Companies::FirstOffer::StepFour::FormParamsService          11      53.96      22          5

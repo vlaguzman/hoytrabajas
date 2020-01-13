@@ -46,6 +46,42 @@ en:
       messages:
         record_invalid: "Error saving the object"
       models:
+        company:
+          attributes:
+            email:
+              blank: "Please write a email, it cant be blank"
+              taken: 'Please write an email different, it already exists.'
+            password:
+              blank: "Please write a password, it cant be blank"
+              too_short: 'The password is too short'
+            password_confirmation:
+              confirmation: 'The two password are different, confirm the passwords'
+        user:
+          attributes:
+            name:
+              blank: "Please write a name, it cant be blank"
+            last_name:
+              blank: "Please write a last name, it cant be blank"
+            email:
+              blank: "Please write an email, it cant be blank"
+              taken: 'Please write an email different, it already exists.'
+            password:
+              blank: "Please write a password, it cant be blank"
+              too_short: 'The password is too short'
+            password_confirmation:
+              confirmation: 'The two password are different, confirm the passwords'
+            identification_number:
+              blank: "Please select an identification number, it cant be blank"
+            contact_number:
+              blank: "Please select a contact number, it cant be blank"
+            nationalities:
+              blank: "Please select at least one nationalily"
+            born_city_id:
+              blank: "Please select a born city, it cant be blank"
+            residence_city_id:
+              blank: "Please select a residence city, it cant be blank"
+            document_type_id:
+              blank: "Please select a document type, it cant be blank"
         applied_offer:
           attributes:
             offer_id:

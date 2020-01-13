@@ -31,7 +31,6 @@ RSpec.describe "sign up user", js: true, type: :feature do
 
     context  "when I want to sing up with email and password" do
       context "when I looking for a job" do
-
         it "should redirect to cadidate step zero" do
           actual_users = User.count
 
@@ -51,7 +50,66 @@ RSpec.describe "sign up user", js: true, type: :feature do
           expect(User.count).to eq(actual_users + 1)
 
           expect(current_path).to eq(users_wizards_step_zero_path)
+        end
+      end
 
+      context "The user already exist" do
+        it "should see a message 'Por favor ingrese un correo electróico diferente, ese ya esta en us'" do
+          user = FactoryBot.create(:user, email: "user_test@gmail.com", password: "12345678")
+
+          visit root_path
+          expect(page).to have_text("Registrarme")
+          click_on 'Registrarme'
+
+          fill_in 'user[email]', :with => "user_test@gmail.com"
+          fill_in 'user[password]', :with => "12345678"
+          fill_in 'user[password_confirmation]', :with => "12345678"
+
+          find('span', text: 'Aceptar términos y condiciones.').click
+          find(".a-button", text: "Registrarme", visible: false).click
+
+          expect(page).to have_text("Por favor ingrese un correo electrónico diferente, ese ya esta en uso")
+        end
+      end
+
+      context "The user puts two password different" do
+        it "should see an error message" do
+          actual_users = User.count
+
+          visit root_path
+          click_on 'Registrarme'
+
+          fill_in 'user[email]', :with => "candidate@gmail.com"
+          fill_in 'user[password]', :with => "1wantt$finda7ob"
+          fill_in 'user[password_confirmation]', :with => "wantt$finda7ob"
+
+          find('span', text: 'Aceptar términos y condiciones.').click
+          find(".a-button", text: "Registrarme", visible: false).click
+
+          expect(User.count).to eq(actual_users)
+
+          expect(page).to have_text("Su contraseña no coincide con la confirmación, por favor haga que su contraseña se igual a la verificación")
+        end
+      end
+
+      context "The user select an email than already exists and puts two password differents" do
+        it "should see a multiple error message" do
+          user = FactoryBot.create(:user, email: "user_test@gmail.com", password: "12345678")
+          actual_users = User.count
+
+          visit root_path
+          click_on 'Registrarme'
+
+          fill_in 'user[email]', :with => "user_test@gmail.com"
+          fill_in 'user[password]', :with => "1wantt$finda7ob"
+          fill_in 'user[password_confirmation]', :with => "wantt$finda7ob"
+
+          find('span', text: 'Aceptar términos y condiciones.').click
+          find(".a-button", text: "Registrarme", visible: false).click
+
+          expect(User.count).to eq(actual_users)
+
+          expect(page).to have_text("Por favor ingrese un correo electrónico diferente, ese ya esta en uso. Su contraseña no coincide con la confirmación, por favor haga que su contraseña se igual a la verificación")
         end
       end
     end

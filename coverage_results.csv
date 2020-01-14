@@ -2,9 +2,10 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/channels/application_cable/channel.rb",100,4,2,2,0
 "./app/channels/application_cable/connection.rb",100,4,2,2,0
 "./app/jobs/application_job.rb",100,7,1,1,0
-"./app/jobs/offers/update_offers_status_daily_job.rb",100,8,5,5,0
+"./app/jobs/offers/update_offers_status_daily_job.rb",100,14,6,6,0
 "./app/mailers/application_mailer.rb",100,4,3,3,0
 "./app/mailers/applied_offers_mailer.rb",100,14,8,8,0
+"./app/mailers/mail_notifier.rb",100,12,5,5,0
 "./app/models/acknowledgment.rb",100,11,6,6,0
 "./app/models/admin_user.rb",100,6,3,3,0
 "./app/models/age_range.rb",100,5,3,3,0
@@ -49,7 +50,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/level.rb",100,5,3,3,0
 "./app/models/limitation.rb",100,6,3,3,0
 "./app/models/nationality.rb",100,7,4,4,0
-"./app/models/offer.rb",100,85,62,62,0
+"./app/models/offer.rb",100,86,62,62,0
 "./app/models/offer_on_demand.rb",100,10,5,5,0
 "./app/models/offer_required_experiences.rb",100,9,5,5,0
 "./app/models/offer_salary.rb",100,11,7,7,0
@@ -150,11 +151,11 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/companies/list_candidates/applied_candidates_service.rb",100,54,23,23,0
 "./app/services/company_service.rb",100,38,20,20,0
 "./app/services/offers/applied_offer_service.rb",100,15,6,6,0
-"./app/services/offers/expired_service.rb",100,20,11,11,0
+"./app/services/offers/expired_service.rb",100,27,13,13,0
 "./app/services/offers/index_service.rb",100,18,7,7,0
 "./app/services/offers/show_service.rb",100,76,27,27,0
 "./app/services/offers/views_service.rb",100,83,34,34,0
-"./app/services/offers_on_demand/set_inactive_service.rb",100,22,11,11,0
+"./app/services/offers_on_demand/set_inactive_service.rb",100,29,13,13,0
 "./app/services/offers_service.rb",100,33,14,14,0
 "./app/services/routes_service.rb",100,10,5,5,0
 "./app/services/users/curriculum_vitaes/profile_photo_service.rb",100,24,12,12,0

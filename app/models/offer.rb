@@ -3,6 +3,7 @@ class Offer < ApplicationRecord
   #TODO: Evaluate educational_level values and quantity
   LISTS_TO_COMPARE = [:job_categories, :working_days, :available_work_days, :languages_list, :technical_skills, :vehicles, :driving_licences, :soft_skills, :sexes, :educational_level]
 
+  #TODO oscar: move this states to a state machine o create a db table
   OFFER_STATUS = ["expired", "hired", "active", "preview", "trash"]
 
   before_save -> { self.slug = self.title.parameterize }

@@ -1,0 +1,4 @@
+es:
+  mailers:
+    dailly_update_offers:
+      subject: "Reporte diario de actuaizacion de ofertas"

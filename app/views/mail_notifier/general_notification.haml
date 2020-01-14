@@ -1,0 +1,4 @@
+%p= t('mailers.dailly_update_offers.subject')
+%br
+- @message.each do |key, value|
+  %p= "#{key}: #{value}"

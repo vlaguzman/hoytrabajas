@@ -23,7 +23,7 @@ RSpec.describe "Admin can create a company", type: :feature do
         click_on 'Guardar Company'
       end
 
-      expect(page).to have_content("Por favor ingrese el password, este campo no puede estar en blanco")
+      expect(page).to have_content("Por favor ingrese la contraseña, este campo no puede estar en blanco")
 
       expect(Company.count).to eq(0)
     end

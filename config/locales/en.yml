@@ -82,6 +82,8 @@ en:
               blank: "Please select a residence city, it cant be blank"
             document_type_id:
               blank: "Please select a document type, it cant be blank"
+        curriculum_vitae:
+          attributes:
         applied_offer:
           attributes:
             offer_id:

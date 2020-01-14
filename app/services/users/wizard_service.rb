@@ -27,7 +27,7 @@ module Users::WizardService
       HashesConverter.sanitize_array_values(hash: update_params)
     )
 
-    validate_candidate = Users::Wizards::ErrorsService.(candidate, update_params: update_params)
+    validate_candidate = Users::Wizards::UserErrorsService.(candidate, update_params: update_params)
 
     [validate_candidate, first_valid && validate_candidate.errors.any?]
   end

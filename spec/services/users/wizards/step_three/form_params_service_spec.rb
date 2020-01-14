@@ -37,19 +37,19 @@ RSpec.describe Users::Wizards::StepThree::FormParamsService do
           formFields: {
             job_category_ids: {
               name: 'curriculum_vitae[job_category_ids][]',
-              label: 'Elje las categorías en las que deseas buscar trabajo',
+              label: 'Elije la/las categorías en las que deseas buscar trabajo*',
               values: create_job_categories_list,
               current_value: ''
             },
             offer_type_ids: {
               name: 'curriculum_vitae[offer_type_ids][]',
-              label: 'Tipo de oferta',
+              label: 'Tipo de oferta*',
               values: create_offer_types_list,
               current_value: ''
             },
             contract_type_id: {
               name: 'curriculum_vitae[contract_type_id]',
-              label: '¿A que tipo de contrato te gustaría aplicar? ',
+              label: '¿A que tipo de contrato te gustaría aplicar?',
               values: create_contract_type_list,
               current_value: ''
             },

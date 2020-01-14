@@ -39,7 +39,7 @@ RSpec.describe Users::Wizards::StepTwo::FormParamsService do
             formFields: {
               about_me:{
                 name: "user[about_me]",
-                label: "Cuentanos un poco de ti*",
+                label: "Describe tu perfil*",
                 current_value: nil
               },
               sex_id:{
@@ -61,7 +61,7 @@ RSpec.describe Users::Wizards::StepTwo::FormParamsService do
               },
               educational_degree_id:{
                 name: "user[educational_degree_id]",
-                label: "Nivel de educación*",
+                label: "Nivel de educación",
                 values: create_educational_degree_list,
                 current_value: nil
               }
@@ -118,7 +118,7 @@ RSpec.describe Users::Wizards::StepTwo::FormParamsService do
               formFields: {
                 about_me:{
                   name: "user[about_me]",
-                  label: "Cuentanos un poco de ti*",
+                  label: "Describe tu perfil*",
                   current_value: "A very important person"
                 },
                 sex_id:{
@@ -140,7 +140,7 @@ RSpec.describe Users::Wizards::StepTwo::FormParamsService do
                 },
                 educational_degree_id:{
                   name: "user[educational_degree_id]",
-                  label: "Nivel de educación*",
+                  label: "Nivel de educación",
                   values: create_educational_degree_list,
                   current_value: educational_degrees.pluck(:id)[0]
                 }

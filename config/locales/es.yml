@@ -186,6 +186,10 @@ es:
               blank: 'Debes selecionar lugar de residencia'
             document_type_id:
               blank: 'Debes selecionar el tipo de documento de identidad'
+            about_me:
+              blank: 'Describe un poco más tu perfil, este campo no puede estar vacío.'
+            educational_degree_id:
+              blank: 'Debes seleccionar un nivel de educación'
 
         offer:
           attributes:

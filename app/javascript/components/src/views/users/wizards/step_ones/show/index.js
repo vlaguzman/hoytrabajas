@@ -25,7 +25,7 @@ const UsersWizardsStepOne = ({ csrf_param, csrf_token, formInfo }) => {
           <>
             <FormTitle title={title} subtitle={subtitle} />
             <div className="w-80">
-              { ShowMessage(errors, 'red') }
+              {ShowMessage(errors, 'red')}
               <form className="forms__candidate" action={action} method="post">
                 <input type="hidden" name={csrf_param} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />
@@ -53,6 +53,7 @@ UsersWizardsStepOne.propTypes = {
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
     form: PropTypes.shape({
+      errors: PropTypes.object,
       buttons: PropTypes.shape({
         submit: PropTypes.string.isRequired,
         nextPath: PropTypes.string,

@@ -10,6 +10,17 @@ RSpec.describe "Like new candidate", :type => :feature do
   let(:candidate) { create(:user, :first_time_candidate, email: "nuevousuario@gmail.com") }
   let(:current_month) { Time.zone.now.month }
 
+  describe "When the required fields does not filled", js: true do
+    it "Should return a errors message" do
+      sign_in candidate
+
+      visit users_wizards_step_two_path
+
+      find("span", text: /SIGUIENTE/).click
+
+      expect(page).to have_text('* Describe un poco más tu perfil, este campo no puede estar vacío.')
+    end
+  end
 
   describe "When visit step two" do
     it "Should show the expected text", js: true do

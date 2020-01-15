@@ -1,0 +1,30 @@
+.a-progressBar {
+  width: 100%;
+  position: fixed;
+  height: 4px;
+  z-index: 1000;
+
+  .progressBar__wrapper {
+    width: 100%;
+    display: flex;
+  }
+
+  .progressBar__bar {
+    transition: all 0.4s linear;
+    background: $color__orange-light;
+    height: 4px;
+  }
+
+  .progressBar__dots {
+    display: grid;
+    grid-gap: 0 4px;
+    grid-auto-flow: column;
+    margin-left: 4px;
+
+    div {
+      background: $color__orange-light;
+      width: 4px;
+      height: 4px;
+    }
+  }
+}

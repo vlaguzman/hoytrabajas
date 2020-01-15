@@ -1,4 +1,5 @@
 = render '/shared/header'
+= react_component("src/components/FormsLayout/FormProgress", { value: (100 / 11 * 1) }, prerender: false)
 = simple_form_for(current_user, url: users_wizards_step_zeros_curriculum_vitae_path, :html => { class: "upload_cv" }) do |f|
   %h1=t('info.title')
   %p=t('info.description')

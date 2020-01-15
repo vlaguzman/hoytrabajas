@@ -46,4 +46,21 @@ RSpec.describe "like new candidate", :type => :feature do
       expect(current_path).to eq(users_wizards_step_six_path)
     end
   end
+
+  feature "When user want to go exit form" do
+    it "Should be able to go home", js: true do
+      sign_in_and_visit_step_seven
+  
+      click_link_or_button('Inicio')
+      expect(current_path).to eq(root_path)
+    end
+  end
+
+  feature "When user want to see his progress" do
+    it "Should see the progress bar with the correct % of completion", js: true do
+      sign_in_and_visit_step_seven
+
+      expect( find('.progressBar__bar', visible: false).value.to_i ).to eq((100 / 11 * 8))
+    end
+  end
 end

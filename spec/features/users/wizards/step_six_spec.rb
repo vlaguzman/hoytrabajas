@@ -115,5 +115,14 @@ RSpec.describe "In wizards step six view", type: :feature do
       end
     end
 
+    feature "When user want to see his progress" do
+      it "Should see the progress bar with the correct % of completion", js: true do
+        sign_in candidate
+        visit users_wizards_step_six_path
+  
+        expect( find('.progressBar__bar', visible: false).value.to_i ).to eq((100 / 11 * 7))
+      end
+    end
+
   end
 end

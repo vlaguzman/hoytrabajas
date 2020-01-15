@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Paper from '@material-ui/core/Paper'
 import { Row } from 'reactstrap'
-import FormProgress from '../../../../../components/FormsLayout/FormProgress'
 import FormTitle from '../../../../../components/FormsLayout/FormTitle'
 import FormButtons from '../../../../../components/FormsLayout/FormButtons'
 import FormFields from './FormFields'
@@ -19,7 +18,6 @@ const CompaniesStepSeven = ({ formInfo, csrf_param, csrf_token }) => {
 
   return (
     <div className="m-formWrapper">
-      <FormProgress value={0} />
       <Row className="justify-content-center w-100 mx-0 px-20">
         <Paper className="d-flex flex-column position-relative paper-width justify-content-around align-items-center pt-60 mb-70">
           <>

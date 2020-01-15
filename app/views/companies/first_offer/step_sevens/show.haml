@@ -1,4 +1,5 @@
 = render '/shared/header'
+= react_component("src/components/FormsLayout/FormProgress", { value: (100 / 7 * 7) }, prerender: false)
 = react_component('views/companies/first_offer/step_sevens/show',
   {formInfo: @offer.form_information,
   log_out_companies: destroy_company_session_path,

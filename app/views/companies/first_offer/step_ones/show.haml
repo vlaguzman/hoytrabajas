@@ -1,4 +1,5 @@
 = render '/shared/header'
+= react_component("src/components/FormsLayout/FormProgress", { value: (100 / 7 * 1) }, prerender: false)
 = react_component('views/companies/first_offer/step_ones/show',
   {formInfo: @company.form_information,
   csrf_param: request_forgery_protection_token,

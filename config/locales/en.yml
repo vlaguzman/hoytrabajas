@@ -82,8 +82,7 @@ en:
               blank: "Please select a residence city, it cant be blank"
             document_type_id:
               blank: "Please select a document type, it cant be blank"
-        curriculum_vitae:
-          attributes:
+
         applied_offer:
           attributes:
             offer_id:
@@ -134,6 +133,8 @@ en:
               blank: "You must select at least one category in which you want to look for work, this field cannot be empty."
             soft_skills:
               blank: "You must select to highlight at least one skill in your profile, this field cannot be empty."
+            offer_types:
+              blank: "You must select to highlight at least one offer type, this field cannot be empty."
 
   time:
     formats:

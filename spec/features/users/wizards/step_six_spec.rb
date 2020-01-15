@@ -37,7 +37,7 @@ RSpec.describe "In wizards step six view", type: :feature do
 
         find("span", text: /SIGUIENTE/).click
 
-        expect(page).to have_text('* Debes seleccionar destacar por lo menos una habilidad en tu perfil, este campo no puede estar vacío.')
+        expect(page).to have_text('* Debes seleccionar por lo menos una habilidad en tu perfil, este campo no puede estar vacío.')
       end
     end
 

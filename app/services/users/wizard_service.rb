@@ -21,7 +21,7 @@ module Users::WizardService
 
     validate_curriculum = Users::Wizards::CurriculumVitaeErrorsService.(curriculum, update_params: update_params)
 
-    [validate_curriculum, first_valid && !validate_curriculum.errors.any?]
+    [validate_curriculum, first_valid && validate_curriculum.errors.empty?]
   end
 
   private
@@ -34,7 +34,7 @@ module Users::WizardService
 
     validate_candidate = Users::Wizards::UserErrorsService.(candidate, update_params: update_params)
 
-    [validate_candidate, first_valid && !validate_candidate.errors.any?]
+    [validate_candidate, first_valid && validate_candidate.errors.empty?]
   end
 
 

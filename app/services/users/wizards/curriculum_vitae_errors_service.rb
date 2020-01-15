@@ -13,6 +13,11 @@ class Users::Wizards::CurriculumVitaeErrorsService < AddModelErrorsService
       collection_name: :soft_skills,
       error_key: :blank
     },
+    {
+      key: :offer_type_ids,
+      collection_name: :offer_types,
+      error_key: :blank
+    }
   ]
 
 end

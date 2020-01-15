@@ -14,9 +14,14 @@ module Users::WizardService
   end
 
   def self.update_curriculum_vitae(curriculum, update_params: {})
-    [curriculum, curriculum.update(
+
+    first_valid = curriculum.update(
       HashesConverter.sanitize_array_values(hash: update_params)
-    )]
+    )
+
+    validate_curriculum = Users::Wizards::CurriculumVitaeErrorsService.(curriculum, update_params: update_params)
+
+    [validate_curriculum, first_valid && !validate_curriculum.errors.any?]
   end
 
   private
@@ -29,7 +34,7 @@ module Users::WizardService
 
     validate_candidate = Users::Wizards::UserErrorsService.(candidate, update_params: update_params)
 
-    [validate_candidate, first_valid && validate_candidate.errors.any?]
+    [validate_candidate, first_valid && !validate_candidate.errors.any?]
   end
 
 

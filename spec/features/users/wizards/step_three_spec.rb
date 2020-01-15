@@ -36,7 +36,7 @@ RSpec.describe "Like new candidate", :type => :feature do
 
         find("span", text: /SIGUIENTE/).click
 
-        expect(page).to have_text('* Describe un poco más tu perfil, este campo no puede estar vacío.')
+        expect(page).to have_text('* Debes seleccionar por lo menos una categoría en la que desees buscar trabajo, este campo no puede estar vacío.')
       end
     end
 

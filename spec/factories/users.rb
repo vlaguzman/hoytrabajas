@@ -14,6 +14,7 @@ FactoryBot.define do
     vehicles              { [create(:vehicle)] }
     driving_licences      { [create(:driving_licence)] }
     sign_in_count         { 1323 }
+    about_me              { Faker::FunnyName.name }
 
     association :contract_type, factory: :contract_type
     association :work_mode, factory: :work_mode
@@ -42,6 +43,7 @@ FactoryBot.define do
       born_city_id          { nil }
       residence_city_id     { nil }
       vehicles              { [] }
+      about_me              { nil }
     end
 
     association :document_type, factory: :document_type

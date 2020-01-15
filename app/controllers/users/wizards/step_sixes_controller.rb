@@ -10,8 +10,8 @@ class Users::Wizards::StepSixesController < ApplicationController
     updated_curriculum = Users::Wizards::StepSixService.(curriculum_vitae: curriculum_vitae, update_params: step_six_params)
 
     if updated_curriculum.errors.details.any?
-      user_presenter
-      render 'show'
+      user_presenter(user: updated_curriculum)
+      render :show
     else
       redirect_to users_wizards_step_seven_path
     end
@@ -19,8 +19,8 @@ class Users::Wizards::StepSixesController < ApplicationController
 
   private
 
-  def user_presenter(user: current_user)
-    @user = Users::Wizards::StepSixPresenter.new(user.curriculum_vitae)
+  def user_presenter(user: current_user.curriculum_vitae)
+    @user = Users::Wizards::StepSixPresenter.new(user)
   end
 
   def step_six_params

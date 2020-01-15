@@ -128,6 +128,13 @@ en:
               required: "Please select a job category"
               blank: "You must select a Job Category"
 
+        curriculum_vitae:
+          attributes:
+            job_categories:
+              blank: "You must select at least one category in which you want to look for work, this field cannot be empty."
+            soft_skills:
+              blank: "You must select to highlight at least one skill in your profile, this field cannot be empty."
+
   time:
     formats:
       default: "%A, %-d de %B de %Y %H:%M:%S %z"

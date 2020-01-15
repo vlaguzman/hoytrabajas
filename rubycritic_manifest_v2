@@ -1,4 +1,5 @@
 A          • Acknowledgment                                              6       0.0        0           1
+A          • AddModelErrorsService                                       1       48.21      0           6
 A          • AdminUser                                                   2       0.0        0           1
 A          • AdminUsers                                                  1       0.0        0           0
 A          • AdminUsers::SessionsController                              2       6.2        0           1
@@ -153,9 +154,8 @@ A          • Users::OmniauthCallbacksController                          1    
 A          • Users::ProfilesController                                   17      16.81      0           1
 A          • Users::RegistrationsController                              13      1.0        0           2
 A          • Users::SessionsController                                   3       0.0        0           1
-A          • Users::WizardService                                        8       22.44      0           2
 A          • Users::Wizards::Commons::FindOrCreateElementAssociation     1       22.47      0           4
-A          • Users::Wizards::ErrorsService                               3       31.81      0           6
+A          • Users::Wizards::CurriculumVitaeErrorsService                2       0.0        0           0
 A          • Users::Wizards::StepEight::FormParamsService                7       8.2        0           7
 A          • Users::Wizards::StepEightPresenter                          11      14.2       0           1
 A          • Users::Wizards::StepEightService                            9       17.22      0           1
@@ -187,7 +187,7 @@ A          • Users::Wizards::StepSevenPresenter                          5    
 A          • Users::Wizards::StepSevensController                        8       4.62       0           1
 A          • Users::Wizards::StepSix::FormParamsService                  9       9.0        0           6
 A          • Users::Wizards::StepSixPresenter                            5       14.2       0           1
-A          • Users::Wizards::StepSixesController                         11      22.55      0           1
+A          • Users::Wizards::StepSixesController                         12      22.55      0           1
 A          • Users::Wizards::StepTen::FormParamsService                  6       4.2        0           3
 A          • Users::Wizards::StepTenPresenter                            5       14.2       0           1
 A          • Users::Wizards::StepTenService                              4       4.0        0           1
@@ -205,6 +205,7 @@ A          • Users::Wizards::StepZero::CurriculumVitaeService            1    
 A          • Users::Wizards::StepZeroPresenter                           2       1.0        0           2
 A          • Users::Wizards::StepZeros::CurriculumVitaesController       4       14.48      0           2
 A          • Users::Wizards::StepZerosController                         3       3.24       0           1
+A          • Users::Wizards::UserErrorsService                           1       0.0        0           0
 A          • Users::WizardsController                                    4       24.97      0           5
 A          • Users::WizardsPresenter                                     3       4.8        0           1
 A          • UsersController                                             10      2.2        0           1
@@ -235,8 +236,9 @@ B          • Offers::ExpiredService                                      4    
 B          • Offers::ShowService                                         17      87.8       0           1
 B          • Offers::ViewsService                                        19      85.3       0           7
 B          • OffersOnDemand::SetInactiveService                          4       27.96      34          3
-B          • User                                                        44      54.53      0           2
+B          • User                                                        45      54.53      0           2
 B          • Users::ProfilesPresenter                                    5       72.56      0           9
+B          • Users::WizardService                                        10      26.27      58          3
 B          • Users::Wizards::StepOneService                              3       3.0        19          2
 B          • Users::Wizards::StepSixService                              11      35.03      31          2
 B          • Users::Wizards::StepTwoService                              2       3.0        19          2

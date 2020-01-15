@@ -14,15 +14,30 @@ RSpec.describe "In wizards step six view", type: :feature do
   feature "Like a new candidate" do
     let(:candidate) { create(:user, :first_time_candidate) }
 
-    feature "When dont fill only required fields and press 'Siguiente' button" do
+    feature "When fill only required fields and press 'Siguiente' button" do
       scenario "Should redirect to step seven path",js: true do
         sign_in candidate
 
         visit users_wizards_step_six_path
 
-        click_on 'Siguiente'
+        find("div[id='mui-component-select-curriculum_vitae[soft_skill_ids][]", visible: false).click
+        find("li", text: "Archer").click
+
+        find("span", text: /SIGUIENTE/).click
 
         expect(current_path).to eq(users_wizards_step_seven_path)
+      end
+    end
+
+    describe "When the required fields does not filled", js: true do
+      it "Should return a errors message" do
+        sign_in candidate
+
+        visit users_wizards_step_six_path
+
+        find("span", text: /SIGUIENTE/).click
+
+        expect(page).to have_text('* Debes seleccionar por lo menos una habilidad en tu perfil, este campo no puede estar vacío.')
       end
     end
 

@@ -186,6 +186,10 @@ es:
               blank: 'Debes selecionar lugar de residencia'
             document_type_id:
               blank: 'Debes selecionar el tipo de documento de identidad'
+            about_me:
+              blank: 'Describe un poco más tu perfil, este campo no puede estar vacío.'
+            educational_degree_id:
+              blank: 'Debes seleccionar un nivel de educación'
 
         offer:
           attributes:
@@ -219,6 +223,14 @@ es:
             title:
               blank: 'El Titulo reconocimiento no puede estar vacio'
 
+        curriculum_vitae:
+          attributes:
+            job_categories:
+              blank: "Debes seleccionar por lo menos una categoría en la que desees buscar trabajo, este campo no puede estar vacío."
+            soft_skills:
+              blank: "Debes seleccionar por lo menos una habilidad en tu perfil, este campo no puede estar vacío."
+            offer_types:
+              blank: "Debes seleccionar por lo menos un tipo de oferta, este campo no puede estar vacío."
   time:
     am: am
     formats:

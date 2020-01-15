@@ -82,6 +82,7 @@ en:
               blank: "Please select a residence city, it cant be blank"
             document_type_id:
               blank: "Please select a document type, it cant be blank"
+
         applied_offer:
           attributes:
             offer_id:
@@ -94,6 +95,10 @@ en:
               required: "The state is a required fill"
             applied_offer_status_id:
               blank: "Please select status, it cant be blank"
+            about_me:
+              blank: 'Add a description to the field "Tell us a little about yourself", this field cannot be empty.'
+            educational_degree_id:
+              blank: 'Please select a educational degree, it cant be blank'
         offer:
           attributes:
             company:
@@ -121,6 +126,15 @@ en:
             job_category:
               required: "Please select a job category"
               blank: "You must select a Job Category"
+
+        curriculum_vitae:
+          attributes:
+            job_categories:
+              blank: "You must select at least one category in which you want to look for work, this field cannot be empty."
+            soft_skills:
+              blank: "You must select to highlight at least one skill in your profile, this field cannot be empty."
+            offer_types:
+              blank: "You must select to highlight at least one offer type, this field cannot be empty."
 
   time:
     formats:

@@ -1,0 +1,18 @@
+en:
+  users:
+    wizards:
+      step_twos:
+        show:
+          title: "Let's start by getting to know each other"
+          subtitle: "Give companies valuable information about you."
+          form:
+            buttons:
+              submit: "Continue"
+              next: "Next"
+              previous: "Previous"
+            formFields:
+              about_me: "Describe your profile *"
+              sex_id: "Gender"
+              birthday: "Date of birth"
+              educational_degree_id: "Education degree"
+              limitation_ids:  "Do you have any limitation?"

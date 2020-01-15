@@ -6,12 +6,13 @@ import FormProgress from '../../../../../components/FormsLayout/FormProgress'
 import FormTitle from '../../../../../components/FormsLayout/FormTitle'
 import FormButtons from '../../../../../components/FormsLayout/FormButtons'
 import FormFields from './FormFields'
+import { ShowMessage } from '../../shared/message'
 
 const UsersWizardsStepTwo = ({ formInfo, csrf_param, csrf_token }) => {
   const {
     title,
     subtitle,
-    form: { buttons, action, method, type, formFields, errors }
+    form: { buttons, action, method, type, formFields, errors = null }
   } = formInfo
 
   const { nextPath, previousPath } = buttons
@@ -24,6 +25,7 @@ const UsersWizardsStepTwo = ({ formInfo, csrf_param, csrf_token }) => {
           <>
             <FormTitle title={title} subtitle={subtitle} />
             <div className="w-80">
+              {ShowMessage(errors, 'red')}
               <form className="forms__candidate" action={action} method="post">
                 <input type="hidden" name={csrf_param} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />
@@ -51,6 +53,7 @@ UsersWizardsStepTwo.propTypes = {
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
     form: PropTypes.shape({
+      errors: PropTypes.object,
       buttons: PropTypes.shape({
         submit: PropTypes.string.isRequired,
         next: PropTypes.string.isRequired,

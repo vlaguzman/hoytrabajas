@@ -11,8 +11,8 @@ es:
               next: "Saltar"
               previous: "Regresar"
             formFields:
-              job_category_ids: "Elje las categorías en las que deseas buscar trabajo"
-              offer_type_ids: "Tipo de oferta"
-              contract_type_id: "¿A que tipo de contrato te gustaría aplicar? "
+              job_category_ids: "Elije la/las categorías en las que deseas buscar trabajo*"
+              offer_type_ids: "Tipo de oferta*"
+              contract_type_id: "¿A que tipo de contrato te gustaría aplicar?"
               work_mode_ids: "Modalidad de trabajo"
               labor_disponibility_id: "Disponibilidad para trabajar"

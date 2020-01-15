@@ -11,7 +11,7 @@ class Companies::FirstOffer::StepTwosController < ApplicationController
     if company[:status].eql?(:ok)
       redirect_to companies_first_offer_step_three_path
     else
-      company_presenter(company[:data])
+      company_presenter(company: company[:data])
       render 'show'
     end
   end

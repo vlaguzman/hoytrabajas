@@ -30,4 +30,35 @@ RSpec.describe "When company fill the step two form", :type => :feature do
     end
   end
 
+
+  describe "Mandatory fields have not been filled" do
+    context "Required fields are empty" do
+      scenario "should retorn translate error", js: true do
+
+        sign_in company
+        visit companies_first_offer_step_two_path
+
+        expect(page).to have_content("Empecemos por conocernos")
+        expect(page).to have_content("Brinda a tu candidato información de tu empresa.")
+
+        expect(page).to have_tag(:form, with: { class: "forms__candidate" }) do
+          with_tag(:input, with: { name: 'company[description]' })
+        end
+
+        expect(page).to have_button('Siguiente')
+
+        fill_in 'company[description]', :with => ""
+
+        click_link_or_button('Siguiente')
+
+        company.reload
+
+        expect(current_path).to eq(companies_first_offer_step_two_path)
+
+        expect(page).to have_content("Por favor agrege la descripcion de la empresa, este campo no puede estar en blanco")
+
+      end
+    end
+  end
+
 end

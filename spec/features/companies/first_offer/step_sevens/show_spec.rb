@@ -73,6 +73,18 @@ RSpec.describe "When company fill the step seven form", :type => :feature do
     end
   end
 
+  describe "User want to exit the form" do
+    context "The navbar is visible" do
+      scenario "should click the home button and go to root path", js: true do
+        sign_in company
+        visit companies_first_offer_step_seven_path
+    
+        click_link_or_button('Inicio')
+        expect(current_path).to eq(root_path)
+      end
+    end
+  end
+
   #TODO daniel in progress
   feature "When only fill the technical skills section"
 

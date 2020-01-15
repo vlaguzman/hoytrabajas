@@ -17,9 +17,9 @@ const CompaniesStepThree = ({ formInfo, csrf_param, csrf_token }) => {
   } = formInfo
 
   return (
-    <div className="main-wrapper">
+    <div className="m-formWrapper">
       <FormProgress value={0} />
-      <Row className="mt-10 mb-70 justify-content-center w-100 pb-50 mx-0 px-20">
+      <Row className="justify-content-center w-100 mx-0 px-20">
         <Paper className="d-flex flex-column position-relative paper-width justify-content-around align-items-center pt-60 mb-70">
           <>
             <FormTitle title={title} subtitle={subtitle} />

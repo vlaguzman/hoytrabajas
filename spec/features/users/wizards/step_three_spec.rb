@@ -48,6 +48,14 @@ RSpec.describe "Like new candidate", :type => :feature do
 
       expect(page).to have_text(/¡Búsquemos las mejores ofertas!/)
     end
+
+    it "Should be able to go home", js: true do
+      sign_in candidate
+      visit users_wizards_step_three_path
+  
+      click_link_or_button('Inicio')
+      expect(current_path).to eq(root_path)
+    end
   end
 
   feature "When im in step three" do

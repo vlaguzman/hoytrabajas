@@ -105,5 +105,15 @@ RSpec.describe "In wizards step six view", type: :feature do
       end
     end
 
+    feature "When user want to go exit form" do
+      it "Should be able to go home", js: true do
+        sign_in candidate
+        visit users_wizards_step_six_path
+    
+        click_link_or_button('Inicio')
+        expect(current_path).to eq(root_path)
+      end
+    end
+
   end
 end

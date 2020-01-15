@@ -2,17 +2,19 @@ class Admins::OffersController < ApplicationController
   before_action :authenticate_admin_user!
 
   def edit
-    offer = Offer.find(edit_params[:offer_id])
+    offer = Offer.find(sanitize_offer_id)
     offer_presenter(offer)
   end
 
   def update
     offer = Admins::OffersService.(update_params: update_params)
+
     if offer[:status].eql?(:error)
-      redirect_to admin_offers_path
       flash[:error] = offer[:data].errors.full_messages
+      offer_presenter(offer[:data])
+      render :edit
     else
-      redirect_to admin_offers_path
+      redirect_to admin_offer_path(offer[:data].id)
       flash[:notice] = t('offer.form.messages.succesfully_update', offer_title: offer[:data].title)
     end
   end
@@ -20,11 +22,11 @@ class Admins::OffersController < ApplicationController
   private
 
   def offer_presenter(offer)
-   @offer = Admins::OffersPresenter.new(offer)
+    @offer = Admins::OffersPresenter.new(offer)
   end
 
-  def edit_params
-    params.permit(:offer_id)
+  def sanitize_offer_id
+    params.permit(:id)[:id]
   end
 
   def update_params
@@ -33,6 +35,7 @@ class Admins::OffersController < ApplicationController
       .permit(
         :id,
         :title,
+        :description,
         :vacancies_quantity,
         :offer_type_id,
         :work_mode_id,

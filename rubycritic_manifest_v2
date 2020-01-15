@@ -3,7 +3,7 @@ A          • AddModelErrorsService                                       1    
 A          • AdminUser                                                   2       0.0        0           1
 A          • AdminUsers                                                  1       0.0        0           0
 A          • AdminUsers::SessionsController                              2       6.2        0           1
-A          • Admins::OffersController                                    11      34.23      0           3
+A          • Admins::OffersController                                    12      38.82      0           4
 A          • Admins::OffersPresenter                                     2       2.2        0           2
 A          • AdminsService                                               1       13.19      0           1
 A          • AgeRange                                                    1       0.0        0           1
@@ -116,7 +116,7 @@ A          • OfferOnDemand                                               3    
 A          • OfferRequiredExperiences                                    1       0.0        0           1
 A          • OfferSalary                                                 8       0.0        0           1
 A          • OfferType                                                   5       0.0        0           1
-A          • Offers                                                      17      0.0        0           0
+A          • Offers                                                      18      0.0        0           0
 A          • Offers::AppliedOfferService                                 2       13.25      0           1
 A          • Offers::IndexService                                        6       11.26      0           3
 A          • Offers::UpdateOffersStatusDailyJob                          2       6.9        0           2
@@ -155,7 +155,7 @@ A          • Users::ProfilesController                                   17   
 A          • Users::RegistrationsController                              13      1.0        0           2
 A          • Users::SessionsController                                   3       0.0        0           1
 A          • Users::Wizards::Commons::FindOrCreateElementAssociation     1       22.47      0           4
-A          • Users::Wizards::CurriculumVitaeErrorsService                2       0.0        0           0
+A          • Users::Wizards::CurriculumVitaeErrorsService                3       0.0        0           0
 A          • Users::Wizards::StepEight::FormParamsService                7       8.2        0           7
 A          • Users::Wizards::StepEightPresenter                          11      14.2       0           1
 A          • Users::Wizards::StepEightService                            9       17.22      0           1
@@ -220,7 +220,7 @@ A          • WorkMethodology                                             1    
 A          • WorkMode                                                    3       0.0        0           1
 A          • WorkPosition                                                3       0.0        0           1
 A          • WorkingDay                                                  5       0.0        0           1
-B          • Admins::OffersService                                       6       66.75      0           1
+B          • Admins::OffersService                                       7       67.95      0           1
 B          • AffinityCalculator                                          11      68.63      46          15
 B          • Companies::FirstOffer::StepFivePresenter                    5       25.0       23          1
 B          • Companies::FirstOffer::StepFiveService                      4       38.92      18          6
@@ -238,7 +238,7 @@ B          • Offers::ViewsService                                        19   
 B          • OffersOnDemand::SetInactiveService                          4       27.96      34          3
 B          • User                                                        45      54.53      0           2
 B          • Users::ProfilesPresenter                                    5       72.56      0           9
-B          • Users::WizardService                                        10      26.27      58          3
+B          • Users::WizardService                                        11      26.27      58          3
 B          • Users::Wizards::StepOneService                              3       3.0        19          2
 B          • Users::Wizards::StepSixService                              11      35.03      31          2
 B          • Users::Wizards::StepTwoService                              2       3.0        19          2

@@ -1,10 +1,26 @@
 = simple_form_for @offer, url: admins_offer_path, html: { class: 'basic_form' } do |f|
-  %h1= "Editar #{@offer.title}"
+  %h1= "#{t('offer.title')} #{@offer.title}"
+
+  - @offer.errors.messages.each do |error, error_list|
+    - error_list.each do |error|
+      %span.error= error
+      %br
+
   = f.input :id,                 value: @offer.id, as: :hidden
   = f.input :title,              value: @offer.title, label: t('offer.form.labels.title')
+
+  %div.group.--forTextArea
+    %lable{ class: 'string required', for: 'offer_description' }
+      %abbr{ title: 'required' }*
+      = t('offer.form.labels.description')
+    %textarea#offer_description{ class: 'text required', name: 'offer[description]' }
+      = @offer.description
+    - @offer.errors[:description].each do |error|
+      %span.error= error
+
   = f.input :vacancies_quantity, value: @offer.vacancies_quantity, label: t('offer.form.labels.vacancies_quantity')
   = f.input :close_date, as: :date, order: [:day, :month, :year], value: @offer.close_date, label: t('offer.form.labels.close_date')
-  = f.input :status, collection: ['active', 'expire'], selected: @offer.status, label: t('offer.form.labels.status')
+  = f.input :status, collection: Offer::OFFER_STATUS, selected: @offer.status, label: t('offer.form.labels.status')
   %div.input
     = f.label :immediate_start, label: t('offer.form.labels.immediate_start')
     = f.check_box :immediate_start,     value: @offer.immediate_start
@@ -67,6 +83,8 @@
     %span=t('offer.form.labels.job_categories')
     %div.group
       = f.input :job_categories, collection: @offer.collection(JobCategory), checked: @offer.job_category_ids, label_method: :first, value_method: :second, as: :check_boxes, label: false
+    - @offer.errors[:job_category_ids].each do |error|
+      %span.error= error
 
   %div
     %span=t('offer.form.labels.work_positions')

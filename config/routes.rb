@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :job_categories, only:[:index]
 
   namespace :admins do
-    resource :offer, only: [:edit, :update]
+    resources :offers, only: [:edit, :update]
   end
 
   namespace :companies do

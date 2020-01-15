@@ -5,6 +5,7 @@ en:
         succesfully_update: 'Offer %{offer_title} updated succesfully!'
       labels:
         title: 'Title'
+        description: 'Detailed description of the offer'
         vacancies_quantity: 'Vacancies quantity'
         close_date: 'Close date'
         immediate_start: 'Immediate start'

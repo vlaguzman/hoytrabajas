@@ -34,7 +34,7 @@ RSpec.describe "Admin can create an Offer", type: :feature do
 
     scenario "the admin dont select the category data" do
       sign_in create(:admin_user)
-      visit admin_dashboard_path 
+      visit admin_dashboard_path
       expect(page).to have_content("Active Admin")
 
       has_button?("Offers")

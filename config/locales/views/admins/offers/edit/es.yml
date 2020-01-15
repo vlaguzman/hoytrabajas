@@ -1,10 +1,12 @@
 es:
   offer:
+    title: 'Editar la oferta: '
     form:
       messages:
-        succesfully_update: 'La oferta %{offer_title} actualizada exitosamente!'
+        succesfully_update: 'La oferta %{offer_title} fue actualizada exitosamente!'
       labels:
         title: 'Titulo'
+        description: 'Descripción detallada de la oferta'
         vacancies_quantity: 'Cantidad de vacantes'
         close_date: 'Fecha de finalización'
         immediate_start: 'Inicio inmediato'

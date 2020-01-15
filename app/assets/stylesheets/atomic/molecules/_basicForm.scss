@@ -9,6 +9,15 @@
   .group {
     display: flex;
 
+    &.--forTextArea {
+      flex-direction: column;
+
+      textarea {
+        height: 15vh;
+      }
+
+    }
+
     .hidden {
       display: none;
     }

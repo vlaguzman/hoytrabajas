@@ -7,6 +7,7 @@ import FormTitle from '../../../../../components/FormsLayout/FormTitle'
 import FormButtons from '../../../../../components/FormsLayout/FormButtons'
 import FormFields from './FormFields'
 import { ShowMessage } from '../../../../users/wizards/shared/message'
+
 const CompaniesStepOne = ({ formInfo, csrf_param, csrf_token }) => {
   const {
     title,
@@ -24,7 +25,7 @@ const CompaniesStepOne = ({ formInfo, csrf_param, csrf_token }) => {
           <>
             <FormTitle title={title} subtitle={subtitle} />
             <div className="w-80">
-              { ShowMessage(errors, 'red') }
+              {ShowMessage(errors, 'red')}
               <form className="forms__candidate" action={action} method="post">
                 <FormFields type={type} formFields={formFields} />
                 <input type="hidden" name={csrf_param} value={csrf_token} />
@@ -52,6 +53,7 @@ CompaniesStepOne.propTypes = {
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
     form: PropTypes.shape({
+      errors: PropTypes.object,
       buttons: PropTypes.shape({
         submit: PropTypes.string.isRequired,
         next: PropTypes.string.isRequired,

@@ -121,8 +121,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/users/wizards/step_zero_presenter.rb",100,7,3,3,0
 "./app/presenters/users/wizards_presenter.rb",100,14,4,4,0
 "./app/presenters/users_presenter.rb",100,19,5,5,0
-"./app/services/add_model_errors_service.rb",100,59,23,23,0
-"./app/services/admins/offers_service.rb",100,62,20,20,0
+"./app/services/admins/offers_service.rb",100,63,20,20,0
 "./app/services/admins_service.rb",100,15,8,8,0
 "./app/services/affinity_calculator.rb",100,77,35,35,0
 "./app/services/base_form_wizards_service.rb",100,99,52,52,0

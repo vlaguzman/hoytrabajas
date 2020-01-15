@@ -3,7 +3,7 @@ A          • AddModelErrorsService                                       1    
 A          • AdminUser                                                   2       0.0        0           1
 A          • AdminUsers                                                  1       0.0        0           0
 A          • AdminUsers::SessionsController                              2       6.2        0           1
-A          • Admins::OffersController                                    11      34.23      0           3
+A          • Admins::OffersController                                    12      38.82      0           4
 A          • Admins::OffersPresenter                                     2       2.2        0           2
 A          • AdminsService                                               1       13.19      0           1
 A          • AgeRange                                                    1       0.0        0           1
@@ -116,7 +116,7 @@ A          • OfferOnDemand                                               3    
 A          • OfferRequiredExperiences                                    1       0.0        0           1
 A          • OfferSalary                                                 8       0.0        0           1
 A          • OfferType                                                   5       0.0        0           1
-A          • Offers                                                      17      0.0        0           0
+A          • Offers                                                      18      0.0        0           0
 A          • Offers::AppliedOfferService                                 2       13.25      0           1
 A          • Offers::IndexService                                        6       11.26      0           3
 A          • Offers::UpdateOffersStatusDailyJob                          2       6.9        0           2
@@ -220,7 +220,7 @@ A          • WorkMethodology                                             1    
 A          • WorkMode                                                    3       0.0        0           1
 A          • WorkPosition                                                3       0.0        0           1
 A          • WorkingDay                                                  5       0.0        0           1
-B          • Admins::OffersService                                       6       66.75      0           1
+B          • Admins::OffersService                                       7       67.95      0           1
 B          • AffinityCalculator                                          11      68.63      46          15
 B          • Companies::FirstOffer::StepFivePresenter                    5       25.0       23          1
 B          • Companies::FirstOffer::StepFiveService                      4       38.92      18          6

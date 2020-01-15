@@ -45,6 +45,7 @@ RSpec.describe Admins::OffersService do
         {
           id:                     offer.id,
           title:                  'Offer for only devs',
+          description:            'A very good description, oh yeah!',
           vacancies_quantity:     '2',
           "close_date(1i)"=>      '2020',
           "close_date(2i)"=>      '1',
@@ -105,6 +106,7 @@ RSpec.describe Admins::OffersService do
         expect(offer[:data]).to be_an_instance_of(Offer)
 
         expect(offer[:data].title).to eq('Offer for only devs')
+        expect(offer[:data].description).to eq('A very good description, oh yeah!')
         expect(offer[:data].vacancies_quantity).to eq(2)
         expect(offer[:data].close_date.strftime("%F")).to eq(Time.new(2020, 01, 4).strftime("%F"))
         expect(offer[:data].immediate_start).to be_truthy
@@ -167,6 +169,7 @@ RSpec.describe Admins::OffersService do
         {
           id:                     offer.id,
           title:                  '',
+          description:            '',
           vacancies_quantity:     '2',
           "close_date(1i)"=>      '2020',
           "close_date(2i)"=>      '1',
@@ -226,7 +229,15 @@ RSpec.describe Admins::OffersService do
 
         expect(offer[:data]).to be_an_instance_of(Offer)
 
-        expect(offer[:data].errors.details).to eq({:title => [{:error=>:blank}, {:count=>3, :error=>:too_short}]})
+        expected_errors = {
+          :title=>[
+            {:error=>:blank},
+            {:error=>:too_short, :count=>3}
+          ],
+          :description=>[{:error=>:blank}]
+        }
+
+        expect(offer[:data].errors.details).to eq(expected_errors)
       end
     end
   end

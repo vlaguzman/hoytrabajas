@@ -1,10 +1,11 @@
 = simple_form_for @offer, url: admins_offer_path, html: { class: 'basic_form' } do |f|
-  %h1= "Editar #{@offer.title}"
+  %h1= "#{t('offer.title')} #{@offer.title}"
   = f.input :id,                 value: @offer.id, as: :hidden
   = f.input :title,              value: @offer.title, label: t('offer.form.labels.title')
+  = f.input :description,        value: @offer.description, label: t('offer.form.labels.description')
   = f.input :vacancies_quantity, value: @offer.vacancies_quantity, label: t('offer.form.labels.vacancies_quantity')
   = f.input :close_date, as: :date, order: [:day, :month, :year], value: @offer.close_date, label: t('offer.form.labels.close_date')
-  = f.input :status, collection: ['active', 'expire'], selected: @offer.status, label: t('offer.form.labels.status')
+  = f.input :status, collection: Offer::OFFER_STATUS, selected: @offer.status, label: t('offer.form.labels.status')
   %div.input
     = f.label :immediate_start, label: t('offer.form.labels.immediate_start')
     = f.check_box :immediate_start,     value: @offer.immediate_start

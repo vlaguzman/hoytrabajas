@@ -11,6 +11,7 @@ module Admins::OffersService
     create_or_update_associations(params)
     {
       title:                  params[:title],
+      description:            params[:description],
       vacancies_quantity:     params[:vacancies_quantity],
       close_date:             prepare_date(params),
       immediate_start:        params[:immediate_start],

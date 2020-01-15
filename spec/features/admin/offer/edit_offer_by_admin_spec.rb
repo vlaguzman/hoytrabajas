@@ -80,12 +80,13 @@ RSpec.describe "Admin can edit an offer", type: :feature do
       has_button?("Editar")
 
       click_on("Editar")
-      expect(current_path).to eq(edit_admins_offer_path)
-      expect(page).to have_content("Editar #{offer.title}")
+      expect(current_path).to eq(edit_admins_offer_path(offer.id))
+      expect(page).to have_content("Editar la oferta: #{offer.title}")
 
       expect(page).to have_tag(:form, with: { id: "edit_offer_#{offer.id}" }) do
         with_tag(:input,  with: { name: 'offer[id]',                 type: 'hidden'})
         with_tag(:input,  with: { name: 'offer[title]',              type: 'text'})
+        with_tag(:input,  with: { name: 'offer[description]',        type: 'text'})
         with_tag(:input,  with: { name: 'offer[vacancies_quantity]', type: 'number'})
         with_tag(:input,  with: { name: 'offer[vacancies_quantity]', type: 'number'})
         with_tag(:select, with: { name: 'offer[close_date(3i)]'})
@@ -148,6 +149,7 @@ RSpec.describe "Admin can edit an offer", type: :feature do
 
       within "#edit_offer_#{offer.id}" do
         fill_in 'offer[title]',              with: 'Offer for only devs'
+        fill_in 'offer[description]',        with: 'A super Dupper description'
         fill_in 'offer[vacancies_quantity]', with: 2
         select('4', from: 'offer[close_date(3i)]')
         select('Enero', from: 'offer[close_date(2i)]')
@@ -194,14 +196,17 @@ RSpec.describe "Admin can edit an offer", type: :feature do
         click_on('Guardar')
       end
 
+      expect(current_path).to eq(admin_offer_path(offer.id))
+
       offer.reload
 
       expect(offer.title).to eq('Offer for only devs')
+      expect(offer.description).to eq('A super Dupper description')
       expect(offer.vacancies_quantity).to eq(2)
       expect(offer.close_date.strftime("%F")).to eq(Time.new(2020, 01, 4).strftime("%F"))
       expect(offer.immediate_start).to be_truthy
       expect(offer.required_experience).to be_truthy
-      expect(offer.status).to eq('active')
+      expect(offer.status).to eq(Offer::OFFER_STATUS[2])
 
       expect(AgeRange.count).to eq(1)
 
@@ -267,14 +272,16 @@ RSpec.describe "Admin can edit an offer", type: :feature do
       has_button?("Editar")
 
       click_on("Editar")
-      expect(current_path).to eq(edit_admins_offer_path)
-      expect(page).to have_content("Editar #{offer.title}")
+      expect(current_path).to eq(edit_admins_offer_path(offer.id))
+      expect(page).to have_content("Editar la oferta: #{offer.title}")
 
       within "#edit_offer_#{offer.id}" do
         fill_in 'offer[title]', with: ''
 
         click_on('Guardar')
       end
+
+      expect(current_path).to eq(admins_offer_path(offer.id))
 
       expect(page).to have_content("Por favor ingrese un título a la oferta, este campo no puede estar en blanco")
     end

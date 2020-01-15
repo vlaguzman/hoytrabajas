@@ -160,6 +160,10 @@ es:
               too_short: 'La contraseña es muy corta'
             password_confirmation:
               confirmation: 'Su contraseña no coincide con la confirmación, por favor haga que su contraseña se igual a la verificación'
+            name:
+              blank: 'Por favor ingresa el nombre de su empresa, este campo no puede estar en blanco'
+            contact_cellphone:
+              blank: 'Por favor ingresa un numero de contacto, este campo no puede estar en blanco'
         user:
           attributes:
             name:

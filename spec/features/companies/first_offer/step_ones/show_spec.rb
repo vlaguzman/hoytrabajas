@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe "When company fill the step one form", :type => :feature do
   let(:company) { create(:company, :first_time, name: 'HoyTrabajas.com') }
 
+  let(:company_two) { create(:company, :first_time) }
+
   let!(:industry) { create(:industry) }
 
   def expected_page_structure
@@ -67,4 +69,36 @@ RSpec.describe "When company fill the step one form", :type => :feature do
       end
     end
   end
+
+  describe "Mandatory fields have not been filled" do
+    context "Required fields are empty" do
+      scenario "should retorn translate error", js: true do
+
+      sign_in company_two
+
+      visit companies_first_offer_step_one_path
+
+      expected_page_structure
+      fill_form(
+        {
+          name:               '',
+          industry_id:        '',
+          contact_cellphone:  ''
+        }
+      )
+
+      click_link_or_button('Siguiente')
+
+      company.reload
+
+      expect(current_path).to eq(companies_first_offer_step_one_path)
+
+      expect(page).to have_content("Por favor ingresa el nombre de tu empresa, este campo no puede estar en blanco")
+      expect(page).to have_content("Por favor ingresa la industria a la que pertenece, este campo no puede estar en blanco")
+      expect(page).to have_content("Por favor ingresa un numero de contacto, este campo no puede estar en blanco")
+
+      end
+    end
+  end
+
 end

@@ -90,7 +90,7 @@ RSpec.describe "When company fill the step three form", :type => :feature do
             title: '',
             description: '',
             job_category_id: job_category.description,
-            offer_type_id: offer_type.description,
+            offer_type_id: '',
             work_mode_id: work_mode.description,
             offers_work_positions: work_position.description
           }
@@ -98,6 +98,7 @@ RSpec.describe "When company fill the step three form", :type => :feature do
         click_link_or_button('Siguiente')
 
         expect(page).to have_content("Por favor ingrese un título a la oferta, este campo no puede estar en blanco")
+        expect(page).to have_content("Por favor ingrese un tipo de oferta, este campo no puede estar en blanco")
         expect(page).to have_content("Por favor ingrese una descripción a la oferta, este campo no puede estar en blanco")
       end
     end

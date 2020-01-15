@@ -16,5 +16,5 @@ es:
               industry_id: "Sector al que pertenece tu empresa*"
               contact_work_position: "Cargo"
               contact_name: "Persona de contacto"
-              contact_cellphone: "Número de contacto"
+              contact_cellphone: "Número de contacto*"
               employees_range_id: "Número de empleados"

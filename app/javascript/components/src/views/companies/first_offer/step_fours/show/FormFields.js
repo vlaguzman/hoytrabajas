@@ -58,7 +58,6 @@ const FormFields = props => {
           name={contract_type_id.name}
           label={contract_type_id.label}
           selectOptions={contract_type_id.values}
-          isRequired
         />
       </Col>
     ),
@@ -95,7 +94,6 @@ const FormFields = props => {
           label={sex_ids.label}
           selectOptions={sex_ids.values}
           isMultiple
-          isRequired
         />
       </Col>
     ),

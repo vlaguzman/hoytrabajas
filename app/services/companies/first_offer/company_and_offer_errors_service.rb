@@ -2,10 +2,7 @@ class Companies::FirstOffer::CompanyAndOfferErrorsService < AddModelErrorsServic
 
   VALIDATE_SINGLE_PARAMS = [
 
-     { key: :name,               error_key: :blank },
-     { key: :contact_cellphone,  error_key: :blank },
-     { key: :industry_id,        error_key: :blank },
-     { key: :description,        error_key: :blank }
+     { key: :industry_id,        error_key: :blank }
 
   ]
 

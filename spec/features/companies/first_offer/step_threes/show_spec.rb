@@ -81,24 +81,17 @@ RSpec.describe "When company fill the step three form", :type => :feature do
     end
     context "Data is not correct" do
       scenario "should not save succesfully data", js: true do
+
         sign_in company
+
         visit companies_first_offer_step_three_path
 
-        expected_page_structure
-        fill_form(
-          {
-            title: '',
-            description: '',
-            job_category_id: job_category.description,
-            offer_type_id: '',
-            work_mode_id: work_mode.description,
-            offers_work_positions: work_position.description
-          }
-        )
         click_link_or_button('Siguiente')
 
+        expect(current_path).to eq(companies_first_offer_step_three_path)
+
         expect(page).to have_content("Por favor ingrese un título a la oferta, este campo no puede estar en blanco")
-        expect(page).to have_content("Por favor ingrese un tipo de oferta, este campo no puede estar en blanco")
+        expect(page).to have_content("Por favor seleccioné una categoría, este campo es requerido")
         expect(page).to have_content("Por favor ingrese una descripción a la oferta, este campo no puede estar en blanco")
       end
     end

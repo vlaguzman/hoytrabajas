@@ -36,10 +36,12 @@ FactoryBot.define do
       contact_web_site      { nil }
       description           { nil }
       contact_work_position { nil }
+      industry              { nil }
     end
 
     association :city, factory: :city
     association :employees_range, factory: :employees_range
+    association :industry, factory: :industry
 
     factory :with_logo_company, traits: [:with_logo]
   end

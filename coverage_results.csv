@@ -17,7 +17,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/available_work_days_offers.rb",100,4,3,3,0
 "./app/models/city.rb",100,7,4,4,0
 "./app/models/companies_users.rb",100,4,3,3,0
-"./app/models/company.rb",100,31,15,15,0
+"./app/models/company.rb",100,35,17,17,0
 "./app/models/company_transition.rb",100,4,3,3,0
 "./app/models/contract_type.rb",100,3,2,2,0
 "./app/models/country.rb",100,3,2,2,0
@@ -133,7 +133,8 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/base_forms/wizards_translations_service.rb",100,22,11,11,0
 "./app/services/cities/cities_with_offers_list_service.rb",100,12,5,5,0
 "./app/services/companies/dashboards/offers_service.rb",100,46,18,18,0
-"./app/services/companies/first_offer/common_service.rb",100,11,5,5,0
+"./app/services/companies/first_offer/common_service.rb",100,16,7,7,0
+"./app/services/companies/first_offer/company_and_offer_errors_service.rb",100,11,3,3,0
 "./app/services/companies/first_offer/step_eight/form_params_service.rb",100,2,1,1,0
 "./app/services/companies/first_offer/step_five/form_params_service.rb",100,65,26,26,0
 "./app/services/companies/first_offer/step_five_service.rb",100,49,24,24,0

@@ -12,6 +12,7 @@ class Company < ApplicationRecord
 
   belongs_to :employees_range, optional: true
   belongs_to :city, optional: true
+  belongs_to :industry, optional: true
 
   has_many :offers
   has_many :transitions, class_name: "CompanyTransition", autosave: false

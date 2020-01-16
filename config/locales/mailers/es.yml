@@ -1,4 +1,4 @@
 es:
   mailers:
     dailly_update_offers:
-      subject: "Dailly Offers Status"
+      subject: 'Reporte diario de actuaizacion de ofertas'

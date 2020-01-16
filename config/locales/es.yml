@@ -165,9 +165,9 @@ es:
             contact_cellphone:
               blank: 'Por favor ingresa un número de contacto, este campo no puede estar en blanco'
             industry_id:
-              blank: 'Por favor seleccioné el sector al que pertenese la empresa, este campo no puede estar en blanco'
+              blank: 'Por favor seleccione el sector al que pertenese la empresa, este campo no puede estar en blanco'
             description:
-              blank: 'Por favor agrege la descripcion de la empresa, este campo no puede estar en blanco'
+              blank: 'Por favor agrege la descripción de la empresa, este campo no puede estar en blanco'
         user:
           attributes:
             name:
@@ -209,7 +209,7 @@ es:
             description:
               blank: 'Por favor ingrese una descripción a la oferta, este campo no puede estar en blanco'
             job_category_ids:
-              blank: 'Por favor seleccioné una categoría, este campo es requerido'
+              blank: 'Por favor seleccione una categoría, este campo es requerido'
             status:
               inclusion: '%{value} no es un estado valido, estados validos: [:expired, :hired, :active, :preview, :trash]'
         educational_level:

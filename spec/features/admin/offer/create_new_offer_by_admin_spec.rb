@@ -50,7 +50,7 @@ RSpec.describe "Admin can create an Offer", type: :feature do
         click_on 'Guardar Offer'
       end
 
-      expect(page).to have_content("Por favor seleccioné una categoría, este campo es requerido")
+      expect(page).to have_content("Por favor seleccione una categoría, este campo es requerido")
       expect(Offer.count).to eq(0)
     end
 

@@ -91,7 +91,7 @@ RSpec.describe "When company fill the step three form", :type => :feature do
         expect(current_path).to eq(companies_first_offer_step_three_path)
 
         expect(page).to have_content("Por favor ingrese un título a la oferta, este campo no puede estar en blanco")
-        expect(page).to have_content("Por favor seleccioné una categoría, este campo es requerido")
+        expect(page).to have_content("Por favor seleccione una categoría, este campo es requerido")
         expect(page).to have_content("Por favor ingrese una descripción a la oferta, este campo no puede estar en blanco")
       end
     end

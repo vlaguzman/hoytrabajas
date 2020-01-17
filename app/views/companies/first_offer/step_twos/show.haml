@@ -1,5 +1,5 @@
 = render '/shared/header'
-= react_component("src/components/FormsLayout/FormProgress", { value: (100 / 7 * 2) }, prerender: false)
+= react_component("src/components/FormsLayout/FormProgress", { value: FormProgressManager.calculate_company_progress(2) }, prerender: false)
 = react_component('views/companies/first_offer/step_twos/show',
   {formInfo: @company.form_information,
   csrf_param: request_forgery_protection_token,

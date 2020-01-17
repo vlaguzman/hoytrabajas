@@ -84,7 +84,7 @@ RSpec.describe "When company fill the step one form", :type => :feature do
 
       expect(page).to have_content("Por favor ingresa el nombre de la empresa, este campo no puede estar en blanco")
       expect(page).to have_content("Por favor ingresa un número de contacto, este campo no puede estar en blanco")
-      expect(page).to have_content("Por favor seleccione el sector al que pertenese la empresa, este campo no puede estar en blanco")
+      expect(page).to have_content("Por favor seleccione el sector al que pertenece la empresa, este campo no puede estar en blanco")
 
       end
     end

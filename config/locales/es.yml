@@ -165,7 +165,7 @@ es:
             contact_cellphone:
               blank: 'Por favor ingresa un número de contacto, este campo no puede estar en blanco'
             industry_id:
-              blank: 'Por favor seleccione el sector al que pertenese la empresa, este campo no puede estar en blanco'
+              blank: 'Por favor seleccione el sector al que pertenece la empresa, este campo no puede estar en blanco'
             description:
               blank: 'Por favor agrege la descripción de la empresa, este campo no puede estar en blanco'
         user:

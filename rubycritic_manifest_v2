@@ -35,7 +35,7 @@ A          • Companies::Dashboards::OffersService                        3    
 A          • Companies::DashboardsController                             3       7.23       0           1
 A          • Companies::DashboardsPresenter                              2       3.2        0           2
 A          • Companies::FirstOffer::CommonService                        3       6.27       0           1
-A          • Companies::FirstOffer::CompanyAndOfferErrorsService         1       0.0        0           0
+A          • Companies::FirstOffer::CompanyAndOfferErrorsService         2       0.0        0           0
 A          • Companies::FirstOffer::StepEight::FormParamsService         3       0.0        0           1
 A          • Companies::FirstOffer::StepEightPresenter                   4       9.4        0           1
 A          • Companies::FirstOffer::StepEightsController                 3       5.44       0           1
@@ -66,7 +66,7 @@ A          • Companies::ListCandidatesPresenter                          1    
 A          • Companies::RegistrationsController                          7       1.0        0           2
 A          • CompaniesController                                         7       3.4        0           1
 A          • CompaniesUsers                                              1       0.0        0           1
-A          • Company                                                     19      3.61       0           1
+A          • Company                                                     21      3.61       0           1
 A          • CompanyService                                              4       12.89      0           1
 A          • CompanyStateMachine                                         3       4.0        0           1
 A          • CompanyTransition                                           2       0.0        0           1

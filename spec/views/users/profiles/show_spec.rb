@@ -19,6 +19,7 @@ RSpec.describe "users/profiles/show" do
     expect(rendered).to have_content("test@test.com")
     expect(rendered).to have_content("311 353 5522")
     expect(rendered).to have_link("Descargar Curriculum")
+    expect(rendered).to have_link("Editar Información")
 
     expect(rendered).to have_content("Sobre mi")
     expect(rendered).to have_content("Quis minim aliquip ea tempor reprehenderit voluptate.")

@@ -8,6 +8,30 @@ RSpec.describe Users::ProfilesPresenter do
   let!(:curriculum_vitae)  { create(:curriculum_vitae, user: user, educational_level_ids: [educational_level.id], work_experience_ids: [work_experience.id], job_category_ids: [job_category.id]) }
   let(:subject)            { described_class.new(user) }
 
+  describe "#basic_user_data" do
+    context "User basic information" do
+      it "Should return data basic of user" do
+        response = subject.basic_user_data
+
+        result = [
+          {
+            name: user.name,
+            last_name: user.last_name,
+            birthday: user.birthday,
+            document_type:  user.document_type,
+            identification_number: user.identification_number,
+            nationalities:  user.nationalities.pluck(:description),
+            born_state: user.born_city.state,
+            born_city: user.born_city
+          }
+        ]
+
+        expect(response).to eq(result)
+
+      end
+    end
+  end 
+
   describe "#contact_number_with_format" do
     context "When a user has a number" do
       it "Should return number transform" do
@@ -75,10 +99,10 @@ RSpec.describe Users::ProfilesPresenter do
       it "Should return interests of a user" do
         response = subject.interests_present?
         result = {
-          job_categories: true,
-          contract_type: false,
-          offer_types: false,
-          work_modes: false
+          job_categories:  true,
+          contract_type:   false,
+          offer_types:     false,
+          work_modes:      false
         }
 
         expect(response).to eq(result)

@@ -73,7 +73,7 @@ RSpec.describe "When company fill the step seven form", :type => :feature do
     end
   end
 
-  describe "User want to exit the form" do
+  describe "Company want to exit the form" do
     context "The navbar is visible" do
       scenario "should click the home button and go to root path", js: true do
         sign_in company
@@ -86,7 +86,7 @@ RSpec.describe "When company fill the step seven form", :type => :feature do
     end
   end
 
-  describe "User want to see the progress of completion" do
+  describe "Company want to see the progress of completion" do
     it "Should see the progress bar with the correct % of completion", js: true do
       sign_in company
       visit companies_first_offer_step_seven_path(offer_id: offer.id)

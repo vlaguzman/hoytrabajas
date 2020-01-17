@@ -93,7 +93,7 @@ RSpec.describe "In wizards step eight view", type: :feature do
       end
     end
 
-    feature "When user want to go exit form" do
+    feature "User want to exit from form" do
       it "Should be able to go home", js: true do
         sign_in candidate
         visit users_wizards_step_eight_path

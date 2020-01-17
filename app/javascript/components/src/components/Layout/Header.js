@@ -299,7 +299,7 @@ const Header = props => {
           />
         )} */}
       </Navbar>
-      <div style={{ paddingBottom: '89px' }} />
+      <div className="a-paddingBottom__89" />
     </>
   )
 }

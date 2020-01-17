@@ -47,7 +47,7 @@ RSpec.describe "like new candidate", :type => :feature do
     end
   end
 
-  feature "When user want to go exit form" do
+  feature "User want to exit from form" do
     it "Should be able to go home", js: true do
       sign_in_and_visit_step_seven
   

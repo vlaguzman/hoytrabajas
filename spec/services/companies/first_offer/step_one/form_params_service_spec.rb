@@ -53,7 +53,7 @@ RSpec.describe Companies::FirstOffer::StepOne::FormParamsService do
             },
             contact_cellphone: {
               name: 'comapny[contact_cellphone]',
-              label: "Número de contacto",
+              label: "Número de contacto*",
               current_value: nil
             },
             employees_range_id: {

@@ -32,7 +32,7 @@ RSpec.describe Companies::FirstOffer::StepTwo::FormParamsService do
           formFields: {
             description: {
               name: 'company[description]',
-              label: 'Agrega la descripción de tu empresa/negocio',
+              label: 'Agrega la descripción de tu empresa/negocio*',
               current_value: ""
             }
           },

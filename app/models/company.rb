@@ -1,4 +1,7 @@
 class Company < ApplicationRecord
+
+  validates :name, :contact_cellphone, :description, presence: true, allow_nil: true
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise  :database_authenticatable, :registerable,
@@ -9,6 +12,7 @@ class Company < ApplicationRecord
 
   belongs_to :employees_range, optional: true
   belongs_to :city, optional: true
+  belongs_to :industry, optional: true
 
   has_many :offers
   has_many :transitions, class_name: "CompanyTransition", autosave: false

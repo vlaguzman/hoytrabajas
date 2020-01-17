@@ -56,6 +56,14 @@ en:
               too_short: 'The password is too short'
             password_confirmation:
               confirmation: 'The two password are different, confirm the passwords'
+            name:
+              blank: 'Please enter the company name, it cant be blank'
+            contact_cellphone:
+              blank: 'Please enter a contact number, it cant be blank'
+            industry_id:
+              blank: 'Please select a industry, it cant be blank'
+            description:
+              blank: 'Please enter a description, it cant be blank'
         user:
           attributes:
             name:

@@ -2,7 +2,7 @@
   width: 100%;
   position: fixed;
   height: 4px;
-  z-index: 1000;
+  z-index: $zIndex__progressBar;
 
   .progressBar__wrapper {
     width: 100%;

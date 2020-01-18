@@ -1,6 +1,15 @@
 class Users::Wizards::CurriculumVitaeErrorsService < AddModelErrorsService
 
-  VALIDATE_SINGLE_PARAMS = []
+  VALIDATE_SINGLE_PARAMS = [
+    {
+      key: :technical_skills,
+      error_key: :invalid_skill
+    },
+    {
+      key: :to_learn_skills,
+      error_key: :invalid_skill
+    }
+  ]
 
   VALIDATE_COLLECTION_PARAMS = [
     {

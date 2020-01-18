@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button'
 const Presentation = ({
   title_one,
   title_two,
-  title_decription,
+  title_description,
   welcome_to_your,
   dashborad,
   grow_to_premium,
@@ -46,7 +46,7 @@ const Presentation = ({
                 {title_two}
               </Typography>
               <Typography className="my-25 w-60" variant="body2">
-                {title_decription}
+                {title_description}
               </Typography>
               {/* <Button
                 className="mt-25 fw-bold"
@@ -107,7 +107,7 @@ export default Presentation
 Presentation.propTypes = {
   title_one: PropTypes.string,
   title_two: PropTypes.string,
-  title_decription: PropTypes.string,
+  title_description: PropTypes.string,
   welcome_to_your: PropTypes.string,
   dashborad: PropTypes.string,
   grow_to_premium: PropTypes.string,

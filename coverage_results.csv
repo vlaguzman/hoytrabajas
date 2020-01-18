@@ -27,7 +27,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/curriculum_vitaes_educational_degrees.rb",100,4,3,3,0
 "./app/models/curriculum_vitaes_languages.rb",100,5,4,4,0
 "./app/models/curriculum_vitaes_soft_skills.rb",100,4,3,3,0
-"./app/models/curriculum_vitaes_technical_skills.rb",100,6,5,5,0
+"./app/models/curriculum_vitaes_technical_skills.rb",100,9,6,6,0
 "./app/models/curriculum_vitaes_vehicles.rb",100,4,3,3,0
 "./app/models/curriculum_vitaes_working_days.rb",100,4,3,3,0
 "./app/models/document_type.rb",100,3,2,2,0
@@ -129,7 +129,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/base_forms/find_or_create_record_service.rb",100,16,8,8,0
 "./app/services/base_forms/wizards_autocomplete_service.rb",100,23,10,10,0
 "./app/services/base_forms/wizards_errors_service.rb",100,7,3,3,0
-"./app/services/base_forms/wizards_sub_forms_service.rb",100,32,9,9,0
+"./app/services/base_forms/wizards_sub_forms_service.rb",100,34,11,11,0
 "./app/services/base_forms/wizards_translations_service.rb",100,22,11,11,0
 "./app/services/cities/cities_with_offers_list_service.rb",100,12,5,5,0
 "./app/services/companies/dashboards/offers_service.rb",100,46,18,18,0
@@ -164,7 +164,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/users/dashboards/offers_service.rb",100,51,21,21,0
 "./app/services/users/wizard_service.rb",100,53,22,22,0
 "./app/services/users/wizards/commons/find_or_create_element_association.rb",100,51,20,20,0
-"./app/services/users/wizards/curriculum_vitae_errors_service.rb",100,23,3,3,0
+"./app/services/users/wizards/curriculum_vitae_errors_service.rb",100,32,3,3,0
 "./app/services/users/wizards/step_eight/form_params_service.rb",100,51,19,19,0
 "./app/services/users/wizards/step_eight_service.rb",100,44,14,14,0
 "./app/services/users/wizards/step_eleven/form_params_service.rb",100,2,1,1,0
@@ -178,7 +178,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/users/wizards/step_one_service.rb",100,8,4,4,0
 "./app/services/users/wizards/step_seven/form_params_service.rb",100,13,5,5,0
 "./app/services/users/wizards/step_six/form_params_service.rb",100,45,17,17,0
-"./app/services/users/wizards/step_six_service.rb",100,72,20,20,0
+"./app/services/users/wizards/step_six_service.rb",100,104,51,51,0
 "./app/services/users/wizards/step_ten/form_params_service.rb",100,29,10,10,0
 "./app/services/users/wizards/step_ten_service.rb",100,13,7,7,0
 "./app/services/users/wizards/step_three/form_params_service.rb",100,36,14,14,0

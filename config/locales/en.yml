@@ -143,6 +143,10 @@ en:
               blank: "You must select to highlight at least one skill in your profile, this field cannot be empty."
             offer_types:
               blank: "You must select to highlight at least one offer type, this field cannot be empty."
+            technical_skills:
+              invalid_skill: "One of the technical skills you want to add, it is already in the list and you can select it, we do not allow repeated values"
+            to_learn_skills:
+              invalid_skill: "One of the to learn skills that you want to add, is already in the list and you can select it, we do not allow repeated values"
 
   time:
     formats:

@@ -26,7 +26,9 @@ module BaseForms::WizardsSubFormsService
 
     options.default = object_type
 
-    source.present? ? -> { ListConverter.parameters_list(source.send(options[object_type]), self.class::SUBFORMS_FIELDS[object_type])} : -> { [] }
+    source.present? ?
+        -> {ListConverter.parameters_list(source.send(options[object_type]), self.class::SUBFORMS_FIELDS[object_type])}
+      : -> { [] }
   end
 
 end

@@ -8,6 +8,7 @@ import styled from 'styled-components'
 import SelectChip from '../../../../../components/FormsLayout/Fields/SelectChip'
 import FormRow from '../../../../../components/FormsLayout/Fields/FormRow'
 import FormLabel from '../../../../../components/FormsLayout/FormLabel'
+import SelectFindOrCreate from '../../../../../components/FormsLayout/Fields/SelectFindOrCreate'
 
 import {
   handleDeleteChip,
@@ -35,7 +36,7 @@ const StyledCol = styled(Col)`
   }
 `
 const FormFields = props => {
-  const { formFields, placeholders } = props
+  const { formFields, placeholders, tooltip_description } = props
   const {
     soft_skill_ids = null,
     technical_skills = null,
@@ -142,7 +143,7 @@ const FormFields = props => {
         {technical_skills.main_label && (
           <FormLabel>{technical_skills.main_label}</FormLabel>
         )}
-        <Paper className="FormRowWrapper">
+        <Paper id="techicalSkillsRowsWrapper" className="FormRowWrapper">
           {formValues[technical_skills.name].map(
             (technicalSkillObject, index) => (
               <Col
@@ -163,7 +164,7 @@ const FormFields = props => {
                       value={
                         formValues[technical_skills.name].length > 0
                           ? formValues[technical_skills.name][index][fieldKey]
-                          : null
+                          : ''
                       }
                     />
                   ))}
@@ -192,18 +193,24 @@ const FormFields = props => {
                           />
                         </StyledCol>
 
-                        <StyledCol xs={12} lg={3}>
-                          <SelectChip
-                            name="technical_skill_id"
-                            label={placeholders['technical_skill_id']}
-                            inputValue={rowValue.technical_skill_id}
-                            handleChange={handleRowChanges}
-                            handleDeleteChip={handleRowDeleteChip}
-                            selectOptions={
-                              technical_skills.list_values.technical_skill_id
+                        <Col xs={12} lg={3}>
+                          <SelectFindOrCreate
+                            label={placeholders['technical_skill_description']}
+                            name="technical_skill_description"
+                            input_value={
+                              rowValue['technical_skill_description']
                             }
+                            test={rowValue}
+                            options={
+                              technical_skills.list_values
+                                .technical_skill_description
+                            }
+                            tooltip_description={
+                              tooltip_description['press_enter']
+                            }
+                            handleOnChange={handleRowChanges}
                           />
-                        </StyledCol>
+                        </Col>
 
                         <StyledCol xs={12} lg={3}>
                           <SelectChip
@@ -237,7 +244,7 @@ const FormFields = props => {
           <FormLabel>{to_learn_skills.main_label}</FormLabel>
         )}
 
-        <Paper className="FormRowWrapper">
+        <Paper id="toLearnSkillsRowsWrapper" className="FormRowWrapper">
           {formValues[to_learn_skills.name].map((toLearnSkillObject, index) => (
             <Col
               key={toLearnSkillObject.rowID}
@@ -286,18 +293,23 @@ const FormFields = props => {
                         />
                       </StyledCol>
 
-                      <StyledCol xs={12} lg={6}>
-                        <SelectChip
-                          name="technical_skill_id"
-                          label={placeholders['technical_skill_id']}
-                          inputValue={rowValue.technical_skill_id}
-                          handleChange={handleRowChanges}
-                          handleDeleteChip={handleRowDeleteChip}
-                          selectOptions={
-                            to_learn_skills.list_values.technical_skill_id
+                      <Col xs={12} lg={6}>
+                        <SelectFindOrCreate
+                          label={placeholders['technical_skill_description']}
+                          name="technical_skill_description"
+                          input_value={rowValue['technical_skill_description']}
+                          test={rowValue}
+                          options={
+                            to_learn_skills.list_values
+                              .technical_skill_description
                           }
+                          tooltip_description={
+                            tooltip_description['press_enter']
+                          }
+                          handleOnChange={handleRowChanges}
                         />
-                      </StyledCol>
+                      </Col>
+
                     </>
                   )}
                 </FormRow>
@@ -315,7 +327,7 @@ const FormFields = props => {
       <>
         {languages.main_label && <FormLabel>{languages.main_label}</FormLabel>}
 
-        <Paper className="FormRowWrapper">
+        <Paper id="languagesRowsWrapper" className="FormRowWrapper">
           {formValues[languages.name].map((toLearnSkillObject, index) => (
             <Col
               key={toLearnSkillObject.rowID}
@@ -384,9 +396,8 @@ const FormFields = props => {
   return (
     <Row className="HT__FormGenerator">
       {softSkillIDsField}
-      {/* TODO Oscar temporaly comment until add technical skills */}
-      {/* {techicalSkillsRows}
-      {toLearnSkillsRows} */}
+      {techicalSkillsRows}
+      {toLearnSkillsRows}
       {languagesRows}
     </Row>
   )
@@ -395,6 +406,8 @@ const FormFields = props => {
 export default FormFields
 
 FormFields.propTypes = {
+  placeholders: PropTypes.object,
+  tooltip_description: PropTypes.object,
   formFields: PropTypes.shape({
     soft_skill_ids: PropTypes.object,
     technical_skills: PropTypes.object,

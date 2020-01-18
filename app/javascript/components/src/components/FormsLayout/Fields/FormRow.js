@@ -31,10 +31,10 @@ const FormRow = props => {
     }))
   }, [currentRow])
 
-  const handleRowChanges = (e, name) => {
+  const handleRowChanges = (e, name, autocomplete = null) => {
     setRowValue(prevState => ({
       ...prevState,
-      [name]: e.target.value
+      [name]: autocomplete || e.target.value
     }))
   }
 

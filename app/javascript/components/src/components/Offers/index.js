@@ -85,7 +85,7 @@ const Offers = props => {
         </h6>
       )}
       {loadMoreOffers && offers.length >= 1 && offers.length > offersToDisplay && (
-        <Row className="justify-content-center align-items-center mt-30">
+        <div className="d-flex justify-content-center align-items-center mt-30 px-15">
           <button
             type="button"
             id="loadMoreOffers"
@@ -102,7 +102,7 @@ const Offers = props => {
               </>
             )}
           </button>
-        </Row>
+        </div>
       )}
     </>
   )

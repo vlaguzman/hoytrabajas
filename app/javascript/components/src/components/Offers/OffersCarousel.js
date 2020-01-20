@@ -9,23 +9,27 @@ const OffersCarousel = ({
   path_applied_offers,
   csrf_param,
   csrf_token,
-  offers_path
+  offers_path,
+  maxOffers
 }) => {
   return offers && offers.length > 0 ? (
     <>
       <CarouselRow slidesToShowResp={1} autoplay={false} infinite>
-        {offers.map(offer => (
-          <OfferCard
-            key={offer['title']}
-            offer={offer}
-            offer_translations={offer_translations}
-            path_applied_offers={path_applied_offers}
-            csrf_param={csrf_param}
-            csrf_token={csrf_token}
-          />
-        ))}
+        {offers.map((offer, idx) => {
+          if (maxOffers && idx + 1 > maxOffers) return null
+          return (
+            <OfferCard
+              key={offer['title']}
+              offer={offer}
+              offer_translations={offer_translations}
+              path_applied_offers={path_applied_offers}
+              csrf_param={csrf_param}
+              csrf_token={csrf_token}
+            />
+          )
+        })}
       </CarouselRow>
-      <div className="w-100 d-flex mt-60" style={{ color: 'white' }}>
+      <div className="w-100 d-flex px-15 mt-60" style={{ color: 'white' }}>
         <a
           type="button"
           id="loadMoreOffers"
@@ -47,6 +51,7 @@ OffersCarousel.propTypes = {
   csrf_token: PropTypes.string,
   offers_path: PropTypes.string,
   offers: PropTypes.array.isRequired,
+  maxOffers: PropTypes.number,
   offer_translations: PropTypes.shape({
     index: PropTypes.shape({
       no_offers: PropTypes.string.isRequired

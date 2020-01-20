@@ -73,21 +73,19 @@ const OfferContent = ({ offer, translations }) => {
         {capitalizeFirstLetter(wordsShortener(offer.description, 58))}
       </p>
       <div className="mt-auto">
-        <Row className="mr-0 justify-content-between align-items-end px-10 mb-10">
-          <Row className="mr-0 px-10">
-            {offer.on_demand === 'up' && (
-              <OnDemandBlock content={tag_on_demand} />
-            )}
-            {!offer.required_experience && (
-              <RequiredExperienceBlock
-                content={tag_without_required_experience}
-              />
-            )}
-            {offer.immediate_start && (
-              <ImmediateStartBlock content={tag_immediate_start} />
-            )}
-          </Row>
-        </Row>
+        <div className="m-0 d-flex justify-content-between align-items-end mb-10">
+          {offer.on_demand === 'up' && (
+            <OnDemandBlock content={tag_on_demand} />
+          )}
+          {!offer.required_experience && (
+            <RequiredExperienceBlock
+              content={tag_without_required_experience}
+            />
+          )}
+          {offer.immediate_start && (
+            <ImmediateStartBlock content={tag_immediate_start} />
+          )}
+        </div>
         <Typography
           variant="caption"
           className="offerLocation mt-10 text-secondary"

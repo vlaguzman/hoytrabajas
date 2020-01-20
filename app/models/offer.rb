@@ -80,11 +80,6 @@ class Offer < ApplicationRecord
     Offer.where(id: ids)
   end
   
-  def self.sort_not_on_demand_offers
-    ids = (self.created_at_desc - self.on_demand_up).map(&:id)
-    Offer.where(id: ids)
-  end
-
   def self.order_by_demand_and_created_at(limit = MAX_OFFER_LIMIT)
     array_of_ids = Offer.on_demand_up.map(&:id) + (Offer.created_at_desc - Offer.on_demand_up).map(&:id)
     Offer.find(array_of_ids.take(limit)).sort_by{|offer| array_of_ids.index offer.id}

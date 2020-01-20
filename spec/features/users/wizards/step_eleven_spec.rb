@@ -18,4 +18,14 @@ RSpec.describe "like new candidate", :type => :feature do
       expect(current_path).to eq('/users/dashboard')
     end
   end
+
+  feature "User want to exit from form" do
+    it "Should be able to go home", js: true do
+      sign_in candidate
+      visit users_wizards_step_eight_path
+  
+      click_link_or_button('Inicio')
+      expect(current_path).to eq(root_path)
+    end
+  end
 end

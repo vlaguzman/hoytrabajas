@@ -52,7 +52,7 @@ RSpec.describe Users::Wizards::StepFive::FormParamsService do
               },
               range_type: {
                 name: "curriculum_vitae[curriculum_vitae_salary][range_type]",
-                label: "Aspiración salarial*",
+                label: "Aspiración salarial",
                 values: [{id: 1, description: "Rango"}, {id: 2, description: "Fijo"}]
               },
               currency_id: {
@@ -146,7 +146,7 @@ RSpec.describe Users::Wizards::StepFive::FormParamsService do
               },
               range_type: {
                 name: "curriculum_vitae[curriculum_vitae_salary][range_type]",
-                label: "Aspiración salarial*",
+                label: "Aspiración salarial",
                 values: [{id: 1, description: "Rango"}, {id: 2, description: "Fijo"}]
               },
               currency_id: {

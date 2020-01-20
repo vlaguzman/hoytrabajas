@@ -5,93 +5,94 @@ RSpec.describe Users::Wizards::StepSixService do
   let!(:new_curriculum_vitae) { create(:curriculum_vitae, :empty) }
   let(:subject) { described_class.new(new_curriculum_vitae) }
 
+  let!(:soft_skills_ids) do
+    [
+      create(:soft_skill, description: "Creatividad").id,
+      create(:soft_skill, description: "Responsabilidad").id
+    ]
+  end
+
+  let!(:job_categories_ids) do
+    [
+      create(:job_category, description: "Marketing").id,
+      create(:job_category, description: "Desarrollo de Software").id,
+      create(:job_category, description: "Cocina").id,
+      create(:job_category, description: "Mecanica").id,
+      create(:job_category, description: "Contruccion").id
+    ]
+  end
+
+  let!(:technical_skills_descriptions) do
+    [
+      create(:technical_skill, description: "SEO").description,
+      create(:technical_skill, description: "Redes sociales").description,
+      create(:technical_skill, description: "Ruby On Rails").description,
+      create(:technical_skill, description: "Cocina Italiana").description,
+      create(:technical_skill, description: "Pintar").description
+    ]
+  end
+
+  let!(:languages_ids) do
+    [
+      create(:language, description: "Parsel").id,
+      create(:language, description: "Inglés").id,
+    ]
+  end
+
+  let!(:levels_ids) do
+    [
+      create(:level, description: "bajo").id,
+      create(:level, description: "medio").id,
+      create(:level, description: "avanzado").id
+    ]
+  end
+
   describe "#update" do
+    let(:params) do
+      {
+        soft_skill_ids: [soft_skills_ids.join(",")],
+        technical_skills: [
+          {
+            job_category_id: job_categories_ids[0],
+            technical_skill_description: technical_skills_descriptions[0],
+            level_id: levels_ids[0]
+          },
+          {
+            job_category_id: job_categories_ids[0],
+            technical_skill_description: technical_skills_descriptions[1],
+            level_id: levels_ids[2]
+          },
+          {
+            job_category_id: job_categories_ids[1],
+            technical_skill_description: technical_skills_descriptions[2],
+            level_id: levels_ids[2]
+          }
+        ],
+        to_learn_skills: [
+          {
+            job_category_id: job_categories_ids[3],
+            technical_skill_description: technical_skills_descriptions[3]
+          },
+          {
+            job_category_id: job_categories_ids[4],
+            technical_skill_description: technical_skills_descriptions[4]
+          },
+          {
+            job_category_id: job_categories_ids[1],
+            technical_skill_description: technical_skills_descriptions[0]
+          }
+        ],
+        languages: [
+          {
+            level_id: levels_ids[0],
+            language_id: languages_ids[0]
+          }
+        ]
+
+      }
+    end
+
     context "When the params are valids" do
-      let!(:soft_skills_ids) do
-        [
-          create(:soft_skill, description: "Creatividad").id,
-          create(:soft_skill, description: "Responsabilidad").id
-        ]
-      end
-
-      let!(:job_categories_ids) do
-        [
-          create(:job_category, description: "Marketing").id,
-          create(:job_category, description: "Desarrollo de Software").id,
-          create(:job_category, description: "Cocina").id,
-          create(:job_category, description: "Mecanica").id,
-          create(:job_category, description: "Contruccion").id
-        ]
-      end
-
-      let!(:technical_skills_descriptions) do
-        [
-          create(:technical_skill, description: "SEO").description,
-          create(:technical_skill, description: "Redes sociales").description,
-          create(:technical_skill, description: "Ruby On Rails").description,
-          create(:technical_skill, description: "Cocina Italiana").description,
-          create(:technical_skill, description: "Pintar").description
-        ]
-      end
-
-      let!(:languages_ids) do
-        [
-          create(:language, description: "Parsel").id,
-          create(:language, description: "Inglés").id,
-        ]
-      end
-
-      let!(:levels_ids) do
-        [
-          create(:level, description: "bajo").id,
-          create(:level, description: "medio").id,
-          create(:level, description: "avanzado").id
-        ]
-      end
-
-      let(:params) do
-        {
-          soft_skill_ids: [soft_skills_ids.join(",")],
-          technical_skills: [
-            {
-              job_category_id: job_categories_ids[0],
-              technical_skill_description: technical_skills_descriptions[0],
-              level_id: levels_ids[0]
-            },
-            {
-              job_category_id: job_categories_ids[0],
-              technical_skill_description: technical_skills_descriptions[1],
-              level_id: levels_ids[2]
-            },
-            {
-              job_category_id: job_categories_ids[1],
-              technical_skill_description: technical_skills_descriptions[2],
-              level_id: levels_ids[2]
-            }
-          ],
-          to_learn_skills: [
-            {
-              job_category_id: job_categories_ids[3],
-              technical_skill_description: technical_skills_descriptions[3]
-            },
-            {
-              job_category_id: job_categories_ids[4],
-              technical_skill_description: technical_skills_descriptions[4]
-            },
-            {
-              job_category_id: job_categories_ids[1],
-              technical_skill_description: technical_skills_descriptions[0]
-            }
-          ],
-          languages: [
-            {
-              level_id: levels_ids[0],
-              language_id: languages_ids[0]
-            }
-          ]
-
-        }
-      end
 
       it "Should return a modifiend User" do
         updated_cv = subject.update(params)
@@ -158,6 +159,22 @@ RSpec.describe Users::Wizards::StepSixService do
           expect(updated_cv.errors).to be_present
           expect(updated_cv.errors.details).to eq(expected_errors)
 
+        end
+      end
+    end
+
+    describe "params are invalid" do
+      context "When technical skills is empty array of values" do
+        let(:invalid_params) do
+          params.tap { |field| field[:technical_skills] = [] }
+        end
+
+        it "Should return te empty technical skills error" do
+          response = subject.update(invalid_params)
+
+          expected_errors = {:technical_skills=>[{:error=>:empty}]}
+
+          expect(response.errors.details).to eq(expected_errors)
         end
       end
     end

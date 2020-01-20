@@ -12,9 +12,9 @@ es:
               previous: "Regresar"
             formFields:
               soft_skill_ids: 'Define tres habilidades blandas que destacarías de tu perfil*'
-              technical_skill_description: 'Define técnicas de acuerdo a tu perfil*'
-              to_learn_skill_id: 'Define qué habilidades te gustaría aprender o reforzar'
-              language_id: '¿Qué idiomas deseas resaltar en tu perfil?'
+              technical_skill_description: '¿Qué habilidades técnicas tienes?*'
+              to_learn_skill_id: 'Lista las habilidades que quisieras aprender o desarrollar'
+              language_id: '¿Hablas algún otro idioma?'
             placeholders:
               language_id: 'Selecciona el Idioma'
               level_id: 'Selecciona el Nivel'

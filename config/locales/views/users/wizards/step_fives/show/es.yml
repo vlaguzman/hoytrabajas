@@ -14,7 +14,7 @@ es:
               currency_id: "Moneda"
               available_work_day_ids: "¿Que días estas disponible para trabajar?"
               working_day_ids: "Franja horaria"
-              range_type: "Aspiración salarial*"
+              range_type: "Aspiración salarial"
               to: ""
               from: ""
               salary_period_id: "Pago"

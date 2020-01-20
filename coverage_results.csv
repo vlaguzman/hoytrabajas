@@ -121,7 +121,8 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/users/wizards/step_zero_presenter.rb",100,7,3,3,0
 "./app/presenters/users/wizards_presenter.rb",100,14,4,4,0
 "./app/presenters/users_presenter.rb",100,19,5,5,0
-"./app/services/add_model_errors_service.rb",100,59,23,23,0
+"./app/services/add_model_errors/curriculum_vitaes/technical_skills.rb",100,18,9,9,0
+"./app/services/add_model_errors_service.rb",100,58,23,23,0
 "./app/services/admins/offers_service.rb",100,63,20,20,0
 "./app/services/admins_service.rb",100,15,8,8,0
 "./app/services/affinity_calculator.rb",100,77,35,35,0
@@ -164,7 +165,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/users/dashboards/offers_service.rb",100,51,21,21,0
 "./app/services/users/wizard_service.rb",100,53,22,22,0
 "./app/services/users/wizards/commons/find_or_create_element_association.rb",100,51,20,20,0
-"./app/services/users/wizards/curriculum_vitae_errors_service.rb",100,32,3,3,0
+"./app/services/users/wizards/curriculum_vitae_errors_service.rb",100,31,3,3,0
 "./app/services/users/wizards/step_eight/form_params_service.rb",100,51,19,19,0
 "./app/services/users/wizards/step_eight_service.rb",100,44,14,14,0
 "./app/services/users/wizards/step_eleven/form_params_service.rb",100,2,1,1,0
@@ -178,7 +179,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/users/wizards/step_one_service.rb",100,8,4,4,0
 "./app/services/users/wizards/step_seven/form_params_service.rb",100,13,5,5,0
 "./app/services/users/wizards/step_six/form_params_service.rb",100,45,17,17,0
-"./app/services/users/wizards/step_six_service.rb",100,104,51,51,0
+"./app/services/users/wizards/step_six_service.rb",100,106,53,53,0
 "./app/services/users/wizards/step_ten/form_params_service.rb",100,29,10,10,0
 "./app/services/users/wizards/step_ten_service.rb",100,13,7,7,0
 "./app/services/users/wizards/step_three/form_params_service.rb",100,36,14,14,0
@@ -190,6 +191,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/wizards_last_step_service.rb",100,26,17,17,0
 "./app/state_machines/company_state_machine.rb",100,17,10,10,0
 "./lib/dates_manager.rb",100,24,15,15,0
+"./lib/extra_hash_methods.rb",100,11,6,6,0
 "./lib/form_progress_manager.rb",100,12,7,7,0
 "./lib/hashes_compare.rb",100,23,12,12,0
 "./lib/hashes_converter.rb",100,19,8,8,0

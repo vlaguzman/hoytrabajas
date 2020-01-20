@@ -240,6 +240,7 @@ es:
             offer_types:
               blank: "Debes seleccionar por lo menos un tipo de oferta, este campo no puede estar vacío."
             technical_skills:
+              empty: 'Debes definir por lo menos una técnica en tu perfil, este grupo de valores no puede estar vacío'
               invalid_skill: "Una de las habilidades tecnicas que quieres agregar, ya esta en la lista y la puedes seleccionar, no permitimos valores repetidos"
             to_learn_skills:
               invalid_skill: "Una de las habilidades tecnicas a aprender que quieres agregar, ya esta en la lista y la puedes seleccionar, no permitimos valores repetidos"

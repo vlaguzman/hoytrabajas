@@ -28,5 +28,4 @@ class Users::Wizards::CurriculumVitaeErrorsService < AddModelErrorsService
       error_key: :blank
     }
   ]
-
 end

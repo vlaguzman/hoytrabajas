@@ -1,4 +1,5 @@
 class Users::Wizards::StepSixService
+  include AddModelErrors::CurriculumVitaes::TechnicalSkills
 
   ADD_CV_ERRORS_SERVICE = Users::Wizards::CurriculumVitaeErrorsService
 
@@ -41,6 +42,7 @@ class Users::Wizards::StepSixService
   end
 
   def update_strong_params(strong_skills_params_list: [])
+    validate_strong_skills(model: self.curriculum_vitae, strong_skills_list: strong_skills_params_list)
     update_skills_params(type_skill: :technical_skills, params_list: strong_skills_params_list)
   end
 

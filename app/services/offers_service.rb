@@ -23,8 +23,8 @@ module OffersService
   def self.query_offers_home(query, ids_categories)
     if ids_categories.present?
       query
-        .by_job_categories(ids_categories.split(","))
         .order_by_on_demand_and_created_at
+        .by_job_categories(ids_categories.split(","))
     else
       query.order_by_on_demand_and_created_at
     end

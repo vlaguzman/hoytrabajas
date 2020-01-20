@@ -71,7 +71,7 @@ class Offer < ApplicationRecord
   delegate :duration, :duration_type_id, to: :offer_required_experiences, prefix: :required_experiences, allow_nil: true
 
   def self.by_job_categories(job_categories_ids)
-    ids = (Offer.all - self.by_job_categories_ids(job_categories_ids)).map(&:id)
+    ids = self.by_job_categories_ids(job_categories_ids).map(&:id)
     Offer.where(id: ids)
   end
 
@@ -90,10 +90,6 @@ class Offer < ApplicationRecord
     Offer.find(array_of_ids.take(limit)).sort_by{|offer| array_of_ids.index offer.id}
   end
   
-  def self.ids_ordered
-    array.map(&:id)
-  end
-
   def languages_list
     LanguagesOffers.where(offer_id: self.id)
   end

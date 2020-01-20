@@ -2,7 +2,8 @@ class Offer < ApplicationRecord
   MAX_OFFER_LIMIT = 150
   ATTRIBUTES_TO_COMPARE = [:city_id, :work_mode_id, :contract_type_id]
   #TODO: Evaluate educational_level values and quantity
-  LISTS_TO_COMPARE = [:job_categories, :working_days, :available_work_days, :languages_list, :technical_skills, :vehicles, :driving_licences, :soft_skills, :sexes, :educational_level]
+  LISTS_TO_COMPARE = [:job_categories, :working_days, :available_work_days, :languages_list,
+  :technical_skills, :vehicles, :driving_licences, :soft_skills, :sexes, :educational_level]
 
   #TODO oscar: move this states to a state machine o create a db table
   OFFER_STATUS = ["expired", "hired", "active", "preview", "trash"]
@@ -71,20 +72,20 @@ class Offer < ApplicationRecord
   delegate :duration, :duration_type_id, to: :offer_required_experiences, prefix: :required_experiences, allow_nil: true
 
   def self.by_job_categories(job_categories_ids)
-    ids = self.by_job_categories_ids(job_categories_ids).map(&:id)
+    ids = self.by_job_categories_ids(job_categories_ids).pluck(:id)
     Offer.where(id: ids)
   end
 
   def self.not_applied_offers_by_cv(curriculum_vitae_id)
-    ids = (Offer.all - self.by_applied_offer_cv(curriculum_vitae_id)).map(&:id)
+    ids = (Offer.all - self.by_applied_offer_cv(curriculum_vitae_id)).pluck(:id)
     Offer.where(id: ids)
   end
   
   def self.order_by_demand_and_created_at(limit = MAX_OFFER_LIMIT)
-    array_of_ids = Offer.on_demand_up.map(&:id) + (Offer.created_at_desc - Offer.on_demand_up).map(&:id)
+    array_of_ids = Offer.on_demand_up.pluck(:id) + (Offer.created_at_desc - Offer.on_demand_up).pluck(:id)
     Offer.find(array_of_ids.take(limit)).sort_by{|offer| array_of_ids.index offer.id}
   end
-  
+ 
   def languages_list
     LanguagesOffers.where(offer_id: self.id)
   end

@@ -48,6 +48,21 @@ RSpec.describe "Like new candidate", :type => :feature do
 
       expect(page).to have_text(/¡Búsquemos las mejores ofertas!/)
     end
+
+    it "Should be able to go home", js: true do
+      sign_in candidate
+      visit users_wizards_step_three_path
+  
+      click_link_or_button('Inicio')
+      expect(current_path).to eq(root_path)
+    end
+
+    it "Should see the progress bar with the correct % of completion", js: true do
+      sign_in candidate
+      visit users_wizards_step_three_path
+
+      expect( find('.progressBar__bar', visible: false).value.to_i ).to eq((100 / 11 * 4))
+    end
   end
 
   feature "When im in step three" do

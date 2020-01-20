@@ -30,4 +30,14 @@ RSpec.describe "like new candidate", type: :feature do
       expect(current_path).to eq(users_wizards_step_zeros_curriculum_vitae_path)
     end
   end
+
+  feature "When click on 'Inicio'" do
+    scenario "should click the home button and go to root path", js: true do
+      sign_in candidate
+      visit users_wizards_step_zero_path
+  
+      click_link_or_button('Inicio')
+      expect(current_path).to eq(root_path)
+    end
+  end
 end

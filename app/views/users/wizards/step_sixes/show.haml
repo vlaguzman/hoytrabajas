@@ -1,4 +1,5 @@
-
+= render '/shared/header'
+= react_component("src/components/FormsLayout/FormProgress", { value: FormProgressManager.calculate_user_progress(7) }, prerender: false)
 = react_component('views/users/wizards/step_sixes/show',
   {formInfo: @user.form_information,
   csrf_param: request_forgery_protection_token,

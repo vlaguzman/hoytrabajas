@@ -12,6 +12,7 @@
  *
  */
 @import 'variables/colors';
+@import 'variables/zIndex';
 @import 'scss/bootstrap';
 
 // //Slick Slider
@@ -64,6 +65,8 @@
 @import 'atomic/atoms/chip';
 @import 'atomic/atoms/tags';
 @import 'atomic/atoms/spans';
+@import 'atomic/atoms/progressBar';
+@import 'atomic/atoms/paddings';
 
 // MOLECULES
 @import 'atomic/molecules/filterForm';
@@ -79,6 +82,7 @@
 @import 'atomic/molecules/login';
 @import 'atomic/molecules/boxes';
 @import 'atomic/molecules/offer';
+@import 'atomic/molecules/forms';
 
 // ORGANISMS
 @import 'atomic/organisms/profile_candidate';

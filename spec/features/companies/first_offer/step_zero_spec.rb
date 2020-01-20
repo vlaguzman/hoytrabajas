@@ -27,4 +27,14 @@ RSpec.describe "like new company", type: :feature do
       expect(current_path).to eq(companies_first_offer_step_one_path)
     end
   end
+
+  feature "When click on 'Inicio'" do
+    scenario "should click the home button and go to root path", js: true do
+      sign_in company
+      visit companies_first_offer_step_zero_path
+  
+      click_link_or_button('Inicio')
+      expect(current_path).to eq(root_path)
+    end
+  end
 end

@@ -1,24 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Row, Col } from 'reactstrap'
-import LinearProgress from '@material-ui/core/LinearProgress'
-import Typography from '@material-ui/core/Typography'
 
 const FormProgress = ({ value }) => {
   return (
-    <Row className="mx-0 mt-70 mb-0 w-100 justify-content-center d-md-none">
-      <Col>
-        <LinearProgress
-          color="primary"
-          variant="determinate"
+    <div className="a-progressBar">
+      <div className="progressBar__wrapper">
+        <div
+          className="progressBar__bar"
+          style={{ width: `${value}%` }}
           value={value}
-          className="w-75 mx-auto"
         />
-        <Typography variant="h6" className="text-center">
-          {`${value}%`}
-        </Typography>
-      </Col>
-    </Row>
+        <div className="progressBar__dots">
+          <div />
+          <div />
+          <div />
+        </div>
+      </div>
+    </div>
   )
 }
 

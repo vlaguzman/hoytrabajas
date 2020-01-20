@@ -51,5 +51,23 @@ RSpec.describe 'In wizards step ten view', type: :feature do
       end
     end
 
+    feature "User want to exit from form" do
+      it "Should be able to go home", js: true do
+        sign_in candidate
+        visit users_wizards_step_ten_path
+    
+        click_link_or_button('Inicio')
+        expect(current_path).to eq(root_path)
+      end
+    end
+
+    feature "When user want to see his progress" do
+      it "Should see the progress bar with the correct % of completion", js: true do
+        sign_in candidate
+        visit users_wizards_step_ten_path
+  
+        expect( find('.progressBar__bar', visible: false).value.to_i ).to eq((100 / 11 * 11))
+      end
+    end
   end
 end

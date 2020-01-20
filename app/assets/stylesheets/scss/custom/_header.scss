@@ -4,7 +4,7 @@
   @extend .a-shadow__1;
   position: fixed;
   background-color: $color__palelilac-extralight;
-  z-index: 999 !important;
+  z-index: $zIndex__navbar !important;
   transition: all 500ms ease-in-out;
   color: white;
   min-height: 86px;

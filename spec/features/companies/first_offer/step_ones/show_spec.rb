@@ -90,4 +90,24 @@ RSpec.describe "When company fill the step one form", :type => :feature do
     end
   end
 
+  describe "Company want to exit the form" do
+    context "The navbar is visible" do
+      scenario "should click the home button and go to root path", js: true do
+        sign_in company
+        visit companies_first_offer_step_one_path
+    
+        click_link_or_button('Inicio')
+        expect(current_path).to eq(root_path)
+      end
+    end
+  end
+
+  describe "Company want to see the progress of completion" do
+    it "Should see the progress bar with the correct % of completion", js: true do
+      sign_in company
+      visit companies_first_offer_step_one_path
+
+      expect( find('.progressBar__bar', visible: false).value.to_i ).to eq((100 / 7 * 1))
+    end
+  end
 end

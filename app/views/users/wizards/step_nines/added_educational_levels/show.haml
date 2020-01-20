@@ -1,3 +1,5 @@
+= render '/shared/header'
+= react_component("src/components/FormsLayout/FormProgress", { value: FormProgressManager.calculate_user_progress(10) }, prerender: false)
 %div.o-stepPage__mainContainer
   %div.m-container
     %span.a-title= t('.title')

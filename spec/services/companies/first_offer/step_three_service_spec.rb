@@ -108,6 +108,7 @@ RSpec.describe Companies::FirstOffer::StepThreeService do
           {
             company_id: '',
             title: '',
+            description: '',
             job_category_ids: "#{job_category.id}",
             offer_type_id: offer_type.id,
             work_mode_id: work_mode.id,

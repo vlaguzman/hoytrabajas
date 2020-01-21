@@ -1,7 +1,9 @@
 class Offer < ApplicationRecord
+  MAX_OFFER_LIMIT = 150
   ATTRIBUTES_TO_COMPARE = [:city_id, :work_mode_id, :contract_type_id]
   #TODO: Evaluate educational_level values and quantity
-  LISTS_TO_COMPARE = [:job_categories, :working_days, :available_work_days, :languages_list, :technical_skills, :vehicles, :driving_licences, :soft_skills, :sexes, :educational_level]
+  LISTS_TO_COMPARE = [:job_categories, :working_days, :available_work_days, :languages_list,
+  :technical_skills, :vehicles, :driving_licences, :soft_skills, :sexes, :educational_level]
 
   #TODO oscar: move this states to a state machine o create a db table
   OFFER_STATUS = ["expired", "hired", "active", "preview", "trash"]
@@ -20,8 +22,10 @@ class Offer < ApplicationRecord
   scope :by_company_email, -> (company_email) { joins(:company).where('companies.email LIKE ?', company_email) }
   scope :by_company_name, -> (company_name) { joins(:company).where('companies.name LIKE ?', company_name) }
   scope :by_applied_offer_cv, -> (curriculum_vitae_id) { joins(:applied_offers).where(applied_offers: {curriculum_vitae_id: curriculum_vitae_id}) }
-  scope :by_job_categories, -> (job_category_ids) { joins(:job_categories).where('job_category_id in (?)', job_category_ids).uniq }
-  scope :order_by_demand_and_created_at, -> { includes(:offer_on_demand).order("offer_on_demands.start_at ASC", created_at: :desc) }
+  scope :by_job_categories_ids, -> (job_category_ids) { joins(:job_categories).where('job_category_id in (?)', job_category_ids).uniq }
+  scope :created_at_desc, -> { order(created_at: :desc) }
+  scope :on_demand_up, -> { joins(:offer_on_demand).where(:offer_on_demands=>{status: 'up'}).order("offer_on_demands.start_at DESC NULLS LAST") } 
+  scope :order_by_on_demand_and_created_at, -> { includes(:offer_on_demand).order("offer_on_demands.start_at ASC", created_at: :desc) }
 
   has_one :offer_salary
   has_one :age_range
@@ -67,11 +71,21 @@ class Offer < ApplicationRecord
   delegate :description, to: :working_days, prefix: :working_days, allow_nil: true
   delegate :duration, :duration_type_id, to: :offer_required_experiences, prefix: :required_experiences, allow_nil: true
 
-  def self.not_applied_offers_by_cv(curriculum_vitae_id)
-    ids = (Offer.all - self.by_applied_offer_cv(curriculum_vitae_id)).map(&:id)
+  def self.by_job_categories(job_categories_ids)
+    ids = self.by_job_categories_ids(job_categories_ids).pluck(:id)
     Offer.where(id: ids)
   end
 
+  def self.not_applied_offers_by_cv(curriculum_vitae_id)
+    ids = (Offer.all - self.by_applied_offer_cv(curriculum_vitae_id)).pluck(:id)
+    Offer.where(id: ids)
+  end
+  
+  def self.order_by_demand_and_created_at(limit = MAX_OFFER_LIMIT)
+    array_of_ids = Offer.on_demand_up.pluck(:id) + (Offer.created_at_desc - Offer.on_demand_up).pluck(:id)
+    Offer.find(array_of_ids.take(limit)).sort_by{|offer| array_of_ids.index offer.id}
+  end
+ 
   def languages_list
     LanguagesOffers.where(offer_id: self.id)
   end

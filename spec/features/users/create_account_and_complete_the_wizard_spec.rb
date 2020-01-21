@@ -278,10 +278,10 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     find("li", text: "Dev RoR").click
 
     find("div[id='mui-component-select-work_experience[work_methodology_id]']", visible: false).click
-    find("li", text:  "Full Time").click
+    find("li", text: "Full Time").click
 
     find("div[id='mui-component-select-work_experience[state_id]']", visible: false).click
-    find("li", text:  "Neverland North").click
+    find("li", text: "Neverland North").click
 
     find("div[id='mui-component-select-work_experience[city_id]']", visible: false).click
     find("li", text:  "Neverland City").click

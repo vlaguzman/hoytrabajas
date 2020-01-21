@@ -120,7 +120,6 @@ RSpec.describe "Like new candidate", :type => :feature do
       expect(form_field_value(:name)).to have_content(old_candidate.name)
       expect(form_field_value(:last_name)).to have_content(old_candidate.last_name)
       expect(form_field_value(:born_city_id)).to have_content(born_city.id)
-      save_screenshot("lafoto.png")
       expect(form_field_value(:residence_city_id)).to have_content(residence_city.id)
       expect(form_field_value(:nationality_ids, :true)).to have_content(old_candidate.nationality_ids.join(","))
       expect(form_field_value(:document_type_id)).to have_content(old_candidate.document_type.id)

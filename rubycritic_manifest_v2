@@ -240,10 +240,10 @@ B          • Offers::ExpiredService                                      4    
 B          • Offers::ShowService                                         18      87.8       0           1
 B          • Offers::ViewsService                                        19      85.3       0           7
 B          • OffersOnDemand::SetInactiveService                          4       27.96      34          3
-B          • User                                                        45      54.53      0           2
-B          • Users::ProfilesPresenter                                    5       72.56      0           9
+B          • User                                                        46      54.53      0           2
 B          • Users::WizardService                                        11      26.27      58          3
 B          • Users::Wizards::StepOneService                              3       3.0        19          2
 B          • Users::Wizards::StepSixService                              13      93.15      0           14
 B          • Users::Wizards::StepTwoService                              2       3.0        19          2
 C          • BaseFormWizardsService                                      31      101.71     0           2
+C          • Users::ProfilesPresenter                                    6       129.23     0           15

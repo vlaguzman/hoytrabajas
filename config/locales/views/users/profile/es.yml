@@ -1,5 +1,7 @@
 es:
   profile:
+    empty: 'Completa tu información'
+    edit_info: 'Editar Información'
     download_cv: 'Descargar Curriculum'
     about_me: 'Sobre mi'
     my_interests: 'Mis intereses'

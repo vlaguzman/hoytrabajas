@@ -76,7 +76,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/technical_skill.rb",100,10,7,7,0
 "./app/models/technical_skill_category.rb",100,3,2,2,0
 "./app/models/term.rb",100,5,3,3,0
-"./app/models/user.rb",100,81,45,45,0
+"./app/models/user.rb",100,82,46,46,0
 "./app/models/users_limitations.rb",100,8,4,4,0
 "./app/models/users_nationalities.rb",100,6,3,3,0
 "./app/models/vehicle.rb",100,6,4,4,0
@@ -103,7 +103,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/companies/list_candidates_presenter.rb",100,33,16,16,0
 "./app/presenters/home/home_presenter.rb",100,53,14,14,0
 "./app/presenters/offers_presenter.rb",100,25,13,13,0
-"./app/presenters/users/profiles_presenter.rb",100,71,22,22,0
+"./app/presenters/users/profiles_presenter.rb",100,123,43,43,0
 "./app/presenters/users/wizards/step_eight_presenter.rb",100,32,12,12,0
 "./app/presenters/users/wizards/step_eights/work_experience_presenter.rb",100,19,9,9,0
 "./app/presenters/users/wizards/step_eleven_presenter.rb",100,20,8,8,0

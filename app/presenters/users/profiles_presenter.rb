@@ -1,5 +1,50 @@
 class Users::ProfilesPresenter < ApplicationPresenter
 
+  def basic_user_data
+    {
+      name: validate_present_simple(:name),
+      last_name: validate_present_simple(:last_name),
+      birthday: validate_present_simple(:birthday),
+      document_type: validate_present_relation(:document_type),
+      identification_number: validate_present_simple(:identification_number),
+      nationalities: validate_present_collection(:nationalities),
+      born_state: validate_present_born_state(:born_city),
+      born_city: validate_present_relation(:born_city)
+    }
+  end
+
+  def validate_present_simple(param)
+    if source.send(param).present?
+      source.send(param)
+    else
+      empty_translation
+    end
+  end
+
+  def validate_present_collection(param)
+    if source.send(param).present?
+      source.send(param).pluck(:description)
+    else
+      empty_translation
+    end
+  end
+
+  def validate_present_relation(param)
+    if source.send(param).present?
+      source.send(param).description
+    else
+      empty_translation
+    end
+  end
+
+  def validate_present_born_state(param)
+    if source.born_city_id.present?
+      source.born_city.state
+    else
+      empty_translation
+    end
+  end
+
   def contact_number_with_format
     grouped_number = source
       .contact_number
@@ -68,4 +113,11 @@ class Users::ProfilesPresenter < ApplicationPresenter
     value = attributes.values.uniq
     value.count.eql?(1) ? value.last : true
   end
+
+  private
+
+  def empty_translation
+      I18n.t("views.users.profile.empty")
+  end
+
 end

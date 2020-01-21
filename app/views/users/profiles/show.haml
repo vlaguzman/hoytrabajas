@@ -1,6 +1,8 @@
 = render '/shared/header'
 .backgroundImage
 .contentBox
+  %a.buttonEditProfile{href: users_wizards_step_zeros_curriculum_vitae_url}
+    %p=t('profile.edit_info')
   - @user.yield_if(@user.curriculum_vitae.file_cv.attached?) do
     %a.buttonDownload{href: @user.download_cv}
       %p=t('profile.download_cv')

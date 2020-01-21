@@ -5,32 +5,100 @@ RSpec.describe Users::ProfilesPresenter do
   let!(:educational_level) { create(:educational_level) }
   let!(:work_experience)   { create(:work_experience) }
   let!(:user)              { create(:user) }
-  let!(:curriculum_vitae)  { create(:curriculum_vitae, user: user, educational_level_ids: [educational_level.id], work_experience_ids: [work_experience.id], job_category_ids: [job_category.id]) }
   let(:subject)            { described_class.new(user) }
+  let!(:curriculum_vitae)  { create(:curriculum_vitae, user: user,
+                             educational_level_ids: [educational_level.id],
+                             work_experience_ids: [work_experience.id],
+                             job_category_ids: [job_category.id])
+                           }
+
+  describe "#validate_present_simple" do
+    context "When the element have value" do
+      it "Should return param sending" do
+        response = subject.validate_present_simple(:name)
+
+        expect(response).to eq(user.name)
+      end
+    end
+  end
+
+  describe "#validate_present_relation" do
+    context "When there is a relationship" do
+      it "Should return value in the relation" do
+        response = subject.validate_present_relation(:document_type)
+
+        expect(response).to eq(user.document_type.description)
+      end
+    end
+  end
+
+  describe "#validate_present_collection" do
+    context "When there is a collection" do
+      it "Should return array with the values" do
+        response = subject.validate_present_collection(:nationalities)
+
+        expect(response).to eq(user.nationalities.pluck(:description))
+      end
+    end
+  end
+
+  describe "#validate_present_born_state" do
+    context "When find a born_state" do
+      it "Should return born state" do
+        response = subject.validate_present_born_state(:born_city_id)
+
+        expect(response).to eq(user.born_city.state)
+      end
+    end
+  end
 
   describe "#basic_user_data" do
     context "User basic information" do
       it "Should return data basic of user" do
         response = subject.basic_user_data
 
-        result = [
-          {
-            name: user.name,
-            last_name: user.last_name,
-            birthday: user.birthday,
-            document_type:  user.document_type,
-            identification_number: user.identification_number,
-            nationalities:  user.nationalities.pluck(:description),
-            born_state: user.born_city.state,
-            born_city: user.born_city
-          }
-        ]
+        result = {
+          name: user.name,
+          last_name: user.last_name,
+          birthday: user.birthday,
+          document_type:  user.document_type.description,
+          identification_number: user.identification_number,
+          nationalities:  user.nationalities.pluck(:description),
+          born_state: user.born_city.state,
+          born_city: user.born_city.description
+        }
 
         expect(response).to eq(result)
 
       end
     end
-  end 
+
+    context "When the attributes not have value" do
+
+      let(:user)    { create(:user, :first_time_candidate)  }
+      let(:subject) { described_class.new(user) }
+
+      it "Should return the translation" do
+
+        response = subject.basic_user_data
+
+        result = {
+          name: I18n.t("views.users.profile.empty"),
+          last_name: I18n.t("views.users.profile.empty"),
+          birthday: I18n.t("views.users.profile.empty"),
+          document_type: I18n.t("views.users.profile.empty"),
+          identification_number: I18n.t("views.users.profile.empty"),
+          nationalities: I18n.t("views.users.profile.empty"),
+          born_state: I18n.t("views.users.profile.empty"),
+          born_city: I18n.t("views.users.profile.empty")
+        }
+
+        expect(response).to eq(result)
+
+      end
+    end
+  end
+
 
   describe "#contact_number_with_format" do
     context "When a user has a number" do

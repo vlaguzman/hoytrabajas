@@ -19,7 +19,7 @@ RSpec.describe Companies::FirstOffer::StepFive::FormParamsService do
         range_description: 'Rango',
         permanent_description: 'Fijo',
         title: 'Conozcamos más de tu oferta',
-        subtitle: 'Brinda a tu candidato una relevante de tu empresa.',
+        subtitle: 'Brinda a tu candidato información relevante de tu empresa.',
         content: 'Aspiración salarial',
         form:  {
           placeholders:  {

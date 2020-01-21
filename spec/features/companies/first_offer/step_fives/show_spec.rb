@@ -12,7 +12,7 @@ RSpec.describe "When company fill the step five form", :type => :feature do
 
   def expected_page_structure
     expect(page).to have_content("Conozcamos más de tu oferta")
-    expect(page).to have_content("Brinda a tu candidato una relevante de tu empresa.")
+    expect(page).to have_content("Brinda a tu candidato información relevante de tu empresa.")
 
     expect(page).to have_tag(:form, with: { class: "forms__candidate" }) do
       with_tag(:input, with: { name: 'offer[is_range]',         type: "hidden" })

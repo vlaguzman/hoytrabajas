@@ -3,7 +3,7 @@ export default {
   pag: null,
   next: null,
   title: 'Conozcamos más de tu oferta',
-  subtitle: 'Brinda a tu candidato una relevante de tu empresa.',
+  subtitle: 'Brinda a tu candidato información relevante de tu empresa.',
   editTitle: 'No está de más un poco de información',
   formSection: 'employee_profile',
   formObj: [

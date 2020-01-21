@@ -53,7 +53,6 @@ class AddModelErrorsService
     self.update_params.key?(validate_param) && !self.update_params[validate_param].last.present? && self.model.errors.add(collection_name, error_key)
   end
 
-
   attr_accessor :model, :update_params
 
 end

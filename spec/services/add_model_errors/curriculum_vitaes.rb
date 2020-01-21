@@ -1,0 +1,2 @@
+module AddModelErrors::CurriculumVitaes
+end

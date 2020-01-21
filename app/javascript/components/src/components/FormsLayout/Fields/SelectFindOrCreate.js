@@ -10,8 +10,6 @@ const filterOptions = createFilterOptions({
   trim: true
 })
 
-// Internal Functions
-
 const SelectFindOrCreate = ({
   id,
   label,
@@ -21,12 +19,14 @@ const SelectFindOrCreate = ({
   input_value,
   no_options_text,
   isMultiple = false,
-  tooltip_description
+  tooltip_description,
+  handleOnChange = null
 }) => {
+
   const [interValue, setInterValue] = useState(input_value)
   const [updateOptions, setUpdateOptions] = useState(options)
 
-  const handleValueNoPresent = (e, value, r) => {
+  const handleValueNoPresent = value => {
     if (value.split('').includes(',')) {
       setUpdateOptions([
         ...updateOptions,
@@ -38,8 +38,11 @@ const SelectFindOrCreate = ({
           : value.split(',').join('')
       )
     }
+  }
 
-    if(!isMultiple) setInterValue(value)
+  const handleOnInputChange = (e, value, r) => {
+    handleValueNoPresent(value)
+    if (handleOnChange) handleOnChange({ target: { value: null } }, name, value)
   }
 
   return (
@@ -48,27 +51,38 @@ const SelectFindOrCreate = ({
         <Autocomplete
           freeSolo
           id={id}
+          name={id}
+          value={interValue}
           multiple={isMultiple}
           includeInputInList
           noOptionsText={no_options_text}
           options={updateOptions.map(option => option[text_key])}
           filterOptions={filterOptions}
-          value={interValue}
           onChange={(e, value) => {
             setInterValue(value)
           }}
-          onInputChange={handleValueNoPresent}
+          onInputChange={handleOnInputChange}
           renderInput={params => (
-            <TextField {...params} label={label} margin="normal" fullWidth />
+            <TextField
+              {...params}
+              label={label}
+              name={!isMultiple && name}
+              margin="normal"
+              fullWidth
+            />
           )}
         />
       </Tooltip>
-      <input name={name} type="hidden" value={interValue} />
+      {isMultiple && (
+        <input name={name} type="hidden" value={interValue || ''} />
+      )}
     </>
   )
 }
 
 SelectFindOrCreate.propTypes = {
+  handleOnChange: PropTypes.func,
+  tooltip_description: PropTypes.string,
   id: PropTypes.string,
   label: PropTypes.string,
   name: PropTypes.string.isRequired,

@@ -52,6 +52,11 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     create(:soft_skill, description: "Seeker")
     create(:soft_skill, description: "Archer")
 
+    create(:job_category, description: 'Home and Garden')
+
+    create(:technical_skill, description: "Magichian")
+    create(:technical_skill, description: "Warrior")
+
     create(:language, description: "Spanish")
 
     create(:level, description: "Expert")
@@ -227,10 +232,35 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     find("div[id='mui-component-select-curriculum_vitae[soft_skill_ids][]", visible: false).click
     find("li", text: "Archer").click
 
-    find("div[id='mui-component-select-language_id']", visible: false).click
+    within "#techicalSkillsRowsWrapper" do
+      find("input[name='technical_skill_description']").set('Warrior')
+
+      find('div#mui-component-select-job_category_id').click
+    end
+    find("li", text: "Home and Garden").click
+
+    within "#techicalSkillsRowsWrapper" do
+      find('div#mui-component-select-level_id').click
+    end
+    find("li", text: "Expert").click
+
+    within "#toLearnSkillsRowsWrapper" do
+      find('div#mui-component-select-job_category_id').click
+    end
+    find("li", text: "Home and Garden").click
+
+    within "#toLearnSkillsRowsWrapper" do
+      find("input[name='technical_skill_description']").set('Magichian')
+    end
+
+    within "#languagesRowsWrapper" do
+      find("div[id='mui-component-select-language_id']", visible: false).click
+    end
     find("li", text: "Spanish").click
 
-    find("div[id='mui-component-select-level_id']", visible: false).click
+    within "#languagesRowsWrapper" do
+      find("div[id='mui-component-select-level_id']", visible: false).click
+    end
     find("li", text: "Expert").click
 
     find("span", text: /SIGUIENTE/).click
@@ -368,6 +398,8 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
 
   #Step Six
     expect(cv.soft_skill_ids.count).to eq(2)
+    expect(cv.strong_skills.count).to eq(1)
+    expect(cv.to_learn_skills.count).to eq(1)
     expect(cv.strong_languages.count).to eq(1)
 
   #Step_seven

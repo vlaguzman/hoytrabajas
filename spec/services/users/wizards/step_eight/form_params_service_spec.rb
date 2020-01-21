@@ -56,7 +56,7 @@ RSpec.describe Users::Wizards::StepEight::FormParamsService do
               },
               company_name: {
                 name: 'work_experience[company_name]',
-                label: 'Empresa',
+                label: 'Empresa*',
                 current_value: nil
               },
               work_position: {
@@ -171,7 +171,7 @@ RSpec.describe Users::Wizards::StepEight::FormParamsService do
               },
               company_name: {
                 name: 'work_experience[company_name]',
-                label: 'Empresa',
+                label: 'Empresa*',
                 current_value: "Hoy Trabajas"
               },
               work_position: {

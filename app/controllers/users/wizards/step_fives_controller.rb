@@ -1,20 +1,20 @@
 class Users::Wizards::StepFivesController < Users::WizardsController
 
   def show
-    user_presenter(current_user.curriculum_vitae)
+    curriculum_vitae_presenter(current_user.curriculum_vitae)
   end
 
   def create
     cv = Users::Wizards::StepFiveService.(curriculum_vitae: current_user.curriculum_vitae, update_params: strong_params)
 
-    user_presenter(cv)
+    curriculum_vitae_presenter(cv)
 
     validate_redirect_to(source: cv, users_wizard_path: users_wizards_step_six_path)
   end
 
   private
 
-  def user_presenter(source = current_user)
+  def curriculum_vitae_presenter(source = current_user)
     @user = Users::Wizards::StepFivePresenter.new(source)
   end
 

@@ -9,7 +9,7 @@ es:
           dashborad: 'Dashboard'
           title_one: 'Bienvenido al Dashboard'
           title_two: 'de Candidato.'
-          title_decription: 'Aquí podrás editar tu información y ver las ofertas a las que aplicaste.'
+          title_description: 'Aquí podrás editar tu información y ver las ofertas a las que aplicaste.'
         first_section:
           my_profile: Mi Perfil
           update:

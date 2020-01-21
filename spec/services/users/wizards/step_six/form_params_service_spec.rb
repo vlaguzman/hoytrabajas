@@ -52,11 +52,11 @@ RSpec.describe Users::Wizards::StepSix::FormParamsService do
             technical_skills:{
               name: :technical_skills,
               form_keys: [:curriculum_vitae, :technical_skills],
-              field_keys: [:job_category_id, :technical_skill_id, :level_id],
+              field_keys: [:job_category_id, :technical_skill_description, :level_id],
               main_label: 'Define técnicas de acuerdo a tu perfil*',
               list_values: {
                 job_category_id: create_job_category_list,
-                technical_skill_id: create_technical_skills_list,
+                technical_skill_description: create_technical_skills_list,
                 level_id: create_levels_list
               },
               current_values: []
@@ -64,11 +64,11 @@ RSpec.describe Users::Wizards::StepSix::FormParamsService do
             to_learn_skills:{
               name: :to_learn_skills,
               form_keys: [:curriculum_vitae, :to_learn_skills],
-              field_keys: [:job_category_id, :technical_skill_id],
+              field_keys: [:job_category_id, :technical_skill_description],
               main_label: "Define qué habilidades te gustaría aprender o reforzar*",
               list_values: {
                 job_category_id: create_job_category_list,
-                technical_skill_id: create_technical_skills_list
+                technical_skill_description: create_technical_skills_list
               },
               :current_values=>[]
             },
@@ -88,7 +88,7 @@ RSpec.describe Users::Wizards::StepSix::FormParamsService do
             language_id: 'Selecciona el Idioma',
             level_id: 'Selecciona el Nivel',
             job_category_id: 'Selecciona la Categoria',
-            technical_skill_id: 'Seleciona la Habilidad'
+            technical_skill_description: 'Seleciona la Habilidad'
           }
         }
       }
@@ -152,19 +152,19 @@ RSpec.describe Users::Wizards::StepSix::FormParamsService do
       let!(:expected_strong_params) do
         [create(:curriculum_vitaes_technical_skills,
           job_category_id: job_categories[0].id,
-          technical_skill_id: technical_skills[0].id,
+          technical_skill: technical_skills[0],
           level_id: levels[0].id,
           curriculum_vitae: cv
         ),
         create(:curriculum_vitaes_technical_skills,
           job_category_id: job_categories[0].id,
-          technical_skill_id: technical_skills[1].id,
+          technical_skill: technical_skills[1],
           level_id: levels[2].id,
           curriculum_vitae: cv
         ),
         create(:curriculum_vitaes_technical_skills,
           job_category_id: job_categories[2].id,
-          technical_skill_id:technical_skills[2].id,
+          technical_skill:technical_skills[2],
           level_id: levels[2].id,
           curriculum_vitae: cv
         )]
@@ -174,26 +174,26 @@ RSpec.describe Users::Wizards::StepSix::FormParamsService do
         expected_object = {
             name: :technical_skills,
             form_keys: [:curriculum_vitae, :technical_skills],
-            field_keys: [:job_category_id, :technical_skill_id, :level_id],
+            field_keys: [:job_category_id, :technical_skill_description, :level_id],
             main_label: 'Define técnicas de acuerdo a tu perfil*',
             list_values: {
               job_category_id: create_job_category_list,
-              technical_skill_id: create_technical_skills_list,
+              technical_skill_description: create_technical_skills_list,
               level_id: create_levels_list
             },
             current_values: [{
               job_category_id: job_categories[0].id,
-              technical_skill_id: technical_skills[0].id,
+              technical_skill_description: technical_skills[0].description,
               level_id: levels[0].id
             },
             {
               job_category_id: job_categories[0].id,
-              technical_skill_id: technical_skills[1].id,
+              technical_skill_description: technical_skills[1].description,
               level_id: levels[2].id
             },
             {
               job_category_id: job_categories[2].id,
-              technical_skill_id:technical_skills[2].id,
+              technical_skill_description: technical_skills[2].description,
               level_id: levels[2].id
             }]
           }
@@ -240,23 +240,23 @@ RSpec.describe Users::Wizards::StepSix::FormParamsService do
         expected_object = {
             name: :to_learn_skills,
             form_keys: [:curriculum_vitae, :to_learn_skills],
-            field_keys: [:job_category_id, :technical_skill_id],
+            field_keys: [:job_category_id, :technical_skill_description],
             main_label: 'Define qué habilidades te gustaría aprender o reforzar*',
             list_values: {
               job_category_id: create_job_category_list,
-              technical_skill_id: create_technical_skills_list,
+              technical_skill_description: create_technical_skills_list,
             },
             current_values: [{
               job_category_id: job_categories[0].id,
-              technical_skill_id: technical_skills[0].id,
+              technical_skill_description: technical_skills[0].description,
             },
             {
               job_category_id: job_categories[0].id,
-              technical_skill_id: technical_skills[1].id,
+              technical_skill_description: technical_skills[1].description,
             },
             {
               job_category_id: job_categories[2].id,
-              technical_skill_id:technical_skills[2].id,
+              technical_skill_description:technical_skills[2].description,
             }]
           }
 

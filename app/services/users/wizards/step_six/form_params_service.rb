@@ -7,8 +7,8 @@ class Users::Wizards::StepSix::FormParamsService < BaseFormWizardsService
   SUBFORMS = [:technical_skills, :to_learn_skills, :languages]
 
   SUBFORMS_FIELDS = {
-    :technical_skills => [:job_category_id, :technical_skill_id, :level_id],
-    :to_learn_skills => [:job_category_id, :technical_skill_id],
+    :technical_skills => [:job_category_id, :technical_skill_description, :level_id],
+    :to_learn_skills => [:job_category_id, :technical_skill_description],
     :languages => [:language_id, :level_id]
   }
 
@@ -30,7 +30,7 @@ class Users::Wizards::StepSix::FormParamsService < BaseFormWizardsService
     ListConverter.model_list JobCategory
   end
 
-  def technical_skill_id_list
+  def technical_skill_description_list
     ListConverter.model_list TechnicalSkill
   end
 

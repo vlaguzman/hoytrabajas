@@ -12,7 +12,7 @@ es:
               add_other: 'Agregar otra experiencia'
             formFields:
               job_category_id: 'Úbica tu empleo dentro de una categoría*'
-              company_name: 'Empresa'
+              company_name: 'Empresa*'
               work_position: 'Cargo*'
               work_methodology_id: 'Modalidad de trabajo'
               city_id: 'Ciudad'

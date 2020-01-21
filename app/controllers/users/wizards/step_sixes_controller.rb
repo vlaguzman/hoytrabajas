@@ -1,26 +1,25 @@
-class Users::Wizards::StepSixesController < ApplicationController
-  before_action :authenticate_user!
+class Users::Wizards::StepSixesController < Users::WizardsController
 
   def show
-    user_presenter
+    curriculum_vitae_presenter
   end
 
   def create
-    curriculum_vitae = current_user.curriculum_vitae
-    updated_curriculum = Users::Wizards::StepSixService.(curriculum_vitae: curriculum_vitae, update_params: step_six_params)
+    updated_curriculum = step_six_execute_update_service(current_user.curriculum_vitae)
 
-    if updated_curriculum.errors.details.any?
-      user_presenter(user: updated_curriculum)
-      render :show
-    else
-      redirect_to users_wizards_step_seven_path
-    end
+    curriculum_vitae_presenter(curriculum_vitae: updated_curriculum)
+
+    validate_redirect_to(source: updated_curriculum, users_wizard_path: users_wizards_step_seven_path)
   end
 
   private
 
-  def user_presenter(user: current_user.curriculum_vitae)
-    @user = Users::Wizards::StepSixPresenter.new(user)
+  def step_six_execute_update_service(curriculum_vitae)
+    Users::Wizards::StepSixService.new(curriculum_vitae).update(step_six_params)
+  end
+
+  def curriculum_vitae_presenter(curriculum_vitae: current_user.curriculum_vitae)
+    @curriculum_vitae = Users::Wizards::StepSixPresenter.new(curriculum_vitae)
   end
 
   def step_six_params
@@ -30,12 +29,12 @@ class Users::Wizards::StepSixesController < ApplicationController
       soft_skill_ids: [],
       technical_skills: [[
         :job_category_id,
-        :technical_skill_id,
+        :technical_skill_description,
         :level_id
       ]],
       to_learn_skills:[[
         :job_category_id,
-        :technical_skill_id
+        :technical_skill_description
       ]],
       languages:[[
         :level_id,

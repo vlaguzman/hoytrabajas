@@ -2,6 +2,7 @@
   max-width: 1250px;
   padding: 0 60px 60px;
   margin: auto;
+  overflow: hidden;
 
   @media (max-width: 900px) {
     padding: 0 30px;
@@ -39,12 +40,37 @@
     }
   }
 
+  .offers__gridWrapper {
+    @media (max-width: 576px) {
+      display: none;
+    }
+  }
+
+  .offers__carouselWrapper {
+    display: none;
+    @media (max-width: 576px) {
+      display: block;
+    }
+  }
+
+  .slick-track {
+    display: flex !important;
+  }
+
+  .slick-slide {
+    height: inherit !important;
+    > div {
+      height: 100%;
+    }
+  }
+
   .slick-list {
     overflow: visible;
   }
 
   .slick-dots {
-    margin-top: 20px;
+    margin-top: 30px;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -60,6 +86,16 @@
       color: $color__orange-main;
       font-size: 0.625rem;
       margin-top: 1px;
+    }
+  }
+
+  .slick-slide {
+    margin: 0 7.5px;
+  }
+
+  .slick-slide.slick-active {
+    .m-offer {
+      height: 110%;
     }
   }
 }

@@ -34,7 +34,7 @@ const CompaniesSection = ({ translations }) => {
       <Row className="flex-wrap justify-content-center align-items-center d-none d-md-flex px-20">
         <CompaniesList {...{ catalogo }} />
       </Row>
-      <Row className="justify-content-center align-items-center d-md-none w-90 mx-auto">
+      <Row className="justify-content-center align-items-center d-md-none w-100 mx-auto">
         <CarouselRow
           className="w-75"
           slidesToShow={3}

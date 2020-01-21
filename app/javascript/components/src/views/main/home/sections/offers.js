@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Offers from '../../../../components/Offers'
 import OffersCarousel from '../../../../components/Offers/OffersCarousel'
-import useWindowSize from '../../../../hooks/useWindowSize'
 
 const OffersSection = props => {
   const {
@@ -15,12 +14,10 @@ const OffersSection = props => {
     offer_translations
   } = props
 
-  const windowSize = useWindowSize()
-
   return (
     <div className="o-offers__wrapper">
       <h4 className="offersTitle color__blue-main">{section_title}</h4>
-      {windowSize.width > 576 ? (
+      <div className="offers__gridWrapper">
         <Offers
           offers={offers}
           offer_translations={offer_translations}
@@ -31,7 +28,8 @@ const OffersSection = props => {
           rowIncrement={3}
           maxOffers={24}
         />
-      ) : (
+      </div>
+      <div className="offers__carouselWrapper">
         <OffersCarousel
           offers={offers}
           offers_path={offers_path}
@@ -39,8 +37,9 @@ const OffersSection = props => {
           csrf_param={csrf_param}
           csrf_token={csrf_token}
           path_applied_offers={path_applied_offers}
+          maxOffers={10}
         />
-      )}
+      </div>
     </div>
   )
 }

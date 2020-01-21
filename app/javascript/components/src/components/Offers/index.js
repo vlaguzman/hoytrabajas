@@ -85,11 +85,10 @@ const Offers = props => {
         </h6>
       )}
       {loadMoreOffers && offers.length >= 1 && offers.length > offersToDisplay && (
-        <Row className="justify-content-center align-items-center mt-30">
+        <div className="d-flex justify-content-center align-items-center mt-30 px-15">
           <button
             type="button"
-            id="loadMoreOffers"
-            className="a-button a-button--secondary a-button--big my-20"
+            className="loadMoreOffers a-button a-button--secondary a-button--big my-20"
             onClick={() => updateOffers()}
           >
             {(!hasAllOffers && offersToDisplay >= offersLimit) ||
@@ -102,7 +101,7 @@ const Offers = props => {
               </>
             )}
           </button>
-        </Row>
+        </div>
       )}
     </>
   )

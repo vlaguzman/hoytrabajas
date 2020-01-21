@@ -11,7 +11,7 @@ RSpec.describe Companies::FirstOffer::StepThree::FormParamsService do
 
       expected_object = {
         title: 'Creemos tu primera oferta',
-        subtitle: 'Brinda a tu candidato una relevante de tu empresa.',
+        subtitle: 'Brinda a tu candidato información relevante de tu empresa.',
         form: {
           placeholders: {},
           buttons: {

@@ -4,7 +4,7 @@ es:
       step_sixes:
         show:
           title: "Conozcamos más de tu oferta"
-          subtitle: "Brinda a tu candidato una relevante de tu empresa."
+          subtitle: "Brinda a tu candidato información relevante de tu empresa."
           form:
             buttons:
               submit: "Siguiente"

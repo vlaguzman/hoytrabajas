@@ -3,7 +3,7 @@ export default {
   next: null,
   prev: null,
   title: 'Creemos tu primera oferta',
-  subtitle: 'Brinda a tu candidato una relevante de tu empresa.',
+  subtitle: 'Brinda a tu candidato información relevante de tu empresa.',
   editTitle: 'Empecemos por lo importante',
   formSection: 'offer_info',
   formObj: [

@@ -43,7 +43,7 @@ RSpec.describe Users::Wizards::StepThree::FormParamsService do
             },
             offer_type_ids: {
               name: 'curriculum_vitae[offer_type_ids][]',
-              label: 'Tipo de oferta*',
+              label: 'Tipo de oferta',
               values: create_offer_types_list,
               current_value: ''
             },

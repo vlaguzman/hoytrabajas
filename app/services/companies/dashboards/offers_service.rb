@@ -28,7 +28,7 @@ module Companies::Dashboards::OffersService
   end
 
   def self.applied_offer_approved(offer)
-    offer.status.eql?(:active)
+    offer.status.eql?(Offer::OFFER_STATUS[2])
   end
 
   def self.applied_offers_count(offer)

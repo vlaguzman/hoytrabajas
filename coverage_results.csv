@@ -165,7 +165,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/users/dashboards/offers_service.rb",100,51,21,21,0
 "./app/services/users/wizard_service.rb",100,53,22,22,0
 "./app/services/users/wizards/commons/find_or_create_element_association.rb",100,51,20,20,0
-"./app/services/users/wizards/curriculum_vitae_errors_service.rb",100,31,3,3,0
+"./app/services/users/wizards/curriculum_vitae_errors_service.rb",100,26,3,3,0
 "./app/services/users/wizards/step_eight/form_params_service.rb",100,51,19,19,0
 "./app/services/users/wizards/step_eight_service.rb",100,44,14,14,0
 "./app/services/users/wizards/step_eleven/form_params_service.rb",100,2,1,1,0

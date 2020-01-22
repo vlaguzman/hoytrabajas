@@ -159,7 +159,7 @@ A          • Users::ProfilesController                                   17   
 A          • Users::RegistrationsController                              13      1.0        0           2
 A          • Users::SessionsController                                   3       0.0        0           1
 A          • Users::Wizards::Commons::FindOrCreateElementAssociation     1       22.47      0           4
-A          • Users::Wizards::CurriculumVitaeErrorsService                5       0.0        0           0
+A          • Users::Wizards::CurriculumVitaeErrorsService                6       0.0        0           0
 A          • Users::Wizards::StepEight::FormParamsService                7       8.2        0           7
 A          • Users::Wizards::StepEightPresenter                          11      14.2       0           1
 A          • Users::Wizards::StepEightService                            9       17.22      0           1

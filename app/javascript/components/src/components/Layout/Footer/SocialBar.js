@@ -19,18 +19,38 @@ const SocialBar = ({ translations }) => {
         <div className="shareIcons">
           <p className="shareIcons__followUs">{translations.follow_us}</p>
           <div className="socialIcons">
-            <div className="socialIcons__icon d-flex align-items-center">
+            <a
+              href={process.env.SOCIAL_URL_FACEBOOK}
+              rel="noopener noreferrer"
+              target="_blank"
+              className="socialIcons__icon d-flex align-items-center"
+            >
               <FontAwesomeIcon icon={faFacebookF} />
-            </div>
-            <div className="socialIcons__icon d-flex align-items-center">
+            </a>
+            <a
+              href={process.env.SOCIAL_URL_INSTAGRAM}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="socialIcons__icon d-flex align-items-center"
+            >
               <FontAwesomeIcon icon={faInstagram} />
-            </div>
-            <div className="socialIcons__icon d-flex align-items-center">
+            </a>
+            <a
+              href={process.env.SOCIAL_URL_TWITTER}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="socialIcons__icon d-flex align-items-center"
+            >
               <FontAwesomeIcon icon={faTwitter} />
-            </div>
-            <div className="socialIcons__icon d-flex align-items-center">
+            </a>
+            <a
+              href={process.env.SOCIAL_URL_WHATSAPP}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="socialIcons__icon d-flex align-items-center"
+            >
               <FontAwesomeIcon icon={faWhatsapp} />
-            </div>
+            </a>
           </div>
         </div>
       </div>

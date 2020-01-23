@@ -32,7 +32,7 @@ A          • BaseForms::WizardsTranslationsService                       1    
 A          • Cities::CitiesWithOffersListService                         1       10.73      0           1
 A          • City                                                        5       0.0        0           1
 A          • Companies                                                   7       1.3        0           1
-A          • Companies::Dashboards::OffersService                        3       30.2       0           2
+A          • Companies::Dashboards::OffersService                        4       30.2       0           2
 A          • Companies::DashboardsController                             3       7.23       0           1
 A          • Companies::DashboardsPresenter                              2       3.2        0           2
 A          • Companies::FirstOffer::CommonService                        3       6.27       0           1

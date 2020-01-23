@@ -20,7 +20,7 @@ const SocialBar = ({ translations }) => {
           <p className="shareIcons__followUs">{translations.follow_us}</p>
           <div className="socialIcons">
             <a
-              href="https://www.facebook.com/HoyTrabajasLatam/"
+              href={process.env.SOCIAL_URL_FACEBOOK}
               rel="noopener noreferrer"
               target="_blank"
               className="socialIcons__icon d-flex align-items-center"
@@ -28,7 +28,7 @@ const SocialBar = ({ translations }) => {
               <FontAwesomeIcon icon={faFacebookF} />
             </a>
             <a
-              href="https://www.instagram.com/hoytrabajas/"
+              href={process.env.SOCIAL_URL_INSTAGRAM}
               target="_blank"
               rel="noopener noreferrer"
               className="socialIcons__icon d-flex align-items-center"
@@ -36,7 +36,7 @@ const SocialBar = ({ translations }) => {
               <FontAwesomeIcon icon={faInstagram} />
             </a>
             <a
-              href="https://twitter.com/hoytrabajas"
+              href={process.env.SOCIAL_URL_TWITTER}
               target="_blank"
               rel="noopener noreferrer"
               className="socialIcons__icon d-flex align-items-center"
@@ -44,7 +44,7 @@ const SocialBar = ({ translations }) => {
               <FontAwesomeIcon icon={faTwitter} />
             </a>
             <a
-              href="https://wa.me/573219766150"
+              href={process.env.SOCIAL_URL_WHATSAPP}
               target="_blank"
               rel="noopener noreferrer"
               className="socialIcons__icon d-flex align-items-center"

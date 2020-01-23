@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Form, Col, Row } from 'reactstrap'
+import { Form, Col, Collapse, Row } from 'reactstrap'
 import IconButton from '@material-ui/core/IconButton'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PropTypes from 'prop-types'
@@ -12,7 +12,6 @@ import FormGen from './components/formFieldGenerartor'
 import CarouselRow from './components/carousel/carousel'
 import dialogState from '../../../../hooks/dialogState'
 import RctCollapsibleCard from '../../../../components/Reactify/CollapsibleCard'
-import { removeItemFromArr } from '../../../../../utils/array_functions'
 import CityFilter from '../../../../../views/home/index/cityFilter'
 import AdvancedSearch from '../../../../components/AdvancedSearch'
 
@@ -34,20 +33,22 @@ const FilterForm = ({ translations, common, button1, fields1, cities }) => {
   fields1 = [fields1[0]]
 
   const { value: state, toggleState } = dialogState({ open: false })
-  const [open, setOpen] = React.useState(false)
-  const [idJobCategory, setIdJobCategory] = useState([])
-  const [valueFilterCategories, setValueFilterCategories] = useState(null)
+  const [open, setOpen] = useState(false)
+  const [openCategories, setOpenCategories] = useState(true)
+  const [jobCategoryIds, setJobCategoryIds] = useState([])
 
-  function handleJobCategory(idJobCategoryValue, selected) {
-    const idsCategories = idJobCategory
+  function handleJobCategory(newId, selected) {
     if (!selected) {
-      idsCategories.push(idJobCategoryValue)
-      setIdJobCategory(idsCategories)
+      setJobCategoryIds([...jobCategoryIds, newId])
+      setOpenCategories(false)
     } else {
-      removeItemFromArr(idsCategories, idJobCategoryValue)
-      setIdJobCategory(idsCategories)
+      const newArray = jobCategoryIds.filter(id => id !== newId)
+      setJobCategoryIds(newArray)
     }
-    setValueFilterCategories(idJobCategory.join())
+  }
+
+  const handleClickCategories = () => {
+    setOpenCategories(!openCategories)
   }
 
   function handleClickOpen() {
@@ -79,7 +80,7 @@ const FilterForm = ({ translations, common, button1, fields1, cities }) => {
     return (
       <>
         {arreglo.map(({ label, placeholder }, i) => (
-          <Col xs={12} lg={4} key={i}>
+          <Col xs={12} lg={4} key={label}>
             <FormControl>
               <InputLabel htmlFor="select-multiple-checkbox">
                 {label}
@@ -121,8 +122,13 @@ const FilterForm = ({ translations, common, button1, fields1, cities }) => {
           action="offers/"
           method="get"
         >
-          {/* TODO oscar ucomment this Button wheh find by categories exist */}
-
+          <button
+            type="button"
+            className="a-button a-button--primary filterForm__categoriesButton"
+            onClick={handleClickCategories}
+          >
+            {translations.filterForm.categories}
+          </button>
           <FormGen fields={fields1} />
           <CityFilter cities={cities} />
           {/* <ListIcon /> */}
@@ -132,8 +138,8 @@ const FilterForm = ({ translations, common, button1, fields1, cities }) => {
           >
             <FontAwesomeIcon icon="search" style={{ fontSize: '26px' }} />
           </button>
-          {/* TODO oscar Col form of advance search uncomment when advance searh is ready */}
-          <div className="pl-10 p-0 align-items-center">
+          {/* TODO: uncomment to activate the advanced search */}
+          {/* <div className="pl-10 p-0 align-items-center">
             <IconButton className="text-primary" onClick={handleClickOpen}>
               <FontAwesomeIcon
                 className="mx-auto text-primary"
@@ -141,21 +147,29 @@ const FilterForm = ({ translations, common, button1, fields1, cities }) => {
                 size="xs"
               />
             </IconButton>
-            {/* TODO: uncomment to activate the advanced search */}
-            {/* <AdvancedSearch
+            <AdvancedSearch
               translations={translations.advancedSearch}
               open={open}
               onClose={handleClose}
-            /> */}
-          </div>
+            />
+          </div> */}
           <input
             type="hidden"
             name="q[job_category_ids]"
-            value={valueFilterCategories}
+            value={jobCategoryIds.join()}
             multiple
           />
         </Form>
-        <CarouselRow items={common} handleJobCategory={handleJobCategory} />
+        <Collapse
+          isOpen={openCategories}
+          className="filterForm__collapseCategories"
+        >
+          <CarouselRow
+            items={common}
+            jobCategoryIds={jobCategoryIds}
+            handleJobCategory={handleJobCategory}
+          />
+        </Collapse>
       </RctCollapsibleCard>
     </Row>
   )
@@ -165,7 +179,10 @@ export default FilterForm
 FilterForm.propTypes = {
   common: PropTypes.object.isRequired,
   translations: PropTypes.shape({
-    categories: PropTypes.string.isRequired
+    filterForm: PropTypes.shape({
+      categories: PropTypes.string.isRequired
+    }),
+    advancedSearch: PropTypes.object.isRequired
   }).isRequired,
   button1: PropTypes.object.isRequired,
   fields1: PropTypes.object.isRequired,

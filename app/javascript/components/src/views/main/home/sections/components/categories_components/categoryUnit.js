@@ -1,14 +1,23 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import { Row, Col } from 'reactstrap'
 import Typography from '@material-ui/core/Typography'
 import classNames from 'classnames'
-import PropTypes from 'prop-types'
 
-export default ({ id, img, quantity, name, handleJobCategory }) => {
+const CategoryUnit = ({
+  id,
+  img,
+  quantity,
+  name,
+  jobCategoryIds,
+  handleJobCategory
+}) => {
   const ellipsis = word => {
     return word.length > 20 ? `${word.substr(0, 18)}...` : word
   }
-  const [selected, setSelected] = useState(false)
+
+  const isInArray = jobCategoryIds.findIndex(item => item === id)
+  const [selected, setSelected] = useState(isInArray !== -1)
 
   return (
     <Col
@@ -53,3 +62,14 @@ export default ({ id, img, quantity, name, handleJobCategory }) => {
     </Col>
   )
 }
+
+CategoryUnit.propTypes = {
+  id: PropTypes.string.isRequired,
+  img: PropTypes.string.isRequired,
+  quantity: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  jobCategoryIds: PropTypes.array.isRequired,
+  handleJobCategory: PropTypes.func.isRequired
+}
+
+export default CategoryUnit

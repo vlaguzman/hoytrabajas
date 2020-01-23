@@ -319,6 +319,7 @@
   transition: $block-transition;
   margin-bottom: $block-margin-bottom;
   position: relative;
+  padding-top: 10px;
   .rct-block-content {
     padding: $block-spacing;
   }

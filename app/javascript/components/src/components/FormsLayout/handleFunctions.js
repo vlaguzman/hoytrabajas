@@ -63,3 +63,21 @@ export const handleSimpleChange = (formValues, setFormValues) => {
     }))
   }
 }
+
+export const baseHandleDeleteChip = (
+  id,
+  inputValue,
+  setInputValue,
+  isMultiple,
+  handleGetSelectValue = null
+) => {
+  if (isMultiple) {
+    const newChips = [...inputValue]
+    newChips.splice(newChips.indexOf(id), 1)
+    setInputValue(newChips)
+  } else {
+    setInputValue('')
+  }
+
+  if (handleGetSelectValue) handleGetSelectValue(id)
+}

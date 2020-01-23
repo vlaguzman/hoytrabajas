@@ -7,24 +7,31 @@ import Input from '@material-ui/core/Input'
 import Chip from '@material-ui/core/Chip'
 import MenuItem from '@material-ui/core/MenuItem'
 import FormHelperText from '@material-ui/core/FormHelperText'
+import uuid from 'uuid'
 import { baseHandleDeleteChip } from '../handleFunctions'
 
-const chipBuilder = ({key, label, handleOnDelete}) => {
-
-
-  return (
-    <Chip
-      key={key}
-      label={label}
-      onClick={e => e.stopPropagation()}
-      onDelete={() => {
-        handleOnDelete(key)
+const ChipBuilder = (
+  value,
+  handleOnDelete
+) => (
+  <Chip
+    key={uuid()}
+    label={value}
+    onClick={e => e.stopPropagation()}
+    onDelete={() => {
+        handleOnDelete(value)
       }}
-      className="mr-5 mt-5"
-    />
-  )
-}
+    className="mr-5 mt-5"
+  />
+)
 
+const compactChipValues = (inputValue, selectOptions) => {
+  inputValue = Array.isArray(inputValue) ? inputValue : [inputValue]
+
+  return inputValue
+    .map(item => selectOptions.find(a => a.id === item))
+    .filter(x => x)
+}
 
 const BaseSelectChip = props => {
   const {
@@ -89,39 +96,18 @@ const BaseSelectChip = props => {
               required={isRequired}
             />
           }
-          renderValue={selected => {
-            console.log("selected" + selected)
-            console.log("selectValues" + name)
-            const selectValues = Array.isArray(selected)
-              ? selected.map(item => selectOptions.find(a => a.id === item))
-              : selectOptions.find(({ id }) => id === selected)
-            console.log(selectValues)
+          renderValue={selectedValue => {
+            const iterableValues = compactChipValues(
+              selectedValue,
+              selectOptions
+            )
 
             return (
-              <div className="d-flex flex-wrap">
-                {Array.isArray(selected) ? (
-                  selectValues.map(({ id, description }) => (
-                    <Chip
-                      key={id}
-                      label={description}
-                      onClick={e => e.stopPropagation()}
-                      onDelete={() => {
-                        handleOnDelete(id)
-                      }}
-                      className="mr-5 mt-5"
-                    />
-                  ))
-                ) : (
-                  <Chip
-                    key={selected}
-                    label={ selectValues && selectValues.description}
-                    onDelete={() => {
-                      handleOnDelete(selected || '')
-                    }}
-                    className="mr-5 mt-5"
-                  />
-                )}
-              </div>
+              <>
+                <div className="d-flex flex-wrap">
+                  {iterableValues.map(x => ChipBuilder(x.description, handleOnDelete))}
+                </div>
+              </>
             )
           }}
         >

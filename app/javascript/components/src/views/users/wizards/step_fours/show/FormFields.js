@@ -8,10 +8,12 @@ import {
   handleChange,
   handleDeleteChip
 } from '../../../../../components/FormsLayout/handleFunctions'
+import LocationPicker from '../../../../../components/FormsLayout/LocationPicker'
 
 const FormFields = props => {
   const { formFields } = props
   const {
+    country_id = null,
     state_id = null,
     travel_disponibility = null,
     city_id = null,
@@ -20,6 +22,7 @@ const FormFields = props => {
   } = formFields
 
   const [formValues, setFormValues] = useState({
+    [country_id.name]: country_id.current_value || '',
     [state_id.name]: state_id.current_value || '',
     [travel_disponibility.name]: travel_disponibility.current_value || false,
     [city_id.name]: city_id.current_value || '',
@@ -27,73 +30,89 @@ const FormFields = props => {
     [vehicle_ids.name]: vehicle_ids.current_value || ''
   })
 
-  const [citiesOfCurrentState, setCitiesOfCurrentState] = useState(
-    city_id.values.filter(
-      city => city['state_id'] === formValues[state_id.name]
-    )
-  )
+  const handleSelectedCity = selectedCity => {
+    setFormValues({ ...formValues, [city_id.name]: selectedCity })
+  }
 
-  useEffect(() => {
-    setFormValues({ ...formValues, [city_id.name]: formValues[city_id.name] || '' })
-    setCitiesOfCurrentState(
-      city_id.values.filter(
-        city => city['state_id'] === formValues[state_id.name]
-      )
-    )
-  }, [formValues[state_id.name]])
+  const {
+    CountrySelect,
+    StateSelect,
+    CitySelect,
+    numberOfColumsToLocationPicker
+  } = LocationPicker({
+    countriesProperties: country_id,
+    statesProperties: state_id,
+    citiesProperties: city_id,
+    handleSelectedCity
+  })
 
   const inputClassname = 'my-30 animated fadeIn inputField'
 
+  const CountryIDsField = () => {
+    return (
+      CountrySelect && (
+        <Col
+          key={country_id.name}
+          className={inputClassname}
+          xs={12}
+          lg={numberOfColumsToLocationPicker}
+        >
+          {CountrySelect}
+        </Col>
+      )
+    )
+  }
+
+  const stateIDField = () => {
+    return (
+      StateSelect && (
+        <Col
+          key={state_id.name}
+          className={inputClassname}
+          xs={12}
+          lg={numberOfColumsToLocationPicker}
+        >
+          {StateSelect}
+        </Col>
+      )
+    )
+  }
+
+  const cityIDField = () => {
+    return (
+      CitySelect && (
+        <Col
+          key={city_id.name}
+          className={inputClassname}
+          xs={12}
+          lg={numberOfColumsToLocationPicker}
+        >
+          {CitySelect}
+        </Col>
+      )
+    )
+  }
+
   const stateIDField = useMemo(
     () => (
-      <Col key={state_id.name} className={inputClassname} xs={12} lg={6}>
+      <Col key={state_id.name} className={inputClassname} xs={12} lg={4}>
         <SelectChip
-          inputValue={formValues[state_id.name]}
+          inputValue={
+            (formValues[country_id.name] && formValues[state_id.name]) || ''
+          }
           handleChange={handleChange(formValues, setFormValues)}
           handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
           name={state_id.name}
           label={state_id.label}
-          selectOptions={state_id.values}
+          selectOptions={statesOfCurrentCountry || []}
         />
       </Col>
     ),
-    [formValues[state_id.name]]
-  )
-
-  const travelDisponibilityField = useMemo(
-    () => (
-      <Col className={inputClassname} xs={12} lg={6}>
-        <Checkbox
-          inputValue={formValues[travel_disponibility.name]}
-          handleBoolean={handleBoolean(setFormValues)}
-          name={travel_disponibility.name}
-          label=""
-          description={travel_disponibility.label}
-          isRequired={false}
-        />
-      </Col>
-    ),
-    [formValues[travel_disponibility.name]]
-  )
-
-  const cityIDField = useMemo(
-    () => (
-      <Col key={city_id.name} className={inputClassname} xs={12} lg={6}>
-        <SelectChip
-          inputValue={
-            (formValues[state_id.name] && formValues[city_id.name]) || ''
-          }
-          handleChange={handleChange(formValues, setFormValues)}
-          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
-          name={city_id.name}
-          label={city_id.label}
-          selectOptions={
-            (formValues[state_id.name] && citiesOfCurrentState) || []
-          }
-        />
-      </Col>
-    ),
-    [formValues[city_id.name], formValues[state_id.name], citiesOfCurrentState]
+    [
+      formValues[state_id.name],
+      formValues[country_id.name],
+      statesOfCurrentCountry
+    ]
   )
 
   const vehicleIDsField = useMemo(
@@ -137,9 +156,10 @@ const FormFields = props => {
 
   return (
     <Row className="HT__FormGenerator">
-      {stateIDField}
+      {CountryIDsField()}
+      {stateIDField()}
+      {cityIDField()}
       {travelDisponibilityField}
-      {cityIDField}
       {vehicleIDsField}
       {drivingLicenceIDsField}
     </Row>
@@ -150,6 +170,7 @@ export default FormFields
 
 FormFields.propTypes = {
   formFields: PropTypes.shape({
+    country_id: PropTypes.object,
     state_id: PropTypes.object,
     travel_disponibility: PropTypes.object,
     city_id: PropTypes.object,

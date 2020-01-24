@@ -15,6 +15,7 @@ es:
               company_name: 'Empresa*'
               work_position: 'Cargo*'
               work_methodology_id: 'Modalidad de trabajo'
+              country_id: 'País'
               city_id: 'Ciudad'
               state_id: 'Departamento'
               still_in_progress: 'Actualmente laborando'

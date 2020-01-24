@@ -5,6 +5,7 @@ class Users::Wizards::StepFour::FormParamsService < BaseFormWizardsService
   ]
 
   SELECT_FIELDS_KEYS = [
+    :country_id,
     :city_id,
     :state_id
   ]
@@ -20,8 +21,12 @@ class Users::Wizards::StepFour::FormParamsService < BaseFormWizardsService
     super('curriculum_vitae')
   end
 
+  def country_id_list
+    ListConverter.model_list Country
+  end
+
   def state_id_list
-    ListConverter.model_list State
+    ListConverter.model_list(State, nil, additional_key: :country_id)
   end
 
   def city_id_list
@@ -42,5 +47,9 @@ class Users::Wizards::StepFour::FormParamsService < BaseFormWizardsService
 
   def state_id_current_value
     source.city_state_id
+  end
+
+  def country_id_current_value
+    source.city_state_country_id
   end
 end

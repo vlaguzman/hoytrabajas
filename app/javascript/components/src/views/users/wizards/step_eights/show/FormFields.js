@@ -14,6 +14,7 @@ import {
   handleSimpleChange,
   handleBoolean
 } from '../../../../../components/FormsLayout/handleFunctions'
+import LocationPicker from '../../../../../components/FormsLayout/LocationPicker'
 
 const inputClassname = 'my-30 animated fadeIn inputField'
 
@@ -30,6 +31,7 @@ const FormFields = props => {
     company_name = null,
     work_position = null,
     work_methodology_id = null,
+    country_id = null,
     city_id = null,
     state_id = null,
     finished_at = null,
@@ -43,6 +45,7 @@ const FormFields = props => {
     [company_name.name]: company_name.current_value || '',
     [work_position.name]: work_position.current_value || '',
     [work_methodology_id.name]: work_methodology_id.current_value || '',
+    [country_id.name]: country_id.current_value || '',
     [city_id.name]: city_id.current_value || '',
     [state_id.name]: state_id.current_value || '',
     [technical_skills.name]: technical_skills.current_value || '',
@@ -51,20 +54,16 @@ const FormFields = props => {
     [still_in_progress.name]: still_in_progress.current_value || false
   })
 
-  const [citiesOfCurrentState, setCitiesOfCurrentState] = useState(
-    city_id.values.filter(
-      city => city['state_id'] === formValues[state_id.name]
-    )
-  )
-
-  useEffect(() => {
-    setFormValues({ ...formValues, [city_id.name]: '' })
-    setCitiesOfCurrentState(
-      city_id.values.filter(
-        city => city['state_id'] === formValues[state_id.name]
-      )
-    )
-  }, [formValues[state_id.name]])
+  const {
+    CountrySelect,
+    StateSelect,
+    CitySelect,
+    numberOfColumsToLocationPicker
+  } = LocationPicker({
+    countriesProperties: country_id,
+    statesProperties: state_id,
+    citiesProperties: city_id
+  })
 
   const jobCategoryIDField = useMemo(
     () => (
@@ -85,7 +84,7 @@ const FormFields = props => {
 
   const companyNameField = useMemo(
     () => (
-      <Col key={company_name.name} className={inputClassname} xs={12} lg={12}>
+      <Col key={company_name.name} className={inputClassname} xs={12} lg={6}>
         <StandardInput
           inputValue={formValues[company_name.name]}
           handleChange={handleChange(formValues, setFormValues)}
@@ -135,41 +134,51 @@ const FormFields = props => {
     [formValues[work_methodology_id.name]]
   )
 
-  const stateIDField = useMemo(
-    () => (
-      <Col key={state_id.name} className={inputClassname} xs={12} lg={3}>
-        <SelectChip
-          inputValue={formValues[state_id.name]}
-          handleChange={handleChange(formValues, setFormValues)}
-          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
-          name={state_id.name}
-          label={state_id.label}
-          selectOptions={state_id.values}
-        />
-      </Col>
-    ),
-    [formValues[state_id.name]]
-  )
+  const CountryIDsField = () => {
+    return (
+      CountrySelect && (
+        <Col
+          key={country_id.name}
+          className={inputClassname}
+          xs={12}
+          lg={numberOfColumsToLocationPicker}
+        >
+          {CountrySelect}
+        </Col>
+      )
+    )
+  }
 
-  const cityIDField = useMemo(
-    () => (
-      <Col key={city_id.name} className={inputClassname} xs={12} lg={3}>
-        <SelectChip
-          inputValue={
-            (formValues[state_id.name] && formValues[city_id.name]) || ''
-          }
-          handleChange={handleChange(formValues, setFormValues)}
-          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
-          name={city_id.name}
-          label={city_id.label}
-          selectOptions={
-            (formValues[state_id.name] && citiesOfCurrentState) || []
-          }
-        />
-      </Col>
-    ),
-    [formValues[city_id.name], formValues[state_id.name], citiesOfCurrentState]
-  )
+
+  const stateIDField = () => {
+    return (
+      StateSelect && (
+        <Col
+          key={state_id.name}
+          className={inputClassname}
+          xs={12}
+          lg={numberOfColumsToLocationPicker}
+        >
+          {StateSelect}
+        </Col>
+      )
+    )
+  }
+
+  const cityIDField = () => {
+    return (
+      CitySelect && (
+        <Col
+          key={city_id.name}
+          className={inputClassname}
+          xs={12}
+          lg={numberOfColumsToLocationPicker}
+        >
+          {CitySelect}
+        </Col>
+      )
+    )
+  }
 
   const technicalSkillsField = useMemo(
     () => (
@@ -252,12 +261,13 @@ const FormFields = props => {
 
   return (
     <Row className="HT__FormGenerator">
-      {companyNameField}
       {jobCategoryIDField}
+      {companyNameField}
       {workPositionField}
       {workMethodologyIDField}
-      {stateIDField}
-      {cityIDField}
+      {CountryIDsField()}
+      {stateIDField()}
+      {cityIDField()}
       {technicalSkillsField}
       {startedAtField}
       {!formValues[still_in_progress.name] && finishedAtField}
@@ -274,6 +284,7 @@ FormFields.propTypes = {
     company_name: PropTypes.object,
     work_position: PropTypes.object,
     work_methodology_id: PropTypes.object,
+    country_id: PropTypes.object,
     city_id: PropTypes.object,
     state_id: PropTypes.object,
     technical_skills: PropTypes.object,

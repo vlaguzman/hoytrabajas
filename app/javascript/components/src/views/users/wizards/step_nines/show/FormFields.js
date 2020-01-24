@@ -13,6 +13,7 @@ import {
   handleSimpleChange,
   handleBoolean
 } from '../../../../../components/FormsLayout/handleFunctions'
+import LocationPicker from '../../../../../components/FormsLayout/LocationPicker'
 
 const inputClassname = 'my-30 animated fadeIn inputField'
 
@@ -26,6 +27,7 @@ const FormFields = props => {
   const { formFields } = props
 
   const {
+    country_id = null,
     city_id = null,
     state_id = null,
     degree = null,
@@ -46,20 +48,16 @@ const FormFields = props => {
     [start_date.name]: Date.now()
   })
 
-  const [citiesOfCurrentState, setCitiesOfCurrentState] = useState(
-    city_id.values.filter(
-      city => city['state_id'] === formValues[state_id.name]
-    )
-  )
-
-  useEffect(() => {
-    setFormValues({ ...formValues, [city_id.name]: '' })
-    setCitiesOfCurrentState(
-      city_id.values.filter(
-        city => city['state_id'] === formValues[state_id.name]
-      )
-    )
-  }, [formValues[state_id.name]])
+  const {
+    CountrySelect,
+    StateSelect,
+    CitySelect,
+    numberOfColumsToLocationPicker
+  } = LocationPicker({
+    countriesProperties: country_id,
+    statesProperties: state_id,
+    citiesProperties: city_id
+  })
 
   const degreeField = useMemo(
     () => (
@@ -149,41 +147,50 @@ const FormFields = props => {
     [formValues[ongoing_study.name]]
   )
 
-  const stateIDField = useMemo(
-    () => (
-      <Col key={state_id.name} className={inputClassname} xs={12} lg={3}>
-        <SelectChip
-          inputValue={formValues[state_id.name]}
-          handleChange={handleChange(formValues, setFormValues)}
-          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
-          name={state_id.name}
-          label={state_id.label}
-          selectOptions={state_id.values}
-        />
-      </Col>
-    ),
-    [formValues[state_id.name]]
-  )
+  const CountryIDsField = () => {
+    return (
+      CountrySelect && (
+        <Col
+          key={country_id.name}
+          className={inputClassname}
+          xs={12}
+          lg={numberOfColumsToLocationPicker}
+        >
+          {CountrySelect}
+        </Col>
+      )
+    )
+  }
 
-  const cityIDField = useMemo(
-    () => (
-      <Col key={city_id.name} className={inputClassname} xs={12} lg={3}>
-        <SelectChip
-          inputValue={
-            (formValues[state_id.name] && formValues[city_id.name]) || ''
-          }
-          handleChange={handleChange(formValues, setFormValues)}
-          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
-          name={city_id.name}
-          label={city_id.label}
-          selectOptions={
-            (formValues[state_id.name] && citiesOfCurrentState) || []
-          }
-        />
-      </Col>
-    ),
-    [formValues[city_id.name], formValues[state_id.name], citiesOfCurrentState]
-  )
+  const stateIDField = () => {
+    return (
+      StateSelect && (
+        <Col
+          key={state_id.name}
+          className={inputClassname}
+          xs={12}
+          lg={numberOfColumsToLocationPicker}
+        >
+          {StateSelect}
+        </Col>
+      )
+    )
+  }
+
+  const cityIDField = () => {
+    return (
+      CitySelect && (
+        <Col
+          key={city_id.name}
+          className={inputClassname}
+          xs={12}
+          lg={numberOfColumsToLocationPicker}
+        >
+          {CitySelect}
+        </Col>
+      )
+    )
+  }
 
   const diplomaField = useMemo(
     () => (
@@ -191,7 +198,7 @@ const FormFields = props => {
         key={diploma.name}
         className={inputClassname}
         xs={12}
-        lg={6}
+        lg={12}
         style={{ display: 'flex', flexDirection: 'column' }}
       >
         <FormLabel style={{ alignSelf: 'flex-start' }}>

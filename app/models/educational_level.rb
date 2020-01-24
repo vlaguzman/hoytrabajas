@@ -8,5 +8,7 @@ class EducationalLevel < ApplicationRecord
   has_one_attached :diploma
 
   delegate :state_id, to: :city, prefix: :city, allow_nil: true
+  delegate :state_country_id, to: :city, prefix: :city, allow_nil: true
+
 
 end

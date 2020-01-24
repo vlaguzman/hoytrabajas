@@ -6,8 +6,9 @@ RSpec.describe Users::Wizards::StepFour::FormParamsService do
     let!(:cities) { create_list(:city, 5) }
     let(:create_cities_list) { ListConverter.model_list(City) }
 
-    let!(:states) { create_list(:state, 5) }
-    let(:create_states_list) { ListConverter.model_list(State) }
+    let(:create_states_list) { ListConverter.model_list(State, nil, additional_key: :country_id) }
+
+    let(:create_countries_list) { ListConverter.model_list(Country) }
 
     let!(:driving_licences) { create_list(:driving_licence, 5) }
     let(:create_driving_licences_list) { ListConverter.model_list(DrivingLicence) }
@@ -40,14 +41,20 @@ RSpec.describe Users::Wizards::StepFour::FormParamsService do
             formFields: {
               city_id: {
                 name: 'user[city_id]',
-                label: 'Ciudad',
+                label: 'Ciudad de interes para trabajar',
                 values: create_cities_list,
                 current_value: nil
               },
               state_id: {
                 name: 'user[state_id]',
-                label: 'Departamento',
+                label: 'Departamento de interes para trabajar',
                 values: create_states_list,
+                current_value: nil
+              },
+              country_id: {
+                name: 'user[country_id]',
+                label: 'Pais de interes para trabajar',
+                values: create_countries_list,
                 current_value: nil
               },
               driving_licence_ids: {
@@ -127,15 +134,21 @@ RSpec.describe Users::Wizards::StepFour::FormParamsService do
             formFields: {
               city_id: {
                 name: 'user[city_id]',
-                label: 'Ciudad',
+                label: 'Ciudad de interes para trabajar',
                 values: create_cities_list,
                 current_value: cities.last.id
               },
               state_id: {
                 name: 'user[state_id]',
-                label: 'Departamento',
+                label: 'Departamento de interes para trabajar',
                 values: create_states_list,
                 current_value: cities.last.state_id
+              },
+              country_id: {
+                name: 'user[country_id]',
+                label: 'Pais de interes para trabajar',
+                values: create_countries_list,
+                current_value: cities.last.state_country_id
               },
               driving_licence_ids: {
                 name: 'user[driving_licence_ids][]',

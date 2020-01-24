@@ -12,6 +12,8 @@ es:
               next: "Saltar"
               previous: "Regresar"
             formFields:
+              country_id: 'Pais'
+              state_id: 'Estado/Departamento'
               city_id: 'Que resida en'
               educational_degree_id: 'Nivel mínimo de educación'
               duration: 'Con mínimo'
@@ -26,6 +28,6 @@ es:
             technical_skills:
               skill: 'Con habilidades en'
               level: 'con nivel'
-            languages: 
+            languages:
               language: 'Manejo de idioma'
               level: 'con nivel'

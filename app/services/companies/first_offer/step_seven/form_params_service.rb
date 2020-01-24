@@ -5,6 +5,8 @@ class Companies::FirstOffer::StepSeven::FormParamsService < BaseFormWizardsServi
   ]
 
   SELECT_FIELDS_KEYS = [
+    :country_id,
+    :state_id,
     :city_id,
     :educational_degree_id,
     :duration_type_id,
@@ -42,6 +44,14 @@ class Companies::FirstOffer::StepSeven::FormParamsService < BaseFormWizardsServi
     ListConverter.model_list City
   end
 
+  def country_id_list
+    ListConverter.model_list Country
+  end
+
+  def state_id_list
+    ListConverter.model_list(State, nil, additional_key: :country_id)
+  end
+
   def educational_degree_id_list
     ListConverter.model_list EducationalDegree
   end
@@ -68,6 +78,14 @@ class Companies::FirstOffer::StepSeven::FormParamsService < BaseFormWizardsServi
 
   def language_id_list
     ListConverter.model_list Language
+  end
+
+  def state_id_current_value
+    source.city_state_id
+  end
+
+  def country_id_current_value
+    source.city_state_country_id
   end
 
 end

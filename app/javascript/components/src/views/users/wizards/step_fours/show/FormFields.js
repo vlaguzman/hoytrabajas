@@ -93,26 +93,20 @@ const FormFields = props => {
     )
   }
 
-  const stateIDField = useMemo(
+  const travelDisponibilityField = useMemo(
     () => (
-      <Col key={state_id.name} className={inputClassname} xs={12} lg={4}>
-        <SelectChip
-          inputValue={
-            (formValues[country_id.name] && formValues[state_id.name]) || ''
-          }
-          handleChange={handleChange(formValues, setFormValues)}
-          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
-          name={state_id.name}
-          label={state_id.label}
-          selectOptions={statesOfCurrentCountry || []}
+      <Col className={inputClassname} xs={12} lg={6}>
+        <Checkbox
+          inputValue={formValues[travel_disponibility.name]}
+          handleBoolean={handleBoolean(setFormValues)}
+          name={travel_disponibility.name}
+          label=""
+          description={travel_disponibility.label}
+          isRequired={false}
         />
       </Col>
     ),
-    [
-      formValues[state_id.name],
-      formValues[country_id.name],
-      statesOfCurrentCountry
-    ]
+    [formValues[travel_disponibility.name]]
   )
 
   const vehicleIDsField = useMemo(

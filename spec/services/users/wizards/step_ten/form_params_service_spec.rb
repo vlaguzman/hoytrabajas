@@ -5,7 +5,8 @@ RSpec.describe Users::Wizards::StepTen::FormParamsService do
   describe '#form_params' do
     let!(:cities) { create_list(:city, 5) }
     let(:create_cites_list) { ListConverter.model_list(City) }
-    let(:create_states_list) { ListConverter.model_list(State) }
+    let(:create_states_list) { ListConverter.model_list(State, nil, additional_key: :country_id) }
+    let(:create_countries_list) { ListConverter.model_list(Country) }
 
     let(:subject) { described_class }
 
@@ -60,6 +61,12 @@ RSpec.describe Users::Wizards::StepTen::FormParamsService do
                 name: 'acknowledgment[state_id]',
                 label: 'Departamento',
                 values: create_states_list,
+                current_value: nil
+              },
+              country_id: {
+                name: 'acknowledgment[country_id]',
+                label: 'País',
+                values: create_countries_list,
                 current_value: nil
               }
             },
@@ -140,6 +147,12 @@ RSpec.describe Users::Wizards::StepTen::FormParamsService do
                 label: 'Departamento',
                 values: create_states_list,
                 current_value: cities.last.state.id
+              },
+              country_id: {
+                name: 'acknowledgment[country_id]',
+                label: 'País',
+                values: create_countries_list,
+                current_value: cities.last.state_country_id
               }
             },
             placeholders:{}

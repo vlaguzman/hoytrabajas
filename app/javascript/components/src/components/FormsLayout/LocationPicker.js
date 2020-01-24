@@ -43,7 +43,8 @@ const LocationPicker = ({
   countriesProperties,
   statesProperties,
   citiesProperties,
-  handleSelectedCity
+  handleSelectedCity,
+  maxColumns = 12
 }) => {
   const [selectedCountry, setSelectedCountry] = useState(
     countriesProperties.current_value
@@ -139,7 +140,7 @@ const LocationPicker = ({
       StateSelectComponent(),
       CitySelectComponent()
     ].filter(x => x).length
-    return 12 / quantity
+    return maxColumns / quantity
   }
 
   return {

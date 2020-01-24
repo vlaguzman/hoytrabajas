@@ -14,6 +14,7 @@ class WorkExperience < ApplicationRecord
   delegate :description, to: :work_position, prefix: :work_position, allow_nil: true
   delegate :description, to: :job_category, prefix: :job_category, allow_nil: true
   delegate :state_id, to: :city, prefix: :city, allow_nil: true
+  delegate :state_country_id, to: :city, prefix: :city, allow_nil: true
 
   def self.user_wizard_step_eight_list(curriculum_id)
     where(curriculum_vitae_id: curriculum_id).map { |exp| [exp.company_name, exp.work_position.description] }

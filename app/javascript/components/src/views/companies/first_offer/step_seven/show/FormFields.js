@@ -389,7 +389,7 @@ const FormFields = props => {
   )
 
   return (
-    <Row className="HT__FormGenerator StepSeven">
+    <Row className="HT__FormGenerator StepSeven _locationSelect">
       {cityIdField}
       {educationalDegreeIdField}
       {experienceFields}

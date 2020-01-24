@@ -53,5 +53,26 @@ RSpec.describe Users::Wizards::StepOneService do
       expect(modified_candidate.contact_number).to eq(params[:contact_number])
     end
 
+    describe "When the user does not select a born city or residence city" do
+      let(:params) do
+        {
+          name: "False",
+          last_name: "Fakeman",
+          document_type_id: document_type_id,
+          contact_number: "12355552345",
+          identification_number: "561234563",
+          nationality_ids: nationality_ids
+        }
+      end
+
+      it "should return user with cities not present" do
+        modified_candidate = subject.(candidate: candidate, update_params: params )
+
+        expected_error = {:born_city_id=>[{:error=>:blank}], :residence_city_id=>[{:error=>:blank}]}
+
+        expect(modified_candidate.errors.details).to eq(expected_error)
+      end
+    end
+
   end
 end

@@ -12,7 +12,7 @@ es:
               next: "Saltar"
               previous: "Regresar"
             formFields:
-              country_id: 'Pais'
+              country_id: 'País'
               state_id: 'Estado/Departamento'
               city_id: 'Que resida en'
               educational_degree_id: 'Nivel mínimo de educación'

@@ -11,9 +11,9 @@ es:
               next: "Saltar"
               previous: "Regresar"
             formFields:
-              country_id: "Pais de interes para trabajar"
-              state_id: "Departamento de interes para trabajar"
-              city_id: "Ciudad de interes para trabajar"
+              country_id: "País de interés para trabajar"
+              state_id: "Departamento de interés para trabajar"
+              city_id: "Ciudad de interés para trabajar"
               driving_licence_ids: "Licencia de conducción requerida"
               vehicle_ids: "Cuentas con algún tipo de vehículo"
               travel_disponibility: "Disponibilidad para trabajar en otra ciudades"

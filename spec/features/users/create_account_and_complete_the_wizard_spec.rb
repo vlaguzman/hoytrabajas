@@ -70,7 +70,13 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     create(:work_position, description: "Dev RoR")
     create(:work_methodology, description: "Full Time")
     create(:technical_skill, description: "Poo")
-    create(:city, description: "Neverland City", state: create(:state, description: 'Neverland North', country: create(:country, description: 'Neverland') ))
+    create(:city,
+      description: "Neverland City",
+      state: create(:state,
+        description: 'Stateland',
+        country: create(:country, description: 'Neverland')
+      )
+    )
 
   end
 
@@ -291,7 +297,7 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     find("li", text: "Neverland").click
 
     find("div[id='mui-component-select-work_experience[state_id]']", visible: false).click
-    find("li", text: "Neverland North").click
+    find("li", text: "Stateland").click
 
     find("div[id='mui-component-select-work_experience[city_id]']", visible: false).click
     find("li", text:  "Neverland City").click

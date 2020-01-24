@@ -139,7 +139,7 @@ const LocationPicker = ({
       CountrySelectComponent(),
       StateSelectComponent(),
       CitySelectComponent()
-    ].filter(x => x).length
+    ].filter(value => value).length
     return maxColumns / quantity
   }
 

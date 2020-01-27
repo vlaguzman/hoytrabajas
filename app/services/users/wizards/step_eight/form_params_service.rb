@@ -10,6 +10,7 @@ class Users::Wizards::StepEight::FormParamsService < BaseFormWizardsService
   SELECT_FIELDS_KEYS = [
     :job_category_id,
     :work_methodology_id,
+    :country_id,
     :city_id,
     :state_id
   ]
@@ -42,10 +43,18 @@ class Users::Wizards::StepEight::FormParamsService < BaseFormWizardsService
   end
 
   def state_id_list
-    ListConverter.model_list State
+    ListConverter.model_list(State, nil, additional_key: :country_id)
+  end
+
+  def country_id_list
+    ListConverter.model_list Country
   end
 
   def state_id_current_value
     source.city_state_id
+  end
+
+  def country_id_current_value
+    source.city_state_country_id
   end
 end

@@ -30,6 +30,7 @@ class User < ApplicationRecord
   has_and_belongs_to_many :driving_licences
 
   delegate :description, to: :city, prefix: :city, allow_nil: true
+  delegate :state_country_id, to: :city, prefix: :city, allow_nil: true
   delegate :state_id, to: :city, prefix: :city, allow_nil: true
   delegate :description, to: :sex, prefix: :sex, allow_nil: true
   delegate :description, to: :document_type, prefix: :document_type, allow_nil: true

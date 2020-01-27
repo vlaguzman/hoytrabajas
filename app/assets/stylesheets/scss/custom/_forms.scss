@@ -58,6 +58,13 @@
 
 .HT__FormGenerator {
   align-items: flex-end;
+
+  &._locationSelect {
+    label + .MuiInput-formControl {
+      margin-top: 0.5rem;
+    }
+  }
+
   .MuiFormHelperText-root.Mui-error {
     position: absolute;
     top: 100%;

@@ -2,7 +2,13 @@ require 'rails_helper'
 
 RSpec.describe "Like new candidate", :type => :feature do
   before do
-    create(:city, description: "La Dorada", state: create(:state, description: "Caldas"))
+    create(:city,
+      description: "La Dorada",
+      state: create(:state,
+        description: "Caldas",
+        country: create(:country, description: "SwonLand")
+      )
+    )
 
     create(:vehicle, description: "Moto")
     create(:vehicle, description: "Carro")
@@ -36,7 +42,7 @@ RSpec.describe "Like new candidate", :type => :feature do
     it "Should be able to go home", js: true do
       sign_in candidate
       visit users_wizards_step_four_path
-  
+
       click_link_or_button('Inicio')
       expect(current_path).to eq(root_path)
     end
@@ -54,6 +60,9 @@ RSpec.describe "Like new candidate", :type => :feature do
       sign_in candidate
 
       visit users_wizards_step_four_path
+
+      find("div[id='mui-component-select-user[country_id]", visible: false).click
+      find("li", text: "SwonLand").click
 
       find("div[id='mui-component-select-user[state_id]", visible: false).click
       find("li", text: "Caldas").click

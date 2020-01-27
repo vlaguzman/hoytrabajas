@@ -66,6 +66,8 @@ class Offer < ApplicationRecord
   delegate :from, :to, to: :age_range, prefix: :age_range, allow_nil: true
   delegate :description, :email, :name, :web_site, :employees_range_description, to: :company, prefix: :company, allow_nil: true
   delegate :description, to: :city, prefix: :city, allow_nil: true
+  delegate :state_id, to: :city, prefix: :city, allow_nil: true
+  delegate :state_country_id, to: :city, prefix: :city, allow_nil: true
   delegate :description, to: :offer_type, prefix: :offer_type, allow_nil: true
   delegate :description, to: :work_mode, prefix: :work_mode, allow_nil: true
   delegate :description, to: :contract_type, prefix: :contract_type, allow_nil: true
@@ -82,12 +84,12 @@ class Offer < ApplicationRecord
     ids = (Offer.all - self.by_applied_offer_cv(curriculum_vitae_id)).pluck(:id)
     Offer.where(id: ids)
   end
-  
+
   def self.order_by_demand_and_created_at(limit = MAX_OFFER_LIMIT)
     array_of_ids = Offer.on_demand_up.pluck(:id) + (Offer.created_at_desc - Offer.on_demand_up).pluck(:id)
     Offer.find(array_of_ids.take(limit)).sort_by{|offer| array_of_ids.index offer.id}
   end
- 
+
   def languages_list
     LanguagesOffers.where(offer_id: self.id)
   end

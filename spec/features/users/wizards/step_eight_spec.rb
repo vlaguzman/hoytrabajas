@@ -11,7 +11,7 @@ RSpec.describe "In wizards step eight view", type: :feature do
     create(:work_methodology)
     create(:technical_skill, description: "Play videogames every day")
     create(:technical_skill)
-    create(:city, description: "Neverland City", state: create(:state, description: 'Neverland North'))
+    create(:city, description: "Neverland City", state: create(:state, description: 'Neverland North', country: create(:country, description: 'Neverland')))
     create(:city)
   end
 
@@ -52,6 +52,9 @@ RSpec.describe "In wizards step eight view", type: :feature do
 
         find("div[id='mui-component-select-work_experience[work_methodology_id]']", visible: false).click
         find("li", text:  "Full Time").click
+
+        find("div[id='mui-component-select-work_experience[country_id]']", visible: false).click
+        find("li", text:  "Neverland").click
 
         find("div[id='mui-component-select-work_experience[state_id]']", visible: false).click
         find("li", text:  "Neverland North").click

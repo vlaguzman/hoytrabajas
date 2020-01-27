@@ -17,6 +17,7 @@ es:
               start_date: 'Fecha de inicio'
               finish_date: 'Fecha de finalización'
               ongoing_study: 'Estudio en curso'
+              country_id: 'País'
               city_id: 'Ciudad'
               state_id: 'Departamento'
               diploma: 'Carga aquí tu diploma'

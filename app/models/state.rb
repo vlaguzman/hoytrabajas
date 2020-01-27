@@ -5,5 +5,6 @@ class State < ApplicationRecord
   belongs_to :country
 
   delegate :description, to: :country, prefix: :country, allow_nil: true
+  delegate :id, to: :country, prefix: :country, allow_nil: true
 
 end

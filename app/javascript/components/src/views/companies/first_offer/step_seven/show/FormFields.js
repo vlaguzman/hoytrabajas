@@ -15,6 +15,7 @@ import {
   handleChange,
   handleBoolean
 } from '../../../../../components/FormsLayout/handleFunctions'
+import LocationPicker from '../../../../../components/FormsLayout/LocationPicker'
 
 const StyledRow = styled(Row)`
   width: 100%;
@@ -44,6 +45,8 @@ const AfterLabel = styled.span`
 const FormFields = props => {
   const { formFields } = props
   const {
+    country_id = null,
+    state_id = null,
     city_id = null,
     educational_degree_id = null,
     duration = null,
@@ -76,6 +79,8 @@ const FormFields = props => {
   }
 
   const [formValues, setFormValues] = useState({
+    [country_id.name]: country_id.current_value || '',
+    [state_id.name]: state_id.current_value || '',
     [city_id.name]: city_id.current_value || '',
     [educational_degree_id.name]: educational_degree_id.current_value || '',
     [duration.name]: duration.current_value || '',
@@ -84,6 +89,19 @@ const FormFields = props => {
     [technical_skills.name]:
       setDefaultRowIDs(technical_skills.current_values) || [],
     [languages.name]: setDefaultRowIDs(languages.current_values) || []
+  })
+
+
+  const {
+    CountrySelect,
+    StateSelect,
+    CitySelect,
+    numberOfColumsToLocationPicker
+  } = LocationPicker({
+    countriesProperties: country_id,
+    statesProperties: state_id,
+    citiesProperties: city_id,
+    maxColumns: 9
   })
 
   const addRow = ({ rowName }) => {
@@ -146,19 +164,15 @@ const FormFields = props => {
           <StyledRow>
             <StyledCol>
               <BeforeLabel>{city_id.label}</BeforeLabel>
-              <SelectChip
-                inputValue={formValues[city_id.name]}
-                handleChange={handleChange(formValues, setFormValues)}
-                handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
-                name={city_id.name}
-                selectOptions={city_id.values}
-              />
+              {CountrySelect}
+              {StateSelect}
+              {CitySelect}
             </StyledCol>
           </StyledRow>
         </Paper>
       </Col>
     ),
-    [formValues[city_id.name]]
+    [numberOfColumsToLocationPicker]
   )
 
   const educationalDegreeIdField = useMemo(
@@ -375,7 +389,7 @@ const FormFields = props => {
   )
 
   return (
-    <Row className="HT__FormGenerator StepSeven">
+    <Row className="HT__FormGenerator StepSeven _locationSelect">
       {cityIdField}
       {educationalDegreeIdField}
       {experienceFields}

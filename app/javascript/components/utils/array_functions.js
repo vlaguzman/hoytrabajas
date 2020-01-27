@@ -6,4 +6,7 @@ const removeItemFromArr = (arr, item) => {
   }
 }
 
-export { removeItemFromArr }
+const compare = (firstArray, secondArray) =>
+  JSON.stringify(firstArray) === JSON.stringify(secondArray)
+
+export { removeItemFromArr, compare }

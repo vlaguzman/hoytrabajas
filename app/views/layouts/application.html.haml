@@ -8,39 +8,40 @@
     = csrf_meta_tags
     = csp_meta_tag
 
-    -# Global site tag (gtag.js) - Google Analytics
-    %script{:async => "", :src => "https://www.googletagmanager.com/gtag/js?id=UA-108065726-1"}
-
-    -# Crazy egg
-    %script{:async => "async", :src => "//script.crazyegg.com/pages/scripts/0090/2467.js", :type => "text/javascript"}
-
-    -# Facebook pixel
-    %noscript
-      %img{:height => "1", :src => "https://www.facebook.com/tr?id=349189892310764&ev=PageView&noscript=1", :style => "display:none", :width => "1"}
+    %link{href: "https://fonts.googleapis.com/icon?family=Material+Icons", rel: "stylesheet"}
 
     = stylesheet_link_tag 'application', media: 'all'
 
     - if Rails.env.production?
-      = render 'layouts/google_analytics'
+      -# TODO Oscar uncommet when marketing require google analitycs again
+      -# = render 'layouts/google_analytics'
       = javascript_pack_tag 'analytics/clientify_analytics'
       = javascript_pack_tag 'analytics/facebook_pixel'
       = javascript_pack_tag 'analytics/tag_manager'
+
+      -# Facebook pixel
+      %noscript
+        %img{:height => "1", :src => "https://www.facebook.com/tr?id=349189892310764&ev=PageView&noscript=1", :style => "display:none", :width => "1"}
+
+      -# Crazy egg
+      %script{:async => "async", :src => "//script.crazyegg.com/pages/scripts/0090/2467.js", :type => "text/javascript"}
+
       %link{:href => "#{ENV['HT_PROTOCOL']}#{ENV['HT_DOMAIN']}#{url_for(:page => params[:page])}", :rel => "canonical"}/
   %body
-    -# Google Tag Manager (noscript)
-    %noscript
-      %iframe{:height => "0", :src => "https://www.googletagmanager.com/ns.html?id=GTM-MC7RKNG", :style => "display:none;visibility:hidden", :width => "0"}
 
     = yield
-
-    %link{href: "https://fonts.googleapis.com/icon?family=Material+Icons", rel: "stylesheet"}
 
     = react_component('src/components/Notification/NotificationWrapper',
     {alert_message: alert,
     notice_message: notice}, prerender: false)
 
     - if Rails.env.production?
-      %div.m-chatBot--hiddenOnMobile
-        = javascript_pack_tag 'analytics/chat_bot'
+      -# Google Tag Manager (noscript)
+      %noscript
+        %iframe{:height => "0", :src => "https://www.googletagmanager.com/ns.html?id=GTM-MC7RKNG", :style => "display:none;visibility:hidden", :width => "0"}
+
+    -# TOOD Oscar: uncommet the chatbot when the account is active again
+    -# %div.m-chatBot--hiddenOnMobile
+      -# = javascript_pack_tag 'analytics/chat_bot'
 
     = javascript_pack_tag 'application'

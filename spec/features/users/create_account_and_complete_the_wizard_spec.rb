@@ -28,7 +28,11 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     create(:labor_disponibility, description: "Inmediato")
 
     #Step_Four
-    create(:city, description: "La Dorada", state: create(:state, description: "Caldas"))
+    create(:city, description: "La Dorada",
+      state: create(:state, description: "Caldas",
+        country: create(:country, description: 'AmericaCountry')
+      )
+    )
 
     create(:vehicle, description: "Moto")
     create(:vehicle, description: "Carro")
@@ -66,7 +70,13 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     create(:work_position, description: "Dev RoR")
     create(:work_methodology, description: "Full Time")
     create(:technical_skill, description: "Poo")
-    create(:city, description: "Neverland City", state: create(:state, description: 'Neverland North'))
+    create(:city,
+      description: "Neverland City",
+      state: create(:state,
+        description: 'Stateland',
+        country: create(:country, description: 'Neverland')
+      )
+    )
 
   end
 
@@ -176,10 +186,13 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     find("span", text: /SIGUIENTE/).click
 
   #Step_Four
+    find("span", text: "Disponibilidad para trabajar en otra ciudades").click
+
+    find("div[id='mui-component-select-user[country_id]", visible: false).click
+    find("li", text: "AmericaCountry").click
+
     find("div[id='mui-component-select-user[state_id]", visible: false).click
     find("li", text: "Caldas").click
-
-    find("span", text: "Disponibilidad para trabajar en otra ciudades").click
 
     find("div[id='mui-component-select-user[city_id]", visible: false).click
     find("li", text: "La Dorada").click
@@ -280,8 +293,11 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     find("div[id='mui-component-select-work_experience[work_methodology_id]']", visible: false).click
     find("li", text: "Full Time").click
 
+    find("div[id='mui-component-select-work_experience[country_id]", visible: false).click
+    find("li", text: "Neverland").click
+
     find("div[id='mui-component-select-work_experience[state_id]']", visible: false).click
-    find("li", text: "Neverland North").click
+    find("li", text: "Stateland").click
 
     find("div[id='mui-component-select-work_experience[city_id]']", visible: false).click
     find("li", text:  "Neverland City").click

@@ -86,7 +86,6 @@ RSpec.describe "User searches for an offer", type: :feature do
         it "Should return results", js: true do
           visit root_path
 
-
           find("#Operario").click
           find(".filterForm__searchButton", visible: false).click
 
@@ -96,12 +95,33 @@ RSpec.describe "User searches for an offer", type: :feature do
         end
       end
 
+      context "When you select a category filter" do
+        it "Should hide all categories", js: true do
+          visit root_path
+
+          find("div[id='Tecnologia']").click
+          expect( find('.filterForm__collapseCategories', visible: false)['aria-expanded']).to eq("false")
+
+        end
+      end
+
+      context "When you click the categories button" do
+        it "Should hide all categories", js: true do
+          visit root_path
+
+          find('.filterForm__categoriesButton', visible: false).click
+
+          expect( find('.filterForm__collapseCategories', visible: false)['aria-expanded']).to eq("false")
+        end
+      end
+
       context "When you filter by several categories and find results" do
         it "Should return results", js: true do
           visit root_path
 
-
           find("div[id='Tecnologia']").click
+          find('.filterForm__categoriesButton', visible: false).click
+
           find("div[id='Marketing']").click
           find(".filterForm__searchButton", visible: false).click
 
@@ -150,7 +170,6 @@ RSpec.describe "User searches for an offer", type: :feature do
           visit root_path
 
           fill_in('keyword', with: 'jhoan')
-
 
           find("div[id='Marketing']").click
           find(".filterForm__searchButton", visible: false).click

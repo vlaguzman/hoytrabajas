@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 import BaseSelectChip from './Fields/BaseSelectChip'
-// import { compare } from '../../../utils/array_functions'
 
 Array.prototype.any = function() {
   return this.length >= 1
@@ -44,7 +43,8 @@ const LocationPicker = ({
   countriesProperties,
   statesProperties,
   citiesProperties,
-  handleSelectedCity
+  handleSelectedCity,
+  maxColumns = 12
 }) => {
   const [selectedCountry, setSelectedCountry] = useState(
     countriesProperties.current_value
@@ -139,8 +139,8 @@ const LocationPicker = ({
       CountrySelectComponent(),
       StateSelectComponent(),
       CitySelectComponent()
-    ].filter(x => x).length
-    return 12 / quantity
+    ].filter(value => value).length
+    return maxColumns / quantity
   }
 
   return {

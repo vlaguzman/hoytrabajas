@@ -17,51 +17,6 @@
       padding: 0 15px;
     }
   }
-
-  .filterForm__carousel {
-    padding: 0 30px 30px;
-
-    .slick-list {
-      padding-top: 20px;
-    }
-
-    .slick-prev {
-      left: 0;
-      transform: rotate(135deg);
-      -webkit-transform: rotate(135deg);
-    }
-
-    .slick-next {
-      right: 0;
-      &:before {
-        transform: rotate(-45deg);
-        -webkit-transform: rotate(-45deg);
-      }
-    }
-
-    .slick-next:before,
-    .slick-prev:before {
-      content: '';
-      height: 0;
-      width: 0;
-      border: solid $color__slategray-light;
-      border-width: 0 2.5px 2.5px 0;
-      padding: 4px;
-      display: block;
-    }
-  }
-
-  .filterForm__categoryImage {
-    height: 70px;
-
-    img {
-      object-fit: contain;
-    }
-  }
-
-  .filterForm__categoryTitle {
-    margin: 0;
-  }
 }
 
 .t-home__companies {

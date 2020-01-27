@@ -69,6 +69,7 @@
         border-right: 1px solid transparentize(white, 0.7);
         padding: 0 30px;
         font-size: 2rem;
+        color: inherit;
 
         &:first-child {
           border-left: 1px solid transparentize(white, 0.7);

@@ -32,6 +32,12 @@ RSpec.describe "When company fill the step seven form", :type => :feature do
   end
 
   def fill_form(data)
+    find(id: 'mui-component-select-offer[country_id]', visible: false).click
+    find('li', text: data[:country_description]).click
+
+    find(id: 'mui-component-select-offer[state_id]', visible: false).click
+    find('li', text: data[:state_description]).click
+
     find(id: 'mui-component-select-offer[city_id]', visible: false).click
     find('li', text: data[:city_id]).click
 
@@ -53,6 +59,8 @@ RSpec.describe "When company fill the step seven form", :type => :feature do
         expected_page_structure
         fill_form(
           {
+            country_description:   city.state.country.description,
+            state_description:     city.state.description,
             city_id:               city.description,
             educational_degree_id: educational_degree.description,
             duration:              '2',

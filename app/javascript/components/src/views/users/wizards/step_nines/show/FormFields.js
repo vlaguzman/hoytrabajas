@@ -98,7 +98,7 @@ const FormFields = props => {
         key={start_date.name}
         className={inputClassname}
         xs={12}
-        lg={formValues[ongoing_study.name] ? 6 : 3}
+        lg={formValues[ongoing_study.name] ? 12 : 6}
       >
         <DatePicker
           name={start_date.name}
@@ -114,7 +114,7 @@ const FormFields = props => {
 
   const finishDateField = useMemo(
     () => (
-      <Col key={finish_date.name} className={inputClassname} xs={12} lg={3}>
+      <Col key={finish_date.name} className={inputClassname} xs={12} lg={6}>
         <DatePicker
           name={finish_date.name}
           inputValue={
@@ -214,12 +214,13 @@ const FormFields = props => {
     <Row className="HT__FormGenerator StepFive">
       {degreeField}
       {institutionNameField}
+      {CountryIDsField()}
+      {stateIDField()}
+      {cityIDField()}
+      {onGoingStudyField}
+      {diplomaField}
       {startDateField}
       {!formValues[ongoing_study.name] && finishDateField}
-      {onGoingStudyField}
-      {stateIDField}
-      {cityIDField}
-      {diplomaField}
     </Row>
   )
 }

@@ -19,7 +19,9 @@ RSpec.describe Users::Wizards::StepEight::FormParamsService do
     let!(:cities) { create_list(:city, 5) }
     let(:create_cities_list) { ListConverter.model_list(City) }
 
-    let(:create_states_list) { ListConverter.model_list(State) }
+    let(:create_states_list) { ListConverter.model_list(State, nil, additional_key: :country_id) }
+
+    let(:create_countries_list) { ListConverter.model_list(Country) }
 
     let(:subject) { described_class }
 
@@ -81,6 +83,12 @@ RSpec.describe Users::Wizards::StepEight::FormParamsService do
                 name: 'work_experience[state_id]',
                 label: 'Departamento',
                 values: create_states_list,
+                current_value: nil
+              },
+              country_id: {
+                name: 'work_experience[country_id]',
+                label: 'País',
+                values: create_countries_list,
                 current_value: nil
               },
               started_at: {
@@ -197,6 +205,12 @@ RSpec.describe Users::Wizards::StepEight::FormParamsService do
                 label: 'Departamento',
                 values: create_states_list,
                 current_value: cities.last.state.id
+              },
+              country_id: {
+                name: 'work_experience[country_id]',
+                label: 'País',
+                values: create_countries_list,
+                current_value: cities.last.state.country.id
               },
               started_at: {
                 name: 'work_experience[started_at]',

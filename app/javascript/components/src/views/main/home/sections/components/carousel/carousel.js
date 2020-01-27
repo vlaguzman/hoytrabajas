@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import map from 'lodash/map'
 import Unidad from '../categories_components/categoryUnit'
 
-const CarouselRow = ({ items = [], handleJobCategory }) => {
+const CarouselRow = ({ items = [], jobCategoryIds, handleJobCategory }) => {
   const settings = {
     dots: false,
     // lazyLoad: true,
@@ -43,8 +43,13 @@ const CarouselRow = ({ items = [], handleJobCategory }) => {
   }
   return (
     <Slider {...settings} className="filterForm__carousel">
-      {map(items['categorias'], (item, i) => (
-        <Unidad key={i} {...item} handleJobCategory={handleJobCategory} />
+      {map(items['categorias'], item => (
+        <Unidad
+          {...item}
+          key={item.id}
+          jobCategoryIds={jobCategoryIds}
+          handleJobCategory={handleJobCategory}
+        />
       ))}
     </Slider>
   )
@@ -52,6 +57,7 @@ const CarouselRow = ({ items = [], handleJobCategory }) => {
 
 CarouselRow.propTypes = {
   items: PropTypes.array,
+  jobCategoryIds: PropTypes.array,
   handleJobCategory: PropTypes.func
 }
 

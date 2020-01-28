@@ -7,4 +7,5 @@ class OfferOnDemand < ApplicationRecord
   validates :status, inclusion: { in: ONDEMAND_STATUS }
 
   belongs_to :offer
+
 end

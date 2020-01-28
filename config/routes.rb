@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   resources :faqs, only: [:index]
   resources :offers
 
+  namespace :offers do
+    resources :cities, only: [:show]
+    resources :job_categories, only: [:show]
+  end
+
   localized do
     resources :offers
   end

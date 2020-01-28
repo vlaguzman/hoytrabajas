@@ -4,7 +4,7 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "Encuentra trabajo compatible con tus habilidades y competencias", :name => "description"}/
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
-    %title HoyTrabajas.com
+    %title= yield(:title)
     = csrf_meta_tags
     = csp_meta_tag
 

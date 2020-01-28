@@ -121,7 +121,9 @@ A          • OfferSalary                                                 8    
 A          • OfferType                                                   5       0.0        0           1
 A          • Offers                                                      18      0.0        0           0
 A          • Offers::AppliedOfferService                                 2       13.25      0           1
+A          • Offers::CitiesController                                    0       20.32      16          3
 A          • Offers::IndexService                                        6       11.26      0           3
+A          • Offers::JobCategoriesController                             0       20.32      16          3
 A          • Offers::UpdateOffersStatusDailyJob                          2       6.9        0           2
 A          • OffersController                                            28      36.69      0           3
 A          • OffersPresenter                                             8       19.0       0           4

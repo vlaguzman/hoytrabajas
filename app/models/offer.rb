@@ -18,7 +18,7 @@ class Offer < ApplicationRecord
 
   validates :status, inclusion: { in: OFFER_STATUS }
 
-  scope :active, -> { where(status: 'active') }
+  scope :active, -> { where(status: OFFER_STATUS[2]) }
   scope :max_offers, -> (max_offer_limit) { limit(max_offer_limit) }
   scope :related_job_category, -> (job_categories_ids) { joins(:job_categories).where("job_categories.id in (?)", job_categories_ids).uniq }
   scope :by_company_email, -> (company_email) { joins(:company).where('companies.email LIKE ?', company_email) }

@@ -14,10 +14,12 @@ class Offers::CitiesController < ApplicationController
   end
 
   def offers_presenter
-    @offers = Offer
+    offer_by_city = Offer
       .active
       .where(city_id: city_id)
-      .map { |offer| Offers::IndexService.new(offer, current_user).details }
+
+    @offers = Offers::OrderByOnDemand.(offers: offer_by_city)
+        .map { |offer| Offers::IndexService.new(offer, current_user).details }
   end
 
 end

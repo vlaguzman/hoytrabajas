@@ -120,3 +120,13 @@ join ( select meta_value, user_id from hoytrabajas.wp_usermeta where meta_key='f
   on first_name.user_id=u.id
 join ( select meta_value, user_id from hoytrabajas.wp_usermeta where meta_key='last_name') as last_name
   on last_name.user_id=u.id;
+
+
+
+
+--- Por solucitud de la gente de Data Studio, se hicieron estas actualizaciones para que companias, ofertas y usuarios
+-- quedaran con la fecha de creacion original
+--- Enero 28 de 2020 a las 04:16am hora Bogota
+update companies set created_at=u.user_registered from hoytrabajas.wp_users u where companies.id=u.id;
+update users set created_at=u.user_registered from hoytrabajas.wp_users u where users.id=u.id;
+update offers set created_at=p.post_date from hoytrabajas.wp_posts p where offers.slug=p.post_name;

@@ -64,13 +64,17 @@ const OfferContent = ({ offer, translations }) => {
         </div>
       )}
       <h2 className="offerTitle a-typo__subtitle1 my-0">
-        {capitalizeFirstLetter(wordsShortener(offer.title, 26))}
+        {capitalizeFirstLetter(
+          offer.title ? wordsShortener(offer.title, 26) : ''
+        )}
       </h2>
       <h4 className="offerSubtitle a-typo__subtitle2 mb-10">
-        {wordsShortener(offer.company.name, 31)}
+        {offer.company.name ? wordsShortener(offer.company.name, 31) : ''}
       </h4>
       <p className="offerDescription a-typo__subtitle2 mb-5">
-        {capitalizeFirstLetter(wordsShortener(offer.description, 58))}
+        {capitalizeFirstLetter(
+          offer.description ? wordsShortener(offer.description, 58) : ''
+        )}
       </p>
       <div className="mt-auto">
         <div className="m-0 d-flex justify-content-between align-items-end mb-10">

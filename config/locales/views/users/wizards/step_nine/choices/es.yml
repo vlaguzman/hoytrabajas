@@ -1,0 +1,14 @@
+es:
+  users:
+    wizards:
+      step_nines:
+        choices:
+          show:
+            title: 'Cuentas con experiencia'
+            subtitle: 'Experiencia o no, lo importante son las ganas de aprender'
+            content:
+              accept: 'Sí, quiero agregarla'
+              decline: 'No, pero quiero aprender'
+            form_buttons:
+              previous: 'Regresar'
+              skip: 'Omitir'

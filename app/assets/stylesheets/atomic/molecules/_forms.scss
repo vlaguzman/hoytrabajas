@@ -1,3 +1,96 @@
 .m-formWrapper {
   margin-top: 90px;
+
+  .formBackground {
+    background-image: url(/assets/static/img/background-city.png);
+    background-repeat: no-repeat;
+    position: fixed;
+    background-position: bottom center;
+    height: 80vh;
+    width: 100%;
+    bottom: 0;
+    z-index: -1;
+  }
+
+  .formContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    box-shadow: 0 11px 27px 1px #ecebf0;
+    background: white;
+    width: 100%;
+    max-width: 920px;
+    flex-direction: column;
+    padding: 80px 80px 40px;
+    border-radius: 10px;
+  }
+
+  .formHeading {
+    text-align: center;
+
+    .formTitle {
+      font-weight: 800;
+      font-size: 1.5rem;
+      margin: 0;
+    }
+    .formSubtitle {
+      font-size: 1rem;
+      margin-top: 8px;
+    }
+  }
+  .formContent {
+    padding: 80px 0;
+  }
+
+  .formChoices {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .formButton__accept,
+    .formButton__decline {
+      width: 100%;
+      border-radius: 4px;
+      text-transform: none;
+      font-size: 1rem;
+    }
+
+    .formButton__accept {
+      color: white;
+    }
+
+    .formButton__decline {
+      margin-top: 20px;
+      color: $color__gray-light;
+    }
+  }
+
+  .formButtons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .formPrevButton,
+  .formNextButton {
+    font-weight: 900;
+    letter-spacing: 1.25px;
+    line-height: 1.64;
+    padding: 6px 20px;
+  }
+
+  .formPrevButton {
+    margin-right: auto;
+    background: none;
+    color: $color__gray-light;
+  }
+
+  .formNextButton {
+    color: black;
+    background: $color__gray-extralight;
+    border-radius: 4px;
+  }
 }

@@ -67,6 +67,7 @@ Rails.application.routes.draw do
 
       resource :step_nine,    except: [:new, :destroy]
       namespace :step_nines   do
+        resource :choices,   only: [:show]
         resources :added_educational_levels,  only: [:show]
       end
 

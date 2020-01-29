@@ -46,6 +46,12 @@
   }
 }
 
+.a-button--outlined {
+  background: white;
+  color: $color__gray-light;
+  border: 1px solid transparentize($color__gray-light, 0.2);
+}
+
 .a-buttonFab {
   cursor: pointer;
   outline: none;

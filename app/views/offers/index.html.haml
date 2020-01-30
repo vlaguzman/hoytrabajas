@@ -1,8 +1,15 @@
+- content_for(:title, I18n.t("meta_tags.offers.job_categories.index.#{@offers[:job_category_key]}.title"))
+
+- content_for(:meta_title, I18n.t("meta_tags.offers.job_categories.index.#{@offers[:job_category_key]}.meta_title"))
+- content_for(:meta_description, I18n.t("meta_tags.offers.job_categories.index.#{@offers[:job_category_key]}.meta_description"))
+- content_for(:meta_keywords, I18n.t("meta_tags.offers.job_categories.index.#{@offers[:job_category_key]}.meta_keywords"))
+
 = render '/shared/header'
 = react_component('views/offers/show',
-  {offers: @offers,
+  {offers: @offers[:offers_list] || @offers,
     csrf_param: request_forgery_protection_token,
     csrf_token: form_authenticity_token,
     path_applied_offers: applied_offers_path,
+    title_aditional_description: @offers[:adtional_title_description] || '',
     offer_translations: I18n.t("offers")}, prerender: false)
 = render '/shared/footer'

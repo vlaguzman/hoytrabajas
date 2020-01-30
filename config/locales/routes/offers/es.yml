@@ -1,5 +1,18 @@
 es:
   routes:
     offers: ofertas
-    job-offers: 'ofertas-de-empleo'
+    job-offers: 'ofertas-empleo'
     offers-search: 'buscador-de-empleo'
+    offers-of-job: 'ofertas-de-empleo'
+    categories:
+      general-cleaning-services: 'servicios-generales-limpieza'
+      sales-commercial: 'ventas-comercial'
+      administrative-management: 'gestion-administrativa'
+      operator: 'operario'
+      logistics-transportation: 'logistica-transporte'
+      beauty-wellness-health: 'belleza-bienestar-salud'
+      kitchen-bar-waiters: 'cocina-bar-meseros'
+      technology-development: 'tecnologia-programacion'
+      markeing-design-advertising: 'markeing-diseno-publicidad'
+      protocol-events: 'eventos-protocolo'
+      security: 'seguridad'

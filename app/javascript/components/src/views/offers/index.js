@@ -21,7 +21,8 @@ const OffersPage = ({
   offer_translations,
   csrf_param,
   csrf_token,
-  path_applied_offers
+  path_applied_offers,
+  title_aditional_description
 }) => (
   <div
     style={{
@@ -32,7 +33,7 @@ const OffersPage = ({
       className="sec-title mb-40 px-30 pt-20 mx-10 text-center"
       style={{ marginTop: '100px' }}
     >
-      {offer_translations.index.title}
+      {offer_translations.index.title} {title_aditional_description}
     </h1>
     <div className="o-offers__wrapper pb-60">
       <Offers
@@ -55,6 +56,7 @@ OffersPage.propTypes = {
   offers: PropTypes.array.isRequired,
   csrf_param: PropTypes.string.isRequired,
   csrf_token: PropTypes.string.isRequired,
+  title_aditional_description: PropTypes.string,
   path_applied_offers: PropTypes.string.isRequired,
   offer_translations: PropTypes.shape({
     index: PropTypes.shape({

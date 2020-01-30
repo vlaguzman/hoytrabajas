@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   around_action :set_locale_from_url
 
+  def default_url_options
+    { host: ENV["HT_DOMAIN"] || "localhost:3000" }
+  end
+
   private
 
   def after_sign_in_path_for(resource)

@@ -9,7 +9,8 @@ const OffersPage = props => {
     csrf_param,
     csrf_token,
     path_applied_offers,
-    offer_translations
+    offer_translations,
+    title_aditional_description
   } = props
 
   return (
@@ -20,6 +21,7 @@ const OffersPage = props => {
         path_applied_offers={path_applied_offers}
         csrf_param={csrf_param}
         csrf_token={csrf_token}
+        title_aditional_description={title_aditional_description}
       />
     </AppLayout>
   )
@@ -31,6 +33,7 @@ OffersPage.propTypes = {
   offers: PropTypes.array.isRequired,
   csrf_param: PropTypes.string.isRequired,
   csrf_token: PropTypes.string.isRequired,
+  title_aditional_description: PropTypes.string,
   path_applied_offers: PropTypes.object.isRequired,
   offer_translations: PropTypes.shape({
     index: PropTypes.shape({

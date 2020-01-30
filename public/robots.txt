@@ -1,1 +1,8 @@
-# See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+User-agent: *
+Disallow: /letter_opener
+Disallow: /admin/
+Disallow: /companies/first_offer/
+Disallow: /companies/dashboard/
+Disallow: /companies/list_candidates/
+Disallow: /users/wizards/
+Disallow: /rails/

@@ -1,10 +1,10 @@
 es:
   routes:
-    in: 'en'
     offers: ofertas
     job-offers: 'ofertas-empleo'
     offers-search: 'buscador-de-empleo'
     offers-of-job: 'ofertas-de-empleo'
+    offers-city: 'ofertas-ciudad'
     categories:
       general-cleaning-services: 'servicios-generales-limpieza'
       sales-commercial: 'ventas-comercial'

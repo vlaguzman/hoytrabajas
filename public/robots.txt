@@ -7,4 +7,4 @@ Disallow: /companies/list_candidates/
 Disallow: /users/wizards/
 Disallow: /rails/
 
-Sitemap: http://www.hoytrabajas.com/sitemap.xml.gz
+Sitemap: http://www.hoytrabajas.com/sitemap.xml

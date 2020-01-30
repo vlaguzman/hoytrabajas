@@ -1,5 +1,5 @@
+SitemapGenerator::Sitemap.compress = false
 SitemapGenerator::Sitemap.default_host = 'http://www.hoytrabajas.com'
-
 SitemapGenerator::Sitemap.create do
 
   add '/users/sign_up'
@@ -37,7 +37,7 @@ SitemapGenerator::Sitemap.create do
   add '/buscador-de-empleo'
 
   Offer.all.map { |offer| offer.city_description}.uniq.map do |city_name|
-    add "/buscador-de-empleo/en/#{city_name}"
+    add "/ofertas-ciudad/#{city_name}"
   end
 
   add '/faqs'

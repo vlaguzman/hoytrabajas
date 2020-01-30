@@ -1,6 +1,7 @@
 File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/channels/application_cable/channel.rb",100,4,2,2,0
 "./app/channels/application_cable/connection.rb",100,4,2,2,0
+"./app/helpers/meta_tags_helper.rb",100,18,10,10,0
 "./app/jobs/application_job.rb",100,7,1,1,0
 "./app/jobs/offers/update_offers_status_daily_job.rb",100,14,6,6,0
 "./app/mailers/application_mailer.rb",100,4,3,3,0
@@ -51,7 +52,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/limitation.rb",100,6,3,3,0
 "./app/models/nationality.rb",100,7,4,4,0
 "./app/models/offer.rb",100,104,74,74,0
-"./app/models/offer_on_demand.rb",100,10,5,5,0
+"./app/models/offer_on_demand.rb",100,11,5,5,0
 "./app/models/offer_required_experiences.rb",100,9,5,5,0
 "./app/models/offer_salary.rb",100,11,7,7,0
 "./app/models/offer_type.rb",100,5,3,3,0
@@ -156,6 +157,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/offers/applied_offer_service.rb",100,15,6,6,0
 "./app/services/offers/expired_service.rb",100,27,13,13,0
 "./app/services/offers/index_service.rb",100,18,7,7,0
+"./app/services/offers/order_by_on_demand.rb",100,25,11,11,0
 "./app/services/offers/show_service.rb",100,76,27,27,0
 "./app/services/offers/views_service.rb",100,83,34,34,0
 "./app/services/offers_on_demand/set_inactive_service.rb",100,29,13,13,0
@@ -196,4 +198,4 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./lib/hashes_compare.rb",100,23,12,12,0
 "./lib/hashes_converter.rb",100,19,8,8,0
 "./lib/list_converter.rb",100,25,12,12,0
-"./lib/string_converter.rb",100,12,7,7,0
+"./lib/string_converter.rb",100,16,9,9,0

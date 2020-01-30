@@ -2,7 +2,8 @@ class Users::Wizards::StepNines::ChoicesController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @choices_information = Users::Wizards::StepNines::ChoicesPresenter.new(current_user)
+    @user = Users::Wizards::StepNines::ChoicesPresenter.new(current_user)
+
   end
 
   def update

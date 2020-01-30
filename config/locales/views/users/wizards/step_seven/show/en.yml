@@ -1,11 +1,11 @@
 en:
   users:
     wizards:
-      step_nines:
+      step_sevens:
         choices:
           show:
-            title: 'Do you have education?'
-            subtitle: 'Is never too late to learn.'
+            title: 'Do you have experience?'
+            subtitle: 'With experience or not, you can always learn.'
             content:
               accept: 'Yes, I want to add it'
               decline: 'No, but I am willing to learn'

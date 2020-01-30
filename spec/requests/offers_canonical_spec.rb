@@ -114,4 +114,12 @@ RSpec.describe "Offers templete visible with url canonical '/ofertas-de-empleo' 
     end
   end
 
+  describe "When visit '/ofertas-empleo/en/medellin'" do
+    it "Should be redirecto /offers/cities/medellin" do
+      get "/ofertas-empleo/en/medellin"
+
+      expect(response).to redirect_to("/offers/cities/medellin")
+    end
+  end
+
 end

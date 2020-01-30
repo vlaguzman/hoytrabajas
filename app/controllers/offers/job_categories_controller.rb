@@ -8,12 +8,12 @@ class Offers::JobCategoriesController < ApplicationController
 
   private
 
-  def sanitzed_job_category_name
+  def sanitized_job_category_name
     params.permit(:id)[:id]
   end
 
   def job_category_name
-    StringConverter.replace_chars_to(sanitzed_job_category_name, char_to_replace: "-", new_char: " ")
+    StringConverter.replace_chars_to(sanitized_job_category_name, char_to_replace: "-", new_char: " ")
   end
 
   def job_category_id
@@ -31,7 +31,8 @@ class Offers::JobCategoriesController < ApplicationController
 
     @offers = {
       offers_list: offers_list,
-      job_category_key: sanitzed_job_category_name,
+      origin: :job_categories,
+      content: sanitized_job_category_name,
       adtional_title_description: "#{t('in')} #{job_category_name}"
     }
   end

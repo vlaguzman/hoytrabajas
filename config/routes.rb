@@ -103,6 +103,9 @@ Rails.application.routes.draw do
   get RoutesService.build_path('job-offers', 'categories.protocol-events'), to: redirect('/offers/job_categories/eventos-y-protocolo')
   get RoutesService.build_path('job-offers', 'categories.security'), to: redirect('/offers/job_categories/seguridad')
 
+  #Offer by city
+  get "#{ RoutesService.build_path('job-offers', 'in')}/:city_name", to: redirect('/offers/cities/%{city_name}')
+
   # User Session and Registration
   devise_scope :user do
     get RoutesService.build_path(:wizards, :users), to: 'devise/sessions#new'

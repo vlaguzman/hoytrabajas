@@ -13,6 +13,13 @@ es:
         meta_keywords: 'hoytrabajas, ofertas, empleo, colombia, trabajo, bogota, trabajo si hay, cometencias, habilidades'
 
     offers:
+      cities:
+        index:
+          default:
+            title: 'Mejores ofertas de empleo en %{city_name}'
+            meta_title: 'Mejores ofertas de empleo en %{city_name}'
+            meta_description: 'Las mejores empresas están buscando personal en %{city_name}. Completa tu perfil y descubre la empresa perfecta para ti - Hoytrabajas.com'
+            meta_keywords: 'hoytrabajas, ofertas, empleo, colombia, %{city_name}, trabajo si hay'
       job_categories:
         index:
           default:

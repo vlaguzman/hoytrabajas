@@ -1,5 +1,6 @@
 es:
   routes:
+    in: 'en'
     offers: ofertas
     job-offers: 'ofertas-empleo'
     offers-search: 'buscador-de-empleo'

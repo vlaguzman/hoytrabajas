@@ -1,7 +1,6 @@
 File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/channels/application_cable/channel.rb",100,4,2,2,0
 "./app/channels/application_cable/connection.rb",100,4,2,2,0
-"./app/helpers/meta_tags_helper.rb",100,18,10,10,0
 "./app/jobs/application_job.rb",100,7,1,1,0
 "./app/jobs/offers/update_offers_status_daily_job.rb",100,14,6,6,0
 "./app/mailers/application_mailer.rb",100,4,3,3,0

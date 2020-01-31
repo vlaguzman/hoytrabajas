@@ -10,7 +10,7 @@ A          • AdminsService                                               1    
 A          • AgeRange                                                    1       0.0        0           1
 A          • ApplicationCable::Channel                                   1       0.0        0           1
 A          • ApplicationCable::Connection                                1       0.0        0           1
-A          • ApplicationController                                       30      35.98      0           4
+A          • ApplicationController                                       32      35.98      0           4
 A          • ApplicationJob                                              1       0.0        0           1
 A          • ApplicationMailer                                           3       0.0        0           1
 A          • ApplicationPresenter                                        5       26.49      0           10
@@ -113,7 +113,7 @@ A          • Level                                                       4    
 A          • Limitation                                                  4       0.0        0           1
 A          • ListConverter                                               12      29.49      0           2
 A          • MailNotifier                                                1       3.54       0           1
-A          • MetaTagsHelper                                              0       15.81      0           1
+A          • MetaTagsVerifier                                            1       15.81      0           1
 A          • Nationality                                                 5       0.0        0           1
 A          • Offer                                                       63      31.6       0           2
 A          • OfferOnDemand                                               4       0.0        0           1
@@ -125,7 +125,7 @@ A          • Offers::AppliedOfferService                                 2    
 A          • Offers::IndexService                                        6       11.26      0           3
 A          • Offers::OrderByOnDemand                                     1       29.62      0           2
 A          • Offers::UpdateOffersStatusDailyJob                          2       6.9        0           2
-A          • OffersController                                            29      36.69      0           3
+A          • OffersController                                            30      36.69      0           3
 A          • OffersPresenter                                             8       19.0       0           4
 A          • OffersResponsibilities                                      1       0.0        0           1
 A          • OffersService                                               21      40.05      0           3

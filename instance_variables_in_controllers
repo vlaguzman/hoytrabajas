@@ -22,6 +22,7 @@
       1 app/controllers/users/wizards/step_fives_controller.rb
       1 app/controllers/users/wizards/step_fours_controller.rb
       1 app/controllers/users/wizards/step_nines/added_educational_levels_controller.rb
+      1 app/controllers/users/wizards/step_nines/choices_controller.rb
       1 app/controllers/users/wizards/step_nines_controller.rb
       1 app/controllers/users/wizards/step_ones_controller.rb
       1 app/controllers/users/wizards/step_sevens_controller.rb

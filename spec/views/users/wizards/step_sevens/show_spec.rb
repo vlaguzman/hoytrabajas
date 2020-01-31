@@ -1,14 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe "users/wizards/step_sevens/show" do
-  let(:curriculum) { create(:curriculum_vitae, user: create(:user, :first_time_candidate)) }
-
   it "Should render users/wizards/step_sevens#show template" do
-    assign(:user, Users::Wizards::StepElevenPresenter.new(curriculum.user))
+    assign(:choices, Users::Wizards::StepSevenPresenter.new(create(:user, :first_time_candidate)))
 
     render
 
-    expect(rendered).to have_tag("div", with: { "data-react-class": "views/users/wizards/step_sevens/show"})
+    expect(rendered).to have_content('Cuentas con experiencia')
+    expect(rendered).to have_content('Experiencia o no, lo importante son las ganas de aprender')
+
+    expect(rendered).to have_content('Sí, quiero agregarla')
+    expect(rendered).to have_content('No, pero quiero aprender')
+
+    expect(rendered).to have_content('Regresar')
+    expect(rendered).to have_content('Omitir')
 
   end
 end

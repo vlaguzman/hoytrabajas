@@ -12,9 +12,9 @@ RSpec.describe Users::Wizards::StepNines::ChoicesPresenter do
     end
   end
 
-  describe '#next_path' do
+  describe '#current_path' do
     it 'should return a path' do
-      response = subject.next_path
+      response = subject.current_path
 
       expect(response).to eq('/users/wizards/step_nine')
     end
@@ -50,7 +50,7 @@ RSpec.describe Users::Wizards::StepNines::ChoicesPresenter do
     it 'should return a boolean' do
       has_work_experience = subject.has_work_experience?
 
-      expect(has_work_experience).to be_an_instance_of(Boolean)
+      expect(has_work_experience).to be_in([true, false])
     end
   end
 

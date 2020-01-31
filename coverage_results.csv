@@ -110,9 +110,10 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/users/wizards/step_five_presenter.rb",100,33,12,12,0
 "./app/presenters/users/wizards/step_four_presenter.rb",100,32,12,12,0
 "./app/presenters/users/wizards/step_nine_presenter.rb",100,33,12,12,0
+"./app/presenters/users/wizards/step_nines/choices_presenter.rb",100,17,9,9,0
 "./app/presenters/users/wizards/step_nines/educational_level_presenter.rb",100,19,9,9,0
 "./app/presenters/users/wizards/step_one_presenter.rb",100,41,14,14,0
-"./app/presenters/users/wizards/step_seven_presenter.rb",100,27,10,10,0
+"./app/presenters/users/wizards/step_seven_presenter.rb",100,13,7,7,0
 "./app/presenters/users/wizards/step_six_presenter.rb",100,34,12,12,0
 "./app/presenters/users/wizards/step_ten_presenter.rb",100,32,12,12,0
 "./app/presenters/users/wizards/step_tens/acknowledgment_presenter.rb",100,19,9,9,0
@@ -178,7 +179,6 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/users/wizards/step_nine_service.rb",100,13,7,7,0
 "./app/services/users/wizards/step_one/form_params_service.rb",100,74,29,29,0
 "./app/services/users/wizards/step_one_service.rb",100,28,13,13,0
-"./app/services/users/wizards/step_seven/form_params_service.rb",100,13,5,5,0
 "./app/services/users/wizards/step_six/form_params_service.rb",100,45,17,17,0
 "./app/services/users/wizards/step_six_service.rb",100,106,53,53,0
 "./app/services/users/wizards/step_ten/form_params_service.rb",100,38,14,14,0

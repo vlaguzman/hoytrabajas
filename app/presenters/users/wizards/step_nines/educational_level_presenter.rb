@@ -13,7 +13,7 @@ class Users::Wizards::StepNines::EducationalLevelPresenter < ApplicationPresente
   end
 
   def next_path
-    rails_routes.users_wizards_step_ten_path
+    rails_routes.users_wizards_step_eleven_path
   end
 
 end

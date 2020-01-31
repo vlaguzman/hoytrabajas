@@ -7,33 +7,33 @@ RSpec.describe "like new candidate", :type => :feature do
     visit users_wizards_step_seven_path
   }
 
-  feature "When click on 'No pero con disposición'" do
+  feature "When click on 'No, pero quiero aprender'" do
     it "Should redirect to the expected path", js: true do
       sign_in_and_visit_step_seven
 
-      click_on 'No pero con disposición'
+      click_on 'No, pero quiero aprender'
 
-      expect(current_path).to eq(users_wizards_step_nine_path)
+      expect(current_path).to eq(users_wizards_step_nines_choices_path)
     end
   end
 
-  feature "When click on 'Sí, quiero adicionarla'" do
+  feature "When click on 'Sí, quiero agregarla'" do
     it "Should redirect to the expected path", js: true do
       sign_in_and_visit_step_seven
 
-      click_on 'Sí, quiero adicionarla'
+      click_on 'Sí, quiero agregarla'
 
       expect(current_path).to eq(users_wizards_step_eight_path)
     end
   end
 
-  feature "When click on 'Saltar'" do
+  feature "When click on 'Omitir'" do
     it "Should redirect to the expected path", js: true do
       sign_in_and_visit_step_seven
 
-      click_on 'Saltar'
+      click_on 'Omitir'
 
-      expect(current_path).to eq(users_wizards_step_nine_path)
+      expect(current_path).to eq(users_wizards_step_nines_choices_path)
     end
   end
 

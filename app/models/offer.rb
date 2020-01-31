@@ -18,6 +18,8 @@ class Offer < ApplicationRecord
 
   validates :status, inclusion: { in: OFFER_STATUS }
 
+  validates_numericality_of :vacancies_quantity, :greater_than_or_equal_to => 1
+
   scope :active, -> { where(status: OFFER_STATUS[2]) }
   scope :max_offers, -> (max_offer_limit) { limit(max_offer_limit) }
   scope :related_job_category, -> (job_categories_ids) { joins(:job_categories).where("job_categories.id in (?)", job_categories_ids).uniq }
@@ -26,7 +28,7 @@ class Offer < ApplicationRecord
   scope :by_applied_offer_cv, -> (curriculum_vitae_id) { joins(:applied_offers).where(applied_offers: {curriculum_vitae_id: curriculum_vitae_id}) }
   scope :by_job_categories_ids, -> (job_category_ids) { joins(:job_categories).where('job_category_id in (?)', job_category_ids).uniq }
   scope :created_at_desc, -> { order(created_at: :desc) }
-  scope :on_demand_up, -> { joins(:offer_on_demand).where(:offer_on_demands=>{status: 'up'}).order("offer_on_demands.start_at DESC NULLS LAST") } 
+  scope :on_demand_up, -> { joins(:offer_on_demand).where(:offer_on_demands=>{status: 'up'}).order("offer_on_demands.start_at DESC NULLS LAST") }
   scope :order_by_on_demand_and_created_at, -> { includes(:offer_on_demand).order("offer_on_demands.start_at ASC", created_at: :desc) }
 
   has_one :offer_salary
@@ -101,4 +103,5 @@ class Offer < ApplicationRecord
   def strong_languages
     LanguagesOffers.where(offer_id: self.id)
   end
+
 end

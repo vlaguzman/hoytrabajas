@@ -7,15 +7,14 @@ class Admins::OffersController < ApplicationController
   end
 
   def update
-    offer = Admins::OffersService.(update_params: update_params)
+    response = Admins::OffersService.(update_params: update_params)
 
-    if offer[:status].eql?(:error)
-      flash[:error] = offer[:data].errors.full_messages
-      offer_presenter(offer[:data])
+    if response[:status].eql?(:error)
+      offer_presenter(response[:data])
       render :edit
     else
-      redirect_to admin_offer_path(offer[:data].id)
-      flash[:notice] = t('offer.form.messages.succesfully_update', offer_title: offer[:data].title)
+      redirect_to admin_offer_path(response[:data].id)
+      flash[:notice] = t('offer.form.messages.succesfully_update', offer_title: response[:data].title)
     end
   end
 
@@ -48,40 +47,38 @@ class Admins::OffersController < ApplicationController
         :status,
         age_range: [
           :to,
-          :from,
-          :offer_id
+          :from
         ],
         offer_salary: [
           :to,
           :from,
           :is_range,
-          :offer_id,
           :salary_period_id,
           :currency_id
         ],
         offer_required_experiences: [
           :duration,
-          :duration_type_id,
-          :offer_id
+          :duration_type_id
         ],
-        offers_technical_skills: [
+        offers_technical_skills: [[
+          :id,
           :technical_skill_id,
-          :level_id,
-          :offer_id
-        ],
-        languages_offers: [
+          :level_id
+        ]],
+        languages_offers: [[
+          :id,
           :language_id,
-          :level_id,
-          :offer_id
-        ],
+          :level_id
+        ]],
         job_categories: [],
         work_positions: [],
         sexes: [],
         available_work_days: [],
         working_days: [],
         job_aids: [],
-        responsibilities: [],
-        requirements: [],
+        # TODO uncomment when responsibilities and requirements has been defined
+        #responsibilities: [],
+        #requirements: [],
         vehicles: [],
         driving_licences: []
     ).to_h

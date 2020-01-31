@@ -1,8 +1,10 @@
 en:
   offer:
+    title: 'Edit offer: '
     form:
       messages:
         succesfully_update: 'Offer %{offer_title} updated succesfully!'
+        fail_global_update: 'An error occurred while saving '
       labels:
         title: 'Title'
         description: 'Detailed description of the offer'
@@ -13,12 +15,12 @@ en:
         status: 'Select status'
         age_range:
           label: 'Age range'
-          to: 'To'
           from: 'From'
+          to: 'To'
         offer_salary:
           label: 'Offer salary'
-          to: 'To'
           from: 'From'
+          to: 'To'
           is_range: 'Is range'
           currency_id: 'Select currency'
           salary_period_id: 'Select salary period'
@@ -49,5 +51,23 @@ en:
         requirements: 'Select requirements'
         vehicles: 'Select vehicles'
         driving_licences: 'Select driving licences'
+      prompt:
+        status: ''
+        offer_salary:
+          currency_id: ''
+          salary_period_id: ''
+        offer_required_experiences:
+          duration_type_id: ''
+        offers_technical_skills:
+          technical_skill_id: 'Select technical skill'
+          level_id: 'Select level'
+        languages_offers:
+          language_id: 'Select language'
+          level_id: 'Select level'
+        offer_type_id: ''
+        work_mode_id: ''
+        contract_type_id: ''
+        city_id: ''
+        educational_degree_id: ''
       buttons:
         save: 'Save'

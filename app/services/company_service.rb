@@ -1,5 +1,6 @@
 module CompanyService
 
+  #TODO move this variables to model that manage variables for this module
   DEFAULT_STATE_UP       = 'up'
   DEFAULT_STATE_DOWN     = 'down'
   DEFAULT_TIME_OF_DEMAND = 10.days

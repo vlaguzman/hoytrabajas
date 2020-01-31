@@ -50,4 +50,18 @@ RSpec.describe HashesConverter do
       expect(subject.validate_presence_values(example_object)).to eq(expected_hash)
     end
   end
+
+  describe "#select_if_values_presence" do
+    context "When the user needs to select hash that at least have a value" do
+      it "should return an these hash" do
+        test_hash = {
+            a: :a,
+            b: :b,
+            c: ''
+          }
+
+        expect(subject.select_if_values_presence(test_hash)).to eq({a: :a, b: :b})
+      end
+    end
+  end
 end

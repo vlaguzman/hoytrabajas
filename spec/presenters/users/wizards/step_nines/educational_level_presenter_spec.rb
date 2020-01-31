@@ -38,7 +38,7 @@ RSpec.describe Users::Wizards::StepNines::EducationalLevelPresenter do
     it "Should return the path" do
       response = subject.next_path
 
-      expect(response).to eq('/users/wizards/step_ten')
+      expect(response).to eq('/users/wizards/step_eleven')
     end
   end
 

@@ -124,7 +124,7 @@ const FilterForm = ({ translations, common, button1, fields1, cities }) => {
         >
           <button
             type="button"
-            className="a-button a-button--primary filterForm__categoriesButton"
+            className="a-button --primary filterForm__categoriesButton"
             onClick={handleClickCategories}
           >
             {translations.filterForm.categories}
@@ -133,7 +133,7 @@ const FilterForm = ({ translations, common, button1, fields1, cities }) => {
           <CityFilter cities={cities} />
           {/* <ListIcon /> */}
           <button
-            className="a-buttonFab a-button--primary mb-10 search_button filterForm__searchButton"
+            className="a-buttonFab --primary mb-10 search_button filterForm__searchButton"
             type="submit"
           >
             <FontAwesomeIcon icon="search" style={{ fontSize: '26px' }} />

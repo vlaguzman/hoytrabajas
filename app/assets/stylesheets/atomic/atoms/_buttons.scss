@@ -21,35 +21,38 @@
   pointer-events: none;
 }
 
-.a-button--close {
-  color: $color__slategray-extralight;
-}
-
-.a-button--primary {
-  background: $color__orange-main;
-  color: white;
-}
-
-.a-button--secondary {
-  background: $color__blue-main;
-  color: white;
-}
-
-.a-button--big {
-  padding: 12px 60px;
-  min-width: 64px;
-
-  @media (max-width: 576px) {
-    width: 100%;
-    padding: 15px 10px;
-    letter-spacing: 0.8px;
+.a-button,
+.a-fabButton {
+  &.--primary {
+    background: $color__orange-main;
+    color: white;
   }
-}
 
-.a-button--outlined {
-  background: white;
-  color: $color__gray-light;
-  border: 1px solid transparentize($color__gray-light, 0.2);
+  &.--secondary {
+    background: $color__blue-main;
+    color: white;
+  }
+
+  &.--big {
+    padding: 12px 60px;
+    min-width: 64px;
+
+    @media (max-width: 576px) {
+      width: 100%;
+      padding: 15px 10px;
+      letter-spacing: 0.8px;
+    }
+  }
+
+  &.--close {
+    color: $color__slategray-extralight;
+  }
+
+  &.--outlined {
+    background: $color__white-main;
+    color: $color__gray-light;
+    border: 1px solid transparentize($color__gray-light, 0.2);
+  }
 }
 
 .a-buttonFab {

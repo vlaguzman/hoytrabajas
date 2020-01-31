@@ -8,8 +8,8 @@
       %p.formSubtitle= t('.subtitle')
     .formContent
       .formChoices
-        %a.formButton__accept.a-button.a-button--big.a-button--secondary{:href => @choices.next_path}= t('.content.accept')
-        %a.formButton__decline.a-button.a-button--big.a-button--outlined{:href => @choices.skip_path}= t('.content.decline')
+        %a.formButton__accept.a-button.--big.--secondary{:href => @choices.next_path}= t('.content.accept')
+        %a.formButton__decline.a-button.--big.--outlined{:href => @choices.skip_path}= t('.content.decline')
     .formButtons
       %a.formPrevButton{:href => @choices.return_path}= t('.form_buttons.previous')
       %a.formNextButton{:href => @choices.skip_path}= t('.form_buttons.skip')

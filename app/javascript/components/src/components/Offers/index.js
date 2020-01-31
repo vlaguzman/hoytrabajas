@@ -88,7 +88,7 @@ const Offers = props => {
         <div className="d-flex justify-content-center align-items-center mt-30 px-15">
           <button
             type="button"
-            className="loadMoreOffers a-button a-button--secondary a-button--big my-20"
+            className="loadMoreOffers a-button --secondary --big my-20"
             onClick={() => updateOffers()}
           >
             {(!hasAllOffers && offersToDisplay >= offersLimit) ||

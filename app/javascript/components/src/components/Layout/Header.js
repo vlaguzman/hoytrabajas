@@ -122,7 +122,7 @@ const Header = props => {
         <NavItem className="list-inline-item a-navItem__button">
           <a
             href={pathToCreateOffer}
-            className="a-button a-button--primary d-flex align-items-center"
+            className="a-button --primary d-flex align-items-center"
           >
             <AddCircleIcon className="text-white mr-5" />
             {props.session_translation.nav.create_offer}
@@ -132,7 +132,7 @@ const Header = props => {
       {/* TODO any: uncomment when premium page is ready */}
       {/* {user_signed_in ? (
         <NavItem className="list-inline-item a-navItem__button">
-          <a className="a-button a-button--primary d-flex align-items-center">
+          <a className="a-button --primary d-flex align-items-center">
             <StarsIcon className="text-white mr-5" />
             {props.session_translation.nav.premium}
           </a>
@@ -141,7 +141,7 @@ const Header = props => {
         <NavItem className="list-inline-item a-navItem__button">
           <a
             href={pathToCreateOffer}
-            className="a-button a-button--primary d-flex align-items-center"
+            className="a-button --primary d-flex align-items-center"
           >
             <AddCircleIcon className="text-white mr-5" />
             {props.session_translation.nav.create_offer}

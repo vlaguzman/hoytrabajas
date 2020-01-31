@@ -207,7 +207,7 @@ const AdvancedSearch = ({
               </button>
               <button
                 type="submit"
-                className="a-button a-button--primary advancedSearch__searchOffer"
+                className="a-button --primary advancedSearch__searchOffer"
               >
                 {translations.search_offer}
               </button>

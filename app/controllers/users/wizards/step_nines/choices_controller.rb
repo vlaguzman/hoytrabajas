@@ -3,11 +3,9 @@ class Users::Wizards::StepNines::ChoicesController < ApplicationController
 
   def show
     @user = Users::Wizards::StepNines::ChoicesPresenter.new(current_user)
-
   end
 
   def update
     redirect_to users_wizards_step_ten_path
   end
-
 end

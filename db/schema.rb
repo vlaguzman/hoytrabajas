@@ -10,10 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_08_234536) do
+ActiveRecord::Schema.define(version: 2020_01_27_225258) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "citext"
   enable_extension "plpgsql"
+  enable_extension "unaccent"
 
   create_table "acknowledgments", force: :cascade do |t|
     t.string "title"
@@ -126,7 +128,7 @@ ActiveRecord::Schema.define(version: 2020_01_08_234536) do
   end
 
   create_table "cities", force: :cascade do |t|
-    t.string "description"
+    t.citext "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "state_id"
@@ -444,7 +446,7 @@ ActiveRecord::Schema.define(version: 2020_01_08_234536) do
   end
 
   create_table "job_categories", force: :cascade do |t|
-    t.string "description"
+    t.citext "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"

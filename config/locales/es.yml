@@ -1,4 +1,5 @@
 es:
+  in: 'en'
   tooltip:
     press_enter: 'Puedes usar las flechas de navegación para ver la lista, pulsa Enter para seleccionar'
     use_coma: "Usa una coma ',' despues de cada elemento para agregar otro"

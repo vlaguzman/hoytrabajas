@@ -1,0 +1,95 @@
+es:
+  meta_tags:
+    default:
+      meta_product_name: 'HoyTrabajas.com'
+      meta_title: 'El trabajo compatible con tu perfil. Solo en HoyTrabajas.com'
+      meta_description: 'La conexión perfecta entre tu perfil laboral y miles de ofertas de empleo. Encuentra trabajo commpatibles a tus habilidades, competencias y experiencia.'
+      meta_keywords: ''
+    home:
+      index:
+        title: 'El trabajo compatible con tu perfil. Solo en HoyTrabajas.com'
+        meta_title: 'El trabajo compatible con tu perfil. Solo en HoyTrabajas.com'
+        meta_description: 'La conexión perfecta entre tu perfil laboral y miles de ofertas de empleo. Encuentra trabajo commpatibles a tus habilidades, competencias y experiencia.'
+        meta_keywords: 'hoytrabajas, ofertas, empleo, colombia, trabajo, bogota, trabajo si hay, cometencias, habilidades'
+
+    offers:
+      default:
+        index:
+          title: 'Aplica a las mejores ofertas de empleo en HoyTrabajas.com'
+          meta_title: 'Aplica a las mejores ofertas de empleo en HoyTrabajas.com'
+          meta_description: 'HoyTrabajas.com - Más de 19.000 ofertas de empleo acordes a tu perfil profesional y de las mejores empresas esperando tu CV. ¡Registrate ahora!'
+          meta_keywords: 'hoytrabajas, ofertas, empleo, colombia, trabajo, bogota, trabajo si hay'
+      cities:
+        index:
+          default:
+            title: 'Mejores ofertas de empleo en %{city_name}'
+            meta_title: 'Mejores ofertas de empleo en %{city_name}'
+            meta_description: 'Las mejores empresas están buscando personal en %{city_name}. Completa tu perfil y descubre la empresa perfecta para ti - Hoytrabajas.com'
+            meta_keywords: 'hoytrabajas, ofertas, empleo, colombia, %{city_name}, trabajo si hay'
+      job_categories:
+        index:
+          default:
+            title: 'Aplica a las mejores ofertas de empleo en HoyTrabajas.com'
+            meta_title: 'Aplica a las mejores ofertas de empleo en HoyTrabajas.com'
+            meta_description: 'HoyTrabajas.com - Más de 19.000 ofertas de empleo acordes a tu perfil profesional y de las mejores empresas esperando tu CV. ¡Registrate ahora!'
+            meta_keywords: 'hoytrabajas, ofertas, empleo, colombia, trabajo, bogota, trabajo si hay'
+          servicios-generales-y-limpieza:
+            title: 'Mejores ofertas de empleo en servicios generales y limpieza'
+            meta_title: 'Mejores ofertas de empleo en servicios generales y limpieza'
+            meta_description: 'Las mejores empresas están buscando personal en Servicios generales y limpieza. Completa tu perfil y descubre la empresa perfecta para ti - Hoytrabajas.com'
+            meta_keywords: 'hoytrabajas, ofertas, empleo, colombia, trabajo, bogota, Servicios generales, limpieza, trabajo si hay'
+          ventas-y-comercial:
+            title: 'Mejores ofertas de empleo en ventas y comercial'
+            meta_title: 'Mejores ofertas de empleo en ventas y comercial'
+            meta_description: 'Las mejores empresas están buscando personal en Ventas y comercial. Completa tu perfil y descubre la empresa perfecta para ti - Hoytrabajas.com'
+            meta_keywords: 'hoytrabajas, ofertas, empleo, colombia, trabajo, bogota, ventas, comercial, trabajo si hay'
+          gestion-administrativa:
+            title: 'Mejores ofertas de empleo en Gestión administrativa'
+            meta_title: 'Mejores ofertas de empleo en Gestión administrativa'
+            meta_description: 'Las mejores empresas están buscando personal en Gestión administrativa. Completa tu perfil y descubre la empresa perfecta para ti.- Hoytrabajas.com '
+            meta_keywords: 'hoytrabajas, ofertas, empleo, colombia, trabajo, bogota, geston administrativa, administrativo, trabajo si hay'
+          operario:
+            title: 'Ofertas de empleo de operario en las mejores empresas'
+            meta_title: 'Ofertas de empleo de operario en las mejores empresas'
+            meta_description: 'Las mejores empresas están buscando personal de Operario. Completa tu perfil y descubre la empresa perfecta para ti. ¡Regístrate ahora! - Hoytrabajas.com'
+            meta_keywords: 'hoytrabajas, ofertas, empleo, colombia, trabajo, bogota, operario, trabajo si hay'
+          logistica-y-transporte:
+            title: 'Mejores ofertas de empleo en Logística y transporte'
+            meta_title: 'Mejores ofertas de empleo en Logística y transporte'
+            meta_description: 'Las mejores empresas están buscando personal en Logística y transporte. Completa tu perfil y descubre la empresa perfecta para ti - Hoytrabajas.com '
+            meta_keywords: 'hoytrabajas, ofertas, empleo, colombia, trabajo, bogota, logistica, transporte, trabajo si hay'
+          belleza,-bienestar-y-salud:
+            title: 'Mejores ofertas de empleo en Belleza, bienestar y salud'
+            meta_title: 'Mejores ofertas de empleo en Belleza, bienestar y salud'
+            meta_description: 'Las mejores empresas están buscando personal en Belleza, bienestar y salud. Completa tu perfil y descubre la empresa perfecta para ti - Hoytrabajas.com '
+            meta_keywords: 'hoytrabajas, ofertas, empleo, colombia, trabajo, bogota, belleza, bienestar, salud, trabajo si hay'
+          cocina,-bar-y-meseros:
+            title: 'Mejores ofertas de empleo en Cocina, bar y meseros'
+            meta_title: 'Mejores ofertas de empleo en Cocina, bar y meseros'
+            meta_description: 'Las mejores empresas están buscando personal en Cocina, bar y meseros. Completa tu perfil y descubre la empresa perfecta para ti - Hoytrabajas.com'
+            meta_keywords: 'hoytrabajas, ofertas, empleo, colombia, trabajo, bogota, cocina, bar, meseros, trabajo si hay'
+          tecnologia-y-programacion:
+            title: 'Mejores ofertas de empleo en Tecnología y programación'
+            meta_title: 'Mejores ofertas de empleo en Tecnología y programación'
+            meta_description: 'Las mejores empresas están buscando personal en Tecnología y programación. Completa tu perfil y descubre la empresa perfecta para ti - Hoytrabajas.com '
+            meta_keywords: 'hoytrabajas, ofertas, empleo, colombia, trabajo, bogota, tecnologia, programacion, trabajo si hay'
+          marketing,-diseño-y-publicidad:
+            title: 'Mejores ofertas de empleo en Marketing, diseño y publicidad'
+            meta_title: 'Mejores ofertas de empleo en Marketing, diseño y publicidad'
+            meta_description: 'Las mejores empresas están buscando personal en Marketing, diseño y publicidad. Completa tu perfil y descubre la empresa perfecta para ti - Hoytrabajas.com'
+            meta_keywords: 'hoytrabajas, ofertas, empleo, colombia, trabajo, bogota, marketing, diseño, publicidad, trabajo si hay'
+          marketing,-diseno-y-publicidad:
+            title: 'Mejores ofertas de empleo en Marketing, diseño y publicidad'
+            meta_title: 'Mejores ofertas de empleo en Marketing, diseño y publicidad'
+            meta_description: 'Las mejores empresas están buscando personal en Marketing, diseño y publicidad. Completa tu perfil y descubre la empresa perfecta para ti - Hoytrabajas.com'
+            meta_keywords: 'hoytrabajas, ofertas, empleo, colombia, trabajo, bogota, marketing, diseño, publicidad, trabajo si hay'
+          eventos-y-protocolo:
+            title: 'Empleos en eventos y protocolo en las mejores empresas'
+            meta_title: 'Empleos en eventos y protocolo en las mejores empresas'
+            meta_description: 'Las mejores empresas están buscando personal en Eventos y protocolo. Completa tu perfil y descubre la empresa perfecta para ti - Hoytrabajas.com '
+            meta_keywords: 'hoytrabajas, ofertas, empleo, colombia, trabajo, bogota,  eventos, protocolo, trabajo si hay'
+          seguridad:
+            title: 'Ofertas de empleo en Seguridad en las mejores empresas'
+            meta_title: 'Ofertas de empleo en Seguridad en las mejores empresas'
+            meta_description: 'Las mejores empresas están buscando personal en Seguridad. Completa tu perfil y descubre la empresa perfecta para ti. ¡Regístrate ahora! - Hoytrabajas.com '
+            meta_keywords: 'hoytrabajas, ofertas, empleo, colombia, trabajo, bogota, seguridad, trabajo si hay'

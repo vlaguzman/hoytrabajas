@@ -10,3 +10,6 @@ every 1.day, at: '23:59' do
   command "echo 'Offers Updated'"
 end
 
+every 1.day at: '5:00' do
+  rake "-s sitemap:refresh"
+end

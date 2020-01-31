@@ -3,9 +3,9 @@
     "app_path": "/ht",
     "rails_version": "6.0.0",
     "security_warnings": 0,
-    "start_time": "2020-01-29 15:58:28 +0000",
-    "end_time": "2020-01-29 15:58:30 +0000",
-    "duration": 2.033662502,
+    "start_time": "2020-01-31 15:48:32 +0000",
+    "end_time": "2020-01-31 15:48:34 +0000",
+    "duration": 2.010954755,
     "checks_performed": [
       "BasicAuth",
       "BasicAuthTimingAttack",
@@ -74,9 +74,9 @@
       "XMLDoS",
       "YAMLParsing"
     ],
-    "number_of_controllers": 44,
+    "number_of_controllers": 46,
     "number_of_models": 80,
-    "number_of_templates": 61,
+    "number_of_templates": 62,
     "ruby_version": "2.6.3",
     "brakeman_version": "4.7.0"
   },

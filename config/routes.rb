@@ -11,12 +11,16 @@ Rails.application.routes.draw do
   resources :faqs, only: [:index]
   resources :offers
 
+  namespace :offers do
+    resources :cities, only: [:show]
+    resources :job_categories, only: [:show]
+  end
+
   localized do
     resources :offers
   end
 
   resources :applied_offers, only: [:create]
-  resources :job_categories, only:[:index]
 
   namespace :admins do
     resources :offers, only: [:edit, :update]
@@ -36,26 +40,6 @@ Rails.application.routes.draw do
       resource :step_six,   only: [:show, :update]
       resource :step_seven, only: [:show, :update]
       resource :step_eight, only: [:show]
-    end
-  end
-
-  #localized Companies
-  localized do
-    namespace :companies do
-      resource :dashboard, only: [:show]
-      resources :list_candidates, only: [:show]
-
-      namespace :first_offer do
-        resource :step_zero,  only: [:show]
-        resource :step_one,   only: [:show, :update]
-        resource :step_two,   only: [:show, :update]
-        resource :step_three, only: [:show, :update]
-        resource :step_four,  only: [:show, :update]
-        resource :step_five,  only: [:show, :update]
-        resource :step_six,   only: [:show, :update]
-        resource :step_seven, only: [:show, :update]
-        resource :step_eight, only: [:show]
-      end
     end
   end
 
@@ -96,56 +80,31 @@ Rails.application.routes.draw do
 
   end
 
-  #localized Users
-  localized do
-    namespace :users do
-      resource :dashboard, only: [:show]
-      resources :profile, only: [:show]
-
-
-      namespace :wizards do
-        resource :step_zero,    only: [:show]
-        namespace :step_zeros do
-          resource :curriculum_vitae, only: [:show, :create]
-        end
-        resource :step_one,     except: [:new, :destroy]
-        resource :step_two,     except: [:new, :destroy]
-        resource :step_three,   except: [:new, :destroy]
-        resource :step_four,    except: [:new, :destroy]
-        resource :step_five,    except: [:new, :destroy]
-        resource :step_six,     except: [:new, :destroy]
-        resource :step_seven,   except: [:new, :destroy]
-        resource :step_eight,   except: [:new, :destroy]
-
-        namespace :step_eights  do
-          resources :added_work_experiences,   only: [:show]
-        end
-
-        resource :step_nine,    except: [:new, :destroy]
-        namespace :step_nines   do
-          resources :added_educational_levels,  only: [:show]
-        end
-
-        resource :step_ten,     except: [:new, :destroy]
-        namespace :step_tens    do
-          resources :added_acknowledgments,     only: [:show]
-        end
-
-        resource :step_eleven,  only: [:show]
-      end
-
-    end
-  end
-
   resource :users, only: [:show, :edit]
   resources :companies, only: [:edit, :update, :show, :index]
 
   #The next one url canonicals
 
   # Offers
+  get RoutesService.build_path('job-offers'), to: redirect('/offers')
+  get RoutesService.build_path('offers-of-job'), to: redirect('/offers')
+  get RoutesService.build_path('offers-search'), to: redirect('/offers')
 
-  get RoutesService.build_path('job-offers'), to: 'offers#index'
-  get RoutesService.build_path('offers-search'), to: 'offers#index'
+  # Offers by category
+  get RoutesService.build_path('job-offers', 'categories.general-cleaning-services'), to: redirect('/offers/job_categories/servicios-generales-y-limpieza')
+  get RoutesService.build_path('job-offers', 'categories.sales-commercial'), to: redirect('/offers/job_categories/ventas-y-comercial')
+  get RoutesService.build_path('job-offers', 'categories.administrative-management'), to: redirect('/offers/job_categories/gestion-administrativa')
+  get RoutesService.build_path('job-offers', 'categories.operator'), to: redirect('/offers/job_categories/operario')
+  get RoutesService.build_path('job-offers', 'categories.logistics-transportation'), to: redirect('/offers/job_categories/logistica-y-transporte')
+  get RoutesService.build_path('job-offers', 'categories.beauty-wellness-health'), to: redirect('/offers/job_categories/belleza,-bienestar-y-salud')
+  get RoutesService.build_path('job-offers', 'categories.kitchen-bar-waiters'), to: redirect('/offers/job_categories/cocina,-bar-y-meseros')
+  get RoutesService.build_path('job-offers', 'categories.technology-development'), to: redirect('/offers/job_categories/tecnologia-y-programacion')
+  get RoutesService.build_path('job-offers', 'categories.markeing-design-advertising'), to: redirect('/offers/job_categories/marketing,-diseno-y-publicidad')
+  get RoutesService.build_path('job-offers', 'categories.protocol-events'), to: redirect('/offers/job_categories/eventos-y-protocolo')
+  get RoutesService.build_path('job-offers', 'categories.security'), to: redirect('/offers/job_categories/seguridad')
+
+  #Offer by city
+  get "#{ RoutesService.build_path('offers-city')}/:city_name", to: redirect('/offers/cities/%{city_name}')
 
   # User Session and Registration
   devise_scope :user do

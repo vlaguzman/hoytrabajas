@@ -2,11 +2,11 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %meta{:content => "Encuentra trabajo compatible con tus habilidades y competencias", :name => "description"}/
+    %title= yield(:title)
+
+    = render 'shared/meta_tags'
+
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
-    %title HoyTrabajas.com
-    = csrf_meta_tags
-    = csp_meta_tag
 
     %link{href: "https://fonts.googleapis.com/icon?family=Material+Icons", rel: "stylesheet"}
 

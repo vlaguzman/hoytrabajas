@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  helper MetaTagsVerifier
+
   around_action :set_locale_from_url
 
   private

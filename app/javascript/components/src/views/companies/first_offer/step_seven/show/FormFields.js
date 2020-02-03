@@ -157,22 +157,19 @@ const FormFields = props => {
 
   const inputClassname = 'my-30 animated fadeIn inputField'
 
-  const cityIdField = useMemo(
-    () => (
-      <Col className={`${inputClassname} p-0`} xs={12}>
-        <Paper className="SimpleRowWrapper" style={{ padding: '20px' }}>
-          <StyledRow>
-            <StyledCol>
-              <BeforeLabel>{city_id.label}</BeforeLabel>
-              {CountrySelect}
-              {StateSelect}
-              {CitySelect}
-            </StyledCol>
-          </StyledRow>
-        </Paper>
-      </Col>
-    ),
-    [numberOfColumsToLocationPicker]
+  const cityIdField = () => (
+    <Col className={`${inputClassname} p-0`} xs={12}>
+      <Paper className="SimpleRowWrapper" style={{ padding: '20px' }}>
+        <StyledRow>
+          <StyledCol>
+            <BeforeLabel>{city_id.label}</BeforeLabel>
+            {CountrySelect}
+            {StateSelect}
+            {CitySelect}
+          </StyledCol>
+        </StyledRow>
+      </Paper>
+    </Col>
   )
 
   const educationalDegreeIdField = useMemo(
@@ -390,7 +387,7 @@ const FormFields = props => {
 
   return (
     <Row className="HT__FormGenerator StepSeven _locationSelect">
-      {cityIdField}
+      {cityIdField()}
       {educationalDegreeIdField}
       {experienceFields}
       {technicalSkillsRows}

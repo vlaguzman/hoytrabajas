@@ -61,7 +61,7 @@ RSpec.describe "Like new candidate", :type => :feature do
       find("input[name='user[birthday]']").click
       find("h6[class='MuiTypography-root MuiPickersToolbarText-toolbarTxt MuiTypography-subtitle1']").click
       find("div[class='MuiTypography-root MuiPickersYear-root MuiTypography-subtitle1']", text:"1995", visible: false).click
-      find("p[class='MuiTypography-root MuiTypography-body2 MuiTypography-colorInherit']", text: "29").click
+      find("p[class='MuiTypography-root MuiTypography-body2 MuiTypography-colorInherit']", text: "27").click
       click_on "OK"
 
       find("div[id='mui-component-select-user[limitation_ids][]']", visible: false).click
@@ -76,7 +76,7 @@ RSpec.describe "Like new candidate", :type => :feature do
 
       expect(candidate.about_me).to eq('I am the best chef in the world')
       expect(candidate.sex.description).to eq('Masculino')
-      expect(candidate.birthday).to eq(Date.new(1995, current_month, 29))
+      expect(candidate.birthday).to eq(Date.new(1995, current_month, 27))
       expect(candidate.limitations.last.description).to eq('Ninguna')
     end
   end

@@ -1,5 +1,5 @@
 SitemapGenerator::Sitemap.compress = false
-SitemapGenerator::Sitemap.default_host = 'http://www.hoytrabajas.com'
+SitemapGenerator::Sitemap.default_host = 'https://hoytrabajas.com'
 SitemapGenerator::Sitemap.create do
 
   add '/users/sign_up'

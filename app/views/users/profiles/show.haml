@@ -1,11 +1,16 @@
 = render '/shared/header'
+-#TODO:add title in this view 
 .backgroundImage
 .contentBox
-  %a.buttonEditProfile{href: users_wizards_step_zeros_curriculum_vitae_url}
-    %p=t('profile.edit_info')
-  - @user.yield_if(@user.curriculum_vitae.file_cv.attached?) do
-    %a.buttonDownload{href: @user.download_cv}
-      %p=t('profile.download_cv')
+  .tagButtonsContainer
+    - @user.yield_if(user_signed_in?) do
+      %a.tagButton{href: users_wizards_step_zeros_curriculum_vitae_url}
+        %p=t('profile.edit_info')
+
+    - @user.yield_if(@user.curriculum_vitae.file_cv.attached?) do
+      %a.tagButton.-editProfile{href: @user.download_cv}
+        %p=t('profile.download_cv')
+
   .m-box.o-boxPrincipal
     .headerBox
       %img{src: image_path("/assets/static/avatars/profile.jpg"), alt: 'Photo Profile'}
@@ -13,59 +18,147 @@
         = @user.name
         %strong=@user.last_name
       .infoCandidate
-        - @user.yield_if(@user.city.present?) do
-          .iconMoreText
-            %i.material-icons location_city
-            %span= @user.city.description
+        .iconMoreText
+          %i.material-icons location_city
+          %span{ class: "#{@user.basic_user_data[:born_city][:class_empty]}" }
+            = @user.basic_user_data[:born_city][:value]
         .iconMoreText
           %i.material-icons email
-          %span= @user.email
-        - @user.yield_if(@user.contact_number.present?) do
-          .iconMoreText
-            %i.material-icons phone_iphone
-            %span= @user.contact_number_with_format
-    - @user.yield_if(@user.about_me.present?) do
-      .bodyBox
-        %h2=t('profile.about_me')
-        %p.aboutMe= @user.about_me
-        - @user.yield_if(@user.curriculum_vitae.travel_disponibility) do
-          %span.additionalInformation Disponible para trabajar en otra ciudad
-    - @user.yield_if(@user.all_attributes_present?(@user.interests_present?)) do
-      .bodyBox
-        %h2=t('profile.my_interests')
-        .boxInterests
-          - @user.yield_if(@user.interests_present?[:job_categories]) do
-            .typeSkill
-              %h4=t('profile.interest_categories')
-              .contentSkills
-                - @user.curriculum_vitae.job_categories.each do |job_category|
-                  %span.a-skill=job_category.description
-          - @user.yield_if(@user.interests_present?[:offer_types]) do
-            .typeSkill
-              %h4=t('profile.offer_interest_rates')
-              .contentSkills
-                - @user.curriculum_vitae.offer_types.each do |offer_type|
-                  %span.a-skill= offer_type.description
-          - @user.yield_if(@user.interests_present?[:work_modes]) do
-            .typeSkill
-              %h4=t('profile.work_mode')
-              .contentSkills
-                - @user.curriculum_vitae.work_modes.each do |work_mode|
-                  %span.a-skill= work_mode.description
-          - @user.yield_if(@user.interests_present?[:contract_type]) do
-            .typeSkill
-              %h4=t('profile.types_of_agreement')
-              .contentSkills
-                %span.a-skill= @user.curriculum_vitae.contract_type.description
-    - @user.yield_if(@user.all_attributes_present?(@user.abilities_present?)) do
-      .bodyBox
-        %h2=t('profile.abilities')
+          %span{ class: "#{@user.basic_user_data[:email][:class_empty]}" }
+            = @user.basic_user_data[:email][:value]
+        .iconMoreText
+          %i.material-icons phone_iphone
+          %span{ class: "#{@user.basic_user_data[:contact_number][:class_empty]}" }
+            = @user.basic_user_data[:contact_number][:value]
+    .bodyBox
+      %h2=t('profile.demography.title')
+      .boxDemography
+        .typeDemography
+          %h4=t('profile.demography.name')
+          .contentDemography
+            %span{ class: "a-skill #{@user.basic_user_data[:name][:class_empty]}" }
+              = @user.basic_user_data[:name][:value]
+        .typeDemography
+          %h4=t('profile.demography.identification_number')
+          .contentDemography
+            %span{ class: "a-skill #{@user.basic_user_data[:identification_number][:class_empty]}" }
+              = @user.basic_user_data[:identification_number][:value]
+        .typeDemography
+          %h4=t('profile.demography.last_name')
+          .contentDemography
+            %span{ class: "a-skill #{@user.basic_user_data[:last_name][:class_empty]}" }
+              = @user.basic_user_data[:last_name][:value]
+        .typeDemography
+          %h4=t('profile.demography.nationalities')
+          .contentDemography
+            - @user.basic_user_data[:nationalities][:value].each do |nationalities|
+              %span{ class: "a-skill #{@user.basic_user_data[:nationalities][:class_empty]}" }=nationalities
+        .typeDemography
+          %h4=t('profile.demography.birthday')
+          .contentDemography
+            %span{ class: "a-skill #{@user.basic_user_data[:birthday][:class_empty]}" }
+              = @user.basic_user_data[:birthday][:value]
+        .typeDemography
+          %h4=t('profile.demography.born_state')
+          .contentDemography
+            %span{ class: "a-skill #{@user.basic_user_data[:born_state][:class_empty]}" }
+              = @user.basic_user_data[:born_state][:value]
+        .typeDemography
+          %h4=t('profile.demography.document_type')
+          .contentDemography
+            %span{ class: "a-skill #{@user.basic_user_data[:document_type][:class_empty]}" }
+              = @user.basic_user_data[:document_type][:value]
+        .typeDemography
+          %h4=t('profile.demography.born_city')
+          .contentDemography
+            %span{ class: "a-skill #{@user.basic_user_data[:born_city][:class_empty]}" }
+              = @user.basic_user_data[:born_city][:value]
+    .bodyBox
+      %h2=t('profile.about_me.title')
+      %p.aboutMe= @user.about_me
+      .boxAboutMe
+        .typeAboutMe
+          %h4=t('profile.about_me.mail')
+          .contentAboutMe
+            %span{ class: "a-skill #{@user.basic_user_data[:email][:class_empty]}" }
+              = @user.basic_user_data[:email][:value]
+        .typeAboutMe
+          %h4=t('profile.about_me.special_condition')
+          .contentAboutMe
+            - @user.basic_user_data[:limitations][:value].each do |limitations|
+              %span{ class: "a-skill #{@user.basic_user_data[:limitations][:class_empty]}" }=limitations
+        .typeAboutMe
+          %h4=t('profile.about_me.contact_number')
+          .contentAboutMe
+            %span{ class: "a-skill #{@user.basic_user_data[:contact_number][:class_empty]}" }
+              = @user.basic_user_data[:contact_number][:value]
+        .typeAboutMe
+          %h4=t('profile.about_me.vehicle')
+          .contentAboutMe
+            - @user.basic_user_data[:vehicles][:value].each do |vehicles|
+              %span{ class: "a-skill #{@user.basic_user_data[:vehicles][:class_empty]}" }=vehicles
+        .typeAboutMe
+          %h4=t('profile.about_me.educational_level')
+          .contentAboutMe
+            %span{ class: "a-skill #{@user.basic_user_data[:educational_degree][:class_empty]}" }
+              = @user.basic_user_data[:educational_degree][:value]
+        .typeAboutMe
+          %h4=t('profile.about_me.driving_license')
+          .contentAboutMe
+            - @user.basic_user_data[:driving_licences][:value].each do |licences|
+              %span{ class: "a-skill #{@user.basic_user_data[:driving_licences][:class_empty]}" }=licences
+    .bodyBox
+      %h2=t('profile.my_interests.title')
+      .boxInterests
+        .typeSkill
+          %h4=t('profile.my_interests.city')
+          .contentSkills
+          %span{ class: "a-skill #{@user.basic_user_data[:city][:class_empty]}" }
+            = @user.basic_user_data[:city][:value]
+        .typeSkill
+          %h4=t('profile.my_interests.offer_interest_rates')
+          .contentSkills
+          - @user.basic_user_data[:offer_types][:value].each do |offer_type|
+            %span{ class: "a-skill #{@user.basic_user_data[:offer_types][:class_empty]}" }=offer_type
+        .typeSkill
+          %h4=t('profile.my_interests.willing_to_travel')
+          .contentSkills
+          %span{ class: "a-skill #{@user.basic_user_data[:travel_disponibility][:class_empty]}" }
+            = @user.basic_user_data[:travel_disponibility][:value]
+        .typeSkill
+          %h4=t('profile.my_interests.work_mode')
+          .contentSkills
+            - @user.basic_user_data[:work_modes][:value].each do |work_mode|
+              %span{ class: "a-skill #{@user.basic_user_data[:work_modes][:class_empty]}" }=work_mode
+        .typeSkill
+          %h4=t('profile.my_interests.interest_categories')
+          .contentSkills
+            - @user.basic_user_data[:job_categories][:value].each do |categories|
+              %span{ class: "a-skill #{@user.basic_user_data[:job_categories][:class_empty]}" }=categories
+        .typeSkill
+          %h4=t('profile.my_interests.time_availability')
+          .contentSkills
+          %span{ class: "a-skill #{@user.basic_user_data[:labor_disponibility][:class_empty]}" }
+            = @user.basic_user_data[:labor_disponibility][:value]
+        .typeSkill
+          %h4=t('profile.my_interests.types_of_agreement')
+          .contentSkills
+          %span{ class: "a-skill #{@user.basic_user_data[:contract_type][:class_empty]}" }
+            = @user.basic_user_data[:contract_type][:value]
+        .typeSkill
+          %h4=t('profile.my_interests.wage_aspiration')
+          .contentSkills
+          %span{ class: "a-skill #{@user.basic_user_data[:salary][:class_empty]}" }
+            = @user.basic_user_data[:salary][:value]
+    .bodyBox
+      %h2=t('profile.abilities')
+      - @user.yield_if(@user.all_attributes_present?(@user.abilities_present?)) do
         - @user.yield_if(@user.abilities_present?[:soft_skills]) do
           .softSkills
             %h3=t('profile.valid_soft_skills')
             - @user.curriculum_vitae.soft_skills.each do |soft_skill|
               %span.a-skill= soft_skill.description
-        // TODO We don't have valid soft skills yet
+        //TODO We don't have valid soft skills yet
         - @user.yield_if(params[:tester].present?) do
           .boxSkills
             %h3=t('profile.technical_skills')
@@ -86,16 +179,19 @@
               .skillSpecific
                 %h4.nameSkill=language.language.description
                 %h4.levelSkill=language.level.description
-    - @user.yield_if(@user.data_education.present?) do
-      .bodyBox.boxAcademy
-        %h2=t('profile.academic_training')
+    .bodyBox.boxAcademy
+      %h2=t('profile.academic_training')
+      - @user.yield_if(@user.data_education.present?) do
         = react_component('src/components/Cards/PublicProfile/Education', {defaultList: @user.data_education}, prerender: false)
-    - @user.yield_if(@user.data_experience.present?) do
-      .bodyBox.boxAcademy
-        %h2=t('profile.experience')
+    .bodyBox.boxAcademy
+      %h2=t('profile.experience')
+      - @user.yield_if(@user.data_experience.present?) do
         = react_component('src/components/Cards/PublicProfile/Experience', {defaultList: @user.data_experience}, prerender: false)
-    - @user.yield_if(@user.curriculum_vitae.file_cv.attached?) do
-      %a.--buttonDownloadMobile{href: @user.download_cv}=t('profile.download_cv')
+    .tagMobileButton
+      - @user.yield_if(user_signed_in?) do
+        %a{href: users_wizards_step_zeros_curriculum_vitae_url}=t('profile.edit_info')
+      - @user.yield_if(@user.curriculum_vitae.file_cv.attached?) do
+        %a{href: @user.download_cv}=t('profile.download_cv')
     .footerBox
       %p=t('profile.slogan')
 = render '/shared/footer'

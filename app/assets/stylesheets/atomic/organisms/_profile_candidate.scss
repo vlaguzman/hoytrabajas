@@ -18,91 +18,68 @@
   justify-content: flex-end;
   display: flex;
 
-  .--buttonDownloadMobile {
-    display: none;
+
+  .tagButtonsContainer {
+    display: flex;
+    flex-direction: column;
+    width: 5%;
+
+    .tagButton {
+      border-radius: 0 10px 10px 0;
+      background-color: $color__orange-main;
+      align-items: center;
+      padding: 0 20px 0 0;
+      position: relative;
+      margin-top: 380px;
+      display: flex;
+      height: 247px;
+
+      &.-editProfile {
+        margin-top: 1vh;
+        background-color: $color__blue-main;
+      }
+
+      p {
+        transform-origin: 70px 59px;
+        transform: rotate(-90deg);
+        font-size: 1.1875rem;
+        position: absolute;
+        font-weight: bold;
+        width: 200px;
+        height: 59px;
+        color: #fff;
+
+        a {
+          justify-content: start;
+          align-items: start;
+          width: 100%;
+          height: 14%;
+          z-index: 1;
+        }
+
+        a:not([href]):not([tabindex]) {
+          color: #fff;
+        }
+      }
+    }
+
   }
 
   @media only screen and (max-width : 480px) {
-    padding: 130px 10px;
-
-    a {
-      display: none;
-
-      &.--buttonDownloadMobile {
-        display: block;
-      }
+    .tagButtonsContainer {
+      visibility: hidden;
     }
+  }
+
+}
+
+
+@media only screen and (min-width : 480px) {
+  .tagMobileButton {
+    visibility: hidden;
   }
 }
 
-.buttonEditProfile{
-  border-radius: 0 10px 10px 0;
-  background-color: #0b5aa0;
-  align-items: center;
-  padding: 0 20px 0 0;
-  position: relative;
-  margin-top: 380px;
-  display: flex;
-  height: 247px;
-  width: 5%;
-
-  p {
-    transform-origin: 70px 59px;
-    transform: rotate(-90deg);
-    font-size: 1.1875rem;
-    position: absolute;
-    font-weight: bold;
-    width: 200px;
-    height: 59px;
-    color: #fff;
-
-    a {
-      justify-content: start;
-      align-items: start;
-      width: 100%;
-      height: 14%;
-      z-index: 1;
-    }
-
-    a:not([href]):not([tabindex]) {
-      color: #fff;
-    }
-  }
-}
-.buttonDownload {
-  border-radius: 0 10px 10px 0;
-  background-color: $color__orange-main;
-  align-items: center;
-  padding: 0 20px 0 0;
-  position: relative;
-  margin-top: 380px;
-  display: flex;
-  height: 247px;
-  width: 5%;
-
-  p {
-    transform-origin: 70px 59px;
-    transform: rotate(-90deg);
-    font-size: 1.1875rem;
-    position: absolute;
-    font-weight: bold;
-    width: 200px;
-    height: 59px;
-    color: #fff;
-
-    a {
-      justify-content: start;
-      align-items: start;
-      width: 100%;
-      height: 14%;
-      z-index: 1;
-    }
-
-    a:not([href]):not([tabindex]) {
-      color: #fff;
-    }
-  }
-}
 
 .o-boxPrincipal {
   padding-top: 74px;
@@ -218,6 +195,36 @@
       font-size: 0.875rem;
       font-weight: bold;
       color: #0b5aa0;
+    }
+
+    .boxDemography {
+      grid-template-columns: 2fr 2fr;
+      grid-row-gap: 28px;
+      display: grid;
+
+      .typeDemography.contentDemography{
+        flex-wrap: wrap;
+        display: flex;
+
+        span {
+          margin: 0 5px 5px 0;
+        }
+      }
+    }
+
+    .boxAboutMe{
+      grid-template-columns: 2fr 2fr;
+      grid-row-gap: 28px;
+      display: grid;
+
+      .typeAboutMe.contentAboutMe{
+        flex-wrap: wrap;
+        display: flex;
+
+        span {
+          margin: 0 5px 5px 0;
+        }
+      }
     }
 
     .boxInterests {

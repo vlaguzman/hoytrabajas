@@ -18,7 +18,7 @@ class Offer < ApplicationRecord
 
   validates :status, inclusion: { in: OFFER_STATUS }
 
-  validates_numericality_of :vacancies_quantity, :greater_than_or_equal_to => 1
+  validates_numericality_of :vacancies_quantity, :greater_than_or_equal_to => 1, allow_nil: true
 
   scope :active, -> { where(status: OFFER_STATUS[2]) }
   scope :max_offers, -> (max_offer_limit) { limit(max_offer_limit) }

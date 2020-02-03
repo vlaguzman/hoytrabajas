@@ -112,15 +112,18 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     find("li", text: "Colombiana").click
 
     find("div[id='mui-component-select-user[born_country_id]", visible: false).click
+    sleep 1
     find("li", text: "Argentina").click
 
     find("div[id='mui-component-select-user[born_state_id]", visible: false).click
+    sleep 1
     find("li", text: "Buenos Aires").click
 
     find("div[id='mui-component-select-user[born_city_id]", visible: false).click
     find("li", text: "Capital Federal").click
 
     find("div[id='mui-component-select-user[residence_country_id]", visible: false).click
+    sleep 1
     find("li", text: "Colombia").click
 
     find("div[id='mui-component-select-user[residence_state_id]", visible: false).click

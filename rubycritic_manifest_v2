@@ -73,7 +73,7 @@ A          • CompanyTransition                                           2    
 A          • ContractType                                                1       0.0        0           1
 A          • Country                                                     4       0.0        0           1
 A          • Currency                                                    1       0.0        0           1
-A          • CurriculumVitae                                             37      8.6        0           1
+A          • CurriculumVitae                                             38      8.6        0           1
 A          • CurriculumVitaeSalary                                       3       0.0        0           1
 A          • CurriculumVitaes                                            1       0.0        0           0
 A          • CurriculumVitaesEducationalDegrees                          1       0.0        0           1
@@ -246,8 +246,9 @@ B          • Offers::JobCategoriesController                             4    
 B          • Offers::ShowService                                         18      87.8       0           1
 B          • Offers::ViewsService                                        19      85.3       0           7
 B          • OffersOnDemand::SetInactiveService                          4       27.96      34          3
-B          • User                                                        48      54.53      0           2
+B          • User                                                        49      54.53      0           2
 B          • Users::WizardService                                        11      26.27      58          3
 B          • Users::Wizards::StepSixService                              13      93.15      0           14
 C          • BaseFormWizardsService                                      31      101.71     0           2
-C          • Users::ProfilesPresenter                                    6       129.23     0           15
+D          • GetValueOfRecord                                            5       161.13     23          25
+D          • Users::ProfilesPresenter                                    11      148.71     23          10

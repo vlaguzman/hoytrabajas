@@ -34,6 +34,7 @@ class User < ApplicationRecord
   delegate :state_id, to: :city, prefix: :city, allow_nil: true
   delegate :description, to: :sex, prefix: :sex, allow_nil: true
   delegate :description, to: :document_type, prefix: :document_type, allow_nil: true
+  delegate :description, to: :educational_degree, prefix: :educational_degree, allow_nil: true
 
   accepts_nested_attributes_for :curriculum_vitaes
 

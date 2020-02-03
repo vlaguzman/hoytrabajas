@@ -14,11 +14,14 @@ FactoryBot.define do
     end
 
     trait :empty do
-      area_code             { nil }
-      about_me              { nil }
-      release_date          { nil }
-      travel_disponibility  { false }
-      city                  { nil }
+      area_code               { nil }
+      about_me                { nil }
+      release_date            { nil }
+      travel_disponibility    { false }
+      city                    { nil }
+      job_categories          { [] }
+      work_modes              { [] }
+      offer_types             { [] }
     end
 
     factory :empty_curriculum_vitae, traits: [:empty]

@@ -38,6 +38,8 @@ class CurriculumVitae < ApplicationRecord
   delegate :state_id, to: :city, prefix: :city, allow_nil: true
   delegate :salary_period_id, to: :curriculum_vitae_salary, allow_nil: true
   delegate :currency_id, :from, :to, to: :curriculum_vitae_salary,  prefix: :salary, allow_nil: true
+  delegate :description, to: :contract_type, prefix: :contract_type, allow_nil: true
+  delegate :description, to: :labor_disponibility, prefix: :labor_disponibility, allow_nil: true
 
   def languages_list
     strong_languages

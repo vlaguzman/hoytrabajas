@@ -2,47 +2,37 @@ class Users::ProfilesPresenter < ApplicationPresenter
 
   def basic_user_data
     {
-      name: validate_present_simple(:name),
-      last_name: validate_present_simple(:last_name),
-      birthday: validate_present_simple(:birthday),
-      document_type: validate_present_relation(:document_type),
-      identification_number: validate_present_simple(:identification_number),
-      nationalities: validate_present_collection(:nationalities),
-      born_state: validate_present_born_state(:born_city),
-      born_city: validate_present_relation(:born_city)
+      email:                 get_value_of_record(source).validate_present?(:simple, :email),
+      name:                  get_value_of_record(source).validate_present?(:simple, :name),
+      last_name:             get_value_of_record(source).validate_present?(:simple, :last_name),
+      birthday:              get_value_of_record(source).validate_present?(:simple, :birthday),
+      identification_number: get_value_of_record(source).validate_present?(:simple, :identification_number),
+
+      document_type:         get_value_of_record(source).validate_present?(:relation, :document_type),
+      educational_degree:    get_value_of_record(source).validate_present?(:relation, :educational_degree),
+      city:                  get_value_of_record(source).validate_present?(:relation, :city),
+      born_city:             get_value_of_record(source).validate_present?(:relation, :born_city),
+      contract_type:         get_value_of_record(curriculum_vitae).validate_present?(:relation, :contract_type),
+      labor_disponibility:   get_value_of_record(curriculum_vitae).validate_present?(:relation, :labor_disponibility),
+
+      nationalities:         get_value_of_record(source).validate_present?(:collection, :nationalities),
+      limitations:           get_value_of_record(source).validate_present?(:collection, :limitations),
+      vehicles:              get_value_of_record(source).validate_present?(:collection, :vehicles),
+      driving_licences:      get_value_of_record(source).validate_present?(:collection, :driving_licences),
+      offer_types:           get_value_of_record(curriculum_vitae).validate_present?(:collection, :offer_types),
+      work_modes:            get_value_of_record(curriculum_vitae).validate_present?(:collection, :work_modes),
+      job_categories:        get_value_of_record(curriculum_vitae).validate_present?(:collection, :job_categories),
+      available_work_days:   get_value_of_record(curriculum_vitae).validate_present?(:collection, :available_work_days),
+
+      born_state:            get_value_of_record(source).validate_present?(:state, :born_city),
+      contact_number:        get_value_of_record(source).validate_present?(:contact_number, :contact_number),
+      travel_disponibility:  get_value_of_record(curriculum_vitae).validate_present?(:travel_disponibility, :travel_disponibility),
+      salary:                get_value_of_record(curriculum_vitae_salary).validate_present?(:salary, :salary)
     }
   end
 
-  def validate_present_simple(param)
-    if source.send(param).present?
-      source.send(param)
-    else
-      empty_translation
-    end
-  end
-
-  def validate_present_collection(param)
-    if source.send(param).present?
-      source.send(param).pluck(:description)
-    else
-      empty_translation
-    end
-  end
-
-  def validate_present_relation(param)
-    if source.send(param).present?
-      source.send(param).description
-    else
-      empty_translation
-    end
-  end
-
-  def validate_present_born_state(param)
-    if source.born_city_id.present?
-      source.born_city.state
-    else
-      empty_translation
-    end
+  def get_value_of_record(record)
+    GetValueOfRecord.new(record)
   end
 
   def contact_number_with_format
@@ -68,7 +58,7 @@ class Users::ProfilesPresenter < ApplicationPresenter
         }
       end
   end
-  
+
   def data_experience
     source
       .curriculum_vitae
@@ -91,16 +81,6 @@ class Users::ProfilesPresenter < ApplicationPresenter
     end
   end
 
-  def interests_present?
-    curriculum_vitae = source.curriculum_vitae
-    {
-      job_categories: curriculum_vitae.job_categories.present?,
-      contract_type:  curriculum_vitae.contract_type.present?,
-      offer_types:    curriculum_vitae.offer_types.present?,
-      work_modes:     curriculum_vitae.work_modes.present?
-    }
-  end
-  
   def abilities_present?
     curriculum_vitae = source.curriculum_vitae
     {
@@ -116,8 +96,11 @@ class Users::ProfilesPresenter < ApplicationPresenter
 
   private
 
-  def empty_translation
-      I18n.t("views.users.profile.empty")
+  def curriculum_vitae
+    source.curriculum_vitae
   end
 
+  def curriculum_vitae_salary
+    curriculum_vitae.curriculum_vitae_salary
+  end
 end

@@ -12,6 +12,8 @@ RSpec.describe "users/profiles/show" do
     curriculum_vitae.file_cv.attach(io: File.open(Rails.root.join('spec', 'factories', 'pdfs', 'diploma.pdf')), filename: 'diploma.pdf')
     assign(:user, Users::ProfilesPresenter.new(user))
 
+    sign_in user
+
     render
 
     expect(rendered).to have_content("Sebastian")
@@ -21,11 +23,11 @@ RSpec.describe "users/profiles/show" do
     expect(rendered).to have_link("Descargar Curriculum")
     expect(rendered).to have_link("Editar Información")
 
-    expect(rendered).to have_content("Sobre mi")
+    expect(rendered).to have_content("Sobre Mi")
     expect(rendered).to have_content("Quis minim aliquip ea tempor reprehenderit voluptate.")
 
     expect(rendered).to have_content("Mis intereses")
-    expect(rendered).to have_content("Categorias de interes")
+    expect(rendered).to have_content("Categorías de interes")
     expect(rendered).to have_content(job_category.description)
 
     expect(rendered).to have_content("Habilidades")

@@ -8,10 +8,14 @@ span.a-skill {
   font-weight: normal;
   font-size: 0.75rem;
   padding: 3px 9px;
-  color: #979797;
+  color: $color__gray-light;
 
   &.color-orange {
-    background-color: #ff7b00;
+    background-color: $color__orange-main;
     color: #fff;
+  }
+  &.incomplete {
+    background-color: $color__pink-extralight;
+    color: $color__pink-main;
   }
 }

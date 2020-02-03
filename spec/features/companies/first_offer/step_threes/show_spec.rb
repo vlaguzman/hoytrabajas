@@ -18,7 +18,6 @@ RSpec.describe "When company fill the step three form", :type => :feature do
 
       with_tag(:input, with: { name: 'offer[id]', type: "hidden" })
       with_tag(:input, with: { name: 'offer[job_category_ids]', type: "hidden" })
-      with_tag(:input, with: { name: 'offer[offers_work_positions]', type: "hidden" })
       with_tag(:input, with: { name: 'offer[offer_type_id]', type: "hidden" })
       with_tag(:input, with: { name: 'offer[work_mode_id]', type: "hidden" })
     end
@@ -43,8 +42,8 @@ RSpec.describe "When company fill the step three form", :type => :feature do
     find(id: 'mui-component-select-offer[work_mode_id]', visible: false).click
     find('li.MuiListItem-button', text: data[:work_mode_id]).click
 
-    find(id: 'mui-component-select-offer[offers_work_positions]', visible: false).click
-    find('li.MuiListItem-button', text: data[:offers_work_positions]).click
+    find(id: 'offer[offers_work_positions]', visible: false).click
+    find('li', text: data[:offers_work_positions]).click
   end
 
   describe "Fill the first offer data" do

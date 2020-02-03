@@ -309,7 +309,6 @@ const FormFields = props => {
                           handleOnChange={handleRowChanges}
                         />
                       </Col>
-
                     </>
                   )}
                 </FormRow>

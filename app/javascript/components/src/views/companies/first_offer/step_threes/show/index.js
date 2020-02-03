@@ -8,7 +8,12 @@ import FormButtons from '../../../../../components/FormsLayout/FormButtons'
 import FormFields from './FormFields'
 import { ShowMessage } from '../../../../users/wizards/shared/message'
 
-const CompaniesStepThree = ({ formInfo, csrf_param, csrf_token }) => {
+const CompaniesStepThree = ({
+  formInfo,
+  tooltip_description,
+  csrf_param,
+  csrf_token
+}) => {
   const {
     title,
     subtitle,
@@ -25,7 +30,11 @@ const CompaniesStepThree = ({ formInfo, csrf_param, csrf_token }) => {
             <div className="w-80">
               {ShowMessage(errors, 'red')}
               <form className="forms__candidate" action={action} method="post">
-                <FormFields type={type} formFields={formFields} />
+                <FormFields
+                  type={type}
+                  formFields={formFields}
+                  tooltip_description={tooltip_description}
+                />
                 <input type="hidden" name={csrf_param} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />
                 <input type="hidden" name="offer[id]" value={offer_id} />
@@ -44,6 +53,7 @@ export default CompaniesStepThree
 CompaniesStepThree.propTypes = {
   csrf_param: PropTypes.string,
   csrf_token: PropTypes.string,
+  tooltip_description: PropTypes.object.isRequired,
   formInfo: PropTypes.shape({
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,

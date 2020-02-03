@@ -12,7 +12,11 @@ const Footer = ({
   search_offers,
   companies,
   create_offers,
-  faqs
+  faqs,
+  social_url_twitter,
+  social_url_whatsapp,
+  social_url_instagram,
+  social_url_facebook
 }) => {
   const underFooterPaths = {
     faq: faqs,
@@ -62,7 +66,13 @@ const Footer = ({
         </div>
       )}
       <Collapse isOpen={isOpen}>
-        <SocialBar translations={footer_translations.social_bar} />
+        <SocialBar
+          translations={footer_translations.social_bar}
+          social_url_twitter={social_url_twitter}
+          social_url_whatsapp={social_url_whatsapp}
+          social_url_instagram={social_url_instagram}
+          social_url_facebook={social_url_facebook}
+        />
         <UpperFooter
           translations={footer_translations.upper_footer}
           paths={upperFooterPaths}

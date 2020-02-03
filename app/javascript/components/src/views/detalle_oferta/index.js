@@ -20,36 +20,6 @@ const CompanyWrapper = styled(Col)`
     margin-top: 60px;
   }
 `
-const SexDescriptionBlock = (translationOffer, offer) => (
-  <Row className="justify-content-between">
-    <Col xs={6}>
-      <Typography variant="body1" className="">
-        {translationOffer.targeted_offer}
-      </Typography>
-    </Col>
-    <Col xs={6}>
-      <Typography variant="body1" className="fw-bold">
-        {offer.sex.description}
-      </Typography>
-    </Col>
-  </Row>
-)
-
-const AgeRangeBlock = (translationOffer, offer) => (
-  <Row className="justify-content-between">
-    <Col xs={6}>
-      <Typography variant="body1" className="">
-        {translationOffer.age}
-      </Typography>
-    </Col>
-    <Col xs={6}>
-      <Typography
-        variant="body1"
-        className="fw-bold"
-      >{`${offer.age_range.from} a ${offer.age_range.to}`}</Typography>
-    </Col>
-  </Row>
-)
 
 const VacanciesQuantityBlock = (translationOffer, offer) => (
   <Row className="justify-content-between">
@@ -394,10 +364,6 @@ const DetallePage = ({
               </Button>
             </form>
 
-            {offer.sex.description.length !== 0 &&
-              SexDescriptionBlock(translationOffer, offer)}
-            {offer.age_range.from !== null &&
-              AgeRangeBlock(translationOffer, offer)}
             {offer.vacancies_quantity !== null &&
               VacanciesQuantityBlock(translationOffer, offer)}
             {offer.city.description !== null &&
@@ -617,8 +583,6 @@ DetallePage.propTypes = {
     employees: PropTypes.string,
     contact_company: PropTypes.string,
     related_offers: PropTypes.string,
-    targeted_offer: PropTypes.string,
-    age: PropTypes.string,
     vacancy_numbers: PropTypes.string,
     recident: PropTypes.string,
     experience: PropTypes.string,

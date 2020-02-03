@@ -9,8 +9,6 @@ es:
     affinity: 'de afinidad'
     close: 'Cierre '
     aplications: ' aplicaciones'
-    targeted_offer: 'Oferta dirigida a'
-    age: 'Edad'
     vacancy_numbers: 'Número de vacantes'
     recident: 'Residente en'
     experience: 'Experiencia'

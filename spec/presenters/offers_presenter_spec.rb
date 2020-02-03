@@ -82,8 +82,6 @@ RSpec.describe OffersPresenter do
         :affinity,
         :close,
         :aplications,
-        :targeted_offer,
-        :age,
         :vacancy_numbers,
         :recident,
         :experience,

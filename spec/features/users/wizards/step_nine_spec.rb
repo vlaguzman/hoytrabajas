@@ -43,7 +43,7 @@ RSpec.describe 'In wizards step nine view', type: :feature do
         find("input[name='educational_level[finish_date]']").click
         find("h6[class='MuiTypography-root MuiPickersToolbarText-toolbarTxt MuiTypography-subtitle1']").click
         find("div[class='MuiTypography-root MuiPickersYear-root MuiTypography-subtitle1']", text:"2018", visible: false).click
-        find("p[class='MuiTypography-root MuiTypography-body2 MuiTypography-colorInherit']", text: "30").click
+        find("p[class='MuiTypography-root MuiTypography-body2 MuiTypography-colorInherit']", text: "27").click
         click_on 'OK'
 
         attach_file("educational_level[diploma]", Rails.root + "spec/factories/pdfs/diploma.pdf" )
@@ -57,7 +57,7 @@ RSpec.describe 'In wizards step nine view', type: :feature do
         expect(added_educational_level.degree).to eq('Supa Engineer')
         expect(added_educational_level.institution_name).to eq('MIT')
         expect(added_educational_level.start_date).to eq(Date.new(2000, Date.today.month, 23))
-        expect(added_educational_level.finish_date).to eq(Date.new(2018, Date.today.month, 30))
+        expect(added_educational_level.finish_date).to eq(Date.new(2018, Date.today.month, 27))
         expect(added_educational_level.diploma).to be_present
         expect(added_educational_level.ongoing_study).to be_falsy
       end

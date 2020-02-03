@@ -13,7 +13,7 @@ class Users::Wizards::StepEightPresenter < Users::WizardsPresenter
       template_translation_path: 'users.wizards.step_eights.show',
       form_type: :work_experience,
       action_path: users_wizards_step_eight_path,
-      previous_path: users_wizards_step_six_path,
+      previous_path: users_wizards_step_seven_path,
       next_path: users_wizards_step_nines_choices_path
     )
   end
@@ -22,8 +22,8 @@ class Users::Wizards::StepEightPresenter < Users::WizardsPresenter
     rails_routes.users_wizards_step_nines_choices_path
   end
 
-  def users_wizards_step_six_path
-    rails_routes.users_wizards_step_six_path
+  def users_wizards_step_seven_path
+    rails_routes.users_wizards_step_seven_path
   end
 
   def users_wizards_step_eight_path

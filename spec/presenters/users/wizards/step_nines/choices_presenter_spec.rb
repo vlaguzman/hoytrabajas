@@ -38,10 +38,10 @@ RSpec.describe Users::Wizards::StepNines::ChoicesPresenter do
     end
 
     context 'when user does not have work experience' do
-      it 'should return a path to step_six' do
+      it 'should return a path to step_seven' do
         response = subject.return_path
 
-        expect(response).to eq('/users/wizards/step_six')
+        expect(response).to eq('/users/wizards/step_seven')
       end
     end
   end

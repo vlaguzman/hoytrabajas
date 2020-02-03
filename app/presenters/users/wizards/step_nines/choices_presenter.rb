@@ -1,6 +1,6 @@
 class Users::Wizards::StepNines::ChoicesPresenter < ApplicationPresenter
   def return_path
-    has_work_experience? ? rails_routes.users_wizards_step_eight_path : rails_routes.users_wizards_step_six_path
+    has_work_experience? ? rails_routes.users_wizards_step_eight_path : rails_routes.users_wizards_step_seven_path
   end
 
   def current_path

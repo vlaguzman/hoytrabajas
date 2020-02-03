@@ -124,6 +124,7 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     find("li", text: "Colombia").click
 
     find("div[id='mui-component-select-user[residence_state_id]", visible: false).click
+    sleep 1
     find("li", text: "Huila").click
 
     find("div[id='mui-component-select-user[residence_city_id]", visible: false).click
@@ -294,14 +295,13 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     find("li", text: "Full Time").click
 
     find("div[id='mui-component-select-work_experience[country_id]", visible: false).click
+    sleep 1
     find("li", text: "Neverland").click
 
-    sleep 1
 
     find("div[id='mui-component-select-work_experience[state_id]']", visible: false).click
-    find("li", text: "Stateland").click
-
     sleep 1
+    find("li", text: "Stateland").click
 
     find("div[id='mui-component-select-work_experience[city_id]']", visible: false).click
     find("li", text:  "Neverland City").click

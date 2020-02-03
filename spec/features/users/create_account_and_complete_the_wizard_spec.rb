@@ -112,18 +112,22 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     find("li", text: "Colombiana").click
 
     find("div[id='mui-component-select-user[born_country_id]", visible: false).click
+    sleep 1
     find("li", text: "Argentina").click
 
     find("div[id='mui-component-select-user[born_state_id]", visible: false).click
+    sleep 1
     find("li", text: "Buenos Aires").click
 
     find("div[id='mui-component-select-user[born_city_id]", visible: false).click
     find("li", text: "Capital Federal").click
 
     find("div[id='mui-component-select-user[residence_country_id]", visible: false).click
+    sleep 1
     find("li", text: "Colombia").click
 
     find("div[id='mui-component-select-user[residence_state_id]", visible: false).click
+    sleep 1
     find("li", text: "Huila").click
 
     find("div[id='mui-component-select-user[residence_city_id]", visible: false).click
@@ -147,7 +151,7 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     find("input[name='user[birthday]']").click
     find("h6[class='MuiTypography-root MuiPickersToolbarText-toolbarTxt MuiTypography-subtitle1']").click
     find("div[class='MuiTypography-root MuiPickersYear-root MuiTypography-subtitle1']", text:"1995", visible: false).click
-    find("p[class='MuiTypography-root MuiTypography-body2 MuiTypography-colorInherit']", text: "29").click
+    find("p[class='MuiTypography-root MuiTypography-body2 MuiTypography-colorInherit']", text: "27").click
     click_on "OK"
 
     find("div[id='mui-component-select-user[limitation_ids][]']", visible: false).click
@@ -294,9 +298,12 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     find("li", text: "Full Time").click
 
     find("div[id='mui-component-select-work_experience[country_id]", visible: false).click
+    sleep 1
     find("li", text: "Neverland").click
 
+
     find("div[id='mui-component-select-work_experience[state_id]']", visible: false).click
+    sleep 1
     find("li", text: "Stateland").click
 
     find("div[id='mui-component-select-work_experience[city_id]']", visible: false).click
@@ -335,7 +342,7 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     find("input[name='educational_level[finish_date]']").click
     find("h6[class='MuiTypography-root MuiPickersToolbarText-toolbarTxt MuiTypography-subtitle1']").click
     find("div[class='MuiTypography-root MuiPickersYear-root MuiTypography-subtitle1']", text:"2018", visible: false).click
-    find("p[class='MuiTypography-root MuiTypography-body2 MuiTypography-colorInherit']", text: "30").click
+    find("p[class='MuiTypography-root MuiTypography-body2 MuiTypography-colorInherit']", text: "27").click
     click_on 'OK'
 
     attach_file("educational_level[diploma]", Rails.root + "spec/factories/pdfs/diploma.pdf" )
@@ -383,7 +390,7 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
   #Step_Two
     expect(registered_user.about_me).to eq('I am the best chef in the world')
     expect(registered_user.sex.description).to eq('Masculino')
-    expect(registered_user.birthday).to eq(Date.new(1995, current_month, 29))
+    expect(registered_user.birthday).to eq(Date.new(1995, current_month, 27))
     expect(registered_user.limitations.last.description).to eq('Ninguna')
 
     cv = registered_user.curriculum_vitae
@@ -440,7 +447,7 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     expect(added_educational_level.degree).to eq('Supa Engineer')
     expect(added_educational_level.institution_name).to eq('MIT')
     expect(added_educational_level.start_date).to eq(Date.new(2000, Date.today.month, 23))
-    expect(added_educational_level.finish_date).to eq(Date.new(2018, Date.today.month, 30))
+    expect(added_educational_level.finish_date).to eq(Date.new(2018, Date.today.month, 27))
     expect(added_educational_level.diploma).to be_present
     expect(added_educational_level.ongoing_study).to be_falsy
 

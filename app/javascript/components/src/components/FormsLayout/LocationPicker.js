@@ -107,7 +107,7 @@ const LocationPicker = ({
 
   const StateSelectComponent = () => {
     return (
-      statesList.any() && (
+      /* statesList.any() &&  */(
         <SelectBuilder
           placeID={selectedState}
           placesList={statesList}
@@ -121,8 +121,8 @@ const LocationPicker = ({
 
   const CitySelectComponent = () => {
     return (
-      statesList.any() &&
-      citiesList.any() && (
+      /* statesList.any() &&
+      citiesList.any() &&  */(
         <SelectBuilder
           placeID={selectedCity}
           placesList={citiesList}

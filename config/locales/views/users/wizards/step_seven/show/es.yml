@@ -3,16 +3,11 @@ es:
     wizards:
       step_sevens:
         show:
-          title: 'Cuéntanos un poco de tu experiencia'
-          subtitle: 'Brinda a las empresas información valiosa sobre ti.'
-          form:
-            buttons:
-              #submit: 'Siguiente'
-              next: 'Saltar'
-              previous: 'Regresar'
-              acceptButton: 'Sí, quiero adicionarla'
-              skipButton: 'No pero con disposición'
-              have_experience: '¿Cuentas con experiencia?'
-            formFields:
-            placeholders:
-
+          title: '¿Cuentas con experiencia?'
+          subtitle: 'Experiencia o no, lo importante son las ganas de aprender'
+          content:
+            accept: 'Sí, quiero agregarla'
+            decline: 'No, pero quiero aprender'
+          form_buttons:
+            previous: 'Regresar'
+            skip: 'Omitir'

@@ -13,8 +13,8 @@ class Users::Wizards::StepNinePresenter < Users::WizardsPresenter
       template_translation_path: 'users.wizards.step_nines.show',
       form_type: :educational_level,
       action_path: users_wizards_step_nine_path,
-      previous_path: users_wizards_step_eight_path,
-      next_path: users_wizards_step_ten_path
+      previous_path: users_wizards_step_nines_choices_path,
+      next_path: users_wizards_step_eleven_path
     )
   end
 
@@ -22,12 +22,12 @@ class Users::Wizards::StepNinePresenter < Users::WizardsPresenter
     rails_routes.users_wizards_step_nine_path
   end
 
-  def users_wizards_step_eight_path
-    rails_routes.users_wizards_step_eight_path
+  def users_wizards_step_nines_choices_path
+    rails_routes.users_wizards_step_nines_choices_path
   end
 
-  def users_wizards_step_ten_path
-    rails_routes.users_wizards_step_ten_path
+  def users_wizards_step_eleven_path
+    rails_routes.users_wizards_step_eleven_path
   end
 
 end

@@ -6,7 +6,12 @@ import FormTitle from '../../../../../components/FormsLayout/FormTitle'
 import FormButtons from '../../../../../components/FormsLayout/FormButtons'
 import FormFields from './FormFields'
 
-const CompaniesStepSeven = ({ formInfo, csrf_param, csrf_token }) => {
+const CompaniesStepSeven = ({
+  formInfo,
+  tooltip_description,
+  csrf_param,
+  csrf_token
+}) => {
   const {
     title,
     subtitle,
@@ -24,7 +29,11 @@ const CompaniesStepSeven = ({ formInfo, csrf_param, csrf_token }) => {
             <FormTitle title={title} subtitle={subtitle} />
             <div className="w-80">
               <form className="forms__candidate" action={action} method="post">
-                <FormFields type={type} formFields={formFields} />
+                <FormFields
+                  type={type}
+                  formFields={formFields}
+                  tooltip_description={tooltip_description}
+                />
                 <input type="hidden" name={csrf_param} value={csrf_token} />
                 <input type="hidden" name="_method" value={method} />
                 <input type="hidden" name="offer[id]" value={id} />
@@ -47,6 +56,7 @@ export default CompaniesStepSeven
 CompaniesStepSeven.propTypes = {
   csrf_param: PropTypes.string,
   csrf_token: PropTypes.string,
+  tooltip_description: PropTypes.object.isRequired,
   formInfo: PropTypes.shape({
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,

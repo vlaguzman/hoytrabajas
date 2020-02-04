@@ -20,9 +20,9 @@ const SelectFindOrCreate = ({
   no_options_text,
   isMultiple = false,
   tooltip_description,
-  handleOnChange = null
+  handleOnChange = null,
+  className = ''
 }) => {
-
   const [interValue, setInterValue] = useState(input_value)
   const [updateOptions, setUpdateOptions] = useState(options)
 
@@ -49,6 +49,7 @@ const SelectFindOrCreate = ({
     <>
       <Tooltip title={tooltip_description} arrow>
         <Autocomplete
+          className={className}
           freeSolo
           id={id}
           name={id}
@@ -81,6 +82,7 @@ const SelectFindOrCreate = ({
 }
 
 SelectFindOrCreate.propTypes = {
+  className: PropTypes.string,
   handleOnChange: PropTypes.func,
   tooltip_description: PropTypes.string,
   id: PropTypes.string,

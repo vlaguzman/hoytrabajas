@@ -13,7 +13,7 @@ class Users::Wizards::StepEights::WorkExperiencePresenter < ApplicationPresenter
   end
 
   def next_path
-    rails_routes.users_wizards_step_nine_path
+    rails_routes.users_wizards_step_nines_choices_path
   end
 
 end

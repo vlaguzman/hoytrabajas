@@ -33,7 +33,7 @@ const OffersCarousel = ({
         <a
           type="button"
           id="loadMoreOffers"
-          className="a-button a-button--secondary a-button--big m-auto"
+          className="a-button --secondary --big m-auto"
           href={offers_path}
         >
           {offer_translations.index.btn_all_offers}

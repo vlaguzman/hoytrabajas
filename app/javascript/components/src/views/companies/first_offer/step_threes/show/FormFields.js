@@ -3,13 +3,14 @@ import PropTypes from 'prop-types'
 import { Row, Col } from 'reactstrap'
 import StandardInput from '../../../../../components/FormsLayout/Fields/StandardInput'
 import SelectChip from '../../../../../components/FormsLayout/Fields/SelectChip'
+import SelectFindOrCreate from '../../../../../components/FormsLayout/Fields/SelectFindOrCreate'
 import {
   handleChange,
   handleDeleteChip
 } from '../../../../../components/FormsLayout/handleFunctions'
 
 const FormFields = props => {
-  const { formFields } = props
+  const { formFields, tooltip_description } = props
 
   const {
     title = null,
@@ -130,15 +131,13 @@ const FormFields = props => {
         xs={12}
         lg={6}
       >
-        <SelectChip
-          inputValue={formValues[offers_work_positions.name]}
-          inputName={offers_work_positions.name}
-          handleChange={handleChange(formValues, setFormValues)}
-          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
-          name={offers_work_positions.name}
+        <SelectFindOrCreate
+          id={offers_work_positions.name}
           label={offers_work_positions.label}
-          selectOptions={offers_work_positions.values}
-          isMultiple={false}
+          name={offers_work_positions.name}
+          input_value={offers_work_positions.current_value}
+          options={offers_work_positions.values}
+          tooltip_description={tooltip_description['press_enter']}
         />
       </Col>
     ),
@@ -166,5 +165,8 @@ FormFields.propTypes = {
     offer_type_id: PropTypes.object,
     work_mode_id: PropTypes.object,
     offers_work_positions: PropTypes.object
+  }).isRequired,
+  tooltip_description: PropTypes.shape({
+    press_enter: PropTypes.string.isRequired
   }).isRequired
 }

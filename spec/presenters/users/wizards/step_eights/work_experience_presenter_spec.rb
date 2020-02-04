@@ -29,7 +29,7 @@ RSpec.describe Users::Wizards::StepEights::WorkExperiencePresenter do
     it "Should return the path" do
       response = subject.next_path
 
-      expect(response).to eq('/users/wizards/step_nine')
+      expect(response).to eq('/users/wizards/step_nines/choices')
     end
   end
 

@@ -152,7 +152,7 @@ const SignIn = props => {
             <Col xs={12} className="px-30">
               <button
                 type="submit"
-                className="a-button a-button--primary fw-bold"
+                className="a-button --primary fw-bold"
                 style={{
                   textTransform: 'uppercase',
                   fontSize: '1rem',

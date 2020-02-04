@@ -1,0 +1,16 @@
+= render '/shared/header'
+= react_component("src/components/FormsLayout/FormProgress", { value: FormProgressManager.calculate_user_progress(9) }, prerender: false)
+.m-formWrapper
+  .formBackground
+  .formContainer
+    .formHeading
+      %h5.formTitle= t('.title')
+      %p.formSubtitle= t('.subtitle')
+    .formContent
+      .formChoices
+        %a.formButton__accept.a-button.--big.--secondary{:href => @user.current_path}= t('.content.accept')
+        %a.formButton__decline.a-button.--big.--outlined{:href => @user.skip_path}= t('.content.decline')
+    .formButtons
+      %a.formPrevButton{:href => @user.return_path}= t('.form_buttons.previous')
+      %a.formNextButton{:href => @user.skip_path}= t('.form_buttons.skip')
+  

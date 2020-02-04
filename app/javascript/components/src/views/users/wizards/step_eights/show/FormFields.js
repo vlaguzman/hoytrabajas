@@ -1,8 +1,7 @@
-import React, { useState, useMemo, useEffect } from 'react'
+import React, { useState, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { Row, Col } from 'reactstrap'
 import SelectChip from '../../../../../components/FormsLayout/Fields/SelectChip'
-// import Select from '../../../../../components/FormsLayout/Fields/Select'
 import StandardInput from '../../../../../components/FormsLayout/Fields/StandardInput'
 import DatePicker from '../../../../../components/FormsLayout/Fields/DatePicker'
 import Checkbox from '../../../../../components/FormsLayout/Fields/Checkbox'
@@ -148,7 +147,6 @@ const FormFields = props => {
       )
     )
   }
-
 
   const stateIDField = () => {
     return (

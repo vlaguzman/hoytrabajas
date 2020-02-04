@@ -283,7 +283,7 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     find("span", text: /SIGUIENTE/).click
 
   #Step Seven
-    click_on 'Sí, quiero adicionarla'
+    click_on 'Sí, quiero agregarla'
 
   #Step_Eight
     fill_in "work_experience[company_name]", with: 'Hoy Trabajas'
@@ -300,14 +300,17 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     find("div[id='mui-component-select-work_experience[country_id]", visible: false).click
     sleep 1
     find("li", text: "Neverland").click
+    sleep(2)
 
 
     find("div[id='mui-component-select-work_experience[state_id]']", visible: false).click
     sleep 1
     find("li", text: "Stateland").click
+    sleep(2)
 
     find("div[id='mui-component-select-work_experience[city_id]']", visible: false).click
     find("li", text:  "Neverland City").click
+    sleep(2)
 
     find("input[id='work_experience[technical_skills]']", visible: false).click
     find("li", text: "Poo").click

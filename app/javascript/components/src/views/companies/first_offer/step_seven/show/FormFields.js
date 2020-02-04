@@ -5,6 +5,7 @@ import uuidv4 from 'uuid/v4'
 import Paper from '@material-ui/core/Paper'
 import styled from 'styled-components'
 
+import SelectFindOrCreate from '../../../../../components/FormsLayout/Fields/SelectFindOrCreate'
 import SelectChip from '../../../../../components/FormsLayout/Fields/SelectChip'
 import FormRow from '../../../../../components/FormsLayout/Fields/FormRow'
 import Checkbox from '../../../../../components/FormsLayout/Fields/Checkbox'
@@ -43,7 +44,7 @@ const AfterLabel = styled.span`
 `
 
 const FormFields = props => {
-  const { formFields } = props
+  const { formFields, tooltip_description } = props
   const {
     country_id = null,
     state_id = null,
@@ -90,7 +91,6 @@ const FormFields = props => {
       setDefaultRowIDs(technical_skills.current_values) || [],
     [languages.name]: setDefaultRowIDs(languages.current_values) || []
   })
-
 
   const {
     CountrySelect,
@@ -276,22 +276,24 @@ const FormFields = props => {
               >
                 {({ rowValue, handleRowChanges, handleRowDeleteChip }) => (
                   <>
-                    <StyledCol xs={12} lg={4}>
+                    <StyledCol xs={12} lg={6}>
                       <BeforeLabel marginAuto>
                         {technical_skills.main_label.skill}
                       </BeforeLabel>
-                      <SelectChip
-                        name="technical_skill_id"
-                        inputValue={rowValue.technical_skill_id}
-                        handleChange={handleRowChanges}
-                        handleDeleteChip={handleRowDeleteChip}
-                        selectOptions={
+                      <SelectFindOrCreate
+                        className="a-formFields__technicalSkills"
+                        id="technical_skills_id"
+                        name={technical_skills.name}
+                        input_value={technical_skills.current_value}
+                        options={
                           technical_skills.list_values.technical_skill_id
                         }
+                        tooltip_description={tooltip_description['press_enter']}
+                        handleOnChange={handleRowChanges}
                       />
                     </StyledCol>
 
-                    <StyledCol xs={12} lg={6}>
+                    <StyledCol xs={12} lg={4}>
                       <BeforeLabel marginAuto>
                         {technical_skills.main_label.level}
                       </BeforeLabel>
@@ -399,6 +401,9 @@ const FormFields = props => {
 export default FormFields
 
 FormFields.propTypes = {
+  tooltip_description: PropTypes.shape({
+    press_enter: PropTypes.string.isRequired
+  }).isRequired,
   formFields: PropTypes.shape({
     city_id: PropTypes.object.isRequired,
     educational_degree_id: PropTypes.object.isRequired,

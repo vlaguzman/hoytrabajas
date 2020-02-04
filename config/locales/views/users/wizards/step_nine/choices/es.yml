@@ -1,0 +1,14 @@
+es:
+  users:
+    wizards:
+      step_nines:
+        choices:
+          show:
+            title: '¿Cuentas con educación?'
+            subtitle: 'Nunca es tarde para aprender'
+            content:
+              accept: 'Sí, quiero agregarla'
+              decline: 'No, pero quiero aprender'
+            form_buttons:
+              previous: 'Regresar'
+              skip: 'Omitir'

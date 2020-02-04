@@ -26,8 +26,6 @@ RSpec.describe "hide the empty information", type: :feature, js: :true do
       expect(page).to have_text("sales")
       expect(page).to have_text("marketing")
 
-      expect(page).to have_text("Oferta dirigida a")
-      expect(page).to have_text("Edad")
       expect(page).to have_text("Número de vacantes")
       expect(page).to have_text("Residente en")
       expect(page).to have_text("Experiencia")

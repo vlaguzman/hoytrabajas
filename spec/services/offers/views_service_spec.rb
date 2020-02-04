@@ -88,6 +88,7 @@ RSpec.describe Offers::ViewsService do
     job_category_image: "https://img-categorias-ht.s3.amazonaws.com/any.png",
     required_experience: true,
     on_demand: nil,
+    affinity_percentage: false,
     city: {
       description: "Bogotá"
     },
@@ -115,6 +116,7 @@ RSpec.describe Offers::ViewsService do
     immediate_start: true,
     job_category_image: "https://img-categorias-ht.s3.amazonaws.com/cat-card-gestion-administrativa2x.png",
     required_experience: true,
+    affinity_percentage: false,
     on_demand: nil,
     city: {
       description: "Bogotá"
@@ -144,6 +146,7 @@ RSpec.describe Offers::ViewsService do
     job_category_image: "https://img-categorias-ht.s3.amazonaws.com/cat-card-gestion-administrativa2x.png",
     required_experience: true,
     on_demand: nil,
+    affinity_percentage: false,
     city: {
       description: "Bogotá"
     },

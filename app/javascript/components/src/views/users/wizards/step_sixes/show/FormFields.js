@@ -15,17 +15,14 @@ import {
   handleChange
 } from '../../../../../components/FormsLayout/handleFunctions'
 
-const StyledRow = styled(Row)`
-  width: 100%;
-  flex: 1 1 0%;
-  display: flex;
-  margin: 0px;
-`
-
 const StyledCol = styled(Col)`
   display: flex;
   align-items: flex-end;
   margin: ${props => (props.marginAuto ? 'auto 0' : 0)};
+
+  @media only screen and (max-width: 576px) {
+    margin-top: 20px;
+  }
 
   & .MuiFormControl-root {
     flex: 1;
@@ -169,7 +166,7 @@ const FormFields = props => {
                     />
                   ))}
                 </>
-                <StyledRow style={{ height: '55px' }}>
+                <div className="rowContainer">
                   <FormRow
                     allRows={formValues[technical_skills.name]}
                     rowName={technical_skills.name}
@@ -227,7 +224,7 @@ const FormFields = props => {
                       </>
                     )}
                   </FormRow>
-                </StyledRow>
+                </div>
               </Col>
             )
           )}
@@ -269,7 +266,7 @@ const FormFields = props => {
                   />
                 ))}
               </>
-              <StyledRow style={{ height: '55px' }}>
+              <div className="rowContainer">
                 <FormRow
                   allRows={formValues[to_learn_skills.name]}
                   rowName={to_learn_skills.name}
@@ -312,7 +309,7 @@ const FormFields = props => {
                     </>
                   )}
                 </FormRow>
-              </StyledRow>
+              </div>
             </Col>
           ))}
         </Paper>
@@ -348,7 +345,7 @@ const FormFields = props => {
                   />
                 ))}
               </>
-              <StyledRow style={{ height: '55px' }}>
+              <div className="rowContainer">
                 <FormRow
                   allRows={formValues[languages.name]}
                   rowName={languages.name}
@@ -383,7 +380,7 @@ const FormFields = props => {
                     </>
                   )}
                 </FormRow>
-              </StyledRow>
+              </div>
             </Col>
           ))}
         </Paper>

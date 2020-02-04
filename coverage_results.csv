@@ -8,7 +8,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/mailers/mail_notifier.rb",100,12,5,5,0
 "./app/models/acknowledgment.rb",100,12,7,7,0
 "./app/models/admin_user.rb",100,6,3,3,0
-"./app/models/age_range.rb",100,5,3,3,0
+"./app/models/age_range.rb",100,8,5,5,0
 "./app/models/application_record.rb",100,3,2,2,0
 "./app/models/applied_offer.rb",100,10,6,6,0
 "./app/models/applied_offer_status.rb",100,3,2,2,0
@@ -50,10 +50,10 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/level.rb",100,5,3,3,0
 "./app/models/limitation.rb",100,6,3,3,0
 "./app/models/nationality.rb",100,7,4,4,0
-"./app/models/offer.rb",100,104,74,74,0
+"./app/models/offer.rb",100,107,75,75,0
 "./app/models/offer_on_demand.rb",100,11,5,5,0
-"./app/models/offer_required_experiences.rb",100,9,5,5,0
-"./app/models/offer_salary.rb",100,11,7,7,0
+"./app/models/offer_required_experiences.rb",100,11,6,6,0
+"./app/models/offer_salary.rb",100,14,9,9,0
 "./app/models/offer_type.rb",100,5,3,3,0
 "./app/models/offers_responsibilities.rb",100,4,3,3,0
 "./app/models/offers_soft_skills.rb",100,4,3,3,0
@@ -86,7 +86,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/work_mode.rb",100,5,3,3,0
 "./app/models/work_position.rb",100,7,4,4,0
 "./app/models/working_day.rb",100,6,4,4,0
-"./app/presenters/admins/offers_presenter.rb",100,6,3,3,0
+"./app/presenters/admins/offers_presenter.rb",100,26,12,12,0
 "./app/presenters/application_presenter.rb",100,34,19,19,0
 "./app/presenters/applied_offers_presenter.rb",100,30,11,11,0
 "./app/presenters/companies/dashboards_presenter.rb",100,10,5,5,0
@@ -124,7 +124,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/users_presenter.rb",100,19,5,5,0
 "./app/services/add_model_errors/curriculum_vitaes/technical_skills.rb",100,18,9,9,0
 "./app/services/add_model_errors_service.rb",100,58,23,23,0
-"./app/services/admins/offers_service.rb",100,63,20,20,0
+"./app/services/admins/offers_service.rb",100,187,92,92,0
 "./app/services/admins_service.rb",100,15,8,8,0
 "./app/services/affinity_calculator.rb",100,77,35,35,0
 "./app/services/base_form_wizards_service.rb",100,99,52,52,0
@@ -153,7 +153,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/companies/first_offer/step_two/form_params_service.rb",100,7,2,2,0
 "./app/services/companies/first_offer/step_two_service.rb",100,6,3,3,0
 "./app/services/companies/list_candidates/applied_candidates_service.rb",100,54,23,23,0
-"./app/services/company_service.rb",100,38,20,20,0
+"./app/services/company_service.rb",100,39,20,20,0
 "./app/services/offers/applied_offer_service.rb",100,15,6,6,0
 "./app/services/offers/completely_destroy_service.rb",100,20,11,11,0
 "./app/services/offers/expired_service.rb",100,27,13,13,0
@@ -197,6 +197,6 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./lib/form_progress_manager.rb",100,12,7,7,0
 "./lib/get_value_of_record.rb",100,97,44,44,0
 "./lib/hashes_compare.rb",100,23,12,12,0
-"./lib/hashes_converter.rb",100,19,8,8,0
+"./lib/hashes_converter.rb",100,22,10,10,0
 "./lib/list_converter.rb",100,25,12,12,0
 "./lib/string_converter.rb",100,16,9,9,0

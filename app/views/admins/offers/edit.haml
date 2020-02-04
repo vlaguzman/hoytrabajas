@@ -4,7 +4,7 @@
   .error_messages
     - @offer.errors.messages.each do |error, error_list|
       - error_list.each do |error|
-        - if error.is_a?(String)
+        - @offer.yield_if(error.is_a?(String)) do
           %span.error= error
           %br
 

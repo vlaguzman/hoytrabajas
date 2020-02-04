@@ -59,10 +59,18 @@
 .HT__FormGenerator {
   align-items: flex-end;
 
+  @media only screen and (max-width: 576px) {
+    margin-top: 30px;
+  }
+
   &._locationSelect {
     label + .MuiInput-formControl {
       margin-top: 0.5rem;
     }
+  }
+
+  .MuiInputLabel-shrink {
+    position: relative;
   }
 
   .MuiFormHelperText-root.Mui-error {
@@ -90,6 +98,11 @@
     .MuiTextField-root {
       height: 100%;
     }
+
+    @media only screen and (max-width: 576px) {
+      height: auto;
+      max-height: none;
+    }
   }
 
   label + .MuiInput-formControl {
@@ -99,10 +112,6 @@
   &.StepFive .inputField {
     display: flex;
     align-items: flex-end;
-
-    label + .MuiInput-formControl {
-      margin-top: 16px;
-    }
 
     & > .MuiFormControl-root {
       width: 100%;
@@ -123,5 +132,14 @@
     .MuiCheckbox-root {
       padding: 0 10px;
     }
+  }
+
+  .rowContainer {
+    min-height: 55px;
+    width: 100%;
+    flex: 1 1 0%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0px;
   }
 }

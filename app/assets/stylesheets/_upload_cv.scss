@@ -22,9 +22,10 @@ body {
   border-radius: 7.2px;
   text-align: center;
 
-  @media only screen and (max-width : 480px) {
+  @media only screen and (max-width: 576px) {
     padding: 100px 10px 0;
     margin: 0;
+    box-shadow: none;
   }
 
   h1 {
@@ -39,6 +40,11 @@ body {
     font-weight: normal;
     font-size: 16px;
     color: #647a99;
+
+    @media only screen and (max-width: 480px) {
+      margin-top: 20px;
+      margin-bottom: 60px;
+    }
   }
 
   input[type='file'] {
@@ -66,7 +72,7 @@ body {
       }
     }
 
-    @media only screen and (max-width : 480px) {
+    @media only screen and (max-width: 480px) {
       display: unset;
 
       a {
@@ -75,7 +81,8 @@ body {
     }
 
     input {
-      box-shadow: 0 4px 4px -3px #ecebf0, 0 3px 12px 2px #ecebf0, 0 9px 23px 1px #ecebf0;
+      box-shadow: 0 4px 4px -3px #ecebf0, 0 3px 12px 2px #ecebf0,
+        0 9px 23px 1px #ecebf0;
       background-color: #ff7b00;
       border-radius: 24.7px;
       font-weight: 900;

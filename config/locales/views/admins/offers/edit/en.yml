@@ -71,3 +71,4 @@ en:
         educational_degree_id: ''
       buttons:
         save: 'Save'
+        back: 'Go back'

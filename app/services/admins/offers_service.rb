@@ -74,17 +74,17 @@ module Admins::OffersService
 
   def self.validate_params_global(model_params)
     if model_params.is_a?(Hash)
-      select_if_values_presence(model_params).present?
+      remove_empty_keys(model_params).present?
     else
       model_params
-        .map { |model_param| select_if_values_presence(model_param) }
+        .map { |model_param| remove_empty_keys(model_param) }
         .map { |value| value.present? }
         .any?
     end
   end
 
-  def self.select_if_values_presence(hash)
-    HashesConverter.select_if_values_presence(hash)
+  def self.remove_empty_keys(hash)
+    HashesConverter.remove_empty_keys(hash)
   end
 
   def self.validate_params_specific(model, model_params)
@@ -100,11 +100,11 @@ module Admins::OffersService
   end
 
   def self.validate_offer_salary(model_params)
-    !select_if_values_presence(model_params).keys.eql?(["is_range"])
+    !remove_empty_keys(model_params).keys.eql?(["is_range"])
   end
 
   def self.get_hashes_with_at_least_one_value(hash)
-    hash.select { |array| select_if_values_presence(hash).present? }
+    hash.select { |array| remove_empty_keys(hash).present? }
   end
 
   def self.prepare_model_associated(offer, model, params)

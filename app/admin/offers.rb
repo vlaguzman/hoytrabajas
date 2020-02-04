@@ -42,7 +42,7 @@ ActiveAdmin.register Offer do
       f.input :contract_type, label: t('admin.offers.form.contract_type'), as: :select, collection: ListConverter.model_array_list(ContractType)
       f.input :required_experience, label: t('admin.offers.form.required_experience')
       f.input :immediate_start, label: t('admin.offers.form.inmediate_start')
-      f.input :status, label: t('admin.offers.form.status.label'), collection: ['active', 'expire']
+      f.input :status, label: t('admin.offers.form.status.label'), collection: Offer::OFFER_STATUS
       f.input :close_date, as: :date_time_picker, datepicker_options: { min_date: "2019-11-1" }
       unless f.object.new_record?
       end

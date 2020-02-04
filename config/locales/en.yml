@@ -123,6 +123,8 @@ en:
               inclusion: "%{value} Invalid offer status, valid: [:expired, :hired, :active, :preview, :trash]"
             vacancies_quantity:
               greater_than_or_equal_to: 'Vacancies quantity must be equal to or greater than one (1)'
+            close_date:
+              be_older_today: 'Close date must be older today'
         educational_level:
           attributes:
             degree:
@@ -155,10 +157,10 @@ en:
         age_range:
           attributes:
             from:
-              greater_than_or_equal_to: 'From must be equal to or greater than one (1)'
+              greater_than_or_equal_to: 'From must be equal to or greater than 18'
               blank: 'Please enter from, it cant be blank'
             to:
-              greater_than_or_equal_to: 'To must be equal to or greater than one (1)'
+              greater_than_or_equal_to: 'To must be equal to or greater than 18'
               blank: 'Please enter to, it cant be blank'
 
         offer_salary:

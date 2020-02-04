@@ -51,16 +51,16 @@ RSpec.describe HashesConverter do
     end
   end
 
-  describe "#select_if_values_presence" do
-    context "When the user needs to select hash that at least have a value" do
-      it "should return an these hash" do
+  describe "#remove_empty_keys" do
+    context "When the user needs remove empty keys in hash" do
+      it "should return an hash without empty keys" do
         test_hash = {
             a: :a,
             b: :b,
             c: ''
           }
 
-        expect(subject.select_if_values_presence(test_hash)).to eq({a: :a, b: :b})
+        expect(subject.remove_empty_keys(test_hash)).to eq({a: :a, b: :b})
       end
     end
   end

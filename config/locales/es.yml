@@ -214,6 +214,8 @@ es:
               inclusion: '%{value} no es un estado valido, estados validos: [:expired, :hired, :active, :preview, :trash]'
             vacancies_quantity:
               greater_than_or_equal_to: 'La cantidad de vacantes debe ser igual ó mayor a uno(1)'
+            close_date:
+              be_older_today: 'La fecha de finalización debe ser mayor al día de hoy'
         educational_level:
           attributes:
             degree:
@@ -248,10 +250,10 @@ es:
         age_range:
           attributes:
             from:
-              greater_than_or_equal_to: 'Desde debe ser igual ó mayor a uno(1)'
+              greater_than_or_equal_to: 'Desde debe ser igual ó mayor a 18'
               blank: 'Desde no puede estar en blanco'
             to:
-              greater_than_or_equal_to: 'Hasta debe ser igual ó mayor a uno(1)'
+              greater_than_or_equal_to: 'Hasta debe ser igual ó mayor a 18'
               blank: 'Hasta no puede estar en blanco'
         offer_salary:
           attributes:

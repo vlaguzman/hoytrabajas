@@ -9,7 +9,7 @@ class Admins::OffersPresenter < ApplicationPresenter
   end
 
   def get_collection_by_model(model)
-    model.all.pluck(:description, :id)
+    model.all.pluck(:id, :description)
   end
 
   def get_error_by_model(model, attribute)

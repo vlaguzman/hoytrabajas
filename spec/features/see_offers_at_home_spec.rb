@@ -6,7 +6,7 @@ RSpec.describe "see offers at home", type: :feature, js: true do
       it "should show me a message: there are not offers" do
         visit root_path
 
-        expect(Offer.count).to eq(0)	
+        expect(Offer.count).to eq(0)
         expect(page).to have_text("No hay ningún trabajo en este momento")
       end
     end
@@ -14,10 +14,11 @@ RSpec.describe "see offers at home", type: :feature, js: true do
     context "The offer has a title (>26), a description (>58) and a company name (>31) too long" do
       it "Should render home#index and shorten the text" do
         company = FactoryBot.create(:company, name: "the name of the company is too long")
-        offer = FactoryBot.create(:offer, 
-                                   title: 'the title of the offer is too long', 
-                                   description: 'the description of the offer actually is to long, really long',
-                                   company: company)
+        offer = FactoryBot.create(:offer,
+          title: 'the title of the offer is too long',
+          description: 'the description of the offer actually is to long, really long',
+          company: company
+        )
 
         visit root_path
 
@@ -34,12 +35,12 @@ RSpec.describe "see offers at home", type: :feature, js: true do
 
         visit root_path
 
-        expect(Offer.count).to eq(2)	
+        expect(Offer.count).to eq(2)
         expect(page).to have_text(offer.title.capitalize)
         expect(page).not_to have_text(expired_offer.title.capitalize)
       end
-    end 
-    
+    end
+
     context "There are one not required_experience offer" do
       it "should show me a message 'Sin experiencia'" do
         offer = FactoryBot.create(:offer, :no_required_experience_offer, title: 'active_offer_no_experience')
@@ -67,7 +68,7 @@ RSpec.describe "see offers at home", type: :feature, js: true do
     context "there are a new offer" do
       it "should show me the new flag" do
         offer = FactoryBot.create(:offer, title: 'new_offer')
-	
+
         visit root_path
 
         expect(page).to have_text(offer.title.capitalize)
@@ -88,6 +89,39 @@ RSpec.describe "see offers at home", type: :feature, js: true do
         expect(page).not_to have_text("Nuevo")
       end
     end
+  end
 
+  describe "Like a logged user" do
+    context "When candidate at home" do
+
+      let(:contract_type) { create(:contract_type, description: "Indefinido")}
+      let(:offer_contract)  { create(:empty_offer,
+        contract_type: contract_type,
+        title: "A Super Offer",
+        description: 'a super description')}
+
+      let(:curriculum_vitae) { create(:curriculum_vitae,
+      job_categories: offer_contract.job_categories
+      ) }
+
+      let!(:candidate) { create(:user,
+        :first_time_candidate,
+        name: "conan",
+        contract_type: contract_type,
+        curriculum_vitaes: [curriculum_vitae]
+      )}
+
+      it "Should see able to see his affinity percentage" do
+        sign_in candidate
+
+        visit root_path
+
+        save_page("paps.hmtl")
+
+        expect(page).to have_content("A Super Offer")
+        expect(page).to have_content("A super description")
+        expect(page).to have_content("100%")
+      end
+    end
   end
 end

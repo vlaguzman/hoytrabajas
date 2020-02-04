@@ -21,8 +21,10 @@ RSpec.describe Offers::ViewsService do
       job_categories: [job_category],
       required_experience: true,
       city: create(:city, description: "Bogotá"),
-      company: create(:with_logo_company,
-                 name: "Orellana S.A.")
+      company: create(
+        :with_logo_company,
+        name: "Orellana S.A."
+      )
     )
   end
 

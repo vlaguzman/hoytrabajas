@@ -13,7 +13,12 @@
 
   .m-box.o-boxPrincipal
     .headerBox
-      %img{src: image_path("/assets/static/avatars/profile.jpg"), alt: 'Photo Profile'}
+      - @user.yield_if(@user.photo.attached?) do
+        %img{src: image_path(@user.photo.url), id: "photo_profile_#{@user.id}"}
+
+      - @user.yield_if(!@user.photo.attached?) do
+        %img{src: image_path("/assets/static/avatars/profile.jpg"), alt: 'Photo Profile'}
+
       %h1
         = @user.name
         %strong=@user.last_name

@@ -41,6 +41,10 @@ class CurriculumVitae < ApplicationRecord
   delegate :description, to: :contract_type, prefix: :contract_type, allow_nil: true
   delegate :description, to: :labor_disponibility, prefix: :labor_disponibility, allow_nil: true
 
+  validates_attachment_presence :photo
+  validates_attachment_size :photo, :less_than => 2.megabytes
+  validates_attachment_content_type :photo, :content_type => ['image/jpeg']
+
   def languages_list
     strong_languages
   end

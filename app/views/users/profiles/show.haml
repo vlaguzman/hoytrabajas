@@ -13,11 +13,14 @@
 
   .m-box.o-boxPrincipal
     .headerBox
-      - @user.yield_if(@user.photo.attached?) do
-        %img{src: image_path(@user.photo.url), id: "photo_profile_#{@user.id}"}
+      - photo = @user.curriculum_vitae.photo
+      - @user.yield_if(photo.attached?) do
+        %img{src: image_path(image_path), id: "photo_profile_#{@user.id}"}
 
-      - @user.yield_if(!@user.photo.attached?) do
+      - @user.yield_if(!photo.attached?) do
         %img{src: image_path("/assets/static/avatars/profile.jpg"), alt: 'Photo Profile'}
+
+      = react_component('src/components/UserUploadPhoto', {defaultList: @user.data_education}, prerender: false)
 
       %h1
         = @user.name

@@ -199,7 +199,6 @@ es:
               blank: 'Describe un poco más tu perfil, este campo no puede estar vacío.'
             educational_degree_id:
               blank: 'Debes seleccionar un nivel de educación'
-
         offer:
           attributes:
             company:
@@ -213,6 +212,10 @@ es:
               blank: 'Por favor seleccione una categoría, este campo es requerido'
             status:
               inclusion: '%{value} no es un estado valido, estados validos: [:expired, :hired, :active, :preview, :trash]'
+            vacancies_quantity:
+              greater_than_or_equal_to: 'La cantidad de vacantes debe ser igual ó mayor a uno(1)'
+            close_date:
+              be_older_today: 'La fecha de finalización debe ser mayor al día de hoy'
         educational_level:
           attributes:
             degree:
@@ -231,7 +234,6 @@ es:
           attributes:
             title:
               blank: 'El Titulo reconocimiento no puede estar vacio'
-
         curriculum_vitae:
           attributes:
             job_categories:
@@ -245,6 +247,44 @@ es:
               invalid_skill: "Una de las habilidades tecnicas que quieres agregar, ya esta en la lista y la puedes seleccionar, no permitimos valores repetidos"
             to_learn_skills:
               invalid_skill: "Una de las habilidades tecnicas a aprender que quieres agregar, ya esta en la lista y la puedes seleccionar, no permitimos valores repetidos"
+        age_range:
+          attributes:
+            from:
+              greater_than_or_equal_to: 'Desde debe ser igual ó mayor a 18'
+              blank: 'Desde no puede estar en blanco'
+            to:
+              greater_than_or_equal_to: 'Hasta debe ser igual ó mayor a 18'
+              blank: 'Hasta no puede estar en blanco'
+        offer_salary:
+          attributes:
+            from:
+              greater_than_or_equal_to: 'Desde debe ser igual ó mayor a uno(1)'
+              blank: 'Desde no puede estar en blanco'
+            to:
+              greater_than_or_equal_to: 'Hasta debe ser igual ó mayor a uno(1)'
+            salary_period:
+              required: 'Debe seleccionar un periodo de pago'
+            currency:
+              required: 'Debe seleccionar una moneda'
+        offer_required_experiences:
+          attributes:
+            duration:
+              greater_than_or_equal_to: 'Debe ser igual ó mayor a uno(1)'
+              blank: 'No puede estar en blanco'
+            duration_type:
+              required: 'Debe seleccionar un tipo de duración'
+        offers_technical_skills:
+          attributes:
+            technical_skill:
+              required: 'Debe seleccionar una habilidad técnica'
+            level:
+              required: 'Debe seleccionar un nivel'
+        languages_offers:
+          attributes:
+            language:
+              required: 'Debe seleccionar un idioma'
+            level:
+              required: 'Debe seleccionar un nivel'
 
   time:
     am: am

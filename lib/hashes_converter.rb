@@ -16,4 +16,7 @@ module HashesConverter
     object.delete_if { |_, value| not value.present? }
   end
 
+  def self.remove_empty_keys(hash)
+    hash.select { |key, value| value.present? }
+  end
 end

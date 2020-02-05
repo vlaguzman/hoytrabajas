@@ -47,11 +47,10 @@ RSpec.describe Admins::OffersService do
           title:                  'Offer for only devs',
           description:            'A very good description, oh yeah!',
           vacancies_quantity:     '2',
-          "close_date(1i)"=>      '2020',
-          "close_date(2i)"=>      '1',
-          "close_date(3i)"=>      '4',
+          close_date:             '01-01-2020',
           immediate_start:        '1',
           status:                 'active',
+          required_experience:    '1',
           offer_type_id:          offer_type.id,
           work_mode_id:           work_mode.id,
           contract_type_id:       contract_type.id,
@@ -63,38 +62,34 @@ RSpec.describe Admins::OffersService do
           available_work_days:    ["#{available_work_day_1.id}", "#{available_work_day_2.id}"],
           working_days:           ["#{working_day_1.id}", "#{working_day_2.id}"],
           job_aids:               ["#{job_aid_1.id}", "#{job_aid_2.id}"],
-          responsibilities:       ["#{responsibility_1.id}", "#{responsibility_2.id}"],
-          requirements:           ["#{requirement_1.id}", "#{requirement_2.id}"],
+          # TODO uncomment when responsibilities and requirements has been defined
+          # responsibilities:       ["#{responsibility_1.id}", "#{responsibility_2.id}"],
+          # requirements:           ["#{requirement_1.id}", "#{requirement_2.id}"],
           vehicles:               ["#{vehicle_1.id}", "#{vehicle_2.id}"],
           driving_licences:       ["#{driving_licence_1.id}", "#{driving_licence_2.id}"],
           age_range: {
             to:   '750000',
             from: '750000',
-            offer_id: offer.id
           },
           offer_salary: {
             to:   '750000',
             from: '750000',
             is_range: '1',
-            offer_id: offer.id,
             salary_period_id: salary_period.id,
             currency_id: currency.id
           },
           offer_required_experiences: {
             duration: '2',
             duration_type_id: duration_type.id,
-            offer_id: offer.id
           },
-          offers_technical_skills: {
+          offers_technical_skills: [{
             technical_skill_id: technical_skill.id,
             level_id: level.id,
-            offer_id: offer.id
-          },
-          languages_offers: {
+          }],
+          languages_offers: [{
             language_id: language.id,
             level_id: level.id,
-            offer_id: offer.id
-          }
+          }]
         }
       end
 
@@ -108,7 +103,7 @@ RSpec.describe Admins::OffersService do
         expect(offer[:data].title).to eq('Offer for only devs')
         expect(offer[:data].description).to eq('A very good description, oh yeah!')
         expect(offer[:data].vacancies_quantity).to eq(2)
-        expect(offer[:data].close_date.strftime("%F")).to eq(Time.new(2020, 01, 4).strftime("%F"))
+        expect(offer[:data].close_date.strftime("%F")).to eq(Time.new(2020, 01, 01).strftime("%F"))
         expect(offer[:data].immediate_start).to be_truthy
         expect(offer[:data].required_experience).to be_truthy
 
@@ -156,8 +151,9 @@ RSpec.describe Admins::OffersService do
         expect(offer[:data].available_work_day_ids).to match_array([available_work_day_1.id, available_work_day_2.id])
         expect(offer[:data].working_day_ids).to match_array([working_day_1.id, working_day_2.id])
         expect(offer[:data].job_aid_ids).to match_array([job_aid_1.id, job_aid_2.id])
-        expect(offer[:data].responsibility_ids).to match_array([responsibility_1.id, responsibility_2.id])
-        expect(offer[:data].requirement_ids).to match_array([requirement_1.id, requirement_2.id])
+        # TODO uncomment when responsibilities and requirements has been defined
+        # expect(offer[:data].responsibility_ids).to match_array([responsibility_1.id, responsibility_2.id])
+        # expect(offer[:data].requirement_ids).to match_array([requirement_1.id, requirement_2.id])
         expect(offer[:data].vehicle_ids).to match_array([vehicle_1.id, vehicle_2.id])
         expect(offer[:data].driving_licence_ids).to match_array([driving_licence_1.id, driving_licence_2.id])
 
@@ -171,9 +167,7 @@ RSpec.describe Admins::OffersService do
           title:                  '',
           description:            '',
           vacancies_quantity:     '2',
-          "close_date(1i)"=>      '2020',
-          "close_date(2i)"=>      '1',
-          "close_date(3i)"=>      '4',
+          close_date:             '01-01-2020',
           immediate_start:        '1',
           status:                 'active',
           offer_type_id:          offer_type.id,
@@ -187,8 +181,9 @@ RSpec.describe Admins::OffersService do
           available_work_days:    ["#{available_work_day_1.id}", "#{available_work_day_2.id}"],
           working_days:           ["#{working_day_1.id}", "#{working_day_2.id}"],
           job_aids:               ["#{job_aid_1.id}", "#{job_aid_2.id}"],
-          responsibilities:       ["#{responsibility_1.id}", "#{responsibility_2.id}"],
-          requirements:           ["#{requirement_1.id}", "#{requirement_2.id}"],
+          # TODO uncomment when responsibilities and requirements has been defined
+          # responsibilities:       ["#{responsibility_1.id}", "#{responsibility_2.id}"],
+          # requirements:           ["#{requirement_1.id}", "#{requirement_2.id}"],
           vehicles:               ["#{vehicle_1.id}", "#{vehicle_2.id}"],
           driving_licences:       ["#{driving_licence_1.id}", "#{driving_licence_2.id}"],
           age_range: {

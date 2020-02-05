@@ -121,6 +121,10 @@ en:
               blank: "Please select a category, this field is required"
             status:
               inclusion: "%{value} Invalid offer status, valid: [:expired, :hired, :active, :preview, :trash]"
+            vacancies_quantity:
+              greater_than_or_equal_to: 'Vacancies quantity must be equal to or greater than one (1)'
+            close_date:
+              be_older_today: 'Close date must be older today'
         educational_level:
           attributes:
             degree:
@@ -149,6 +153,49 @@ en:
               invalid_skill: "One of the technical skills you want to add, it is already in the list and you can select it, we do not allow repeated values"
             to_learn_skills:
               invalid_skill: "One of the to learn skills that you want to add, is already in the list and you can select it, we do not allow repeated values"
+
+        age_range:
+          attributes:
+            from:
+              greater_than_or_equal_to: 'From must be equal to or greater than 18'
+              blank: 'Please enter from, it cant be blank'
+            to:
+              greater_than_or_equal_to: 'To must be equal to or greater than 18'
+              blank: 'Please enter to, it cant be blank'
+
+        offer_salary:
+          attributes:
+            from:
+              greater_than_or_equal_to: 'From must be equal to or greater than one (1)'
+              blank: 'Please enter from, it cant be blank'
+            to:
+              greater_than_or_equal_to: 'To must be equal to or greater than one (1)'
+            salary_period:
+              required: "The salary period is a required fill"
+            currency:
+              required: "The currency is a required fill"
+
+        offer_required_experiences:
+          attributes:
+            duration:
+              greater_than_or_equal_to: 'Duration must be equal to or greater than one (1)'
+              blank: 'Please enter duration, it cant be blank'
+            duration_type:
+              required: "The duration type is a required fill"
+
+        offers_technical_skills:
+          attributes:
+            technical_skill:
+              required: "The technical skill is a required fill"
+            level:
+              required: "The level is a required fill"
+
+        languages_offers:
+          attributes:
+            language:
+              required: "The language is a required fill"
+            level:
+              required: "The level is a required fill"
 
   time:
     formats:

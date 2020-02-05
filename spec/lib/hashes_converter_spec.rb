@@ -50,4 +50,18 @@ RSpec.describe HashesConverter do
       expect(subject.validate_presence_values(example_object)).to eq(expected_hash)
     end
   end
+
+  describe "#remove_empty_keys" do
+    context "When the user needs remove empty keys in hash" do
+      it "should return an hash without empty keys" do
+        test_hash = {
+            a: :a,
+            b: :b,
+            c: ''
+          }
+
+        expect(subject.remove_empty_keys(test_hash)).to eq({a: :a, b: :b})
+      end
+    end
+  end
 end

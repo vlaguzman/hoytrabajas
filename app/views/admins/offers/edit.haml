@@ -1,16 +1,20 @@
-= simple_form_for @offer, url: admins_offer_path, html: { class: 'basic_form' } do |f|
+= link_to(t('offer.form.buttons.back'), admin_offers_path)
+
+= simple_form_for @offer, url: admins_offer_path(@offer.id), html: { class: 'basic_form' } do |f|
   %h1= "#{t('offer.title')} #{@offer.title}"
 
-  - @offer.errors.messages.each do |error, error_list|
-    - error_list.each do |error|
-      %span.error= error
-      %br
+  .error_messages
+    - @offer.errors.messages.each do |error, error_list|
+      - error_list.each do |error|
+        - @offer.yield_if(error.is_a?(String)) do
+          %span.error= error
+          %br
 
-  = f.input :id,                 value: @offer.id, as: :hidden
-  = f.input :title,              value: @offer.title, label: t('offer.form.labels.title')
+  = f.input :id,    value: @offer.id, as: :hidden
+  = f.input :title, value: @offer.title, label: t('offer.form.labels.title')
 
   %div.group.--forTextArea
-    %lable{ class: 'string required', for: 'offer_description' }
+    %label{ class: 'string required', for: 'offer_description' }
       %abbr{ title: 'required' }*
       = t('offer.form.labels.description')
     %textarea#offer_description{ class: 'text required', name: 'offer[description]' }
@@ -18,9 +22,9 @@
     - @offer.errors[:description].each do |error|
       %span.error= error
 
-  = f.input :vacancies_quantity, value: @offer.vacancies_quantity, label: t('offer.form.labels.vacancies_quantity')
-  = f.input :close_date, as: :date, order: [:day, :month, :year], value: @offer.close_date, label: t('offer.form.labels.close_date')
-  = f.input :status, collection: Offer::OFFER_STATUS, selected: @offer.status, label: t('offer.form.labels.status')
+  = f.input :vacancies_quantity, value: @offer.vacancies_quantity, label: t('offer.form.labels.vacancies_quantity'), input_html: { min: "1" }
+  = f.input :close_date, as: :date, order: [:day, :month, :year], value: @offer.close_date, label: t('offer.form.labels.close_date'), input_html: { min: "2020-01-20" }, html5: true
+  = f.input :status, collection: Offer::OFFER_STATUS, selected: @offer.status, label: t('offer.form.labels.status'), prompt: t('offer.form.prompt.status')
   %div.input
     = f.label :immediate_start, label: t('offer.form.labels.immediate_start')
     = f.check_box :immediate_start,     value: @offer.immediate_start
@@ -30,105 +34,116 @@
 
   %div
     %span=t('offer.form.labels.age_range.label')
-    %div.group
+    %div.group#age_range
       = f.simple_fields_for :age_range do |ar|
-        = ar.input :offer_id, input_html: { value: @offer.id }, as: :hidden
-        = ar.input :to,       value: @offer.age_range_to,   input_html: { type: 'number' }, label: t('offer.form.labels.age_range.to')
-        = ar.input :from,     value: @offer.age_range_from, input_html: { type: 'number' }, label: t('offer.form.labels.age_range.from')
+        = ar.input :from, input_html: { type: 'number', min: "1", value: @offer.age_range_from }, label: t('offer.form.labels.age_range.from'), error: @offer.get_error_by_model(:age_range, :from)
+        = ar.input :to,   input_html: { type: 'number', min: "1", value: @offer.age_range_to   }, label: t('offer.form.labels.age_range.to'),   error: @offer.get_error_by_model(:age_range, :to)
 
   %div
     %span=t('offer.form.labels.offer_salary.label')
-    %div.group
+    %div.group#offer_salary
       = f.simple_fields_for :offer_salary do |os|
-        = os.input :offer_id,         input_html: { value: @offer.id }, as: :hidden
-        = os.input :to,               value: @offer.salary_to,   input_html: { type: 'number' }, label: t('offer.form.labels.offer_salary.to')
-        = os.input :from,             value: @offer.salary_from, input_html: { type: 'number' }, label: t('offer.form.labels.offer_salary.from')
+        = os.input :from, input_html: { type: 'number', min: "1", value: @offer.salary_from }, label: t('offer.form.labels.offer_salary.from'), error: @offer.get_error_by_model(:offer_salary, :from)
+        = os.input :to,   input_html: { type: 'number', min: "1", value: @offer.salary_to },   label: t('offer.form.labels.offer_salary.to'),   error: @offer.get_error_by_model(:offer_salary, :to)
         %div.input
           = os.label :is_range, label: t('offer.form.labels.offer_salary.is_range')
-          = os.check_box :is_range,     value: @offer.salary_is_range
-        = os.input :currency_id,      collection: @offer.collection(Currency), selected: @offer.salary_currency_id, label_method: :first, value_method: :second, label: t('offer.form.labels.offer_salary.currency_id')
-        = os.input :salary_period_id, collection: @offer.collection(SalaryPeriod), selected: @offer.salary_period_id, label_method: :first, value_method: :second, label: t('offer.form.labels.offer_salary.salary_period_id')
+          = os.check_box :is_range, checked: @offer.salary_is_range
+        = os.input :currency_id,      collection: @offer.get_collection_by_model(Currency),     selected: @offer.salary_currency_id, value_method: :first, label_method: :second, label: t('offer.form.labels.offer_salary.currency_id'),      prompt: t('offer.form.prompt.offer_salary.currency_id'), error: @offer.get_error_by_model(:offer_salary, :currency)
+        = os.input :salary_period_id, collection: @offer.get_collection_by_model(SalaryPeriod), selected: @offer.salary_period_id,   value_method: :first, label_method: :second, label: t('offer.form.labels.offer_salary.salary_period_id'), prompt: t('offer.form.prompt.offer_salary.currency_id'), error: @offer.get_error_by_model(:offer_salary, :salary_period)
 
   %div
     %span=t('offer.form.labels.offer_required_experiences.label')
-    %div.group
+    %div.group#offer_required_experiences
       = f.simple_fields_for :offer_required_experiences do |ore|
-        = ore.input :offer_id,         input_html: { value: @offer.id }, as: :hidden
-        = ore.input :duration,         value: @offer.required_experiences_duration, input_html: { type: 'number' }, label: t('offer.form.labels.offer_required_experiences.duration')
-        = ore.input :duration_type_id, collection: @offer.collection(DurationType), selected: @offer.required_experiences_duration_type_id, label_method: :first, value_method: :second, label: t('offer.form.labels.offer_required_experiences.duration_type_id')
+        = ore.input :duration, input_html: { type: 'number', min: "1", value: @offer.required_experiences_duration }, label: t('offer.form.labels.offer_required_experiences.duration'), error: @offer.get_error_by_model(:offer_required_experiences, :duration)
+        = ore.input :duration_type_id, collection: @offer.get_collection_by_model(DurationType), selected: @offer.required_experiences_duration_type_id, value_method: :first, label_method: :second, label: t('offer.form.labels.offer_required_experiences.duration_type_id'), prompt: t('offer.form.prompt.offer_required_experiences.duration_type_id'), error: @offer.get_error_by_model(:offer_required_experiences, :duration_type)
 
   %div
     %span=t('offer.form.labels.offers_technical_skills.label')
-    %div.group
+    - @offer.offers_technical_skills.each do |technical_skill|
+      %div.group{id: "offers_technical_skill_#{technical_skill.id}"}
+        = f.simple_fields_for :offers_technical_skills, index: nil do |ots|
+          = ots.input :id, input_html: { type: "hidden", value: technical_skill.id }, label: false
+          = ots.input :technical_skill_id, input_html: { name: "offer[offers_technical_skills][][technical_skill_id]" }, collection: @offer.get_collection_by_model(TechnicalSkill), selected: technical_skill.technical_skill_id, value_method: :first, label_method: :second, label: t('offer.form.labels.offers_technical_skills.technical_skill_id'), include_blank: t('offer.form.prompt.offers_technical_skills.technical_skill_id'), error: @offer.get_error_by_model(@offer.prepare_key_to_error("offers_technical_skills", technical_skill.id), :technical_skill)
+          = ots.input :level_id,           input_html: { name: "offer[offers_technical_skills][][level_id]" },           collection: @offer.get_collection_by_model(Level),          selected: technical_skill.level_id,           value_method: :first, label_method: :second, label: t('offer.form.labels.offers_technical_skills.level_id'),           include_blank: t('offer.form.prompt.offers_technical_skills.level_id'),           error: @offer.get_error_by_model(@offer.prepare_key_to_error("offers_technical_skills", technical_skill.id), :level)
+
+    %div.group#offers_technical_skills
       = f.simple_fields_for :offers_technical_skills do |ots|
-        = ots.input :offer_id,           input_html: { value: @offer.id }, as: :hidden
-        = ots.input :technical_skill_id, collection: @offer.collection(TechnicalSkill), label_method: :first, value_method: :second, label: t('offer.form.labels.offers_technical_skills.technical_skill_id')
-        = ots.input :level_id,           collection: @offer.collection(Level),          label_method: :first, value_method: :second, label: t('offer.form.labels.offers_technical_skills.level_id')
+        = ots.input :technical_skill_id, input_html: { name: "offer[offers_technical_skills][][technical_skill_id]" }, collection: @offer.get_collection_by_model(TechnicalSkill), value_method: :first, label_method: :second, label: t('offer.form.labels.offers_technical_skills.technical_skill_id'), prompt: t('offer.form.prompt.offers_technical_skills.technical_skill_id'), error: @offer.get_error_by_model(:offers_technical_skills, :technical_skill)
+        = ots.input :level_id,           input_html: { name: "offer[offers_technical_skills][][level_id]" },           collection: @offer.get_collection_by_model(Level),          value_method: :first, label_method: :second, label: t('offer.form.labels.offers_technical_skills.level_id'),           prompt: t('offer.form.prompt.offers_technical_skills.level_id'),           error: @offer.get_error_by_model(:offers_technical_skills, :level)
 
   %div
     %span=t('offer.form.labels.languages_offers.label')
-    %div.group
-      = f.simple_fields_for :languages_offers do |lo|
-        = lo.input :offer_id,    input_html: { value: @offer.id }, as: :hidden
-        = lo.input :language_id, collection: @offer.collection(Language), label_method: :first, value_method: :second, label: t('offer.form.labels.languages_offers.language_id')
-        = lo.input :level_id,    collection: @offer.collection(Level),    label_method: :first, value_method: :second, label: t('offer.form.labels.languages_offers.level_id')
+    - @offer.languages_offers.each do |language_offer|
+      %div.group{id: "language_offer_#{language_offer.id}"}
+        = f.simple_fields_for :languages_offers, index: nil do |lo|
+          = lo.input :id, input_html: { type: "hidden", value: language_offer.id }, label: false
+          = lo.input :language_id, input_html: { name: "offer[languages_offers][][language_id]" }, collection: @offer.get_collection_by_model(Language), selected: language_offer.language_id, value_method: :first, label_method: :second, label: t('offer.form.labels.languages_offers.language_id'), include_blank: t('offer.form.prompt.languages_offers.language_id'), error: @offer.get_error_by_model(@offer.prepare_key_to_error("languages_offers", language_offer.id), :language)
+          = lo.input :level_id,    input_html: { name: "offer[languages_offers][][level_id]" },    collection: @offer.get_collection_by_model(Level),    selected: language_offer.level_id,    value_method: :first, label_method: :second, label: t('offer.form.labels.languages_offers.level_id'),    include_blank: t('offer.form.prompt.languages_offers.level_id'),    error: @offer.get_error_by_model(@offer.prepare_key_to_error("languages_offers", language_offer.id), :level)
 
-  = f.input :offer_type_id,    collection: @offer.collection(OfferType),    selected: @offer.offer_type_id,    label_method: :first, value_method: :second, label: t('offer.form.labels.offer_type_id')
-  = f.input :work_mode_id,     collection: @offer.collection(WorkMode),     selected: @offer.work_mode_id,     label_method: :first, value_method: :second, label: t('offer.form.labels.work_mode_id')
-  = f.input :contract_type_id, collection: @offer.collection(ContractType), selected: @offer.contract_type_id, label_method: :first, value_method: :second, label: t('offer.form.labels.contract_type_id')
-  = f.input :city_id,          collection: @offer.collection(City),         selected: @offer.city_id,          label_method: :first, value_method: :second, label: t('offer.form.labels.city_id')
-  = f.input :educational_degree_id, collection: @offer.collection(EducationalDegree), selected: @offer.educational_degree_id, label_method: :first, value_method: :second, label: t('offer.form.labels.educational_degree_id')
+    %div.group#languages_offers
+      = f.simple_fields_for :languages_offers do |lo|
+        = lo.input :language_id, input_html: { name: "offer[languages_offers][][language_id]" }, collection: @offer.get_collection_by_model(Language), value_method: :first, label_method: :second, label: t('offer.form.labels.languages_offers.language_id'), prompt: t('offer.form.prompt.languages_offers.language_id'), error: @offer.get_error_by_model(:languages_offers, :language)
+        = lo.input :level_id,    input_html: { name: "offer[languages_offers][][level_id]" },    collection: @offer.get_collection_by_model(Level),    value_method: :first, label_method: :second, label: t('offer.form.labels.languages_offers.level_id'),    prompt: t('offer.form.prompt.languages_offers.level_id'),    error: @offer.get_error_by_model(:languages_offers, :level)
+
+  = f.input :offer_type_id,         collection: @offer.get_collection_by_model(OfferType),         selected: @offer.offer_type_id,         value_method: :first, label_method: :second, label: t('offer.form.labels.offer_type_id'),         prompt: t('offer.form.prompt.offer_type_id')
+  = f.input :work_mode_id,          collection: @offer.get_collection_by_model(WorkMode),          selected: @offer.work_mode_id,          value_method: :first, label_method: :second, label: t('offer.form.labels.work_mode_id'),          prompt: t('offer.form.prompt.work_mode_id')
+  = f.input :contract_type_id,      collection: @offer.get_collection_by_model(ContractType),      selected: @offer.contract_type_id,      value_method: :first, label_method: :second, label: t('offer.form.labels.contract_type_id'),      prompt: t('offer.form.prompt.contract_type_id')
+  -#TODO Implements logic to select city and state and country
+  = f.input :city_id,               collection: @offer.get_collection_by_model(City),              selected: @offer.city_id,               value_method: :first, label_method: :second, label: t('offer.form.labels.city_id'),               prompt: t('offer.form.prompt.city_id')
+  = f.input :educational_degree_id, collection: @offer.get_collection_by_model(EducationalDegree), selected: @offer.educational_degree_id, value_method: :first, label_method: :second, label: t('offer.form.labels.educational_degree_id'), prompt: t('offer.form.prompt.educational_degree_id')
 
   %div
     %span=t('offer.form.labels.job_categories')
     %div.group
-      = f.input :job_categories, collection: @offer.collection(JobCategory), checked: @offer.job_category_ids, label_method: :first, value_method: :second, as: :check_boxes, label: false
+      = f.input :job_categories, collection: @offer.get_collection_by_model(JobCategory), checked: @offer.job_category_ids, value_method: :first, label_method: :second, as: :check_boxes, label: false
     - @offer.errors[:job_category_ids].each do |error|
       %span.error= error
 
   %div
+    -#TODO Move this to select, when change work_position_ids for work_position_id
     %span=t('offer.form.labels.work_positions')
     %div.group
-      = f.input :work_positions, collection: @offer.collection(WorkPosition), checked: @offer.work_position_ids, label_method: :first, value_method: :second, as: :check_boxes, label: false
+      = f.input :work_positions, collection: @offer.get_collection_by_model(WorkPosition), checked: @offer.work_position_ids, value_method: :first, label_method: :second, as: :check_boxes, label: false
 
   %div
     %span=t('offer.form.labels.sexes')
     %div.group
-      = f.input :sexes, collection: @offer.collection(Sex), checked: @offer.sex_ids, label_method: :first, value_method: :second, as: :check_boxes, label: false
+      = f.input :sexes, collection: @offer.get_collection_by_model(Sex), checked: @offer.sex_ids, value_method: :first, label_method: :second, as: :check_boxes, label: false
 
   %div
     %span=t('offer.form.labels.available_work_days')
     %div.group
-      = f.input :available_work_days, collection: @offer.collection(AvailableWorkDay), checked: @offer.available_work_day_ids, label_method: :first, value_method: :second, as: :check_boxes, label: false
+      = f.input :available_work_days, collection: @offer.get_collection_by_model(AvailableWorkDay), checked: @offer.available_work_day_ids, value_method: :first, label_method: :second, as: :check_boxes, label: false
 
   %div
     %span=t('offer.form.labels.working_days')
     %div.group
-      = f.input :working_days, collection: @offer.collection(WorkingDay), checked: @offer.working_day_ids, label_method: :first, value_method: :second, as: :check_boxes, label: false
+      = f.input :working_days, collection: @offer.get_collection_by_model(WorkingDay), checked: @offer.working_day_ids, value_method: :first, label_method: :second, as: :check_boxes, label: false
 
   %div
     %span=t('offer.form.labels.job_aids')
-    %div.group
-      = f.input :job_aids, collection: @offer.collection(JobAid), checked: @offer.job_aid_ids, label_method: :first, value_method: :second, as: :check_boxes, label: false
+    %div.group#job_aids
+      = f.input :job_aids, collection: @offer.get_collection_by_model(JobAid), checked: @offer.job_aid_ids, value_method: :first, label_method: :second, as: :check_boxes, label: false
 
-  %div
+  -# TODO uncomment when responsibilities has been defined %div
     %span=t('offer.form.labels.responsibilities')
     %div.group
-      = f.input :responsibilities, collection: @offer.collection(Responsibility), checked: @offer.responsibility_ids, label_method: :first, value_method: :second, as: :check_boxes, label: false
+      = f.input :responsibilities, collection: @offer.get_collection_by_model(Responsibility), checked: @offer.responsibility_ids, value_method: :first, label_method: :second, as: :check_boxes, label: false
 
-  %div
+  -# TODO uncomment when requirements has been defined %div
     %span=t('offer.form.labels.requirements')
     %div.group
-      = f.input :requirements, collection: @offer.collection(Requirement), checked: @offer.requirement_ids, label_method: :first, value_method: :second, as: :check_boxes, label: false
+      = f.input :requirements, collection: @offer.get_collection_by_model(Requirement), checked: @offer.requirement_ids, value_method: :first, label_method: :second, as: :check_boxes, label: false
 
   %div
     %span=t('offer.form.labels.vehicles')
     %div.group
-      = f.input :vehicles, collection: @offer.collection(Vehicle), checked: @offer.vehicle_ids, label_method: :first, value_method: :second, as: :check_boxes, label: false
+      = f.input :vehicles, collection: @offer.get_collection_by_model(Vehicle), checked: @offer.vehicle_ids, value_method: :first, label_method: :second, as: :check_boxes, label: false
 
   %div
     %span=t('offer.form.labels.driving_licences')
     %div.group
-      = f.input :driving_licences, collection: @offer.collection(DrivingLicence), checked: @offer.driving_licence_ids, label_method: :first, value_method: :second, as: :check_boxes, label: false
+      = f.input :driving_licences, collection: @offer.get_collection_by_model(DrivingLicence), checked: @offer.driving_licence_ids, value_method: :first, label_method: :second, as: :check_boxes, label: false
 
   = f.button :submit, t('offer.form.buttons.save')

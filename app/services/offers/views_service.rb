@@ -21,7 +21,11 @@ class Offers::ViewsService
     @offer
   end
 
-  protected
+  def validate_affinity_percentage
+    affinity_percentage_builder && (affinity_percentage_builder >= Offer::MIN_VALID_AFFINTY_PERCENTAGE) && "#{affinity_percentage_builder}%"
+  end
+
+  private
 
   def used_keys
     [:title, :immediate_start, :description, :required_experience]
@@ -41,9 +45,6 @@ class Offers::ViewsService
     }
   end
 
-  def validate_affinity_percentage
-    affinity_percentage_builder && (affinity_percentage_builder >= Offer::MIN_VALID_AFFINTY_PERCENTAGE) && "#{affinity_percentage_builder}%"
-  end
 
   def affinity_percentage_builder
     current_user.present? && AffinityCalculator.new(offer, current_user).affinity_percentage
@@ -73,8 +74,6 @@ class Offers::ViewsService
     offer_on_demand = OfferOnDemand.find_by(offer_id: offer.id)
     offer_on_demand.present? ? offer_on_demand.status : nil
   end
-
-  private
 
   def company_logo_image
     offer.company.logo.attached? ?

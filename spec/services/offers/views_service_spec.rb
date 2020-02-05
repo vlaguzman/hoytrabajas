@@ -195,4 +195,43 @@ RSpec.describe Offers::ViewsService do
 
   end
 
+  describe "#validate_affinity_percentage" do
+    context "When the candidate does not reach the 40%" do
+      it "Should return a false" do
+        response = subject.validate_affinity_percentage
+
+        expect(response).to be_falsy
+      end
+
+    end
+
+    context "When the user rebase the 40%" do
+      let(:contract_type) { create(:contract_type, description: "Indefinido")}
+      let(:offer_contract)  { create(:empty_offer,
+        contract_type: contract_type,
+        title: "A Super Offer",
+        description: 'a super description')}
+
+      let(:curriculum_vitae) { create(:curriculum_vitae,
+        job_categories: offer_contract.job_categories
+      ) }
+
+      let!(:candidate) { create(:user,
+        :first_time_candidate,
+        name: "conan",
+        contract_type: contract_type,
+        curriculum_vitaes: [curriculum_vitae]
+      )}
+
+      let(:subject) { described_class.new(offer_contract, candidate) }
+
+      it "Should return the percetage in text" do
+        response = subject.validate_affinity_percentage
+
+        expect(response).to eq("100%")
+      end
+    end
+
+  end
+
 end

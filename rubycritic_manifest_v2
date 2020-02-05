@@ -115,7 +115,7 @@ A          • ListConverter                                               12   
 A          • MailNotifier                                                1       3.54       0           1
 A          • MetaTagsVerifier                                            1       15.81      0           1
 A          • Nationality                                                 5       0.0        0           1
-A          • Offer                                                       65      31.6       0           2
+A          • Offer                                                       66      31.6       0           2
 A          • OfferOnDemand                                               4       0.0        0           1
 A          • OfferRequiredExperiences                                    2       0.0        0           1
 A          • OfferSalary                                                 9       0.0        0           1
@@ -229,7 +229,7 @@ A          • WorkMethodology                                             1    
 A          • WorkMode                                                    3       0.0        0           1
 A          • WorkPosition                                                3       0.0        0           1
 A          • WorkingDay                                                  5       0.0        0           1
-B          • AffinityCalculator                                          11      68.63      46          15
+B          • AffinityCalculator                                          12      68.63      46          15
 B          • Companies::FirstOffer::StepFivePresenter                    5       25.0       23          1
 B          • Companies::FirstOffer::StepFiveService                      4       38.92      18          6
 B          • Companies::FirstOffer::StepFour::FormParamsService          11      53.96      22          5
@@ -245,7 +245,7 @@ B          • Offers::CitiesController                                    3    
 B          • Offers::ExpiredService                                      4       29.14      34          3
 B          • Offers::JobCategoriesController                             4       26.66      16          3
 B          • Offers::ShowService                                         18      87.8       0           1
-B          • Offers::ViewsService                                        19      85.3       0           7
+B          • Offers::ViewsService                                        20      99.5       0           7
 B          • OffersOnDemand::SetInactiveService                          4       27.96      34          3
 B          • User                                                        49      54.53      0           2
 B          • Users::WizardService                                        11      26.27      58          3

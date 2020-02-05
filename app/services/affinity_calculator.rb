@@ -48,11 +48,11 @@ class AffinityCalculator
                       total_equal_values(@offer_attr_hash, @user_attr_hash, @cv_attr_hash)
     ((total_eq_values.to_f/total_base.to_f) * 100).round(0)
   end
-  
+
   def total_equal_values(offer_hash, user_hash, cv_hash)
     HashesCompare.compare_hashes_count(offer_hash, user_hash, ATTRIBUTE_WEIGHT) + HashesCompare.compare_hashes_count(offer_hash, cv_hash, ATTRIBUTE_WEIGHT)
   end
-  
+
   def not_nil_attributes_to_compare(klass, object)
     not_nil_att = []
     klass::ATTRIBUTES_TO_COMPARE.each do |att|

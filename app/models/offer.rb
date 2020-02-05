@@ -1,4 +1,6 @@
 class Offer < ApplicationRecord
+  MIN_VALID_AFFINTY_PERCENTAGE = 20
+
   MAX_OFFER_LIMIT = 150
   ATTRIBUTES_TO_COMPARE = [:city_id, :work_mode_id, :contract_type_id]
   #TODO: Evaluate educational_level values and quantity

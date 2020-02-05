@@ -103,12 +103,12 @@ const OfferContent = ({ offer, translations }) => {
           />{' '}
           100 Candidatos */}
         </Typography>
-        {/* TODO anyone : add % of affinity and timer */}
-        {/* <div className="d-flex align-items-center justify-content-between mt-10">
+        <div className="d-flex align-items-center justify-content-between mt-10">
           <Typography variant="h6" className="offerAffinity" component="span">
-            64%
+            {offer['affinity_percentage'] && offer['affinity_percentage']}
           </Typography>
-          <Typography
+          {/* TODO Oscar: add timer */}
+          {/* <Typography
             variant="body1"
             className="fw-bold offerTimer color__slategray-dark"
             component="span"
@@ -118,8 +118,8 @@ const OfferContent = ({ offer, translations }) => {
               style={{ fontSize: '12px' }}
             />
             <span>24:00</span>
-          </Typography>
-        </div> */}
+          </Typography> */}
+        </div>
       </div>
     </CardContent>
   )
@@ -141,6 +141,7 @@ OfferContent.propTypes = {
     required_experience: PropTypes.bool,
     new_offer: PropTypes.bool,
     on_demand: PropTypes.string,
+    affinity_percentage: PropTypes.string,
     city: PropTypes.shape({
       description: PropTypes.string.isRequired
     }),

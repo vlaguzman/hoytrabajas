@@ -21,7 +21,11 @@ class Offers::ViewsService
     @offer
   end
 
-  protected
+  def validate_affinity_percentage
+    affinity_percentage_builder && (affinity_percentage_builder >= Offer::MIN_VALID_AFFINTY_PERCENTAGE) && "#{affinity_percentage_builder}%"
+  end
+
+  private
 
   def used_keys
     [:title, :immediate_start, :description, :required_experience]
@@ -36,8 +40,14 @@ class Offers::ViewsService
       salary:               salary_details,
       company:              company_details,
       close_date:           close_date.present? ? DatesManager.default(date: close_date) : DatesManager.default(date: Date.today + 1.day ),
-      on_demand:            offer_on_demand_details
+      on_demand:            offer_on_demand_details,
+      affinity_percentage:  validate_affinity_percentage
     }
+  end
+
+
+  def affinity_percentage_builder
+    current_user.present? && AffinityCalculator.new(offer, current_user).affinity_percentage
   end
 
   def salary_details
@@ -64,8 +74,6 @@ class Offers::ViewsService
     offer_on_demand = OfferOnDemand.find_by(offer_id: offer.id)
     offer_on_demand.present? ? offer_on_demand.status : nil
   end
-
-  private
 
   def company_logo_image
     offer.company.logo.attached? ?

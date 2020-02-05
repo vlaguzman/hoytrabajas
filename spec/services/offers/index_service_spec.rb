@@ -13,9 +13,11 @@ RSpec.describe Offers::IndexService do
       company: create(:company, name: "Orellana S.A.")
   ) }
 
-  let(:subject) { described_class.new(offer) }
+  let(:current_candidate) { create(:user) }
 
-  let(:offers_salary) { create(:offer_salary,
+  let(:subject) { described_class.new(offer, current_candidate) }
+
+  let!(:offers_salary) { create(:offer_salary,
     offer: offer,
     from: 1000000,
     to: 5000000,
@@ -24,6 +26,7 @@ RSpec.describe Offers::IndexService do
 
   let(:expected_object) do {
     id_offer: offer.id,
+    affinity_percentage: false,
     title: "District Facilitator",
     description: "endSint esse anim consequat commodo.",
     immediate_start: true,
@@ -55,8 +58,34 @@ RSpec.describe Offers::IndexService do
     it { should respond_to(:details) }
 
     it "should return a hash with the required info to show template" do
-      offers_salary
       expect(subject.details).to eq(expected_object)
+    end
+  end
+
+  describe "The offer now show the affinity percentage" do
+    context "When call the details methods" do
+
+      let(:contract_type) { create(:contract_type, description: "Indefinido")}
+      let(:offer_contract)  { create(:empty_offer, contract_type: contract_type, description: 'a description')}
+
+      let(:curriculum_vitae) { create(:curriculum_vitae,
+      job_categories: offer_contract.job_categories
+      ) }
+
+      let(:user_contract_c) { create(:user,
+        :first_time_candidate,
+        name: "conan",
+        contract_type: contract_type,
+        curriculum_vitaes: [curriculum_vitae]
+      )}
+
+      let(:subject) { described_class.new(offer_contract, user_contract_c) }
+
+      it "Should include the affinity percentage in text" do
+        response = subject.details
+
+        expect(response[:affinity_percentage]).to eq("100%")
+      end
     end
   end
 

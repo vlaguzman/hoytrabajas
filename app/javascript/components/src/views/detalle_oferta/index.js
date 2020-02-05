@@ -298,29 +298,31 @@ const DetallePage = ({
                 {offer.title}
               </Typography>
               {/* TODO Oscar this is the chip of affinty percentage, uncomment when the funcionality is ready */}
-              {/*               <Chip
-                color="primary"
-                className="text-white"
-                label={
-                  <>
-                    <Typography
-                      className="fw-bold"
-                      variant="h6"
-                      component="span"
-                    >
-                      64%
-                    </Typography>
-                    &nbsp;
-                    <Typography
-                      className="fw-bold"
-                      variant="body1"
-                      component="span"
-                    >
-                      {translationOffer.affinity}
-                    </Typography>
-                  </>
-                }
-              /> */}
+              {offer.affinity_percentage && (
+                <Chip
+                  color="primary"
+                  className="text-white"
+                  label={
+                    <>
+                      <Typography
+                        className="fw-bold"
+                        variant="h6"
+                        component="span"
+                      >
+                        {offer.affinity_percentage}
+                      </Typography>
+                      &nbsp;
+                      <Typography
+                        className="fw-bold"
+                        variant="body1"
+                        component="span"
+                      >
+                        {translationOffer.affinity}
+                      </Typography>
+                    </>
+                  }
+                />
+              )}
             </Row>
             <Row className="my-10 mx-0">
               {offer.job_categories.map(value => (
@@ -546,6 +548,10 @@ DetallePage.propTypes = {
   pathAppliedOffers: PropTypes.string.isRequired,
   offer_translations: PropTypes.object.isRequired,
   offer: PropTypes.shape({
+    affinity_percentage: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.bool
+    ]),
     job_categories: PropTypes.array,
     total_applications: PropTypes.number,
     sex: PropTypes.object,

@@ -245,7 +245,7 @@ B          • Offers::CitiesController                                    3    
 B          • Offers::ExpiredService                                      4       29.14      34          3
 B          • Offers::JobCategoriesController                             4       26.66      16          3
 B          • Offers::ShowService                                         18      87.8       0           1
-B          • Offers::ViewsService                                        20      99.5       0           7
+B          • Offers::ViewsService                                        21      99.5       0           7
 B          • OffersOnDemand::SetInactiveService                          4       27.96      34          3
 B          • User                                                        49      54.53      0           2
 B          • Users::WizardService                                        11      26.27      58          3

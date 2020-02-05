@@ -5,9 +5,9 @@ A          • AdminUser                                                   2    
 A          • AdminUsers                                                  1       0.0        0           0
 A          • AdminUsers::SessionsController                              2       6.2        0           1
 A          • Admins::OffersController                                    13      33.32      0           2
-A          • Admins::OffersPresenter                                     3       22.34      0           3
+A          • Admins::OffersPresenter                                     4       22.34      0           3
 A          • AdminsService                                               1       13.19      0           1
-A          • AgeRange                                                    2       0.0        0           1
+A          • AgeRange                                                    3       0.0        0           1
 A          • ApplicationCable::Channel                                   1       0.0        0           1
 A          • ApplicationCable::Connection                                1       0.0        0           1
 A          • ApplicationController                                       32      35.98      0           4
@@ -98,7 +98,7 @@ A          • FormProgressManager                                         2    
 A          • Function                                                    2       0.0        0           1
 A          • FunctionsOffers                                             1       0.0        0           1
 A          • HashesCompare                                               3       17.36      0           4
-A          • HashesConverter                                             5       25.97      0           2
+A          • HashesConverter                                             6       25.97      0           2
 A          • Home::HomePresenter                                         11      17.4       0           5
 A          • HomeController                                              9       2.42       0           1
 A          • Industry                                                    3       0.0        0           1
@@ -120,7 +120,7 @@ A          • OfferOnDemand                                               4    
 A          • OfferRequiredExperiences                                    2       0.0        0           1
 A          • OfferSalary                                                 9       0.0        0           1
 A          • OfferType                                                   5       0.0        0           1
-A          • Offers                                                      18      0.0        0           0
+A          • Offers                                                      19      0.0        0           0
 A          • Offers::AppliedOfferService                                 2       13.25      0           1
 A          • Offers::CompletelyDestroyService                            2       13.3       0           1
 A          • Offers::IndexService                                        6       11.26      0           3
@@ -250,7 +250,7 @@ B          • OffersOnDemand::SetInactiveService                          4    
 B          • User                                                        49      54.53      0           2
 B          • Users::WizardService                                        11      26.27      58          3
 B          • Users::Wizards::StepSixService                              13      93.15      0           14
-C          • Admins::OffersService                                       8       146.63     0           11
+C          • Admins::OffersService                                       9       146.63     0           11
 C          • BaseFormWizardsService                                      31      101.71     0           2
 D          • GetValueOfRecord                                            1       161.13     23          25
 D          • Users::ProfilesPresenter                                    7       149.71     23          13

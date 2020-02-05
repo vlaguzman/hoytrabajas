@@ -1,6 +1,6 @@
 = link_to(t('offer.form.buttons.back'), admin_offers_path)
 
-= simple_form_for @offer, url: admins_offer_path, html: { class: 'basic_form' } do |f|
+= simple_form_for @offer, url: admins_offer_path(@offer.id), html: { class: 'basic_form' } do |f|
   %h1= "#{t('offer.title')} #{@offer.title}"
 
   .error_messages

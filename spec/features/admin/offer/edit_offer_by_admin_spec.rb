@@ -71,21 +71,16 @@ RSpec.describe "Like an admin", type: :feature do
 
     before do
       sign_in FactoryBot.create(:admin_user)
-      visit admin_dashboard_path
-      expect(page).to have_content("Active Admin")
 
-      has_button?("Offers")
+      visit admin_dashboard_path
+
       click_on("Offers")
 
-      expect(page).to have_content("Offer for great devs!")
-
       within "#offer_#{offer.id}" do
-        has_button?("Ver")
-        has_button?("Eliminar")
-        has_button?("Editar")
-
         click_on("Editar")
       end
+
+      expect(current_path).to eq(edit_admins_offer_path(offer.id))
     end
 
     context "when click's on Go back" do
@@ -98,64 +93,7 @@ RSpec.describe "Like an admin", type: :feature do
 
     context "when fill form with correct data" do
       scenario "the admin select an offer and edit all the data and save succesfully" do
-        save_page("daniel.html")
-        expect(current_path).to eq(edit_admins_offer_path(offer.id))
         expect(page).to have_content("Editar la oferta: #{offer.title}")
-
-        expect(page).to have_tag(:form, with: { id: "edit_offer_#{offer.id}" }) do
-          with_tag(:input,    with: { name: 'offer[id]',                 type: 'hidden'})
-          with_tag(:input,    with: { name: 'offer[title]',              type: 'text'})
-          with_tag(:textarea, with: { name: 'offer[description]'})
-          with_tag(:input,    with: { name: 'offer[vacancies_quantity]',  type: 'number'})
-          with_tag(:input,    with: { name: 'offer[vacancies_quantity]',  type: 'number'})
-          with_tag(:input,    with: { name: 'offer[close_date]',          type: 'date'})
-          with_tag(:input,    with: { name: 'offer[immediate_start]',     type: 'hidden'})
-          with_tag(:input,    with: { name: 'offer[required_experience]', type: 'hidden'})
-          with_tag(:select,   with: { name: 'offer[status]'})
-
-          with_tag(:input, with: { name: 'offer[age_range][from]',     type: 'number'})
-          with_tag(:input, with: { name: 'offer[age_range][to]',       type: 'number'})
-
-          with_tag(:input,  with: { name: 'offer[offer_salary][from]',     type: 'number'})
-          with_tag(:input,  with: { name: 'offer[offer_salary][to]',       type: 'number'})
-          with_tag(:input,  with: { name: 'offer[offer_salary][is_range]', type: 'hidden'})
-          with_tag(:select, with: { name: 'offer[offer_salary][currency_id]'})
-          with_tag(:select, with: { name: 'offer[offer_salary][salary_period_id]'})
-
-          with_tag(:select, with: { name: 'offer[offers_technical_skills][][technical_skill_id]'})
-          with_tag(:select, with: { name: 'offer[offers_technical_skills][][level_id]'})
-
-          with_tag(:select, with: { name: 'offer[languages_offers][][language_id]'})
-          with_tag(:select, with: { name: 'offer[languages_offers][][level_id]'})
-
-          with_tag(:select, with: { name: 'offer[offer_type_id]'})
-          with_tag(:select, with: { name: 'offer[work_mode_id]'})
-          with_tag(:select, with: { name: 'offer[contract_type_id]'})
-          with_tag(:select, with: { name: 'offer[city_id]'})
-          with_tag(:select, with: { name: 'offer[educational_degree_id]'})
-
-          with_tag(:input, with: { id: "offer_job_categories_#{job_category_1.id}"})
-          with_tag(:input, with: { id: "offer_job_categories_#{job_category_2.id}"})
-          with_tag(:input, with: { id: "offer_work_positions_#{work_position_1.id}"})
-          with_tag(:input, with: { id: "offer_work_positions_#{work_position_2.id}"})
-          with_tag(:input, with: { id: "offer_sexes_#{sex_1.id}"})
-          with_tag(:input, with: { id: "offer_sexes_#{sex_2.id}"})
-          with_tag(:input, with: { id: "offer_available_work_days_#{available_work_day_1.id}"})
-          with_tag(:input, with: { id: "offer_available_work_days_#{available_work_day_2.id}"})
-          with_tag(:input, with: { id: "offer_working_days_#{working_day_1.id}"})
-          with_tag(:input, with: { id: "offer_working_days_#{working_day_2.id}"})
-          with_tag(:input, with: { id: "offer_job_aids_#{job_aid_1.id}"})
-          with_tag(:input, with: { id: "offer_job_aids_#{job_aid_2.id}"})
-          # TODO uncomment when responsibilities and requirements has been defined
-          #with_tag(:input, with: { id: "offer_responsibilities_#{responsibility_1.id}"})
-          #with_tag(:input, with: { id: "offer_responsibilities_#{responsibility_2.id}"})
-          #with_tag(:input, with: { id: "offer_requirements_#{requirement_1.id}"})
-          #with_tag(:input, with: { id: "offer_requirements_#{requirement_2.id}"})
-          with_tag(:input, with: { id: "offer_vehicles_#{vehicle_1.id}"})
-          with_tag(:input, with: { id: "offer_vehicles_#{vehicle_2.id}"})
-          with_tag(:input, with: { id: "offer_driving_licences_#{driving_licence_1.id}"})
-          with_tag(:input, with: { id: "offer_driving_licences_#{driving_licence_2.id}"})
-        end
 
         within "#edit_offer_#{offer.id}" do
           fill_in 'offer[title]',              with: 'Offer for only devs'
@@ -272,9 +210,6 @@ RSpec.describe "Like an admin", type: :feature do
     context "when fill form with incorrect data" do
       context "when has errors of offer data attributes" do
         scenario "should return errors of offer attributes" do
-          expect(current_path).to eq(edit_admins_offer_path(offer.id))
-          expect(page).to have_content("Editar la oferta: #{offer.title}")
-
           within "#edit_offer_#{offer.id}" do
             fill_in 'offer[title]', with: ''
             fill_in 'offer[description]', with: ''

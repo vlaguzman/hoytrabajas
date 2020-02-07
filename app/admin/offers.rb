@@ -44,6 +44,7 @@ ActiveAdmin.register Offer do
       f.input :immediate_start, label: t('admin.offers.form.inmediate_start')
       f.input :status, label: t('admin.offers.form.status.label'), collection: Offer::OFFER_STATUS
       f.input :close_date, as: :date_time_picker, datepicker_options: { min_date: "2019-11-1" }
+      f.input :offer_confidential, label: t('admin.offers.form.offer_confidential')
       unless f.object.new_record?
       end
     end

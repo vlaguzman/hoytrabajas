@@ -24,6 +24,7 @@ class Companies::FirstOffer::StepThreesController < ApplicationController
       .permit(
         :id,
         :title,
+        :offer_confidential,
         :description,
         :job_category_ids,
         :offers_work_positions,

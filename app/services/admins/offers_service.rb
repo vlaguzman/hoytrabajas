@@ -28,6 +28,7 @@ module Admins::OffersService
       immediate_start:        params[:immediate_start],
       required_experience:    params[:required_experience],
       status:                 params[:status],
+      offer_confidential:     params[:offer_confidential],
       offer_type_id:          params[:offer_type_id],
       work_mode_id:           params[:work_mode_id],
       contract_type_id:       params[:contract_type_id],

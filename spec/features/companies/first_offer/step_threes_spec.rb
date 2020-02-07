@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "When company fill the step three form", :type => :feature do
+RSpec.describe "Like an company", :type => :feature do
   let(:company) { create(:company, :first_time, name: 'HoyTrabajas.com') }
 
   let!(:job_category)  { create(:job_category) }
@@ -9,11 +9,12 @@ RSpec.describe "When company fill the step three form", :type => :feature do
   let!(:work_position) { create(:work_position) }
 
   def expected_page_structure
-    expect(page).to have_content("Creemos tu primera oferta")
-    expect(page).to have_content("Brinda a tu candidato información relevante de tu empresa.")
+    expect(page).to have_content("Acerca de tu oferta")
+    expect(page).to have_content("¡Llegó la hora de crear tu oferta y obtener el mejor talento!")
 
     expect(page).to have_tag(:form, with: { class: "forms__candidate" }) do
       with_tag(:textarea, with: { name: 'offer[title]'})
+      with_tag(:input,    with: { name: 'offer[offer_confidential]', type: "hidden" })
       with_tag(:textarea, with: { name: 'offer[description]'})
 
       with_tag(:input, with: { name: 'offer[id]', type: "hidden" })
@@ -34,21 +35,21 @@ RSpec.describe "When company fill the step three form", :type => :feature do
     fill_in 'offer[description]', :with => data[:description]
 
     find(id: 'mui-component-select-offer[job_category_ids]', visible: false).click
-    find('li.MuiListItem-button', text: data[:job_category_ids]).click
+    find('li.MuiListItem-button', text: data[:job_category]).click
 
     find(id: 'mui-component-select-offer[offer_type_id]', visible: false).click
-    find('li.MuiListItem-button', text: data[:offer_type_id]).click
+    find('li.MuiListItem-button', text: data[:offer_type]).click
 
     find(id: 'mui-component-select-offer[work_mode_id]', visible: false).click
-    find('li.MuiListItem-button', text: data[:work_mode_id]).click
+    find('li.MuiListItem-button', text: data[:work_mode]).click
 
     find(id: 'offer[offers_work_positions]', visible: false).click
     find('li', text: data[:offers_work_positions]).click
   end
 
-  describe "Fill the first offer data" do
-    context "Data is correct" do
-      scenario "should save succesfully data", js: true do
+  describe "fill the step three form" do
+    context "when entry data is correct" do
+      scenario "should save succesfully", js: true do
         sign_in company
 
         visit companies_first_offer_step_three_path
@@ -56,9 +57,9 @@ RSpec.describe "When company fill the step three form", :type => :feature do
         expected_data = {
           title:                 'Oferta para el mejor desarrollador del mundo mundial',
           description:           'Se busca desarrollador con 10 años de experiencia en COBOL y HASKEL, salirio: mucho money',
-          job_category_ids:      job_category.description,
-          offer_type_id:         offer_type.description,
-          work_mode_id:          work_mode.description,
+          job_category:          job_category.description,
+          offer_type:            offer_type.description,
+          work_mode:             work_mode.description,
           offers_work_positions: work_position.description
         }
 
@@ -74,12 +75,14 @@ RSpec.describe "When company fill the step three form", :type => :feature do
         expect(offer.work_mode_id).not_to be_nil
         expect(offer.offer_type_id).not_to be_nil
         expect(offer.status).to eq("preview")
+        expect(offer.offer_confidential).to be_falsey
 
         expect(current_path).to eq(companies_first_offer_step_four_path)
       end
     end
-    context "Data is not correct" do
-      scenario "should not save succesfully data", js: true do
+
+    context "when entry data is not correct" do
+      scenario "should not save succesfully", js: true do
 
         sign_in company
 
@@ -94,7 +97,6 @@ RSpec.describe "When company fill the step three form", :type => :feature do
         expect(page).to have_content("Por favor ingrese una descripción a la oferta, este campo no puede estar en blanco")
       end
     end
-
   end
 
   describe "Company want to exit the form" do
@@ -102,7 +104,7 @@ RSpec.describe "When company fill the step three form", :type => :feature do
       scenario "should click the home button and go to root path", js: true do
         sign_in company
         visit companies_first_offer_step_three_path
-    
+
         click_link_or_button('Inicio')
         expect(current_path).to eq(root_path)
       end

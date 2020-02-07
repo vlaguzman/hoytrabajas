@@ -13,6 +13,7 @@ en:
         immediate_start: 'Immediate start'
         required_experience: 'Required experience'
         status: 'Select status'
+        offer_confidential: 'Offer confidential'
         age_range:
           label: 'Age range'
           from: 'From'

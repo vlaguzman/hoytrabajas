@@ -1,6 +1,8 @@
 module Companies::FirstOffer::StepThreeService
 
   def self.call(company: _, params: {})
+    puts "PARAMS"
+    puts params.inspect
     work_position_id = params.delete(:offers_work_positions)
     params.merge!({company_id: company.id})
 
@@ -17,6 +19,8 @@ module Companies::FirstOffer::StepThreeService
 
   def self.create_offer(params, work_position_id)
     new_params = clean_params(params)
+    puts "PARAMS"
+    puts new_params.inspect
     offer = Offer.new(new_params)
 
     persist_offer(offer, work_position_id)

@@ -13,7 +13,7 @@ RSpec.describe "apply offer from home", type: :feature, js: :true do
       sign_in user
       visit root_path
 
-      expect(page).to have_text("I am a sexy offer")
+      expect(page).to have_text("I Am A Sexy Offer")
       find(".cardOffer", match: :first).hover
       has_css?('.btn-apply')
       find(".btn-apply", match: :first).click
@@ -30,7 +30,7 @@ RSpec.describe "apply offer from home", type: :feature, js: :true do
 
       visit root_path
 
-      expect(page).to have_text("I am a sexy offer")
+      expect(page).to have_text("I Am A Sexy Offer")
       find(".cardOffer", match: :first).hover
       has_css?('.btn-apply')
       find(".btn-apply", match: :first).click
@@ -41,7 +41,7 @@ RSpec.describe "apply offer from home", type: :feature, js: :true do
 
       visit root_path
 
-      expect(page).not_to have_text("I am a sexy offer")
+      expect(page).not_to have_text("I Am A Sexy Offer")
       expect(AppliedOffer.count).to eq(1)
     end
   end
@@ -50,7 +50,7 @@ RSpec.describe "apply offer from home", type: :feature, js: :true do
     it "should ask you to register" do
       visit root_path
 
-      expect(page).to have_text("I am a sexy offer")
+      expect(page).to have_text("I Am A Sexy Offer")
       find(".cardOffer", match: :first).hover
       has_css?('.btn-apply')
       find(".btn-apply", match: :first).click

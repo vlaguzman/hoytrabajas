@@ -33,6 +33,8 @@ RSpec.describe Offers::IndexService do
     job_category_image: "https://img-categorias-ht.s3.amazonaws.com/cat-card-gestion-administrativa2x.png",
     required_experience: true,
     on_demand: nil,
+    applied_offers:0,
+    raw_close_date: Time.zone.local(2019, 7, 3).to_s,
     city: {
       description: "Bogotá"
     },

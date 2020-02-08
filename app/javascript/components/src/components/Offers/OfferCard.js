@@ -27,7 +27,8 @@ const OfferCard = ({
     tag_without_required_experience,
     tag_immediate_start,
     tag_new_offer,
-    tag_on_demand
+    tag_on_demand,
+    candidates
   } = offer_translations
 
   function isOfferOnDemand() {
@@ -147,7 +148,8 @@ const OfferCard = ({
               tag_new_offer,
               tag_immediate_start,
               tag_without_required_experience,
-              tag_on_demand
+              tag_on_demand,
+              candidates
             }}
           />
         </CardActionArea>

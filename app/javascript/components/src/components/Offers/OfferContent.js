@@ -5,10 +5,20 @@ import Avatar from '@material-ui/core/Avatar'
 import { Row } from 'reactstrap'
 import CardContent from '@material-ui/core/CardContent'
 import StarsIcon from '@material-ui/icons/Stars'
-import { wordsShortener, capitalizeFirstLetter } from '../../helpers'
+import { capitalizeFirstLetter } from '../../helpers'
+import CardCountDown from './CardCountDown'
+
+String.prototype.toUpperCaseFirstLetter = function() {
+  return capitalizeFirstLetter(this)
+}
+
+String.prototype.toUpperCaseAllFirstLetter = function() {
+
+  return this.split(" ").map( word => capitalizeFirstLetter(word) ).join(" ")
+}
 
 const OnDemandBlock = ({ content }) => (
-  <div className="offerTag a-tag-with_icon a-tag-orange_inverse">
+  <div className="a-tag-with_icon a-tag-orange_inverse truncate">
     <StarsIcon />
     {content}
   </div>
@@ -19,7 +29,7 @@ OnDemandBlock.propTypes = {
 }
 
 const RequiredExperienceBlock = ({ content }) => (
-  <div className="offerTag a-tag__orange mr-5">{content}</div>
+  <div className="a-tag__orange mr-5 truncate">{content}</div>
 )
 
 RequiredExperienceBlock.propTypes = {
@@ -27,7 +37,7 @@ RequiredExperienceBlock.propTypes = {
 }
 
 const ImmediateStartBlock = ({ content }) => (
-  <div color="success" className="offerTag a-tag__aqua">
+  <div color="success" className="a-tag__aqua truncate">
     {content}
   </div>
 )
@@ -49,8 +59,10 @@ const OfferContent = ({ offer, translations }) => {
     tag_immediate_start,
     tag_new_offer,
     tag_without_required_experience,
-    tag_on_demand
+    tag_on_demand,
+    candidates
   } = translations
+
   return (
     <CardContent className="offerContent pt-0 pb-5">
       <Avatar
@@ -63,21 +75,17 @@ const OfferContent = ({ offer, translations }) => {
           <span>{`${offer.salary.currency.description} ${offer.salary.from}`}</span>
         </div>
       )}
-      <h2 className="offerTitle a-typo__subtitle1 my-0">
-        {capitalizeFirstLetter(
-          offer.title ? wordsShortener(offer.title, 26) : ''
-        )}
+      <h2 className="offerTitle a-typo__subtitle1 my-0 truncateText">
+        {offer.title ? offer.title.toUpperCaseAllFirstLetter() : ''}
       </h2>
-      <h4 className="offerSubtitle a-typo__subtitle2 mb-10">
-        {offer.company.name ? wordsShortener(offer.company.name, 31) : ''}
+      <h4 className="offerSubtitle companyName a-typo__subtitle2 mb-10 truncateText">
+        {offer.company.name ? offer.company.name.toUpperCaseAllFirstLetter() : ''}
       </h4>
-      <p className="offerDescription a-typo__subtitle2 mb-5">
-        {capitalizeFirstLetter(
-          offer.description ? wordsShortener(offer.description, 58) : ''
-        )}
+      <p className="offerDescription a-typo__subtitle2 mb-5 truncateParagraph">
+        {offer.description ? offer.description.toUpperCaseFirstLetter() : ''}
       </p>
       <div className="mt-auto">
-        <div className="m-0 d-flex justify-content-between align-items-end mb-10">
+        <div className="d-flex justify-content-between align-items-end mb-10">
           {offer.on_demand === 'up' && (
             <OnDemandBlock content={tag_on_demand} />
           )}
@@ -90,35 +98,18 @@ const OfferContent = ({ offer, translations }) => {
             <ImmediateStartBlock content={tag_immediate_start} />
           )}
         </div>
-        <Typography
-          variant="caption"
-          className="offerLocation mt-10 text-secondary"
-        >
-          <i className="ti-location-pin fw-bold" style={{ fontSize: '1rem' }} />{' '}
+        <Typography variant="caption" className="offerLocation text-secondary">
+          <i className="offerLocationIcon material-icons">room</i>
           {offer.city.description}
-          {/* TODO Javier : add number of applications */}
-          {/* <i
-            className="ti-hand-point-up fw-bold ml-10"
-            style={{ fontSize: '1rem' }}
-          />{' '}
-          100 Candidatos */}
+          <i className="offerApplicationIcon material-icons">touch_app</i>
+          {offer['applied_offers']} {candidates}
         </Typography>
-        <div className="d-flex align-items-center justify-content-between mt-10">
-          <Typography variant="h6" className="offerAffinity" component="span">
+        <div className="m-affinityAndPercentageBox d-flex align-items-center justify-content-between">
+          <Typography variant="h6" className={`${!offer['affinity_percentage'] && 'alignAffinity'} offerAffinity`} component="span">
             {offer['affinity_percentage'] && offer['affinity_percentage']}
           </Typography>
-          {/* TODO Oscar: add timer */}
-          {/* <Typography
-            variant="body1"
-            className="fw-bold offerTimer color__slategray-dark"
-            component="span"
-          >
-            <i
-              className="ti-timer fw-bold mt-5 mr-5"
-              style={{ fontSize: '12px' }}
-            />
-            <span>24:00</span>
-          </Typography> */}
+
+          {offer['raw_close_date'] && (<CardCountDown closeDate={new Date(offer['raw_close_date']) } />) }
         </div>
       </div>
     </CardContent>
@@ -132,7 +123,8 @@ OfferContent.propTypes = {
     tag_new_offer: PropTypes.string.isRequired,
     tag_immediate_start: PropTypes.string.isRequired,
     tag_without_required_experience: PropTypes.string.isRequired,
-    tag_on_demand: PropTypes.string.isRequired
+    tag_on_demand: PropTypes.string.isRequired,
+    candidates: PropTypes.string.isRequired
   }).isRequired,
   offer: PropTypes.shape({
     title: PropTypes.string.isRequired,
@@ -142,6 +134,7 @@ OfferContent.propTypes = {
     new_offer: PropTypes.bool,
     on_demand: PropTypes.string,
     affinity_percentage: PropTypes.string,
+    applied_offers: PropTypes.number,
     city: PropTypes.shape({
       description: PropTypes.string.isRequired
     }),

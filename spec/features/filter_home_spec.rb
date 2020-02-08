@@ -45,12 +45,12 @@ RSpec.describe "User searches for an offer", type: :feature do
 
           expect(current_path).to eq("#{offers_path}/")
 
-          expect(page).to have_content("Que gran oferta sebas!")
-          expect(page).to have_content("Esto es un prueba de sebas")
+          expect(page).to have_content("Que Gran Oferta Sebas!")
+          expect(page).to have_content("Esto Es Un Prueba De Sebas")
 
           find(".loadMoreOffers", visible: false).click
 
-          expect(page).to have_content("Test sebas")
+          expect(page).to have_content("Test Sebas")
         end
       end
 
@@ -61,9 +61,9 @@ RSpec.describe "User searches for an offer", type: :feature do
           fill_in('keyword', with: 'prueba')
           find(".filterForm__searchButton", visible: false).click
 
-          expect(page).to have_content("Esto es un prueba de sebas")
-          expect(page).to_not have_content("Test sebas")
-          expect(page).to_not have_content("Que gran oferta sebas!")
+          expect(page).to have_content("Esto Es Un Prueba De Sebas")
+          expect(page).to_not have_content("Test Sebas")
+          expect(page).to_not have_content("Que Gran Oferta Sebas!")
         end
       end
 
@@ -74,9 +74,9 @@ RSpec.describe "User searches for an offer", type: :feature do
           fill_in('keyword', with: 'Jhoan')
           find(".filterForm__searchButton", visible: false).click
 
-          expect(page).to_not have_content("Esto es un prueba de sebas")
-          expect(page).to_not have_content("Test sebas")
-          expect(page).to_not have_content("Que gran oferta sebas!")
+          expect(page).to_not have_content("Esto Es Un Prueba De Sebas")
+          expect(page).to_not have_content("Test Sebas")
+          expect(page).to_not have_content("Que Gran Oferta Sebas!")
         end
       end
     end
@@ -89,9 +89,9 @@ RSpec.describe "User searches for an offer", type: :feature do
           find("#Operario").click
           find(".filterForm__searchButton", visible: false).click
 
-          expect(page).to have_content("Esto es un prueba de sebas")
-          expect(page).to have_content("Test sebas")
-          expect(page).to_not have_content("Que gran oferta sebas!")
+          expect(page).to have_content("Esto Es Un Prueba De Sebas")
+          expect(page).to have_content("Test Sebas")
+          expect(page).to_not have_content("Que Gran Oferta Sebas!")
         end
       end
 
@@ -125,9 +125,9 @@ RSpec.describe "User searches for an offer", type: :feature do
           find("div[id='Marketing']").click
           find(".filterForm__searchButton", visible: false).click
 
-          expect(page).to have_content("Esto es un prueba de sebas")
-          expect(page).to have_content("Que gran oferta sebas!")
-          expect(page).not_to have_content("Test sebas")
+          expect(page).to have_content("Esto Es Un Prueba De Sebas")
+          expect(page).to have_content("Que Gran Oferta Sebas!")
+          expect(page).not_to have_content("Test Sebas")
         end
       end
 
@@ -141,9 +141,9 @@ RSpec.describe "User searches for an offer", type: :feature do
 
           expect(current_path).to eq("#{offers_path}/")
 
-          expect(page).not_to have_content("Esto es un prueba de sebas")
-          expect(page).not_to have_content("Que gran oferta sebas!")
-          expect(page).not_to have_content("Test sebas")
+          expect(page).not_to have_content("Esto Es Un Prueba De Sebas")
+          expect(page).not_to have_content("Que Gran Oferta Sebas!")
+          expect(page).not_to have_content("Test Sebas")
         end
       end
     end
@@ -159,9 +159,9 @@ RSpec.describe "User searches for an offer", type: :feature do
 
           find(".filterForm__searchButton", visible: false).click
 
-          expect(page).not_to have_content("Esto es un prueba de sebas")
-          expect(page).to have_content("Que gran oferta sebas!")
-          expect(page).not_to have_content("Test sebas")
+          expect(page).not_to have_content("Esto Es Un Prueba De Sebas")
+          expect(page).to have_content("Que Gran Oferta Sebas!")
+          expect(page).not_to have_content("Test Sebas")
         end
       end
 
@@ -174,9 +174,9 @@ RSpec.describe "User searches for an offer", type: :feature do
           find("div[id='Marketing']").click
           find(".filterForm__searchButton", visible: false).click
 
-          expect(page).not_to have_content("Esto es un prueba de sebas")
-          expect(page).not_to have_content("Que gran oferta sebas!")
-          expect(page).not_to have_content("Test sebas")
+          expect(page).not_to have_content("Esto Es Un Prueba de Sebas")
+          expect(page).not_to have_content("Que Gran Oferta Sebas!")
+          expect(page).not_to have_content("Test Sebas")
         end
       end
     end
@@ -233,9 +233,9 @@ RSpec.describe "User searches for an offer", type: :feature do
 
           find(".filterForm__searchButton", visible: false).click
 
-          expect(page).to have_content("Oferta de sebas")
-          expect(page).not_to have_content("Esto es un prueba de sebas")
-          expect(page).not_to have_content("Test sebas")
+          expect(page).to have_content("Oferta De Sebas")
+          expect(page).not_to have_content("Esto Es Un Prueba De Sebas")
+          expect(page).not_to have_content("Test Sebas")
         end
       end
 
@@ -252,11 +252,11 @@ RSpec.describe "User searches for an offer", type: :feature do
 
           find(".filterForm__searchButton", visible: false).click
 
-          expect(page).not_to have_content("Esto es un prueba de sebas")
-          expect(page).not_to have_content("Que gran oferta sebas!")
-          expect(page).not_to have_content("Test sebas")
-          expect(page).not_to have_content("Esta oferta tambien es de sebas")
-          expect(page).not_to have_content("Oferta de sebas")
+          expect(page).not_to have_content("Esto Es Un Prueba De Sebas")
+          expect(page).not_to have_content("Que Gran Oferta Sebas!")
+          expect(page).not_to have_content("Test Sebas")
+          expect(page).not_to have_content("Esta Oferta Tambien Es De Sebas")
+          expect(page).not_to have_content("Oferta De Sebas")
         end
       end
     end

@@ -39,7 +39,7 @@ RSpec.describe OffersService do
       end
 
       it "Should return hash with details" do
-        expect(subject.related_offers_show_details(main_offer.id, main_offer.job_categories).last.keys).to match_array([
+        expect(subject.related_offers_show_details(main_offer.id, main_offer.job_categories).last.keys).to match_array([:applied_offers, :raw_close_date,
           :affinity_percentage, :id_offer, :city, :close_date, :company, :description, :immediate_start, :job_category_image, :new_offer, :required_experience, :salary, :title, :on_demand
         ])
       end

@@ -78,6 +78,8 @@ RSpec.describe Offers::ShowService do
         vacancies_quantity: 10,
         required_experience: true,
         on_demand: nil,
+        applied_offers:0,
+        raw_close_date: Time.zone.local(2019, 7, 25).to_s,
         sex: {
           description: ["Mujer"]
         },

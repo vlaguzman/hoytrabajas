@@ -89,9 +89,14 @@ class Offer < ApplicationRecord
     Offer.where(id: ids)
   end
 
-  def self.order_by_demand_and_created_at(limit = MAX_OFFER_LIMIT)
-    array_of_ids = Offer.on_demand_up.pluck(:id) + (Offer.created_at_desc - Offer.on_demand_up).pluck(:id)
+  def self.order_by_demand_and_created_at(current_user: nil, limit: MAX_OFFER_LIMIT)
+    ordered_on_demand_and_affinity = Offers::OrderByAffinityPercentageService.(current_user: current_user, offers: Offer.on_demand_up)
+
+    ordered_standard_and_affinity = Offers::OrderByAffinityPercentageService.(current_user: current_user, offers: (Offer.created_at_desc - Offer.on_demand_up))
+
+    array_of_ids = ordered_on_demand_and_affinity.pluck(:id) + ordered_standard_and_affinity.pluck(:id)
     Offer.find(array_of_ids.take(limit)).sort_by{|offer| array_of_ids.index offer.id}
+
   end
 
   def languages_list

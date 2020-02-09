@@ -50,7 +50,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/level.rb",100,5,3,3,0
 "./app/models/limitation.rb",100,6,3,3,0
 "./app/models/nationality.rb",100,7,4,4,0
-"./app/models/offer.rb",100,109,76,76,0
+"./app/models/offer.rb",100,114,78,78,0
 "./app/models/offer_on_demand.rb",100,11,5,5,0
 "./app/models/offer_required_experiences.rb",100,11,6,6,0
 "./app/models/offer_salary.rb",100,14,9,9,0
@@ -158,6 +158,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/offers/completely_destroy_service.rb",100,20,11,11,0
 "./app/services/offers/expired_service.rb",100,27,13,13,0
 "./app/services/offers/index_service.rb",100,18,7,7,0
+"./app/services/offers/order_by_affinity_percentage_service.rb",100,37,19,19,0
 "./app/services/offers/order_by_on_demand.rb",100,25,11,11,0
 "./app/services/offers/show_service.rb",100,76,27,27,0
 "./app/services/offers/views_service.rb",100,97,39,39,0

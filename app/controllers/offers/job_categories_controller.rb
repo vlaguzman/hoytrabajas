@@ -26,7 +26,9 @@ class Offers::JobCategoriesController < ApplicationController
       .active
       .related_job_category([job_category_id])
 
-    offers_list = Offers::OrderByOnDemand.(offers: offers__by_category)
+    offers_by_affinity = Offers::OrderByAffinityPercentageService.(current_user: current_user, offers: offers__by_category)
+
+    offers_list = Offers::OrderByOnDemand.(offers: offers_by_affinity)
       .map { |offer| Offers::IndexService.new(offer, current_user).details }
 
     @offers = {

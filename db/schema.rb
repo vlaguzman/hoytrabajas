@@ -575,7 +575,7 @@ ActiveRecord::Schema.define(version: 2020_02_07_163107) do
     t.string "slug"
     t.boolean "created_by_admin", default: false
     t.bigint "educational_degree_id"
-    t.boolean "offer_confidential", default: false
+    t.boolean "confidential", default: false
     t.index ["city_id"], name: "index_offers_on_city_id"
     t.index ["company_id"], name: "index_offers_on_company_id"
     t.index ["contract_type_id"], name: "index_offers_on_contract_type_id"

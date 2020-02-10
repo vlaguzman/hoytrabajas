@@ -21,7 +21,7 @@ A          • AppliedOffers                                               3    
 A          • AppliedOffersController                                     9       35.72      0           2
 A          • AppliedOffersMailer                                         3       7.09       0           1
 A          • AppliedOffersPresenter                                      6       25.41      0           3
-A          • AppliedOffersRestController                                 0       33.82      0           2
+A          • AppliedOffersRestController                                 10      33.82      0           2
 A          • AvailableWorkDay                                            3       0.0        0           1
 A          • AvailableWorkDaysCurriculumVitaes                           1       0.0        0           1
 A          • AvailableWorkDaysOffers                                     1       0.0        0           1

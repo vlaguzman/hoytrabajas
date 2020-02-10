@@ -8,45 +8,6 @@ RSpec.describe "Like an company", :type => :feature do
   let!(:work_mode)     { create(:work_mode) }
   let!(:work_position) { create(:work_position) }
 
-  def expected_page_structure
-    expect(page).to have_content("Acerca de tu oferta")
-    expect(page).to have_content("¡Llegó la hora de crear tu oferta y obtener el mejor talento!")
-
-    expect(page).to have_tag(:form, with: { class: "forms__candidate" }) do
-      with_tag(:textarea, with: { name: 'offer[title]'})
-      with_tag(:input,    with: { name: 'offer[offer_confidential]', type: "hidden" })
-      with_tag(:textarea, with: { name: 'offer[description]'})
-
-      with_tag(:input, with: { name: 'offer[id]', type: "hidden" })
-      with_tag(:input, with: { name: 'offer[job_category_ids]', type: "hidden" })
-      with_tag(:input, with: { name: 'offer[offer_type_id]', type: "hidden" })
-      with_tag(:input, with: { name: 'offer[work_mode_id]', type: "hidden" })
-    end
-
-    expect(page).to have_button('Siguiente')
-
-    expect(page).to_not have_button('Regresar')
-    expect(page).to_not have_button('Saltar')
-  end
-
-  def fill_form(data)
-    fill_in 'offer[title]', :with => data[:title]
-
-    fill_in 'offer[description]', :with => data[:description]
-
-    find(id: 'mui-component-select-offer[job_category_ids]', visible: false).click
-    find('li.MuiListItem-button', text: data[:job_category]).click
-
-    find(id: 'mui-component-select-offer[offer_type_id]', visible: false).click
-    find('li.MuiListItem-button', text: data[:offer_type]).click
-
-    find(id: 'mui-component-select-offer[work_mode_id]', visible: false).click
-    find('li.MuiListItem-button', text: data[:work_mode]).click
-
-    find(id: 'offer[offers_work_positions]', visible: false).click
-    find('li', text: data[:offers_work_positions]).click
-  end
-
   describe "fill the step three form" do
     context "when entry data is correct" do
       scenario "should save succesfully", js: true do
@@ -63,8 +24,40 @@ RSpec.describe "Like an company", :type => :feature do
           offers_work_positions: work_position.description
         }
 
-        expected_page_structure
-        fill_form(expected_data)
+        expect(page).to have_content("Acerca de tu oferta")
+        expect(page).to have_content("¡Llegó la hora de crear tu oferta y obtener el mejor talento!")
+  
+        expect(page).to have_tag(:form, with: { class: "forms__candidate" }) do
+          with_tag(:textarea, with: { name: 'offer[title]'})
+          with_tag(:input,    with: { name: 'offer[offer_confidential]', type: "hidden" })
+          with_tag(:textarea, with: { name: 'offer[description]'})
+  
+          with_tag(:input, with: { name: 'offer[id]', type: "hidden" })
+          with_tag(:input, with: { name: 'offer[job_category_ids]', type: "hidden" })
+          with_tag(:input, with: { name: 'offer[offer_type_id]', type: "hidden" })
+          with_tag(:input, with: { name: 'offer[work_mode_id]', type: "hidden" })
+        end
+  
+        expect(page).to have_button('Siguiente')
+  
+        expect(page).to_not have_button('Regresar')
+        expect(page).to_not have_button('Saltar')
+
+        fill_in 'offer[title]', :with => expected_data[:title]
+  
+        fill_in 'offer[description]', :with => expected_data[:description]
+  
+        find(id: 'mui-component-select-offer[job_category_ids]', visible: false).click
+        find('li.MuiListItem-button', text: expected_data[:job_category]).click
+  
+        find(id: 'mui-component-select-offer[offer_type_id]', visible: false).click
+        find('li.MuiListItem-button', text: expected_data[:offer_type]).click
+  
+        find(id: 'mui-component-select-offer[work_mode_id]', visible: false).click
+        find('li.MuiListItem-button', text: expected_data[:work_mode]).click
+  
+        find(id: 'offer[offers_work_positions]', visible: false).click
+        find('li', text: expected_data[:offers_work_positions]).click
 
         click_link_or_button('Siguiente')
 

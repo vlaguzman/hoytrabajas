@@ -5,7 +5,7 @@ class OffersController < ApplicationController
     query = Offer.active.ransack(index_params[:q])
     if index_params[:q].present?
       results_query = query.result(distinct: true)
-      query_with_filter_categories = OffersService.query_offers_home(results_query, index_params[:q][:job_category_ids])
+      query_with_filter_categories = OffersService.query_offers_home(results_query, index_params[:q][:job_category_ids], current_user: current_user)
       @offers = {
         offers_list: query_with_filter_categories.map { |offer| Offers::IndexService.new(offer, current_user).details },
         origin: :default

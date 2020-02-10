@@ -26,7 +26,9 @@ class Offers::CitiesController < ApplicationController
       .active
       .where(city_id: city.id)
 
-    offers_list = Offers::OrderByOnDemand.(offers: offer_by_city)
+    offers_by_affinity = Offers::OrderByAffinityPercentageService.(current_user: current_user, offers: offer_by_city)
+
+    offers_list = Offers::OrderByOnDemand.(offers: offers_by_affinity)
       .map { |offer| Offers::IndexService.new(offer, current_user).details }
 
     @offers = {

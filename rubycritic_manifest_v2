@@ -115,7 +115,7 @@ A          • ListConverter                                               12   
 A          • MailNotifier                                                1       3.54       0           1
 A          • MetaTagsVerifier                                            1       15.81      0           1
 A          • Nationality                                                 5       0.0        0           1
-A          • Offer                                                       66      31.6       0           2
+A          • Offer                                                       67      32.93      0           2
 A          • OfferOnDemand                                               4       0.0        0           1
 A          • OfferRequiredExperiences                                    2       0.0        0           1
 A          • OfferSalary                                                 9       0.0        0           1
@@ -124,12 +124,13 @@ A          • Offers                                                      19   
 A          • Offers::AppliedOfferService                                 2       13.25      0           1
 A          • Offers::CompletelyDestroyService                            2       13.3       0           1
 A          • Offers::IndexService                                        6       11.26      0           3
+A          • Offers::OrderByAffinityPercentageService                    3       28.36      0           4
 A          • Offers::OrderByOnDemand                                     1       29.62      0           2
 A          • Offers::UpdateOffersStatusDailyJob                          2       6.9        0           2
-A          • OffersController                                            30      36.69      0           3
+A          • OffersController                                            31      38.05      0           4
 A          • OffersPresenter                                             8       19.0       0           4
 A          • OffersResponsibilities                                      1       0.0        0           1
-A          • OffersService                                               21      40.05      0           3
+A          • OffersService                                               22      40.15      0           4
 A          • OffersSoftSkills                                            1       0.0        0           1
 A          • OffersTechnicalSkills                                       2       0.0        0           1
 A          • OffersTerms                                                 1       0.0        0           1
@@ -241,9 +242,9 @@ B          • Companies::FirstOffer::StepSevenService                     6    
 B          • Companies::FirstOffer::StepSixPresenter                     4       25.0       23          1
 B          • Companies::FirstOffer::StepSixService                       4       22.62      18          4
 B          • Companies::FirstOffer::StepTwosController                   11      20.32      29          2
-B          • Offers::CitiesController                                    3       29.31      16          3
+B          • Offers::CitiesController                                    4       31.66      16          3
 B          • Offers::ExpiredService                                      4       29.14      34          3
-B          • Offers::JobCategoriesController                             4       26.66      16          3
+B          • Offers::JobCategoriesController                             5       29.04      16          3
 B          • Offers::ShowService                                         18      87.8       0           1
 B          • OffersOnDemand::SetInactiveService                          4       27.96      34          3
 B          • User                                                        49      54.53      0           2
@@ -251,6 +252,6 @@ B          • Users::WizardService                                        11   
 B          • Users::Wizards::StepSixService                              13      93.15      0           14
 C          • Admins::OffersService                                       9       146.63     0           11
 C          • BaseFormWizardsService                                      31      101.71     0           2
-C          • Offers::ViewsService                                        21      105.26     0           8
+C          • Offers::ViewsService                                        22      105.26     0           7
 D          • GetValueOfRecord                                            1       161.13     23          25
 D          • Users::ProfilesPresenter                                    7       149.71     23          13

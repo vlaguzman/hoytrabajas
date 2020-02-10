@@ -1,0 +1,45 @@
+.m-appliedOfferModal {
+  .MuiPaper-root {
+    overflow: visible;
+    position: relative;
+    text-align: center;
+    border-radius: 10px;
+  }
+
+  .appliedOfferModal__image {
+    margin-top: $negative__60px;
+    object-fit: contain;
+  }
+
+  .appliedOfferModal__title {
+    color: $color__blue-main;
+    font-size: 1.625rem;
+    font-weight: 600;
+    margin-top: 30px;
+  }
+
+  .appliedOfferModal__description {
+    margin-top: 20px;
+    color: $color__slategray-dark;
+    font-size: 1rem;
+    padding: 0 30px;
+  }
+
+  strong {
+    color: $color__slategray-main;
+  }
+
+  .appliedOfferModal__button {
+    border-radius: 24px;
+    margin: 30px auto;
+  }
+
+  .appliedOfferModal__closeButton {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    color: $color__slategray-light;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+}

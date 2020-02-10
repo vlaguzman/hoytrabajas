@@ -127,7 +127,9 @@ export default class Index extends React.Component {
                 </div>
                 <TermsAndConditionsTLink
                   session_translation={this.props.session_translation.sign_up}
-                  terms_and_conditions_file_path={this.props.terms_and_conditions_file_path}
+                  terms_and_conditions_file_path={
+                    this.props.terms_and_conditions_file_path
+                  }
                 />
                 <Row noGutters className="justify-content-center my-25">
                   <Col xs={12}>
@@ -156,16 +158,6 @@ export default class Index extends React.Component {
                     {
                       this.props.session_translation.sign_up.button_action
                         .sign_up_facebook
-                    }
-                  </MatButton>
-                </Col>
-              </Row>
-              <Row className="my-30">
-                <Col xs={12}>
-                  <MatButton variant="outlined" disabled>
-                    {
-                      this.props.session_translation.sign_up.button_action
-                        .sign_up_google
                     }
                   </MatButton>
                 </Col>

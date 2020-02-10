@@ -96,6 +96,7 @@ RSpec.describe OffersPresenter do
         :transport_aid,
         :employees,
         :contact_company,
+        :applied_offer_modal,
         :related_offers,
         :button_disactive,
         :button_active,

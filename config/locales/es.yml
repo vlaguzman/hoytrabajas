@@ -112,7 +112,6 @@ es:
       button_action:
         sign_in_label: 'Iniciar sesión'
         sign_in_facebook: 'Conectarse con Facebook'
-        sign_in_google: 'Conectarse con Google'
       no_account:
         title: '¿No tienes una cuenta?'
         sign_up: 'Regístrate'
@@ -127,7 +126,6 @@ es:
       button_action:
         sign_up_label: 'Registrarme'
         sign_up_facebook: 'Continuar con Facebook'
-        sign_up_google: 'Continuar con Google'
       with_account:
         title: '¿Ya tienes cuenta?'
         sign_in: 'Inicia sesión'
@@ -237,16 +235,16 @@ es:
         curriculum_vitae:
           attributes:
             job_categories:
-              blank: "Debes seleccionar por lo menos una categoría en la que desees buscar trabajo, este campo no puede estar vacío."
+              blank: 'Debes seleccionar por lo menos una categoría en la que desees buscar trabajo, este campo no puede estar vacío.'
             soft_skills:
-              blank: "Debes seleccionar por lo menos una habilidad en tu perfil, este campo no puede estar vacío."
+              blank: 'Debes seleccionar por lo menos una habilidad en tu perfil, este campo no puede estar vacío.'
             offer_types:
-              blank: "Debes seleccionar por lo menos un tipo de oferta, este campo no puede estar vacío."
+              blank: 'Debes seleccionar por lo menos un tipo de oferta, este campo no puede estar vacío.'
             technical_skills:
               empty: 'Debes definir por lo menos una técnica en tu perfil, este grupo de valores no puede estar vacío'
-              invalid_skill: "Una de las habilidades tecnicas que quieres agregar, ya esta en la lista y la puedes seleccionar, no permitimos valores repetidos"
+              invalid_skill: 'Una de las habilidades tecnicas que quieres agregar, ya esta en la lista y la puedes seleccionar, no permitimos valores repetidos'
             to_learn_skills:
-              invalid_skill: "Una de las habilidades tecnicas a aprender que quieres agregar, ya esta en la lista y la puedes seleccionar, no permitimos valores repetidos"
+              invalid_skill: 'Una de las habilidades tecnicas a aprender que quieres agregar, ya esta en la lista y la puedes seleccionar, no permitimos valores repetidos'
         age_range:
           attributes:
             from:

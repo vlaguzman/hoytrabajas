@@ -19,7 +19,7 @@ RSpec.describe "apply offer from home", type: :feature, js: :true do
       find(".btn-apply", match: :first).click
 
       expect(current_path).to eq(offer_path(offer.id))
-      expect(page).to have_button('¡Has aplicado!')
+      expect(page).to have_text('¡HAS APLICADO!')
       expect(AppliedOffer.count).to eq(1)
     end
   end
@@ -36,7 +36,7 @@ RSpec.describe "apply offer from home", type: :feature, js: :true do
       find(".btn-apply", match: :first).click
 
       expect(current_path).to eq(offer_path(offer.id))
-      expect(page).to have_button('¡Has aplicado!')
+      expect(page).to have_text('¡HAS APLICADO!')
       expect(AppliedOffer.count).to eq(1)
 
       visit root_path

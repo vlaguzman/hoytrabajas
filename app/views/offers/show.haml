@@ -4,6 +4,7 @@
     csrf_param: request_forgery_protection_token,
     relatedOffers: @offer.related_offer_show,
     pathAppliedOffers: applied_offers_path,
+    pathAppliedOffersRest: applied_offers_rest_index_path,
     offer_translations: I18n.t("offers"),
     csrf_token: form_authenticity_token,
     offer: @offer.show_details }, prerender: false)

@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe Offers::OrderByAffinityPercentageService do
 
-  # Contracts
   let(:temporal_contract) { create(:contract_type) }
   let(:undefined_contract) { create(:contract_type) }
   let(:bogota) { create(:city) }

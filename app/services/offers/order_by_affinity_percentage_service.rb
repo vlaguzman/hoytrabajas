@@ -2,8 +2,8 @@ module Offers::OrderByAffinityPercentageService
 
   def self.call(current_user: nil, offers: [])
 
-    return offers if !current_user.present?
-    return [] if !current_user.present? && !offers.present?
+    return offers if not current_user.present?
+    return [] if not current_user.present? and not offers.present?
 
     execute(current_user: current_user, offers: offers)
   end

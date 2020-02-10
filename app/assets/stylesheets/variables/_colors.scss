@@ -8,6 +8,7 @@ $color__orange-extralight: #ffdebf;
 $color__blue-main: #0b5aa0;
 $color__blue-light: #4884b8;
 $color__blue-extralight: #c2d6e7;
+$color__blue-tooltip: #eff4f9;
 
 // /*/////////////////////////////////////////
 // /             Secondary Colors            /
@@ -49,6 +50,7 @@ $color-list: (
   blue-main: $color__blue-main,
   blue-light: $color__blue-light,
   blue-extralight: $color__blue-extralight,
+  blue-tooltip: $color__blue-tooltip,
   yellow-main: $color__yellow-main,
   yellow-light: $color__yellow-light,
   yellow-extralight: $color__yellow-extralight,

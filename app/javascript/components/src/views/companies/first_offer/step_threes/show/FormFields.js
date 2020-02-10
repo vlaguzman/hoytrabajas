@@ -54,14 +54,13 @@ const FormFields = props => {
 
   const offerConfidentialField = useMemo(
     () => (
-      <Col key={title.name} className={inputClassname} xs={12} lg={6}>
-      {/*TODO: move checkbox to radio button and implements hover*/}
+      <Col key={offer_confidential.name} className={inputClassname} xs={12} lg={6}>
         <Checkbox
           inputValue={formValues[offer_confidential.name]}
           handleBoolean={handleBoolean(setFormValues)}
           name={offer_confidential.name}
-          label={offer_confidential.label}
-          description={offer_confidential.tooltip}
+          description={offer_confidential.label}
+          tooltip_description={offer_confidential.tooltip}
           isRequired={false}
         />
       </Col>

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import MaterialCheckbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormLabel from '../FormLabel'
+import Tooltip from '@material-ui/core/Tooltip'
 
 const Checkbox = props => {
   const {
@@ -10,6 +11,7 @@ const Checkbox = props => {
     name,
     label,
     description,
+    tooltip_description,
     isRequired,
     handleBoolean
   } = props
@@ -24,19 +26,23 @@ const Checkbox = props => {
           {label}
         </FormLabel>
       )}
-      <FormControlLabel
-        className="p-0 mx-0 mb-0"
-        control={
-          <MaterialCheckbox
-            className="pr-5"
-            value={inputValue}
-            checked={inputValue}
-            onChange={onChange}
-            required={isRequired}
+      <div>
+        <Tooltip title={tooltip_description} >
+          <FormControlLabel
+            className="p-0 mx-0 mb-0"
+            control={
+              <MaterialCheckbox
+                className="pr-5"
+                value={inputValue}
+                checked={inputValue}
+                onChange={onChange}
+                required={isRequired}
+              />
+            }
+            label={description}
           />
-        }
-        label={description}
-      />
+        </Tooltip>
+      </div>
     </>
   )
 }
@@ -48,6 +54,7 @@ Checkbox.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string,
   description: PropTypes.string.isRequired,
+  tooltip_description: PropTypes.string.isRequired,
   handleBoolean: PropTypes.func.isRequired,
   isRequired: PropTypes.bool
 }

@@ -1,0 +1,9 @@
+.MuiTooltip-popper {
+  .MuiTooltip-tooltip {
+    width: 200px;
+    height: 35px;
+    border-radius: 3px;
+    background-color: $color__blue-tooltip;
+    color: $color__blue-main;
+  }
+}

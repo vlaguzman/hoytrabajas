@@ -17,7 +17,11 @@ RSpec.describe "User applied offer", type: :feature do
 
       click_button 'Aplicar ahora'
 
-      expect(page).to have_button('¡Has aplicado!')
+      expect(page).to have_text('¡HAS APLICADO!')
+      expect(page).to have_button('¡Perfecto!')
+
+      find('.appliedOfferModal__button', text: '¡Perfecto!', visible: false).click
+
       expect(page).to have_content("1 aplicaciones")
     end
 
@@ -28,7 +32,7 @@ RSpec.describe "User applied offer", type: :feature do
       expect(page).to have_button('Aplicar ahora')
 
       click_button 'Aplicar ahora'
-
+      sleep(0.5)
       expect(current_path).to eq(new_user_registration_path)
     end
   end

@@ -185,13 +185,6 @@ const SignUp = props => {
             </LoginButton>
           </Col>
         </Row>
-        <Row className="mt-10">
-          <Col xs={12}>
-            <LoginButton variant="outlined" disabled>
-              {props.session_translation.sign_up.button_action.sign_up_google}
-            </LoginButton>
-          </Col>
-        </Row>
       </DialogContent>
       <DialogActions className="my-10">
         <div className="w-100 text-center">

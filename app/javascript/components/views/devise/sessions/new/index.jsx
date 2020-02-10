@@ -138,16 +138,6 @@ const Index = props => {
                 </MatButton>
               </Col>
             </Row>
-            <Row className="my-30">
-              <Col xs={12}>
-                <MatButton variant="outlined" disabled>
-                  {
-                    props.session_translation.sign_in.button_action
-                      .sign_in_google
-                  }
-                </MatButton>
-              </Col>
-            </Row>
           </DialogContent>
           <DialogActions className="">
             <div className="w-100 text-center">

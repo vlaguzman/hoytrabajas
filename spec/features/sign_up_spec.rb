@@ -206,13 +206,6 @@ RSpec.describe "sign up user", js: true, type: :feature do
     #  end
     #end
 
-    #context "I want to sing up with Google" do
-    #  xit "should send me to a page where I can select my role" do
-    #    expect(page).to have_text("regístrate con")
-    #    page.should have_selector(:link_or_button, 'Google')
-    #    expect(page).to have_text("Escoge tu tipo de cuenta")
-    #  end
-    #end
   end
 end
 

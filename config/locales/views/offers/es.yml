@@ -35,3 +35,10 @@ es:
     tag_without_required_experience: 'Sin experiencia'
     tag_on_demand: 'OnDemand'
     candidates: 'Candidato(s)'
+    applied_offer_modal:
+      title: '¡Has aplicado a esta oferta!'
+      description:
+        'Puedes seguir aplicando a todas las ofertas que tenemos para ti
+        y consultar su estado en tu tablero'
+      dashboard: 'Mi tablero > Mis aplicaciones'
+      button: '¡Perfecto!'

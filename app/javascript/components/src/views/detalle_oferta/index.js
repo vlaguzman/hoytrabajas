@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import { Row, Badge, Col } from 'reactstrap'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
-import PropTypes from 'prop-types'
+import Dialog from '@material-ui/core/Dialog'
 import CardContent from '@material-ui/core/CardContent'
 import Card from '@material-ui/core/Card'
 import Chip from '@material-ui/core/Chip'
 import Button from '@material-ui/core/Button'
 import Divider from '@material-ui/core/Divider'
+import CloseIcon from '@material-ui/icons/Close'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // TO-DO any How use it
 // import Avatar from '@material-ui/core/Avatar'
@@ -263,14 +265,48 @@ const DetallePage = ({
   offer,
   relatedOffers,
   pathAppliedOffers,
+  pathAppliedOffersRest,
   translationOffer,
   csrf_param,
   csrf_token,
   offer_translations
 }) => {
-  const valueButton = offer.is_applied
+  const [isOpenAppliedModal, setIsOpenAppliedModal] = useState(false)
+  const [isApplied, setIsApplied] = useState(offer.is_applied)
+  const [numberOfApplications, setNumberOfApplications] = useState(
+    offer.total_applications
+  )
+
+  const valueButton = isApplied
     ? translationOffer.button_disactive
     : translationOffer.button_active
+
+  const handleApplication = () => {
+    const data = JSON.stringify({
+      [csrf_param]: csrf_token,
+      _method: 'post',
+      applied_offer: {
+        offer_id: offer.id_offer
+      }
+    })
+
+    fetch(pathAppliedOffersRest, {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: data
+    })
+      .then(res => res.json())
+      .then(({ success, redirect }) => {
+        if (success) {
+          setIsApplied(true)
+          setIsOpenAppliedModal(true)
+          setNumberOfApplications(numberOfApplications + 1)
+        } else if (redirect) {
+          window.location.href = redirect
+        }
+      })
+  }
+
   return (
     <>
       <Row
@@ -339,32 +375,57 @@ const DetallePage = ({
               </Typography>
               <Typography className="ml-10" variant="caption">
                 {' '}
-                <span className="fw-bold"> {offer.total_applications} </span>
+                <span className="fw-bold"> {numberOfApplications} </span>
                 {translationOffer.aplications}
               </Typography>
             </Row>
             <Divider variant="middle" className="mx-0 my-10" />
             <Typography variant="body1">{offer.description}</Typography>
-            <form action={pathAppliedOffers} method="post">
-              <input type="hidden" name={csrf_param} value={csrf_token} />
-              <input type="hidden" name="_method" value="post" />
-              <input
-                type="hidden"
-                name="applied_offer[offer_id]"
-                value={offer.id_offer}
+            <Button
+              variant="contained"
+              type="button"
+              color="primary"
+              disabled={isApplied}
+              onClick={handleApplication}
+              className={classNames(
+                'a-button --primary --rounded --big my-50',
+                {
+                  'a-button--disabled': isApplied
+                }
+              )}
+            >
+              {valueButton}
+            </Button>
+            <Dialog
+              open={isOpenAppliedModal}
+              onClose={() => setIsOpenAppliedModal(false)}
+              className="m-appliedOfferModal"
+            >
+              <CloseIcon
+                className="appliedOfferModal__closeButton"
+                onClick={() => setIsOpenAppliedModal(false)}
               />
-              <Button
-                variant="contained"
-                type="submit"
-                color="primary"
-                className={classNames('text-white my-50', {
-                  'a-button--disabled': offer.is_applied
-                })}
-                style={{ borderRadius: '50px' }}
+              <img
+                src="/assets/static/img/aplicacion-oferta-exitosa.png"
+                alt="Ícono de persona"
+                className="appliedOfferModal__image"
+              />
+              <h2 className="appliedOfferModal__title">
+                {translationOffer.applied_offer_modal.title}
+              </h2>
+
+              <p className="appliedOfferModal__description">
+                {translationOffer.applied_offer_modal.description}
+              </p>
+              <strong> {translationOffer.applied_offer_modal.dashboard}</strong>
+              <button
+                type="button"
+                className="a-button --primary --big appliedOfferModal__button"
+                onClick={() => setIsOpenAppliedModal(false)}
               >
-                {valueButton}
-              </Button>
-            </form>
+                {translationOffer.applied_offer_modal.button}
+              </button>
+            </Dialog>
 
             {offer.vacancies_quantity !== null &&
               VacanciesQuantityBlock(translationOffer, offer)}

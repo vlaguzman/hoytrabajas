@@ -6,7 +6,7 @@ RSpec.describe "companies/first_offer/step_threes/show" do
 
     render
 
-    expect(rendered).to match(/Creemos tu primera oferta/)
+    expect(rendered).to match(/Acerca de tu oferta/)
 
     expect(rendered).to have_tag("div", with: { "data-react-class": "views/companies/first_offer/step_threes/show"})
   end

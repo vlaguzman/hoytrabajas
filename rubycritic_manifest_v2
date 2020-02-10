@@ -4,7 +4,7 @@ A          • AddModelErrorsService                                       2    
 A          • AdminUser                                                   2       0.0        0           1
 A          • AdminUsers                                                  1       0.0        0           0
 A          • AdminUsers::SessionsController                              2       6.2        0           1
-A          • Admins::OffersController                                    13      33.32      0           2
+A          • Admins::OffersController                                    14      33.32      0           2
 A          • Admins::OffersPresenter                                     4       22.34      0           3
 A          • AdminsService                                               1       13.19      0           1
 A          • AgeRange                                                    3       0.0        0           1
@@ -51,10 +51,10 @@ A          • Companies::FirstOffer::StepOneService                       6    
 A          • Companies::FirstOffer::StepSevensController                 7       18.08      0           1
 A          • Companies::FirstOffer::StepSix::FormParamsService           1       4.0        0           5
 A          • Companies::FirstOffer::StepSixesController                  6       18.08      0           1
-A          • Companies::FirstOffer::StepThree::FormParamsService         7       9.87       0           6
+A          • Companies::FirstOffer::StepThree::FormParamsService         8       24.98      0           6
 A          • Companies::FirstOffer::StepThreePresenter                   9       11.8       0           1
-A          • Companies::FirstOffer::StepThreeService                     5       34.01      0           1
-A          • Companies::FirstOffer::StepThreesController                 13      20.83      0           2
+A          • Companies::FirstOffer::StepThreeService                     7       34.01      0           1
+A          • Companies::FirstOffer::StepThreesController                 14      20.83      0           2
 A          • Companies::FirstOffer::StepTwo::FormParamsService           2       0.0        0           0
 A          • Companies::FirstOffer::StepTwoPresenter                     15      15.0       20          2
 A          • Companies::FirstOffer::StepTwoService                       6       2.0        0           1
@@ -121,7 +121,7 @@ A          • OfferOnDemand                                               4    
 A          • OfferRequiredExperiences                                    2       0.0        0           1
 A          • OfferSalary                                                 9       0.0        0           1
 A          • OfferType                                                   5       0.0        0           1
-A          • Offers                                                      19      0.0        0           0
+A          • Offers                                                      20      0.0        0           0
 A          • Offers::AppliedOfferService                                 2       13.25      0           1
 A          • Offers::CompletelyDestroyService                            2       13.3       0           1
 A          • Offers::IndexService                                        6       11.26      0           3
@@ -251,7 +251,7 @@ B          • OffersOnDemand::SetInactiveService                          4    
 B          • User                                                        49      54.53      0           2
 B          • Users::WizardService                                        11      26.27      58          3
 B          • Users::Wizards::StepSixService                              13      93.15      0           14
-C          • Admins::OffersService                                       9       146.63     0           11
+C          • Admins::OffersService                                       10      147.83     0           11
 C          • BaseFormWizardsService                                      31      101.71     0           2
 C          • Offers::ViewsService                                        22      105.26     0           7
 D          • GetValueOfRecord                                            1       161.13     23          25

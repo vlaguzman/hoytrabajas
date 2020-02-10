@@ -11,7 +11,7 @@ RSpec.describe Companies::FirstOffer::StepThreePresenter do
 
       expect(response).to be_an_instance_of(Hash)
 
-      expected_keys = [:title, :subtitle, :form, :offer_id]
+      expected_keys = [:title, :subtitle, :offer_confidential_tooltip, :form, :offer_id]
 
       expect(response.keys).to eq(expected_keys)
     end

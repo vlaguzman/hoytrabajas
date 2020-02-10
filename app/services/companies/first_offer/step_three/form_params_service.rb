@@ -26,9 +26,13 @@ class Companies::FirstOffer::StepThree::FormParamsService < BaseFormWizardsServi
         name: 'offer[offer_confidential]',
         label: template_translations[:form][:formFields][:offer_confidential],
         tooltip: template_translations[:offer_confidential_tooltip],
-        current_value: source.offer_confidential
+        current_value: offer_confidential_current_value
       }
     }
+  end
+
+  def offer_confidential_current_value
+    source.present? ? source.offer_confidential : ''
   end
 
   def job_category_ids_list

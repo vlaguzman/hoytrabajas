@@ -37,33 +37,53 @@
   .offerTitle {
     color: $color__slategray-dark;
     font-weight: 800;
-    text-transform: none;
     padding-top: 10px;
   }
 
   .offerSubtitle {
     color: $color__blue-main;
     font-weight: 700;
-    text-transform: capitalize;
+
   }
 
   .offerDescription {
     color: $color__gray-main;
     text-transform: none;
     font-weight: 400;
+    line-height: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
 
-  .offerTag {
-    margin-top: 8px;
+  .m-affinityAndPercentageBox {
+    margin-bottom: 0;
   }
 
   .offerLocation {
-    text-transform: none;
+    margin-top: 0;
+    letter-spacing: 0;
+
+    .offerLocationIcon {
+      font-size: 0.75rem;
+    }
+
+    .offerApplicationIcon {
+      font-size: 0.75rem;
+      margin-left: 1rem;
+    }
+
   }
 
   .offerAffinity {
     color: $color__blue-main;
     font-weight: 800;
+  }
+
+  .alignAffinity {
+    margin-top: 1.8rem;
   }
 
   .offerTimer {
@@ -86,5 +106,20 @@
     background: white;
     color: $color__blue-main;
     text-align: center;
+  }
+
+  .CardCountDown {
+    display: inline-flex;
+    vertical-align: middle;
+    align-items: center;
+
+    font-size: 0.8rem;
+    font-family: sans-serif;
+
+    i {
+      font-size: 0.8rem;
+      margin-right: 5px;
+    }
+
   }
 }

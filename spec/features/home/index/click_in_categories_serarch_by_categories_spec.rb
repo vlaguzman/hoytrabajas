@@ -15,13 +15,13 @@ RSpec.describe "Like a anonymous user", type: :feature do
     scenario "should load all offers with this category", js: true do
       visit root_path
 
-      expect(page).to have_content('Im not appear')
+      expect(page).to have_content('Im Not Appear')
 
       find('a', text: 'tech').click
 
-      expect(page).to have_content('My offer')
-      expect(page).to have_content('Super offer')
-      expect(page).to_not have_content('Im not appear')
+      expect(page).to have_content('My Offer')
+      expect(page).to have_content('Super Offer')
+      expect(page).to_not have_content('Im Not Appear')
 
       expect(Offer.count).to eq(3)
     end

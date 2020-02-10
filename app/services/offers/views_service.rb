@@ -1,3 +1,4 @@
+#TODO Oscar refactor this, the RC is in "C"
 class Offers::ViewsService
   include ActionView::Helpers
 
@@ -41,13 +42,19 @@ class Offers::ViewsService
       company:              company_details,
       close_date:           close_date.present? ? DatesManager.default(date: close_date) : DatesManager.default(date: Date.today + 1.day ),
       on_demand:            offer_on_demand_details,
-      affinity_percentage:  validate_affinity_percentage
+      affinity_percentage:  validate_affinity_percentage,
+      applied_offers:       applied_offers_count,
+      raw_close_date:       close_date.present? && close_date
     }
   end
 
 
   def affinity_percentage_builder
     current_user.present? && AffinityCalculator.new(offer, current_user).affinity_percentage
+  end
+
+  def applied_offers_count
+    offer.applied_offers.count
   end
 
   def salary_details

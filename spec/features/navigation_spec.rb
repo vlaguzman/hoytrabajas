@@ -75,7 +75,7 @@ RSpec.describe "Overall navigation" do
         has_button?('VER MÁS OFERTAS')
         find(".loadMoreOffers", visible: false).click
 
-        expect(page).to have_content("Esta oferta deberia aparec...")
+        expect(page).to have_content("Esta Oferta Deberia Aparecer")
 
         click_on("Inicio")
 

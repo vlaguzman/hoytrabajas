@@ -17,7 +17,12 @@ export function capitalize(string) {
 }
 
 export function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1)
+  return (
+    string
+      .toLowerCase()
+      .charAt(0)
+      .toUpperCase() + string.toLowerCase().slice(1)
+  )
 }
 
 export const wordsShortener = (words, maxSize) => {

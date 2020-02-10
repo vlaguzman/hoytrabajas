@@ -25,22 +25,23 @@ en:
         address: "Address"
     offers:
       form:
-        title: "Título"
-        address: "Dirección"
-        company: "Compañía"
-        cellphone: "Celular de contacto"
-        offer_description: "Descripción de la oferta"
-        vacancies_quantity: "Vacantes disponibles"
-        work_mode: "Modo de trabajo"
-        city: "Ciudad"
-        job_category: "Categoría de trabajo"
-        contract_type: "Tipo de contrato"
-        required_experience: "¿Requiere experiencia?"
-        inmediate_start: "Inicio inmediato"
-        offer_confidential: 'Oferta confidencial'
+        title: "Title"
+        address: "Address"
+        company: "Company"
+        cellphone: "Cellphone"
+        offer_description: "Offer description"
+        vacancies_quantity: "Vacancies quantity"
+        work_mode: "Work mode"
+        city: "City"
+        job_category: "Job category"
+        contract_type: "Contract type"
+        required_experience: "Required experience?"
+        inmediate_start: "Inmediate start"
+        offer_confidential: 'Confidential offer'
         status:
-          label: "Estado"
-          active: "active"
+          label: "Status"
+          active: "Active"
+          expired: "Expired"
       actions:
         edit: 'Edit'
   activerecord:

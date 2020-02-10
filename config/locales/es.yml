@@ -41,8 +41,8 @@ es:
         offer_confidential: 'Oferta confidencial'
         status:
           label: 'Estado'
-          active: 'active'
-          expire: 'expire'
+          active: 'Activo'
+          expire: 'Expirado'
       actions:
         edit: 'Editar'
   session:

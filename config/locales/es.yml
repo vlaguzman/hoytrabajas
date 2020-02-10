@@ -38,7 +38,7 @@ es:
         contract_type: 'Tipo de contrato'
         required_experience: '¿Requiere experiencia?'
         inmediate_start: 'Inicio inmediato'
-        offer_confidential: 'Oferta confidencial'
+        confidential: 'Oferta confidencial'
         status:
           label: 'Estado'
           active: 'Activo'

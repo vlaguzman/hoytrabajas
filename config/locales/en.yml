@@ -37,7 +37,7 @@ en:
         contract_type: "Contract type"
         required_experience: "Required experience?"
         inmediate_start: "Inmediate start"
-        offer_confidential: 'Confidential offer'
+        confidential: 'Confidential offer'
         status:
           label: "Status"
           active: "Active"

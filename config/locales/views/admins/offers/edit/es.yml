@@ -13,7 +13,7 @@ es:
         immediate_start: 'Inicio inmediato'
         required_experience: 'Requiere experiencia'
         status: 'Seleccione el estado'
-        offer_confidential: 'Oferta confidencial'
+        confidential: 'Oferta confidencial'
         age_range:
           label: 'Rango de edad'
           from: 'Desde'

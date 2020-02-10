@@ -5,7 +5,7 @@ es:
         show:
           title: "Acerca de tu oferta"
           subtitle: "¡Llegó la hora de crear tu oferta y obtener el mejor talento!"
-          offer_confidential_tooltip: "Con esto evitaremos hacer público en tu oferta el nombre y el logo de tu empresa."
+          confidential_tooltip: "Con esto evitaremos hacer público en tu oferta el nombre y el logo de tu empresa."
           form:
             buttons:
               submit: "Siguiente"
@@ -14,7 +14,7 @@ es:
             type: "offer"
             formFields:
               title: "Título de tu oferta*"
-              offer_confidential: "Ocultar nombre y logo de mi empresa"
+              confidential: "Ocultar nombre y logo de mi empresa"
               description: "Agrega una descripción detallada de tu oferta*"
               offers_work_positions: "Elige el cargo que deseas contratar"
               job_category_ids: "Selecciona las categorías de tu oferta*"

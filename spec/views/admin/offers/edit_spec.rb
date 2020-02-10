@@ -71,7 +71,7 @@ RSpec.describe "admins/offers/edit" do
       with_tag(:input,    with: { name: 'offer[immediate_start]',     type: 'hidden'})
       with_tag(:input,    with: { name: 'offer[required_experience]', type: 'hidden'})
       with_tag(:select,   with: { name: 'offer[status]'})
-      with_tag(:input,    with: { name: 'offer[offer_confidential]', type: 'hidden'})
+      with_tag(:input,    with: { name: 'offer[confidential]', type: 'hidden'})
 
       with_tag(:input, with: { name: 'offer[age_range][from]', type: 'number'})
       with_tag(:input, with: { name: 'offer[age_range][to]',   type: 'number'})

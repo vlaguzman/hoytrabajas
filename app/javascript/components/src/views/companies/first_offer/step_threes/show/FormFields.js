@@ -16,7 +16,7 @@ const FormFields = props => {
 
   const {
     title = null,
-    offer_confidential = null,
+    confidential = null,
     description = null,
     job_category_ids = null,
     offers_work_positions = null,
@@ -26,7 +26,7 @@ const FormFields = props => {
 
   const [formValues, setFormValues] = useState({
     [title.name]: title.current_value || '',
-    [offer_confidential.name]: offer_confidential.current_value || 'false',
+    [confidential.name]: confidential.current_value || 'false',
     [description.name]: description.current_value || '',
     [job_category_ids.name]: job_category_ids.current_value || '',
     [offers_work_positions.name]: offers_work_positions.current_value || '',
@@ -54,18 +54,18 @@ const FormFields = props => {
 
   const offerConfidentialField = useMemo(
     () => (
-      <Col key={offer_confidential.name} className={inputClassname} xs={12} lg={6}>
+      <Col key={confidential.name} className={inputClassname} xs={12} lg={6}>
         <Checkbox
-          inputValue={formValues[offer_confidential.name]}
+          inputValue={formValues[confidential.name]}
           handleBoolean={handleBoolean(setFormValues)}
-          name={offer_confidential.name}
-          description={offer_confidential.label}
-          tooltip_description={offer_confidential.tooltip}
+          name={confidential.name}
+          description={confidential.label}
+          tooltip_description={confidential.tooltip}
           isRequired={false}
         />
       </Col>
     ),
-    [formValues[offer_confidential.name]]
+    [formValues[confidential.name]]
   )
 
   const descriptionField = useMemo(
@@ -182,7 +182,7 @@ export default FormFields
 FormFields.propTypes = {
   formFields: PropTypes.shape({
     title: PropTypes.object,
-    offer_confidential: PropTypes.object,
+    confidential: PropTypes.object,
     job_category_ids: PropTypes.object,
     offer_type_id: PropTypes.object,
     work_mode_id: PropTypes.object,

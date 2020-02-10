@@ -12,7 +12,7 @@ RSpec.describe Companies::FirstOffer::StepThree::FormParamsService do
       expected_object = {
         title: 'Acerca de tu oferta',
         subtitle: '¡Llegó la hora de crear tu oferta y obtener el mejor talento!',
-        offer_confidential_tooltip: 'Con esto evitaremos hacer público en tu oferta el nombre y el logo de tu empresa.',
+        confidential_tooltip: 'Con esto evitaremos hacer público en tu oferta el nombre y el logo de tu empresa.',
         form: {
           placeholders: {},
           buttons: {
@@ -32,8 +32,8 @@ RSpec.describe Companies::FirstOffer::StepThree::FormParamsService do
               label: 'Título de tu oferta*',
               current_value: ''
             },
-            offer_confidential: {
-              name: 'offer[offer_confidential]',
+            confidential: {
+              name: 'offer[confidential]',
               label: 'Ocultar nombre y logo de mi empresa',
               tooltip: 'Con esto evitaremos hacer público en tu oferta el nombre y el logo de tu empresa.',
               current_value: ''

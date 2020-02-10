@@ -101,7 +101,7 @@ RSpec.describe "Like an admin", type: :feature do
           fill_in 'offer[vacancies_quantity]', with: 2
           fill_in 'offer[close_date]', with: "#{(Time.new + 10.days).strftime('%F')}"
           find(:css, "#offer_immediate_start[value='1']").set(true)
-          find(:css, "#offer_offer_confidential[value='1']").set(true)
+          find(:css, "#offer_confidential[value='1']").set(true)
           find(:css, "#offer_required_experience[value='1']").set(true)
           select('active', from: 'offer[status]')
 
@@ -154,7 +154,7 @@ RSpec.describe "Like an admin", type: :feature do
         expect(offer.close_date.strftime("%F")).to eq((Time.new + 10.days).strftime("%F"))
         expect(offer.immediate_start).to be_truthy
         expect(offer.required_experience).to be_truthy
-        expect(offer.offer_confidential).to be_truthy
+        expect(offer.confidential).to be_truthy
         expect(offer.status).to eq(Offer::OFFER_STATUS[2])
 
         expect(AgeRange.count).to eq(1)

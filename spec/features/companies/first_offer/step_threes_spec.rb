@@ -29,7 +29,7 @@ RSpec.describe "Like an company", :type => :feature do
   
         expect(page).to have_tag(:form, with: { class: "forms__candidate" }) do
           with_tag(:textarea, with: { name: 'offer[title]'})
-          with_tag(:input,    with: { name: 'offer[offer_confidential]', type: "hidden" })
+          with_tag(:input,    with: { name: 'offer[confidential]', type: "hidden" })
           with_tag(:textarea, with: { name: 'offer[description]'})
   
           with_tag(:input, with: { name: 'offer[id]', type: "hidden" })
@@ -68,7 +68,7 @@ RSpec.describe "Like an company", :type => :feature do
         expect(offer.work_mode_id).not_to be_nil
         expect(offer.offer_type_id).not_to be_nil
         expect(offer.status).to eq("preview")
-        expect(offer.offer_confidential).to be_falsey
+        expect(offer.confidential).to be_falsey
 
         expect(current_path).to eq(companies_first_offer_step_four_path)
       end

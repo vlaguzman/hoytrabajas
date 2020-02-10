@@ -16,23 +16,23 @@ class Companies::FirstOffer::StepThree::FormParamsService < BaseFormWizardsServi
 
   def fields_builder
     super(
-      offer_confidential_field
+      confidential_field
     )
   end
 
-  def offer_confidential_field
+  def confidential_field
     {
-      offer_confidential: {
-        name: 'offer[offer_confidential]',
-        label: template_translations[:form][:formFields][:offer_confidential],
-        tooltip: template_translations[:offer_confidential_tooltip],
-        current_value: offer_confidential_current_value
+      confidential: {
+        name: 'offer[confidential]',
+        label: template_translations[:form][:formFields][:confidential],
+        tooltip: template_translations[:confidential_tooltip],
+        current_value: confidential_current_value
       }
     }
   end
 
-  def offer_confidential_current_value
-    source.present? ? source.offer_confidential : ''
+  def confidential_current_value
+    source.present? ? source.confidential : ''
   end
 
   def job_category_ids_list

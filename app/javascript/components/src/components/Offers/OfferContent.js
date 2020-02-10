@@ -19,7 +19,6 @@ String.prototype.toUpperCaseAllFirstLetter = function() {
 
 const OnDemandBlock = ({ content }) => (
   <div className="a-tag-with_icon a-tag-orange_inverse truncate">
-    <StarsIcon />
     {content}
   </div>
 )

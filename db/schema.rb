@@ -527,10 +527,10 @@ ActiveRecord::Schema.define(version: 2020_02_07_163107) do
 
   create_table "offer_required_experiences", force: :cascade do |t|
     t.integer "duration"
+    t.bigint "duration_type_id", null: false
     t.bigint "offer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "duration_type_id"
     t.index ["duration_type_id"], name: "index_offer_required_experiences_on_duration_type_id"
     t.index ["offer_id"], name: "index_offer_required_experiences_on_offer_id"
   end
@@ -969,6 +969,7 @@ ActiveRecord::Schema.define(version: 2020_02_07_163107) do
   add_foreign_key "nationalities_users", "nationalities"
   add_foreign_key "nationalities_users", "users"
   add_foreign_key "offer_on_demands", "offers"
+  add_foreign_key "offer_required_experiences", "duration_types"
   add_foreign_key "offer_required_experiences", "offers"
   add_foreign_key "offer_salaries", "currencies"
   add_foreign_key "offer_salaries", "offers"

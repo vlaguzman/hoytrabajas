@@ -1,7 +1,7 @@
 ActiveAdmin.register Offer do
   actions :index, :show, :create, :new, :destroy
 
-  permit_params :title, :created_by_admin, :address, :cellphone, :description, :vacancies_quantity, :close_date, :immediate_start, :required_experience, :release_date, :status, :city_id, :offer_type_id, :contract_type_id, :work_mode_id, :sex_id, :company_id, job_category_ids: []
+  permit_params :title, :created_by_admin, :address, :cellphone, :description, :vacancies_quantity, :close_date, :immediate_start, :required_experience, :release_date, :status, :confidential, :city_id, :offer_type_id, :contract_type_id, :work_mode_id, :sex_id, :company_id, job_category_ids: []
 
   index do
     selectable_column

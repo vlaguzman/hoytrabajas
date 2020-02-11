@@ -26,7 +26,7 @@ const FormFields = props => {
 
   const [formValues, setFormValues] = useState({
     [title.name]: title.current_value || '',
-    [confidential.name]: confidential.current_value || 'false',
+    [confidential.name]: confidential.current_value || false,
     [description.name]: description.current_value || '',
     [job_category_ids.name]: job_category_ids.current_value || '',
     [offers_work_positions.name]: offers_work_positions.current_value || '',

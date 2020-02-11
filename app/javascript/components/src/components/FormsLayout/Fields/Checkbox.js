@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import MaterialCheckbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
-import FormLabel from '../FormLabel'
 import Tooltip from '@material-ui/core/Tooltip'
+import FormLabel from '../FormLabel'
 
 const Checkbox = props => {
   const {
@@ -27,7 +27,7 @@ const Checkbox = props => {
         </FormLabel>
       )}
       <div>
-        <Tooltip title={tooltip_description} >
+        <Tooltip title={tooltip_description}>
           <FormControlLabel
             className="p-0 mx-0 mb-0"
             control={

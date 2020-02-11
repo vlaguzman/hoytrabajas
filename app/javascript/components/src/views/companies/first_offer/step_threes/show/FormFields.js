@@ -183,6 +183,7 @@ FormFields.propTypes = {
   formFields: PropTypes.shape({
     title: PropTypes.object,
     confidential: PropTypes.object,
+    description: PropTypes.object,
     job_category_ids: PropTypes.object,
     offer_type_id: PropTypes.object,
     work_mode_id: PropTypes.object,

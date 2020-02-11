@@ -45,12 +45,10 @@ RSpec.describe "Like an company", :type => :feature do
         }
 
         find(id: 'mui-component-select-offer[country_id]', visible: false).click
-        sleep 1
 
         find('li', text: expected_data[:country_description]).click
   
         find(id: 'mui-component-select-offer[state_id]', visible: false).click
-        sleep 1
 
         find('li', text: expected_data[:state_description]).click
   

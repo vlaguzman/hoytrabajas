@@ -148,7 +148,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/companies/first_offer/step_seven_service.rb",97,64,30,29,1
 "./app/services/companies/first_offer/step_six/form_params_service.rb",100,27,11,11,0
 "./app/services/companies/first_offer/step_six_service.rb",100,36,16,16,0
-"./app/services/companies/first_offer/step_three/form_params_service.rb",100,59,21,21,0
+"./app/services/companies/first_offer/step_three/form_params_service.rb",100,57,21,21,0
 "./app/services/companies/first_offer/step_three_service.rb",100,45,25,25,0
 "./app/services/companies/first_offer/step_two/form_params_service.rb",100,7,2,2,0
 "./app/services/companies/first_offer/step_two_service.rb",100,6,3,3,0

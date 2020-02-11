@@ -15,9 +15,7 @@ class Companies::FirstOffer::StepThree::FormParamsService < BaseFormWizardsServi
   private
 
   def fields_builder
-    super(
-      confidential_field
-    )
+    super(confidential_field)
   end
 
   def confidential_field

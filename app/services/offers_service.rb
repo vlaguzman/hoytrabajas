@@ -1,9 +1,11 @@
 module OffersService
 
-  def self.active_offers_index_details(current_user = nil, limited = nil)
+
+  def self.active_offers_index_details(current_user = nil, limited = Home::HomePresenter::MAX_OFFER_LIMIT)
     cv_id = current_user.present? ? current_user.curriculum_vitae.id : 0
     Offer
       .active
+      .limit(limited * 3 ) # TODO Oscar temporal limite to reduce query time
       .not_applied_offers_by_cv(cv_id)
       .order_by_demand_and_created_at(current_user: current_user)
       .map{ |offer| Offers::IndexService.new(offer, current_user).details }

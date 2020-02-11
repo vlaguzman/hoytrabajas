@@ -163,7 +163,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/offers/show_service.rb",100,76,27,27,0
 "./app/services/offers/views_service.rb",100,98,39,39,0
 "./app/services/offers_on_demand/set_inactive_service.rb",100,29,13,13,0
-"./app/services/offers_service.rb",100,32,14,14,0
+"./app/services/offers_service.rb",100,34,14,14,0
 "./app/services/routes_service.rb",100,10,5,5,0
 "./app/services/users/curriculum_vitaes/profile_photo_service.rb",100,24,12,12,0
 "./app/services/users/dashboards/offers_service.rb",100,51,21,21,0

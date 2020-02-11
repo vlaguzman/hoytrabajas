@@ -1,5 +1,5 @@
 class OffersController < ApplicationController
-  MAX_OFFER_LIMIT = 150
+  MAX_OFFER_LIMIT = 50
 
   def index
     query = Offer.active.ransack(index_params[:q])

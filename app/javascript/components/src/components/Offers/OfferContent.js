@@ -4,7 +4,6 @@ import Typography from '@material-ui/core/Typography'
 import Avatar from '@material-ui/core/Avatar'
 import { Row } from 'reactstrap'
 import CardContent from '@material-ui/core/CardContent'
-import StarsIcon from '@material-ui/icons/Stars'
 import { capitalizeFirstLetter } from '../../helpers'
 import CardCountDown from './CardCountDown'
 

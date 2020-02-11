@@ -10,8 +10,6 @@ RSpec.describe "admins/offers/edit" do
   let!(:job_category_1)       { create(:job_category,       description: 'Programming') }
   let!(:work_position_1)      { create(:work_position,      description: 'Developer') }
   let!(:sex_1)                { create(:sex,                description: 'Male') }
-  let!(:currency_1)           { create(:currency,           description: 'COP') }
-  let!(:salary_period_1)      { create(:salary_period,      description: 'Biweekly') }
   let!(:available_work_day_1) { create(:available_work_day, description: 'All days') }
   let!(:working_day_1)        { create(:working_day,        description: 'Full time') }
   let!(:job_aid_1)            { create(:job_aid,            description: 'Prestations') }
@@ -19,16 +17,10 @@ RSpec.describe "admins/offers/edit" do
   let!(:requirement_1)        { create(:requirement,        description: 'Indifferent') }
   let!(:vehicle_1)            { create(:vehicle,            description: 'Car') }
   let!(:driving_licence_1)    { create(:driving_licence,    description: 'B(2)') }
-  let!(:duration_type_1)      { create(:duration_type,      description: 'DT 1') }
   let!(:technical_skill_1)    { create(:technical_skill,    description: 'TS 1') }
   let!(:language_1)           { create(:language,           description: 'English') }
   let!(:level_1)              { create(:level,              description: 'Basic') }
 
-  let!(:offer_type_2)         { create(:offer_type,         description: 'Work by week') }
-  let!(:work_mode_2)          { create(:work_mode,          description: 'Home office') }
-  let!(:contract_type_2)      { create(:contract_type,      description: 'Temporal') }
-  let!(:city_2)               { create(:city,               description: 'Bogota D.C') }
-  let!(:educational_degree_2) { create(:educational_degree, description: 'Master') }
   let!(:job_category_2)       { create(:job_category,       description: 'Computation') }
   let!(:work_position_2)      { create(:work_position,      description: 'Tester') }
   let!(:sex_2)                { create(:sex,                description: 'Female') }
@@ -39,10 +31,6 @@ RSpec.describe "admins/offers/edit" do
   let!(:requirement_2)        { create(:requirement,        description: 'Indifferent') }
   let!(:vehicle_2)            { create(:vehicle,            description: 'Motocycle') }
   let!(:driving_licence_2)    { create(:driving_licence,    description: 'A(2)') }
-  let!(:duration_type_2)      { create(:duration_type,      description: 'DT 2') }
-  let!(:technical_skill_2)    { create(:technical_skill,    description: 'TS 2') }
-  let!(:language_2)           { create(:language,           description: 'French') }
-  let!(:level_2)              { create(:level,              description: 'Avanced') }
 
   let!(:offers_technical_skill) { create(:offers_technical_skills, offer_id: offer.id, technical_skill_id: technical_skill_1.id, level_id: level_1.id) }
   let!(:language_offer)         { create(:languages_offers, offer_id: offer.id, language_id: language_1.id, level_id: level_1.id) }
@@ -79,11 +67,11 @@ RSpec.describe "admins/offers/edit" do
       with_tag(:input,    with: { name: 'offer[title]',               type: 'text'})
       with_tag(:textarea, with: { name: 'offer[description]'})
       with_tag(:input,    with: { name: 'offer[vacancies_quantity]',  type: 'number'})
-      with_tag(:input,    with: { name: 'offer[vacancies_quantity]',  type: 'number'})
       with_tag(:input,    with: { name: 'offer[close_date]',          type: 'date'})
       with_tag(:input,    with: { name: 'offer[immediate_start]',     type: 'hidden'})
       with_tag(:input,    with: { name: 'offer[required_experience]', type: 'hidden'})
       with_tag(:select,   with: { name: 'offer[status]'})
+      with_tag(:input,    with: { name: 'offer[confidential]', type: 'hidden'})
 
       with_tag(:input, with: { name: 'offer[age_range][from]', type: 'number'})
       with_tag(:input, with: { name: 'offer[age_range][to]',   type: 'number'})

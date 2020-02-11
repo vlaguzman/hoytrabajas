@@ -4,9 +4,11 @@ import { Row, Col } from 'reactstrap'
 import StandardInput from '../../../../../components/FormsLayout/Fields/StandardInput'
 import SelectChip from '../../../../../components/FormsLayout/Fields/SelectChip'
 import SelectFindOrCreate from '../../../../../components/FormsLayout/Fields/SelectFindOrCreate'
+import Checkbox from '../../../../../components/FormsLayout/Fields/Checkbox'
 import {
   handleChange,
-  handleDeleteChip
+  handleDeleteChip,
+  handleBoolean
 } from '../../../../../components/FormsLayout/handleFunctions'
 
 const FormFields = props => {
@@ -14,6 +16,7 @@ const FormFields = props => {
 
   const {
     title = null,
+    confidential = null,
     description = null,
     job_category_ids = null,
     offers_work_positions = null,
@@ -23,6 +26,7 @@ const FormFields = props => {
 
   const [formValues, setFormValues] = useState({
     [title.name]: title.current_value || '',
+    [confidential.name]: confidential.current_value || false,
     [description.name]: description.current_value || '',
     [job_category_ids.name]: job_category_ids.current_value || '',
     [offers_work_positions.name]: offers_work_positions.current_value || '',
@@ -34,7 +38,7 @@ const FormFields = props => {
 
   const titleField = useMemo(
     () => (
-      <Col key={title.name} className={inputClassname} xs={12} lg={12}>
+      <Col key={title.name} className={inputClassname} xs={12} lg={6}>
         <StandardInput
           isTextArea
           inputValue={formValues[title.name]}
@@ -46,6 +50,22 @@ const FormFields = props => {
       </Col>
     ),
     [formValues[title.name]]
+  )
+
+  const offerConfidentialField = useMemo(
+    () => (
+      <Col key={confidential.name} className={inputClassname} xs={12} lg={6}>
+        <Checkbox
+          inputValue={formValues[confidential.name]}
+          handleBoolean={handleBoolean(setFormValues)}
+          name={confidential.name}
+          description={confidential.label}
+          tooltip_description={confidential.tooltip}
+          isRequired={false}
+        />
+      </Col>
+    ),
+    [formValues[confidential.name]]
   )
 
   const descriptionField = useMemo(
@@ -147,6 +167,7 @@ const FormFields = props => {
   return (
     <Row className="HT__FormGenerator">
       {titleField}
+      {offerConfidentialField}
       {descriptionField}
       {jobCategoryField}
       {offerTypeField}
@@ -161,6 +182,8 @@ export default FormFields
 FormFields.propTypes = {
   formFields: PropTypes.shape({
     title: PropTypes.object,
+    confidential: PropTypes.object,
+    description: PropTypes.object,
     job_category_ids: PropTypes.object,
     offer_type_id: PropTypes.object,
     work_mode_id: PropTypes.object,

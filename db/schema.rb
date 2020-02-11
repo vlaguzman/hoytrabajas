@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_27_225258) do
+ActiveRecord::Schema.define(version: 2020_02_07_163107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -575,6 +575,7 @@ ActiveRecord::Schema.define(version: 2020_01_27_225258) do
     t.string "slug"
     t.boolean "created_by_admin", default: false
     t.bigint "educational_degree_id"
+    t.boolean "confidential", default: false
     t.index ["city_id"], name: "index_offers_on_city_id"
     t.index ["company_id"], name: "index_offers_on_company_id"
     t.index ["contract_type_id"], name: "index_offers_on_contract_type_id"

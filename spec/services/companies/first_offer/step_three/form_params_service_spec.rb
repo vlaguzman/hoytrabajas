@@ -10,8 +10,9 @@ RSpec.describe Companies::FirstOffer::StepThree::FormParamsService do
     it 'should return the expected object' do
 
       expected_object = {
-        title: 'Creemos tu primera oferta',
-        subtitle: 'Brinda a tu candidato información relevante de tu empresa.',
+        title: 'Acerca de tu oferta',
+        subtitle: '¡Llegó la hora de crear tu oferta y obtener el mejor talento!',
+        confidential_tooltip: 'Con esto evitaremos hacer público en tu oferta el nombre y el logo de tu empresa.',
         form: {
           placeholders: {},
           buttons: {
@@ -29,6 +30,12 @@ RSpec.describe Companies::FirstOffer::StepThree::FormParamsService do
             title: {
               name: 'company[title]',
               label: 'Título de tu oferta*',
+              current_value: ''
+            },
+            confidential: {
+              name: 'offer[confidential]',
+              label: 'Ocultar nombre y logo de mi empresa',
+              tooltip: 'Con esto evitaremos hacer público en tu oferta el nombre y el logo de tu empresa.',
               current_value: ''
             },
             description: {

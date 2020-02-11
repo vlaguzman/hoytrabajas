@@ -45,6 +45,7 @@ class Admins::OffersController < ApplicationController
         :immediate_start,
         :required_experience,
         :status,
+        :confidential,
         age_range: [
           :to,
           :from

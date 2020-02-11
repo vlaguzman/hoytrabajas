@@ -31,6 +31,9 @@
   %div.input
     = f.label :immediate_start, label: t('offer.form.labels.required_experience')
     = f.check_box :required_experience, value: @offer.required_experience
+  %div.input
+    = f.label :confidential, label: t('offer.form.labels.confidential')
+    = f.check_box :confidential, value: @offer.confidential
 
   %div
     %span=t('offer.form.labels.age_range.label')

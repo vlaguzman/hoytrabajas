@@ -38,10 +38,11 @@ es:
         contract_type: 'Tipo de contrato'
         required_experience: '¿Requiere experiencia?'
         inmediate_start: 'Inicio inmediato'
+        confidential: 'Oferta confidencial'
         status:
           label: 'Estado'
-          active: 'active'
-          expire: 'expire'
+          active: 'Activo'
+          expire: 'Expirado'
       actions:
         edit: 'Editar'
   session:

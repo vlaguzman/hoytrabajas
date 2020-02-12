@@ -63,7 +63,7 @@ const OfferContent = ({ offer, translations }) => {
 
   return (
     <CardContent className="offerContent pt-0 pb-5">
-      {offer.confidential === false && (
+      {!offer.confidential && (
         <Avatar
           className="offerCompanyIcon"
           src={offer['company']['url_image_logo']}
@@ -78,7 +78,7 @@ const OfferContent = ({ offer, translations }) => {
       <h2 className="offerTitle a-typo__subtitle1 my-0 truncateText">
         {offer.title ? offer.title.toUpperCaseAllFirstLetter() : ''}
       </h2>
-      {offer.confidential === false && (
+      {!offer.confidential && (
         <h4 className="offerSubtitle companyName a-typo__subtitle2 mb-10 truncateText">
           {offer.company.name ? offer.company.name.toUpperCaseAllFirstLetter() : ''}
         </h4>

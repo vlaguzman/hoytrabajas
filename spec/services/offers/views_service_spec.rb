@@ -91,6 +91,7 @@ RSpec.describe Offers::ViewsService do
     affinity_percentage: false,
     applied_offers: 0,
     raw_close_date: Time.zone.local(2019, 7, 3).to_s,
+    confidential: false,
     city: {
       description: "Bogotá"
     },
@@ -122,6 +123,7 @@ RSpec.describe Offers::ViewsService do
     applied_offers: 0,
     raw_close_date: Time.zone.local(2019, 7, 3).to_s,
     on_demand: nil,
+    confidential: false,
     city: {
       description: "Bogotá"
     },
@@ -153,6 +155,7 @@ RSpec.describe Offers::ViewsService do
     affinity_percentage: false,
     applied_offers: 0,
     raw_close_date: Time.zone.local(2019, 7, 3).to_s,
+    confidential: false,
     city: {
       description: "Bogotá"
     },

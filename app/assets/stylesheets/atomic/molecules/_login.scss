@@ -40,7 +40,7 @@
       padding: 10px 10px 10px 15px;
       font-size: 1rem;
       line-height: 1.5;
-      color: $color__slategray-light;
+      color: $color__slategray-dark;
       border: 0;
       background: none;
       text-transform: none;
@@ -50,6 +50,10 @@
       @media (max-width: 576px) {
         padding: 7px 7px 7px 10px;
         font-size: 0.875rem;
+      }
+
+      &::placeholder {
+        color: $color__slategray-light;
       }
     }
 
@@ -82,7 +86,7 @@
   }
 
   .loginAs {
-    margin-top: 20px;
+    margin: 20px 0 0;
     text-align: center;
     font-size: 1rem;
     font-weight: 700;
@@ -110,9 +114,14 @@
     @media (max-width: 576px) {
       margin-top: 20px;
     }
+
+    .MuiButton-root {
+      color: $color__slategray-main;
+    }
   }
 
   .a-radioItems {
+    color: $color__slategray-main;
     .MuiRadio-colorSecondary,
     .MuiRadio-colorSecondary.Mui-checked {
       color: $color__blue-main;

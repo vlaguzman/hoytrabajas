@@ -42,7 +42,7 @@ RSpec.describe "sign up user", js: true, type: :feature do
           fill_in 'user[password]', :with => "1wantt$finda7ob"
           fill_in 'user[password_confirmation]', :with => "1wantt$finda7ob"
 
-          find('span', text: 'Aceptar términos y condiciones').click
+          find('.termsAndConditions__checkbox').click
 
           has_button?("Registrarme")
           find(".a-button", text: "Registrarme", visible: false).click
@@ -65,7 +65,7 @@ RSpec.describe "sign up user", js: true, type: :feature do
           fill_in 'user[password]', :with => "12345678"
           fill_in 'user[password_confirmation]', :with => "12345678"
 
-          find('span', text: 'Aceptar términos y condiciones').click
+          find('.termsAndConditions__checkbox').click
           find(".a-button", text: "Registrarme", visible: false).click
 
           expect(page).to have_text("Por favor ingrese un correo electrónico diferente, ese ya esta en uso")
@@ -83,7 +83,7 @@ RSpec.describe "sign up user", js: true, type: :feature do
           fill_in 'user[password]', :with => "1wantt$finda7ob"
           fill_in 'user[password_confirmation]', :with => "wantt$finda7ob"
 
-          find('span', text: 'Aceptar términos y condiciones').click
+          find('.termsAndConditions__checkbox').click
           find(".a-button", text: "Registrarme", visible: false).click
 
           expect(User.count).to eq(actual_users)
@@ -104,7 +104,7 @@ RSpec.describe "sign up user", js: true, type: :feature do
           fill_in 'user[password]', :with => "1wantt$finda7ob"
           fill_in 'user[password_confirmation]', :with => "wantt$finda7ob"
 
-          find('span', text: 'Aceptar términos y condiciones').click
+          find('.termsAndConditions__checkbox').click
           find(".a-button", text: "Registrarme", visible: false).click
 
           expect(User.count).to eq(actual_users)
@@ -128,7 +128,7 @@ RSpec.describe "sign up user", js: true, type: :feature do
           fill_in 'user[password]', :with => "1wantt$finda7ob"
           fill_in 'user[password_confirmation]', :with => "1wantt$finda7ob"
 
-          find('span', text: 'Aceptar términos y condiciones').click
+          find('.termsAndConditions__checkbox').click
 
           has_button?("Registrarme")
           find(".a-button", text: "Registrarme", visible: false).click
@@ -184,7 +184,7 @@ RSpec.describe "sign up user", js: true, type: :feature do
           fill_in "company[password]", :with => "iwanttofindaemployee"
           fill_in 'company[password_confirmation]', :with => "iwanttofindaemployee"
 
-          find('span', text: 'Aceptar términos y condiciones').click
+          find('.termsAndConditions__checkbox').click
 
           has_button?("Registrarme")
           find(".a-button", text: "Registrarme", visible: false).click

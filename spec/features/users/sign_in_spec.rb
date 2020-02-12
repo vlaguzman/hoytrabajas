@@ -10,7 +10,7 @@ RSpec.describe "User sign in", type: :feature do
         expect(page).to have_text("Ingresar")
         click_on 'Ingresar'
 
-        expect(page).to have_text("¿No tienes una cuenta?")
+        expect(page).to have_text("¿Aún no tienes una cuenta?")
       end
 
       scenario "should create account", js: true do
@@ -26,7 +26,7 @@ RSpec.describe "User sign in", type: :feature do
         fill_in "user[password]", with: "JesiPickman"
         fill_in "user[password_confirmation]", with: "JesiPickman"
 
-        find('span', text: 'Aceptar términos y condiciones').click
+        find('.termsAndConditions__checkbox').click
 
         has_button?("Registrarme")
         find(".a-button", text: "Registrarme", visible: false).click

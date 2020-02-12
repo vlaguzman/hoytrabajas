@@ -1,15 +1,14 @@
 require "rails_helper"
 
 RSpec.describe Offers::ShowService do
-  let!(:level) { create(:level, description: "Avanzado") }
-  let!(:language) { create(:language, description: "Ingles") }
+  let!(:level)           { create(:level, description: "Avanzado") }
+  let!(:language)        { create(:language, description: "Ingles") }
   let(:monday_to_friday) { create(:available_work_day, description: "Lunes a Viernes") }
-  let(:saturday) { create(:available_work_day, description: "Sabado") }
-  let(:morning) { create(:working_day, description: "Mañana 7 a 1pm") }
-  let(:late) { create(:working_day, description: "Tarde 2pm a 7pm") }
-  let(:job_aid) { create(:job_aid, description: "Auxilio de Transporte") }
-  let(:job_aid) { create(:job_aid, description: "Auxilio de Transporte") }
-  let(:sex) { create(:sex, description: "Mujer") }
+  let(:saturday)         { create(:available_work_day, description: "Sabado") }
+  let(:morning)          { create(:working_day, description: "Mañana 7 a 1pm") }
+  let(:late)             { create(:working_day, description: "Tarde 2pm a 7pm") }
+  let(:job_aid)          { create(:job_aid, description: "Auxilio de Transporte") }
+  let(:sex)              { create(:sex, description: "Mujer") }
 
   let(:company) { create(:company,
     address: "Calle Falsa 123 # 00 99",
@@ -80,6 +79,7 @@ RSpec.describe Offers::ShowService do
         on_demand: nil,
         applied_offers:0,
         raw_close_date: Time.zone.local(2019, 7, 25).to_s,
+        confidential: false,
         sex: {
           description: ["Mujer"]
         },

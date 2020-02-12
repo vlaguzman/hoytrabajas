@@ -135,13 +135,6 @@ a {
     text-decoration: none;
     outline: 0;
   }
-  &.a-link{
-    &--terms_and_conditions {
-      font-size: 0.8rem;
-      margin-left: 15px;
-      margin-top: 10px;
-    }
-  }
 }
 *::-moz-selection {
   background-color: $primary;

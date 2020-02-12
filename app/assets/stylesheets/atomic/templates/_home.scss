@@ -1,20 +1,24 @@
 .t-home__cover {
-  padding-top: 140px;
+  width: 100%;
 
-  .welcomeImage {
-    text-align: center;
-  }
-
-  .welcomeText {
-    max-width: 750px;
-    padding: 0 30px;
-    text-align: center;
-    margin: auto;
-    margin-bottom: 30px;
+  .home__banner {
+    object-fit: cover;
+    width: 100%;
 
     @media (max-width: 576px) {
-      font-size: 1.125rem;
-      padding: 0 15px;
+      display: none;
+    }
+  }
+
+  .home__banner--responsive {
+    display: none;
+
+    @media (max-width: 576px) {
+      display: block;
+      background: url('/assets/static/img/home-banner3.jpg');
+      background-size: cover;
+      background-position: center center;
+      height: 170px;
     }
   }
 }

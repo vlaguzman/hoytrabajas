@@ -1,0 +1,11 @@
+.a-link__termsAndConditions {
+  text-align: center;
+  font-size: 0.8125rem;
+  margin-top: 3px;
+
+  a {
+    text-decoration: underline;
+    color: $color__slategray-main;
+    margin-left: 5px;
+  }
+}

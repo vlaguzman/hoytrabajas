@@ -26,7 +26,7 @@ RSpec.describe "User sign in", type: :feature do
         fill_in "user[password]", with: "JesiPickman"
         fill_in "user[password_confirmation]", with: "JesiPickman"
 
-        find('span', text: 'Aceptar términos y condiciones.').click
+        find('span', text: 'Aceptar términos y condiciones').click
 
         has_button?("Registrarme")
         find(".a-button", text: "Registrarme", visible: false).click

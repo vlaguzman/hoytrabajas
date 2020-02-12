@@ -54,21 +54,16 @@ const SignUp = props => {
           <div className="ht-image">
             <img
               src="/assets/static/img/hoytrabajas-logo-color.svg"
-              className="mr-15 animeted fadeIn"
+              className="mr-15 animated fadeIn"
               alt="site logo"
             />
           </div>
         </Row>
       </div>
-      <DialogContent className="m-loginContent mt-20 p-0 px-40">
-        <DialogContentText style={{ textAlign: 'center' }}>
-          <p className="a-typo__body2 color__slategray-main mb-5">
-            {props.session_translation.sign_up.subtitle}
-          </p>
-          <h5 className="color__blue-main">
-            {props.session_translation.sign_up.title}
-          </h5>
-        </DialogContentText>
+      <DialogContent className="m-loginContent mt-20">
+        <h5 className="color__blue-main loginTitle">
+          {props.session_translation.sign_up.title}
+        </h5>
         <form
           id={`new_${sourceName}`}
           className={`new_${sourceName}`}
@@ -94,7 +89,7 @@ const SignUp = props => {
               <input
                 name={`${sourceName}[email]`}
                 id={`${sourceName}_email`}
-                className="loginInput pl-15 py-10"
+                className="loginInput"
                 autoComplete="email"
                 placeholder={props.session_translation.sign_up.email_label}
                 type="email"
@@ -105,7 +100,7 @@ const SignUp = props => {
               <input
                 name={`${sourceName}[password]`}
                 id={`${sourceName}_password`}
-                className="loginInput pl-15 py-10"
+                className="loginInput"
                 autoComplete="new-password"
                 placeholder={props.session_translation.sign_up.password_label}
                 type="password"
@@ -116,7 +111,7 @@ const SignUp = props => {
               <input
                 name={`${sourceName}[password_confirmation]`}
                 id={`${sourceName}_password_confirmation`}
-                className="loginInput pl-15 py-10"
+                className="loginInput"
                 placeholder={
                   props.session_translation.sign_up.pass_confirm_label
                 }
@@ -133,10 +128,7 @@ const SignUp = props => {
 
           {!source_name && (
             <>
-              <p
-                className="m-0 mt-20 color__blue-main fw-bold"
-                style={{ textAlign: 'center', fontSize: '1rem' }}
-              >
+              <p className="color__blue-main loginAs">
                 {props.session_translation.sign_up.sign_up_as}
               </p>
               <RadioGroup
@@ -161,22 +153,14 @@ const SignUp = props => {
             </>
           )}
 
-          <Row noGutters className="justify-content-center my-20">
-            <Col xs={12} className="px-30">
-              <button
-                type="submit"
-                className="a-button --primary fw-bold"
-                style={{
-                  textTransform: 'uppercase',
-                  fontSize: '1rem',
-                  paddingTop: 12,
-                  paddingBottom: 12
-                }}
-              >
-                {props.session_translation.sign_up.button_action.sign_up_label}
-              </button>
-            </Col>
-          </Row>
+          <div className="loginButton__wrapper">
+            <button
+              type="submit"
+              className="a-button --primary --big loginButton"
+            >
+              {props.session_translation.sign_up.button_action.sign_up_label}
+            </button>
+          </div>
         </form>
         <Row className="mt-40">
           <Col xs={12}>
@@ -186,8 +170,9 @@ const SignUp = props => {
           </Col>
         </Row>
       </DialogContent>
-      <DialogActions className="my-10">
+      <DialogActions className="loginActions my-10">
         <div className="w-100 text-center">
+          <div className="loginActions__divider" />
           <Typography variant="caption" component="span">
             {props.session_translation.sign_up.with_account.title}
           </Typography>

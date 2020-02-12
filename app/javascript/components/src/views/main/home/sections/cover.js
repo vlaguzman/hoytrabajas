@@ -1,5 +1,4 @@
 import React from 'react'
-import { Row, Col } from 'reactstrap'
 import PropTypes from 'prop-types'
 import FilterFormSection from './filterForm'
 
@@ -11,47 +10,31 @@ const WelcomeText = ({
   filterForm
 }) => {
   const {
-    welcome_text,
     filterForm: filterFormTranslations,
     call_to_action_text
   } = translations
 
-  const welcomeTextFirst = welcome_text.slice(0, welcome_text.search(/\d/))
-  const welcomeTextBold = welcome_text.slice(
-    welcome_text.search(/\d/),
-    welcome_text.search(/\d/) + welcome_text.replace(/[^0-9]/g, '').length
-  )
-  const welcomeTextEnd = welcome_text.slice(
-    welcome_text.search(/\d/) + welcome_text.replace(/[^0-9]/g, '').length
-  )
   return (
-    <div className="align-items-center d-flex justify-content-center mb-60">
-      <Col
-        className="align-items-center justify-content-center t-home__cover"
-        xs={12}
-      >
-        <h4 className="welcomeText mb-20 a-typo__titleH4 color__blue-main d-sm-inline">
-          {welcomeTextFirst}
-          <strong> {welcomeTextBold} </strong>
-          {welcomeTextEnd}
-        </h4>
-        <div className="welcomeImage mb-30 d-none d-lg-block">
-          <img src="/assets/static/img/home-banner.jpg" alt="Banner" />
-        </div>
-        <FilterFormSection
-          {...{ common, ...filterForm }}
-          translations={{
-            filterForm: filterFormTranslations,
-            advancedSearch: advanced_search_translations
-          }}
-        />
-        <p className="a-callToAction__inline">
-          {call_to_action_text.text}{' '}
-          <a className="color__blue-main" href={new_offer_path}>
-            {call_to_action_text.link}
-          </a>
-        </p>
-      </Col>
+    <div className="t-home__cover">
+      <img
+        src="/assets/static/img/home-banner2.jpg"
+        alt="Banner"
+        className="home__banner"
+      />
+      <div className="home__banner--responsive" />
+      <FilterFormSection
+        {...{ common, ...filterForm }}
+        translations={{
+          filterForm: filterFormTranslations,
+          advancedSearch: advanced_search_translations
+        }}
+      />
+      <p className="a-callToAction__inline">
+        {call_to_action_text.text}{' '}
+        <a className="color__blue-main" href={new_offer_path}>
+          {call_to_action_text.link}
+        </a>
+      </p>
     </div>
   )
 }
@@ -64,7 +47,6 @@ WelcomeText.propTypes = {
   filterForm: PropTypes.object.isRequired,
   advanced_search_translations: PropTypes.object.isRequired,
   translations: PropTypes.shape({
-    welcome_text: PropTypes.string.isRequired,
     filterForm: PropTypes.object.isRequired,
     call_to_action_text: PropTypes.shape({
       text: PropTypes.string.isRequired,

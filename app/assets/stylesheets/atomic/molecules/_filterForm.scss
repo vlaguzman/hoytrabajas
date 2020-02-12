@@ -1,4 +1,10 @@
 .m-filterForm {
+  margin-top: $negative__35px;
+
+  @media (max-width: 992px) {
+    display: none;
+  }
+
   .filterForm__searchButton {
     background-color: $color__orange-main;
     color: white;

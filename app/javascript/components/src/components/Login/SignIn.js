@@ -52,22 +52,17 @@ const SignIn = props => {
         <Row noGutters className="justify-content-center">
           <div className="ht-image">
             <img
-              src="/assets/static/img/appLogoC.svg"
-              className="mr-15 animeted fadeIn"
+              src="/assets/static/img/hoytrabajas-logo-color.svg"
+              className="mr-15 animated fadeIn"
               alt="site logo"
             />
           </div>
         </Row>
       </div>
-      <DialogContent className="m-loginContent mt-20 p-0 px-40">
-        <DialogContentText style={{ textAlign: 'center' }}>
-          <p className="a-typo__body2 color__slategray-main mb-5">
-            {props.session_translation.sign_in.subtitle}
-          </p>
-          <h5 className="color__blue-main">
-            {props.session_translation.sign_in.title}
-          </h5>
-        </DialogContentText>
+      <DialogContent className="m-loginContent mt-20">
+        <h5 className="color__blue-main loginTitle">
+          {props.session_translation.sign_in.title}
+        </h5>
         <form
           id={`new_${sourceName}`}
           className={`new_${sourceName}`}
@@ -89,7 +84,7 @@ const SignIn = props => {
               <input
                 name={`${sourceName}[email]`}
                 id={`${sourceName}_email`}
-                className="loginInput pl-15 py-10"
+                className="loginInput"
                 autoComplete="email"
                 placeholder={props.session_translation.sign_in.email_label}
                 type="email"
@@ -100,7 +95,7 @@ const SignIn = props => {
               <input
                 name={`${sourceName}[password]`}
                 id={`${sourceName}_password`}
-                className="loginInput pl-15 py-10"
+                className="loginInput"
                 autoComplete="new-password"
                 placeholder={props.session_translation.sign_in.password_label}
                 type="password"
@@ -108,12 +103,20 @@ const SignIn = props => {
             </div>
           </div>
 
+          <div className="loginForgotPassword">
+            <a
+              href={`/${
+                sourceName === 'user' ? 'users' : 'companies'
+              }/password/new`}
+              className="loginForgotPassword__link"
+            >
+              {props.session_translation.sign_in.forget_password}
+            </a>
+          </div>
+
           {!source_name && (
             <>
-              <p
-                className="m-0 mt-20 color__blue-main fw-bold"
-                style={{ textAlign: 'center', fontSize: '1rem' }}
-              >
+              <p className="color__blue-main loginAs">
                 {props.session_translation.sign_in.sign_in_as}
               </p>
               <RadioGroup
@@ -138,34 +141,16 @@ const SignIn = props => {
             </>
           )}
 
-          <Typography
-            component="a"
-            variant="caption"
-            style={{ color: 'robin-blue', marginTop: 10 }}
-            href={`/${
-              sourceName === 'user' ? 'users' : 'companies'
-            }/password/new`}
-          >
-            {props.session_translation.sign_in.forget_password}
-          </Typography>
-          <Row noGutters className="justify-content-center my-20">
-            <Col xs={12} className="px-30">
-              <button
-                type="submit"
-                className="a-button --primary fw-bold"
-                style={{
-                  textTransform: 'uppercase',
-                  fontSize: '1rem',
-                  paddingTop: 12,
-                  paddingBottom: 12
-                }}
-              >
-                {props.session_translation.sign_in.button_action.sign_in_label}
-              </button>
-            </Col>
-          </Row>
+          <div className="loginButton__wrapper">
+            <button
+              type="submit"
+              className="a-button --primary --big loginButton"
+            >
+              {props.session_translation.sign_in.button_action.sign_in_label}
+            </button>
+          </div>
         </form>
-        <Row className="mt-40">
+        <div className="loginSocial">
           <Col xs={12}>
             <LoginButton
               variant="outlined"
@@ -174,10 +159,11 @@ const SignIn = props => {
               {props.session_translation.sign_in.button_action.sign_in_facebook}
             </LoginButton>
           </Col>
-        </Row>
+        </div>
       </DialogContent>
-      <DialogActions className="my-10">
+      <DialogActions className="loginActions my-10">
         <div className="w-100 text-center">
+          <div className="loginActions__divider" />
           <Typography variant="caption" component="span">
             {props.session_translation.sign_in.no_account.title}
           </Typography>

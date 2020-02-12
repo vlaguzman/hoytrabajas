@@ -11,7 +11,6 @@ RSpec.describe "User can Log In", type: :feature do
     scenario "redirect after login to the active admin views", js: true do
 
       visit new_admin_user_session_path
-      expect(page).to have_content("Es momento de encontrar tu empleo o empleado ideal")
 
       within "#new_admin_user" do
         fill_in "admin_user_email", with: 'admin@email.com'
@@ -48,9 +47,8 @@ RSpec.describe "User can Log In", type: :feature do
       has_button?("Ingresar")
       find('.a-navOpenLogin', text:/Ingresar/).click
 
-      find(".modal--close-icon").click
+      find(".modalCloseIcon__button").click
 
-      expect(page).to have_text("Accede hoy a más de 3000 ofertas laborales que tenemos para ti de forma fácil") 
       expect(current_path).to eq(root_path)
     end
   end

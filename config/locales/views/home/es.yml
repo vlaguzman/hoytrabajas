@@ -1,7 +1,6 @@
 es:
   home:
     cover:
-      welcome_text: 'Accede hoy a más de 3000 ofertas laborales que tenemos para ti de forma fácil'
       filterForm:
         categories: 'Categorías'
       call_to_action_text:

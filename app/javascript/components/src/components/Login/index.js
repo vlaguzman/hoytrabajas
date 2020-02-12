@@ -26,6 +26,7 @@ const Login = ({
       else window.location.assign('/')
     }}
     aria-labelledby="max-width-dialog-title"
+    className="m-loginModal"
   >
     {currentModal === 'sign_in' && (
       <SignIn

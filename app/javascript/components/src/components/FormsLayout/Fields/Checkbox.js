@@ -13,7 +13,9 @@ const Checkbox = props => {
     description,
     tooltip_description,
     isRequired,
-    handleBoolean
+    handleBoolean,
+    disableRipple,
+    className = ''
   } = props
 
   const onChange = e => handleBoolean(e, name)
@@ -27,21 +29,39 @@ const Checkbox = props => {
         </FormLabel>
       )}
       <div>
-        <Tooltip title={tooltip_description}>
+        {tooltip_description ? (
+          <Tooltip title={tooltip_description}>
+            <FormControlLabel
+              className="p-0 mx-0 mb-0"
+              control={
+                <MaterialCheckbox
+                  className={`${className} pr-5`}
+                  value={inputValue}
+                  checked={inputValue}
+                  onChange={onChange}
+                  required={isRequired}
+                  disableRipple={disableRipple}
+                />
+              }
+              label={description}
+            />
+          </Tooltip>
+        ) : (
           <FormControlLabel
             className="p-0 mx-0 mb-0"
             control={
               <MaterialCheckbox
-                className="pr-5"
+                className={`${className} pr-5`}
                 value={inputValue}
                 checked={inputValue}
                 onChange={onChange}
                 required={isRequired}
+                disableRipple={disableRipple}
               />
             }
             label={description}
           />
-        </Tooltip>
+        )}
       </div>
     </>
   )
@@ -55,6 +75,8 @@ Checkbox.propTypes = {
   label: PropTypes.string,
   description: PropTypes.string.isRequired,
   tooltip_description: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
   handleBoolean: PropTypes.func.isRequired,
+  disableRipple: PropTypes.bool.isRequired,
   isRequired: PropTypes.bool
 }

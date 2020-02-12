@@ -18,8 +18,6 @@ RSpec.describe "User searches for an offer", type: :feature do
       it "Should show the title, carousel and the filter inputs", js: true do
         visit root_path
 
-        expect(page).to have_content("Accede hoy a más de 3000 ofertas laborales que tenemos para ti de forma fácil")
-
         expect(page).to have_tag(:form, with: { class: "row justify-content-around" }) do
           with_tag(:input, with: { name: 'q[title_cont]'})
         end

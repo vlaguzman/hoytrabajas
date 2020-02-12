@@ -469,9 +469,12 @@ const DetallePage = ({
               >
                 H
               </Avatar> */}
-              {offer.company.name !== null && CompanyNameBlock(offer.company)}
-              {offer.company.description !== null &&
-                CompanyDescriptionBlock(offer.company)}
+              {offer.company.name && !offer.confidential &&
+                CompanyNameBlock(offer.company)
+              }
+              {offer.company.description && !offer.confidential &&
+                CompanyDescriptionBlock(offer.company)
+              }
               <Divider variant="middle" className="mx-0 my-10" />
               {/* <img
                 className="img-fluid my-20"

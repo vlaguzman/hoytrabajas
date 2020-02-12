@@ -35,6 +35,7 @@ RSpec.describe Offers::IndexService do
     on_demand: nil,
     applied_offers:0,
     raw_close_date: Time.zone.local(2019, 7, 3).to_s,
+    confidential: false,
     city: {
       description: "Bogotá"
     },

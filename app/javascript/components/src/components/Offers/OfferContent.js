@@ -63,10 +63,12 @@ const OfferContent = ({ offer, translations }) => {
 
   return (
     <CardContent className="offerContent pt-0 pb-5">
-      <Avatar
-        className="offerCompanyIcon"
-        src={offer['company']['url_image_logo']}
-      />
+      {offer.confidential === false && (
+        <Avatar
+          className="offerCompanyIcon"
+          src={offer['company']['url_image_logo']}
+        />
+      )}
       {offer.new_offer && <NewFlagBlock content={tag_new_offer} />}
       {offer.salary && offer.salary.from && (
         <div className="a-typo__subtitle2 a-badge__price px-0">
@@ -76,9 +78,11 @@ const OfferContent = ({ offer, translations }) => {
       <h2 className="offerTitle a-typo__subtitle1 my-0 truncateText">
         {offer.title ? offer.title.toUpperCaseAllFirstLetter() : ''}
       </h2>
-      <h4 className="offerSubtitle companyName a-typo__subtitle2 mb-10 truncateText">
-        {offer.company.name ? offer.company.name.toUpperCaseAllFirstLetter() : ''}
-      </h4>
+      {offer.confidential === false && (
+        <h4 className="offerSubtitle companyName a-typo__subtitle2 mb-10 truncateText">
+          {offer.company.name ? offer.company.name.toUpperCaseAllFirstLetter() : ''}
+        </h4>
+      )}
       <p className="offerDescription a-typo__subtitle2 mb-5 truncateParagraph">
         {offer.description ? offer.description.toUpperCaseFirstLetter() : ''}
       </p>

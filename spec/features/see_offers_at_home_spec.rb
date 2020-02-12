@@ -72,6 +72,18 @@ RSpec.describe "see offers at home", type: :feature, js: true do
         expect(page).not_to have_text("Nuevo")
       end
     end
+
+    context "there are an offer with confidential in true" do
+      it "should dont show the logo and description of company" do
+        offer = FactoryBot.create(:offer, title: 'old_offer', confidential: true)
+        offer.save!
+
+        visit root_path
+
+        expect(page).not_to have_css('.offerCompanyIcon')
+        expect(page).not_to have_css('.offerSubtitle')
+      end
+    end
   end
 
   describe "Like a logged user" do
@@ -98,8 +110,6 @@ RSpec.describe "see offers at home", type: :feature, js: true do
         sign_in candidate
 
         visit root_path
-
-        save_page("paps.hmtl")
 
         expect(page).to have_content("A Super Offer")
         expect(page).to have_content("A super description")

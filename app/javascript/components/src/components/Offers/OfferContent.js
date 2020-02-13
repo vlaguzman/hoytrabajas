@@ -83,7 +83,7 @@ const OfferContent = ({ offer, translations }) => {
           {offer.company.name ? offer.company.name.toUpperCaseAllFirstLetter() : ''}
         </h4>
       )}
-      <p className="offerDescription a-typo__subtitle2 mb-5 truncateParagraph">
+      <p className={`${offer.confidential && 'alignAffinity'} offerDescription a-typo__subtitle2 mb-5 truncateParagraph`}>
         {offer.description ? offer.description.toUpperCaseFirstLetter() : ''}
       </p>
       <div className="mt-auto">

@@ -65,3 +65,14 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
+.hiddenElement {
+  display: none;
+}
+
+.visibleElement {
+  position: relative;
+  bottom: 100px;
+  left: 170px;
+  height: 58px;
+  width: 58px;
+}

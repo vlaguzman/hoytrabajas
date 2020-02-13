@@ -13,10 +13,16 @@ class Users::ProfilesController < ApplicationController
   def update
     parameter = update_permit_params[:user]
     if parameter.present?
+      puts "$>"
+      puts current_user.curriculum_vitae.photo.attached?
+      puts "$>"
       AttachFile.upload_record_file(current_user.curriculum_vitae, :photo, parameter[:photo])
-      redirect_to user_profile_path
+      redirect_to users_profile_path
+      puts "&>"
+      puts current_user.curriculum_vitae.photo.attached?
+      puts "&>"
     else
-      redirect_to user_profile_path
+      redirect_to users_profile_path
     end
   end
 

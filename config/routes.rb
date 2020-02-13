@@ -46,7 +46,7 @@ Rails.application.routes.draw do
 
   namespace :users do
     resource :dashboard, only: [:show]
-    resource :profile, only: [:show]
+    resource :profile, only: [:show, :update]
 
     namespace :wizards do
       resource :step_zero,    only: [:show]

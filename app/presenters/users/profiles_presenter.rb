@@ -31,6 +31,15 @@ class Users::ProfilesPresenter < ApplicationPresenter
     }
   end
 
+  def give_the_profile_picture
+    if curriculum_vitae.photo.attached?
+      puts "$"*99
+      puts rails_routes.rails_blob_path(source.curriculum_vitae.photo, disposition: 'attachment', only_path: true )
+    else
+      "/assets/static/avatars/profile.jpg"
+    end
+  end
+
   def get_value_of_record(record)
     GetValueOfRecord.new(record)
   end

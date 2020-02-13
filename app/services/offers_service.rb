@@ -4,6 +4,7 @@ module OffersService
   def self.active_offers_index_details(current_user = nil, limited = Home::HomePresenter::MAX_OFFER_LIMIT)
     cv_id = current_user.present? ? current_user.curriculum_vitae.id : 0
     Offer
+      .order_by_created_at
       .active
       .limit(limited * 3 ) # TODO Oscar temporal limite to reduce query time
       .not_applied_offers_by_cv(cv_id)
@@ -13,7 +14,8 @@ module OffersService
 
   def self.related_offers_show_details(id = nil, job_categories = [], current_user = nil)
     cv_id = current_user.present? ? current_user.curriculum_vitae.id : 0
-    Offer.not_applied_offers_by_cv(cv_id)
+    Offer.order_by_created_at
+      .not_applied_offers_by_cv(cv_id)
       .active
       .created_at_desc
       .related_job_category(job_categories.pluck(:id))
@@ -25,10 +27,10 @@ module OffersService
   def self.query_offers_home(query, ids_categories, current_user: nil)
     if ids_categories.present?
       ordered_by_on_demand = query
-        .order_by_on_demand_and_created_at
+        .order_by_on_demand_created_at
         .by_job_categories(ids_categories.split(","))
     else
-      query.order_by_on_demand_and_created_at
+      query.order_by_on_demand_created_at
     end
   end
 end

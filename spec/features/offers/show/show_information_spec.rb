@@ -107,15 +107,19 @@ RSpec.describe "Like an user", type: :feature do
     end
 
     context "when offer is confidential" do
-      scenario "should render offers show template with the first block data and two job categories", js: true do
+      scenario "should render only description of company", js: true do
         show_offer.update(confidential: true)
         show_offer.reload
 
         sign_in user
         visit offer_path(show_offer.id)
 
-        expect(page).not_to have_text("the great company")
-        expect(page).not_to have_text("the best company to work")
+        expect(page).to have_text("the best company to work")
+
+        expect(page).to_not have_text("the great company")
+        expect(page).to_not have_text("calle falsa 123")
+        expect(page).to_not have_text(show_offer.company.employees_range_description)
+        expect(page).to_not have_text("thebestcompany.com")
       end
     end
   end

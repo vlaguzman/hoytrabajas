@@ -29,7 +29,7 @@ class Offers::ViewsService
   private
 
   def used_keys
-    [:title, :immediate_start, :description, :required_experience]
+    [:title, :immediate_start, :description, :required_experience, :confidential]
   end
 
   def build_details

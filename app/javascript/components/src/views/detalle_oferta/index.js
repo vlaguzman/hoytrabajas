@@ -469,18 +469,28 @@ const DetallePage = ({
               >
                 H
               </Avatar> */}
-              {offer.company.name !== null && CompanyNameBlock(offer.company)}
-              {offer.company.description !== null &&
-                CompanyDescriptionBlock(offer.company)}
+
+              {offer.company.name && !offer.confidential &&
+                CompanyNameBlock(offer.company)
+              }
+
+              {offer.company.description &&
+                CompanyDescriptionBlock(offer.company)
+              }
+
               <Divider variant="middle" className="mx-0 my-10" />
+
               {/* <img
                 className="img-fluid my-20"
                 src="https://www.kulud-pharmacy.com/wp-content/uploads/2018/01/687474703a2f2f692e696d6775722e636f6d2f4f32454f4378662e706e67.png"
                 alt="address"
               /> */}
-              {offer.address !== null && OfferAddressBlock(offer)}
-              {offer.company.employees_range.description !== null &&
+
+              {offer.address && !offer.confidential && OfferAddressBlock(offer)}
+
+              {offer.company.employees_range.description && !offer.confidential &&
                 CompanyEmployeesRangeBlock(translationOffer, offer.company)}
+
               {/*
                  TO-DO Vlado: add the link
               <Row className="justify-content-between">
@@ -502,9 +512,12 @@ const DetallePage = ({
                 </Col>
               </Row>
                */}
-              {offer.company.web_site !== null &&
+
+              {offer.company.web_site && !offer.confidential &&
                 CompanyWebSiteBlock(offer.company)}
+
               <Divider variant="middle" className="mx-0 my-10" />
+
               {/*
               <Row style={{ height: '2rem' }}>
                 <div

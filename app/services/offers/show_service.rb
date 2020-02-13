@@ -34,7 +34,7 @@ class Offers::ShowService < Offers::ViewsService
   attr_accessor :offer, :current_user
 
   def used_keys
-    [:title, :address, :immediate_start, :description, :vacancies_quantity, :required_experience]
+    [:title, :address, :immediate_start, :description, :vacancies_quantity, :required_experience, :confidential]
   end
 
   def age_range_details

@@ -1,10 +1,10 @@
 class CurriculumVitae < ApplicationRecord
 
-  DEFAULT_MALE_USER_PROFILE_IMAGE = ENV['DEFAULT_MALE_USER_PROFILE_IMAGE']
+  DEFAULT_MALE_USER_PROFILE_IMAGE   = ENV['DEFAULT_MALE_USER_PROFILE_IMAGE']
   DEFAULT_FEMALE_USER_PROFILE_IMAGE = ENV['DEFAULT_FEMALE_USER_PROFILE_IMAGE']
 
   ATTRIBUTES_TO_COMPARE = [:city_id]
-  LISTS_TO_COMPARE = [:job_categories, :working_days, :available_work_days, :technical_skills, :languages_list, :to_learn_skills, :soft_skills, :work_modes]
+  LISTS_TO_COMPARE      = [:job_categories, :working_days, :available_work_days, :technical_skills, :languages_list, :to_learn_skills, :soft_skills, :work_modes]
 
   validates_presence_of :user
 
@@ -41,9 +41,15 @@ class CurriculumVitae < ApplicationRecord
   delegate :description, to: :contract_type, prefix: :contract_type, allow_nil: true
   delegate :description, to: :labor_disponibility, prefix: :labor_disponibility, allow_nil: true
 
-  validates :photo, attached:  true,
-    content_type: [ 'image/jpeg', 'image/jpg', 'image/png' ],
-    size: { :less_than => 2.megabytes }
+  validate :photo_validation
+
+  def photo_validation
+    if photo.attached?
+      if photo.blob.byte_size > 2000000
+        self.errors.add(:photo, "La foto debe pesar maximo 2MB")
+      end
+    end
+  end
 
   def languages_list
     strong_languages

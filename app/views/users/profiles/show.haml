@@ -14,9 +14,10 @@
   .m-box.o-boxPrincipal
     .headerBox
       .photoBox
-        %img{src: "#{@user.give_the_profile_picture}", alt: 'Photo Profile'}
-
-        = react_component('UserUploadPhoto', {csrf_param: request_forgery_protection_token, csrf_token: form_authenticity_token, action: users_profile_path, method: "patch"}, prerender: false)
+        %img{src: "#{@user.give_the_profile_picture}", alt: 'Photo Profile', class: "profilePicture"}
+        %p=@user.errors.messages[:curriculum_vitae_photo]
+        - @user.yield_if(user_signed_in?) do
+          = react_component('UserUploadPhoto', {csrf_param: request_forgery_protection_token, csrf_token: form_authenticity_token, action: users_profile_path, method: "put"}, prerender: false)
 
       %h1
         = @user.name

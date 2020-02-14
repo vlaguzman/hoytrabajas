@@ -15,11 +15,11 @@ const { action, method, csrf_param, csrf_token } = props;
   };
 
   return (
-    <form action={action} method="post">
+    <form action={action} method="post" encType="multipart/form-data" className="noHeight" >
       <input type="hidden" name={csrf_param} value={csrf_token}/>
       <input type="hidden" name="_method" value={method}/>
       <>
-        <input accept="image/*" id="icon-button-file" type="file" onChange={handleOnChange} className="hidden"/>
+        <input accept="image/*" id="icon-button-file" type="file" onChange={handleOnChange} className="hidden" name="curriculum_vitae[photo]" />
         <label htmlFor="icon-button-file" className={`${ uploadButton ? 'visibleElement' : 'hiddenElement' }`}>
           <IconButton color="primary" aria-label="upload picture" component="span" className="uploadPhoto">
             <PhotoCamera />

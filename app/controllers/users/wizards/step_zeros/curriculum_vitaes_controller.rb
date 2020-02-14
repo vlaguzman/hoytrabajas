@@ -19,5 +19,4 @@ class Users::Wizards::StepZeros::CurriculumVitaesController < ApplicationControl
   def permit_params
     params.permit(user: :file_cv)
   end
-
 end

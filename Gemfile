@@ -25,7 +25,6 @@ gem 'statesman', '~> 5.1.0'
 gem 'whenever', require: false
 gem 'route_translator'
 gem 'sitemap_generator'
-gem 'active_storage_validations'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

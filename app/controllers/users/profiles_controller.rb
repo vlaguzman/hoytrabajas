@@ -11,19 +11,11 @@ class Users::ProfilesController < ApplicationController
   end
 
   def update
-    parameter = update_permit_params[:user]
-    if parameter.present?
-      puts "$>"
-      puts current_user.curriculum_vitae.photo.attached?
-      puts "$>"
-      AttachFile.upload_record_file(current_user.curriculum_vitae, :photo, parameter[:photo])
-      redirect_to users_profile_path
-      puts "&>"
-      puts current_user.curriculum_vitae.photo.attached?
-      puts "&>"
-    else
-      redirect_to users_profile_path
-    end
+    cv = current_user.curriculum_vitae
+    AttachFile.upload_record_file(cv, :photo, update_permit_params[:photo])
+    cv.user.errors.add(:curriculum_vitae_photo, cv.errors[:photo])
+    @user = Users::ProfilesPresenter.new(cv.user)
+    render 'show'
   end
 
   private
@@ -33,7 +25,9 @@ class Users::ProfilesController < ApplicationController
   end
 
   def update_permit_params
-    params.permit(user: :photo)
+    params
+    .require(:curriculum_vitae)
+    .permit(:photo).to_h
   end
 
   def logged_candidate

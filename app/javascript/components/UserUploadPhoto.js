@@ -5,36 +5,46 @@ import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import CheckIcon from '@material-ui/icons/Check';
 
 const UserUploadPhoto = props => {
-const { action, method, csrf_param, csrf_token } = props;
+const { action, method, csrf_param, csrf_token, src_image, candidate_present } = props;
 
   const [uploadButton, setUploadButton] = useState(true)
+  const [urlPhoto, setUrlPhoto] = useState(src_image)
 
   const handleOnChange = (e) => {
     let attach_file = e.target.files
     attach_file.length >= 1 && setUploadButton(false)
+    console.log("attach_file", e.target.files)
+    setUrlPhoto(URL.createObjectURL(attach_file[0]))
   };
 
   return (
-    <form action={action} method="post" encType="multipart/form-data" className="noHeight" >
-      <input type="hidden" name={csrf_param} value={csrf_token}/>
-      <input type="hidden" name="_method" value={method}/>
-      <>
-        <input accept="image/*" id="icon-button-file" type="file" onChange={handleOnChange} className="hidden" name="curriculum_vitae[photo]" />
-        <label htmlFor="icon-button-file" className={`${ uploadButton ? 'visibleElement' : 'hiddenElement' }`}>
-          <IconButton color="primary" aria-label="upload picture" component="span" className="uploadPhoto">
-            <PhotoCamera />
-          </IconButton>
-        </label>
-      </>
-        <>
-           <input className="hidden" id="icon-button-submit" type="submit" />
-           <label htmlFor="icon-button-submit" className={`${ uploadButton ? 'hiddenElement' : 'visibleElement' }`} >
-           <IconButton color="primary" aria-label="upload picture" component="span" className='uploadPhoto'>
-               <CheckIcon />
-             </IconButton>
-           </label>
-        </>
-    </form>
+    <>
+      <img src={urlPhoto} alt='Photo Profile' className='profilePicture'/>
+
+      {candidate_present && (
+        <form action={action} method="post" encType="multipart/form-data" className="noHeight" >
+          <input type="hidden" name={csrf_param} value={csrf_token}/>
+          <input type="hidden" name="_method" value={method}/>
+          <>
+            <input accept="image/*" id="icon-button-file" type="file" onChange={handleOnChange} className="hidden" name="curriculum_vitae[photo]" />
+            <label htmlFor="icon-button-file" className={`${ uploadButton ? 'visibleElement' : 'hiddenElement' }`}>
+              <IconButton color="primary" aria-label="upload picture" component="span" className="uploadPhoto">
+                <PhotoCamera />
+              </IconButton>
+            </label>
+          </>
+            <>
+               <input className="hidden" id="icon-button-submit" type="submit" />
+               <label htmlFor="icon-button-submit" className={`${ uploadButton ? 'hiddenElement' : 'visibleElement' }`} >
+               <IconButton color="primary" aria-label="upload picture" component="span" className='uploadPhoto'>
+                   <CheckIcon />
+                 </IconButton>
+               </label>
+            </>
+        </form>
+        )
+      }
+    </>
   )
 }
 

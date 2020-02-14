@@ -2,7 +2,7 @@
   %div.background
     %div.container
       %div.flex-box
-        %h2= t('devise.passwords.edit.title') 
+        %h2= t('devise.passwords.edit.title')
         %br/
         %p= t('devise.passwords.edit.description')
         = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
@@ -19,4 +19,4 @@
           .actions
             %button{type: "submit"}= t('devise.passwords.edit.button')
         .divider
-          %a{href: "/"}= t('devise.passwords.edit.link') 
+          %a{href: "/"}= t('devise.passwords.edit.link')

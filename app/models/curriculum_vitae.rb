@@ -46,7 +46,11 @@ class CurriculumVitae < ApplicationRecord
   def photo_validation
     if photo.attached?
       if photo.blob.byte_size > 2000000
-        self.errors.add(:photo, "La foto debe pesar maximo 2MB")
+        self.reload.photo.purge
+        errors.add(:photo, "La foto debe pesar maximo 2MB")
+      elsif !photo.blob.content_type.starts_with?('image/')
+        self.reload.photo.purge
+        errors.add(:photo, "El formato debe ser una imagen")
       end
     end
   end

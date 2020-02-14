@@ -50,18 +50,22 @@ RSpec.describe "Like an user looged", type: :feature do
       end
 
       context "when format of image is incorrect" do
-        scenario "should not save picture and return specfic error" do
+        scenario "should not save picture and return specfic error", js: true do
           sign_in user
 
           visit users_profile_path
 
-          expect(page).to have_field("user[photo]")
+          find('span.uploadPhoto').click
 
-          attach_file('user[photo]', Rails.root + "spec/factories/pdfs/diploma.pdf", make_visible: true)
+          attach_file('curriculum_vitae[photo]', Rails.root + "spec/factories/pdfs/diploma.pdf", make_visible: true)
+          find('span.uploadPhoto').click
 
-          expect(page).to have_content("Error al cargar la imagen, formato erroneo.")
+          expect(current_path).to eq(users_profile_path)
 
-          expect(current_path).to eq(user_profile_path)
+          curriculum_vitae.reload
+          expect(curriculum_vitae.photo.attached?).to be_falsey
+
+          expect(page).to have_text("El formato debe ser una imagen")
         end
       end
     end

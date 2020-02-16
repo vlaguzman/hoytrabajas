@@ -1,6 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Slider from 'react-slick'
 import FilterFormSection from './filterForm'
+
+const bannerImages = [
+  '/assets/static/img/home-banner2.jpg',
+  '/assets/static/img/home-banner3.jpg'
+]
 
 const WelcomeText = ({
   translations,
@@ -16,12 +22,21 @@ const WelcomeText = ({
 
   return (
     <div className="t-home__cover">
-      <img
-        src="/assets/static/img/home-banner2.jpg"
-        alt="Banner"
-        className="home__banner"
-      />
-      <div className="home__banner--responsive" />
+      <Slider
+        className="homeBanner__slider"
+        autoplay
+        slidesToScroll={1}
+        slidesToShow={1}
+        arrows={false}
+        dots={false}
+        swipeToSlide
+        autoplaySpeed={4000}
+      >
+        {bannerImages.map(image => (
+          <img src={image} alt="Home Banner" className="homeBanner__image" />
+        ))}
+      </Slider>
+      <div className="homeBanner__responsive" />
       <FilterFormSection
         {...{ common, ...filterForm }}
         translations={{

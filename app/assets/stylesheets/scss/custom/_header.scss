@@ -19,10 +19,16 @@
 
   @media (max-width: 576px) {
     padding: 0 15px;
+    background-color: $color__blue-main;
+    min-height: 72px;
   }
 
   .site-logo {
     padding: 1rem 0rem 0.8rem 0rem;
+
+    @media (max-width: 576px) {
+      padding: 0;
+    }
   }
   .navbar-left {
     margin-left: 0.85rem;
@@ -43,11 +49,17 @@
     margin: auto;
     flex-flow: row nowrap;
     justify-content: flex-start;
+
     @media (max-width: 992px) {
       padding: 0;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
+    }
+
+    @media (max-width: 576px) {
+      padding: 10px 0;
+      margin: 0 auto;
     }
   }
 
@@ -103,6 +115,12 @@
       padding: 5px 10px;
       border-radius: 4px;
       width: 100%;
+    }
+
+    @media (max-width: 576px) {
+      input {
+        padding: 4px 0;
+      }
     }
   }
 

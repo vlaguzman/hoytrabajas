@@ -13,6 +13,7 @@
  */
 @import 'variables/colors';
 @import 'variables/zIndex';
+@import 'variables/fonts';
 @import 'variables/negativeValues';
 @import 'scss/bootstrap';
 
@@ -25,8 +26,9 @@
 
 // /*==== Google Fonts  ====*/
 @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700,800,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Sanchez:400,400i&display=swap');
 
-// /*==== Google MAterial Icons ====*/
+// /*==== Google Material Icons ====*/
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons&display=swap');
 
 // // Custom themes Files

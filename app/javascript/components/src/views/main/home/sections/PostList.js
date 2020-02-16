@@ -23,28 +23,30 @@ const PostList = ({ translations }) => {
   const { title, btn_see_more, content } = translations
   return (
     <div className="t-home__postList">
-      <h4 className="postList__title color__blue-main">{title}</h4>
-      <div className="postListGrid">
-        {posts.map(post => (
-          <div
-            key={post.key}
-            className="a-shadow__card singlePost d-flex flex-column"
-          >
-            <p className="a-badge__service">{content[post.key].tag}</p>
-            <img src={post.imagePath} alt="Post Thumbnail" />
-            <p className="mt-20 px-20" style={{ textAlign: 'justify' }}>
-              {content[post.key].description}
-            </p>
-            <a
-              className="mt-auto p-20 color__blue-main fw-bold"
-              // TODO any: replace when we have a real link inside each object
-              // href={post.path}
-              href="mailto:operaciones@hoytrabajas.com"
+      <div className="postList__Wrapper">
+        <h4 className="postList__title color__blue-main">{title}</h4>
+        <div className="postListGrid">
+          {posts.map(post => (
+            <div
+              key={post.key}
+              className="a-shadow__card singlePost d-flex flex-column"
             >
-              {btn_see_more}
-            </a>
-          </div>
-        ))}
+              <p className="a-badge__service">{content[post.key].tag}</p>
+              <img src={post.imagePath} alt="Post Thumbnail" />
+              <p className="mt-20 px-20" style={{ textAlign: 'justify' }}>
+                {content[post.key].description}
+              </p>
+              <a
+                className="mt-auto p-20 color__blue-main fw-bold"
+                // TODO any: replace when we have a real link inside each object
+                // href={post.path}
+                href="mailto:operaciones@hoytrabajas.com"
+              >
+                {btn_see_more}
+              </a>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )

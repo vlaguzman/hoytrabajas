@@ -16,6 +16,10 @@
     letter-spacing: normal;
     cursor: pointer;
     padding: 0;
+
+    @media (max-width: 576px) {
+      color: $color__white-main;
+    }
   }
 
   .a-navItem__button {

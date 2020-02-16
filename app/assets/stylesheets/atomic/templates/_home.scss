@@ -1,64 +1,140 @@
 .t-home__cover {
   width: 100%;
+  margin-bottom: 80px;
 
-  .home__banner {
-    object-fit: cover;
-    width: 100%;
-
-    @media (max-width: 576px) {
-      display: none;
-    }
+  @media (max-width: 576px) {
+    margin-bottom: 30px;
   }
 
-  .home__banner--responsive {
-    display: none;
-
-    @media (max-width: 576px) {
-      display: block;
-      background: url('/assets/static/img/home-banner3.jpg');
-      background-size: cover;
-      background-position: center center;
-      height: 170px;
-    }
+  .homeBanner__image {
+    object-fit: cover;
+    width: 100%;
+    min-height: 170px;
   }
 }
 
 .t-home__companies {
   max-width: 1250x;
-  margin: auto;
+  margin: 60px auto 0;
 
-  .companiesSubtitle {
+  .homeSubtitle {
     color: transparentize($color__slategray-main, 0.25);
   }
 }
 
 .t-home__jobCategories,
 .t-home__companies,
-.t-home__newsletter {
+.t-home__newsletter,
+.t-home__steps {
   padding: 0 60px;
+
+  .homeTitle {
+    font-weight: 700;
+  }
 
   @media (max-width: 576px) {
     padding: 0 15px;
 
-    .companiesTitle {
+    .homeTitle {
       font-size: 1.25rem;
       line-height: 1.4;
-      font-weight: bold;
     }
 
-    .companiesSubtitle {
+    .homeSubtitle {
       font-size: 0.875rem;
       letter-spacing: normal;
     }
   }
 }
 
-.t-home__jobCategories {
-  margin: auto;
-  margin-top: 60px;
+.t-home__steps {
+  margin: 100px auto 0;
   max-width: 1250px;
+  text-align: center;
 
-  .companiesSubtitle {
+  .homeGrid {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-top: 60px;
+
+    @media (max-width: 992px) {
+      display: none;
+    }
+  }
+
+  .responsiveSlider {
+    margin-top: 60px;
+    @media (min-width: 992px) {
+      display: none;
+    }
+
+    .slick-dots {
+      li {
+        margin: 0;
+
+        button:before {
+          font-size: 0.625rem;
+          color: $color__slategray-light;
+        }
+      }
+
+      li.slick-active button:before {
+        color: $color__orange-main;
+        opacity: 1;
+      }
+    }
+  }
+
+  .homeStep {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .stepImage {
+    margin: auto auto 30px;
+    object-fit: contain;
+  }
+
+  .stepTitle {
+    color: $color__blue-main;
+    font-weight: 400;
+    font-size: 1rem;
+    font-family: $font-family-secondary;
+    margin-top: auto;
+    min-height: 50px;
+    padding: 0 30px;
+
+    @media (max-width: 992px) {
+      font-size: 1.25rem;
+    }
+
+    @media (max-width: 576px) {
+      font-size: 1.125rem;
+      font-family: $font-family-base;
+      font-weight: 700;
+    }
+  }
+}
+
+.t-home__jobCategories {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: $color__palelilac-dark;
+
+  @media (max-width: 576px) {
+    background: transparent;
+    padding: 60px 0 0;
+  }
+
+  .jobCategoriesWrapper {
+    margin: auto auto 40px;
+    max-width: 1250px;
+  }
+
+  .homeSubtitle {
     color: $color__slategray-main;
   }
 
@@ -96,7 +172,7 @@
     margin-top: 60px;
     padding: 0 15px;
 
-    .bannerBox {
+    .bannerContainer {
       border-radius: 6px;
     }
   }
@@ -112,6 +188,11 @@
   }
   img {
     padding-right: 50px;
+    margin-top: $negative__35px;
+
+    @media (max-width: 992px) {
+      display: none;
+    }
   }
 }
 
@@ -128,10 +209,10 @@
 
   .searchTrends__title {
     margin-bottom: 60px;
+    font-weight: 700;
 
     @media (max-width: 576px) {
       font-size: 1.25rem;
-      font-weight: bold;
       line-height: normal;
       letter-spacing: normal;
       margin-bottom: 40px;
@@ -150,6 +231,7 @@
       max-width: 600px;
     }
   }
+
   .singleTrend {
     li {
       list-style: none;
@@ -158,22 +240,31 @@
 }
 
 .t-home__postList {
-  margin: auto;
+  padding: 100px 0;
+  background-color: $color__palelilac-dark;
   margin-top: 120px;
-  max-width: 1250px;
-  padding: 0 60px;
+
+  .postList__Wrapper {
+    margin: auto;
+    max-width: 1250px;
+    padding: 0;
+
+    @media (max-width: 576px) {
+      padding: 15px;
+    }
+  }
 
   @media (max-width: 576px) {
-    padding: 0 15px;
-    margin-top: 60px;
+    padding: 60px 15px;
+    margin-top: 100px;
   }
 
   .postList__title {
     margin-bottom: 60px;
+    font-weight: 700;
 
     @media (max-width: 576px) {
       font-size: 1.25rem;
-      font-weight: bold;
       line-height: normal;
       letter-spacing: normal;
       margin-bottom: 40px;
@@ -186,10 +277,11 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
     margin: auto;
+
     @media (max-width: 900px) {
       grid-template-columns: repeat(2, 1fr);
-      max-width: 600px;
     }
+
     @media (max-width: 575px) {
       grid-template-columns: 1fr;
     }
@@ -227,16 +319,52 @@
 
 .t-home__newsletter {
   text-align: center;
-  background: $color__palelilac-extralight;
   color: $color__slategray-dark;
-  padding: 0 15px;
+  padding: 60px 60px 120px;
+
+  .newsletter__wrapper {
+    max-width: 1250px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+
+    @media (max-width: 992px) {
+      grid-template-columns: 1fr;
+      grid-gap: 30px;
+    }
+  }
+
+  .homeSubtitle {
+    color: transparentize($color__slategray-main, 0.25);
+  }
 
   .newsletter__inputWrapper {
     border-radius: 50px;
     background: white;
-    padding: 5px;
+    padding: 10px;
     display: flex;
     align-items: center;
+    width: 100%;
+    max-width: 450px;
+    min-height: 50px;
+    position: relative;
+    margin: auto;
+
+    @media (max-width: 992px) {
+      margin: 120px auto auto;
+    }
+
+    .newsletter__image {
+      position: absolute;
+      bottom: 100%;
+      width: 100%;
+      margin: auto;
+
+      img {
+        object-fit: contain;
+      }
+    }
 
     .newsletter__input {
       padding: 8px;
@@ -245,6 +373,17 @@
       outline: none;
       flex: 1;
       margin-left: 5px;
+      background: transparent;
+      font-size: 1.25rem;
+
+      @media (max-width: 576px) {
+        font-size: 0.875rem;
+        padding: 0 8px;
+      }
+
+      &::placeholder {
+        color: $color__slategray-light;
+      }
     }
 
     .newsletter__button {
@@ -255,8 +394,13 @@
       background: $color__orange-main;
       color: white;
       margin-left: auto;
-      width: 35px;
-      height: 35px;
+      width: 43px;
+      height: 43px;
+
+      @media (max-width: 576px) {
+        width: 35px;
+        height: 35px;
+      }
 
       .MuiSvgIcon-root {
         font-size: 1rem;

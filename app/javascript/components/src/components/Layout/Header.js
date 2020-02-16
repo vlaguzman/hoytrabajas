@@ -192,7 +192,7 @@ const Header = props => {
           openState.advancedSearch ? 'navbar-advancedSearch-opened' : ''
         }`}
       >
-        <div className="navbar-row mt-10 mui-fixed">
+        <div className="navbar-row mui-fixed">
           <div className="d-flex align-items-center">
             <div className="site-logo">
               <NavbarBrand href="/" className="logo-mini mr-auto">
@@ -299,7 +299,7 @@ const Header = props => {
           />
         )} */}
       </Navbar>
-      <div className="a-paddingBottom__89" />
+      <div className="a-paddingNavbar" />
     </>
   )
 }

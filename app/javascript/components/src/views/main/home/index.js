@@ -7,6 +7,7 @@ import JobCategories from './sections/JobCategories'
 import Banner from './sections/Banner'
 import SearchTrends from './sections/SearchTrends'
 import PostList from './sections/PostList'
+import Steps from './sections/Steps'
 import Newsletter from './sections/Newsletter'
 import content from './data'
 import useWindowSize from '../../../hooks/useWindowSize'
@@ -33,7 +34,8 @@ const HomePage = ({
     search_trends,
     post_list,
     affiliates,
-    newsletter
+    newsletter,
+    steps
   } = home_translations
   const windowSize = useWindowSize()
 
@@ -57,16 +59,15 @@ const HomePage = ({
       <JobCategories categories={common.categorias} translations={categories} />
       <Banner translations={info} />
       <SearchTrends translations={search_trends} />
+      <Steps translations={steps} />
       <PostList translations={post_list} />
       <CompaniesSection translations={affiliates} {...companies} />
       {/* TODO: use when we have the newsletter working right */}
-      {/* {windowSize.width <= 576 && (
-        <Newsletter
-          translations={newsletter}
-          csrf_param={csrf_param}
-          csrf_token={csrf_token}
-        />
-      )} */}
+      <Newsletter
+        translations={newsletter}
+        csrf_param={csrf_param}
+        csrf_token={csrf_token}
+      />
     </div>
   )
 }

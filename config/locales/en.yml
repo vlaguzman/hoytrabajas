@@ -144,6 +144,9 @@ en:
 
         curriculum_vitae:
           attributes:
+            photo:
+              greather_that_two_mb: 'The photo must weigh a maximum of 2MB'
+              invalid_format: 'The format must be an image'
             job_categories:
               blank: "You must select at least one category in which you want to look for work, this field cannot be empty."
             soft_skills:

@@ -100,17 +100,6 @@ RSpec.describe Users::ProfilesPresenter do
     end
   end
 
-
-  describe "#contact_number_with_format" do
-    context "When a user has a number" do
-      it "Should return number transform" do
-        response = subject.contact_number_with_format
-
-        expect(response).to eq("311 353 5522")
-      end
-    end
-  end
-
   describe "#data_education" do
     context "When a user has a data" do
       it "Should return data user" do

@@ -1,10 +1,11 @@
 class CurriculumVitae < ApplicationRecord
 
-  DEFAULT_MALE_USER_PROFILE_IMAGE = ENV['DEFAULT_MALE_USER_PROFILE_IMAGE']
+  DEFAULT_MALE_USER_PROFILE_IMAGE   = ENV['DEFAULT_MALE_USER_PROFILE_IMAGE']
   DEFAULT_FEMALE_USER_PROFILE_IMAGE = ENV['DEFAULT_FEMALE_USER_PROFILE_IMAGE']
+  DEFAULT_MAX_SIZE_IMAGE =2000000
 
   ATTRIBUTES_TO_COMPARE = [:city_id]
-  LISTS_TO_COMPARE = [:job_categories, :working_days, :available_work_days, :technical_skills, :languages_list, :to_learn_skills, :soft_skills, :work_modes]
+  LISTS_TO_COMPARE      = [:job_categories, :working_days, :available_work_days, :technical_skills, :languages_list, :to_learn_skills, :soft_skills, :work_modes]
 
   validates_presence_of :user
 
@@ -40,6 +41,20 @@ class CurriculumVitae < ApplicationRecord
   delegate :currency_id, :from, :to, to: :curriculum_vitae_salary,  prefix: :salary, allow_nil: true
   delegate :description, to: :contract_type, prefix: :contract_type, allow_nil: true
   delegate :description, to: :labor_disponibility, prefix: :labor_disponibility, allow_nil: true
+
+  validate :validate_photo
+
+  def validate_photo
+    if photo.attached?
+      if !photo.blob.content_type.starts_with?('image/')
+        self.reload.photo.purge
+        errors.add(:photo, I18n.t('activerecord.errors.models.curriculum_vitae.attributes.photo.invalid_format'))
+      elsif photo.blob.byte_size > DEFAULT_MAX_SIZE_IMAGE
+        self.reload.photo.purge
+        errors.add(:photo, I18n.t('activerecord.errors.models.curriculum_vitae.attributes.photo.greather_that_two_mb'))
+      end
+    end
+  end
 
   def languages_list
     strong_languages

@@ -4,7 +4,7 @@
   %h1=t('info.title')
   %p=t('info.description')
   = f.file_field :file_cv
-  = f.input :test, as: :hidden, input_html: { name: request_forgery_protection_token, value: form_authenticity_token }
+  = f.input :test,  as: :hidden, input_html: { name: request_forgery_protection_token, value: form_authenticity_token }
   = f.input :test2, as: :hidden, input_html: { name: "_method", value: "post" }
   .actions
     = link_to(t('actions.return'), users_wizards_step_zero_path)

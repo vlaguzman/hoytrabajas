@@ -31,16 +31,12 @@ class Users::ProfilesPresenter < ApplicationPresenter
     }
   end
 
-  def get_value_of_record(record)
-    GetValueOfRecord.new(record)
-  end
-
-  def contact_number_with_format
-    grouped_number = source
-      .contact_number
-      .to_s
-      .match(/(\d{1,3})(\d{1,3})(\d{1,4})|\d/)
-    "#{grouped_number[1]} #{grouped_number[2]} #{grouped_number[3]}"
+  def give_the_profile_picture
+    if curriculum_vitae.photo.attached?
+       rails_routes.rails_blob_path(source.curriculum_vitae.photo, disposition: 'attachment', only_path: true )
+    else
+      "/assets/static/avatars/profile.jpg"
+    end
   end
 
   def data_education
@@ -103,4 +99,9 @@ class Users::ProfilesPresenter < ApplicationPresenter
   def curriculum_vitae_salary
     curriculum_vitae.curriculum_vitae_salary
   end
+
+  def get_value_of_record(record)
+    GetValueOfRecord.new(record)
+  end
+
 end

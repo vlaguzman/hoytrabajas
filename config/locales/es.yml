@@ -233,6 +233,9 @@ es:
               blank: 'El Titulo reconocimiento no puede estar vacio'
         curriculum_vitae:
           attributes:
+            photo:
+              greather_that_two_mb: 'La foto debe pesar maximo 2MB'
+              invalid_format: 'El formato debe ser una imagen'
             job_categories:
               blank: 'Debes seleccionar por lo menos una categoría en la que desees buscar trabajo, este campo no puede estar vacío.'
             soft_skills:

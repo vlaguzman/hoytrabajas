@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "like new candidate", type: :feature do
-  let(:user) { create(:user) }
+  let(:user)             { create(:user) }
+  let!(:curriculum_vitae) { create(:curriculum_vitae, user: user) }
 
   feature "When Im the upload curriculum vitae page" do
     scenario "When the resume goes up and goes to step zero", js:true do
@@ -19,6 +20,7 @@ RSpec.describe "like new candidate", type: :feature do
       click_button("Continuar")
 
       expect(users_wizards_step_one_path)
+
       expect(user.curriculum_vitae.file_cv.attached?).to be_truthy
     end
 

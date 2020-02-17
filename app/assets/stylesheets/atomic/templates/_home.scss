@@ -30,6 +30,8 @@
 
   .homeTitle {
     font-weight: 700;
+    font-size: 1.938rem;
+    line-height: 41px;
   }
 
   @media (max-width: 576px) {
@@ -100,9 +102,8 @@
 
   .stepTitle {
     color: $color__blue-main;
-    font-weight: 400;
+    font-weight: 700;
     font-size: 1rem;
-    font-family: $font-family-secondary;
     margin-top: auto;
     min-height: 50px;
     padding: 0 30px;
@@ -196,6 +197,23 @@
   }
 }
 
+.t-home__searchTrends,
+.t-home__postList {
+  .homeTitle {
+    margin-bottom: 60px;
+    font-weight: 700;
+    font-size: 1.938rem;
+    line-height: 41px;
+
+    @media (max-width: 576px) {
+      font-size: 1.25rem;
+      line-height: normal;
+      letter-spacing: normal;
+      margin-bottom: 40px;
+    }
+  }
+}
+
 .t-home__searchTrends {
   margin: auto;
   margin-top: 120px;
@@ -205,18 +223,6 @@
   @media (max-width: 576px) {
     padding: 0 15px;
     margin-top: 60px;
-  }
-
-  .searchTrends__title {
-    margin-bottom: 60px;
-    font-weight: 700;
-
-    @media (max-width: 576px) {
-      font-size: 1.25rem;
-      line-height: normal;
-      letter-spacing: normal;
-      margin-bottom: 40px;
-    }
   }
 
   .trendsGrid {

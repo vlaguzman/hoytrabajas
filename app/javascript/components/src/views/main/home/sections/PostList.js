@@ -24,7 +24,7 @@ const PostList = ({ translations }) => {
   return (
     <div className="t-home__postList">
       <div className="postList__Wrapper">
-        <h4 className="postList__title color__blue-main">{title}</h4>
+        <h4 className="homeTitle color__blue-main">{title}</h4>
         <div className="postListGrid">
           {posts.map(post => (
             <div

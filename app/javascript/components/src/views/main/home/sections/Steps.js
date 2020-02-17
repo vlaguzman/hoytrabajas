@@ -9,7 +9,7 @@ const Steps = ({ translations }) => {
     Object.keys(stepsTitles).map((key, index) => (
       <div className="homeStep" key={key}>
         <img
-          src={`/assets/static/img/home-step-${key}`}
+          src={`/assets/static/img/home-step-${key}.png`}
           alt={`${altText} ${index}`}
           className="stepImage"
         />

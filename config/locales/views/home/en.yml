@@ -42,6 +42,12 @@ en:
       subtitle: 'with the talent of their companies'
     steps:
       title: 'Finding your ideal job today is as easy as'
+      stepsTitles:
+        one: 'Register in our platform'
+        two: 'Complete your profile at 100%'
+        three: 'Apply to the offers we have for you'
+        four: 'Get response from the employer'
+      altText: 'Icon of step'
     newsletter:
       title: 'Subscribe to our newsletter'
       subtitle: 'to keep up with the job industry'

@@ -63,11 +63,11 @@ const HomePage = ({
       <PostList translations={post_list} />
       <CompaniesSection translations={affiliates} {...companies} />
       {/* TODO: use when we have the newsletter working right */}
-      <Newsletter
+      {/* <Newsletter
         translations={newsletter}
         csrf_param={csrf_param}
         csrf_token={csrf_token}
-      />
+      /> */}
     </div>
   )
 }

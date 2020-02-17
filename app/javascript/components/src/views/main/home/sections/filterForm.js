@@ -34,7 +34,7 @@ const FilterForm = ({ translations, common, button1, fields1, cities }) => {
 
   const { value: state, toggleState } = dialogState({ open: false })
   const [open, setOpen] = useState(false)
-  const [openCategories, setOpenCategories] = useState(true)
+  const [openCategories, setOpenCategories] = useState(false)
   const [jobCategoryIds, setJobCategoryIds] = useState([])
 
   function handleJobCategory(newId, selected) {

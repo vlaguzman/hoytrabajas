@@ -40,7 +40,15 @@ es:
     affiliates:
       title: 'Muchas empresas confían en nosotros'
       subtitle: 'el talento de su empresa'
+    steps:
+      title: 'Hoy encontrar tu trabajo ideal es tan fácil como'
+      stepsTitles:
+        one: 'Regístrate en nuestra plataforma'
+        two: 'Completar tu perfil al 100%'
+        three: 'Aplicar a las ofertas que tenemos para ti'
+        four: 'Recibe respuesta del empleador'
+      altText: 'Ícono del paso'
     newsletter:
-      title: 'Suscríbete a nuestro boletín'
-      subtitle: 'para estar al tanto de la industria laboral'
+      title: 'Suscríbete a nuestro newsletter'
+      subtitle: 'y entérate de todo acerca de la industria laboral'
       placeholder: 'Ingresa tu correo electrónico'

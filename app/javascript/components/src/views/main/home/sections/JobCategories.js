@@ -6,13 +6,13 @@ const JobCategories = ({ categories, translations }) => {
   return (
     <div className="t-home__jobCategories">
       <div
-        className="mt-0 mb-40 d-flex flex-column justify-content-center align-items-center"
+        className="jobCategoriesWrapper d-flex flex-column justify-content-center align-items-center"
         style={{ textAlign: 'center' }}
       >
-        <h4 className="companiesTitle a-typo__titleH4 color__blue-main">
+        <h4 className="homeTitle a-typo__titleH4 color__blue-main">
           {translations.title}
         </h4>
-        <h5 className="companiesSubtitle a-typo__titleH5">
+        <h5 className="homeSubtitle a-typo__titleH5">
           {translations.subtitle}
         </h5>
       </div>

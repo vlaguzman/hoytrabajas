@@ -18,15 +18,15 @@ const CompaniesSection = ({ translations }) => {
       >
         {windowSize.width > 576 ? (
           <>
-            <h4 className="companiesTitle a-typo__titleH4 color__blue-main">
+            <h4 className="homeTitle a-typo__titleH4 color__blue-main">
               {translations.title}
             </h4>
-            <h5 className="companiesSubtitle a-typo__titleH5">
+            <h5 className="homeSubtitle a-typo__titleH5">
               {translations.subtitle}
             </h5>
           </>
         ) : (
-          <h4 className="companiesTitle a-typo__titleH4 color__blue-main">
+          <h4 className="homeTitle a-typo__titleH4 color__blue-main">
             {`${translations.title} ${translations.subtitle}`}
           </h4>
         )}

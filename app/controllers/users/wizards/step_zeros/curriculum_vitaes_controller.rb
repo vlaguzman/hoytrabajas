@@ -7,7 +7,7 @@ class Users::Wizards::StepZeros::CurriculumVitaesController < ApplicationControl
   def create
     parameter = permit_params[:user]
     if parameter.present?
-      AttachFile.upload_record_file(current_user.curriculum_vitae, :file_cv, parameter[:file_cv])
+      Users::AttachFileService.upload_record_file(current_user.curriculum_vitae, :file_cv, parameter[:file_cv])
       redirect_to users_wizards_step_one_path
     else
       redirect_to users_wizards_step_one_path

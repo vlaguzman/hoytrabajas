@@ -12,7 +12,7 @@ class Users::ProfilesController < ApplicationController
 
   def update
     cv = current_user.curriculum_vitae
-    AttachFile.upload_record_file(cv, :photo, update_permit_params[:photo])
+    Users::AttachFileService.upload_record_file(cv, :photo, update_permit_params[:photo])
     cv.user.errors.add(:curriculum_vitae_photo, cv.errors[:photo])
     @user = Users::ProfilesPresenter.new(cv.user)
     render 'show'
@@ -31,7 +31,7 @@ class Users::ProfilesController < ApplicationController
   end
 
   def logged_candidate
-    candidate_id = (user_signed_in?) ? current_user.id :  permit_params[:user_id]
+    candidate_id = (user_signed_in?) ? current_user.id : show_permit_params[:user_id]
     User.find_by(id: candidate_id)
   end
 end

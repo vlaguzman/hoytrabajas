@@ -15,7 +15,7 @@ A          • ApplicationJob                                              1    
 A          • ApplicationMailer                                           3       0.0        0           1
 A          • ApplicationPresenter                                        5       26.49      0           10
 A          • ApplicationRecord                                           4       0.0        0           1
-A          • AppliedOffer                                                3       0.0        0           1
+A          • AppliedOffer                                                4       0.0        0           1
 A          • AppliedOfferStatus                                          1       0.0        0           1
 A          • AppliedOffers                                               3       0.0        0           0
 A          • AppliedOffersController                                     9       35.72      0           2
@@ -61,9 +61,9 @@ A          • Companies::FirstOffer::StepTwoService                       6    
 A          • Companies::FirstOffer::StepZeroPresenter                    2       1.0        0           2
 A          • Companies::FirstOffer::StepZerosController                  3       3.24       0           1
 A          • Companies::FirstOfferPresenter                              5       4.8        0           1
-A          • Companies::ListCandidates::AppliedCandidatesService         2       44.86      0           2
+A          • Companies::ListCandidates::AppliedCandidatesService         3       46.24      0           2
 A          • Companies::ListCandidatesController                         2       6.94       0           1
-A          • Companies::ListCandidatesPresenter                          1       20.6       0           1
+A          • Companies::ListCandidatesPresenter                          3       28.45      0           2
 A          • Companies::RegistrationsController                          7       1.0        0           2
 A          • CompaniesController                                         7       3.4        0           1
 A          • CompaniesUsers                                              1       0.0        0           1

@@ -7,4 +7,6 @@ class AppliedOffer < ApplicationRecord
 
   delegate :title, to: :offer, prefix: :offer, allow_nil: true
 
+  scope :order_by_applied_date, -> { order(applied_date: :asc) }
+
 end

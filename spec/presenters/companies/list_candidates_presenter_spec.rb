@@ -1,16 +1,25 @@
 require "rails_helper"
 
 RSpec.describe Companies::ListCandidatesPresenter do
+
+  let(:vehicles)     { [create(:vehicle, description: "Moto")] }
+  let(:vehicles_b)   { [vehicles.first, create(:vehicle, description: "Carro")] }
+
   let(:offer) { create(:offer,
     close_date: Date.new(2019, 12, 31),
     city: create(:city, description: 'La Dorada'),
     job_categories: [
       create(:job_category, description: 'Salud'),
       create(:job_category, description: 'Hogar'),
-    ]
+    ],
+    vehicles: vehicles
   ) }
 
-  let!(:applied_offers) { create_list(:applied_offer, 3, offer: offer) }
+  let(:candidate_one_cv)   { create(:user, name: 'Jhonny', last_name: 'Bravo').curriculum_vitae }
+  let(:candidate_two_cv)   { create(:user, name: 'Alfred', last_name: 'Ito', vehicles: vehicles_b).curriculum_vitae }
+
+  let!(:applied_offer_1) { create(:applied_offer, curriculum_vitae: candidate_one_cv, offer: offer) }
+  let!(:applied_offer_2) { create(:applied_offer, curriculum_vitae: candidate_two_cv, offer: offer) }
 
   let(:subject) { described_class.new(offer) }
 
@@ -21,7 +30,7 @@ RSpec.describe Companies::ListCandidatesPresenter do
   end
 
   describe "#categories" do
-    it "should return the the job categories" do
+    it "should return the job categories" do
       expect(subject.categories).to match_array(['Salud', 'Hogar'])
     end
   end
@@ -33,9 +42,39 @@ RSpec.describe Companies::ListCandidatesPresenter do
   end
 
   describe "#pretty_applied_candidades" do
-    it "should return the the job categories" do
-      expect(subject.pretty_applied_candidades).to eq('3 Candidato(s)')
+    it "should return the job categories" do
+      expect(subject.list_applied_candidates).to eq({})
     end
   end
 
+  describe "#list_applied_candidates" do
+    context "when has applied offers" do
+      it "should return a candidates sort by affinity percentage" do
+        affinity_percentages = subject.list_applied_candidates.map { |candidate_info| candidate_info[:affinity_percentage] }
+
+        expect(affinity_percentages).to match_array([27, 0])
+      end
+    end
+
+    context "when has applied offers with same affinity percentage" do
+      before do
+        candidate_one_cv.user.update(vehicles: vehicles_b)
+      end
+
+      it "should return a candidates sort by applied_date" do
+        response = subject.list_applied_candidates.map { |candidate_info| [candidate_info[:name], candidate_info[:affinity_percentage]] }
+
+        expect(response).to match_array([['Jhonny Bravo', 27], ['Alfred Ito', 27]])
+      end
+    end
+
+    context "when has not applied offers" do
+      before do
+        offer.applied_offers.destroy_all
+      end
+      scenario "should return an empty array" do
+        expect(subject.list_applied_candidates).to match_array([])
+      end
+    end
+  end
 end

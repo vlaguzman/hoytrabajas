@@ -24,8 +24,8 @@
 
     %div.o-listCandidates
       %div.o-listCandidates__container.--desktop
-        - @offer.list_applied_candidates.each do |candidate|
-          %div.m-candidateBox
+        - @offer.list_applied_candidates.each_with_index do |candidate, index|
+          %div.m-candidateBox{id: "candidate_#{index}"}
             %img.a-avatar{src: candidate[:avatar]}
             %div.m-detailsContainer
               %div.m-nameContaintainer
@@ -38,7 +38,7 @@
                   %span.a-title--skills= t('.skills')
                   %span= candidate[:technical_skills]
             %div.m-affinityPercentageContainer
-              %span.a-affinityPercentage= candidate[:affinity_percentage]
+              %span.a-affinityPercentage= "#{candidate[:affinity_percentage]}%"
               = react_component('views/companies/affinity_percentage_info', description: t('.tooltips.affinity_percentage') )
             %div.m-profileButtonContainer
               %a{href: candidate[:profile_path]}
@@ -62,5 +62,5 @@
             %div.m-affinityPercentageContainer.--mobile
               %img.a-avatar{src: candidate[:avatar]}
               %div.m-affinityPercentageContainer__group.--mobile
-                %span.a-affinityPercentage= candidate[:affinity_percentage]
+                %span.a-affinityPercentage= "#{candidate[:affinity_percentage]}%"
                 = react_component('views/companies/affinity_percentage_info', description: t('.tooltips.affinity_percentage') )

@@ -43,7 +43,7 @@ RSpec.describe Companies::ListCandidatesPresenter do
 
   describe "#pretty_applied_candidades" do
     it "should return the job categories" do
-      expect(subject.list_applied_candidates).to eq({})
+      expect(subject.pretty_applied_candidades).to eq('2 Candidato(s)')
     end
   end
 

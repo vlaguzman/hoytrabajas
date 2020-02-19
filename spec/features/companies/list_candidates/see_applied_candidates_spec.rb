@@ -18,8 +18,8 @@ RSpec.describe "Like a company, I want to see the applied candidates", type: :fe
   let!(:applied_offer_1) { create(:applied_offer, curriculum_vitae: candidate_one_cv, offer: main_offer) }
   let!(:applied_offer_2) { create(:applied_offer, curriculum_vitae: candidate_two_cv, offer: main_offer) }
 
-  context "When i visit the list candidates path inside my offer" do
-    context "when has applied offers" do
+  context "When i visit the list candidates path of my offer" do
+    context "when offer has applied offers" do
       scenario "should return a candidates sort by affinity percentage", js: true do
         sign_in main_company
 
@@ -45,7 +45,7 @@ RSpec.describe "Like a company, I want to see the applied candidates", type: :fe
       end
     end
 
-    context "when has applied offers with same affinity percentage" do
+    context "when offer has applied offers with same affinity percentage" do
       before do
         candidate_one_cv.user.update(vehicles: vehicles_b)
       end
@@ -61,7 +61,6 @@ RSpec.describe "Like a company, I want to see the applied candidates", type: :fe
 
         expect(page).to have_text(main_offer.title)
 
-        save_page('daniel.html')
         expect(page).to have_content('2 Candidato(s)')
 
         within "#candidate_0" do
@@ -76,7 +75,7 @@ RSpec.describe "Like a company, I want to see the applied candidates", type: :fe
       end
     end
 
-    context "when has not applied offers" do
+    context "when offer has not applied offers" do
       before do
         main_offer.applied_offers.destroy_all
       end

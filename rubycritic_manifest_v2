@@ -5,7 +5,7 @@ A          • AdminUser                                                   2    
 A          • AdminUsers                                                  1       0.0        0           0
 A          • AdminUsers::SessionsController                              2       6.2        0           1
 A          • Admins::OffersController                                    15      33.32      0           2
-A          • Admins::OffersPresenter                                     4       22.34      0           3
+A          • Admins::OffersPresenter                                     5       28.01      0           3
 A          • AdminsService                                               1       13.19      0           1
 A          • AgeRange                                                    3       0.0        0           1
 A          • ApplicationCable::Channel                                   1       0.0        0           1

@@ -9,7 +9,7 @@ left join cities on c.city_id=cities.id;
 
 -- Orders
 select o.id, coalesce(o.release_date, o.created_at) offer_date, o.title, ot.description, status, companies.name, cities.description city, count(applied_offers.id) aplicantes,
-created_by_admin, string_agg(jc.description, ',' order by jc.description) category
+created_by_admin, string_agg(distinct jc.description, ',' order by jc.description) category
 from offers o
 join offer_types ot on o.offer_type_id=ot.id
 join job_categories_offers jco on o.id=jco.offer_id

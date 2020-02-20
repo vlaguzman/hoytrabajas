@@ -66,7 +66,7 @@
     - @offer.offers_technical_skills.each do |technical_skill|
       %div.group{id: "offers_technical_skill_#{technical_skill.id}"}
         = f.simple_fields_for :offers_technical_skills, index: nil do |ots|
-          = ots.input :id, input_html: { type: "hidden", value: technical_skill.id }, label: false
+          = ots.input :id, input_html: { value: technical_skill.id }, label: false
           = ots.input :technical_skill_id, input_html: { name: "offer[offers_technical_skills][][technical_skill_id]" }, collection: @offer.get_collection_by_model(TechnicalSkill), selected: technical_skill.technical_skill_id, value_method: :first, label_method: :second, label: t('offer.form.labels.offers_technical_skills.technical_skill_id'), include_blank: t('offer.form.prompt.offers_technical_skills.technical_skill_id'), error: @offer.get_error_by_model(@offer.prepare_key_to_error("offers_technical_skills", technical_skill.id), :technical_skill)
           = ots.input :level_id,           input_html: { name: "offer[offers_technical_skills][][level_id]" },           collection: @offer.get_collection_by_model(Level),          selected: technical_skill.level_id,           value_method: :first, label_method: :second, label: t('offer.form.labels.offers_technical_skills.level_id'),           include_blank: t('offer.form.prompt.offers_technical_skills.level_id'),           error: @offer.get_error_by_model(@offer.prepare_key_to_error("offers_technical_skills", technical_skill.id), :level)
 

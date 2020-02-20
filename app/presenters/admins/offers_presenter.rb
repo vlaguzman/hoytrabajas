@@ -10,7 +10,6 @@ class Admins::OffersPresenter < ApplicationPresenter
 
   def get_collection_by_model(model)
     model.all.pluck(:id, :description).map { |value| [ value[0], value[1].truncate(30) ] }
-
   end
 
   def get_error_by_model(model, attribute)

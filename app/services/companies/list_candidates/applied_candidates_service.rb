@@ -11,7 +11,7 @@ module Companies::ListCandidates::AppliedCandidatesService
   end
 
   def self.build_applied_candidates_list(offer)
-    AppliedOffer.where(offer: offer).map do |applied_offer|
+    AppliedOffer.where(offer: offer).order_by_applied_date.map do |applied_offer|
       build_applied_candidate(offer, applied_offer.curriculum_vitae)
     end
   end
@@ -44,7 +44,7 @@ module Companies::ListCandidates::AppliedCandidatesService
   end
 
   def self.build_affinity_percentage(offer: nil, candidate: nil)
-    offer.present? && candidate.present? && "#{AffinityCalculator.new(offer, candidate).affinity_percentage.to_i}%"
+    offer.present? && candidate.present? && AffinityCalculator.new(offer, candidate).affinity_percentage.to_i
   end
 
   def self.profile_path(candidate)

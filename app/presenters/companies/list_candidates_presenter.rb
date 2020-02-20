@@ -9,7 +9,7 @@ class Companies::ListCandidatesPresenter < ApplicationPresenter
   end
 
   def pretty_close_date
-    DatesManager.default(date: source.close_date)
+    source.close_date.present? ? DatesManager.default(date: source.close_date) : '-'
   end
 
   def pretty_applied_candidades
@@ -18,6 +18,7 @@ class Companies::ListCandidatesPresenter < ApplicationPresenter
 
   def list_applied_candidates
     Companies::ListCandidates::AppliedCandidatesService.(offer: source)
+      .sort_by { |attribute, _| -(attribute[:affinity_percentage]) }
   end
 
   def offer_path

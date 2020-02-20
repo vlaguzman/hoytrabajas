@@ -39,7 +39,11 @@
 
     @media (max-width: 576px) {
       width: 100%;
-      padding: 15px 10px;
+      padding: 10px 0;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       letter-spacing: 0.8px;
     }
 

@@ -9,7 +9,7 @@ es:
           permanent_description: "Fijo"
           title: "Conozcamos más de tu oferta"
           subtitle: "Brinda a tu candidato información relevante de tu empresa."
-          content: "Aspiración salarial"
+          content: "Salario ofrecido"
           form:
             buttons:
               submit: "Siguiente"

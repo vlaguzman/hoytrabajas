@@ -121,7 +121,7 @@ A          • OfferOnDemand                                               4    
 A          • OfferRequiredExperiences                                    2       0.0        0           1
 A          • OfferSalary                                                 9       0.0        0           1
 A          • OfferType                                                   5       0.0        0           1
-A          • Offers                                                      22      0.0        0           0
+A          • Offers                                                      23      0.0        0           0
 A          • Offers::AppliedOfferService                                 2       13.25      0           1
 A          • Offers::CompletelyDestroyService                            2       13.3       0           1
 A          • Offers::IndexService                                        6       11.26      0           3

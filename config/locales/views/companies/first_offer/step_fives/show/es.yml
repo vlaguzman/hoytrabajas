@@ -17,7 +17,7 @@ es:
               previous: "Regresar"
             type: "offer"
             formFields:
-              is_range: 'Aspiración salarial'
+              is_range: 'Salario ofrecido'
               currency_id: 'Moneda'
               from: ''
               to: ''

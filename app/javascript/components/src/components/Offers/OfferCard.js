@@ -1,11 +1,12 @@
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, {useState} from 'react'
 import Card from '@material-ui/core/Card'
 import CardActionArea from '@material-ui/core/CardActionArea'
 import CardMedia from '@material-ui/core/CardMedia'
 import { Row, Col } from 'reactstrap'
 import classNames from 'classnames'
 import OfferContent from './OfferContent'
+import CircularProgress from '@material-ui/core/CircularProgress';
 // The quick action icons are not used yet
 // import ShareIcon from '@material-ui/icons/Share'
 // import Delete from '@material-ui/icons/Delete'
@@ -35,6 +36,11 @@ const OfferCard = ({
     return offer.on_demand === 'up' ? 'cardOfferOnDemand' : ''
   }
 
+  const [loading, setLoading] = useState(false);
+
+  const handleButtonClick = () => {
+    if (!loading) setLoading(true);
+  }
   return (
     <Col
       className={`m-offer cardOffer position-relative justify-content-center align-items-center ${isOfferOnDemand()}`}
@@ -61,22 +67,28 @@ const OfferCard = ({
               name="applied_offer[offer_id]"
               value={offer.id_offer}
             />
-            <button
-              variant="contained"
-              type="submit"
-              className={classNames(
-                'a-button offerButton__apply btn-apply w-80 my-10 text-white',
-                {
-                  'a-button--disabled': offer.is_applied
-                }
-              )}
-            >
-              {/* TO-DO-VLADO: made a review of the responsive
-                   <span className="d-none d-lg-inline">
-                     {value_button_lg}
-                   </span> */}
-              {value_button}
-            </button>
+            <div className="w-100 justify-content-center no-gutters row" >
+              <button
+                onClick={handleButtonClick}
+                variant="contained"
+                type="submit"
+                className={classNames(
+                  'a-button offerButton__apply btn-apply w-80 my-10 text-white',
+                  {
+                    'a-button--disabled': offer.is_applied || loading
+                  }
+                )}
+              >
+                {/* TO-DO-VLADO: made a review of the responsive
+                     <span className="d-none d-lg-inline">
+                       {value_button_lg}
+                     </span> */}
+                {value_button}
+              </button>
+              <div className="w-100 justify-content-center no-gutters row paddingCustom">
+                { loading && <CircularProgress size={30} className={'a-loadingEvent'} /> }
+              </div>
+            </div>
           </form>
         </Row>
         {/* TO-DO-ANYONE: ACTIVE THE SUPER-APPLY

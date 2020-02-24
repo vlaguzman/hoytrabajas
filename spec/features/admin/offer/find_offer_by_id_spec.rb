@@ -16,7 +16,7 @@ RSpec.describe "like a admin user", :type => :feature do
         expect(page).to have_content(offer.title)
       end
 
-      fill_in 'q[offer_id_contains]', with: offer.id
+      fill_in 'q[id_equals]', with: objective_offer.id
 
       click_button 'Filtrar'
 

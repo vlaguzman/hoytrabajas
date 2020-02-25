@@ -76,6 +76,47 @@ ActiveRecord::Schema.define(version: 2020_02_25_154250) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "affinity_percentages", force: :cascade do |t|
+    t.bigint "offer_id", null: false
+    t.bigint "curriculum_vitae_id", null: false
+    t.float "affinity_percentage", null: false
+    t.string "version", null: false
+    t.string "sexes_offer"
+    t.string "sexes_curriculum_vitae"
+    t.string "available_work_days_offer"
+    t.string "available_work_days_curriculum_vitae"
+    t.string "educational_degree_offer"
+    t.string "educational_degree_curriculum_vitae"
+    t.string "educational_level_offer"
+    t.string "educational_level_curriculum_vitae"
+    t.string "driving_licences_offer"
+    t.string "driving_licences_curriculum_vitae"
+    t.string "technical_skills_offer"
+    t.string "technical_skills_curriculum_vitae"
+    t.string "contract_type_id_offer"
+    t.string "contract_type_id_curriculum_vitae"
+    t.string "to_learn_skills_offer"
+    t.string "to_learn_skills_curriculum_vitae"
+    t.string "languages_list_offer"
+    t.string "languages_list_curriculum_vitae"
+    t.string "job_categories_offer"
+    t.string "job_categories_curriculum_vitae"
+    t.string "working_days_offer"
+    t.string "working_days_curriculum_vitae"
+    t.string "work_mode_id_offer"
+    t.string "work_mode_id_curriculum_vitae"
+    t.string "soft_skills_offer"
+    t.string "soft_skills_curriculum_vitae"
+    t.string "vehicles_offer"
+    t.string "vehicles_curriculum_vitae"
+    t.string "city_id_offer"
+    t.string "city_id_curriculum_vitae"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["curriculum_vitae_id"], name: "index_affinity_percentages_on_curriculum_vitae_id"
+    t.index ["offer_id"], name: "index_affinity_percentages_on_offer_id"
+  end
+
   create_table "age_ranges", force: :cascade do |t|
     t.integer "from"
     t.integer "to"
@@ -582,47 +623,6 @@ ActiveRecord::Schema.define(version: 2020_02_25_154250) do
     t.index ["educational_degree_id"], name: "index_offers_on_educational_degree_id"
     t.index ["offer_type_id"], name: "index_offers_on_offer_type_id"
     t.index ["work_mode_id"], name: "index_offers_on_work_mode_id"
-  end
-
-  create_table "offers_curriculum_vitaes", force: :cascade do |t|
-    t.bigint "offer_id", null: false
-    t.bigint "curriculum_vitae_id", null: false
-    t.float "affinity_percentage", null: false
-    t.string "version", null: false
-    t.string "sexes_offer"
-    t.string "sexes_curriculum_vitae"
-    t.string "available_work_days_offer"
-    t.string "available_work_days_curriculum_vitae"
-    t.string "educational_degree_offer"
-    t.string "educational_degree_curriculum_vitae"
-    t.string "educational_level_offer"
-    t.string "educational_level_curriculum_vitae"
-    t.string "driving_licences_offer"
-    t.string "driving_licences_curriculum_vitae"
-    t.string "technical_skills_offer"
-    t.string "technical_skills_curriculum_vitae"
-    t.string "contract_type_id_offer"
-    t.string "contract_type_id_curriculum_vitae"
-    t.string "to_learn_skills_offer"
-    t.string "to_learn_skills_curriculum_vitae"
-    t.string "languages_list_offer"
-    t.string "languages_list_curriculum_vitae"
-    t.string "job_categories_offer"
-    t.string "job_categories_curriculum_vitae"
-    t.string "working_days_offer"
-    t.string "working_days_curriculum_vitae"
-    t.string "work_mode_id_offer"
-    t.string "work_mode_id_curriculum_vitae"
-    t.string "soft_skills_offer"
-    t.string "soft_skills_curriculum_vitae"
-    t.string "vehicles_offer"
-    t.string "vehicles_curriculum_vitae"
-    t.string "city_id_offer"
-    t.string "city_id_curriculum_vitae"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["curriculum_vitae_id"], name: "index_offers_curriculum_vitaes_on_curriculum_vitae_id"
-    t.index ["offer_id"], name: "index_offers_curriculum_vitaes_on_offer_id"
   end
 
   create_table "offers_requirements", force: :cascade do |t|

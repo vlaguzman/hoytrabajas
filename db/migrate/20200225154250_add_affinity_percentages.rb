@@ -1,6 +1,6 @@
-class AddOffersCurriculumVitaes < ActiveRecord::Migration[6.0]
+class AddAffinityPercentages < ActiveRecord::Migration[6.0]
   def change
-    create_table :offers_curriculum_vitaes do |t|
+    create_table :affinity_percentages do |t|
       t.references :offer, null: false, forein_key: true
       t.references :curriculum_vitae, null: false, forein_key: true
 

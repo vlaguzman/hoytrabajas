@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe OffersCurriculumVitaes, type: :model do
+RSpec.describe AffinityPercentage, type: :model do
 
   describe "associations" do
     it { should belong_to(:offer) }

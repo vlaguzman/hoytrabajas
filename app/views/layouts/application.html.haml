@@ -27,7 +27,7 @@
       %script{:async => "async", :src => "//script.crazyegg.com/pages/scripts/0090/2467.js", :type => "text/javascript"}
 
       -# Canonical
-      %link{:href => "#{ENV['HT_PROTOCOL']}#{ENV['HT_DOMAIN']}#{(url_for(:page => params_page)).chomp("/")}", :rel => "canonical"}/
+      %link{:href => "#{ENV['HT_PROTOCOL']}#{ENV['HT_DOMAIN']}#{(url_for(:page => params[:page])).chomp("/")}", :rel => "canonical"}/
   %body
 
     = yield

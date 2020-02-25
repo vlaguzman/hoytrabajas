@@ -9,7 +9,7 @@ es:
           permanent_description: "Fijo"
           title: "Conozcamos más de tu oferta"
           subtitle: "Brinda a tu candidato información relevante de tu empresa."
-          content: "Aspiración salarial"
+          content: "Salario ofrecido"
           form:
             buttons:
               submit: "Siguiente"
@@ -17,7 +17,7 @@ es:
               previous: "Regresar"
             type: "offer"
             formFields:
-              is_range: 'Aspiración salarial'
+              is_range: 'Salario ofrecido'
               currency_id: 'Moneda'
               from: ''
               to: ''

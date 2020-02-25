@@ -20,7 +20,7 @@ RSpec.describe Companies::FirstOffer::StepFive::FormParamsService do
         permanent_description: 'Fijo',
         title: 'Conozcamos más de tu oferta',
         subtitle: 'Brinda a tu candidato información relevante de tu empresa.',
-        content: 'Aspiración salarial',
+        content: 'Salario ofrecido',
         form:  {
           placeholders:  {
             from: 'Ej: 750000',
@@ -50,7 +50,7 @@ RSpec.describe Companies::FirstOffer::StepFive::FormParamsService do
             },
             is_range:  {
               name: 'offer[is_range]',
-              label: 'Aspiración salarial',
+              label: 'Salario ofrecido',
               values: [
                {id: 'true',  description: 'Rango'},
                {id: 'false', description: 'Fijo'}

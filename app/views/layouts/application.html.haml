@@ -26,7 +26,8 @@
       -# Crazy egg
       %script{:async => "async", :src => "//script.crazyegg.com/pages/scripts/0090/2467.js", :type => "text/javascript"}
 
-      %link{:href => "#{ENV['HT_PROTOCOL']}#{ENV['HT_DOMAIN']}#{url_for(:page => params[:page])}", :rel => "canonical"}/
+      -# Canonical
+      %link{:href => "#{ENV['HT_PROTOCOL']}#{ENV['HT_DOMAIN']}#{(url_for(:page => params_page)).chomp("/")}", :rel => "canonical"}/
   %body
 
     = yield

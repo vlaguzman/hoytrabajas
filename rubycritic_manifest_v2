@@ -129,6 +129,7 @@ A          • Offers::OrderByAffinityPercentageService                    3    
 A          • Offers::OrderByOnDemand                                     1       29.62      0           2
 A          • Offers::UpdateOffersStatusDailyJob                          2       6.9        0           2
 A          • OffersController                                            32      38.05      0           4
+A          • OffersCurriculumVitaes                                      1       0.0        0           1
 A          • OffersPresenter                                             8       19.0       0           4
 A          • OffersResponsibilities                                      1       0.0        0           1
 A          • OffersService                                               24      48.4       0           4
@@ -231,7 +232,7 @@ A          • WorkMethodology                                             1    
 A          • WorkMode                                                    3       0.0        0           1
 A          • WorkPosition                                                3       0.0        0           1
 A          • WorkingDay                                                  5       0.0        0           1
-B          • AffinityCalculator                                          12      68.63      46          15
+B          • AffinityCalculator                                          13      68.63      46          15
 B          • Companies::FirstOffer::StepFivePresenter                    5       25.0       23          1
 B          • Companies::FirstOffer::StepFiveService                      4       38.92      18          6
 B          • Companies::FirstOffer::StepFour::FormParamsService          11      53.96      22          5

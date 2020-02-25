@@ -16,6 +16,7 @@ ActiveAdmin.register Offer do
     end
   end
 
+  filter :id, as: :numeric, label: 'ID oferta'
   filter :company_name, as: :string, label: 'Nombre compañia'
   filter :company_email, as: :string, label: 'Correo compañia'
   filter :title, label: 'Titulo'

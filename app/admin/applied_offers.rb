@@ -14,6 +14,8 @@ ActiveAdmin.register AppliedOffer do
     actions
   end
 
+  filter :curriculum_vitae_user_email, as: :string, label: 'Correo Usuario'
+
   form do |f|
     f.semantic_errors *f.object.errors.keys
     f.inputs do

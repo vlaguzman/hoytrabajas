@@ -1,4 +1,7 @@
 class AffinityCalculator
+
+  VERSION = '1.0'
+
   ATTRIBUTE_WEIGHT = {
     available_work_days: 1,
     educational_degree:  3,

@@ -209,4 +209,12 @@ RSpec.describe AffinityCalculator do
     end
   end
 
+  describe "Default version of affinity calculator" do
+    context "when calculate affinity percentage, the default version" do
+      it "should return 1.0" do
+        version = AffinityCalculator::VERSION
+        expect(version).to eq('1.0')
+      end
+    end
+  end
 end

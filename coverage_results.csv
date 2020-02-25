@@ -8,6 +8,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/mailers/mail_notifier.rb",100,12,5,5,0
 "./app/models/acknowledgment.rb",100,12,7,7,0
 "./app/models/admin_user.rb",100,6,3,3,0
+"./app/models/affinity_percentage.rb",100,4,3,3,0
 "./app/models/age_range.rb",100,8,5,5,0
 "./app/models/application_record.rb",100,3,2,2,0
 "./app/models/applied_offer.rb",100,12,7,7,0
@@ -126,7 +127,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/add_model_errors_service.rb",100,58,23,23,0
 "./app/services/admins/offers_service.rb",100,188,92,92,0
 "./app/services/admins_service.rb",100,15,8,8,0
-"./app/services/affinity_calculator.rb",100,77,35,35,0
+"./app/services/affinity_calculator.rb",100,80,36,36,0
 "./app/services/base_form_wizards_service.rb",100,99,52,52,0
 "./app/services/base_forms/find_or_create_record_service.rb",100,16,8,8,0
 "./app/services/base_forms/wizards_autocomplete_service.rb",100,23,10,10,0

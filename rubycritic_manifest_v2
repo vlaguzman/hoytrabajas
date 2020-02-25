@@ -7,6 +7,7 @@ A          • AdminUsers::SessionsController                              2    
 A          • Admins::OffersController                                    15      33.32      0           2
 A          • Admins::OffersPresenter                                     6       28.01      0           3
 A          • AdminsService                                               1       13.19      0           1
+A          • AffinityPercentage                                          2       0.0        0           1
 A          • AgeRange                                                    3       0.0        0           1
 A          • ApplicationCable::Channel                                   1       0.0        0           1
 A          • ApplicationCable::Connection                                1       0.0        0           1
@@ -231,7 +232,7 @@ A          • WorkMethodology                                             1    
 A          • WorkMode                                                    3       0.0        0           1
 A          • WorkPosition                                                3       0.0        0           1
 A          • WorkingDay                                                  5       0.0        0           1
-B          • AffinityCalculator                                          12      68.63      46          15
+B          • AffinityCalculator                                          13      68.63      46          15
 B          • Companies::FirstOffer::StepFivePresenter                    5       25.0       23          1
 B          • Companies::FirstOffer::StepFiveService                      4       38.92      18          6
 B          • Companies::FirstOffer::StepFour::FormParamsService          11      53.96      22          5

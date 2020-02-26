@@ -18,7 +18,7 @@ A          • ApplicationPresenter                                        5    
 A          • ApplicationRecord                                           4       0.0        0           1
 A          • AppliedOffer                                                4       0.0        0           1
 A          • AppliedOfferStatus                                          1       0.0        0           1
-A          • AppliedOffers                                               3       0.0        0           0
+A          • AppliedOffers                                               4       0.0        0           0
 A          • AppliedOffersController                                     9       35.72      0           2
 A          • AppliedOffersMailer                                         3       7.09       0           1
 A          • AppliedOffersPresenter                                      6       25.41      0           3

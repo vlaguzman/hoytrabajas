@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe "like a admin user", :type => :feature do
-  let(:admin)               { create(:admin_user) }
-  let!(:user)               { create(:user, email: 'examplo@mail.com') } 
+  let(:admin)                { create(:admin_user) }
+  let!(:user)                { create(:user, email: 'examplo@mail.com') } 
   let!(:list_applied_offers) { create_list(:applied_offer, 5) } 
-  let!(:objective)          { create(:applied_offer, curriculum_vitae: user.curriculum_vitae) }
+  let!(:objective)           { create(:applied_offer, curriculum_vitae: user.curriculum_vitae) }
 
   feature "When I search a candidate by mail" do
     scenario "Should see the offers applied by candidate", js: true do

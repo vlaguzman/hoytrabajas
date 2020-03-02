@@ -19,7 +19,7 @@ es:
       contact_number: 'Número de contacto'
       education_level: 'Nivel de educación'
       special_condition: 'Tienes alguna condición especial'
-      vehicle: '¿Algun tipo de vehículo?'
+      vehicle: '¿Algún tipo de vehículo?'
       driving_license: 'Licencia de conducción tipo'
     travel_disponibility:
       available: 'Si'
@@ -41,4 +41,7 @@ es:
     academic_training: 'Formación académica'
     experience: 'Experiencia'
     slogan: 'La manera más fácil, rápida y económica de conseguir empleo.'
-
+    status_options:
+      are_you_interested: 'Califica el perfil de este usuario'
+      im_interested: 'Me interesa'
+      im_not_interested: 'Descartar'

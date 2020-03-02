@@ -7,6 +7,7 @@ class Users::ProfilesPresenter < ApplicationPresenter
       last_name:             get_value_of_record(source).validate_present?(:simple, :last_name),
       birthday:              get_value_of_record(source).validate_present?(:simple, :birthday),
       identification_number: get_value_of_record(source).validate_present?(:simple, :identification_number),
+      about_me:              get_value_of_record(source).validate_present?(:simple, :about_me),
 
       document_type:         get_value_of_record(source).validate_present?(:relation, :document_type),
       educational_degree:    get_value_of_record(source).validate_present?(:relation, :educational_degree),
@@ -33,7 +34,7 @@ class Users::ProfilesPresenter < ApplicationPresenter
 
   def give_the_profile_picture
     if curriculum_vitae.photo.attached?
-       rails_routes.rails_blob_path(source.curriculum_vitae.photo, disposition: 'attachment', only_path: true )
+      rails_routes.rails_blob_path(source.curriculum_vitae.photo, disposition: 'attachment', only_path: true )
     else
       "/assets/static/avatars/profile.jpg"
     end
@@ -90,11 +91,23 @@ class Users::ProfilesPresenter < ApplicationPresenter
     value.count.eql?(1) ? value.last : true
   end
 
-  private
+  def applied_offer_data
+    applied_offer = AppliedOffer.find_by(id: options[:applied_offer_id] || 0)
+    if applied_offer
+      {
+        applied_offer_id: applied_offer.id,
+        status: applied_offer.current_state,
+        offer_id: applied_offer.offer_id,
+        curriculum_vitae_id: curriculum_vitae.id
+      }
+    end
+  end
 
   def curriculum_vitae
     source.curriculum_vitae
   end
+
+  private
 
   def curriculum_vitae_salary
     curriculum_vitae.curriculum_vitae_salary
@@ -103,5 +116,4 @@ class Users::ProfilesPresenter < ApplicationPresenter
   def get_value_of_record(record)
     GetValueOfRecord.new(record)
   end
-
 end

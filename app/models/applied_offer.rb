@@ -5,6 +5,14 @@ class AppliedOffer < ApplicationRecord
   belongs_to :curriculum_vitae
   belongs_to :applied_offer_status
 
+  has_many :transitions, class_name: "AppliedOfferTransition", autosave: false
+
+  delegate :can_transition_to?, :current_state, :history, :last_transition, :transition_to!, :transition_to, :in_state?, to: :state_machine
+
+  def state_machine
+    @state_machine ||= AppliedOfferStateMachine.new(self, transition_class: AppliedOfferTransition, association_name: :transitions)
+  end
+
   delegate :title, to: :offer, prefix: :offer, allow_nil: true
 
   scope :order_by_applied_date, -> { order(applied_date: :asc) }

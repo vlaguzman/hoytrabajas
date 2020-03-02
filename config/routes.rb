@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   end
 
   resources :applied_offers, only: [:create]
-  resources :applied_offers_rest, only: [:create]
+  resources :applied_offers_rest, only: [:create, :update]
 
   namespace :admins do
     resources :offers, only: [:edit, :update]

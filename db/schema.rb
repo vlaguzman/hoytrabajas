@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_25_154250) do
+ActiveRecord::Schema.define(version: 2020_02_27_142958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -130,6 +130,16 @@ ActiveRecord::Schema.define(version: 2020_02_25_154250) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "applied_offer_transitions", force: :cascade do |t|
+    t.string "to_state", null: false
+    t.json "metadata", default: {}
+    t.integer "sort_key", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "applied_offer_id", null: false
+    t.boolean "most_recent", null: false
   end
 
   create_table "applied_offers", force: :cascade do |t|
@@ -948,6 +958,7 @@ ActiveRecord::Schema.define(version: 2020_02_25_154250) do
   add_foreign_key "acknowledgments", "cities"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "age_ranges", "offers"
+  add_foreign_key "applied_offer_transitions", "applied_offers"
   add_foreign_key "applied_offers", "applied_offer_statuses"
   add_foreign_key "applied_offers", "offers"
   add_foreign_key "available_work_days_curriculum_vitaes", "available_work_days"

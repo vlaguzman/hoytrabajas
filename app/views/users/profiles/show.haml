@@ -18,8 +18,8 @@
         = render "devise/shared/error_messages", resource: @user
 
       %h1
-        = @user.name
-        %strong=@user.last_name
+        = @user.basic_user_data[:name][:value]
+        %strong=@user.basic_user_data[:last_name][:value]
       .infoCandidate
         .iconMoreText
           %i.material-icons location_city
@@ -78,7 +78,7 @@
               = @user.basic_user_data[:born_city][:value]
     .bodyBox
       %h2=t('profile.about_me.title')
-      %p.aboutMe= @user.about_me
+      %p.aboutMe= @user.basic_user_data[:about_me][:value]
       .boxAboutMe
         .typeAboutMe
           %h4=t('profile.about_me.mail')
@@ -197,4 +197,5 @@
         %a{href: @user.download_cv}=t('profile.download_cv')
     .footerBox
       %p=t('profile.slogan')
+= react_component('src/components/Bars/AppliedOfferStatusBar', { translations: t('profile'), company_signed_in: company_signed_in?, applied_offer_data: @user.applied_offer_data, path_applied_offers_rest: applied_offers_rest_index_path, csrf_param: request_forgery_protection_token, csrf_token: form_authenticity_token, download_cv: @user.download_cv }, prerender: false)
 = render '/shared/footer'

@@ -1,5 +1,5 @@
 class Users::ProfilesPresenter < ApplicationPresenter
-  
+
   def basic_user_data
     {
       email:                 get_value_of_record(source).validate_present?(:simple, :email),

@@ -6,7 +6,8 @@ const AppliedOfferStatusBar = ({
   translations,
   company_signed_in,
   applied_offer_data,
-  path_applied_offers_rest
+  path_applied_offers_rest,
+  download_cv
 }) => {
   const [currentState, setCurrentState] = useState(
     applied_offer_data && applied_offer_data.status
@@ -65,9 +66,11 @@ const AppliedOfferStatusBar = ({
           {translations.status_options.im_not_interested}
         </button>
       </div>
-      <button type="button" className="a-button --secondary download_cv">
-        {translations.download_cv}
-      </button>
+      {download_cv && (
+        <a className="a-button --secondary download_cv" href={download_cv}>
+          {translations.download_cv}
+        </a>
+      )}
     </>
   )
 

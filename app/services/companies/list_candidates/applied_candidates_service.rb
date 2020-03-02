@@ -25,7 +25,7 @@ module Companies::ListCandidates::AppliedCandidatesService
       location: build_location(candidate),
       technical_skills: technical_skills(curriculum_vitae),
       affinity_percentage: build_affinity_percentage(offer: offer, candidate: candidate),
-      profile_path: profile_path(user_id: candidate.id),
+      profile_path: profile_path(candidate, curriculum_vitae.id, offer.id),
       avatar: Users::CurriculumVitaes::ProfilePhotoService.(curriculum_vitae: curriculum_vitae)
     }
   end
@@ -47,8 +47,9 @@ module Companies::ListCandidates::AppliedCandidatesService
     offer.present? && candidate.present? && AffinityCalculator.new(offer, candidate).affinity_percentage.to_i
   end
 
-  def self.profile_path(candidate)
-    Rails.application.routes.url_helpers.users_profile_path(candidate)
+  def self.profile_path(user_id, curriculum_vitae_id, offer_id)
+    applied_offer_id = AppliedOffer.find_by(curriculum_vitae_id: curriculum_vitae_id, offer_id: offer_id).id
+    Rails.application.routes.url_helpers.users_profile_path(user_id: user_id, applied_offer_id: applied_offer_id)
   end
 
 end

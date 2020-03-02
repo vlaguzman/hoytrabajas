@@ -33,6 +33,15 @@
     color: white;
   }
 
+  &.--white {
+    color: $color__slategray-main;
+    box-shadow: 0 3px 3px -2px $color__palelilac-main,
+      0 2px 8px 1px $color__palelilac-main,
+      0 6px 15px 1px $color__palelilac-main;
+    background: $color__white-main;
+    border: solid 0.6px #647a99;
+  }
+
   &.--big {
     padding: 12px 60px;
     min-width: 64px;

@@ -2,12 +2,12 @@ class Users::ProfilesController < ApplicationController
 
   def show
     if user_signed_in? || company_signed_in?
-      user = logged_candidate
-      @user = Users::ProfilesPresenter.new(user)
+      user = visited_profile
+      applied_offer_id = show_permit_params[:applied_offer_id] ? show_permit_params[:applied_offer_id] : 0
+      @user = Users::ProfilesPresenter.new(user, applied_offer_id)
     else
       redirect_to root_path
     end
-
   end
 
   def update
@@ -21,7 +21,7 @@ class Users::ProfilesController < ApplicationController
   private
 
   def show_permit_params
-    params.permit(:user_id)
+    params.permit(:user_id, :applied_offer_id)
   end
 
   def update_permit_params
@@ -30,8 +30,10 @@ class Users::ProfilesController < ApplicationController
     .permit(:photo).to_h
   end
 
-  def logged_candidate
-    candidate_id = (user_signed_in?) ? current_user.id : show_permit_params[:user_id]
-    User.find_by(id: candidate_id)
+  def visited_profile
+    profile_id = (user_signed_in?) ? current_user.id : show_permit_params[:user_id]
+    User.find_by(id: profile_id)
   end
+
 end
+

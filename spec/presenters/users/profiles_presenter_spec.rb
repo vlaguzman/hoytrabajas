@@ -37,6 +37,7 @@ RSpec.describe Users::ProfilesPresenter do
           educational_degree:    { value: user.educational_degree_description,                          class_empty: '' },
           city:                  { value: user.city_description,                                        class_empty: '' },
           identification_number: { value: user.identification_number,                                   class_empty: '' },
+          about_me:              { value: user.about_me,                                                class_empty: '' },
           nationalities:         { value: user.nationalities.pluck(:description),                       class_empty: '' },
           limitations:           { value: user.limitations.pluck(:description),                         class_empty: '' },
           vehicles:              { value: user.vehicles.pluck(:description),                            class_empty: '' },
@@ -78,6 +79,7 @@ RSpec.describe Users::ProfilesPresenter do
           educational_degree:    { value: "Completa tu información",    class_empty: 'incomplete' },
           city:                  { value: "Completa tu información",    class_empty: 'incomplete' },
           identification_number: { value: "Completa tu información",    class_empty: 'incomplete' },
+          about_me:              { value: "Completa tu información",    class_empty: 'incomplete' },
           nationalities:         { value: ["Completa tu información"],  class_empty: 'incomplete' },
           limitations:           { value: ["Completa tu información"],  class_empty: 'incomplete' },
           vehicles:              { value: ["Completa tu información"],  class_empty: 'incomplete' },
@@ -114,6 +116,28 @@ RSpec.describe Users::ProfilesPresenter do
             ongoing_study: false
           }
         ]
+
+        expect(response).to eq(result)
+      end
+    end
+  end
+
+  describe "#applied_offer_data" do
+  
+    let(:my_offer)           { create(:offer) }
+    let(:applied_offer)      { create(:applied_offer, curriculum_vitae: curriculum_vitae, offer: my_offer) }
+    let(:subject) { described_class.new(user, applied_offer.id) }
+
+    context "When there is an applied offer id" do
+      it "Should return the applied_offer data" do
+        response = subject.applied_offer_data
+
+        result = {
+          applied_offer_id: applied_offer.id,
+          status: applied_offer.current_state,
+          offer_id: applied_offer.offer_id,
+          curriculum_vitae_id: curriculum_vitae.id
+        }
 
         expect(response).to eq(result)
       end

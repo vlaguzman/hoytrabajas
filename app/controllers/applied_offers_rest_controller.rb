@@ -11,6 +11,16 @@ class AppliedOffersRestController < ApplicationController
     end
   end
 
+  def update
+    applied_offer_data = permit_params
+    
+    if company_signed_in?
+      applied_offer_verification = Offers::AppliedOfferService.applied_offer_verification(applied_offer_data)
+      render json: { data: applied_offer_verification }.to_json
+    end
+
+  end
+
   private
 
   def offer_presenter
@@ -24,6 +34,6 @@ class AppliedOffersRestController < ApplicationController
   end
 
   def permit_params
-    params.require(:applied_offer).permit(:offer_id)
+    params.require(:applied_offer).permit(:offer_id, :curriculum_vitae_id, :applied_offer_id, :status, :action)
   end
 end

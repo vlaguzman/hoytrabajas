@@ -11,8 +11,9 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/affinity_percentage.rb",100,4,3,3,0
 "./app/models/age_range.rb",100,8,5,5,0
 "./app/models/application_record.rb",100,3,2,2,0
-"./app/models/applied_offer.rb",100,12,7,7,0
+"./app/models/applied_offer.rb",100,20,11,11,0
 "./app/models/applied_offer_status.rb",100,3,2,2,0
+"./app/models/applied_offer_transition.rb",100,4,3,3,0
 "./app/models/available_work_day.rb",100,6,4,4,0
 "./app/models/available_work_days_curriculum_vitaes.rb",100,4,3,3,0
 "./app/models/available_work_days_offers.rb",100,4,3,3,0
@@ -104,7 +105,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/companies/list_candidates_presenter.rb",100,34,17,17,0
 "./app/presenters/home/home_presenter.rb",100,53,14,14,0
 "./app/presenters/offers_presenter.rb",100,25,13,13,0
-"./app/presenters/users/profiles_presenter.rb",100,107,29,29,0
+"./app/presenters/users/profiles_presenter.rb",100,129,38,38,0
 "./app/presenters/users/wizards/step_eight_presenter.rb",100,32,12,12,0
 "./app/presenters/users/wizards/step_eights/work_experience_presenter.rb",100,19,9,9,0
 "./app/presenters/users/wizards/step_eleven_presenter.rb",100,20,8,8,0
@@ -153,9 +154,9 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/companies/first_offer/step_three_service.rb",100,45,25,25,0
 "./app/services/companies/first_offer/step_two/form_params_service.rb",100,7,2,2,0
 "./app/services/companies/first_offer/step_two_service.rb",100,6,3,3,0
-"./app/services/companies/list_candidates/applied_candidates_service.rb",100,54,23,23,0
+"./app/services/companies/list_candidates/applied_candidates_service.rb",100,55,24,24,0
 "./app/services/company_service.rb",100,39,20,20,0
-"./app/services/offers/applied_offer_service.rb",100,15,6,6,0
+"./app/services/offers/applied_offer_service.rb",100,27,10,10,0
 "./app/services/offers/completely_destroy_service.rb",100,20,11,11,0
 "./app/services/offers/expired_service.rb",100,27,13,13,0
 "./app/services/offers/index_service.rb",100,18,7,7,0
@@ -193,6 +194,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/users/wizards/step_two_service.rb",100,9,4,4,0
 "./app/services/users/wizards/user_errors_service.rb",100,19,3,3,0
 "./app/services/wizards_last_step_service.rb",100,26,17,17,0
+"./app/state_machines/applied_offer_state_machine.rb",100,14,10,10,0
 "./app/state_machines/company_state_machine.rb",100,17,10,10,0
 "./lib/dates_manager.rb",100,24,15,15,0
 "./lib/extra_hash_methods.rb",100,11,6,6,0

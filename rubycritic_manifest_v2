@@ -16,13 +16,15 @@ A          • ApplicationJob                                              1    
 A          • ApplicationMailer                                           3       0.0        0           1
 A          • ApplicationPresenter                                        5       26.49      0           10
 A          • ApplicationRecord                                           4       0.0        0           1
-A          • AppliedOffer                                                4       0.0        0           1
+A          • AppliedOffer                                                4       1.41       0           1
+A          • AppliedOfferStateMachine                                    0       0.0        0           1
 A          • AppliedOfferStatus                                          1       0.0        0           1
-A          • AppliedOffers                                               4       0.0        0           0
+A          • AppliedOfferTransition                                      0       0.0        0           1
+A          • AppliedOffers                                               5       0.0        0           0
 A          • AppliedOffersController                                     9       35.72      0           2
 A          • AppliedOffersMailer                                         3       7.09       0           1
 A          • AppliedOffersPresenter                                      6       25.41      0           3
-A          • AppliedOffersRestController                                 10      33.82      0           2
+A          • AppliedOffersRestController                                 10      40.1       0           2
 A          • AvailableWorkDay                                            3       0.0        0           1
 A          • AvailableWorkDaysCurriculumVitaes                           1       0.0        0           1
 A          • AvailableWorkDaysOffers                                     1       0.0        0           1
@@ -62,7 +64,7 @@ A          • Companies::FirstOffer::StepTwoService                       6    
 A          • Companies::FirstOffer::StepZeroPresenter                    2       1.0        0           2
 A          • Companies::FirstOffer::StepZerosController                  3       3.24       0           1
 A          • Companies::FirstOfferPresenter                              5       4.8        0           1
-A          • Companies::ListCandidates::AppliedCandidatesService         3       46.24      0           2
+A          • Companies::ListCandidates::AppliedCandidatesService         3       49.7       0           2
 A          • Companies::ListCandidatesController                         2       6.94       0           1
 A          • Companies::ListCandidatesPresenter                          3       28.45      0           2
 A          • Companies::RegistrationsController                          7       1.0        0           2
@@ -123,7 +125,7 @@ A          • OfferRequiredExperiences                                    2    
 A          • OfferSalary                                                 9       0.0        0           1
 A          • OfferType                                                   5       0.0        0           1
 A          • Offers                                                      23      0.0        0           0
-A          • Offers::AppliedOfferService                                 2       13.25      0           1
+A          • Offers::AppliedOfferService                                 2       25.35      0           1
 A          • Offers::CompletelyDestroyService                            2       13.3       0           1
 A          • Offers::IndexService                                        6       11.26      0           3
 A          • Offers::OrderByAffinityPercentageService                    3       28.36      0           4
@@ -161,7 +163,7 @@ A          • Users::CurriculumVitaes::ProfilePhotoService                1    
 A          • Users::Dashboards::OffersService                            2       31.49      0           2
 A          • Users::DashboardsController                                 10      5.69       0           1
 A          • Users::OmniauthCallbacksController                          1       21.49      0           5
-A          • Users::ProfilesController                                   21      37.34      0           2
+A          • Users::ProfilesController                                   21      42.98      0           3
 A          • Users::RegistrationsController                              13      1.0        0           2
 A          • Users::SessionsController                                   3       0.0        0           1
 A          • Users::Wizards::Commons::FindOrCreateElementAssociation     1       22.47      0           4
@@ -256,4 +258,4 @@ C          • Admins::OffersService                                       12   
 C          • BaseFormWizardsService                                      31      101.71     0           2
 C          • GetValueOfRecord                                            1       161.13     0           24
 C          • Offers::ViewsService                                        24      105.26     0           7
-C          • Users::ProfilesPresenter                                    10      151.11     0           11
+C          • Users::ProfilesPresenter                                    10      168.31     0           13

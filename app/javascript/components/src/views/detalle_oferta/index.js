@@ -284,14 +284,13 @@ const DetallePage = ({
   const handleApplication = () => {
     const data = JSON.stringify({
       [csrf_param]: csrf_token,
-      _method: 'post',
       applied_offer: {
         offer_id: offer.id_offer
       }
     })
 
     fetch(pathAppliedOffersRest, {
-      method: 'post',
+      method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: data
     })

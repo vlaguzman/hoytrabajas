@@ -59,7 +59,7 @@ RSpec.describe Companies::ListCandidates::AppliedCandidatesService do
           location: 'La Dorada, Caldas',
           technical_skills: "PHP, Ruby",
           affinity_percentage: 27,
-          profile_path: "/users/profile?user_id=#{curriculum_vitae1.user.id}",
+          profile_path: "/users/profile?applied_offer_id=#{applied_offer1.id}&user_id=#{curriculum_vitae1.user.id}",
           avatar: Rails.application.routes.url_helpers.rails_blob_path(curriculum_vitae1.photo, disposition: "attachment", only_path: true)
         },
         {
@@ -67,7 +67,7 @@ RSpec.describe Companies::ListCandidates::AppliedCandidatesService do
           location: 'Puerto Salgar, Cundinamarca',
           technical_skills: "Ruby",
           affinity_percentage: 0,
-          profile_path:"/users/profile?user_id=#{curriculum_vitae2.user.id}",
+          profile_path:"/users/profile?applied_offer_id=#{applied_offer2.id}&user_id=#{curriculum_vitae2.user.id}",
           avatar: Rails.application.routes.url_helpers.rails_blob_path(curriculum_vitae2.photo, disposition: "attachment", only_path: true)
         },
       ]

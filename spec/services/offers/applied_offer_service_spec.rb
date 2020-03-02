@@ -61,6 +61,54 @@ RSpec.describe Offers::AppliedOfferService do
 
       end
     end
+  
+    context "when the applied_offer data is incorrect" do
+      let!(:applied_offer)        { create(:applied_offer, curriculum_vitae: new_curriculum) }
+
+      it "Should return status error" do
+        applied_offer_data = {
+          applied_offer_id: 344,
+          offer_id: applied_offer.offer_id,
+          curriculum_vitae_id: 123,
+          action: "seen"
+        }
+
+        expect(applied_offer.current_state).to eq("unseen")
+
+        response = subject.applied_offer_verification(applied_offer_data)
+        
+        expect(response).to eq({
+          :status=>"error"
+        })
+
+        expect(applied_offer.current_state).to eq("unseen")
+
+      end
+    end
+
+    context "when the action is incorrect" do
+      let!(:applied_offer)        { create(:applied_offer, curriculum_vitae: new_curriculum) }
+
+      it "Should return status error" do
+        applied_offer_data = {
+          applied_offer_id: applied_offer.id,
+          offer_id: applied_offer.offer_id,
+          curriculum_vitae_id: new_curriculum.id,
+          action: "interested"
+        }
+
+        expect(applied_offer.current_state).to eq("unseen")
+
+        response = subject.applied_offer_verification(applied_offer_data)
+        
+        expect(response).to eq({
+          :status=>"error"
+        })
+
+        expect(applied_offer.current_state).to eq("unseen")
+
+      end
+    end
 
   end
 end

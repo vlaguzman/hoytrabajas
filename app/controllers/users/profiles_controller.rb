@@ -4,7 +4,7 @@ class Users::ProfilesController < ApplicationController
     if user_signed_in? || company_signed_in?
       user = visited_profile
       applied_offer_id = show_permit_params[:applied_offer_id] ? show_permit_params[:applied_offer_id] : 0
-      @user = Users::ProfilesPresenter.new(user, applied_offer_id)
+      @user = Users::ProfilesPresenter.new(user, applied_offer_id: applied_offer_id)
     else
       redirect_to root_path
     end

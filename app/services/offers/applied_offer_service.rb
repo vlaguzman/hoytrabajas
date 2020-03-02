@@ -15,13 +15,20 @@ class Offers::AppliedOfferService
 
   def self.applied_offer_verification(applied_offer_data)
     applied_offer = AppliedOffer.find_by(curriculum_vitae_id: applied_offer_data[:curriculum_vitae_id], offer_id: applied_offer_data[:offer_id])
+    status_error = {
+      status: "error"
+    }
 
-    if applied_offer_data[:applied_offer_id].eql?(applied_offer.id) && applied_offer.state_machine.transition_to!(applied_offer_data[:action])
+    if applied_offer && applied_offer_data[:applied_offer_id].eql?(applied_offer.id) && applied_offer.state_machine.transition_to!(applied_offer_data[:action])
       {
         status: "ok",
         new_state: applied_offer.current_state
       }
+    else
+      status_error
     end
 
+    rescue ::Statesman::TransitionFailedError => e
+      status_error
   end
 end

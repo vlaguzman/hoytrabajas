@@ -78,4 +78,12 @@ RSpec.describe Companies::ListCandidates::AppliedCandidatesService do
     end
   end
 
+  describe '#profile_path' do
+    it "should return a correct path just receiving the user_id" do
+      response = subject.profile_path(curriculum_vitae1.user.id)
+
+      expect(response).to eq("/users/profile?user_id=#{curriculum_vitae1.user.id}")
+    end
+  end
+
 end

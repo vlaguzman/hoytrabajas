@@ -56,7 +56,6 @@ RSpec.describe "Like a company logged", type: :feature do
           click_button('Ver perfil')
 
           expect(applied_offer.current_state).to match("seen")
-          expect(page).to have_tag('div[data-status="seen"]')
         end
 
         it "Should be able to change the status to interested", js: true do 
@@ -71,10 +70,10 @@ RSpec.describe "Like a company logged", type: :feature do
           click_button('Ver perfil')
           
           expect(applied_offer.current_state).to match("seen")
-          expect(page).to have_tag('div[data-status="seen"]')
           
           click_button('Me interesa')
 
+          visit users_profile_path(applied_offer_id: applied_offer.id, user_id: user.id)
           expect(page).to have_tag('div[data-status="interested"]')
         end
 
@@ -89,6 +88,7 @@ RSpec.describe "Like a company logged", type: :feature do
           expect(applied_offer.current_state).to match("seen")
           click_button('Descartar')
           
+          visit users_profile_path(applied_offer_id: applied_offer.id, user_id: user.id)
           expect(page).to have_tag('div[data-status="not_interested"]')
 
          end

@@ -1,12 +1,4 @@
 class Users::ProfilesPresenter < ApplicationPresenter
-
-  attr_accessor :source, :applied_offer_id
-
-  def initialize(source, applied_offer_id = 0)
-    @source = source
-    @applied_offer_id = applied_offer_id
-
-  end
   
   def basic_user_data
     {
@@ -42,7 +34,7 @@ class Users::ProfilesPresenter < ApplicationPresenter
 
   def give_the_profile_picture
     if curriculum_vitae.photo.attached?
-     rails_routes.rails_blob_path(source.curriculum_vitae.photo, disposition: 'attachment', only_path: true )
+      rails_routes.rails_blob_path(source.curriculum_vitae.photo, disposition: 'attachment', only_path: true )
     else
       "/assets/static/avatars/profile.jpg"
     end
@@ -100,16 +92,14 @@ class Users::ProfilesPresenter < ApplicationPresenter
   end
 
   def applied_offer_data
-    if applied_offer_id 
-      applied_offer = AppliedOffer.find_by(id: applied_offer_id)
-      if applied_offer
-        {
-          applied_offer_id: applied_offer.id,
-          status: applied_offer.current_state,
-          offer_id: applied_offer.offer_id,
-          curriculum_vitae_id: curriculum_vitae.id
-        }
-      end
+    applied_offer = AppliedOffer.find_by(id: options[:applied_offer_id] || 0)
+    if applied_offer
+      {
+        applied_offer_id: applied_offer.id,
+        status: applied_offer.current_state,
+        offer_id: applied_offer.offer_id,
+        curriculum_vitae_id: curriculum_vitae.id
+      }
     end
   end
 

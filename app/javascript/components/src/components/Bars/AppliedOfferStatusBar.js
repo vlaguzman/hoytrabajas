@@ -13,7 +13,7 @@ const AppliedOfferStatusBar = ({
   )
   const [openStatusModal, setOpenStatusModal] = useState(false)
 
-  const updateStateMachine = action => {
+  const updateStateMachine = (action, cb) => {
     const data = JSON.stringify({
       applied_offer: {
         ...applied_offer_data,
@@ -30,20 +30,21 @@ const AppliedOfferStatusBar = ({
       }
     )
       .then(res => res.json())
-      .then(resJSON => resJSON)
+      .then(resJSON => cb(resJSON))
   }
 
-  useEffect(async () => {
+  const updateCallback = ({ data }) =>
+    data && data.new_state && setCurrentState(data.new_state)
+
+  const handleUpdate = action => {
+    updateStateMachine(action, updateCallback)
+  }
+
+  useEffect(() => {
     if (company_signed_in && applied_offer_data && currentState === 'unseen') {
-      const { data } = await updateStateMachine('seen')
-      if (data && data.new_state) setCurrentState(data.new_state)
+      handleUpdate('seen')
     }
   }, [])
-
-  const handleUpdate = async action => {
-    const { data } = await updateStateMachine(action)
-    if (data && data.new_state) setCurrentState(data.new_state)
-  }
 
   const renderButtons = () => (
     <>
@@ -98,7 +99,10 @@ const AppliedOfferStatusBar = ({
           onClose={() => setOpenStatusModal(false)}
         >
           <div className="statusModalCloseWrapper">
-            <CloseIcon className="statusModalCloseIcon" />
+            <CloseIcon
+              className="statusModalCloseIcon"
+              onClick={() => setOpenStatusModal(false)}
+            />
           </div>
           <div className="modalWrapper">{renderButtons()}</div>
         </Dialog>

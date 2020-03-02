@@ -105,7 +105,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/companies/list_candidates_presenter.rb",100,34,17,17,0
 "./app/presenters/home/home_presenter.rb",100,53,14,14,0
 "./app/presenters/offers_presenter.rb",100,25,13,13,0
-"./app/presenters/users/profiles_presenter.rb",100,129,38,38,0
+"./app/presenters/users/profiles_presenter.rb",100,119,33,33,0
 "./app/presenters/users/wizards/step_eight_presenter.rb",100,32,12,12,0
 "./app/presenters/users/wizards/step_eights/work_experience_presenter.rb",100,19,9,9,0
 "./app/presenters/users/wizards/step_eleven_presenter.rb",100,20,8,8,0
@@ -154,9 +154,9 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/companies/first_offer/step_three_service.rb",100,45,25,25,0
 "./app/services/companies/first_offer/step_two/form_params_service.rb",100,7,2,2,0
 "./app/services/companies/first_offer/step_two_service.rb",100,6,3,3,0
-"./app/services/companies/list_candidates/applied_candidates_service.rb",100,55,24,24,0
+"./app/services/companies/list_candidates/applied_candidates_service.rb",100,60,26,26,0
 "./app/services/company_service.rb",100,39,20,20,0
-"./app/services/offers/applied_offer_service.rb",100,27,10,10,0
+"./app/services/offers/applied_offer_service.rb",100,34,13,13,0
 "./app/services/offers/completely_destroy_service.rb",100,20,11,11,0
 "./app/services/offers/expired_service.rb",100,27,13,13,0
 "./app/services/offers/index_service.rb",100,18,7,7,0

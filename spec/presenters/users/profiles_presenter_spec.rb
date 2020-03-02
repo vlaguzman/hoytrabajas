@@ -126,9 +126,10 @@ RSpec.describe Users::ProfilesPresenter do
   
     let(:my_offer)           { create(:offer) }
     let(:applied_offer)      { create(:applied_offer, curriculum_vitae: curriculum_vitae, offer: my_offer) }
-    let(:subject) { described_class.new(user, applied_offer.id) }
-
+    
     context "When there is an applied offer id" do
+      let(:subject) { described_class.new(user, applied_offer_id: applied_offer.id) }
+
       it "Should return the applied_offer data" do
         response = subject.applied_offer_data
 
@@ -140,6 +141,16 @@ RSpec.describe Users::ProfilesPresenter do
         }
 
         expect(response).to eq(result)
+      end
+    end
+
+    context "When there is no applied offer id" do
+      let(:subject) { described_class.new(user) }
+
+      it "Should return nil as the applied_offer data" do
+        response = subject.applied_offer_data
+
+        expect(response).to eq(nil)
       end
     end
   end

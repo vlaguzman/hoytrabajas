@@ -4,8 +4,11 @@ RSpec.describe AffinityPercentages::CreateOrUpdateAffinityPercentagesService do
 
   describe '#call' do
 
-    let!(:offer_1) { create(:offer, status: :active, created_at: Time.new(2020, 04, 01, 13, 00, 00)) }
-    let!(:offer_2) { create(:offer, status: :active, created_at: Time.new(2020, 04, 01, 13, 00, 00)) }
+    before { Timecop.freeze(Time.new(2020, 04, 01, 13, 00, 00)) }
+    after  { Timecop.return }
+
+    let!(:offer_1) { create(:offer, status: :active) }
+    let!(:offer_2) { create(:offer, status: :active) }
 
     let!(:curriculum_vitae_1) { create(:curriculum_vitae) }
     let!(:curriculum_vitae_2) { create(:curriculum_vitae) }
@@ -40,7 +43,7 @@ RSpec.describe AffinityPercentages::CreateOrUpdateAffinityPercentagesService do
         context 'cuando la oferta es actualizada(su updated at no corresponde al de la creacion de AffinityPercentage)' do
           let!(:affinity_percentage) { create(:affinity_percentage, offer_id: offer_1.id, curriculum_vitae_id: curriculum_vitae_1.id, created_at: Time.new(2020, 04, 01, 20, 00, 00)) }
 
-          before { Timecop.freeze(Time.new(2020, 05, 01)) }
+          before { Timecop.freeze(Time.new(2020, 05, 01, 13, 00, 00)) }
           after  { Timecop.return }
 
           it 'deberia crearse un nuevo objeto de AffinityPercentage con los datos nuevos' do
@@ -54,17 +57,27 @@ RSpec.describe AffinityPercentages::CreateOrUpdateAffinityPercentagesService do
           end
         end
 
-        context 'cuando la oferta no fue actualizada(su updated_at no coincide con el created_at del AffinityPercentage)' do
-          before { Timecop.freeze(Time.new(2020, 05, 01)) }
+        context 'cuando la oferta no fue actualizada(su updated_at coincide con el created_at del AffinityPercentage)' do
+          let!(:affinity_percentage_1) { create(:affinity_percentage, offer_id: offer_1.id, curriculum_vitae_id: curriculum_vitae_1.id) }
+          let!(:affinity_percentage_2) { create(:affinity_percentage, offer_id: offer_1.id, curriculum_vitae_id: curriculum_vitae_2.id) }
+          let!(:affinity_percentage_3) { create(:affinity_percentage, offer_id: offer_2.id, curriculum_vitae_id: curriculum_vitae_1.id) }
+          let!(:affinity_percentage_4) { create(:affinity_percentage, offer_id: offer_2.id, curriculum_vitae_id: curriculum_vitae_2.id) }
+
+          before { Timecop.freeze(Time.new(2020, 04, 02, 13, 00, 00)) }
           after  { Timecop.return }
 
           it 'no deberia crear un nuevo registro de AffinityPercentage' do
 
-            expect(AffinityPercentage.all.count).to eq(1)
+            puts "antes de entrar al servicio"
+            puts "hay #{AffinityPercentage.all.count} affinity_percentages"
+            expect(AffinityPercentage.all.count).to eq(4)
 
             subject.()
 
-            expect(AffinityPercentage.all.count).to eq(1)
+            puts "despues de entrar al servicio"
+            puts "hay #{AffinityPercentage.all.count} affinity_percentages"
+
+            expect(AffinityPercentage.all.count).to eq(4)
           end
         end
       end

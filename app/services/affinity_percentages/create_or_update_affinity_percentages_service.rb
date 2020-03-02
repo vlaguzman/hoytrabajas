@@ -20,9 +20,16 @@ module AffinityPercentages::CreateOrUpdateAffinityPercentagesService
   def self.validate_if_offer_and_cv_updated?(offer, curriculum_vitae, affinity_percentage)
     (convert_date(offer.updated_at) != convert_date(affinity_percentage.created_at)) ||
       (convert_date(curriculum_vitae.updated_at) != convert_date(affinity_percentage.created_at))
+   #puts "offer"
+   #puts convert_date(offer.updated_at)
+   #puts "affinity_percentage"
+   #puts convert_date(affinity_percentage.created_at)
+   #convert_date(offer.updated_at) != convert_date(affinity_percentage.created_at)
   end
 
   def self.validate_affinity_percentage(offer, curriculum_vitae, affinity_percentage)
+    puts "validation"
+    puts validate_if_offer_and_cv_updated?(offer, curriculum_vitae, affinity_percentage)
     if affinity_percentage && validate_if_offer_and_cv_updated?(offer, curriculum_vitae, affinity_percentage)
       prepare_affinity_percentage(offer, curriculum_vitae)
     elsif not affinity_percentage
@@ -97,6 +104,7 @@ module AffinityPercentages::CreateOrUpdateAffinityPercentagesService
   end
 
   def self.create_affinity_percentage(affinity_percentage)
+    puts "ESTOY PASANDO POR EL CREATE"
     affinity_percentages_logger = Logger.new("#{Rails.root}/log/affinity_percentages.log")
 
     if not affinity_percentage.save

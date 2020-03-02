@@ -6,6 +6,7 @@ class AppliedOffersController < ApplicationController
       redirect_to offer_path(permit_params[:offer_id])
       send_notifications
     else
+      cookies[:applied_offer_path] = offer_path(permit_params[:offer_id])
       redirect_to new_user_registration_path
     end
   end

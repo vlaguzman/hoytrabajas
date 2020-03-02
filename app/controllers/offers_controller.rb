@@ -33,6 +33,7 @@ class OffersController < ApplicationController
   private
 
   def offer_show
+    cookies.delete :applied_offer_path if cookies[:applied_offer_path].present?
     OffersPresenter.new(Offer.find_by(id: show_params[:id]), current_user)
   end
 

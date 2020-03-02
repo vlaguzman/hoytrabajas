@@ -9,11 +9,10 @@ class Users::Wizards::StepNines::AddedEducationalLevelsController < ApplicationC
   private
 
   def educational_level_presenter(educational_level)
-    @educational_level = Users::Wizards::StepNines::EducationalLevelPresenter.new(educational_level)
+    @educational_level = Users::Wizards::StepNines::EducationalLevelPresenter.new(educational_level, user: current_user, cookies: cookies[:applied_offer_path])
   end
 
   def educational_level_id
     params.permit(:id).to_h[:id]
   end
-
 end

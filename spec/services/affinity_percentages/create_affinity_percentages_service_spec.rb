@@ -15,6 +15,7 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
     let!(:level)              { create(:level) }
     let!(:contract_type)      { create(:contract_type) }
     let!(:language)           { create(:language) }
+    let!(:job)           { create(:language) }
 
     let!(:user_curriculum_vitae_1) {
       create(:user,
@@ -47,7 +48,7 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
     let!(:offer_technical_skill) { create(:offers_technical_skills, offer_id: offer_1.id, technical_skill_id: technical_skill.id, level_id: level.id) }
 
     let!(:cv_language)    { create(:curriculum_vitaes_languages, curriculum_vitae_id: curriculum_vitae_1.id, language_id: language.id, level_id: level.id) }
-    let!(:offer_language) { create(:offers_technical_skills, offer_id: offer_1.id, technical_skill_id: technical_skill.id, level_id: level.id) }
+    let!(:offer_language) { create(:languages_offers, offer_id: offer_1.id, language_id: language.id, level_id: level.id) }
 
     let!(:curriculum_vitae_2) { create(:curriculum_vitae) }
     let!(:offer_2)            { create(:offer, status: :active) }
@@ -98,11 +99,11 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
           expect(affinity_percentage_1.contract_type_id_curriculum_vitae).to eq("#{contract_type.description}")
           expect(affinity_percentage_1.contract_type_id_offer).to eq("#{contract_type.description}")
 
-          expect(affinity_percentage_1.languages_list_curriculum_vitae).to eq("#{lenguage.description}")
-          expect(affinity_percentage_1.languages_list_offer).to eq("#{lenguage.description}")
+          expect(affinity_percentage_1.languages_list_curriculum_vitae).to eq("#{language.description}")
+          expect(affinity_percentage_1.languages_list_offer).to eq("#{language.description}")
 
-         #expect(affinity_percentage_1.job_categories_curriculum_vitae:      clean_array(curriculum_vitae.job_categories.pluck(:description)),
-         #expect(affinity_percentage_1.job_categories_offer:      clean_array(offer.job_categories.pluck(:description)),
+          expect(affinity_percentage_1.job_categories_curriculum_vitae).to eq("#{job_category.description}")
+          expect(affinity_percentage_1.job_categories_offer).to eq("#{job_category.description}")
 
          #expect(affinity_percentage_1.working_days_curriculum_vitae:        clean_array(curriculum_vitae.working_days.pluck(:description)),
          #expect(affinity_percentage_1.working_days_offer:        clean_array(offer.working_days.pluck(:description)),

@@ -40,7 +40,7 @@ const Second = ({ my_offers, my_offers_section, edit_offer_path }) => {
   return (
     <Row noGutters className="w-100 justify-content-between my-30 px-20">
       <Col xs={12} className="bg-primary">
-        <Card className="p-25">
+        <Card className="m-offersTable">
           <CardHeader
             title={theTitle(my_offers_section['the_title'])}
             subheader={
@@ -53,90 +53,93 @@ const Second = ({ my_offers, my_offers_section, edit_offer_path }) => {
             }
           />
           <CardContent className="px-0-dash">
-            {/* <Row noGutters className='justify-content-center d-lg-none '>
-          </Row> */}
-            <div>
-              {/* style={{minWidth: '650'}} */}
-              <Table>
-                <TableHead className="bg-white">
-                  <TableRow>
-                    <TableCell
-                      className="text-info"
-                      align="left"
-                      padding="checkbox"
-                    />
-                    <TableCell
-                      className="text-info"
-                      size="medium"
-                      align="center"
-                    >
-                      {my_offers_section['the_title']}
-                    </TableCell>
-                    <TableCell className="text-info" align="left" size="small">
-                      {my_offers_section['approved']}
-                    </TableCell>
-                    <TableCell
-                      className="text-info"
-                      align="center"
-                      size="small"
-                    >
-                      {my_offers_section['candidates']}
-                    </TableCell>
-                    {/* TODO OScar add this column when the company could entreview the candidates */}
-                    {/* <TableCell className="text-info" align="center" size='small' >
+            <Table>
+              <TableHead className="bg-white">
+                <TableRow>
+                  <TableCell
+                    className="text-info hiddenOnMobile"
+                    align="left"
+                    padding="checkbox"
+                  />
+                  <TableCell className="text-info" size="medium" align="center">
+                    {my_offers_section['the_title']}
+                  </TableCell>
+                  <TableCell
+                    className="text-info hiddenOnMobile"
+                    align="left"
+                    size="small"
+                  >
+                    {my_offers_section['approved']}
+                  </TableCell>
+                  <TableCell className="text-info" align="center" size="small">
+                    {my_offers_section['candidates']}
+                  </TableCell>
+                  {/* TODO OScar add this column when the company could entreview the candidates */}
+                  {/* <TableCell className="text-info" align="center" size='small' >
                 Entrevistas
               </TableCell> */}
-                    <TableCell className="text-info" align="left">
-                      {my_offers_section['started_at']}
+                  <TableCell className="text-info hiddenOnMobile" align="left">
+                    {my_offers_section['started_at']}
+                  </TableCell>
+                  <TableCell className="text-info hiddenOnMobile" align="left">
+                    {my_offers_section['closed_at']}
+                  </TableCell>
+                  <TableCell className="text-info" align="left">
+                    {my_offers_section['status']}
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {my_offers.map(row => (
+                  <TableRow key={uuidv4()}>
+                    <TableCell
+                      align="right"
+                      className="hiddenOnMobile"
+                      padding="checkbox"
+                    >
+                      <IconButton
+                        href={`${edit_offer_path}?offer_id=${row.id}`}
+                        className="p-0"
+                        // aria-label="Settings"
+                      >
+                        <EditIcon />
+                      </IconButton>
                     </TableCell>
-                    <TableCell className="text-info" align="left">
-                      {my_offers_section['closed_at']}
+                    <TableCell align="center" size="medium">
+                      <a href={row.list_candidates_path}>{row.title}</a>
                     </TableCell>
-                    <TableCell className="text-info" align="left">
-                      {my_offers_section['status']}
-                    </TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {my_offers.map(row => (
-                    <TableRow key={uuidv4()}>
-                      <TableCell align="right" padding="checkbox">
-                        <IconButton
-                          href={`${edit_offer_path}?offer_id=${row.id}`}
-                          className="p-0"
-                          // aria-label="Settings"
-                        >
-                          <EditIcon />
-                        </IconButton>
-                      </TableCell>
-                      <TableCell align="center" size="medium">
-                        <a href={row.list_candidates_path}>{row.title}</a>
-                      </TableCell>
-                      <TableCell align="left" size="small">
-                        {row.approved
-                          ? my_offers_section.approved_list.approved
-                          : my_offers_section.approved_list.not_approved}
-                        {/* <Switch
+                    <TableCell
+                      align="left"
+                      className="hiddenOnMobile"
+                      size="small"
+                    >
+                      {row.approved
+                        ? my_offers_section.approved_list.approved
+                        : my_offers_section.approved_list.not_approved}
+                      {/* <Switch
                     checked={row.approved}
                     value="checkedA"
                     inputProps={{ 'aria-label': 'secondary checkbox' }}
                   /> */}
-                      </TableCell>
-                      <TableCell align="center" size="small">
-                        {row.applied_candidates}
-                      </TableCell>
-                      {/* TODO Oscar add this column when the company could entreview the candidates */}
-                      {/* <TableCell align="center" size='small'>{row.entrevistas}</TableCell> */}
-                      <TableCell align="left">{row.start_date}</TableCell>
-                      <TableCell align="left">{row.close_date}</TableCell>
-                      <TableCell align="left">
-                        {my_offers_section.status_lists[`${row.status}`]}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </div>
+                    </TableCell>
+                    <TableCell align="center" size="small">
+                      {row.applied_candidates}
+                    </TableCell>
+                    {/* TODO Oscar add this column when the company could entreview the candidates */}
+                    {/* <TableCell align="center" size='small'>{row.entrevistas}</TableCell> */}
+                    <TableCell className="hiddenOnMobile" align="left">
+                      {row.start_date}
+                    </TableCell>
+                    <TableCell className="hiddenOnMobile" align="left">
+                      {row.close_date}
+                    </TableCell>
+                    <TableCell align="left">
+                      {my_offers_section.status_lists[`${row.status}`]}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
           </CardContent>
         </Card>
       </Col>
@@ -149,5 +152,5 @@ export default Second
 Second.propTypes = {
   my_offers: PropTypes.array.isRequired,
   my_offers_section: PropTypes.object.isRequired,
-  edit_offer_path:PropTypes.string.isRequired,
+  edit_offer_path: PropTypes.string.isRequired
 }

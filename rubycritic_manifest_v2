@@ -124,7 +124,7 @@ A          • OfferRequiredExperiences                                    2    
 A          • OfferSalary                                                 9       0.0        0           1
 A          • OfferType                                                   5       0.0        0           1
 A          • Offers                                                      23      0.0        0           0
-A          • Offers::AppliedOfferService                                 3       28.88      0           3
+A          • Offers::AppliedOfferService                                 4       28.88      0           3
 A          • Offers::CompletelyDestroyService                            2       13.3       0           1
 A          • Offers::IndexService                                        6       11.26      0           3
 A          • Offers::OrderByAffinityPercentageService                    3       28.36      0           4
@@ -162,7 +162,7 @@ A          • Users::CurriculumVitaes::ProfilePhotoService                1    
 A          • Users::Dashboards::OffersService                            2       31.49      0           2
 A          • Users::DashboardsController                                 10      5.69       0           1
 A          • Users::OmniauthCallbacksController                          1       21.49      0           5
-A          • Users::ProfilesController                                   22      42.98      0           3
+A          • Users::ProfilesController                                   24      42.98      0           3
 A          • Users::RegistrationsController                              13      1.0        0           2
 A          • Users::SessionsController                                   3       0.0        0           1
 A          • Users::Wizards::Commons::FindOrCreateElementAssociation     1       22.47      0           4
@@ -245,7 +245,7 @@ B          • Companies::FirstOffer::StepSevenService                     6    
 B          • Companies::FirstOffer::StepSixPresenter                     4       25.0       23          1
 B          • Companies::FirstOffer::StepSixService                       4       22.62      18          4
 B          • Companies::FirstOffer::StepTwosController                   11      20.32      29          2
-B          • Companies::ListCandidates::AppliedCandidatesService         4       56.59      0           5
+B          • Companies::ListCandidates::AppliedCandidatesService         5       56.59      0           5
 B          • Offers::CitiesController                                    4       31.66      16          3
 B          • Offers::ExpiredService                                      4       29.14      34          3
 B          • Offers::JobCategoriesController                             5       29.04      16          3
@@ -258,4 +258,4 @@ C          • Admins::OffersService                                       12   
 C          • BaseFormWizardsService                                      31      101.71     0           2
 C          • GetValueOfRecord                                            1       161.13     0           24
 C          • Offers::ViewsService                                        24      105.26     0           7
-C          • Users::ProfilesPresenter                                    11      164.51     0           12
+C          • Users::ProfilesPresenter                                    13      164.51     0           12

@@ -1,4 +1,4 @@
-module AffinityPercentages::CreateOrUpdateAffinityPercentagesService
+module AffinityPercentages::CreateAffinityPercentagesService
   #TODO: When to learn skills has been defined put in offer and curriculum_vitae
 
   def self.call
@@ -18,18 +18,12 @@ module AffinityPercentages::CreateOrUpdateAffinityPercentagesService
   end
 
   def self.validate_if_offer_and_cv_updated?(offer, curriculum_vitae, affinity_percentage)
-    (convert_date(offer.updated_at) != convert_date(affinity_percentage.created_at)) ||
-      (convert_date(curriculum_vitae.updated_at) != convert_date(affinity_percentage.created_at))
-   #puts "offer"
-   #puts convert_date(offer.updated_at)
-   #puts "affinity_percentage"
-   #puts convert_date(affinity_percentage.created_at)
-   #convert_date(offer.updated_at) != convert_date(affinity_percentage.created_at)
+    (convert_date(offer.updated_at)                 != convert_date(affinity_percentage.created_at)) ||
+    (convert_date(curriculum_vitae.updated_at)      != convert_date(affinity_percentage.created_at)) ||
+    (convert_date(curriculum_vitae.user.updated_at) != convert_date(affinity_percentage.created_at))
   end
 
   def self.validate_affinity_percentage(offer, curriculum_vitae, affinity_percentage)
-    puts "validation"
-    puts validate_if_offer_and_cv_updated?(offer, curriculum_vitae, affinity_percentage)
     if affinity_percentage && validate_if_offer_and_cv_updated?(offer, curriculum_vitae, affinity_percentage)
       prepare_affinity_percentage(offer, curriculum_vitae)
     elsif not affinity_percentage

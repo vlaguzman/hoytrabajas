@@ -1,6 +1,5 @@
 class Offers::ShowPresenter < ApplicationPresenter
   include ActionView::Helpers::NumberHelper
-  include Rails.application.routes.url_helpers
 
   def title_capitalize
     title.capitalize
@@ -88,7 +87,7 @@ class Offers::ShowPresenter < ApplicationPresenter
   def company_details
 
     logo_path = company.logo.attached? ?
-      rails_blob_path(company.logo, disposition: "attachment", only_path: true)
+      rails_routes.rails_blob_path(company.logo, disposition: "attachment", only_path: true)
       : ENV['DEFAULT_IMAGE_LOGO_URL']
 
     Hash.new.tap do |field|
@@ -120,6 +119,10 @@ class Offers::ShowPresenter < ApplicationPresenter
 
   private
 
+  def currency_converter(value)
+    number_to_currency(value, precision: 0, delimiter: '.')
+  end
+
   def related_offers_list
     OffersService.related_offers_show_details(source.id, source.job_categories, options[:current_user])
   end
@@ -130,8 +133,8 @@ class Offers::ShowPresenter < ApplicationPresenter
     value = I18n.t("offers.show.no_record")
 
     if(salary_offer.present?)
-      salary_from = number_to_currency(salary_offer.from, precision: 0, delimiter: '.')
-      salary_to = salary_offer.to.present? ? "- #{salary_offer.to}" : " "
+      salary_from = currency_converter(salary_offer.from)
+      salary_to = salary_offer.to.present? ? "- #{currency_converter(salary_offer.to)}" : " "
 
       value = "#{salary_offer.currency_description} #{salary_from}#{salary_to}/ #{salary_offer.period_description}"
     end

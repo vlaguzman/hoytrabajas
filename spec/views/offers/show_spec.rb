@@ -75,14 +75,6 @@ RSpec.describe "offers/show" do
 
       expect(rendered).to have_tag('div', :with => { "data-react-class" => 'src/components/Layout/Header' })
       expect(rendered).to have_tag('div', :with => { "data-react-class" => 'src/components/Layout/Footer' })
-    end
-  end
-
-  context "the offer has all information" do
-    it "should render offers show template with all data" do
-      assign(:offer, Offers::ShowPresenter.new(the_offer, current_user: candidate))
-
-      render
 
       #title
       expect(rendered).to have_tag(:h1, text: "I am the offer title")
@@ -109,5 +101,4 @@ RSpec.describe "offers/show" do
       expect(rendered).to have_tag('div.__employeesRange', text: '50 a 100 empleados')
     end
   end
-
 end

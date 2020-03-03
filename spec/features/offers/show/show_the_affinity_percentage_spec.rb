@@ -27,7 +27,7 @@ RSpec.describe "like logged user", type: :feature do
 
       visit offer_path(offer_contract)
 
-      expect(page).to have_content("100% de afinidad")
+      expect(page).to have_content(/Afinidad\n100%/)
 
 
     end

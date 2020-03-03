@@ -108,6 +108,7 @@ RSpec.describe OffersPresenter do
         :tag_new_offer,
         :tag_without_required_experience,
         :tag_on_demand,
+        :show,
         :candidates
       ]
 

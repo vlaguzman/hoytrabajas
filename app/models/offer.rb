@@ -112,4 +112,8 @@ class Offer < ApplicationRecord
     LanguagesOffers.where(offer_id: self.id)
   end
 
+  def work_position
+    work_positions.last
+  end
+
 end

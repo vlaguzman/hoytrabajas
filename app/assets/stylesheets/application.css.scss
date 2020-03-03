@@ -45,6 +45,8 @@
 @import 'scss/custom/layouts/layout';
 
 // COMPONENTS
+@import 'components/offers/show';
+@import 'components/companies/list_candidates';
 @import 'components/users/wizards/step_eights';
 @import 'components/users/wizards/step_eights/work_experience';
 @import 'components/users/wizards/step_eleven';
@@ -52,9 +54,9 @@
 @import 'components/companies/dashboard/show';
 @import 'components/users/wizards/step_seven';
 @import 'components/users/wizards/step_zero';
+@import 'components/users/dashboard';
 @import 'components/devise/passwords/edit';
 @import 'components/devise/passwords/new';
-@import 'components/users/dashboard';
 @import 'components/filter_home';
 
 // ATOMS

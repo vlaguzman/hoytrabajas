@@ -9,20 +9,25 @@ RSpec.describe "User applied offer", type: :feature do
   context "When user applied offer" do
     scenario "When the user is logged in and has not applied to the offer, should create the association", js: true do
       sign_in user
+
       visit offer_path(offer.id)
 
       expect(page).to have_content("Test sebas")
       expect(page).to have_button('Aplicar ahora')
-      expect(page).to have_content("0 aplicaciones")
+      expect(page).to have_content("0 Candidato(s)")
 
       click_button 'Aplicar ahora'
 
-      expect(page).to have_text('¡HAS APLICADO!')
+      sleep(0.5)
+
+      expect(page).to have_text('¡Has aplicado a esta oferta!')
       expect(page).to have_button('¡Perfecto!')
 
       find('.appliedOfferModal__button', text: '¡Perfecto!', visible: false).click
 
-      expect(page).to have_content("1 aplicaciones")
+      visit offer_path(offer.id)
+
+      expect(page).to have_content("1 Candidato(s)")
     end
 
     scenario "When the user is not logged in, should ask you to register", js: true do

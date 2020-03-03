@@ -9,7 +9,7 @@ RSpec.describe "apply offer from home", type: :feature, js: :true do
   let!(:offer)                { create(:offer, title: 'I am a sexy offer') }
 
   context "When the user is logged in and has not applied to the offer" do
-    it "should create the association" do
+    it "should create the association", js: true do
       sign_in user
       visit root_path
 
@@ -19,13 +19,13 @@ RSpec.describe "apply offer from home", type: :feature, js: :true do
       find(".btn-apply", match: :first).click
 
       expect(current_path).to eq(offer_path(offer.id))
-      expect(page).to have_text('¡HAS APLICADO!')
+      expect(page).to have_text('¡Has aplicado!')
       expect(AppliedOffer.count).to eq(1)
     end
   end
 
   context "When the user is logged in and had applied to a offer" do
-    it "should not create the association again" do
+    it "should not create the association again", js: true do
       sign_in user
 
       visit root_path
@@ -36,7 +36,7 @@ RSpec.describe "apply offer from home", type: :feature, js: :true do
       find(".btn-apply", match: :first).click
 
       expect(current_path).to eq(offer_path(offer.id))
-      expect(page).to have_text('¡HAS APLICADO!')
+      expect(page).to have_text('¡Has aplicado!')
       expect(AppliedOffer.count).to eq(1)
 
       visit root_path

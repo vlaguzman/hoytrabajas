@@ -19,7 +19,15 @@ class OffersController < ApplicationController
   end
 
   def show
-    @offer = offer_show
+    offer = Offer.find_by(id: sanatized_offer_id)
+
+    @offer = Offers::ShowPresenter.new(offer, current_user: current_user, current_company: current_company)
+  end
+
+  def update
+    offer = Offer.find_by(id: sanatized_offer_update_params[:id])
+    offer.update(status: sanatized_offer_update_params[:status])
+    redirect_to offer_path(offer)
   end
 
   private
@@ -40,7 +48,15 @@ class OffersController < ApplicationController
     )
   end
 
-  def show_params
-    params.permit(:id)
+  def sanatized_offer_id
+    params.permit(:id)[:id]
+  end
+
+
+  def sanatized_offer_update_params
+    params.permit(
+      :id,
+      :status
+    ).to_h
   end
 end

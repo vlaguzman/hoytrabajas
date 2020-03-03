@@ -8,7 +8,7 @@ RSpec.describe "like anonymoyus user", type: :feature do
     scenario "Should use the search var in navbar to find other offer", js: true do
       visit offer_path(visited_offer)
 
-      expect(page).to have_text(/somebody visitedme/)
+      expect(page).to have_text(/Somebody visitedme/)
 
       fill_in 'q[title_cont]', with: 'searchme'
       find('.searchBar__searchIcon').click
@@ -17,4 +17,4 @@ RSpec.describe "like anonymoyus user", type: :feature do
       expect(page).to_not have_text('Somebody Visitedme')
     end
   end
-end
+end 

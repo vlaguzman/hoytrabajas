@@ -10,12 +10,12 @@
         %h1.offerTitle= @offer.title_capitalize
 
         .m-tags
-          - @offer.tags[:location] && @offer.tags[:location].each do |city|
-            %span.a-tag__gray= city
           - @offer.tags[:job_categories] && @offer.tags[:job_categories].each do |job_category|
             %span.a-tag__aqua= job_category
           - @offer.tags[:immediate_start] && @offer.tags[:immediate_start].each do |immediate_start|
             %span.a-tag__orange= immediate_start
+          - @offer.tags[:location] && @offer.tags[:location].each do |city|
+            %span.a-tag__gray= city
 
       .m-offerSection
         .m-affinityPercentageSection.__mobile

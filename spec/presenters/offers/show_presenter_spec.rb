@@ -243,6 +243,16 @@ RSpec.describe Offers::ShowPresenter do
     it "should return the offer description with the first capitalized letter" do
       expect(subject.description_capitalized).to eq("I should be a very long description but i dont want")
     end
+
+    context "when descriptions is nil" do
+
+      let(:empty_offer) { create(:offer, :empty, description: nil) }
+      let(:subject) { described_class.new(empty_offer) }
+
+      it "should return a empty string" do
+        expect(subject.description_capitalized).to eq("")
+      end
+    end
   end
 
   describe "#im_offer_owner?" do

@@ -25,7 +25,7 @@ class Offers::ShowPresenter < ApplicationPresenter
   end
 
   def description_capitalized
-    source.description.capitalize
+    source.description ? description.capitalize : ""
   end
 
   def im_offer_owner?

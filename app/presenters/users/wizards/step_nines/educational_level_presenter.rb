@@ -13,18 +13,6 @@ class Users::Wizards::StepNines::EducationalLevelPresenter < ApplicationPresente
   end
 
   def next_path
-    validation_next_path
+    validate_cookie_path(options[:user], options[:cookies], rails_routes.users_wizards_step_eleven_path)
   end
-
-  private
-
-  def validation_next_path
-    if options[:cookies].present?
-      Offers::AppliedOfferService.(user: options[:user], params_offer: { offer_id: options[:cookies].split('/')[2].to_i } )
-      options[:cookies]
-    else
-      rails_routes.users_wizards_step_eleven_path
-    end
-  end
-
 end

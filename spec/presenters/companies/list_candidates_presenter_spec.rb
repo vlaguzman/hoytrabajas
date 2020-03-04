@@ -17,6 +17,7 @@ RSpec.describe Companies::ListCandidatesPresenter do
 
   let(:candidate_one_cv)   { create(:user, name: 'Jhonny', last_name: 'Bravo').curriculum_vitae }
   let(:candidate_two_cv)   { create(:user, name: 'Alfred', last_name: 'Ito', vehicles: vehicles_b).curriculum_vitae }
+  let(:candidate_three_cv)   { create(:user, name: 'Jon', last_name: 'Snow').curriculum_vitae }
 
   let!(:applied_offer_1) { create(:applied_offer, curriculum_vitae: candidate_one_cv, offer: offer) }
   let!(:applied_offer_2) { create(:applied_offer, curriculum_vitae: candidate_two_cv, offer: offer) }
@@ -53,6 +54,19 @@ RSpec.describe Companies::ListCandidatesPresenter do
         affinity_percentages = subject.list_applied_candidates.map { |candidate_info| candidate_info[:affinity_percentage] }
 
         expect(affinity_percentages).to match_array([27, 0])
+      end
+    end
+
+    context "when has applied offers with no_interested state" do
+      let!(:applied_offer_3) { create(:applied_offer, curriculum_vitae: candidate_three_cv, offer: offer) }
+
+      before do
+        applied_offer_3.state_machine.transition_to(:seen)
+        applied_offer_3.state_machine.transition_to(:not_interested)
+      end
+      
+      it "should not return applied_offers with not_interested state" do
+        expect(subject.list_applied_candidates.count).to match(2)
       end
     end
 

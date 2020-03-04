@@ -16,7 +16,9 @@ RSpec.describe "User applied offer", type: :feature do
       expect(page).to have_button('Aplicar ahora')
       expect(page).to have_content("0 Candidato(s)")
 
-      click_button 'Aplicar ahora'
+      within '.a-applyButtonWrapper' do
+        find('button.a-actionButton', text: 'Aplicar ahora').click
+      end
 
       sleep(0.5)
 
@@ -36,7 +38,10 @@ RSpec.describe "User applied offer", type: :feature do
       expect(page).to have_content("Test sebas")
       expect(page).to have_button('Aplicar ahora')
 
-      click_button 'Aplicar ahora'
+      within '.a-applyButtonWrapper' do
+        find('button.a-actionButton', text: 'Aplicar ahora').click
+      end
+
       sleep(0.5)
       expect(current_path).to eq(new_user_registration_path)
     end

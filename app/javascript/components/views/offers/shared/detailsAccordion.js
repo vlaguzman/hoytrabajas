@@ -11,8 +11,6 @@ const DetailsAccordion = ({ title, details, requirements }) => {
     setHiddenPanel(!hiddenPanel)
   }
 
-  const list = [...details, ...requirements]
-
   const listIterator = listElements =>
     listElements.map(element => (
       <div className="m-detail">
@@ -36,7 +34,9 @@ const DetailsAccordion = ({ title, details, requirements }) => {
           hiddenPanel ? 'hiddenElement' : ''
         }`}
       >
-        {listIterator(list)}
+        {listIterator(details)}
+        <div className="m-offerSection" />
+        {listIterator(requirements)}
       </div>
     </>
   )

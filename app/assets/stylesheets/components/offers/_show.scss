@@ -56,6 +56,17 @@ img {
     padding: 1rem 0.4rem;
   }
 
+  .a-applyButtonWrapper {
+    &.--stikyBottom {
+
+      @media only screen and (max-width: 768px) {
+        position:-webkit-sticky;
+        position:sticky;
+        bottom: 1vh;
+      }
+    }
+  }
+
 
   .o-offersShowPageContainer {
 
@@ -77,6 +88,7 @@ img {
 
       @media only screen and (max-width: 768px) {
         width: 100%;
+        margin-right: 0;
       }
 
       .offerTitle {
@@ -250,13 +262,11 @@ img {
         @media only screen and (max-width: 768px) {
           flex-wrap: wrap;
           justify-content: center;
-        }
 
-        .a-applyButtonWrapper {
-          @media only screen and (max-width: 768px) {
-            position: fixed;
-            bottom: 20px;
+          .__hiddenMobile {
+            display: none;
           }
+
         }
 
         button {
@@ -307,6 +317,10 @@ img {
           line-height: 1.63;
           letter-spacing: 0.5px;
           color: $color__slategray-dark;
+
+          @media only screen and (max-width: 768px) {
+            font-size: 0.75rem;
+          }
 
           .m-detail {
             display: flex;
@@ -361,6 +375,10 @@ img {
         min-width: 350px;
 
         padding: 2rem;
+
+        @media only screen and (max-width: 768px) {
+          min-width: 200px;
+        }
 
 
         img {
@@ -428,7 +446,13 @@ img {
         button {
           height: 2.5rem;
         }
+      }
 
+      .m-bannerContainer {
+        @media only screen and (max-width: 768px) {
+          max-width: none;
+          display: none;
+        }
       }
     }
   }

@@ -46,7 +46,7 @@
       .m-offerSection
         .m-buttonsContainer
           - @offer.yield_if(!@offer.im_a_company?) do
-            .a-applyButtonWrapper
+            .__hiddenMobile
               = react_component('views/offers/shared/appliedOfferButton',
                 { csrfParam:              request_forgery_protection_token,
                   csrfToken:              form_authenticity_token,
@@ -72,7 +72,7 @@
       .m-offerSection
         .m-OfferDetailsContainer.__mobile
           = react_component('views/offers/shared/detailsAccordion',
-            { title: t('.offer_details.title'),
+            { title: t('.requirements.title'),
               details: @offer.offer_details_list,
               requirements: @offer.requirements_list })
       .m-offerSection
@@ -135,5 +135,12 @@
           csrf_param: request_forgery_protection_token,
           csrf_token: form_authenticity_token,
           loadMoreOffers: false })
+
+  .a-applyButtonWrapper.--stikyBottom
+    - @offer.yield_if(!@offer.im_a_company?) do
+      = react_component('views/offers/shared/appliedOfferButton',
+        { csrfParam:              request_forgery_protection_token,
+          csrfToken:              form_authenticity_token,
+          appliedOfferDetails:    @offer.applied_offer_button_details })
 
 = render partial: '/shared/footer'

@@ -1,5 +1,4 @@
 require "rails_helper"
-  include Rails.application.routes.url_helpers
 
 RSpec.describe Offers::ShowPresenter do
   let(:cundinamarca) { create(:state, description: "Cundinamarca") }
@@ -122,7 +121,7 @@ RSpec.describe Offers::ShowPresenter do
     context "when the company container is visible" do
       it "should return a hash with the company details" do
 
-        company_logo_path = rails_blob_path(the_offer.company.logo, disposition: "attachment", only_path: true)
+        company_logo_path = Rails.application.routes.url_helpers.rails_blob_path(the_offer.company.logo, disposition: "attachment", only_path: true)
 
         expected_object = {
           logo: company_logo_path,

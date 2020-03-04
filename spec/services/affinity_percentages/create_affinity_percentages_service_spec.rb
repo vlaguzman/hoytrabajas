@@ -70,11 +70,11 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
     let!(:curriculum_vitae_2) { create(:curriculum_vitae) }
     let!(:offer_2)            { create(:offer, status: :active) }
 
-    describe 'Por cada oferta activa y hoja de vida, se debe crear o atualizar el AffinityPercentage relacionado' do
+    describe 'By each active offer and curriculum vitae, should create one AffinityPercentage' do
 
-      context 'cuando el AffinityPercentage no ha sido creado' do
+      context 'when AffinityPercentage does not exist' do
 
-        it 'deberia crearse un nuevo objeto de AffinityPercentage con los datos nuevos' do
+        it 'should create new AffinityPercentage object with new data' do
 
           expect(AffinityPercentage.all.count).to eq(0)
 
@@ -148,15 +148,15 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
         end
       end
 
-      context 'cuando el AffinityPercentage ha sido creado' do
+      context 'when exist AffinityPercentage' do
 
-        context 'cuando la oferta es actualizada(su updated at no corresponde al de la creacion de AffinityPercentage)' do
+        context 'when offer is updated, offer updated_at different than AffinityPercentage created_at)' do
           let!(:affinity_percentage) { create(:affinity_percentage, offer_id: offer_1.id, curriculum_vitae_id: curriculum_vitae_1.id, created_at: Time.new(2020, 04, 01, 20, 00, 00)) }
 
           before { Timecop.freeze(Time.new(2020, 05, 01, 13, 00, 00)) }
           after  { Timecop.return }
 
-          it 'deberia crearse un nuevo objeto de AffinityPercentage con los datos nuevos' do
+          it 'should create new AffinityPercentage object with new data' do
             offer_1.update(title: 'Oferta actualizada')
 
             expect(AffinityPercentage.all.count).to eq(1)
@@ -169,13 +169,13 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
           end
         end
 
-        context 'cuando la hoja de vida es actualizada(su updated at no corresponde al de la creacion de AffinityPercentage)' do
+        context 'when curriculum vitae is updated, curriculum vitae updated_at different than AffinityPercentage created_at)' do
           let!(:affinity_percentage) { create(:affinity_percentage, offer_id: offer_1.id, curriculum_vitae_id: curriculum_vitae_1.id, created_at: Time.new(2020, 04, 01, 20, 00, 00)) }
 
           before { Timecop.freeze(Time.new(2020, 05, 01, 13, 00, 00)) }
           after  { Timecop.return }
 
-          it 'deberia crearse un nuevo objeto de AffinityPercentage con los datos nuevos' do
+          it 'should create new AffinityPercentage object with new data' do
             curriculum_vitae_1.update(about_me: 'Hoja de vida actualizada!')
 
             expect(AffinityPercentage.all.count).to eq(1)
@@ -188,13 +188,13 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
           end
         end
 
-        context 'cuando el usuario relacionado a la hoja de vida es actualizada(su updated at no corresponde al de la creacion de AffinityPercentage)' do
+        context 'when user of curriculum vitae is updated, curriculum vitae user updated_at different than AffinityPercentage created_at)' do
           let!(:affinity_percentage) { create(:affinity_percentage, offer_id: offer_1.id, curriculum_vitae_id: curriculum_vitae_1.id, created_at: Time.new(2020, 04, 01, 20, 00, 00)) }
 
           before { Timecop.freeze(Time.new(2020, 05, 01, 13, 00, 00)) }
           after  { Timecop.return }
 
-          it 'deberia crearse un nuevo objeto de AffinityPercentage con los datos nuevos' do
+          it 'should create new AffinityPercentage object with new data' do
             curriculum_vitae_1.user.update(email: "user@actualizado.com")
 
             expect(AffinityPercentage.all.count).to eq(1)
@@ -207,7 +207,7 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
           end
         end
 
-        context 'cuando la oferta no fue actualizada(su updated_at coincide con el created_at del AffinityPercentage)' do
+        context 'when offer is not updated, offer updated_at equal than AffinityPercentage created_at)' do
           let!(:affinity_percentage_1) { create(:affinity_percentage, offer_id: offer_1.id, curriculum_vitae_id: curriculum_vitae_1.id) }
           let!(:affinity_percentage_2) { create(:affinity_percentage, offer_id: offer_1.id, curriculum_vitae_id: curriculum_vitae_2.id) }
           let!(:affinity_percentage_3) { create(:affinity_percentage, offer_id: offer_2.id, curriculum_vitae_id: curriculum_vitae_1.id) }
@@ -216,7 +216,7 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
           before { Timecop.freeze(Time.new(2020, 04, 02, 13, 00, 00)) }
           after  { Timecop.return }
 
-          it 'no deberia crear un nuevo registro de AffinityPercentage' do
+          it 'should not create new AffinityPercentage object with new data' do
 
             expect(AffinityPercentage.all.count).to eq(4)
 

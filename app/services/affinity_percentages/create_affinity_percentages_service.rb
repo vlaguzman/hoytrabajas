@@ -1,5 +1,5 @@
 module AffinityPercentages::CreateAffinityPercentagesService
-  #TODO: When to learn skills has been defined put in offer and curriculum_vitae
+  #TODO: When 'to learn skills' has been defined put in offer and curriculum_vitae hashes
 
   def self.call
     curriculum_vitaes = CurriculumVitae.all

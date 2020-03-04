@@ -1,9 +1,9 @@
 File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/channels/application_cable/channel.rb",100,4,2,2,0
 "./app/channels/application_cable/connection.rb",100,4,2,2,0
-"./app/jobs/affinity_percentages/create_affinity_percentages_daily_job.rb",100,12,5,5,0
+"./app/jobs/affinity_percentages/create_affinity_percentages_daily_job.rb",100,14,6,6,0
 "./app/jobs/application_job.rb",100,7,1,1,0
-"./app/jobs/offers/update_offers_status_daily_job.rb",100,14,6,6,0
+"./app/jobs/offers/update_offers_status_daily_job.rb",100,16,7,7,0
 "./app/mailers/application_mailer.rb",100,4,3,3,0
 "./app/mailers/applied_offers_mailer.rb",100,14,8,8,0
 "./app/mailers/mail_notifier.rb",100,12,5,5,0

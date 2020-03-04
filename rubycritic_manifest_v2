@@ -8,7 +8,7 @@ A          • Admins::OffersController                                    15   
 A          • Admins::OffersPresenter                                     6       28.01      0           3
 A          • AdminsService                                               1       13.19      0           1
 A          • AffinityPercentage                                          2       0.0        0           1
-A          • AffinityPercentages::CreateAffinityPercentagesDailyJob      1       4.71       0           2
+A          • AffinityPercentages::CreateAffinityPercentagesDailyJob      1       5.02       0           2
 A          • AgeRange                                                    3       0.0        0           1
 A          • ApplicationCable::Channel                                   1       0.0        0           1
 A          • ApplicationCable::Connection                                1       0.0        0           1
@@ -130,7 +130,8 @@ A          • Offers::CompletelyDestroyService                            2    
 A          • Offers::IndexService                                        6       11.26      0           3
 A          • Offers::OrderByAffinityPercentageService                    3       28.36      0           4
 A          • Offers::OrderByOnDemand                                     1       29.62      0           2
-A          • Offers::UpdateOffersStatusDailyJob                          2       6.9        0           2
+A          • Offers::UpdateOffersStatusDailyJob                          2       7.25       0           2
+A          • OffersController                                            32      38.05      0           4
 A          • OffersPresenter                                             8       19.0       0           4
 A          • OffersResponsibilities                                      1       0.0        0           1
 A          • OffersService                                               24      48.4       0           4

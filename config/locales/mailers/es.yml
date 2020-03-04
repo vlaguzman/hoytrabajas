@@ -1,4 +1,6 @@
 es:
   mailers:
-    dailly_update_offers:
+    daily_update_offers:
       subject: 'Reporte diario de actuaizacion de ofertas'
+    daily_create_affinity_percentages:
+      subject: 'Reporte diario de creacion de affinity percentages'

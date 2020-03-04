@@ -1,7 +1,7 @@
 require 'rails_helper'
   include ActiveJob::TestHelper
 
-RSpec.describe AffinityPercentages::CreateAffinityPercentages, type: :job do
+RSpec.describe AffinityPercentages::CreateAffinityPercentagesDailyJob, type: :job do
 
   describe "#perform_later" do
 

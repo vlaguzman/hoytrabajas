@@ -9,18 +9,25 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
 
     let!(:available_work_day) { create(:available_work_day) }
     let!(:educational_degree) { create(:educational_degree) }
-   #let!(:educational_level)  { create(:educational_level) }
     let!(:driving_licence)    { create(:driving_licence) }
     let!(:technical_skill)    { create(:technical_skill) }
     let!(:level)              { create(:level) }
     let!(:contract_type)      { create(:contract_type) }
     let!(:language)           { create(:language) }
-    let!(:job)           { create(:language) }
+    let!(:job_category)       { create(:job_category) }
+    let!(:working_day)        { create(:working_day) }
+    let!(:work_mode)          { create(:work_mode) }
+    let!(:soft_skill)         { create(:soft_skill) }
+    let!(:vehicle)            { create(:vehicle) }
+    let!(:city)               { create(:city) }
+    let!(:sex)                { create(:sex) }
 
     let!(:user_curriculum_vitae_1) {
       create(:user,
         educational_degree_id: educational_degree.id,
         driving_licences:      [driving_licence],
+        vehicles:              [vehicle],
+        sex_id:                sex.id
       )
     }
 
@@ -28,8 +35,12 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
       create(:curriculum_vitae,
         user:                user_curriculum_vitae_1,
         available_work_days: [available_work_day],
-   #    educational_levels:  [educational_level],
         contract_type_id:    contract_type.id,
+        job_categories:      [job_category],
+        working_days:        [working_day],
+        work_modes:          [work_mode],
+        soft_skills:         [soft_skill],
+        city:                city
       )
     }
 
@@ -38,17 +49,23 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
         status: :active,
         available_work_days:   [available_work_day],
         educational_degree_id: educational_degree.id,
-   #    educational_level:     [educational_level],
         driving_licences:      [driving_licence],
-        contract_type_id:    contract_type.id,
+        contract_type_id:      contract_type.id,
+        job_categories:        [job_category],
+        working_days:          [working_day],
+        work_mode_id:          work_mode.id,
+        soft_skills:           [soft_skill],
+        vehicles:              [vehicle],
+        city:                  city,
+        sexes:                 [sex],
       )
     }
 
     let!(:cv_technical_skill)    { create(:curriculum_vitaes_technical_skills, curriculum_vitae_id: curriculum_vitae_1.id, technical_skill_id: technical_skill.id, level_id: level.id) }
     let!(:offer_technical_skill) { create(:offers_technical_skills, offer_id: offer_1.id, technical_skill_id: technical_skill.id, level_id: level.id) }
-
-    let!(:cv_language)    { create(:curriculum_vitaes_languages, curriculum_vitae_id: curriculum_vitae_1.id, language_id: language.id, level_id: level.id) }
-    let!(:offer_language) { create(:languages_offers, offer_id: offer_1.id, language_id: language.id, level_id: level.id) }
+    let!(:cv_language)           { create(:curriculum_vitaes_languages, curriculum_vitae_id: curriculum_vitae_1.id, language_id: language.id, level_id: level.id) }
+    let!(:offer_language)        { create(:languages_offers, offer_id: offer_1.id, language_id: language.id, level_id: level.id) }
+    let!(:cv_language)           { create(:curriculum_vitaes_languages, curriculum_vitae_id: curriculum_vitae_1.id, language_id: language.id, level_id: level.id) }
 
     let!(:curriculum_vitae_2) { create(:curriculum_vitae) }
     let!(:offer_2)            { create(:offer, status: :active) }
@@ -61,7 +78,9 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
 
           expect(AffinityPercentage.all.count).to eq(0)
 
-          subject.()
+          response = subject.()
+
+          expect(response).to match_array([[{}, {}], [{}, {}]])
 
           expect(AffinityPercentage.all.count).to eq(4)
 
@@ -78,7 +97,7 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
 
           affinity_percentage_1 = AffinityPercentage.find_by(offer_id: offer_1.id, curriculum_vitae_id: curriculum_vitae_1.id)
 
-         #expect(affinity_percentage_1.affinity_percentage).to eq()
+          expect(affinity_percentage_1.affinity_percentage).to eq(60.0)
           expect(affinity_percentage_1.version).to eq('1.0')
 
           expect(affinity_percentage_1.available_work_days_curriculum_vitae).to eq("#{available_work_day.description}")
@@ -87,8 +106,11 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
           expect(affinity_percentage_1.educational_degree_curriculum_vitae).to eq(curriculum_vitae_1.user.educational_degree.description)
           expect(affinity_percentage_1.educational_degree_offer).to eq(educational_degree.description)
 
-         #expect(affinity_percentage_1.educational_level_curriculum_vitae).to eq("#{educational_level.degree}")
-         #expect(affinity_percentage_1.educational_level_offer).to eq("#{educational_level.degree}")
+          expect(affinity_percentage_1.educational_level_curriculum_vitae).to be_nil
+          expect(affinity_percentage_1.educational_level_offer).to be_nil
+
+          expect(affinity_percentage_1.to_learn_skills_curriculum_vitae).to be_nil
+          expect(affinity_percentage_1.to_learn_skills_offer).to be_nil
 
           expect(affinity_percentage_1.driving_licences_curriculum_vitae).to eq("#{driving_licence.description}")
           expect(affinity_percentage_1.driving_licences_offer).to eq("#{driving_licence.description}")
@@ -105,23 +127,23 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
           expect(affinity_percentage_1.job_categories_curriculum_vitae).to eq("#{job_category.description}")
           expect(affinity_percentage_1.job_categories_offer).to eq("#{job_category.description}")
 
-         #expect(affinity_percentage_1.working_days_curriculum_vitae:        clean_array(curriculum_vitae.working_days.pluck(:description)),
-         #expect(affinity_percentage_1.working_days_offer:        clean_array(offer.working_days.pluck(:description)),
+          expect(affinity_percentage_1.working_days_curriculum_vitae).to eq("#{working_day.description}")
+          expect(affinity_percentage_1.working_days_offer).to eq("#{working_day.description}")
 
-         #expect(affinity_percentage_1.work_mode_id_curriculum_vitae:        clean_array(curriculum_vitae.work_modes.pluck(:description)),
-         #expect(affinity_percentage_1.work_mode_id_offer:        try_data(offer.work_mode, :description),
+          expect(affinity_percentage_1.work_mode_id_curriculum_vitae).to eq("#{work_mode.description}")
+          expect(affinity_percentage_1.work_mode_id_offer).to eq("#{work_mode.description}")
 
-         #expect(affinity_percentage_1.soft_skills_curriculum_vitae:         clean_array(curriculum_vitae.soft_skills.pluck(:description)),
-         #expect(affinity_percentage_1.soft_skills_offer:         clean_array(offer.soft_skills.pluck(:description)),
+          expect(affinity_percentage_1.soft_skills_curriculum_vitae).to eq("#{soft_skill.description}")
+          expect(affinity_percentage_1.soft_skills_offer).to eq("#{soft_skill.description}")
 
-         #expect(affinity_percentage_1.vehicles_curriculum_vitae:            clean_array(curriculum_vitae.user.vehicles.pluck(:description)),
-         #expect(affinity_percentage_1.vehicles_offer:            clean_array(offer.vehicles.pluck(:description)),
+          expect(affinity_percentage_1.vehicles_curriculum_vitae).to eq("#{vehicle.description}")
+          expect(affinity_percentage_1.vehicles_offer).to eq("#{vehicle.description}")
 
-         #expect(affinity_percentage_1.city_id_curriculum_vitae:             try_data(curriculum_vitae.city, :description),
-         #expect(affinity_percentage_1.city_id_offer:             try_data(offer.city, :description),
+          expect(affinity_percentage_1.city_id_curriculum_vitae).to eq("#{city.description}")
+          expect(affinity_percentage_1.city_id_offer).to eq("#{city.description}")
 
-         #expect(affinity_percentage_1.sexes_curriculum_vitae:               try_data(curriculum_vitae.user.sex, :description)
-         #expect(affinity_percentage_1.sexes_offer:               clean_array(offer.sexes.pluck(:description))
+          expect(affinity_percentage_1.sexes_curriculum_vitae).to eq("#{sex.description}")
+          expect(affinity_percentage_1.sexes_offer).to eq("#{sex.description}")
 
         end
       end
@@ -139,7 +161,9 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
 
             expect(AffinityPercentage.all.count).to eq(1)
 
-            subject.()
+            response = subject.()
+
+            expect(response).to match_array([[{}, {}], [{}, {}]])
 
             expect(AffinityPercentage.all.count).to eq(5)
           end
@@ -156,7 +180,9 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
 
             expect(AffinityPercentage.all.count).to eq(1)
 
-            subject.()
+            response = subject.()
+
+            expect(response).to match_array([[{}, {}], [{}, {}]])
 
             expect(AffinityPercentage.all.count).to eq(5)
           end
@@ -173,7 +199,9 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
 
             expect(AffinityPercentage.all.count).to eq(1)
 
-            subject.()
+            response = subject.()
+
+            expect(response).to match_array([[{}, {}], [{}, {}]])
 
             expect(AffinityPercentage.all.count).to eq(5)
           end
@@ -192,7 +220,9 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
 
             expect(AffinityPercentage.all.count).to eq(4)
 
-            subject.()
+            response = subject.()
+
+            expect(response).to match_array([[{}, {}], [{}, {}]])
 
             expect(AffinityPercentage.all.count).to eq(4)
           end

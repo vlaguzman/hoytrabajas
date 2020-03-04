@@ -28,6 +28,8 @@ module AffinityPercentages::CreateAffinityPercentagesService
       prepare_affinity_percentage(offer, curriculum_vitae)
     elsif not affinity_percentage
       prepare_affinity_percentage(offer, curriculum_vitae)
+    else
+      return {};
     end
   end
 
@@ -47,7 +49,6 @@ module AffinityPercentages::CreateAffinityPercentagesService
     {
       available_work_days_curriculum_vitae: clean_array(curriculum_vitae.available_work_days.pluck(:description)),
       educational_degree_curriculum_vitae:  try_data(curriculum_vitae.user.educational_degree, :description),
-      educational_level_curriculum_vitae:   clean_array(curriculum_vitae.educational_levels.pluck(:degree)),
       driving_licences_curriculum_vitae:    clean_array(curriculum_vitae.user.driving_licences.pluck(:description)),
       technical_skills_curriculum_vitae:    clean_array(curriculum_vitae.technical_skills.map{|ts| try_data(TechnicalSkill.find_by(id: ts.technical_skill_id), :description)}),
       contract_type_id_curriculum_vitae:    try_data(curriculum_vitae.contract_type, :description),
@@ -66,7 +67,6 @@ module AffinityPercentages::CreateAffinityPercentagesService
     {
       available_work_days_offer: clean_array(offer.available_work_days.pluck(:description)),
       educational_degree_offer:  try_data(EducationalDegree.find_by(id: offer.educational_degree_id), :description),
-      educational_level_offer:   clean_array(offer.educational_level.pluck(:degree)),
       driving_licences_offer:    clean_array(offer.driving_licences.pluck(:description)),
       technical_skills_offer:    clean_array(offer.technical_skills.pluck(:description)),
       contract_type_id_offer:    try_data(offer.contract_type, :description),
@@ -98,11 +98,15 @@ module AffinityPercentages::CreateAffinityPercentagesService
   end
 
   def self.create_affinity_percentage(affinity_percentage)
-    puts "ESTOY PASANDO POR EL CREATE"
+    offer_id = affinity_percentage.offer_id
+    cv_id    = affinity_percentage.curriculum_vitae_id
     affinity_percentages_logger = Logger.new("#{Rails.root}/log/affinity_percentages.log")
 
-    if not affinity_percentage.save
+    if affinity_percentage.save
+      return {};
+    else
       affinity_percentages_logger.error("OFFER_ID:#{offer.id} CURRICULUM_VITAE_ID: #{curriculum_vitae.id}, ERROR DETAILS #{affinity_percentage.errors.details}")
+      return {offer_id: offer_id, curriculum_vitae_id: cv_id, error_details: affinity_percentage.errors.details};
     end
   end
 end

@@ -23,8 +23,7 @@ class Offers::ViewsService
   end
 
   def affinity_percentage_builder
-    affinity_percentage = get_affinity_percentage
-    current_user.present? && (affinity_percentage >= Offer::MIN_VALID_AFFINTY_PERCENTAGE) && "#{affinity_percentage}%"
+    current_user.present? && (get_affinity_percentage >= Offer::MIN_VALID_AFFINTY_PERCENTAGE) && "#{get_affinity_percentage}%"
   end
 
   private
@@ -49,10 +48,12 @@ class Offers::ViewsService
     }
   end
 
-
   def get_affinity_percentage
-    last_affinity_percentage = AffinityPercentage.where(offer_id: offer.id, curriculum_vitae_id: current_user.curriculum_vitae.id).last
     last_affinity_percentage ? last_affinity_percentage.affinity_percentage.round : affinity_calculator
+  end
+
+  def last_affinity_percentage
+    AffinityPercentage.where(offer_id: offer.id, curriculum_vitae_id: current_user.curriculum_vitae.id).last
   end
 
   def affinity_calculator

@@ -90,7 +90,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/work_position.rb",100,7,4,4,0
 "./app/models/working_day.rb",100,6,4,4,0
 "./app/presenters/admins/offers_presenter.rb",100,26,12,12,0
-"./app/presenters/application_presenter.rb",100,44,24,24,0
+"./app/presenters/application_presenter.rb",100,45,25,25,0
 "./app/presenters/applied_offers_presenter.rb",100,30,11,11,0
 "./app/presenters/companies/dashboards_presenter.rb",100,10,5,5,0
 "./app/presenters/companies/first_offer/step_eight_presenter.rb",100,21,8,8,0
@@ -206,4 +206,4 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./lib/hashes_compare.rb",100,23,12,12,0
 "./lib/hashes_converter.rb",100,22,10,10,0
 "./lib/list_converter.rb",100,25,12,12,0
-"./lib/string_converter.rb",100,16,9,9,0
+"./lib/string_converter.rb",100,21,11,11,0

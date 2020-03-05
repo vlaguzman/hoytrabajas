@@ -108,7 +108,7 @@ RSpec.describe "Unregistered user applied offer in home", type: :feature do
       find('button', text: "Continuar").click
 
       expect(current_path).to eq(offer_path(offer.id))
-      expect(page).to have_text("¡HAS APLICADO!")
+      expect(page).to have_text("¡Has aplicado!")
     end
 
     it "Should skip add educational level and arrive at the offer show", js: true do
@@ -189,7 +189,7 @@ RSpec.describe "Unregistered user applied offer in home", type: :feature do
       click_on("Omitir")
 
       expect(current_path).to eq(offer_path(offer.id))
-      expect(page).to have_text("¡HAS APLICADO!")
+      expect(page).to have_text("¡Has aplicado!")
     end
 
     it "Should click 'No, pero quiero agregarla' in educational level and arrive at the offer show", js: true do
@@ -270,7 +270,7 @@ RSpec.describe "Unregistered user applied offer in home", type: :feature do
       click_on("No, pero quiero aprender")
 
       expect(current_path).to eq(offer_path(offer.id))
-      expect(page).to have_text("¡HAS APLICADO!")
+      expect(page).to have_text("¡Has aplicado!")
     end
   end
 end

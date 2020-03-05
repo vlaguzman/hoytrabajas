@@ -34,7 +34,8 @@ class ApplicationPresenter < SimpleDelegator
 
   def validate_cookie_path(object, cookies, path)
     if options[:cookies].present?
-      Offers::AppliedOfferService.(user: object, params_offer: { offer_id: cookies.split('/')[2].to_i } )
+    offer_id = StringConverter.split_id_path(path: cookies)
+      Offers::AppliedOfferService.(user: object, params_offer: { offer_id: offer_id} )
       cookies
     else
       path

@@ -18,7 +18,6 @@ RSpec.describe "Unregistered user applied offer in home", type: :feature do
   let!(:offer)                     { create(:offer, title: 'Tremendous offer') }
   let!(:applied_offer_status)      { create(:applied_offer_status, description: "applied") }
 
-
   context "When the anonymous user wants to apply offer in home" do
     it "Should complete registration and arrive at the offer show", js: true do
 

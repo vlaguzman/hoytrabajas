@@ -858,8 +858,8 @@
 
 .logo {
   object-fit: contain;
-  @media (max-width: 992px) {
-    width: 100%;
+  @media only screen and (max-width: 992px) {
+    width: 2.4375rem;
   }
 }
 

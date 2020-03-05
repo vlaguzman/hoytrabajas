@@ -200,9 +200,9 @@ const Header = props => {
                   src={`/assets/static/img/${
                     windowSize.width > 992
                       ? 'hoytrabajas-logo-color.svg'
-                      : 'icon-hoytrabajas-logo.svg'
+                      : 'icon-hoytrabajas-logo.png'
                   }`}
-                  className="mr-15 logo animated fadeIn"
+                  className="logo animated fadeIn"
                   alt="site logo"
                   height="100%"
                 />

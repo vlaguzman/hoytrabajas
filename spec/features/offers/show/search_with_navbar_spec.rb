@@ -17,4 +17,4 @@ RSpec.describe "like anonymoyus user", type: :feature do
       expect(page).to_not have_text('Somebody Visitedme')
     end
   end
-end 
+end

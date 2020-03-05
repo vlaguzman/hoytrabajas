@@ -58,14 +58,15 @@
                 %i.material-icons edit
                 %span= t('.buttons.edit_offer')
 
-            - @offer.yield_if(@offer.in_preview?) do
-              %form.button_to{action: offer_path(@offer.id), method: :post}
-                %input{ name: "_method",  type: "hidden",  value: "put"}
-                %button.a-actionButton{ type: "submit",  value: "offers"}
-                  %i.material-icons check_circle
-                  %span= t('.buttons.publish_offer')
-                %input{ name: "authenticity_token", type:"hidden", value: form_authenticity_token}
-                %input{ name: "status", type:"hidden",  value:"active"}
+            -# TODO Oscar Active when the company can active without HT verification
+            -#- @offer.yield_if(@offer.in_preview?) do
+            -#  %form.button_to{action: offer_path(@offer.id), method: :post}
+            -#    %input{ name: "_method",  type: "hidden",  value: "put"}
+            -#    %button.a-actionButton{ type: "submit",  value: "offers"}
+            -#      %i.material-icons check_circle
+            -#      %span= t('.buttons.publish_offer')
+            -#    %input{ name: "authenticity_token", type:"hidden", value: form_authenticity_token}
+            -#    %input{ name: "status", type:"hidden",  value:"active"}
 
       .m-offerSection.--divider
 

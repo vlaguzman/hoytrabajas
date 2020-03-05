@@ -104,7 +104,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/companies/first_offer_presenter.rb",100,13,4,4,0
 "./app/presenters/companies/list_candidates_presenter.rb",100,34,17,17,0
 "./app/presenters/home/home_presenter.rb",100,53,14,14,0
-"./app/presenters/offers/show_presenter.rb",98,294,130,128,2
+"./app/presenters/offers/show_presenter.rb",98,268,121,119,2
 "./app/presenters/offers_presenter.rb",100,25,13,13,0
 "./app/presenters/users/profiles_presenter.rb",100,119,33,33,0
 "./app/presenters/users/wizards/step_eight_presenter.rb",100,32,12,12,0

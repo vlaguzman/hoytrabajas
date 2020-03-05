@@ -64,8 +64,6 @@ RSpec.describe "Like an user", type: :feature do
 
         visit offer_path(empty_offer.id)
 
-        expect(page).to have_text("Oferta dirigida a")
-        expect(page).to have_text("Edad")
         expect(page).to have_text("Número de vacantes")
         expect(page).to have_text("Residente en")
         expect(page).to have_text("Experiencia")

@@ -91,8 +91,8 @@ RSpec.describe "offers/show" do
       expect(rendered).to have_tag('div.a-offerDescription', text: /I should be a very long description but i dont want/)
 
       #details
-      expect(rendered).to have_tag('div.a-labelBox', text: "Oferta dirigida a")
-      expect(rendered).to have_tag('div.a-spanBox', text: 'Mujer')
+      expect(rendered).to have_tag('div.a-labelBox', text: "Requerimientos")
+      expect(rendered).to have_tag('div.a-spanBox', text: 'Certificación IPA')
 
       #company
       expect(rendered).to have_tag('img', src: Rails.application.routes.url_helpers.rails_blob_path(hoy_trabajas_company.logo, disposition: "attachment", only_path: true) )

@@ -56,8 +56,6 @@ class Offers::ShowPresenter < ApplicationPresenter
 
   def requirements_list
     [
-      sex_requirement,
-      age_requirement,
       residence_requirement,
       experience_requirement,
       language_requirement,
@@ -214,30 +212,6 @@ class Offers::ShowPresenter < ApplicationPresenter
 
     field_builder(
       label: I18n.t('offers.show.requirements.language'),
-      value: value
-    )
-  end
-
-  def sex_requirement
-    value = I18n.t("offers.show.no_record")
-
-    if source.sexes.any?
-      value = source.sexes.pluck(:description).join(" ")
-    end
-
-    field_builder(
-      label: I18n.t('offers.show.requirements.sex'),
-      value: value
-    )
-  end
-
-  def age_requirement
-    age = AgeRange.find_by(offer_id: source.id)
-
-    value = age.present? ? "#{age.from} a #{age.to}" : I18n.t("offers.show.no_record")
-
-    field_builder(
-      label: I18n.t('offers.show.requirements.age'),
       value: value
     )
   end

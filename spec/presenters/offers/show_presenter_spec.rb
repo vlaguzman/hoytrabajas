@@ -184,8 +184,6 @@ RSpec.describe Offers::ShowPresenter do
     context "When the requirements are complete" do
       it "Should return expected object" do
         expected_array = [
-          {label: 'Oferta dirigida a', value: 'Mujer' },
-          {label: 'Edad', value: '18 a 35' },
           {label: 'Residente en', value: 'Bogotá D.C.' },
           {label: 'Experiencia', value: 'No requiere' },
           {label: 'Manejo del idioma', value: 'Ingles Avanzado, Aleman Bajo' },
@@ -203,8 +201,6 @@ RSpec.describe Offers::ShowPresenter do
 
       it "should return the expected object" do
         expected_array = [
-          {label: 'Oferta dirigida a', value: 'No registra' },
-          {label: 'Edad', value: 'No registra' },
           {label: 'Residente en', value: 'No registra' },
           {label: 'Experiencia', value: 'No requiere' },
           {label: 'Manejo del idioma', value: 'No registra' },

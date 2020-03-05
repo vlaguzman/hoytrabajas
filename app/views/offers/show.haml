@@ -122,7 +122,7 @@
         /%button Seguir esta empresa
 
       .m-bannerContainer
-        %img{src: @offer.banner_path}
+        %img.a-appliedOfferModal{src: @offer.banner_path}
 
   - @offer.yield_if(@offer.related_offers[:list].any?) do
     .o-relatedOffersContainer

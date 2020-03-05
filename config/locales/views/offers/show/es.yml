@@ -1,0 +1,50 @@
+es:
+  offers:
+    show:
+      no_record: 'No registra'
+      affinity: 'Afinidad'
+      related_offers: 'Ofertas similares a tu oferta'
+      company:
+        this_company: 'esta compañia'
+        employees_range:
+          employees: "empleados"
+      offer_details:
+        empty: 'Esta oferta no tiene detalles'
+        title: 'Detalle de la oferta'
+        work_position: 'Cargo'
+        vacancies_quantity: 'Número de vacantes'
+        offer_type: 'Tipo de oferta'
+        work_mode: 'Modalidad de trabajo'
+        contract_type: 'Acuerdo Legal'
+        salary: 'Salario'
+        available_work_days: 'Días'
+        working_days: 'Jornada'
+        job_aids: 'Auxilios o prestaciones'
+      requirements:
+        title: 'Requerimientos'
+        sex: 'Oferta dirigida a'
+        age: 'Edad'
+        residence: 'Residente en'
+        experience: 'Experiencia'
+        no_required_experience: 'No requiere'
+        language: 'Manejo del idioma'
+        responsabilities: 'Responsabilidades'
+        requirements: 'Requerimientos'
+      buttons:
+        edit_offer: 'Editar oferta'
+        publish_offer: 'Publicar oferta'
+      applied_button:
+        button_disactive: '¡Has aplicado!'
+        button_active: 'Aplicar ahora'
+        applied_offer_modal:
+          title: '¡Has aplicado a esta oferta!'
+          description:
+            'Puedes seguir aplicando a todas las ofertas que tenemos para ti
+            y consultar su estado en tu tablero'
+          dashboard: 'Mi tablero > Mis aplicaciones'
+          button: '¡Perfecto!'
+      other_details:
+        close_date: 'Cierre de la oferta'
+        applications: 'Aplicaciones'
+      tags:
+        immediate_start: 'Inicio inmediato'

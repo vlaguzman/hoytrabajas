@@ -1,11 +1,147 @@
+- content_for(:title, @offer.title_capitalize)
+
 = render '/shared/header'
-= react_component('pages/detalle_oferta',
-  { translationOffer: @offer.component_translations,
-    csrf_param: request_forgery_protection_token,
-    relatedOffers: @offer.related_offer_show,
-    pathAppliedOffers: applied_offers_path,
-    pathAppliedOffersRest: applied_offers_rest_index_path,
-    offer_translations: I18n.t("offers"),
-    csrf_token: form_authenticity_token,
-    offer: @offer.show_details }, prerender: false)
+
+.o-mainContainer
+  .o-offersShowPageContainer
+
+    .m-offerInformationContainer
+      .m-offerSection.__top
+        %h1.offerTitle= @offer.title_capitalize
+
+        .m-tags
+          - @offer.tags[:job_categories] && @offer.tags[:job_categories].each do |job_category|
+            %span.a-tag__aqua= job_category
+          - @offer.tags[:immediate_start] && @offer.tags[:immediate_start].each do |immediate_start|
+            %span.a-tag__orange= immediate_start
+          - @offer.tags[:location] && @offer.tags[:location].each do |city|
+            %span.a-tag__gray= city
+
+      .m-offerSection
+        .m-affinityPercentageSection.__mobile
+          - @offer.yield_if(@offer.affinity_percentage) do
+            .m-affinityPercentageTag
+              = @offer.affinity_percentage[:label]
+              .__percentage= @offer.affinity_percentage[:value]
+
+          //TODO Oscar like a company disable
+          //.a-likeCompanyButton
+          //  = react_component('views/offers/shared/likeCompanyButton')
+
+      .m-otherDetailsContainer
+        .m-offerSection
+          - @offer.yield_if(@offer.affinity_percentage) do
+            .m-affinityPercentageSection.__desktop
+              .m-affinityPercentageTag
+                = @offer.affinity_percentage[:label]
+                .__percentage= @offer.affinity_percentage[:value]
+          - @offer.other_details.each do |detail|
+            .m-otherDetail
+              %label= detail[:label]
+              %span= detail[:value]
+
+      .m-offerSection
+        .a-offerDescription= @offer.description_capitalized
+
+      .m-offerSection
+        .m-buttonsContainer
+          - @offer.yield_if(!@offer.im_a_company?) do
+            .__hiddenMobile
+              = react_component('views/offers/shared/appliedOfferButton',
+                { csrfParam:              request_forgery_protection_token,
+                  csrfToken:              form_authenticity_token,
+                  appliedOfferDetails:    @offer.applied_offer_button_details })
+
+          - @offer.yield_if(@offer.im_offer_owner?) do
+            %a{href: companies_first_offer_step_three_path(offer_id: @offer.id)}
+              %button.a-actionButton.--secondaryAction
+                %i.material-icons edit
+                %span= t('.buttons.edit_offer')
+
+            -# TODO Oscar Active when the company can active without HT verification
+            -#- @offer.yield_if(@offer.in_preview?) do
+            -#  %form.button_to{action: offer_path(@offer.id), method: :post}
+            -#    %input{ name: "_method",  type: "hidden",  value: "put"}
+            -#    %button.a-actionButton{ type: "submit",  value: "offers"}
+            -#      %i.material-icons check_circle
+            -#      %span= t('.buttons.publish_offer')
+            -#    %input{ name: "authenticity_token", type:"hidden", value: form_authenticity_token}
+            -#    %input{ name: "status", type:"hidden",  value:"active"}
+
+      .m-offerSection.--divider
+
+      .m-offerSection
+        .m-OfferDetailsContainer.__mobile
+          = react_component('views/offers/shared/detailsAccordion',
+            { title: t('.requirements.title'),
+              details: @offer.offer_details_list,
+              requirements: @offer.requirements_list })
+      .m-offerSection
+        .m-OfferDetailsContainer.__desktop
+          .detailTitle= t('.requirements.title')
+          .m-detailsList
+            - @offer.requirements_list.each do |requirement|
+              .m-detail
+                .a-labelBox= requirement[:label]
+                .a-spanBox= requirement[:value]
+
+      .m-offerSection.__bottom
+        .m-OfferDetailsContainer.__desktop
+          .detailTitle.--secondary= t('.offer_details.title')
+          .m-detailsList
+            - @offer.yield_if(@offer.offer_details_list.empty?) do
+              .m-detail
+                .a-labelBox= t('.offer_details.empty')
+            - @offer.offer_details_list.each do |detail|
+              .m-detail
+                .a-labelBox= detail[:label]
+                .a-spanBox= detail[:value]
+
+    .m-aditionalIformationContainer
+      .m-companyContainer
+        - @offer.yield_if(@offer.is_public?) do
+          %img.a-companyLogo{src: @offer.company_details[:logo], alt: @offer.company_details[:logo_alt] }
+          .a-companyName= @offer.company_details[:name]
+        .a-companyIndustry= @offer.company_details[:description]
+
+        -# TODO Oscar build a google maps component
+        /%img{src: 'https://bit.ly/3a519ic', style: "margin-bottom: 2rem;"}
+
+        .m-companyDetails
+          .__location= @offer.company_details[:city]
+          .__employeesRange= @offer.company_details[:employees_range]
+          /TODO Oscar where redirect the contact link?
+          /.__contact Contactar con la empresa
+          - @offer.yield_if(@offer.is_public?) do
+            .__URL= @offer.company_details[:web_site]
+
+        /TODO Oscar add the social icons when the company can added them
+        .m-socialSection
+          .socialButton
+
+        /TODO Oscar complete the follow button when the funcionality is ready
+        /%button Seguir esta empresa
+
+      .m-bannerContainer
+        %img.a-appliedOfferModal{src: @offer.banner_path}
+
+  - @offer.yield_if(@offer.related_offers[:list].any?) do
+    .o-relatedOffersContainer
+      .__title= @offer.related_offers[:title]
+      .o-offers__wrapper
+        = react_component('src/components/Offers/',
+        { offers: @offer.related_offers[:list],
+          offer_translations: I18n.t("offers"),
+          path_applied_offers: applied_offers_path,
+          csrf_param: request_forgery_protection_token,
+          csrf_token: form_authenticity_token,
+          loadMoreOffers: false })
+
+  .a-applyButtonWrapper.--stikyBottom
+    - @offer.yield_if(!@offer.im_a_company?) do
+      = react_component('views/offers/shared/appliedOfferButton',
+        { csrfParam:              request_forgery_protection_token,
+          csrfToken:              form_authenticity_token,
+          appliedOfferDetails:    @offer.applied_offer_button_details })
+
 = render partial: '/shared/footer'

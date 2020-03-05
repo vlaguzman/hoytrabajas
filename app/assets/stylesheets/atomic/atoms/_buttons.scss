@@ -92,6 +92,8 @@
 }
 
 button {
+  transition: 0.3s;
+
   &.--watchProfile {
     background-color: #ffffff;
     border-radius: 5px;
@@ -111,6 +113,49 @@ button {
     &:active {
       position: relative;
       top: 1px;
+    }
+  }
+
+  &.a-actionButton {
+    display: flex;
+    align-items: center;
+    background-color:$color__orange-main;
+    border-radius:24px;
+    border:1px solid $color__orange-main;
+    cursor:pointer;
+    color: white;
+    font-size: 0.7875rem;
+    font-weight:bold;
+    padding: 1vh 2vw;
+
+    @media screen and (max-width: 768px) {
+      padding:1vh 30vw;
+    }
+
+    &:hover {
+      background-color: $color__blue-main;
+      border:1px solid $color__blue-main;
+    }
+
+    &:active{
+      position:relative;
+      top:1px;
+    }
+
+    span {
+      margin: 0 1rem ;
+    }
+
+    &.--secondaryAction {
+      background-color: white;
+      border:1px solid $color__blue-main;
+      color: $color__blue-main
+
+    }
+
+    &.--disabled {
+      background-color: grey;
+      border:1px solid gray;
     }
   }
 }

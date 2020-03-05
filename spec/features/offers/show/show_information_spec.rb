@@ -56,23 +56,24 @@ RSpec.describe "Like an user", type: :feature do
     end
 
     context "when offer has not to much information" do
+
+      let(:empty_offer) { create(:offer, :empty, job_categories: [job_category_1, job_category_2]) }
+
       scenario "should render offers show template as well", js: true do
-        empty_offer = create(:empty_offer, job_categories: [job_category_1, job_category_2])
         sign_in user
+
         visit offer_path(empty_offer.id)
 
-        expect(page).to_not have_text("Oferta dirigida a")
-        expect(page).to_not have_text("Edad")
-        expect(page).to_not have_text("Número de vacantes")
-        expect(page).to_not have_text("Residente en")
-        expect(page).to_not have_text("Experiencia")
-        expect(page).to_not have_text("Tipo de oferta")
-        expect(page).to_not have_text("Modalidad de trabajo")
-        expect(page).to_not have_text("Acuerdo Legal")
-        expect(page).to_not have_text("Salario")
-        expect(page).to_not have_text("Días")
-        expect(page).to_not have_text("Jornada")
-        expect(page).to_not have_text("Auxilios o prestaciones")
+        expect(page).to have_text("Número de vacantes")
+        expect(page).to have_text("Residente en")
+        expect(page).to have_text("Experiencia")
+        expect(page).to have_text("Tipo de oferta")
+        expect(page).to have_text("Modalidad de trabajo")
+        expect(page).to have_text("Acuerdo Legal")
+        expect(page).to have_text("Salario")
+        expect(page).to have_text("Días")
+        expect(page).to have_text("Jornada")
+        expect(page).to have_text("Auxilios o prestaciones")
       end
     end
 
@@ -82,7 +83,6 @@ RSpec.describe "Like an user", type: :feature do
         visit offer_path(show_offer.id)
 
         expect(page).to have_text("the great company")
-        expect(page).to have_text("calle falsa 123")
         expect(page).to have_text(show_offer.company.employees_range_description)
         expect(page).to have_text("the best company to work")
         expect(page).to have_text("thebestcompany.com")
@@ -115,10 +115,10 @@ RSpec.describe "Like an user", type: :feature do
         visit offer_path(show_offer.id)
 
         expect(page).to have_text("the best company to work")
+        expect(page).to have_text('1-10 empleados')
 
         expect(page).to_not have_text("the great company")
         expect(page).to_not have_text("calle falsa 123")
-        expect(page).to_not have_text(show_offer.company.employees_range_description)
         expect(page).to_not have_text("thebestcompany.com")
       end
     end

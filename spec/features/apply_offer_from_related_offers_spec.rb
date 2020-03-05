@@ -22,11 +22,11 @@ RSpec.describe "User applied offer from the related offer section", type: :featu
 
       save_screenshot('offer.png')
       expect(current_path).to eq(offer_path(offer_b.id))
-      expect(page).to have_text('¡HAS APLICADO!')
+      expect(page).to have_text('¡Has aplicado!')
       expect(AppliedOffer.count).to eq(1)
     end
   end
-  
+
   context "When the user is logged in and had applied to a offer" do
     it "should not see the applied offer" do
       sign_in user
@@ -40,7 +40,7 @@ RSpec.describe "User applied offer from the related offer section", type: :featu
       find(".btn-apply", match: :first).click
 
       expect(current_path).to eq(offer_path(offer_b.id))
-      expect(page).to have_text('¡HAS APLICADO!')
+      expect(page).to have_text('¡Has aplicado!')
       expect(AppliedOffer.count).to eq(1)
 
       visit offer_path(offer.id)

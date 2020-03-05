@@ -18,21 +18,21 @@ RSpec.describe "Like an company", :type => :feature do
 
         expect(page).to have_content("Conozcamos más de tu oferta")
         expect(page).to have_content("Brinda a tu candidato información relevante de tu empresa.")
-  
+
         expect(page).to have_tag(:form, with: { class: "forms__candidate" }) do
           with_tag(:input, with: { name: 'offer[city_id]',               type: "hidden" })
           with_tag(:input, with: { name: 'offer[educational_degree_id]', type: "hidden" })
           with_tag(:input, with: { name: 'offer[duration]',              type: "text" })
           with_tag(:input, with: { name: 'offer[duration_type_id]',      type: "hidden" })
           with_tag(:input, with: { name: 'offer[required_experience]',   type: "hidden" })
-  
+
           with_tag(:input, with: { name: 'offer[technical_skills][][technical_skill_id]', type: "hidden" })
           with_tag(:input, with: { name: 'offer[technical_skills][][level_id]',           type: "hidden" })
-  
+
           with_tag(:input, with: { name: 'offer[languages][][language_id]', type: "hidden" })
           with_tag(:input, with: { name: 'offer[languages][][level_id]',    type: "hidden" })
         end
-  
+
         expect(page).to have_button('Publicar')
 
         expected_data = {
@@ -47,19 +47,19 @@ RSpec.describe "Like an company", :type => :feature do
         find(id: 'mui-component-select-offer[country_id]', visible: false).click
 
         find('li', text: expected_data[:country_description]).click
-  
+
         find(id: 'mui-component-select-offer[state_id]', visible: false).click
 
         find('li', text: expected_data[:state_description]).click
-  
+
         find(id: 'mui-component-select-offer[city_id]', visible: false).click
         find('li', text: expected_data[:city_description]).click
-  
+
         find(id: 'mui-component-select-offer[educational_degree_id]', visible: false).click
         find('li', text: expected_data[:educational_degree]).click
-  
+
         fill_in 'offer[duration]', with: '2'
-  
+
         find(id: 'mui-component-select-offer[duration_type_id]', visible: false).click
         find('li', text: expected_data[:duration_type]).click
 

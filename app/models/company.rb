@@ -22,6 +22,7 @@ class Company < ApplicationRecord
   has_one_attached :logo
 
   delegate :description, to: :employees_range, prefix: :employees_range, allow_nil: true
+  delegate :description, :state_description, to: :city, prefix: :city, allow_nil: true
 
   delegate :can_transition_to?, :current_state, :history, :last_transition, :transition_to!, :transition_to, :in_state?, to: :state_machine
 

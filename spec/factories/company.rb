@@ -14,6 +14,7 @@ FactoryBot.define do
     sign_in_count         { 34565 }
     password              { Faker::Blockchain::Bitcoin.address }
     confirmed_at          { Date.today }
+    clientify_contact_id  { nil }
 
     trait :with_logo do
       after(:build) do |company|

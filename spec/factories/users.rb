@@ -16,6 +16,7 @@ FactoryBot.define do
     sign_in_count         { 1323 }
     about_me              { Faker::FunnyName.name }
     limitations           { [create(:limitation)] }
+    clientify_contact_id  { nil }
 
     association :contract_type, factory: :contract_type
     association :work_mode, factory: :work_mode

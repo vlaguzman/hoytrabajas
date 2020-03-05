@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_27_142958) do
+ActiveRecord::Schema.define(version: 2020_03_05_224428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -219,6 +219,7 @@ ActiveRecord::Schema.define(version: 2020_02_27_142958) do
     t.bigint "employees_range_id"
     t.bigint "city_id"
     t.bigint "industry_id"
+    t.integer "clientify_contact_id"
     t.index ["city_id"], name: "index_companies_on_city_id"
     t.index ["confirmation_token"], name: "index_companies_on_confirmation_token", unique: true
     t.index ["email"], name: "index_companies_on_email", unique: true
@@ -854,6 +855,7 @@ ActiveRecord::Schema.define(version: 2020_02_27_142958) do
     t.string "cv_file"
     t.integer "residence_city_id"
     t.integer "born_city_id"
+    t.integer "clientify_contact_id"
     t.index ["born_city_id"], name: "index_users_on_born_city_id"
     t.index ["city_id"], name: "index_users_on_city_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true

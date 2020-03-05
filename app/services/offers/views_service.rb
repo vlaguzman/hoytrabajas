@@ -22,8 +22,9 @@ class Offers::ViewsService
     @offer
   end
 
-  def validate_affinity_percentage
-    affinity_percentage_builder && (affinity_percentage_builder >= Offer::MIN_VALID_AFFINTY_PERCENTAGE) && "#{affinity_percentage_builder}%"
+  def affinity_percentage_builder
+    affinity_percentage = get_affinity_percentage
+    current_user.present? && (affinity_percentage >= Offer::MIN_VALID_AFFINTY_PERCENTAGE) && "#{affinity_percentage}%"
   end
 
   private
@@ -42,15 +43,20 @@ class Offers::ViewsService
       company:              company_details,
       close_date:           close_date.present? ? DatesManager.default(date: close_date) : DatesManager.default(date: Date.today + 1.day ),
       on_demand:            offer_on_demand_details,
-      affinity_percentage:  validate_affinity_percentage,
+      affinity_percentage:  affinity_percentage_builder,
       applied_offers:       applied_offers_count,
       raw_close_date:       close_date.present? && close_date
     }
   end
 
 
-  def affinity_percentage_builder
-    current_user.present? && AffinityCalculator.new(offer, current_user).affinity_percentage
+  def get_affinity_percentage
+    last_affinity_percentage = AffinityPercentage.where(offer_id: offer.id, curriculum_vitae_id: current_user.curriculum_vitae.id).last
+    last_affinity_percentage ? last_affinity_percentage.affinity_percentage.round : affinity_calculator
+  end
+
+  def affinity_calculator
+    AffinityCalculator.new(offer, current_user).affinity_percentage
   end
 
   def applied_offers_count

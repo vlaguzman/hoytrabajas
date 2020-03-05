@@ -204,40 +204,58 @@ RSpec.describe Offers::ViewsService do
 
   end
 
-  describe "#validate_affinity_percentage" do
-    context "When the candidate does not reach the 40%" do
-      it "Should return a false" do
-        response = subject.validate_affinity_percentage
+  describe "#affinity_percentage_builder" do
+    context "When the candidate does not reach the 20%" do
+      it "Should return nothing" do
+        response = subject.affinity_percentage_builder
 
-        expect(response).to be_falsy
+        expect(response).to be_empty
       end
 
     end
 
-    context "When the user rebase the 40%" do
-      let(:contract_type) { create(:contract_type, description: "Indefinido")}
-      let(:offer_contract)  { create(:empty_offer,
-        contract_type: contract_type,
-        title: "A Super Offer",
-        description: 'a super description')}
+    context "When the user rebase the 20%" do
 
-      let(:curriculum_vitae) { create(:curriculum_vitae,
-        job_categories: offer_contract.job_categories
-      ) }
+      let(:curriculum_vitae)    { create(:curriculum_vitae) }
+      let(:affinity_percentage) { create(:affinity_percentage, offer_id: offer.id, curriculum_vitae_id: curriculum_vitae.id, version: '1.0', affinity_percentage: 55.0) }
 
-      let!(:candidate) { create(:user,
-        :first_time_candidate,
-        name: "conan",
-        contract_type: contract_type,
-        curriculum_vitaes: [curriculum_vitae]
-      )}
+      context "when AffinityPercentage exist" do
+        it "Should return the affinity_percentage of affinity_percentage related in text" do
+          expect(AffinityPercentage.all.count).to eq(1)
 
-      let(:subject) { described_class.new(offer_contract, candidate) }
+          response = subject.validate_affinity_percentage
 
-      it "Should return the percetage in text" do
-        response = subject.validate_affinity_percentage
+          expect(response).to eq("55%")
+        end
+      end
 
-        expect(response).to eq("100%")
+      context "when AffinityPercentage does not exist" do
+        let(:contract_type) { create(:contract_type, description: "Indefinido")}
+        let(:offer_contract)  { create(:empty_offer,
+          contract_type: contract_type,
+          title: "A Super Offer",
+          description: 'a super description')}
+
+        let(:curriculum_vitae) { create(:curriculum_vitae,
+          job_categories: offer_contract.job_categories
+        ) }
+
+        let!(:candidate) { create(:user,
+          :first_time_candidate,
+          name: "conan",
+          contract_type: contract_type,
+          curriculum_vitaes: [curriculum_vitae]
+        )}
+
+        let(:subject) { described_class.new(offer_contract, candidate) }
+
+        it "Should return the percetage in text" do
+          expect(AffinityPercentage.all.count).to eq(0)
+
+          response = subject.validate_affinity_percentage
+
+          expect(response).to eq("100%")
+        end
       end
     end
 

@@ -199,7 +199,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/wizards_last_step_service.rb",100,26,17,17,0
 "./app/state_machines/applied_offer_state_machine.rb",100,14,10,10,0
 "./app/state_machines/company_state_machine.rb",100,17,10,10,0
-"./lib/dates_manager.rb",100,24,15,15,0
+"./lib/dates_manager.rb",100,29,17,17,0
 "./lib/extra_hash_methods.rb",100,11,6,6,0
 "./lib/form_progress_manager.rb",100,12,7,7,0
 "./lib/get_value_of_record.rb",100,97,44,44,0

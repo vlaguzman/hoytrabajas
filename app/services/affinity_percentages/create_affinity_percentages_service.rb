@@ -17,14 +17,18 @@ module AffinityPercentages::CreateAffinityPercentagesService
     AffinityPercentage.where(offer_id: offer_id, curriculum_vitae_id: curriculum_vitae_id).last
   end
 
-  def self.validate_if_offer_and_cv_updated?(offer, curriculum_vitae, affinity_percentage)
-    (convert_date(offer.updated_at)                 != convert_date(affinity_percentage.created_at)) ||
-    (convert_date(curriculum_vitae.updated_at)      != convert_date(affinity_percentage.created_at)) ||
-    (convert_date(curriculum_vitae.user.updated_at) != convert_date(affinity_percentage.created_at))
+  def self.to_format(date)
+    DatesManager.to_format(date, "%F")
+  end
+
+  def self.validate_offer_and_cv_updated?(offer, curriculum_vitae, affinity_percentage)
+    (to_format(offer.updated_at)                 != to_format(affinity_percentage.created_at)) ||
+    (to_format(curriculum_vitae.updated_at)      != to_format(affinity_percentage.created_at)) ||
+    (to_format(curriculum_vitae.user.updated_at) != to_format(affinity_percentage.created_at))
   end
 
   def self.validate_affinity_percentage(offer, curriculum_vitae, affinity_percentage)
-    if affinity_percentage && validate_if_offer_and_cv_updated?(offer, curriculum_vitae, affinity_percentage)
+    if affinity_percentage && validate_offer_and_cv_updated?(offer, curriculum_vitae, affinity_percentage)
       prepare_affinity_percentage(offer, curriculum_vitae)
     elsif not affinity_percentage
       prepare_affinity_percentage(offer, curriculum_vitae)
@@ -37,27 +41,23 @@ module AffinityPercentages::CreateAffinityPercentagesService
     object.present? ? object.send(method) : nil
   end
 
-  def self.clean_array(array)
+  def self.array_to_string(array)
     array.any? ? array.join(", ") : nil
-  end
-
-  def self.convert_date(date)
-    date.strftime("%F")
   end
 
   def self.curriculum_vitae_for_affinity_percentage(curriculum_vitae)
     {
-      available_work_days_curriculum_vitae: clean_array(curriculum_vitae.available_work_days.pluck(:description)),
+      available_work_days_curriculum_vitae: array_to_string(curriculum_vitae.available_work_days.pluck(:description)),
       educational_degree_curriculum_vitae:  try_data(curriculum_vitae.user.educational_degree, :description),
-      driving_licences_curriculum_vitae:    clean_array(curriculum_vitae.user.driving_licences.pluck(:description)),
-      technical_skills_curriculum_vitae:    clean_array(curriculum_vitae.technical_skills.map{|ts| try_data(TechnicalSkill.find_by(id: ts.technical_skill_id), :description)}),
+      driving_licences_curriculum_vitae:    array_to_string(curriculum_vitae.user.driving_licences.pluck(:description)),
+      technical_skills_curriculum_vitae:    array_to_string(curriculum_vitae.technical_skills.map{|ts| try_data(TechnicalSkill.find_by(id: ts.technical_skill_id), :description)}),
       contract_type_id_curriculum_vitae:    try_data(curriculum_vitae.contract_type, :description),
-      languages_list_curriculum_vitae:      clean_array(curriculum_vitae.languages_list.map{|cv_language| try_data(cv_language.language, :description) }),
-      job_categories_curriculum_vitae:      clean_array(curriculum_vitae.job_categories.pluck(:description)),
-      working_days_curriculum_vitae:        clean_array(curriculum_vitae.working_days.pluck(:description)),
-      work_mode_id_curriculum_vitae:        clean_array(curriculum_vitae.work_modes.pluck(:description)),
-      soft_skills_curriculum_vitae:         clean_array(curriculum_vitae.soft_skills.pluck(:description)),
-      vehicles_curriculum_vitae:            clean_array(curriculum_vitae.user.vehicles.pluck(:description)),
+      languages_list_curriculum_vitae:      array_to_string(curriculum_vitae.languages_list.map{|cv_language| try_data(cv_language.language, :description) }),
+      job_categories_curriculum_vitae:      array_to_string(curriculum_vitae.job_categories.pluck(:description)),
+      working_days_curriculum_vitae:        array_to_string(curriculum_vitae.working_days.pluck(:description)),
+      work_mode_id_curriculum_vitae:        array_to_string(curriculum_vitae.work_modes.pluck(:description)),
+      soft_skills_curriculum_vitae:         array_to_string(curriculum_vitae.soft_skills.pluck(:description)),
+      vehicles_curriculum_vitae:            array_to_string(curriculum_vitae.user.vehicles.pluck(:description)),
       city_id_curriculum_vitae:             try_data(curriculum_vitae.city, :description),
       sexes_curriculum_vitae:               try_data(curriculum_vitae.user.sex, :description)
     }
@@ -65,19 +65,19 @@ module AffinityPercentages::CreateAffinityPercentagesService
 
   def self.offer_for_affinity_percentage(offer)
     {
-      available_work_days_offer: clean_array(offer.available_work_days.pluck(:description)),
+      available_work_days_offer: array_to_string(offer.available_work_days.pluck(:description)),
       educational_degree_offer:  try_data(EducationalDegree.find_by(id: offer.educational_degree_id), :description),
-      driving_licences_offer:    clean_array(offer.driving_licences.pluck(:description)),
-      technical_skills_offer:    clean_array(offer.technical_skills.pluck(:description)),
+      driving_licences_offer:    array_to_string(offer.driving_licences.pluck(:description)),
+      technical_skills_offer:    array_to_string(offer.technical_skills.pluck(:description)),
       contract_type_id_offer:    try_data(offer.contract_type, :description),
-      languages_list_offer:      clean_array(offer.languages.pluck(:description)),
-      job_categories_offer:      clean_array(offer.job_categories.pluck(:description)),
-      working_days_offer:        clean_array(offer.working_days.pluck(:description)),
+      languages_list_offer:      array_to_string(offer.languages.pluck(:description)),
+      job_categories_offer:      array_to_string(offer.job_categories.pluck(:description)),
+      working_days_offer:        array_to_string(offer.working_days.pluck(:description)),
       work_mode_id_offer:        try_data(offer.work_mode, :description),
-      soft_skills_offer:         clean_array(offer.soft_skills.pluck(:description)),
-      vehicles_offer:            clean_array(offer.vehicles.pluck(:description)),
+      soft_skills_offer:         array_to_string(offer.soft_skills.pluck(:description)),
+      vehicles_offer:            array_to_string(offer.vehicles.pluck(:description)),
       city_id_offer:             try_data(offer.city, :description),
-      sexes_offer:               clean_array(offer.sexes.pluck(:description))
+      sexes_offer:               array_to_string(offer.sexes.pluck(:description))
     }
   end
 
@@ -88,16 +88,16 @@ module AffinityPercentages::CreateAffinityPercentagesService
       affinity_percentage: AffinityCalculator.new(offer, curriculum_vitae.user).affinity_percentage,
       version:             AffinityCalculator::VERSION,
 
-    }.merge!(
+    }.merge(
         offer_for_affinity_percentage(offer),
         curriculum_vitae_for_affinity_percentage(curriculum_vitae)
       )
 
     affinity_percentage = AffinityPercentage.new(affinity_percentage_data)
-    create_affinity_percentage(affinity_percentage)
+    persist_affinity_percentage(affinity_percentage)
   end
 
-  def self.create_affinity_percentage(affinity_percentage)
+  def self.persist_affinity_percentage(affinity_percentage)
     offer_id = affinity_percentage.offer_id
     cv_id    = affinity_percentage.curriculum_vitae_id
     affinity_percentages_logger = Logger.new("#{Rails.root}/log/affinity_percentages.log")

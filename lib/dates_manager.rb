@@ -21,4 +21,9 @@ module DatesManager
     value = (diff.to_i / div).round(1)
     value > 0 ? "#{value} #{pred}": "#{pred}"
   end
+
+  def self.to_format(date, format)
+    date.strftime(format)
+  end
+
 end

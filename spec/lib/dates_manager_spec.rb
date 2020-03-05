@@ -14,6 +14,16 @@ RSpec.describe DatesManager do
     end
   end
 
+  describe "#to_format" do
+    it { should respond_to(:to_format) }
+
+    it "should return date to strftime format" do
+      response = subject.to_format(test_date, "%F")
+
+      expect(response).to eq("2019-09-26")
+    end
+  end
+
   describe "#calculate_difference_time" do
     describe "When is need show see the difference of two dates in days or months and years" do
       context "when total_time is in days" do

@@ -21,7 +21,7 @@ class Clientify::DataManager
     response = https.request(request)
     user.clientify_contact_id = convert_response_and_give(response, 'id')
     user.save
-    puts response.read_body
+    response.read_body
   end 
 
   def update_contact user
@@ -39,7 +39,7 @@ class Clientify::DataManager
                      }"
 
     response = https.request(request)
-    puts response.read_body
+    response.read_body
   end
 
   private 

@@ -1,0 +1,127 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.clientify.net/v1/api-auth/obtain_token/
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+            "username": "vladimir@hoytrabajas.com",
+            "password": "unicornio2020"
+        }
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 09 Mar 2020 17:32:41 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d57a952de752933d77bc8018e3a85c6e81583775161; expires=Wed, 08-Apr-20
+        17:32:41 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - POST, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 57168967ddcada9e-BOG
+    body:
+      encoding: UTF-8
+      string: '{"token":"a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c","user_id":14075}'
+    http_version: null
+  recorded_at: Mon, 09 Mar 2020 17:32:42 GMT
+- request:
+    method: put
+    uri: https://api.clientify.net/v1/contacts/7031198/
+    body:
+      encoding: UTF-8
+      string: "{\n    \"first_name\": \"carlos\",\n                     \n    \"last_name\":
+        \"valderrama\",\n                     \n    \"phone\": \"317 3729438\"\n                     }"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Authorization:
+      - Token a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 09 Mar 2020 17:32:42 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d92651e46345464c2ecdea437a1c538ad1583775162; expires=Wed, 08-Apr-20
+        17:32:42 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept, Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 5716896b5d3df26f-BOG
+    body:
+      encoding: UTF-8
+      string: '{"url":"https://api.clientify.net/v1/contacts/7031198/","id":7031198,"owner":"vladimir@hoytrabajas.com","owner_name":"Vladimir
+        Guzman","first_name":"carlos","last_name":"valderrama","status":"cold-lead","title":"","company":null,"company_details":null,"contact_type":null,"contact_source":null,"emails":[{"type":4,"email":"carlos@testemail.com"}],"phones":[{"type":1,"phone":"317
+        3729438"}],"addresses":[],"picture_url":null,"custom_fields":[],"tags":["candidate","htweb"],"description":"","remarks":"","summary":"","created":"2020-03-09T18:25:39.004877+01:00","last_contact":null,"related_tasks":[],"deals":[],"wall_entries":[{"url":"https://api.clientify.net/v1/wall-entries/46639046/","id":46639046,"user":"Vladimir
+        Guzman","created":"2020-03-09T18:32:42.290453+01:00","extra":"{}","extra_datetime":null,"type":"contact_modification","link":"","source_id":"7031198","object_id":7031198},{"url":"https://api.clientify.net/v1/wall-entries/46638877/","id":46638877,"user":"Info
+        HoyTrabajas.com","created":"2020-03-09T18:31:49.640990+01:00","extra":"{\"message_link\":
+        \"/messaging/email/sent-message/5983498/\", \"message_public\": false, \"message_subject\":
+        \"\\u00a1Un regalo para t\\u00ed! Ahora tienes Plan Premium en HoyTrabajas.com
+        \"}","extra_datetime":null,"type":"sent_message","link":"","source_id":"5983498","object_id":7031198},{"url":"https://api.clientify.net/v1/wall-entries/46638444/","id":46638444,"user":"Vladimir
+        Guzman","created":"2020-03-09T18:29:03.641852+01:00","extra":"{}","extra_datetime":null,"type":"contact_modification","link":"","source_id":"7031198","object_id":7031198},{"url":"https://api.clientify.net/v1/wall-entries/46638082/","id":46638082,"user":"Milton
+        ST Moreno Beltrán","created":"2020-03-09T18:25:39.267388+01:00","extra":"{\"automation_name\":
+        \"Haz conseguido trabajo\", \"automation_link\": \"/automation/2751/\"}","extra_datetime":null,"type":"automation_added","link":"","source_id":"2751","object_id":7031198},{"url":"https://api.clientify.net/v1/wall-entries/46638081/","id":46638081,"user":"Milton
+        ST Moreno Beltrán","created":"2020-03-09T18:25:39.140231+01:00","extra":"{\"automation_name\":
+        \"Primeros 30 d\\u00edas\", \"automation_link\": \"/automation/2672/\"}","extra_datetime":null,"type":"automation_added","link":"","source_id":"2672","object_id":7031198},{"url":"https://api.clientify.net/v1/wall-entries/46638080/","id":46638080,"user":"Vladimir
+        Guzman","created":"2020-03-09T18:25:39.120243+01:00","extra":"{}","extra_datetime":null,"type":"contact_creation","link":"","source_id":"7031198","object_id":7031198}],"page_views":0,"total_visits":0,"first_visit":null,"last_visit":null,"gdpr_accept":false,"visitor_key":"","attachments":[],"websites":[],"linkedin_url":"","linkedin_id":"","linkedin_picture_url":"","skype_username":"","birthday":null,"twitter_id":"","lead_scoring":0,"facebook_url":"","twitter_url":"","googleplus_url":"","pinterest_url":"","foursquare_url":"","aboutme_url":"","klout_url":"","facebook_picture_url":"","twitter_picture_url":"","facebook_id":"","google_id":""}'
+    http_version: null
+  recorded_at: Mon, 09 Mar 2020 17:32:42 GMT
+recorded_with: VCR 5.1.0

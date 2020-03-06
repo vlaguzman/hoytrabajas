@@ -7,14 +7,14 @@ module AffinityPercentages::CreateAffinityPercentagesService
     Offer.active.map do |offer|
       curriculum_vitaes.map do |curriculum_vitae|
 
-        affinity_percentage = get_last_affinity_percentage(offer.id, curriculum_vitae.id)
+        affinity_percentage = last_affinity_percentage(offer.id, curriculum_vitae.id)
         validate_affinity_percentage(offer, curriculum_vitae, affinity_percentage)
       end
     end
   end
 
-  def self.get_last_affinity_percentage(offer_id, curriculum_vitae_id)
-    AffinityPercentage.where(offer_id: offer_id, curriculum_vitae_id: curriculum_vitae_id).last
+  def self.last_affinity_percentage(offer_id, curriculum_vitae_id)
+    AffinityPercentage.get_last(offer_id, curriculum_vitae_id)
   end
 
   def self.to_format(date)

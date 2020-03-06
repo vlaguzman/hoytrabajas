@@ -1,7 +1,7 @@
 1. Clonar el repositorio del proyecto:
 git clone git@bitbucket.org:vladimir_ht/ht-ror.git
 
-# Se pueden agregar los siguientes alias al o tener en cuenta los comandos para las siguientes instrucciones ~/.bashrc
+# Se pueden agregar los siguientes alias al archivo ~/.bashrc o tener en cuenta los comandos para las siguientes instrucciones
 
 alias dc='sudo docker-compose'
 alias run-web='dc run web'
@@ -9,7 +9,7 @@ alias run-bash='run-web /bin/bash'
 alias run-rails='run-web bundle exec bin/rails'
 
 
-2. Crear el archivo .env en la raíz del proyecto, solicitar a cualquier integrante el archivo actualizado
+2. Crear el archivo .env en la raíz del proyecto, solicitar a cualquier integrante del equipo el archivo actualizado
 
 3. Copiar el directorio .ssh con las llaves de producción para poder desplegar correctamente. Solicitar a cualquier integrante del equipo el directorio correspondiente
 

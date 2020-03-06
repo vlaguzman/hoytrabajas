@@ -259,6 +259,6 @@ C          • Admins::OffersService                                       12   
 C          • AffinityPercentages::CreateAffinityPercentagesService       8       175.17     0           11
 C          • BaseFormWizardsService                                      31      101.71     0           2
 C          • GetValueOfRecord                                            1       161.13     0           24
-C          • Offers::ViewsService                                        27      115.77     0           8
+C          • Offers::ViewsService                                        27      120.24     0           9
 C          • Users::ProfilesPresenter                                    13      164.51     0           12
 D          • Offers::ShowPresenter                                       6       297.08     46          22

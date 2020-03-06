@@ -26,7 +26,7 @@ RSpec.describe Offers::IndexService do
 
   let(:expected_object) do {
     id_offer: offer.id,
-    affinity_percentage: "0%",
+    affinity_percentage: false,
     title: "District Facilitator",
     description: "endSint esse anim consequat commodo.",
     immediate_start: true,
@@ -34,7 +34,7 @@ RSpec.describe Offers::IndexService do
     required_experience: true,
     on_demand: nil,
     applied_offers:0,
-    raw_close_date: Time.zone.local(2019, 7, 3).to_s,
+    raw_close_date: Time.zone.local(2019, 7, 3),
     confidential: false,
     city: {
       description: "Bogotá"

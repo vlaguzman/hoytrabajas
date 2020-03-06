@@ -166,7 +166,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/offers/order_by_affinity_percentage_service.rb",100,37,19,19,0
 "./app/services/offers/order_by_on_demand.rb",100,25,11,11,0
 "./app/services/offers/show_service.rb",100,76,27,27,0
-"./app/services/offers/views_service.rb",100,105,43,43,0
+"./app/services/offers/views_service.rb",100,113,47,47,0
 "./app/services/offers_on_demand/set_inactive_service.rb",100,29,13,13,0
 "./app/services/offers_service.rb",100,36,14,14,0
 "./app/services/routes_service.rb",100,10,5,5,0

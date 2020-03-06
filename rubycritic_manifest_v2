@@ -17,7 +17,7 @@ A          • ApplicationJob                                              1    
 A          • ApplicationMailer                                           3       0.0        0           1
 A          • ApplicationPresenter                                        5       26.49      0           10
 A          • ApplicationRecord                                           4       0.0        0           1
-A          • AppliedOffer                                                5       1.41       0           1
+A          • AppliedOffer                                                6       1.41       0           1
 A          • AppliedOfferStateMachine                                    1       0.0        0           1
 A          • AppliedOfferStatus                                          1       0.0        0           1
 A          • AppliedOfferTransition                                      1       0.0        0           1
@@ -66,7 +66,7 @@ A          • Companies::FirstOffer::StepZeroPresenter                    2    
 A          • Companies::FirstOffer::StepZerosController                  3       3.24       0           1
 A          • Companies::FirstOfferPresenter                              5       4.8        0           1
 A          • Companies::ListCandidatesController                         2       6.94       0           1
-A          • Companies::ListCandidatesPresenter                          3       28.45      0           2
+A          • Companies::ListCandidatesPresenter                          4       38.16      0           2
 A          • Companies::RegistrationsController                          7       1.0        0           2
 A          • CompaniesController                                         7       3.4        0           1
 A          • CompaniesUsers                                              1       0.0        0           1
@@ -245,7 +245,7 @@ B          • Companies::FirstOffer::StepSevenService                     6    
 B          • Companies::FirstOffer::StepSixPresenter                     4       25.0       23          1
 B          • Companies::FirstOffer::StepSixService                       4       22.62      18          4
 B          • Companies::FirstOffer::StepTwosController                   11      20.32      29          2
-B          • Companies::ListCandidates::AppliedCandidatesService         5       56.59      0           5
+B          • Companies::ListCandidates::AppliedCandidatesService         7       61.44      0           6
 B          • Offers::CitiesController                                    4       31.66      16          3
 B          • Offers::ExpiredService                                      5       29.14      34          3
 B          • Offers::JobCategoriesController                             5       29.04      16          3

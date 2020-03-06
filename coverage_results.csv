@@ -12,7 +12,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/affinity_percentage.rb",100,8,5,5,0
 "./app/models/age_range.rb",100,8,5,5,0
 "./app/models/application_record.rb",100,3,2,2,0
-"./app/models/applied_offer.rb",100,20,11,11,0
+"./app/models/applied_offer.rb",100,26,12,12,0
 "./app/models/applied_offer_status.rb",100,3,2,2,0
 "./app/models/applied_offer_transition.rb",100,4,3,3,0
 "./app/models/available_work_day.rb",100,6,4,4,0
@@ -103,7 +103,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/companies/first_offer/step_two_presenter.rb",100,28,10,10,0
 "./app/presenters/companies/first_offer/step_zero_presenter.rb",100,7,3,3,0
 "./app/presenters/companies/first_offer_presenter.rb",100,13,4,4,0
-"./app/presenters/companies/list_candidates_presenter.rb",100,34,17,17,0
+"./app/presenters/companies/list_candidates_presenter.rb",100,44,22,22,0
 "./app/presenters/home/home_presenter.rb",100,53,14,14,0
 "./app/presenters/offers/show_presenter.rb",98,268,121,119,2
 "./app/presenters/offers_presenter.rb",100,25,13,13,0
@@ -157,7 +157,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/companies/first_offer/step_three_service.rb",100,45,25,25,0
 "./app/services/companies/first_offer/step_two/form_params_service.rb",100,7,2,2,0
 "./app/services/companies/first_offer/step_two_service.rb",100,6,3,3,0
-"./app/services/companies/list_candidates/applied_candidates_service.rb",100,60,26,26,0
+"./app/services/companies/list_candidates/applied_candidates_service.rb",100,63,27,27,0
 "./app/services/company_service.rb",100,39,20,20,0
 "./app/services/offers/applied_offer_service.rb",100,34,13,13,0
 "./app/services/offers/completely_destroy_service.rb",100,20,11,11,0

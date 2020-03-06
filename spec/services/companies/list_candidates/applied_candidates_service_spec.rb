@@ -47,42 +47,13 @@ RSpec.describe Companies::ListCandidates::AppliedCandidatesService do
     create(:curriculum_vitaes_technical_skills, curriculum_vitae: curriculum_vitae2, technical_skill: technical_skills[1])
   end
 
-  let(:curriculum_vitae3) do
-    create(:curriculum_vitae, :empty,
-      user: create(:user,
-        name: 'Johnny',
-        last_name: 'Stone',
-        vehicles: vehicles,
-        residence_city_id: create(:city,
-          description: 'Puerto Salgar',
-          state: create(:state, description: 'Cundinamarca')
-        ).id
-      )
-    )
-  end
-
-  let!(:skill_3) do
-    create(:curriculum_vitaes_technical_skills, curriculum_vitae: curriculum_vitae3, technical_skill: technical_skills[0])
-    create(:curriculum_vitaes_technical_skills, curriculum_vitae: curriculum_vitae3, technical_skill: technical_skills[1])
-  end
-
   let!(:applied_offer1) { create(:applied_offer, curriculum_vitae: curriculum_vitae1, offer: main_offer) }
   let!(:applied_offer2) { create(:applied_offer, curriculum_vitae: curriculum_vitae2, offer: main_offer) }
-  let!(:applied_offer3) { create(:applied_offer, curriculum_vitae: curriculum_vitae3, offer: main_offer) }
 
   describe "#call" do
     it "shouls return a list of object with te expected data" do
 
       expected_object = [
-        {
-          name: 'Johnny Stone',
-          location: 'Puerto Salgar, Cundinamarca',
-          technical_skills: "PHP, Ruby",
-          affinity_percentage: 27,
-          profile_path:"/users/profile?applied_offer_id=#{applied_offer3.id}&user_id=#{curriculum_vitae3.user.id}",
-          avatar: Rails.application.routes.url_helpers.rails_blob_path(curriculum_vitae3.photo, disposition: "attachment", only_path: true),
-          current_state: applied_offer3.current_state
-        },
         {
           name: 'Alfred Dito',
           location: 'La Dorada, Caldas',
@@ -100,7 +71,7 @@ RSpec.describe Companies::ListCandidates::AppliedCandidatesService do
           profile_path:"/users/profile?applied_offer_id=#{applied_offer2.id}&user_id=#{curriculum_vitae2.user.id}",
           avatar: Rails.application.routes.url_helpers.rails_blob_path(curriculum_vitae2.photo, disposition: "attachment", only_path: true),
           current_state: applied_offer2.current_state
-        }     
+        }
       ]
 
       response = subject.(offer: main_offer)

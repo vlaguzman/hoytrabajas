@@ -11,7 +11,7 @@ module Companies::ListCandidates::AppliedCandidatesService
   end
 
   def self.build_applied_candidates_list(offer)
-    applied_offers = AppliedOffer.where(offer: offer).not_in_state(:not_interested).sort_by{ |x| x[:applied_date] }.reverse
+    applied_offers = AppliedOffer.where(offer: offer).order_by_applied_date.select{ |x| x.current_state != "not_interested" }
 
     applied_offers.map do |applied_offer|
       build_applied_candidate(offer, applied_offer.curriculum_vitae, applied_offer.current_state)

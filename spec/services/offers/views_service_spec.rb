@@ -209,27 +209,29 @@ RSpec.describe Offers::ViewsService do
       it "Should return nothing" do
         response = subject.affinity_percentage_builder
 
-        expect(response).to be_empty
+        expect(response).to be_falsy
       end
 
     end
 
     context "When the user rebase the 20%" do
+      context "when current_user is present and AffinityPercentage exist" do
 
-      let(:curriculum_vitae)    { create(:curriculum_vitae) }
-      let(:affinity_percentage) { create(:affinity_percentage, offer_id: offer.id, curriculum_vitae_id: curriculum_vitae.id, version: '1.0', affinity_percentage: 55.0) }
+        let(:curriculum_vitae)     { create(:curriculum_vitae) }
+        let!(:affinity_percentage) { create(:affinity_percentage, offer_id: offer.id, curriculum_vitae_id: curriculum_vitae.id, version: '1.0', affinity_percentage: 55.0) }
 
-      context "when AffinityPercentage exist" do
+        let(:subject) { described_class.new(offer, curriculum_vitae.user) }
+
         it "Should return the affinity_percentage of affinity_percentage related in text" do
           expect(AffinityPercentage.all.count).to eq(1)
 
-          response = subject.validate_affinity_percentage
+          response = subject.affinity_percentage_builder
 
           expect(response).to eq("55%")
         end
       end
 
-      context "when AffinityPercentage does not exist" do
+      context "when current_user is present and AffinityPercentage does not exist" do
         let(:contract_type) { create(:contract_type, description: "Indefinido")}
         let(:offer_contract)  { create(:empty_offer,
           contract_type: contract_type,
@@ -252,7 +254,7 @@ RSpec.describe Offers::ViewsService do
         it "Should return the percetage in text" do
           expect(AffinityPercentage.all.count).to eq(0)
 
-          response = subject.validate_affinity_percentage
+          response = subject.affinity_percentage_builder
 
           expect(response).to eq("100%")
         end

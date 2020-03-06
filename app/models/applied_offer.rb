@@ -9,6 +9,12 @@ class AppliedOffer < ApplicationRecord
 
   delegate :can_transition_to?, :current_state, :history, :last_transition, :transition_to!, :transition_to, :in_state?, to: :state_machine
 
+  include Statesman::Adapters::ActiveRecordQueries[
+    transition_class: AppliedOfferTransition,
+    initial_state: AppliedOfferStateMachine.initial_state,
+    transition_name: :transitions
+  ]
+
   def state_machine
     @state_machine ||= AppliedOfferStateMachine.new(self, transition_class: AppliedOfferTransition, association_name: :transitions)
   end

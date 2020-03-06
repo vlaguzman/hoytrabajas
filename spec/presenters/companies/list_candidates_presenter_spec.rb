@@ -42,9 +42,18 @@ RSpec.describe Companies::ListCandidatesPresenter do
     end
   end
 
-  describe "#pretty_applied_candidades" do
-    it "should return the job categories" do
-      expect(subject.pretty_applied_candidades).to eq('2 Candidato(s)')
+  describe "#pretty_applied_candidates" do
+    it "should return the total candidates that applied" do
+      expect(subject.pretty_applied_candidates).to eq('2 Candidato(s)')
+    end
+  end
+
+  describe "#pretty_not_interested_candidates" do
+    it "should return the candidates that were discarded" do
+      applied_offer_2.transition_to(:seen)
+      applied_offer_2.transition_to(:not_interested)
+
+      expect(subject.pretty_not_interested_candidates).to eq('1 Descartado(s)')
     end
   end
 

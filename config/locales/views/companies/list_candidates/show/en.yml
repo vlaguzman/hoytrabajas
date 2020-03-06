@@ -7,6 +7,7 @@ en:
           close_date: 'Close Date'
           applied_candidadtes: 'Applied Candidates'
           candidates: 'Candidate(s)'
+          not_interested: 'Discarded'
           buttons:
             visit_offer: 'Visit offer'
             visit_profile: 'Visit Profile'

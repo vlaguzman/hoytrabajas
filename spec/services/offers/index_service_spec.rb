@@ -26,7 +26,7 @@ RSpec.describe Offers::IndexService do
 
   let(:expected_object) do {
     id_offer: offer.id,
-    affinity_percentage: false,
+    affinity_percentage: "0%",
     title: "District Facilitator",
     description: "endSint esse anim consequat commodo.",
     immediate_start: true,

@@ -206,7 +206,7 @@ RSpec.describe Offers::ViewsService do
 
   describe "#affinity_percentage_builder" do
     context "When the candidate does not reach the 20%" do
-      it "Should return nothing" do
+      it "Should return a false" do
         response = subject.affinity_percentage_builder
 
         expect(response).to be_falsy

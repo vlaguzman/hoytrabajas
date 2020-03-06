@@ -25,9 +25,9 @@ RSpec.describe OffersPresenter do
 
       let(:main_offer) { create(:offer, job_categories: [main_job_category]) }
 
-      let!(:related_offer_one)   { Offers::IndexService.new(create(:offer, job_categories: [main_job_category])).details }
-      let!(:related_offer_two)   { Offers::IndexService.new(create(:offer, job_categories: [main_job_category])).details }
-      let!(:related_offer_three) { Offers::IndexService.new(create(:offer, job_categories: [main_job_category])).details }
+      let!(:related_offer_one)   { Offers::IndexService.new(create(:offer, job_categories: [main_job_category]), user).details }
+      let!(:related_offer_two)   { Offers::IndexService.new(create(:offer, job_categories: [main_job_category]), user).details }
+      let!(:related_offer_three) { Offers::IndexService.new(create(:offer, job_categories: [main_job_category]), user).details }
 
       let!(:stuff_offers) do
         [create(:offer), create(:offer)]

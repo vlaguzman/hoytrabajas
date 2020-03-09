@@ -245,7 +245,7 @@ B          • Companies::FirstOffer::StepSevenService                     6    
 B          • Companies::FirstOffer::StepSixPresenter                     4       25.0       23          1
 B          • Companies::FirstOffer::StepSixService                       4       22.62      18          4
 B          • Companies::FirstOffer::StepTwosController                   11      20.32      29          2
-B          • Companies::ListCandidates::AppliedCandidatesService         8       61.44      0           6
+B          • Companies::ListCandidates::AppliedCandidatesService         9       61.44      0           6
 B          • Offers::CitiesController                                    4       31.66      16          3
 B          • Offers::ExpiredService                                      5       29.14      34          3
 B          • Offers::JobCategoriesController                             5       29.04      16          3
@@ -259,6 +259,6 @@ C          • Admins::OffersService                                       12   
 C          • AffinityPercentages::CreateAffinityPercentagesService       8       175.17     0           11
 C          • BaseFormWizardsService                                      31      101.71     0           2
 C          • GetValueOfRecord                                            1       161.13     0           24
-C          • Offers::ViewsService                                        27      120.24     0           9
+C          • Offers::ViewsService                                        28      120.24     0           9
 C          • Users::ProfilesPresenter                                    13      164.51     0           12
 D          • Offers::ShowPresenter                                       6       297.08     46          22

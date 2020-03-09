@@ -31,6 +31,7 @@ $color__slategray-extralight: #b7d0e2;
 $color__slateblue-main: #647a99;
 $color__snow-main: #d5dbe3;
 $color__snow-light: #f4f6f8;
+$color__snow-altlight: #f7f8fa;
 $color__snow-extralight: #f9fafb;
 $color__palelilac-dark: #f8fafc;
 $color__palelilac-main: #ebebf0;
@@ -44,6 +45,7 @@ $color__purple-main: #831fc6;
 $color__white-main: #ffffff;
 $color__black-light: #00111f;
 $color__teal-main: #36c0ae;
+$color__lightblue-extralight: #f2f6fa;
 
 $color-list: (
   orange-main: $color__orange-main,
@@ -69,6 +71,7 @@ $color-list: (
   slategray-extralight: $color__slategray-extralight,
   snow-main: $color__snow-main,
   snow-light: $color__snow-light,
+  snow-altlight: $color__snow-altlight,
   snow-extralight: $color__snow-extralight,
   slateblue-main: $color__slateblue-main,
   palelilac-dark: $color__palelilac-dark,
@@ -82,7 +85,8 @@ $color-list: (
   purple-darkest: $color__purple-darkest,
   white-main: $color__white-main,
   black-light: $color__black-light,
-  teal-main: $color__teal-main
+  teal-main: $color__teal-main,
+  lightblue-extralight: $color__lightblue-extralight
 );
 
 @each $name, $color in $color-list {

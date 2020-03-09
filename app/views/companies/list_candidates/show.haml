@@ -3,9 +3,9 @@
   %div.m-mainContainer
     %div.a-title= @offer.title
     %div.m-tags
-      -if @offer.immediate_start
+      - @offer.yield_if(@offer.immediate_start) do
         %span.a-tag__orange= t('.tags.immediate_start')
-      -if @offer.location
+      - @offer.yield_if(@offer.location) do
         %span.a-tag__gray= @offer.location
       - @offer.categories.each do |category|
         %span.a-tag__aqua= category
@@ -17,7 +17,7 @@
         %div.m-detailBox
           =t('Aplicaciones')
           %span.a-detail= @offer.pretty_applied_candidates
-          - if @offer.pretty_not_interested_candidates
+          - @offer.yield_if(@offer.pretty_not_interested_candidates) do
             %span.a-detail= @offer.pretty_not_interested_candidates
       %a{href: @offer.offer_path}
         %button
@@ -31,11 +31,11 @@
             %img.a-avatar{src: candidate[:avatar]}
             %div.m-nameContainer
               %span.a-name= candidate[:name]
-              -if candidate[:location]
+              - @offer.yield_if(candidate[:location]) do
                 %div.locationWrapper
                   %i.material-icons room
                   %span.a-location= candidate[:location]
-            - if candidate[:technical_skills]
+            - @offer.yield_if(candidate[:technical_skills]) do
               %div.m-skillsContainer
                 %span.a-title--skills= t('.skills')
                 %span= candidate[:technical_skills]
@@ -46,7 +46,7 @@
               %a.watchProfileWrapper{href: candidate[:profile_path]}
                 %button.--watchProfile= t('.buttons.visit_profile')
               %div.iconWrapper
-                -if candidate[:current_state] == "interested"
+                - @offer.yield_if(candidate[:current_state] == "interested") do
                   %i.material-icons thumb_up
 
       %div.o-listCandidates__container.--mobile
@@ -55,11 +55,11 @@
           %div.m-candidateBox.--mobile
             %div.m-nameContainer.--mobile
               %span.a-name= candidate[:name]
-              -if candidate[:location]
+              - @offer.yield_if(candidate[:location]) do
                 %div.locationWrapper
                   %i.material-icons room
                   %span.a-location= candidate[:location]
-            - if candidate[:technical_skills]
+            - @offer.yield_if(candidate[:technical_skills]) do
               %div.m-skillsContainer
                 %span.a-title--skills Habilidades:
                 %span= candidate[:technical_skills]

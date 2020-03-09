@@ -245,7 +245,7 @@ B          • Companies::FirstOffer::StepSevenService                     6    
 B          • Companies::FirstOffer::StepSixPresenter                     4       25.0       23          1
 B          • Companies::FirstOffer::StepSixService                       4       22.62      18          4
 B          • Companies::FirstOffer::StepTwosController                   11      20.32      29          2
-B          • Companies::ListCandidates::AppliedCandidatesService         7       61.44      0           6
+B          • Companies::ListCandidates::AppliedCandidatesService         8       61.44      0           6
 B          • Offers::CitiesController                                    4       31.66      16          3
 B          • Offers::ExpiredService                                      5       29.14      34          3
 B          • Offers::JobCategoriesController                             5       29.04      16          3

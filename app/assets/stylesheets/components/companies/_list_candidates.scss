@@ -13,13 +13,10 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
   height: 100vh;
-
   backdrop-filter: blur(22px);
-  background-color: rgba(247, 248, 250, 0.9);
+  background-color: transparentize($color__snow-altlight, 0.1);
   -webkit-backdrop-filter: blur(22px);
-
   background-image: url('/img/backgrounds/steps/primary.png');
   background-repeat: no-repeat;
   background-position: top;
@@ -165,7 +162,7 @@
 
       &.seen,
       &.interested {
-        background-color: #f2f6fa;
+        background-color: $color__lightblue-extralight;
 
         .--watchProfile {
           background: $color__blue-main;
@@ -276,7 +273,7 @@
           margin-right: 20px;
           color: $color__orange-main;
           cursor: default;
-          min-width: 24px;
+          width: 24px;
         }
 
         .watchProfileWrapper {

@@ -9,32 +9,31 @@ class Clientify::ApiAuth
 
   attr_reader :token
 
+  def initialize
+    @token = obtain_token
+  end
+
   def obtain_token
-    url = URI(URL_OBTAIN_TOKEN)
-
-    https = Net::HTTP.new(url.host, url.port)
-    https.use_ssl = true
-
-    request = Net::HTTP::Post.new(url)
-    request["Content-Type"] = "application/json"
-    request.body = "{\n    \"username\": \"#{USERNAME}\",\n    \"password\": \"#{PASSWORD}\"\n}"
-
-    response = https.request(request)
+    body = "{\n    \"username\": \"#{USERNAME}\",\n    \"password\": \"#{PASSWORD}\"\n}"
+    response = build_response(URI(URL_OBTAIN_TOKEN), body)
     hash = JSON.parse response.body.gsub('\:', ':')
-    @token = hash['token']
+    hash['token']
   end 
   
   def logout
-    url = URI(URL_LOGOUT)
+    response = build_response URI(URL_LOGOUT)
+    response.code
+  end
 
+  def build_response(url, body=nil)
     https = Net::HTTP.new(url.host, url.port)
     https.use_ssl = true
 
     request = Net::HTTP::Post.new(url)
-    request["Authorization"] = "Token #{token}"
     request["Content-Type"] = "application/json"
-
-    response = https.request(request)
-    response.code
+    request["Authorization"] = "Token #{token}" if token.present?
+    request.body = body if body.present?
+    https.request(request)
   end
+
 end

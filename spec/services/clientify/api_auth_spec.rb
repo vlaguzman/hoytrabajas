@@ -13,6 +13,10 @@ RSpec.describe Clientify::ApiAuth do
   describe "#logout" do
     it "should close the conection" do
       VCR.use_cassette("clientify_logout") do
+        clientify_auth = Clientify::ApiAuth.new
+        token = clientify_auth.obtain_token
+        code = clientify_auth.logout
+        expect(code).to eq('200')
       end
     end
   end

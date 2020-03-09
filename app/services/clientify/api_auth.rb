@@ -35,6 +35,6 @@ class Clientify::ApiAuth
     request["Content-Type"] = "application/json"
 
     response = https.request(request)
-    puts response.read_body
+    response.code
   end
 end

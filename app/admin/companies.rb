@@ -1,4 +1,5 @@
 ActiveAdmin.register Company do
+  actions :all, :except => [:destroy]
 
   controller do
     def update_resource object, attributes

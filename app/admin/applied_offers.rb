@@ -1,4 +1,6 @@
 ActiveAdmin.register AppliedOffer do
+  actions :all, :except => [:destroy]
+
   before_create do |applied_offer|
     applied_offer.applied_date = Time.now
   end

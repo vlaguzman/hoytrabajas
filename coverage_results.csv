@@ -160,7 +160,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/companies/list_candidates/applied_candidates_service.rb",100,65,28,28,0
 "./app/services/company_service.rb",100,39,20,20,0
 "./app/services/offers/applied_offer_service.rb",100,34,13,13,0
-"./app/services/offers/completely_destroy_service.rb",100,21,11,11,0
+"./app/services/offers/completely_destroy_service.rb",100,17,11,11,0
 "./app/services/offers/expired_service.rb",100,27,13,13,0
 "./app/services/offers/index_service.rb",100,18,7,7,0
 "./app/services/offers/order_by_affinity_percentage_service.rb",100,37,19,19,0

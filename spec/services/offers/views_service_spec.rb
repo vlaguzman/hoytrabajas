@@ -49,8 +49,7 @@ RSpec.describe Offers::ViewsService do
       immediate_start: true,
       required_experience: true,
       city: create(:city, description: "Bogotá"),
-      company: create(:with_logo_company,
-                 name: "Orellana S.A.")
+      company: create(:with_logo_company, name: "Orellana S.A.")
     )
   end
 
@@ -199,6 +198,48 @@ RSpec.describe Offers::ViewsService do
     context "the offer has not any close date" do
       it "Should return a close date tomorrow" do
         expect(subject_no_close_date.details[:close_date]).to eq(DatesManager.default(date: Date.today + 1.day ))
+      end
+    end
+
+    context "the offer's company was removed" do
+      let(:killed_company) {create(:company)}
+      let!(:offer) { create(:offer,
+        title: "The supaTitle!!",
+        description: "The supaDescription!!",
+        company: killed_company,
+        close_date: DateTime.new(2020, 4, 10)
+        ) }
+
+      it "should not down the server" do
+        offer.company = nil
+
+        expected_object = {
+          title: "The supaTitle!!",
+          immediate_start: false,
+          description: "The supaDescription!!",
+          required_experience: true,
+          confidential: false,
+          id_offer: offer.id,
+          job_category_image: "https://img-categorias-ht.s3.amazonaws.com/cat-card-gestion-administrativa2x.png",
+          city: { description: offer.city_description },
+          salary: {
+            currency: { description: nil },
+            from: nil,
+            to: nil,
+            salary_period: { description: nil }
+          },
+          company: {
+            name: nil,
+            url_image_logo: "https://ht-web-images.s3.amazonaws.com/perfiles/avatar-empresa.png"
+          },
+          close_date: "09 de Abril del 2020",
+          on_demand: nil,
+          affinity_percentage: false,
+          applied_offers: 0,
+          raw_close_date: offer.close_date
+        }
+
+        expect(subject.details).to eq(expected_object)
       end
     end
 

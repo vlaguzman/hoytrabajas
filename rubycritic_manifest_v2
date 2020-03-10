@@ -256,7 +256,7 @@ B          • User                                                        49   
 B          • Users::WizardService                                        11      26.27      58          3
 B          • Users::Wizards::StepSixService                              13      93.15      0           14
 C          • Admins::OffersService                                       12      147.83     0           11
-C          • AffinityPercentages::CreateAffinityPercentagesService       8       175.17     0           11
+C          • AffinityPercentages::CreateAffinityPercentagesService       8       162.31     0           9
 C          • BaseFormWizardsService                                      31      101.71     0           2
 C          • GetValueOfRecord                                            1       161.13     0           24
 C          • Offers::ViewsService                                        28      120.24     0           9

@@ -3,12 +3,16 @@
 ########################################################################*/
 
 span.a-skill {
-  background-color: $color__gray-extralight;
-  border-radius: 10.2px;
+  border-radius: 22px;
   font-weight: normal;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   padding: 3px 9px;
-  color: $color__gray-light;
+  color: $color__slategray-main;
+  border: 1px solid $color__slategray-main;
+
+  @media only screen and (max-width: 576px) {
+    font-size: .875rem;
+  }
 
   &.color-orange {
     background-color: $color__orange-main;
@@ -17,5 +21,13 @@ span.a-skill {
   &.incomplete {
     background-color: $color__pink-extralight;
     color: $color__pink-main;
+  }
+
+  &.--noBG {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    color: $color__slategray-main;
+    font-size: 1rem;
   }
 }

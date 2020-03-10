@@ -1,6 +1,6 @@
 es:
   profile:
-    empty: 'Completa tu información'
+    empty: 'Información sin completar'
     edit_info: 'Editar Información'
     download_cv: 'Descargar Curriculum'
     demography:

@@ -84,6 +84,15 @@
   left: 170px;
   height: 58px;
   width: 58px;
+
+  @media (max-width: 576px) {
+    position: absolute;
+    right: -20px;
+    bottom: 20px;
+    height: auto;
+    width: auto;
+    left: auto;
+  }
 }
 
 .noHeight {

@@ -3,9 +3,9 @@
   %div.m-mainContainer
     %div.a-title= @offer.title
     %div.m-tags
-      -if @offer.immediate_start
+      - @offer.yield_if(@offer.immediate_start) do
         %span.a-tag__orange= t('.tags.immediate_start')
-      -if @offer.location
+      - @offer.yield_if(@offer.location) do
         %span.a-tag__gray= @offer.location
       - @offer.categories.each do |category|
         %span.a-tag__aqua= category
@@ -16,7 +16,9 @@
           %span.a-detail= @offer.pretty_close_date
         %div.m-detailBox
           =t('Aplicaciones')
-          %span.a-detail= @offer.pretty_applied_candidades
+          %span.a-detail= @offer.pretty_applied_candidates
+          - @offer.yield_if(@offer.pretty_not_interested_candidates) do
+            %span.a-detail= @offer.pretty_not_interested_candidates
       %a{href: @offer.offer_path}
         %button
           %i.material-icons remove_red_eye
@@ -25,40 +27,42 @@
     %div.o-listCandidates
       %div.o-listCandidates__container.--desktop
         - @offer.list_applied_candidates.each_with_index do |candidate, index|
-          %div.m-candidateBox{id: "candidate_#{index}"}
+          %div.m-candidateBox{id: "candidate_#{index}", :class => "#{candidate[:current_state]}" }
             %img.a-avatar{src: candidate[:avatar]}
-            %div.m-detailsContainer
-              %div.m-nameContaintainer
-                %span.a-name= candidate[:name]
-                -if candidate[:location]
+            %div.m-nameContainer
+              %span.a-name= candidate[:name]
+              - @offer.yield_if(candidate[:location]) do
+                %div.locationWrapper
                   %i.material-icons room
                   %span.a-location= candidate[:location]
-              - if candidate[:technical_skills]
-                %div.m-skillsContainer
-                  %span.a-title--skills= t('.skills')
-                  %span= candidate[:technical_skills]
+            - @offer.yield_if(candidate[:technical_skills]) do
+              %div.m-skillsContainer
+                %span.a-title--skills= t('.skills')
+                %span= candidate[:technical_skills]
             %div.m-affinityPercentageContainer
               %span.a-affinityPercentage= "#{candidate[:affinity_percentage]}%"
               = react_component('views/companies/affinity_percentage_info', description: t('.tooltips.affinity_percentage') )
             %div.m-profileButtonContainer
-              %a{href: candidate[:profile_path]}
+              %a.watchProfileWrapper{href: candidate[:profile_path]}
                 %button.--watchProfile= t('.buttons.visit_profile')
+              %div.iconWrapper
+                - @offer.yield_if(candidate[:current_state] == "interested") do
+                  %i.material-icons thumb_up
 
       %div.o-listCandidates__container.--mobile
         - @offer.list_applied_candidates.each do |candidate|
           %a{href: candidate[:profile_path]}
           %div.m-candidateBox.--mobile
-            %div.m-detailsContainer
-              %div.m-nameContaintainer.--mobile
-                %span.a-name= candidate[:name]
-                -if candidate[:location]
-                  %div
-                    %i.material-icons room
-                    %span.a-location= candidate[:location]
-              - if candidate[:technical_skills]
-                %div.m-skillsContainer
-                  %span.a-title--skills Habilidades:
-                  %span= candidate[:technical_skills]
+            %div.m-nameContainer.--mobile
+              %span.a-name= candidate[:name]
+              - @offer.yield_if(candidate[:location]) do
+                %div.locationWrapper
+                  %i.material-icons room
+                  %span.a-location= candidate[:location]
+            - @offer.yield_if(candidate[:technical_skills]) do
+              %div.m-skillsContainer
+                %span.a-title--skills Habilidades:
+                %span= candidate[:technical_skills]
             %div.m-affinityPercentageContainer.--mobile
               %img.a-avatar{src: candidate[:avatar]}
               %div.m-affinityPercentageContainer__group.--mobile

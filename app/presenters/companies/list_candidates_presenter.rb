@@ -12,8 +12,14 @@ class Companies::ListCandidatesPresenter < ApplicationPresenter
     source.close_date.present? ? DatesManager.default(date: source.close_date) : '-'
   end
 
-  def pretty_applied_candidades
-    "#{applied_candidades} #{I18n.t('companies.list_candidates.show.candidates')}"
+  def pretty_applied_candidates
+    "#{applied_candidates} #{I18n.t('companies.list_candidates.show.candidates')}"
+  end
+
+  def pretty_not_interested_candidates
+    if not_interested_candidates > 0
+      "#{not_interested_candidates} #{I18n.t('companies.list_candidates.show.not_interested')}"
+    end
   end
 
   def list_applied_candidates
@@ -27,8 +33,12 @@ class Companies::ListCandidatesPresenter < ApplicationPresenter
 
   private
 
-  def applied_candidades
+  def applied_candidates
     AppliedOffer.where(offer: source).count
+  end
+
+  def not_interested_candidates
+    AppliedOffer.where(offer: source).in_state(:not_interested).count
   end
 
 end

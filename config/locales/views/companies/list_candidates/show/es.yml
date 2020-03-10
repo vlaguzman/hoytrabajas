@@ -9,6 +9,7 @@ es:
           close_date: 'Cierre de la oferta'
           applied_candidadtes: 'Aplicaciones'
           candidates: 'Candidato(s)'
+          not_interested: 'Descartado(s)'
           buttons:
             visit_offer: 'Ver oferta'
             visit_profile: 'Ver perfil'

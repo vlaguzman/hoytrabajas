@@ -1,5 +1,7 @@
 module Companies::ListCandidates::AppliedCandidatesService
 
+  NOT_INTERESTED_STATE = "not_interested"
+
   def self.call(offer: nil)
     execute(offer)
   end
@@ -11,12 +13,14 @@ module Companies::ListCandidates::AppliedCandidatesService
   end
 
   def self.build_applied_candidates_list(offer)
-    AppliedOffer.where(offer: offer).order_by_applied_date.map do |applied_offer|
-      build_applied_candidate(offer, applied_offer.curriculum_vitae)
+    applied_offers = AppliedOffer.where(offer: offer).order_by_applied_date.select{ |applied_offer| applied_offer.current_state != NOT_INTERESTED_STATE }
+
+    applied_offers.map do |applied_offer|
+      build_applied_candidate(offer, applied_offer.curriculum_vitae, applied_offer.current_state)
     end
   end
 
-  def self.build_applied_candidate(offer, curriculum_vitae)
+  def self.build_applied_candidate(offer, curriculum_vitae, current_state)
 
     candidate = curriculum_vitae.user
 
@@ -26,7 +30,8 @@ module Companies::ListCandidates::AppliedCandidatesService
       technical_skills: technical_skills(curriculum_vitae),
       affinity_percentage: build_affinity_percentage(offer: offer, candidate: candidate),
       profile_path: profile_path(candidate, curriculum_vitae.id, offer.id),
-      avatar: Users::CurriculumVitaes::ProfilePhotoService.(curriculum_vitae: curriculum_vitae)
+      avatar: Users::CurriculumVitaes::ProfilePhotoService.(curriculum_vitae: curriculum_vitae),
+      current_state: current_state
     }
   end
 

@@ -58,12 +58,6 @@ app/views/applied_offers_mailer/company_notification.html.haml:737:             
 app/views/applied_offers_mailer/company_notification.html.haml:754:                                /[if mso]
 app/views/applied_offers_mailer/company_notification.html.haml:756:                                /[if mso]
 app/views/applied_offers_mailer/company_notification.html.haml:759:                  /[if (gte mso 9)|(IE)]
-app/views/companies/list_candidates/show.haml:33:                -if candidate[:location]
-app/views/companies/list_candidates/show.haml:36:              - if candidate[:technical_skills]
-app/views/companies/list_candidates/show.haml:54:                -if candidate[:location]
-app/views/companies/list_candidates/show.haml:58:              - if candidate[:technical_skills]
-app/views/companies/list_candidates/show.haml:6:      -if @offer.immediate_start
-app/views/companies/list_candidates/show.haml:8:      -if @offer.location
 app/views/devise/mailer/confirmation_instructions.html.haml:538:    / [if !gte mso 9]><!--
 app/views/devise/mailer/confirmation_instructions.html.haml:550:                  /[if (gte mso 9)|(IE)]
 app/views/devise/mailer/confirmation_instructions.html.haml:569:                  /[if (gte mso 9)|(IE)]

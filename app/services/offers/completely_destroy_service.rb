@@ -14,7 +14,4 @@ module Offers::CompletelyDestroyService
     OfferOnDemand.where(offer: offer).destroy_all
     offer.destroy
   end
-
-
-
 end

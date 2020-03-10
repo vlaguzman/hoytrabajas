@@ -17,14 +17,9 @@ module AffinityPercentages::CreateAffinityPercentagesService
     AffinityPercentage.get_last(offer_id, curriculum_vitae_id)
   end
 
-  def self.to_format(date)
-    DatesManager.to_format(date, "%F")
-  end
-
   def self.validate_offer_and_cv_updated?(offer, curriculum_vitae, affinity_percentage)
-    (to_format(offer.updated_at)                 != to_format(affinity_percentage.created_at)) ||
-    (to_format(curriculum_vitae.updated_at)      != to_format(affinity_percentage.created_at)) ||
-    (to_format(curriculum_vitae.user.updated_at) != to_format(affinity_percentage.created_at))
+    dates_to_compare = [offer.updated_at, curriculum_vitae.updated_at, curriculum_vitae.user.updated_at]
+    dates_to_compare.map{ |date| date > affinity_percentage.created_at }.uniq.include?(true)
   end
 
   def self.validate_affinity_percentage(offer, curriculum_vitae, affinity_percentage)

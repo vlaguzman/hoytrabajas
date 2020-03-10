@@ -131,7 +131,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/admins/offers_service.rb",100,188,92,92,0
 "./app/services/admins_service.rb",100,15,8,8,0
 "./app/services/affinity_calculator.rb",100,80,36,36,0
-"./app/services/affinity_percentages/create_affinity_percentages_service.rb",95,112,43,41,2
+"./app/services/affinity_percentages/create_affinity_percentages_service.rb",95,107,40,38,2
 "./app/services/base_form_wizards_service.rb",100,99,52,52,0
 "./app/services/base_forms/find_or_create_record_service.rb",100,16,8,8,0
 "./app/services/base_forms/wizards_autocomplete_service.rb",100,23,10,10,0
@@ -160,7 +160,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/companies/list_candidates/applied_candidates_service.rb",100,65,28,28,0
 "./app/services/company_service.rb",100,39,20,20,0
 "./app/services/offers/applied_offer_service.rb",100,34,13,13,0
-"./app/services/offers/completely_destroy_service.rb",100,20,11,11,0
+"./app/services/offers/completely_destroy_service.rb",100,17,11,11,0
 "./app/services/offers/expired_service.rb",100,27,13,13,0
 "./app/services/offers/index_service.rb",100,18,7,7,0
 "./app/services/offers/order_by_affinity_percentage_service.rb",100,37,19,19,0

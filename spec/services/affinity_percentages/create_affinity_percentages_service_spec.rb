@@ -4,7 +4,7 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
 
   describe '#call' do
 
-    before { Timecop.freeze(Time.new(2020, 04, 01, 13, 00, 00)) }
+    before { Timecop.freeze(Time.zone.parse("2020-01-01 13:00:00")) }
     after  { Timecop.return }
 
     let!(:available_work_day) { create(:available_work_day) }
@@ -33,6 +33,7 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
 
     let!(:curriculum_vitae_1) {
       create(:curriculum_vitae,
+        about_me:            'CV 1',
         user:                user_curriculum_vitae_1,
         available_work_days: [available_work_day],
         contract_type_id:    contract_type.id,
@@ -46,6 +47,7 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
 
     let!(:offer_1) {
       create(:offer,
+        title: 'OFFER ONE',
         status: :active,
         available_work_days:   [available_work_day],
         educational_degree_id: educational_degree.id,
@@ -67,8 +69,8 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
     let!(:offer_language)        { create(:languages_offers, offer_id: offer_1.id, language_id: language.id, level_id: level.id) }
     let!(:cv_language)           { create(:curriculum_vitaes_languages, curriculum_vitae_id: curriculum_vitae_1.id, language_id: language.id, level_id: level.id) }
 
-    let!(:curriculum_vitae_2) { create(:curriculum_vitae) }
-    let!(:offer_2)            { create(:offer, status: :active) }
+    let!(:curriculum_vitae_2) { create(:curriculum_vitae, about_me: 'CV 2') }
+    let!(:offer_2)            { create(:offer, status: :active, title: 'OFFER 2') }
 
     describe 'By each active offer and curriculum vitae, should create one AffinityPercentage' do
 
@@ -149,61 +151,70 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
       end
 
       context 'when exist AffinityPercentage' do
+        context 'affinity percentage is created at one day before' do
+          let!(:affinity_percentage_before_day) { create(:affinity_percentage, offer_id: offer_1.id, curriculum_vitae_id: curriculum_vitae_1.id, created_at: Time.zone.parse("2020-01-01 23:55:00")) }
 
-        context 'when offer is updated, offer updated_at different than AffinityPercentage created_at)' do
-          let!(:affinity_percentage) { create(:affinity_percentage, offer_id: offer_1.id, curriculum_vitae_id: curriculum_vitae_1.id, created_at: Time.new(2020, 04, 01, 20, 00, 00)) }
-
-          before { Timecop.freeze(Time.new(2020, 05, 01, 13, 00, 00)) }
+          before { Timecop.freeze(Time.zone.parse("2020-01-02 13:00:00")) }
           after  { Timecop.return }
 
-          it 'should create new AffinityPercentage object with new data' do
-            offer_1.update(title: 'Oferta actualizada')
+          context 'when offer is updated, offer updated_at greater than AffinityPercentage created_at)' do
+            it 'should create new AffinityPercentage object with new data' do
+              offer_1.update(title: 'Oferta actualizada')
 
-            expect(AffinityPercentage.all.count).to eq(1)
+              expect(AffinityPercentage.all.count).to eq(1)
 
-            response = subject.()
+              response = subject.()
 
-            expect(response).to match_array([[{}, {}], [{}, {}]])
+              expect(response).to match_array([[{}, {}], [{}, {}]])
 
-            expect(AffinityPercentage.all.count).to eq(5)
+              expect(AffinityPercentage.all.count).to eq(5)
+
+              affinity_percentage = AffinityPercentage.where(offer_id: offer_1.id, curriculum_vitae_id: curriculum_vitae_1.id)
+
+              expect(affinity_percentage.count).to eq(2)
+              expect(affinity_percentage.first.created_at.strftime("%F")).to eq("2020-01-01")
+              expect(affinity_percentage.last.created_at.strftime("%F")).to eq("2020-01-02")
+            end
           end
-        end
 
-        context 'when curriculum vitae is updated, curriculum vitae updated_at different than AffinityPercentage created_at)' do
-          let!(:affinity_percentage) { create(:affinity_percentage, offer_id: offer_1.id, curriculum_vitae_id: curriculum_vitae_1.id, created_at: Time.new(2020, 04, 01, 20, 00, 00)) }
+          context 'when curriculum vitae is updated, curriculum vitae updated_at greater than AffinityPercentage created_at)' do
+            it 'should create new AffinityPercentage object with new data' do
+              curriculum_vitae_1.update(about_me: 'Hoja de vida actualizada!')
 
-          before { Timecop.freeze(Time.new(2020, 05, 01, 13, 00, 00)) }
-          after  { Timecop.return }
+              expect(AffinityPercentage.all.count).to eq(1)
 
-          it 'should create new AffinityPercentage object with new data' do
-            curriculum_vitae_1.update(about_me: 'Hoja de vida actualizada!')
+              response = subject.()
 
-            expect(AffinityPercentage.all.count).to eq(1)
+              expect(response).to match_array([[{}, {}], [{}, {}]])
 
-            response = subject.()
+              expect(AffinityPercentage.all.count).to eq(5)
 
-            expect(response).to match_array([[{}, {}], [{}, {}]])
+              affinity_percentage = AffinityPercentage.where(offer_id: offer_1.id, curriculum_vitae_id: curriculum_vitae_1.id)
 
-            expect(AffinityPercentage.all.count).to eq(5)
+              expect(affinity_percentage.count).to eq(2)
+              expect(affinity_percentage.first.created_at.strftime("%F")).to eq("2020-01-01")
+              expect(affinity_percentage.last.created_at.strftime("%F")).to eq("2020-01-02")
+            end
           end
-        end
 
-        context 'when user of curriculum vitae is updated, curriculum vitae user updated_at different than AffinityPercentage created_at)' do
-          let!(:affinity_percentage) { create(:affinity_percentage, offer_id: offer_1.id, curriculum_vitae_id: curriculum_vitae_1.id, created_at: Time.new(2020, 04, 01, 20, 00, 00)) }
+          context 'when user of curriculum vitae is updated, curriculum vitae user updated_at greater than AffinityPercentage created_at)' do
+            it 'should create new AffinityPercentage object with new data' do
+              curriculum_vitae_1.user.update(email: "user@actualizado.com")
 
-          before { Timecop.freeze(Time.new(2020, 05, 01, 13, 00, 00)) }
-          after  { Timecop.return }
+              expect(AffinityPercentage.all.count).to eq(1)
 
-          it 'should create new AffinityPercentage object with new data' do
-            curriculum_vitae_1.user.update(email: "user@actualizado.com")
+              response = subject.()
 
-            expect(AffinityPercentage.all.count).to eq(1)
+              expect(response).to match_array([[{}, {}], [{}, {}]])
 
-            response = subject.()
+              expect(AffinityPercentage.all.count).to eq(5)
 
-            expect(response).to match_array([[{}, {}], [{}, {}]])
+              affinity_percentage = AffinityPercentage.where(offer_id: offer_1.id, curriculum_vitae_id: curriculum_vitae_1.id)
 
-            expect(AffinityPercentage.all.count).to eq(5)
+              expect(affinity_percentage.count).to eq(2)
+              expect(affinity_percentage.first.created_at.strftime("%F")).to eq("2020-01-01")
+              expect(affinity_percentage.last.created_at.strftime("%F")).to eq("2020-01-02")
+            end
           end
         end
 
@@ -213,7 +224,7 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
           let!(:affinity_percentage_3) { create(:affinity_percentage, offer_id: offer_2.id, curriculum_vitae_id: curriculum_vitae_1.id) }
           let!(:affinity_percentage_4) { create(:affinity_percentage, offer_id: offer_2.id, curriculum_vitae_id: curriculum_vitae_2.id) }
 
-          before { Timecop.freeze(Time.new(2020, 04, 02, 13, 00, 00)) }
+          before { Timecop.freeze(Time.zone.parse("2020-01-02 13:00:00")) }
           after  { Timecop.return }
 
           it 'should not create new AffinityPercentage object with new data' do

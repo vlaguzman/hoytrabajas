@@ -107,6 +107,9 @@ RSpec.describe "Unregistered user applied offer in home", type: :feature do
       find('button', text: "Continuar").click
 
       expect(current_path).to eq(offer_path(offer.id))
+
+      expect(page).to have_text('¡Has aplicado a esta oferta!')
+
       expect(page).to have_text("¡Has aplicado!")
     end
 
@@ -188,6 +191,8 @@ RSpec.describe "Unregistered user applied offer in home", type: :feature do
       click_on("Omitir")
 
       expect(current_path).to eq(offer_path(offer.id))
+      expect(page).to have_text('¡Has aplicado a esta oferta!')
+
       expect(page).to have_text("¡Has aplicado!")
     end
 
@@ -269,6 +274,8 @@ RSpec.describe "Unregistered user applied offer in home", type: :feature do
       click_on("No, pero quiero aprender")
 
       expect(current_path).to eq(offer_path(offer.id))
+      expect(page).to have_text('¡Has aplicado a esta oferta!')
+
       expect(page).to have_text("¡Has aplicado!")
     end
   end

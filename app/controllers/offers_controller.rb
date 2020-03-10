@@ -20,8 +20,8 @@ class OffersController < ApplicationController
 
   def show
     offer = Offer.find_by(id: sanatized_offer_id)
-
-    @offer = Offers::ShowPresenter.new(offer, current_user: current_user, current_company: current_company)
+    @offer = Offers::ShowPresenter.new(offer, current_user: current_user, current_company: current_company, cookies_present: cookies_present )
+    delete_cookies
   end
 
   def update
@@ -33,8 +33,7 @@ class OffersController < ApplicationController
   private
 
   def offer_show
-    cookies.delete :applied_offer_path if cookies[:applied_offer_path].present?
-    OffersPresenter.new(Offer.find_by(id: show_params[:id]), current_user)
+    OffersPresenter.new(Offer.find_by(id: show_params[:id]), current_user, cookies_present: cookies_present )
   end
 
   def index_params
@@ -59,5 +58,13 @@ class OffersController < ApplicationController
       :id,
       :status
     ).to_h
+  end
+
+  def delete_cookies
+    cookies.delete :applied_offer_path if cookies[:applied_offer_path].present?
+  end
+
+  def cookies_present
+    cookies[:applied_offer_path].present?
   end
 end

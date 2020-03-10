@@ -39,6 +39,7 @@ class Offers::ShowPresenter < ApplicationPresenter
       field[:total_applications] = applied_candidades
       field[:path_applied_offers_rest] = rails_routes.applied_offers_rest_index_path
       field[:translations] = I18n.t('offers.show.applied_button')
+      field[:cookies_present] = options[:cookies_present]
     end
   end
 

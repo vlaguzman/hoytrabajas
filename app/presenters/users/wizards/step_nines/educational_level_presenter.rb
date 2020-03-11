@@ -13,6 +13,6 @@ class Users::Wizards::StepNines::EducationalLevelPresenter < ApplicationPresente
   end
 
   def next_path
-    validate_cookie_path(options[:user], options[:cookies], rails_routes.users_wizards_step_eleven_path)
+    valid_cookie_path?(options[:user], options[:cookies_path], rails_routes.users_wizards_step_eleven_path)
   end
 end

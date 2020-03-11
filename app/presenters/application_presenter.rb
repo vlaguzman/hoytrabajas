@@ -32,11 +32,11 @@ class ApplicationPresenter < SimpleDelegator
     yield if condition
   end
 
-  def validate_cookie_path(object, cookies, path)
-    if options[:cookies].present?
-    offer_id = StringConverter.split_id_path(path: cookies)
+  def valid_cookie_path?(object, cookies_path ,path)
+    if options[:cookies_path].present?
+      offer_id = StringConverter.split_id_path(path: cookies_path)
       Offers::AppliedOfferService.(user: object, params_offer: { offer_id: offer_id} )
-      cookies
+      cookies_path
     else
       path
     end

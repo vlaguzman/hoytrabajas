@@ -14,6 +14,8 @@ module StringConverter
     text.split(char_to_replace).join(new_char)
   end
 
+  #"'/offer/path/2'" => ["","offer","2"] => "2".to_i
+  #"offers" => ""
   def self.split_id_path(path: "", position_id: 2)
     (path.include?("/")) ? path.split('/')[position_id].to_i : ""
   end

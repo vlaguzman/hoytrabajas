@@ -8,7 +8,7 @@ class Users::Wizards::StepNines::ChoicesPresenter < ApplicationPresenter
   end
 
   def skip_path
-    validate_cookie_path(source, options[:cookies], rails_routes.users_wizards_step_eleven_path)
+    valid_cookie_path?(source, options[:cookies_path], rails_routes.users_wizards_step_eleven_path)
   end
 
   def has_work_experience?

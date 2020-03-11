@@ -2,9 +2,9 @@ require "rails_helper"
 
 RSpec.describe Clientify::DataManager do
   describe "#create_contact" do
-    expected_main_data = {
-      "url"=>"https://api.clientify.net/v1/contacts/7031198/", 
-      "id"=>7031198,
+    expected_main_data_candidate = {
+      "url"=>"https://api.clientify.net/v1/contacts/7067074/", 
+      "id"=>7067074,
       "owner"=>"vladimir@hoytrabajas.com", 
       "owner_name"=>"Vladimir Guzman", 
       "first_name"=>"", 
@@ -24,8 +24,8 @@ RSpec.describe Clientify::DataManager do
       "last_contact"=>nil
     }
     expected_main_data_employer = {
-      "url"=>"https://api.clientify.net/v1/contacts/7040703/", 
-      "id"=>7040703,
+      "url"=>"https://api.clientify.net/v1/contacts/7067075/", 
+      "id"=>7067075,
       "owner"=>"vladimir@hoytrabajas.com", 
       "owner_name"=>"Vladimir Guzman", 
       "first_name"=>"", 
@@ -45,21 +45,23 @@ RSpec.describe Clientify::DataManager do
       "last_contact"=>nil
     }
 
+    let(:token) { 'a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c'}
+    let(:clientify_data_manager) { Clientify::DataManager.new(token) }
+
     context "the user is a candidate" do
       it "should return a contact created at clientify, its clientify_id, and the tag candidate" do
-        VCR.use_cassette("clientify_create_contact") do 
+        VCR.use_cassette("clientify_create_candidate_contact") do 
           user = FactoryBot.create(:user, :first_time_candidate, email: 'carlos@testemail.com')
-          clientify_data_manager = Clientify::DataManager.new
           body_response = clientify_data_manager.create_contact user, 'candidate'
           response_hash = JSON.parse body_response.gsub('\:', ':')
      
-          expect(expected_main_data['url']).to eq(response_hash['url'])
-          expect(expected_main_data['id']).to eq(response_hash['id'])
-          expect(expected_main_data['first_name']).to eq(response_hash['first_name'])
-          expect(expected_main_data['last_name']).to eq(response_hash['last_name'])
-          expect(expected_main_data['emails']).to eq(response_hash['emails'])
-          expect(expected_main_data['tags']).to eq(response_hash['tags'])
-          expect(expected_main_data['phones']).to eq(response_hash['phones'])
+          expect(expected_main_data_candidate['url']).to eq(response_hash['url'])
+          expect(expected_main_data_candidate['id']).to eq(response_hash['id'])
+          expect(expected_main_data_candidate['first_name']).to eq(response_hash['first_name'])
+          expect(expected_main_data_candidate['last_name']).to eq(response_hash['last_name'])
+          expect(expected_main_data_candidate['emails']).to eq(response_hash['emails'])
+          expect(expected_main_data_candidate['tags']).to eq(response_hash['tags'])
+          expect(expected_main_data_candidate['phones']).to eq(response_hash['phones'])
         end
       end
     end
@@ -68,7 +70,6 @@ RSpec.describe Clientify::DataManager do
       it "should return a contact created at clientify, its clientify_id, and the tag employer" do
         VCR.use_cassette("clientify_create_employer_contact") do 
           user = FactoryBot.create(:user, :first_time_candidate, email: 'company@testemail.com')
-          clientify_data_manager = Clientify::DataManager.new
           body_response = clientify_data_manager.create_contact user, 'employer'
           response_hash = JSON.parse body_response.gsub('\:', ':')
      
@@ -86,8 +87,8 @@ RSpec.describe Clientify::DataManager do
 
   describe "#update_contact" do
     expected_main_data = {
-      "url"=>"https://api.clientify.net/v1/contacts/7031198/", 
-      "id"=>7031198, 
+      "url"=>"https://api.clientify.net/v1/contacts/7067074/", 
+      "id"=>7067074, 
       "owner"=>"vladimir@hoytrabajas.com", 
       "owner_name"=>"Vladimir Guzman", 
       "first_name"=>"carlos", 
@@ -106,6 +107,10 @@ RSpec.describe Clientify::DataManager do
       "created"=>"2020-03-07T00:06:53.246193+01:00", 
       "last_contact"=>nil
     }
+
+    let(:token) { 'a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c'}
+    let(:clientify_data_manager) { Clientify::DataManager.new(token) }
+
     it "should return the contact data updated" do
       VCR.use_cassette("clientify_update_contact") do
         user = FactoryBot.create(:user, 
@@ -113,8 +118,7 @@ RSpec.describe Clientify::DataManager do
                                  name: 'carlos', 
                                  last_name: 'valderrama', 
                                  contact_number: '317 3729438', 
-                                 clientify_contact_id: '7031198')
-        clientify_data_manager = Clientify::DataManager.new
+                                 clientify_contact_id: '7067074')
         body_response = clientify_data_manager.update_contact user
         response_hash = JSON.parse body_response.gsub('\:', ':')
 

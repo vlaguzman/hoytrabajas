@@ -1,12 +1,12 @@
 ---
 http_interactions:
 - request:
-    method: put
-    uri: https://api.clientify.net/v1/contacts/7067074/
+    method: post
+    uri: https://api.clientify.net/v1/contacts/
     body:
       encoding: UTF-8
-      string: "{\n    \"first_name\": \"carlos\",\n             \n    \"last_name\":
-        \"valderrama\",\n             \n    \"phone\": \"317 3729438\"\n            }"
+      string: "{\n    \"email\": \"carlos@testemail.com\",\n             \n    \"tags\":
+        [\"candidate\", \"htweb\"]\n            }"
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
@@ -22,26 +22,28 @@ http_interactions:
       - Token a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c
   response:
     status:
-      code: 200
-      message: OK
+      code: 201
+      message: Created
     headers:
       Date:
-      - Wed, 11 Mar 2020 16:30:06 GMT
+      - Wed, 11 Mar 2020 16:10:04 GMT
       Content-Type:
       - application/json
-      Transfer-Encoding:
-      - chunked
+      Content-Length:
+      - '2029'
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=d2cba37b45377b93e30f9b5e2b496ee701583944206; expires=Fri, 10-Apr-20
-        16:30:06 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
-      Vary:
-      - Accept, Accept-Language, Cookie
+      - __cfduid=d95cf73f96e9c7fb1ae90021a2a7b8e601583943003; expires=Fri, 10-Apr-20
+        16:10:03 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
       Content-Language:
       - en
+      Vary:
+      - Accept, Accept-Language, Cookie
+      Location:
+      - https://api.clientify.net/v1/contacts/7067074/
       Allow:
-      - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+      - GET, POST, HEAD, OPTIONS
       Cf-Cache-Status:
       - DYNAMIC
       Expect-Ct:
@@ -49,18 +51,16 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 5726a878dbfbda9e-BOG
+      - 57268b1cfac2b594-BOG
     body:
       encoding: UTF-8
       string: '{"url":"https://api.clientify.net/v1/contacts/7067074/","id":7067074,"owner":"vladimir@hoytrabajas.com","owner_name":"Vladimir
-        Guzman","first_name":"carlos","last_name":"valderrama","status":"cold-lead","title":"","company":null,"company_details":null,"contact_type":null,"contact_source":null,"emails":[{"type":4,"email":"carlos@testemail.com"}],"phones":[{"type":1,"phone":"317
-        3729438"}],"addresses":[],"picture_url":null,"custom_fields":[],"tags":["candidate","htweb"],"description":"","remarks":"","summary":"","created":"2020-03-11T17:10:03.904215+01:00","last_contact":null,"related_tasks":[],"deals":[],"wall_entries":[{"url":"https://api.clientify.net/v1/wall-entries/46889324/","id":46889324,"user":"Vladimir
-        Guzman","created":"2020-03-11T17:30:06.470649+01:00","extra":"{}","extra_datetime":null,"type":"contact_modification","link":"","source_id":"7067074","object_id":7067074},{"url":"https://api.clientify.net/v1/wall-entries/46886432/","id":46886432,"user":"Milton
+        Guzman","first_name":"","last_name":"","status":"cold-lead","title":"","company":null,"company_details":null,"contact_type":null,"contact_source":null,"emails":[{"type":4,"email":"carlos@testemail.com"}],"phones":[],"addresses":[],"picture_url":null,"custom_fields":[],"tags":["candidate","htweb"],"description":"","remarks":"","summary":"","created":"2020-03-11T17:10:03.904215+01:00","last_contact":null,"related_tasks":[],"deals":[],"wall_entries":[{"url":"https://api.clientify.net/v1/wall-entries/46886432/","id":46886432,"user":"Milton
         ST Moreno Beltrán","created":"2020-03-11T17:10:04.210461+01:00","extra":"{\"automation_name\":
         \"Haz conseguido trabajo\", \"automation_link\": \"/automation/2751/\"}","extra_datetime":null,"type":"automation_added","link":"","source_id":"2751","object_id":7067074},{"url":"https://api.clientify.net/v1/wall-entries/46886430/","id":46886430,"user":"Milton
         ST Moreno Beltrán","created":"2020-03-11T17:10:04.080143+01:00","extra":"{\"automation_name\":
         \"Primeros 30 d\\u00edas\", \"automation_link\": \"/automation/2672/\"}","extra_datetime":null,"type":"automation_added","link":"","source_id":"2672","object_id":7067074},{"url":"https://api.clientify.net/v1/wall-entries/46886429/","id":46886429,"user":"Vladimir
         Guzman","created":"2020-03-11T17:10:04.032888+01:00","extra":"{}","extra_datetime":null,"type":"contact_creation","link":"","source_id":"7067074","object_id":7067074}],"page_views":0,"total_visits":0,"first_visit":null,"last_visit":null,"gdpr_accept":false,"visitor_key":"","attachments":[],"websites":[],"linkedin_url":"","linkedin_id":"","linkedin_picture_url":"","skype_username":"","birthday":null,"twitter_id":"","lead_scoring":0,"facebook_url":"","twitter_url":"","googleplus_url":"","pinterest_url":"","foursquare_url":"","aboutme_url":"","klout_url":"","facebook_picture_url":"","twitter_picture_url":"","facebook_id":"","google_id":""}'
     http_version: null
-  recorded_at: Wed, 11 Mar 2020 16:30:07 GMT
+  recorded_at: Wed, 11 Mar 2020 16:10:04 GMT
 recorded_with: VCR 5.1.0

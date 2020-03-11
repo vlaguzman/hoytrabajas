@@ -13,7 +13,7 @@ RSpec.describe Elasticsearch::Common::Queries do
 
     let(:rquest_offer) do
       {
-        key_words: "mesero de bar",
+        keywords: "mesero de bar",
         city: ['Bogotá', medellin.id],
         job_categories: [administration_category.id]
       }

@@ -79,8 +79,9 @@ class Elasticsearch::Common::Queries
   end
 
   def multimatch_keys_present?(parameters_keys: [])
-    keys_not_present = self.class::MULTIMATCH_PARAM_KEYS - parameters_keys
-    keys_not_present.any?
+    parameters_keys
+      .select { |key| self.class::MULTIMATCH_PARAM_KEYS.include? key }
+      .empty?
   end
 
   def bool_builder(parameter_organized_by_clause)

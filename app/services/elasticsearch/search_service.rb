@@ -26,7 +26,7 @@ module Elasticsearch::SearchService
 
   def self.request_builder(query, sort_class)
     request = Hash.new.merge(query)
-    sort_class.present? ?  request.merge(sort_class.new.()) : body
+    sort_class.present? ? request.merge(sort_class.new.()) : request
   end
 
   def self.scroll_request(client: nil, model_index: nil, query: {} )

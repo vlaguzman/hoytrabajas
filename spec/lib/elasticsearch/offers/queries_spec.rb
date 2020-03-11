@@ -40,7 +40,7 @@ RSpec.describe Elasticsearch::Offers::Queries do
     context "When method is used" do
       it "Should return the expected object" do
         expected_object = {
-          filter: [:city, :job_categories, :work_mode, :contract_type, :available_work_days, :working_days, :job_aids, :languages],
+          filter: [:id, :city, :job_categories, :work_mode, :contract_type, :available_work_days, :working_days, :job_aids, :languages],
           multimatch: [:keywords],
           must: [:status],
           must_not: [],
@@ -84,8 +84,11 @@ RSpec.describe Elasticsearch::Offers::Queries do
                     :query=>
                     {:bool=>
                       {:should=>
-                        [{:match=>{"city.id"=>1}}, {:match=>{"city.id"=>2}}]}}}}]},
-            :multi_match=>{:query=>"desarrollador ruby on rails", :fields=>["description^3", "title^1"]}}}
+                        [{:match=>{"city.id"=>bogota.id}}, {:match=>{"city.id"=>medellin.id}}]}}}}],
+              :must=>
+                [{:multi_match=>
+                  {:query=>"desarrollador ruby on rails",
+                    :fields=>["description^3", "title^1"]}}]}}}
 
           expect(response).to eq(expected_object)
         end

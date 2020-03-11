@@ -34,7 +34,7 @@ RSpec.describe Elasticsearch::SearchService do
       it "should return 5 results" do
         Offer.import
 
-        sleep(0.5)
+        sleep(1)
 
         response = subject.(
           Offer,

@@ -2,13 +2,6 @@ module Elasticsearch::Common::BoolBuilders
 
   COMMON_BOOL_CLAUSES = [:must, :filter, :should, :must_not]
 
-  COMMON_BOOL_CLAUSES_OPTIONES = {
-    must: -> { simple_bool_builder },
-    filter: -> { filters_builder },
-    should: -> { simple_bool_builder },
-    must_not: -> { simple_bool_builder }
-  }
-
   def self.call(parameters: {}, clause: COMMON_BOOL_CLAUSES[0])
     default_bool_builder_by_clause(parameters: parameters, clause: clause)
   end

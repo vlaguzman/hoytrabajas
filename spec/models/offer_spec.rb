@@ -343,10 +343,15 @@ RSpec.describe Offer, type: :model do
                 "title"=> demo_offer.title,
                 "description"=> demo_offer.description,
                 "status"=> demo_offer.status,
+                "created_at"=> demo_offer.created_at.iso8601(3),
                 "city"=> {"id" => demo_offer.city.id, "description" => demo_offer.city.description},
                 "job_categories"=> demo_offer.job_categories.map { |category| {"id"=> category.id, "description"=> category.description} },
                 "work_mode"=> {"id" => demo_offer.work_mode.id, "description" => demo_offer.work_mode.description},
-                "contract_type"=> {"id" => demo_offer.contract_type.id, "description" => demo_offer.contract_type.description}
+                "contract_type"=> {"id" => demo_offer.contract_type.id, "description" => demo_offer.contract_type.description},
+                "job_aids"=> demo_offer.job_aids.map { |aid| {"id"=> aid.id, "description"=> aid.description} },
+                "languages"=> demo_offer.job_aids.map { |language| {"id"=> language.id, "description"=> language.description} },
+                "working_days"=> demo_offer.job_aids.map { |working_day| {"id"=> working_day.id, "description"=> working_day.description} },
+                "available_work_days"=> demo_offer.available_work_days.map { |day| {"id"=> day.id, "description"=> day.description} }
               }
             }
 
@@ -469,25 +474,25 @@ RSpec.describe Offer, type: :model do
 
           search_parameters = {
             status: 'active',
-            keywords: 'developer to remote job in bogota',
+            keywords: 'developer',
             city: bogota.id,
             job_categories: tech_category.id,
             work_mode: remote_mode.id,
             contract_type: indefinite_contract.id,
             available_work_days: monday.id,
-            working_days: monday.id,
+            working_days: morning.id,
             job_aids: transport.id,
             languages: english.id
           }
+
+          response = subject.search_by
+
+          expect(response.count).to eq(7)
 
           response = subject.search_by( **search_parameters )
 
           expect(response.count).to eq(1)
           expect(response.last[:title]).to eq('the developer')
-
-          response = subject.search_by
-
-          expect(response.count).to eq(7)
         end
       end
 

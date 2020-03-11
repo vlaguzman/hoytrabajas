@@ -2,13 +2,14 @@
 # SKILL
 ########################################################################*/
 
-span.a-skill {
+.a-skill {
   border-radius: 22px;
   font-weight: normal;
   font-size: 0.875rem;
   padding: 3px 9px;
   color: $color__slategray-main;
   border: 1px solid $color__slategray-main;
+  display: inline-block;
 
   @media only screen and (max-width: 576px) {
     font-size: 0.875rem;

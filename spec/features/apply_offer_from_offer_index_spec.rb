@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "apply offer from offer index", type: :feature, js: :true do
+RSpec.describe "apply offer from offer index", type: :feature do
   let(:user)                  { create(:user) }
   let!(:new_curriculum)       { create(:curriculum_vitae, user_id: user.id) }
   let!(:applied_offer_status) { create(:applied_offer_status, description: 'applied') }
@@ -23,7 +23,7 @@ RSpec.describe "apply offer from offer index", type: :feature, js: :true do
   end
 
   context "When the user is logged in and had applied to a offer" do
-    it "should not create the association again" do
+    it "should not create the association again", js: true do
       sign_in user
 
       visit offers_path
@@ -43,7 +43,7 @@ RSpec.describe "apply offer from offer index", type: :feature, js: :true do
   end
 
   context "When the user is not logged in" do
-    it "should ask you to register" do
+    it "should ask you to register", js: true do
       visit offers_path
 
       expect(page).to have_text("I Am A Sexy Offer")

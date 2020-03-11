@@ -2,13 +2,11 @@
 
 require 'rails_helper'
 
-
-
-RSpec.describe "Overall navigation" do
+RSpec.describe "Overall navigation", type: :feature do
   context "an anonimous user visits the public pages" do
     before { create(:offer) }
 
-    context "all pages render properly", type: :feature do
+    context "all pages render properly" do
       it "should visit inicio from root_path", js:true do
 
         visit root_path

@@ -38,13 +38,13 @@ RSpec.describe Offer, type: :model do
 
     describe "#attributes_to_compare " do
       it "Should return the array with principal attributes" do
-        expect(subject::ATTRIBUTES_TO_COMPARE).to match_array(expected_offer_attr_array) 
+        expect(subject::ATTRIBUTES_TO_COMPARE).to match_array(expected_offer_attr_array)
       end
     end
 
     describe "#lists_to_compare" do
       it "Should return the array with principal list attributes" do
-        expect(subject::LISTS_TO_COMPARE).to match_array(expected_offer_list_array) 
+        expect(subject::LISTS_TO_COMPARE).to match_array(expected_offer_list_array)
       end
     end
 
@@ -225,17 +225,17 @@ RSpec.describe Offer, type: :model do
     context "There are one offer_on_demand with status up and one with status down" do
       it "should return offers showing first the on demand offers, ordered by the start_at of the offer_on_demand descendingly and ordered by created_at descendingly of created_at of offer" do
         offer_1 = create(:offer, title: 'first created', created_at: (Time.now - 4.days))
-      
+
         offer_2 = create(:offer, title: 'second created', created_at: (Time.now - 3.days))
         create(:offer_on_demand, offer_id: offer_2.id, status: "down", start_at: Time.new(2019, 02, 04))
-      
+
         offer_3 = create(:offer, title: 'third created', created_at: (Time.now - 2.days))
         create(:offer_on_demand, offer_id: offer_3.id, status: "up", start_at: Time.new(2019, 02, 03))
-      
+
         offer_4 = create(:offer, title: 'quarter created', created_at: (Time.now - 1.days))
-      
+
         response = described_class.order_by_demand_and_created_at
-      
+
         expect(response[0]).to eq(offer_3)
         expect(response[1]).to eq(offer_4)
         expect(response[2]).to eq(offer_2)
@@ -246,22 +246,251 @@ RSpec.describe Offer, type: :model do
     context "There are two offer_on_demand with status up" do
       it "should return offers showing first the on demand offers, ordered by the start_at of the offer_on_demand descendingly and ordered by created_at descendingly of created_at of offer" do
         offer_1 = create(:offer, title: 'first created', created_at: Time.new(2019, 01, 01))
-      
+
         offer_2 = create(:offer, title: 'second created', created_at: Time.new(2019, 01, 03))
         create(:offer_on_demand, offer_id: offer_2.id, status: "up", start_at: Time.new(2019, 01, 04))
-      
+
         offer_3 = create(:offer, title: 'third created', created_at: Time.new(2019, 01, 03))
         create(:offer_on_demand, offer_id: offer_3.id, status: "up", start_at: Time.new(2019, 01, 03))
-      
+
         offer_4 = create(:offer, title: 'quarter created', created_at: Time.new(2019, 01, 04))
-      
+
         response = described_class.order_by_demand_and_created_at
-      
+
         expect(response[0]).to eq(offer_2)
         expect(response[1]).to eq(offer_3)
         expect(response[2]).to eq(offer_4)
         expect(response[3]).to eq(offer_1)
       end
+    end
+  end
+
+  describe "quering with elasticsearch" do
+
+    before do
+      client = described_class.__elasticsearch__.client = Elasticsearch::Client.new host: "#{ENV['TEST_ELASTICSEARCH_HOST']}:9200"
+      described_class.__elasticsearch__.delete_index! if client.indices.exists? index: :offers
+      described_class.__elasticsearch__.create_index!
+    end
+
+    after do
+      client = described_class.__elasticsearch__.client = Elasticsearch::Client.new host: "#{ENV['ELASTICSEARCH_HOST']}:9200"
+      described_class.__elasticsearch__.delete_index! if client.indices.exists? index: :offers
+      described_class.__elasticsearch__.create_index!
+    end
+
+    describe "#__elasticsearch__" do
+      it "Should be present the docfile" do
+        es_version = subject.__elasticsearch__.client.info['version']['number']
+        dotfile = "#{File.open(".elasticsearch-version", &:readline).chomp}"
+        expect(dotfile).to eql(es_version)
+      end
+    end
+
+    describe "#search" do
+      let(:subject) { described_class }
+
+      context "When no records in db" do
+
+        it "Should return zero records" do
+          subject.import
+
+          response = subject.search("*:*")
+
+          expect(response.size).to be_zero
+        end
+      end
+
+      context "When records are present" do
+        let!(:stuffed_offers) { create_list(:offer, 20) }
+
+        it "Should return the mapped offers" do
+          subject.import
+          sleep(0.5)
+
+          response = subject.search({query: { match_all: {} }})
+
+          expect(response.size).to eq(10)
+        end
+      end
+
+      describe "mappings" do
+        context "When mappings is defined" do
+          let(:subject) { described_class }
+
+          let!(:demo_offer) do
+            create(:offer, {
+              title: "demo title",
+              description: "demo description",
+              city: create(:city, description: "Bogotá"),
+              job_categories: [create(:job_category, description: "tech")]
+            })
+          end
+
+          it "Should return expected object" do
+            subject.import
+            sleep(1)
+
+            response = subject.search({query: { match_all: {} }})
+
+            expected_object = {
+              "_index"=> "offers",
+              "_type"=> "_doc",
+              "_id"=> demo_offer.id.to_s,
+              "_score"=> 1.0,
+              "_source"=> {
+                "id"=> demo_offer.id,
+                "title"=> demo_offer.title,
+                "description"=> demo_offer.description,
+                "status"=> demo_offer.status,
+                "city"=> {"id" => demo_offer.city.id, "description" => demo_offer.city.description},
+                "job_categories"=> demo_offer.job_categories.map { |category| {"id"=> category.id, "description"=> category.description} },
+                "work_mode"=> {"id" => demo_offer.work_mode.id, "description" => demo_offer.work_mode.description},
+                "contract_type"=> {"id" => demo_offer.contract_type.id, "description" => demo_offer.contract_type.description}
+              }
+            }
+
+            expect(Offer.count).to eq(1)
+
+            expect(response.results.count).to eq(1)
+            expect(response.results[0].to_h).to eq(expected_object)
+
+          end
+        end
+      end
+    end
+
+    describe "#search_by" do
+      let(:bogota) { create(:city) }
+      let(:medellin) { create(:city) }
+
+      #Job Categories
+      let(:tech_category) { create(:job_category) }
+      let(:cook_category) { create(:job_category) }
+
+      #Work Modes
+      let(:remote_mode) { create(:work_mode) }
+      let(:fixed_mode) { create(:work_mode) }
+
+      #Contract Types
+      let(:service_provision) { create(:contract_type) }
+      let(:indefinite_contract) { create(:contract_type) }
+
+      #Available work days
+      let(:monday) { create(:available_work_day) }
+      let(:friday) { create(:available_work_day) }
+
+      #Working days
+      let(:morning) { create(:working_day) }
+      let(:late) { create(:working_day) }
+
+      #JobAids
+      let(:transport) { create(:job_aid) }
+
+      #Languages
+      let(:spanish) { create(:language) }
+      let(:english) { create(:language) }
+      let(:german) { create(:language) }
+
+      let(:subject) { described_class }
+
+      let!(:stuffed_offers) { create_list(:offer, 5) }
+
+      context "when does not recibe parameters" do
+        it "should return all posible results" do
+          subject.import
+          sleep(0.5)
+
+          response = subject.search_by
+
+          expect(response.count).to eq(5)
+        end
+      end
+
+      context "when recibe city id" do
+
+        let!(:bogota_offers) { create_list(:offer, 4, city: bogota) }
+        let!(:medellin_offers) { create_list(:offer, 6, city: medellin ) }
+
+        it "should return 5 results to bogota anf six to medellin" do
+          subject.import
+          sleep(0.6)
+
+          response = subject.search_by(city: bogota.id)
+
+          expect(response.count).to eq(4)
+
+          response = subject.search_by(city: medellin.id)
+
+          expect(response.count).to eq(6)
+
+          response = subject.search_by(city: [bogota.id, medellin.id])
+
+          expect(response.count).to eq(10)
+
+          response = subject.search_by
+
+          expect(response.count).to eq(15)
+        end
+      end
+
+      context "when recibe all posible search parameters" do
+        let!(:offer_objetive) { create(:offer,
+          title: "the developer",
+          city: bogota,
+          job_aids: [transport],
+          work_mode: remote_mode,
+          working_days: [morning],
+          contract_type: indefinite_contract,
+          job_categories: [tech_category],
+          available_work_days: [monday],
+          status: 'active'
+        ) }
+
+        let!(:offer_trap) { create(:offer,
+          title: "programmer",
+          city: bogota,
+          job_aids: [transport],
+          work_mode: remote_mode,
+          working_days: [morning],
+          contract_type: indefinite_contract,
+          job_categories: [tech_category],
+          available_work_days: [monday],
+          status: 'active'
+        ) }
+
+        let!(:the_offer_english) { create(:languages_offers, offer: offer_objetive, language: english) }
+        let!(:the_offer_trap_english) { create(:languages_offers, offer: offer_trap, language: english) }
+
+        it "should return only one response" do
+
+          subject.import
+          sleep(0.6)
+
+          search_parameters = {
+            status: 'active',
+            keywords: 'developer to remote job in bogota',
+            city: bogota.id,
+            job_categories: tech_category.id,
+            work_mode: remote_mode.id,
+            contract_type: indefinite_contract.id,
+            available_work_days: monday.id,
+            working_days: monday.id,
+            job_aids: transport.id,
+            languages: english.id
+          }
+
+          response = subject.search_by( **search_parameters )
+
+          expect(response.count).to eq(1)
+          expect(response.last[:title]).to eq('the developer')
+
+          response = subject.search_by
+
+          expect(response.count).to eq(7)
+        end
+      end
+
     end
   end
 end

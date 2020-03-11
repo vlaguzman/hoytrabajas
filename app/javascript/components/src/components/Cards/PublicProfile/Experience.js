@@ -4,8 +4,8 @@ import { es } from 'date-fns/locale'
 import { format } from 'date-fns'
 import CarouselRow from '../../Carousel/CarouselRow'
 
-const formatDate = (date) => {
-  let dateTranform = new Date(date)
+const formatDate = date => {
+  const dateTranform = new Date(date)
   return format(dateTranform, 'MMMM yyyy', { locale: es })
 }
 
@@ -14,16 +14,15 @@ const defaultTranslations = {
   still_in_progress: 'En curso'
 }
 
-const Experience = ({
-  defaultList,
-  translations = defaultTranslations
-}) => (
+const Experience = ({ defaultList, translations = defaultTranslations }) => (
   <div className="m-experienceCards">
-    <CarouselRow slidesToShow={2} autoplay={false}>
+    <CarouselRow slidesToShow={2} autoplay={false} centerModeResp={false}>
       {defaultList.map(item => (
         <div className="pt-20 h-100">
           <div className="d-flex flex-column a-shadow__card p-20 h-100 m-boxSmallInformation singleCard">
-            <p className="a-typo__body1 fw-bolder m-0 titleCardExperience">{item.work_position}</p>
+            <p className="a-typo__body1 fw-bolder m-0 titleCardExperience">
+              {item.work_position}
+            </p>
             <div className="companyWithDate">
               <span className="a-typo__body2 fw-bold color__blue-main titleCompany">
                 {item.company_name}
@@ -51,7 +50,7 @@ const Experience = ({
                 </>
               )
             */}
-            <div>
+            <div className="categoriesWrapper">
               <span className="a-chip__orange d-inline-flex jobCategory a-typo__caption fw-bold color__blue-main fw-bold a-skill color-orange">
                 {item.job_category}
               </span>

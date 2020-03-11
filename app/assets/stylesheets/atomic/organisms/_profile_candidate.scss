@@ -7,9 +7,11 @@
   background-repeat: repeat-x;
   position: absolute;
   z-index: -1;
-  height: 100%;
   width: 100%;
   top: 75px;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .contentBox {
@@ -26,10 +28,11 @@
     display: flex;
     flex-direction: column;
     width: 5%;
+    max-width: 46px;
 
     .tagButton {
       border-radius: 0 10px 10px 0;
-      background-color: $color__orange-main;
+      background-color: $color__blue-main;
       padding: 0;
       position: relative;
       margin-top: 380px;
@@ -46,7 +49,7 @@
       p {
         transform: rotate(-90deg);
         font-size: 1.1875rem;
-        font-weight: bold;
+        font-weight: 900;
         color: $color__white-main;
         white-space: nowrap;
         margin: 0;
@@ -70,8 +73,13 @@
   @media only screen and (max-width: 576px) {
     .tagButtonsContainer {
       visibility: hidden;
+      display: none;
     }
   }
+}
+
+.tagMobileButton a {
+  font-weight: 900;
 }
 
 @media only screen and (min-width: 576px) {
@@ -190,11 +198,20 @@
     padding: 57px 13px 59px;
     margin: 0 95px;
 
+    @media (max-width: 992px) {
+      margin: 0 30px;
+    }
+
     &.boxAcademy {
       padding: 57px 0px 40px;
 
       h2 {
         padding: 0 13px;
+
+        @media (max-width: 576px) {
+          margin: 0 0 0 15px;
+          font-weight: 800;
+        }
       }
     }
 
@@ -294,11 +311,11 @@
       grid-template-columns: 1fr 1fr;
       grid-row-gap: 28px;
       display: grid;
+      margin-top: 30px;
 
       @media (max-width: 992px) {
         display: flex;
         flex-direction: column;
-        margin-top: 30px;
 
         .typeAboutMe {
           margin: 12px 0;

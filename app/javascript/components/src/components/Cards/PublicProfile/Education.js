@@ -6,8 +6,8 @@ import { format } from 'date-fns'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import CarouselRow from '../../Carousel/CarouselRow'
 
-const formatDate = (date) => {
-  let dateTranform = new Date(date)
+const formatDate = date => {
+  const dateTranform = new Date(date)
   return format(dateTranform, 'MMMM yyyy', { locale: es })
 }
 
@@ -15,20 +15,18 @@ const defaultTranslations = {
   ongoing_study: 'Estudio en curso'
 }
 
-const Education = ({
-  defaultList,
-  translations = defaultTranslations
-}) => {
-
+const Education = ({ defaultList, translations = defaultTranslations }) => {
   return (
     <div className="m-educationCards">
-      <CarouselRow slidesToShow={2} autoplay={false}>
+      <CarouselRow slidesToShow={2} autoplay={false} centerModeResp={false}>
         {defaultList.map(item => (
           <div className="pt-20 h-100">
             <div className="d-flex flex-column a-shadow__card singleCard m-boxSmallInformation">
               <div className="d-flex">
                 <div className="a-educationCard__title">
-                  <p className="a-typo__body1 fw-bolder m-0 title">{item.title}</p>
+                  <p className="a-typo__body1 fw-bolder m-0 title">
+                    {item.title}
+                  </p>
                   <p className="a-typo__body2 fw-bold color__blue-main subtitle">
                     {item.institution_name}
                   </p>
@@ -42,7 +40,7 @@ const Education = ({
                 </div>
               </div>
               <p className="a-typo__caption fw-bold infoCity">{item.city_id}</p>
-              <Divider/>
+              <Divider />
               <p className="a-educationCard__date a-typo__caption mt-10 fw-bold color__blue-main infoCity infoDates">
                 {formatDate(item.start_date)} -{' '}
                 {item.ongoing_study

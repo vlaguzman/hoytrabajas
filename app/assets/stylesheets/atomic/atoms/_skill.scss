@@ -11,16 +11,19 @@ span.a-skill {
   border: 1px solid $color__slategray-main;
 
   @media only screen and (max-width: 576px) {
-    font-size: .875rem;
+    font-size: 0.875rem;
   }
 
   &.color-orange {
-    background-color: $color__orange-main;
-    color: #fff;
+    background-color: $color__orange-extralight;
+    color: $color__orange-main;
+    border: none;
   }
+
   &.incomplete {
     background-color: $color__pink-extralight;
     color: $color__pink-main;
+    border: none;
   }
 
   &.--noBG {

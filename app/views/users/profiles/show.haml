@@ -153,9 +153,9 @@
           .contentSkills
           %span{ class: "a-skill #{@user.basic_user_data[:salary][:class_empty]}" }
             = @user.basic_user_data[:salary][:value]
-    .bodyBox
-      %h2=t('profile.abilities')
-      - @user.yield_if(@user.all_attributes_present?(@user.abilities_present?)) do
+    - @user.yield_if(@user.all_attributes_present?(@user.abilities_present?)) do
+      .bodyBox
+        %h2=t('profile.abilities')
         - @user.yield_if(@user.abilities_present?[:soft_skills]) do
           .softSkills
             %h3=t('profile.valid_soft_skills')
@@ -182,13 +182,13 @@
               .skillSpecific
                 %h4.nameSkill=language.language.description
                 %h4.levelSkill=language.level.description
-    .bodyBox.boxAcademy
-      %h2=t('profile.academic_training')
-      - @user.yield_if(@user.data_education.present?) do
+    - @user.yield_if(@user.data_education.present?) do
+      .bodyBox.boxAcademy
+        %h2=t('profile.academic_training')
         = react_component('src/components/Cards/PublicProfile/Education', {defaultList: @user.data_education}, prerender: false)
-    .bodyBox.boxAcademy
-      %h2=t('profile.experience')
-      - @user.yield_if(@user.data_experience.present?) do
+    - @user.yield_if(@user.data_experience.present?) do
+      .bodyBox.boxAcademy
+        %h2=t('profile.experience')
         = react_component('src/components/Cards/PublicProfile/Experience', {defaultList: @user.data_experience}, prerender: false)
     .tagMobileButton
       - @user.yield_if(user_signed_in?) do

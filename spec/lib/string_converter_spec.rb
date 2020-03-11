@@ -24,5 +24,15 @@ RSpec.describe StringConverter do
 
       expect(response).to eq(65430)
     end
+
+    it "Should return empty string" do
+      response = subject.split_id_path(path:"/", position_id: 2)
+      response_two = subject.split_id_path(path:"/offer", position_id: 2)
+      response_three = subject.split_id_path(path:"/offers/", position_id: 2)
+
+      expect(response).to eq("")
+      expect(response_two).to eq("")
+      expect(response_three).to eq("")
+    end
   end
 end

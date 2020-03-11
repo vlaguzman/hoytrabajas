@@ -116,18 +116,18 @@
         .typeSkill.--city
           %h4=t('profile.my_interests.city')
           .contentSkills
-          %span{ class: "a-skill #{@user.basic_user_data[:city][:class_empty]}" }
-            = @user.basic_user_data[:city][:value]
+            %span{ class: "a-skill #{@user.basic_user_data[:city][:class_empty]}" }
+              = @user.basic_user_data[:city][:value]
         .typeSkill.--offer_types
           %h4=t('profile.my_interests.offer_interest_rates')
           .contentSkills
-          - @user.basic_user_data[:offer_types][:value].each do |offer_type|
-            %span{ class: "a-skill #{@user.basic_user_data[:offer_types][:class_empty]}" }=offer_type
+            - @user.basic_user_data[:offer_types][:value].each do |offer_type|
+              %span{ class: "a-skill #{@user.basic_user_data[:offer_types][:class_empty]}" }=offer_type
         .typeSkill.--travel_disponibility
           %h4=t('profile.my_interests.willing_to_travel')
           .contentSkills
-          %span{ class: "a-skill #{@user.basic_user_data[:travel_disponibility][:class_empty]}" }
-            = @user.basic_user_data[:travel_disponibility][:value]
+            %span{ class: "a-skill #{@user.basic_user_data[:travel_disponibility][:class_empty]}" }
+              = @user.basic_user_data[:travel_disponibility][:value]
         .typeSkill.--work_modes
           %h4=t('profile.my_interests.work_mode')
           .contentSkills
@@ -141,18 +141,18 @@
         .typeSkill.--labor_disponibility
           %h4=t('profile.my_interests.time_availability')
           .contentSkills
-          %span{ class: "a-skill #{@user.basic_user_data[:labor_disponibility][:class_empty]}" }
-            = @user.basic_user_data[:labor_disponibility][:value]
+            %span{ class: "a-skill #{@user.basic_user_data[:labor_disponibility][:class_empty]}" }
+              = @user.basic_user_data[:labor_disponibility][:value]
         .typeSkill.--contract_type
           %h4=t('profile.my_interests.types_of_agreement')
           .contentSkills
-          %span{ class: "a-skill #{@user.basic_user_data[:contract_type][:class_empty]}" }
-            = @user.basic_user_data[:contract_type][:value]
+            %span{ class: "a-skill #{@user.basic_user_data[:contract_type][:class_empty]}" }
+              = @user.basic_user_data[:contract_type][:value]
         .typeSkill.--salary
           %h4=t('profile.my_interests.wage_aspiration')
           .contentSkills
-          %span{ class: "a-skill #{@user.basic_user_data[:salary][:class_empty]}" }
-            = @user.basic_user_data[:salary][:value]
+            %span{ class: "a-skill #{@user.basic_user_data[:salary][:class_empty]}" }
+              = @user.basic_user_data[:salary][:value]
     - @user.yield_if(@user.all_attributes_present?(@user.abilities_present?)) do
       .bodyBox
         %h2=t('profile.abilities')
@@ -160,7 +160,7 @@
           .softSkills
             %h3=t('profile.valid_soft_skills')
             - @user.curriculum_vitae.soft_skills.each do |soft_skill|
-              %span.a-skill= soft_skill.description
+              %span.a-skill.--withMargin= soft_skill.description
         //TODO We don't have valid soft skills yet
         - @user.yield_if(params[:tester].present?) do
           .boxSkills

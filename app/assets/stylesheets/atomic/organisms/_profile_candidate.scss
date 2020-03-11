@@ -363,10 +363,10 @@
       .typeSkill .contentSkills {
         flex-wrap: wrap;
         display: flex;
-
-        span {
-          margin: 0 5px 5px 0;
-        }
+      }
+      
+      .a-skill {
+        margin: 0 5px 10px 0;
       }
 
       .--city {

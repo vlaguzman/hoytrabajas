@@ -15,6 +15,10 @@
     font-size: 0.875rem;
   }
 
+  &.--withMargin {
+    margin: 0 5px 10px 0;
+  }
+
   &.color-orange {
     background-color: $color__orange-extralight;
     color: $color__orange-main;

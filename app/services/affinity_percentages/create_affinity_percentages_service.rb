@@ -24,9 +24,9 @@ module AffinityPercentages::CreateAffinityPercentagesService
 
   def self.validate_affinity_percentage(offer, curriculum_vitae, affinity_percentage)
     if affinity_percentage && validate_offer_and_cv_updated?(offer, curriculum_vitae, affinity_percentage)
-      prepare_affinity_percentage(offer, curriculum_vitae)
+      create_affinity_percentage(offer, curriculum_vitae)
     elsif not affinity_percentage
-      prepare_affinity_percentage(offer, curriculum_vitae)
+      create_affinity_percentage(offer, curriculum_vitae)
     else
       return {};
     end
@@ -76,7 +76,7 @@ module AffinityPercentages::CreateAffinityPercentagesService
     }
   end
 
-  def self.prepare_affinity_percentage(offer, curriculum_vitae)
+  def self.create_affinity_percentage(offer, curriculum_vitae)
     affinity_percentage_data = {
       offer_id:            offer.id,
       curriculum_vitae_id: curriculum_vitae.id,
@@ -98,10 +98,10 @@ module AffinityPercentages::CreateAffinityPercentagesService
     affinity_percentages_logger = Logger.new("#{Rails.root}/log/affinity_percentages.log")
 
     if affinity_percentage.save
-      return {};
+      affinity_percentage
     else
       affinity_percentages_logger.error("OFFER_ID:#{offer.id} CURRICULUM_VITAE_ID: #{curriculum_vitae.id}, ERROR DETAILS #{affinity_percentage.errors.details}")
-      return {offer_id: offer_id, curriculum_vitae_id: cv_id, error_details: affinity_percentage.errors.details};
+      affinity_percentage
     end
   end
 end

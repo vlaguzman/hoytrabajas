@@ -52,7 +52,7 @@ class Offers::ViewsService
     if last_affinity_percentage.present?
       validate_affinity(last_affinity_percentage.affinity_percentage.round)
     else
-      validate_affinity(affinity_calculator)
+      validate_affinity(create_affinity_percentage)
     end
   end
 
@@ -64,8 +64,9 @@ class Offers::ViewsService
     AffinityPercentage.get_last(offer.id, current_user.curriculum_vitae.id)
   end
 
-  def affinity_calculator
-    AffinityCalculator.new(offer, current_user).affinity_percentage
+  def create_affinity_percentage
+    affinity = AffinityPercentages::CreateAffinityPercentagesService.create_affinity_percentage(offer, current_user.curriculum_vitae)
+    affinity.present? ? affinity_percentage : 0
   end
 
   def applied_offers_count

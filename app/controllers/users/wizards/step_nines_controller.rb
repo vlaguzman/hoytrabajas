@@ -18,7 +18,7 @@ class Users::Wizards::StepNinesController < Users::WizardsController
   private
 
   def educational_level_presenter(educational_level)
-    @educational_level = Users::Wizards::StepNinePresenter.new(educational_level)
+    @educational_level = Users::Wizards::StepNinePresenter.new(educational_level,user: current_user, cookies_path: cookies[:applied_offer_path])
   end
 
   def step_nine_params

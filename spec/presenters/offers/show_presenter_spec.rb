@@ -288,6 +288,7 @@ RSpec.describe Offers::ShowPresenter do
 
     it "should return the data to apply to the offer" do
       expected_object = {
+        cookies_present: nil,
         is_applied: true,
         offer_id: subject.id,
         total_applications: 4,

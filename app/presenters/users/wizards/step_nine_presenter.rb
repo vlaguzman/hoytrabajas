@@ -27,7 +27,7 @@ class Users::Wizards::StepNinePresenter < Users::WizardsPresenter
   end
 
   def users_wizards_step_eleven_path
-    rails_routes.users_wizards_step_eleven_path
+    valid_cookie_path?(options[:user], options[:cookies_path], rails_routes.users_wizards_step_eleven_path)
   end
 
 end

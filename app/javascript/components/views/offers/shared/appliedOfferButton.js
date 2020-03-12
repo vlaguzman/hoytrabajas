@@ -12,13 +12,14 @@ const AppliedOfferButton = ({ csrfParam, csrfToken, appliedOfferDetails }) => {
     offer_id,
     total_applications,
     path_applied_offers_rest,
-    translations
+    translations,
+    cookies_present = false
   } = appliedOfferDetails
 
   const { button_disactive, button_active, applied_offer_modal } = translations
 
   const [isApplied, setIsApplied] = useState(is_applied)
-  const [isOpenAppliedModal, setIsOpenAppliedModal] = useState(false)
+  const [isOpenAppliedModal, setIsOpenAppliedModal] = useState(cookies_present)
   const [numberOfApplications, setNumberOfApplications] = useState(
     total_applications
   )

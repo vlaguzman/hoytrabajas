@@ -7,6 +7,7 @@ class AppliedOffersRestController < ApplicationController
       send_notifications
       render json: { success: true }.to_json
     else
+      cookies[:applied_offer_path] = offer_path(permit_params[:offer_id])
       render json: { redirect: new_user_registration_path }.to_json
     end
   end

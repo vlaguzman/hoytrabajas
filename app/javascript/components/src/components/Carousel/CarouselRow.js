@@ -7,6 +7,7 @@ const CarouselRow = props => {
     children,
     slidesToShow = 3,
     arrows,
+    slidesToShowTablet = null,
     slidesToShowResp = 1,
     centerModeResp = true,
     autoplay = true,
@@ -15,9 +16,9 @@ const CarouselRow = props => {
     infiniteResp = true,
     dots = true
   } = props
+
   const settings = {
     dots,
-    // lazyLoad: true,
     infinite,
     speed: 500,
     slidesToShow,
@@ -38,9 +39,16 @@ const CarouselRow = props => {
         }
       },
       {
-        breakpoint: 802,
+        breakpoint: 992,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: slidesToShowTablet || 2,
+          slidesToScroll: 1
+        }
+      },
+      {
+        breakpoint: 762,
+        settings: {
+          slidesToShow: slidesToShowTablet || 1,
           slidesToScroll: 1
         }
       },
@@ -81,7 +89,18 @@ const CarouselRow = props => {
 }
 
 CarouselRow.propTypes = {
-  items: PropTypes.array
+  items: PropTypes.array,
+  children: PropTypes.array,
+  slidesToShow: PropTypes.number,
+  arrows: PropTypes.bool,
+  slidesToShowTablet: PropTypes.number,
+  slidesToShowResp: PropTypes.number,
+  centerModeResp: PropTypes.bool,
+  autoplay: PropTypes.bool,
+  centerMode: PropTypes.bool,
+  infinite: PropTypes.bool,
+  infiniteResp: PropTypes.bool,
+  dots: PropTypes.bool
 }
 
 export default CarouselRow

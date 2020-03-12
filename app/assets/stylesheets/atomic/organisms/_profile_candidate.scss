@@ -7,9 +7,11 @@
   background-repeat: repeat-x;
   position: absolute;
   z-index: -1;
-  height: 100%;
   width: 100%;
   top: 75px;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .contentBox {
@@ -18,20 +20,26 @@
   justify-content: flex-end;
   display: flex;
 
+  @media only screen and (max-width: 576px) {
+    padding: 20px 10px;
+  }
+
   .tagButtonsContainer {
     display: flex;
     flex-direction: column;
     width: 5%;
+    max-width: 46px;
 
     .tagButton {
       border-radius: 0 10px 10px 0;
-      background-color: $color__orange-main;
-      align-items: center;
-      padding: 0 20px 0 0;
+      background-color: $color__blue-main;
+      padding: 0;
       position: relative;
       margin-top: 380px;
-      display: flex;
       height: 247px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       &.-editProfile {
         margin-top: 1vh;
@@ -39,14 +47,13 @@
       }
 
       p {
-        transform-origin: 70px 59px;
         transform: rotate(-90deg);
         font-size: 1.1875rem;
-        position: absolute;
-        font-weight: bold;
-        width: 200px;
-        height: 59px;
-        color: #fff;
+        font-weight: 900;
+        color: $color__white-main;
+        white-space: nowrap;
+        margin: 0;
+        padding: 5px;
 
         a {
           justify-content: start;
@@ -63,14 +70,19 @@
     }
   }
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 576px) {
     .tagButtonsContainer {
       visibility: hidden;
+      display: none;
     }
   }
 }
 
-@media only screen and (min-width: 480px) {
+.tagMobileButton a {
+  font-weight: 900;
+}
+
+@media only screen and (min-width: 576px) {
   .tagMobileButton {
     visibility: hidden;
   }
@@ -79,6 +91,11 @@
 .o-boxPrincipal {
   padding-top: 74px;
   width: 95%;
+
+  @media only screen and (max-width: 576px) {
+    width: 100%;
+    padding-top: 30px;
+  }
 
   .headerBox {
     flex-direction: column;
@@ -106,6 +123,12 @@
       width: 211.2px;
       height: 215px;
       object-fit: cover;
+
+      @media only screen and (max-width: 576px) {
+        width: 120px;
+        height: 122px;
+        border-radius: 45px;
+      }
     }
 
     h1 {
@@ -128,9 +151,15 @@
       justify-content: space-between;
       display: flex;
       width: 100%;
+      flex-wrap: wrap;
+
+      @media (max-width: 992px) {
+        justify-content: center;
+        margin-bottom: 30px;
+      }
 
       .iconMoreText {
-        margin-bottom: 30px;
+        margin: 0 10px 30px;
         align-items: center;
         display: flex;
 
@@ -145,6 +174,21 @@
           font-weight: 600;
           color: #77818f;
         }
+
+        @media (max-width: 992px) {
+          margin: 10px 0;
+          justify-content: center;
+        }
+
+        @media (max-width: 576px) {
+          margin: 5px 0;
+          justify-content: center;
+
+          span {
+            margin: 0;
+            font-size: 1rem;
+          }
+        }
       }
     }
   }
@@ -154,11 +198,20 @@
     padding: 57px 13px 59px;
     margin: 0 95px;
 
+    @media (max-width: 992px) {
+      margin: 0 30px;
+    }
+
     &.boxAcademy {
       padding: 57px 0px 40px;
 
       h2 {
         padding: 0 13px;
+
+        @media (max-width: 576px) {
+          margin: 0 0 0 15px;
+          font-weight: 800;
+        }
       }
     }
 
@@ -206,9 +259,18 @@
     }
 
     .boxDemography {
-      grid-template-columns: 2fr 2fr;
+      grid-template-columns: 1fr 1fr;
       grid-row-gap: 28px;
       display: grid;
+
+      @media (max-width: 992px) {
+        display: flex;
+        flex-direction: column;
+
+        .typeDemography {
+          margin: 12px 0;
+        }
+      }
 
       .typeDemography.contentDemography {
         flex-wrap: wrap;
@@ -218,12 +280,47 @@
           margin: 0 5px 5px 0;
         }
       }
+
+      .--name {
+        order: 1;
+      }
+      .--last_name {
+        order: 2;
+      }
+      .--birthday {
+        order: 3;
+      }
+      .--document_type {
+        order: 4;
+      }
+      .--identification_number {
+        order: 5;
+      }
+      .--nationalities {
+        order: 6;
+      }
+      .--born_state {
+        order: 7;
+      }
+      .--born_city {
+        order: 8;
+      }
     }
 
     .boxAboutMe {
-      grid-template-columns: 2fr 2fr;
+      grid-template-columns: 1fr 1fr;
       grid-row-gap: 28px;
       display: grid;
+      margin-top: 30px;
+
+      @media (max-width: 992px) {
+        display: flex;
+        flex-direction: column;
+
+        .typeAboutMe {
+          margin: 12px 0;
+        }
+      }
 
       .typeAboutMe.contentAboutMe {
         flex-wrap: wrap;
@@ -233,20 +330,68 @@
           margin: 0 5px 5px 0;
         }
       }
+
+      .--email {
+        order: 1;
+      }
+      .--contact_number {
+        order: 2;
+      }
+      .--educational_degree {
+        order: 3;
+      }
+      .--limitations {
+        order: 4;
+      }
+      .--vehicles {
+        order: 5;
+      }
+      .--driving_licences {
+        order: 6;
+      }
     }
 
     .boxInterests {
-      grid-template-columns: 2fr 2fr;
+      grid-template-columns: 1fr 1fr;
       grid-row-gap: 28px;
       display: grid;
+
+      @media (max-width: 992px) {
+        grid-template-columns: 1fr;
+      }
 
       .typeSkill .contentSkills {
         flex-wrap: wrap;
         display: flex;
+      }
+      
+      .a-skill {
+        margin: 0 5px 10px 0;
+      }
 
-        span {
-          margin: 0 5px 5px 0;
-        }
+      .--city {
+        order: 1;
+      }
+      .--travel_disponibility {
+        order: 2;
+      }
+      .--job_categories {
+        order: 3;
+      }
+      .--offer_types {
+        order: 4;
+      }
+      .--contract_type {
+        order: 5;
+      }
+      .--work_modes {
+        order: 6;
+      }
+      .--labor_disponibility {
+        order: 7;
+      }
+      .--salary {
+        order: 8;
       }
     }
 
@@ -292,6 +437,10 @@
     background-color: #ff7b00;
     padding: 48px 53px;
 
+    @media only screen and (max-width: 576px) {
+      display: none;
+    }
+
     p {
       font-size: 1.125rem;
       font-weight: bold;
@@ -301,9 +450,9 @@
     }
   }
 
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 576px) {
     .headerBox {
-      padding: 0 70px;
+      padding: 0 30px;
 
       h1 {
         font-size: 1.5625rem;
@@ -320,8 +469,8 @@
     }
 
     .bodyBox {
-      padding: 57px 10px;
-      margin: 0 30px;
+      padding: 60px 18px;
+      margin: 0;
 
       .boxInterests {
         grid-template-columns: 2fr;

@@ -1,0 +1,175 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.clientify.net/v1/contacts/
+    body:
+      encoding: UTF-8
+      string: "{\n    \"email\": \"vladimir@hoytrabajas.com\",\n                    \n
+        \   \"tags\": [\"candidate\", \"htweb\"]\n                   }"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+      Authorization:
+      - Token a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Thu, 12 Mar 2020 01:46:35 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2747'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=da4cbd3f27c4c2e564a18f9bb9454325a1583977595; expires=Sat, 11-Apr-20
+        01:46:35 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Content-Language:
+      - en
+      Vary:
+      - Accept, Accept-Language, Cookie
+      Location:
+      - https://api.clientify.net/v1/contacts/7076713/
+      Allow:
+      - GET, POST, HEAD, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 5729d7a35f34daa2-BOG
+    body:
+      encoding: UTF-8
+      string: '{"url":"https://api.clientify.net/v1/contacts/7076713/","id":7076713,"owner":"vladimir@hoytrabajas.com","owner_name":"Vladimir
+        Guzman","first_name":"","last_name":"","status":"cold-lead","title":"","company":null,"company_details":null,"contact_type":null,"contact_source":null,"emails":[{"type":4,"email":"vladimir@hoytrabajas.com"}],"phones":[],"addresses":[],"picture_url":null,"custom_fields":[],"tags":["candidate","htweb"],"description":"","remarks":"","summary":"","created":"2020-03-12T02:11:58.713822+01:00","last_contact":null,"related_tasks":[],"deals":[],"wall_entries":[{"url":"https://api.clientify.net/v1/wall-entries/46983626/","id":46983626,"user":"Vladimir
+        Guzman","created":"2020-03-12T02:46:35.667779+01:00","extra":"{}","extra_datetime":null,"type":"contact_modification","link":"","source_id":"7076713","object_id":7076713},{"url":"https://api.clientify.net/v1/wall-entries/46982643/","id":46982643,"user":"Info
+        HoyTrabajas.com","created":"2020-03-12T02:31:13.286003+01:00","extra":"{\"message_link\":
+        \"/messaging/email/sent-message/5993218/\", \"message_public\": false, \"message_subject\":
+        \"\\u00a1Un regalo para t\\u00ed! Ahora tienes Plan Premium en HoyTrabajas.com
+        \"}","extra_datetime":null,"type":"sent_message","link":"","source_id":"5993218","object_id":7076713},{"url":"https://api.clientify.net/v1/wall-entries/46979174/","id":46979174,"user":"Milton
+        ST Moreno Beltrán","created":"2020-03-12T02:11:58.933552+01:00","extra":"{\"automation_name\":
+        \"Haz conseguido trabajo\", \"automation_link\": \"/automation/2751/\"}","extra_datetime":null,"type":"automation_added","link":"","source_id":"2751","object_id":7076713},{"url":"https://api.clientify.net/v1/wall-entries/46979173/","id":46979173,"user":"Milton
+        ST Moreno Beltrán","created":"2020-03-12T02:11:58.821437+01:00","extra":"{\"automation_name\":
+        \"Primeros 30 d\\u00edas\", \"automation_link\": \"/automation/2672/\"}","extra_datetime":null,"type":"automation_added","link":"","source_id":"2672","object_id":7076713},{"url":"https://api.clientify.net/v1/wall-entries/46979172/","id":46979172,"user":"Vladimir
+        Guzman","created":"2020-03-12T02:11:58.807996+01:00","extra":"{}","extra_datetime":null,"type":"contact_creation","link":"","source_id":"7076713","object_id":7076713}],"page_views":0,"total_visits":0,"first_visit":null,"last_visit":null,"gdpr_accept":false,"visitor_key":"","attachments":[],"websites":[],"linkedin_url":"","linkedin_id":"","linkedin_picture_url":"","skype_username":"","birthday":null,"twitter_id":"","lead_scoring":0,"facebook_url":"","twitter_url":"","googleplus_url":"","pinterest_url":"","foursquare_url":"","aboutme_url":"","klout_url":"","facebook_picture_url":"","twitter_picture_url":"","facebook_id":"","google_id":""}'
+    http_version: null
+  recorded_at: Thu, 12 Mar 2020 01:46:36 GMT
+- request:
+    method: get
+    uri: https://api.clientify.net/v1/contacts/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+      Authorization:
+      - Token a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 12 Mar 2020 02:09:22 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d140c9cf27e679ee7a6142ed48e69a9001583978961; expires=Sat, 11-Apr-20
+        02:09:21 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept, Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - GET, POST, HEAD, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 5729f8ff4e7ab552-BOG
+    body:
+      encoding: UTF-8
+      string: '{"count":2743,"next":"https://api.clientify.net/v1/contacts/?page=2","previous":null,"results":[{"url":"https://api.clientify.net/v1/contacts/7010506/","id":7010506,"owner":"dayana@hoytrabajas.com","owner_name":"Dayana
+        Aguilar","first_name":"Marylin","last_name":"Montoya","status":"hot-lead","title":"Lider
+        de Selección y desarrollo","company":"https://api.clientify.net/v1/companies/754734/","company_name":"Coltanques","emails":[{"type":4,"email":"seleccion@coltanques.com.co"}],"phones":[],"picture_url":null,"created":"2020-03-06T17:50:09.161895+01:00","last_contact":"2020-03-06T15:00:00+01:00"},{"url":"https://api.clientify.net/v1/contacts/6837611/","id":6837611,"owner":"dayana@hoytrabajas.com","owner_name":"Dayana
+        Aguilar","first_name":"Yury","last_name":"Nova","status":"cold-lead","title":"","company":"https://api.clientify.net/v1/companies/944957/","company_name":"Prosegur
+        Sas","emails":[],"phones":[{"type":1,"phone":"3213734927"}],"picture_url":null,"created":"2020-02-20T20:25:29.029547+01:00","last_contact":"2020-02-20T20:26:12.969228+01:00"},{"url":"https://api.clientify.net/v1/contacts/5297735/","id":5297735,"owner":"operaciones@hoytrabajas.com","owner_name":"Operaciones
+        Hoytrabajas","first_name":"","last_name":"","status":"cold-lead","title":"","company":null,"emails":[{"type":4,"email":"mariiana.0816@gmail.com"}],"phones":[{"type":1,"phone":"3235097337"}],"picture_url":null,"created":"2019-09-28T03:50:46.132953+02:00","last_contact":"2019-09-28T03:50:46.216845+02:00"},{"url":"https://api.clientify.net/v1/contacts/5177072/","id":5177072,"owner":"miltonj@startgency.com","owner_name":"Milton
+        ST Moreno Beltrán","first_name":"Morelia Oicata Castañeda","last_name":"","status":"cold-lead","title":"","company":null,"emails":[{"type":4,"email":"moreliaoicata@gmail.com"}],"phones":[{"type":4,"phone":"3202677797"}],"picture_url":null,"created":"2019-09-12T06:10:43.534108+02:00","last_contact":"2019-10-12T06:31:11.021004+02:00"},{"url":"https://api.clientify.net/v1/contacts/5987910/","id":5987910,"owner":"camilo@hoytrabajas.com","owner_name":"Andres
+        Camilo Ruiz Diaz","first_name":"Jaime","last_name":"Arias","status":"cold-lead","title":"","company":null,"emails":[],"phones":[{"type":1,"phone":"3208445017"}],"picture_url":null,"created":"2019-11-29T19:43:52.444830+01:00","last_contact":"2019-12-03T20:22:33.919330+01:00"},{"url":"https://api.clientify.net/v1/contacts/6987748/","id":6987748,"owner":"dayana@hoytrabajas.com","owner_name":"Dayana
+        Aguilar","first_name":"Angel","last_name":"Celis","status":"cold-lead","title":"Co
+        founder","company":"https://api.clientify.net/v1/companies/957618/","company_name":"Liftit","emails":[],"phones":[{"type":1,"phone":"3194098638"}],"picture_url":null,"created":"2020-03-04T23:04:40.201341+01:00","last_contact":null},{"url":"https://api.clientify.net/v1/contacts/5099148/","id":5099148,"owner":"operaciones@hoytrabajas.com","owner_name":"Operaciones
+        Hoytrabajas","first_name":"","last_name":"","status":"cold-lead","title":"","company":null,"emails":[{"type":4,"email":"patri11-04@hotmail.com"}],"phones":[],"picture_url":null,"created":"2019-09-01T13:43:53.741780+02:00","last_contact":"2019-09-01T14:31:41.800931+02:00"},{"url":"https://api.clientify.net/v1/contacts/6987731/","id":6987731,"owner":"dayana@hoytrabajas.com","owner_name":"Dayana
+        Aguilar","first_name":"Mayra","last_name":"Merchan","status":"cold-lead","title":"Analista
+        de Talento Humano","company":"https://api.clientify.net/v1/companies/957615/","company_name":"Banco
+        Bogota","emails":[],"phones":[{"type":1,"phone":"3320032 ext  1801"}],"picture_url":null,"created":"2020-03-04T22:55:46.878535+01:00","last_contact":null},{"url":"https://api.clientify.net/v1/contacts/6987720/","id":6987720,"owner":"dayana@hoytrabajas.com","owner_name":"Dayana
+        Aguilar","first_name":"Marcela","last_name":"Barreto","status":"cold-lead","title":"","company":"https://api.clientify.net/v1/companies/957613/","company_name":"Grupo
+        CMC","emails":[],"phones":[{"type":1,"phone":"4924640"}],"picture_url":null,"created":"2020-03-04T22:50:17.885654+01:00","last_contact":"2020-03-04T22:53:50.564203+01:00"},{"url":"https://api.clientify.net/v1/contacts/6987678/","id":6987678,"owner":"dayana@hoytrabajas.com","owner_name":"Dayana
+        Aguilar","first_name":"Fernanda","last_name":"Martinez","status":"cold-lead","title":"Recursos
+        Humanos","company":"https://api.clientify.net/v1/companies/957612/","company_name":"Pictograma
+        Creativos","emails":[],"phones":[{"type":1,"phone":"3900011"}],"picture_url":null,"created":"2020-03-04T22:43:54.875054+01:00","last_contact":"2020-03-04T22:48:24.845987+01:00"},{"url":"https://api.clientify.net/v1/contacts/6987640/","id":6987640,"owner":"dayana@hoytrabajas.com","owner_name":"Dayana
+        Aguilar","first_name":"Marcela","last_name":"Duran Barrero","status":"cold-lead","title":"Director
+        de Seleccion","company":"https://api.clientify.net/v1/companies/957610/","company_name":"Banco
+        Occidente","emails":[{"type":4,"email":"dduran@bancodeoccidente.com.co"}],"phones":[{"type":1,"phone":"7464000
+        ext 16819"}],"picture_url":null,"created":"2020-03-04T22:31:19.214119+01:00","last_contact":"2020-03-04T22:36:57.448754+01:00"},{"url":"https://api.clientify.net/v1/contacts/6984812/","id":6984812,"owner":"daniela@hoytrabajas.com","owner_name":"Daniela
+        Urbina","first_name":"SARA","last_name":"SACRSITAN","status":"in-deal","title":"","company":"https://api.clientify.net/v1/companies/957438/","company_name":"HOGARU
+        - VOSAVOS","emails":[{"type":4,"email":"sara.sacristan@hogaru.com"}],"phones":[{"type":1,"phone":"3164648133"}],"picture_url":null,"created":"2020-03-04T18:03:22.376138+01:00","last_contact":null},{"url":"https://api.clientify.net/v1/contacts/6837733/","id":6837733,"owner":"dayana@hoytrabajas.com","owner_name":"Dayana
+        Aguilar","first_name":"Andres","last_name":"Mendez","status":"warm-lead","title":"","company":null,"emails":[{"type":4,"email":"amendez@tugo.com.co"}],"phones":[{"type":1,"phone":"3116434308"}],"picture_url":null,"created":"2020-02-20T20:45:56.331768+01:00","last_contact":"2020-02-24T21:46:04.034317+01:00"},{"url":"https://api.clientify.net/v1/contacts/6837709/","id":6837709,"owner":"dayana@hoytrabajas.com","owner_name":"Dayana
+        Aguilar","first_name":"Paola","last_name":"Madriñan","status":"cold-lead","title":"","company":"https://api.clientify.net/v1/companies/923675/","company_name":"Domicilios.com","emails":[],"phones":[{"type":1,"phone":"3155809306"}],"picture_url":null,"created":"2020-02-20T20:42:40.208352+01:00","last_contact":null},{"url":"https://api.clientify.net/v1/contacts/6837695/","id":6837695,"owner":"dayana@hoytrabajas.com","owner_name":"Dayana
+        Aguilar","first_name":"Monica","last_name":"Muñoz","status":"cold-lead","title":"","company":"https://api.clientify.net/v1/companies/944963/","company_name":"B.P.O
+        Ventas y Servicios","emails":[],"phones":[{"type":1,"phone":"3102938335"}],"picture_url":null,"created":"2020-02-20T20:39:27.966990+01:00","last_contact":null},{"url":"https://api.clientify.net/v1/contacts/6837679/","id":6837679,"owner":"dayana@hoytrabajas.com","owner_name":"Dayana
+        Aguilar","first_name":"Mayra","last_name":"Caballero","status":"cold-lead","title":"","company":"https://api.clientify.net/v1/companies/942186/","company_name":"Novartis","emails":[{"type":4,"email":"mayra.caballero@novartis.com"}],"phones":[{"type":1,"phone":"3183400720"}],"picture_url":null,"created":"2020-02-20T20:36:42.524556+01:00","last_contact":null},{"url":"https://api.clientify.net/v1/contacts/6837584/","id":6837584,"owner":"dayana@hoytrabajas.com","owner_name":"Dayana
+        Aguilar","first_name":"Catalina","last_name":"Suarez","status":"cold-lead","title":"","company":"https://api.clientify.net/v1/companies/944954/","company_name":"Allianz","emails":[{"type":4,"email":"csuarez@allianz.co"}],"phones":[],"picture_url":null,"created":"2020-02-20T20:20:23.999023+01:00","last_contact":null},{"url":"https://api.clientify.net/v1/contacts/6837571/","id":6837571,"owner":"dayana@hoytrabajas.com","owner_name":"Dayana
+        Aguilar","first_name":"Alejandra","last_name":"Pinzon","status":"cold-lead","title":"","company":"https://api.clientify.net/v1/companies/769325/","company_name":"Super
+        wow ","emails":[{"type":4,"email":"talentohumano@superwow.com.co"}],"phones":[{"type":1,"phone":"3144855041"}],"picture_url":null,"created":"2020-02-20T20:17:26.557726+01:00","last_contact":"2020-02-20T20:18:26.489236+01:00"},{"url":"https://api.clientify.net/v1/contacts/6837544/","id":6837544,"owner":"dayana@hoytrabajas.com","owner_name":"Dayana
+        Aguilar","first_name":"Gina Juliana","last_name":"Ponguta","status":"client","title":"","company":"https://api.clientify.net/v1/companies/942485/","company_name":"Maat
+        Soluciones Ambientales","emails":[{"type":4,"email":"ginajuliana@maat.com.co"}],"phones":[{"type":1,"phone":"3183377987"}],"picture_url":null,"created":"2020-02-20T20:11:07.493104+01:00","last_contact":null},{"url":"https://api.clientify.net/v1/contacts/6826107/","id":6826107,"owner":"daniela@hoytrabajas.com","owner_name":"Daniela
+        Urbina","first_name":"Luis Carlos","last_name":"Bojacá","status":"in-deal","title":"Gerencia
+        general","company":"https://api.clientify.net/v1/companies/942486/","company_name":"cymplas","emails":[{"type":4,"email":"gerencia@cymplast.com"}],"phones":[{"type":1,"phone":"3102117086"}],"picture_url":null,"created":"2020-02-19T23:35:49.747521+01:00","last_contact":null},{"url":"https://api.clientify.net/v1/contacts/6826087/","id":6826087,"owner":"sebastian@hoytrabajas.com","owner_name":"Sebastian
+        Arce","first_name":"Carolina","last_name":"Bernal","status":"in-deal","title":"Gerente
+        general","company":"https://api.clientify.net/v1/companies/942483/","company_name":"Supply
+        farmaceutica","emails":[{"type":4,"email":"jscaroline@hotmail.com"}],"phones":[{"type":1,"phone":"3125416212"}],"picture_url":null,"created":"2020-02-19T23:28:39.184849+01:00","last_contact":null},{"url":"https://api.clientify.net/v1/contacts/6826070/","id":6826070,"owner":"daniela@hoytrabajas.com","owner_name":"Daniela
+        Urbina","first_name":"Paola","last_name":"Castro","status":"in-deal","title":"Coordinadora
+        agencia de empleo","company":"https://api.clientify.net/v1/companies/942478/","company_name":"Universidad
+        del área andina","emails":[{"type":4,"email":"gcastro12@areandina.edu.co"}],"phones":[{"type":1,"phone":"3005350533"}],"picture_url":null,"created":"2020-02-19T23:22:10.470826+01:00","last_contact":null},{"url":"https://api.clientify.net/v1/contacts/6826049/","id":6826049,"owner":"daniela@hoytrabajas.com","owner_name":"Daniela
+        Urbina","first_name":"Esteban","last_name":"Diaz","status":"in-deal","title":"Gerente
+        general","company":"https://api.clientify.net/v1/companies/942475/","company_name":"CIBO
+        innova","emails":[{"type":4,"email":"gerencia@ciboinnova.com"}],"phones":[{"type":1,"phone":"3115063077"}],"picture_url":null,"created":"2020-02-19T23:17:06.006395+01:00","last_contact":null},{"url":"https://api.clientify.net/v1/contacts/6713166/","id":6713166,"owner":"camilo@hoytrabajas.com","owner_name":"Andres
+        Camilo Ruiz Diaz","first_name":"Julian","last_name":"Lopez","status":"client","title":"Jefe
+        RH","company":"https://api.clientify.net/v1/companies/923271/","company_name":"Protela
+        SA","emails":[{"type":4,"email":"julian.lopez@protela.com"}],"phones":[{"type":1,"phone":"3137465029"}],"picture_url":null,"created":"2020-02-07T18:46:22.275078+01:00","last_contact":"2020-02-07T20:07:37.698058+01:00"},{"url":"https://api.clientify.net/v1/contacts/6822424/","id":6822424,"owner":"dayana@hoytrabajas.com","owner_name":"Dayana
+        Aguilar","first_name":"Luis Fernando","last_name":"Llamas","status":"in-deal","title":"","company":"https://api.clientify.net/v1/companies/942178/","company_name":"Carvajal
+        Tecnologia y servicios","emails":[{"type":4,"email":"Luis.llamas@carvajal.com"}],"phones":[],"picture_url":null,"created":"2020-02-19T16:55:02.958917+01:00","last_contact":"2020-02-19T20:03:28.769246+01:00"}]}'
+    http_version: null
+  recorded_at: Thu, 12 Mar 2020 02:09:22 GMT
+recorded_with: VCR 5.1.0

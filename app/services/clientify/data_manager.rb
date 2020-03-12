@@ -6,7 +6,7 @@ class Clientify::DataManager
   end
   
   def create_contact user, user_type
-    url = URI(URL_CONTACTS)
+    url = URL_CONTACTS
     body = "{\n    \"email\": \"#{user.email}\",
              \n    \"tags\": [\"#{user_type}\", \"htweb\"]
             }"
@@ -18,7 +18,7 @@ class Clientify::DataManager
   end 
 
   def update_contact user
-    url = URI("#{URL_CONTACTS}#{user.clientify_contact_id}/")
+    url = "#{URL_CONTACTS}#{user.clientify_contact_id}/"
     body = "{\n    \"first_name\": \"#{user.name}\",
              \n    \"last_name\": \"#{user.last_name}\",
              \n    \"phone\": \"#{user.contact_number}\"

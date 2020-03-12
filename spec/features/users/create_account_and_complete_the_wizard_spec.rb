@@ -327,7 +327,7 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
     find("p[class='MuiTypography-root MuiTypography-body2 MuiTypography-colorInherit']", text: "12").click
     click_on "OK"
 
-    find("span", text: /CONTINUAR/).click
+    find("span", text: 'CONTINUAR').click
 
     visit users_wizards_step_nine_path
 
@@ -350,7 +350,7 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
 
     attach_file("educational_level[diploma]", Rails.root + "spec/factories/pdfs/diploma.pdf" )
 
-    find('span', text: /CONTINUAR/).click
+    find('span', text: 'CONTINUAR').click
 
     visit users_wizards_step_ten_path
 
@@ -367,7 +367,7 @@ RSpec.describe "Anonymous user create a candidate user account and complete the 
 
     attach_file("acknowledgment[diploma]", Rails.root + "spec/factories/pdfs/diploma.pdf" )
 
-    find("span", text: /CONTINUAR/).click
+    find("span", text: 'CONTINUAR').click
 
     visit users_wizards_step_eleven_path
 

@@ -36,6 +36,8 @@ A          • BaseForms::WizardsSubFormsService                           2    
 A          • BaseForms::WizardsTranslationsService                       1       30.83      0           1
 A          • Cities::CitiesWithOffersListService                         1       10.73      0           1
 A          • City                                                        9       0.0        0           1
+A          • Clientify::ApiAuth                                          8       18.54      0           2
+A          • Clientify::DataManager                                      7       25.32      0           6
 A          • Companies                                                   8       1.3        0           1
 A          • Companies::Dashboards::OffersService                        4       30.2       0           2
 A          • Companies::DashboardsController                             3       7.23       0           1
@@ -105,6 +107,7 @@ A          • HashesCompare                                               3    
 A          • HashesConverter                                             6       25.97      0           2
 A          • Home::HomePresenter                                         11      17.4       0           5
 A          • HomeController                                              9       2.42       0           1
+A          • HttpRequestManager                                          2       20.49      0           2
 A          • Industry                                                    3       0.0        0           1
 A          • JobAid                                                      4       0.0        0           1
 A          • JobAidsOffers                                               1       0.0        0           1
@@ -162,7 +165,7 @@ A          • Users::CurriculumVitaes::ProfilePhotoService                1    
 A          • Users::Dashboards::OffersService                            2       31.49      0           2
 A          • Users::DashboardsController                                 10      5.69       0           1
 A          • Users::OmniauthCallbacksController                          1       21.49      0           5
-A          • Users::ProfilesController                                   24      42.98      0           3
+A          • Users::ProfilesController                                   25      42.98      0           3
 A          • Users::RegistrationsController                              13      1.0        0           2
 A          • Users::SessionsController                                   3       0.0        0           1
 A          • Users::Wizards::Commons::FindOrCreateElementAssociation     1       22.47      0           4

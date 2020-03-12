@@ -77,7 +77,7 @@ RSpec.describe "In wizards step eight view", type: :feature do
         find("p[class='MuiTypography-root MuiTypography-body2 MuiTypography-colorInherit']", text: "12").click
         click_on "OK"
 
-        find("span", text: /CONTINUAR/).click
+        find("span", text: 'CONTINUAR').click
 
         expect(candidate.curriculum_vitae.work_experiences.count).to eq(1)
 

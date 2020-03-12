@@ -207,6 +207,6 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./lib/get_value_of_record.rb",100,97,44,44,0
 "./lib/hashes_compare.rb",100,23,12,12,0
 "./lib/hashes_converter.rb",100,22,10,10,0
-"./lib.tp_request_manager.rb",100,23,16,16,0
+"./lib.tp_request_manager.rb",100,22,15,15,0
 "./lib/list_converter.rb",100,25,12,12,0
 "./lib/string_converter.rb",100,23,11,11,0

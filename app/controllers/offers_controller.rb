@@ -65,10 +65,6 @@ class OffersController < ApplicationController
   end
 
   def cookies_present
-    if current_user.present? && cookies[:applied_offer_path].present?
-      true
-    else
-      false
-    end
+    current_user.present? && cookies[:applied_offer_path].present?
   end
 end

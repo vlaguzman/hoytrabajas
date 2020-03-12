@@ -1,5 +1,5 @@
 class Clientify::DataManager
-  URL_CONTACTS = "#{Clientify::ApiAuth::CLIENTY_URL_API}contacts/"
+  URL_CONTACTS = "#{Clientify::ApiAuth::CLIENTIFY_URL_API}contacts/"
 
   def initialize(token=nil)
     @token = token || Clientify::ApiAuth.new().token

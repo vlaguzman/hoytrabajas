@@ -4,7 +4,7 @@ RSpec.describe Clientify::DataManager do
   describe "#create_contact" do
 
     expected_main_data = {
-      "url"=>"#{Clientify::ApiAuth::CLIENTY_URL_API}contacts/7078920/",
+      "url"=>"#{Clientify::ApiAuth::CLIENTIFY_URL_API}contacts/7078920/",
       "id"=>7078920,
       "owner"=>"vladimir@hoytrabajas.com", 
       "owner_name"=>"Vladimir Guzman", 
@@ -26,7 +26,7 @@ RSpec.describe Clientify::DataManager do
     }
 
     expected_main_data_employer = {
-      "url"=>"#{Clientify::ApiAuth::CLIENTY_URL_API}contacts/7078893/",
+      "url"=>"#{Clientify::ApiAuth::CLIENTIFY_URL_API}contacts/7078893/",
       "id"=>7078893,
       "owner"=>"vladimir@hoytrabajas.com", 
       "owner_name"=>"Vladimir Guzman", 
@@ -89,7 +89,7 @@ RSpec.describe Clientify::DataManager do
 
   describe "#update_contact" do
     expected_main_data = {
-      "url"=>"#{Clientify::ApiAuth::CLIENTY_URL_API}contacts/7067074/",
+      "url"=>"#{Clientify::ApiAuth::CLIENTIFY_URL_API}contacts/7067074/",
       "id"=>7067074, 
       "owner"=>"vladimir@hoytrabajas.com", 
       "owner_name"=>"Vladimir Guzman", 

@@ -1,9 +1,10 @@
 class Clientify::ApiAuth
   USERNAME = ENV['CLIENTIFY_USERNAME']
   PASSWORD = ENV['CLIENTIFY_PASSWORD']
+  CLIENTY_URL_API = ENV['CLIENTIFY_URL_API']
 
-  URL_OBTAIN_TOKEN = "https://api.clientify.net/v1/api-auth/obtain_token/"
-  URL_LOGOUT = "https://api.clientify.net/v1/api-auth/logout/"
+  URL_OBTAIN_TOKEN = "#{CLIENTIFY_URL_API}api-auth/obtain_token/"
+  URL_LOGOUT = "#{CLIENTIFY_URL_API}api-auth/logout/"
 
   attr_reader :token, :username, :password
 

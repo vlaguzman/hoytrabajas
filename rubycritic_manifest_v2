@@ -21,7 +21,7 @@ A          • AppliedOffer                                                6    
 A          • AppliedOfferStateMachine                                    1       0.0        0           1
 A          • AppliedOfferStatus                                          1       0.0        0           1
 A          • AppliedOfferTransition                                      1       0.0        0           1
-A          • AppliedOffers                                               7       0.0        0           0
+A          • AppliedOffers                                               8       0.0        0           0
 A          • AppliedOffersController                                     10      41.34      0           4
 A          • AppliedOffersMailer                                         3       7.09       0           1
 A          • AppliedOffersPresenter                                      6       25.41      0           3
@@ -107,7 +107,7 @@ A          • HashesCompare                                               3    
 A          • HashesConverter                                             6       25.97      0           2
 A          • Home::HomePresenter                                         11      17.4       0           5
 A          • HomeController                                              9       2.42       0           1
-A          • HttpRequestManager                                          2       20.49      0           2
+A          • HttpRequestManager                                          3       20.49      0           2
 A          • Industry                                                    3       0.0        0           1
 A          • JobAid                                                      4       0.0        0           1
 A          • JobAidsOffers                                               1       0.0        0           1

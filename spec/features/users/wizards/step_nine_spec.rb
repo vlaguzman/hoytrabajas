@@ -48,7 +48,7 @@ RSpec.describe 'In wizards step nine view', type: :feature do
 
         attach_file("educational_level[diploma]", Rails.root + "spec/factories/pdfs/diploma.pdf" )
 
-        find("span", text: /CONTINUAR/).click
+        find("span", text: 'CONTINUAR').click
 
         expect(candidate.curriculum_vitae.educational_levels.count).to eq(1)
 

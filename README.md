@@ -1,13 +1,14 @@
-1. Clonar el repositorio del proyecto:
-git clone git@bitbucket.org:vladimir_ht/ht-ror.git
+# README
 
-# Se pueden agregar los siguientes alias al archivo ~/.bashrc o tener en cuenta los comandos para las siguientes instrucciones
+Se pueden agregar los siguientes alias al archivo ~/.bashrc o tener en cuenta los comandos para las siguientes instrucciones
 
 alias dc='sudo docker-compose'
 alias run-web='dc run web'
 alias run-bash='run-web /bin/bash'
 alias run-rails='run-web bundle exec bin/rails'
 
+1. Clonar el repositorio del proyecto:
+git clone git@bitbucket.org:vladimir_ht/ht-ror.git
 
 2. Crear el archivo .env en la raíz del proyecto, solicitar a cualquier integrante del equipo el archivo actualizado
 
@@ -34,8 +35,8 @@ run-rails db:drop db:create db:migrate
 
 10. correr bin/shot
 run-web bin/shot
-#########################################################
-Recomendado antes de subir los cambios al repositorio
+
+#Recomendado antes de subir los cambios al repositorio
 Guardar los cambios en la rama actual y crear las descripciones explicitas y en ingles
 git add -A
 git commit -m "this is a good description of my commit"

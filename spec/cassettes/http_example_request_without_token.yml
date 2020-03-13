@@ -1,0 +1,59 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.clientify.net/v1/api-auth/obtain_token/
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+            "username": "vladimir@hoytrabajas.com",
+            "password": "unicornio2020"
+        }
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 12 Mar 2020 01:46:35 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d3548d7097c6c368ba387c95697c0ad4d1583977594; expires=Sat, 11-Apr-20
+        01:46:34 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - POST, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 5729d79f8d75da9e-BOG
+    body:
+      encoding: UTF-8
+      string: '{"token":"a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c","user_id":14075}'
+    http_version: null
+  recorded_at: Thu, 12 Mar 2020 01:46:35 GMT
+recorded_with: VCR 5.1.0

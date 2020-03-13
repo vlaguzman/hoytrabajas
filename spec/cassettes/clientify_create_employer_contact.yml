@@ -1,0 +1,70 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.clientify.net/v1/contacts/
+    body:
+      encoding: UTF-8
+      string: "{\n    \"email\": \"company@testemail.com\",\n             \n    \"tags\":
+        [\"employer\", \"htweb\"]\n            }"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+      Authorization:
+      - Token a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Thu, 12 Mar 2020 02:39:22 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2741'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d3777712036d8289fa00ae9b31619c2b91583980761; expires=Sat, 11-Apr-20
+        02:39:21 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Content-Language:
+      - en
+      Vary:
+      - Accept, Accept-Language, Cookie
+      Location:
+      - https://api.clientify.net/v1/contacts/7078893/
+      Allow:
+      - GET, POST, HEAD, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 572a24efc846b588-BOG
+    body:
+      encoding: UTF-8
+      string: '{"url":"https://api.clientify.net/v1/contacts/7078893/","id":7078893,"owner":"vladimir@hoytrabajas.com","owner_name":"Vladimir
+        Guzman","first_name":"","last_name":"","status":"cold-lead","title":"","company":null,"company_details":null,"contact_type":null,"contact_source":null,"emails":[{"type":4,"email":"company@testemail.com"}],"phones":[],"addresses":[],"picture_url":null,"custom_fields":[],"tags":["employer","htweb"],"description":"","remarks":"","summary":"","created":"2020-03-12T03:23:04.910228+01:00","last_contact":null,"related_tasks":[],"deals":[],"wall_entries":[{"url":"https://api.clientify.net/v1/wall-entries/46986585/","id":46986585,"user":"Vladimir
+        Guzman","created":"2020-03-12T03:39:22.366878+01:00","extra":"{}","extra_datetime":null,"type":"contact_modification","link":"","source_id":"7078893","object_id":7078893},{"url":"https://api.clientify.net/v1/wall-entries/46986137/","id":46986137,"user":"Info
+        HoyTrabajas.com","created":"2020-03-12T03:31:14.550758+01:00","extra":"{\"message_link\":
+        \"/messaging/email/sent-message/5993341/\", \"message_public\": false, \"message_subject\":
+        \"[Video] C\\u00f3mo crear tus ofertas GRATIS en HoyTrabajas \\ud83d\\ude0e\"}","extra_datetime":null,"type":"sent_message","link":"","source_id":"5993341","object_id":7078893},{"url":"https://api.clientify.net/v1/wall-entries/46986110/","id":46986110,"user":"Info
+        HoyTrabajas.com","created":"2020-03-12T03:31:10.579809+01:00","extra":"{\"automation_name\":
+        \"Al crear etiqueta Employer\", \"automation_link\": \"/automation/3420/\"}","extra_datetime":null,"type":"automation_completed","link":"","source_id":"3420","object_id":7078893},{"url":"https://api.clientify.net/v1/wall-entries/46985652/","id":46985652,"user":"Info
+        HoyTrabajas.com","created":"2020-03-12T03:23:05.014755+01:00","extra":"{\"automation_name\":
+        \"Al crear etiqueta Employer\", \"automation_link\": \"/automation/3420/\"}","extra_datetime":null,"type":"automation_added","link":"","source_id":"3420","object_id":7078893},{"url":"https://api.clientify.net/v1/wall-entries/46985651/","id":46985651,"user":"Vladimir
+        Guzman","created":"2020-03-12T03:23:05.003136+01:00","extra":"{}","extra_datetime":null,"type":"contact_creation","link":"","source_id":"7078893","object_id":7078893}],"page_views":0,"total_visits":0,"first_visit":null,"last_visit":null,"gdpr_accept":false,"visitor_key":"","attachments":[],"websites":[],"linkedin_url":"","linkedin_id":"","linkedin_picture_url":"","skype_username":"","birthday":null,"twitter_id":"","lead_scoring":5,"facebook_url":"","twitter_url":"","googleplus_url":"","pinterest_url":"","foursquare_url":"","aboutme_url":"","klout_url":"","facebook_picture_url":"","twitter_picture_url":"","facebook_id":"","google_id":""}'
+    http_version: null
+  recorded_at: Thu, 12 Mar 2020 02:39:22 GMT
+recorded_with: VCR 5.1.0

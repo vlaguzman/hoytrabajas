@@ -21,6 +21,7 @@ RSpec.describe User, type: :model do
     it { should respond_to(:educational_degree) }
     it { should respond_to(:limitations) }
     it { should respond_to(:city) }
+    it { should respond_to(:clientify_contact_id) }
   end
 
   describe "associations" do

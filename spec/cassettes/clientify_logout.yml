@@ -1,0 +1,168 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.clientify.net/v1/api-auth/obtain_token/
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+            "username": "vladimir@hoytrabajas.com",
+            "password": "unicornio2020"
+        }
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 09 Mar 2020 21:14:46 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d09648e5c43d18e7e6c1393407173da0c1583788486; expires=Wed, 08-Apr-20
+        21:14:46 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - POST, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 5717ceb7996ada9a-BOG
+    body:
+      encoding: UTF-8
+      string: '{"token":"a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c","user_id":14075}'
+    http_version: null
+  recorded_at: Mon, 09 Mar 2020 21:14:46 GMT
+- request:
+    method: post
+    uri: https://api.clientify.net/v1/api-auth/obtain_token/
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+      Authorization:
+      - Token a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Mon, 09 Mar 2020 21:14:47 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '79'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dc02c2437b70ccce1ccaa29b021432d0e1583788486; expires=Wed, 08-Apr-20
+        21:14:46 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - POST, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 5717cebade90f26f-BOG
+    body:
+      encoding: UTF-8
+      string: '{"username":["This field is required."],"password":["This field is
+        required."]}'
+    http_version: null
+  recorded_at: Mon, 09 Mar 2020 21:14:47 GMT
+- request:
+    method: post
+    uri: https://api.clientify.net/v1/api-auth/logout/
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+      Authorization:
+      - Token a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 09 Mar 2020 21:14:47 GMT
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d29af72a3513f31489fe3a887c3f2d2c51583788487; expires=Wed, 08-Apr-20
+        21:14:47 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept, Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - POST, OPTIONS
+      Accept-Ranges:
+      - bytes
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 5717cebdba52b576-BOG
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: null
+  recorded_at: Mon, 09 Mar 2020 21:14:47 GMT
+recorded_with: VCR 5.1.0

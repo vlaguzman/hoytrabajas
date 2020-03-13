@@ -70,7 +70,7 @@ class Offers::ViewsService
   end
 
   def create_affinity_percentage
-    AffinityPercentages::CreateAffinityPercentagesService.create_affinity_percentage(offer, current_user.curriculum_vitae)
+    AffinityPercentages::CreateAffinityPercentagesService.(offer, current_user.curriculum_vitae)
   end
 
   def applied_offers_count

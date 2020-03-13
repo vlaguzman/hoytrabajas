@@ -6,6 +6,7 @@ es:
   admin:
     applied_offers:
       form:
+        offer_id: 'ID de la oferta'
         offer_title: 'Oferta'
         curriculum_vitae_user_email: 'Email del usuario'
         applied_date: 'Fecha de aplicación'

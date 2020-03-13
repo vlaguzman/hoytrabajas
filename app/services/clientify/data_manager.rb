@@ -1,6 +1,9 @@
 class Clientify::DataManager
   URL_CONTACTS = "#{Clientify::ApiAuth::CLIENTIFY_URL_API}contacts/"
 
+  CONTACT_CANDIDATE_TAG = 'candidate'
+  CONTACT_COMPANY_TAG = 'employer'
+
   def initialize(token=nil)
     @token = token || Clientify::ApiAuth.new().token
   end
@@ -21,7 +24,7 @@ class Clientify::DataManager
     url = "#{URL_CONTACTS}#{user.clientify_contact_id}/"
     body = "{\n    \"first_name\": \"#{user.name}\",
              \n    \"last_name\": \"#{user.last_name}\",
-             \n    \"phone\": \"#{user.contact_number}\"
+             \n    \"phone\": \"#{phone_number user}\"
             }"
 
     response = HttpRequestManager.new(url, body).build_response(Net::HTTP::Put, token)
@@ -29,6 +32,10 @@ class Clientify::DataManager
   end
 
   private 
+
+  def phone_number user
+    user.is_a? User ? user.contact_number : user.contact_cellphone
+  end
 
   def convert_response_and_give response, data
     hash = JSON.parse response.body.gsub('\:', ':')

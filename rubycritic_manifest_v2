@@ -273,4 +273,4 @@ C          • GetValueOfRecord                                            1    
 C          • Offers::ViewsService                                        29      124.61     0           9
 C          • Users::ProfilesPresenter                                    13      164.51     0           12
 D          • Offer                                                       70      77.85      136         4
-D          • Offers::ShowPresenter                                       6       297.08     46          22
+D          • Offers::ShowPresenter                                       7       299.93     46          22

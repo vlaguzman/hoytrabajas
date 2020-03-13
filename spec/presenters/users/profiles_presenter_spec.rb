@@ -123,10 +123,10 @@ RSpec.describe Users::ProfilesPresenter do
   end
 
   describe "#applied_offer_data" do
-  
+
     let(:my_offer)           { create(:offer) }
     let(:applied_offer)      { create(:applied_offer, curriculum_vitae: curriculum_vitae, offer: my_offer) }
-    
+
     context "When there is an applied offer id" do
       let(:subject) { described_class.new(user, applied_offer_id: applied_offer.id) }
 

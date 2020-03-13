@@ -170,11 +170,14 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.ignore_localhost = true
   config.configure_rspec_metadata!
-
-  config.ignore_hosts "selenium", "elasticsearch", 'elasticsearch_test'
+  config.before_record do |i|
+    i.response.body.force_encoding('UTF-8')
+  end
+  config.ignore_hosts "selenium", "elasticsearch"
 
   config.ignore_request do |request|
     URI(request.uri).port.eql?(4444)
     URI(request.uri).port.eql?(3001)
   end
 end
+

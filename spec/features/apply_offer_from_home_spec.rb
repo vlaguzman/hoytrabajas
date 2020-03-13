@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "apply offer from home", type: :feature do
+RSpec.describe "apply offer from home", type: :feature, js: :true do
   include Capybara::DSL
 
   let(:user)                  { create(:user) }
@@ -47,7 +47,7 @@ RSpec.describe "apply offer from home", type: :feature do
   end
 
   context "When the user is not logged in" do
-    it "should ask you to register", js: true do
+    it "should ask you to register" do
       visit root_path
 
       expect(page).to have_text("I Am A Sexy Offer")

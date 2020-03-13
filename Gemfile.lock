@@ -92,7 +92,6 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     airbrussh (1.4.0)
       sshkit (>= 1.6.1, != 1.7.0)
-    ansi (1.5.0)
     arbre (1.2.1)
       activesupport (>= 3.0.0)
     ast (2.4.0)
@@ -188,23 +187,6 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.7.5)
     ed25519 (1.2.4)
-    elasticsearch (7.4.0)
-      elasticsearch-api (= 7.4.0)
-      elasticsearch-transport (= 7.4.0)
-    elasticsearch-api (7.4.0)
-      multi_json
-    elasticsearch-dsl (0.1.9)
-    elasticsearch-extensions (0.0.31)
-      ansi
-      elasticsearch
-    elasticsearch-model (7.0.0)
-      activesupport (> 3)
-      elasticsearch (> 1)
-      hashie
-    elasticsearch-rails (7.0.0)
-    elasticsearch-transport (7.4.0)
-      faraday
-      multi_json
     equalizer (0.0.11)
     erubi (1.9.0)
     erubis (2.7.0)
@@ -621,10 +603,6 @@ DEPENDENCIES
   database_cleaner
   devise
   ed25519 (~> 1.2)
-  elasticsearch-dsl (~> 0.1.9)
-  elasticsearch-extensions
-  elasticsearch-model (~> 7.0)
-  elasticsearch-rails (~> 7.0)
   factory_bot_rails
   faker!
   guard

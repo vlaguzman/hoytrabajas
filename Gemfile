@@ -25,9 +25,6 @@ gem 'statesman', '~> 5.1.0'
 gem 'whenever', require: false
 gem 'route_translator'
 gem 'sitemap_generator'
-gem 'elasticsearch-model', '~> 7.0'
-gem 'elasticsearch-rails', '~> 7.0'
-gem 'elasticsearch-dsl', '~> 0.1.9'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -56,9 +53,8 @@ group :development, :test do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'timecop'
   gem 'database_cleaner'
-  gem 'elasticsearch-extensions'
-  gem "vcr"
-  gem "webmock"
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do

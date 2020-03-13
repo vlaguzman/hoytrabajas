@@ -22,7 +22,6 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/companies_users.rb",100,4,3,3,0
 "./app/models/company.rb",100,36,18,18,0
 "./app/models/company_transition.rb",100,4,3,3,0
-"./app/models/concerns/searchable.rb",100,9,5,5,0
 "./app/models/contract_type.rb",100,3,2,2,0
 "./app/models/country.rb",100,3,2,2,0
 "./app/models/currency.rb",100,3,2,2,0
@@ -54,7 +53,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/level.rb",100,5,3,3,0
 "./app/models/limitation.rb",100,6,3,3,0
 "./app/models/nationality.rb",100,7,4,4,0
-"./app/models/offer.rb",100,220,119,119,0
+"./app/models/offer.rb",100,119,81,81,0
 "./app/models/offer_on_demand.rb",100,11,5,5,0
 "./app/models/offer_required_experiences.rb",100,11,6,6,0
 "./app/models/offer_salary.rb",100,14,9,9,0
@@ -162,7 +161,6 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/companies/first_offer/step_two_service.rb",100,6,3,3,0
 "./app/services/companies/list_candidates/applied_candidates_service.rb",100,65,28,28,0
 "./app/services/company_service.rb",100,39,20,20,0
-"./app/services/elasticsearch/search_service.rb",100,56,28,28,0
 "./app/services/offers/applied_offer_service.rb",100,34,13,13,0
 "./app/services/offers/completely_destroy_service.rb",100,17,11,11,0
 "./app/services/offers/expired_service.rb",100,27,13,13,0
@@ -204,13 +202,6 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/state_machines/applied_offer_state_machine.rb",100,14,10,10,0
 "./app/state_machines/company_state_machine.rb",100,17,10,10,0
 "./lib/dates_manager.rb",100,29,17,17,0
-"./lib/elasticsearch/common.rb",100,2,1,1,0
-"./lib/elasticsearch/common/bool_builders.rb",100,59,25,25,0
-"./lib/elasticsearch/common/queries.rb",100,139,66,66,0
-"./lib/elasticsearch/common/settings.rb",100,53,16,16,0
-"./lib/elasticsearch/common/sorts.rb",100,35,17,17,0
-"./lib/elasticsearch/offers/queries.rb",100,11,7,7,0
-"./lib/elasticsearch/offers/sorts.rb",100,5,2,2,0
 "./lib/extra_hash_methods.rb",100,11,6,6,0
 "./lib/form_progress_manager.rb",100,12,7,7,0
 "./lib/get_value_of_record.rb",100,97,44,44,0

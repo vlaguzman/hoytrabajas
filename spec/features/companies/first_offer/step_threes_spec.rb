@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Like an company", type: :feature do
+RSpec.describe "Like an company", :type => :feature do
   let(:company) { create(:company, :first_time, name: 'HoyTrabajas.com') }
 
   let!(:job_category)  { create(:job_category) }
@@ -26,36 +26,36 @@ RSpec.describe "Like an company", type: :feature do
 
         expect(page).to have_content("Acerca de tu oferta")
         expect(page).to have_content("¡Llegó la hora de crear tu oferta y obtener el mejor talento!")
-
+  
         expect(page).to have_tag(:form, with: { class: "forms__candidate" }) do
           with_tag(:textarea, with: { name: 'offer[title]'})
           with_tag(:input,    with: { name: 'offer[confidential]', type: "hidden" })
           with_tag(:textarea, with: { name: 'offer[description]'})
-
+  
           with_tag(:input, with: { name: 'offer[id]', type: "hidden" })
           with_tag(:input, with: { name: 'offer[job_category_ids]', type: "hidden" })
           with_tag(:input, with: { name: 'offer[offer_type_id]', type: "hidden" })
           with_tag(:input, with: { name: 'offer[work_mode_id]', type: "hidden" })
         end
-
+  
         expect(page).to have_button('Siguiente')
-
+  
         expect(page).to_not have_button('Regresar')
         expect(page).to_not have_button('Saltar')
 
         fill_in 'offer[title]', :with => expected_data[:title]
-
+  
         fill_in 'offer[description]', :with => expected_data[:description]
-
+  
         find(id: 'mui-component-select-offer[job_category_ids]', visible: false).click
         find('li.MuiListItem-button', text: expected_data[:job_category]).click
-
+  
         find(id: 'mui-component-select-offer[offer_type_id]', visible: false).click
         find('li.MuiListItem-button', text: expected_data[:offer_type]).click
-
+  
         find(id: 'mui-component-select-offer[work_mode_id]', visible: false).click
         find('li.MuiListItem-button', text: expected_data[:work_mode]).click
-
+  
         find(id: 'offer[offers_work_positions]', visible: false).click
         find('li', text: expected_data[:offers_work_positions]).click
 

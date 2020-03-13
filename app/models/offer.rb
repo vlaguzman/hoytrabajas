@@ -1,7 +1,6 @@
 class Offer < ApplicationRecord
-  include Searchable
-
   MIN_VALID_AFFINTY_PERCENTAGE = 20
+
   MAX_OFFER_LIMIT = 150
   ATTRIBUTES_TO_COMPARE = [:city_id, :work_mode_id, :contract_type_id]
   #TODO: Evaluate educational_level values and quantity
@@ -115,106 +114,6 @@ class Offer < ApplicationRecord
 
   def work_position
     work_positions.last
-  end
-
-  #Elasticsearch configuration
-
-  def self.index_settings
-    { index:{
-      number_of_shards: 1,
-      number_of_replicas: 0,
-      max_ngram_diff: 50
-    }.merge(Elasticsearch::Common::Settings.()) }
-  end
-
-  settings index_settings do
-
-    mappings dynamic: 'false' do
-      # internal filters
-      indexes :id, type: 'long'
-      indexes :title, type: 'text', analyzer: :spanish
-      indexes :description, type: 'text', analyzer: :spanish
-      indexes :status, type: 'text'
-
-      #sorters
-      # - created_at
-      indexes :created_at, type: 'date'
-
-      #application filters
-      # - city
-      indexes :city, type: 'nested' do
-        indexes :id, type: 'long'
-        indexes :description, type: 'text'
-      end
-
-      # - job categories
-      indexes :job_categories, type: 'nested' do
-        indexes :id, type: 'long'
-        indexes :description, type: 'text'
-      end
-
-      # - work mode
-      indexes :work_mode, type: 'nested' do
-        indexes :id, type: 'long'
-        indexes :description, type: 'text'
-      end
-
-      # - contract_type
-      indexes :contract_type, type: 'nested' do
-        indexes :id, type: 'long'
-        indexes :description, type: 'text'
-      end
-
-      # - working_days
-      indexes :working_days, type: 'nested' do
-        indexes :id, type: 'long'
-        indexes :description, type: 'text'
-      end
-
-      # - available work days
-      indexes :available_work_days, type: 'nested' do
-        indexes :id, type: 'long'
-        indexes :description, type: 'text'
-      end
-
-      # - job aids
-      indexes :job_aids, type: 'nested' do
-        indexes :id, type: 'long'
-        indexes :description, type: 'text'
-      end
-
-      # - languages
-      indexes :languages, type: 'nested' do
-        indexes :id, type: 'long'
-        indexes :description, type: 'text'
-      end
-    end
-
-  end
-
-  def as_indexed_json(options= {})
-    as_json(
-      only: [ :id, :title, :description, :status, :created_at ],
-      include: {
-        city: { only: [:id,:description] },
-        job_categories: { only: [:id,:description] },
-        work_mode: { only: [:id,:description] },
-        contract_type: { only: [:id,:description] },
-        working_days: { only: [:id,:description] },
-        available_work_days: { only: [:id,:description] },
-        job_aids: { only: [:id,:description] },
-        languages: { only: [:id,:description] },
-      }
-    )
-  end
-
-  def self.search_by(**request_parameters)
-      Elasticsearch::SearchService.(
-        self,
-        Elasticsearch::Offers::Queries,
-        sort_class: Elasticsearch::Offers::Sorts,
-        request_parameters: request_parameters
-      )
   end
 
 end

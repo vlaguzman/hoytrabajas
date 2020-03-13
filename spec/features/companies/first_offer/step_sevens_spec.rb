@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "Like an company", type: :feature, ignore_elasticsearch: true do
-  let(:company)   { create(:company, :first_time, name: 'HoyTrabajas.com', city: nil ) }
-  let(:offer)     { create(:offer, city: nil, company: company) }
+RSpec.describe "Like an company", :type => :feature do
+  let(:company)   { create(:company, :first_time, name: 'HoyTrabajas.com') }
+  let(:offer)     { create(:offer) }
 
   let!(:city)               { create(:city, description: "Buenos Aires")}
   let!(:educational_degree) { create(:educational_degree)}
@@ -14,7 +14,6 @@ RSpec.describe "Like an company", type: :feature, ignore_elasticsearch: true do
     context "when entry data is correct" do
       scenario "should save succesfully", js: true do
         sign_in company
-
         visit companies_first_offer_step_seven_path(offer_id: offer.id)
 
         expect(page).to have_content("Conozcamos más de tu oferta")
@@ -46,9 +45,11 @@ RSpec.describe "Like an company", type: :feature, ignore_elasticsearch: true do
         }
 
         find(id: 'mui-component-select-offer[country_id]', visible: false).click
+
         find('li', text: expected_data[:country_description]).click
 
         find(id: 'mui-component-select-offer[state_id]', visible: false).click
+
         find('li', text: expected_data[:state_description]).click
 
         find(id: 'mui-component-select-offer[city_id]', visible: false).click

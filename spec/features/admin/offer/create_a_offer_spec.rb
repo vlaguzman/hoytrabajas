@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "like an admin user", type: :feature do
+RSpec.describe "like an admin user", :type => :feature do
   let(:admin) { create(:admin_user) }
   let!(:job_category) { create(:job_category, description: 'Marketing') }
   let!(:company) { create(:company, name: 'hoycamellas') }

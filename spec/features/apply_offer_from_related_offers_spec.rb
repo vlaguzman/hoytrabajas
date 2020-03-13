@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "User applied offer from the related offer section", type: :feature do
+RSpec.describe "User applied offer from the related offer section", type: :feature, js: :true do
   let(:user)                     { create(:user) }
   let!(:job_category)            { create(:job_category, description: "sales") }
   let!(:offer)                   { create(:offer, title: "offer_a", job_categories: [job_category]) }
@@ -8,7 +8,7 @@ RSpec.describe "User applied offer from the related offer section", type: :featu
   let!(:new_curriculum)          { create(:curriculum_vitae, user_id: user.id) }
   let!(:applied_offer_status)    { create(:applied_offer_status, description: 'applied') }
 
-  context "When the user is logged in and has not applied to the offer", js: true do
+  context "When the user is logged in and has not applied to the offer" do
     it "should create the association" do
       sign_in user
 
@@ -27,7 +27,7 @@ RSpec.describe "User applied offer from the related offer section", type: :featu
     end
   end
 
-  context "When the user is logged in and had applied to a offer", js: true do
+  context "When the user is logged in and had applied to a offer" do
     it "should not see the applied offer" do
       sign_in user
 
@@ -48,7 +48,7 @@ RSpec.describe "User applied offer from the related offer section", type: :featu
     end
   end
 
-  context "When the user is not logged in", js: true do
+  context "When the user is not logged in" do
     it "should ask you to register" do
       visit offer_path(offer.id)
 

@@ -1,35 +1,10 @@
 module AffinityPercentages::CreateAffinityPercentagesService
+  include AffinityPercentages::AffinityPercentagesService
   #TODO: When 'to learn skills' has been defined put in offer and curriculum_vitae hashes
 
   def self.call
-    curriculum_vitaes = CurriculumVitae.all
-
-    Offer.active.map do |offer|
-      curriculum_vitaes.map do |curriculum_vitae|
-
-        affinity_percentage = last_affinity_percentage(offer.id, curriculum_vitae.id)
-        validate_affinity_percentage(offer, curriculum_vitae, affinity_percentage)
-      end
-    end
-  end
-
-  def self.last_affinity_percentage(offer_id, curriculum_vitae_id)
-    AffinityPercentage.get_last(offer_id, curriculum_vitae_id)
-  end
-
-  def self.validate_offer_and_cv_updated?(offer, curriculum_vitae, affinity_percentage)
-    dates_to_compare = [offer.updated_at, curriculum_vitae.updated_at, curriculum_vitae.user.updated_at]
-    dates_to_compare.map{ |date| date > affinity_percentage.created_at }.uniq.include?(true)
-  end
-
-  def self.validate_affinity_percentage(offer, curriculum_vitae, affinity_percentage)
-    if affinity_percentage && validate_offer_and_cv_updated?(offer, curriculum_vitae, affinity_percentage)
-      create_affinity_percentage(offer, curriculum_vitae)
-    elsif not affinity_percentage
-      create_affinity_percentage(offer, curriculum_vitae)
-    else
-      return {};
-    end
+    affinity_percentages = AffinityPercentage.select{|affinity| affinity.offer.updated_at > affinity.created_at}
+    affinity_percentages.map { |affinity| create_or_update_affinity(affinity, :offer_updated) }
   end
 
   def self.try_data(object, method)
@@ -74,6 +49,18 @@ module AffinityPercentages::CreateAffinityPercentagesService
       city_id_offer:             try_data(offer.city, :description),
       sexes_offer:               array_to_string(offer.sexes.pluck(:description))
     }
+  end
+
+  def self.update_affinity_percentage(affinity, action)
+    options = {
+      :offer_updated       = -> { offer_for_affinity_percentage(affinity.offer) },
+      :cv_and_user_updated = -> { curriculum_vitae_for_affinity_percentage(affinity.curriculum_vitae) }
+    }
+
+    affinity_percentage_data = options[action].()
+
+    affinity_percentage = AffinityPercentage.update(affinity_percentage_data)
+    persist_affinity_percentage(affinity_percentage)
   end
 
   def self.create_affinity_percentage(offer, curriculum_vitae)

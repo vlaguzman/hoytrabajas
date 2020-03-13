@@ -37,9 +37,6 @@ gem 'elasticsearch-dsl', '~> 0.1.9'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
-
-gem 'byebug'
-
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do

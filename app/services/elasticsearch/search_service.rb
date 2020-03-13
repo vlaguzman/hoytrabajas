@@ -1,11 +1,12 @@
 module Elasticsearch::SearchService
 
   ELASTICSEARCH_SCROLL_TIME = '30s'
+  ELASTICSEARCH_MAX_QUERY_SIZE = 10000
 
   def self.call(model, query_class, query_type: Elasticsearch::Common::Queries::QUERY_TYPES[2], sort_class: nil, request_parameters: {}, options: {})
     query = query_manager(query_class, query_type: query_type, request_parameters: request_parameters, sort_class: sort_class)
 
-    options = options[:size].present? ? options : options.merge(size: 10000)
+    options = options[:size].present? ? options : options.merge(size: ELASTICSEARCH_MAX_QUERY_SIZE)
 
     client = model.__elasticsearch__.client
     model_index = model.index_name
@@ -39,15 +40,13 @@ module Elasticsearch::SearchService
 
     scroll_body = { scroll_id: scroll_id, scroll: ELASTICSEARCH_SCROLL_TIME }
 
-    scroll_result = client.scroll(body: scroll_body)
+    scroll = client.scroll(body: scroll_body)
 
-    iteration = [*iteration, *scroll_result['hits']['hits']]
+    scroll_results = scroll['hits']['hits']
 
-    if scroll_result['hits']['hits'].any?
-      scroll_iterator(client: client, iteration: iteration, scroll_id: scroll_result['_scroll_id'])
-    else
-      iteration
-    end
+    iteration = [*iteration, *scroll_results]
+
+    scroll_results.any? ? scroll_iterator(client: client, iteration: iteration, scroll_id: scroll['_scroll_id']) : iteration
   end
 
   def self.remove_metadata(result)

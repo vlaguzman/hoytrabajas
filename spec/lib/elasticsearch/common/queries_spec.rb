@@ -104,7 +104,7 @@ RSpec.describe Elasticsearch::Common::Queries do
 
   end
 
-  context "When recibe a demo of parameters from home" do
+  context "When does recibe a demo of parameters from home" do
 
     let(:demo_object) do
       {

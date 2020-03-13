@@ -89,7 +89,7 @@ RSpec.describe Elasticsearch::Common::BoolBuilders do
   end
 
   describe "#simple_bool_builder" do
-    context "When recibe filters" do
+    context "When does recibe filters" do
       it "Should return the expected object" do
         response = subject.simple_bool_builder(parameters: simple_filters)
 
@@ -102,7 +102,7 @@ RSpec.describe Elasticsearch::Common::BoolBuilders do
       end
     end
 
-    context "When recibe filtes and a main clause" do
+    context "When does recibe filtes and a main clause" do
       it "Should return the expected object" do
         response = subject.simple_bool_builder(parameters: simple_filters)
 

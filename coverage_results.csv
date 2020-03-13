@@ -162,7 +162,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/companies/first_offer/step_two_service.rb",100,6,3,3,0
 "./app/services/companies/list_candidates/applied_candidates_service.rb",100,65,28,28,0
 "./app/services/company_service.rb",100,39,20,20,0
-"./app/services/elasticsearch/search_service.rb",100,57,28,28,0
+"./app/services/elasticsearch/search_service.rb",100,56,28,28,0
 "./app/services/offers/applied_offer_service.rb",100,34,13,13,0
 "./app/services/offers/completely_destroy_service.rb",100,17,11,11,0
 "./app/services/offers/expired_service.rb",100,27,13,13,0

@@ -41,20 +41,22 @@ RSpec.describe "like new candidate", type: :feature do
     end
 
     scenario "When he returns", js:true do
-      sign_in user
-
-      visit users_wizards_step_zeros_curriculum_vitae_path
-
-      expect(page).to have_content("Cuentas con una hoja de vida?")
-      expect(page).to have_content("Subiendo tu hoja de vida podras simplificar el diligenciamiento de tu perfil")
-      expect(page).to have_field("user[file_cv]")
-      expect(page).to have_link("Regresar")
-      expect(page).to have_button("Continuar")
-      expect(page).to have_link("No tengo hoja de vida")
-
-      click_link("Regresar")
-
-      expect(users_wizards_step_zeros_curriculum_vitae_path)
+      VCR.use_cassette("create_user") do
+        sign_in user
+        
+        visit users_wizards_step_zeros_curriculum_vitae_path
+        
+        expect(page).to have_content("Cuentas con una hoja de vida?")
+        expect(page).to have_content("Subiendo tu hoja de vida podras simplificar el diligenciamiento de tu perfil")
+        expect(page).to have_field("user[file_cv]")
+        expect(page).to have_link("Regresar")
+        expect(page).to have_button("Continuar")
+        expect(page).to have_link("No tengo hoja de vida")
+        
+        click_link("Regresar")
+        
+        expect(users_wizards_step_zeros_curriculum_vitae_path)
+      end
     end
 
     scenario "When you skip", js:true do

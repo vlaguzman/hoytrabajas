@@ -32,24 +32,26 @@ RSpec.describe "sign up user", js: true, type: :feature do
     context  "when I want to sing up with email and password" do
       context "when I looking for a job" do
         it "should redirect to cadidate step zero" do
-          actual_users = User.count
-
-          visit root_path
-          expect(page).to have_text("Registrarme")
-          click_on 'Registrarme'
-
-          fill_in 'user[email]', :with => "candidate@gmail.com"
-          fill_in 'user[password]', :with => "1wantt$finda7ob"
-          fill_in 'user[password_confirmation]', :with => "1wantt$finda7ob"
-
-          find('.termsAndConditions__checkbox').click
-
-          has_button?("Registrarme")
-          find(".a-button", text: "Registrarme", visible: false).click
-
-          expect(User.count).to eq(actual_users + 1)
-
-          expect(current_path).to eq(users_wizards_step_zero_path)
+          VCR.use_cassette("create_user") do
+            actual_users = User.count
+            
+            visit root_path
+            expect(page).to have_text("Registrarme")
+            click_on 'Registrarme'
+            
+            fill_in 'user[email]', :with => "candidate@gmail.com"
+            fill_in 'user[password]', :with => "1wantt$finda7ob"
+            fill_in 'user[password_confirmation]', :with => "1wantt$finda7ob"
+            
+            find('.termsAndConditions__checkbox').click
+            
+            has_button?("Registrarme")
+            find(".a-button", text: "Registrarme", visible: false).click
+            
+            expect(User.count).to eq(actual_users + 1)
+            
+            expect(current_path).to eq(users_wizards_step_zero_path)
+          end
         end
       end
 
@@ -118,25 +120,26 @@ RSpec.describe "sign up user", js: true, type: :feature do
       context "when I looking for a job" do
 
         it "should redirect to cadidate step zero" do
-          actual_users = User.count
-
-          visit root_path
-          expect(page).to have_text("Registrarme")
-          click_on 'Registrarme'
-
-          fill_in 'user[email]', :with => "gabriel.meneses@hoytrabajas.com"
-          fill_in 'user[password]', :with => "1wantt$finda7ob"
-          fill_in 'user[password_confirmation]', :with => "1wantt$finda7ob"
-
-          find('.termsAndConditions__checkbox').click
-
-          has_button?("Registrarme")
-          find(".a-button", text: "Registrarme", visible: false).click
-
-          expect(User.count).to eq(actual_users + 1)
-
-          expect(current_path).to eq(users_wizards_step_zero_path)
-
+          VCR.use_cassette("create_user") do
+            actual_users = User.count
+           
+            visit root_path
+            expect(page).to have_text("Registrarme")
+            click_on 'Registrarme'
+           
+            fill_in 'user[email]', :with => "gabriel.meneses@hoytrabajas.com"
+            fill_in 'user[password]', :with => "1wantt$finda7ob"
+            fill_in 'user[password_confirmation]', :with => "1wantt$finda7ob"
+           
+            find('.termsAndConditions__checkbox').click
+           
+            has_button?("Registrarme")
+            find(".a-button", text: "Registrarme", visible: false).click
+           
+            expect(User.count).to eq(actual_users + 1)
+           
+            expect(current_path).to eq(users_wizards_step_zero_path)
+          end
         end
       end
     end
@@ -171,27 +174,27 @@ RSpec.describe "sign up user", js: true, type: :feature do
 
     context "when company want to sign up with email adn password" do
       context "when company registrate in the website" do
-
         it "should redirect to company step zero" do
-
-          visit root_path
-          expect(page).to have_text("Registrarme")
-          click_on 'Registrarme'
-
-          find('span', text:/Empleador/, visible: false).click
-
-          fill_in "company[email]", :with => "employee@gmail.com"
-          fill_in "company[password]", :with => "iwanttofindaemployee"
-          fill_in 'company[password_confirmation]', :with => "iwanttofindaemployee"
-
-          find('.termsAndConditions__checkbox').click
-
-          has_button?("Registrarme")
-          find(".a-button", text: "Registrarme", visible: false).click
-
-          expect(Company.count).to eq(1)
-
-          expect(current_path).to eq(companies_first_offer_step_zero_path)
+          VCR.use_cassette("create_company") do
+            visit root_path
+            expect(page).to have_text("Registrarme")
+            click_on 'Registrarme'
+         
+            find('span', text:/Empleador/, visible: false).click
+         
+            fill_in "company[email]", :with => "employee@gmail.com"
+            fill_in "company[password]", :with => "iwanttofindaemployee"
+            fill_in 'company[password_confirmation]', :with => "iwanttofindaemployee"
+         
+            find('.termsAndConditions__checkbox').click
+         
+            has_button?("Registrarme")
+            find(".a-button", text: "Registrarme", visible: false).click
+         
+            expect(Company.count).to eq(1)
+         
+            expect(current_path).to eq(companies_first_offer_step_zero_path)
+          end
         end
       end
     end

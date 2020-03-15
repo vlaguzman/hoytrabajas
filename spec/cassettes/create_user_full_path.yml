@@ -1,0 +1,352 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.clientify.net/v1/api-auth/obtain_token/
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+            "username": "vladimir@hoytrabajas.com",
+            "password": "unicornio2020"
+        }
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 15 Mar 2020 20:27:17 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d86f48bab393487e8b342f2d07174a51a1584304037; expires=Tue, 14-Apr-20
+        20:27:17 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - POST, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 5748f967486ce5c0-BOG
+    body:
+      encoding: UTF-8
+      string: '{"token":"a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c","user_id":14075}'
+    http_version: null
+  recorded_at: Sun, 15 Mar 2020 20:27:17 GMT
+- request:
+    method: post
+    uri: https://api.clientify.net/v1/api-auth/obtain_token/
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+            "username": "vladimir@hoytrabajas.com",
+            "password": "unicornio2020"
+        }
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 15 Mar 2020 20:27:17 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d73a4afe832d9d01ba16226f8858863591584304037; expires=Tue, 14-Apr-20
+        20:27:17 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - POST, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 5748f96b6bd6daa2-BOG
+    body:
+      encoding: UTF-8
+      string: '{"token":"a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c","user_id":14075}'
+    http_version: null
+  recorded_at: Sun, 15 Mar 2020 20:27:18 GMT
+- request:
+    method: post
+    uri: https://api.clientify.net/v1/contacts/
+    body:
+      encoding: UTF-8
+      string: "{\n    \"email\": \"humano.test@email.com\",\n             \n    \"tags\":
+        [\"candidate\", \"htweb\"]\n            }"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+      Authorization:
+      - Token a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 15 Mar 2020 20:27:20 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '2030'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d0fd74e384a265b6870a2c7cfe3ba2af51584304038; expires=Tue, 14-Apr-20
+        20:27:18 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Content-Language:
+      - en
+      Vary:
+      - Accept, Accept-Language, Cookie
+      Location:
+      - https://api.clientify.net/v1/contacts/7121026/
+      Allow:
+      - GET, POST, HEAD, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 5748f96ede16da9e-BOG
+    body:
+      encoding: UTF-8
+      string: '{"url":"https://api.clientify.net/v1/contacts/7121026/","id":7121026,"owner":"vladimir@hoytrabajas.com","owner_name":"Vladimir
+        Guzman","first_name":"","last_name":"","status":"cold-lead","title":"","company":null,"company_details":null,"contact_type":null,"contact_source":null,"emails":[{"type":4,"email":"humano.test@email.com"}],"phones":[],"addresses":[],"picture_url":null,"custom_fields":[],"tags":["candidate","htweb"],"description":"","remarks":"","summary":"","created":"2020-03-15T21:27:18.413985+01:00","last_contact":null,"related_tasks":[],"deals":[],"wall_entries":[{"url":"https://api.clientify.net/v1/wall-entries/47338050/","id":47338050,"user":"Milton
+        ST Moreno Beltrán","created":"2020-03-15T21:27:18.708443+01:00","extra":"{\"automation_name\":
+        \"Haz conseguido trabajo\", \"automation_link\": \"/automation/2751/\"}","extra_datetime":null,"type":"automation_added","link":"","source_id":"2751","object_id":7121026},{"url":"https://api.clientify.net/v1/wall-entries/47338049/","id":47338049,"user":"Milton
+        ST Moreno Beltrán","created":"2020-03-15T21:27:18.613867+01:00","extra":"{\"automation_name\":
+        \"Primeros 30 d\\u00edas\", \"automation_link\": \"/automation/2672/\"}","extra_datetime":null,"type":"automation_added","link":"","source_id":"2672","object_id":7121026},{"url":"https://api.clientify.net/v1/wall-entries/47338048/","id":47338048,"user":"Vladimir
+        Guzman","created":"2020-03-15T21:27:18.528112+01:00","extra":"{}","extra_datetime":null,"type":"contact_creation","link":"","source_id":"7121026","object_id":7121026}],"page_views":0,"total_visits":0,"first_visit":null,"last_visit":null,"gdpr_accept":false,"visitor_key":"","attachments":[],"websites":[],"linkedin_url":"","linkedin_id":"","linkedin_picture_url":"","skype_username":"","birthday":null,"twitter_id":"","lead_scoring":0,"facebook_url":"","twitter_url":"","googleplus_url":"","pinterest_url":"","foursquare_url":"","aboutme_url":"","klout_url":"","facebook_picture_url":"","twitter_picture_url":"","facebook_id":"","google_id":""}'
+    http_version: null
+  recorded_at: Sun, 15 Mar 2020 20:27:20 GMT
+- request:
+    method: post
+    uri: https://api.clientify.net/v1/api-auth/obtain_token/
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+            "username": "vladimir@hoytrabajas.com",
+            "password": "unicornio2020"
+        }
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 15 Mar 2020 20:27:28 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dbb37fc2bde401020da8421448325db0c1584304048; expires=Tue, 14-Apr-20
+        20:27:28 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - POST, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 5748f9b03f3ef257-BOG
+    body:
+      encoding: UTF-8
+      string: '{"token":"a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c","user_id":14075}'
+    http_version: null
+  recorded_at: Sun, 15 Mar 2020 20:27:29 GMT
+- request:
+    method: post
+    uri: https://api.clientify.net/v1/api-auth/obtain_token/
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+            "username": "vladimir@hoytrabajas.com",
+            "password": "unicornio2020"
+        }
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 15 Mar 2020 20:27:29 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d897e5e0086a1213747c5295dba4c9f9c1584304049; expires=Tue, 14-Apr-20
+        20:27:29 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - POST, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 5748f9b4acf7e5c0-BOG
+    body:
+      encoding: UTF-8
+      string: '{"token":"a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c","user_id":14075}'
+    http_version: null
+  recorded_at: Sun, 15 Mar 2020 20:27:30 GMT
+- request:
+    method: put
+    uri: https://api.clientify.net/v1/contacts/7121026/
+    body:
+      encoding: UTF-8
+      string: "{\n    \"first_name\": \"Carlos\",\n             \n    \"last_name\":
+        \"Rojas\",\n             \n    \"phone\": \"3183638789\"\n            }"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+      Authorization:
+      - Token a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 15 Mar 2020 20:27:30 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d7249745d05ee3b688b433f45c7b8247f1584304050; expires=Tue, 14-Apr-20
+        20:27:30 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept, Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - GET, PUT, PATCH, DELETE, HEAD, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 5748f9bac9b3b552-BOG
+    body:
+      encoding: UTF-8
+      string: '{"url":"https://api.clientify.net/v1/contacts/7121026/","id":7121026,"owner":"vladimir@hoytrabajas.com","owner_name":"Vladimir
+        Guzman","first_name":"Carlos","last_name":"Rojas","status":"cold-lead","title":"","company":null,"company_details":null,"contact_type":null,"contact_source":null,"emails":[{"type":4,"email":"humano.test@email.com"}],"phones":[{"type":1,"phone":"3183638789"}],"addresses":[],"picture_url":null,"custom_fields":[],"tags":["candidate","htweb"],"description":"","remarks":"","summary":"","created":"2020-03-15T21:27:18.413985+01:00","last_contact":null,"related_tasks":[],"deals":[],"wall_entries":[{"url":"https://api.clientify.net/v1/wall-entries/47338054/","id":47338054,"user":"Vladimir
+        Guzman","created":"2020-03-15T21:27:30.531851+01:00","extra":"{}","extra_datetime":null,"type":"contact_modification","link":"","source_id":"7121026","object_id":7121026},{"url":"https://api.clientify.net/v1/wall-entries/47338050/","id":47338050,"user":"Milton
+        ST Moreno Beltrán","created":"2020-03-15T21:27:18.708443+01:00","extra":"{\"automation_name\":
+        \"Haz conseguido trabajo\", \"automation_link\": \"/automation/2751/\"}","extra_datetime":null,"type":"automation_added","link":"","source_id":"2751","object_id":7121026},{"url":"https://api.clientify.net/v1/wall-entries/47338049/","id":47338049,"user":"Milton
+        ST Moreno Beltrán","created":"2020-03-15T21:27:18.613867+01:00","extra":"{\"automation_name\":
+        \"Primeros 30 d\\u00edas\", \"automation_link\": \"/automation/2672/\"}","extra_datetime":null,"type":"automation_added","link":"","source_id":"2672","object_id":7121026},{"url":"https://api.clientify.net/v1/wall-entries/47338048/","id":47338048,"user":"Vladimir
+        Guzman","created":"2020-03-15T21:27:18.528112+01:00","extra":"{}","extra_datetime":null,"type":"contact_creation","link":"","source_id":"7121026","object_id":7121026}],"page_views":0,"total_visits":0,"first_visit":null,"last_visit":null,"gdpr_accept":false,"visitor_key":"","attachments":[],"websites":[],"linkedin_url":"","linkedin_id":"","linkedin_picture_url":"","skype_username":"","birthday":null,"twitter_id":"","lead_scoring":0,"facebook_url":"","twitter_url":"","googleplus_url":"","pinterest_url":"","foursquare_url":"","aboutme_url":"","klout_url":"","facebook_picture_url":"","twitter_picture_url":"","facebook_id":"","google_id":""}'
+    http_version: null
+  recorded_at: Sun, 15 Mar 2020 20:27:31 GMT
+recorded_with: VCR 5.1.0

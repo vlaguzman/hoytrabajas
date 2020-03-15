@@ -6,7 +6,7 @@ class Users::Wizards::StepOnesController < Users::WizardsController
 
   def create
     user = Users::Wizards::StepOneService.(candidate: current_user, update_params: strong_params)
-    update_clientify_user
+    update_clientify_user current_user
     user_presenters(user)
 
     validate_redirect_to(
@@ -21,7 +21,7 @@ class Users::Wizards::StepOnesController < Users::WizardsController
 
   def update
     user = Users::Wizards::StepOneService.(candidate: current_user, update_params: strong_params)
-    update_clientify_user
+    update_clientify_user current_user
     user_presenters(user)
 
     validate_redirect_to(source: user, users_wizard_path: users_dashboard_path, view: :edit)
@@ -29,11 +29,6 @@ class Users::Wizards::StepOnesController < Users::WizardsController
 
 
   private
-
-  def update_clientify_user(user: current_user)
-    token = Clientify::ApiAuth.new().obtain_token 
-    Clientify::DataManager.new(token).update_contact(current_user)
-  end
 
   def user_presenters(user = current_user)
     @user = Users::Wizards::StepOnePresenter.new(user)

@@ -7,7 +7,7 @@ class Companies::FirstOffer::StepOnesController < ApplicationController
 
   def update
     company = Companies::FirstOffer::StepOneService.(company: current_company, update_params: step_one_params)
-    update_clientify_user
+    update_clientify_user current_company
 
     if company[:status].eql?(:ok)
       redirect_to companies_first_offer_step_two_path
@@ -22,11 +22,6 @@ class Companies::FirstOffer::StepOnesController < ApplicationController
   end
 
   private
-
-  def update_clientify_user(user: current_company)
-    token = Clientify::ApiAuth.new().obtain_token 
-    Clientify::DataManager.new(token).update_contact(user)
-  end
 
   def step_one_params
     params

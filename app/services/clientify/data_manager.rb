@@ -23,7 +23,7 @@ class Clientify::DataManager
   def update_contact user
     url = "#{URL_CONTACTS}#{user.clientify_contact_id}/"
     body = "{\n    \"first_name\": \"#{user.name}\",
-             \n    \"last_name\": \"#{user.last_name}\",
+             \n    \"last_name\": \"#{last_name_or_nil user}\",
              \n    \"phone\": \"#{phone_number user}\"
             }"
 
@@ -32,9 +32,13 @@ class Clientify::DataManager
   end
 
   private 
+  
+  def last_name_or_nil user
+    (user.is_a? User)? user.last_name : nil
+  end
 
   def phone_number user
-    user.is_a? User ? user.contact_number : user.contact_cellphone
+    (user.is_a? User)? user.contact_number : user.contact_cellphone
   end
 
   def convert_response_and_give response, data

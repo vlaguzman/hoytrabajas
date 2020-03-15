@@ -9,5 +9,5 @@ class Users::Wizards::StepZerosController < ApplicationController
   def user_step_zero_presenter(user: current_user)
     @user = Users::Wizards::StepZeroPresenter.new(user)
   end
-  
+ 
 end

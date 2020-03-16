@@ -12,6 +12,7 @@ A          • AffinityPercentages::CreateAffinityPercentagesDailyJob      2    
 A          • AgeRange                                                    3       0.0        0           1
 A          • ApplicationCable::Channel                                   1       0.0        0           1
 A          • ApplicationCable::Connection                                1       0.0        0           1
+A          • ApplicationController                                       35      45.01      0           6
 A          • ApplicationJob                                              1       0.0        0           1
 A          • ApplicationMailer                                           3       0.0        0           1
 A          • ApplicationPresenter                                        8       32.69      0           10
@@ -36,7 +37,7 @@ A          • BaseForms::WizardsTranslationsService                       1    
 A          • Cities::CitiesWithOffersListService                         1       10.73      0           1
 A          • City                                                        9       0.0        0           1
 A          • Clientify::ApiAuth                                          8       18.54      0           2
-A          • Clientify::DataManager                                      9       31.0       0           7
+A          • Clientify::DataManager                                      10      31.0       0           7
 A          • Companies                                                   8       1.3        0           1
 A          • Companies::Dashboards::OffersService                        4       30.2       0           2
 A          • Companies::DashboardsController                             3       7.23       0           1
@@ -221,7 +222,7 @@ A          • Users::Wizards::StepTwoService                              2    
 A          • Users::Wizards::StepTwosController                          7       15.7       0           1
 A          • Users::Wizards::StepZeroPresenter                           2       1.0        0           2
 A          • Users::Wizards::StepZeros::CurriculumVitaesController       7       16.07      0           2
-A          • Users::Wizards::StepZerosController                         6       5.44       0           1
+A          • Users::Wizards::StepZerosController                         7       5.44       0           1
 A          • Users::Wizards::UserErrorsService                           1       0.0        0           0
 A          • Users::WizardsController                                    4       24.97      0           5
 A          • Users::WizardsPresenter                                     3       4.8        0           1
@@ -238,7 +239,6 @@ A          • WorkMode                                                    3    
 A          • WorkPosition                                                3       0.0        0           1
 A          • WorkingDay                                                  5       0.0        0           1
 B          • AffinityCalculator                                          13      68.63      46          15
-B          • ApplicationController                                       34      51.11      0           6
 B          • Companies::FirstOffer::StepFivePresenter                    5       25.0       23          1
 B          • Companies::FirstOffer::StepFiveService                      4       38.92      18          6
 B          • Companies::FirstOffer::StepFour::FormParamsService          11      53.96      22          5

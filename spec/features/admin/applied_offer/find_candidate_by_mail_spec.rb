@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "like a admin user", :type => :feature do
-  let(:admin)                { create(:admin_user) }
-  let!(:user)                { create(:user, email: 'examplo@mail.com') } 
-  let!(:other_user)          { create(:user, email: 'gabriel.meneses@hoytrabajas.com') }
-  let!(:list_applied_offers) { create_list(:applied_offer, 5, curriculum_vitae: other_user.curriculum_vitae) } 
-  let!(:objective)           { create(:applied_offer, curriculum_vitae: user.curriculum_vitae) }
+  let(:admin)                 { create(:admin_user) }
+  let!(:user)                 { create(:user, email: 'examplo@mail.com') }
+  let!(:other_user)           { create(:user, email: 'gabriel.meneses@hoytrabajas.com') }
+  let!(:list_applied_offers)  { create_list(:applied_offer, 5, curriculum_vitae: other_user.curriculum_vitae) }
+  let!(:objective_offer)      { create(:applied_offer, curriculum_vitae: user.curriculum_vitae) }
 
   feature "When I search a candidate by mail" do
     scenario "Should see the offers applied by candidate", js: true do
@@ -25,7 +25,7 @@ RSpec.describe "like a admin user", :type => :feature do
         expect(page).to_not have_content(offer)
       end
 
-      expect(page).to have_content(objective.offer_id)
+      expect(page).to have_content(objective_offer.offer_id)
 
     end
   end

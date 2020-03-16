@@ -2,13 +2,19 @@
 
 require 'rails_helper'
 
-
-
 RSpec.describe "Overall navigation" do
   context "an anonimous user visits the public pages" do
     before { create(:offer) }
 
     context "all pages render properly", type: :feature do
+
+      let(:job_category) { create(:job_category) }
+
+      let(:create_stuffed_offers) {
+        create(:offer, title: "Esta oferta deberia aparecer")
+        create_list(:offer, 24, job_categories: [job_category])
+      }
+
       it "should visit inicio from root_path", js:true do
 
         visit root_path
@@ -55,24 +61,18 @@ RSpec.describe "Overall navigation" do
       end
 
       it "should visit 'ver mas ofertas' page from home page", js: true do
-        job_category = create(:job_category)
-        create(:offer, title: "Esta oferta deberia aparecer")
-        create_list(:offer, 24, job_categories: [job_category])
+        create_stuffed_offers
 
         visit root_path
 
-        has_button?('VER MÁS OFERTAS')
         find(".loadMoreOffers", visible: false).click
 
-        has_button?('VER EL LISTADO DE OFERTAS')
         find(".loadMoreOffers", visible: false).click
 
         expect(current_path).to eq(offers_path)
 
-        has_button?('VER MÁS OFERTAS')
         find(".loadMoreOffers", visible: false).click
 
-        has_button?('VER MÁS OFERTAS')
         find(".loadMoreOffers", visible: false).click
 
         expect(page).to have_content("Esta Oferta Deberia Aparecer")

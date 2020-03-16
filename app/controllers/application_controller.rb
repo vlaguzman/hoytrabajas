@@ -3,6 +3,18 @@ class ApplicationController < ActionController::Base
 
   around_action :set_locale_from_url
 
+  protected
+
+  def create_clientify_user(user, clientify_tag)
+    token = Clientify::ApiAuth.new().obtain_token 
+    Clientify::DataManager.new(token).create_contact(user, clientify_tag)
+  end
+
+  def update_clientify_user(user)
+    token = Clientify::ApiAuth.new().obtain_token 
+    Clientify::DataManager.new(token).update_contact(user)
+  end
+
   private
 
   def after_sign_in_path_for(resource)

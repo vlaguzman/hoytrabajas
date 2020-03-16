@@ -14,27 +14,28 @@ RSpec.describe "User sign in", type: :feature do
       end
 
       scenario "should create account", js: true do
-        visit root_path
-
-        expect(page).to have_text("Ingresar")
-        click_on 'Ingresar'
-        find('a', text: "Regístrate", visible: false).click
-
-        expect(User.count).to be_zero
-
-        fill_in "user[email]", with: "walter.h.white@meta.com"
-        fill_in "user[password]", with: "JesiPickman"
-        fill_in "user[password_confirmation]", with: "JesiPickman"
-
-        find('.termsAndConditions__checkbox').click
-
-        has_button?("Registrarme")
-        find(".a-button", text: "Registrarme", visible: false).click
-
-        expect(User.count).to eq(1)
-
-        expect(current_path).to eq(users_wizards_step_zero_path)
-
+        VCR.use_cassette("create_user") do
+          visit root_path
+         
+          expect(page).to have_text("Ingresar")
+          click_on 'Ingresar'
+          find('a', text: "Regístrate", visible: false).click
+         
+          expect(User.count).to be_zero
+         
+          fill_in "user[email]", with: "walter.h.white@meta.com"
+          fill_in "user[password]", with: "JesiPickman"
+          fill_in "user[password_confirmation]", with: "JesiPickman"
+         
+          find('.termsAndConditions__checkbox').click
+         
+          has_button?("Registrarme")
+          find(".a-button", text: "Registrarme", visible: false).click
+         
+          expect(User.count).to eq(1)
+         
+          expect(current_path).to eq(users_wizards_step_zero_path)
+        end
       end
     end
   end

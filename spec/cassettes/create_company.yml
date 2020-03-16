@@ -1,0 +1,176 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.clientify.net/v1/api-auth/obtain_token/
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+            "username": "vladimir@hoytrabajas.com",
+            "password": "unicornio2020"
+        }
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 15 Mar 2020 18:15:10 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d6754eac07f1c2361fc79a79e89a1af0a1584296110; expires=Tue, 14-Apr-20
+        18:15:10 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - POST, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 574837e04894f25f-BOG
+    body:
+      encoding: UTF-8
+      string: '{"token":"a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c","user_id":14075}'
+    http_version: null
+  recorded_at: Sun, 15 Mar 2020 18:15:10 GMT
+- request:
+    method: post
+    uri: https://api.clientify.net/v1/api-auth/obtain_token/
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+            "username": "vladimir@hoytrabajas.com",
+            "password": "unicornio2020"
+        }
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 15 Mar 2020 18:15:10 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dbc29e5536392a46d25f5bee00908f0e21584296110; expires=Tue, 14-Apr-20
+        18:15:10 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - POST, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 574837e3cdb0f267-BOG
+    body:
+      encoding: UTF-8
+      string: '{"token":"a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c","user_id":14075}'
+    http_version: null
+  recorded_at: Sun, 15 Mar 2020 18:15:10 GMT
+- request:
+    method: post
+    uri: https://api.clientify.net/v1/contacts/
+    body:
+      encoding: UTF-8
+      string: "{\n    \"email\": \"lyndon_hermiston@dibbert.info\",\n             \n
+        \   \"tags\": [\"employer\", \"htweb\"]\n            }"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+      Authorization:
+      - Token a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Date:
+      - Sun, 15 Mar 2020 18:15:11 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1679'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d1a0f631ee26b0882a303c2b84288c71b1584296111; expires=Tue, 14-Apr-20
+        18:15:11 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Content-Language:
+      - en
+      Vary:
+      - Accept, Accept-Language, Cookie
+      Location:
+      - https://api.clientify.net/v1/contacts/7120438/
+      Allow:
+      - GET, POST, HEAD, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 574837e71a6eda9e-BOG
+    body:
+      encoding: UTF-8
+      string: '{"url":"https://api.clientify.net/v1/contacts/7120438/","id":7120438,"owner":"vladimir@hoytrabajas.com","owner_name":"Vladimir
+        Guzman","first_name":"","last_name":"","status":"cold-lead","title":"","company":null,"company_details":null,"contact_type":null,"contact_source":null,"emails":[{"type":4,"email":"lyndon_hermiston@dibbert.info"}],"phones":[],"addresses":[],"picture_url":null,"custom_fields":[],"tags":["employer","htweb"],"description":"","remarks":"","summary":"","created":"2020-03-15T19:15:11.411468+01:00","last_contact":null,"related_tasks":[],"deals":[],"wall_entries":[{"url":"https://api.clientify.net/v1/wall-entries/47331029/","id":47331029,"user":"Info
+        HoyTrabajas.com","created":"2020-03-15T19:15:11.516436+01:00","extra":"{\"automation_name\":
+        \"Al crear etiqueta Employer\", \"automation_link\": \"/automation/3420/\"}","extra_datetime":null,"type":"automation_added","link":"","source_id":"3420","object_id":7120438},{"url":"https://api.clientify.net/v1/wall-entries/47331028/","id":47331028,"user":"Vladimir
+        Guzman","created":"2020-03-15T19:15:11.496580+01:00","extra":"{}","extra_datetime":null,"type":"contact_creation","link":"","source_id":"7120438","object_id":7120438}],"page_views":0,"total_visits":0,"first_visit":null,"last_visit":null,"gdpr_accept":false,"visitor_key":"","attachments":[],"websites":[],"linkedin_url":"","linkedin_id":"","linkedin_picture_url":"","skype_username":"","birthday":null,"twitter_id":"","lead_scoring":0,"facebook_url":"","twitter_url":"","googleplus_url":"","pinterest_url":"","foursquare_url":"","aboutme_url":"","klout_url":"","facebook_picture_url":"","twitter_picture_url":"","facebook_id":"","google_id":""}'
+    http_version: null
+  recorded_at: Sun, 15 Mar 2020 18:15:11 GMT
+recorded_with: VCR 5.1.0

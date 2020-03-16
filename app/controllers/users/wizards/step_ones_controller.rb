@@ -6,7 +6,7 @@ class Users::Wizards::StepOnesController < Users::WizardsController
 
   def create
     user = Users::Wizards::StepOneService.(candidate: current_user, update_params: strong_params)
-
+    update_clientify_user current_user
     user_presenters(user)
 
     validate_redirect_to(
@@ -21,7 +21,7 @@ class Users::Wizards::StepOnesController < Users::WizardsController
 
   def update
     user = Users::Wizards::StepOneService.(candidate: current_user, update_params: strong_params)
-
+    update_clientify_user current_user
     user_presenters(user)
 
     validate_redirect_to(source: user, users_wizard_path: users_dashboard_path, view: :edit)

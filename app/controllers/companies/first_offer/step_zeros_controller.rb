@@ -2,6 +2,7 @@ class Companies::FirstOffer::StepZerosController < ApplicationController
   before_action :authenticate_company!
 
   def show
+    create_clientify_user current_company, Clientify::DataManager::CONTACT_COMPANY_TAG
     company_step_zero_presenter
   end
 

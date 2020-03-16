@@ -7,6 +7,7 @@ class Companies::FirstOffer::StepOnesController < ApplicationController
 
   def update
     company = Companies::FirstOffer::StepOneService.(company: current_company, update_params: step_one_params)
+    update_clientify_user current_company
 
     if company[:status].eql?(:ok)
       redirect_to companies_first_offer_step_two_path

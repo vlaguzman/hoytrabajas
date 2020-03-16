@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "When company fill the step one form", :type => :feature do
-  let(:company) { create(:company, :first_time, name: 'HoyTrabajas.com') }
+  let(:company) { create(:company, :first_time, name: 'HoyTrabajas.com', clientify_contact_id: '7120438') }
 
   let(:company_two) { create(:company, :first_time) }
 
@@ -42,30 +42,32 @@ RSpec.describe "When company fill the step one form", :type => :feature do
   describe "Fill the principal company user data" do
     context "Data is correct" do
       scenario "should save succesfully data", js: true do
-        sign_in company
-        visit companies_first_offer_step_one_path
-
-        expected_page_structure
-        fill_form(
-          {
-            name:                  '',
-            contact_name:          'Ruben Cordoba',
-            contact_work_position: 'CEO',
-            contact_cellphone:     '3101234567'
-          }
-        )
-        click_link_or_button('Siguiente')
-
-        company.reload
-
-        expect(company.name).to eq('HoyTrabajas.com')
-        expect(company.contact_name).to eq('Ruben Cordoba')
-        expect(company.contact_work_position).to eq('CEO')
-
-        expect(company.industry_id).not_to be_nil
-        expect(company.employees_range_id).not_to eq('')
-
-        expect(current_path).to eq(companies_first_offer_step_two_path)
+        VCR.use_cassette("update_company_2") do
+          sign_in company
+          visit companies_first_offer_step_one_path
+        
+          expected_page_structure
+          fill_form(
+            {
+              name:                  '',
+              contact_name:          'Ruben Cordoba',
+              contact_work_position: 'CEO',
+              contact_cellphone:     '3101234567'
+            }
+          )
+          click_link_or_button('Siguiente')
+        
+          company.reload
+        
+          expect(company.name).to eq('HoyTrabajas.com')
+          expect(company.contact_name).to eq('Ruben Cordoba')
+          expect(company.contact_work_position).to eq('CEO')
+        
+          expect(company.industry_id).not_to be_nil
+          expect(company.employees_range_id).not_to eq('')
+        
+          expect(current_path).to eq(companies_first_offer_step_two_path)
+        end
       end
     end
   end
@@ -73,19 +75,19 @@ RSpec.describe "When company fill the step one form", :type => :feature do
   describe "Mandatory fields have not been filled" do
     context "Required fields are empty" do
       scenario "should retorn translate error", js: true do
-
-      sign_in company_two
-
-      visit companies_first_offer_step_one_path
-
-      click_link_or_button('Siguiente')
-
-      expect(current_path).to eq(companies_first_offer_step_one_path)
-
-      expect(page).to have_content("Por favor ingresa el nombre de la empresa, este campo no puede estar en blanco")
-      expect(page).to have_content("Por favor ingresa un número de contacto, este campo no puede estar en blanco")
-      expect(page).to have_content("Por favor seleccione el sector al que pertenece la empresa, este campo no puede estar en blanco")
-
+        VCR.use_cassette("update_company_errors") do
+          sign_in company_two
+         
+          visit companies_first_offer_step_one_path
+         
+          click_link_or_button('Siguiente')
+         
+          expect(current_path).to eq(companies_first_offer_step_one_path)
+         
+          expect(page).to have_content("Por favor ingresa el nombre de la empresa, este campo no puede estar en blanco")
+          expect(page).to have_content("Por favor ingresa un número de contacto, este campo no puede estar en blanco")
+          expect(page).to have_content("Por favor seleccione el sector al que pertenece la empresa, este campo no puede estar en blanco")
+        end
       end
     end
   end

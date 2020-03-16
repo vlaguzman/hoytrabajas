@@ -1,0 +1,213 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.clientify.net/v1/api-auth/obtain_token/
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+            "username": "vladimir@hoytrabajas.com",
+            "password": "unicornio2020"
+        }
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 15 Mar 2020 20:37:09 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dcb996420585be4af80cbfae53ccc27d21584304628; expires=Tue, 14-Apr-20
+        20:37:08 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - POST, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 574907dabe22da96-BOG
+    body:
+      encoding: UTF-8
+      string: '{"token":"a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c","user_id":14075}'
+    http_version: null
+  recorded_at: Sun, 15 Mar 2020 20:37:09 GMT
+- request:
+    method: post
+    uri: https://api.clientify.net/v1/api-auth/obtain_token/
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+            "username": "vladimir@hoytrabajas.com",
+            "password": "unicornio2020"
+        }
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 15 Mar 2020 20:37:09 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dae8049e08cb2dd68568122411d1eedda1584304629; expires=Tue, 14-Apr-20
+        20:37:09 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - POST, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 574907dec806daa2-BOG
+    body:
+      encoding: UTF-8
+      string: '{"token":"a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c","user_id":14075}'
+    http_version: null
+  recorded_at: Sun, 15 Mar 2020 20:37:10 GMT
+- request:
+    method: put
+    uri: https://api.clientify.net/v1/contacts//
+    body:
+      encoding: UTF-8
+      string: "{\n    \"first_name\": \"Carlos\",\n             \n    \"last_name\":
+        \"Rojas\",\n             \n    \"phone\": \"3183638789\"\n            }"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+      Authorization:
+      - Token a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Sun, 15 Mar 2020 20:37:10 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d87d19a4591773d1a88e58c2bfe4d6b421584304630; expires=Tue, 14-Apr-20
+        20:37:10 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept-Language, Cookie
+      Content-Language:
+      - en
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 574907e2aa4ff257-BOG
+    body:
+      encoding: UTF-8
+      string: |-
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Clientify - Error 404</title>
+            <link rel="icon" href="https://clientify.net/static/img/icon_clientify.png">
+
+            <!-- Meta -->
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <!-- End Meta -->
+
+            <!-- Css -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+            <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Lato:400,700' type='text/css'>
+            <style type="text/css">
+                .img-responsive {
+                    margin: 0 auto;
+                }
+            </style>
+            <!-- End Css -->
+        </head>
+
+        <body style="background-color: #f2f4f5; padding-top: 40px; padding-bottom: 40px; font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif;">
+        <main>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <h2 class="text-center"><img src="https://clientify.net/static/img/clientify-logotipo-azul-low.png"></h2>
+                                <div class="text-center"><img class="img-responsive" src="https://clientify.net/static/img/error-404-clientify.png"></div>
+                                <h3 class="text-center text-primary">Page not Found.  Página no encontrada</h3>
+                                <p class="text-center"><button type="button" onclick="window.history.back()" class="btn btn-primary">Back.  Atrás</button></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        </body>
+        </html>
+    http_version: null
+  recorded_at: Sun, 15 Mar 2020 20:37:10 GMT
+recorded_with: VCR 5.1.0

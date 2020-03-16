@@ -171,7 +171,9 @@ VCR.configure do |config|
   config.ignore_localhost = true
   config.configure_rspec_metadata!
 
-  config.ignore_hosts "selenium", "elasticsearch", 'elasticsearch_test'
+  config.ignore_hosts "selenium"
+  config.allow_http_connections_when_no_cassette = true
+  #, "elasticsearch", 'elasticsearch_test'
 
   config.ignore_request do |request|
     URI(request.uri).port.eql?(4444)

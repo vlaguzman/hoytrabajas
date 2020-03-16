@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Offer, type: :model do
+RSpec.describe Offer, type: :model, vcr: true do
   describe "#languages_list" do
-    let(:subject) { create(:offer) }
+    let(:subject) { create(:offer, id: 11) }
 
     it "should return languages list" do
       expected_array = create_list(:languages_offers, 5, offer_id: subject.id)
@@ -27,8 +27,8 @@ RSpec.describe Offer, type: :model do
     let!(:job_category)      { create(:job_category, description: 'Operario') }
     let!(:job_category_2)    { create(:job_category, description: 'Marketing') }
     let!(:job_category_3)    { create(:job_category, description: 'Seguridad') }
-    let!(:offer)             { create(:offer, title: 'just_an_offer', job_categories: [job_category]) }
-    let!(:offer_2)           { create(:offer, title: 'an_other_offer', job_categories: [job_category_2]) }
+    let!(:offer)             { create(:offer, id: 12, title: 'just_an_offer', job_categories: [job_category]) }
+    let!(:offer_2)           { create(:offer, id: 13, title: 'an_other_offer', job_categories: [job_category_2]) }
     let!(:applied_offer)     { create(:applied_offer, curriculum_vitae: cv, offer: offer) }
     let!(:applied_offer_2)   { create(:applied_offer, curriculum_vitae: cv, offer: offer_2) }
     let!(:applied_offer_3)   { create(:applied_offer, curriculum_vitae: cv_2, offer: offer_2) }
@@ -49,8 +49,8 @@ RSpec.describe Offer, type: :model do
     end
 
     describe "#by_job_categories" do
-      let!(:offer_3)           { create(:offer, title: 'an_other_offer_three', job_categories: [job_category, job_category_2]) }
-      let!(:offer_4)           { create(:offer, title: 'an_other_offer_four', job_categories: [job_category]) }
+      let!(:offer_3) { create(:offer, id: 14, title: 'an_other_offer_three', job_categories: [job_category, job_category_2]) }
+      let!(:offer_4) { create(:offer, id: 15, title: 'an_other_offer_four', job_categories: [job_category]) }
 
       context "When you search for a category and find results" do
         it "Should return the results found" do
@@ -190,21 +190,26 @@ RSpec.describe Offer, type: :model do
 
   describe "#active" do
     context "there are just one active_offer" do
-      let!(:offer) { create(:offer) }
+      let!(:offer) { create(:offer, id: 16) }
       it "should return one offer" do
         expect(Offer.active.count).to eq(1)
       end
     end
 
     context "there are not active_offer" do
-      let!(:offer) { create(:offer, :expired_offer) }
+      let!(:offer) { create(:offer, :expired_offer, id: 17) }
       it "should not return any offer" do
         expect(Offer.active.count).to eq(0)
       end
     end
 
     context "there are active and expired offers" do
-      let!(:offers) { [create(:offer, title: 'active_offer'), create(:offer, :expired_offer)] }
+      let!(:offers) do
+        [
+          create(:offer, id: 18, title: 'active_offer'),
+          create(:offer, :expired_offer, id: 51)
+        ]
+      end
       it "should return just the active_offer" do
         expect(Offer.active.first.title).to eq('active_offer')
         expect(Offer.active.count).to eq(1)
@@ -215,7 +220,7 @@ RSpec.describe Offer, type: :model do
 
   describe "#before_save" do
     it "assign the parametrized name to the slug field" do
-      offer = build(:offer, title: 'Pañalera de pingüinos de compañía', slug: nil)
+      offer = build(:offer, id: 19, title: 'Pañalera de pingüinos de compañía', slug: nil)
       offer.save
       expect(offer.slug).to eq('panalera-de-pinguinos-de-compania')
     end
@@ -224,15 +229,15 @@ RSpec.describe Offer, type: :model do
   describe "#order_by_demand_and_created_at" do
     context "There are one offer_on_demand with status up and one with status down" do
       it "should return offers showing first the on demand offers, ordered by the start_at of the offer_on_demand descendingly and ordered by created_at descendingly of created_at of offer" do
-        offer_1 = create(:offer, title: 'first created', created_at: (Time.now - 4.days))
+        offer_1 = create(:offer, id: 20, title: 'first created', created_at: (Time.now - 4.days))
 
-        offer_2 = create(:offer, title: 'second created', created_at: (Time.now - 3.days))
+        offer_2 = create(:offer, id: 21, title: 'second created', created_at: (Time.now - 3.days))
         create(:offer_on_demand, offer_id: offer_2.id, status: "down", start_at: Time.new(2019, 02, 04))
 
-        offer_3 = create(:offer, title: 'third created', created_at: (Time.now - 2.days))
+        offer_3 = create(:offer, id: 22, title: 'third created', created_at: (Time.now - 2.days))
         create(:offer_on_demand, offer_id: offer_3.id, status: "up", start_at: Time.new(2019, 02, 03))
 
-        offer_4 = create(:offer, title: 'quarter created', created_at: (Time.now - 1.days))
+        offer_4 = create(:offer, id: 23, title: 'quarter created', created_at: (Time.now - 1.days))
 
         response = described_class.order_by_demand_and_created_at
 
@@ -245,15 +250,15 @@ RSpec.describe Offer, type: :model do
 
     context "There are two offer_on_demand with status up" do
       it "should return offers showing first the on demand offers, ordered by the start_at of the offer_on_demand descendingly and ordered by created_at descendingly of created_at of offer" do
-        offer_1 = create(:offer, title: 'first created', created_at: Time.new(2019, 01, 01))
+        offer_1 = create(:offer, id: 24, title: 'first created', created_at: Time.new(2019, 01, 01))
 
-        offer_2 = create(:offer, title: 'second created', created_at: Time.new(2019, 01, 03))
+        offer_2 = create(:offer, id: 25, title: 'second created', created_at: Time.new(2019, 01, 03))
         create(:offer_on_demand, offer_id: offer_2.id, status: "up", start_at: Time.new(2019, 01, 04))
 
-        offer_3 = create(:offer, title: 'third created', created_at: Time.new(2019, 01, 03))
+        offer_3 = create(:offer, id: 26, title: 'third created', created_at: Time.new(2019, 01, 03))
         create(:offer_on_demand, offer_id: offer_3.id, status: "up", start_at: Time.new(2019, 01, 03))
 
-        offer_4 = create(:offer, title: 'quarter created', created_at: Time.new(2019, 01, 04))
+        offer_4 = create(:offer, id: 27, title: 'quarter created', created_at: Time.new(2019, 01, 04))
 
         response = described_class.order_by_demand_and_created_at
 
@@ -279,7 +284,7 @@ RSpec.describe Offer, type: :model do
       described_class.__elasticsearch__.create_index!
     end
 
-    describe "#__elasticsearch__" do
+    describe "#__elasticsearch__", vcr: true do
       it "Should be present the docfile" do
         es_version = subject.__elasticsearch__.client.info['version']['number']
         dotfile = "#{File.open(".elasticsearch-version", &:readline).chomp}"
@@ -287,7 +292,7 @@ RSpec.describe Offer, type: :model do
       end
     end
 
-    describe "#search" do
+    describe "#search", vcr: true do
       let(:subject) { described_class }
 
       context "When no records in db" do
@@ -302,11 +307,22 @@ RSpec.describe Offer, type: :model do
       end
 
       context "When records are present" do
-        let!(:stuffed_offers) { create_list(:offer, 20) }
+        let!(:stuffed_offers) do
+          create(:offer, id: 51)
+          create(:offer, id: 52)
+          create(:offer, id: 53)
+          create(:offer, id: 54)
+          create(:offer, id: 55)
+          create(:offer, id: 56)
+          create(:offer, id: 57)
+          create(:offer, id: 58)
+          create(:offer, id: 59)
+          create(:offer, id: 60)
+          create(:offer, id: 61)
+        end
 
         it "Should return the mapped offers" do
           subject.import
-          sleep(0.5)
 
           response = subject.search({query: { match_all: {} }})
 
@@ -320,16 +336,19 @@ RSpec.describe Offer, type: :model do
 
           let!(:demo_offer) do
             create(:offer, {
+              id: 50,
               title: "demo title",
               description: "demo description",
-              city: create(:city, description: "Bogotá"),
-              job_categories: [create(:job_category, description: "tech")]
+              city: create(:city, id: 303, description: "Bogotá"),
+              job_categories: [create(:job_category, id: 72, description: "tech")],
+              contract_type: create(:contract_type, id: 107, description: 'Programable'),
+              work_mode: create(:work_mode, id: 107, description: 'codificar'),
+              created_at: DateTime.new(2020, 3, 10, 10, 0, 0)
             })
           end
 
           it "Should return expected object" do
             subject.import
-            sleep(1)
 
             response = subject.search({query: { match_all: {} }})
 
@@ -343,7 +362,7 @@ RSpec.describe Offer, type: :model do
                 "title"=> demo_offer.title,
                 "description"=> demo_offer.description,
                 "status"=> demo_offer.status,
-                "created_at"=> demo_offer.created_at.iso8601(3),
+                "created_at"=> "2020-03-10T05:00:00.000-05:00",
                 "city"=> {"id" => demo_offer.city.id, "description" => demo_offer.city.description},
                 "job_categories"=> demo_offer.job_categories.map { |category| {"id"=> category.id, "description"=> category.description} },
                 "work_mode"=> {"id" => demo_offer.work_mode.id, "description" => demo_offer.work_mode.description},
@@ -365,7 +384,7 @@ RSpec.describe Offer, type: :model do
       end
     end
 
-    describe "#search_by" do
+    describe "#search_by", vcr: true do
       let(:bogota) { create(:city) }
       let(:medellin) { create(:city) }
 
@@ -399,12 +418,17 @@ RSpec.describe Offer, type: :model do
 
       let(:subject) { described_class }
 
-      let!(:stuffed_offers) { create_list(:offer, 5) }
+      let!(:stuffed_offers) do
+        create(:offer, id: 9001)
+        create(:offer, id: 9002)
+        create(:offer, id: 9003)
+        create(:offer, id: 9004)
+        create(:offer, id: 9005)
+      end
 
       context "when does not recibe parameters" do
         it "should return all posible results" do
           subject.import
-          sleep(0.5)
 
           response = subject.search_by
 
@@ -414,12 +438,24 @@ RSpec.describe Offer, type: :model do
 
       context "when recibe city id" do
 
-        let!(:bogota_offers) { create_list(:offer, 4, city: bogota) }
-        let!(:medellin_offers) { create_list(:offer, 6, city: medellin ) }
+        let!(:bogota_offers) do
+          create(:offer, id: 9006, city: bogota)
+          create(:offer, id: 9007, city: bogota)
+          create(:offer, id: 9008, city: bogota)
+          create(:offer, id: 9009, city: bogota)
+        end
+
+        let!(:medellin_offers) do
+          create(:offer, id: 9010, city: medellin)
+          create(:offer, id: 9011, city: medellin)
+          create(:offer, id: 9012, city: medellin)
+          create(:offer, id: 9013, city: medellin)
+          create(:offer, id: 9014, city: medellin)
+          create(:offer, id: 9015, city: medellin)
+        end
 
         it "should return 5 results to bogota anf six to medellin" do
           subject.import
-          sleep(0.6)
 
           response = subject.search_by(city: bogota.id)
 
@@ -441,6 +477,7 @@ RSpec.describe Offer, type: :model do
 
       context "when recibe all posible search parameters" do
         let!(:offer_objetive) { create(:offer,
+          id: 9016,
           title: "the developer",
           city: bogota,
           job_aids: [transport],
@@ -453,6 +490,7 @@ RSpec.describe Offer, type: :model do
         ) }
 
         let!(:offer_trap) { create(:offer,
+          id: 9017,
           title: "programmer",
           city: bogota,
           job_aids: [transport],
@@ -470,7 +508,6 @@ RSpec.describe Offer, type: :model do
         it "should return only one response" do
 
           subject.import
-          sleep(0.6)
 
           search_parameters = {
             status: 'active',

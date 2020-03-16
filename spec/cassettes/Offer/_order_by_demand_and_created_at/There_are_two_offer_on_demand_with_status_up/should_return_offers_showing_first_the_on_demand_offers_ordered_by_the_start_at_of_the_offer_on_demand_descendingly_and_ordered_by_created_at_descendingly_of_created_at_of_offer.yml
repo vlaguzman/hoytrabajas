@@ -1,0 +1,135 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: http://elasticsearch:9200/offers/_doc/24
+    body:
+      encoding: UTF-8
+      string: '{"id":24,"title":"first created","description":"endSint esse anim consequat
+        commodo.","status":"active","created_at":"2018-12-31T19:00:00.000-05:00","city":{"id":274,"description":"Saint
+        George''s"},"job_categories":[{"id":57,"description":"Books \u0026 Home"}],"work_mode":{"id":92,"description":"firmware"},"contract_type":{"id":92,"description":"alianza"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/24"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '142'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"24","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":46,"_primary_term":1}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:04 GMT
+- request:
+    method: put
+    uri: http://elasticsearch:9200/offers/_doc/25
+    body:
+      encoding: UTF-8
+      string: '{"id":25,"title":"second created","description":"endSint esse anim
+        consequat commodo.","status":"active","created_at":"2019-01-02T19:00:00.000-05:00","city":{"id":276,"description":"Abu
+        Dhabi"},"job_categories":[{"id":58,"description":"Clothing, Baby \u0026 Music"}],"work_mode":{"id":93,"description":"capacidad"},"contract_type":{"id":93,"description":"Persistente"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/25"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '142'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"25","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":47,"_primary_term":1}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:04 GMT
+- request:
+    method: put
+    uri: http://elasticsearch:9200/offers/_doc/26
+    body:
+      encoding: UTF-8
+      string: '{"id":26,"title":"third created","description":"endSint esse anim consequat
+        commodo.","status":"active","created_at":"2019-01-02T19:00:00.000-05:00","city":{"id":278,"description":"Tarawa
+        Atoll"},"job_categories":[{"id":59,"description":"Home"}],"work_mode":{"id":94,"description":"Configurable"},"contract_type":{"id":94,"description":"Integrado"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/26"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '142'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"26","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":48,"_primary_term":1}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:04 GMT
+- request:
+    method: put
+    uri: http://elasticsearch:9200/offers/_doc/27
+    body:
+      encoding: UTF-8
+      string: '{"id":27,"title":"quarter created","description":"endSint esse anim
+        consequat commodo.","status":"active","created_at":"2019-01-03T19:00:00.000-05:00","city":{"id":280,"description":"Dushanbe"},"job_categories":[{"id":60,"description":"Garden
+        \u0026 Grocery"}],"work_mode":{"id":95,"description":"nacional"},"contract_type":{"id":95,"description":"motivadora"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/27"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '142'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"27","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":49,"_primary_term":1}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:04 GMT
+recorded_with: VCR 5.1.0

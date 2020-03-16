@@ -14,7 +14,7 @@ RSpec.describe Elasticsearch::SearchService do
     Offer.__elasticsearch__.create_index!
   end
 
-  describe "#call" do
+  describe "#call", vcr: true do
 
     let(:bogota) { create(:city) }
     let(:other_city) { create(:city) }
@@ -24,17 +24,15 @@ RSpec.describe Elasticsearch::SearchService do
         { city: bogota.id }
       end
 
-      let!(:first_offer)  { create(:offer, city: bogota, created_at: Date.new(2020, 1, 1)) }
-      let!(:second_offer) { create(:offer, city: bogota, created_at: Date.new(2020, 2, 4)) }
-      let!(:third_offer)  { create(:offer, city: bogota, created_at: Date.new(2020, 5, 14)) }
-      let!(:fourth_offer)  { create(:offer, city: bogota, created_at: Date.new(2020, 5, 21)) }
-      let!(:last_offer)   { create(:offer, city: bogota, created_at: Date.new(2020, 7, 22)) }
+      let!(:first_offer)   { create(:offer, id: 10, city: bogota, created_at: Date.new(2020, 1, 1)) }
+      let!(:second_offer)  { create(:offer, id: 11, city: bogota, created_at: Date.new(2020, 2, 4)) }
+      let!(:third_offer)   { create(:offer, id: 12, city: bogota, created_at: Date.new(2020, 5, 14)) }
+      let!(:fourth_offer)  { create(:offer, id: 13, city: bogota, created_at: Date.new(2020, 5, 21)) }
+      let!(:last_offer)    { create(:offer, id: 14, city: bogota, created_at: Date.new(2020, 7, 22)) }
 
 
       it "should return 5 results" do
         Offer.import
-
-        sleep(1)
 
         response = subject.(
           Offer,
@@ -60,9 +58,16 @@ RSpec.describe Elasticsearch::SearchService do
 
       let(:developer_category) { create(:job_category) }
 
-      let!(:only_bogota_offers) { create_list(:offer, 2, city: bogota) }
-      let!(:bogota_and_dev_offers) { create_list(:offer, 3, city: bogota, job_categories: [developer_category] ) }
-      let!(:dev_offers) { create_list(:offer, 1, city: other_city, job_categories: [developer_category] ) }
+      let!(:only_bogota_offers) do
+        create(:offer, id: 15, city: bogota)
+        create(:offer, id: 16, city: bogota)
+      end
+      let!(:bogota_and_dev_offers) do
+        create(:offer, id: 17, city: bogota, job_categories: [developer_category] )
+        create(:offer, id: 18, city: bogota, job_categories: [developer_category] )
+        create(:offer, id: 19, city: bogota, job_categories: [developer_category] )
+      end
+      let!(:dev_offer) { create(:offer, id: 20, city: other_city, job_categories: [developer_category] ) }
 
 
       context "when search only by city" do
@@ -73,8 +78,6 @@ RSpec.describe Elasticsearch::SearchService do
 
         it "should return 5 results" do
           Offer.import
-
-          sleep(0.5)
 
           response = subject.(Offer, Elasticsearch::Offers::Queries, request_parameters: request_parameters)
 
@@ -95,8 +98,6 @@ RSpec.describe Elasticsearch::SearchService do
         it "should return 3 results" do
           Offer.import
 
-          sleep(0.5)
-
           response = subject.(Offer, Elasticsearch::Offers::Queries, request_parameters: request_parameters)
 
           expect(response).to be_a Array
@@ -114,8 +115,6 @@ RSpec.describe Elasticsearch::SearchService do
 
         it "should return 4 results" do
           Offer.import
-
-          sleep(0.5)
 
           response = subject.(Offer, Elasticsearch::Offers::Queries, request_parameters: request_parameters)
 

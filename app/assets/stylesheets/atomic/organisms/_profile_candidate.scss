@@ -92,9 +92,14 @@
   padding-top: 74px;
   width: 95%;
 
+  @media only screen and (max-width: 992px) {
+    background: transparent;
+    box-shadow: none;
+  }
+
   @media only screen and (max-width: 576px) {
     width: 100%;
-    padding-top: 30px;
+    padding-top: 15px;
   }
 
   .headerBox {
@@ -102,6 +107,10 @@
     align-items: center;
     padding: 0 148px;
     display: flex;
+
+    @media only screen and (max-width: 992px) {
+      padding-top: 60px;
+    }
 
     .photoBox {
       position: relative;
@@ -193,13 +202,35 @@
     }
   }
 
+  .mobileBoxElevation {
+    @media (max-width: 992px) {
+      padding: 30px 13px;
+      margin-top: 11px;
+      box-shadow: 0 3px 15px 2px rgba(235, 235, 240, 0.8),
+        0 12px 30px 1px $color__palelilac-main;
+      background-color: $color__white-main;
+      border-radius: 6px;
+    }
+  }
+
+  .sectionDivider {
+    @media (max-width: 992px) {
+      width: 100%;
+      margin: 30px 0;
+      height: 1px;
+      background: $color__snow-main;
+    }
+  }
+
   .bodyBox {
-    border-top: solid 1px #d5dbe3;
     padding: 57px 13px 59px;
     margin: 0 95px;
+    border-top: solid 1px $color__snow-main;
 
     @media (max-width: 992px) {
       margin: 0 30px;
+      padding: 60px 0;
+      border: none;
     }
 
     &.boxAcademy {
@@ -364,7 +395,7 @@
         flex-wrap: wrap;
         display: flex;
       }
-      
+
       .a-skill {
         margin: 0 5px 10px 0;
       }
@@ -452,7 +483,7 @@
 
   @media only screen and (max-width: 576px) {
     .headerBox {
-      padding: 0 30px;
+      padding: 30px 30px 0;
 
       h1 {
         font-size: 1.5625rem;
@@ -469,7 +500,7 @@
     }
 
     .bodyBox {
-      padding: 60px 18px;
+      padding: 0 18px 0;
       margin: 0;
 
       .boxInterests {
@@ -523,7 +554,7 @@
 
 .a-statusOptions {
   @media only screen and (max-width: 992px) {
-    padding: 0 30px;
+    padding: 0 10px;
   }
 
   &.fixed {
@@ -534,6 +565,12 @@
     background: $color__palelilac-light;
     box-shadow: inset 0 0 3px 0 rgba(0, 0, 0, 0.5);
     text-align: center;
+
+    @media only screen and (max-width: 992px) {
+      padding: 0 10px;
+      background: $color__white-main;
+      box-shadow: none;
+    }
   }
 
   .flexWrapper {
@@ -574,13 +611,13 @@
   .openStatusModalButton {
     font-size: 0.875rem;
     text-transform: none;
-    margin: auto;
     padding: 8px;
     margin: 30px auto;
 
     @media only screen and (max-width: 992px) {
       width: 100%;
       max-width: 300px;
+      margin: 20px auto;
     }
   }
 

@@ -11,57 +11,94 @@
 .o-companiesListCandidades {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
   backdrop-filter: blur(22px);
   background-color: transparentize($color__snow-altlight, 0.1);
   -webkit-backdrop-filter: blur(22px);
   background-image: url('/img/backgrounds/steps/primary.png');
   background-repeat: no-repeat;
   background-position: top;
+  background-size: contain;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 992px) {
     justify-content: flex-start;
   }
 
   .m-mainContainer {
-    width: 60vw;
-
+    width: 70vw;
+    max-width: 1100px;
+    margin: 90px 0;
     border-radius: 20px;
     box-shadow: 0 3px 15px 2px rgba(235, 235, 240, 0.8),
       0 12px 30px 1px rgba(235, 235, 240, 0.8);
     background-color: white;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 992px) {
       width: 90vw;
       margin-top: 2vh;
+      background: transparent;
+      box-shadow: none;
+
+      .mainInfoWrapper {
+        border-radius: 6px;
+        margin-bottom: 10px;
+        padding: 20px;
+        background-color: $color__white-main;
+        box-shadow: 0 3px 15px 2px rgba(235, 235, 240, 0.8),
+          0 12px 30px 1px rgba(235, 235, 240, 0.8);
+      }
     }
 
     .a-title {
-      margin: 3vh 2vw 1vh 2vw;
-
+      margin: 30px 30px 10px 30px;
       font-size: 2.1rem;
       font-weight: 800;
       line-height: 1.24;
       letter-spacing: normal;
       color: $color__slategray-dark;
+
+      @media screen and (max-width: 992px) {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin: 0 0 10px 0;
+      }
     }
 
     .m-tags {
       display: flex;
-      margin: 1vw;
+      margin: 0 30px 30px;
+
+      @media screen and (max-width: 992px) {
+        margin: 0;
+      }
+    }
+
+    .iconWrapper {
+      display: flex;
+      align-items: center;
+      margin-right: 20px;
+      color: $color__orange-main;
+      cursor: default;
+      width: 24px;
+
+      @media screen and (max-width: 992px) {
+        margin: 0;
+      }
     }
 
     .m-detailsContainer {
       display: flex;
-      justify-content: space-around;
       align-items: center;
       background: $color__snow-extralight;
+      padding: 0 2vw;
 
-      @media screen and (max-width: 768px) {
-        justify-content: center;
+      @media screen and (max-width: 992px) {
+        justify-content: flex-start;
+        align-items: flex-start;
         flex-direction: column;
+        background: transparent;
+        padding: 0;
       }
 
       .m-ditails {
@@ -73,24 +110,36 @@
         color: $color__slategray-main;
 
         > * {
-          padding: 2vh 2vw;
+          padding: 5px 10px;
         }
 
         .m-detailBox {
           display: flex;
-          flex-direction: column;
+
+          @media screen and (max-width: 768px) {
+            flex-direction: column;
+          }
+
+          .detailContent {
+            display: flex;
+            @media screen and (max-width: 1150px) {
+              flex-direction: column;
+            }
+          }
 
           .a-detail {
             font-weight: bold;
             line-height: 1.64;
             color: $color__blue-main;
+            margin-left: 6px;
           }
         }
       }
 
-      button {
+      .seeOffer {
         display: flex;
         align-items: center;
+        justify-content: center;
         background: linear-gradient(
           to bottom,
           $color__orange-main 5%,
@@ -100,13 +149,15 @@
         border-radius: 24px;
         border: 1px solid $color__yellow-main;
         cursor: pointer;
-        color: white;
-        font-size: 0.9rem;
+        color: $color__white-main;
+        font-size: 1rem;
         font-weight: bold;
-        padding: 1vh 2vw;
+        padding: 8px 24px;
+        margin-left: auto;
 
         @media screen and (max-width: 768px) {
-          padding: 1vh 30vw;
+          width: 100%;
+          margin: 20px 0 0 0;
         }
 
         &:hover {
@@ -137,7 +188,7 @@
       margin: 5vh 0 3vh 0;
 
       &.--desktop {
-        @media screen and (max-width: 768px) {
+        @media screen and (max-width: 992px) {
           display: none;
         }
       }
@@ -145,7 +196,7 @@
       &.--mobile {
         margin: 0;
 
-        @media screen and (min-width: 768px) {
+        @media screen and (min-width: 992px) {
           display: none;
         }
       }
@@ -154,24 +205,29 @@
     .m-candidateBox {
       display: flex;
       align-items: center;
-      justify-content: space-between;
       border-radius: 6px;
       margin: 4vh 2vw 1vh 2vw;
       box-shadow: 0 12px 30px 1px $color__palelilac-main;
       background-color: white;
+      padding: 15px;
+
+      @media screen and (max-width: 992px) {
+        margin: 10px 0;
+      }
 
       &.seen,
       &.interested {
         background-color: $color__lightblue-extralight;
 
         .--watchProfile {
-          background: $color__blue-main;
+          background: $color__blue-light;
           color: $color__white-main;
         }
       }
 
       &.--mobile {
-        justify-content: space-around;
+        flex-direction: column;
+        align-items: flex-start;
       }
 
       img.a-avatar {
@@ -181,16 +237,42 @@
         -webkit-border-radius: 30px;
         -moz-border-radius: 30px;
         border-radius: 30px;
-        margin: 12px;
+        margin: 0 12px 12px 0;
+
+        @media screen and (max-width: 992px) {
+          width: 50px;
+          height: 52px;
+          border-radius: 16px;
+        }
+      }
+
+      .skillsAndPercentageWrapper {
+        display: flex;
+        align-items: flex-end;
+        width: 100%;
+      }
+
+      .candidateTitleWrapper {
+        display: flex;
+        flex-direction: column;
+
+        @media screen and (max-width: 992px) {
+          flex-direction: row;
+          align-items: flex-start;
+          width: 100%;
+        }
       }
 
       .m-nameContainer {
         flex: 1;
         display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
+        align-items: center;
         font-weight: bold;
+
+        @media screen and (max-width: 992px) {
+          flex-direction: column;
+          align-items: flex-start;
+        }
 
         &.--mobile {
           display: flex;
@@ -201,11 +283,20 @@
           font-size: 1.3rem;
           letter-spacing: 0.15px;
           color: $color__blue-main;
+
+          @media screen and (max-width: 576px) {
+            font-size: 1rem;
+          }
         }
 
         .locationWrapper {
           display: flex;
           align-items: center;
+          margin-left: 15px;
+
+          @media screen and (max-width: 992px) {
+            margin: 0;
+          }
         }
 
         i.material-icons {
@@ -218,25 +309,41 @@
           letter-spacing: 0.4px;
           color: $color__gray-main;
           margin-left: 5px;
+
+          @media screen and (max-width: 576px) {
+            font-size: 0.815rem;
+          }
+        }
+      }
+
+      .m-skillsContainer {
+        font-size: 0.8rem;
+        line-height: 1.33;
+        letter-spacing: 0.4px;
+        color: $color__slategray-main;
+
+        @media screen and (max-width: 992px) {
+          margin-right: 10px;
+          span {
+            display: block;
+          }
         }
 
-        .m-skillsContainer {
-          font-size: 0.8rem;
-          line-height: 1.33;
-          letter-spacing: 0.4px;
-          color: $color__gray-light;
-
-          .a-title--skills {
-            font-weight: bold;
-          }
+        .a-title--skills {
+          font-weight: bold;
+          color: $color__blue-main;
         }
       }
 
       .m-affinityPercentageContainer {
         display: flex;
         align-items: flex-start;
-        margin: 0 3vw;
+        margin: 0 30px 0 auto;
         color: $color__blue-main;
+
+        @media screen and (max-width: 992px) {
+          margin: 0 0 0 auto;
+        }
 
         &__group {
           display: flex;
@@ -247,7 +354,6 @@
           flex-direction: column;
           align-items: flex-end;
           justify-content: flex-end;
-          margin: 0;
         }
 
         .a-affinityPercentage {
@@ -255,10 +361,18 @@
           font-weight: bold;
           line-height: 1.25;
           letter-spacing: normal;
+
+          @media screen and (max-width: 992px) {
+            font-size: 1.25rem;
+          }
         }
 
         i.material-icons {
           font-size: 0.7rem;
+
+          @media screen and (max-width: 992px) {
+            display: none;
+          }
         }
       }
 
@@ -266,15 +380,6 @@
         display: flex;
         justify-content: space-between;
         align-content: center;
-
-        .iconWrapper {
-          display: flex;
-          align-items: center;
-          margin-right: 20px;
-          color: $color__orange-main;
-          cursor: default;
-          width: 24px;
-        }
 
         .watchProfileWrapper {
           margin: 0 20px 0 auto;

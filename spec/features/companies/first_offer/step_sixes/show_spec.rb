@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "When company fill the step six form", :type => :feature do
+RSpec.describe "When company fill the step six form", type: :feature do
   let(:company)   { create(:company, :first_time, name: 'HoyTrabajas.com') }
   let(:offer)     { create(:offer) }
 

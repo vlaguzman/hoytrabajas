@@ -1,0 +1,2 @@
+module Elasticsearch::Common
+end

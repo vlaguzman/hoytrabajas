@@ -6,17 +6,13 @@ class ApplicationController < ActionController::Base
   protected
 
   def create_clientify_user(user, clientify_tag)
-    if Rails.env.production?
-      token = Clientify::ApiAuth.new().obtain_token 
-      Clientify::DataManager.new(token).create_contact(user, clientify_tag)
-    end
+    token = Clientify::ApiAuth.new().obtain_token 
+    Clientify::DataManager.new(token).create_contact(user, clientify_tag)
   end
 
   def update_clientify_user(user)
-    if Rails.env.production?
-      token = Clientify::ApiAuth.new().obtain_token 
-      Clientify::DataManager.new(token).update_contact(user)
-    end
+    token = Clientify::ApiAuth.new().obtain_token 
+    Clientify::DataManager.new(token).update_contact(user)
   end
 
   private

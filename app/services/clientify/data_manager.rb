@@ -33,12 +33,12 @@ class Clientify::DataManager
 
   private 
   
-  def last_name_or_nil user
-    (user.is_a? User)? user.last_name : nil
+  def last_name_or_nil resource 
+    (resource.is_a? User)? resource.last_name : nil
   end
 
-  def phone_number user
-    (user.is_a? User)? user.contact_number : user.contact_cellphone
+  def phone_number resource
+    (resource.is_a? User)? resource.contact_number : resource.contact_cellphone
   end
 
   def convert_response_and_give response, data

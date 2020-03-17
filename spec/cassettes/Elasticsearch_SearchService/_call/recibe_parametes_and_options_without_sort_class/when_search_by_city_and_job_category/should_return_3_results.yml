@@ -1,0 +1,552 @@
+---
+http_interactions:
+- request:
+    method: head
+    uri: http://elasticsearch_test:9200/offers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '1693'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:18:53 GMT
+- request:
+    method: delete
+    uri: http://elasticsearch_test:9200/offers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '47'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"acknowledged":true}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:18:53 GMT
+- request:
+    method: head
+    uri: http://elasticsearch_test:9200/offers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '365'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:18:53 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers
+    body:
+      encoding: UTF-8
+      string: '{"settings":{"index":{"number_of_shards":1,"number_of_replicas":0,"max_ngram_diff":50,"analysis":{"index_analyzer":{"common_index_analizer":{"type":"custom","tokenizer":"standard","filter":["lowercase","common_ngram_filter"]}},"search_analyzer":{"common_search_analyzer":{"type":"custom","tokenizer":"standard","filter":["lowercase","standard","common_ngram_filter"]}},"ascii_analizer":{"common_ascii_analyzer":{"tokenizer":"standard","filter":"standard"}},"filter":{"common_ngram_filter":{"type":"nGram","min_gram":2,"max_gram":50}}}}},"mappings":{"dynamic":"false","properties":{"id":{"type":"long"},"title":{"type":"text","analyzer":"spanish"},"description":{"type":"text","analyzer":"spanish"},"status":{"type":"text"},"created_at":{"type":"date"},"city":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"job_categories":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"work_mode":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"contract_type":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"working_days":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"available_work_days":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"job_aids":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"languages":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}}}}}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '73'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"acknowledged":true,"shards_acknowledged":true,"index":"offers"}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:18:53 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/15
+    body:
+      encoding: UTF-8
+      string: '{"id":15,"title":"Omnis ipsum sequi magnam nam accusantium vel voluptatem.","description":"endSint
+        esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:18:53.540-05:00","city":{"id":15,"description":"Accra"},"job_categories":[{"id":9,"description":"Clothing
+        \u0026 Games"}],"work_mode":{"id":12,"description":"Enfocado en la calidad"},"contract_type":{"id":12,"description":"tangible"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/15"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '139'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"15","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":0,"_primary_term":1}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:18:53 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/16
+    body:
+      encoding: UTF-8
+      string: '{"id":16,"title":"Fugiat commodi esse earum sit qui est qui.","description":"endSint
+        esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:18:53.604-05:00","city":{"id":15,"description":"Accra"},"job_categories":[{"id":10,"description":"Games
+        \u0026 Kids"}],"work_mode":{"id":13,"description":"instalación"},"contract_type":{"id":13,"description":"superestructura"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/16"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '138'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"16","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":1,"_primary_term":1}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:18:53 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/17
+    body:
+      encoding: UTF-8
+      string: '{"id":17,"title":"Suscipit cum enim iure aut nihil hic officiis.","description":"endSint
+        esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:18:53.671-05:00","city":{"id":15,"description":"Accra"},"job_categories":[{"id":11,"description":"Garden
+        \u0026 Tools"}],"work_mode":{"id":14,"description":"optimizada"},"contract_type":{"id":14,"description":"Polarizado"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/17"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '140'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"17","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":2,"_primary_term":1}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:18:53 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/18
+    body:
+      encoding: UTF-8
+      string: '{"id":18,"title":"Minus porro et repudiandae voluptates veritatis optio
+        voluptatum.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:18:53.735-05:00","city":{"id":15,"description":"Accra"},"job_categories":[{"id":11,"description":"Garden
+        \u0026 Tools"}],"work_mode":{"id":15,"description":"Monitorizado"},"contract_type":{"id":15,"description":"Organico"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/18"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '140'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"18","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":3,"_primary_term":1}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:18:53 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/19
+    body:
+      encoding: UTF-8
+      string: '{"id":19,"title":"Distinctio qui minus debitis aut fugiat facilis ut.","description":"endSint
+        esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:18:53.799-05:00","city":{"id":15,"description":"Accra"},"job_categories":[{"id":11,"description":"Garden
+        \u0026 Tools"}],"work_mode":{"id":16,"description":"escalable"},"contract_type":{"id":16,"description":"Fácil"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/19"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '140'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"19","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":4,"_primary_term":1}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:18:53 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/20
+    body:
+      encoding: UTF-8
+      string: '{"id":20,"title":"Dignissimos voluptatem aperiam velit animi ut aliquam
+        sit.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:18:53.870-05:00","city":{"id":21,"description":"Antananarivo"},"job_categories":[{"id":11,"description":"Garden
+        \u0026 Tools"}],"work_mode":{"id":17,"description":"Opcional"},"contract_type":{"id":17,"description":"Realineado"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/20"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '140'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"20","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":5,"_primary_term":1}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:18:53 GMT
+- request:
+    method: head
+    uri: http://elasticsearch_test:9200/offers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '1693'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:18:53 GMT
+- request:
+    method: post
+    uri: http://elasticsearch_test:9200/offers/_bulk
+    body:
+      encoding: UTF-8
+      string: |
+        {"index":{"_id":15}}
+        {"id":15,"title":"Omnis ipsum sequi magnam nam accusantium vel voluptatem.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:18:53.540-05:00","city":{"id":15,"description":"Accra"},"job_categories":[{"id":9,"description":"Clothing \u0026 Games"}],"work_mode":{"id":12,"description":"Enfocado en la calidad"},"contract_type":{"id":12,"description":"tangible"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":16}}
+        {"id":16,"title":"Fugiat commodi esse earum sit qui est qui.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:18:53.604-05:00","city":{"id":15,"description":"Accra"},"job_categories":[{"id":10,"description":"Games \u0026 Kids"}],"work_mode":{"id":13,"description":"instalación"},"contract_type":{"id":13,"description":"superestructura"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":17}}
+        {"id":17,"title":"Suscipit cum enim iure aut nihil hic officiis.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:18:53.671-05:00","city":{"id":15,"description":"Accra"},"job_categories":[{"id":11,"description":"Garden \u0026 Tools"}],"work_mode":{"id":14,"description":"optimizada"},"contract_type":{"id":14,"description":"Polarizado"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":18}}
+        {"id":18,"title":"Minus porro et repudiandae voluptates veritatis optio voluptatum.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:18:53.735-05:00","city":{"id":15,"description":"Accra"},"job_categories":[{"id":11,"description":"Garden \u0026 Tools"}],"work_mode":{"id":15,"description":"Monitorizado"},"contract_type":{"id":15,"description":"Organico"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":19}}
+        {"id":19,"title":"Distinctio qui minus debitis aut fugiat facilis ut.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:18:53.799-05:00","city":{"id":15,"description":"Accra"},"job_categories":[{"id":11,"description":"Garden \u0026 Tools"}],"work_mode":{"id":16,"description":"escalable"},"contract_type":{"id":16,"description":"Fácil"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":20}}
+        {"id":20,"title":"Dignissimos voluptatem aperiam velit animi ut aliquam sit.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:18:53.870-05:00","city":{"id":21,"description":"Antananarivo"},"job_categories":[{"id":11,"description":"Garden \u0026 Tools"}],"work_mode":{"id":17,"description":"Opcional"},"contract_type":{"id":17,"description":"Realineado"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/x-ndjson
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '219'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":6,"errors":false,"items":[{"index":{"_index":"offers","_type":"_doc","_id":"15","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":6,"_primary_term":1,"status":200}},{"index":{"_index":"offers","_type":"_doc","_id":"16","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":7,"_primary_term":1,"status":200}},{"index":{"_index":"offers","_type":"_doc","_id":"17","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":8,"_primary_term":1,"status":200}},{"index":{"_index":"offers","_type":"_doc","_id":"18","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":9,"_primary_term":1,"status":200}},{"index":{"_index":"offers","_type":"_doc","_id":"19","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":10,"_primary_term":1,"status":200}},{"index":{"_index":"offers","_type":"_doc","_id":"20","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":11,"_primary_term":1,"status":200}}]}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:18:53 GMT
+- request:
+    method: get
+    uri: http://elasticsearch_test:9200/offers/_search?scroll=30s
+    body:
+      encoding: UTF-8
+      string: '{"query":{"bool":{"filter":[{"nested":{"path":"city","query":{"bool":{"should":[{"match":{"city.id":15}}]}}}},{"nested":{"path":"job_categories","query":{"bool":{"should":[{"match":{"job_categories.id":11}}]}}}}]}}}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '656'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJfc2Nyb2xsX2lkIjoiRFhGMVpYSjVRVzVrUm1WMFkyZ0JBQUFBQUFBQUFKQVdUbEkxUVRSVFNGVlVObkZ4ZURCTmIyNTJZbVpzWnc9PSIsInRvb2siOjEsInRpbWVkX291dCI6ZmFsc2UsIl9zaGFyZHMiOnsidG90YWwiOjEsInN1Y2Nlc3NmdWwiOjEsInNraXBwZWQiOjAsImZhaWxlZCI6MH0sImhpdHMiOnsidG90YWwiOnsidmFsdWUiOjMsInJlbGF0aW9uIjoiZXEifSwibWF4X3Njb3JlIjowLjAsImhpdHMiOlt7Il9pbmRleCI6Im9mZmVycyIsIl90eXBlIjoiX2RvYyIsIl9pZCI6IjE3IiwiX3Njb3JlIjowLjAsIl9zb3VyY2UiOnsiaWQiOjE3LCJ0aXRsZSI6IlN1c2NpcGl0IGN1bSBlbmltIGl1cmUgYXV0IG5paGlsIGhpYyBvZmZpY2lpcy4iLCJkZXNjcmlwdGlvbiI6ImVuZFNpbnQgZXNzZSBhbmltIGNvbnNlcXVhdCBjb21tb2RvLiIsInN0YXR1cyI6ImFjdGl2ZSIsImNyZWF0ZWRfYXQiOiIyMDIwLTAzLTE2VDE0OjE4OjUzLjY3MS0wNTowMCIsImNpdHkiOnsiaWQiOjE1LCJkZXNjcmlwdGlvbiI6IkFjY3JhIn0sImpvYl9jYXRlZ29yaWVzIjpbeyJpZCI6MTEsImRlc2NyaXB0aW9uIjoiR2FyZGVuIFx1MDAyNiBUb29scyJ9XSwid29ya19tb2RlIjp7ImlkIjoxNCwiZGVzY3JpcHRpb24iOiJvcHRpbWl6YWRhIn0sImNvbnRyYWN0X3R5cGUiOnsiaWQiOjE0LCJkZXNjcmlwdGlvbiI6IlBvbGFyaXphZG8ifSwid29ya2luZ19kYXlzIjpbXSwiYXZhaWxhYmxlX3dvcmtfZGF5cyI6W10sImpvYl9haWRzIjpbXSwibGFuZ3VhZ2VzIjpbXX19LHsiX2luZGV4Ijoib2ZmZXJzIiwiX3R5cGUiOiJfZG9jIiwiX2lkIjoiMTgiLCJfc2NvcmUiOjAuMCwiX3NvdXJjZSI6eyJpZCI6MTgsInRpdGxlIjoiTWludXMgcG9ycm8gZXQgcmVwdWRpYW5kYWUgdm9sdXB0YXRlcyB2ZXJpdGF0aXMgb3B0aW8gdm9sdXB0YXR1bS4iLCJkZXNjcmlwdGlvbiI6ImVuZFNpbnQgZXNzZSBhbmltIGNvbnNlcXVhdCBjb21tb2RvLiIsInN0YXR1cyI6ImFjdGl2ZSIsImNyZWF0ZWRfYXQiOiIyMDIwLTAzLTE2VDE0OjE4OjUzLjczNS0wNTowMCIsImNpdHkiOnsiaWQiOjE1LCJkZXNjcmlwdGlvbiI6IkFjY3JhIn0sImpvYl9jYXRlZ29yaWVzIjpbeyJpZCI6MTEsImRlc2NyaXB0aW9uIjoiR2FyZGVuIFx1MDAyNiBUb29scyJ9XSwid29ya19tb2RlIjp7ImlkIjoxNSwiZGVzY3JpcHRpb24iOiJNb25pdG9yaXphZG8ifSwiY29udHJhY3RfdHlwZSI6eyJpZCI6MTUsImRlc2NyaXB0aW9uIjoiT3JnYW5pY28ifSwid29ya2luZ19kYXlzIjpbXSwiYXZhaWxhYmxlX3dvcmtfZGF5cyI6W10sImpvYl9haWRzIjpbXSwibGFuZ3VhZ2VzIjpbXX19LHsiX2luZGV4Ijoib2ZmZXJzIiwiX3R5cGUiOiJfZG9jIiwiX2lkIjoiMTkiLCJfc2NvcmUiOjAuMCwiX3NvdXJjZSI6eyJpZCI6MTksInRpdGxlIjoiRGlzdGluY3RpbyBxdWkgbWludXMgZGViaXRpcyBhdXQgZnVnaWF0IGZhY2lsaXMgdXQuIiwiZGVzY3JpcHRpb24iOiJlbmRTaW50IGVzc2UgYW5pbSBjb25zZXF1YXQgY29tbW9kby4iLCJzdGF0dXMiOiJhY3RpdmUiLCJjcmVhdGVkX2F0IjoiMjAyMC0wMy0xNlQxNDoxODo1My43OTktMDU6MDAiLCJjaXR5Ijp7ImlkIjoxNSwiZGVzY3JpcHRpb24iOiJBY2NyYSJ9LCJqb2JfY2F0ZWdvcmllcyI6W3siaWQiOjExLCJkZXNjcmlwdGlvbiI6IkdhcmRlbiBcdTAwMjYgVG9vbHMifV0sIndvcmtfbW9kZSI6eyJpZCI6MTYsImRlc2NyaXB0aW9uIjoiZXNjYWxhYmxlIn0sImNvbnRyYWN0X3R5cGUiOnsiaWQiOjE2LCJkZXNjcmlwdGlvbiI6IkbDoWNpbCJ9LCJ3b3JraW5nX2RheXMiOltdLCJhdmFpbGFibGVfd29ya19kYXlzIjpbXSwiam9iX2FpZHMiOltdLCJsYW5ndWFnZXMiOltdfX1dfX0=
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:18:54 GMT
+- request:
+    method: get
+    uri: http://elasticsearch_test:9200/_search/scroll
+    body:
+      encoding: UTF-8
+      string: '{"scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAJAWTlI1QTRTSFVUNnFxeDBNb252YmZsZw==","scroll":"30s"}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '214'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAJAWTlI1QTRTSFVUNnFxeDBNb252YmZsZw==","took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":{"value":3,"relation":"eq"},"max_score":0.0,"hits":[]}}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:18:54 GMT
+- request:
+    method: head
+    uri: http://elasticsearch:9200/offers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '1693'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:18:55 GMT
+- request:
+    method: delete
+    uri: http://elasticsearch:9200/offers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '47'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"acknowledged":true}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:18:55 GMT
+- request:
+    method: head
+    uri: http://elasticsearch:9200/offers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '365'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:18:55 GMT
+- request:
+    method: put
+    uri: http://elasticsearch:9200/offers
+    body:
+      encoding: UTF-8
+      string: '{"settings":{"index":{"number_of_shards":1,"number_of_replicas":0,"max_ngram_diff":50,"analysis":{"index_analyzer":{"common_index_analizer":{"type":"custom","tokenizer":"standard","filter":["lowercase","common_ngram_filter"]}},"search_analyzer":{"common_search_analyzer":{"type":"custom","tokenizer":"standard","filter":["lowercase","standard","common_ngram_filter"]}},"ascii_analizer":{"common_ascii_analyzer":{"tokenizer":"standard","filter":"standard"}},"filter":{"common_ngram_filter":{"type":"nGram","min_gram":2,"max_gram":50}}}}},"mappings":{"dynamic":"false","properties":{"id":{"type":"long"},"title":{"type":"text","analyzer":"spanish"},"description":{"type":"text","analyzer":"spanish"},"status":{"type":"text"},"created_at":{"type":"date"},"city":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"job_categories":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"work_mode":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"contract_type":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"working_days":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"available_work_days":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"job_aids":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"languages":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}}}}}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '73'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"acknowledged":true,"shards_acknowledged":true,"index":"offers"}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:18:55 GMT
+recorded_with: VCR 5.1.0

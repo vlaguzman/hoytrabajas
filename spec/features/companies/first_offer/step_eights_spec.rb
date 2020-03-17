@@ -23,7 +23,7 @@ RSpec.describe "When company arrives in step eight", :type => :feature do
       scenario "should click the home button and go to root path", js: true do
         sign_in company
         visit companies_first_offer_step_eight_path
-    
+
         click_link_or_button('Inicio')
         expect(current_path).to eq(root_path)
       end

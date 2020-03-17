@@ -1,0 +1,1076 @@
+---
+http_interactions:
+- request:
+    method: head
+    uri: http://elasticsearch_test:9200/offers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '1693'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:10 GMT
+- request:
+    method: delete
+    uri: http://elasticsearch_test:9200/offers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '47'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"acknowledged":true}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:10 GMT
+- request:
+    method: head
+    uri: http://elasticsearch_test:9200/offers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '365'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:10 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers
+    body:
+      encoding: UTF-8
+      string: '{"settings":{"index":{"number_of_shards":1,"number_of_replicas":0,"max_ngram_diff":50,"analysis":{"index_analyzer":{"common_index_analizer":{"type":"custom","tokenizer":"standard","filter":["lowercase","common_ngram_filter"]}},"search_analyzer":{"common_search_analyzer":{"type":"custom","tokenizer":"standard","filter":["lowercase","standard","common_ngram_filter"]}},"ascii_analizer":{"common_ascii_analyzer":{"tokenizer":"standard","filter":"standard"}},"filter":{"common_ngram_filter":{"type":"nGram","min_gram":2,"max_gram":50}}}}},"mappings":{"dynamic":"false","properties":{"id":{"type":"long"},"title":{"type":"text","analyzer":"spanish"},"description":{"type":"text","analyzer":"spanish"},"status":{"type":"text"},"created_at":{"type":"date"},"city":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"job_categories":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"work_mode":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"contract_type":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"working_days":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"available_work_days":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"job_aids":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"languages":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}}}}}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '73'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"acknowledged":true,"shards_acknowledged":true,"index":"offers"}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:10 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/9001
+    body:
+      encoding: UTF-8
+      string: '{"id":9001,"title":"Sint cum error exercitationem incidunt accusantium
+        illum accusamus.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:10.299-05:00","city":{"id":316,"description":"Ulaanbaatar"},"job_categories":[{"id":78,"description":"Shoes,
+        Toys \u0026 Baby"}],"work_mode":{"id":113,"description":"Automatizado"},"contract_type":{"id":113,"description":"Opcional"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/9001"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '139'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"9001","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":0,"_primary_term":1}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:10 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/9002
+    body:
+      encoding: UTF-8
+      string: '{"id":9002,"title":"Pariatur officiis repudiandae optio quos sed itaque
+        est.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:10.365-05:00","city":{"id":318,"description":"Bratislava"},"job_categories":[{"id":79,"description":"Jewelry,
+        Kids \u0026 Sports"}],"work_mode":{"id":114,"description":"Robusto"},"contract_type":{"id":114,"description":"vía
+        web"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/9002"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '138'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"9002","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":1,"_primary_term":1}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:10 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/9003
+    body:
+      encoding: UTF-8
+      string: '{"id":9003,"title":"Autem labore deleniti error optio et ipsam consequatur.","description":"endSint
+        esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:10.429-05:00","city":{"id":320,"description":"San
+        Jose"},"job_categories":[{"id":80,"description":"Automotive, Toys \u0026 Industrial"}],"work_mode":{"id":115,"description":"conjunto"},"contract_type":{"id":115,"description":"red
+        de area local"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/9003"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '142'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"9003","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":2,"_primary_term":1}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:10 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/9004
+    body:
+      encoding: UTF-8
+      string: '{"id":9004,"title":"Cumque et ratione repudiandae aut quasi maiores
+        aliquid.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:10.498-05:00","city":{"id":322,"description":"Freetown"},"job_categories":[{"id":81,"description":"Toys"}],"work_mode":{"id":116,"description":"Obligatorio"},"contract_type":{"id":116,"description":"fuerza
+        de trabajo"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/9004"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '142'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"9004","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":3,"_primary_term":1}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:10 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/9005
+    body:
+      encoding: UTF-8
+      string: '{"id":9005,"title":"Qui eum atque reprehenderit dicta porro nam rem.","description":"endSint
+        esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:10.585-05:00","city":{"id":324,"description":"N''Djamena"},"job_categories":[{"id":82,"description":"Beauty
+        \u0026 Jewelry"}],"work_mode":{"id":117,"description":"Inverso"},"contract_type":{"id":117,"description":"Visionario"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/9005"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '142'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"9005","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":4,"_primary_term":1}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:10 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/9006
+    body:
+      encoding: UTF-8
+      string: '{"id":9006,"title":"Pariatur sint et quia provident delectus vel culpa.","description":"endSint
+        esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:10.649-05:00","city":{"id":325,"description":"Bissau"},"job_categories":[{"id":83,"description":"Health"}],"work_mode":{"id":118,"description":"en
+        fases"},"contract_type":{"id":118,"description":"Organizado"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/9006"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '142'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"9006","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":5,"_primary_term":1}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:10 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/9007
+    body:
+      encoding: UTF-8
+      string: '{"id":9007,"title":"In corporis alias id rerum tenetur possimus tempore.","description":"endSint
+        esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:10.707-05:00","city":{"id":325,"description":"Bissau"},"job_categories":[{"id":84,"description":"Automotive,
+        Books \u0026 Tools"}],"work_mode":{"id":119,"description":"móbil"},"contract_type":{"id":119,"description":"Open-source"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/9007"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '142'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"9007","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":6,"_primary_term":1}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:10 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/9008
+    body:
+      encoding: UTF-8
+      string: '{"id":9008,"title":"Cum et laborum exercitationem minima quidem quod
+        sunt.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:10.765-05:00","city":{"id":325,"description":"Bissau"},"job_categories":[{"id":85,"description":"Books,
+        Outdoors \u0026 Clothing"}],"work_mode":{"id":120,"description":"Extendido"},"contract_type":{"id":120,"description":"maximizada"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/9008"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '142'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"9008","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":7,"_primary_term":1}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:10 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/9009
+    body:
+      encoding: UTF-8
+      string: '{"id":9009,"title":"Dicta dolorum quam architecto in eos nostrum nemo.","description":"endSint
+        esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:10.825-05:00","city":{"id":325,"description":"Bissau"},"job_categories":[{"id":86,"description":"Automotive
+        \u0026 Sports"}],"work_mode":{"id":121,"description":"Seguro"},"contract_type":{"id":121,"description":"implementación"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/9009"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '141'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"9009","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":8,"_primary_term":1}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:10 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/9010
+    body:
+      encoding: UTF-8
+      string: '{"id":9010,"title":"Et nisi voluptatum voluptates quis culpa cupiditate
+        ea.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:10.893-05:00","city":{"id":330,"description":"Pristina"},"job_categories":[{"id":87,"description":"Books,
+        Home \u0026 Sports"}],"work_mode":{"id":122,"description":"base de datos"},"contract_type":{"id":122,"description":"Multi
+        canal"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/9010"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '140'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"9010","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":9,"_primary_term":1}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:10 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/9011
+    body:
+      encoding: UTF-8
+      string: '{"id":9011,"title":"Enim quod possimus et tempore est non voluptas.","description":"endSint
+        esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:10.953-05:00","city":{"id":330,"description":"Pristina"},"job_categories":[{"id":88,"description":"Automotive
+        \u0026 Clothing"}],"work_mode":{"id":123,"description":"Compatible"},"contract_type":{"id":123,"description":"intermedia"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/9011"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '138'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"9011","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":10,"_primary_term":1}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:10 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/9012
+    body:
+      encoding: UTF-8
+      string: '{"id":9012,"title":"Qui nesciunt delectus placeat expedita doloribus
+        fugit beatae.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:11.009-05:00","city":{"id":330,"description":"Pristina"},"job_categories":[{"id":89,"description":"Beauty,
+        Sports \u0026 Automotive"}],"work_mode":{"id":124,"description":"óptima"},"contract_type":{"id":124,"description":"Orígenes"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/9012"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '138'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"9012","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":11,"_primary_term":1}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:11 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/9013
+    body:
+      encoding: UTF-8
+      string: '{"id":9013,"title":"Sed in iure non ut et et cumque.","description":"endSint
+        esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:11.066-05:00","city":{"id":330,"description":"Pristina"},"job_categories":[{"id":90,"description":"Books,
+        Electronics \u0026 Baby"}],"work_mode":{"id":125,"description":"proceso de
+        mejora"},"contract_type":{"id":125,"description":"monitorizar"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/9013"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '139'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"9013","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":12,"_primary_term":1}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:11 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/9014
+    body:
+      encoding: UTF-8
+      string: '{"id":9014,"title":"Modi fugit illum sed sit qui ut ducimus.","description":"endSint
+        esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:11.121-05:00","city":{"id":330,"description":"Pristina"},"job_categories":[{"id":91,"description":"Computers"}],"work_mode":{"id":126,"description":"Asimilado"},"contract_type":{"id":126,"description":"Distribuido"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/9014"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '140'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"9014","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":13,"_primary_term":1}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:11 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/9015
+    body:
+      encoding: UTF-8
+      string: '{"id":9015,"title":"Quia harum quo qui exercitationem magnam quis corrupti.","description":"endSint
+        esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:11.176-05:00","city":{"id":330,"description":"Pristina"},"job_categories":[{"id":92,"description":"Health"}],"work_mode":{"id":127,"description":"archivo"},"contract_type":{"id":127,"description":"núcleo"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/9015"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '140'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"9015","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":14,"_primary_term":1}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:11 GMT
+- request:
+    method: head
+    uri: http://elasticsearch_test:9200/offers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '1693'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:11 GMT
+- request:
+    method: post
+    uri: http://elasticsearch_test:9200/offers/_bulk
+    body:
+      encoding: UTF-8
+      string: |
+        {"index":{"_id":9001}}
+        {"id":9001,"title":"Sint cum error exercitationem incidunt accusantium illum accusamus.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:10.299-05:00","city":{"id":316,"description":"Ulaanbaatar"},"job_categories":[{"id":78,"description":"Shoes, Toys \u0026 Baby"}],"work_mode":{"id":113,"description":"Automatizado"},"contract_type":{"id":113,"description":"Opcional"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":9002}}
+        {"id":9002,"title":"Pariatur officiis repudiandae optio quos sed itaque est.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:10.365-05:00","city":{"id":318,"description":"Bratislava"},"job_categories":[{"id":79,"description":"Jewelry, Kids \u0026 Sports"}],"work_mode":{"id":114,"description":"Robusto"},"contract_type":{"id":114,"description":"vía web"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":9003}}
+        {"id":9003,"title":"Autem labore deleniti error optio et ipsam consequatur.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:10.429-05:00","city":{"id":320,"description":"San Jose"},"job_categories":[{"id":80,"description":"Automotive, Toys \u0026 Industrial"}],"work_mode":{"id":115,"description":"conjunto"},"contract_type":{"id":115,"description":"red de area local"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":9004}}
+        {"id":9004,"title":"Cumque et ratione repudiandae aut quasi maiores aliquid.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:10.498-05:00","city":{"id":322,"description":"Freetown"},"job_categories":[{"id":81,"description":"Toys"}],"work_mode":{"id":116,"description":"Obligatorio"},"contract_type":{"id":116,"description":"fuerza de trabajo"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":9005}}
+        {"id":9005,"title":"Qui eum atque reprehenderit dicta porro nam rem.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:10.585-05:00","city":{"id":324,"description":"N'Djamena"},"job_categories":[{"id":82,"description":"Beauty \u0026 Jewelry"}],"work_mode":{"id":117,"description":"Inverso"},"contract_type":{"id":117,"description":"Visionario"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":9006}}
+        {"id":9006,"title":"Pariatur sint et quia provident delectus vel culpa.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:10.649-05:00","city":{"id":325,"description":"Bissau"},"job_categories":[{"id":83,"description":"Health"}],"work_mode":{"id":118,"description":"en fases"},"contract_type":{"id":118,"description":"Organizado"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":9007}}
+        {"id":9007,"title":"In corporis alias id rerum tenetur possimus tempore.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:10.707-05:00","city":{"id":325,"description":"Bissau"},"job_categories":[{"id":84,"description":"Automotive, Books \u0026 Tools"}],"work_mode":{"id":119,"description":"móbil"},"contract_type":{"id":119,"description":"Open-source"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":9008}}
+        {"id":9008,"title":"Cum et laborum exercitationem minima quidem quod sunt.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:10.765-05:00","city":{"id":325,"description":"Bissau"},"job_categories":[{"id":85,"description":"Books, Outdoors \u0026 Clothing"}],"work_mode":{"id":120,"description":"Extendido"},"contract_type":{"id":120,"description":"maximizada"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":9009}}
+        {"id":9009,"title":"Dicta dolorum quam architecto in eos nostrum nemo.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:10.825-05:00","city":{"id":325,"description":"Bissau"},"job_categories":[{"id":86,"description":"Automotive \u0026 Sports"}],"work_mode":{"id":121,"description":"Seguro"},"contract_type":{"id":121,"description":"implementación"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":9010}}
+        {"id":9010,"title":"Et nisi voluptatum voluptates quis culpa cupiditate ea.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:10.893-05:00","city":{"id":330,"description":"Pristina"},"job_categories":[{"id":87,"description":"Books, Home \u0026 Sports"}],"work_mode":{"id":122,"description":"base de datos"},"contract_type":{"id":122,"description":"Multi canal"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":9011}}
+        {"id":9011,"title":"Enim quod possimus et tempore est non voluptas.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:10.953-05:00","city":{"id":330,"description":"Pristina"},"job_categories":[{"id":88,"description":"Automotive \u0026 Clothing"}],"work_mode":{"id":123,"description":"Compatible"},"contract_type":{"id":123,"description":"intermedia"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":9012}}
+        {"id":9012,"title":"Qui nesciunt delectus placeat expedita doloribus fugit beatae.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:11.009-05:00","city":{"id":330,"description":"Pristina"},"job_categories":[{"id":89,"description":"Beauty, Sports \u0026 Automotive"}],"work_mode":{"id":124,"description":"óptima"},"contract_type":{"id":124,"description":"Orígenes"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":9013}}
+        {"id":9013,"title":"Sed in iure non ut et et cumque.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:11.066-05:00","city":{"id":330,"description":"Pristina"},"job_categories":[{"id":90,"description":"Books, Electronics \u0026 Baby"}],"work_mode":{"id":125,"description":"proceso de mejora"},"contract_type":{"id":125,"description":"monitorizar"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":9014}}
+        {"id":9014,"title":"Modi fugit illum sed sit qui ut ducimus.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:11.121-05:00","city":{"id":330,"description":"Pristina"},"job_categories":[{"id":91,"description":"Computers"}],"work_mode":{"id":126,"description":"Asimilado"},"contract_type":{"id":126,"description":"Distribuido"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":9015}}
+        {"id":9015,"title":"Quia harum quo qui exercitationem magnam quis corrupti.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-16T14:22:11.176-05:00","city":{"id":330,"description":"Pristina"},"job_categories":[{"id":92,"description":"Health"}],"work_mode":{"id":127,"description":"archivo"},"contract_type":{"id":127,"description":"núcleo"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/x-ndjson
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '278'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":5,"errors":false,"items":[{"index":{"_index":"offers","_type":"_doc","_id":"9001","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":15,"_primary_term":1,"status":200}},{"index":{"_index":"offers","_type":"_doc","_id":"9002","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":16,"_primary_term":1,"status":200}},{"index":{"_index":"offers","_type":"_doc","_id":"9003","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":17,"_primary_term":1,"status":200}},{"index":{"_index":"offers","_type":"_doc","_id":"9004","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":18,"_primary_term":1,"status":200}},{"index":{"_index":"offers","_type":"_doc","_id":"9005","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":19,"_primary_term":1,"status":200}},{"index":{"_index":"offers","_type":"_doc","_id":"9006","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":20,"_primary_term":1,"status":200}},{"index":{"_index":"offers","_type":"_doc","_id":"9007","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":21,"_primary_term":1,"status":200}},{"index":{"_index":"offers","_type":"_doc","_id":"9008","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":22,"_primary_term":1,"status":200}},{"index":{"_index":"offers","_type":"_doc","_id":"9009","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":23,"_primary_term":1,"status":200}},{"index":{"_index":"offers","_type":"_doc","_id":"9010","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":24,"_primary_term":1,"status":200}},{"index":{"_index":"offers","_type":"_doc","_id":"9011","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":25,"_primary_term":1,"status":200}},{"index":{"_index":"offers","_type":"_doc","_id":"9012","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":26,"_primary_term":1,"status":200}},{"index":{"_index":"offers","_type":"_doc","_id":"9013","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":27,"_primary_term":1,"status":200}},{"index":{"_index":"offers","_type":"_doc","_id":"9014","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":28,"_primary_term":1,"status":200}},{"index":{"_index":"offers","_type":"_doc","_id":"9015","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":29,"_primary_term":1,"status":200}}]}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:11 GMT
+- request:
+    method: get
+    uri: http://elasticsearch_test:9200/offers/_search?scroll=30s
+    body:
+      encoding: UTF-8
+      string: '{"query":{"bool":{"filter":[{"nested":{"path":"city","query":{"bool":{"should":[{"match":{"city.id":325}}]}}}}]}},"sort":[{"created_at":{"order":"desc"}}]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '827'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJfc2Nyb2xsX2lkIjoiRFhGMVpYSjVRVzVrUm1WMFkyZ0JBQUFBQUFBQUFKWVdUbEkxUVRSVFNGVlVObkZ4ZURCTmIyNTJZbVpzWnc9PSIsInRvb2siOjEsInRpbWVkX291dCI6ZmFsc2UsIl9zaGFyZHMiOnsidG90YWwiOjEsInN1Y2Nlc3NmdWwiOjEsInNraXBwZWQiOjAsImZhaWxlZCI6MH0sImhpdHMiOnsidG90YWwiOnsidmFsdWUiOjQsInJlbGF0aW9uIjoiZXEifSwibWF4X3Njb3JlIjpudWxsLCJoaXRzIjpbeyJfaW5kZXgiOiJvZmZlcnMiLCJfdHlwZSI6Il9kb2MiLCJfaWQiOiI5MDA5IiwiX3Njb3JlIjpudWxsLCJfc291cmNlIjp7ImlkIjo5MDA5LCJ0aXRsZSI6IkRpY3RhIGRvbG9ydW0gcXVhbSBhcmNoaXRlY3RvIGluIGVvcyBub3N0cnVtIG5lbW8uIiwiZGVzY3JpcHRpb24iOiJlbmRTaW50IGVzc2UgYW5pbSBjb25zZXF1YXQgY29tbW9kby4iLCJzdGF0dXMiOiJhY3RpdmUiLCJjcmVhdGVkX2F0IjoiMjAyMC0wMy0xNlQxNDoyMjoxMC44MjUtMDU6MDAiLCJjaXR5Ijp7ImlkIjozMjUsImRlc2NyaXB0aW9uIjoiQmlzc2F1In0sImpvYl9jYXRlZ29yaWVzIjpbeyJpZCI6ODYsImRlc2NyaXB0aW9uIjoiQXV0b21vdGl2ZSBcdTAwMjYgU3BvcnRzIn1dLCJ3b3JrX21vZGUiOnsiaWQiOjEyMSwiZGVzY3JpcHRpb24iOiJTZWd1cm8ifSwiY29udHJhY3RfdHlwZSI6eyJpZCI6MTIxLCJkZXNjcmlwdGlvbiI6ImltcGxlbWVudGFjacOzbiJ9LCJ3b3JraW5nX2RheXMiOltdLCJhdmFpbGFibGVfd29ya19kYXlzIjpbXSwiam9iX2FpZHMiOltdLCJsYW5ndWFnZXMiOltdfSwic29ydCI6WzE1ODQzODY1MzA4MjVdfSx7Il9pbmRleCI6Im9mZmVycyIsIl90eXBlIjoiX2RvYyIsIl9pZCI6IjkwMDgiLCJfc2NvcmUiOm51bGwsIl9zb3VyY2UiOnsiaWQiOjkwMDgsInRpdGxlIjoiQ3VtIGV0IGxhYm9ydW0gZXhlcmNpdGF0aW9uZW0gbWluaW1hIHF1aWRlbSBxdW9kIHN1bnQuIiwiZGVzY3JpcHRpb24iOiJlbmRTaW50IGVzc2UgYW5pbSBjb25zZXF1YXQgY29tbW9kby4iLCJzdGF0dXMiOiJhY3RpdmUiLCJjcmVhdGVkX2F0IjoiMjAyMC0wMy0xNlQxNDoyMjoxMC43NjUtMDU6MDAiLCJjaXR5Ijp7ImlkIjozMjUsImRlc2NyaXB0aW9uIjoiQmlzc2F1In0sImpvYl9jYXRlZ29yaWVzIjpbeyJpZCI6ODUsImRlc2NyaXB0aW9uIjoiQm9va3MsIE91dGRvb3JzIFx1MDAyNiBDbG90aGluZyJ9XSwid29ya19tb2RlIjp7ImlkIjoxMjAsImRlc2NyaXB0aW9uIjoiRXh0ZW5kaWRvIn0sImNvbnRyYWN0X3R5cGUiOnsiaWQiOjEyMCwiZGVzY3JpcHRpb24iOiJtYXhpbWl6YWRhIn0sIndvcmtpbmdfZGF5cyI6W10sImF2YWlsYWJsZV93b3JrX2RheXMiOltdLCJqb2JfYWlkcyI6W10sImxhbmd1YWdlcyI6W119LCJzb3J0IjpbMTU4NDM4NjUzMDc2NV19LHsiX2luZGV4Ijoib2ZmZXJzIiwiX3R5cGUiOiJfZG9jIiwiX2lkIjoiOTAwNyIsIl9zY29yZSI6bnVsbCwiX3NvdXJjZSI6eyJpZCI6OTAwNywidGl0bGUiOiJJbiBjb3Jwb3JpcyBhbGlhcyBpZCByZXJ1bSB0ZW5ldHVyIHBvc3NpbXVzIHRlbXBvcmUuIiwiZGVzY3JpcHRpb24iOiJlbmRTaW50IGVzc2UgYW5pbSBjb25zZXF1YXQgY29tbW9kby4iLCJzdGF0dXMiOiJhY3RpdmUiLCJjcmVhdGVkX2F0IjoiMjAyMC0wMy0xNlQxNDoyMjoxMC43MDctMDU6MDAiLCJjaXR5Ijp7ImlkIjozMjUsImRlc2NyaXB0aW9uIjoiQmlzc2F1In0sImpvYl9jYXRlZ29yaWVzIjpbeyJpZCI6ODQsImRlc2NyaXB0aW9uIjoiQXV0b21vdGl2ZSwgQm9va3MgXHUwMDI2IFRvb2xzIn1dLCJ3b3JrX21vZGUiOnsiaWQiOjExOSwiZGVzY3JpcHRpb24iOiJtw7NiaWwifSwiY29udHJhY3RfdHlwZSI6eyJpZCI6MTE5LCJkZXNjcmlwdGlvbiI6Ik9wZW4tc291cmNlIn0sIndvcmtpbmdfZGF5cyI6W10sImF2YWlsYWJsZV93b3JrX2RheXMiOltdLCJqb2JfYWlkcyI6W10sImxhbmd1YWdlcyI6W119LCJzb3J0IjpbMTU4NDM4NjUzMDcwN119LHsiX2luZGV4Ijoib2ZmZXJzIiwiX3R5cGUiOiJfZG9jIiwiX2lkIjoiOTAwNiIsIl9zY29yZSI6bnVsbCwiX3NvdXJjZSI6eyJpZCI6OTAwNiwidGl0bGUiOiJQYXJpYXR1ciBzaW50IGV0IHF1aWEgcHJvdmlkZW50IGRlbGVjdHVzIHZlbCBjdWxwYS4iLCJkZXNjcmlwdGlvbiI6ImVuZFNpbnQgZXNzZSBhbmltIGNvbnNlcXVhdCBjb21tb2RvLiIsInN0YXR1cyI6ImFjdGl2ZSIsImNyZWF0ZWRfYXQiOiIyMDIwLTAzLTE2VDE0OjIyOjEwLjY0OS0wNTowMCIsImNpdHkiOnsiaWQiOjMyNSwiZGVzY3JpcHRpb24iOiJCaXNzYXUifSwiam9iX2NhdGVnb3JpZXMiOlt7ImlkIjo4MywiZGVzY3JpcHRpb24iOiJIZWFsdGgifV0sIndvcmtfbW9kZSI6eyJpZCI6MTE4LCJkZXNjcmlwdGlvbiI6ImVuIGZhc2VzIn0sImNvbnRyYWN0X3R5cGUiOnsiaWQiOjExOCwiZGVzY3JpcHRpb24iOiJPcmdhbml6YWRvIn0sIndvcmtpbmdfZGF5cyI6W10sImF2YWlsYWJsZV93b3JrX2RheXMiOltdLCJqb2JfYWlkcyI6W10sImxhbmd1YWdlcyI6W119LCJzb3J0IjpbMTU4NDM4NjUzMDY0OV19XX19
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:13 GMT
+- request:
+    method: get
+    uri: http://elasticsearch_test:9200/_search/scroll
+    body:
+      encoding: UTF-8
+      string: '{"scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAJYWTlI1QTRTSFVUNnFxeDBNb252YmZsZw==","scroll":"30s"}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '213'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAJYWTlI1QTRTSFVUNnFxeDBNb252YmZsZw==","took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":{"value":4,"relation":"eq"},"max_score":null,"hits":[]}}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:13 GMT
+- request:
+    method: get
+    uri: http://elasticsearch_test:9200/offers/_search?scroll=30s
+    body:
+      encoding: UTF-8
+      string: '{"query":{"bool":{"filter":[{"nested":{"path":"city","query":{"bool":{"should":[{"match":{"city.id":330}}]}}}}]}},"sort":[{"created_at":{"order":"desc"}}]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '1015'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJfc2Nyb2xsX2lkIjoiRFhGMVpYSjVRVzVrUm1WMFkyZ0JBQUFBQUFBQUFKY1dUbEkxUVRSVFNGVlVObkZ4ZURCTmIyNTJZbVpzWnc9PSIsInRvb2siOjEsInRpbWVkX291dCI6ZmFsc2UsIl9zaGFyZHMiOnsidG90YWwiOjEsInN1Y2Nlc3NmdWwiOjEsInNraXBwZWQiOjAsImZhaWxlZCI6MH0sImhpdHMiOnsidG90YWwiOnsidmFsdWUiOjYsInJlbGF0aW9uIjoiZXEifSwibWF4X3Njb3JlIjpudWxsLCJoaXRzIjpbeyJfaW5kZXgiOiJvZmZlcnMiLCJfdHlwZSI6Il9kb2MiLCJfaWQiOiI5MDE1IiwiX3Njb3JlIjpudWxsLCJfc291cmNlIjp7ImlkIjo5MDE1LCJ0aXRsZSI6IlF1aWEgaGFydW0gcXVvIHF1aSBleGVyY2l0YXRpb25lbSBtYWduYW0gcXVpcyBjb3JydXB0aS4iLCJkZXNjcmlwdGlvbiI6ImVuZFNpbnQgZXNzZSBhbmltIGNvbnNlcXVhdCBjb21tb2RvLiIsInN0YXR1cyI6ImFjdGl2ZSIsImNyZWF0ZWRfYXQiOiIyMDIwLTAzLTE2VDE0OjIyOjExLjE3Ni0wNTowMCIsImNpdHkiOnsiaWQiOjMzMCwiZGVzY3JpcHRpb24iOiJQcmlzdGluYSJ9LCJqb2JfY2F0ZWdvcmllcyI6W3siaWQiOjkyLCJkZXNjcmlwdGlvbiI6IkhlYWx0aCJ9XSwid29ya19tb2RlIjp7ImlkIjoxMjcsImRlc2NyaXB0aW9uIjoiYXJjaGl2byJ9LCJjb250cmFjdF90eXBlIjp7ImlkIjoxMjcsImRlc2NyaXB0aW9uIjoibsO6Y2xlbyJ9LCJ3b3JraW5nX2RheXMiOltdLCJhdmFpbGFibGVfd29ya19kYXlzIjpbXSwiam9iX2FpZHMiOltdLCJsYW5ndWFnZXMiOltdfSwic29ydCI6WzE1ODQzODY1MzExNzZdfSx7Il9pbmRleCI6Im9mZmVycyIsIl90eXBlIjoiX2RvYyIsIl9pZCI6IjkwMTQiLCJfc2NvcmUiOm51bGwsIl9zb3VyY2UiOnsiaWQiOjkwMTQsInRpdGxlIjoiTW9kaSBmdWdpdCBpbGx1bSBzZWQgc2l0IHF1aSB1dCBkdWNpbXVzLiIsImRlc2NyaXB0aW9uIjoiZW5kU2ludCBlc3NlIGFuaW0gY29uc2VxdWF0IGNvbW1vZG8uIiwic3RhdHVzIjoiYWN0aXZlIiwiY3JlYXRlZF9hdCI6IjIwMjAtMDMtMTZUMTQ6MjI6MTEuMTIxLTA1OjAwIiwiY2l0eSI6eyJpZCI6MzMwLCJkZXNjcmlwdGlvbiI6IlByaXN0aW5hIn0sImpvYl9jYXRlZ29yaWVzIjpbeyJpZCI6OTEsImRlc2NyaXB0aW9uIjoiQ29tcHV0ZXJzIn1dLCJ3b3JrX21vZGUiOnsiaWQiOjEyNiwiZGVzY3JpcHRpb24iOiJBc2ltaWxhZG8ifSwiY29udHJhY3RfdHlwZSI6eyJpZCI6MTI2LCJkZXNjcmlwdGlvbiI6IkRpc3RyaWJ1aWRvIn0sIndvcmtpbmdfZGF5cyI6W10sImF2YWlsYWJsZV93b3JrX2RheXMiOltdLCJqb2JfYWlkcyI6W10sImxhbmd1YWdlcyI6W119LCJzb3J0IjpbMTU4NDM4NjUzMTEyMV19LHsiX2luZGV4Ijoib2ZmZXJzIiwiX3R5cGUiOiJfZG9jIiwiX2lkIjoiOTAxMyIsIl9zY29yZSI6bnVsbCwiX3NvdXJjZSI6eyJpZCI6OTAxMywidGl0bGUiOiJTZWQgaW4gaXVyZSBub24gdXQgZXQgZXQgY3VtcXVlLiIsImRlc2NyaXB0aW9uIjoiZW5kU2ludCBlc3NlIGFuaW0gY29uc2VxdWF0IGNvbW1vZG8uIiwic3RhdHVzIjoiYWN0aXZlIiwiY3JlYXRlZF9hdCI6IjIwMjAtMDMtMTZUMTQ6MjI6MTEuMDY2LTA1OjAwIiwiY2l0eSI6eyJpZCI6MzMwLCJkZXNjcmlwdGlvbiI6IlByaXN0aW5hIn0sImpvYl9jYXRlZ29yaWVzIjpbeyJpZCI6OTAsImRlc2NyaXB0aW9uIjoiQm9va3MsIEVsZWN0cm9uaWNzIFx1MDAyNiBCYWJ5In1dLCJ3b3JrX21vZGUiOnsiaWQiOjEyNSwiZGVzY3JpcHRpb24iOiJwcm9jZXNvIGRlIG1lam9yYSJ9LCJjb250cmFjdF90eXBlIjp7ImlkIjoxMjUsImRlc2NyaXB0aW9uIjoibW9uaXRvcml6YXIifSwid29ya2luZ19kYXlzIjpbXSwiYXZhaWxhYmxlX3dvcmtfZGF5cyI6W10sImpvYl9haWRzIjpbXSwibGFuZ3VhZ2VzIjpbXX0sInNvcnQiOlsxNTg0Mzg2NTMxMDY2XX0seyJfaW5kZXgiOiJvZmZlcnMiLCJfdHlwZSI6Il9kb2MiLCJfaWQiOiI5MDEyIiwiX3Njb3JlIjpudWxsLCJfc291cmNlIjp7ImlkIjo5MDEyLCJ0aXRsZSI6IlF1aSBuZXNjaXVudCBkZWxlY3R1cyBwbGFjZWF0IGV4cGVkaXRhIGRvbG9yaWJ1cyBmdWdpdCBiZWF0YWUuIiwiZGVzY3JpcHRpb24iOiJlbmRTaW50IGVzc2UgYW5pbSBjb25zZXF1YXQgY29tbW9kby4iLCJzdGF0dXMiOiJhY3RpdmUiLCJjcmVhdGVkX2F0IjoiMjAyMC0wMy0xNlQxNDoyMjoxMS4wMDktMDU6MDAiLCJjaXR5Ijp7ImlkIjozMzAsImRlc2NyaXB0aW9uIjoiUHJpc3RpbmEifSwiam9iX2NhdGVnb3JpZXMiOlt7ImlkIjo4OSwiZGVzY3JpcHRpb24iOiJCZWF1dHksIFNwb3J0cyBcdTAwMjYgQXV0b21vdGl2ZSJ9XSwid29ya19tb2RlIjp7ImlkIjoxMjQsImRlc2NyaXB0aW9uIjoiw7NwdGltYSJ9LCJjb250cmFjdF90eXBlIjp7ImlkIjoxMjQsImRlc2NyaXB0aW9uIjoiT3LDrWdlbmVzIn0sIndvcmtpbmdfZGF5cyI6W10sImF2YWlsYWJsZV93b3JrX2RheXMiOltdLCJqb2JfYWlkcyI6W10sImxhbmd1YWdlcyI6W119LCJzb3J0IjpbMTU4NDM4NjUzMTAwOV19LHsiX2luZGV4Ijoib2ZmZXJzIiwiX3R5cGUiOiJfZG9jIiwiX2lkIjoiOTAxMSIsIl9zY29yZSI6bnVsbCwiX3NvdXJjZSI6eyJpZCI6OTAxMSwidGl0bGUiOiJFbmltIHF1b2QgcG9zc2ltdXMgZXQgdGVtcG9yZSBlc3Qgbm9uIHZvbHVwdGFzLiIsImRlc2NyaXB0aW9uIjoiZW5kU2ludCBlc3NlIGFuaW0gY29uc2VxdWF0IGNvbW1vZG8uIiwic3RhdHVzIjoiYWN0aXZlIiwiY3JlYXRlZF9hdCI6IjIwMjAtMDMtMTZUMTQ6MjI6MTAuOTUzLTA1OjAwIiwiY2l0eSI6eyJpZCI6MzMwLCJkZXNjcmlwdGlvbiI6IlByaXN0aW5hIn0sImpvYl9jYXRlZ29yaWVzIjpbeyJpZCI6ODgsImRlc2NyaXB0aW9uIjoiQXV0b21vdGl2ZSBcdTAwMjYgQ2xvdGhpbmcifV0sIndvcmtfbW9kZSI6eyJpZCI6MTIzLCJkZXNjcmlwdGlvbiI6IkNvbXBhdGlibGUifSwiY29udHJhY3RfdHlwZSI6eyJpZCI6MTIzLCJkZXNjcmlwdGlvbiI6ImludGVybWVkaWEifSwid29ya2luZ19kYXlzIjpbXSwiYXZhaWxhYmxlX3dvcmtfZGF5cyI6W10sImpvYl9haWRzIjpbXSwibGFuZ3VhZ2VzIjpbXX0sInNvcnQiOlsxNTg0Mzg2NTMwOTUzXX0seyJfaW5kZXgiOiJvZmZlcnMiLCJfdHlwZSI6Il9kb2MiLCJfaWQiOiI5MDEwIiwiX3Njb3JlIjpudWxsLCJfc291cmNlIjp7ImlkIjo5MDEwLCJ0aXRsZSI6IkV0IG5pc2kgdm9sdXB0YXR1bSB2b2x1cHRhdGVzIHF1aXMgY3VscGEgY3VwaWRpdGF0ZSBlYS4iLCJkZXNjcmlwdGlvbiI6ImVuZFNpbnQgZXNzZSBhbmltIGNvbnNlcXVhdCBjb21tb2RvLiIsInN0YXR1cyI6ImFjdGl2ZSIsImNyZWF0ZWRfYXQiOiIyMDIwLTAzLTE2VDE0OjIyOjEwLjg5My0wNTowMCIsImNpdHkiOnsiaWQiOjMzMCwiZGVzY3JpcHRpb24iOiJQcmlzdGluYSJ9LCJqb2JfY2F0ZWdvcmllcyI6W3siaWQiOjg3LCJkZXNjcmlwdGlvbiI6IkJvb2tzLCBIb21lIFx1MDAyNiBTcG9ydHMifV0sIndvcmtfbW9kZSI6eyJpZCI6MTIyLCJkZXNjcmlwdGlvbiI6ImJhc2UgZGUgZGF0b3MifSwiY29udHJhY3RfdHlwZSI6eyJpZCI6MTIyLCJkZXNjcmlwdGlvbiI6Ik11bHRpIGNhbmFsIn0sIndvcmtpbmdfZGF5cyI6W10sImF2YWlsYWJsZV93b3JrX2RheXMiOltdLCJqb2JfYWlkcyI6W10sImxhbmd1YWdlcyI6W119LCJzb3J0IjpbMTU4NDM4NjUzMDg5M119XX19
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:13 GMT
+- request:
+    method: get
+    uri: http://elasticsearch_test:9200/_search/scroll
+    body:
+      encoding: UTF-8
+      string: '{"scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAJcWTlI1QTRTSFVUNnFxeDBNb252YmZsZw==","scroll":"30s"}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '212'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAJcWTlI1QTRTSFVUNnFxeDBNb252YmZsZw==","took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":{"value":6,"relation":"eq"},"max_score":null,"hits":[]}}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:13 GMT
+- request:
+    method: get
+    uri: http://elasticsearch_test:9200/offers/_search?scroll=30s
+    body:
+      encoding: UTF-8
+      string: '{"query":{"bool":{"filter":[{"nested":{"path":"city","query":{"bool":{"should":[{"match":{"city.id":325}},{"match":{"city.id":330}}]}}}}]}},"sort":[{"created_at":{"order":"desc"}}]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '1365'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJfc2Nyb2xsX2lkIjoiRFhGMVpYSjVRVzVrUm1WMFkyZ0JBQUFBQUFBQUFKZ1dUbEkxUVRSVFNGVlVObkZ4ZURCTmIyNTJZbVpzWnc9PSIsInRvb2siOjMsInRpbWVkX291dCI6ZmFsc2UsIl9zaGFyZHMiOnsidG90YWwiOjEsInN1Y2Nlc3NmdWwiOjEsInNraXBwZWQiOjAsImZhaWxlZCI6MH0sImhpdHMiOnsidG90YWwiOnsidmFsdWUiOjEwLCJyZWxhdGlvbiI6ImVxIn0sIm1heF9zY29yZSI6bnVsbCwiaGl0cyI6W3siX2luZGV4Ijoib2ZmZXJzIiwiX3R5cGUiOiJfZG9jIiwiX2lkIjoiOTAxNSIsIl9zY29yZSI6bnVsbCwiX3NvdXJjZSI6eyJpZCI6OTAxNSwidGl0bGUiOiJRdWlhIGhhcnVtIHF1byBxdWkgZXhlcmNpdGF0aW9uZW0gbWFnbmFtIHF1aXMgY29ycnVwdGkuIiwiZGVzY3JpcHRpb24iOiJlbmRTaW50IGVzc2UgYW5pbSBjb25zZXF1YXQgY29tbW9kby4iLCJzdGF0dXMiOiJhY3RpdmUiLCJjcmVhdGVkX2F0IjoiMjAyMC0wMy0xNlQxNDoyMjoxMS4xNzYtMDU6MDAiLCJjaXR5Ijp7ImlkIjozMzAsImRlc2NyaXB0aW9uIjoiUHJpc3RpbmEifSwiam9iX2NhdGVnb3JpZXMiOlt7ImlkIjo5MiwiZGVzY3JpcHRpb24iOiJIZWFsdGgifV0sIndvcmtfbW9kZSI6eyJpZCI6MTI3LCJkZXNjcmlwdGlvbiI6ImFyY2hpdm8ifSwiY29udHJhY3RfdHlwZSI6eyJpZCI6MTI3LCJkZXNjcmlwdGlvbiI6Im7DumNsZW8ifSwid29ya2luZ19kYXlzIjpbXSwiYXZhaWxhYmxlX3dvcmtfZGF5cyI6W10sImpvYl9haWRzIjpbXSwibGFuZ3VhZ2VzIjpbXX0sInNvcnQiOlsxNTg0Mzg2NTMxMTc2XX0seyJfaW5kZXgiOiJvZmZlcnMiLCJfdHlwZSI6Il9kb2MiLCJfaWQiOiI5MDE0IiwiX3Njb3JlIjpudWxsLCJfc291cmNlIjp7ImlkIjo5MDE0LCJ0aXRsZSI6Ik1vZGkgZnVnaXQgaWxsdW0gc2VkIHNpdCBxdWkgdXQgZHVjaW11cy4iLCJkZXNjcmlwdGlvbiI6ImVuZFNpbnQgZXNzZSBhbmltIGNvbnNlcXVhdCBjb21tb2RvLiIsInN0YXR1cyI6ImFjdGl2ZSIsImNyZWF0ZWRfYXQiOiIyMDIwLTAzLTE2VDE0OjIyOjExLjEyMS0wNTowMCIsImNpdHkiOnsiaWQiOjMzMCwiZGVzY3JpcHRpb24iOiJQcmlzdGluYSJ9LCJqb2JfY2F0ZWdvcmllcyI6W3siaWQiOjkxLCJkZXNjcmlwdGlvbiI6IkNvbXB1dGVycyJ9XSwid29ya19tb2RlIjp7ImlkIjoxMjYsImRlc2NyaXB0aW9uIjoiQXNpbWlsYWRvIn0sImNvbnRyYWN0X3R5cGUiOnsiaWQiOjEyNiwiZGVzY3JpcHRpb24iOiJEaXN0cmlidWlkbyJ9LCJ3b3JraW5nX2RheXMiOltdLCJhdmFpbGFibGVfd29ya19kYXlzIjpbXSwiam9iX2FpZHMiOltdLCJsYW5ndWFnZXMiOltdfSwic29ydCI6WzE1ODQzODY1MzExMjFdfSx7Il9pbmRleCI6Im9mZmVycyIsIl90eXBlIjoiX2RvYyIsIl9pZCI6IjkwMTMiLCJfc2NvcmUiOm51bGwsIl9zb3VyY2UiOnsiaWQiOjkwMTMsInRpdGxlIjoiU2VkIGluIGl1cmUgbm9uIHV0IGV0IGV0IGN1bXF1ZS4iLCJkZXNjcmlwdGlvbiI6ImVuZFNpbnQgZXNzZSBhbmltIGNvbnNlcXVhdCBjb21tb2RvLiIsInN0YXR1cyI6ImFjdGl2ZSIsImNyZWF0ZWRfYXQiOiIyMDIwLTAzLTE2VDE0OjIyOjExLjA2Ni0wNTowMCIsImNpdHkiOnsiaWQiOjMzMCwiZGVzY3JpcHRpb24iOiJQcmlzdGluYSJ9LCJqb2JfY2F0ZWdvcmllcyI6W3siaWQiOjkwLCJkZXNjcmlwdGlvbiI6IkJvb2tzLCBFbGVjdHJvbmljcyBcdTAwMjYgQmFieSJ9XSwid29ya19tb2RlIjp7ImlkIjoxMjUsImRlc2NyaXB0aW9uIjoicHJvY2VzbyBkZSBtZWpvcmEifSwiY29udHJhY3RfdHlwZSI6eyJpZCI6MTI1LCJkZXNjcmlwdGlvbiI6Im1vbml0b3JpemFyIn0sIndvcmtpbmdfZGF5cyI6W10sImF2YWlsYWJsZV93b3JrX2RheXMiOltdLCJqb2JfYWlkcyI6W10sImxhbmd1YWdlcyI6W119LCJzb3J0IjpbMTU4NDM4NjUzMTA2Nl19LHsiX2luZGV4Ijoib2ZmZXJzIiwiX3R5cGUiOiJfZG9jIiwiX2lkIjoiOTAxMiIsIl9zY29yZSI6bnVsbCwiX3NvdXJjZSI6eyJpZCI6OTAxMiwidGl0bGUiOiJRdWkgbmVzY2l1bnQgZGVsZWN0dXMgcGxhY2VhdCBleHBlZGl0YSBkb2xvcmlidXMgZnVnaXQgYmVhdGFlLiIsImRlc2NyaXB0aW9uIjoiZW5kU2ludCBlc3NlIGFuaW0gY29uc2VxdWF0IGNvbW1vZG8uIiwic3RhdHVzIjoiYWN0aXZlIiwiY3JlYXRlZF9hdCI6IjIwMjAtMDMtMTZUMTQ6MjI6MTEuMDA5LTA1OjAwIiwiY2l0eSI6eyJpZCI6MzMwLCJkZXNjcmlwdGlvbiI6IlByaXN0aW5hIn0sImpvYl9jYXRlZ29yaWVzIjpbeyJpZCI6ODksImRlc2NyaXB0aW9uIjoiQmVhdXR5LCBTcG9ydHMgXHUwMDI2IEF1dG9tb3RpdmUifV0sIndvcmtfbW9kZSI6eyJpZCI6MTI0LCJkZXNjcmlwdGlvbiI6IsOzcHRpbWEifSwiY29udHJhY3RfdHlwZSI6eyJpZCI6MTI0LCJkZXNjcmlwdGlvbiI6Ik9yw61nZW5lcyJ9LCJ3b3JraW5nX2RheXMiOltdLCJhdmFpbGFibGVfd29ya19kYXlzIjpbXSwiam9iX2FpZHMiOltdLCJsYW5ndWFnZXMiOltdfSwic29ydCI6WzE1ODQzODY1MzEwMDldfSx7Il9pbmRleCI6Im9mZmVycyIsIl90eXBlIjoiX2RvYyIsIl9pZCI6IjkwMTEiLCJfc2NvcmUiOm51bGwsIl9zb3VyY2UiOnsiaWQiOjkwMTEsInRpdGxlIjoiRW5pbSBxdW9kIHBvc3NpbXVzIGV0IHRlbXBvcmUgZXN0IG5vbiB2b2x1cHRhcy4iLCJkZXNjcmlwdGlvbiI6ImVuZFNpbnQgZXNzZSBhbmltIGNvbnNlcXVhdCBjb21tb2RvLiIsInN0YXR1cyI6ImFjdGl2ZSIsImNyZWF0ZWRfYXQiOiIyMDIwLTAzLTE2VDE0OjIyOjEwLjk1My0wNTowMCIsImNpdHkiOnsiaWQiOjMzMCwiZGVzY3JpcHRpb24iOiJQcmlzdGluYSJ9LCJqb2JfY2F0ZWdvcmllcyI6W3siaWQiOjg4LCJkZXNjcmlwdGlvbiI6IkF1dG9tb3RpdmUgXHUwMDI2IENsb3RoaW5nIn1dLCJ3b3JrX21vZGUiOnsiaWQiOjEyMywiZGVzY3JpcHRpb24iOiJDb21wYXRpYmxlIn0sImNvbnRyYWN0X3R5cGUiOnsiaWQiOjEyMywiZGVzY3JpcHRpb24iOiJpbnRlcm1lZGlhIn0sIndvcmtpbmdfZGF5cyI6W10sImF2YWlsYWJsZV93b3JrX2RheXMiOltdLCJqb2JfYWlkcyI6W10sImxhbmd1YWdlcyI6W119LCJzb3J0IjpbMTU4NDM4NjUzMDk1M119LHsiX2luZGV4Ijoib2ZmZXJzIiwiX3R5cGUiOiJfZG9jIiwiX2lkIjoiOTAxMCIsIl9zY29yZSI6bnVsbCwiX3NvdXJjZSI6eyJpZCI6OTAxMCwidGl0bGUiOiJFdCBuaXNpIHZvbHVwdGF0dW0gdm9sdXB0YXRlcyBxdWlzIGN1bHBhIGN1cGlkaXRhdGUgZWEuIiwiZGVzY3JpcHRpb24iOiJlbmRTaW50IGVzc2UgYW5pbSBjb25zZXF1YXQgY29tbW9kby4iLCJzdGF0dXMiOiJhY3RpdmUiLCJjcmVhdGVkX2F0IjoiMjAyMC0wMy0xNlQxNDoyMjoxMC44OTMtMDU6MDAiLCJjaXR5Ijp7ImlkIjozMzAsImRlc2NyaXB0aW9uIjoiUHJpc3RpbmEifSwiam9iX2NhdGVnb3JpZXMiOlt7ImlkIjo4NywiZGVzY3JpcHRpb24iOiJCb29rcywgSG9tZSBcdTAwMjYgU3BvcnRzIn1dLCJ3b3JrX21vZGUiOnsiaWQiOjEyMiwiZGVzY3JpcHRpb24iOiJiYXNlIGRlIGRhdG9zIn0sImNvbnRyYWN0X3R5cGUiOnsiaWQiOjEyMiwiZGVzY3JpcHRpb24iOiJNdWx0aSBjYW5hbCJ9LCJ3b3JraW5nX2RheXMiOltdLCJhdmFpbGFibGVfd29ya19kYXlzIjpbXSwiam9iX2FpZHMiOltdLCJsYW5ndWFnZXMiOltdfSwic29ydCI6WzE1ODQzODY1MzA4OTNdfSx7Il9pbmRleCI6Im9mZmVycyIsIl90eXBlIjoiX2RvYyIsIl9pZCI6IjkwMDkiLCJfc2NvcmUiOm51bGwsIl9zb3VyY2UiOnsiaWQiOjkwMDksInRpdGxlIjoiRGljdGEgZG9sb3J1bSBxdWFtIGFyY2hpdGVjdG8gaW4gZW9zIG5vc3RydW0gbmVtby4iLCJkZXNjcmlwdGlvbiI6ImVuZFNpbnQgZXNzZSBhbmltIGNvbnNlcXVhdCBjb21tb2RvLiIsInN0YXR1cyI6ImFjdGl2ZSIsImNyZWF0ZWRfYXQiOiIyMDIwLTAzLTE2VDE0OjIyOjEwLjgyNS0wNTowMCIsImNpdHkiOnsiaWQiOjMyNSwiZGVzY3JpcHRpb24iOiJCaXNzYXUifSwiam9iX2NhdGVnb3JpZXMiOlt7ImlkIjo4NiwiZGVzY3JpcHRpb24iOiJBdXRvbW90aXZlIFx1MDAyNiBTcG9ydHMifV0sIndvcmtfbW9kZSI6eyJpZCI6MTIxLCJkZXNjcmlwdGlvbiI6IlNlZ3VybyJ9LCJjb250cmFjdF90eXBlIjp7ImlkIjoxMjEsImRlc2NyaXB0aW9uIjoiaW1wbGVtZW50YWNpw7NuIn0sIndvcmtpbmdfZGF5cyI6W10sImF2YWlsYWJsZV93b3JrX2RheXMiOltdLCJqb2JfYWlkcyI6W10sImxhbmd1YWdlcyI6W119LCJzb3J0IjpbMTU4NDM4NjUzMDgyNV19LHsiX2luZGV4Ijoib2ZmZXJzIiwiX3R5cGUiOiJfZG9jIiwiX2lkIjoiOTAwOCIsIl9zY29yZSI6bnVsbCwiX3NvdXJjZSI6eyJpZCI6OTAwOCwidGl0bGUiOiJDdW0gZXQgbGFib3J1bSBleGVyY2l0YXRpb25lbSBtaW5pbWEgcXVpZGVtIHF1b2Qgc3VudC4iLCJkZXNjcmlwdGlvbiI6ImVuZFNpbnQgZXNzZSBhbmltIGNvbnNlcXVhdCBjb21tb2RvLiIsInN0YXR1cyI6ImFjdGl2ZSIsImNyZWF0ZWRfYXQiOiIyMDIwLTAzLTE2VDE0OjIyOjEwLjc2NS0wNTowMCIsImNpdHkiOnsiaWQiOjMyNSwiZGVzY3JpcHRpb24iOiJCaXNzYXUifSwiam9iX2NhdGVnb3JpZXMiOlt7ImlkIjo4NSwiZGVzY3JpcHRpb24iOiJCb29rcywgT3V0ZG9vcnMgXHUwMDI2IENsb3RoaW5nIn1dLCJ3b3JrX21vZGUiOnsiaWQiOjEyMCwiZGVzY3JpcHRpb24iOiJFeHRlbmRpZG8ifSwiY29udHJhY3RfdHlwZSI6eyJpZCI6MTIwLCJkZXNjcmlwdGlvbiI6Im1heGltaXphZGEifSwid29ya2luZ19kYXlzIjpbXSwiYXZhaWxhYmxlX3dvcmtfZGF5cyI6W10sImpvYl9haWRzIjpbXSwibGFuZ3VhZ2VzIjpbXX0sInNvcnQiOlsxNTg0Mzg2NTMwNzY1XX0seyJfaW5kZXgiOiJvZmZlcnMiLCJfdHlwZSI6Il9kb2MiLCJfaWQiOiI5MDA3IiwiX3Njb3JlIjpudWxsLCJfc291cmNlIjp7ImlkIjo5MDA3LCJ0aXRsZSI6IkluIGNvcnBvcmlzIGFsaWFzIGlkIHJlcnVtIHRlbmV0dXIgcG9zc2ltdXMgdGVtcG9yZS4iLCJkZXNjcmlwdGlvbiI6ImVuZFNpbnQgZXNzZSBhbmltIGNvbnNlcXVhdCBjb21tb2RvLiIsInN0YXR1cyI6ImFjdGl2ZSIsImNyZWF0ZWRfYXQiOiIyMDIwLTAzLTE2VDE0OjIyOjEwLjcwNy0wNTowMCIsImNpdHkiOnsiaWQiOjMyNSwiZGVzY3JpcHRpb24iOiJCaXNzYXUifSwiam9iX2NhdGVnb3JpZXMiOlt7ImlkIjo4NCwiZGVzY3JpcHRpb24iOiJBdXRvbW90aXZlLCBCb29rcyBcdTAwMjYgVG9vbHMifV0sIndvcmtfbW9kZSI6eyJpZCI6MTE5LCJkZXNjcmlwdGlvbiI6Im3Ds2JpbCJ9LCJjb250cmFjdF90eXBlIjp7ImlkIjoxMTksImRlc2NyaXB0aW9uIjoiT3Blbi1zb3VyY2UifSwid29ya2luZ19kYXlzIjpbXSwiYXZhaWxhYmxlX3dvcmtfZGF5cyI6W10sImpvYl9haWRzIjpbXSwibGFuZ3VhZ2VzIjpbXX0sInNvcnQiOlsxNTg0Mzg2NTMwNzA3XX0seyJfaW5kZXgiOiJvZmZlcnMiLCJfdHlwZSI6Il9kb2MiLCJfaWQiOiI5MDA2IiwiX3Njb3JlIjpudWxsLCJfc291cmNlIjp7ImlkIjo5MDA2LCJ0aXRsZSI6IlBhcmlhdHVyIHNpbnQgZXQgcXVpYSBwcm92aWRlbnQgZGVsZWN0dXMgdmVsIGN1bHBhLiIsImRlc2NyaXB0aW9uIjoiZW5kU2ludCBlc3NlIGFuaW0gY29uc2VxdWF0IGNvbW1vZG8uIiwic3RhdHVzIjoiYWN0aXZlIiwiY3JlYXRlZF9hdCI6IjIwMjAtMDMtMTZUMTQ6MjI6MTAuNjQ5LTA1OjAwIiwiY2l0eSI6eyJpZCI6MzI1LCJkZXNjcmlwdGlvbiI6IkJpc3NhdSJ9LCJqb2JfY2F0ZWdvcmllcyI6W3siaWQiOjgzLCJkZXNjcmlwdGlvbiI6IkhlYWx0aCJ9XSwid29ya19tb2RlIjp7ImlkIjoxMTgsImRlc2NyaXB0aW9uIjoiZW4gZmFzZXMifSwiY29udHJhY3RfdHlwZSI6eyJpZCI6MTE4LCJkZXNjcmlwdGlvbiI6Ik9yZ2FuaXphZG8ifSwid29ya2luZ19kYXlzIjpbXSwiYXZhaWxhYmxlX3dvcmtfZGF5cyI6W10sImpvYl9haWRzIjpbXSwibGFuZ3VhZ2VzIjpbXX0sInNvcnQiOlsxNTg0Mzg2NTMwNjQ5XX1dfX0=
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:13 GMT
+- request:
+    method: get
+    uri: http://elasticsearch_test:9200/_search/scroll
+    body:
+      encoding: UTF-8
+      string: '{"scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAJgWTlI1QTRTSFVUNnFxeDBNb252YmZsZw==","scroll":"30s"}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '212'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAJgWTlI1QTRTSFVUNnFxeDBNb252YmZsZw==","took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":{"value":10,"relation":"eq"},"max_score":null,"hits":[]}}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:13 GMT
+- request:
+    method: get
+    uri: http://elasticsearch_test:9200/offers/_search?scroll=30s
+    body:
+      encoding: UTF-8
+      string: '{"query":{"match_all":{}},"sort":[{"created_at":{"order":"desc"}}]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '1365'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJfc2Nyb2xsX2lkIjoiRFhGMVpYSjVRVzVrUm1WMFkyZ0JBQUFBQUFBQUFKa1dUbEkxUVRSVFNGVlVObkZ4ZURCTmIyNTJZbVpzWnc9PSIsInRvb2siOjAsInRpbWVkX291dCI6ZmFsc2UsIl9zaGFyZHMiOnsidG90YWwiOjEsInN1Y2Nlc3NmdWwiOjEsInNraXBwZWQiOjAsImZhaWxlZCI6MH0sImhpdHMiOnsidG90YWwiOnsidmFsdWUiOjE1LCJyZWxhdGlvbiI6ImVxIn0sIm1heF9zY29yZSI6bnVsbCwiaGl0cyI6W3siX2luZGV4Ijoib2ZmZXJzIiwiX3R5cGUiOiJfZG9jIiwiX2lkIjoiOTAxNSIsIl9zY29yZSI6bnVsbCwiX3NvdXJjZSI6eyJpZCI6OTAxNSwidGl0bGUiOiJRdWlhIGhhcnVtIHF1byBxdWkgZXhlcmNpdGF0aW9uZW0gbWFnbmFtIHF1aXMgY29ycnVwdGkuIiwiZGVzY3JpcHRpb24iOiJlbmRTaW50IGVzc2UgYW5pbSBjb25zZXF1YXQgY29tbW9kby4iLCJzdGF0dXMiOiJhY3RpdmUiLCJjcmVhdGVkX2F0IjoiMjAyMC0wMy0xNlQxNDoyMjoxMS4xNzYtMDU6MDAiLCJjaXR5Ijp7ImlkIjozMzAsImRlc2NyaXB0aW9uIjoiUHJpc3RpbmEifSwiam9iX2NhdGVnb3JpZXMiOlt7ImlkIjo5MiwiZGVzY3JpcHRpb24iOiJIZWFsdGgifV0sIndvcmtfbW9kZSI6eyJpZCI6MTI3LCJkZXNjcmlwdGlvbiI6ImFyY2hpdm8ifSwiY29udHJhY3RfdHlwZSI6eyJpZCI6MTI3LCJkZXNjcmlwdGlvbiI6Im7DumNsZW8ifSwid29ya2luZ19kYXlzIjpbXSwiYXZhaWxhYmxlX3dvcmtfZGF5cyI6W10sImpvYl9haWRzIjpbXSwibGFuZ3VhZ2VzIjpbXX0sInNvcnQiOlsxNTg0Mzg2NTMxMTc2XX0seyJfaW5kZXgiOiJvZmZlcnMiLCJfdHlwZSI6Il9kb2MiLCJfaWQiOiI5MDE0IiwiX3Njb3JlIjpudWxsLCJfc291cmNlIjp7ImlkIjo5MDE0LCJ0aXRsZSI6Ik1vZGkgZnVnaXQgaWxsdW0gc2VkIHNpdCBxdWkgdXQgZHVjaW11cy4iLCJkZXNjcmlwdGlvbiI6ImVuZFNpbnQgZXNzZSBhbmltIGNvbnNlcXVhdCBjb21tb2RvLiIsInN0YXR1cyI6ImFjdGl2ZSIsImNyZWF0ZWRfYXQiOiIyMDIwLTAzLTE2VDE0OjIyOjExLjEyMS0wNTowMCIsImNpdHkiOnsiaWQiOjMzMCwiZGVzY3JpcHRpb24iOiJQcmlzdGluYSJ9LCJqb2JfY2F0ZWdvcmllcyI6W3siaWQiOjkxLCJkZXNjcmlwdGlvbiI6IkNvbXB1dGVycyJ9XSwid29ya19tb2RlIjp7ImlkIjoxMjYsImRlc2NyaXB0aW9uIjoiQXNpbWlsYWRvIn0sImNvbnRyYWN0X3R5cGUiOnsiaWQiOjEyNiwiZGVzY3JpcHRpb24iOiJEaXN0cmlidWlkbyJ9LCJ3b3JraW5nX2RheXMiOltdLCJhdmFpbGFibGVfd29ya19kYXlzIjpbXSwiam9iX2FpZHMiOltdLCJsYW5ndWFnZXMiOltdfSwic29ydCI6WzE1ODQzODY1MzExMjFdfSx7Il9pbmRleCI6Im9mZmVycyIsIl90eXBlIjoiX2RvYyIsIl9pZCI6IjkwMTMiLCJfc2NvcmUiOm51bGwsIl9zb3VyY2UiOnsiaWQiOjkwMTMsInRpdGxlIjoiU2VkIGluIGl1cmUgbm9uIHV0IGV0IGV0IGN1bXF1ZS4iLCJkZXNjcmlwdGlvbiI6ImVuZFNpbnQgZXNzZSBhbmltIGNvbnNlcXVhdCBjb21tb2RvLiIsInN0YXR1cyI6ImFjdGl2ZSIsImNyZWF0ZWRfYXQiOiIyMDIwLTAzLTE2VDE0OjIyOjExLjA2Ni0wNTowMCIsImNpdHkiOnsiaWQiOjMzMCwiZGVzY3JpcHRpb24iOiJQcmlzdGluYSJ9LCJqb2JfY2F0ZWdvcmllcyI6W3siaWQiOjkwLCJkZXNjcmlwdGlvbiI6IkJvb2tzLCBFbGVjdHJvbmljcyBcdTAwMjYgQmFieSJ9XSwid29ya19tb2RlIjp7ImlkIjoxMjUsImRlc2NyaXB0aW9uIjoicHJvY2VzbyBkZSBtZWpvcmEifSwiY29udHJhY3RfdHlwZSI6eyJpZCI6MTI1LCJkZXNjcmlwdGlvbiI6Im1vbml0b3JpemFyIn0sIndvcmtpbmdfZGF5cyI6W10sImF2YWlsYWJsZV93b3JrX2RheXMiOltdLCJqb2JfYWlkcyI6W10sImxhbmd1YWdlcyI6W119LCJzb3J0IjpbMTU4NDM4NjUzMTA2Nl19LHsiX2luZGV4Ijoib2ZmZXJzIiwiX3R5cGUiOiJfZG9jIiwiX2lkIjoiOTAxMiIsIl9zY29yZSI6bnVsbCwiX3NvdXJjZSI6eyJpZCI6OTAxMiwidGl0bGUiOiJRdWkgbmVzY2l1bnQgZGVsZWN0dXMgcGxhY2VhdCBleHBlZGl0YSBkb2xvcmlidXMgZnVnaXQgYmVhdGFlLiIsImRlc2NyaXB0aW9uIjoiZW5kU2ludCBlc3NlIGFuaW0gY29uc2VxdWF0IGNvbW1vZG8uIiwic3RhdHVzIjoiYWN0aXZlIiwiY3JlYXRlZF9hdCI6IjIwMjAtMDMtMTZUMTQ6MjI6MTEuMDA5LTA1OjAwIiwiY2l0eSI6eyJpZCI6MzMwLCJkZXNjcmlwdGlvbiI6IlByaXN0aW5hIn0sImpvYl9jYXRlZ29yaWVzIjpbeyJpZCI6ODksImRlc2NyaXB0aW9uIjoiQmVhdXR5LCBTcG9ydHMgXHUwMDI2IEF1dG9tb3RpdmUifV0sIndvcmtfbW9kZSI6eyJpZCI6MTI0LCJkZXNjcmlwdGlvbiI6IsOzcHRpbWEifSwiY29udHJhY3RfdHlwZSI6eyJpZCI6MTI0LCJkZXNjcmlwdGlvbiI6Ik9yw61nZW5lcyJ9LCJ3b3JraW5nX2RheXMiOltdLCJhdmFpbGFibGVfd29ya19kYXlzIjpbXSwiam9iX2FpZHMiOltdLCJsYW5ndWFnZXMiOltdfSwic29ydCI6WzE1ODQzODY1MzEwMDldfSx7Il9pbmRleCI6Im9mZmVycyIsIl90eXBlIjoiX2RvYyIsIl9pZCI6IjkwMTEiLCJfc2NvcmUiOm51bGwsIl9zb3VyY2UiOnsiaWQiOjkwMTEsInRpdGxlIjoiRW5pbSBxdW9kIHBvc3NpbXVzIGV0IHRlbXBvcmUgZXN0IG5vbiB2b2x1cHRhcy4iLCJkZXNjcmlwdGlvbiI6ImVuZFNpbnQgZXNzZSBhbmltIGNvbnNlcXVhdCBjb21tb2RvLiIsInN0YXR1cyI6ImFjdGl2ZSIsImNyZWF0ZWRfYXQiOiIyMDIwLTAzLTE2VDE0OjIyOjEwLjk1My0wNTowMCIsImNpdHkiOnsiaWQiOjMzMCwiZGVzY3JpcHRpb24iOiJQcmlzdGluYSJ9LCJqb2JfY2F0ZWdvcmllcyI6W3siaWQiOjg4LCJkZXNjcmlwdGlvbiI6IkF1dG9tb3RpdmUgXHUwMDI2IENsb3RoaW5nIn1dLCJ3b3JrX21vZGUiOnsiaWQiOjEyMywiZGVzY3JpcHRpb24iOiJDb21wYXRpYmxlIn0sImNvbnRyYWN0X3R5cGUiOnsiaWQiOjEyMywiZGVzY3JpcHRpb24iOiJpbnRlcm1lZGlhIn0sIndvcmtpbmdfZGF5cyI6W10sImF2YWlsYWJsZV93b3JrX2RheXMiOltdLCJqb2JfYWlkcyI6W10sImxhbmd1YWdlcyI6W119LCJzb3J0IjpbMTU4NDM4NjUzMDk1M119LHsiX2luZGV4Ijoib2ZmZXJzIiwiX3R5cGUiOiJfZG9jIiwiX2lkIjoiOTAxMCIsIl9zY29yZSI6bnVsbCwiX3NvdXJjZSI6eyJpZCI6OTAxMCwidGl0bGUiOiJFdCBuaXNpIHZvbHVwdGF0dW0gdm9sdXB0YXRlcyBxdWlzIGN1bHBhIGN1cGlkaXRhdGUgZWEuIiwiZGVzY3JpcHRpb24iOiJlbmRTaW50IGVzc2UgYW5pbSBjb25zZXF1YXQgY29tbW9kby4iLCJzdGF0dXMiOiJhY3RpdmUiLCJjcmVhdGVkX2F0IjoiMjAyMC0wMy0xNlQxNDoyMjoxMC44OTMtMDU6MDAiLCJjaXR5Ijp7ImlkIjozMzAsImRlc2NyaXB0aW9uIjoiUHJpc3RpbmEifSwiam9iX2NhdGVnb3JpZXMiOlt7ImlkIjo4NywiZGVzY3JpcHRpb24iOiJCb29rcywgSG9tZSBcdTAwMjYgU3BvcnRzIn1dLCJ3b3JrX21vZGUiOnsiaWQiOjEyMiwiZGVzY3JpcHRpb24iOiJiYXNlIGRlIGRhdG9zIn0sImNvbnRyYWN0X3R5cGUiOnsiaWQiOjEyMiwiZGVzY3JpcHRpb24iOiJNdWx0aSBjYW5hbCJ9LCJ3b3JraW5nX2RheXMiOltdLCJhdmFpbGFibGVfd29ya19kYXlzIjpbXSwiam9iX2FpZHMiOltdLCJsYW5ndWFnZXMiOltdfSwic29ydCI6WzE1ODQzODY1MzA4OTNdfSx7Il9pbmRleCI6Im9mZmVycyIsIl90eXBlIjoiX2RvYyIsIl9pZCI6IjkwMDkiLCJfc2NvcmUiOm51bGwsIl9zb3VyY2UiOnsiaWQiOjkwMDksInRpdGxlIjoiRGljdGEgZG9sb3J1bSBxdWFtIGFyY2hpdGVjdG8gaW4gZW9zIG5vc3RydW0gbmVtby4iLCJkZXNjcmlwdGlvbiI6ImVuZFNpbnQgZXNzZSBhbmltIGNvbnNlcXVhdCBjb21tb2RvLiIsInN0YXR1cyI6ImFjdGl2ZSIsImNyZWF0ZWRfYXQiOiIyMDIwLTAzLTE2VDE0OjIyOjEwLjgyNS0wNTowMCIsImNpdHkiOnsiaWQiOjMyNSwiZGVzY3JpcHRpb24iOiJCaXNzYXUifSwiam9iX2NhdGVnb3JpZXMiOlt7ImlkIjo4NiwiZGVzY3JpcHRpb24iOiJBdXRvbW90aXZlIFx1MDAyNiBTcG9ydHMifV0sIndvcmtfbW9kZSI6eyJpZCI6MTIxLCJkZXNjcmlwdGlvbiI6IlNlZ3VybyJ9LCJjb250cmFjdF90eXBlIjp7ImlkIjoxMjEsImRlc2NyaXB0aW9uIjoiaW1wbGVtZW50YWNpw7NuIn0sIndvcmtpbmdfZGF5cyI6W10sImF2YWlsYWJsZV93b3JrX2RheXMiOltdLCJqb2JfYWlkcyI6W10sImxhbmd1YWdlcyI6W119LCJzb3J0IjpbMTU4NDM4NjUzMDgyNV19LHsiX2luZGV4Ijoib2ZmZXJzIiwiX3R5cGUiOiJfZG9jIiwiX2lkIjoiOTAwOCIsIl9zY29yZSI6bnVsbCwiX3NvdXJjZSI6eyJpZCI6OTAwOCwidGl0bGUiOiJDdW0gZXQgbGFib3J1bSBleGVyY2l0YXRpb25lbSBtaW5pbWEgcXVpZGVtIHF1b2Qgc3VudC4iLCJkZXNjcmlwdGlvbiI6ImVuZFNpbnQgZXNzZSBhbmltIGNvbnNlcXVhdCBjb21tb2RvLiIsInN0YXR1cyI6ImFjdGl2ZSIsImNyZWF0ZWRfYXQiOiIyMDIwLTAzLTE2VDE0OjIyOjEwLjc2NS0wNTowMCIsImNpdHkiOnsiaWQiOjMyNSwiZGVzY3JpcHRpb24iOiJCaXNzYXUifSwiam9iX2NhdGVnb3JpZXMiOlt7ImlkIjo4NSwiZGVzY3JpcHRpb24iOiJCb29rcywgT3V0ZG9vcnMgXHUwMDI2IENsb3RoaW5nIn1dLCJ3b3JrX21vZGUiOnsiaWQiOjEyMCwiZGVzY3JpcHRpb24iOiJFeHRlbmRpZG8ifSwiY29udHJhY3RfdHlwZSI6eyJpZCI6MTIwLCJkZXNjcmlwdGlvbiI6Im1heGltaXphZGEifSwid29ya2luZ19kYXlzIjpbXSwiYXZhaWxhYmxlX3dvcmtfZGF5cyI6W10sImpvYl9haWRzIjpbXSwibGFuZ3VhZ2VzIjpbXX0sInNvcnQiOlsxNTg0Mzg2NTMwNzY1XX0seyJfaW5kZXgiOiJvZmZlcnMiLCJfdHlwZSI6Il9kb2MiLCJfaWQiOiI5MDA3IiwiX3Njb3JlIjpudWxsLCJfc291cmNlIjp7ImlkIjo5MDA3LCJ0aXRsZSI6IkluIGNvcnBvcmlzIGFsaWFzIGlkIHJlcnVtIHRlbmV0dXIgcG9zc2ltdXMgdGVtcG9yZS4iLCJkZXNjcmlwdGlvbiI6ImVuZFNpbnQgZXNzZSBhbmltIGNvbnNlcXVhdCBjb21tb2RvLiIsInN0YXR1cyI6ImFjdGl2ZSIsImNyZWF0ZWRfYXQiOiIyMDIwLTAzLTE2VDE0OjIyOjEwLjcwNy0wNTowMCIsImNpdHkiOnsiaWQiOjMyNSwiZGVzY3JpcHRpb24iOiJCaXNzYXUifSwiam9iX2NhdGVnb3JpZXMiOlt7ImlkIjo4NCwiZGVzY3JpcHRpb24iOiJBdXRvbW90aXZlLCBCb29rcyBcdTAwMjYgVG9vbHMifV0sIndvcmtfbW9kZSI6eyJpZCI6MTE5LCJkZXNjcmlwdGlvbiI6Im3Ds2JpbCJ9LCJjb250cmFjdF90eXBlIjp7ImlkIjoxMTksImRlc2NyaXB0aW9uIjoiT3Blbi1zb3VyY2UifSwid29ya2luZ19kYXlzIjpbXSwiYXZhaWxhYmxlX3dvcmtfZGF5cyI6W10sImpvYl9haWRzIjpbXSwibGFuZ3VhZ2VzIjpbXX0sInNvcnQiOlsxNTg0Mzg2NTMwNzA3XX0seyJfaW5kZXgiOiJvZmZlcnMiLCJfdHlwZSI6Il9kb2MiLCJfaWQiOiI5MDA2IiwiX3Njb3JlIjpudWxsLCJfc291cmNlIjp7ImlkIjo5MDA2LCJ0aXRsZSI6IlBhcmlhdHVyIHNpbnQgZXQgcXVpYSBwcm92aWRlbnQgZGVsZWN0dXMgdmVsIGN1bHBhLiIsImRlc2NyaXB0aW9uIjoiZW5kU2ludCBlc3NlIGFuaW0gY29uc2VxdWF0IGNvbW1vZG8uIiwic3RhdHVzIjoiYWN0aXZlIiwiY3JlYXRlZF9hdCI6IjIwMjAtMDMtMTZUMTQ6MjI6MTAuNjQ5LTA1OjAwIiwiY2l0eSI6eyJpZCI6MzI1LCJkZXNjcmlwdGlvbiI6IkJpc3NhdSJ9LCJqb2JfY2F0ZWdvcmllcyI6W3siaWQiOjgzLCJkZXNjcmlwdGlvbiI6IkhlYWx0aCJ9XSwid29ya19tb2RlIjp7ImlkIjoxMTgsImRlc2NyaXB0aW9uIjoiZW4gZmFzZXMifSwiY29udHJhY3RfdHlwZSI6eyJpZCI6MTE4LCJkZXNjcmlwdGlvbiI6Ik9yZ2FuaXphZG8ifSwid29ya2luZ19kYXlzIjpbXSwiYXZhaWxhYmxlX3dvcmtfZGF5cyI6W10sImpvYl9haWRzIjpbXSwibGFuZ3VhZ2VzIjpbXX0sInNvcnQiOlsxNTg0Mzg2NTMwNjQ5XX1dfX0=
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:13 GMT
+- request:
+    method: get
+    uri: http://elasticsearch_test:9200/_search/scroll
+    body:
+      encoding: UTF-8
+      string: '{"scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAJkWTlI1QTRTSFVUNnFxeDBNb252YmZsZw==","scroll":"30s"}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '976'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJfc2Nyb2xsX2lkIjoiRFhGMVpYSjVRVzVrUm1WMFkyZ0JBQUFBQUFBQUFKa1dUbEkxUVRSVFNGVlVObkZ4ZURCTmIyNTJZbVpzWnc9PSIsInRvb2siOjEsInRpbWVkX291dCI6ZmFsc2UsIl9zaGFyZHMiOnsidG90YWwiOjEsInN1Y2Nlc3NmdWwiOjEsInNraXBwZWQiOjAsImZhaWxlZCI6MH0sImhpdHMiOnsidG90YWwiOnsidmFsdWUiOjE1LCJyZWxhdGlvbiI6ImVxIn0sIm1heF9zY29yZSI6bnVsbCwiaGl0cyI6W3siX2luZGV4Ijoib2ZmZXJzIiwiX3R5cGUiOiJfZG9jIiwiX2lkIjoiOTAwNSIsIl9zY29yZSI6bnVsbCwiX3NvdXJjZSI6eyJpZCI6OTAwNSwidGl0bGUiOiJRdWkgZXVtIGF0cXVlIHJlcHJlaGVuZGVyaXQgZGljdGEgcG9ycm8gbmFtIHJlbS4iLCJkZXNjcmlwdGlvbiI6ImVuZFNpbnQgZXNzZSBhbmltIGNvbnNlcXVhdCBjb21tb2RvLiIsInN0YXR1cyI6ImFjdGl2ZSIsImNyZWF0ZWRfYXQiOiIyMDIwLTAzLTE2VDE0OjIyOjEwLjU4NS0wNTowMCIsImNpdHkiOnsiaWQiOjMyNCwiZGVzY3JpcHRpb24iOiJOJ0RqYW1lbmEifSwiam9iX2NhdGVnb3JpZXMiOlt7ImlkIjo4MiwiZGVzY3JpcHRpb24iOiJCZWF1dHkgXHUwMDI2IEpld2VscnkifV0sIndvcmtfbW9kZSI6eyJpZCI6MTE3LCJkZXNjcmlwdGlvbiI6IkludmVyc28ifSwiY29udHJhY3RfdHlwZSI6eyJpZCI6MTE3LCJkZXNjcmlwdGlvbiI6IlZpc2lvbmFyaW8ifSwid29ya2luZ19kYXlzIjpbXSwiYXZhaWxhYmxlX3dvcmtfZGF5cyI6W10sImpvYl9haWRzIjpbXSwibGFuZ3VhZ2VzIjpbXX0sInNvcnQiOlsxNTg0Mzg2NTMwNTg1XX0seyJfaW5kZXgiOiJvZmZlcnMiLCJfdHlwZSI6Il9kb2MiLCJfaWQiOiI5MDA0IiwiX3Njb3JlIjpudWxsLCJfc291cmNlIjp7ImlkIjo5MDA0LCJ0aXRsZSI6IkN1bXF1ZSBldCByYXRpb25lIHJlcHVkaWFuZGFlIGF1dCBxdWFzaSBtYWlvcmVzIGFsaXF1aWQuIiwiZGVzY3JpcHRpb24iOiJlbmRTaW50IGVzc2UgYW5pbSBjb25zZXF1YXQgY29tbW9kby4iLCJzdGF0dXMiOiJhY3RpdmUiLCJjcmVhdGVkX2F0IjoiMjAyMC0wMy0xNlQxNDoyMjoxMC40OTgtMDU6MDAiLCJjaXR5Ijp7ImlkIjozMjIsImRlc2NyaXB0aW9uIjoiRnJlZXRvd24ifSwiam9iX2NhdGVnb3JpZXMiOlt7ImlkIjo4MSwiZGVzY3JpcHRpb24iOiJUb3lzIn1dLCJ3b3JrX21vZGUiOnsiaWQiOjExNiwiZGVzY3JpcHRpb24iOiJPYmxpZ2F0b3JpbyJ9LCJjb250cmFjdF90eXBlIjp7ImlkIjoxMTYsImRlc2NyaXB0aW9uIjoiZnVlcnphIGRlIHRyYWJham8ifSwid29ya2luZ19kYXlzIjpbXSwiYXZhaWxhYmxlX3dvcmtfZGF5cyI6W10sImpvYl9haWRzIjpbXSwibGFuZ3VhZ2VzIjpbXX0sInNvcnQiOlsxNTg0Mzg2NTMwNDk4XX0seyJfaW5kZXgiOiJvZmZlcnMiLCJfdHlwZSI6Il9kb2MiLCJfaWQiOiI5MDAzIiwiX3Njb3JlIjpudWxsLCJfc291cmNlIjp7ImlkIjo5MDAzLCJ0aXRsZSI6IkF1dGVtIGxhYm9yZSBkZWxlbml0aSBlcnJvciBvcHRpbyBldCBpcHNhbSBjb25zZXF1YXR1ci4iLCJkZXNjcmlwdGlvbiI6ImVuZFNpbnQgZXNzZSBhbmltIGNvbnNlcXVhdCBjb21tb2RvLiIsInN0YXR1cyI6ImFjdGl2ZSIsImNyZWF0ZWRfYXQiOiIyMDIwLTAzLTE2VDE0OjIyOjEwLjQyOS0wNTowMCIsImNpdHkiOnsiaWQiOjMyMCwiZGVzY3JpcHRpb24iOiJTYW4gSm9zZSJ9LCJqb2JfY2F0ZWdvcmllcyI6W3siaWQiOjgwLCJkZXNjcmlwdGlvbiI6IkF1dG9tb3RpdmUsIFRveXMgXHUwMDI2IEluZHVzdHJpYWwifV0sIndvcmtfbW9kZSI6eyJpZCI6MTE1LCJkZXNjcmlwdGlvbiI6ImNvbmp1bnRvIn0sImNvbnRyYWN0X3R5cGUiOnsiaWQiOjExNSwiZGVzY3JpcHRpb24iOiJyZWQgZGUgYXJlYSBsb2NhbCJ9LCJ3b3JraW5nX2RheXMiOltdLCJhdmFpbGFibGVfd29ya19kYXlzIjpbXSwiam9iX2FpZHMiOltdLCJsYW5ndWFnZXMiOltdfSwic29ydCI6WzE1ODQzODY1MzA0MjldfSx7Il9pbmRleCI6Im9mZmVycyIsIl90eXBlIjoiX2RvYyIsIl9pZCI6IjkwMDIiLCJfc2NvcmUiOm51bGwsIl9zb3VyY2UiOnsiaWQiOjkwMDIsInRpdGxlIjoiUGFyaWF0dXIgb2ZmaWNpaXMgcmVwdWRpYW5kYWUgb3B0aW8gcXVvcyBzZWQgaXRhcXVlIGVzdC4iLCJkZXNjcmlwdGlvbiI6ImVuZFNpbnQgZXNzZSBhbmltIGNvbnNlcXVhdCBjb21tb2RvLiIsInN0YXR1cyI6ImFjdGl2ZSIsImNyZWF0ZWRfYXQiOiIyMDIwLTAzLTE2VDE0OjIyOjEwLjM2NS0wNTowMCIsImNpdHkiOnsiaWQiOjMxOCwiZGVzY3JpcHRpb24iOiJCcmF0aXNsYXZhIn0sImpvYl9jYXRlZ29yaWVzIjpbeyJpZCI6NzksImRlc2NyaXB0aW9uIjoiSmV3ZWxyeSwgS2lkcyBcdTAwMjYgU3BvcnRzIn1dLCJ3b3JrX21vZGUiOnsiaWQiOjExNCwiZGVzY3JpcHRpb24iOiJSb2J1c3RvIn0sImNvbnRyYWN0X3R5cGUiOnsiaWQiOjExNCwiZGVzY3JpcHRpb24iOiJ2w61hIHdlYiJ9LCJ3b3JraW5nX2RheXMiOltdLCJhdmFpbGFibGVfd29ya19kYXlzIjpbXSwiam9iX2FpZHMiOltdLCJsYW5ndWFnZXMiOltdfSwic29ydCI6WzE1ODQzODY1MzAzNjVdfSx7Il9pbmRleCI6Im9mZmVycyIsIl90eXBlIjoiX2RvYyIsIl9pZCI6IjkwMDEiLCJfc2NvcmUiOm51bGwsIl9zb3VyY2UiOnsiaWQiOjkwMDEsInRpdGxlIjoiU2ludCBjdW0gZXJyb3IgZXhlcmNpdGF0aW9uZW0gaW5jaWR1bnQgYWNjdXNhbnRpdW0gaWxsdW0gYWNjdXNhbXVzLiIsImRlc2NyaXB0aW9uIjoiZW5kU2ludCBlc3NlIGFuaW0gY29uc2VxdWF0IGNvbW1vZG8uIiwic3RhdHVzIjoiYWN0aXZlIiwiY3JlYXRlZF9hdCI6IjIwMjAtMDMtMTZUMTQ6MjI6MTAuMjk5LTA1OjAwIiwiY2l0eSI6eyJpZCI6MzE2LCJkZXNjcmlwdGlvbiI6IlVsYWFuYmFhdGFyIn0sImpvYl9jYXRlZ29yaWVzIjpbeyJpZCI6NzgsImRlc2NyaXB0aW9uIjoiU2hvZXMsIFRveXMgXHUwMDI2IEJhYnkifV0sIndvcmtfbW9kZSI6eyJpZCI6MTEzLCJkZXNjcmlwdGlvbiI6IkF1dG9tYXRpemFkbyJ9LCJjb250cmFjdF90eXBlIjp7ImlkIjoxMTMsImRlc2NyaXB0aW9uIjoiT3BjaW9uYWwifSwid29ya2luZ19kYXlzIjpbXSwiYXZhaWxhYmxlX3dvcmtfZGF5cyI6W10sImpvYl9haWRzIjpbXSwibGFuZ3VhZ2VzIjpbXX0sInNvcnQiOlsxNTg0Mzg2NTMwMjk5XX1dfX0=
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:13 GMT
+- request:
+    method: get
+    uri: http://elasticsearch_test:9200/_search/scroll
+    body:
+      encoding: UTF-8
+      string: '{"scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAJkWTlI1QTRTSFVUNnFxeDBNb252YmZsZw==","scroll":"30s"}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '213'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAJkWTlI1QTRTSFVUNnFxeDBNb252YmZsZw==","took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":{"value":15,"relation":"eq"},"max_score":null,"hits":[]}}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:13 GMT
+- request:
+    method: head
+    uri: http://elasticsearch:9200/offers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '1693'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:13 GMT
+- request:
+    method: delete
+    uri: http://elasticsearch:9200/offers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '47'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"acknowledged":true}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:13 GMT
+- request:
+    method: head
+    uri: http://elasticsearch:9200/offers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '365'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:13 GMT
+- request:
+    method: put
+    uri: http://elasticsearch:9200/offers
+    body:
+      encoding: UTF-8
+      string: '{"settings":{"index":{"number_of_shards":1,"number_of_replicas":0,"max_ngram_diff":50,"analysis":{"index_analyzer":{"common_index_analizer":{"type":"custom","tokenizer":"standard","filter":["lowercase","common_ngram_filter"]}},"search_analyzer":{"common_search_analyzer":{"type":"custom","tokenizer":"standard","filter":["lowercase","standard","common_ngram_filter"]}},"ascii_analizer":{"common_ascii_analyzer":{"tokenizer":"standard","filter":"standard"}},"filter":{"common_ngram_filter":{"type":"nGram","min_gram":2,"max_gram":50}}}}},"mappings":{"dynamic":"false","properties":{"id":{"type":"long"},"title":{"type":"text","analyzer":"spanish"},"description":{"type":"text","analyzer":"spanish"},"status":{"type":"text"},"created_at":{"type":"date"},"city":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"job_categories":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"work_mode":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"contract_type":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"working_days":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"available_work_days":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"job_aids":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"languages":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}}}}}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.4.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.0)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '73'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"acknowledged":true,"shards_acknowledged":true,"index":"offers"}'
+    http_version: null
+  recorded_at: Mon, 16 Mar 2020 19:22:13 GMT
+recorded_with: VCR 5.1.0

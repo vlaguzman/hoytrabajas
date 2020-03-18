@@ -74,6 +74,9 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
 
         expect(AffinityPercentage.all.count).to eq(0)
 
+        offer.reload
+        curriculum_vitae.reload
+
         affinity_percentage = subject.create_affinity(offer, curriculum_vitae)
 
         expect(AffinityPercentage.all.count).to eq(1)

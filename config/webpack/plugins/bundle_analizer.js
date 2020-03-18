@@ -1,7 +1,7 @@
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+/* eslint-disable prefer-destructuring */
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin
 
 module.exports = {
-  plugins: [
-    new BundleAnalyzerPlugin({ analyzerPort: 7777 })
-  ]
+  plugins: [new BundleAnalyzerPlugin({ analyzerPort: 7777 })]
 }

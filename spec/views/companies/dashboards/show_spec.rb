@@ -9,6 +9,6 @@ RSpec.describe "companies/dashboards/show" do
 
     render
 
-    expect(rendered).to have_tag("div", with: { "data-react-class": "pages/dashboards/enterprises/index"})
+    expect(rendered).to have_tag("div", with: { "data-react-class": "views/dashboards/enterprises/index"})
   end
 end

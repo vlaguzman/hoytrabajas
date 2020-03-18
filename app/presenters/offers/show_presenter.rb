@@ -110,7 +110,7 @@ class Offers::ShowPresenter < ApplicationPresenter
   def affinity_percentage(value: nil)
     affinity = options[:current_user] && AffinityPercentageService.new(source, options[:current_user].curriculum_vitae).get_round_affinity
 
-    field_builder(label: I18n.t('offers.show.affinity'), value: "#{affinity}%")
+    affinity && field_builder(label: I18n.t('offers.show.affinity'), value: "#{affinity}%")
   end
 
   private

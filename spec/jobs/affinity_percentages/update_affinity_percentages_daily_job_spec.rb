@@ -38,7 +38,9 @@ RSpec.describe AffinityPercentages::UpdateAffinityPercentagesDailyJob, type: :jo
 
         ActiveJob::Base.queue_adapter = :test
 
-        subject.perform
+        response = subject.perform
+        puts "fuck"
+        puts response.inspect
 
         affinity_percentage.reload
 

@@ -8,7 +8,7 @@ class AffinityPercentages::UpdateAffinityPercentagesDailyJob < ApplicationJob
     MailNotifier.general_notification(
       action,
       date: Time.now,
-      affinity_percentages_error: response,
+      response: response,
     ).deliver
   end
 end

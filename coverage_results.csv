@@ -203,6 +203,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/wizards_last_step_service.rb",100,26,17,17,0
 "./app/state_machines/applied_offer_state_machine.rb",100,14,10,10,0
 "./app/state_machines/company_state_machine.rb",100,17,10,10,0
+"./app/workers/my_worker.rb",100,10,0,0,0
 "./lib/dates_manager.rb",100,29,17,17,0
 "./lib/elasticsearch/common.rb",100,2,1,1,0
 "./lib/elasticsearch/common/bool_builders.rb",100,59,25,25,0

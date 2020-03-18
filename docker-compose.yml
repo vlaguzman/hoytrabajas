@@ -12,6 +12,7 @@ services:
       - "3000:3000"
     depends_on:
       - postgres
+      - sidekiq
       - selenium
       - elasticsearch
       - elasticsearch_test
@@ -114,6 +115,7 @@ services:
     volumes:
       - "./:/ht"
     command: bundle exec sidekiq -C config/sidekiq.yml
+    env_file: .env
 
 volumes:
   postgres_data:

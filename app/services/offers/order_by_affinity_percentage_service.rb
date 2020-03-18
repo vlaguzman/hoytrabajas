@@ -31,7 +31,7 @@ module Offers::OrderByAffinityPercentageService
   end
 
   def self.candidate_and_offer_group_builder(current_user, offer)
-    [offer.id, AffinityCalculator.new(offer, current_user).affinity_percentage]
+    [offer.id, AffinityPercentageService.new(offer, current_user.curriculum_vitae).get_round_affinity.to_i]
   end
 
 end

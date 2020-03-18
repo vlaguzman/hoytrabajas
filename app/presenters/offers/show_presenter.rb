@@ -108,12 +108,9 @@ class Offers::ShowPresenter < ApplicationPresenter
   end
 
   def affinity_percentage(value: nil)
-    if options[:current_user].present?
-      percentage = AffinityCalculator.new(source, options[:current_user]).affinity_percentage
-      value = (percentage >= Offer::MIN_VALID_AFFINTY_PERCENTAGE) && "#{percentage}%"
-    end
+    affinity = options[:current_user] && AffinityPercentageService.new(source, options[:current_user].curriculum_vitae).get_round_affinity
 
-    value && field_builder(label: I18n.t('offers.show.affinity'), value: value)
+    affinity && field_builder(label: I18n.t('offers.show.affinity'), value: "#{affinity}%")
   end
 
   private

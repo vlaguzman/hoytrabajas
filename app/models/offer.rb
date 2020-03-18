@@ -41,6 +41,7 @@ class Offer < ApplicationRecord
   has_one :offer_on_demand
 
   has_many :applied_offers
+  has_many :affinity_percentages
 
   belongs_to :company
   belongs_to :city, optional: true

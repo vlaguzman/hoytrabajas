@@ -28,7 +28,7 @@ module Companies::ListCandidates::AppliedCandidatesService
       name: build_name(candidate),
       location: build_location(candidate),
       technical_skills: technical_skills(curriculum_vitae),
-      affinity_percentage: build_affinity_percentage(offer: offer, candidate: candidate),
+      affinity_percentage: build_affinity_percentage(offer: offer, curriculum_vitae: curriculum_vitae),
       profile_path: profile_path(candidate, curriculum_vitae.id, offer.id),
       avatar: Users::CurriculumVitaes::ProfilePhotoService.(curriculum_vitae: curriculum_vitae),
       current_state: current_state
@@ -48,8 +48,8 @@ module Companies::ListCandidates::AppliedCandidatesService
     curriculum_vitae.strong_skills.any? && curriculum_vitae.strong_skills.map { |skill| skill.technical_skill }.pluck(:description).join(", ")
   end
 
-  def self.build_affinity_percentage(offer: nil, candidate: nil)
-    offer.present? && candidate.present? && AffinityCalculator.new(offer, candidate).affinity_percentage.to_i
+  def self.build_affinity_percentage(offer: nil, curriculum_vitae: nil)
+    offer.present? && curriculum_vitae.user.present? && AffinityPercentageService.new(offer, curriculum_vitae).get_round_affinity.to_i
   end
 
   def self.profile_path(user_id, curriculum_vitae_id = '', offer_id = '')

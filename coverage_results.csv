@@ -1,7 +1,7 @@
 File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/channels/application_cable/channel.rb",100,4,2,2,0
 "./app/channels/application_cable/connection.rb",100,4,2,2,0
-"./app/jobs/affinity_percentages/create_affinity_percentages_daily_job.rb",100,14,6,6,0
+"./app/jobs/affinity_percentages/update_affinity_percentages_daily_job.rb",100,7,4,4,0
 "./app/jobs/application_job.rb",100,7,1,1,0
 "./app/jobs/offers/update_offers_status_daily_job.rb",100,16,7,7,0
 "./app/mailers/application_mailer.rb",100,4,3,3,0
@@ -9,7 +9,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/mailers/mail_notifier.rb",100,12,5,5,0
 "./app/models/acknowledgment.rb",100,12,7,7,0
 "./app/models/admin_user.rb",100,6,3,3,0
-"./app/models/affinity_percentage.rb",100,8,5,5,0
+"./app/models/affinity_percentage.rb",100,9,5,5,0
 "./app/models/age_range.rb",100,8,5,5,0
 "./app/models/application_record.rb",100,3,2,2,0
 "./app/models/applied_offer.rb",100,26,12,12,0
@@ -26,7 +26,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/contract_type.rb",100,3,2,2,0
 "./app/models/country.rb",100,3,2,2,0
 "./app/models/currency.rb",100,3,2,2,0
-"./app/models/curriculum_vitae.rb",100,78,52,52,0
+"./app/models/curriculum_vitae.rb",100,79,53,53,0
 "./app/models/curriculum_vitae_salary.rb",100,10,7,7,0
 "./app/models/curriculum_vitaes_educational_degrees.rb",100,4,3,3,0
 "./app/models/curriculum_vitaes_languages.rb",100,5,4,4,0
@@ -54,7 +54,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/level.rb",100,5,3,3,0
 "./app/models/limitation.rb",100,6,3,3,0
 "./app/models/nationality.rb",100,7,4,4,0
-"./app/models/offer.rb",100,220,119,119,0
+"./app/models/offer.rb",100,221,120,120,0
 "./app/models/offer_on_demand.rb",100,11,5,5,0
 "./app/models/offer_required_experiences.rb",100,11,6,6,0
 "./app/models/offer_salary.rb",100,14,9,9,0
@@ -106,7 +106,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/companies/first_offer_presenter.rb",100,13,4,4,0
 "./app/presenters/companies/list_candidates_presenter.rb",100,44,22,22,0
 "./app/presenters/home/home_presenter.rb",100,53,14,14,0
-"./app/presenters/offers/show_presenter.rb",98,269,122,120,2
+"./app/presenters/offers/show_presenter.rb",98,266,120,118,2
 "./app/presenters/offers_presenter.rb",100,25,13,13,0
 "./app/presenters/users/profiles_presenter.rb",100,119,33,33,0
 "./app/presenters/users/wizards/step_eight_presenter.rb",100,32,12,12,0
@@ -132,7 +132,11 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/admins/offers_service.rb",100,188,92,92,0
 "./app/services/admins_service.rb",100,15,8,8,0
 "./app/services/affinity_calculator.rb",100,80,36,36,0
-"./app/services/affinity_percentages/create_affinity_percentages_service.rb",95,107,40,38,2
+"./app/services/affinity_percentage_service.rb",100,36,19,19,0
+"./app/services/affinity_percentages/affinity_percentages_service.rb",100,52,13,13,0
+"./app/services/affinity_percentages/create_affinity_percentages_service.rb",100,20,6,6,0
+"./app/services/affinity_percentages/execute_job_service.rb",100,17,6,6,0
+"./app/services/affinity_percentages/update_affinity_percentages_service.rb",100,16,8,8,0
 "./app/services/base_form_wizards_service.rb",100,99,52,52,0
 "./app/services/base_forms/find_or_create_record_service.rb",100,16,8,8,0
 "./app/services/base_forms/wizards_autocomplete_service.rb",100,23,10,10,0
@@ -170,7 +174,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/offers/order_by_affinity_percentage_service.rb",100,37,19,19,0
 "./app/services/offers/order_by_on_demand.rb",100,25,11,11,0
 "./app/services/offers/show_service.rb",100,76,27,27,0
-"./app/services/offers/views_service.rb",100,113,47,47,0
+"./app/services/offers/views_service.rb",100,98,40,40,0
 "./app/services/offers_on_demand/set_inactive_service.rb",100,29,13,13,0
 "./app/services/offers_service.rb",100,36,14,14,0
 "./app/services/routes_service.rb",100,10,5,5,0
@@ -203,7 +207,6 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/wizards_last_step_service.rb",100,26,17,17,0
 "./app/state_machines/applied_offer_state_machine.rb",100,14,10,10,0
 "./app/state_machines/company_state_machine.rb",100,17,10,10,0
-"./app/workers/my_worker.rb",100,10,0,0,0
 "./lib/dates_manager.rb",100,29,17,17,0
 "./lib/elasticsearch/common.rb",100,2,1,1,0
 "./lib/elasticsearch/common/bool_builders.rb",100,59,25,25,0

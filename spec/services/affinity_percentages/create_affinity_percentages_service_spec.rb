@@ -67,7 +67,6 @@ RSpec.describe AffinityPercentages::CreateAffinityPercentagesService do
     let!(:offer_technical_skill) { create(:offers_technical_skills, offer_id: offer.id, technical_skill_id: technical_skill.id, level_id: level.id) }
     let!(:cv_language)           { create(:curriculum_vitaes_languages, curriculum_vitae_id: curriculum_vitae.id, language_id: language.id, level_id: level.id) }
     let!(:offer_language)        { create(:languages_offers, offer_id: offer.id, language_id: language.id, level_id: level.id) }
-    let!(:cv_language)           { create(:curriculum_vitaes_languages, curriculum_vitae_id: curriculum_vitae.id, language_id: language.id, level_id: level.id) }
 
     context 'when I want create AffinityPercentage' do
 

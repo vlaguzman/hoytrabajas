@@ -24,7 +24,7 @@ class Companies::ListCandidatesPresenter < ApplicationPresenter
 
   def list_applied_candidates
     Companies::ListCandidates::AppliedCandidatesService.(offer: source)
-      .sort_by { |attribute, _| -(attribute[:affinity_percentage]) }
+     .sort_by { |attribute, _| -(attribute[:affinity_percentage]) }
   end
 
   def offer_path

@@ -1,8 +1,17 @@
 module AffinityPercentages::ExecuteJobService
 
   def self.call
-    affinity_percentages = AffinityPercentage.select { |affinity| affinity.offer.updated_at > affinity.created_at }
-    affinity_percentages.map { |affinity| AffinityPercentages::UpdateAffinityPercentagesService.new.update_affinity(affinity, :offer_updated) }
+    affinity_percentages = Offer
+      .active
+      .joins(:affinity_percentages)
+      .where("offers.updated_at > affinity_percentages.created_at")
+      .distinct
+      .map { |offer| offer.affinity_percentages }
+      .flatten
+
+    affinity_percentages.map do |affinity|
+      AffinityPercentages::UpdateAffinityPercentagesService.new.update_affinity(affinity, :offer_updated)
+    end
   end
 
 end

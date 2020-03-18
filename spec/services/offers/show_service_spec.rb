@@ -68,7 +68,7 @@ RSpec.describe Offers::ShowService do
         close_date: "25 de Julio del 2019",
         title: "Desarrollador Front-end Sr. test",
         address: "Calle Falsa 123 # 00 99",
-        affinity_percentage: false,
+        affinity_percentage: nil,
         immediate_start: false,
         job_category_image: "https://img-categorias-ht.s3.amazonaws.com/cat-card-gestion-administrativa2x.png",
         is_applied: false,

@@ -21,6 +21,7 @@ class CurriculumVitae < ApplicationRecord
   has_many :educational_levels
   has_many :applied_offers
   has_many :work_experiences
+  has_many :affinity_percentages
 
   has_and_belongs_to_many :soft_skills
   has_and_belongs_to_many :educational_degrees
@@ -30,6 +31,7 @@ class CurriculumVitae < ApplicationRecord
   has_and_belongs_to_many :job_categories
   has_and_belongs_to_many :offer_types
   has_and_belongs_to_many :work_modes
+  has_and_belongs_to_many :affinity_percentages
 
   has_one_attached :photo
   has_one_attached :file_cv

@@ -46,16 +46,7 @@ module AffinityPercentages::AffinityPercentagesService
   end
 
   def persist_affinity_percentage(affinity_percentage)
-    offer_id = affinity_percentage.offer_id
-    cv_id    = affinity_percentage.curriculum_vitae_id
-    affinity_percentages_logger = Logger.new("#{Rails.root}/log/affinity_percentages.log")
-
-    if affinity_percentage.save
-      affinity_percentage
-    else
-      affinity_percentages_logger.error("OFFER_ID:#{offer.id} CURRICULUM_VITAE_ID: #{curriculum_vitae.id}, ERROR DETAILS #{affinity_percentage.errors.details}")
-      affinity_percentage
-    end
+    affinity_percentage if affinity_percentage.save
   end
 
 end

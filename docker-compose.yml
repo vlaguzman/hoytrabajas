@@ -1,17 +1,6 @@
 version: '2'
 services:
-  #webpacker:
-  #  build: .
-  #  working_dir: /ht
-  #  env_file:
-  #    - '.env'
-  #  command: bash -c 'bin/webpack-dev-server'
-  #  volumes:
-  #    - "./:/ht"
-  #  ports:
-  #    - '3035:3035'
-  #  depends_on:
-  #    - web
+
   web:
     build: .
     env_file: .env
@@ -26,6 +15,7 @@ services:
       - selenium
       - elasticsearch
       - elasticsearch_test
+
     links:
       - postgres:postgres
       - selenium:selenium
@@ -106,10 +96,31 @@ services:
         soft: -1
         hard: -1
 
+  redis:
+    image: 'redis:6.0-rc2-alpine'
+    command: redis-server
+    ports:
+      - "6379:6379"
+    volumes:
+      - 'redis_data:/data'
+
+  sidekiq:
+    tty: true
+    stdin_open: true
+    depends_on:
+      - postgres
+      - redis
+    build: .
+    volumes:
+      - "./:/ht"
+    command: bundle exec sidekiq -C config/sidekiq.yml
+
 volumes:
   postgres_data:
     driver: local
   elasticsearch_data:
     driver: local
   elasticsearch_test_data:
+    driver: local
+  redis_data:
     driver: local

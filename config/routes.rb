@@ -1,7 +1,14 @@
+require 'sidekiq/web'
+require 'sidekiq/cron/web'
+
 Rails.application.routes.default_url_options[:host] = "hoytrabajas.com"
 Rails.application.routes.draw do
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+
+  authenticate :admin_user do
+    mount Sidekiq::Web, at: '/sidekiq'
+  end
 
   devise_for :admin_users, {:path=>:admin, :controllers=>{:sessions=>"admin_users/sessions"}, :path_names=>{:sign_in=>"sign_in", :sign_out=>"logout"}, :sign_out_via=>[:delete, :get]}
   ActiveAdmin.routes(self)

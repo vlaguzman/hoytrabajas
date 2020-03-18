@@ -31,7 +31,6 @@ class CurriculumVitae < ApplicationRecord
   has_and_belongs_to_many :job_categories
   has_and_belongs_to_many :offer_types
   has_and_belongs_to_many :work_modes
-  has_and_belongs_to_many :affinity_percentages
 
   has_one_attached :photo
   has_one_attached :file_cv

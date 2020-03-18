@@ -15,6 +15,8 @@ class AffinityPercentageService
     end
   end
 
+  private
+
   def validate_affinity(percentage)
     percentage if percentage >= Offer::MIN_VALID_AFFINTY_PERCENTAGE
   end

@@ -2,11 +2,11 @@ module AffinityPercentages::AffinityPercentagesService
   #TODO: When 'to learn skills' has been defined put in offer and curriculum_vitae hashes
 
   def try_data(object, method)
-    object.present? ? object.send(method) : nil
+    object.send(method) if object.present?
   end
 
   def array_to_string(array)
-    array.any? ? array.join(", ") : nil
+    array.join(", ") if array.any?
   end
 
   def curriculum_vitae_for_affinity_percentage(curriculum_vitae)

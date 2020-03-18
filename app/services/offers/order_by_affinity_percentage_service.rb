@@ -21,9 +21,6 @@ module Offers::OrderByAffinityPercentageService
   end
 
   def self.by_affinity_list_sorter(candidate_and_offer_group_list)
-    puts "FUCK" * 100
-    puts candidate_and_offer_group_list.class
-    puts "END" * 100
     candidate_and_offer_group_list.sort { |lowest, hightest| hightest[1] <=> lowest[1] }
   end
 

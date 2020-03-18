@@ -16,10 +16,10 @@ gem 'activeadmin'
 gem 'active_admin_datetimepicker'
 gem 'omniauth-facebook'
 gem 'omniauth-google'
-gem "haml-rails", "~> 2.0"
-gem "simple_token_authentication", "~> 1.0"
+gem 'haml-rails', '~> 2.0'
+gem 'simple_token_authentication', '~> 1.0'
 gem 'ransack'
-gem "aws-sdk-s3"
+gem 'aws-sdk-s3'
 gem 'simple_form'
 gem 'statesman', '~> 5.1.0'
 gem 'whenever', require: false
@@ -28,6 +28,9 @@ gem 'sitemap_generator'
 gem 'elasticsearch-model', '~> 7.0'
 gem 'elasticsearch-rails', '~> 7.0'
 gem 'elasticsearch-dsl', '~> 0.1.9'
+gem 'sidekiq', '~> 6.0'
+gem 'redis', '~> 4.1'
+gem 'sidekiq-cron'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -49,24 +52,24 @@ group :development, :test do
   gem 'rails_best_practices'
   gem 'shoulda', '~> 3.5'
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
-  gem "rails-controller-testing"
+  gem 'rails-controller-testing'
   gem 'rspec-html-matchers'
-  gem "selenium-webdriver",'~>3.141.0'
+  gem 'selenium-webdriver','~>3.141.0'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'timecop'
   gem 'database_cleaner'
   gem 'elasticsearch-extensions'
-  gem "vcr"
-  gem "webmock"
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do
-  gem "guard", require: false
-  gem "guard-rspec", require: false
+  gem 'guard', require: false
+  gem 'guard-rspec', require: false
   gem 'simplecov', :require => false
   gem 'simplecov-csv', :require => false
-  gem "rubycritic", require: false
+  gem 'rubycritic', require: false
   gem 'brakeman', require: false
   gem 'bullet'
   gem 'curb'

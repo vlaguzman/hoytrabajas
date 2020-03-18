@@ -130,6 +130,7 @@ A          • Limitation                                                  4    
 A          • ListConverter                                               12      29.49      0           2
 A          • MailNotifier                                                2       3.54       0           1
 A          • MetaTagsVerifier                                            1       15.81      0           1
+A          • MyWorker                                                    0       0.0        0           0
 A          • Nationality                                                 5       0.0        0           1
 A          • OfferOnDemand                                               4       0.0        0           1
 A          • OfferRequiredExperiences                                    2       0.0        0           1

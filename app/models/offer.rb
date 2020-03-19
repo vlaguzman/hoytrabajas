@@ -119,6 +119,7 @@ class Offer < ApplicationRecord
   end
 
   #Elasticsearch configuration
+  documement_type = 'offer'
 
   def self.index_settings
     { index:{

@@ -4,3 +4,5 @@ es:
       subject: 'Reporte diario de actuaizacion de ofertas'
     daily_create_affinity_percentages:
       subject: 'Reporte diario de creacion de affinity percentages'
+    elasticsearch_index_not_found:
+      subject: "No se pudo remover un indice de elasticsearch"

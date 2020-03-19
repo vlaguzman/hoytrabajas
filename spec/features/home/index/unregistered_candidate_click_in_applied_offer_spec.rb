@@ -8,7 +8,7 @@ RSpec.describe "Unregistered user applied offer in home", type: :feature do
 
   let(:born_country)              { create(:country, description: "Argentina") }
   let(:born_state)                { create(:state, description: "Buenos Aires", country: born_country) }
-  let(:residence_country)         { create(:country, description: "Colombia") }
+  let(:residence_country)         { create(:country, description: "Snowland") }
   let(:residence_state)           { create(:state, description: "Huila", country: residence_country) }
 
   context "When the anonymous user wants to apply offer in home" do
@@ -67,7 +67,7 @@ RSpec.describe "Unregistered user applied offer in home", type: :feature do
         find("li", text: "Capital Federal").click
 
         find("div[id='mui-component-select-user[residence_country_id]", visible: false).click
-        find("li", text: "Colombia").click
+        find("li", text: "Snowland").click
 
         find("div[id='mui-component-select-user[residence_state_id]", visible: false).click
         find("li", text: "Huila").click
@@ -139,7 +139,7 @@ RSpec.describe "Unregistered user applied offer in home", type: :feature do
         find("li", text: "Capital Federal").click
 
         find("div[id='mui-component-select-user[residence_country_id]", visible: false).click
-        find("li", text: "Colombia").click
+        find("li", text: "Snowland").click
 
         find("div[id='mui-component-select-user[residence_state_id]", visible: false).click
         find("li", text: "Huila").click
@@ -203,7 +203,7 @@ RSpec.describe "Unregistered user applied offer in home", type: :feature do
         find("li", text: "Capital Federal").click
 
         find("div[id='mui-component-select-user[residence_country_id]", visible: false).click
-        find("li", text: "Colombia").click
+        find("li", text: "Snowland").click
 
         find("div[id='mui-component-select-user[residence_state_id]", visible: false).click
         find("li", text: "Huila").click

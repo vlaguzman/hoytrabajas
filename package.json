@@ -36,7 +36,8 @@
     "typescript": "^3.6.2",
     "uuid": "^3.3.3",
     "validator": "^11.1.0",
-    "webpack-bundle-analyzer": "^3.6.0"
+    "webpack-bundle-analyzer": "^3.6.0",
+    "yarn": "^1.22.4"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",

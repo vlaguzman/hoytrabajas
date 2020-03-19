@@ -1,6 +1,12 @@
 class Offer < ApplicationRecord
   include Searchable
 
+  documement_type = 'offer'
+
+  after_commit on: [:create, :update] do
+    Elasticsearch::IndexerWorker.perform_async(documement_type, self.id, 'index')
+  end
+
   MIN_VALID_AFFINTY_PERCENTAGE = 20
   MAX_OFFER_LIMIT = 150
   ATTRIBUTES_TO_COMPARE = [:city_id, :work_mode_id, :contract_type_id]
@@ -119,7 +125,6 @@ class Offer < ApplicationRecord
   end
 
   #Elasticsearch configuration
-  documement_type = 'offer'
 
   def self.index_settings
     { index:{

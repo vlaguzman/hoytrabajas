@@ -8,7 +8,7 @@ RSpec.describe "When company fill the step four form", type: :feature do
   let!(:sex_2) { create(:sex, description: "Female") }
   let!(:sex_3) { create(:sex, description: "Undefined") }
 
-  let!(:contract_type) { create(:contract_type) }
+  let!(:contract_type) { create(:contract_type, description: "unrepetible description") }
 
   def expected_page_structure
     expect(page).to have_content("Conozcamos más de tu oferta")

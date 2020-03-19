@@ -52,10 +52,8 @@ RSpec.describe Elasticsearch::IndexerService do
     end
 
     context "when offer is removed" do
-      it "should return" do
+      it "should return empty response" do
         demo_offer = create(:offer, id: 3)
-
-        Offer.import
 
         subject.(:offer, 3, operation: 'delete')
 

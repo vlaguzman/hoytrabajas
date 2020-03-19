@@ -1,5 +1,5 @@
 = render '/shared/header'
-= react_component('views/dashboards',
+= react_component('pages/dashboards/index',
   {csrf_param: request_forgery_protection_token,
   csrf_token: form_authenticity_token,
   translations: I18n.t("users.dashboards.show"),

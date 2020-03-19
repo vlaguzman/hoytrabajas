@@ -5,7 +5,7 @@
 - content_for(:meta_keywords, I18n.t("meta_tags.offers.#{@offers[:origin]}.index.#{@offers[:content]}.meta_keywords", city_name: @offers[:city_name]))
 
 = render '/shared/header'
-= react_component('views/offers',
+= react_component('views/offers/show',
   {offers: @offers[:offers_list] || @offers,
     csrf_param: request_forgery_protection_token,
     csrf_token: form_authenticity_token,

@@ -13,11 +13,7 @@ const TermsAndConditionsTLink = ({
       description={
         <div className="a-link__termsAndConditions">
           {session_translation.tc_accept}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href={terms_and_conditions_file_path}
-          >
+          <a target="_blank" href={terms_and_conditions_file_path}>
             {' '}
             {session_translation.tc_link}
           </a>

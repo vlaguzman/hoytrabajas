@@ -8,19 +8,15 @@
 
     = render 'shared/meta_tags'
 
-    %meta{:name => "viewport", :content => "height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi"}
+    %meta{:name => "viewport", :content => "height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"}
 
-    %link{href: "https://fonts.googleapis.com/icon?family=Material+Icons", rel: "stylesheet"}
-
-    = stylesheet_link_tag 'application', media: 'all'
+      -# TODO add to javascript_pack_with_chunks_tag list 
+      -# when marketing require google analitycs again
+      -# 'layouts/google_analytics'
 
     - if Rails.env.production?
-      -# TODO Oscar uncommet when marketing require google analitycs again
-      -# = render 'layouts/google_analytics'
-      = javascript_pack_tag 'analytics/clientify_analytics'
-      = javascript_pack_tag 'analytics/facebook_pixel'
-      = javascript_pack_tag 'analytics/tag_manager'
-
+      = javascript_packs_with_chunks_tag 'application', 'analytics/clientify_analytics', 'analytics/facebook_pixel', 'analytics/tag_manager', 'data-turbolinks-track': 'reload'
+      
       -# Facebook pixel
       %noscript
         %img{:height => "1", :src => "https://www.facebook.com/tr?id=349189892310764&ev=PageView&noscript=1", :style => "display:none", :width => "1"}
@@ -30,6 +26,14 @@
 
       -# Canonical
       %link{:href => "#{ENV['HT_PROTOCOL']}#{ENV['HT_DOMAIN']}#{(url_for(:page => params[:page])).chomp("/")}", :rel => "canonical"}/
+
+    - else
+      = javascript_packs_with_chunks_tag 'application', 'data-turbolinks-track': 'reload'
+    
+    = stylesheet_link_tag 'application', media: 'all'
+
+    %link{href: "https://fonts.googleapis.com/icon?family=Material+Icons", rel: "stylesheet"}
+
   %body
 
     = yield
@@ -46,5 +50,3 @@
     -# TOOD Oscar: uncommet the chatbot when the account is active again
     -# %div.m-chatBot--hiddenOnMobile
       -# = javascript_pack_tag 'analytics/chat_bot'
-
-    = javascript_pack_tag 'application'

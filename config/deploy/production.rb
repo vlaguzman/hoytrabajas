@@ -11,10 +11,13 @@ end
 task :reload_app do
   on roles(:app) do |host|
     within current_path do
-      as :deploy  do
+      as :deploy do
         with rails_env: :production do
           execute "bin/reload"
         end
+
+        #Restart sidekiq after any deploy
+        execute :sudo, :systemctl, :restart, :sidekiq
       end
     end
   end

@@ -34,7 +34,7 @@ environment.splitChunks(config => ({
     ],
     runtimeChunk: 'single',
     splitChunks: {
-      chunks: 'async',
+      chunks: 'all',
       maxSize: 600000,
       cacheGroups: {
         defaultVendors: {

@@ -12,7 +12,6 @@ RSpec.describe Companies::FirstOffer::StepFour::FormParamsService do
       expected_object = {
         title: 'Conozcamos más de tu oferta',
         subtitle: 'Brinda a tu candidato información relevante de tu empresa.',
-        confidential_tooltip: 'Con esto evitaremos hacer público en tu oferta el nombre y el logo de tu empresa.',
         immediate_start_description: "Inicio inmediato",
         offer_age_range_before: "Edad min.",
         offer_age_range_after: "Edad máx.",
@@ -26,7 +25,7 @@ RSpec.describe Companies::FirstOffer::StepFour::FormParamsService do
             nextPath: '/companies/first_offer/step_five',
             addOther: nil
           },
-          action: '/companies/first_offer/step_three',
+          action: '/companies/first_offer/step_four',
           method: :put,
           type: :company,
           formFields: {
@@ -44,41 +43,41 @@ RSpec.describe Companies::FirstOffer::StepFour::FormParamsService do
             },
             contract_type_id: {
               name: 'company[contract_type_id]',
-              label: nil,
+              label: 'Acuerdo legal',
               values: [],
               current_value: ''
             },
             sex_ids: {
               name: 'company[sex_ids][]',
-              label: nil,
+              label: 'Tu oferta está dirigida a',
               values: [],
               current_value: ''
             },
             vacancies_quantity: {
               name: 'offer[vacancies_quantity]',
-              label: nil,
+              label: 'Elige el número de vacantes',
               values: {min: 1, max: 100},
               step: 1,
               current_value: nil
             },
             offer_age_range: {
               name: 'offer[offer_age_range]',
-              label: nil,
-              beforeLabel: nil,
-              afterLabel: nil,
+              label: 'Edad del candidato',
+              beforeLabel: 'Edad min.',
+              afterLabel: 'Edad máx.',
               values: {min: 18, max: 80},
               step: 1,
               current_value: ''
             },
             immediate_start: {
               name: 'offer[immediate_start]',
-              label: nil,
-              description: nil,
+              label: '¿Cuál es el tiempo para cubrir esta oferta?',
+              description: 'Inicio inmediato',
               current_value: nil
             },
             close_date: {
               name: 'offer[close_date]',
-              label: nil,
+              label: 'Fecha de cierre de la oferta',
               current_value: ''
             }
           }
@@ -91,10 +90,11 @@ RSpec.describe Companies::FirstOffer::StepFour::FormParamsService do
         next_path: '/companies/first_offer/step_five',
         previous_path: '/companies/first_offer/step_three',
         form_type: :company,
-        template_translation_path: 'companies.first_offer.step_threes.show',
+        template_translation_path: 'companies.first_offer.step_fours.show',
         form_method: :put
       ).form_params
 
+      puts response.inspect
       expect(response[:form][:formFields]).to eq(expected_object[:form][:formFields])
 
       expect(response.keys).to match_array(expected_object.keys)

@@ -20,8 +20,6 @@ const FormFields = props => {
     description = null,
     job_category_ids = null,
     offers_work_positions = null,
-    offer_type_id = null,
-    work_mode_id = null
   } = formFields
 
   const [formValues, setFormValues] = useState({
@@ -29,9 +27,7 @@ const FormFields = props => {
     [confidential.name]: confidential.current_value || false,
     [description.name]: description.current_value || '',
     [job_category_ids.name]: job_category_ids.current_value || '',
-    [offers_work_positions.name]: offers_work_positions.current_value || '',
-    [offer_type_id.name]: offer_type_id.current_value || '',
-    [work_mode_id.name]: work_mode_id.current_value || ''
+    [offers_work_positions.name]: offers_work_positions.current_value || ''
   })
 
   const inputClassname = 'my-30 animated fadeIn inputField'
@@ -107,42 +103,6 @@ const FormFields = props => {
     [formValues[job_category_ids.name]]
   )
 
-  const offerTypeField = useMemo(
-    () => (
-      <Col key={offer_type_id.name} className={inputClassname} xs={12} lg={6}>
-        <SelectChip
-          inputValue={formValues[offer_type_id.name]}
-          inputName={offer_type_id.name}
-          handleChange={handleChange(formValues, setFormValues)}
-          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
-          name={offer_type_id.name}
-          label={offer_type_id.label}
-          selectOptions={offer_type_id.values}
-          isMultiple={false}
-        />
-      </Col>
-    ),
-    [formValues[offer_type_id.name]]
-  )
-
-  const workModeField = useMemo(
-    () => (
-      <Col key={work_mode_id.name} className={inputClassname} xs={12} lg={6}>
-        <SelectChip
-          inputValue={formValues[work_mode_id.name]}
-          inputName={work_mode_id.name}
-          handleChange={handleChange(formValues, setFormValues)}
-          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
-          name={work_mode_id.name}
-          label={work_mode_id.label}
-          selectOptions={work_mode_id.values}
-          isMultiple={false}
-        />
-      </Col>
-    ),
-    [formValues[work_mode_id.name]]
-  )
-
   const offersWorkPositionsField = useMemo(
     () => (
       <Col
@@ -170,8 +130,6 @@ const FormFields = props => {
       {offerConfidentialField}
       {descriptionField}
       {jobCategoryField}
-      {offerTypeField}
-      {workModeField}
       {offersWorkPositionsField}
     </Row>
   )
@@ -185,8 +143,6 @@ FormFields.propTypes = {
     confidential: PropTypes.object,
     description: PropTypes.object,
     job_category_ids: PropTypes.object,
-    offer_type_id: PropTypes.object,
-    work_mode_id: PropTypes.object,
     offers_work_positions: PropTypes.object
   }).isRequired,
   tooltip_description: PropTypes.shape({

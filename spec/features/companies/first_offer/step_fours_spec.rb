@@ -37,10 +37,10 @@ RSpec.describe "When company fill the step four form", type: :feature do
         expect(page).to have_button('Siguiente')
 
         find(id: 'mui-component-select-offer[offer_type_id]', visible: false).click
-        find('li.MuiListItem-button', text: expected_data[:offer_type]).click
+        find('li.MuiListItem-button', text: offer_type.description).click
 
         find(id: 'mui-component-select-offer[work_mode_id]', visible: false).click
-        find('li.MuiListItem-button', text: expected_data[:work_mode]).click
+        find('li.MuiListItem-button', text: work_mode.description).click
 
         find(id: 'mui-component-select-offer[contract_type_id]', visible: false).click
         find('li', text: contract_type.description).click
@@ -53,8 +53,6 @@ RSpec.describe "When company fill the step four form", type: :feature do
 
         find(id: 'mui-component-select-offer[sex_ids][]', visible: false).click
         find('li', text: sex_3.description).click
-
-       #execute_script "window.scrollTo(0, (window.innerHeight * 2) )"
 
         click_link_or_button('Siguiente')
 

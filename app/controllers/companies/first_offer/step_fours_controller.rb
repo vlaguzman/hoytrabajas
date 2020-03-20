@@ -30,6 +30,8 @@ class Companies::FirstOffer::StepFoursController < ApplicationController
       .require(:offer)
       .permit(
         :id,
+        :offer_type_id,
+        :work_mode_id,
         :contract_type_id,
         :vacancies_quantity,
         :close_date,

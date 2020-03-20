@@ -12,7 +12,6 @@ RSpec.describe "Like an company", type: :feature do
         sign_in company
 
         visit companies_first_offer_step_three_path
-        save_page("daniel.html")
 
         expected_data = {
           title:                 'Oferta para el mejor desarrollador del mundo mundial',
@@ -44,9 +43,6 @@ RSpec.describe "Like an company", type: :feature do
 
         find(id: 'mui-component-select-offer[job_category_ids]', visible: false).click
         find('li.MuiListItem-button', text: expected_data[:job_category]).click
-
-        find(id: 'mui-component-select-offer[work_mode_id]', visible: false).click
-        find('li.MuiListItem-button', text: expected_data[:work_mode]).click
 
         find(id: 'offer[offers_work_positions]', visible: false).click
         find('li', text: expected_data[:offers_work_positions]).click

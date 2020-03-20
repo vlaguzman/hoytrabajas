@@ -4,8 +4,6 @@ RSpec.describe "Like an company", type: :feature do
   let(:company) { create(:company, :first_time, name: 'HoyTrabajas.com') }
 
   let!(:job_category)  { create(:job_category) }
-  let!(:offer_type)    { create(:offer_type) }
-  let!(:work_mode)     { create(:work_mode) }
   let!(:work_position) { create(:work_position) }
 
   describe "fill the step three form" do
@@ -14,13 +12,12 @@ RSpec.describe "Like an company", type: :feature do
         sign_in company
 
         visit companies_first_offer_step_three_path
+        save_page("daniel.html")
 
         expected_data = {
           title:                 'Oferta para el mejor desarrollador del mundo mundial',
           description:           'Se busca desarrollador con 10 años de experiencia en COBOL y HASKEL, salirio: mucho money',
           job_category:          job_category.description,
-          offer_type:            offer_type.description,
-          work_mode:             work_mode.description,
           offers_work_positions: work_position.description
         }
 
@@ -34,8 +31,6 @@ RSpec.describe "Like an company", type: :feature do
 
           with_tag(:input, with: { name: 'offer[id]', type: "hidden" })
           with_tag(:input, with: { name: 'offer[job_category_ids]', type: "hidden" })
-          with_tag(:input, with: { name: 'offer[offer_type_id]', type: "hidden" })
-          with_tag(:input, with: { name: 'offer[work_mode_id]', type: "hidden" })
         end
 
         expect(page).to have_button('Siguiente')
@@ -50,9 +45,6 @@ RSpec.describe "Like an company", type: :feature do
         find(id: 'mui-component-select-offer[job_category_ids]', visible: false).click
         find('li.MuiListItem-button', text: expected_data[:job_category]).click
 
-        find(id: 'mui-component-select-offer[offer_type_id]', visible: false).click
-        find('li.MuiListItem-button', text: expected_data[:offer_type]).click
-
         find(id: 'mui-component-select-offer[work_mode_id]', visible: false).click
         find('li.MuiListItem-button', text: expected_data[:work_mode]).click
 
@@ -65,8 +57,6 @@ RSpec.describe "Like an company", type: :feature do
 
         expect(offer.description).to eq(expected_data[:description])
         expect(offer.job_category_ids).not_to be_nil
-        expect(offer.work_mode_id).not_to be_nil
-        expect(offer.offer_type_id).not_to be_nil
         expect(offer.status).to eq("preview")
         expect(offer.confidential).to be_falsey
 

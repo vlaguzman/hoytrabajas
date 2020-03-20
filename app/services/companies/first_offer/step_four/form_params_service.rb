@@ -1,6 +1,8 @@
 class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsService
 
   SELECT_FIELDS_KEYS = [
+    :offer_type_id,
+    :work_mode_id,
     :contract_type_id,
   ]
 
@@ -19,32 +21,39 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
     )
   end
 
-  def age_range_list_ids_list
-    ListConverter.model_list AgeRangeList
-  end
-
-  def contract_type_id_list
-    ListConverter.model_list ContractType
-  end
-
-  def sex_ids_list
-    ListConverter.model_list Sex
-  end
-
   def vacancies_quantity_field
+    current_value = source && source.vacancies_quantity
+
     {
       vacancies_quantity: {
         name: 'offer[vacancies_quantity]',
         label: template_translations[:form][:formFields][:vacancies_quantity],
         values: { min: 1, max: 100 },
         step: 1,
-        current_value: source.vacancies_quantity
+        current_value: current_value
+      }
+    }
+  end
+
+  def offer_age_range_field
+    object = source && AgeRange.find_by(offer_id: source.id)
+    current_value = object.present? ? [object.from, object.to] : ""
+
+    {
+      offer_age_range: {
+        name: 'offer[offer_age_range]',
+        label: template_translations[:form][:formFields][:offer_age_range],
+        beforeLabel: template_translations[:offer_age_range_before],
+        afterLabel: template_translations[:offer_age_range_after],
+        values: { min: 18, max: 80 },
+        step: 1,
+        current_value: current_value
       }
     }
   end
 
   def close_date_field
-    object = source.close_date
+    object = source && source.close_date
     close_date = object.present? ? "#{object.year}, #{object.month}, #{object.day}" : ""
 
     {
@@ -57,14 +66,32 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
   end
 
   def immediate_start_field
+    current_value = source && source.immediate_start
     {
       immediate_start: {
         name: 'offer[immediate_start]',
         label: template_translations[:form][:formFields][:immediate_start],
         description: template_translations[:immediate_start_description],
-        current_value: source.immediate_start
+        current_value: current_value
       }
     }
+  end
+
+
+  def offer_type_id_list
+    ListConverter.model_list OfferType
+  end
+
+  def work_mode_id_list
+    ListConverter.model_list WorkMode
+  end
+
+  def contract_type_id_list
+    ListConverter.model_list ContractType
+  end
+
+  def sex_ids_list
+    ListConverter.model_list Sex
   end
 
 end

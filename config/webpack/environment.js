@@ -1,7 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
 const { environment } = require('@rails/webpacker')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
 const typescript = require('./loaders/typescript')
 
@@ -9,8 +8,6 @@ environment.plugins.prepend(
   'MomentContextReplacement',
   new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|es/)
 )
-
-environment.plugins.prepend('CleanWebpackPlugin', new CleanWebpackPlugin())
 
 environment.config.merge({
   module: {

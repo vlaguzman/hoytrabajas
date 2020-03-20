@@ -4,6 +4,10 @@ set :bundle_command, 'bundle exec'
 set :output, {:error => '/tmp/cron.error.log', :standard => '/tmp/cron.standard.log'}
 set :chronic_options, hours24: true
 
+every 5.minutes do
+  rake 'sidekiq_check:rerun'
+end
+
 every 1.day, at: '04:59' do
   command "echo 'Updating Offers...'"
   runner 'Offers::UpdateOffersStatusDailyJob.new.perform(limit_date: Date.today)'

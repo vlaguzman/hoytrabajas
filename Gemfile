@@ -64,6 +64,10 @@ group :development, :test do
   gem 'webmock'
 end
 
+group :test do
+  gem 'rspec-sidekiq'
+end
+
 group :development do
   gem 'guard', require: false
   gem 'guard-rspec', require: false

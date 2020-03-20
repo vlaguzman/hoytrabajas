@@ -1,0 +1,5 @@
+es:
+  elasticsearch:
+    start_operation: "inciar proceso para ID %{id}"
+    indexing_success: "indexado exitoso %{model} ID %{id}"
+    record_no_found: "no se encontro %{model} con ID %{id}"

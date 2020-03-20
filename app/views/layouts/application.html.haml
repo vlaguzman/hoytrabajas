@@ -15,7 +15,7 @@
       -# 'layouts/google_analytics'
 
     - if Rails.env.production?
-      = javascript_packs_with_chunks_tag 'application', 'analytics/clientify_analytics', 'analytics/facebook_pixel', 'analytics/tag_manager', 'data-turbolinks-track': 'reload'
+      = javascript_packs_with_chunks_tag 'application', 'analytics/facebook_pixel', 'analytics/tag_manager', 'data-turbolinks-track': 'reload'
       
       -# Facebook pixel
       %noscript
@@ -43,6 +43,7 @@
     notice_message: notice}, prerender: false)
 
     - if Rails.env.production?
+      = javascript_pack_tag 'analytics/clientify_analytics'
       -# Google Tag Manager (noscript)
       %noscript
         %iframe{:height => "0", :src => "https://www.googletagmanager.com/ns.html?id=GTM-MC7RKNG", :style => "display:none;visibility:hidden", :width => "0"}

@@ -1,11 +1,17 @@
 {
   "scan_info": {
     "app_path": "/ht",
-    "rails_version": "6.0.0",
+    "rails_version": "6.0.2.2",
     "security_warnings": 0,
+<<<<<<< HEAD
     "start_time": "2020-03-20 15:32:17 +0000",
     "end_time": "2020-03-20 15:32:20 +0000",
     "duration": 2.636203197,
+=======
+    "start_time": "2020-03-20 15:26:32 +0000",
+    "end_time": "2020-03-20 15:26:35 +0000",
+    "duration": 2.440581115,
+>>>>>>> clientify code moved
     "checks_performed": [
       "BasicAuth",
       "BasicAuthTimingAttack",
@@ -78,7 +84,7 @@
     "number_of_models": 82,
     "number_of_templates": 63,
     "ruby_version": "2.6.3",
-    "brakeman_version": "4.7.0"
+    "brakeman_version": "4.8.0"
   },
   "warnings": [
 

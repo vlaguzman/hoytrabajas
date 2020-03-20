@@ -125,5 +125,9 @@ app/views/devise/shared/_links.html.haml:1:- if controller_name != 'sessions'
 app/views/devise/shared/_links.html.haml:4:- if devise_mapping.registerable? && controller_name != 'registrations'
 app/views/devise/shared/_links.html.haml:7:- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
 app/views/layouts/application.html.haml:17:    - if Rails.env.production?
+<<<<<<< HEAD
 app/views/layouts/application.html.haml:45:    - if Rails.env.production?
+=======
+app/views/layouts/application.html.haml:40:    - if Rails.env.production?
+>>>>>>> clientify code moved
 app/views/shared/_form_errors.haml:2:  - if source.errors.any?

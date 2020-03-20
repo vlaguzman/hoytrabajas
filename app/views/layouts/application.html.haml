@@ -43,7 +43,6 @@
     notice_message: notice}, prerender: false)
 
     - if Rails.env.production?
-      = javascript_pack_tag 'analytics/clientify_analytics'
       -# Google Tag Manager (noscript)
       %noscript
         %iframe{:height => "0", :src => "https://www.googletagmanager.com/ns.html?id=GTM-MC7RKNG", :style => "display:none;visibility:hidden", :width => "0"}

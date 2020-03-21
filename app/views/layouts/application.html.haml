@@ -10,13 +10,15 @@
 
     %meta{:name => "viewport", :content => "height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"}
 
-      -# TODO add to javascript_pack_with_chunks_tag list 
-      -# when marketing require google analitycs again
-      -# 'layouts/google_analytics'
+      -# TODO add to javascript_pack_tag 'layouts/google_analytics'
+  
+    = javascript_pack_tag 'application'
+    = stylesheet_link_tag 'application', media: 'all'
 
     - if Rails.env.production?
-      = javascript_packs_with_chunks_tag 'application', 'analytics/facebook_pixel', 'analytics/tag_manager', 'data-turbolinks-track': 'reload'
-      
+      = javascript_pack_tag 'analytics/facebook_pixel'
+      = javascript_pack_tag 'analytics/tag_manager'
+
       -# Facebook pixel
       %noscript
         %img{:height => "1", :src => "https://www.facebook.com/tr?id=349189892310764&ev=PageView&noscript=1", :style => "display:none", :width => "1"}
@@ -26,11 +28,6 @@
 
       -# Canonical
       %link{:href => "#{ENV['HT_PROTOCOL']}#{ENV['HT_DOMAIN']}#{(url_for(:page => params[:page])).chomp("/")}", :rel => "canonical"}/
-
-    - else
-      = javascript_packs_with_chunks_tag 'application', 'data-turbolinks-track': 'reload'
-    
-    = stylesheet_link_tag 'application', media: 'all'
 
     %link{href: "https://fonts.googleapis.com/icon?family=Material+Icons", rel: "stylesheet"}
 

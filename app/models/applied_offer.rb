@@ -23,4 +23,5 @@ class AppliedOffer < ApplicationRecord
 
   scope :order_by_applied_date, -> { order(applied_date: :asc) }
 
+  validates_uniqueness_of :curriculum_vitae_id, :scope => :offer_id
 end

@@ -50,6 +50,10 @@ en:
       messages:
         record_invalid: "Error saving the object"
       models:
+        applied_offer:
+          attributes:
+            curriculum_vitae_id:
+              taken: 'A job offer just should one application by candidate'
         company:
           attributes:
             email:

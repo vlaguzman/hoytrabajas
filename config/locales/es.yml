@@ -139,6 +139,8 @@ es:
       models:
         applied_offer:
           attributes:
+            curriculum_vitae_id:
+              taken: 'A job offer just should one application by candidate'
             offer_id:
               blank: 'Por favor seleccione un oferta, este campo no puede estar en blanco'
             curriculum_vitae_id:

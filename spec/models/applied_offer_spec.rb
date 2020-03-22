@@ -7,6 +7,14 @@ RSpec.describe AppliedOffer, type: :model do
     it { should validate_presence_of(:offer_id) }
     it { should validate_presence_of(:curriculum_vitae_id) }
     it { should validate_presence_of(:applied_offer_status_id) }
+
+    it "should reject duplicate curriculum_vitae in the same offer" do
+      user = FactoryBot.create(:user)
+      offer = FactoryBot.create(:offer)
+      job_application = FactoryBot.create(:applied_offer, offer: offer, curriculum_vitae: user.curriculum_vitae, applied_date: DateTime.now )
+      duplicate_job_application = AppliedOffer.new(offer: offer, curriculum_vitae: user.curriculum_vitae, applied_date: DateTime.now )
+      expect(duplicate_job_application).to_not be_valid
+    end
   end
 
   describe "associoations" do

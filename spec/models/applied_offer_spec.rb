@@ -13,7 +13,9 @@ RSpec.describe AppliedOffer, type: :model do
       offer = FactoryBot.create(:offer)
       job_application = FactoryBot.create(:applied_offer, offer: offer, curriculum_vitae: user.curriculum_vitae, applied_date: DateTime.now )
       duplicate_job_application = AppliedOffer.new(offer: offer, curriculum_vitae: user.curriculum_vitae, applied_date: DateTime.now )
+
       expect(duplicate_job_application).to_not be_valid
+      expect(duplicate_job_application.errors[:curriculum_vitae_id]).to include("Un candidato solo puede aplicar una vez a cada oferta")
     end
   end
 

@@ -12,7 +12,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/affinity_percentage.rb",100,9,5,5,0
 "./app/models/age_range.rb",100,8,5,5,0
 "./app/models/application_record.rb",100,3,2,2,0
-"./app/models/applied_offer.rb",100,26,12,12,0
+"./app/models/applied_offer.rb",100,27,13,13,0
 "./app/models/applied_offer_status.rb",100,3,2,2,0
 "./app/models/applied_offer_transition.rb",100,4,3,3,0
 "./app/models/available_work_day.rb",100,6,4,4,0

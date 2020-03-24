@@ -23,7 +23,7 @@ RSpec.describe 'Like an company', type: :feature do
 
           with_tag(:input, with: { name: 'offer[id]', type: "hidden" })
           with_tag(:input, with: { name: 'offer[job_category_ids]', type: 'hidden' })
-          with_tag(:input, with: { name: 'offer[job_category_image]', type: 'hidden' })
+          with_tag(:input, with: { name: 'offer[job_category][image]', type: 'hidden' })
         end
 
         expect(page).to have_button('Siguiente')

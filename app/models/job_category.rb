@@ -5,4 +5,5 @@ class JobCategory < ApplicationRecord
 
   has_and_belongs_to_many :curriculum_vitaes
   has_and_belongs_to_many :offers, optional: true
+  has_and_belongs_to_many :jc_images, optional: true
 end

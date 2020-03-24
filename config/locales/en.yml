@@ -101,6 +101,7 @@ en:
               blank: "Please select an offer, it cant be blank"
             curriculum_vitae_id:
               blank: "Please select a curriculum vitae, it cant be blank"
+              taken: "Each candidate can only apply once per offer"
             applied_date:
               blank: "Please select a date, it cant be blank"
             applied_offer_status:

@@ -143,6 +143,7 @@ es:
               blank: 'Por favor seleccione un oferta, este campo no puede estar en blanco'
             curriculum_vitae_id:
               blank: 'Por favor seleccione un valor para curriculum vitae, este campo no puede estar en blanco'
+              taken: "Un candidato solo puede aplicar una vez a cada oferta"
             applied_date:
               blank: 'Por favor seleccione una fecha, este campo no puede estar en blanco'
             applied_offer_status_id:

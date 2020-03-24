@@ -21,7 +21,7 @@ A          • ApplicationJob                                              1    
 A          • ApplicationMailer                                           3       0.0        0           1
 A          • ApplicationPresenter                                        10      32.69      0           10
 A          • ApplicationRecord                                           4       0.0        0           1
-A          • AppliedOffer                                                6       1.41       0           1
+A          • AppliedOffer                                                7       1.41       0           1
 A          • AppliedOfferStateMachine                                    1       0.0        0           1
 A          • AppliedOfferStatus                                          1       0.0        0           1
 A          • AppliedOfferTransition                                      1       0.0        0           1

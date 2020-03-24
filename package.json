@@ -17,7 +17,6 @@
     "@types/react-dom": "^16.9.0",
     "babel-plugin-transform-imports": "^2.0.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
-    "chart.js": "^2.8.0",
     "classnames": "^2.2.6",
     "date-fns": "^2.0.0-beta.5",
     "downshift": "^3.2.12",
@@ -37,7 +36,7 @@
     "typescript": "^3.6.2",
     "uuid": "^3.3.3",
     "validator": "^11.1.0",
-    "webpack-bundle-analyzer": "^3.6.0",
+    "webpack-bundle-analyzer": "^3.6.1",
     "yarn": "^1.22.4"
   },
   "devDependencies": {

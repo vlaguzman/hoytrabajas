@@ -1,9 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Presentation from './sections/presentation'
-// import First from './sections/first'
 import Second from './sections/second'
-// import Third from './sections/third'
 
 const DashEnterprises = props => {
   const { my_offers, component_translations, edit_offer_path } = props
@@ -18,12 +16,6 @@ const DashEnterprises = props => {
         my_offers_section={my_offers_section}
         edit_offer_path={edit_offer_path}
       />
-      {
-        // TODO: add this when dashboards be implemented
-        /* <First />
-      <Second />
-      <Third /> */
-      }
     </>
   )
 }

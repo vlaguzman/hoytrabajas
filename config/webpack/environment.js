@@ -21,4 +21,5 @@ environment.config.merge({
 })
 
 environment.loaders.prepend('typescript', typescript)
+
 module.exports = environment

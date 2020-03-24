@@ -60,7 +60,8 @@ const HomePage = ({
       <Banner translations={info} />
       <SearchTrends translations={search_trends} />
       <Steps translations={steps} />
-      <PostList translations={post_list} />
+      {/* TODO: Uncomment when landing pages has been defined */}
+      {/* <PostList translations={post_list} /> */}
       <CompaniesSection translations={affiliates} {...companies} />
       {/* TODO: use when we have the newsletter working right */}
       {/* <Newsletter

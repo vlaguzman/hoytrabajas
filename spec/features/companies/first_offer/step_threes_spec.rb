@@ -4,6 +4,7 @@ RSpec.describe 'Like an company', type: :feature do
   let(:company) { create(:company, :first_time, name: 'HoyTrabajas.com') }
 
   let!(:job_category)  { create(:job_category) }
+
   let!(:work_position) { create(:work_position) }
 
   describe 'fill the step three form' do
@@ -38,6 +39,10 @@ RSpec.describe 'Like an company', type: :feature do
         find(id: 'mui-component-select-offer[job_category_ids]', visible: false).click
         find('li.MuiListItem-button', text: job_category.description).click
 
+        # Select image two
+        find(id: 'mui-component-select-offer[job_category][image]', visible: false).click
+        find('li.MuiListItem-button', text: 'image_2').click
+
         find(id: 'offer[offers_work_positions]', visible: false).click
         find('li', text: work_position.description).click
 
@@ -47,6 +52,7 @@ RSpec.describe 'Like an company', type: :feature do
 
         expect(offer.description).to eq('Se busca desarrollador en ROR')
         expect(offer.job_category_ids).not_to be_nil
+        expect(offer.job_category.image).to eq('https://bitbucket-image-2.png')
         expect(offer.status).to eq('preview')
         expect(offer.confidential).to be_falsey
 

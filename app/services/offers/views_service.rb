@@ -1,4 +1,5 @@
 #TODO Oscar refactor this, the RC is in "C"
+# this class should be a module and only should reusable methods that help the offer presenters
 class Offers::ViewsService
   include ActionView::Helpers
 
@@ -26,8 +27,6 @@ class Offers::ViewsService
     affinity = get_affinity_percentage
     affinity && "#{affinity}%"
   end
-
-  private
 
   def used_keys
     [:title, :immediate_start, :description, :required_experience, :confidential]

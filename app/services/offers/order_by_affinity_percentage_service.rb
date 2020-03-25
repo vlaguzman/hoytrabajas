@@ -1,3 +1,5 @@
+#TODO Deleteme and use Offers::CarousalOffersService::ByAffinityPercentageSorter
+
 module Offers::OrderByAffinityPercentageService
 
   def self.call(current_user: nil, offers: [])

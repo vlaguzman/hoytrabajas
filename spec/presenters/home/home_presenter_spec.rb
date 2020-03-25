@@ -1,7 +1,10 @@
 require "rails_helper"
 
 RSpec.describe Home::HomePresenter do
-  let(:subject) { described_class.new }
+
+  let(:candidate) { create(:user) }
+
+  let(:subject) { described_class.new candidate }
 
   describe "#data_filter" do
     it "should return a hash with data filter" do

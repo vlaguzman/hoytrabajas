@@ -2,14 +2,9 @@ class Home::HomePresenter < ApplicationPresenter
 
   MAX_OFFER_LIMIT = 50
 
-  attr_accessor :current_user
-
-  def initialize(current_user = nil)
-    @current_user = current_user
-  end
-
   def data_filter
     cities = Cities::CitiesWithOffersListService.()
+
     {
       fields1: [
         { type: 'text', label: 'Palabra clave', name: 'q[title_cont]', id: 'keyword' },
@@ -31,10 +26,11 @@ class Home::HomePresenter < ApplicationPresenter
       button1: 'Categories',
       cities: cities
     }
+
   end
 
   def offers
-    OffersService.active_offers_index_details(current_user, MAX_OFFER_LIMIT)
+    [] #OffersService.active_offers_index_details(source, MAX_OFFER_LIMIT)
   end
 
   def categories

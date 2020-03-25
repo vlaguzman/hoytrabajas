@@ -71,11 +71,11 @@ RSpec.describe Offers::Organizer::Joiner do
       it "should return joined lists" do
         response = subject.(offer_attributes_lists: offer_attributes_lists)
 
-        expect(response.pluck(:id_offer)).to eq([offer_57.id, offer_65.id, offer_71.id, offer_25.id])
+        expect(response.pluck(:id)).to eq([offer_57.id, offer_65.id, offer_71.id, offer_25.id])
 
         expected_keys = [
           :title, :immediate_start, :description, :required_experience, :confidential,
-          :offer, :id_offer, :job_category_image, :city, :salary, :company, :close_date, :on_demand,
+          :offer, :id, :job_category_image, :city, :salary, :company, :close_date, :on_demand,
           :affinity_percentage, :applied_offers, :raw_close_date
         ]
 
@@ -87,11 +87,11 @@ RSpec.describe Offers::Organizer::Joiner do
       it "should return joined lists without offer key" do
         response = subject.(offer_attributes_lists: offer_attributes_lists, remove_offer_key: true)
 
-        expect(response.pluck(:id_offer)).to eq([offer_57.id, offer_65.id, offer_71.id, offer_25.id])
+        expect(response.pluck(:id)).to eq([offer_57.id, offer_65.id, offer_71.id, offer_25.id])
 
         expected_keys = [
           :title, :immediate_start, :description, :required_experience, :confidential,
-          :id_offer, :job_category_image, :city, :salary, :company, :close_date, :on_demand,
+          :id, :job_category_image, :city, :salary, :company, :close_date, :on_demand,
           :affinity_percentage, :applied_offers, :raw_close_date
         ]
 

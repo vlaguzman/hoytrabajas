@@ -64,7 +64,6 @@ RSpec.describe Offers::ShowService do
 
     let(:expected_object) do
         {
-        id_offer: offer.id,
         close_date: "25 de Julio del 2019",
         title: "Desarrollador Front-end Sr. test",
         address: "Calle Falsa 123 # 00 99",

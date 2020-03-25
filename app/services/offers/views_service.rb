@@ -29,13 +29,12 @@ class Offers::ViewsService
   end
 
   def used_keys
-    [:title, :immediate_start, :description, :required_experience, :confidential]
+    [:id, :title, :immediate_start, :description, :required_experience, :confidential]
   end
 
   def build_details
     close_date = offer.close_date
     {
-      id_offer:             offer.id,
       job_category_image:   job_category_image,
       city:                 { description: offer.city_description },
       salary:               salary_details,
@@ -77,21 +76,22 @@ class Offers::ViewsService
   end
 
   def offer_on_demand_details
-    offer_on_demand = OfferOnDemand.find_by(offer_id: offer.id)
-    offer_on_demand.present? ? offer_on_demand.status : nil
+    offer.offer_on_demand_status
   end
 
   def company_logo_image
-    offer.company.present? && offer.company.logo.attached? ?
-      Rails.application.routes.url_helpers.rails_blob_path(offer.company.logo, disposition: "attachment", only_path: true)
+    logo = offer.company_logo
+    logo && logo.attached? ?
+      Rails.application.routes.url_helpers.rails_blob_path(logo, disposition: "attachment", only_path: true)
       : DEFAULT_IMAGE_LOGO_URL
   end
 
   def job_category_image
-    category_and_image_present? ? offer.job_categories.first.image : DEFAULT_IMAGE_CATEGORY_URL
+    image = job_category_image_getter
+    image.present? ? image : DEFAULT_IMAGE_CATEGORY_URL
   end
 
-  def category_and_image_present?
-    offer.job_categories.any? && offer.job_categories.first.image.present?
+  def job_category_image_getter
+    offer.job_category_ids.any? && offer.job_categories.first.image
   end
 end

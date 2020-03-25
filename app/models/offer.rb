@@ -76,7 +76,7 @@ class Offer < ApplicationRecord
   #delegates
   delegate :from, :to, :currency_description, :period_description, :currency_id, :period_id, :is_range, to: :offer_salary, prefix: :salary, allow_nil: true
   delegate :from, :to, to: :age_range, prefix: :age_range, allow_nil: true
-  delegate :description, :email, :name, :web_site, :employees_range_description, to: :company, prefix: :company, allow_nil: true
+  delegate :description, :email, :name, :web_site, :employees_range_description, :logo, to: :company, prefix: :company, allow_nil: true
   delegate :description, to: :city, prefix: :city, allow_nil: true
   delegate :state_id, to: :city, prefix: :city, allow_nil: true
   delegate :state_country_id, to: :city, prefix: :city, allow_nil: true
@@ -85,6 +85,7 @@ class Offer < ApplicationRecord
   delegate :description, to: :contract_type, prefix: :contract_type, allow_nil: true
   delegate :description, to: :available_work_days, prefix: :available_work_days, allow_nil: true
   delegate :description, to: :working_days, prefix: :working_days, allow_nil: true
+  delegate :status, to: :offer_on_demand, prefix: :offer_on_demand, allow_nil: true
   delegate :duration, :duration_type_id, to: :offer_required_experiences, prefix: :required_experiences, allow_nil: true
 
   def self.by_job_categories(job_categories_ids)
@@ -100,7 +101,7 @@ class Offer < ApplicationRecord
   def self.order_by_demand_and_created_at(current_user: nil, limit: MAX_OFFER_LIMIT)
     ordered_on_demand_and_affinity = Offers::OrderByAffinityPercentageService.(current_user: current_user, offers: Offer.on_demand_up)
 
-    ordered_standard_and_affinity = Offers::OrderByAffinityPercentageService.(current_user: current_user, offers: (Offer.created_at_desc - Offer.on_demand_up))
+    ordered_standard_and_affinity = Offers::OrderByAffinityPercentageService.(current_user: current_user, offers: (Offer.most_recently_created - Offer.on_demand_up))
 
     array_of_ids = ordered_on_demand_and_affinity.pluck(:id) + ordered_standard_and_affinity.pluck(:id)
     Offer.find(array_of_ids.take(limit)).sort_by{|offer| array_of_ids.index offer.id}

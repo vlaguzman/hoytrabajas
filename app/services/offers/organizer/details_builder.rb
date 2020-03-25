@@ -1,6 +1,6 @@
 module Offers::Organizer::DetailsBuilder
 
-  DEFAULT_ATTRIBUTES = [:title, :immediate_start, :description, :required_experience, :confidential]
+  DEFAULT_ATTRIBUTES = [:id, :title, :immediate_start, :description, :required_experience, :confidential]
 
   def self.call(offer_ids_lists: {})
     offer_ids_lists.reduce({}) do |attributes_groups, (group_key, group_list)|

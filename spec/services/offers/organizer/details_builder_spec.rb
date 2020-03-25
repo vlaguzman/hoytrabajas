@@ -15,9 +15,9 @@ RSpec.describe Offers::Organizer::DetailsBuilder do
         expect(response[:on_demand_offer_ids_list].last).to be_an_instance_of Hash
         expect(response[:standard_offer_ids_list].last).to be_an_instance_of Hash
 
-        expected_keys [
+        expected_keys = [
           :title, :immediate_start, :description, :required_experience, :confidential,
-          :offer, :id_offer, :job_category_image, :city, :salary, :company, :close_date, :on_demand,
+          :offer, :id, :job_category_image, :city, :salary, :company, :close_date, :on_demand,
           :affinity_percentage, :applied_offers, :raw_close_date
         ]
 

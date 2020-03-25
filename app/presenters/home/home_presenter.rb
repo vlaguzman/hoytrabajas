@@ -30,7 +30,9 @@ class Home::HomePresenter < ApplicationPresenter
   end
 
   def offers
-    [] #OffersService.active_offers_index_details(source, MAX_OFFER_LIMIT)
+    #TODO Change to carousel offers service in next pr
+    #Offers::CarouselOffersService.(source.curriculum_vitae, limit: MAX_OFFER_LIMIT)
+    OffersService.active_offers_index_details(source, MAX_OFFER_LIMIT)
   end
 
   def categories

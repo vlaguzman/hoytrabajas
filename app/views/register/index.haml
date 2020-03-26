@@ -1,0 +1,11 @@
+= render '/shared/header'
+= react_component('src/components/Login/StaticLogin', 
+{ currentContent: 'sign_up',
+  companies_registration_path: company_registration_path,
+  users_registration_path: user_registration_path,
+  terms_and_conditions_file_path: ENV['TERMS_AND_CONDITIONS_FILE_PATH'],
+  csrf_param: request_forgery_protection_token,
+  csrf_token: form_authenticity_token,
+  session_translation: I18n.t("session"),
+}, prerender: false)
+= render '/shared/footer'

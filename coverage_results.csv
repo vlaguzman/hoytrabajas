@@ -180,9 +180,9 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/offers/organizer/joiner.rb",100,18,9,9,0
 "./app/services/offers/organizer/list_builder.rb",100,45,23,23,0
 "./app/services/offers/show_service.rb",100,76,27,27,0
-"./app/services/offers/views_service.rb",100,97,40,40,0
+"./app/services/offers/views_service.rb",100,99,41,41,0
 "./app/services/offers_on_demand/set_inactive_service.rb",100,29,13,13,0
-"./app/services/offers_service.rb",100,78,24,24,0
+"./app/services/offers_service.rb",100,78,22,22,0
 "./app/services/routes_service.rb",100,10,5,5,0
 "./app/services/users/attach_file_service.rb",100,5,3,3,0
 "./app/services/users/curriculum_vitaes/profile_photo_service.rb",100,24,12,12,0

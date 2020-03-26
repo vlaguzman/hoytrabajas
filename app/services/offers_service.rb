@@ -5,14 +5,14 @@ module OffersService
     OfferOnDemand
       .active
       .most_recently_offer_created
-      .map { |on_demand| on_demand.offer }
+      .map(&:offer)
   end
 
   def applied_offer_by_curriculum_id(curriculum_vitae_id = nil)
     AppliedOffer
       .where(curriculum_vitae_id: curriculum_vitae_id)
       .most_recently_offer_created
-      .map { |on_demand| on_demand.offer }
+      .map(&:offer)
   end
 
   def active_most_recently_created(limit: nil)

@@ -92,6 +92,8 @@ class Offers::ViewsService
   end
 
   def job_category_image_getter
-    offer.job_category_ids.any? && offer.job_categories.first.image
+    if offer.job_category_ids.any?
+      offer.job_categories.first.image
+    end
   end
 end

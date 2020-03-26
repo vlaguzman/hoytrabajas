@@ -20,7 +20,8 @@ const SignUp = props => {
     registration_path,
     source_name = null,
     toggleOpenState = null,
-    setCurrentModal = null
+    setCurrentModal = null,
+    isStatic = false
   } = props
 
   const [sourceName, setSourceName] = useState(source_name || 'user')
@@ -43,13 +44,15 @@ const SignUp = props => {
         style={{ position: 'relative' }}
         className="m-loginHeader mt-25"
       >
-        <CloseIcon
-          className="a-button--close"
-          onClick={() => {
-            if (toggleOpenState) toggleOpenState('login', false)
-            else window.location.assign('/')
-          }}
-        />
+        {!isStatic && (
+          <CloseIcon
+            className="a-button--close"
+            onClick={() => {
+              if (toggleOpenState) toggleOpenState('login', false)
+              else window.location.assign('/')
+            }}
+          />
+        )}
         <Row noGutters className="justify-content-center">
           <div className="ht-image">
             <img
@@ -170,33 +173,35 @@ const SignUp = props => {
           </Col>
         </Row>
       </DialogContent>
-      <DialogActions className="loginActions my-10">
-        <div className="w-100 text-center">
-          <div className="loginActions__divider" />
-          <Typography variant="caption" component="span">
-            {props.session_translation.sign_up.with_account.title}
-          </Typography>
-          <Typography
-            variant="caption"
-            className="ml-5 color__blue-main fw-bold"
-            component="a"
-            style={{
-              color: '#0b5aa0',
-              textDecoration: 'underline',
-              cursor: 'pointer'
-            }}
-            onClick={() => {
-              if (setCurrentModal) setCurrentModal('sign_in')
-              else
-                window.location.assign(
-                  `/${sourceName === 'user' ? 'users' : 'companies'}/sign_in`
-                )
-            }}
-          >
-            {props.session_translation.sign_up.with_account.sign_in}
-          </Typography>
-        </div>
-      </DialogActions>
+      {!isStatic && (
+        <DialogActions className="loginActions my-10">
+          <div className="w-100 text-center">
+            <div className="loginActions__divider" />
+            <Typography variant="caption" component="span">
+              {props.session_translation.sign_up.with_account.title}
+            </Typography>
+            <Typography
+              variant="caption"
+              className="ml-5 color__blue-main fw-bold"
+              component="a"
+              style={{
+                color: '#0b5aa0',
+                textDecoration: 'underline',
+                cursor: 'pointer'
+              }}
+              onClick={() => {
+                if (setCurrentModal) setCurrentModal('sign_in')
+                else
+                  window.location.assign(
+                    `/${sourceName === 'user' ? 'users' : 'companies'}/sign_in`
+                  )
+              }}
+            >
+              {props.session_translation.sign_up.with_account.sign_in}
+            </Typography>
+          </div>
+        </DialogActions>
+      )}
     </>
   )
 }

@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers:  {registrations: 'users/registrations', :omniauth_callbacks => "users/omniauth_callbacks" , sessions: 'users/sessions' }
   devise_for :companies, controllers: { registrations: 'companies/registrations' }
 
+  resources :register, only: [:index]
+
   resources :faqs, only: [:index]
   resources :offers
 

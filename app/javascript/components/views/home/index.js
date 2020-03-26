@@ -23,7 +23,7 @@ const HomePage = ({
   offer_translations,
   advanced_search_translations,
   filterForm,
-  common
+  categoriesAttributesList
 }) => {
   const { companies } = content
   const {
@@ -42,7 +42,7 @@ const HomePage = ({
   return (
     <div className="home-wrapper">
       <CoverSection
-        {...{ common, filterForm }}
+        {...{ categoriesAttributesList, filterForm }}
         translations={cover}
         advanced_search_translations={advanced_search_translations}
         new_offer_path={new_offer_path}
@@ -56,7 +56,7 @@ const HomePage = ({
         offer_translations={offer_translations}
         offers_path={offers_path}
       />
-      <JobCategories categories={common.categorias} translations={categories} />
+      <JobCategories categories={categoriesAttributesList} translations={categories} />
       <Banner translations={info} />
       <SearchTrends translations={search_trends} />
       <Steps translations={steps} />
@@ -85,6 +85,6 @@ HomePage.propTypes = {
   home_translations: PropTypes.object.isRequired,
   offer_translations: PropTypes.object,
   advanced_search_translations: PropTypes.object.isRequired,
-  common: PropTypes.object,
+  categoriesAttributesList: PropTypes.object,
   filterForm: PropTypes.object
 }

@@ -28,9 +28,10 @@ const names = [
   'Kelly Snyder'
 ]
 
-const FilterForm = ({ translations, common, button1, fields1, cities }) => {
+const FilterForm = ({ translations, categoriesAttributesList, fields, lists: { cities } }) => {
   // TODO oscar remove this line when in rails when can searh by other fields
-  fields1 = [fields1[0]]
+
+  const keysRemovedFields = fields.map( field => Object.values(field)[0] )
 
   const { value: state, toggleState } = dialogState({ open: false })
   const [open, setOpen] = useState(false)
@@ -76,39 +77,6 @@ const FilterForm = ({ translations, common, button1, fields1, cities }) => {
     setPersonName(value)
   }
 
-  const arregloCampos = arreglo => {
-    return (
-      <>
-        {arreglo.map(({ label, placeholder }, i) => (
-          <Col xs={12} lg={4} key={label}>
-            <FormControl>
-              <InputLabel htmlFor="select-multiple-checkbox">
-                {label}
-              </InputLabel>
-              <Select
-                multiple
-                value={personName}
-                onChange={handleChange}
-                className="w-70 mb-20"
-                input={<Input id="select-multiple-checkbox" />}
-                renderValue={selected => selected.join(', ')}
-              >
-                <MenuItem disabled value="">
-                  <em>{placeholder}</em>
-                </MenuItem>
-                {names.map(name => (
-                  <MenuItem key={name} value={name}>
-                    {name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Col>
-        ))}
-      </>
-    )
-  }
-
   return (
     <Row className="m-filterForm justify-content-center" noGutters>
       <RctCollapsibleCard
@@ -129,7 +97,7 @@ const FilterForm = ({ translations, common, button1, fields1, cities }) => {
           >
             {translations.filterForm.categories}
           </button>
-          <FormGen fields={fields1} />
+          <FormGen fields={keysRemovedFields} />
           <CityFilter cities={cities} />
           {/* <ListIcon /> */}
           <button
@@ -165,7 +133,7 @@ const FilterForm = ({ translations, common, button1, fields1, cities }) => {
           className="filterForm__collapseCategories"
         >
           <CarouselRow
-            items={common}
+            items={categoriesAttributesList}
             jobCategoryIds={jobCategoryIds}
             handleJobCategory={handleJobCategory}
           />

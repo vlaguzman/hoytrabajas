@@ -2,29 +2,21 @@ class Home::HomePresenter < ApplicationPresenter
 
   MAX_OFFER_LIMIT = 50
 
-  def data_filter
+  def filter_form_attributes
     cities = Cities::CitiesWithOffersListService.()
 
     {
-      fields1: [
-        { type: 'text', label: 'Palabra clave', name: 'q[title_cont]', id: 'keyword' },
-        {
-          type: 'select',
-          label: 'Tiempo',
-          name: 'time',
-          aux: [
-          ]
-        },
-        {
-          type: 'select',
-          label: 'Rango Salarial',
-          name: 'pay',
-          aux: [
-          ]
+      fields: [
+        keyword_field: {
+          type: 'text',
+          label: I18n.t("home.index.filter_form.fields.keywords.label"),
+          name: 'search[keyword]',
+          id: 'search_form_keyword'
         }
       ],
-      button1: 'Categories',
-      cities: cities
+      lists: {
+        cities: cities
+      }
     }
 
   end
@@ -35,17 +27,15 @@ class Home::HomePresenter < ApplicationPresenter
     OffersService.active_offers_index_details(source, MAX_OFFER_LIMIT)
   end
 
-  def categories
+  def categories_list_builder
     categories = JobCategory.all.map do |category|
-      [
-        ["img", "icon_job_category_id_#{category.id}.png"],
-        ["id", category.id],
-        ["name", category.description],
-        ["quantity", category.offers.active.count]
-      ].to_h
+      attributes = category.attributes.deep_symbolize_keys.slice(:id, :description)
+
+      attributes.tap do |field|
+        field[:name] = field[:description]
+        field[:img] = "icon_job_category_id_#{field[:id]}.png"
+        field[:quantity] = category.offers.active.count
+      end
     end
-    {
-      categorias: categories
-    }
   end
 end

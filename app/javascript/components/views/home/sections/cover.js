@@ -11,7 +11,7 @@ const bannerImages = [
 const WelcomeText = ({
   translations,
   advanced_search_translations,
-  common,
+  categoriesAttributesList,
   new_offer_path,
   filterForm
 }) => {
@@ -38,7 +38,7 @@ const WelcomeText = ({
       </Slider>
       <div className="homeBanner__responsive" />
       <FilterFormSection
-        {...{ common, ...filterForm }}
+        {...{ categoriesAttributesList, ...filterForm }}
         translations={{
           filterForm: filterFormTranslations,
           advancedSearch: advanced_search_translations
@@ -58,7 +58,7 @@ export default WelcomeText
 
 WelcomeText.propTypes = {
   new_offer_path: PropTypes.string.isRequired,
-  common: PropTypes.object.isRequired,
+  categoriesAttributesList: PropTypes.object.isRequired,
   filterForm: PropTypes.object.isRequired,
   advanced_search_translations: PropTypes.object.isRequired,
   translations: PropTypes.shape({

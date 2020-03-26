@@ -6,5 +6,6 @@ production:
 :queues:
   - critical
   - elasticsearch
+  - affinitypercentage
   - default
   - low

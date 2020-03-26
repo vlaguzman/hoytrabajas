@@ -1,5 +1,9 @@
 class User < ApplicationRecord
 
+  after_commit on: :update do
+    AffinityPercentages::ExecuteUpdateWorker.perform_async(self.curriculum_vitae.id)
+  end
+
   ATTRIBUTES_TO_COMPARE = [:contract_type_id, :educational_degree_id, :sex_id]
   LISTS_TO_COMPARE = [:vehicles, :driving_licences]
 

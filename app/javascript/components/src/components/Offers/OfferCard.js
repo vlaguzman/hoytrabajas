@@ -43,13 +43,13 @@ const OfferCard = ({
   }
   return (
     <Col
-      id={`offer_${offer['id_offer']}`}
+      id={`offer_${offer['id']}`}
       className={`m-offer cardOffer position-relative justify-content-center align-items-center ${isOfferOnDemand()}`}
     >
       <div className="bg-buttons-carusel MuiPaper-rounded position-absolute d-flex flex-column align-items-center justify-content-center">
         <Row noGutters className="w-100 justify-content-center">
           <a
-            href={`/offers/${offer['id_offer']}`}
+            href={`/offers/${offer['id']}`}
             className="w-80 a-button offerButton__seeOffer bg-white my-10"
           >
             {offer_translations.see_offer}
@@ -66,7 +66,7 @@ const OfferCard = ({
             <input
               type="hidden"
               name="applied_offer[offer_id]"
-              value={offer.id_offer}
+              value={offer['id']}
             />
             <div className="w-100 justify-content-center no-gutters row" >
               <button
@@ -179,7 +179,7 @@ OfferCard.propTypes = {
   csrf_token: PropTypes.string,
   offer: PropTypes.shape({
     is_applied: PropTypes.bool,
-    id_offer: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string,
     immediate_start: PropTypes.bool,

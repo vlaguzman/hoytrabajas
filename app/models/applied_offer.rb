@@ -22,6 +22,7 @@ class AppliedOffer < ApplicationRecord
   delegate :title, to: :offer, prefix: :offer, allow_nil: true
 
   scope :order_by_applied_date, -> { order(applied_date: :asc) }
+  scope :most_recently_offer_created, -> { joins(:offer).order('offers.created_at desc') }
 
   validates_uniqueness_of :curriculum_vitae_id, :scope => :offer_id
 end

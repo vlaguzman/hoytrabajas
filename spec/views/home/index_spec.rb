@@ -7,7 +7,7 @@ RSpec.describe "home/index" do
     let!(:offer2) { create(:offer, title: 'one of the best offers') }
 
     it "Should render home#index template" do
-      assign(:presenter, Home::HomePresenter.new)
+      assign(:presenter, Home::HomePresenter.new(create(:user)))
 
       render
 

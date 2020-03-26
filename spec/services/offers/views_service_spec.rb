@@ -80,7 +80,7 @@ RSpec.describe Offers::ViewsService do
   ) }
 
   let(:expected_object) do {
-    id_offer: offer.id,
+    id: offer.id,
     title: "District Facilitator",
     description: "endSint esse anim consequat commodo.",
     immediate_start: true,
@@ -112,7 +112,7 @@ RSpec.describe Offers::ViewsService do
   } end
 
   let(:expected_object_default_url) do {
-    id_offer: offer_no_image.id,
+    id: offer_no_image.id,
     title: "District Facilitator",
     description: "endSint esse anim consequat commodo.",
     immediate_start: true,
@@ -144,7 +144,7 @@ RSpec.describe Offers::ViewsService do
   } end
 
   let(:expected_object_default_url_2) do {
-    id_offer: offer_no_job_category.id,
+    id: offer_no_job_category.id,
     title: "District Facilitator",
     description: "endSint esse anim consequat commodo.",
     immediate_start: true,
@@ -219,7 +219,7 @@ RSpec.describe Offers::ViewsService do
           description: "The supaDescription!!",
           required_experience: true,
           confidential: false,
-          id_offer: offer.id,
+          id: offer.id,
           job_category_image: "https://img-categorias-ht.s3.amazonaws.com/cat-card-gestion-administrativa2x.png",
           city: { description: offer.city_description },
           salary: {

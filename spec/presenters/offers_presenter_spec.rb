@@ -65,7 +65,7 @@ RSpec.describe OffersPresenter do
     it "should have the expected keys in the arrays" do
       response = subject.index_details
 
-      expect(response.keys).to match_array([:applied_offers, :raw_close_date, :affinity_percentage, :id_offer, :city, :close_date, :company, :description, :immediate_start, :job_category_image, :new_offer, :required_experience, :salary, :title, :on_demand, :confidential])
+      expect(response.keys).to match_array([:applied_offers, :raw_close_date, :affinity_percentage, :id, :city, :close_date, :company, :description, :immediate_start, :job_category_image, :new_offer, :required_experience, :salary, :title, :on_demand, :confidential])
     end
   end
 

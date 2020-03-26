@@ -13,7 +13,7 @@ import content from './data'
 import useWindowSize from '../../src/hooks/useWindowSize'
 
 const HomePage = ({
-  offers,
+  offers = [],
   csrf_param,
   csrf_token,
   offers_path,

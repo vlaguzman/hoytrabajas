@@ -36,10 +36,9 @@ class Offer < ApplicationRecord
   scope :by_company_name, -> (company_name) { joins(:company).where('companies.name LIKE ?', company_name) }
   scope :by_applied_offer_cv, -> (curriculum_vitae_id) { joins(:applied_offers).where(applied_offers: {curriculum_vitae_id: curriculum_vitae_id}) }
   scope :by_job_categories_ids, -> (job_category_ids) { joins(:job_categories).where('job_category_id in (?)', job_category_ids).uniq }
-  scope :created_at_desc, -> { order(created_at: :desc) }
+  scope :most_recently_created, -> { order(created_at: :desc) }
   scope :on_demand_up, -> { joins(:offer_on_demand).where(:offer_on_demands=>{status: 'up'}).order("offer_on_demands.start_at DESC NULLS LAST") }
   scope :order_by_on_demand_created_at, -> { includes(:offer_on_demand).order("offer_on_demands.start_at ASC", created_at: :desc) }
-  scope :order_by_created_at, -> { order(created_at: :desc) }
 
   has_one :offer_salary
   has_one :age_range
@@ -77,7 +76,7 @@ class Offer < ApplicationRecord
   #delegates
   delegate :from, :to, :currency_description, :period_description, :currency_id, :period_id, :is_range, to: :offer_salary, prefix: :salary, allow_nil: true
   delegate :from, :to, to: :age_range, prefix: :age_range, allow_nil: true
-  delegate :description, :email, :name, :web_site, :employees_range_description, to: :company, prefix: :company, allow_nil: true
+  delegate :description, :email, :name, :web_site, :employees_range_description, :logo, to: :company, prefix: :company, allow_nil: true
   delegate :description, to: :city, prefix: :city, allow_nil: true
   delegate :state_id, to: :city, prefix: :city, allow_nil: true
   delegate :state_country_id, to: :city, prefix: :city, allow_nil: true
@@ -86,6 +85,7 @@ class Offer < ApplicationRecord
   delegate :description, to: :contract_type, prefix: :contract_type, allow_nil: true
   delegate :description, to: :available_work_days, prefix: :available_work_days, allow_nil: true
   delegate :description, to: :working_days, prefix: :working_days, allow_nil: true
+  delegate :status, to: :offer_on_demand, prefix: :offer_on_demand, allow_nil: true
   delegate :duration, :duration_type_id, to: :offer_required_experiences, prefix: :required_experiences, allow_nil: true
 
   def self.by_job_categories(job_categories_ids)
@@ -101,7 +101,7 @@ class Offer < ApplicationRecord
   def self.order_by_demand_and_created_at(current_user: nil, limit: MAX_OFFER_LIMIT)
     ordered_on_demand_and_affinity = Offers::OrderByAffinityPercentageService.(current_user: current_user, offers: Offer.on_demand_up)
 
-    ordered_standard_and_affinity = Offers::OrderByAffinityPercentageService.(current_user: current_user, offers: (Offer.created_at_desc - Offer.on_demand_up))
+    ordered_standard_and_affinity = Offers::OrderByAffinityPercentageService.(current_user: current_user, offers: (Offer.most_recently_created - Offer.on_demand_up))
 
     array_of_ids = ordered_on_demand_and_affinity.pluck(:id) + ordered_standard_and_affinity.pluck(:id)
     Offer.find(array_of_ids.take(limit)).sort_by{|offer| array_of_ids.index offer.id}
@@ -122,6 +122,10 @@ class Offer < ApplicationRecord
 
   def work_position
     work_positions.last
+  end
+
+  def affinity_percentage_of(curriculum_vitae = nil)
+    AffinityPercentageService.new(self, curriculum_vitae).get_round_affinity if curriculum_vitae.present?
   end
 
   #Elasticsearch configuration

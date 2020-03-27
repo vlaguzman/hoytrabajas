@@ -26,7 +26,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/contract_type.rb",100,3,2,2,0
 "./app/models/country.rb",100,3,2,2,0
 "./app/models/currency.rb",100,3,2,2,0
-"./app/models/curriculum_vitae.rb",100,79,53,53,0
+"./app/models/curriculum_vitae.rb",100,83,55,55,0
 "./app/models/curriculum_vitae_salary.rb",100,10,7,7,0
 "./app/models/curriculum_vitaes_educational_degrees.rb",100,4,3,3,0
 "./app/models/curriculum_vitaes_languages.rb",100,5,4,4,0
@@ -80,7 +80,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/technical_skill.rb",100,10,7,7,0
 "./app/models/technical_skill_category.rb",100,3,2,2,0
 "./app/models/term.rb",100,5,3,3,0
-"./app/models/user.rb",100,84,48,48,0
+"./app/models/user.rb",100,88,50,50,0
 "./app/models/users_limitations.rb",100,8,4,4,0
 "./app/models/users_nationalities.rb",100,6,3,3,0
 "./app/models/vehicle.rb",100,6,4,4,0
@@ -136,6 +136,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/affinity_percentages/affinity_percentages_service.rb",100,52,13,13,0
 "./app/services/affinity_percentages/create_affinity_percentages_service.rb",100,20,6,6,0
 "./app/services/affinity_percentages/execute_job_service.rb",100,17,6,6,0
+"./app/services/affinity_percentages/execute_worker_service.rb",100,17,8,8,0
 "./app/services/affinity_percentages/update_affinity_percentages_service.rb",100,16,8,8,0
 "./app/services/base_form_wizards_service.rb",100,99,52,52,0
 "./app/services/base_forms/find_or_create_record_service.rb",100,16,8,8,0
@@ -213,6 +214,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/wizards_last_step_service.rb",100,26,17,17,0
 "./app/state_machines/applied_offer_state_machine.rb",100,14,10,10,0
 "./app/state_machines/company_state_machine.rb",100,17,10,10,0
+"./app/workers/affinity_percentages/execute_update_worker.rb",80,10,5,4,1
 "./app/workers/elasticsearch/indexer_worker.rb",100,10,5,5,0
 "./lib/dates_manager.rb",100,29,17,17,0
 "./lib/elasticsearch/common.rb",100,2,1,1,0

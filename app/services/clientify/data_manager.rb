@@ -3,6 +3,7 @@ class Clientify::DataManager
 
   CONTACT_CANDIDATE_TAG = 'candidate'
   CONTACT_COMPANY_TAG = 'employer'
+  CONTACT_SOURCE = 'HTCLF'
 
   def initialize(token=nil)
     @token = token || Clientify::ApiAuth.new().token
@@ -28,6 +29,12 @@ class Clientify::DataManager
             }"
 
     response = HttpRequestManager.new(url, body).build_response(Net::HTTP::Put, token)
+    response.read_body
+  end
+  
+  def get_contacts source=CONTACT_SOURCE 
+    url = "#{URL_CONTACTS}?contact_source=#{source}"
+    response = HttpRequestManager.new(url).build_response(Net::HTTP::Get, token)
     response.read_body
   end
 

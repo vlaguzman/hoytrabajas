@@ -152,7 +152,7 @@ A          • Offers::AppliedOfferService                                 5    
 A          • Offers::CarouselOffersService                               3       12.55      16          2
 A          • Offers::CompletelyDestroyService                            5       11.1       0           1
 A          • Offers::IndexService                                        6       11.26      0           3
-A          • Offers::JobCategoriesController                             5       21.01      0           2
+A          • Offers::JobCategoriesController                             6       21.01      0           2
 A          • Offers::OrderByAffinityPercentageService                    7       31.36      0           3
 A          • Offers::OrderByOnDemand                                     1       29.62      0           2
 A          • Offers::Organizer::AffinityPercentageSorter                 2       18.87      0           1

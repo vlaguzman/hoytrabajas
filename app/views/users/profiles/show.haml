@@ -15,7 +15,7 @@
     .mobileBoxElevation
       .headerBox
         .photoBox
-          = react_component('UploadPhoto', {csrf_param: request_forgery_protection_token, csrf_token: form_authenticity_token, action: users_profile_path, method: "put", src_image: @user.give_the_profile_picture, candidate_present: user_signed_in?,input_name: "curriculum_vitae[photo]" , icon_file: "icon-button-file", icon_submit: "icon-button-submit"}, prerender: false)
+          = react_component('UploadPhoto', {csrf_param: request_forgery_protection_token, csrf_token: form_authenticity_token, action: users_profile_path, method: "put", src_image: @user.give_the_profile_picture, candidate_present: user_signed_in?, input_name: "curriculum_vitae[photo]" , icon_file: "icon-button-file", icon_submit: "icon-button-submit"}, prerender: false)
           = render "devise/shared/error_messages", resource: @user
 
         %h1

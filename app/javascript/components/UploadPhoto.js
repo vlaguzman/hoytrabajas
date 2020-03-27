@@ -11,6 +11,7 @@ const UserUploadPhoto = props => {
     csrf_param,
     csrf_token,
     src_image,
+    input_name,
     candidate_present
   } = props
 
@@ -39,7 +40,7 @@ const UserUploadPhoto = props => {
           type="file"
           onChange={handleOnChange}
           className="-hidden"
-          name="curriculum_vitae[photo]"
+          name={input_name}
         />
         <label
           htmlFor="icon-button-file"
@@ -88,6 +89,7 @@ export default UserUploadPhoto
 UserUploadPhoto.propTypes = {
   csrf_param: PropTypes.string,
   csrf_token: PropTypes.string,
+  input_name: PropTypes.string,
   candidate_present: PropTypes.bool,
   action: PropTypes.string.isRequired,
   method: PropTypes.string,

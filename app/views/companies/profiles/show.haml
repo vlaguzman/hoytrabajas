@@ -1,0 +1,14 @@
+= render '/shared/header'
+-#TODO:add title in this view
+.backgroundImage
+.contentBox
+  .tagButtonsContainer
+  - @company.yield_if(company_signed_in?) do
+    %a.tagButton{href: companies_first_offer_step_zero}
+    %p=t('profile.edit_info')
+
+  .m-box.o-boxPrincipal
+    .mobileBoxElevation
+      .headerBox
+        .photoBox
+          = react_component('

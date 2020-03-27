@@ -6,14 +6,20 @@ class Home::HomePresenter < ApplicationPresenter
     cities = Cities::CitiesWithOffersListService.()
 
     {
-      fields: [
-        keyword_field: {
+      fields: {
+        keywords_field: {
           type: 'text',
           label: I18n.t("home.index.filter_form.fields.keywords.label"),
-          name: 'search[keyword]',
-          id: 'search_form_keyword'
+          name: 'search[keywords]',
+          id: 'search_form_keywords'
+        },
+        job_categories_field: {
+          type: 'text',
+          label: I18n.t("home.index.filter_form.fields.job_categories.label"),
+          name: 'search[job_categories]',
+          id: 'search_form_job_categories'
         }
-      ],
+      },
       lists: {
         cities: cities
       }

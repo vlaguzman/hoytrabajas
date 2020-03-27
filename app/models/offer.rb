@@ -127,7 +127,8 @@ class Offer < ApplicationRecord
   end
 
   def affinity_percentage_of(curriculum_vitae = nil)
-    AffinityPercentageService.new(self, curriculum_vitae).get_round_affinity if curriculum_vitae.present?
+    affinity = AffinityPercentageService.new(self, curriculum_vitae).get_round_affinity if curriculum_vitae.present?
+    affinity.present? ? affinity : 0
   end
 
   #Elasticsearch configuration

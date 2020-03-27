@@ -73,7 +73,7 @@ RSpec.describe Offers::Organizer::AffinityPercentageSorter do
 
         join_response = [*response[response.keys[0]], *response[response.keys[1]]]
 
-        expect(join_response.pluck(:affinity_percentage)).to eq([57, 71, 65, 25])
+        expect(join_response.pluck(:affinity_percentage)).to eq(["57%", "71%", "65%", "25%"])
 
         expected_keys = [
           :title, :immediate_start, :description, :required_experience, :confidential,

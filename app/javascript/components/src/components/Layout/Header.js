@@ -216,15 +216,15 @@ const Header = props => {
             inline
           >
             <FormGroup className="search-bar">
-              <Label for="title_cont" hidden>
+              <Label for="keywords" hidden>
                 {
                   props.session_translation.nav.advanced_search
                     .search_offer_input
                 }
               </Label>
               <InputBase
-                name="q[title_cont]"
-                id="q[title_cont]"
+                name="search[keywords]"
+                id="search[keywords]"
                 type="text"
                 className="searchBar__input"
                 value={searchValue}

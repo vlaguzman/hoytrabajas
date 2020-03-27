@@ -14,7 +14,13 @@ module Offers::Organizer::AffinityPercentageSorter
 
   def self.affinity_percentage_sorter(curriculum_vitae, offer_attributes_list: [])
     offer_attributes_with_affinity_list = affinity_percentage_iterator(curriculum_vitae, offer_attributes_list: offer_attributes_list)
-    offer_attributes_with_affinity_list.sort { |lowest, hightest| hightest[:affinity_percentage] <=> lowest[:affinity_percentage] }
+    offer_attributes_with_affinity_list
+      .sort_by { |attrs| -attrs[:affinity_percentage] }
+      .map { |attrs| attrs.tap { |field| field[:affinity_percentage] = affinity_prettier(field[:affinity_percentage]) } }
+    end
+
+  def self.affinity_prettier(percentage)
+    "#{percentage.to_i}%" if percentage > Offer::MIN_VALID_AFFINTY_PERCENTAGE
   end
 
   def self.affinity_percentage_iterator(curriculum_vitae, offer_attributes_list:[])

@@ -1,22 +1,13 @@
 class OffersController < ApplicationController
-  MAX_OFFER_LIMIT = 50
+
+  MAX_OFFER_LIMIT = 200
 
   def index
-    query = Offer.active.ransack(index_params[:q])
-    if index_params[:q].present?
-      results_query = query.result(distinct: true)
-      query_with_filter_categories = OffersService.query_offers_home(results_query, index_params[:q][:job_category_ids], current_user: current_user)
-      @offers = {
-        offers_list: query_with_filter_categories.map { |offer| Offers::IndexService.new(offer, current_user).details },
-        origin: :default
-      }
-    else
-      @offers = {
-        offers_list: OffersService.active_offers_index_details(current_user, MAX_OFFER_LIMIT),
-        origin: :default
-      }
-    end
+    search_parameters = Offers::Search::ParamsOrganizer.(sanatized_search_params)
+
+    @offers = OffersPresenter.new(nil, current_user: current_user, search_parameters: search_parameters, limit: MAX_OFFER_LIMIT)
   end
+
 
   def show
     offer = Offer.find_by(id: sanatized_offer_id)
@@ -36,16 +27,12 @@ class OffersController < ApplicationController
     OffersPresenter.new(Offer.find_by(id: show_params[:id]), current_user, cookies_present: cookies_present )
   end
 
-  def index_params
-    params.permit(
-      {
-        q: [
-          :title_cont,
-          :job_category_ids,
-          :city_id_eq
-        ]
-      }
-    )
+  def sanatized_search_params
+    params.include?(:search) ? params.require(:search).permit(
+      :keywords,
+      :job_categories,
+      :city
+    ).to_h : {}
   end
 
   def sanatized_offer_id

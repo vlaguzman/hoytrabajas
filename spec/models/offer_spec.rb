@@ -331,12 +331,14 @@ RSpec.describe Offer, type: :model, vcr: true do
         context "When mappings is defined" do
           let(:subject) { described_class }
 
+          let(:city_bogota) { create(:city, id: 304, description: "Bogotá") }
+
           let!(:demo_offer) do
             create(:offer, {
               id: 50,
               title: "demo title",
               description: "demo description",
-              city: create(:city, id: 303, description: "Bogotá"),
+              city: city_bogota,
               job_categories: [create(:job_category, id: 72, description: "tech")],
               contract_type: create(:contract_type, id: 107, description: 'Programable'),
               work_mode: create(:work_mode, id: 107, description: 'codificar'),
@@ -527,6 +529,57 @@ RSpec.describe Offer, type: :model, vcr: true do
 
           expect(response.count).to eq(1)
           expect(response.last[:title]).to eq('the developer')
+        end
+      end
+
+      context "when search by a random word", vcr: true do
+        let!(:offer_objetive) { create(:offer,
+          id: 9018,
+          title: "the developer",
+          city: bogota,
+          job_aids: [transport],
+          work_mode: remote_mode,
+          working_days: [morning],
+          contract_type: indefinite_contract,
+          job_categories: [tech_category],
+          available_work_days: [monday],
+          status: 'active'
+        ) }
+
+        let!(:offer_trap) { create(:offer,
+          id: 9019,
+          title: "programmer",
+          city: bogota,
+          job_aids: [transport],
+          work_mode: remote_mode,
+          working_days: [morning],
+          contract_type: indefinite_contract,
+          job_categories: [tech_category],
+          available_work_days: [monday],
+          status: 'active'
+        ) }
+
+        let!(:the_offer_english) { create(:languages_offers, offer: offer_objetive, language: english) }
+        let!(:the_offer_trap_english) { create(:languages_offers, offer: offer_trap, language: english) }
+
+
+        it "should return a empty array" do
+
+          subject.import
+
+          search_parameters = {
+            status: 'active',
+            keywords: 'THisDoesntExistWooWReturn Empty'
+          }
+
+          response = subject.search_by
+
+          expect(response.count).to eq(7)
+
+          response = subject.search_by( **search_parameters )
+
+          expect(response.count).to eq(0)
+
         end
       end
 

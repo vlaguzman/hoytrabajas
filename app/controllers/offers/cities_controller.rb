@@ -1,7 +1,7 @@
 class Offers::CitiesController < ApplicationController
 
   def show
-    offers_presenter
+    @offers = offers_presenter
 
     render 'offers/index'
   end
@@ -22,22 +22,14 @@ class Offers::CitiesController < ApplicationController
   end
 
   def offers_presenter
-    offer_by_city = Offer
-      .active
-      .where(city_id: city.id)
 
-    offers_by_affinity = Offers::OrderByAffinityPercentageService.(current_user: current_user, offers: offer_by_city)
-
-    offers_list = Offers::OrderByOnDemand.(offers: offers_by_affinity)
-      .map { |offer| Offers::IndexService.new(offer, current_user).details }
-
-    @offers = {
-      offers_list: offers_list,
+    OffersPresenter.new(nil,
+      current_user: current_user,
+      search_parameters: { city: [city.id] },
       origin: :cities,
-      content: :default,
-      city_name: city.description,
-      adtional_title_description: "#{t('in')} #{city.description}"
-    }
+      adtional_title_description:"#{t('in')} #{city.description}"
+    )
+
   end
 
 end

@@ -30,8 +30,7 @@ const names = [
 
 const FilterForm = ({ translations, categoriesAttributesList, fields, lists: { cities } }) => {
   // TODO oscar remove this line when in rails when can searh by other fields
-
-  const keysRemovedFields = fields.map( field => Object.values(field)[0] )
+  const keywordField = fields['keywords_field']
 
   const { value: state, toggleState } = dialogState({ open: false })
   const [open, setOpen] = useState(false)
@@ -48,7 +47,8 @@ const FilterForm = ({ translations, categoriesAttributesList, fields, lists: { c
     }
   }
 
-  const handleClickCategories = () => {
+  const handleClickCategories = (e) => {
+    e.preventDefault()
     setOpenCategories(!openCategories)
   }
 
@@ -97,7 +97,7 @@ const FilterForm = ({ translations, categoriesAttributesList, fields, lists: { c
           >
             {translations.filterForm.categories}
           </button>
-          <FormGen fields={keysRemovedFields} />
+          <FormGen fields={[keywordField]} />
           <CityFilter cities={cities} />
           {/* <ListIcon /> */}
           <button
@@ -123,7 +123,7 @@ const FilterForm = ({ translations, categoriesAttributesList, fields, lists: { c
           </div> */}
           <input
             type="hidden"
-            name="q[job_category_ids]"
+            name={fields['job_categories_field']['name']}
             value={jobCategoryIds.join()}
             multiple
           />

@@ -1,0 +1,9 @@
+es:
+  home:
+    index:
+      filter_form:
+        fields:
+          keywords:
+            label: 'Palabra Clave'
+          job_caregories:
+            labe: Categorias

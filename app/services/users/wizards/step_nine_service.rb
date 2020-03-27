@@ -6,7 +6,7 @@ module Users::Wizards::StepNineService
   private
 
   def self.persist_educational_level(educational_level, params: {})
-    HashesConverter.validate_presence_values(params)
+    HashesConverter.remove_empty_keys(params)
     [educational_level, educational_level.update(params)]
   end
 

@@ -6,7 +6,7 @@ module Users::Wizards::StepTenService
   private
 
   def self.persist_acknowledgment(acknowledgment, params: {})
-    HashesConverter.validate_presence_values(params)
+    HashesConverter.remove_empty_keys(params)
     [acknowledgment, acknowledgment.update(params)]
   end
 

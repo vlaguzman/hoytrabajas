@@ -3,7 +3,7 @@ import { Col } from 'reactstrap'
 import PropTypes from 'prop-types'
 import Autocomplete from '../../src/components/FormsLayout/Fields/FieldAutocomplete'
 
-const CityFilter = cities => {
+const CityFilter = (cities) => {
   const [value, setValue] = useState('')
   const [idCityQuery, setIdCity] = useState('')
 
@@ -24,7 +24,7 @@ const CityFilter = cities => {
           filterCity={filterCity}
           setValue={setValue}
         />
-        <input type="hidden" name="q[city_id_eq]" value={idCityQuery} />
+        <input type="hidden" name="search[city]" value={idCityQuery} />
       </div>
     </>
   )

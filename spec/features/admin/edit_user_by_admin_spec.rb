@@ -56,7 +56,6 @@ RSpec.describe "Admin can edit an User", type: :feature do
       expect(page).to have_content("eldoncarlos@gmail.com")
 
       expect(User.last.email).to eq("eldoncarlos@gmail.com")
-      User.destroy_all
     end
   end
 end

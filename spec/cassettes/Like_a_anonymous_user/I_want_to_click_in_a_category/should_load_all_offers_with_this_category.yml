@@ -1,0 +1,124 @@
+---
+http_interactions:
+- request:
+    method: head
+    uri: http://elasticsearch:9200/offers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '1693'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 18:53:53 GMT
+- request:
+    method: post
+    uri: http://elasticsearch:9200/offers/_bulk
+    body:
+      encoding: UTF-8
+      string: |
+        {"index":{"_id":1}}
+        {"id":1,"title":"my offer","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-27T13:53:53.759-05:00","city":{"id":2,"description":"Kigali"},"job_categories":[{"id":1,"description":"tech"}],"work_mode":{"id":1,"description":"24/7"},"contract_type":{"id":1,"description":"moderador"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":2}}
+        {"id":2,"title":"super offer","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-27T13:53:53.818-05:00","city":{"id":4,"description":"Port Moresby"},"job_categories":[{"id":1,"description":"tech"}],"work_mode":{"id":2,"description":"migración"},"contract_type":{"id":2,"description":"Open-source"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":3}}
+        {"id":3,"title":"im not appear","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-27T13:53:53.882-05:00","city":{"id":6,"description":"Muscat"},"job_categories":[{"id":2,"description":"Kids"}],"work_mode":{"id":3,"description":"red de area local"},"contract_type":{"id":3,"description":"Innovador"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/x-ndjson
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '194'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":5,"errors":false,"items":[{"index":{"_index":"offers","_type":"_doc","_id":"1","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":0,"_primary_term":1,"status":201}},{"index":{"_index":"offers","_type":"_doc","_id":"2","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":1,"_primary_term":1,"status":201}},{"index":{"_index":"offers","_type":"_doc","_id":"3","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":2,"_primary_term":1,"status":201}}]}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 18:53:53 GMT
+- request:
+    method: get
+    uri: http://elasticsearch:9200/offers/_search?scroll=30s
+    body:
+      encoding: UTF-8
+      string: '{"query":{"bool":{"must":[{"term":{"status":"active"}}],"filter":[{"nested":{"path":"job_categories","query":{"bool":{"should":[{"match":{"job_categories.id":1}}]}}}}]}},"sort":[{"created_at":{"order":"desc"}}]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '548'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJfc2Nyb2xsX2lkIjoiRFhGMVpYSjVRVzVrUm1WMFkyZ0JBQUFBQUFBQUFGa1dOMEpmVUZkUmNIQlViUzFpUXpaRGRVbEpaR290VVE9PSIsInRvb2siOjczMywidGltZWRfb3V0IjpmYWxzZSwiX3NoYXJkcyI6eyJ0b3RhbCI6MSwic3VjY2Vzc2Z1bCI6MSwic2tpcHBlZCI6MCwiZmFpbGVkIjowfSwiaGl0cyI6eyJ0b3RhbCI6eyJ2YWx1ZSI6MiwicmVsYXRpb24iOiJlcSJ9LCJtYXhfc2NvcmUiOm51bGwsImhpdHMiOlt7Il9pbmRleCI6Im9mZmVycyIsIl90eXBlIjoiX2RvYyIsIl9pZCI6IjIiLCJfc2NvcmUiOm51bGwsIl9zb3VyY2UiOnsiaWQiOjIsInRpdGxlIjoic3VwZXIgb2ZmZXIiLCJkZXNjcmlwdGlvbiI6ImVuZFNpbnQgZXNzZSBhbmltIGNvbnNlcXVhdCBjb21tb2RvLiIsInN0YXR1cyI6ImFjdGl2ZSIsImNyZWF0ZWRfYXQiOiIyMDIwLTAzLTI3VDEzOjUzOjUzLjgxOC0wNTowMCIsImNpdHkiOnsiaWQiOjQsImRlc2NyaXB0aW9uIjoiUG9ydCBNb3Jlc2J5In0sImpvYl9jYXRlZ29yaWVzIjpbeyJpZCI6MSwiZGVzY3JpcHRpb24iOiJ0ZWNoIn1dLCJ3b3JrX21vZGUiOnsiaWQiOjIsImRlc2NyaXB0aW9uIjoibWlncmFjacOzbiJ9LCJjb250cmFjdF90eXBlIjp7ImlkIjoyLCJkZXNjcmlwdGlvbiI6Ik9wZW4tc291cmNlIn0sIndvcmtpbmdfZGF5cyI6W10sImF2YWlsYWJsZV93b3JrX2RheXMiOltdLCJqb2JfYWlkcyI6W10sImxhbmd1YWdlcyI6W119LCJzb3J0IjpbMTU4NTMzNTIzMzgxOF19LHsiX2luZGV4Ijoib2ZmZXJzIiwiX3R5cGUiOiJfZG9jIiwiX2lkIjoiMSIsIl9zY29yZSI6bnVsbCwiX3NvdXJjZSI6eyJpZCI6MSwidGl0bGUiOiJteSBvZmZlciIsImRlc2NyaXB0aW9uIjoiZW5kU2ludCBlc3NlIGFuaW0gY29uc2VxdWF0IGNvbW1vZG8uIiwic3RhdHVzIjoiYWN0aXZlIiwiY3JlYXRlZF9hdCI6IjIwMjAtMDMtMjdUMTM6NTM6NTMuNzU5LTA1OjAwIiwiY2l0eSI6eyJpZCI6MiwiZGVzY3JpcHRpb24iOiJLaWdhbGkifSwiam9iX2NhdGVnb3JpZXMiOlt7ImlkIjoxLCJkZXNjcmlwdGlvbiI6InRlY2gifV0sIndvcmtfbW9kZSI6eyJpZCI6MSwiZGVzY3JpcHRpb24iOiIyNC83In0sImNvbnRyYWN0X3R5cGUiOnsiaWQiOjEsImRlc2NyaXB0aW9uIjoibW9kZXJhZG9yIn0sIndvcmtpbmdfZGF5cyI6W10sImF2YWlsYWJsZV93b3JrX2RheXMiOltdLCJqb2JfYWlkcyI6W10sImxhbmd1YWdlcyI6W119LCJzb3J0IjpbMTU4NTMzNTIzMzc1OV19XX19
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 18:53:58 GMT
+- request:
+    method: get
+    uri: http://elasticsearch:9200/_search/scroll
+    body:
+      encoding: UTF-8
+      string: '{"scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAFkWN0JfUFdRcHBUbS1iQzZDdUlJZGotUQ==","scroll":"30s"}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '211'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAFkWN0JfUFdRcHBUbS1iQzZDdUlJZGotUQ==","took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":{"value":2,"relation":"eq"},"max_score":null,"hits":[]}}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 18:53:58 GMT
+recorded_with: VCR 5.1.0

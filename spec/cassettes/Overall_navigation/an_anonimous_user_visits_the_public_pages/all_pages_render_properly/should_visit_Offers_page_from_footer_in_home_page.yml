@@ -1,0 +1,122 @@
+---
+http_interactions:
+- request:
+    method: head
+    uri: http://elasticsearch:9200/offers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '1693'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 19:15:16 GMT
+- request:
+    method: post
+    uri: http://elasticsearch:9200/offers/_bulk
+    body:
+      encoding: UTF-8
+      string: |
+        {"index":{"_id":1}}
+        {"id":1,"title":"Vel id voluptatem expedita quasi eum labore ipsam.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-27T14:15:16.820-05:00","city":{"id":2,"description":"Porto-Novo"},"job_categories":[{"id":1,"description":"Clothing, Movies \u0026 Health"}],"work_mode":{"id":1,"description":"habilidad"},"contract_type":{"id":1,"description":"Extendido"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/x-ndjson
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '173'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":5,"errors":false,"items":[{"index":{"_index":"offers","_type":"_doc","_id":"1","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":0,"_primary_term":1,"status":201}}]}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 19:15:16 GMT
+- request:
+    method: get
+    uri: http://elasticsearch:9200/offers/_search?scroll=30s
+    body:
+      encoding: UTF-8
+      string: '{"query":{"bool":{"must":[{"term":{"status":"active"}}]}},"sort":[{"created_at":{"order":"desc"}}]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '521'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAF0WN0JfUFdRcHBUbS1iQzZDdUlJZGotUQ==","took":72,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":{"value":1,"relation":"eq"},"max_score":null,"hits":[{"_index":"offers","_type":"_doc","_id":"1","_score":null,"_source":{"id":1,"title":"Vel
+        id voluptatem expedita quasi eum labore ipsam.","description":"endSint esse
+        anim consequat commodo.","status":"active","created_at":"2020-03-27T14:15:16.820-05:00","city":{"id":2,"description":"Porto-Novo"},"job_categories":[{"id":1,"description":"Clothing,
+        Movies \u0026 Health"}],"work_mode":{"id":1,"description":"habilidad"},"contract_type":{"id":1,"description":"Extendido"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]},"sort":[1585336516820]}]}}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 19:15:20 GMT
+- request:
+    method: get
+    uri: http://elasticsearch:9200/_search/scroll
+    body:
+      encoding: UTF-8
+      string: '{"scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAF0WN0JfUFdRcHBUbS1iQzZDdUlJZGotUQ==","scroll":"30s"}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '210'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAF0WN0JfUFdRcHBUbS1iQzZDdUlJZGotUQ==","took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":{"value":1,"relation":"eq"},"max_score":null,"hits":[]}}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 19:15:20 GMT
+recorded_with: VCR 5.1.0

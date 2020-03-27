@@ -1,0 +1,9 @@
+es:
+  home:
+    index:
+      filter_form:
+        fields:
+          keywords:
+            label: 'Keyword'
+          job_caregories:
+            labe: Categories

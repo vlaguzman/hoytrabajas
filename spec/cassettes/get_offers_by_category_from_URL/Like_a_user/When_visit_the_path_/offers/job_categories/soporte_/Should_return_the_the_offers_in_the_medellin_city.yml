@@ -26,7 +26,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: null
-  recorded_at: Fri, 27 Mar 2020 15:51:22 GMT
+  recorded_at: Fri, 27 Mar 2020 20:29:41 GMT
 - request:
     method: delete
     uri: http://elasticsearch_test:9200/offers
@@ -55,7 +55,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"acknowledged":true}'
     http_version: null
-  recorded_at: Fri, 27 Mar 2020 15:51:22 GMT
+  recorded_at: Fri, 27 Mar 2020 20:29:41 GMT
 - request:
     method: head
     uri: http://elasticsearch_test:9200/offers
@@ -82,7 +82,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: null
-  recorded_at: Fri, 27 Mar 2020 15:51:22 GMT
+  recorded_at: Fri, 27 Mar 2020 20:29:41 GMT
 - request:
     method: put
     uri: http://elasticsearch_test:9200/offers
@@ -111,38 +111,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"acknowledged":true,"shards_acknowledged":true,"index":"offers"}'
     http_version: null
-  recorded_at: Fri, 27 Mar 2020 15:51:22 GMT
-- request:
-    method: put
-    uri: http://elasticsearch_test:9200/offers/_doc/50
-    body:
-      encoding: UTF-8
-      string: '{"id":50,"title":"demo title","description":"demo description","status":"active","created_at":"2020-03-10T05:00:00.000-05:00","city":{"id":304,"description":"Bogotá"},"job_categories":[{"id":72,"description":"tech"}],"work_mode":{"id":107,"description":"codificar"},"contract_type":{"id":107,"description":"Programable"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
-    headers:
-      User-Agent:
-      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
-      Content-Type:
-      - application/json
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 201
-      message: Created
-    headers:
-      Location:
-      - "/offers/_doc/50"
-      Content-Type:
-      - application/json; charset=UTF-8
-      Content-Length:
-      - '139'
-    body:
-      encoding: ASCII-8BIT
-      string: '{"_index":"offers","_type":"_doc","_id":"50","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":0,"_primary_term":1}'
-    http_version: null
-  recorded_at: Fri, 27 Mar 2020 15:51:22 GMT
+  recorded_at: Fri, 27 Mar 2020 20:29:41 GMT
 - request:
     method: head
     uri: http://elasticsearch_test:9200/offers
@@ -169,15 +138,19 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: null
-  recorded_at: Fri, 27 Mar 2020 15:51:22 GMT
+  recorded_at: Fri, 27 Mar 2020 20:29:41 GMT
 - request:
     method: post
     uri: http://elasticsearch_test:9200/offers/_bulk
     body:
       encoding: UTF-8
       string: |
-        {"index":{"_id":50}}
-        {"id":50,"title":"demo title","description":"demo description","status":"active","created_at":"2020-03-10T05:00:00.000-05:00","city":{"id":304,"description":"Bogotá"},"job_categories":[{"id":72,"description":"tech"}],"work_mode":{"id":107,"description":"codificar"},"contract_type":{"id":107,"description":"Programable"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":1}}
+        {"id":1,"title":"Gran Oferta Ventas","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-27T15:29:41.148-05:00","city":{"id":2,"description":"Libreville"},"job_categories":[{"id":1,"description":"Soporte"},{"id":3,"description":"Ventas"}],"work_mode":{"id":1,"description":"nacional"},"contract_type":{"id":1,"description":"iniciativa"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":2}}
+        {"id":2,"title":"Soporte: Una Super Offerta","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-27T15:29:41.212-05:00","city":{"id":4,"description":"Kinshasa"},"job_categories":[{"id":1,"description":"Soporte"}],"work_mode":{"id":2,"description":"escalable"},"contract_type":{"id":2,"description":"uniforme"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":3}}
+        {"id":3,"title":"No busques Más Ofertas","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-27T15:29:41.269-05:00","city":{"id":6,"description":"Vatican City"},"job_categories":[{"id":2,"description":"contruccion"}],"work_mode":{"id":3,"description":"conjunto de instrucciones"},"contract_type":{"id":3,"description":"Clonado"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
     headers:
       User-Agent:
       - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
@@ -195,18 +168,18 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
-      - '176'
+      - '194'
     body:
       encoding: ASCII-8BIT
-      string: '{"took":4,"errors":false,"items":[{"index":{"_index":"offers","_type":"_doc","_id":"50","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":1,"_primary_term":1,"status":200}}]}'
+      string: '{"took":3,"errors":false,"items":[{"index":{"_index":"offers","_type":"_doc","_id":"1","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":0,"_primary_term":1,"status":201}},{"index":{"_index":"offers","_type":"_doc","_id":"2","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":1,"_primary_term":1,"status":201}},{"index":{"_index":"offers","_type":"_doc","_id":"3","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":2,"_primary_term":1,"status":201}}]}'
     http_version: null
-  recorded_at: Fri, 27 Mar 2020 15:51:22 GMT
+  recorded_at: Fri, 27 Mar 2020 20:29:41 GMT
 - request:
     method: get
-    uri: http://elasticsearch_test:9200/offers/_search
+    uri: http://elasticsearch_test:9200/offers/_search?scroll=30s
     body:
       encoding: UTF-8
-      string: '{"query":{"match_all":{}}}'
+      string: '{"query":{"bool":{"filter":[{"nested":{"path":"job_categories","query":{"bool":{"should":[{"match":{"job_categories.id":1}}]}}}}]}},"sort":[{"created_at":{"order":"desc"}}]}'
     headers:
       User-Agent:
       - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
@@ -224,13 +197,43 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Content-Length:
-      - '372'
+      - '580'
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        eyJ0b29rIjoyLCJ0aW1lZF9vdXQiOmZhbHNlLCJfc2hhcmRzIjp7InRvdGFsIjoxLCJzdWNjZXNzZnVsIjoxLCJza2lwcGVkIjowLCJmYWlsZWQiOjB9LCJoaXRzIjp7InRvdGFsIjp7InZhbHVlIjoxLCJyZWxhdGlvbiI6ImVxIn0sIm1heF9zY29yZSI6MS4wLCJoaXRzIjpbeyJfaW5kZXgiOiJvZmZlcnMiLCJfdHlwZSI6Il9kb2MiLCJfaWQiOiI1MCIsIl9zY29yZSI6MS4wLCJfc291cmNlIjp7ImlkIjo1MCwidGl0bGUiOiJkZW1vIHRpdGxlIiwiZGVzY3JpcHRpb24iOiJkZW1vIGRlc2NyaXB0aW9uIiwic3RhdHVzIjoiYWN0aXZlIiwiY3JlYXRlZF9hdCI6IjIwMjAtMDMtMTBUMDU6MDA6MDAuMDAwLTA1OjAwIiwiY2l0eSI6eyJpZCI6MzA0LCJkZXNjcmlwdGlvbiI6IkJvZ290w6EifSwiam9iX2NhdGVnb3JpZXMiOlt7ImlkIjo3MiwiZGVzY3JpcHRpb24iOiJ0ZWNoIn1dLCJ3b3JrX21vZGUiOnsiaWQiOjEwNywiZGVzY3JpcHRpb24iOiJjb2RpZmljYXIifSwiY29udHJhY3RfdHlwZSI6eyJpZCI6MTA3LCJkZXNjcmlwdGlvbiI6IlByb2dyYW1hYmxlIn0sIndvcmtpbmdfZGF5cyI6W10sImF2YWlsYWJsZV93b3JrX2RheXMiOltdLCJqb2JfYWlkcyI6W10sImxhbmd1YWdlcyI6W119fV19fQ==
+      string: '{"_scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAIYWTlI1QTRTSFVUNnFxeDBNb252YmZsZw==","took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":{"value":2,"relation":"eq"},"max_score":null,"hits":[{"_index":"offers","_type":"_doc","_id":"2","_score":null,"_source":{"id":2,"title":"Soporte:
+        Una Super Offerta","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-27T15:29:41.212-05:00","city":{"id":4,"description":"Kinshasa"},"job_categories":[{"id":1,"description":"Soporte"}],"work_mode":{"id":2,"description":"escalable"},"contract_type":{"id":2,"description":"uniforme"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]},"sort":[1585340981212]},{"_index":"offers","_type":"_doc","_id":"1","_score":null,"_source":{"id":1,"title":"Gran
+        Oferta Ventas","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-27T15:29:41.148-05:00","city":{"id":2,"description":"Libreville"},"job_categories":[{"id":1,"description":"Soporte"},{"id":3,"description":"Ventas"}],"work_mode":{"id":1,"description":"nacional"},"contract_type":{"id":1,"description":"iniciativa"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]},"sort":[1585340981148]}]}}'
     http_version: null
-  recorded_at: Fri, 27 Mar 2020 15:51:24 GMT
+  recorded_at: Fri, 27 Mar 2020 20:29:44 GMT
+- request:
+    method: get
+    uri: http://elasticsearch_test:9200/_search/scroll
+    body:
+      encoding: UTF-8
+      string: '{"scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAIYWTlI1QTRTSFVUNnFxeDBNb252YmZsZw==","scroll":"30s"}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '212'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAIYWTlI1QTRTSFVUNnFxeDBNb252YmZsZw==","took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":{"value":2,"relation":"eq"},"max_score":null,"hits":[]}}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 20:29:44 GMT
 - request:
     method: head
     uri: http://elasticsearch:9200/offers
@@ -257,7 +260,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: null
-  recorded_at: Fri, 27 Mar 2020 15:51:24 GMT
+  recorded_at: Fri, 27 Mar 2020 20:29:44 GMT
 - request:
     method: delete
     uri: http://elasticsearch:9200/offers
@@ -286,7 +289,7 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"acknowledged":true}'
     http_version: null
-  recorded_at: Fri, 27 Mar 2020 15:51:24 GMT
+  recorded_at: Fri, 27 Mar 2020 20:29:44 GMT
 - request:
     method: head
     uri: http://elasticsearch:9200/offers
@@ -313,7 +316,7 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: null
-  recorded_at: Fri, 27 Mar 2020 15:51:24 GMT
+  recorded_at: Fri, 27 Mar 2020 20:29:44 GMT
 - request:
     method: put
     uri: http://elasticsearch:9200/offers
@@ -342,5 +345,5 @@ http_interactions:
       encoding: ASCII-8BIT
       string: '{"acknowledged":true,"shards_acknowledged":true,"index":"offers"}'
     http_version: null
-  recorded_at: Fri, 27 Mar 2020 15:51:24 GMT
+  recorded_at: Fri, 27 Mar 2020 20:29:44 GMT
 recorded_with: VCR 5.1.0

@@ -1,0 +1,444 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.clientify.net/v1/api-auth/obtain_token/
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+            "username": "vladimir@hoytrabajas.com",
+            "password": "unicornio2000"
+        }
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Fri, 27 Mar 2020 18:54:23 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '68'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=daab1cafbabe53c09058515c7cc2863751585335263; expires=Sun, 26-Apr-20
+        18:54:23 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - POST, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 57ab51d258efda9a-BOG
+    body:
+      encoding: UTF-8
+      string: '{"non_field_errors":["Unable to log in with provided credentials."]}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 18:54:23 GMT
+- request:
+    method: post
+    uri: https://api.clientify.net/v1/api-auth/obtain_token/
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+            "username": "vladimir@hoytrabajas.com",
+            "password": "unicornio2000"
+        }
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Fri, 27 Mar 2020 18:54:25 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '68'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d0d9a69e8fe1ff19562c6165e05ce34821585335264; expires=Sun, 26-Apr-20
+        18:54:24 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - POST, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 57ab51ddeb94daa2-BOG
+    body:
+      encoding: UTF-8
+      string: '{"non_field_errors":["Unable to log in with provided credentials."]}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 18:54:25 GMT
+- request:
+    method: post
+    uri: https://api.clientify.net/v1/api-auth/obtain_token/
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+            "username": "vladimir@hoytrabajas.com",
+            "password": "unicornio2000"
+        }
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Fri, 27 Mar 2020 18:54:27 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '68'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=deb844e5039bafeb45ca09885e840d4d51585335267; expires=Sun, 26-Apr-20
+        18:54:27 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - POST, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 57ab51eb7d11f25f-BOG
+    body:
+      encoding: UTF-8
+      string: '{"non_field_errors":["Unable to log in with provided credentials."]}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 18:54:27 GMT
+- request:
+    method: post
+    uri: https://api.clientify.net/v1/contacts/
+    body:
+      encoding: UTF-8
+      string: "{\n    \"email\": \"kendrick.test@email.com\",\n             \n    \"tags\":
+        [\"candidate\", \"htweb\"]\n            }"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Fri, 27 Mar 2020 18:54:29 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '34'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dd2fcfb80bdff44dbcae55421e58b15e21585335269; expires=Sun, 26-Apr-20
+        18:54:29 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept, Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - GET, POST, HEAD, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 57ab51f82c41b552-BOG
+    body:
+      encoding: UTF-8
+      string: '{"detail":"Api key not provided."}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 18:54:29 GMT
+- request:
+    method: post
+    uri: https://api.clientify.net/v1/api-auth/obtain_token/
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+            "username": "vladimir@hoytrabajas.com",
+            "password": "unicornio2000"
+        }
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Fri, 27 Mar 2020 18:54:37 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '68'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=db97e2bb9920f60621125860294dfddb21585335276; expires=Sun, 26-Apr-20
+        18:54:36 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - POST, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 57ab5228eed5f267-BOG
+    body:
+      encoding: UTF-8
+      string: '{"non_field_errors":["Unable to log in with provided credentials."]}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 18:54:37 GMT
+- request:
+    method: post
+    uri: https://api.clientify.net/v1/api-auth/obtain_token/
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+            "username": "vladimir@hoytrabajas.com",
+            "password": "unicornio2000"
+        }
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Fri, 27 Mar 2020 18:54:40 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '68'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=db8676194e4c4a07dfba66b67faff010c1585335279; expires=Sun, 26-Apr-20
+        18:54:39 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - POST, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 57ab52387a12e5c4-BOG
+    body:
+      encoding: UTF-8
+      string: '{"non_field_errors":["Unable to log in with provided credentials."]}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 18:54:40 GMT
+- request:
+    method: post
+    uri: https://api.clientify.net/v1/api-auth/obtain_token/
+    body:
+      encoding: UTF-8
+      string: |-
+        {
+            "username": "vladimir@hoytrabajas.com",
+            "password": "unicornio2000"
+        }
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Date:
+      - Fri, 27 Mar 2020 18:54:42 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '68'
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=db45d3b05302c3fe1ba1b937cd547913d1585335282; expires=Sun, 26-Apr-20
+        18:54:42 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - POST, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 57ab52496935daa2-BOG
+    body:
+      encoding: UTF-8
+      string: '{"non_field_errors":["Unable to log in with provided credentials."]}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 18:54:42 GMT
+- request:
+    method: put
+    uri: https://api.clientify.net/v1/contacts//
+    body:
+      encoding: UTF-8
+      string: "{\n    \"first_name\": \"Carlos\",\n             \n    \"last_name\":
+        \"Rojas\",\n             \n    \"phone\": \"3183638789\"\n            }"
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Date:
+      - Fri, 27 Mar 2020 18:54:47 GMT
+      Content-Type:
+      - text/html; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dcaf236fe6bab6c5509c56f956b8908dd1585335287; expires=Sun, 26-Apr-20
+        18:54:47 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept-Language, Cookie
+      Content-Language:
+      - en
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 57ab52682ddeda96-BOG
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        PCFET0NUWVBFIGh0bWw+CjxodG1sPgo8aGVhZD4KICAgIDx0aXRsZT5DbGllbnRpZnkgLSBFcnJvciA0MDQ8L3RpdGxlPgogICAgPGxpbmsgcmVsPSJpY29uIiBocmVmPSJodHRwczovL2NsaWVudGlmeS5uZXQvc3RhdGljL2ltZy9pY29uX2NsaWVudGlmeS5wbmciPgoKICAgIDwhLS0gTWV0YSAtLT4KICAgIDxtZXRhIGNoYXJzZXQ9InV0Zi04Ij4KICAgIDxtZXRhIGh0dHAtZXF1aXY9IlgtVUEtQ29tcGF0aWJsZSIgY29udGVudD0iSUU9ZWRnZSI+CiAgICA8bWV0YSBuYW1lPSJ2aWV3cG9ydCIgY29udGVudD0id2lkdGg9ZGV2aWNlLXdpZHRoLCBpbml0aWFsLXNjYWxlPTEuMCIvPgogICAgPCEtLSBFbmQgTWV0YSAtLT4KCiAgICA8IS0tIENzcyAtLT4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9ib290c3RyYXAvMy4zLjcvY3NzL2Jvb3RzdHJhcC5taW4uY3NzIiBpbnRlZ3JpdHk9InNoYTM4NC1CVllpaVNJRmVLMWRHbUpSQWt5Y3VIQUhSZzMyT21VY3d3N29uM1JZZGc0VmErUG1TVHN6L0s2OHZiZEVqaDR1IiBjcm9zc29yaWdpbj0iYW5vbnltb3VzIj4KICAgIDxsaW5rIHJlbD0nc3R5bGVzaGVldCcgaHJlZj0naHR0cDovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2Nzcz9mYW1pbHk9TGF0bzo0MDAsNzAwJyB0eXBlPSd0ZXh0L2Nzcyc+CiAgICA8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgogICAgICAgIC5pbWctcmVzcG9uc2l2ZSB7CiAgICAgICAgICAgIG1hcmdpbjogMCBhdXRvOwogICAgICAgIH0KICAgIDwvc3R5bGU+CiAgICA8IS0tIEVuZCBDc3MgLS0+CjwvaGVhZD4KCjxib2R5IHN0eWxlPSJiYWNrZ3JvdW5kLWNvbG9yOiAjZjJmNGY1OyBwYWRkaW5nLXRvcDogNDBweDsgcGFkZGluZy1ib3R0b206IDQwcHg7IGZvbnQtZmFtaWx5OiAnTGF0bycsJ0hlbHZldGljYSBOZXVlJyxIZWx2ZXRpY2EsQXJpYWwsc2Fucy1zZXJpZjsiPgo8bWFpbj4KICAgIDxkaXYgY2xhc3M9ImNvbnRhaW5lciI+CiAgICAgICAgPGRpdiBjbGFzcz0icm93Ij4KICAgICAgICAgICAgPGRpdiBjbGFzcz0iY29sLW1kLTYgY29sLW1kLW9mZnNldC0zIj4KICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9InBhbmVsIHBhbmVsLWRlZmF1bHQiPgogICAgICAgICAgICAgICAgICAgIDxkaXYgY2xhc3M9InBhbmVsLWJvZHkiPgogICAgICAgICAgICAgICAgICAgICAgICA8aDIgY2xhc3M9InRleHQtY2VudGVyIj48aW1nIHNyYz0iaHR0cHM6Ly9jbGllbnRpZnkubmV0L3N0YXRpYy9pbWcvY2xpZW50aWZ5LWxvZ290aXBvLWF6dWwtbG93LnBuZyI+PC9oMj4KICAgICAgICAgICAgICAgICAgICAgICAgPGRpdiBjbGFzcz0idGV4dC1jZW50ZXIiPjxpbWcgY2xhc3M9ImltZy1yZXNwb25zaXZlIiBzcmM9Imh0dHBzOi8vY2xpZW50aWZ5Lm5ldC9zdGF0aWMvaW1nL2Vycm9yLTQwNC1jbGllbnRpZnkucG5nIj48L2Rpdj4KICAgICAgICAgICAgICAgICAgICAgICAgPGgzIGNsYXNzPSJ0ZXh0LWNlbnRlciB0ZXh0LXByaW1hcnkiPlBhZ2Ugbm90IEZvdW5kLiAgUMOhZ2luYSBubyBlbmNvbnRyYWRhPC9oMz4KICAgICAgICAgICAgICAgICAgICAgICAgPHAgY2xhc3M9InRleHQtY2VudGVyIj48YnV0dG9uIHR5cGU9ImJ1dHRvbiIgb25jbGljaz0id2luZG93Lmhpc3RvcnkuYmFjaygpIiBjbGFzcz0iYnRuIGJ0bi1wcmltYXJ5Ij5CYWNrLiAgQXRyw6FzPC9idXR0b24+PC9wPgogICAgICAgICAgICAgICAgICAgIDwvZGl2PgogICAgICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICAgIDwvZGl2PgogICAgICAgIDwvZGl2PgogICAgPC9kaXY+CjwvbWFpbj4KCjxzY3JpcHQgc3JjPSJodHRwczovL2NvZGUuanF1ZXJ5LmNvbS9qcXVlcnktMi4yLjQubWluLmpzIiBpbnRlZ3JpdHk9InNoYTI1Ni1CYmhkbHZRZi94VFk5Z2phMERxM0hpd1FGOExhQ1JUWHhaS1J1dGVsVDQ0PSIgY3Jvc3NvcmlnaW49ImFub255bW91cyI+PC9zY3JpcHQ+CjxzY3JpcHQgc3JjPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjMuNy9qcy9ib290c3RyYXAubWluLmpzIiBpbnRlZ3JpdHk9InNoYTM4NC1UYzVJUWliMDI3cXZ5alNNZkhqT01hTGtmdVdWeFp4VVBuQ0pBN2wybUNXTklwRzltR0NEOHdHTkljUEQ3VHhhIiBjcm9zc29yaWdpbj0iYW5vbnltb3VzIj48L3NjcmlwdD4KPC9ib2R5Pgo8L2h0bWw+
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 18:54:47 GMT
+recorded_with: VCR 5.1.0

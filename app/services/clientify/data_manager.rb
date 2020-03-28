@@ -39,6 +39,13 @@ class Clientify::DataManager
     response.read_body
   end
 
+  def get_contact_tags id_contact 
+    url = "#{URL_CONTACTS}#{id_contact}/tags/"
+
+    response = HttpRequestManager.new(url).build_response(Net::HTTP::Get, token)
+    response.read_body
+  end
+
   private 
   
   def last_name_or_nil resource 

@@ -28,7 +28,8 @@ class Offers::JobCategoriesController < ApplicationController
       search_parameters: { job_categories: [job_category_id] },
       origin: :job_categories,
       content: sanitized_job_category_name,
-      adtional_title_description: "#{t('in')} #{job_category_name}"
+      adtional_title_description: "#{t('in')} #{job_category_name}",
+      limit: OffersController::MAX_OFFER_LIMIT
     )
 
   end

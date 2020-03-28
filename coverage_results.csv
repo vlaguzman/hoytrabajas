@@ -181,7 +181,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/offers/organizer/affinity_percentage_sorter.rb",100,36,19,19,0
 "./app/services/offers/organizer/details_builder.rb",100,32,14,14,0
 "./app/services/offers/organizer/joiner.rb",100,18,9,9,0
-"./app/services/offers/organizer/list_builder.rb",100,46,23,23,0
+"./app/services/offers/organizer/list_builder.rb",100,50,25,25,0
 "./app/services/offers/show_service.rb",100,76,27,27,0
 "./app/services/offers/views_service.rb",100,99,41,41,0
 "./app/services/offers_on_demand/set_inactive_service.rb",100,29,13,13,0

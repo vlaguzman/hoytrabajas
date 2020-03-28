@@ -34,11 +34,15 @@ module Offers::Organizer::ListBuilder
   end
 
   def self.offer_ids_list(limit: nil, previous_results: nil)
-    previous_results.nil? ? ids_extractor(active_most_recently_created(limit: limit)) : previous_results
+    previous_results.nil? ? ids_extractor(active_most_recently_created(limit: limit)) : limit_size(previous_results, limit: limit)
   end
 
   def self.applied_offers_list(curriculum_vitae_id = nil)
     ids_extractor(applied_offer_by_curriculum_id(curriculum_vitae_id))
+  end
+
+  def self.limit_size(list, limit: nil)
+    limit.present? ? list.take(limit) : list
   end
 
 end

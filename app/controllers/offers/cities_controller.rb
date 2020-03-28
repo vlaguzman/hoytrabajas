@@ -27,7 +27,9 @@ class Offers::CitiesController < ApplicationController
       current_user: current_user,
       search_parameters: { city: [city.id] },
       origin: :cities,
-      adtional_title_description:"#{t('in')} #{city.description}"
+      content: :default,
+      adtional_title_description:"#{t('in')} #{city.description}",
+      limit: OffersController::MAX_OFFER_LIMIT
     )
 
   end

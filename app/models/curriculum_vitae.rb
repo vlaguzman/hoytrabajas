@@ -1,8 +1,9 @@
 class CurriculumVitae < ApplicationRecord
 
-  after_commit on: :update do
-    AffinityPercentages::ExecuteUpdateWorker.perform_async(self.id)
-  end
+  #TODO Oscar disable while sidekiq is in optimization
+  #after_commit on: :update do
+  #  AffinityPercentages::ExecuteUpdateWorker.perform_async(self.id)
+  #end
 
   DEFAULT_MALE_USER_PROFILE_IMAGE   = ENV['DEFAULT_MALE_USER_PROFILE_IMAGE']
   DEFAULT_FEMALE_USER_PROFILE_IMAGE = ENV['DEFAULT_FEMALE_USER_PROFILE_IMAGE']

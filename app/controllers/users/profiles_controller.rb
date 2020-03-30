@@ -1,9 +1,6 @@
 class Users::ProfilesController < ApplicationController
 
   def show
-    puts "%" * 100
-    puts current_user
-    puts "%" * 100
     if user_signed_in? || company_signed_in?
       user = visited_profile
       applied_offer_id = show_permit_params[:applied_offer_id] ? show_permit_params[:applied_offer_id] : 0
@@ -14,9 +11,6 @@ class Users::ProfilesController < ApplicationController
   end
 
   def update
-    puts "%" * 100
-    puts current_user
-    puts "%" * 100
     cv = current_user.curriculum_vitae
     Users::AttachFileService.upload_record_file(cv, :photo, update_permit_params[:photo])
     cv.user.errors.add(:curriculum_vitae_photo, cv.errors[:photo])

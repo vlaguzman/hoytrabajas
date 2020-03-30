@@ -3,9 +3,9 @@
 .backgroundImage
 .contentBox
   .tagButtonsContainer
-  - @company.yield_if(company_signed_in?) do
-    %a.tagButton{href: companies_first_offer_step_zero}
-    %p=t('profile.edit_info')
+    - @company.yield_if(company_signed_in?) do
+      %a.tagButton{href: companies_first_offer_step_zero_url}
+        %p=t('profile.edit_info')
 
   .m-box.o-boxPrincipal
     .mobileBoxElevation
@@ -13,3 +13,5 @@
         .photoBox
           = react_component('UploadPhoto', {csrf_param: request_forgery_protection_token, csrf_token: form_authenticity_token, action: companies_profile_path, method: "put", src_image: @company.give_the_profile_picture, candidate_present: company_signed_in?, input_name: "company[logo]", icon_file: "icon-button-file", icon_submit: "icon-button-submit"}, prerender: false)
           = render "devise/shared/error_messages", resource: @company
+        %h1
+          = 

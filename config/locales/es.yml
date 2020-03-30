@@ -168,6 +168,9 @@ es:
               blank: 'Por favor seleccione el sector al que pertenece la empresa, este campo no puede estar en blanco'
             description:
               blank: 'Por favor agrege la descripción de la empresa, este campo no puede estar en blanco'
+            logo:
+              greather_that_two_mb: 'La foto debe pesar maximo 2MB'
+              invalid_format: 'El formato debe ser una imagen'
         user:
           attributes:
             name:

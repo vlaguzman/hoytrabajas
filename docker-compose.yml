@@ -12,7 +12,7 @@ services:
       - "3000:3000"
     depends_on:
       - postgres
-      - sidekiq
+      #- sidekiq
       - selenium
       - elasticsearch
       - elasticsearch_test
@@ -97,25 +97,26 @@ services:
         soft: -1
         hard: -1
 
-  redis:
-    image: 'redis:6.0-rc2-alpine'
-    command: redis-server
-    ports:
-      - "6379:6379"
-    volumes:
-      - 'redis_data:/data'
+  #TODO Oscar disable while sidekiq is in optimization
+  #redis:
+  #  image: 'redis:6.0-rc2-alpine'
+  #  command: redis-server
+  #  ports:
+  #    - "6379:6379"
+  #  volumes:
+  #    - 'redis_data:/data'
 
-  sidekiq:
-    tty: true
-    stdin_open: true
-    depends_on:
-      - postgres
-      - redis
-    build: .
-    volumes:
-      - "./:/ht"
-    command: bundle exec sidekiq -C config/sidekiq.yml
-    env_file: .env
+  #sidekiq:
+  #  tty: true
+  #  stdin_open: true
+  #  depends_on:
+  #    - postgres
+  #    - redis
+  #  build: .
+  #  volumes:
+  #    - "./:/ht"
+  #  command: bundle exec sidekiq -C config/sidekiq.yml
+  #  env_file: .env
 
 volumes:
   postgres_data:

@@ -24,8 +24,7 @@ module Offers::Search::ParamsOrganizer
   end
 
   def self.paramters_converter(ids_parameters = {})
-
-    ids_parameters.map { |k, v| [ k, v.to_s.split(',').map(&:to_i) ] }.to_h
+    ids_parameters.map { |key, value| [ key, value.to_s.split(',').map(&:to_i) ] }.to_h
   end
 
   def self.parameters_divider(parameters)

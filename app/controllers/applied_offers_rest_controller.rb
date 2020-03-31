@@ -14,7 +14,7 @@ class AppliedOffersRestController < ApplicationController
 
   def update
     applied_offer_data = permit_params
-    
+
     if company_signed_in?
       applied_offer_verification = Offers::AppliedOfferService.applied_offer_verification(applied_offer_data)
       render json: { data: applied_offer_verification }.to_json

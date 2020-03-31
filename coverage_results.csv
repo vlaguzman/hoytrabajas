@@ -233,6 +233,6 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./lib/hashes_converter.rb",100,18,8,8,0
 "./lib.tp_request_manager.rb",100,22,15,15,0
 "./lib/list_converter.rb",100,25,12,12,0
-"./lib/offers/search/params_organizer.rb",100,38,16,16,0
+"./lib/offers/search/params_organizer.rb",100,37,16,16,0
 "./lib/string_converter.rb",100,23,11,11,0
 "./lib/symbol_manager.rb",100,8,4,4,0

@@ -95,7 +95,4 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 
-  config.before(:each) do
-    Rails.cache.clear
-  end
 end

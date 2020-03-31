@@ -158,7 +158,7 @@ A          • Offers::OrderByOnDemand                                     1    
 A          • Offers::Organizer::AffinityPercentageSorter                 2       18.87      0           1
 A          • Offers::Organizer::DetailsBuilder                           3       20.46      0           2
 A          • Offers::Organizer::Joiner                                   1       10.03      0           3
-A          • Offers::Search::ParamsOrganizer                             3       23.46      0           1
+A          • Offers::Search::ParamsOrganizer                             4       23.46      0           1
 A          • Offers::UpdateOffersStatusDailyJob                          3       7.25       0           2
 A          • OffersPresenter                                             9       19.0       0           4
 A          • OffersResponsibilities                                      1       0.0        0           1

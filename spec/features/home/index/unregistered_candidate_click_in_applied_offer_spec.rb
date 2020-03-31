@@ -22,216 +22,212 @@ RSpec.describe "Unregistered user applied offer in home", type: :feature do
       create(:applied_offer_status, description: "applied")
     end
 
-    let!(:offer) { create(:offer, title: 'Tremendous offer') }
+    let!(:offer) { create(:offer, id: 1, title: 'Tremendous offer') }
 
     it "Should complete registration and arrive at the offer show", js: true do
-      VCR.use_cassette("create_user_full_path") do
-        visit root_path
+      visit root_path
 
-        expect(page).to have_text("Tremendous Offer")
+      expect(page).to have_text("Tremendous Offer")
 
-        find(".cardOffer", match: :first).hover
-        find(".btn-apply", match: :first).click
+      find(".cardOffer", match: :first).hover
+      find(".btn-apply", match: :first).click
 
-        expect(current_path).to eq(new_user_registration_path)
+      expect(current_path).to eq(new_user_registration_path)
 
-        expect(page).to have_text("¡Hola! Regístrate ahora")
+      expect(page).to have_text("¡Hola! Regístrate ahora")
 
-        fill_in 'user[email]',                 :with => "humano.test@email.com"
-        fill_in 'user[password]',              :with => "holamundo101"
-        fill_in 'user[password_confirmation]', :with => "holamundo101"
+      fill_in 'user[email]',                 :with => "humano.test@email.com"
+      fill_in 'user[password]',              :with => "holamundo101"
+      fill_in 'user[password_confirmation]', :with => "holamundo101"
 
-        find('.termsAndConditions__checkbox').click
+      find('.termsAndConditions__checkbox').click
 
-        find(".a-button", text: "Registrarme", visible: false).click
+      find(".a-button", text: "Registrarme", visible: false).click
 
-        expect(current_path).to eq(users_wizards_step_zero_path)
-        expect(page).to have_text("Quiero completar mi perfil")
+      expect(current_path).to eq(users_wizards_step_zero_path)
+      expect(page).to have_text("Quiero completar mi perfil")
 
-        click_on('Quiero completar mi perfil')
+      click_on('Quiero completar mi perfil')
 
-        expect(current_path).to eq(users_wizards_step_zeros_curriculum_vitae_path)
+      expect(current_path).to eq(users_wizards_step_zeros_curriculum_vitae_path)
 
-        click_on("No tengo hoja de vida")
+      click_on("No tengo hoja de vida")
 
-        fill_in 'user[name]', with: 'Carlos'
-        fill_in 'user[last_name]', with: 'Rojas'
+      fill_in 'user[name]', with: 'Carlos'
+      fill_in 'user[last_name]', with: 'Rojas'
 
-        find("div[id='mui-component-select-user[born_country_id]", visible: false).click
-        find("li", text: "Argentina").click
+      find("div[id='mui-component-select-user[born_country_id]", visible: false).click
+      find("li", text: "Argentina").click
 
-        find("div[id='mui-component-select-user[born_state_id]", visible: false).click
-        find("li", text: "Buenos Aires").click
+      find("div[id='mui-component-select-user[born_state_id]", visible: false).click
+      find("li", text: "Buenos Aires").click
 
-        find("div[id='mui-component-select-user[born_city_id]", visible: false).click
-        find("li", text: "Capital Federal").click
+      find("div[id='mui-component-select-user[born_city_id]", visible: false).click
+      find("li", text: "Capital Federal").click
 
-        find("div[id='mui-component-select-user[residence_country_id]", visible: false).click
-        find("li", text: "Snowland").click
+      find("div[id='mui-component-select-user[residence_country_id]", visible: false).click
+      find("li", text: "Snowland").click
 
-        find("div[id='mui-component-select-user[residence_state_id]", visible: false).click
-        find("li", text: "Huila").click
+      find("div[id='mui-component-select-user[residence_state_id]", visible: false).click
+      find("li", text: "Huila").click
 
-        find("div[id='mui-component-select-user[residence_city_id]", visible: false).click
-        find("li", text: "Neiva").click
+      find("div[id='mui-component-select-user[residence_city_id]", visible: false).click
+      find("li", text: "Neiva").click
 
-        find("div[id='mui-component-select-user[nationality_ids][]']", visible: false).click
-        find("li", text: "Argentina").click
-        find("div[id='mui-component-select-user[nationality_ids][]']", visible: false).click
-        find("li", text: "Colombiana").click
+      find("div[id='mui-component-select-user[nationality_ids][]']", visible: false).click
+      find("li", text: "Argentina").click
+      find("div[id='mui-component-select-user[nationality_ids][]']", visible: false).click
+      find("li", text: "Colombiana").click
 
-        find("div[id='mui-component-select-user[document_type_id]']", visible: false).click
-        find("li", text: "Cedula de Ciudadania").click
+      find("div[id='mui-component-select-user[document_type_id]']", visible: false).click
+      find("li", text: "Cedula de Ciudadania").click
 
-        fill_in "user[identification_number]", :with => "1063558224"
-        fill_in "user[contact_number]", :with => "3183638789"
+      fill_in "user[identification_number]", :with => "1063558224"
+      fill_in "user[contact_number]", :with => "3183638789"
 
-        find("span", text: /SIGUIENTE/).click
+      find("span", text: /SIGUIENTE/).click
 
-        visit users_wizards_step_nines_choices_path
+      visit users_wizards_step_nines_choices_path
 
-        click_on("Sí, quiero agregarla")
+      click_on("Sí, quiero agregarla")
 
-        fill_in 'educational_level[degree]', with: 'Supa Engineer'
+      fill_in 'educational_level[degree]', with: 'Supa Engineer'
 
-        click_on("Continuar")
+      click_on("Continuar")
 
-        find('button', text: "Continuar").click
+      find('button', text: "Continuar").click
 
-        expect(current_path).to eq(offer_path(offer.id))
-        expect(page).to have_text('¡Has aplicado a esta oferta!')
-        expect(page).to have_text("¡Has aplicado!")
-      end
+      expect(current_path).to eq(offer_path(offer.id))
+      expect(page).to have_text('¡Has aplicado a esta oferta!')
+      expect(page).to have_text("¡Has aplicado!")
     end
 
     it "Should skip add educational level and arrive at the offer show", js: true do
-      VCR.use_cassette("create_user_full_path") do
-        visit root_path
 
-        expect(page).to have_text("Tremendous Offer")
+      visit root_path
 
-        find(".cardOffer", match: :first).hover
-        find(".btn-apply", match: :first).click
+      expect(page).to have_text("Tremendous Offer")
 
-        fill_in 'user[email]',                 :with => "kendrick.test@email.com"
-        fill_in 'user[password]',              :with => "holamundo101"
-        fill_in 'user[password_confirmation]', :with => "holamundo101"
+      find(".cardOffer", match: :first).hover
+      find(".btn-apply", match: :first).click
 
-        find('.termsAndConditions__checkbox').click
-        find(".a-button", text: "Registrarme", visible: false).click
+      fill_in 'user[email]',                 :with => "kendrick.test@email.com"
+      fill_in 'user[password]',              :with => "holamundo101"
+      fill_in 'user[password_confirmation]', :with => "holamundo101"
 
-        expect(page).to have_text("Quiero completar mi perfil")
+      find('.termsAndConditions__checkbox').click
+      find(".a-button", text: "Registrarme", visible: false).click
 
-        click_on('Quiero completar mi perfil')
+      expect(page).to have_text("Quiero completar mi perfil")
 
-        click_on("No tengo hoja de vida")
+      click_on('Quiero completar mi perfil')
 
-        fill_in 'user[name]', with: 'Carlos'
-        fill_in 'user[last_name]', with: 'Rojas'
+      click_on("No tengo hoja de vida")
 
-        find("div[id='mui-component-select-user[born_country_id]", visible: false).click
-        find("li", text: "Argentina").click
+      fill_in 'user[name]', with: 'Carlos'
+      fill_in 'user[last_name]', with: 'Rojas'
 
-        find("div[id='mui-component-select-user[born_state_id]", visible: false).click
-        find("li", text: "Buenos Aires").click
+      find("div[id='mui-component-select-user[born_country_id]", visible: false).click
+      find("li", text: "Argentina").click
 
-        find("div[id='mui-component-select-user[born_city_id]", visible: false).click
-        find("li", text: "Capital Federal").click
+      find("div[id='mui-component-select-user[born_state_id]", visible: false).click
+      find("li", text: "Buenos Aires").click
 
-        find("div[id='mui-component-select-user[residence_country_id]", visible: false).click
-        find("li", text: "Snowland").click
+      find("div[id='mui-component-select-user[born_city_id]", visible: false).click
+      find("li", text: "Capital Federal").click
 
-        find("div[id='mui-component-select-user[residence_state_id]", visible: false).click
-        find("li", text: "Huila").click
+      find("div[id='mui-component-select-user[residence_country_id]", visible: false).click
+      find("li", text: "Snowland").click
 
-        find("div[id='mui-component-select-user[residence_city_id]", visible: false).click
-        find("li", text: "Neiva").click
+      find("div[id='mui-component-select-user[residence_state_id]", visible: false).click
+      find("li", text: "Huila").click
 
-        find("div[id='mui-component-select-user[nationality_ids][]']", visible: false).click
-        find("li", text: "Argentina").click
-        find("div[id='mui-component-select-user[nationality_ids][]']", visible: false).click
-        find("li", text: "Colombiana").click
+      find("div[id='mui-component-select-user[residence_city_id]", visible: false).click
+      find("li", text: "Neiva").click
 
-        find("div[id='mui-component-select-user[document_type_id]']", visible: false).click
-        find("li", text: "Cedula de Ciudadania").click
+      find("div[id='mui-component-select-user[nationality_ids][]']", visible: false).click
+      find("li", text: "Argentina").click
+      find("div[id='mui-component-select-user[nationality_ids][]']", visible: false).click
+      find("li", text: "Colombiana").click
 
-        fill_in "user[identification_number]", :with => "1063558224"
-        fill_in "user[contact_number]", :with => "3183638789"
+      find("div[id='mui-component-select-user[document_type_id]']", visible: false).click
+      find("li", text: "Cedula de Ciudadania").click
 
-        find("span", text: /SIGUIENTE/).click
+      fill_in "user[identification_number]", :with => "1063558224"
+      fill_in "user[contact_number]", :with => "3183638789"
 
-        visit users_wizards_step_nines_choices_path
+      find("span", text: /SIGUIENTE/).click
 
-        click_on("Omitir")
+      visit users_wizards_step_nines_choices_path
 
-        expect(current_path).to eq(offer_path(offer.id))
-        expect(page).to have_text('¡Has aplicado a esta oferta!')
-        expect(page).to have_text("¡Has aplicado!")
-      end
+      page.has_button?('Omitir')
+      click_on("Omitir")
+
+      expect(current_path).to eq(offer_path(offer.id))
+      expect(page).to have_text('¡Has aplicado a esta oferta!')
+      expect(page).to have_text("¡Has aplicado!")
     end
 
     it "Should click 'No, pero quiero agregarla' in educational level and arrive at the offer show", js: true do
-      VCR.use_cassette("create_user_full_path") do
-        visit root_path
+      visit root_path
 
-        expect(page).to have_text("Tremendous Offer")
+      expect(page).to have_text("Tremendous Offer")
 
-        find(".cardOffer", match: :first).hover
-        find(".btn-apply", match: :first).click
+      find(".cardOffer", match: :first).hover
+      find(".btn-apply", match: :first).click
 
-        fill_in 'user[email]',                 :with => "kendrick.test@email.com"
-        fill_in 'user[password]',              :with => "holamundo101"
-        fill_in 'user[password_confirmation]', :with => "holamundo101"
+      fill_in 'user[email]',                 :with => "kendrick.test@email.com"
+      fill_in 'user[password]',              :with => "holamundo101"
+      fill_in 'user[password_confirmation]', :with => "holamundo101"
 
-        find('.termsAndConditions__checkbox').click
-        find(".a-button", text: "Registrarme", visible: false).click
+      find('.termsAndConditions__checkbox').click
+      find(".a-button", text: "Registrarme", visible: false).click
 
-        click_on('Quiero completar mi perfil')
+      click_on('Quiero completar mi perfil')
 
-        click_on("No tengo hoja de vida")
+      click_on("No tengo hoja de vida")
 
-        fill_in 'user[name]', with: 'Carlos'
-        fill_in 'user[last_name]', with: 'Rojas'
+      fill_in 'user[name]', with: 'Carlos'
+      fill_in 'user[last_name]', with: 'Rojas'
 
-        find("div[id='mui-component-select-user[born_country_id]", visible: false).click
-        find("li", text: "Argentina").click
+      find("div[id='mui-component-select-user[born_country_id]", visible: false).click
+      find("li", text: "Argentina").click
 
-        find("div[id='mui-component-select-user[born_state_id]", visible: false).click
-        find("li", text: "Buenos Aires").click
+      find("div[id='mui-component-select-user[born_state_id]", visible: false).click
+      find("li", text: "Buenos Aires").click
 
-        find("div[id='mui-component-select-user[born_city_id]", visible: false).click
-        find("li", text: "Capital Federal").click
+      find("div[id='mui-component-select-user[born_city_id]", visible: false).click
+      find("li", text: "Capital Federal").click
 
-        find("div[id='mui-component-select-user[residence_country_id]", visible: false).click
-        find("li", text: "Snowland").click
+      find("div[id='mui-component-select-user[residence_country_id]", visible: false).click
+      find("li", text: "Snowland").click
 
-        find("div[id='mui-component-select-user[residence_state_id]", visible: false).click
-        find("li", text: "Huila").click
+      find("div[id='mui-component-select-user[residence_state_id]", visible: false).click
+      find("li", text: "Huila").click
 
-        find("div[id='mui-component-select-user[residence_city_id]", visible: false).click
-        find("li", text: "Neiva").click
+      find("div[id='mui-component-select-user[residence_city_id]", visible: false).click
+      find("li", text: "Neiva").click
 
-        find("div[id='mui-component-select-user[nationality_ids][]']", visible: false).click
-        find("li", text: "Argentina").click
-        find("div[id='mui-component-select-user[nationality_ids][]']", visible: false).click
-        find("li", text: "Colombiana").click
+      find("div[id='mui-component-select-user[nationality_ids][]']", visible: false).click
+      find("li", text: "Argentina").click
+      find("div[id='mui-component-select-user[nationality_ids][]']", visible: false).click
+      find("li", text: "Colombiana").click
 
-        find("div[id='mui-component-select-user[document_type_id]']", visible: false).click
-        find("li", text: "Cedula de Ciudadania").click
+      find("div[id='mui-component-select-user[document_type_id]']", visible: false).click
+      find("li", text: "Cedula de Ciudadania").click
 
-        fill_in "user[identification_number]", :with => "1063558224"
-        fill_in "user[contact_number]", :with => "3183638789"
+      fill_in "user[identification_number]", :with => "1063558224"
+      fill_in "user[contact_number]", :with => "3183638789"
 
-        find("span", text: /SIGUIENTE/).click
+      find("span", text: /SIGUIENTE/).click
 
-        visit users_wizards_step_nines_choices_path
+      visit users_wizards_step_nines_choices_path
 
-        click_on("No, pero quiero aprender")
+      click_on("No, pero quiero aprender")
 
-        expect(current_path).to eq(offer_path(offer.id))
-        expect(page).to have_text('¡Has aplicado a esta oferta!')
-        expect(page).to have_text("¡Has aplicado!")
-      end
+      expect(current_path).to eq(offer_path(offer.id))
+      expect(page).to have_text('¡Has aplicado a esta oferta!')
+      expect(page).to have_text("¡Has aplicado!")
     end
   end
 end

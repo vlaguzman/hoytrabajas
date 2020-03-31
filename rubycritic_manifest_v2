@@ -11,6 +11,7 @@ A          • AffinityPercentage                                          5    
 A          • AffinityPercentageService                                   2       29.08      0           3
 A          • AffinityPercentages::CreateAffinityPercentagesService       13      12.17      0           1
 A          • AffinityPercentages::ExecuteJobService                      3       13.91      0           1
+A          • AffinityPercentages::ExecuteUpdateWorker                    4       0.0        0           2
 A          • AffinityPercentages::ExecuteWorkerService                   2       8.61       0           1
 A          • AffinityPercentages::UpdateAffinityPercentagesDailyJob      5       1.0        0           2
 A          • AffinityPercentages::UpdateAffinityPercentagesService       2       9.43       0           2
@@ -30,7 +31,7 @@ A          • AppliedOffers                                               8    
 A          • AppliedOffersController                                     11      41.34      0           4
 A          • AppliedOffersMailer                                         3       7.09       0           1
 A          • AppliedOffersPresenter                                      7       25.41      0           3
-A          • AppliedOffersRestController                                 5       45.83      0           2
+A          • AppliedOffersRestController                                 6       45.83      0           2
 A          • AvailableWorkDay                                            3       0.0        0           1
 A          • AvailableWorkDaysCurriculumVitaes                           1       0.0        0           1
 A          • AvailableWorkDaysOffers                                     1       0.0        0           1
@@ -114,7 +115,6 @@ A          • Elasticsearch::Offers::Queries                              4    
 A          • Elasticsearch::Offers::Sorts                                3       0.0        0           0
 A          • Elasticsearch::SearchService                                5       39.36      0           5
 A          • EmployeesRange                                              1       0.0        0           1
-A          • ExecuteUpdateWorker                                         3       0.0        0           0
 A          • ExtraHashMethods                                            3       4.95       0           1
 A          • FaqsController                                              2       0.0        0           1
 A          • FormProgressManager                                         2       5.1        0           1
@@ -204,11 +204,11 @@ A          • Users::Wizards::StepElevensController                       4    
 A          • Users::Wizards::StepFive::FormParamsService                 3       21.3       0           5
 A          • Users::Wizards::StepFivePresenter                           6       14.8       0           1
 A          • Users::Wizards::StepFiveService                             5       10.88      0           1
-A          • Users::Wizards::StepFivesController                         10      19.69      21          2
+A          • Users::Wizards::StepFivesController                         9       19.69      21          2
 A          • Users::Wizards::StepFour::FormParamsService                 4       14.0       0           6
 A          • Users::Wizards::StepFourPresenter                           5       14.8       0           1
 A          • Users::Wizards::StepFourService                             3       3.16       0           1
-A          • Users::Wizards::StepFoursController                         7       16.65      0           2
+A          • Users::Wizards::StepFoursController                         6       16.65      0           2
 A          • Users::Wizards::StepNine::FormParamsService                 7       7.4        0           4
 A          • Users::Wizards::StepNinePresenter                           13      20.8       0           1
 A          • Users::Wizards::StepNineService                             8       4.0        0           1
@@ -225,7 +225,7 @@ A          • Users::Wizards::StepSevenPresenter                          6    
 A          • Users::Wizards::StepSevensController                        5       4.62       0           1
 A          • Users::Wizards::StepSix::FormParamsService                  10      9.0        0           6
 A          • Users::Wizards::StepSixPresenter                            5       14.2       0           1
-A          • Users::Wizards::StepSixesController                         14      19.83      0           1
+A          • Users::Wizards::StepSixesController                         13      19.83      0           1
 A          • Users::Wizards::StepTen::FormParamsService                  7       7.4        0           4
 A          • Users::Wizards::StepTenPresenter                            5       14.2       0           1
 A          • Users::Wizards::StepTenService                              5       4.0        0           1
@@ -235,11 +235,11 @@ A          • Users::Wizards::StepTensController                          8    
 A          • Users::Wizards::StepThree::FormParamsService                2       5.0        0           6
 A          • Users::Wizards::StepThreePresenter                          7       14.8       0           1
 A          • Users::Wizards::StepThreeService                            4       3.2        0           1
-A          • Users::Wizards::StepThreesController                        7       19.69      21          2
+A          • Users::Wizards::StepThreesController                        6       19.69      21          2
 A          • Users::Wizards::StepTwo::FormParamsService                  2       3.0        0           4
 A          • Users::Wizards::StepTwoPresenter                            8       14.8       0           1
 A          • Users::Wizards::StepTwoService                              2       3.0        0           1
-A          • Users::Wizards::StepTwosController                          8       15.7       0           1
+A          • Users::Wizards::StepTwosController                          7       15.7       0           1
 A          • Users::Wizards::StepZeroPresenter                           2       1.0        0           2
 A          • Users::Wizards::StepZeros::CurriculumVitaesController       7       16.07      0           2
 A          • Users::Wizards::StepZerosController                         11      5.44       0           1
@@ -275,7 +275,7 @@ B          • Offers::JobCategoriesController                             7    
 B          • Offers::Organizer::ListBuilder                              4       29.85      16          4
 B          • Offers::ShowService                                         20      87.8       0           1
 B          • Offers::ViewsService                                        38      84.92      0           3
-B          • OffersController                                            40      72.8       0           4
+B          • OffersController                                            39      72.8       0           4
 B          • OffersOnDemand::SetInactiveService                          4       27.96      34          3
 B          • OffersService                                               27      63.25      0           7
 B          • User                                                        55      54.53      0           2
@@ -288,4 +288,4 @@ C          • Elasticsearch::Common::Queries                              4    
 C          • GetValueOfRecord                                            1       161.13     0           24
 C          • Users::ProfilesPresenter                                    15      164.51     0           12
 D          • Offer                                                       82      81.53      136         4
-D          • Offers::ShowPresenter                                       8       298.49     46          23
+D          • Offers::ShowPresenter                                       7       298.49     46          23

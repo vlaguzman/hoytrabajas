@@ -8,9 +8,23 @@ class Companies::ProfilesController < ApplicationController
     end
   end
 
+  def update
+    company = current_company
+    Users::AttachFileService.upload_record_file(company, :logo, update_permit_params[:logo])
+    company.errors.add(:logo, company.errors[:logo])
+    @company = Companies::ProfilesPresenter.new(company)
+    render 'show'
+  end
+
   private
 
   def show_permit_params
     params.permit(:company_id)
+  end
+
+  def update_permit_params
+    params
+    .require(:company)
+    .permit(:logo).to_h
   end
 end

@@ -14,4 +14,69 @@
           = react_component('UploadPhoto', {csrf_param: request_forgery_protection_token, csrf_token: form_authenticity_token, action: companies_profile_path, method: "put", src_image: @company.give_the_profile_picture, candidate_present: company_signed_in?, input_name: "company[logo]", icon_file: "icon-button-file", icon_submit: "icon-button-submit"}, prerender: false)
           = render "devise/shared/error_messages", resource: @company
         %h1
-          = 
+          =t('profile.greeting')
+          %strong=@company.basic_data[:name][:value]
+
+    .bodyBox
+      .sectionDivider
+      %h2=t('profile.about_us.title')
+      %p.AboutUs
+        Somos una plataforma de empleo que conecta a las personas con ofertas de empleo en menos de 24 horas.
+      .boxAboutUs
+        .typeAboutUs.--name_company
+          %h4=t('profile.about_us.name')
+          .contentAboutUs
+            %span.a-skill HoyTrabajas.com
+        .typeAboutUs.--document_company
+          %h4=t('profile.about_us.document_type')
+          .contentAboutUs
+            %span.a-skill NIT
+        .typeAboutUs.--economic_sector
+          %h4=t('profile.about_us.economic_sector')
+          .contentAboutUs
+            %span.a-skill Farmaceutico
+        .typeAboutUs.--number_employees
+          %h4=t('profile.about_us.number_of_employees')
+          .contentAboutUs
+            %span.a-skill 20 a 50
+        .typeAboutUs.--identification_number_company
+          %h4=t('profile.about_us.identification_number')
+          .contentAboutUs
+            %span.a-skill
+              12345678-9
+
+    .bodyBox
+      .sectionDivider
+      %h2=t('profile.location.title')
+      .boxLocation
+        .typeLocation.--company_city
+          %h4=t('profile.location.city')
+          .contentLocation
+            %span.a-skill Bogotá
+        .typeLocation.--zone
+          %h4=t('profile.location.zone')
+          .contenLocation
+            %span.a-skill Bosa
+        .typeLocation.--address
+          %h4=t('profile.location.address')
+          .contentLocation
+            %span.a-skill--NoBG Cl. 101b ##45a 41
+        .typeLocation.--company_phone
+          %h4=t('profile.location.phone')
+          .contentLocation
+            %span.a-skill 123 45 66
+
+    .bodyBox
+      .sectionDivider
+      %h2=t('profile.contact_person.title')
+      .boxContactPerson
+        .typeContactPerson.--responsible
+          %h4=t('profile.contact_person.responsible')
+          .contentContactPerson
+            %span.a-skill--NoBG Sebástian Torres Ávila
+        .typeContactPerson.--contact_number
+          %h4=t('profile.contact_person.contact_number')
+          .contentContactPerson
+            %span.a-skill--NoBG (57) 123 456 7890
+
+= render '/shared/footer'

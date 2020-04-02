@@ -138,19 +138,17 @@ const FormFields = props => {
     }
 
     const imageClick = (route) => {
-      console.log(route);
-      setState({formValues[job_category_image.name]})
+      setFormValues({...formValues, [job_category_image.name]: route})
     }
 
     const renderImages = description => {
       const imagesBlock = [1, 2, 3].map((index) => {
 
         const route = `https://img-categorias-ht.s3.amazonaws.com/card-${description}-${index}.jpg`;
+        const imgSelected = (formValues[job_category_image.name] === route) ? 'imgSelected' : '';
 
-        return ( 
-          <div>
-            <img className="" src={route} alt="" onClick={() => imageClick(route)} />
-          </div>
+        return (
+          <img className={`imgJobCategory ${imgSelected}`} src={route} alt={`${description}-${index}`} onClick={() => imageClick(route)} />
         )
       });
 
@@ -161,15 +159,20 @@ const FormFields = props => {
     const jobCategoryObject = job_category_ids.values.find(jobCategory => jobCategory.id === jobCategoryId);
 
     return jobCategoryId ? (
-      <div className="my-30 animated fadeIn inputField col-12 col-lg-12">
-        <div className="MuiFormControl-root">
-          <div className="MuiFormControl-root MuiTextField-root">
-            <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"> {job_category_image.label} </label>
-            <input type="hidden" name={job_category_image.name} value={}/>
+      <>
+        <div className="my-30 animated fadeIn inputField col-12 col-lg-12">
+          <div className="MuiFormControl-root">
+            <div className="MuiFormControl-root MuiTextField-root">
+              <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"> {job_category_image.label} </label>
+              <input type="hidden" name={job_category_image.name} value={formValues[job_category_image.name]}/>
+            </div>
           </div>
         </div>
-        {renderImages(cleanDescription(jobCategoryObject.description))}
-      </div>
+
+        <div className="jobCategoryImages">
+          {renderImages(cleanDescription(jobCategoryObject.description))}
+        </div>
+      </>
     ) : null
   }
 

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Like an company', type: :feature do
   let(:company) { create(:company, :first_time, name: 'HoyTrabajas.com') }
 
-  let!(:job_category)  { create(:job_category) }
+  let!(:job_category)  { create(:job_category, description: "Ventas y comercial") }
 
   let!(:work_position) { create(:work_position) }
 
@@ -39,12 +39,10 @@ RSpec.describe 'Like an company', type: :feature do
         find(id: 'mui-component-select-offer[job_category_ids]', visible: false).click
         find('li.MuiListItem-button', text: job_category.description).click
 
-        # Select image two
-        find(id: 'mui-component-select-offer[job_category_image]', visible: false).click
-        find('li.MuiListItem-button', text: 'image_2').click
-
         find(id: 'offer[offers_work_positions]', visible: false).click
         find('li', text: work_position.description).click
+
+        find("img[alt='ventas-y-comercial-2']").click
 
         click_link_or_button('Siguiente')
 

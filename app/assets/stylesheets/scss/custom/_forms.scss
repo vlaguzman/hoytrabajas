@@ -143,3 +143,21 @@
     margin: 0px;
   }
 }
+
+.jobCategoryImages {
+  display: grid;
+  grid-gap: 15rem;
+  grid-template-columns: repeat(3, 40px);
+  grid-template-rows: repeat(1, 100px);
+}
+
+.imgJobCategory {
+  height: 120px;
+  filter: grayscale(1);
+}
+
+.imgSelected {
+  filter: grayscale(0);
+  border-radius: 3px;
+  box-shadow: 0 2px 10px -1px rgba(183, 208, 226, 0.53);
+}

@@ -50,7 +50,8 @@ RSpec.describe "like new candidate", :type => :feature do
   feature "User want to exit from form" do
     it "Should be able to go home", js: true do
       sign_in_and_visit_step_seven
-  
+
+      has_button?('Inicio')
       click_link_or_button('Inicio')
       expect(current_path).to eq(root_path)
     end

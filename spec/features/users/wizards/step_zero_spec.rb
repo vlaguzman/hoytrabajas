@@ -11,9 +11,9 @@ RSpec.describe "like new candidate", type: :feature do
     scenario "Should see the expected text", js:true do
       VCR.use_cassette("create_user") do
         sign_in candidate
-      
+
         visit users_wizards_step_zero_path
-      
+
         expect(page).to have_text(/El trabajo ideal ¡si existe!/)
         expect(page).to have_text(/Conociendo tus habilidades y experiencia encontraremos las mejores ofertas para ti/)
         expect(page).to have_text(/Quiero completar mi perfil/)
@@ -25,11 +25,11 @@ RSpec.describe "like new candidate", type: :feature do
     scenario "Should redirect to step one", js: true do
       VCR.use_cassette("create_user") do
         sign_in candidate
-       
+
         visit users_wizards_step_zero_path
-       
+
         click_on('Quiero completar mi perfil')
-       
+
         expect(current_path).to eq(users_wizards_step_zeros_curriculum_vitae_path)
       end
     end
@@ -37,13 +37,12 @@ RSpec.describe "like new candidate", type: :feature do
 
   feature "When click on 'Inicio'" do
     scenario "should click the home button and go to root path", js: true do
-      VCR.use_cassette("create_user") do
-        sign_in candidate
-        visit users_wizards_step_zero_path
-       
-        click_link_or_button('Inicio')
-        expect(current_path).to eq(root_path)
-      end
+      sign_in candidate
+      visit users_wizards_step_zero_path
+
+      has_button?('Inicio')
+      click_link_or_button('Inicio')
+      expect(current_path).to eq(root_path)
     end
   end
 end

@@ -22,7 +22,7 @@
 @import './custom/extensions';
 
 @media screen and (max-width: 768px) {
-  .hiddenOnMobile {
+  .MuiTableCell-root.hiddenOnMobile {
     display: none;
   }
 }

@@ -136,7 +136,7 @@ const SignUp = props => {
               </p>
               <RadioGroup
                 aria-label="gender"
-                name="gender1"
+                name="userType"
                 value={sourceName}
                 onChange={handleRadioChange}
               >
@@ -173,7 +173,8 @@ const SignUp = props => {
           </Col>
         </Row>
       </DialogContent>
-      {!isStatic && (
+      {(
+      /* !isStatic && */
         <DialogActions className="loginActions my-10">
           <div className="w-100 text-center">
             <div className="loginActions__divider" />

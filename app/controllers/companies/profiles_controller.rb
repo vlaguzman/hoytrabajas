@@ -1,7 +1,7 @@
 class Companies::ProfilesController < ApplicationController
 
   def show
-    if  company_signed_in? && current_company.email == "test@empresa.com"
+    if  company_signed_in? && current_company.email.eql?("test@empresa.com")
       @company = Companies::ProfilesPresenter.new(current_company)
     else
       redirect_to companies_dashboard_path

@@ -1,0 +1,22 @@
+es:
+  profile:
+    empty: 'Información sin completar'
+    edit_info: 'Editar Información'
+    greeting: 'Hola, '
+    about_us:
+      title: 'Sobre nosotros'
+      name: 'Nombre de la empresa'
+      economic_sector: 'Sector económico de la empresa'
+      number_of_employees: 'Número de empleados'
+      document_type: 'Tipo de documento'
+      identification_number: 'Número de identificación'
+    location:
+      title: 'Ubicación'
+      city: 'Ciudad'
+      zone: 'Localidad'
+      address: 'Dirección'
+      phone: 'Teléfono'
+    contact_person:
+      title: 'Persona de contacto'
+      responsible: 'Encargado'
+      contact_number: 'Número de contacto'

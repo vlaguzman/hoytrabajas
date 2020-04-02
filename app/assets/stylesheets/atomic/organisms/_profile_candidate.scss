@@ -461,6 +461,117 @@
         width: 70%;
       }
     }
+
+    .boxAboutUs {
+      grid-template-columns: 1fr 1fr;
+      grid-row-gap: 28px;
+      display: grid;
+      margin-top: 30px;
+
+      @media (max-width: 992px) {
+        display: flex;
+        flex-direction: column;
+
+        .typeAboutUs{
+          margin: 12px 0;
+        }
+      }
+
+      .typeAboutUs.contentAboutUs {
+        flex-wrap: wrap;
+        display: flex;
+
+        span {
+          margin: 0 5px 5px 0;
+        }
+      }
+
+      .--name_company {
+        order: 1;
+      }
+      .--document_company {
+        order: 2;
+      }
+      .--economic_sector {
+        order: 3;
+      }
+      .--identification_number_company {
+        order: 4;
+      }
+      .--number_employees {
+        order: 5;
+      }
+    }
+
+    .boxLocation{
+      grid-template-columns: 1fr 1fr;
+      grid-row-gap: 28px;
+      display: grid;
+      margin-top: 30px;
+
+      @media (max-width: 992px) {
+        display: flex;
+        flex-direction: column;
+
+        .typeLocation{
+          margin: 12px 0;
+        }
+      }
+
+      .typeLocation.contentLocation {
+        flex-wrap: wrap;
+        display: flex;
+
+        span {
+          margin: 0 5px 5px 0;
+        }
+      }
+
+      .--company_city {
+        order: 1;
+      }
+      .--address {
+        order: 2;
+      }
+      .--zone {
+        order: 3;
+      }
+      .--company_phone {
+        order: 4;
+      }
+    }
+
+    .boxContactPerson{
+      grid-template-columns: 1fr 1fr;
+      grid-row-gap: 28px;
+      display: grid;
+      margin-top: 30px;
+
+      @media (max-width: 992px) {
+        display: flex;
+        flex-direction: column;
+
+        .typeContactPerson {
+          margin: 12px 0;
+        }
+      }
+
+      .typeContactPerson.contentContactPerson{
+        flex-wrap: wrap;
+        display: flex;
+
+        span {
+          margin: 0 5px 5px 0;
+        }
+      }
+
+      .--responsible {
+        order: 1;
+      }
+      .--contact_number {
+        order: 2;
+      }
+    }
   }
 
   .footerBox {

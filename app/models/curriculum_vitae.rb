@@ -7,7 +7,7 @@ class CurriculumVitae < ApplicationRecord
 
   DEFAULT_MALE_USER_PROFILE_IMAGE   = ENV['DEFAULT_MALE_USER_PROFILE_IMAGE']
   DEFAULT_FEMALE_USER_PROFILE_IMAGE = ENV['DEFAULT_FEMALE_USER_PROFILE_IMAGE']
-  DEFAULT_MAX_SIZE_IMAGE =2000000
+  DEFAULT_MAX_SIZE_IMAGE = 2000000
 
   ATTRIBUTES_TO_COMPARE = [:city_id]
   LISTS_TO_COMPARE      = [:job_categories, :working_days, :available_work_days, :technical_skills, :languages_list, :to_learn_skills, :soft_skills, :work_modes]

@@ -68,6 +68,9 @@ en:
               blank: 'Please select a industry, it cant be blank'
             description:
               blank: 'Please enter a description, it cant be blank'
+            logo:
+              greather_that_two_mb: 'The photo must weigh a maximum of 2MB'
+              invalid_format: 'The format must be an image'
         user:
           attributes:
             name:

@@ -10,6 +10,7 @@
       1 app/controllers/companies/first_offer/step_twos_controller.rb
       1 app/controllers/companies/first_offer/step_zeros_controller.rb
       1 app/controllers/companies/list_candidates_controller.rb
+      1 app/controllers/companies/profiles_controller.rb
       1 app/controllers/home_controller.rb
       1 app/controllers/offers/cities_controller.rb
       1 app/controllers/offers/job_categories_controller.rb

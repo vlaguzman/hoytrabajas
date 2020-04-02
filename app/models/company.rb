@@ -1,5 +1,7 @@
 class Company < ApplicationRecord
 
+  DEFAULT_MAX_SIZE_IMAGE = 2000000
+
   validates :name, :contact_cellphone, :description, presence: true, allow_nil: true
 
   # Include default devise modules. Others available are:
@@ -25,6 +27,20 @@ class Company < ApplicationRecord
   delegate :description, :state_description, to: :city, prefix: :city, allow_nil: true
 
   delegate :can_transition_to?, :current_state, :history, :last_transition, :transition_to!, :transition_to, :in_state?, to: :state_machine
+
+  validate :validate_logo
+
+  def validate_logo
+    if logo.attached?
+      if !logo.blob.content_type.starts_with?('image/')
+        self.reload.logo.purge
+        errors.add(:logo, I18n.t('activerecord.errors.models.company.attributes.logo.invalid_format'))
+      elsif logo.blob.byte_size > DEFAULT_MAX_SIZE_IMAGE
+        self.reload.logo.purge
+        errors.add(:logo, I18n.t('activerecord.errors.models.company.attributes.logo.greather_that_two_mb'))
+      end
+    end
+  end
 
   def state_machine
     @state_machine ||= CompanyStateMachine.new(self, transition_class: CompanyTransition, association_name: :transitions)

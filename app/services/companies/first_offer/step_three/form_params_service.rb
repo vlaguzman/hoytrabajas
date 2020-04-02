@@ -2,7 +2,8 @@ class Companies::FirstOffer::StepThree::FormParamsService < BaseFormWizardsServi
 
   INPUT_FIELDS_KEYS = [
     :title,
-    :description
+    :description,
+    :job_category_image
   ]
 
   SELECT_FIELDS_KEYS = [

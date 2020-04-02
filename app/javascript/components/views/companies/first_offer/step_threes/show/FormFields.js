@@ -20,6 +20,7 @@ const FormFields = props => {
     description = null,
     job_category_ids = null,
     offers_work_positions = null,
+    job_category_image = null
   } = formFields
 
   const [formValues, setFormValues] = useState({
@@ -27,7 +28,8 @@ const FormFields = props => {
     [confidential.name]: confidential.current_value || false,
     [description.name]: description.current_value || '',
     [job_category_ids.name]: job_category_ids.current_value || '',
-    [offers_work_positions.name]: offers_work_positions.current_value || ''
+    [offers_work_positions.name]: offers_work_positions.current_value || '',
+    [job_category_image.name]: job_category_image.current_value || ''
   })
 
   const inputClassname = 'my-30 animated fadeIn inputField'
@@ -80,7 +82,7 @@ const FormFields = props => {
     [formValues[description.name]]
   )
 
-  const jobCategoryField = useMemo(
+  const jobCategoryIdsField = useMemo(
     () => (
       <Col
         key={job_category_ids.name}
@@ -124,13 +126,61 @@ const FormFields = props => {
     [formValues[offers_work_positions.name]]
   )
 
+  const JobCategoryImageField = () => {
+
+    const cleanDescription = str => {
+      let strLowerCase = str.toLowerCase();
+      let strWithoutMarks = strLowerCase.replace(",", "");
+      let strWithoutSpaces = strWithoutMarks.replace(/ /g, "-");
+      let strFinal = strWithoutSpaces.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+      return strFinal;
+    }
+
+    const imageClick = (route) => {
+      console.log(route);
+      setState({formValues[job_category_image.name]})
+    }
+
+    const renderImages = description => {
+      const imagesBlock = [1, 2, 3].map((index) => {
+
+        const route = `https://img-categorias-ht.s3.amazonaws.com/card-${description}-${index}.jpg`;
+
+        return ( 
+          <div>
+            <img className="" src={route} alt="" onClick={() => imageClick(route)} />
+          </div>
+        )
+      });
+
+      return imagesBlock;
+     }
+
+    const jobCategoryId = formValues[job_category_ids.name][0];
+    const jobCategoryObject = job_category_ids.values.find(jobCategory => jobCategory.id === jobCategoryId);
+
+    return jobCategoryId ? (
+      <div className="my-30 animated fadeIn inputField col-12 col-lg-12">
+        <div className="MuiFormControl-root">
+          <div className="MuiFormControl-root MuiTextField-root">
+            <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated"> {job_category_image.label} </label>
+            <input type="hidden" name={job_category_image.name} value={}/>
+          </div>
+        </div>
+        {renderImages(cleanDescription(jobCategoryObject.description))}
+      </div>
+    ) : null
+  }
+
   return (
     <Row className="HT__FormGenerator">
       {titleField}
       {offerConfidentialField}
       {descriptionField}
-      {jobCategoryField}
+      {jobCategoryIdsField}
       {offersWorkPositionsField}
+      <JobCategoryImageField />
     </Row>
   )
 }
@@ -143,7 +193,8 @@ FormFields.propTypes = {
     confidential: PropTypes.object,
     description: PropTypes.object,
     job_category_ids: PropTypes.object,
-    offers_work_positions: PropTypes.object
+    offers_work_positions: PropTypes.object,
+    job_category_image: PropTypes.object,
   }).isRequired,
   tooltip_description: PropTypes.shape({
     press_enter: PropTypes.string.isRequired

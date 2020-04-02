@@ -40,7 +40,7 @@ RSpec.describe 'Like an company', type: :feature do
         find('li.MuiListItem-button', text: job_category.description).click
 
         # Select image two
-        find(id: 'mui-component-select-offer[job_category][image]', visible: false).click
+        find(id: 'mui-component-select-offer[job_category_image]', visible: false).click
         find('li.MuiListItem-button', text: 'image_2').click
 
         find(id: 'offer[offers_work_positions]', visible: false).click
@@ -51,8 +51,8 @@ RSpec.describe 'Like an company', type: :feature do
         offer = Offer.find_by(title: 'Oferta para el mejor desarrollador del mundo mundial')
 
         expect(offer.description).to eq('Se busca desarrollador en ROR')
-        expect(offer.job_category_ids).not_to be_nil
-        expect(offer.job_category.image).to eq('https://bitbucket-image-2.png')
+        expect(offer.job_category_ids).to match_array([job_category.id])
+        expect(offer.job_category_image).to eq('https://img-categorias-ht.s3.amazonaws.com/card-ventas-y-comercial-2.jpg')
         expect(offer.status).to eq('preview')
         expect(offer.confidential).to be_falsey
 

@@ -27,7 +27,8 @@ class Companies::FirstOffer::StepThreesController < ApplicationController
         :confidential,
         :description,
         :job_category_ids,
-        :offers_work_positions
+        :offers_work_positions,
+        :job_category_image
     ).to_h
   end
 end

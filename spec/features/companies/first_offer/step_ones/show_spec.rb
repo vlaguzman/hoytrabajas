@@ -20,7 +20,7 @@ RSpec.describe "When company fill the step one form", :type => :feature do
       with_tag(:input, with: { name: 'company[employees_range_id]',    type: "hidden" })
     end
 
-    expect(page).to have_button('Siguiente')
+    has_button?('Siguiente')
   end
 
   def fill_form(data)

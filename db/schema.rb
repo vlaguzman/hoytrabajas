@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_05_224428) do
+ActiveRecord::Schema.define(version: 2020_04_02_230235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -115,6 +115,19 @@ ActiveRecord::Schema.define(version: 2020_03_05_224428) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["curriculum_vitae_id"], name: "index_affinity_percentages_on_curriculum_vitae_id"
     t.index ["offer_id"], name: "index_affinity_percentages_on_offer_id"
+  end
+
+  create_table "age_range_lists", force: :cascade do |t|
+    t.string "description"
+  end
+
+  create_table "age_range_lists_offers", force: :cascade do |t|
+    t.bigint "offer_id", null: false
+    t.bigint "age_range_list_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["age_range_list_id"], name: "index_age_range_lists_offers_on_age_range_list_id"
+    t.index ["offer_id"], name: "index_age_range_lists_offers_on_offer_id"
   end
 
   create_table "age_ranges", force: :cascade do |t|
@@ -959,6 +972,8 @@ ActiveRecord::Schema.define(version: 2020_03_05_224428) do
 
   add_foreign_key "acknowledgments", "cities"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "age_range_lists_offers", "age_range_lists"
+  add_foreign_key "age_range_lists_offers", "offers"
   add_foreign_key "age_ranges", "offers"
   add_foreign_key "applied_offer_transitions", "applied_offers"
   add_foreign_key "applied_offers", "applied_offer_statuses"

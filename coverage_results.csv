@@ -11,6 +11,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/admin_user.rb",100,6,3,3,0
 "./app/models/affinity_percentage.rb",100,9,5,5,0
 "./app/models/age_range.rb",100,8,5,5,0
+"./app/models/age_range_list.rb",100,5,2,2,0
 "./app/models/application_record.rb",100,3,2,2,0
 "./app/models/applied_offer.rb",100,28,14,14,0
 "./app/models/applied_offer_status.rb",100,3,2,2,0
@@ -54,7 +55,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/level.rb",100,5,3,3,0
 "./app/models/limitation.rb",100,6,3,3,0
 "./app/models/nationality.rb",100,7,4,4,0
-"./app/models/offer.rb",100,232,123,123,0
+"./app/models/offer.rb",100,241,124,124,0
 "./app/models/offer_on_demand.rb",100,14,8,8,0
 "./app/models/offer_required_experiences.rb",100,11,6,6,0
 "./app/models/offer_salary.rb",100,14,9,9,0

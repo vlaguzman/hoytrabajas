@@ -24,7 +24,6 @@ RSpec.describe 'Like an company', type: :feature do
 
           with_tag(:input, with: { name: 'offer[id]', type: "hidden" })
           with_tag(:input, with: { name: 'offer[job_category_ids]', type: 'hidden' })
-          with_tag(:input, with: { name: 'offer[job_category][image]', type: 'hidden' })
         end
 
         expect(page).to have_button('Siguiente')
@@ -46,7 +45,7 @@ RSpec.describe 'Like an company', type: :feature do
 
         click_link_or_button('Siguiente')
 
-        offer = Offer.find_by(title: 'Oferta para el mejor desarrollador del mundo mundial')
+        offer = Offer.find_by(title: 'Se busca ROR developer')
 
         expect(offer.description).to eq('Se busca desarrollador en ROR')
         expect(offer.job_category_ids).to match_array([job_category.id])

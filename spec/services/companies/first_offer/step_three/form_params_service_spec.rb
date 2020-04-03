@@ -55,6 +55,11 @@ RSpec.describe Companies::FirstOffer::StepThree::FormParamsService do
               values: [],
               current_value: ''
             },
+            job_category_image: {
+              name: 'company[job_category_image]',
+              label: 'Selecciona una imagen para destacar tu oferta',
+              current_value: ''
+            }
           }
         }
       }

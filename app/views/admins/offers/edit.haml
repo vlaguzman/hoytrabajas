@@ -37,10 +37,8 @@
 
   %div
     %span=t('offer.form.labels.age_range.label')
-    %div.group#age_range
-      = f.simple_fields_for :age_range do |ar|
-        = ar.input :from, input_html: { type: 'number', min: "1", value: @offer.age_range_from }, label: t('offer.form.labels.age_range.from'), error: @offer.get_error_by_model(:age_range, :from)
-        = ar.input :to,   input_html: { type: 'number', min: "1", value: @offer.age_range_to   }, label: t('offer.form.labels.age_range.to'),   error: @offer.get_error_by_model(:age_range, :to)
+    %div.group
+      = f.input :age_range_lists, collection: @offer.get_collection_by_model(AgeRangeList), checked: @offer.age_range_list_ids, value_method: :first, label_method: :second, as: :check_boxes, label: false
 
   %div
     %span=t('offer.form.labels.offer_salary.label')

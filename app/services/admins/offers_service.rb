@@ -1,5 +1,5 @@
 module Admins::OffersService
-  ASSOCIATIONS = [ "age_range", "offer_salary", "offer_required_experiences", "offers_technical_skills", "languages_offers" ]
+  ASSOCIATIONS = [ "offer_salary", "offer_required_experiences", "offers_technical_skills", "languages_offers" ]
   ASSOCIATIONS_TO_COMPARE = [ "offers_technical_skills", "languages_offers" ]
 
   def self.call(update_params: {})

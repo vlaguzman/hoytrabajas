@@ -94,7 +94,6 @@ RSpec.describe Companies::FirstOffer::StepFour::FormParamsService do
         form_method: :put
       ).form_params
 
-      puts response.inspect
       expect(response[:form][:formFields]).to eq(expected_object[:form][:formFields])
 
       expect(response.keys).to match_array(expected_object.keys)

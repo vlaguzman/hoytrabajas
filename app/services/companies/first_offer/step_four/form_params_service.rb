@@ -23,8 +23,6 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
 
   def vacancies_quantity_field
     current_value = source && source.vacancies_quantity
-    puts "GOLONDRINA"
-    puts template_translations
 
     {
       vacancies_quantity: {

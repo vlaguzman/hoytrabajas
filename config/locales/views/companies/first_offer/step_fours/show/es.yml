@@ -6,8 +6,6 @@ es:
           title: "Conozcamos más de tu oferta"
           subtitle: "Brinda a tu candidato información relevante de tu empresa."
           immediate_start_description: "Inicio inmediato"
-          offer_age_range_before: "Edad min."
-          offer_age_range_after: "Edad máx."
           form:
             buttons:
               submit: "Siguiente"
@@ -18,6 +16,6 @@ es:
               contract_type_id: "Acuerdo legal"
               vacancies_quantity: "Elige el número de vacantes"
               sex_ids: "Tu oferta está dirigida a"
-              offer_age_range: "Edad del candidato"
+              age_range_list_ids: "Edad del candidato (Puedes elegir mas de uno)"
               close_date: "Fecha de cierre de la oferta"
               immediate_start: "¿Cuál es el tiempo para cubrir esta oferta?"

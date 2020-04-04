@@ -5,7 +5,8 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
   ]
 
   MULTIPLE_SELECT_FIELDS_KEYS = [
-    :sex_ids
+    :sex_ids,
+    :age_range_list_ids
   ]
 
   private
@@ -13,10 +14,13 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
   def fields_builder
     super(
       vacancies_quantity_field,
-      offer_age_range_field,
       immediate_start_field,
       close_date_field
     )
+  end
+
+  def age_range_list_ids_list
+    ListConverter.model_list AgeRangeList
   end
 
   def contract_type_id_list
@@ -35,23 +39,6 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
         values: { min: 1, max: 100 },
         step: 1,
         current_value: source.vacancies_quantity
-      }
-    }
-  end
-
-  def offer_age_range_field
-    object = AgeRange.find_by(offer_id: source.id)
-    current_value = object.present? ? [object.from, object.to] : ""
-
-    {
-      offer_age_range: {
-        name: 'offer[offer_age_range]',
-        label: template_translations[:form][:formFields][:offer_age_range],
-        beforeLabel: template_translations[:offer_age_range_before],
-        afterLabel: template_translations[:offer_age_range_after],
-        values: { min: 18, max: 80 },
-        step: 1,
-        current_value: current_value
       }
     }
   end

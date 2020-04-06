@@ -5,7 +5,7 @@ class AddModelErrorsService
 
   def initialize(model, update_params)
     self.model = model
-    self.update_params = update_params || {}
+    self.update_params = update_params.deep_symbolize_keys || {}
   end
 
   def validate

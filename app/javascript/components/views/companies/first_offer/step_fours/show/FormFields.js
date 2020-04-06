@@ -24,18 +24,14 @@ const FormFields = props => {
     immediate_start = null
   } = formFields
 
-  function closeDateCurrentValue() {
-    return close_date.current_value === ''
-      ? Date.now()
-      : new Date(close_date.current_value)
-  }
-
   const [formValues, setFormValues] = useState({
     [contract_type_id.name]: contract_type_id.current_value || '',
     [vacancies_quantity.name]: vacancies_quantity.current_value || '',
     [sex_ids.name]: sex_ids.current_value || '',
     [offer_age_range.name]: offer_age_range.current_value || '',
-    [close_date.name]: closeDateCurrentValue(),
+    [close_date.name]: close_date.current_value
+      ? new Date(close_date.current_value)
+      : null,
     [immediate_start.name]: immediate_start.current_value || false
   })
 

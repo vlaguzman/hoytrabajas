@@ -25,8 +25,12 @@ const DatePicker = props => {
   const formatString = dateOptions && dateOptions.format
 
   const formatLabel = date => {
-    const stringDate = format(date, formatString)
-    return capitalize(stringDate)
+    if (date) {
+      const stringDate = format(date, formatString)
+      return capitalize(stringDate)
+    }
+
+    return date
   }
 
   const onChange = value => handleSimpleChange(value, name)
@@ -39,12 +43,13 @@ const DatePicker = props => {
       label={label}
       maxDate={dateOptions.maxDate || new Date()}
       onChange={onChange}
-      value={inputValue || ''}
+      value={inputValue}
       labelFunc={formatLabel}
       disableFuture={dateOptions.disableFuture || false}
       disablePast={dateOptions.disablePast || false}
       minDate={minDate}
       minDateMessage={minDateMessage}
+      InputLabelProps={{ shrink: !!inputValue }}
       InputProps={{
         endAdornment: (
           <InputAdornment position="end" className="date-picker-icon">

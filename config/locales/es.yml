@@ -186,9 +186,10 @@ es:
             password_confirmation:
               confirmation: 'Su contraseña no coincide con la confirmación, por favor haga que su contraseña se igual a la verificación'
             identification_number:
-              blank: 'Por favor ingrese su numero de documento, este campo no puede estar en blanco'
+              blank: 'Por favor ingrese su número de documento, este campo no puede estar en blanco'
+              not_a_number: 'El número de documento solo puede contener un valor numérico'
             contact_number:
-              blank: 'Por favor ingrese su numero de contacto, este campo no puede estar en blanco'
+              blank: 'Por favor ingrese su número de contacto, este campo no puede estar en blanco'
             nationalities:
               blank: 'Debes selecionar por lo menos una nacionalidad'
             born_city_id:
@@ -197,8 +198,11 @@ es:
               blank: 'Debes selecionar lugar de residencia'
             document_type_id:
               blank: 'Debes selecionar el tipo de documento de identidad'
+            birthday:
+              blank: 'Por favor, selecciona tu fecha de nacimiento.'
             about_me:
               blank: 'Describe un poco más tu perfil, este campo no puede estar vacío.'
+              too_long: 'La descripción no debe superar los 500 caracteres.'
             educational_degree_id:
               blank: 'Debes seleccionar un nivel de educación'
         offer:
@@ -213,10 +217,11 @@ es:
             job_category_ids:
               blank: 'Por favor seleccione una categoría, este campo es requerido'
             status:
-              inclusion: '%{value} no es un estado valido, estados validos: [:expired, :hired, :active, :preview, :trash]'
+              inclusion: '%{value} no es un estado válido, estados válidos: [:expired, :hired, :active, :preview, :trash]'
             vacancies_quantity:
               greater_than_or_equal_to: 'La cantidad de vacantes debe ser igual ó mayor a uno(1)'
             close_date:
+              blank: 'Por favor seleccione la fecha de cierre de la oferta'
               be_older_today: 'La fecha de finalización debe ser mayor al día de hoy'
         educational_level:
           attributes:
@@ -252,6 +257,9 @@ es:
               invalid_skill: 'Una de las habilidades tecnicas que quieres agregar, ya esta en la lista y la puedes seleccionar, no permitimos valores repetidos'
             to_learn_skills:
               invalid_skill: 'Una de las habilidades tecnicas a aprender que quieres agregar, ya esta en la lista y la puedes seleccionar, no permitimos valores repetidos'
+            about_me:
+              blank: 'Describe un poco más tu perfil, este campo no puede estar vacío.'
+              too_long: 'La descripción no debe superar los 500 caracteres.'
         age_range:
           attributes:
             from:

@@ -80,7 +80,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/technical_skill.rb",100,10,7,7,0
 "./app/models/technical_skill_category.rb",100,3,2,2,0
 "./app/models/term.rb",100,5,3,3,0
-"./app/models/user.rb",100,89,48,48,0
+"./app/models/user.rb",100,92,50,50,0
 "./app/models/users_limitations.rb",100,8,4,4,0
 "./app/models/users_nationalities.rb",100,6,3,3,0
 "./app/models/vehicle.rb",100,6,4,4,0
@@ -150,7 +150,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/clientify/data_manager.rb",100,61,33,33,0
 "./app/services/companies/dashboards/offers_service.rb",100,46,18,18,0
 "./app/services/companies/first_offer/common_service.rb",100,16,7,7,0
-"./app/services/companies/first_offer/company_and_offer_errors_service.rb",100,11,3,3,0
+"./app/services/companies/first_offer/company_and_offer_errors_service.rb",100,12,3,3,0
 "./app/services/companies/first_offer/step_eight/form_params_service.rb",100,2,1,1,0
 "./app/services/companies/first_offer/step_five/form_params_service.rb",100,65,26,26,0
 "./app/services/companies/first_offer/step_five_service.rb",100,49,24,24,0
@@ -211,7 +211,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/users/wizards/step_three_service.rb",100,5,3,3,0
 "./app/services/users/wizards/step_two/form_params_service.rb",100,31,11,11,0
 "./app/services/users/wizards/step_two_service.rb",100,9,4,4,0
-"./app/services/users/wizards/user_errors_service.rb",100,19,3,3,0
+"./app/services/users/wizards/user_errors_service.rb",100,20,3,3,0
 "./app/services/wizards_last_step_service.rb",100,26,17,17,0
 "./app/state_machines/applied_offer_state_machine.rb",100,14,10,10,0
 "./app/state_machines/company_state_machine.rb",100,17,10,10,0

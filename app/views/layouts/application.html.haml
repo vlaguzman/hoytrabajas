@@ -18,6 +18,7 @@
     - if Rails.env.production?
       = javascript_pack_tag 'analytics/facebook_pixel'
       = javascript_pack_tag 'analytics/tag_manager'
+      = javascript_pack_tag 'analytics/a_b_testing'
 
       -# Facebook pixel
       %noscript
@@ -25,6 +26,9 @@
 
       -# Crazy egg
       %script{:async => "async", :src => "//script.crazyegg.com/pages/scripts/0090/2467.js", :type => "text/javascript"}
+
+      -# a&b testing
+      %script{:async => "async", :src => "https://www.googletagmanager.com/gtag/js?id=UA-108065726-1", :type => "text/javascript"}
 
       -# Canonical
       %link{:href => "#{ENV['HT_PROTOCOL']}#{ENV['HT_DOMAIN']}#{(url_for(:page => params[:page])).chomp("/")}", :rel => "canonical"}/

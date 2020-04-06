@@ -13,6 +13,7 @@ RSpec.describe "Like an admin", type: :feature do
     let!(:job_category_1)       { create(:job_category,       description: 'Programming') }
     let!(:work_position_1)      { create(:work_position,      description: 'Developer') }
     let!(:sex_1)                { create(:sex,                description: 'Male') }
+    let!(:age_1)                { create(:age_range_list,     description: '18 - 24') }
     let!(:currency_1)           { create(:currency,           description: 'COP') }
     let!(:salary_period_1)      { create(:salary_period,      description: 'Biweekly') }
     let!(:available_work_day_1) { create(:available_work_day, description: 'All days') }
@@ -35,6 +36,7 @@ RSpec.describe "Like an admin", type: :feature do
     let!(:job_category_2)       { create(:job_category,       description: 'Computation') }
     let!(:work_position_2)      { create(:work_position,      description: 'Tester') }
     let!(:sex_2)                { create(:sex,                description: 'Female') }
+    let!(:age_2)                { create(:age_range_list,     description: '40 - 60') }
     let!(:available_work_day_2) { create(:available_work_day, description: 'Weekend') }
     let!(:working_day_2)        { create(:working_day,        description: 'Morning') }
     let!(:job_aid_2)            { create(:job_aid,            description: 'Transport aux') }
@@ -60,6 +62,7 @@ RSpec.describe "Like an admin", type: :feature do
       job_category_ids:       [job_category_1.id],
       work_position_ids:      [work_position_1.id],
       sex_ids:                [sex_1.id],
+      age_range_list_ids:     [age_1.id],
       available_work_day_ids: [available_work_day_1.id],
       working_day_ids:        [working_day_1.id],
       job_aid_ids:            [job_aid_1.id],
@@ -105,8 +108,7 @@ RSpec.describe "Like an admin", type: :feature do
           find(:css, "#offer_required_experience[value='1']").set(true)
           select('active', from: 'offer[status]')
 
-          fill_in 'offer[age_range][from]', with: 750000
-          fill_in 'offer[age_range][to]',   with: 750000
+          find(:css, "#offer_age_range_lists_#{age_2.id}[value='#{age_2.id}']").set(true)
 
           fill_in 'offer[offer_salary][from]', with: 750000
           fill_in 'offer[offer_salary][to]',   with: 750000
@@ -157,11 +159,6 @@ RSpec.describe "Like an admin", type: :feature do
         expect(offer.confidential).to be_truthy
         expect(offer.status).to eq(Offer::OFFER_STATUS[2])
 
-        expect(AgeRange.count).to eq(1)
-
-        expect(offer.age_range_from).to eq(750000)
-        expect(offer.age_range_to).to eq(750000)
-
         expect(OfferSalary.count).to eq(1)
 
         expect(offer.salary_from).to eq(750000)
@@ -198,6 +195,7 @@ RSpec.describe "Like an admin", type: :feature do
         expect(offer.job_category_ids).to match_array([job_category_1.id, job_category_2.id])
         expect(offer.work_position_ids).to match_array([work_position_1.id, work_position_2.id])
         expect(offer.sex_ids).to match_array([sex_1.id, sex_2.id])
+        expect(offer.age_range_list_ids).to match_array([age_1.id, age_2.id])
         expect(offer.available_work_day_ids).to match_array([available_work_day_1.id, available_work_day_2.id])
         expect(offer.working_day_ids).to match_array([working_day_1.id, working_day_2.id])
         expect(offer.job_aid_ids).to match_array([job_aid_1.id, job_aid_2.id])
@@ -232,37 +230,6 @@ RSpec.describe "Like an admin", type: :feature do
       end
 
       context "when admin try save associations" do
-        context "when has erros in all associations" do
-          scenario "should return an goblal messages error of models associates" do
-            within "#edit_offer_#{offer.id}" do
-              fill_in 'offer[title]', with: ''
-
-              fill_in 'offer[age_range][from]', with: -750000
-              fill_in 'offer[age_range][to]',   with: -750000
-
-              fill_in 'offer[offer_salary][from]', with: -750000
-              fill_in 'offer[offer_salary][to]',   with: -750000
-
-              fill_in 'offer[offer_required_experiences][duration]', with: -2
-
-              click_on('Guardar')
-            end
-
-            expect(current_path).to eq(admins_offer_path(offer.id))
-
-            expect(page).to have_text('Ha ocurrido un error al guardar Rango de edad')
-            expect(page).to have_text('Ha ocurrido un error al guardar Información del salario')
-            expect(page).to have_text('Ha ocurrido un error al guardar Información de experiencia')
-
-            expect(page).to have_css('#age_range', text: 'Desde debe ser igual ó mayor a 18')
-            expect(page).to have_css('#age_range', text: 'Hasta debe ser igual ó mayor a 18')
-
-            expect(page).to have_css('#offer_salary', text: 'Desde debe ser igual ó mayor a uno(1)')
-            expect(page).to have_css('#offer_salary', text: 'Hasta debe ser igual ó mayor a uno(1)')
-
-            expect(page).to have_css('#offer_required_experiences', text: 'Debe ser igual ó mayor a uno(1)')
-          end
-        end
 
         context "when try save age range" do
           context "when no entry some value" do
@@ -279,22 +246,6 @@ RSpec.describe "Like an admin", type: :feature do
             end
           end
 
-          context "when entry incomplete data" do
-            scenario "should return an goblal messages error of age range and specific error" do
-              within "#edit_offer_#{offer.id}" do
-                fill_in 'offer[age_range][from]', with: ''
-                fill_in 'offer[age_range][to]',   with: 750000
-
-                click_on('Guardar')
-              end
-
-              expect(current_path).to eq(admins_offer_path(offer.id))
-
-              expect(page).to have_text('Ha ocurrido un error al guardar Rango de edad')
-
-              expect(page).to have_css('#age_range', text: 'Desde no puede estar en blanco')
-            end
-          end
         end
 
         context "when try save offer salary" do

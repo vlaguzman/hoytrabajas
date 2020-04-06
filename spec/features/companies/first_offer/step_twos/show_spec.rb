@@ -66,7 +66,8 @@ RSpec.describe "When company fill the step two form", :type => :feature do
       scenario "should click the home button and go to root path", js: true do
         sign_in company
         visit companies_first_offer_step_two_path
-    
+
+        has_button?('Inicio')
         click_link_or_button('Inicio')
         expect(current_path).to eq(root_path)
       end

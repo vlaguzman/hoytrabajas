@@ -16,6 +16,6 @@ es:
               contract_type_id: "Acuerdo legal"
               vacancies_quantity: "Elige el número de vacantes"
               sex_ids: "Tu oferta está dirigida a"
-              age_range_list_ids: "Edad del candidato (Puedes elegir mas de uno)"
+              age_range_list_ids: "Edad del candidato (Puedes elegir más de uno)"
               close_date: "Fecha de cierre de la oferta"
               immediate_start: "¿Cuál es el tiempo para cubrir esta oferta?"

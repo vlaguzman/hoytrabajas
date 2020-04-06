@@ -2,9 +2,6 @@ require 'rails_helper'
 
 RSpec.describe CompanyService do
 
-  before { Timecop.freeze(Time.zone.parse("2020-04-03 13:00:00")) }
-  after  { Timecop.return }
-
   describe 'When company is premium' do
 
     describe '#up_offers_on_demands' do

@@ -38,8 +38,8 @@ RSpec.describe "like new company", type: :feature do
       visit companies_first_offer_step_zero_path
 
       page.has_button?('Inicio')
-
       click_link_or_button('Inicio')
+
       expect(current_path).to eq(root_path)
     end
   end

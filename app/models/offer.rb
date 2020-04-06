@@ -43,7 +43,7 @@ class Offer < ApplicationRecord
 
   has_one :offer_salary
 
-  #TODO Oscar remove after age ragne change
+  #TODO Oscar remove after age range change
   has_one :age_range
 
   has_one :offer_required_experiences

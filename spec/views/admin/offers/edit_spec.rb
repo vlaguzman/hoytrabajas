@@ -10,6 +10,7 @@ RSpec.describe "admins/offers/edit" do
   let!(:job_category_1)       { create(:job_category,       description: 'Programming') }
   let!(:work_position_1)      { create(:work_position,      description: 'Developer') }
   let!(:sex_1)                { create(:sex,                description: 'Male') }
+  let!(:age_1)                { create(:age_range_list,     description: '18 - 24') }
   let!(:available_work_day_1) { create(:available_work_day, description: 'All days') }
   let!(:working_day_1)        { create(:working_day,        description: 'Full time') }
   let!(:job_aid_1)            { create(:job_aid,            description: 'Prestations') }
@@ -24,6 +25,7 @@ RSpec.describe "admins/offers/edit" do
   let!(:job_category_2)       { create(:job_category,       description: 'Computation') }
   let!(:work_position_2)      { create(:work_position,      description: 'Tester') }
   let!(:sex_2)                { create(:sex,                description: 'Female') }
+  let!(:age_2)                { create(:age_range_list,     description: '25 - 34') }
   let!(:available_work_day_2) { create(:available_work_day, description: 'Weekend') }
   let!(:working_day_2)        { create(:working_day,        description: 'Morning') }
   let!(:job_aid_2)            { create(:job_aid,            description: 'Transport aux') }
@@ -73,8 +75,8 @@ RSpec.describe "admins/offers/edit" do
       with_tag(:select,   with: { name: 'offer[status]'})
       with_tag(:input,    with: { name: 'offer[confidential]', type: 'hidden'})
 
-      with_tag(:input, with: { name: 'offer[age_range][from]', type: 'number'})
-      with_tag(:input, with: { name: 'offer[age_range][to]',   type: 'number'})
+      with_tag(:input, with: { id: "offer_age_range_lists_#{age_1.id}"})
+      with_tag(:input, with: { id: "offer_age_range_lists_#{age_2.id}"})
 
       with_tag(:input,  with: { name: 'offer[offer_salary][from]',     type: 'number'})
       with_tag(:input,  with: { name: 'offer[offer_salary][to]',       type: 'number'})

@@ -3,9 +3,9 @@
     "app_path": "/ht",
     "rails_version": "6.0.2.2",
     "security_warnings": 0,
-    "start_time": "2020-04-06 16:55:42 +0000",
-    "end_time": "2020-04-06 16:55:45 +0000",
-    "duration": 2.4141102,
+    "start_time": "2020-04-06 19:04:51 +0000",
+    "end_time": "2020-04-06 19:04:54 +0000",
+    "duration": 2.578001555,
     "checks_performed": [
       "BasicAuth",
       "BasicAuthTimingAttack",
@@ -43,7 +43,7 @@
       "NumberToCurrency",
       "PermitAttributes",
       "QuoteTableName",
-      "Radd many to many age range list association [stable]edirect",
+      "Redirect",
       "RegexDoS",
       "Render",
       "RenderDoS",
@@ -75,7 +75,7 @@
       "YAMLParsing"
     ],
     "number_of_controllers": 50,
-    "number_of_models": 82,
+    "number_of_models": 84,
     "number_of_templates": 65,
     "ruby_version": "2.6.3",
     "brakeman_version": "4.8.0"

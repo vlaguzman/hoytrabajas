@@ -43,6 +43,7 @@ RSpec.describe "Like new candidate", :type => :feature do
       sign_in candidate
       visit users_wizards_step_four_path
 
+      has_button?('Inicio')
       click_link_or_button('Inicio')
       expect(current_path).to eq(root_path)
     end

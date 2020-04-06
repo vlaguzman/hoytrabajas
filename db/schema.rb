@@ -119,6 +119,8 @@ ActiveRecord::Schema.define(version: 2020_04_02_230235) do
 
   create_table "age_range_lists", force: :cascade do |t|
     t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "age_range_lists_offers", force: :cascade do |t|

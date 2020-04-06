@@ -24,6 +24,7 @@ RSpec.describe "When company arrives in step eight", :type => :feature do
         sign_in company
         visit companies_first_offer_step_eight_path
 
+        has_button?('Inicio')
         click_link_or_button('Inicio')
         expect(current_path).to eq(root_path)
       end

@@ -42,6 +42,7 @@ module Admins::OffersService
       job_category_ids:       prepare_ids(params[:job_categories]),
       work_position_ids:      prepare_ids(params[:work_positions]),
       sex_ids:                prepare_ids(params[:sexes]),
+      age_range_list_ids:     prepare_ids(params[:age_range_lists]),
       available_work_day_ids: prepare_ids(params[:available_work_days]),
       working_day_ids:        prepare_ids(params[:working_days]),
       job_aid_ids:            prepare_ids(params[:job_aids]),

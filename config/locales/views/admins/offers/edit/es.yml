@@ -14,10 +14,6 @@ es:
         required_experience: 'Requiere experiencia'
         status: 'Seleccione el estado'
         confidential: 'Oferta confidencial'
-        age_range:
-          label: 'Rango de edad'
-          from: 'Desde'
-          to: 'Hasta'
         offer_salary:
           label: 'Información del salario'
           from: 'Desde'

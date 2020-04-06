@@ -9,7 +9,6 @@ module Offers::CompletelyDestroyService
 
   def self.destroy_associoations(offer)
     OfferSalary.where(offer: offer).destroy_all
-    AgeRange.where(offer: offer).destroy_all
     OfferRequiredExperiences.where(offer: offer).destroy_all
     OfferOnDemand.where(offer: offer).destroy_all
     offer.destroy

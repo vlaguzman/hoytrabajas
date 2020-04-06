@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_02_230235) do
+ActiveRecord::Schema.define(version: 2020_04_06_195451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -130,15 +130,6 @@ ActiveRecord::Schema.define(version: 2020_04_02_230235) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["age_range_list_id"], name: "index_age_range_lists_offers_on_age_range_list_id"
     t.index ["offer_id"], name: "index_age_range_lists_offers_on_offer_id"
-  end
-
-  create_table "age_ranges", force: :cascade do |t|
-    t.integer "from"
-    t.integer "to"
-    t.bigint "offer_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["offer_id"], name: "index_age_ranges_on_offer_id"
   end
 
   create_table "applied_offer_statuses", force: :cascade do |t|
@@ -976,7 +967,6 @@ ActiveRecord::Schema.define(version: 2020_04_02_230235) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "age_range_lists_offers", "age_range_lists"
   add_foreign_key "age_range_lists_offers", "offers"
-  add_foreign_key "age_ranges", "offers"
   add_foreign_key "applied_offer_transitions", "applied_offers"
   add_foreign_key "applied_offers", "applied_offer_statuses"
   add_foreign_key "applied_offers", "offers"

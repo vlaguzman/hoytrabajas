@@ -164,15 +164,6 @@ en:
             to_learn_skills:
               invalid_skill: "One of the to learn skills that you want to add, is already in the list and you can select it, we do not allow repeated values"
 
-        age_range:
-          attributes:
-            from:
-              greater_than_or_equal_to: 'From must be equal to or greater than 18'
-              blank: 'Please enter from, it cant be blank'
-            to:
-              greater_than_or_equal_to: 'To must be equal to or greater than 18'
-              blank: 'Please enter to, it cant be blank'
-
         offer_salary:
           attributes:
             from:

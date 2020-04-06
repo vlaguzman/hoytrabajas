@@ -43,9 +43,6 @@ class Offer < ApplicationRecord
 
   has_one :offer_salary
 
-  #TODO Oscar remove after age range change
-  has_one :age_range
-
   has_one :offer_required_experiences
   has_one :offer_on_demand
 
@@ -81,10 +78,6 @@ class Offer < ApplicationRecord
 
   #delegates
   delegate :from, :to, :currency_description, :period_description, :currency_id, :period_id, :is_range, to: :offer_salary, prefix: :salary, allow_nil: true
-
-  #TODO Oscar remove after age ragne change
-  delegate :from, :to, to: :age_range, prefix: :age_range, allow_nil: true
-
   delegate :description, :email, :name, :web_site, :employees_range_description, :logo, to: :company, prefix: :company, allow_nil: true
   delegate :description, to: :city, prefix: :city, allow_nil: true
   delegate :state_id, to: :city, prefix: :city, allow_nil: true

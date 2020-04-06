@@ -4,7 +4,7 @@ FactoryBot.define do
     last_name             { Faker::FunnyName.two_word_name }
     birthday              { Faker::Date.birthday(min_age: 18, max_age: 65) }
     contact_number        { 3113535522 }
-    identification_number { Faker::IDNumber.valid }
+    identification_number { Faker::IDNumber.valid.to_i }
     email                 { Faker::Internet.email }
     password              { Faker::Blockchain::Bitcoin.address }
     confirmed_at          { Date.today }

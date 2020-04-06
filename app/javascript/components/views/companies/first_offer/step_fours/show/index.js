@@ -8,13 +8,14 @@ import { MuiPickersUtilsProvider } from '@material-ui/pickers'
 import FormTitle from '../../../../../src/components/FormsLayout/FormTitle'
 import FormButtons from '../../../../../src/components/FormsLayout/FormButtons'
 import FormFields from './FormFields'
+import { ShowMessage } from '../../../../users/wizards/shared/message'
 
 const CompaniesStepFour = ({ formInfo, csrf_param, csrf_token }) => {
   const {
     title,
     subtitle,
     id,
-    form: { buttons, action, method, type, formFields }
+    form: { buttons, action, method, type, formFields, errors = null }
   } = formInfo
 
   const { nextPath, previousPath } = buttons
@@ -27,6 +28,7 @@ const CompaniesStepFour = ({ formInfo, csrf_param, csrf_token }) => {
             <>
               <FormTitle title={title} subtitle={subtitle} />
               <div className="w-80">
+                {ShowMessage(errors, 'red')}
                 <form
                   className="forms__candidate"
                   action={action}

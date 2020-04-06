@@ -25,7 +25,7 @@ const FormFields = props => {
     [sex_id.name]: sex_id.current_value || '',
     [birthday.name]: birthday.current_value
       ? new Date(`${birthday.current_value} 0:00`)
-      : new Date(),
+      : null,
     [limitation_ids.name]: limitation_ids.current_value || '',
     [educational_degree_id.name]: educational_degree_id.current_value || ''
   })

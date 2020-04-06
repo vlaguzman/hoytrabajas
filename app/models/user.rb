@@ -19,6 +19,9 @@ class User < ApplicationRecord
 
   validates_presence_of :email, :sign_in_count
 
+  validates_length_of :about_me, maximum: 500, :allow_blank => true
+  validates :identification_number, :numericality => { :only_integer => true }, :allow_blank => true
+
   belongs_to :sex,                optional: true
   belongs_to :contract_type,      optional: true
   belongs_to :document_type,      optional: true

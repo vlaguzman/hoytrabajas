@@ -161,7 +161,7 @@ const FormFields = props => {
           </div>
         </div>
 
-        <div className="jobCategoryImages">
+        <div className="my-30 animated fadeIn inputField col-12 col-lg-12 jobCategoryImages">
           {renderImages(cleanJobCategoryDescription(jobCategoryObject.description))}
         </div>
       </>

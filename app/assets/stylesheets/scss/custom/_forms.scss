@@ -146,13 +146,18 @@
 
 .jobCategoryImages {
   display: grid;
-  grid-gap: 15rem;
-  grid-template-columns: repeat(3, 40px);
-  grid-template-rows: repeat(1, 100px);
+  grid-gap: 15px;
+  grid-template-columns: repeat(3, 1fr);
+
+  @media only screen and (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .imgJobCategory {
-  height: 120px;
+  object-fit: contain;
+  filter: grayscale(1);
+  width: 100%;
   filter: grayscale(1);
 }
 

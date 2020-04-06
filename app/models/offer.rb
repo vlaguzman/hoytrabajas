@@ -22,7 +22,7 @@ class Offer < ApplicationRecord
 
   validates_presence_of :title, :job_category_ids
 
-  validates :description, :close_date, presence: true, allow_nil: true
+  validates :description, :offer_type_id, presence: true, allow_nil: true
 
   validates_length_of :title, minimum: 3, maximum: 400
 

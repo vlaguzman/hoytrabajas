@@ -5,6 +5,7 @@ import StandardInput from '../../../../../src/components/FormsLayout/Fields/Stan
 import SelectChip from '../../../../../src/components/FormsLayout/Fields/SelectChip'
 import SelectFindOrCreate from '../../../../../src/components/FormsLayout/Fields/SelectFindOrCreate'
 import Checkbox from '../../../../../src/components/FormsLayout/Fields/Checkbox'
+import { cleanJobCategoryDescription } from '../../../../../utils/string_functions'
 import {
   handleChange,
   handleDeleteChip,
@@ -128,15 +129,6 @@ const FormFields = props => {
 
   const JobCategoryImageField = () => {
 
-    const cleanDescription = str => {
-      let strLowerCase = str.toLowerCase();
-      let strWithoutMarks = strLowerCase.replace(",", "");
-      let strWithoutSpaces = strWithoutMarks.replace(/ /g, "-");
-      let strFinal = strWithoutSpaces.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
-      return strFinal;
-    }
-
     const imageClick = (route) => {
       setFormValues({...formValues, [job_category_image.name]: route})
     }
@@ -170,7 +162,7 @@ const FormFields = props => {
         </div>
 
         <div className="jobCategoryImages">
-          {renderImages(cleanDescription(jobCategoryObject.description))}
+          {renderImages(cleanJobCategoryDescription(jobCategoryObject.description))}
         </div>
       </>
     ) : null

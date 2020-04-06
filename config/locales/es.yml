@@ -223,6 +223,8 @@ es:
             close_date:
               blank: 'Por favor seleccione la fecha de cierre de la oferta'
               be_older_today: 'La fecha de finalización debe ser mayor al día de hoy'
+            offer_type_id:
+              blank: 'Por favor seleccione un tipo de oferta'
         educational_level:
           attributes:
             degree:

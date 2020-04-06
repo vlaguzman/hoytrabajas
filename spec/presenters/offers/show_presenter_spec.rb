@@ -50,8 +50,6 @@ RSpec.describe Offers::ShowPresenter do
     salary_period: create(:salary_period, description: 'Mes')
   ) }
 
-  let!(:offer_age_range) { create(:age_range, offer: the_offer, from: 18, to: 35) }
-
   let!(:languages_offers) do
     [
       create(:languages_offers, offer: the_offer, language: create(:language, description: 'Ingles'), level: create(:level, description: 'Avanzado') ),

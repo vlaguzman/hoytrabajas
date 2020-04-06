@@ -91,7 +91,6 @@ module Admins::OffersService
 
   def self.validate_params_specific(model, model_params)
     options = {
-      age_range:                  -> { true },
       offer_salary:               -> { validate_offer_salary(model_params) },
       offer_required_experiences: -> { true },
       offers_technical_skills:    -> { true },

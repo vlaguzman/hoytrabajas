@@ -10,7 +10,6 @@ RSpec.describe "Like an user", type: :feature do
 
   context "when user arrives to offer show" do
     context "when offer has all information to first block" do
-      let!(:age_range) { create(:age_range, offer: show_offer) }
 
       scenario "should render offers show template with the first block data and two job categories", js: true do
         show_offer.sexes << FactoryBot.create(:sex)

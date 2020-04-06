@@ -13,7 +13,6 @@ class Offers::ShowService < Offers::ViewsService
       offer_type:           { description: offer.offer_type_description },
       work_mode:            { description: offer.work_mode_description },
       contract_type:        { description: offer.contract_type_description },
-      age_range:            age_range_details,
       languages:            languages_list_details,
       available_work_days:  available_work_days_list,
       working_days:         working_days_list,
@@ -35,13 +34,6 @@ class Offers::ShowService < Offers::ViewsService
 
   def used_keys
     [:title, :address, :immediate_start, :description, :vacancies_quantity, :required_experience, :confidential]
-  end
-
-  def age_range_details
-    {
-      from: offer.age_range_from,
-      to: offer.age_range_to
-    }
   end
 
   def languages_list_details

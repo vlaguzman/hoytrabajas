@@ -14,10 +14,7 @@ en:
         required_experience: 'Required experience'
         status: 'Select status'
         confidential: 'Offer confidential'
-        age_range:
-          label: 'Age range'
-          from: 'From'
-          to: 'To'
+
         offer_salary:
           label: 'Offer salary'
           from: 'From'

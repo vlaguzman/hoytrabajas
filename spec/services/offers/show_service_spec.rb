@@ -55,7 +55,6 @@ RSpec.describe Offers::ShowService do
   ]
   end
 
-  let(:age_range) { create(:age_range, offer: offer) }
   let(:user)      { create(:user) }
   let(:subject)   { described_class.new(offer, user) }
 
@@ -81,10 +80,6 @@ RSpec.describe Offers::ShowService do
         confidential: false,
         sex: {
           description: ["Mujer"]
-        },
-        age_range: {
-          from: 18,
-          to: 35
         },
         city:{
           description: "Bogotá D.C."
@@ -126,21 +121,8 @@ RSpec.describe Offers::ShowService do
 
     it "should return a hash with the required info to show template" do
       offers_salary
-      age_range
 
       expect(subject.details).to eq(expected_object)
-    end
-
-    context "when age range asoc with the offer is not present" do
-      it "should return a hash" do
-        AgeRange.destroy_all
-
-        response = subject.details
-
-        expected_object = { from: nil ,to: nil }
-
-        expect(response[:age_range]).to eq(expected_object)
-      end
     end
 
     context "when offers salaries asoc with the offer is not present" do

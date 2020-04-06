@@ -10,7 +10,6 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/acknowledgment.rb",100,12,7,7,0
 "./app/models/admin_user.rb",100,6,3,3,0
 "./app/models/affinity_percentage.rb",100,9,5,5,0
-"./app/models/age_range.rb",100,8,5,5,0
 "./app/models/age_range_list.rb",100,6,3,3,0
 "./app/models/age_range_lists_offers.rb",100,4,3,3,0
 "./app/models/application_record.rb",100,3,2,2,0
@@ -56,7 +55,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/level.rb",100,5,3,3,0
 "./app/models/limitation.rb",100,6,3,3,0
 "./app/models/nationality.rb",100,7,4,4,0
-"./app/models/offer.rb",100,240,124,124,0
+"./app/models/offer.rb",100,233,122,122,0
 "./app/models/offer_on_demand.rb",100,14,8,8,0
 "./app/models/offer_required_experiences.rb",100,11,6,6,0
 "./app/models/offer_salary.rb",100,14,9,9,0
@@ -132,7 +131,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/users_presenter.rb",100,19,5,5,0
 "./app/services/add_model_errors/curriculum_vitaes/technical_skills.rb",100,18,9,9,0
 "./app/services/add_model_errors_service.rb",100,58,23,23,0
-"./app/services/admins/offers_service.rb",100,189,92,92,0
+"./app/services/admins/offers_service.rb",100,188,91,91,0
 "./app/services/admins_service.rb",100,15,8,8,0
 "./app/services/affinity_calculator.rb",100,80,36,36,0
 "./app/services/affinity_percentage_service.rb",100,36,19,19,0
@@ -174,7 +173,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/elasticsearch/search_service.rb",100,55,28,28,0
 "./app/services/offers/applied_offer_service.rb",100,34,13,13,0
 "./app/services/offers/carousel_offers_service.rb",100,23,12,12,0
-"./app/services/offers/completely_destroy_service.rb",100,17,11,11,0
+"./app/services/offers/completely_destroy_service.rb",100,16,10,10,0
 "./app/services/offers/expired_service.rb",100,27,13,13,0
 "./app/services/offers/index_service.rb",100,18,7,7,0
 "./app/services/offers/order_by_affinity_percentage_service.rb",100,39,19,19,0
@@ -183,7 +182,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/offers/organizer/details_builder.rb",100,32,14,14,0
 "./app/services/offers/organizer/joiner.rb",100,18,9,9,0
 "./app/services/offers/organizer/list_builder.rb",100,45,23,23,0
-"./app/services/offers/show_service.rb",100,76,27,27,0
+"./app/services/offers/show_service.rb",100,68,25,25,0
 "./app/services/offers/views_service.rb",100,99,41,41,0
 "./app/services/offers_on_demand/set_inactive_service.rb",100,29,13,13,0
 "./app/services/offers_service.rb",100,78,22,22,0

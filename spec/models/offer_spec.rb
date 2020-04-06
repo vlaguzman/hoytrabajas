@@ -144,9 +144,6 @@ RSpec.describe Offer, type: :model, vcr: true do
     it { should respond_to(:salary_currency_description) }
     it { should respond_to(:salary_period_description) }
 
-    it { should respond_to(:age_range_from) }
-    it { should respond_to(:age_range_to) }
-
     it { should respond_to(:city_description) }
     it { should respond_to(:offer_type_description) }
     it { should respond_to(:work_mode_description) }

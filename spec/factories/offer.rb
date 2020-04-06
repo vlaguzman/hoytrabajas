@@ -13,6 +13,7 @@ FactoryBot.define do
     status                        { 'active' }
     job_categories                { [FactoryBot.create(:job_category)] }
     vacancies_quantity            { 10 }
+    age_range_lists               { [FactoryBot.create(:age_range_list)] }
 
     trait :empty do
       title                         { Faker::Lorem.sentence(word_count: 8) }

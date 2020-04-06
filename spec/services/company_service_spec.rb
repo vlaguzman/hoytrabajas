@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CompanyService do
+
   describe 'When company is premium' do
 
     describe '#up_offers_on_demands' do

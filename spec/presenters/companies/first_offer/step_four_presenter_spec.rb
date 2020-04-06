@@ -14,8 +14,6 @@ RSpec.describe Companies::FirstOffer::StepFourPresenter do
       expected_keys = [:title,
                        :subtitle,
                        :immediate_start_description,
-                       :offer_age_range_before,
-                       :offer_age_range_after,
                        :form,
                        :id]
 

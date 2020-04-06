@@ -20,7 +20,7 @@ RSpec.describe "When company fill the step one form", :type => :feature do
       with_tag(:input, with: { name: 'company[employees_range_id]',    type: "hidden" })
     end
 
-    expect(page).to have_button('Siguiente')
+    has_button?('Siguiente')
   end
 
   def fill_form(data)
@@ -97,7 +97,8 @@ RSpec.describe "When company fill the step one form", :type => :feature do
       scenario "should click the home button and go to root path", js: true do
         sign_in company
         visit companies_first_offer_step_one_path
-    
+
+        has_button?('Inicio')
         click_link_or_button('Inicio')
         expect(current_path).to eq(root_path)
       end

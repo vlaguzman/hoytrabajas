@@ -11,6 +11,8 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/admin_user.rb",100,6,3,3,0
 "./app/models/affinity_percentage.rb",100,9,5,5,0
 "./app/models/age_range.rb",100,8,5,5,0
+"./app/models/age_range_list.rb",100,6,3,3,0
+"./app/models/age_range_lists_offers.rb",100,4,3,3,0
 "./app/models/application_record.rb",100,3,2,2,0
 "./app/models/applied_offer.rb",100,28,14,14,0
 "./app/models/applied_offer_status.rb",100,3,2,2,0
@@ -54,7 +56,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/level.rb",100,5,3,3,0
 "./app/models/limitation.rb",100,6,3,3,0
 "./app/models/nationality.rb",100,7,4,4,0
-"./app/models/offer.rb",100,232,123,123,0
+"./app/models/offer.rb",100,240,124,124,0
 "./app/models/offer_on_demand.rb",100,14,8,8,0
 "./app/models/offer_required_experiences.rb",100,11,6,6,0
 "./app/models/offer_salary.rb",100,14,9,9,0
@@ -130,7 +132,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/users_presenter.rb",100,19,5,5,0
 "./app/services/add_model_errors/curriculum_vitaes/technical_skills.rb",100,18,9,9,0
 "./app/services/add_model_errors_service.rb",100,58,23,23,0
-"./app/services/admins/offers_service.rb",100,188,92,92,0
+"./app/services/admins/offers_service.rb",100,189,92,92,0
 "./app/services/admins_service.rb",100,15,8,8,0
 "./app/services/affinity_calculator.rb",100,80,36,36,0
 "./app/services/affinity_percentage_service.rb",100,36,19,19,0
@@ -154,8 +156,8 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/companies/first_offer/step_eight/form_params_service.rb",100,2,1,1,0
 "./app/services/companies/first_offer/step_five/form_params_service.rb",100,65,26,26,0
 "./app/services/companies/first_offer/step_five_service.rb",100,49,24,24,0
-"./app/services/companies/first_offer/step_four/form_params_service.rb",100,83,22,22,0
-"./app/services/companies/first_offer/step_four_service.rb",100,30,16,16,0
+"./app/services/companies/first_offer/step_four/form_params_service.rb",100,70,20,20,0
+"./app/services/companies/first_offer/step_four_service.rb",100,18,7,7,0
 "./app/services/companies/first_offer/step_one/form_params_service.rb",100,25,8,8,0
 "./app/services/companies/first_offer/step_one_service.rb",100,6,3,3,0
 "./app/services/companies/first_offer/step_seven/form_params_service.rb",100,91,34,34,0

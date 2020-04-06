@@ -12,6 +12,7 @@ RSpec.describe Admins::OffersService do
   let!(:job_category_1)       { create(:job_category,       description: 'Programming') }
   let!(:work_position_1)      { create(:work_position,      description: 'Developer') }
   let!(:sex_1)                { create(:sex,                description: 'Male') }
+  let!(:age_range_list_1)     { create(:age_range_list,     description: '18 - 24') }
   let!(:currency)             { create(:currency,           description: 'COP') }
   let!(:salary_period)        { create(:salary_period,      description: 'Biweekly') }
   let!(:available_work_day_1) { create(:available_work_day, description: 'All days') }
@@ -29,6 +30,7 @@ RSpec.describe Admins::OffersService do
   let!(:job_category_2)       { create(:job_category,       description: 'Computation') }
   let!(:work_position_2)      { create(:work_position,      description: 'Tester') }
   let!(:sex_2)                { create(:sex,                description: 'Female') }
+  let!(:age_range_list_2)     { create(:age_range_list,     description: '25 - 34') }
   let!(:available_work_day_2) { create(:available_work_day, description: 'Weekend') }
   let!(:working_day_2)        { create(:working_day,        description: 'Morning') }
   let!(:job_aid_2)            { create(:job_aid,            description: 'Transport aux') }
@@ -59,6 +61,7 @@ RSpec.describe Admins::OffersService do
           job_categories:         ["#{job_category_1.id}", "#{job_category_2.id}"],
           work_positions:         ["#{work_position_1.id}", "#{work_position_2.id}"],
           sexes:                  ["#{sex_1.id}", "#{sex_2.id}"],
+          age_range_lists:        ["#{age_range_list_1.id}", "#{age_range_list_2.id}"],
           available_work_days:    ["#{available_work_day_1.id}", "#{available_work_day_2.id}"],
           working_days:           ["#{working_day_1.id}", "#{working_day_2.id}"],
           job_aids:               ["#{job_aid_1.id}", "#{job_aid_2.id}"],
@@ -67,10 +70,6 @@ RSpec.describe Admins::OffersService do
           # requirements:           ["#{requirement_1.id}", "#{requirement_2.id}"],
           vehicles:               ["#{vehicle_1.id}", "#{vehicle_2.id}"],
           driving_licences:       ["#{driving_licence_1.id}", "#{driving_licence_2.id}"],
-          age_range: {
-            to:   '750000',
-            from: '750000',
-          },
           offer_salary: {
             to:   '750000',
             from: '750000',
@@ -106,11 +105,6 @@ RSpec.describe Admins::OffersService do
         expect(offer[:data].close_date.strftime("%F")).to eq(Time.new(2020, 01, 01).strftime("%F"))
         expect(offer[:data].immediate_start).to be_truthy
         expect(offer[:data].required_experience).to be_truthy
-
-        expect(AgeRange.count).to eq(1)
-
-        expect(offer[:data].age_range_to).to eq(750000)
-        expect(offer[:data].age_range_from).to eq(750000)
 
         expect(OfferSalary.count).to eq(1)
 
@@ -148,6 +142,7 @@ RSpec.describe Admins::OffersService do
         expect(offer[:data].job_category_ids).to match_array([job_category_1.id, job_category_2.id])
         expect(offer[:data].work_position_ids).to match_array([work_position_1.id, work_position_2.id])
         expect(offer[:data].sex_ids).to match_array([sex_1.id, sex_2.id])
+        expect(offer[:data].age_range_list_ids).to match_array([age_range_list_1.id, age_range_list_2.id])
         expect(offer[:data].available_work_day_ids).to match_array([available_work_day_1.id, available_work_day_2.id])
         expect(offer[:data].working_day_ids).to match_array([working_day_1.id, working_day_2.id])
         expect(offer[:data].job_aid_ids).to match_array([job_aid_1.id, job_aid_2.id])
@@ -178,6 +173,7 @@ RSpec.describe Admins::OffersService do
           job_categories:         ["#{job_category_1.id}", "#{job_category_2.id}"],
           work_positions:         ["#{work_position_1.id}", "#{work_position_2.id}"],
           sexes:                  ["#{sex_1.id}", "#{sex_2.id}"],
+          age_range_lists:        ["#{age_range_list_1.id}", "#{age_range_list_2.id}"],
           available_work_days:    ["#{available_work_day_1.id}", "#{available_work_day_2.id}"],
           working_days:           ["#{working_day_1.id}", "#{working_day_2.id}"],
           job_aids:               ["#{job_aid_1.id}", "#{job_aid_2.id}"],
@@ -186,11 +182,6 @@ RSpec.describe Admins::OffersService do
           # requirements:           ["#{requirement_1.id}", "#{requirement_2.id}"],
           vehicles:               ["#{vehicle_1.id}", "#{vehicle_2.id}"],
           driving_licences:       ["#{driving_licence_1.id}", "#{driving_licence_2.id}"],
-          age_range: {
-            to:   '750000',
-            from: '750000',
-            offer_id: offer.id
-          },
           offer_salary: {
             to:   '750000',
             from: '750000',

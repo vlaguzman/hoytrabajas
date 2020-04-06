@@ -1,5 +1,5 @@
 module Admins::OffersService
-  ASSOCIATIONS = [ "age_range", "offer_salary", "offer_required_experiences", "offers_technical_skills", "languages_offers" ]
+  ASSOCIATIONS = [ "offer_salary", "offer_required_experiences", "offers_technical_skills", "languages_offers" ]
   ASSOCIATIONS_TO_COMPARE = [ "offers_technical_skills", "languages_offers" ]
 
   def self.call(update_params: {})
@@ -42,6 +42,7 @@ module Admins::OffersService
       job_category_ids:       prepare_ids(params[:job_categories]),
       work_position_ids:      prepare_ids(params[:work_positions]),
       sex_ids:                prepare_ids(params[:sexes]),
+      age_range_list_ids:     prepare_ids(params[:age_range_lists]),
       available_work_day_ids: prepare_ids(params[:available_work_days]),
       working_day_ids:        prepare_ids(params[:working_days]),
       job_aid_ids:            prepare_ids(params[:job_aids]),

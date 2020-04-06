@@ -83,7 +83,8 @@ RSpec.describe "Like an company", type: :feature, ignore_elasticsearch: true do
         sign_in company
         visit companies_first_offer_step_seven_path(offer_id: offer.id)
 
-        click_link_or_button('Inicio')
+        has_button?('Inicio')
+        find('a', text: 'Inicio').click
         expect(current_path).to eq(root_path)
       end
     end

@@ -46,10 +46,6 @@ class Admins::OffersController < ApplicationController
         :required_experience,
         :status,
         :confidential,
-        age_range: [
-          :to,
-          :from
-        ],
         offer_salary: [
           :to,
           :from,
@@ -74,6 +70,7 @@ class Admins::OffersController < ApplicationController
         job_categories: [],
         work_positions: [],
         sexes: [],
+        age_range_lists: [],
         available_work_days: [],
         working_days: [],
         job_aids: [],

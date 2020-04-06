@@ -19,7 +19,7 @@ const FormFields = props => {
     contract_type_id = null,
     vacancies_quantity = null,
     sex_ids = null,
-    offer_age_range = null,
+    age_range_list_ids = null,
     close_date = null,
     immediate_start = null
   } = formFields
@@ -28,7 +28,7 @@ const FormFields = props => {
     [contract_type_id.name]: contract_type_id.current_value || '',
     [vacancies_quantity.name]: vacancies_quantity.current_value || '',
     [sex_ids.name]: sex_ids.current_value || '',
-    [offer_age_range.name]: offer_age_range.current_value || '',
+    [age_range_list_ids.name]: age_range_list_ids.current_value || '',
     [close_date.name]: close_date.current_value
       ? new Date(close_date.current_value)
       : null,
@@ -96,25 +96,21 @@ const FormFields = props => {
     [formValues[sex_ids.name]]
   )
 
-  const offerAgeRangeField = useMemo(
+  const AgeRangeListField = useMemo(
     () => (
       <Col className={inputClassname} xs={12} lg={6}>
-        <Slider
-          inputValue={formValues[offer_age_range.name]}
-          handleSimpleChange={handleSimpleChange(formValues, setFormValues)}
-          currentValue={offer_age_range.currentValue}
-          name={offer_age_range.name}
-          label={offer_age_range.label}
-          beforeLabel={offer_age_range.beforeLabel}
-          afterLabel={offer_age_range.afterLabel}
-          values={offer_age_range.values}
-          step={offer_age_range.step}
+        <SelectChip
+          inputValue={formValues[age_range_list_ids.name]}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
+          name={age_range_list_ids.name}
+          label={age_range_list_ids.label}
+          selectOptions={age_range_list_ids.values}
           isMultiple
-          isRequired={false}
         />
       </Col>
     ),
-    [formValues[offer_age_range.name]]
+    [formValues[age_range_list_ids.name]]
   )
 
   const closeDateField = useMemo(
@@ -154,7 +150,7 @@ const FormFields = props => {
       {contractTypeField}
       {vacanciesQuantityField}
       {sexField}
-      {offerAgeRangeField}
+      {AgeRangeListField}
       {closeDateField}
       {immediateStartField}
     </Row>
@@ -168,7 +164,7 @@ FormFields.propTypes = {
     contract_type_id: PropTypes.object,
     vacancies_quantity: PropTypes.object,
     sex_ids: PropTypes.object,
-    offer_age_range: PropTypes.object,
+    age_range_list_ids: PropTypes.object,
     close_date: PropTypes.object,
     immediate_start: PropTypes.object
   }).isRequired

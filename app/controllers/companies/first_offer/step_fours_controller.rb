@@ -32,9 +32,9 @@ class Companies::FirstOffer::StepFoursController < ApplicationController
         :id,
         :contract_type_id,
         :vacancies_quantity,
-        :offer_age_range,
         :close_date,
         :immediate_start,
+        :age_range_list_ids => [],
         :sex_ids => []
     ).to_h
   end

@@ -5,7 +5,7 @@ RSpec.describe "Like an user looged", type: :feature do
   let!(:curriculum_vitae) { create(:curriculum_vitae, user: user) }
 
   feature "when try upload profile picture" do
-    context "when upload correctly file" do
+    context "when upload correctly file", js: true do
       scenario "should save picture and see these file in profile", js: true do
         sign_in user
 
@@ -25,7 +25,7 @@ RSpec.describe "Like an user looged", type: :feature do
       end
     end
 
-    context "when upload incorrectly file" do
+    context "when upload incorrectly file", js: true do
       before do
         curriculum_vitae.photo.purge
       end

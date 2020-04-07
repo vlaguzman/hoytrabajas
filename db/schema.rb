@@ -634,6 +634,7 @@ ActiveRecord::Schema.define(version: 2020_04_06_195451) do
     t.boolean "created_by_admin", default: false
     t.bigint "educational_degree_id"
     t.boolean "confidential", default: false
+    t.string "job_category_image"
     t.index ["city_id"], name: "index_offers_on_city_id"
     t.index ["company_id"], name: "index_offers_on_company_id"
     t.index ["contract_type_id"], name: "index_offers_on_contract_type_id"

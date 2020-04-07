@@ -16,6 +16,8 @@ import {
 const FormFields = props => {
   const { formFields } = props
   const {
+    offer_type_id = null,
+    work_mode_id = null,
     contract_type_id = null,
     vacancies_quantity = null,
     sex_ids = null,
@@ -25,6 +27,8 @@ const FormFields = props => {
   } = formFields
 
   const [formValues, setFormValues] = useState({
+    [offer_type_id.name]: offer_type_id.current_value || '',
+    [work_mode_id.name]: work_mode_id.current_value || '',
     [contract_type_id.name]: contract_type_id.current_value || '',
     [vacancies_quantity.name]: vacancies_quantity.current_value || '',
     [sex_ids.name]: sex_ids.current_value || '',
@@ -43,6 +47,42 @@ const FormFields = props => {
     maxDate: maxDate(),
     emptyLabel: '...'
   }
+
+  const offerTypeField = useMemo(
+    () => (
+      <Col key={offer_type_id.name} className={inputClassname} xs={12} lg={6}>
+        <SelectChip
+          inputValue={formValues[offer_type_id.name]}
+          inputName={offer_type_id.name}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
+          name={offer_type_id.name}
+          label={offer_type_id.label}
+          selectOptions={offer_type_id.values}
+          isMultiple={false}
+        />
+      </Col>
+    ),
+    [formValues[offer_type_id.name]]
+  )
+
+  const workModeField = useMemo(
+    () => (
+      <Col key={work_mode_id.name} className={inputClassname} xs={12} lg={6}>
+        <SelectChip
+          inputValue={formValues[work_mode_id.name]}
+          inputName={work_mode_id.name}
+          handleChange={handleChange(formValues, setFormValues)}
+          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
+          name={work_mode_id.name}
+          label={work_mode_id.label}
+          selectOptions={work_mode_id.values}
+          isMultiple={false}
+        />
+      </Col>
+    ),
+    [formValues[work_mode_id.name]]
+  )
 
   const contractTypeField = useMemo(
     () => (
@@ -147,6 +187,8 @@ const FormFields = props => {
 
   return (
     <Row className="HT__FormGenerator">
+      {offerTypeField}
+      {workModeField}
       {contractTypeField}
       {vacanciesQuantityField}
       {sexField}
@@ -161,6 +203,8 @@ export default FormFields
 
 FormFields.propTypes = {
   formFields: PropTypes.shape({
+    offer_type_id: PropTypes.object,
+    work_mode_id: PropTypes.object,
     contract_type_id: PropTypes.object,
     vacancies_quantity: PropTypes.object,
     sex_ids: PropTypes.object,

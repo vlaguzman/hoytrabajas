@@ -87,13 +87,7 @@ class Offers::ViewsService
   end
 
   def job_category_image
-    image = job_category_image_getter
+    image = offer.job_category_image
     image.present? ? image : DEFAULT_IMAGE_CATEGORY_URL
-  end
-
-  def job_category_image_getter
-    if offer.job_category_ids.any?
-      offer.job_categories.first.image
-    end
   end
 end

@@ -71,7 +71,7 @@ const OfferContent = ({ offer, translations }) => {
       )}
       {offer.new_offer && <NewFlagBlock content={tag_new_offer} />}
       {offer.salary && offer.salary.from && (
-        <div className="a-typo__subtitle2 a-badge__price px-0">
+        <div className="a-typo__subtitle2 a-badge__price">
           <span>{`${offer.salary.currency.description} ${offer.salary.from}`}</span>
         </div>
       )}

@@ -5,6 +5,7 @@ import StandardInput from '../../../../../src/components/FormsLayout/Fields/Stan
 import SelectChip from '../../../../../src/components/FormsLayout/Fields/SelectChip'
 import SelectFindOrCreate from '../../../../../src/components/FormsLayout/Fields/SelectFindOrCreate'
 import Checkbox from '../../../../../src/components/FormsLayout/Fields/Checkbox'
+import { cleanJobCategoryDescription } from '../../../../../utils/string_functions'
 import {
   handleChange,
   handleDeleteChip,
@@ -20,8 +21,7 @@ const FormFields = props => {
     description = null,
     job_category_ids = null,
     offers_work_positions = null,
-    offer_type_id = null,
-    work_mode_id = null
+    job_category_image = null
   } = formFields
 
   const [formValues, setFormValues] = useState({
@@ -30,8 +30,7 @@ const FormFields = props => {
     [description.name]: description.current_value || '',
     [job_category_ids.name]: job_category_ids.current_value || '',
     [offers_work_positions.name]: offers_work_positions.current_value || '',
-    [offer_type_id.name]: offer_type_id.current_value || '',
-    [work_mode_id.name]: work_mode_id.current_value || ''
+    [job_category_image.name]: job_category_image.current_value || ''
   })
 
   const inputClassname = 'my-30 animated fadeIn inputField'
@@ -84,7 +83,7 @@ const FormFields = props => {
     [formValues[description.name]]
   )
 
-  const jobCategoryField = useMemo(
+  const jobCategoryIdsField = useMemo(
     () => (
       <Col
         key={job_category_ids.name}
@@ -105,42 +104,6 @@ const FormFields = props => {
       </Col>
     ),
     [formValues[job_category_ids.name]]
-  )
-
-  const offerTypeField = useMemo(
-    () => (
-      <Col key={offer_type_id.name} className={inputClassname} xs={12} lg={6}>
-        <SelectChip
-          inputValue={formValues[offer_type_id.name]}
-          inputName={offer_type_id.name}
-          handleChange={handleChange(formValues, setFormValues)}
-          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
-          name={offer_type_id.name}
-          label={offer_type_id.label}
-          selectOptions={offer_type_id.values}
-          isMultiple={false}
-        />
-      </Col>
-    ),
-    [formValues[offer_type_id.name]]
-  )
-
-  const workModeField = useMemo(
-    () => (
-      <Col key={work_mode_id.name} className={inputClassname} xs={12} lg={6}>
-        <SelectChip
-          inputValue={formValues[work_mode_id.name]}
-          inputName={work_mode_id.name}
-          handleChange={handleChange(formValues, setFormValues)}
-          handleDeleteChip={handleDeleteChip(formValues, setFormValues)}
-          name={work_mode_id.name}
-          label={work_mode_id.label}
-          selectOptions={work_mode_id.values}
-          isMultiple={false}
-        />
-      </Col>
-    ),
-    [formValues[work_mode_id.name]]
   )
 
   const offersWorkPositionsField = useMemo(
@@ -164,15 +127,70 @@ const FormFields = props => {
     [formValues[offers_work_positions.name]]
   )
 
+  const JobCategoryImageField = () => {
+    const imageClick = route => {
+      setFormValues({ ...formValues, [job_category_image.name]: route })
+    }
+
+    const renderImages = description => {
+      const imagesBlock = [1, 2, 3].map(index => {
+        const route = `${process.env.JOB_CATEGORY_IMAGES_URL}/card-${description}-${index}.jpg`
+        const imgSelected =
+          formValues[job_category_image.name] === route ? 'imgSelected' : ''
+
+        return (
+          <img
+            className={`imgJobCategory ${imgSelected}`}
+            src={route}
+            alt={`${description}-${index}`}
+            onClick={() => imageClick(route)}
+          />
+        )
+      })
+
+      return imagesBlock
+    }
+
+    const jobCategoryId = formValues[job_category_ids.name][0]
+    const jobCategoryObject = job_category_ids.values.find(
+      jobCategory => jobCategory.id === jobCategoryId
+    )
+
+    return jobCategoryId ? (
+      <>
+        <div className="my-30 animated fadeIn inputField col-12 col-lg-12">
+          <div className="MuiFormControl-root">
+            <div className="MuiFormControl-root MuiTextField-root">
+              <label className="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-formControl MuiInputLabel-animated">
+                {' '}
+                {job_category_image.label}{' '}
+              </label>
+              <input
+                type="hidden"
+                name={job_category_image.name}
+                value={formValues[job_category_image.name]}
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="my-30 animated fadeIn inputField col-12 col-lg-12 jobCategoryImages">
+          {renderImages(
+            cleanJobCategoryDescription(jobCategoryObject.description)
+          )}
+        </div>
+      </>
+    ) : null
+  }
+
   return (
     <Row className="HT__FormGenerator">
       {titleField}
       {offerConfidentialField}
       {descriptionField}
-      {jobCategoryField}
-      {offerTypeField}
-      {workModeField}
+      {jobCategoryIdsField}
       {offersWorkPositionsField}
+      <JobCategoryImageField />
     </Row>
   )
 }
@@ -185,9 +203,8 @@ FormFields.propTypes = {
     confidential: PropTypes.object,
     description: PropTypes.object,
     job_category_ids: PropTypes.object,
-    offer_type_id: PropTypes.object,
-    work_mode_id: PropTypes.object,
-    offers_work_positions: PropTypes.object
+    offers_work_positions: PropTypes.object,
+    job_category_image: PropTypes.object
   }).isRequired,
   tooltip_description: PropTypes.shape({
     press_enter: PropTypes.string.isRequired

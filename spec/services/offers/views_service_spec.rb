@@ -3,14 +3,7 @@ include ActionView::Helpers::NumberHelper
 
 RSpec.describe Offers::ViewsService do
 
-  let(:job_category) do
-    create(:job_category,
-      description: "any-category",
-      image: "https://img-categorias-ht.s3.amazonaws.com/any.png"
-    )
-  end
-
-  let(:job_category_no_image) { create(:job_category, description: "any-category-no-image") }
+  let(:job_category) { create(:job_category, description: "any-category") }
 
   let(:offer) do
     create(:offer, title: "District Facilitator",
@@ -19,6 +12,7 @@ RSpec.describe Offers::ViewsService do
       close_date: Date.new(2019, 7, 3),
       immediate_start: true,
       job_categories: [job_category],
+      job_category_image: "https://img-categorias-ht.s3.amazonaws.com/card-any-category-1.jpg",
       required_experience: true,
       city: create(:city, description: "Bogotá"),
       company: create(
@@ -34,7 +28,8 @@ RSpec.describe Offers::ViewsService do
       created_at: Date.new(2019, 7, 1),
       close_date: Date.new(2019, 7, 3),
       immediate_start: true,
-      job_categories: [job_category_no_image],
+      job_categories: [job_category],
+      job_category_image: nil,
       required_experience: true,
       city: create(:city, description: "Bogotá"),
       company: create(:company, name: "Orellana S.A.")
@@ -84,12 +79,12 @@ RSpec.describe Offers::ViewsService do
     title: "District Facilitator",
     description: "endSint esse anim consequat commodo.",
     immediate_start: true,
-    job_category_image: "https://img-categorias-ht.s3.amazonaws.com/any.png",
+    job_category_image: "https://img-categorias-ht.s3.amazonaws.com/card-any-category-1.jpg",
     required_experience: true,
     on_demand: nil,
     affinity_percentage: false,
     applied_offers: 0,
-    raw_close_date: Time.zone.local(2019, 7, 3).to_s,
+    raw_close_date: Time.zone.local(2019, 7, 3),
     confidential: false,
     city: {
       description: "Bogotá"

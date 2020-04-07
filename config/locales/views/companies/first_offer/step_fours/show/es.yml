@@ -13,6 +13,8 @@ es:
               previous: "Regresar"
             type: "offer"
             formFields:
+              offer_type_id: "Tipo de oferta"
+              work_mode_id: "Modalidad de trabajo"
               contract_type_id: "Acuerdo legal"
               vacancies_quantity: "Elige el número de vacantes"
               sex_ids: "Tu oferta está dirigida a"

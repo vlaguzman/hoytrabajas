@@ -28,9 +28,13 @@
   @extend .a-badge__base;
   background-color: white;
   color: $color__blue-main;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   position: absolute;
-  margin-top: -20px;
+  margin-top: -25px;
   font-weight: 800;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .a-badge__service {

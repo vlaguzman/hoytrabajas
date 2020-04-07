@@ -28,8 +28,7 @@ class Companies::FirstOffer::StepThreesController < ApplicationController
         :description,
         :job_category_ids,
         :offers_work_positions,
-        :offer_type_id,
-        :work_mode_id
+        :job_category_image
     ).to_h
   end
 end

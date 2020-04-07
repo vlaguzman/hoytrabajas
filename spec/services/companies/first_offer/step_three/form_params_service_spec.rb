@@ -55,16 +55,9 @@ RSpec.describe Companies::FirstOffer::StepThree::FormParamsService do
               values: [],
               current_value: ''
             },
-            offer_type_id: {
-              name: 'company[offer_type_id]',
-              label: 'Tipo de oferta',
-              values: [],
-              current_value: ''
-            },
-            work_mode_id:  {
-              name: 'company[work_mode_id]',
-              label: 'Modalidad de trabajo',
-              values: [],
+            job_category_image: {
+              name: 'company[job_category_image]',
+              label: 'Selecciona una imagen para destacar tu oferta',
               current_value: ''
             }
           }

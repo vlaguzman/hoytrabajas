@@ -23,7 +23,8 @@ RSpec.describe Companies::FirstOffer::StepThreeService do
             job_category_ids: "#{job_category.id}",
             offer_type_id: offer_type.id,
             work_mode_id: work_mode.id,
-            offers_work_positions: work_position.id
+            offers_work_positions: work_position.id,
+            job_category_image: 'https://url.image.com/'
           }
         end
 
@@ -39,6 +40,7 @@ RSpec.describe Companies::FirstOffer::StepThreeService do
           expect(offer[:data].title).to eq(params[:title])
           expect(offer[:data].job_category_ids).to match_array(job_category.id)
           expect(offer[:data].offer_type_id).to eq(params[:offer_type_id])
+          expect(offer[:data].job_category_image).to eq('https://url.image.com/')
 
           expect(offer[:error]).to eq(nil)
         end

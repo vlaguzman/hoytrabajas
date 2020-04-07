@@ -2,14 +2,13 @@ class Companies::FirstOffer::StepThree::FormParamsService < BaseFormWizardsServi
 
   INPUT_FIELDS_KEYS = [
     :title,
-    :description
+    :description,
+    :job_category_image
   ]
 
   SELECT_FIELDS_KEYS = [
     :job_category_ids,
-    :offers_work_positions,
-    :offer_type_id,
-    :work_mode_id
+    :offers_work_positions
   ]
 
   private
@@ -39,14 +38,6 @@ class Companies::FirstOffer::StepThree::FormParamsService < BaseFormWizardsServi
 
   def offers_work_positions_list
     ListConverter.model_list WorkPosition
-  end
-
-  def offer_type_id_list
-    ListConverter.model_list OfferType
-  end
-
-  def work_mode_id_list
-    ListConverter.model_list WorkMode
   end
 
   def offers_work_positions_current_value

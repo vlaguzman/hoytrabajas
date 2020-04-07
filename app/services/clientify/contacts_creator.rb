@@ -21,12 +21,14 @@ class Clientify::ContactsCreator
     Company.create(name: resource["company_name"],
                    contact_name: resource["name"],
                    email: resource["emails"][0]["email"],
-                   password: resource["id"])
+                   password: resource["id"], 
+                   clientify_contact_id: resource["id"])
   end
 
   def self.create_candidate resource
     User.create(name: resource["first_name"],
                 email: resource["emails"][0]["email"],
-                password: resource["id"])
+                password: resource["id"],
+                clientify_contact_id: resource["id"])
   end
 end

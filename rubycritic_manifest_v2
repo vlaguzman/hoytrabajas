@@ -1,6 +1,6 @@
 A          • Acknowledgment                                              7       0.0        0           1
 A          • AddModelErrors::CurriculumVitaes::TechnicalSkills           1       11.47      0           3
-A          • AddModelErrorsService                                       4       48.47      0           5
+A          • AddModelErrorsService                                       5       48.47      0           5
 A          • AdminUser                                                   2       0.0        0           1
 A          • AdminUsers                                                  2       0.0        0           0
 A          • AdminUsers::SessionsController                              2       6.2        0           1
@@ -50,15 +50,15 @@ A          • Companies::Dashboards::OffersService                        4    
 A          • Companies::DashboardsController                             3       7.23       0           1
 A          • Companies::DashboardsPresenter                              2       3.2        0           2
 A          • Companies::FirstOffer::CommonService                        3       6.27       0           1
-A          • Companies::FirstOffer::CompanyAndOfferErrorsService         5       0.0        0           0
+A          • Companies::FirstOffer::CompanyAndOfferErrorsService         7       0.0        0           0
 A          • Companies::FirstOffer::StepEight::FormParamsService         2       0.0        0           1
 A          • Companies::FirstOffer::StepEightPresenter                   4       9.4        0           1
 A          • Companies::FirstOffer::StepEightsController                 3       5.44       0           1
 A          • Companies::FirstOffer::StepFive::FormParamsService          7       20.3       0           7
 A          • Companies::FirstOffer::StepFivesController                  11      18.08      0           1
-A          • Companies::FirstOffer::StepFour::FormParamsService          17      42.85      0           7
+A          • Companies::FirstOffer::StepFour::FormParamsService          21      42.85      0           7
 A          • Companies::FirstOffer::StepFourService                      13      7.5        0           2
-A          • Companies::FirstOffer::StepFoursController                  19      18.08      0           1
+A          • Companies::FirstOffer::StepFoursController                  20      18.08      0           1
 A          • Companies::FirstOffer::StepOne::FormParamsService           2       2.0        0           3
 A          • Companies::FirstOffer::StepOnePresenter                     14      15.0       20          2
 A          • Companies::FirstOffer::StepOneService                       6       2.0        0           1
@@ -67,10 +67,10 @@ A          • Companies::FirstOffer::StepSeven::FormParamsService         5    
 A          • Companies::FirstOffer::StepSevensController                 7       18.08      0           1
 A          • Companies::FirstOffer::StepSix::FormParamsService           1       4.0        0           5
 A          • Companies::FirstOffer::StepSixesController                  6       18.08      0           1
-A          • Companies::FirstOffer::StepThree::FormParamsService         13      22.98      0           4
+A          • Companies::FirstOffer::StepThree::FormParamsService         15      22.98      0           4
 A          • Companies::FirstOffer::StepThreePresenter                   9       11.8       0           1
 A          • Companies::FirstOffer::StepThreeService                     7       34.01      0           1
-A          • Companies::FirstOffer::StepThreesController                 17      20.83      0           2
+A          • Companies::FirstOffer::StepThreesController                 19      20.83      0           2
 A          • Companies::FirstOffer::StepTwo::FormParamsService           2       0.0        0           0
 A          • Companies::FirstOffer::StepTwoPresenter                     8       15.0       20          2
 A          • Companies::FirstOffer::StepTwoService                       2       2.0        0           1
@@ -113,7 +113,7 @@ A          • Elasticsearch::Common::BoolBuilders                         4    
 A          • Elasticsearch::Common::Settings                             3       5.2        0           2
 A          • Elasticsearch::Common::Sorts                                3       16.88      0           2
 A          • Elasticsearch::IndexerService                               4       39.41      0           2
-A          • Elasticsearch::IndexerWorker                                7       1.0        0           2
+A          • Elasticsearch::IndexerWorker                                8       1.0        0           2
 A          • Elasticsearch::Offers::Queries                              5       0.0        0           1
 A          • Elasticsearch::Offers::Sorts                                3       0.0        0           0
 A          • Elasticsearch::SearchService                                6       39.36      0           5
@@ -132,7 +132,7 @@ A          • Industry                                                    1    
 A          • JobAid                                                      2       0.0        0           1
 A          • JobAidsOffers                                               1       0.0        0           1
 A          • JobCategoriesController                                     1       0.0        0           1
-A          • JobCategory                                                 7       0.0        0           1
+A          • JobCategory                                                 9       0.0        0           1
 A          • LaborDisponibility                                          1       0.0        0           1
 A          • Language                                                    7       0.0        0           1
 A          • LanguagesOffers                                             4       2.0        0           1
@@ -275,7 +275,7 @@ B          • Offers::ExpiredService                                      5    
 B          • Offers::JobCategoriesController                             8       29.04      16          3
 B          • Offers::Organizer::ListBuilder                              5       29.85      16          4
 B          • Offers::ShowService                                         21      82.2       0           1
-B          • Offers::ViewsService                                        39      76.71      0           3
+B          • Offers::ViewsService                                        40      76.71      0           3
 B          • OffersController                                            40      72.8       0           4
 B          • OffersOnDemand::SetInactiveService                          4       27.96      34          3
 B          • OffersService                                               28      63.25      0           7
@@ -290,5 +290,5 @@ C          • CurriculumVitae                                             49   
 C          • Elasticsearch::Common::Queries                              4       104.32     0           14
 C          • GetValueOfRecord                                            1       161.13     0           24
 C          • Users::ProfilesPresenter                                    14      164.51     0           12
-D          • Offer                                                       95      81.53      136         4
+D          • Offer                                                       97      81.53      136         4
 D          • Offers::ShowPresenter                                       8       298.49     46          23

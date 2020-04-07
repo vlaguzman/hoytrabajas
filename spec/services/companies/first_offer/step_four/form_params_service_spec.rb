@@ -13,8 +13,6 @@ RSpec.describe Companies::FirstOffer::StepFour::FormParamsService do
         title: 'Conozcamos más de tu oferta',
         subtitle: 'Brinda a tu candidato información relevante de tu empresa.',
         immediate_start_description: "Inicio inmediato",
-        offer_age_range_before: "Edad min.",
-        offer_age_range_after: "Edad máx.",
         form: {
           placeholders: {},
           buttons: {
@@ -60,14 +58,11 @@ RSpec.describe Companies::FirstOffer::StepFour::FormParamsService do
               step: 1,
               current_value: nil
             },
-            offer_age_range: {
-              name: 'offer[offer_age_range]',
-              label: 'Edad del candidato',
-              beforeLabel: 'Edad min.',
-              afterLabel: 'Edad máx.',
-              values: {min: 18, max: 80},
-              step: 1,
-              current_value: ''
+            age_range_list_ids: {
+              current_value: '',
+              label: 'Edad del candidato (Puedes elegir más de uno)',
+              name: 'company[age_range_list_ids][]',
+              values: []
             },
             immediate_start: {
               name: 'offer[immediate_start]',

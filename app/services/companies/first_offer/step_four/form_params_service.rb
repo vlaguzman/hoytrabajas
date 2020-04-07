@@ -21,6 +21,26 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
     )
   end
 
+  def offer_type_id_list
+    ListConverter.model_list OfferType
+  end
+
+  def work_mode_id_list
+    ListConverter.model_list WorkMode
+  end
+
+  def age_range_list_ids_list
+    ListConverter.model_list AgeRangeList
+  end
+
+  def contract_type_id_list
+    ListConverter.model_list ContractType
+  end
+
+  def sex_ids_list
+    ListConverter.model_list Sex
+  end
+
   def vacancies_quantity_field
     current_value = source && source.vacancies_quantity
 
@@ -29,23 +49,6 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
         name: 'offer[vacancies_quantity]',
         label: template_translations[:form][:formFields][:vacancies_quantity],
         values: { min: 1, max: 100 },
-        step: 1,
-        current_value: current_value
-      }
-    }
-  end
-
-  def offer_age_range_field
-    object = source && AgeRange.find_by(offer_id: source.id)
-    current_value = object.present? ? [object.from, object.to] : ""
-
-    {
-      offer_age_range: {
-        name: 'offer[offer_age_range]',
-        label: template_translations[:form][:formFields][:offer_age_range],
-        beforeLabel: template_translations[:offer_age_range_before],
-        afterLabel: template_translations[:offer_age_range_after],
-        values: { min: 18, max: 80 },
         step: 1,
         current_value: current_value
       }
@@ -76,22 +79,4 @@ class Companies::FirstOffer::StepFour::FormParamsService < BaseFormWizardsServic
       }
     }
   end
-
-
-  def offer_type_id_list
-    ListConverter.model_list OfferType
-  end
-
-  def work_mode_id_list
-    ListConverter.model_list WorkMode
-  end
-
-  def contract_type_id_list
-    ListConverter.model_list ContractType
-  end
-
-  def sex_ids_list
-    ListConverter.model_list Sex
-  end
-
 end

@@ -32,6 +32,13 @@ class Clientify::DataManager
     response.read_body
   end
   
+  def get_contact_by id
+    url = "#{URL_CONTACTS}#{id}"
+
+    response = HttpRequestManager.new(url).build_response(Net::HTTP::Get, token)
+    response.read_body
+  end
+
   def get_contacts source=CONTACT_SOURCE 
     url = "#{URL_CONTACTS}?contact_source=#{source}"
 
@@ -47,6 +54,11 @@ class Clientify::DataManager
   end
 
   private 
+
+  def convert_response_and_give response, data
+    hash = JSON.parse response.body.gsub('\:', ':')
+    hash[data]
+  end
   
   def last_name_or_nil resource 
     (resource.is_a? User)? resource.last_name : nil
@@ -54,11 +66,6 @@ class Clientify::DataManager
 
   def phone_number resource
     (resource.is_a? User)? resource.contact_number : resource.contact_cellphone
-  end
-
-  def convert_response_and_give response, data
-    hash = JSON.parse response.body.gsub('\:', ':')
-    hash[data]
   end
   
   def token

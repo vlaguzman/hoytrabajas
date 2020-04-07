@@ -18,14 +18,18 @@ class Clientify::ApiAuth
     url = URL_OBTAIN_TOKEN
     body = "{\n    \"username\": \"#{username}\",\n    \"password\": \"#{password}\"\n}"
     response = HttpRequestManager.new(url, body).build_response(Net::HTTP::Post)
-    hash = JSON.parse response.body.gsub('\:', ':')
-    hash['token']
+    convert_response_and_give response, "token"
   end 
   
   def logout
     url = URL_LOGOUT
     response = HttpRequestManager.new(url).build_response(Net::HTTP::Post)
     response.code
+  end
+
+  def convert_response_and_give response, data
+    hash = JSON.parse response.body.gsub('\:', ':')
+    hash[data]
   end
 
 end

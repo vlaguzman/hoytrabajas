@@ -4,7 +4,11 @@ A          • AddModelErrorsService                                       5    
 A          • AdminUser                                                   2       0.0        0           1
 A          • AdminUsers                                                  2       0.0        0           0
 A          • AdminUsers::SessionsController                              2       6.2        0           1
+<<<<<<< HEAD
 A          • Admins::OffersController                                    24      33.32      0           2
+=======
+A          • Admins::OffersController                                    23      33.32      0           2
+>>>>>>> refactors to clientify services
 A          • Admins::OffersPresenter                                     12      28.01      0           3
 A          • AdminsService                                               1       13.19      0           1
 A          • AffinityPercentage                                          5       2.2        0           1
@@ -19,12 +23,16 @@ A          • AgeRangeList                                                2    
 A          • AgeRangeListsOffers                                         2       0.0        0           1
 A          • ApplicationCable::Channel                                   1       0.0        0           1
 A          • ApplicationCable::Connection                                1       0.0        0           1
-A          • ApplicationController                                       42      45.01      0           6
+A          • ApplicationController                                       40      45.01      0           6
 A          • ApplicationJob                                              1       0.0        0           1
 A          • ApplicationMailer                                           3       0.0        0           1
 A          • ApplicationPresenter                                        8       32.69      0           10
 A          • ApplicationRecord                                           4       0.0        0           1
+<<<<<<< HEAD
 A          • AppliedOffer                                                10      1.41       0           1
+=======
+A          • AppliedOffer                                                9       1.41       0           1
+>>>>>>> refactors to clientify services
 A          • AppliedOfferStateMachine                                    1       0.0        0           1
 A          • AppliedOfferStatus                                          1       0.0        0           1
 A          • AppliedOfferTransition                                      1       0.0        0           1
@@ -44,18 +52,28 @@ A          • BaseForms::WizardsTranslationsService                       1    
 A          • Cities::CitiesWithOffersListService                         1       10.73      0           1
 A          • City                                                        8       0.0        0           1
 A          • Clientify::ApiAuth                                          11      18.54      0           2
+<<<<<<< HEAD
 A          • Clientify::DataManager                                      21      36.32      0           7
+=======
+A          • Clientify::ContactsCreator                                  5       42.81      0           5
+A          • Clientify::DataManager                                      20      41.16      0           7
+>>>>>>> refactors to clientify services
 A          • Companies                                                   8       1.3        0           1
 A          • Companies::Dashboards::OffersService                        4       30.2       0           2
 A          • Companies::DashboardsController                             3       7.23       0           1
 A          • Companies::DashboardsPresenter                              2       3.2        0           2
 A          • Companies::FirstOffer::CommonService                        3       6.27       0           1
+<<<<<<< HEAD
 A          • Companies::FirstOffer::CompanyAndOfferErrorsService         7       0.0        0           0
+=======
+A          • Companies::FirstOffer::CompanyAndOfferErrorsService         4       0.0        0           0
+>>>>>>> refactors to clientify services
 A          • Companies::FirstOffer::StepEight::FormParamsService         2       0.0        0           1
 A          • Companies::FirstOffer::StepEightPresenter                   4       9.4        0           1
 A          • Companies::FirstOffer::StepEightsController                 3       5.44       0           1
 A          • Companies::FirstOffer::StepFive::FormParamsService          7       20.3       0           7
 A          • Companies::FirstOffer::StepFivesController                  11      18.08      0           1
+<<<<<<< HEAD
 A          • Companies::FirstOffer::StepFour::FormParamsService          21      42.85      0           7
 A          • Companies::FirstOffer::StepFourService                      13      7.5        0           2
 A          • Companies::FirstOffer::StepFoursController                  20      18.08      0           1
@@ -64,6 +82,14 @@ A          • Companies::FirstOffer::StepOnePresenter                     14   
 A          • Companies::FirstOffer::StepOneService                       6       2.0        0           1
 A          • Companies::FirstOffer::StepOnesController                   14      22.51      17          2
 A          • Companies::FirstOffer::StepSeven::FormParamsService         5       30.4       0           9
+=======
+A          • Companies::FirstOffer::StepFourService                      13      7.5        0           2
+A          • Companies::FirstOffer::StepFoursController                  19      18.08      0           1
+A          • Companies::FirstOffer::StepOne::FormParamsService           2       2.0        0           3
+A          • Companies::FirstOffer::StepOnePresenter                     14      15.0       20          2
+A          • Companies::FirstOffer::StepOneService                       6       2.0        0           1
+A          • Companies::FirstOffer::StepOnesController                   12      22.51      17          2
+>>>>>>> refactors to clientify services
 A          • Companies::FirstOffer::StepSevensController                 7       18.08      0           1
 A          • Companies::FirstOffer::StepSix::FormParamsService           1       4.0        0           5
 A          • Companies::FirstOffer::StepSixesController                  6       18.08      0           1
@@ -76,7 +102,7 @@ A          • Companies::FirstOffer::StepTwoPresenter                     8    
 A          • Companies::FirstOffer::StepTwoService                       2       2.0        0           1
 A          • Companies::FirstOffer::StepTwosController                   11      20.32      17          2
 A          • Companies::FirstOffer::StepZeroPresenter                    2       1.0        0           2
-A          • Companies::FirstOffer::StepZerosController                  7       5.44       0           1
+A          • Companies::FirstOffer::StepZerosController                  5       5.44       0           1
 A          • Companies::FirstOfferPresenter                              2       4.8        0           1
 A          • Companies::ListCandidatesController                         2       6.94       0           1
 A          • Companies::ListCandidatesPresenter                          6       38.16      0           2
@@ -132,7 +158,11 @@ A          • Industry                                                    1    
 A          • JobAid                                                      2       0.0        0           1
 A          • JobAidsOffers                                               1       0.0        0           1
 A          • JobCategoriesController                                     1       0.0        0           1
+<<<<<<< HEAD
 A          • JobCategory                                                 9       0.0        0           1
+=======
+A          • JobCategory                                                 7       0.0        0           1
+>>>>>>> refactors to clientify services
 A          • LaborDisponibility                                          1       0.0        0           1
 A          • Language                                                    7       0.0        0           1
 A          • LanguagesOffers                                             4       2.0        0           1
@@ -146,9 +176,15 @@ A          • OfferOnDemand                                               7    
 A          • OfferRequiredExperiences                                    4       0.0        0           1
 A          • OfferSalary                                                 11      0.0        0           1
 A          • OfferType                                                   3       0.0        0           1
+<<<<<<< HEAD
 A          • Offers                                                      25      0.0        0           0
 A          • Offers::AppliedOfferService                                 4       28.88      0           3
 A          • Offers::CarouselOffersService                               4       12.55      16          2
+=======
+A          • Offers                                                      24      0.0        0           0
+A          • Offers::AppliedOfferService                                 4       28.88      0           3
+A          • Offers::CarouselOffersService                               3       12.55      16          2
+>>>>>>> refactors to clientify services
 A          • Offers::CompletelyDestroyService                            5       11.1       0           1
 A          • Offers::IndexService                                        6       11.26      0           3
 A          • Offers::OrderByAffinityPercentageService                    7       31.36      0           3
@@ -190,7 +226,7 @@ A          • Users::CurriculumVitaes::ProfilePhotoService                1    
 A          • Users::Dashboards::OffersService                            2       31.49      0           2
 A          • Users::DashboardsController                                 1       5.69       0           1
 A          • Users::OmniauthCallbacksController                          1       21.49      0           5
-A          • Users::ProfilesController                                   31      42.98      0           3
+A          • Users::ProfilesController                                   30      42.98      0           3
 A          • Users::RegistrationsController                              13      1.0        0           2
 A          • Users::SessionsController                                   4       0.0        0           1
 A          • Users::Wizards::Commons::FindOrCreateElementAssociation     1       22.47      0           4
@@ -223,7 +259,7 @@ A          • Users::Wizards::StepNinesController                         11   
 A          • Users::Wizards::StepOne::FormParamsService                  5       38.27      0           13
 A          • Users::Wizards::StepOnePresenter                            15      17.2       0           1
 A          • Users::Wizards::StepOneService                              4       14.08      0           2
-A          • Users::Wizards::StepOnesController                          14      27.74      0           1
+A          • Users::Wizards::StepOnesController                          12      27.74      0           1
 A          • Users::Wizards::StepSevenPresenter                          6       6.6        0           1
 A          • Users::Wizards::StepSevensController                        5       4.62       0           1
 A          • Users::Wizards::StepSix::FormParamsService                  10      9.0        0           6

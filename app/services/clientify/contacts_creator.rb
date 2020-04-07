@@ -1,4 +1,6 @@
 class Clientify::ContactsCreator
+
+  PASSWORD_DEFAULT = ENV['CLIENTIFY_PASSWORD_DEFAULT']
   
   def self.call(token=nil, contact_source=nil)
     data_manager = Clientify::DataManager.new(token)
@@ -20,7 +22,7 @@ class Clientify::ContactsCreator
   def self.create_resource klass, resource
     klass.create(name: first_name_or_company_name(klass, resource),
                  email: resource["emails"][0]["email"],
-                 password: resource["id"],
+                 password: PASSWORD_DEFAULT,
                  clientify_contact_id: resource["id"])
   end
 

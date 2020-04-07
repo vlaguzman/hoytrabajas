@@ -4,7 +4,7 @@ class Clientify::ContactsCreator
     @data_manager = Clientify::DataManager.new(token)
     contacts_response = @data_manager.get_contacts contact_source
     hash_contacts = JSON.parse contacts_response.gsub('\:', ':')
-    hash_contacts['results'].each{|contact| create_contact contact}
+    hash_contacts['results'].each{|contact| create_contact contact} if hash_contacts['results'].present?
   end
 
   private 

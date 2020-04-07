@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.clientify.net/v1/contacts/?contact_source=HTCLF
+    uri: https://api.clientify.net/v1/contacts/?contact_source=Facebook
     body:
       encoding: US-ASCII
       string: ''
@@ -25,7 +25,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 04 Apr 2020 00:27:29 GMT
+      - Mon, 06 Apr 2020 23:41:15 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -33,8 +33,8 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=db792e38095444b37f4960c6e1ed0ebbd1585960049; expires=Mon, 04-May-20
-        00:27:29 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      - __cfduid=d10dde6f4d008c285acbaef528f29044f1586216475; expires=Wed, 06-May-20
+        23:41:15 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
       Vary:
       - Accept, Accept-Language, Cookie
       Content-Language:
@@ -48,16 +48,19 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 57e6e764af1de5af-BOG
+      - 57ff5bcba88bf25f-BOG
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        eyJjb3VudCI6MSwibmV4dCI6bnVsbCwicHJldmlvdXMiOm51bGwsInJlc3VsdHMiOlt7InVybCI6Imh0dHBzOi8vYXBpLmNsaWVudGlmeS5uZXQvdjEvY29udGFjdHMvNzI5Mjk3Ni8iLCJpZCI6NzI5Mjk3Niwib3duZXIiOiJtaWx0b25AaG95dHJhYmFqYXMuY29tIiwib3duZXJfbmFtZSI6Ik1pbHRvbiBKIEhUIE1vcmVubyBCZWx0csOhbiIsImZpcnN0X25hbWUiOiJNaWx0b24iLCJsYXN0X25hbWUiOiJNb3Jlbm8iLCJzdGF0dXMiOiJjb2xkLWxlYWQiLCJ0aXRsZSI6IiIsImNvbXBhbnkiOiJodHRwczovL2FwaS5jbGllbnRpZnkubmV0L3YxL2NvbXBhbmllcy85OTA4MjIvIiwiY29tcGFueV9uYW1lIjoiSE9ZVFJBQkFKQVMiLCJlbWFpbHMiOlt7InR5cGUiOjQsImVtYWlsIjoibWlsdG9uam1iQGdtYWlsLmNvbSJ9XSwicGhvbmVzIjpbXSwicGljdHVyZV91cmwiOm51bGwsImNyZWF0ZWQiOiIyMDIwLTAzLTMwVDIzOjE3OjQwLjUxMTAzOCswMjowMCIsImxhc3RfY29udGFjdCI6IjIwMjAtMDMtMzFUMDA6NDc6MjgrMDI6MDAifV19
+      string: '{"count":2,"next":null,"previous":null,"results":[{"url":"https://api.clientify.net/v1/contacts/5863851/","id":5863851,"owner":"camilo@hoytrabajas.com","owner_name":"Andres
+        Camilo Ruiz Diaz","first_name":"camu garaje grill","last_name":"","status":"in-deal","title":"Mesera
+        tiempo completo","company":null,"emails":[{"type":4,"email":"camugrill@gmail.com"}],"phones":[{"type":3,"phone":"3000778"}],"picture_url":null,"created":"2019-11-13T18:21:06.458410+01:00","last_contact":"2019-11-21T17:15:20+01:00"},{"url":"https://api.clientify.net/v1/contacts/5863779/","id":5863779,"owner":"camilo@hoytrabajas.com","owner_name":"Andres
+        Camilo Ruiz Diaz","first_name":"De raiz","last_name":"","status":"cold-lead","title":"Administrador
+        para punto","company":null,"emails":[{"type":4,"email":"info@deraiz.com"}],"phones":[],"picture_url":null,"created":"2019-11-13T17:49:46.359237+01:00","last_contact":"2019-11-13T17:55:51.983498+01:00"}]}'
     http_version: null
-  recorded_at: Sat, 04 Apr 2020 00:27:29 GMT
+  recorded_at: Mon, 06 Apr 2020 23:41:15 GMT
 - request:
     method: get
-    uri: https://api.clientify.net/v1/contacts/7292976/tags/
+    uri: https://api.clientify.net/v1/contacts/5863851/tags/
     body:
       encoding: US-ASCII
       string: ''
@@ -80,7 +83,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 04 Apr 2020 00:27:30 GMT
+      - Mon, 06 Apr 2020 23:41:16 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -88,8 +91,8 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=df6fb69f70c7505685f823ce685d388c71585960050; expires=Mon, 04-May-20
-        00:27:30 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      - __cfduid=d0b04f424ea8e8b24b6ba3541fb3618451586216476; expires=Wed, 06-May-20
+        23:41:16 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
       Vary:
       - Accept, Accept-Language, Cookie
       Content-Language:
@@ -103,15 +106,15 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 57e6e768be34b594-BOG
+      - 57ff5bcf0e8ce5b3-BOG
     body:
       encoding: ASCII-8BIT
-      string: '{"count":2,"next":null,"previous":null,"results":[{"name":"htclf","id":382477864},{"name":"employer","id":382363338}]}'
+      string: '{"count":1,"next":null,"previous":null,"results":[{"name": "candidate"},{"name":"flexi-bd-catering","id":382447129}]}'
     http_version: null
-  recorded_at: Sat, 04 Apr 2020 00:27:30 GMT
+  recorded_at: Mon, 06 Apr 2020 23:41:16 GMT
 - request:
     method: get
-    uri: https://api.clientify.net/v1/contacts/?contact_source=Google
+    uri: https://api.clientify.net/v1/contacts/5863779/tags/
     body:
       encoding: US-ASCII
       string: ''
@@ -134,7 +137,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 06 Apr 2020 23:06:26 GMT
+      - Mon, 06 Apr 2020 23:41:16 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -142,8 +145,8 @@ http_interactions:
       Connection:
       - keep-alive
       Set-Cookie:
-      - __cfduid=dfa4b14aeb9a5dc72fbf3089958a41e071586214386; expires=Wed, 06-May-20
-        23:06:26 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      - __cfduid=d857407c2f31fb77ceab386db70f7e57c1586216476; expires=Wed, 06-May-20
+        23:41:16 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
       Vary:
       - Accept, Accept-Language, Cookie
       Content-Language:
@@ -157,10 +160,10 @@ http_interactions:
       Server:
       - cloudflare
       Cf-Ray:
-      - 57ff28ccda20daa2-BOG
+      - 57ff5bd19f03f25f-BOG
     body:
       encoding: ASCII-8BIT
       string: '{"count":0,"next":null,"previous":null,"results":[]}'
     http_version: null
-  recorded_at: Mon, 06 Apr 2020 23:06:26 GMT
+  recorded_at: Mon, 06 Apr 2020 23:41:16 GMT
 recorded_with: VCR 5.1.0

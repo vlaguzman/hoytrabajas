@@ -3,13 +3,13 @@ require "rails_helper"
 RSpec.describe Clientify::ContactsCreator do
   describe "#call" do
 
-    let(:token) { 'a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c'}
+    let(:token) { 'a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c' }
     let(:clientify_data_manager) { Clientify::DataManager.new(token) }
 
     context "there are not any contacts" do
       it "should to receive an empty aswerd and do not do anything" do
-        VCR.use_cassette "clientify_contacts_creator_no_contacts", record: :new_episodes do 
-          Clientify::ContactsCreator.(token)
+        VCR.use_cassette "clientify_contacts_creator_no_contacts" do 
+          Clientify::ContactsCreator.(token, "Google")
 
           expect(User.count).to eq(0)
           expect(Company.count).to eq(0)
@@ -19,48 +19,48 @@ RSpec.describe Clientify::ContactsCreator do
 
     context "there are one new company contact that is not in the database" do
       it "should to create the company" do
-        VCR.use_cassette "clientify_contacts_creator_new_company", record: :new_episodes do 
-          
+        VCR.use_cassette "clientify_contacts_creator_new_company" do 
+          Clientify::ContactsCreator.(token, "HTCLF")
+
+          expect(User.count).to eq(0)
+          expect(Company.count).to eq(1)
+        end
+      end
+    end
+
+    context "there are at least one new user contact that is not in the database" do
+      it "should to create the user" do
+        VCR.use_cassette "clientify_contacts_creator_new_user" do 
+          Clientify::ContactsCreator.(token, "Facebook")
+
+          expect(User.count).to eq(1)
+          expect(Company.count).to eq(0)
         end
       end
     end
 
     context "there are just one company contact that is already in the database" do
       it "should not to create the company" do
-        VCR.use_cassette "clientify_contacts_creator_new_company", record: :new_episodes do 
-          
+        VCR.use_cassette "clientify_contacts_creator_new_company" do 
+          Company.create!(email: "miltonjmb@gmail.com", password: "12345678", name: "HOYTRABAJAS", contact_name: "Milton")
+          expect(Company.count).to eq(1)
+          Clientify::ContactsCreator.(token, "HTCLF")
+
+          expect(User.count).to eq(0)
+          expect(Company.count).to eq(1)
         end
       end
     end
 
-    context "there are one new candidate contact that is not in the database" do
-      it "should to create the user" do
-        VCR.use_cassette "clientify_contacts_creator_new_candidate", record: :new_episodes do 
-          
-        end
-      end
-    end
-
-    context "there are just new candidate contact that is already in the database" do
+    context "there are just one user contact that is already in the database" do
       it "should not to create the user" do
-        VCR.use_cassette "clientify_contacts_creator_new_candidate", record: :new_episodes do 
-          
-        end
-      end
-    end
+        VCR.use_cassette "clientify_contacts_creator_new_user" do 
+          User.create!(email: "camugrill@gmail.com", password: "12345678", name: "De raiz")
+          expect(User.count).to eq(1)
+          Clientify::ContactsCreator.(token, "Facebook")
 
-    context "there are two contcats, one that is new and the other one that already is in the database" do
-      it "should save the new contact" do
-        VCR.use_cassette "clientify_contacts_creator_one_new_and_one_old_contacts", record: :new_episodes do 
-          
-        end
-      end
-    end
-
-    context "there are just contacts that are already saved" do
-      it "should validate the contacts and dont save anything" do
-        VCR.use_cassette "clientify_contacts_creator_contacts_aldeady_saved", record: :new_episodes do 
-          
+          expect(User.count).to eq(1)
+          expect(Company.count).to eq(0)
         end
       end
     end

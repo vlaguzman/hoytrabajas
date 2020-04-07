@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "When company fill the step four form", type: :feature do
   let(:company) { create(:company, :first_time, name: 'HoyTrabajas.com') }
-  let(:offer)   { create(:offer) }
+  let(:offer)   { create(:offer, age_range_lists: []) }
 
   let!(:sex_1) { create(:sex, description: "Male") }
   let!(:sex_2) { create(:sex, description: "Female") }
@@ -64,6 +64,8 @@ RSpec.describe "When company fill the step four form", type: :feature do
         find(id: 'mui-component-select-offer[age_range_list_ids][]', visible: false).click
         find('li', text: age_2.description).click
 
+        execute_script "window.scrollTo(0, (window.innerHeight * 2) )"
+
         click_link_or_button('Siguiente')
 
         offer.reload
@@ -73,7 +75,7 @@ RSpec.describe "When company fill the step four form", type: :feature do
         expect(offer.work_mode_id).to eq(work_mode.id)
         expect(offer.vacancies_quantity).to eq(10)
         expect(offer.sex_ids).to match_array([sex_1.id, sex_2.id, sex_3.id])
-        expect(offer.sex_ids).to match_array([sex_1.id, sex_2.id, sex_3.id])
+        expect(offer.age_range_list_ids).to match_array([age_1.id, age_2.id])
         expect(offer.close_date.strftime("%F") ).to eq(expected_close_date.strftime("%F"))
         expect(offer.immediate_start).to eq(false)
 

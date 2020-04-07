@@ -151,12 +151,12 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/clientify/data_manager.rb",100,61,33,33,0
 "./app/services/companies/dashboards/offers_service.rb",100,46,18,18,0
 "./app/services/companies/first_offer/common_service.rb",100,16,7,7,0
-"./app/services/companies/first_offer/company_and_offer_errors_service.rb",100,12,3,3,0
+"./app/services/companies/first_offer/company_and_offer_errors_service.rb",100,11,3,3,0
 "./app/services/companies/first_offer/step_eight/form_params_service.rb",100,2,1,1,0
 "./app/services/companies/first_offer/step_five/form_params_service.rb",100,65,26,26,0
 "./app/services/companies/first_offer/step_five_service.rb",100,49,24,24,0
-"./app/services/companies/first_offer/step_four/form_params_service.rb",100,97,28,28,0
-"./app/services/companies/first_offer/step_four_service.rb",100,30,16,16,0
+"./app/services/companies/first_offer/step_four/form_params_service.rb",100,82,26,26,0
+"./app/services/companies/first_offer/step_four_service.rb",100,18,7,7,0
 "./app/services/companies/first_offer/step_one/form_params_service.rb",100,25,8,8,0
 "./app/services/companies/first_offer/step_one_service.rb",100,6,3,3,0
 "./app/services/companies/first_offer/step_seven/form_params_service.rb",100,91,34,34,0
@@ -183,7 +183,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/offers/organizer/joiner.rb",100,18,9,9,0
 "./app/services/offers/organizer/list_builder.rb",100,45,23,23,0
 "./app/services/offers/show_service.rb",100,68,25,25,0
-"./app/services/offers/views_service.rb",100,99,41,41,0
+"./app/services/offers/views_service.rb",100,93,38,38,0
 "./app/services/offers_on_demand/set_inactive_service.rb",100,29,13,13,0
 "./app/services/offers_service.rb",100,78,22,22,0
 "./app/services/routes_service.rb",100,10,5,5,0

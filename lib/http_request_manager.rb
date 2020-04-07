@@ -19,4 +19,5 @@ class HttpRequestManager
     request.body = body if body.present?
     https.request(request)
   end
+
 end

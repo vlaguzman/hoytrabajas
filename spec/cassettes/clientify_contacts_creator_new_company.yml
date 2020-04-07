@@ -1,0 +1,166 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.clientify.net/v1/contacts/?contact_source=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+      Authorization:
+      - Token a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 06 Apr 2020 23:20:17 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d20c34fe17abd21147dc1f2189d186f841586215217; expires=Wed, 06-May-20
+        23:20:17 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept, Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - GET, POST, HEAD, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 57ff3d13ca70b582-BOG
+    body:
+      encoding: ASCII-8BIT
+      string: '{"count":0,"next":null,"previous":null,"results":[]}'
+    http_version: null
+  recorded_at: Mon, 06 Apr 2020 23:20:17 GMT
+- request:
+    method: get
+    uri: https://api.clientify.net/v1/contacts/?contact_source=HTCLF
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+      Authorization:
+      - Token a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 06 Apr 2020 23:28:59 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=df5020d98e76d503a5c091b4584f9a5771586215739; expires=Wed, 06-May-20
+        23:28:59 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept, Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - GET, POST, HEAD, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 57ff49d28c15f25b-BOG
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJjb3VudCI6MSwibmV4dCI6bnVsbCwicHJldmlvdXMiOm51bGwsInJlc3VsdHMiOlt7InVybCI6Imh0dHBzOi8vYXBpLmNsaWVudGlmeS5uZXQvdjEvY29udGFjdHMvNzI5Mjk3Ni8iLCJpZCI6NzI5Mjk3Niwib3duZXIiOiJtaWx0b25AaG95dHJhYmFqYXMuY29tIiwib3duZXJfbmFtZSI6Ik1pbHRvbiBKIEhUIE1vcmVubyBCZWx0csOhbiIsImZpcnN0X25hbWUiOiJNaWx0b24iLCJsYXN0X25hbWUiOiJNb3Jlbm8iLCJzdGF0dXMiOiJjb2xkLWxlYWQiLCJ0aXRsZSI6IiIsImNvbXBhbnkiOiJodHRwczovL2FwaS5jbGllbnRpZnkubmV0L3YxL2NvbXBhbmllcy85OTA4MjIvIiwiY29tcGFueV9uYW1lIjoiSE9ZVFJBQkFKQVMiLCJlbWFpbHMiOlt7InR5cGUiOjQsImVtYWlsIjoibWlsdG9uam1iQGdtYWlsLmNvbSJ9XSwicGhvbmVzIjpbXSwicGljdHVyZV91cmwiOm51bGwsImNyZWF0ZWQiOiIyMDIwLTAzLTMwVDIzOjE3OjQwLjUxMTAzOCswMjowMCIsImxhc3RfY29udGFjdCI6IjIwMjAtMDMtMzFUMDA6NDc6MjgrMDI6MDAifV19
+    http_version: null
+  recorded_at: Mon, 06 Apr 2020 23:28:59 GMT
+- request:
+    method: get
+    uri: https://api.clientify.net/v1/contacts/7292976/tags/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+      Authorization:
+      - Token a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 06 Apr 2020 23:28:59 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=dbc67fc0014e1a20b9b4f23615570605e1586215739; expires=Wed, 06-May-20
+        23:28:59 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept, Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - GET, POST, HEAD, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 57ff49d5bdb0daa2-BOG
+    body:
+      encoding: ASCII-8BIT
+      string: '{"count":2,"next":null,"previous":null,"results":[{"name":"htclf","id":382477864},{"name":"employer","id":382363338}]}'
+    http_version: null
+  recorded_at: Mon, 06 Apr 2020 23:28:59 GMT
+recorded_with: VCR 5.1.0

@@ -1,0 +1,169 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.clientify.net/v1/contacts/?contact_source=Facebook
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+      Authorization:
+      - Token a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 06 Apr 2020 23:41:15 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d10dde6f4d008c285acbaef528f29044f1586216475; expires=Wed, 06-May-20
+        23:41:15 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept, Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - GET, POST, HEAD, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 57ff5bcba88bf25f-BOG
+    body:
+      encoding: ASCII-8BIT
+      string: '{"count":2,"next":null,"previous":null,"results":[{"url":"https://api.clientify.net/v1/contacts/5863851/","id":5863851,"owner":"camilo@hoytrabajas.com","owner_name":"Andres
+        Camilo Ruiz Diaz","first_name":"camu garaje grill","last_name":"","status":"in-deal","title":"Mesera
+        tiempo completo","company":null,"emails":[{"type":4,"email":"camugrill@gmail.com"}],"phones":[{"type":3,"phone":"3000778"}],"picture_url":null,"created":"2019-11-13T18:21:06.458410+01:00","last_contact":"2019-11-21T17:15:20+01:00"},{"url":"https://api.clientify.net/v1/contacts/5863779/","id":5863779,"owner":"camilo@hoytrabajas.com","owner_name":"Andres
+        Camilo Ruiz Diaz","first_name":"De raiz","last_name":"","status":"cold-lead","title":"Administrador
+        para punto","company":null,"emails":[{"type":4,"email":"info@deraiz.com"}],"phones":[],"picture_url":null,"created":"2019-11-13T17:49:46.359237+01:00","last_contact":"2019-11-13T17:55:51.983498+01:00"}]}'
+    http_version: null
+  recorded_at: Mon, 06 Apr 2020 23:41:15 GMT
+- request:
+    method: get
+    uri: https://api.clientify.net/v1/contacts/5863851/tags/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+      Authorization:
+      - Token a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 06 Apr 2020 23:41:16 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d0b04f424ea8e8b24b6ba3541fb3618451586216476; expires=Wed, 06-May-20
+        23:41:16 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept, Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - GET, POST, HEAD, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 57ff5bcf0e8ce5b3-BOG
+    body:
+      encoding: ASCII-8BIT
+      string: '{"count":1,"next":null,"previous":null,"results":[{"name": "candidate"},{"name":"flexi-bd-catering","id":382447129}]}'
+    http_version: null
+  recorded_at: Mon, 06 Apr 2020 23:41:16 GMT
+- request:
+    method: get
+    uri: https://api.clientify.net/v1/contacts/5863779/tags/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - api.clientify.net
+      Content-Type:
+      - application/json
+      Authorization:
+      - Token a7b2a35e8ea5151a084fd5f80479bbdfa0ff0a5c
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 06 Apr 2020 23:41:16 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - __cfduid=d857407c2f31fb77ceab386db70f7e57c1586216476; expires=Wed, 06-May-20
+        23:41:16 GMT; path=/; domain=.clientify.net; HttpOnly; SameSite=Lax; Secure
+      Vary:
+      - Accept, Accept-Language, Cookie
+      Content-Language:
+      - en
+      Allow:
+      - GET, POST, HEAD, OPTIONS
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 57ff5bd19f03f25f-BOG
+    body:
+      encoding: ASCII-8BIT
+      string: '{"count":0,"next":null,"previous":null,"results":[]}'
+    http_version: null
+  recorded_at: Mon, 06 Apr 2020 23:41:16 GMT
+recorded_with: VCR 5.1.0

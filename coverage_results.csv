@@ -147,8 +147,9 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/base_forms/wizards_sub_forms_service.rb",100,34,11,11,0
 "./app/services/base_forms/wizards_translations_service.rb",100,22,11,11,0
 "./app/services/cities/cities_with_offers_list_service.rb",100,12,5,5,0
-"./app/services/clientify/api_auth.rb",100,31,21,21,0
-"./app/services/clientify/data_manager.rb",100,61,33,33,0
+"./app/services/clientify/api_auth.rb",100,35,23,23,0
+"./app/services/clientify/contacts_creator.rb",100,34,19,19,0
+"./app/services/clientify/data_manager.rb",100,68,37,37,0
 "./app/services/companies/dashboards/offers_service.rb",100,46,18,18,0
 "./app/services/companies/first_offer/common_service.rb",100,16,7,7,0
 "./app/services/companies/first_offer/company_and_offer_errors_service.rb",100,11,3,3,0
@@ -231,7 +232,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./lib/get_value_of_record.rb",100,97,44,44,0
 "./lib/hashes_compare.rb",100,23,12,12,0
 "./lib/hashes_converter.rb",100,22,10,10,0
-"./lib.tp_request_manager.rb",100,22,15,15,0
+"./lib.tp_request_manager.rb",100,23,15,15,0
 "./lib/list_converter.rb",100,25,12,12,0
 "./lib/string_converter.rb",100,23,11,11,0
 "./lib/symbol_manager.rb",100,8,4,4,0

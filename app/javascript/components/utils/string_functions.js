@@ -1,10 +1,12 @@
 const cleanJobCategoryDescription = str => {
-  let strLowerCase = str.toLowerCase();
-  let strWithoutMarks = strLowerCase.replace(",", "");
-  let strWithoutSpaces = strWithoutMarks.replace(/ /g, "-");
-  let strFinal = strWithoutSpaces.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const strLowerCase = str.toLowerCase()
+  const strWithoutMarks = strLowerCase.replace(',', '')
+  const strWithoutSpaces = strWithoutMarks.replace(/ /g, '-')
+  const strFinal = strWithoutSpaces
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
 
-  return strFinal;
+  return strFinal
 }
 
 export { cleanJobCategoryDescription }

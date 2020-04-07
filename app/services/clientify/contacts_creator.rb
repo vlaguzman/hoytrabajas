@@ -1,4 +1,4 @@
-class Clientify::ContactsCreator
+module Clientify::ContactsCreator
 
   PASSWORD_DEFAULT = ENV['CLIENTIFY_PASSWORD_DEFAULT']
   

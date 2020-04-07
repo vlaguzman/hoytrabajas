@@ -134,7 +134,7 @@ const FormFields = props => {
 
     const renderImages = description => {
       const imagesBlock = [1, 2, 3].map(index => {
-        const route = `${process.env.JOB_CATEGORY_IMAGES_URL}/card-${description}-${index}.jpg`
+        const route = `https://img-categorias-ht.s3.amazonaws.com/card-${description}-${index}.jpg`
         const imgSelected =
           formValues[job_category_image.name] === route ? 'imgSelected' : ''
 

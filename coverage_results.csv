@@ -55,7 +55,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/models/level.rb",100,5,3,3,0
 "./app/models/limitation.rb",100,6,3,3,0
 "./app/models/nationality.rb",100,7,4,4,0
-"./app/models/offer.rb",100,233,122,122,0
+"./app/models/offer.rb",100,234,123,123,0
 "./app/models/offer_on_demand.rb",100,14,8,8,0
 "./app/models/offer_required_experiences.rb",100,11,6,6,0
 "./app/models/offer_salary.rb",100,14,9,9,0
@@ -106,6 +106,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/companies/first_offer/step_zero_presenter.rb",100,7,3,3,0
 "./app/presenters/companies/first_offer_presenter.rb",100,13,4,4,0
 "./app/presenters/companies/list_candidates_presenter.rb",100,44,22,22,0
+"./app/presenters/companies/profiles_presenter.rb",100,25,11,11,0
 "./app/presenters/home/home_presenter.rb",100,47,14,14,0
 "./app/presenters/offers/show_presenter.rb",98,266,120,118,2
 "./app/presenters/offers_presenter.rb",100,38,17,17,0
@@ -182,8 +183,8 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/offers/organizer/details_builder.rb",100,32,14,14,0
 "./app/services/offers/organizer/joiner.rb",100,18,9,9,0
 "./app/services/offers/organizer/list_builder.rb",100,50,25,25,0
-"./app/services/offers/show_service.rb",100,76,27,27,0
-"./app/services/offers/views_service.rb",100,99,41,41,0
+"./app/services/offers/show_service.rb",100,68,25,25,0
+"./app/services/offers/views_service.rb",100,93,38,38,0
 "./app/services/offers_on_demand/set_inactive_service.rb",100,29,13,13,0
 "./app/services/offers_service.rb",100,78,22,22,0
 "./app/services/routes_service.rb",100,10,5,5,0
@@ -231,7 +232,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./lib/get_value_of_record.rb",100,97,44,44,0
 "./lib/hashes_compare.rb",100,23,12,12,0
 "./lib/hashes_converter.rb",100,18,8,8,0
-"./lib.tp_request_manager.rb",100,22,15,15,0
+"./lib.tp_request_manager.rb",100,23,15,15,0
 "./lib/list_converter.rb",100,25,12,12,0
 "./lib/offers/search/params_organizer.rb",100,37,16,16,0
 "./lib/string_converter.rb",100,23,11,11,0

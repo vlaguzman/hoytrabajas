@@ -24,6 +24,7 @@ const HomePage = ({
   advanced_search_translations,
   filterForm,
   searchTrendsParams,
+  categoriesAttributesList,
   common
 }) => {
   const { companies } = content

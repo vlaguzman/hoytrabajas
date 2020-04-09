@@ -107,7 +107,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/companies/first_offer_presenter.rb",100,13,4,4,0
 "./app/presenters/companies/list_candidates_presenter.rb",100,44,22,22,0
 "./app/presenters/companies/profiles_presenter.rb",100,25,11,11,0
-"./app/presenters/home/home_presenter.rb",100,55,13,13,0
+"./app/presenters/home/home_presenter.rb",100,51,16,16,0
 "./app/presenters/offers/show_presenter.rb",98,266,120,118,2
 "./app/presenters/offers_presenter.rb",100,38,17,17,0
 "./app/presenters/users/profiles_presenter.rb",100,119,33,33,0
@@ -130,7 +130,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/users/wizards_presenter.rb",100,14,4,4,0
 "./app/presenters/users_presenter.rb",100,19,5,5,0
 "./app/services/add_model_errors/curriculum_vitaes/technical_skills.rb",100,18,9,9,0
-"./app/services/add_model_errors_service.rb",100,58,2feature/oscar/HTV2-696-modificar-el-servicio-que-reali3,23,0
+"./app/services/add_model_errors_service.rb",100,58,23,23,0
 "./app/services/admins/offers_service.rb",100,188,91,91,0
 "./app/services/admins_service.rb",100,15,8,8,0
 "./app/services/affinity_calculator.rb",100,80,36,36,0

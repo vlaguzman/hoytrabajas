@@ -37,7 +37,7 @@ class Home::HomePresenter < ApplicationPresenter
     Home::SearchTrendsListService.()
   end
 
-  def categories
+  def categories_list_builder
     categories = JobCategory.all.map do |category|
       attributes = category.attributes.deep_symbolize_keys.slice(:id, :description)
 

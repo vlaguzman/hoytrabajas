@@ -14,8 +14,9 @@ const SearchTrends = ({ searchTrendsParams, translations }) => {
             </h6>
             <ul>
               {searchTrendsParams[trendGroup].map( trend => (
-                <li key={trendtrends
-                  Trends
+                <li key={trend.id}>
+                  <a className="--trendLink" href={`/offers?search[${trendGroup}]=${trend.id}`}>{trend.description}</a>
+                </li>
               ))}
             </ul>
           </div>

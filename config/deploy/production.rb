@@ -1,5 +1,4 @@
-server "ec2-3-234-3-185.compute-1.amazonaws.com", user: "deploy", roles: %w{ db web }
-server "ec2-54-234-213-19.compute-1.amazonaws.com", user: "deploy", roles: %w{ app }
+server "ec2-3-234-3-185.compute-1.amazonaws.com", user: "deploy", roles: %w{ db web app }
 
 namespace :deploy do
   after :finishing, :notify do

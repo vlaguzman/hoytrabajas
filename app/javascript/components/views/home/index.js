@@ -23,7 +23,8 @@ const HomePage = ({
   offer_translations,
   advanced_search_translations,
   filterForm,
-  categoriesAttributesList
+  searchTrendsParams,
+  common
 }) => {
   const { companies } = content
   const {
@@ -58,7 +59,7 @@ const HomePage = ({
       />
       <JobCategories categories={categoriesAttributesList} translations={categories} />
       <Banner translations={info} />
-      <SearchTrends translations={search_trends} />
+      <SearchTrends translations={search_trends} searchTrendsParams={searchTrendsParams} />
       <Steps translations={steps} />
       {/* TODO: Uncomment when landing pages has been defined */}
       {/* <PostList translations={post_list} /> */}
@@ -85,6 +86,7 @@ HomePage.propTypes = {
   home_translations: PropTypes.object.isRequired,
   offer_translations: PropTypes.object,
   advanced_search_translations: PropTypes.object.isRequired,
-  categoriesAttributesList: PropTypes.object,
-  filterForm: PropTypes.object
+  common: PropTypes.object,
+  filterForm: PropTypes.object,
+  searchTrendsParams: PropTypes.object
 }

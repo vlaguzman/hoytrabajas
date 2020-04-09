@@ -19,11 +19,11 @@ es:
     search_trends:
       title: 'Tendencias de búsqueda'
       subtitles:
-        cities: 'Ciudades'
-        categories: 'Categorías'
-        positions: 'Cargos'
-        work_mode: 'Tipo de empleo'
-        working_hours: 'Jornada'
+        city: 'Ciudades'
+        job_categories: 'Categorías'
+        work_position: 'Cargos'
+        contract_type: 'Tipo de empleo'
+        working_days: 'Jornada'
     post_list:
       title: 'Trabajamos para brindarte más oportunidades'
       content:

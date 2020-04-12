@@ -16,9 +16,9 @@ every 1.day, at: '04:59' do
 end
 
 every 1.day, at: '04:50' do
-  command "echo 'Updating AffinityPercentages...'"
-  runner 'AffinityPercentages::UpdateAffinityPercentagesDailyJob.new.perform'
-  command "echo 'AffinityPercentages Updated'"
+  #command "echo 'Updating AffinityPercentages...'"
+  #runner 'AffinityPercentages::UpdateAffinityPercentagesDailyJob.new.perform'
+  #command "echo 'AffinityPercentages Updated'"
 end
 
 every 1.day at: '5:00' do

@@ -173,6 +173,8 @@ GEM
     crass (1.0.6)
     curb (0.9.10)
     database_cleaner (1.8.3)
+    ddtrace (0.34.2)
+      msgpack
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
     devise (4.7.1)
@@ -636,6 +638,7 @@ DEPENDENCIES
   capybara (~> 3.18.0)
   curb
   database_cleaner
+  ddtrace
   devise
   ed25519 (~> 1.2)
   elasticsearch-dsl (~> 0.1.9)

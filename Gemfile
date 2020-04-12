@@ -33,6 +33,7 @@ gem 'redis', '~> 4.1'
 gem 'sidekiq-cron'
 
 gem "skylight"
+gem 'ddtrace'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

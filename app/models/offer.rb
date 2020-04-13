@@ -3,10 +3,9 @@ class Offer < ApplicationRecord
 
   documement_type = 'offer'
 
-  #TODO Oscar disable while sidekiq is in optimization
-  #after_commit on: [:create, :update] do
-  #  Elasticsearch::IndexerWorker.perform_async(documement_type, self.id, 'index')
-  #end
+  after_commit on: [:create, :update] do
+    Elasticsearch::IndexerWorker.perform_async(documement_type, self.id, 'index')
+  end
 
   MIN_VALID_AFFINTY_PERCENTAGE = 20
   MAX_OFFER_LIMIT = 150
@@ -127,7 +126,8 @@ class Offer < ApplicationRecord
   end
 
   def affinity_percentage_of(curriculum_vitae = nil)
-    AffinityPercentageService.new(self, curriculum_vitae).get_round_affinity if curriculum_vitae.present?
+    affinity = AffinityPercentageService.new(self, curriculum_vitae).get_round_affinity if curriculum_vitae.present?
+    affinity.present? ? affinity : 0
   end
 
   #Elasticsearch configuration

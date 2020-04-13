@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe "Overall navigation" do
+RSpec.describe "Overall navigation", vcr: true do
   context "an anonimous user visits the public pages" do
     before { create(:offer) }
 
@@ -16,6 +16,7 @@ RSpec.describe "Overall navigation" do
       }
 
       it "should visit inicio from root_path", js:true do
+        Offer.import
 
         visit root_path
 
@@ -26,6 +27,8 @@ RSpec.describe "Overall navigation" do
       end
 
       it "should visit ‘FAQ’ page from home page", js: true do
+        Offer.import
+
         visit root_path
 
         expect(page).to have_link("FAQs", href: faqs_path)
@@ -40,6 +43,8 @@ RSpec.describe "Overall navigation" do
       end
 
       it "should visit Candidato page from home page", js: true do
+        Offer.import
+
         visit root_path
 
         expect(page).to have_content("Registrarme")
@@ -52,6 +57,8 @@ RSpec.describe "Overall navigation" do
       end
 
       it "should visit 'Registrarme' page from home page", js: true do
+        Offer.import
+
         visit root_path
 
         find('.a-navOpenSignUp', text:/Registrarme/, visible: false).click
@@ -61,6 +68,8 @@ RSpec.describe "Overall navigation" do
       end
 
       it "should visit 'ver mas ofertas' page from home page", js: true do
+        Offer.import
+
         create_stuffed_offers
 
         visit root_path
@@ -83,6 +92,8 @@ RSpec.describe "Overall navigation" do
       end
 
       it "should visit 'Offers' page from footer in home page", js: true do
+        Offer.import
+
         visit root_path
 
         expect(page).to have_link("Buscar ofertas", href: offers_path)
@@ -97,6 +108,8 @@ RSpec.describe "Overall navigation" do
       end
 
       it "should visit 'Companies' page from footer in home page", js: true do
+        Offer.import
+
         visit root_path
 
         expect(page).to have_link("Compañías", href: companies_path)

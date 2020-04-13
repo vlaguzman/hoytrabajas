@@ -1,7 +1,7 @@
 class Offers::JobCategoriesController < ApplicationController
 
   def show
-    offers_presenter
+    @offers = offers_presenter
 
     render 'offers/index'
   end
@@ -22,21 +22,16 @@ class Offers::JobCategoriesController < ApplicationController
   end
 
   def offers_presenter
-    offers__by_category = Offer
-      .active
-      .related_job_category([job_category_id])
 
-    offers_by_affinity = Offers::OrderByAffinityPercentageService.(current_user: current_user, offers: offers__by_category)
-
-    offers_list = Offers::OrderByOnDemand.(offers: offers_by_affinity)
-      .map { |offer| Offers::IndexService.new(offer, current_user).details }
-
-    @offers = {
-      offers_list: offers_list,
+    OffersPresenter.new(nil,
+      current_user: current_user,
+      search_parameters: { job_categories: [job_category_id] },
       origin: :job_categories,
       content: sanitized_job_category_name,
-      adtional_title_description: "#{t('in')} #{job_category_name}"
-    }
+      adtional_title_description: "#{t('in')} #{job_category_name}",
+      limit: OffersController::MAX_OFFER_LIMIT
+    )
+
   end
 
 end

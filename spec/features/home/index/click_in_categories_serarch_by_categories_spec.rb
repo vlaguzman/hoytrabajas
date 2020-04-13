@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Like a anonymous user", type: :feature do
+RSpec.describe "Like a anonymous user", type: :feature, vcr: true do
 
   let!(:tech_category) { create(:job_category, description: 'tech') }
 
@@ -13,6 +13,8 @@ RSpec.describe "Like a anonymous user", type: :feature do
   }
 
     scenario "should load all offers with this category", js: true do
+      Offer.import
+
       visit root_path
 
       expect(page).to have_content('Im Not Appear')

@@ -4,13 +4,13 @@ module Offers::Organizer::DetailsBuilder
 
   def self.call(offer_ids_lists: {})
     offer_ids_lists.reduce({}) do |attributes_groups, (group_key, group_list)|
-      attributes_groups.tap { |field| field[group_key] = group_list.map { |offer_id| all_offer_attributes(offer_id) } }
+      attributes_groups.tap { |field| field[group_key] = group_list.map { |offer_id| all_offer_attributes(offer_id) }.compact }
     end
   end
 
   def self.all_offer_attributes(offer_id)
     base = attributes_getter(offer_id)
-    carousal_card_attributes(base)
+    carousal_card_attributes(base) if base.present?
   end
 
   def self.carousal_card_attributes(attributes_base)
@@ -20,12 +20,12 @@ module Offers::Organizer::DetailsBuilder
   end
 
   def self.attributes_getter(offer_id)
-  foud_offer = Offer.find_by(id: offer_id)
-  foud_offer
+  found_offer = Offer.find_by(id: offer_id)
+  found_offer
     .attributes
     .deep_symbolize_keys
     .slice(*DEFAULT_ATTRIBUTES)
-    .merge(offer: foud_offer)
+    .merge(offer: found_offer) if found_offer.present?
   end
 
 

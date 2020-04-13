@@ -1,6 +1,18 @@
 require 'rails_helper'
 
-RSpec.describe "User searches for an offer", type: :feature do
+RSpec.describe "User searches for an offer", type: :feature, vcr: true do
+
+  before do
+    client = Offer.__elasticsearch__.client = Elasticsearch::Client.new host: "#{ENV['TEST_ELASTICSEARCH_HOST']}:9200"
+    Offer.__elasticsearch__.delete_index! if client.indices.exists? index: :offers
+    Offer.__elasticsearch__.create_index!
+  end
+
+  after do
+    client = Offer.__elasticsearch__.client = Elasticsearch::Client.new host: "#{ENV['ELASTICSEARCH_HOST']}:9200"
+    Offer.__elasticsearch__.delete_index! if client.indices.exists? index: :offers
+    Offer.__elasticsearch__.create_index!
+  end
 
   context "When user search of offer" do
     let!(:job_category)   { create(:job_category, description: 'Operario') }
@@ -16,10 +28,12 @@ RSpec.describe "User searches for an offer", type: :feature do
 
     context "Visit home" do
       it "Should show the title, carousel and the filter inputs", js: true do
+        Offer.import
+
         visit root_path
 
         expect(page).to have_tag(:form, with: { class: "row justify-content-around" }) do
-          with_tag(:input, with: { name: 'q[title_cont]'})
+          with_tag(:input, with: { name: 'search[keywords]'})
         end
 
         find(".filterForm__categoriesButton").click
@@ -38,9 +52,11 @@ RSpec.describe "User searches for an offer", type: :feature do
     context "When you filter only by offer title" do
       context "When several offers are found" do
         it "Should return offers related", js: true do
+          Offer.import
+
           visit root_path
 
-          fill_in('keyword', with: 'sebas')
+          fill_in('search_form_keywords', with: 'sebas')
           find(".filterForm__searchButton", visible: false).click
 
           expect(current_path).to eq("#{offers_path}/")
@@ -56,9 +72,11 @@ RSpec.describe "User searches for an offer", type: :feature do
 
       context "When you only find a concidence" do
         it "Should return the related offer", js: true do
+          Offer.import
+
           visit root_path
 
-          fill_in('keyword', with: 'prueba')
+          fill_in('search_form_keywords', with: 'Esto Es Un Prueba')
           find(".filterForm__searchButton", visible: false).click
 
           expect(page).to have_content("Esto Es Un Prueba De Sebas")
@@ -69,9 +87,11 @@ RSpec.describe "User searches for an offer", type: :feature do
 
       context "When no concidence is found" do
         it "Should be redirected to the offers page without any results", js: true do
+          Offer.import
+
           visit root_path
 
-          fill_in('keyword', with: 'Jhoan')
+          fill_in('search_form_keywords', with: 'Jhoan')
           find(".filterForm__searchButton", visible: false).click
 
           expect(page).to_not have_content("Esto Es Un Prueba De Sebas")
@@ -84,6 +104,8 @@ RSpec.describe "User searches for an offer", type: :feature do
     context "When you filter by offer categories only" do
       context "When you filter by a single category and find results" do
         it "Should return results", js: true do
+          Offer.import
+
           visit root_path
 
           find(".filterForm__categoriesButton").click
@@ -99,6 +121,8 @@ RSpec.describe "User searches for an offer", type: :feature do
 
       context "When you select a category filter" do
         it "Should hide all categories", js: true do
+          Offer.import
+
           visit root_path
 
           find(".filterForm__categoriesButton").click
@@ -111,6 +135,8 @@ RSpec.describe "User searches for an offer", type: :feature do
 
       context "When you click the categories button" do
         it "Should have hidden categories", js: true do
+          Offer.import
+
           visit root_path
 
           expect( find('.filterForm__collapseCategories', visible: false)['aria-expanded']).to eq("false")
@@ -119,6 +145,8 @@ RSpec.describe "User searches for an offer", type: :feature do
 
       context "When you filter by several categories and find results" do
         it "Should return results", js: true do
+          Offer.import
+
           visit root_path
 
           find(".filterForm__categoriesButton").click
@@ -137,6 +165,8 @@ RSpec.describe "User searches for an offer", type: :feature do
 
       context "When you filter by categories and find no results" do
         it "Should return message of empty", js: true do
+          Offer.import
+
           visit root_path
 
           find(".filterForm__categoriesButton").click
@@ -156,9 +186,11 @@ RSpec.describe "User searches for an offer", type: :feature do
     context "When you filter by title and offer categories" do
       context "When you search by title and category and find results" do
         it "Should return results", js: true do
+          Offer.import
+
           visit root_path
 
-          fill_in('keyword', with: 'oferta')
+          fill_in('search_form_keywords', with: 'oferta')
 
           find(".filterForm__categoriesButton").click
 
@@ -174,9 +206,11 @@ RSpec.describe "User searches for an offer", type: :feature do
 
       context "When you search by title and category and find no results" do
         it "Should return message of empty", js: true do
+          Offer.import
+
           visit root_path
 
-          fill_in('keyword', with: 'jhoan')
+          fill_in('search_form_keywords', with: 'jhoan')
 
           find(".filterForm__categoriesButton").click
 
@@ -201,6 +235,8 @@ RSpec.describe "User searches for an offer", type: :feature do
 
       context "When you filter by a single city and find results" do
         it "Should return results", js: true do
+          Offer.import
+
           visit root_path
 
           find("input#combo-box-demo", visible: false).set("mede")
@@ -215,6 +251,8 @@ RSpec.describe "User searches for an offer", type: :feature do
 
       context "When you filter by city and find no results" do
         it "Should return message of empty", js: true do
+          Offer.import
+
           visit root_path
 
           find("input#combo-box-demo", visible: false).set("cali")
@@ -231,9 +269,11 @@ RSpec.describe "User searches for an offer", type: :feature do
 
       context "When you search by title and category and city and find results" do
         it "Should return results", js: true do
+          Offer.import
+
           visit root_path
 
-          fill_in('keyword', with: 'oferta de sebas')
+          fill_in('search_form_keywords', with: 'oferta de sebas')
 
           find(".filterForm__categoriesButton").click
 
@@ -252,9 +292,11 @@ RSpec.describe "User searches for an offer", type: :feature do
 
       context "When you search by title and category and city and find no results" do
         it "Should return message of empty", js: true do
+          Offer.import
+
           visit root_path
 
-          fill_in('keyword', with: 'jhoan')
+          fill_in('search_form_keywords', with: 'jhoan')
 
           find(".filterForm__categoriesButton").click
 

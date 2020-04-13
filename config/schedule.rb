@@ -4,10 +4,9 @@ set :bundle_command, 'bundle exec'
 set :output, {:error => '/tmp/cron.error.log', :standard => '/tmp/cron.standard.log'}
 set :chronic_options, hours24: true
 
-#TODO Oscar disable while sidekiq is in optimization
-#every 5.minutes do
-#  rake 'sidekiq_check:rerun'
-#end
+every 5.minutes do
+  rake 'sidekiq_check:rerun'
+end
 
 every 1.day, at: '04:59' do
   command "echo 'Updating Offers...'"

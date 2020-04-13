@@ -1,0 +1,120 @@
+---
+http_interactions:
+- request:
+    method: head
+    uri: http://elasticsearch:9200/offers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '1693'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 18:43:36 GMT
+- request:
+    method: post
+    uri: http://elasticsearch:9200/offers/_bulk
+    body:
+      encoding: UTF-8
+      string: |
+        {"index":{"_id":1}}
+        {"id":1,"title":"I am a sexy offer","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-27T13:43:36.913-05:00","city":{"id":6,"description":"Sanaa"},"job_categories":[{"id":1,"description":"Toys, Shoes \u0026 Computers"}],"work_mode":{"id":2,"description":"jerarquía"},"contract_type":{"id":2,"description":"innovadora"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/x-ndjson
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '175'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":4,"errors":false,"items":[{"index":{"_index":"offers","_type":"_doc","_id":"1","_version":3,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":2,"_primary_term":1,"status":200}}]}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 18:43:36 GMT
+- request:
+    method: get
+    uri: http://elasticsearch:9200/offers/_search?scroll=30s
+    body:
+      encoding: UTF-8
+      string: '{"query":{"bool":{"must":[{"term":{"status":"active"}}]}},"sort":[{"created_at":{"order":"desc"}}]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '500'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJfc2Nyb2xsX2lkIjoiRFhGMVpYSjVRVzVrUm1WMFkyZ0JBQUFBQUFBQUFGY1dOMEpmVUZkUmNIQlViUzFpUXpaRGRVbEpaR290VVE9PSIsInRvb2siOjEsInRpbWVkX291dCI6ZmFsc2UsIl9zaGFyZHMiOnsidG90YWwiOjEsInN1Y2Nlc3NmdWwiOjEsInNraXBwZWQiOjAsImZhaWxlZCI6MH0sImhpdHMiOnsidG90YWwiOnsidmFsdWUiOjEsInJlbGF0aW9uIjoiZXEifSwibWF4X3Njb3JlIjpudWxsLCJoaXRzIjpbeyJfaW5kZXgiOiJvZmZlcnMiLCJfdHlwZSI6Il9kb2MiLCJfaWQiOiIxIiwiX3Njb3JlIjpudWxsLCJfc291cmNlIjp7ImlkIjoxLCJ0aXRsZSI6IkkgYW0gYSBzZXh5IG9mZmVyIiwiZGVzY3JpcHRpb24iOiJlbmRTaW50IGVzc2UgYW5pbSBjb25zZXF1YXQgY29tbW9kby4iLCJzdGF0dXMiOiJhY3RpdmUiLCJjcmVhdGVkX2F0IjoiMjAyMC0wMy0yN1QxMzo0MzozNi45MTMtMDU6MDAiLCJjaXR5Ijp7ImlkIjo2LCJkZXNjcmlwdGlvbiI6IlNhbmFhIn0sImpvYl9jYXRlZ29yaWVzIjpbeyJpZCI6MSwiZGVzY3JpcHRpb24iOiJUb3lzLCBTaG9lcyBcdTAwMjYgQ29tcHV0ZXJzIn1dLCJ3b3JrX21vZGUiOnsiaWQiOjIsImRlc2NyaXB0aW9uIjoiamVyYXJxdcOtYSJ9LCJjb250cmFjdF90eXBlIjp7ImlkIjoyLCJkZXNjcmlwdGlvbiI6Imlubm92YWRvcmEifSwid29ya2luZ19kYXlzIjpbXSwiYXZhaWxhYmxlX3dvcmtfZGF5cyI6W10sImpvYl9haWRzIjpbXSwibGFuZ3VhZ2VzIjpbXX0sInNvcnQiOlsxNTg1MzM0NjE2OTEzXX1dfX0=
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 18:43:39 GMT
+- request:
+    method: get
+    uri: http://elasticsearch:9200/_search/scroll
+    body:
+      encoding: UTF-8
+      string: '{"scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAFcWN0JfUFdRcHBUbS1iQzZDdUlJZGotUQ==","scroll":"30s"}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '210'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAFcWN0JfUFdRcHBUbS1iQzZDdUlJZGotUQ==","took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":{"value":1,"relation":"eq"},"max_score":null,"hits":[]}}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 18:43:40 GMT
+recorded_with: VCR 5.1.0

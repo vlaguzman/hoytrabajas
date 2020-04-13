@@ -221,7 +221,7 @@ const AdvancedSearch = ({
             <div className="advancedSearch__searchBar w-100">
               <input
                 type="text"
-                name="q[title_cont]"
+                name="search[keywords]"
                 placeholder={translations.search_offer_input}
                 className="advancedSearch__searchInput"
               />

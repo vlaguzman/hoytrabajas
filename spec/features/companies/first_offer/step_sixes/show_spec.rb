@@ -14,9 +14,9 @@ RSpec.describe "When company fill the step six form", type: :feature do
     expect(page).to have_content("Brinda a tu candidato información relevante de tu empresa.")
 
     expect(page).to have_tag(:form, with: { class: "forms__candidate" }) do
-     #TODO daniel, uncomment when responsabilities and requirement has been defined
-     #with_tag(:input, with: { name: 'offer[responsibility_ids][]',  type: "hidden" })
-     #with_tag(:input, with: { name: 'offer[requirement_ids][]',     type: "hidden" })
+      #TODO daniel, uncomment when responsabilities and requirement has been defined
+      #with_tag(:input, with: { name: 'offer[responsibility_ids][]',  type: "hidden" })
+      #with_tag(:input, with: { name: 'offer[requirement_ids][]',     type: "hidden" })
       with_tag(:input, with: { name: 'offer[vehicle_ids][]',         type: "hidden" })
       with_tag(:input, with: { name: 'offer[driving_licence_ids][]', type: "hidden" })
     end

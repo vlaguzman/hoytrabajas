@@ -28,7 +28,8 @@ const CategoryUnit = ({
           'is-selected': selected
         }
       )}
-      onClick={() => {
+      onClick={(e) => {
+        e.preventDefault()
         handleJobCategory(id, selected)
         setSelected(!selected)
       }}

@@ -1,0 +1,649 @@
+---
+http_interactions:
+- request:
+    method: head
+    uri: http://elasticsearch_test:9200/offers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '1693'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 15:38:28 GMT
+- request:
+    method: delete
+    uri: http://elasticsearch_test:9200/offers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '47'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"acknowledged":true}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 15:38:28 GMT
+- request:
+    method: head
+    uri: http://elasticsearch_test:9200/offers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '365'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 15:38:28 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers
+    body:
+      encoding: UTF-8
+      string: '{"settings":{"index":{"number_of_shards":1,"number_of_replicas":0,"max_ngram_diff":50,"analysis":{"index_analyzer":{"common_index_analizer":{"type":"custom","tokenizer":"standard","filter":["lowercase","common_ngram_filter"]}},"search_analyzer":{"common_search_analyzer":{"type":"custom","tokenizer":"standard","filter":["lowercase","standard","common_ngram_filter"]}},"ascii_analizer":{"common_ascii_analyzer":{"tokenizer":"standard","filter":"standard"}},"filter":{"common_ngram_filter":{"type":"nGram","min_gram":2,"max_gram":50}}}}},"mappings":{"dynamic":"false","properties":{"id":{"type":"long"},"title":{"type":"text","analyzer":"spanish"},"description":{"type":"text","analyzer":"spanish"},"status":{"type":"text"},"created_at":{"type":"date"},"city":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"job_categories":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"work_mode":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"contract_type":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"working_days":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"available_work_days":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"job_aids":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"languages":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}}}}}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '73'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"acknowledged":true,"shards_acknowledged":true,"index":"offers"}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 15:38:28 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/9001
+    body:
+      encoding: UTF-8
+      string: '{"id":9001,"title":"Voluptate eum ut ut sit rerum nobis ducimus.","description":"endSint
+        esse anim consequat commodo.","status":"active","created_at":"2020-03-27T10:38:28.714-05:00","city":{"id":350,"description":"Skopje"},"job_categories":[{"id":98,"description":"Books,
+        Tools \u0026 Sports"}],"work_mode":{"id":133,"description":"colaboración"},"contract_type":{"id":133,"description":"modelo"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/9001"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '139'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"9001","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":0,"_primary_term":1}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 15:38:28 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/9002
+    body:
+      encoding: UTF-8
+      string: '{"id":9002,"title":"Distinctio perferendis voluptatem vero excepturi
+        autem itaque consectetur.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-27T10:38:28.788-05:00","city":{"id":352,"description":"Copenhagen"},"job_categories":[{"id":99,"description":"Garden"}],"work_mode":{"id":134,"description":"multiestado"},"contract_type":{"id":134,"description":"Digitalizado"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/9002"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '138'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"9002","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":1,"_primary_term":1}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 15:38:28 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/9003
+    body:
+      encoding: UTF-8
+      string: '{"id":9003,"title":"Quis nihil aliquam velit necessitatibus aut expedita
+        voluptas.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-27T10:38:28.860-05:00","city":{"id":354,"description":"Tashkent"},"job_categories":[{"id":100,"description":"Shoes"}],"work_mode":{"id":135,"description":"modular"},"contract_type":{"id":135,"description":"circuito"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/9003"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '142'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"9003","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":2,"_primary_term":1}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 15:38:28 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/9004
+    body:
+      encoding: UTF-8
+      string: '{"id":9004,"title":"Consectetur sint iusto vel officia sequi soluta
+        non.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-27T10:38:28.929-05:00","city":{"id":356,"description":"Saint
+        John''s"},"job_categories":[{"id":101,"description":"Outdoors, Kids \u0026
+        Beauty"}],"work_mode":{"id":136,"description":"En red"},"contract_type":{"id":136,"description":"contingencia"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/9004"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '142'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"9004","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":3,"_primary_term":1}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 15:38:28 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/9005
+    body:
+      encoding: UTF-8
+      string: '{"id":9005,"title":"Saepe et nobis voluptatibus ut maxime ea aut.","description":"endSint
+        esse anim consequat commodo.","status":"active","created_at":"2020-03-27T10:38:28.997-05:00","city":{"id":358,"description":"Algiers"},"job_categories":[{"id":102,"description":"Shoes"}],"work_mode":{"id":137,"description":"estructura
+        de precios"},"contract_type":{"id":137,"description":"Compatible"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/9005"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '142'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"9005","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":4,"_primary_term":1}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 15:38:29 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/9018
+    body:
+      encoding: UTF-8
+      string: '{"id":9018,"title":"the developer","description":"endSint esse anim
+        consequat commodo.","status":"active","created_at":"2020-03-27T10:38:29.072-05:00","city":{"id":359,"description":"Vienna"},"job_categories":[{"id":103,"description":"Toys,
+        Automotive \u0026 Books"}],"work_mode":{"id":138,"description":"amplio ábanico"},"contract_type":{"id":138,"description":"hibrida"},"working_days":[{"id":2,"description":"Mañana
+        (7am-12pm)"}],"available_work_days":[{"id":2,"description":"Martes"}],"job_aids":[{"id":2,"description":"Trasport
+        aid"}],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/9018"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '143'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"9018","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":5,"_primary_term":1}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 15:38:29 GMT
+- request:
+    method: put
+    uri: http://elasticsearch_test:9200/offers/_doc/9019
+    body:
+      encoding: UTF-8
+      string: '{"id":9019,"title":"programmer","description":"endSint esse anim consequat
+        commodo.","status":"active","created_at":"2020-03-27T10:38:29.163-05:00","city":{"id":359,"description":"Vienna"},"job_categories":[{"id":103,"description":"Toys,
+        Automotive \u0026 Books"}],"work_mode":{"id":138,"description":"amplio ábanico"},"contract_type":{"id":138,"description":"hibrida"},"working_days":[{"id":2,"description":"Mañana
+        (7am-12pm)"}],"available_work_days":[{"id":2,"description":"Martes"}],"job_aids":[{"id":2,"description":"Trasport
+        aid"}],"languages":[]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Location:
+      - "/offers/_doc/9019"
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '142'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_index":"offers","_type":"_doc","_id":"9019","_version":1,"result":"created","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":6,"_primary_term":1}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 15:38:29 GMT
+- request:
+    method: head
+    uri: http://elasticsearch_test:9200/offers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '1693'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 15:38:29 GMT
+- request:
+    method: post
+    uri: http://elasticsearch_test:9200/offers/_bulk
+    body:
+      encoding: UTF-8
+      string: |
+        {"index":{"_id":9001}}
+        {"id":9001,"title":"Voluptate eum ut ut sit rerum nobis ducimus.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-27T10:38:28.714-05:00","city":{"id":350,"description":"Skopje"},"job_categories":[{"id":98,"description":"Books, Tools \u0026 Sports"}],"work_mode":{"id":133,"description":"colaboración"},"contract_type":{"id":133,"description":"modelo"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":9002}}
+        {"id":9002,"title":"Distinctio perferendis voluptatem vero excepturi autem itaque consectetur.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-27T10:38:28.788-05:00","city":{"id":352,"description":"Copenhagen"},"job_categories":[{"id":99,"description":"Garden"}],"work_mode":{"id":134,"description":"multiestado"},"contract_type":{"id":134,"description":"Digitalizado"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":9003}}
+        {"id":9003,"title":"Quis nihil aliquam velit necessitatibus aut expedita voluptas.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-27T10:38:28.860-05:00","city":{"id":354,"description":"Tashkent"},"job_categories":[{"id":100,"description":"Shoes"}],"work_mode":{"id":135,"description":"modular"},"contract_type":{"id":135,"description":"circuito"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":9004}}
+        {"id":9004,"title":"Consectetur sint iusto vel officia sequi soluta non.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-27T10:38:28.929-05:00","city":{"id":356,"description":"Saint John's"},"job_categories":[{"id":101,"description":"Outdoors, Kids \u0026 Beauty"}],"work_mode":{"id":136,"description":"En red"},"contract_type":{"id":136,"description":"contingencia"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":9005}}
+        {"id":9005,"title":"Saepe et nobis voluptatibus ut maxime ea aut.","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-27T10:38:28.997-05:00","city":{"id":358,"description":"Algiers"},"job_categories":[{"id":102,"description":"Shoes"}],"work_mode":{"id":137,"description":"estructura de precios"},"contract_type":{"id":137,"description":"Compatible"},"working_days":[],"available_work_days":[],"job_aids":[],"languages":[]}
+        {"index":{"_id":9018}}
+        {"id":9018,"title":"the developer","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-27T10:38:29.072-05:00","city":{"id":359,"description":"Vienna"},"job_categories":[{"id":103,"description":"Toys, Automotive \u0026 Books"}],"work_mode":{"id":138,"description":"amplio ábanico"},"contract_type":{"id":138,"description":"hibrida"},"working_days":[{"id":2,"description":"Mañana (7am-12pm)"}],"available_work_days":[{"id":2,"description":"Martes"}],"job_aids":[{"id":2,"description":"Trasport aid"}],"languages":[{"id":7,"description":"Machine codeish"}]}
+        {"index":{"_id":9019}}
+        {"id":9019,"title":"programmer","description":"endSint esse anim consequat commodo.","status":"active","created_at":"2020-03-27T10:38:29.163-05:00","city":{"id":359,"description":"Vienna"},"job_categories":[{"id":103,"description":"Toys, Automotive \u0026 Books"}],"work_mode":{"id":138,"description":"amplio ábanico"},"contract_type":{"id":138,"description":"hibrida"},"working_days":[{"id":2,"description":"Mañana (7am-12pm)"}],"available_work_days":[{"id":2,"description":"Martes"}],"job_aids":[{"id":2,"description":"Trasport aid"}],"languages":[{"id":7,"description":"Machine codeish"}]}
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/x-ndjson
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '230'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"took":9,"errors":false,"items":[{"index":{"_index":"offers","_type":"_doc","_id":"9001","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":7,"_primary_term":1,"status":200}},{"index":{"_index":"offers","_type":"_doc","_id":"9002","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":8,"_primary_term":1,"status":200}},{"index":{"_index":"offers","_type":"_doc","_id":"9003","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":9,"_primary_term":1,"status":200}},{"index":{"_index":"offers","_type":"_doc","_id":"9004","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":10,"_primary_term":1,"status":200}},{"index":{"_index":"offers","_type":"_doc","_id":"9005","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":11,"_primary_term":1,"status":200}},{"index":{"_index":"offers","_type":"_doc","_id":"9018","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":12,"_primary_term":1,"status":200}},{"index":{"_index":"offers","_type":"_doc","_id":"9019","_version":2,"result":"updated","_shards":{"total":1,"successful":1,"failed":0},"_seq_no":13,"_primary_term":1,"status":200}}]}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 15:38:29 GMT
+- request:
+    method: get
+    uri: http://elasticsearch_test:9200/offers/_search?scroll=30s
+    body:
+      encoding: UTF-8
+      string: '{"query":{"match_all":{}},"sort":[{"created_at":{"order":"desc"}}]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '1167'
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJfc2Nyb2xsX2lkIjoiRFhGMVpYSjVRVzVrUm1WMFkyZ0JBQUFBQUFBQUFBVVdUbEkxUVRSVFNGVlVObkZ4ZURCTmIyNTJZbVpzWnc9PSIsInRvb2siOjUsInRpbWVkX291dCI6ZmFsc2UsIl9zaGFyZHMiOnsidG90YWwiOjEsInN1Y2Nlc3NmdWwiOjEsInNraXBwZWQiOjAsImZhaWxlZCI6MH0sImhpdHMiOnsidG90YWwiOnsidmFsdWUiOjcsInJlbGF0aW9uIjoiZXEifSwibWF4X3Njb3JlIjpudWxsLCJoaXRzIjpbeyJfaW5kZXgiOiJvZmZlcnMiLCJfdHlwZSI6Il9kb2MiLCJfaWQiOiI5MDE5IiwiX3Njb3JlIjpudWxsLCJfc291cmNlIjp7ImlkIjo5MDE5LCJ0aXRsZSI6InByb2dyYW1tZXIiLCJkZXNjcmlwdGlvbiI6ImVuZFNpbnQgZXNzZSBhbmltIGNvbnNlcXVhdCBjb21tb2RvLiIsInN0YXR1cyI6ImFjdGl2ZSIsImNyZWF0ZWRfYXQiOiIyMDIwLTAzLTI3VDEwOjM4OjI5LjE2My0wNTowMCIsImNpdHkiOnsiaWQiOjM1OSwiZGVzY3JpcHRpb24iOiJWaWVubmEifSwiam9iX2NhdGVnb3JpZXMiOlt7ImlkIjoxMDMsImRlc2NyaXB0aW9uIjoiVG95cywgQXV0b21vdGl2ZSBcdTAwMjYgQm9va3MifV0sIndvcmtfbW9kZSI6eyJpZCI6MTM4LCJkZXNjcmlwdGlvbiI6ImFtcGxpbyDDoWJhbmljbyJ9LCJjb250cmFjdF90eXBlIjp7ImlkIjoxMzgsImRlc2NyaXB0aW9uIjoiaGlicmlkYSJ9LCJ3b3JraW5nX2RheXMiOlt7ImlkIjoyLCJkZXNjcmlwdGlvbiI6Ik1hw7FhbmEgKDdhbS0xMnBtKSJ9XSwiYXZhaWxhYmxlX3dvcmtfZGF5cyI6W3siaWQiOjIsImRlc2NyaXB0aW9uIjoiTWFydGVzIn1dLCJqb2JfYWlkcyI6W3siaWQiOjIsImRlc2NyaXB0aW9uIjoiVHJhc3BvcnQgYWlkIn1dLCJsYW5ndWFnZXMiOlt7ImlkIjo3LCJkZXNjcmlwdGlvbiI6Ik1hY2hpbmUgY29kZWlzaCJ9XX0sInNvcnQiOlsxNTg1MzIzNTA5MTYzXX0seyJfaW5kZXgiOiJvZmZlcnMiLCJfdHlwZSI6Il9kb2MiLCJfaWQiOiI5MDE4IiwiX3Njb3JlIjpudWxsLCJfc291cmNlIjp7ImlkIjo5MDE4LCJ0aXRsZSI6InRoZSBkZXZlbG9wZXIiLCJkZXNjcmlwdGlvbiI6ImVuZFNpbnQgZXNzZSBhbmltIGNvbnNlcXVhdCBjb21tb2RvLiIsInN0YXR1cyI6ImFjdGl2ZSIsImNyZWF0ZWRfYXQiOiIyMDIwLTAzLTI3VDEwOjM4OjI5LjA3Mi0wNTowMCIsImNpdHkiOnsiaWQiOjM1OSwiZGVzY3JpcHRpb24iOiJWaWVubmEifSwiam9iX2NhdGVnb3JpZXMiOlt7ImlkIjoxMDMsImRlc2NyaXB0aW9uIjoiVG95cywgQXV0b21vdGl2ZSBcdTAwMjYgQm9va3MifV0sIndvcmtfbW9kZSI6eyJpZCI6MTM4LCJkZXNjcmlwdGlvbiI6ImFtcGxpbyDDoWJhbmljbyJ9LCJjb250cmFjdF90eXBlIjp7ImlkIjoxMzgsImRlc2NyaXB0aW9uIjoiaGlicmlkYSJ9LCJ3b3JraW5nX2RheXMiOlt7ImlkIjoyLCJkZXNjcmlwdGlvbiI6Ik1hw7FhbmEgKDdhbS0xMnBtKSJ9XSwiYXZhaWxhYmxlX3dvcmtfZGF5cyI6W3siaWQiOjIsImRlc2NyaXB0aW9uIjoiTWFydGVzIn1dLCJqb2JfYWlkcyI6W3siaWQiOjIsImRlc2NyaXB0aW9uIjoiVHJhc3BvcnQgYWlkIn1dLCJsYW5ndWFnZXMiOlt7ImlkIjo3LCJkZXNjcmlwdGlvbiI6Ik1hY2hpbmUgY29kZWlzaCJ9XX0sInNvcnQiOlsxNTg1MzIzNTA5MDcyXX0seyJfaW5kZXgiOiJvZmZlcnMiLCJfdHlwZSI6Il9kb2MiLCJfaWQiOiI5MDA1IiwiX3Njb3JlIjpudWxsLCJfc291cmNlIjp7ImlkIjo5MDA1LCJ0aXRsZSI6IlNhZXBlIGV0IG5vYmlzIHZvbHVwdGF0aWJ1cyB1dCBtYXhpbWUgZWEgYXV0LiIsImRlc2NyaXB0aW9uIjoiZW5kU2ludCBlc3NlIGFuaW0gY29uc2VxdWF0IGNvbW1vZG8uIiwic3RhdHVzIjoiYWN0aXZlIiwiY3JlYXRlZF9hdCI6IjIwMjAtMDMtMjdUMTA6Mzg6MjguOTk3LTA1OjAwIiwiY2l0eSI6eyJpZCI6MzU4LCJkZXNjcmlwdGlvbiI6IkFsZ2llcnMifSwiam9iX2NhdGVnb3JpZXMiOlt7ImlkIjoxMDIsImRlc2NyaXB0aW9uIjoiU2hvZXMifV0sIndvcmtfbW9kZSI6eyJpZCI6MTM3LCJkZXNjcmlwdGlvbiI6ImVzdHJ1Y3R1cmEgZGUgcHJlY2lvcyJ9LCJjb250cmFjdF90eXBlIjp7ImlkIjoxMzcsImRlc2NyaXB0aW9uIjoiQ29tcGF0aWJsZSJ9LCJ3b3JraW5nX2RheXMiOltdLCJhdmFpbGFibGVfd29ya19kYXlzIjpbXSwiam9iX2FpZHMiOltdLCJsYW5ndWFnZXMiOltdfSwic29ydCI6WzE1ODUzMjM1MDg5OTddfSx7Il9pbmRleCI6Im9mZmVycyIsIl90eXBlIjoiX2RvYyIsIl9pZCI6IjkwMDQiLCJfc2NvcmUiOm51bGwsIl9zb3VyY2UiOnsiaWQiOjkwMDQsInRpdGxlIjoiQ29uc2VjdGV0dXIgc2ludCBpdXN0byB2ZWwgb2ZmaWNpYSBzZXF1aSBzb2x1dGEgbm9uLiIsImRlc2NyaXB0aW9uIjoiZW5kU2ludCBlc3NlIGFuaW0gY29uc2VxdWF0IGNvbW1vZG8uIiwic3RhdHVzIjoiYWN0aXZlIiwiY3JlYXRlZF9hdCI6IjIwMjAtMDMtMjdUMTA6Mzg6MjguOTI5LTA1OjAwIiwiY2l0eSI6eyJpZCI6MzU2LCJkZXNjcmlwdGlvbiI6IlNhaW50IEpvaG4ncyJ9LCJqb2JfY2F0ZWdvcmllcyI6W3siaWQiOjEwMSwiZGVzY3JpcHRpb24iOiJPdXRkb29ycywgS2lkcyBcdTAwMjYgQmVhdXR5In1dLCJ3b3JrX21vZGUiOnsiaWQiOjEzNiwiZGVzY3JpcHRpb24iOiJFbiByZWQifSwiY29udHJhY3RfdHlwZSI6eyJpZCI6MTM2LCJkZXNjcmlwdGlvbiI6ImNvbnRpbmdlbmNpYSJ9LCJ3b3JraW5nX2RheXMiOltdLCJhdmFpbGFibGVfd29ya19kYXlzIjpbXSwiam9iX2FpZHMiOltdLCJsYW5ndWFnZXMiOltdfSwic29ydCI6WzE1ODUzMjM1MDg5MjldfSx7Il9pbmRleCI6Im9mZmVycyIsIl90eXBlIjoiX2RvYyIsIl9pZCI6IjkwMDMiLCJfc2NvcmUiOm51bGwsIl9zb3VyY2UiOnsiaWQiOjkwMDMsInRpdGxlIjoiUXVpcyBuaWhpbCBhbGlxdWFtIHZlbGl0IG5lY2Vzc2l0YXRpYnVzIGF1dCBleHBlZGl0YSB2b2x1cHRhcy4iLCJkZXNjcmlwdGlvbiI6ImVuZFNpbnQgZXNzZSBhbmltIGNvbnNlcXVhdCBjb21tb2RvLiIsInN0YXR1cyI6ImFjdGl2ZSIsImNyZWF0ZWRfYXQiOiIyMDIwLTAzLTI3VDEwOjM4OjI4Ljg2MC0wNTowMCIsImNpdHkiOnsiaWQiOjM1NCwiZGVzY3JpcHRpb24iOiJUYXNoa2VudCJ9LCJqb2JfY2F0ZWdvcmllcyI6W3siaWQiOjEwMCwiZGVzY3JpcHRpb24iOiJTaG9lcyJ9XSwid29ya19tb2RlIjp7ImlkIjoxMzUsImRlc2NyaXB0aW9uIjoibW9kdWxhciJ9LCJjb250cmFjdF90eXBlIjp7ImlkIjoxMzUsImRlc2NyaXB0aW9uIjoiY2lyY3VpdG8ifSwid29ya2luZ19kYXlzIjpbXSwiYXZhaWxhYmxlX3dvcmtfZGF5cyI6W10sImpvYl9haWRzIjpbXSwibGFuZ3VhZ2VzIjpbXX0sInNvcnQiOlsxNTg1MzIzNTA4ODYwXX0seyJfaW5kZXgiOiJvZmZlcnMiLCJfdHlwZSI6Il9kb2MiLCJfaWQiOiI5MDAyIiwiX3Njb3JlIjpudWxsLCJfc291cmNlIjp7ImlkIjo5MDAyLCJ0aXRsZSI6IkRpc3RpbmN0aW8gcGVyZmVyZW5kaXMgdm9sdXB0YXRlbSB2ZXJvIGV4Y2VwdHVyaSBhdXRlbSBpdGFxdWUgY29uc2VjdGV0dXIuIiwiZGVzY3JpcHRpb24iOiJlbmRTaW50IGVzc2UgYW5pbSBjb25zZXF1YXQgY29tbW9kby4iLCJzdGF0dXMiOiJhY3RpdmUiLCJjcmVhdGVkX2F0IjoiMjAyMC0wMy0yN1QxMDozODoyOC43ODgtMDU6MDAiLCJjaXR5Ijp7ImlkIjozNTIsImRlc2NyaXB0aW9uIjoiQ29wZW5oYWdlbiJ9LCJqb2JfY2F0ZWdvcmllcyI6W3siaWQiOjk5LCJkZXNjcmlwdGlvbiI6IkdhcmRlbiJ9XSwid29ya19tb2RlIjp7ImlkIjoxMzQsImRlc2NyaXB0aW9uIjoibXVsdGllc3RhZG8ifSwiY29udHJhY3RfdHlwZSI6eyJpZCI6MTM0LCJkZXNjcmlwdGlvbiI6IkRpZ2l0YWxpemFkbyJ9LCJ3b3JraW5nX2RheXMiOltdLCJhdmFpbGFibGVfd29ya19kYXlzIjpbXSwiam9iX2FpZHMiOltdLCJsYW5ndWFnZXMiOltdfSwic29ydCI6WzE1ODUzMjM1MDg3ODhdfSx7Il9pbmRleCI6Im9mZmVycyIsIl90eXBlIjoiX2RvYyIsIl9pZCI6IjkwMDEiLCJfc2NvcmUiOm51bGwsIl9zb3VyY2UiOnsiaWQiOjkwMDEsInRpdGxlIjoiVm9sdXB0YXRlIGV1bSB1dCB1dCBzaXQgcmVydW0gbm9iaXMgZHVjaW11cy4iLCJkZXNjcmlwdGlvbiI6ImVuZFNpbnQgZXNzZSBhbmltIGNvbnNlcXVhdCBjb21tb2RvLiIsInN0YXR1cyI6ImFjdGl2ZSIsImNyZWF0ZWRfYXQiOiIyMDIwLTAzLTI3VDEwOjM4OjI4LjcxNC0wNTowMCIsImNpdHkiOnsiaWQiOjM1MCwiZGVzY3JpcHRpb24iOiJTa29wamUifSwiam9iX2NhdGVnb3JpZXMiOlt7ImlkIjo5OCwiZGVzY3JpcHRpb24iOiJCb29rcywgVG9vbHMgXHUwMDI2IFNwb3J0cyJ9XSwid29ya19tb2RlIjp7ImlkIjoxMzMsImRlc2NyaXB0aW9uIjoiY29sYWJvcmFjacOzbiJ9LCJjb250cmFjdF90eXBlIjp7ImlkIjoxMzMsImRlc2NyaXB0aW9uIjoibW9kZWxvIn0sIndvcmtpbmdfZGF5cyI6W10sImF2YWlsYWJsZV93b3JrX2RheXMiOltdLCJqb2JfYWlkcyI6W10sImxhbmd1YWdlcyI6W119LCJzb3J0IjpbMTU4NTMyMzUwODcxNF19XX19
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 15:38:32 GMT
+- request:
+    method: get
+    uri: http://elasticsearch_test:9200/_search/scroll
+    body:
+      encoding: UTF-8
+      string: '{"scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAAUWTlI1QTRTSFVUNnFxeDBNb252YmZsZw==","scroll":"30s"}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '212'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAAUWTlI1QTRTSFVUNnFxeDBNb252YmZsZw==","took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":{"value":7,"relation":"eq"},"max_score":null,"hits":[]}}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 15:38:32 GMT
+- request:
+    method: get
+    uri: http://elasticsearch_test:9200/offers/_search?scroll=30s
+    body:
+      encoding: UTF-8
+      string: '{"query":{"bool":{"must":[{"term":{"status":"active"}},{"multi_match":{"query":"THisDoesntExistWooWReturn
+        Empty","fields":["description^3","title^1"]}}]}},"sort":[{"created_at":{"order":"desc"}}]}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '212'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAAYWTlI1QTRTSFVUNnFxeDBNb252YmZsZw==","took":2,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 15:38:32 GMT
+- request:
+    method: get
+    uri: http://elasticsearch_test:9200/_search/scroll
+    body:
+      encoding: UTF-8
+      string: '{"scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAAYWTlI1QTRTSFVUNnFxeDBNb252YmZsZw==","scroll":"30s"}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '209'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"_scroll_id":"DXF1ZXJ5QW5kRmV0Y2gBAAAAAAAAAAYWTlI1QTRTSFVUNnFxeDBNb252YmZsZw==","took":1,"timed_out":false,"_shards":{"total":1,"successful":1,"skipped":0,"failed":0},"hits":{"total":{"value":0,"relation":"eq"},"max_score":null,"hits":[]}}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 15:38:32 GMT
+- request:
+    method: head
+    uri: http://elasticsearch:9200/offers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '1693'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 15:38:32 GMT
+- request:
+    method: delete
+    uri: http://elasticsearch:9200/offers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '47'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"acknowledged":true}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 15:38:32 GMT
+- request:
+    method: head
+    uri: http://elasticsearch:9200/offers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '365'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 15:38:32 GMT
+- request:
+    method: put
+    uri: http://elasticsearch:9200/offers
+    body:
+      encoding: UTF-8
+      string: '{"settings":{"index":{"number_of_shards":1,"number_of_replicas":0,"max_ngram_diff":50,"analysis":{"index_analyzer":{"common_index_analizer":{"type":"custom","tokenizer":"standard","filter":["lowercase","common_ngram_filter"]}},"search_analyzer":{"common_search_analyzer":{"type":"custom","tokenizer":"standard","filter":["lowercase","standard","common_ngram_filter"]}},"ascii_analizer":{"common_ascii_analyzer":{"tokenizer":"standard","filter":"standard"}},"filter":{"common_ngram_filter":{"type":"nGram","min_gram":2,"max_gram":50}}}}},"mappings":{"dynamic":"false","properties":{"id":{"type":"long"},"title":{"type":"text","analyzer":"spanish"},"description":{"type":"text","analyzer":"spanish"},"status":{"type":"text"},"created_at":{"type":"date"},"city":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"job_categories":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"work_mode":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"contract_type":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"working_days":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"available_work_days":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"job_aids":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}},"languages":{"type":"nested","properties":{"id":{"type":"long"},"description":{"type":"text"}}}}}}'
+    headers:
+      User-Agent:
+      - 'elasticsearch-ruby/7.5.0 (RUBY_VERSION: 2.6.3; linux x86_64; Faraday v0.17.3)'
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Length:
+      - '73'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"acknowledged":true,"shards_acknowledged":true,"index":"offers"}'
+    http_version: null
+  recorded_at: Fri, 27 Mar 2020 15:38:32 GMT
+recorded_with: VCR 5.1.0

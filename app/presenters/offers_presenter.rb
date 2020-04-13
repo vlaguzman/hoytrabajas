@@ -1,23 +1,36 @@
 class OffersPresenter < ApplicationPresenter
+  include OffersService
 
-  attr_accessor :source, :current_user
+  def carousal_offers_list
+    search_parameters = options[:search_parameters] || {}
+    result_ids_list = search_parameters.any? ? ids_extractor(Offer.search_by search_parameters) : []
 
-  def initialize(source, current_user)
-    @source = source
-    @current_user = current_user
+    current_user = options[:current_user]
+    cv = current_user.curriculum_vitae if current_user.present?
+
+    Offers::CarouselOffersService.(cv, previous_results: result_ids_list, limit: options[:limit])
+
   end
 
-  def show_details
-    Offers::ShowService.new(source, current_user).details
+  def adtional_title_description
+    options[:adtional_title_description]
+  end
+
+  # used in view to build meta tags
+  def meta_tags_builders
+    city_name = source.city_description if source.present?
+
+    {
+      origin: options[:origin] || :default,
+      content: options[:content],
+      city_name: city_name
+    }
   end
 
   def related_offer_show
-    OffersService.related_offers_show_details(source.id, source.job_categories, current_user)
+    OffersService.related_offers_show_details(source.id, source.job_categories, options[:current_user])
   end
 
-  def index_details
-    Offers::IndexService.new(source).details
-  end
 
   def component_translations
     I18n.t('offers')

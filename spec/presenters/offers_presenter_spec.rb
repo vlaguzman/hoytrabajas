@@ -1,15 +1,65 @@
 require "rails_helper"
 
 RSpec.describe OffersPresenter do
-  let(:offer)   { create(:offer) }
+
+  before do
+    client = Offer.__elasticsearch__.client = Elasticsearch::Client.new host: "#{ENV['TEST_ELASTICSEARCH_HOST']}:9200"
+    Offer.__elasticsearch__.delete_index! if client.indices.exists? index: :offers
+    Offer.__elasticsearch__.create_index!
+  end
+
+  after do
+    client = Offer.__elasticsearch__.client = Elasticsearch::Client.new host: "#{ENV['ELASTICSEARCH_HOST']}:9200"
+    Offer.__elasticsearch__.delete_index! if client.indices.exists? index: :offers
+    Offer.__elasticsearch__.create_index!
+  end
+
+  let!(:offer)   { create(:offer, id: 1313) }
   let(:user)    { create(:user) }
-  let(:subject) { described_class.new(offer, user) }
+  let(:subject) { described_class.new(offer, current_user: user) }
 
-  describe "#show_details" do
-    it { should respond_to(:show_details) }
+  describe "#carousal_offers_list", vcr: true do
+    let(:subject) { described_class.new(offer, current_user: user, search_parameters: { keywords: offer.title }) }
+    it "should return array with card offers attributes" do
+      Offer.import
 
-    it "should return a hash with the required info to show template" do
-      expect(subject.show_details).to be_an_instance_of(Hash)
+      response = subject.carousal_offers_list
+
+      expect(response.last.keys).to eq([
+        :id,
+        :title,
+        :immediate_start,
+        :description,
+        :required_experience,
+        :confidential,
+        :job_category_image,
+        :city,
+        :salary,
+        :company,
+        :close_date,
+        :on_demand,
+        :affinity_percentage,
+        :applied_offers,
+        :raw_close_date
+      ])
+    end
+  end
+
+  describe "#adtional_title_description" do
+    let(:subject) { described_class.new(offer, adtional_title_description: "aditional") }
+
+    it "should return aditional title" do
+      response = subject.adtional_title_description
+
+      expect(response).to eq("aditional")
+    end
+  end
+
+  describe "#meta_tags_builders" do
+    it "should return meta tags" do
+      response = subject.meta_tags_builders
+
+      expect(response).to eq({:origin=>:default, :content=>nil, :city_name=>offer.city_description})
     end
   end
 
@@ -33,7 +83,7 @@ RSpec.describe OffersPresenter do
         [create(:offer), create(:offer)]
       end
 
-      let(:subject) { described_class.new(main_offer, user) }
+      let(:subject) { described_class.new(main_offer, current_user: user) }
 
       it "should return 3 expected objects" do
         response = subject.related_offer_show
@@ -47,25 +97,6 @@ RSpec.describe OffersPresenter do
         expect(response.length).to eq(3)
         expect(response).to match_array(expected_response)
       end
-    end
-  end
-
-  describe "#index_details" do
-    it { should respond_to(:index_details) }
-
-    it "should return a array with the required info to show template" do
-      response = subject.index_details
-
-      expect(response).to be_an_instance_of(Hash)
-    end
-
-    let!(:main_job_category_2) { create(:job_category, description: "TheMainCategory") }
-    let!(:related_offer) { create(:offer, job_categories: [main_job_category_2]) }
-
-    it "should have the expected keys in the arrays" do
-      response = subject.index_details
-
-      expect(response.keys).to match_array([:applied_offers, :raw_close_date, :affinity_percentage, :id, :city, :close_date, :company, :description, :immediate_start, :job_category_image, :new_offer, :required_experience, :salary, :title, :on_demand, :confidential])
     end
   end
 

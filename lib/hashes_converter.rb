@@ -12,11 +12,7 @@ module HashesConverter
     )
   end
 
-  def self.validate_presence_values(object={})
-    object.delete_if { |_, value| not value.present? }
-  end
-
-  def self.remove_empty_keys(hash)
+  def self.remove_empty_keys(hash = {})
     hash.select { |key, value| value.present? }
   end
 end

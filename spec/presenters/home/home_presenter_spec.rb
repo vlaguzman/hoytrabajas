@@ -6,12 +6,12 @@ RSpec.describe Home::HomePresenter do
 
   let(:subject) { described_class.new candidate }
 
-  describe "#data_filter" do
+  describe "#filter_form_attributes" do
     it "should return a hash with data filter" do
-      response = subject.data_filter
+      response = subject.filter_form_attributes
 
       expect(response).to be_an_instance_of(Hash)
-      expect(response.keys).to match_array([:fields1, :button1, :cities])
+      expect(response.keys).to match_array([:fields, :lists])
     end
   end
 
@@ -28,14 +28,14 @@ RSpec.describe Home::HomePresenter do
     end
   end
 
-  describe "#categories" do
+  describe "#categories_list_builder" do
     let!(:offer) { create(:offer) }
 
     it "should return a array" do
-      response = subject.categories
+      response = subject.categories_list_builder
 
       expect(response.count).to eq(1)
-      expect(response).to be_an_instance_of(Hash)
+      expect(response).to be_an_instance_of(Array)
     end
   end
 

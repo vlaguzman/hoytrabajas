@@ -1,10 +1,10 @@
 import React from 'react'
 import Slider from 'react-slick'
 import PropTypes from 'prop-types'
-import map from 'lodash/map'
 import Unidad from '../categories_components/categoryUnit'
 
 const CarouselRow = ({ items = [], jobCategoryIds, handleJobCategory }) => {
+
   const settings = {
     dots: false,
     // lazyLoad: true,
@@ -41,9 +41,10 @@ const CarouselRow = ({ items = [], jobCategoryIds, handleJobCategory }) => {
       }
     ]
   }
+
   return (
     <Slider {...settings} className="filterForm__carousel">
-      {map(items['categorias'], item => (
+      { items.map( item => (
         <Unidad
           {...item}
           key={item.id}

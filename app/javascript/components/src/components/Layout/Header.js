@@ -117,6 +117,7 @@ const Header = props => {
           {props.session_translation.nav.sign_out}
         </a>
       </NavItem>
+
       {/* TODO any: replace code below with commented one when premium page is ready */}
       {company_signed_in && (
         <NavItem className="list-inline-item a-navItem__button">

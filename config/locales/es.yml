@@ -49,6 +49,8 @@ es:
   session:
     nav:
       home: 'Inicio'
+      candidates: 'Candidatos'
+      employer: 'Empleador'
       i_need_job: 'Busco empleo'
       i_offer_job: 'Ofrezco trabajo'
       sign_in: 'Ingreso'

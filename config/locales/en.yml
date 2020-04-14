@@ -45,6 +45,65 @@ en:
           expired: "Expired"
       actions:
         edit: 'Edit'
+  session:
+    nav:
+      home: 'Home'
+      candidates: 'Candidates'
+      employer: 'Employer'
+      i_need_job: 'I look for a job'
+      i_offer_job: 'I offer a job'
+      sign_in: 'Sign in'
+      sign_up: 'Sign up'
+      sign_out: 'Sign out'
+      premium: 'Be a Premium'
+      create_offer: 'Create offer'
+      dashboard: 'My dashboard'
+      profile: 'My profile'
+      advanced_search:
+        title: 'Advanced search'
+        clean_search: 'Clean search'
+        search_offer: 'Search offer'
+        search_offer_input: 'Search offer'
+        fields:
+          city:
+            label: 'City'
+            placeholder: 'Select a city'
+          experience:
+            label: 'Experience'
+            placeholder: 'Select your experience'
+          age:
+            label: 'Age'
+            placeholder: 'Select an age'
+          job_category:
+            label: 'Job categories'
+            placeholder: 'Select a job category'
+          work_mode:
+            label: 'Work mode'
+            placeholder: 'Select a work mode'
+          legal_agreement:
+            label: 'Legal agreement'
+            placeholder: 'Select a legal agreement'
+          offer_type:
+            label: 'Offer type'
+            placeholder: 'Select an offer type'
+          working_days:
+            label: 'Working days'
+            placeholder: 'Select the working days'
+          working_hours:
+            label: 'Working hours'
+            placeholder: 'Select working hours'
+          offer_aux:
+            label: 'Labor aids'
+            placeholder: 'Select labor aids'
+          offer_salary:
+            label: 'Salary'
+            placeholder: 'Select the salary'
+          offer_date:
+            label: 'Date'
+            placeholder: 'Day'
+          offer_language:
+            label: 'Languages'
+            placeholder: 'Select languages'
   activerecord:
     errors:
       messages:

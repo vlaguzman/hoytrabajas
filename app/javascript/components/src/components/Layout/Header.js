@@ -158,7 +158,10 @@ const Header = props => {
         <a href="/">{props.session_translation.nav.home}</a>
       </NavItem>
       <NavItem className="list-inline-item a-navItem">
-        <a href={pathToOffers}>{props.session_translation.nav.i_need_job}</a>
+        <a href={pathToOffers}>{props.session_translation.nav.candidates}</a>
+      </NavItem>
+      <NavItem className="list-inline-item a-navItem">
+        <a href={pathToOffers}>{props.session_translation.nav.employer}</a>
       </NavItem>
       {/* TODO any: uncomment when companies landing page is ready */}
       {/* <NavItem className="list-inline-item a-navItem">

@@ -19,11 +19,11 @@ en:
     search_trends:
       title: 'Search trends'
       subtitles:
-        cities: 'Cities'
-        categories: 'Categories'
-        positions: 'Positions'
-        work_mode: 'Work mode'
-        working_hours: 'Working hours'
+        city: 'Cities'
+        job_categories: 'Categories'
+        work_position: 'Positions'
+        contract_type: 'Work mode'
+        working_days: 'Working hours'
       post_list:
         title: 'We work to give you more opportunities'
         content:

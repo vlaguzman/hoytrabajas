@@ -107,7 +107,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/presenters/companies/first_offer_presenter.rb",100,13,4,4,0
 "./app/presenters/companies/list_candidates_presenter.rb",100,44,22,22,0
 "./app/presenters/companies/profiles_presenter.rb",100,25,11,11,0
-"./app/presenters/home/home_presenter.rb",100,47,14,14,0
+"./app/presenters/home/home_presenter.rb",100,51,16,16,0
 "./app/presenters/offers/show_presenter.rb",98,266,120,118,2
 "./app/presenters/offers_presenter.rb",100,38,17,17,0
 "./app/presenters/users/profiles_presenter.rb",100,119,33,33,0
@@ -172,6 +172,7 @@ File,% covered,Lines,Relevant Lines,Lines covered,Lines missed
 "./app/services/company_service.rb",100,39,20,20,0
 "./app/services/elasticsearch/indexer_service.rb",100,59,23,23,0
 "./app/services/elasticsearch/search_service.rb",100,55,28,28,0
+"./app/services/home/search_trends_list_service.rb",100,67,19,19,0
 "./app/services/offers/applied_offer_service.rb",100,34,13,13,0
 "./app/services/offers/carousel_offers_service.rb",100,23,12,12,0
 "./app/services/offers/completely_destroy_service.rb",100,16,10,10,0

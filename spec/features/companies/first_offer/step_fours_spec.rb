@@ -90,6 +90,7 @@ RSpec.describe "When company fill the step four form", type: :feature do
         sign_in company
         visit companies_first_offer_step_four_path(offer_id: offer.id)
 
+        has_button?("Inicio")
         click_link_or_button('Inicio')
         expect(current_path).to eq(root_path)
       end

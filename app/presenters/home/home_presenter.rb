@@ -33,6 +33,10 @@ class Home::HomePresenter < ApplicationPresenter
     OffersService.active_offers_index_details(source, MAX_OFFER_LIMIT)
   end
 
+  def search_trends_parameters
+    Home::SearchTrendsListService.()
+  end
+
   def categories_list_builder
     categories = JobCategory.all.map do |category|
       attributes = category.attributes.deep_symbolize_keys.slice(:id, :description)

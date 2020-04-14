@@ -44,4 +44,19 @@
     align-content: center;
     justify-content: center;
   }
+
+  li {
+    a:link,
+    a:visited {
+      &.--trendLink {
+        color: $color__gray-main;
+      }
+    }
+
+    a:hover {
+      &.--trendLink {
+        color: $color__slategray-dark;
+      }
+    }
+  }
 }

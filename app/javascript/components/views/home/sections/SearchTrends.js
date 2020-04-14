@@ -1,60 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const trends = [
-  {
-    name: 'cities',
-    list: ['Bogotá', 'Medellín', 'Bucaramanga', 'Santa Marta', 'Villavicencio']
-  },
-  {
-    name: 'categories',
-    list: [
-      'Gestión administrativa',
-      'Ventas',
-      'Operario',
-      'Tecnología y programación',
-      'Cocina, bar y meseros'
-    ]
-  },
-  {
-    name: 'positions',
-    list: [
-      'Auxiliar logístico',
-      'Diseñador gráfico',
-      'Mensajero',
-      'Community manager',
-      'Asesor contable'
-    ]
-  },
-  {
-    name: 'work_mode',
-    list: ['Medio tiempo', 'Por horas', 'Tiempo completo', 'Fines de semana']
-  },
-  {
-    name: 'working_hours',
-    list: [
-      'Mañana (7am-12pm)',
-      'Tarde (12pm-5pm)',
-      'Media tarde (5pm-10pm)',
-      'Noche (10pm-3am)'
-    ]
-  }
-]
+const SearchTrends = ({ searchTrendsParams, translations }) => {
 
-const SearchTrends = ({ translations }) => {
   return (
     <div className="t-home__searchTrends">
       <h4 className="homeTitle color__blue-main">{translations.title}</h4>
       <div className="trendsGrid">
-        {trends.map(singleTrend => (
-          <div key={singleTrend.name} className="singleTrend">
+        {Object.keys(searchTrendsParams).map(trendGroup => (
+          <div key={trendGroup} className="singleTrend">
             <h6 className="a-typo__body1 color__blue-main fw-bold mb-30">
-              {translations.subtitles[singleTrend.name]}
+              {translations.subtitles[trendGroup]}
             </h6>
             <ul>
-              {singleTrend.list.map(listItem => (
-                <li key={listItem} className="color__slategray-main">
-                  {listItem}
+              {searchTrendsParams[trendGroup].map( trend => (
+                <li key={trend.id}>
+                  <a className="--trendLink" href={`/offers?search[${trendGroup}]=${trend.id}`}>{trend.description}</a>
                 </li>
               ))}
             </ul>
@@ -66,14 +27,15 @@ const SearchTrends = ({ translations }) => {
 }
 
 SearchTrends.propTypes = {
+  searchTrends: PropTypes.object,
   translations: PropTypes.shape({
     title: PropTypes.string.isRequired,
     subtitles: PropTypes.shape({
       cities: PropTypes.string.isRequired,
-      categories: PropTypes.string.isRequired,
-      positions: PropTypes.string.isRequired,
-      work_mode: PropTypes.string.isRequired,
-      working_hours: PropTypes.string.isRequired
+      job_categories: PropTypes.string.isRequired,
+      work_positions: PropTypes.string.isRequired,
+      work_modes: PropTypes.string.isRequired,
+      working_days: PropTypes.string.isRequired
     }).isRequired
   })
 }

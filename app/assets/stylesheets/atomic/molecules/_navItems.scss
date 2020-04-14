@@ -10,7 +10,7 @@
   .a-navItem button {
     font-weight: bold;
     color: $color__purple-darkest;
-    font-size: 1rem;
+    font-size: 0.8125rem;
     -webkit-appearance: none;
     background: none;
     letter-spacing: normal;
@@ -19,6 +19,9 @@
 
     @media (max-width: 576px) {
       color: $color__white-main;
+    }
+    &:hover{
+      color: $color__orange-main;
     }
   }
 

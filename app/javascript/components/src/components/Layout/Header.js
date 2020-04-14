@@ -165,22 +165,20 @@ const Header = props => {
         <a href="/">{props.session_translation.nav.i_offer_job}</a>
       </NavItem> */}
       <NavItem className="list-inline-item a-navItem">
-        <button
-          type="button"
+        <a
           className="default a-navOpenLogin"
           onClick={() => handleOpenModal('sign_in')}
         >
           {props.session_translation.nav.sign_in}
-        </button>
+        </a>
       </NavItem>
       <NavItem className="list-inline-item a-navItem">
-        <button
-          type="button"
+        <a
           className="default a-navOpenSignUp"
           onClick={() => handleOpenModal('sign_up')}
         >
           {props.session_translation.nav.sign_up}
-        </button>
+        </a>
       </NavItem>
     </>
   )

@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton'
 import AddCircleIcon from '@material-ui/icons/AddCircle'
 import StarsIcon from '@material-ui/icons/Stars'
 import CloseIcon from '@material-ui/icons/Close'
+
 import {
   Form,
   FormGroup,
@@ -21,6 +22,7 @@ import {
 import Login from '../Login'
 import useWindowSize from '../../hooks/useWindowSize'
 import AdvancedSearch from '../AdvancedSearch'
+import PopperMenu from './PopperMenu'
 
 const Header = props => {
   const {
@@ -156,6 +158,10 @@ const Header = props => {
     <>
       <NavItem className="list-inline-item a-navItem">
         <a href="/">{props.session_translation.nav.home}</a>
+      </NavItem>
+      <NavItem className="list-inline-item a-navItem">
+        <PopperMenu
+        />
       </NavItem>
       <NavItem className="list-inline-item a-navItem">
         <a href={pathToOffers}>{props.session_translation.nav.candidates}</a>

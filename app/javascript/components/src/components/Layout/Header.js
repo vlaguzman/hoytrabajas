@@ -160,11 +160,9 @@ const Header = props => {
         <a href="/">{props.session_translation.nav.home}</a>
       </NavItem>
       <NavItem className="list-inline-item a-navItem">
-        <PopperMenu
+        <PopperMenu className="a-navItem__popper"
+	  translations={props.session_translation}
         />
-      </NavItem>
-      <NavItem className="list-inline-item a-navItem">
-        <a href={pathToOffers}>{props.session_translation.nav.candidates}</a>
       </NavItem>
       <NavItem className="list-inline-item a-navItem">
         <a href={pathToOffers}>{props.session_translation.nav.employer}</a>
